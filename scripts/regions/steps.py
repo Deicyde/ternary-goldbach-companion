@@ -525,6 +525,12 @@ def main():
             x, y, w, h = r['rect']
             item_rect[r['page']].append((iid, [x * W, y * H, (x + w) * W, (y + h) * H]))
     item_overlaps = []
+    item_touch = []   # (step, item, page, points): a line whose words the item's box reaches over
+
+    def own_bottom(i, pg, q):
+        """The lowest depth of the step's own words whose centre lies in q."""
+        ys = [v[4] for p2, v in words_s.get(i, []) if p2 == pg and q[0] < (v[1] + v[3]) / 2 < q[2] and q[1] < cy(v) < q[3]]
+        return max(ys) if ys else None
     for i, r, kind in allregs:
         inside = (D_by_id.get(i) or {}).get('inside_item')
         for q in r['quads']:
@@ -536,7 +542,15 @@ def main():
                 if o[1] <= q[1] and q[3] - o[3] >= 0.6 * L.bskip:
                     q[1] = o[3] + 0.05
                 elif o[3] >= q[3] and o[1] - q[1] >= 0.6 * L.bskip:
-                    q[3] = o[1] - 0.05
+                    low = own_bottom(i, r['page'], q)
+                    if low is not None and low + 0.05 > o[1] - 0.05:
+                        # the item's glyphs reach above the bottom of the line's words (a tall display
+                        # set just below it): no cut holds both, so the line keeps its words and the
+                        # two boxes overlap by the difference
+                        q[3] = low + 0.05
+                        item_touch.append((i, iid, r['page'], round(q[3] - o[1], 2)))
+                    else:
+                        q[3] = o[1] - 0.05
                 else:
                     item_overlaps.append((i, iid, r['page']))
     # -- checks on the arXiv PDF
@@ -645,12 +659,15 @@ def main():
                            methods=dict(methods), displays_without_distinctive_tokens=len(tok_none),
                            display_word_share_min=round(min(word_share), 3) if word_share else None,
                            overlaps_with_items=item_overlaps,
+                           lines_overlapping_an_item_box=item_touch,
                            display_word_share_below_80_in_place=low_share_in_place,
                            word_held_by_centre_not_wholly=strict,
                            failures={k: v for k, v in fails.items()}))
     json.dump(out, open(out_path, 'w'), indent=1, ensure_ascii=False)
     print(json.dumps({k: (len(v) if isinstance(v, list) else v) for k, v in out['checks'].items() if k != 'failures'}))
-    print(json.dumps({k: len(v) for k, v in fails.items()}), 'missing', len(missing))
+    print(json.dumps({k: len(v) for k, v in fails.items()}), 'missing', len(missing), 'lines overlapping an item box', len(item_touch))
+    if strict:
+        sys.exit(f'{len(strict)} words held by their centre only: {strict}')
 
 
 if __name__ == '__main__':

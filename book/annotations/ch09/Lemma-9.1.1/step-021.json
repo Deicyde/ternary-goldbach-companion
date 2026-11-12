@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.1.1 step 21",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean defines no $R$: under `GoodSmoothing` $G_\\delta$ is holomorphic at 0, and the residue at $s=0$ (a trivial zero of $L$ for even $\\chi$) is counted as a term of the zero sum.",
+  "subject": [
+    {
+      "location": {
+        "page": 176,
+        "rect": [
+          0.26253,
+          0.57784,
+          0.56162,
+          0.01307
+        ]
+      },
+      "title": "Lemma 9.1.1 step 21: Text, p. 166",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.explicit_formula_gen",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          984,
+          993
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.explicit_formula_gen"
+          },
+          "snippet": {
+            "text": "/-- **The explicit formula** ([H, Lemma 9.1.1] for `η(t) = t² e^{−t²/2}`, `χ` primitive, `χ ≠ 1`):\nalong heights `T_k ∈ [k+1, k+2]`,\n`Σ_{ρ ∈ (−1/2, 3/2) × (−T_k, T_k)} m_ρ G_δ(ρ) x^ρ → −S − (1/2π) ∫ (L'/L)(−1/2+iy) G_δ(−1/2+iy) x^{−1/2+iy} dy`,\nwhere `S = Σ Λ(n) χ(n) e(δn/x) η(n/x)`. (The sum includes the trivial zero `s = 0` when `χ` is even.) -/\ntheorem explicit_formula_gen {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {x : ℝ} (hx : 0 < x) :\n    ∃ T : ℕ → ℝ, (∀ k : ℕ, T k ∈ Icc ((k : ℝ) + 1) ((k : ℝ) + 2)) ∧\n      Tendsto (fun k => ∑ u ∈ zerosRect χ (T k), (multRect χ (T k) u : ℂ) * (mellin φ u * (x : ℂ) ^ u))\n        atTop (𝓝 (-SsumG χ φ x - (1 / (2 * π) : ℂ) *\n          ∫ y : ℝ, hIntG χ φ x (((-1 / 2 : ℝ) : ℂ) + y * I))) := by",
+            "line": 984,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.explicit_formula_gen",
+            "lines": [
+              984,
+              1093
+            ],
+            "conclusion": "The zero sum runs over `zerosRect` (zeros of $L(s,\\chi)$ in $(-1/2,3/2)\\times(-T_k,T_k)$ with multiplicity `multRect`), which contains $s=0$ when $\\chi$ is even, so the residue at $s=0$ is a term $m_0G_\\delta(0)$ of the zero sum."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L984-L993"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zerosRect",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          297,
+          300
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zerosRect"
+          },
+          "snippet": {
+            "text": "/-- The zeros strictly inside the rectangle `[−1/2, 3/2] × [−T, T]`, with multiplicity. -/\nnoncomputable def zerosRect {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (T : ℝ) : Finset ℂ :=\n  (zerosIn χ.LFunction 2 (RT T) (RT T / 2)).filter\n    (fun u => (zT T).re < u.re ∧ u.re < (wT T).re ∧ (zT T).im < u.im ∧ u.im < (wT T).im)",
+            "line": 297,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zerosRect",
+            "lines": [
+              297,
+              300
+            ],
+            "conclusion": "The zeros of $L(s,\\chi)$ strictly inside $[-1/2,3/2]\\times[-T,T]$, with no exclusion of $s=0$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L297-L300"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          176
+        ],
+        "printed": [
+          166
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.1 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean sums over odd n = 2r+1 (r ∈ ℤ), with h(u) = e(β(2u+1))η₂(m(2u+1)/x), β = δm/2x, so the Fourier variable is k with a factor e(k/2); text sums over all n.",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.26253,
+          0.44255,
+          0.56162,
+          0.03368
+        ]
+      },
+      "title": "Lemma 4.2.1 step 5: Display, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          302,
+          307
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Todd_main"
+          },
+          "snippet": {
+            "text": "  have hP := Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable hcont one_lt_two\n    (isBigO_of_hasCompactSupport hcs 2) hsummF 0\n  simp only [zero_add, QuotientAddGroup.mk_zero, fourier_eval_zero, mul_one] at hP\n  -- Step F: separate the zero frequency.\n  refine ⟨∑' k : ℤ, if k = 0 then 0 else 𝓕 h k, ?_, ?_⟩\n  · rw [hA, hP, hsummF.tsum_eq_add_tsum_ite 0, hF 0]",
+            "line": 302,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+            "lines": [
+              220,
+              322
+            ],
+            "conclusion": "Poisson summation (`Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable`) turns `∑_r h(r)` into `∑_k 𝓕h(k)`, then the k = 0 term is separated."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L302-L307"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.1.1 step 3",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Bounds are `|s₀|,|τ-s₀| ≤ 1/2` (book `≤ 1/2q` before scaling by q); `δ₂ ≥ 0` obtained by the reflection `σ`.",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.26253,
+          0.45047,
+          0.56162,
+          0.03131
+        ]
+      },
+      "title": "Lemma 4.1.1 step 3: Text, p. 52",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.residue_formΦ",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          767,
+          774
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.residue_formΦ"
+          },
+          "snippet": {
+            "text": "  have hs₀ : |s₀| ≤ 1 / 2 := abs_sub_round w\n  set τn := fun n : ℤ => s₀ + β * (n - c) / Q\n  have hsmall : ∀ n ∈ S, |β * (n - c) / Q| ≤ 1 / 2 := by\n    intro n hn\n    rw [abs_div, abs_mul, abs_of_pos hQ0, div_le_iff₀ hQ0]\n    calc |β| * |(n : ℝ) - c| ≤ 1 * (q / 2) :=\n          mul_le_mul hβ (hdist n hn) (abs_nonneg _) zero_le_one\n      _ ≤ 1 / 2 * Q := by linarith",
+            "line": 767,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.residue_formΦ",
+            "lines": [
+              742,
+              870
+            ],
+            "conclusion": "`|s₀| ≤ 1/2` and `|β(n-c)/Q| ≤ 1/2` for `n ∈ S`, i.e. both shift parts are at most `1/2` after scaling by `q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L767-L774"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.residue_formΦ",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          781,
+          802
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.residue_formΦ"
+          },
+          "snippet": {
+            "text": "  -- Choose the orientation `σ = ±1` so that `s = σ s₀ ≥ 0`.\n  obtain ⟨σ, hσ, hσs⟩ : ∃ σ : ℤ, σ * σ = 1 ∧ 0 ≤ (σ : ℝ) * s₀ := by\n    rcases le_or_gt 0 s₀ with h0 | h0\n    · exact ⟨1, by norm_num, by simpa using h0⟩\n    · exact ⟨-1, by norm_num, by push_cast; linarith⟩\n  have hσr : (σ : ℝ) * σ = 1 := by exact_mod_cast hσ\n  have hσabs : |(σ : ℝ)| = 1 := by\n    have : |(σ : ℝ)| * |(σ : ℝ)| = 1 := by rw [← abs_mul, hσr, abs_one]\n    nlinarith [abs_nonneg (σ : ℝ)]\n  set s := (σ : ℝ) * s₀\n  have hs1 : s ≤ 1 / 2 := by\n    calc s ≤ |s| := le_abs_self _\n      _ = |s₀| := by simp only [s, abs_mul, hσabs, one_mul]\n      _ ≤ 1 / 2 := hs₀\n  set τ' := fun n : ℤ => (σ : ℝ) * τn n\n  have hτ' : ∀ n ∈ S, τ' n ∈ Icc (s - 1 / 2) (s + 1 / 2) := by\n    intro n hn\n    have hb := hsmall n hn\n    have : |(σ : ℝ) * (β * (n - c) / Q)| ≤ 1 / 2 := by rw [abs_mul, hσabs, one_mul]; exact hb\n    rw [abs_le] at this\n    simp only [τ', τn, s, mul_add, mem_Icc]\n    constructor <;> linarith [this.1, this.2]",
+            "line": 781,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.residue_formΦ",
+            "lines": [
+              742,
+              870
+            ],
+            "conclusion": "Orientation `σ = ±1` makes `s = σ s₀ ≥ 0`, `s ≤ 1/2`, and `τ' n ∈ [s-1/2, s+1/2]`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L781-L802"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.residue_formΦ",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          831,
+          870
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.residue_formΦ"
+          },
+          "snippet": {
+            "text": "  have hinj : Set.InjOn R S := by\n    intro n hn n' hn' hR\n    have hmod : m n % q = m n' % q := by rw [← hRcast, ← hRcast]; exact congrArg _ hR\n    have hdvd : (q : ℤ) ∣ a * (n - n') := by\n      have h1 : (q : ℤ) ∣ m n - m n' := Int.ModEq.dvd hmod.symm\n      have : m n - m n' = σ * (a * (n - n')) := by simp only [m]; ring\n      rw [this] at h1\n      have h2 : (q : ℤ) ∣ σ * (σ * (a * (n - n'))) := dvd_mul_of_dvd_right h1 σ\n      rwa [← mul_assoc, hσ, one_mul] at h2\n    have hd : (q : ℤ) ∣ n - n' := hcop.symm.dvd_of_dvd_mul_left hdvd\n    simp only [S, Finset.coe_Ioc, Set.mem_Ioc] at hn hn'\n    obtain ⟨t, ht⟩ := hd\n    have : t = 0 := by\n      by_contra ht0\n      rcases lt_or_gt_of_ne ht0 with h | h\n      · have : (q : ℤ) * t ≤ -q := by nlinarith\n        omega\n      · have : (q : ℤ) ≤ q * t := by nlinarith\n        omega\n    subst this; omega\n  have hτR : ∀ n ∈ S, τR (R n) = τ' n := by\n    intro n hn\n    have hex : ∃ n' ∈ S, R n' = R n := ⟨n, hn, rfl⟩\n    simp only [τR, dite_eq_left hex]\n    have := hex.choose_spec\n    rw [hinj this.1 hn this.2]\n  refine ⟨s, hσs, hs1, τR, fun r => ?_, ?_⟩\n  · simp only [τR]\n    split_ifs with hr\n    · exact hτ' _ hr.choose_spec.1\n    · exact ⟨by linarith, by linarith⟩\n  · rw [Finset.sum_congr rfl fun n _ => hterm n]\n    refine Finset.sum_nbij R (fun n _ => Finset.mem_range.2 (hRlt n)) hinj ?_ ?_\n    · have hcard : (Finset.range q).card ≤ S.card := by\n        simp only [S, Int.card_Ioc, Finset.card_range]; omega\n      intro r hr\n      obtain ⟨n, hn, hrn⟩ := Finset.surj_on_of_inj_on_of_card_le (fun n _ => R n)\n        (fun n _ => Finset.mem_range.2 (hRlt n)) (fun n n' hn hn' h => hinj hn hn' h) hcard r hr\n      exact ⟨n, hn, hrn.symm⟩\n    · intro n hn; rw [hτR n hn]",
+            "line": 831,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.residue_formΦ",
+            "lines": [
+              742,
+              870
+            ],
+            "conclusion": "The map `n ↦ R n = (σ(a n + c₀)) mod q` is injective on `S` (by `(a,q)=1`) hence a bijection onto `range q`, so each residue occurs once."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L831-L870"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

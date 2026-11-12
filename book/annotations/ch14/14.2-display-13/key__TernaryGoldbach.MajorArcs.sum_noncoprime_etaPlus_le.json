@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 13",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same idea (small prime powers use $|\\eta|_\\infty$, large ones a tail bound), but [L] bounds the weighted sum $\\sum_{(n,q)>1}\\Lambda(n)|\\eta(n/x)|$ with $K=\\lceil2\\log_2x\\rceil$ and a Gaussian envelope, not $LS_\\eta=\\log r\\max_p\\sum_\\alpha\\eta(p^\\alpha/x)$ with $|\\eta\\cdot t|_\\infty$.",
+  "subject": [
+    {
+      "location": {
+        "page": 275,
+        "rect": [
+          0.17135,
+          0.43084,
+          0.56816,
+          0.17886
+        ]
+      },
+      "title": "Display, p. 265",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          66,
+          69
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le"
+          },
+          "snippet": {
+            "text": "theorem sum_noncoprime_etaPlus_le {x : ℝ} (hx : 1e4 ≤ x) {q K : ℕ} (hq : 1 ≤ q)\n    (hK : x ^ 2 ≤ 2 ^ K) :\n    ∑' n, ‖cP x n - coprimePart q (cP x) n‖ ≤ 1.94 * K * Real.log q + 1 := by\n  have hx0 : 0 < x := by linarith",
+            "line": 66,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+            "lines": [
+              64,
+              157
+            ],
+            "conclusion": "For $x\\ge10^4$, $x^2\\le2^K$: $\\sum_{(n,q)>1}\\Lambda(n)|\\eta_+(n/x)|\\le1.94\\,K\\log q+1$, splitting $p^k\\le x^2$ (using $|\\eta_+|\\le1.94$) from the Gaussian tail."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L66-L69"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          275
+        ],
+        "printed": [
+          265
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

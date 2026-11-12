@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 6.2 step 6",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Unnormalized; derived by peeling layers (layer_le) rather than by a single decomposition.",
+  "subject": [
+    {
+      "location": {
+        "page": 48,
+        "rect": [
+          0.20698,
+          0.24766,
+          0.62529,
+          0.04813
+        ]
+      },
+      "title": "Proposition 6.2 step 6: Display, p. 48",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 6.2 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.layer_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          50,
+          86
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.layer_le"
+          },
+          "snippet": {
+            "text": "/-- Peeling off one level: `∫_{(M r₀)ᶜ} u v ≤ Σ_{r₀ ≤ n < k} g(n)(I(n+1) − I(n)) + ∫_{(M k)ᶜ} u v`\nwith `I(n) = ∫_{M n} u`. -/\ntheorem layer_le {u v : Ω → ℝ} (hu : Integrable u μ) (huv : Integrable (fun ω => u ω * v ω) μ)\n    (hu0 : ∀ ω, 0 ≤ u ω) {M : ℕ → Set Ω} (hM : ∀ n, MeasurableSet (M n)) (hmono : Monotone M)\n    {g : ℕ → ℝ} {r₀ K : ℕ} (hv : ∀ n, r₀ ≤ n → n < K → ∀ ω ∉ M n, v ω ≤ g n) :\n    ∀ k, r₀ ≤ k → k ≤ K → ∫ ω in (M r₀)ᶜ, u ω * v ω ∂μ ≤\n      ∑ n ∈ Ico r₀ k, g n * ((∫ ω in M (n + 1), u ω ∂μ) - ∫ ω in M n, u ω ∂μ) +\n        ∫ ω in (M k)ᶜ, u ω * v ω ∂μ := by\n  intro k hk\n  induction k, hk using Nat.le_induction with\n  | base => simp\n  | succ k hk ih =>\n    intro hkK\n    have ih := ih (by omega)\n    rw [sum_Ico_succ_top hk]\n    have hsplit : (M k)ᶜ = (M (k + 1) \\ M k) ∪ (M (k + 1))ᶜ := by\n      ext ω; simp only [mem_compl_iff, mem_union, mem_sdiff]\n      have : ω ∈ M k → ω ∈ M (k + 1) := fun h => hmono (show k ≤ k + 1 by omega) h\n      tauto\n    have hdisj : Disjoint (M (k + 1) \\ M k) (M (k + 1))ᶜ :=\n      disjoint_compl_right.mono_left sdiff_subset\n    have e1 : ∫ ω in (M k)ᶜ, u ω * v ω ∂μ = (∫ ω in M (k + 1) \\ M k, u ω * v ω ∂μ) +\n        ∫ ω in (M (k + 1))ᶜ, u ω * v ω ∂μ := by\n      rw [hsplit, setIntegral_union hdisj (hM _).compl huv.integrableOn huv.integrableOn]\n    have e2 : ∫ ω in M (k + 1), u ω ∂μ = (∫ ω in M k, u ω ∂μ) + ∫ ω in M (k + 1) \\ M k, u ω ∂μ := by\n      have : M (k + 1) = M k ∪ (M (k + 1) \\ M k) := (union_sdiff_cancel (hmono (by omega))).symm\n      conv_lhs => rw [this]\n      rw [setIntegral_union disjoint_sdiff_right ((hM _).diff (hM _)) hu.integrableOn hu.integrableOn]\n    have h3 : ∫ ω in M (k + 1) \\ M k, u ω * v ω ∂μ ≤ ∫ ω in M (k + 1) \\ M k, g k * u ω ∂μ := by\n      refine setIntegral_mono_on huv.integrableOn (hu.integrableOn.const_mul _)\n        ((hM _).diff (hM _)) fun ω hω => ?_\n      rw [mul_comm (g k)]\n      exact mul_le_mul_of_nonneg_left (hv k hk (by omega) ω hω.2) (hu0 ω)\n    rw [integral_const_mul] at h3\n    have e4 : g k * ((∫ ω in M (k + 1), u ω ∂μ) - ∫ ω in M k, u ω ∂μ) =\n        g k * ∫ ω in M (k + 1) \\ M k, u ω ∂μ := by rw [e2]; ring\n    linarith",
+            "line": 50,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.layer_le",
+            "lines": [
+              50,
+              86
+            ],
+            "conclusion": "∫_{(M r₀)ᶜ} u v ≤ Σ_{r₀≤n<k} g n (I(n+1)−I n)+∫_{(M k)ᶜ} u v."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L50-L86"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          99,
+          120
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_13_1_2"
+          },
+          "snippet": {
+            "text": "  have hlast : ∫ ω in (M r₁)ᶜ, u ω * v ω ∂μ ≤ g r₁ * ((∫ ω, u ω ∂μ) - I r₁) := by\n    have h1 : ∫ ω in (M r₁)ᶜ, u ω * v ω ∂μ ≤ ∫ ω in (M r₁)ᶜ, g r₁ * u ω ∂μ := by\n      refine setIntegral_mono_on huv.integrableOn (hu.integrableOn.const_mul _)\n        (hM _).compl fun ω hω => ?_\n      rw [mul_comm (g r₁)]\n      exact mul_le_mul_of_nonneg_left (hv r₁ h01 le_rfl ω hω) (hu0 ω)\n    rw [integral_const_mul] at h1\n    have h2 : ∫ ω in (M r₁)ᶜ, u ω ∂μ = (∫ ω, u ω ∂μ) - I r₁ := by\n      have := integral_add_compl (hM r₁) hu\n      simp only [hI]; linarith\n    rwa [h2] at h1\n  have hl := layer_le hu huv hu0 hM hmono (K := r₁) (fun n h1 h2 => hv n h1 h2.le) r₁ h01 le_rfl\n  -- write it as `Σ_{n ∈ [r₀, r₁]} f(n) g(n)`\n  set f : ℕ → ℝ := fun n => if n < r₁ then I (n + 1) - I n else (∫ ω, u ω ∂μ) - I r₁ with hf\n  have hsum : ∑ n ∈ Ico r₀ r₁, g n * (I (n + 1) - I n) + g r₁ * ((∫ ω, u ω ∂μ) - I r₁) =\n      ∑ n ∈ Icc r₀ r₁, f n * g n := by\n    rw [← Finset.Ico_add_one_right_eq_Icc, sum_Ico_succ_top (by omega)]\n    congr 1\n    · refine sum_congr rfl fun n hn => ?_\n      have : n < r₁ := (mem_Ico.1 hn).2\n      simp only [hf, ite_eq_left this]; ring\n    · simp only [hf, lt_irrefl, ite_false]; ring",
+            "line": 99,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+            "lines": [
+              88,
+              139
+            ],
+            "conclusion": "With k=r₁ and the last-layer bound, ∫_{(M r₀)ᶜ} u v ≤ Σ_{n∈Icc r₀ r₁} f n g n (hsum)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L99-L120"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          48
+        ],
+        "printed": [
+          48
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 13.1.2 step 6, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

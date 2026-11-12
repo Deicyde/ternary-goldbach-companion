@@ -1,0 +1,81 @@
+{
+  "id": "3 display 21",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] avoids summing $\\mu^2(q)q/\\phi(q)$: the tail error is bounded by an absolute constant for each modulus (T_q>=4). The constants $0.64787$, $\\log r/(4r)$, $0.425/r$ are not in [L].",
+  "subject": [
+    {
+      "location": {
+        "page": 19,
+        "rect": [
+          0.20371,
+          0.09722,
+          0.63183,
+          0.10625
+        ]
+      },
+      "title": "Display, p. 19",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_fourier_etaPlus_Ioo_bounds",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusL2",
+        "lines": [
+          220,
+          226
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_fourier_etaPlus_Ioo_bounds"
+          },
+          "snippet": {
+            "text": "  have hc : 2 * (98 / (2 * π * T) ^ 4) ≤ 0.0005 := by\n    have h1 : (25.12 : ℝ) ≤ 2 * π * T := by nlinarith\n    have h2 : (25.12 : ℝ) ^ 4 ≤ (2 * π * T) ^ 4 := pow_le_pow_left₀ (by norm_num) h1 4\n    have h3 : 98 / (2 * π * T) ^ 4 ≤ 98 / 25.12 ^ 4 := div_le_div_of_nonneg_left (by norm_num)\n      (by norm_num) h2\n    have : (98 : ℝ) / 25.12 ^ 4 ≤ 0.00025 := by norm_num\n    linarith",
+            "line": 220,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_fourier_etaPlus_Ioo_bounds",
+            "lines": [
+              197,
+              229
+            ],
+            "conclusion": "For $T\\ge4$, $2\\cdot98/(2\\pi T)^4\\le0.0005$: the tail error is uniform in $q$ (since $T_q=1.2\\cdot10^6/\\tilde q\\ge4$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusL2.lean",
+            "fragment": "L220-L226"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          19
+        ],
+        "printed": [
+          19
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.3 display 12, the same LaTeX (mapper (sonnet); verifier (sonnet); judge (opus))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

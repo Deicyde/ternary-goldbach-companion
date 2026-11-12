@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 12.2.3 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean reduces by Gq_mul_le/G_le_mul_Gq with X=P/phi(P) bounded by 0.86+0.4log(qR), not by Lemma trivo's e^gamma log(Q0/sq+log q)+1.172 form.",
+  "subject": [
+    {
+      "location": {
+        "page": 245,
+        "rect": [
+          0.17462,
+          0.38687,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 12.2.3 step 1: Text, p. 235",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 12.2.3 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          106,
+          108
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have h1 := Gq_mul_le (q := q) (P := P) (R := R) (t := t) hR0.le (by linarith) hPR hPq\n  have h2 := G_le_mul_Gq hPsq (t := t)\n  have h3 := G_ge_log ht",
+            "line": 106,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "Gq_mul_le and G_le_mul_Gq with G_ge_log give the G-ratio comparison via P=prod of primes <=R or dividing q."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L106-L108"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          156,
+          164
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hGP : (Real.log t + 1.064) / X ≤ Gq P t := by\n    rw [div_le_iff₀ hX0]; nlinarith\n  have hGqR := Gq_nonneg_q q R\n  have hmain : Gq q R * (Real.log t + 1.064) ≤ Gq q (t * R) * X := by\n    have := mul_le_mul_of_nonneg_left hGP hGqR\n    rw [mul_div_assoc'] at this\n    rw [div_le_iff₀ hX0] at this\n    calc Gq q R * (Real.log t + 1.064) ≤ Gq q R * Gq P t * X := this\n      _ ≤ Gq q (t * R) * X := mul_le_mul_of_nonneg_right h1 hX0.le",
+            "line": 156,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "Derives Gq q R*(log t+1.064) <= Gq q (tR)*X, the analogue of reducing to the inequality via Lemma 12.2.1."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L156-L164"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          245
+        ],
+        "printed": [
+          235
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

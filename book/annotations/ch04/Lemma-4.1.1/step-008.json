@@ -1,0 +1,119 @@
+{
+  "id": "Lemma 4.1.1 step 8",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.26253,
+          0.66788,
+          0.56162,
+          0.04687
+        ]
+      },
+      "title": "Lemma 4.1.1 step 8: Display, p. 52",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          616,
+          623
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₁'"
+          },
+          "snippet": {
+            "text": "  calc ∑ k ∈ Finset.range K, (F k + F (q - 1 - k)) + (if q % 2 = 1 then F K else 0)\n      ≤ 2 * A + C * (∑ k ∈ Finset.Ico 1 K, (g k + g (k + 1)) + g K) := by\n        rw [hpeel]\n        have := Finset.sum_le_sum hpair\n        rw [← Finset.mul_sum] at this\n        nlinarith [hFA 0, hFA (q - 1)]\n    _ = 2 * A + C * (fq q (1 / 2) + 2 * ∑ j ∈ Finset.Icc 2 K, fq q (j - 1 / 2)) := by\n        rw [htel, hg1]",
+            "line": 616,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+            "lines": [
+              549,
+              627
+            ],
+            "conclusion": "Pair sum equals C(f_q(1/2) + 2Σ_{j=2}^{K} f_q(j-1/2)) via pair_telescope."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L616-L623"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_fq_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          248,
+          295
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_fq_le"
+          },
+          "snippet": {
+            "text": "  have hHH : ∀ j ∈ Finset.Icc 2 K, fq q (j - 1 / 2) ≤ ∫ u in ((j : ℝ) - 1)..j, fq q u := by\n    intro j hj\n    have hj2 : (2 : ℝ) ≤ j := by exact_mod_cast (Finset.mem_Icc.1 hj).1\n    have hjK : (j : ℝ) ≤ K := by exact_mod_cast (Finset.mem_Icc.1 hj).2\n    have h := (convexOn_fq hq0).le_integral_of_midpoint (m := j - 1 / 2)\n      (fun u hu => ⟨by linarith [hu.1], by linarith [hu.2]⟩)\n      (continuousOn_fq hq0 (by linarith) (by linarith))\n    convert h using 2 <;> ring\n  have hcot0 : 0 ≤ Real.cos (π / q) / Real.sin (π / q) := by\n    have h1 : π / q < π / 2 := by\n      rw [div_lt_div_iff₀ hq0 (by norm_num)]; nlinarith [Real.pi_pos]\n    have h0 : 0 < π / q := by positivity\n    exact div_nonneg (Real.cos_nonneg_of_mem_Icc ⟨by linarith, h1.le⟩)\n      (Real.sin_pos_of_pos_of_lt_pi h0 (by linarith)).le\n  rcases Nat.lt_or_ge K 2 with hK2 | hK2\n  · rw [Finset.Icc_eq_empty (by omega), Finset.sum_empty]\n    exact mul_nonneg (by positivity) hcot0\n  -- Sum of adjacent integrals.\n  have hsum : ∑ j ∈ Finset.Icc 2 K, ∫ u in ((j : ℝ) - 1)..j, fq q u = ∫ u in (1 : ℝ)..K, fq q u := by\n    have h := intervalIntegral.sum_integral_adjacent_intervals (μ := volume)\n      (f := fq q) (a := fun k : ℕ => (k : ℝ) + 1) (n := K - 1) fun k hk => by\n        have hk2 : k + 2 ≤ K := by omega\n        have : (k : ℝ) + 2 ≤ K := by exact_mod_cast hk2\n        have hc := continuousOn_fq hq0 (a := (k : ℝ) + 1) (b := (k : ℝ) + 1 + 1)\n          (by positivity) (by linarith)\n        show IntervalIntegrable (fq q) volume ((k : ℝ) + 1) (((k + 1 : ℕ) : ℝ) + 1)\n        push_cast\n        exact hc.intervalIntegrable_of_Icc (by linarith)\n    simp only [Nat.cast_zero, zero_add] at h\n    rw [show ((K - 1 : ℕ) : ℝ) + 1 = K by rw [Nat.cast_sub (by omega)]; ring] at h\n    rw [← h]\n    refine Finset.sum_bij (fun k _ => k - 2) ?_ ?_ ?_ ?_\n    · intro j hj; simp only [Finset.mem_Icc] at hj; simp only [Finset.mem_range]; omega\n    · intro a ha b hb hab; simp only [Finset.mem_Icc] at ha hb; omega\n    · intro k hk; simp only [Finset.mem_range] at hk\n      exact ⟨k + 2, by simp only [Finset.mem_Icc]; omega, by simp⟩\n    · intro j hj; simp only [Finset.mem_Icc] at hj\n      push_cast [Nat.cast_sub hj.1]; ring_nf\n  have hKq : ∫ u in (1 : ℝ)..K, fq q u ≤ ∫ u in (1 : ℝ)..(q / 2), fq q u := by\n    have hK1 : (1 : ℝ) ≤ K := by exact_mod_cast (by omega : 1 ≤ K)\n    rw [← intervalIntegral.integral_add_adjacent_intervals (b := (K : ℝ))\n      ((continuousOn_fq hq0 one_pos (by linarith)).intervalIntegrable_of_Icc hK1)\n      ((continuousOn_fq hq0 (by linarith) (by linarith)).intervalIntegrable_of_Icc hK)]\n    have := intervalIntegral.integral_nonneg (μ := volume) hK fun u _ => fq_nonneg q u\n    linarith\n  calc ∑ j ∈ Finset.Icc 2 K, fq q (j - 1 / 2)\n      ≤ ∑ j ∈ Finset.Icc 2 K, ∫ u in ((j : ℝ) - 1)..j, fq q u := Finset.sum_le_sum hHH\n    _ ≤ ∫ u in (1 : ℝ)..(q / 2), fq q u := hsum ▸ hKq",
+            "line": 248,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_fq_le",
+            "lines": [
+              242,
+              299
+            ],
+            "conclusion": "Σ_{j=2}^{K} f_q(j-1/2) ≤ ∫_1^{q/2} f_q, by the midpoint inequality on each [j-1,j]."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L248-L295"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

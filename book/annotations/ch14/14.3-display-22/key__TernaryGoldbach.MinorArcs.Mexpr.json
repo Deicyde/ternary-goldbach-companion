@@ -1,0 +1,81 @@
+{
+  "id": "14.3 display 22",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has the discrete analogue $\\sum_n\\hat g(y,n)\\log\\frac{n+1}n\\,\\sigma/D$ for $\\frac{2S}{\\log x+2c^-}\\int g/r\\,dr$, with different $g$, $D$, and upper limit $r_2$ in place of $r_1$.",
+  "subject": [
+    {
+      "location": {
+        "page": 283,
+        "rect": [
+          0.17135,
+          0.20969,
+          0.56816,
+          0.03911
+        ]
+      },
+      "title": "Display, p. 273",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.3 display 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          77,
+          81
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Mexpr"
+          },
+          "snippet": {
+            "text": "/-- The bound for `Z₁/(x · x/κ)` produced by `thm_13_2_1_repaired`. -/\nnoncomputable def Mexpr (x : ℝ) (r₂ : ℕ) : ℝ :=\n  ghatY (x / κ) 150000 * (cL 150000 * sig x / Dx x - 8.6294) +\n    ∑ n ∈ Finset.Ioo 150000 r₂, ghatY (x / κ) n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n    ghatY (x / κ) r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)",
+            "line": 77,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+            "lines": [
+              77,
+              81
+            ],
+            "conclusion": "Defines the discrete bound `Mexpr` for $Z_1/(x\\cdot x/\\kappa)$: base term, sum $\\sum\\hat g(y,n)\\log\\frac{n+1}n\\,\\sigma/D$ over $150000<n<r_2$, and tail term."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L77-L81"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          283
+        ],
+        "printed": [
+          273
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

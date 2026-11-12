@@ -1,0 +1,81 @@
+{
+  "id": "7 display 39",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] does not form the convex combination $c R_{y/K,t}+(1-c)R_{y,t}$ with $c=0.07455/\\log\\frac{\\log y}2$; scale change is handled by $\\hat g=1.398\\max(g_y,h)+\\ldots$ and `gx_scale_le`. The value $0.58341$ for $R_{y,2r_0}$ is computed inside `c0_g0`, but $0.58385$ is not.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.20371,
+          0.41432,
+          0.63183,
+          0.03714
+        ]
+      },
+      "title": "Display, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          195,
+          205
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le"
+          },
+          "snippet": {
+            "text": "/-- Both cases: `g_{wy}(min(1, w) n) ≤ g_y(n) · max(1, 1/w)`. -/\ntheorem gx_scale_le {y n w : ℝ} (hy : 0 < y) (hw : 0 < w) (hn : 670 ≤ min 1 w * n)\n    (hny : n ≤ y ^ (1 / 3 : ℝ) / 6) :\n    gx (w * y) (min 1 w * n) ≤ gx y n * max 1 (1 / w) := by\n  rcases le_total w 1 with h | h\n  · rw [min_eq_right h] at hn ⊢\n    rw [max_eq_right (by rw [le_div_iff₀ hw]; linarith), ← div_eq_mul_one_div]\n    exact gx_scale_le_of_le_one hy hw h hn hny\n  · rw [min_eq_left h, one_mul] at hn ⊢\n    rw [max_eq_left (by rw [div_le_iff₀ hw]; linarith), mul_one]\n    exact gx_scale_le_of_one_le hy h hn hny",
+            "line": 195,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
+            "lines": [
+              195,
+              205
+            ],
+            "conclusion": "$g_{wy}(\\min(1,w)n)\\le g_y(n)\\max(1,1/w)$, replacing the convex combination of $R_{y/K,t}$ and $R_{y,t}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L195-L205"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.3 display 10, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

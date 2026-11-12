@@ -1,0 +1,81 @@
+{
+  "id": "8.4 display 16",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The book's final bound for |I| comes from the saddle-point contour split I1+I2+I3 with explicit c-constants; [L] bounds the same transform by rotating the ray and gets different exponents (0.1598, 0.1065) and constants, not this formula.",
+  "subject": [
+    {
+      "location": {
+        "page": 166,
+        "rect": [
+          0.25926,
+          0.34356,
+          0.56816,
+          0.05047
+        ]
+      },
+      "title": "Display, p. 156",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "8.4 display 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Gr_le_closed",
+        "module": "TernaryGoldbach.Explicit.MellinRotate",
+        "lines": [
+          479,
+          506
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Gr_le_closed"
+          },
+          "snippet": {
+            "text": "theorem norm_Gr_le_closed (s : ℂ) (δ : ℝ) {θ : ℝ} (hθ0 : 0 ≤ θ) (hθ : θ < π / 4)\n    (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1) :\n    ‖Gr s δ 0‖ ≤ Real.exp (-(θ * |s.im|)) *\n      (Real.exp ((2 * π * |δ| * Real.sin θ) ^ 2 / (2 * Real.cos (2 * θ))) *\n        ((1 + (2 * π * |δ| * Real.sin θ / Real.cos (2 * θ)) ^ 2) * √(π / (Real.cos (2 * θ) / 2)) +\n          √π / (Real.cos (2 * θ) * √(Real.cos (2 * θ) / 2)))) := by\n  have hsin : 0 ≤ Real.sin θ := Real.sin_nonneg_of_nonneg_of_le_pi hθ0 (by linarith [Real.pi_pos])\n  have hc : 0 < Real.cos (2 * θ) := Real.cos_pos_of_mem_Ioo ⟨by linarith [Real.pi_pos], by linarith⟩\n  set θ' := if 0 ≤ s.im then θ else -θ with hθ'\n  have habs : |θ'| = θ := by rw [hθ']; split_ifs <;> simp [abs_of_nonneg hθ0]\n  have hcos : Real.cos (2 * θ') = Real.cos (2 * θ) := by\n    rw [hθ']; split_ifs\n    · rfl\n    · rw [mul_neg, Real.cos_neg]\n  have hsin' : |Real.sin θ'| = Real.sin θ := by\n    rw [hθ']; split_ifs\n    · exact abs_of_nonneg hsin\n    · rw [Real.sin_neg, abs_neg, abs_of_nonneg hsin]\n  have hsg : 0 ≤ θ' * s.im := by\n    rw [hθ']; split_ifs with h\n    · exact mul_nonneg hθ0 h\n    · push Not at h; nlinarith\n  have h1 := norm_Gr_le s δ (θ := θ') (by rw [habs]; exact hθ) (by linarith) hsg\n  rw [habs, hcos, hsin'] at h1\n  refine h1.trans (mul_le_mul_of_nonneg_left ?_ (Real.exp_pos _).le)\n  have h2 := integral_rpow_exp_quad_le (p := s.re + 1) (c := Real.cos (2 * θ))\n    (b := 2 * π * |δ| * Real.sin θ) (by linarith) (by linarith) hc\n  convert h2 using 3 <;> ring",
+            "line": 479,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_Gr_le_closed",
+            "lines": [
+              479,
+              506
+            ],
+            "conclusion": "Bounds the same Mellin integral `Gr s δ 0` (the book's I / F_δ, up to the shift s→s+2) by a rotated-ray Gaussian estimate."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L479-L506"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          166
+        ],
+        "printed": [
+          156
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

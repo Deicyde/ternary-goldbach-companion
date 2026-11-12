@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 15",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the `u`-sum bound for natural `K` and odd `q` (used with `K = min(NU, ⌊M⌋/v)`) and the double-sum bound with a factor `3/2` on the `(U+1)²V log q/4` term, which is weaker than the text's.",
+  "subject": [
+    {
+      "location": {
+        "page": 83,
+        "rect": [
+          0.17462,
+          0.27356,
+          0.56162,
+          0.03354
+        ]
+      },
+      "title": "Lemma 4.2.4 step 15: Text, p. 73",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_dvd_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          557,
+          586
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_dvd_le"
+          },
+          "snippet": {
+            "text": "/-- [H, p. 73]: `∑_{u ≤ K, u odd, q | u} u ≤ K²/4q + 3K/4` for `q` odd. -/\ntheorem sum_odd_dvd_le {q : ℕ} (hq : Odd q) (K : ℕ) :\n    ∑ u ∈ Icc 1 K, (if Odd u ∧ q ∣ u then (u : ℝ) else 0) ≤ (K : ℝ) ^ 2 / (4 * q) + 3 * K / 4 := by\n  have hq1 : 1 ≤ q := hq.pos\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq1\n  have h := sum_dvd_reindex hq1 (K : ℝ) (Nat.cast_nonneg _) (fun u => (u : ℝ))\n  rw [Nat.floor_natCast] at h\n  rw [h]\n  set N := ⌊(K : ℝ) / q⌋₊\n  have hN : (N : ℝ) ≤ K / q := Nat.floor_le (by positivity)\n  have hodd : ∀ w, Odd (q * w) ↔ Odd w := fun w => by\n    rw [Nat.odd_mul]; exact ⟨fun h => h.2, fun h => ⟨hq, h⟩⟩\n  have e : ∑ w ∈ Icc 1 N, (if Odd (q * w) then ((q * w : ℕ) : ℝ) else 0) =\n      q * ∑ w ∈ Icc 1 N, (if Odd w then (w : ℝ) else 0) := by\n    rw [mul_sum]; refine sum_congr rfl fun w _ => ?_\n    by_cases ho : Odd w\n    · rw [if_pos ((hodd w).2 ho), if_pos ho]; push_cast; ring\n    · rw [if_neg (fun h => ho ((hodd w).1 h)), if_neg ho, mul_zero]\n  rw [e]\n  have hK0 : (0 : ℝ) ≤ K := Nat.cast_nonneg _\n  rcases Nat.eq_zero_or_pos N with h0 | hpos\n  · rw [h0]; simp; positivity\n  have hqK : (q : ℝ) ≤ K := by\n    have : (1 : ℝ) ≤ N := by exact_mod_cast hpos\n    rw [le_div_iff₀ hq0] at hN; nlinarith\n  calc (q : ℝ) * ∑ w ∈ Icc 1 N, (if Odd w then (w : ℝ) else 0)\n      ≤ q * (((N : ℝ) + 1) ^ 2 / 4) := mul_le_mul_of_nonneg_left (sum_odd_le N) hq0.le\n    _ ≤ q * ((K / q + 1) ^ 2 / 4) := by gcongr\n    _ = (K : ℝ) ^ 2 / (4 * q) + K / 2 + q / 4 := by field_simp; ring\n    _ ≤ _ := by linarith",
+            "line": 557,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_dvd_le",
+            "lines": [
+              557,
+              586
+            ],
+            "conclusion": "For odd `q` and natural `K`, `Σ_{u≤K, u odd, q∣u} u ≤ K²/(4q) + 3K/4`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L557-L586"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_abs_coefI2_mul_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          589,
+          776
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_abs_coefI2_mul_le"
+          },
+          "snippet": {
+            "text": "/-- **[H, (4.54)–(4.55)]** (with `3/2` in the last term, see `sum_vonMangoldt_mul_not_coprime_le`):\n`∑_{a ≤ M, a odd, q | a} |c(a)| a ≤ M² log V/4q + (3c₄/4) MV + (3/2)(U+1)² V log q/4`. -/\ntheorem sum_abs_coefI2_mul_le {U V M : ℝ} (hU : 1 ≤ U) (hV : 1 ≤ V) (hM : 0 ≤ M) {q : ℕ}\n    (hq : Odd q) :\n    ∑ a ∈ Icc 1 ⌊M⌋₊, (if Odd a ∧ q ∣ a then |coefI2 U V a| * a else 0) ≤\n      M ^ 2 * Real.log V / (4 * q) + 3 * c₄ / 4 * M * V +\n        3 / 2 * (U + 1) ^ 2 * V * Real.log q / 4 := by\n  have hq1 : 1 ≤ q := hq.pos\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq1\n  set NV := ⌊V⌋₊\n  set NU := ⌊U⌋₊\n  set NM := ⌊M⌋₊\n  set N := max NM (NV * NU)\n  have hNM : (NM : ℝ) ≤ M := Nat.floor_le hM\n  have hNU : (NU : ℝ) ≤ U := Nat.floor_le (by linarith)\n  -- Step 1: `|c(a)| ≤ ∑_{v | a, …} Λ(v)`, extend the range, and regroup.\n  set c0 : ℕ → ℝ := fun a => ∑ v ∈ a.divisors,\n    (if (v : ℝ) ≤ V ∧ ((a / v : ℕ) : ℝ) ≤ U then (Λ v : ℝ) else 0)\n  have hc0 : ∀ a, |coefI2 U V a| ≤ c0 a := by\n    intro a\n    refine (abs_sum_le_sum_abs _ _).trans (sum_le_sum fun v _ => ?_)\n    split_ifs\n    · rw [abs_mul, abs_of_nonneg ArithmeticFunction.vonMangoldt_nonneg]\n      have : |(μ (a / v) : ℝ)| ≤ 1 := by exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n      nlinarith [ArithmeticFunction.vonMangoldt_nonneg (n := v), abs_nonneg ((μ (a / v) : ℝ))]\n    · simp\n  have hz : ∀ a, NV * NU < a → c0 a = 0 := by\n    intro a ha\n    refine sum_eq_zero fun v hv => ?_\n    rw [if_neg]\n    rintro ⟨h1, h2⟩\n    have hva : v ∣ a := (Nat.mem_divisors.1 hv).1\n    have : v * (a / v) ≤ NV * NU := Nat.mul_le_mul (Nat.le_floor h1) (Nat.le_floor h2)\n    rw [Nat.mul_div_cancel' hva] at this; omega\n  have h1 : ∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then |coefI2 U V a| * a else 0) ≤\n      ∑ p ∈ Icc 1 NV ×ˢ Icc 1 NU, (if (Odd (p.1 * p.2) ∧ q ∣ p.1 * p.2) ∧ p.1 * p.2 ≤ NM then\n        (Λ p.1 : ℝ) * ((p.1 * p.2 : ℕ) : ℝ) else 0) := by\n    calc ∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then |coefI2 U V a| * a else 0)\n        ≤ ∑ a ∈ Icc 1 NM, (if (Odd a ∧ q ∣ a) ∧ a ≤ NM then c0 a * a else 0) :=\n          sum_le_sum fun a ha => by\n            have : a ≤ NM := (mem_Icc.1 ha).2\n            by_cases h : Odd a ∧ q ∣ a\n            · rw [if_pos h, if_pos ⟨h, this⟩]\n              exact mul_le_mul_of_nonneg_right (hc0 a) (Nat.cast_nonneg _)\n            · rw [if_neg h, if_neg (fun h' => h h'.1)]\n      _ = ∑ a ∈ Icc 1 N, (if (Odd a ∧ q ∣ a) ∧ a ≤ NM then c0 a * a else 0) :=\n          sum_subset (Icc_subset_Icc le_rfl (le_max_left _ _)) (fun a ha hna => by\n            simp only [mem_Icc] at ha hna; rw [if_neg (fun h => by omega)])\n      _ = ∑ a ∈ Icc 1 (NV * NU), (if (Odd a ∧ q ∣ a) ∧ a ≤ NM then c0 a * a else 0) :=\n          (sum_subset (Icc_subset_Icc le_rfl (le_max_right _ _)) (fun a ha hna => by\n            simp only [mem_Icc] at ha hna\n            split_ifs\n            · rw [hz a (by omega), zero_mul]\n            · rfl)).symm\n      _ = ∑ a ∈ Icc 1 (NV * NU), ∑ v ∈ a.divisors,\n            (if (v : ℝ) ≤ V ∧ ((a / v : ℕ) : ℝ) ≤ U then\n              (if (Odd (v * (a / v)) ∧ q ∣ v * (a / v)) ∧ v * (a / v) ≤ NM then\n                (Λ v : ℝ) * ((v * (a / v) : ℕ) : ℝ) else 0) else 0) := by\n          refine sum_congr rfl fun a _ => ?_\n          simp only [c0]\n          split_ifs with h\n          · rw [sum_mul]\n            refine sum_congr rfl fun v hv => ?_\n            have hva : v * (a / v) = a := Nat.mul_div_cancel' (Nat.mem_divisors.1 hv).1\n            rw [hva, if_pos h]\n            split_ifs <;> simp\n          · refine (sum_eq_zero fun v hv => ?_).symm\n            have hva : v * (a / v) = a := Nat.mul_div_cancel' (Nat.mem_divisors.1 hv).1\n            rw [hva, if_neg h]; split_ifs <;> rfl\n      _ = _ := (sum_pairs_eq_sum_divisors (by linarith) (by linarith) (fun v u =>\n            if (Odd (v * u) ∧ q ∣ v * u) ∧ v * u ≤ NM then\n              (Λ v : ℝ) * ((v * u : ℕ) : ℝ) else 0)).symm\n  refine h1.trans ?_\n  rw [sum_product]\n  -- Per `v`.\n  have hv : ∀ v ∈ Icc 1 NV, ∑ u ∈ Icc 1 NU, (if (Odd (v * u) ∧ q ∣ v * u) ∧ v * u ≤ NM then\n      (Λ v : ℝ) * ((v * u : ℕ) : ℝ) else 0) ≤\n      (if Nat.Coprime q v then (Λ v : ℝ) / v * (M ^ 2 / (4 * q)) + (Λ v : ℝ) * (3 * M / 4) else 0) +\n      (if ¬ Nat.Coprime q v then (Λ v : ℝ) * v * ((U + 1) ^ 2 / 4) else 0) := by\n    intro v hv\n    have hv1 : 1 ≤ v := (mem_Icc.1 hv).1\n    have hv0 : (0 : ℝ) < v := by exact_mod_cast hv1\n    have hΛ := ArithmeticFunction.vonMangoldt_nonneg (n := v)\n    have hRHS : 0 ≤ (if Nat.Coprime q v then (Λ v : ℝ) / v * (M ^ 2 / (4 * q)) +\n        (Λ v : ℝ) * (3 * M / 4) else 0) +\n        (if ¬ Nat.Coprime q v then (Λ v : ℝ) * v * ((U + 1) ^ 2 / 4) else 0) := by\n      have : 0 ≤ (U + 1) ^ 2 / 4 := by positivity\n      split_ifs <;> positivity\n    rcases Nat.even_or_odd v with hve | hvo\n    · rw [sum_eq_zero fun u _ => by\n        rw [if_neg]; rintro ⟨⟨ho, _⟩, _⟩\n        exact (Nat.not_odd_iff_even.2 (hve.mul_right u)) ho]\n      exact hRHS\n    have hfac : ∀ u, (Λ v : ℝ) * ((v * u : ℕ) : ℝ) = (Λ v : ℝ) * v * u := fun u => by\n      push_cast; ring\n    simp_rw [hfac]\n    have hfac2 : ∀ u, (if (Odd (v * u) ∧ q ∣ v * u) ∧ v * u ≤ NM then (Λ v : ℝ) * v * u else 0) =\n        (Λ v : ℝ) * v * (if (Odd (v * u) ∧ q ∣ v * u) ∧ v * u ≤ NM then (u : ℝ) else 0) :=\n      fun u => by split_ifs <;> simp\n    rw [sum_congr rfl fun u _ => hfac2 u, ← mul_sum]\n    by_cases hc : Nat.Coprime q v\n    · rw [if_pos hc, if_neg (fun h => h hc), add_zero]\n      have hrw : ∑ u ∈ Icc 1 NU, (if (Odd (v * u) ∧ q ∣ v * u) ∧ v * u ≤ NM then (u : ℝ) else 0) =\n          ∑ u ∈ Icc 1 (min NU (NM / v)), (if Odd u ∧ q ∣ u then (u : ℝ) else 0) := by\n        rw [← sum_subset (Icc_subset_Icc le_rfl (min_le_left _ _) :\n            Icc 1 (min NU (NM / v)) ⊆ Icc 1 NU)\n          (fun u hu hnu => by\n            rw [if_neg]\n            rintro ⟨_, hle⟩\n            simp only [mem_Icc] at hu hnu\n            have : u ≤ NM / v := (Nat.le_div_iff_mul_le hv1).2 (by rw [mul_comm]; exact hle)\n            omega)]\n        refine sum_congr rfl fun u hu => ?_\n        have hule : u ≤ NM / v := (mem_Icc.1 hu).2.trans (min_le_right _ _)\n        have hvu : v * u ≤ NM := by\n          have := (Nat.le_div_iff_mul_le hv1).1 hule; rw [mul_comm]; exact this\n        have hodd : Odd (v * u) ↔ Odd u := by\n          rw [Nat.odd_mul]; exact ⟨fun h => h.2, fun h => ⟨hvo, h⟩⟩\n        have hdvd : q ∣ v * u ↔ q ∣ u := hc.dvd_mul_left\n        by_cases h : Odd u ∧ q ∣ u\n        · rw [if_pos ⟨⟨hodd.2 h.1, hdvd.2 h.2⟩, hvu⟩, if_pos h]\n        · rw [if_neg (fun h' => h ⟨hodd.1 h'.1.1, hdvd.1 h'.1.2⟩), if_neg h]\n      rw [hrw]\n      have hE := sum_odd_dvd_le hq (min NU (NM / v))\n      have hK : ((min NU (NM / v) : ℕ) : ℝ) ≤ M / v := by\n        have : ((NM / v : ℕ) : ℝ) ≤ (NM : ℝ) / v := Nat.cast_div_le\n        have h2 : ((min NU (NM / v) : ℕ) : ℝ) ≤ ((NM / v : ℕ) : ℝ) := by\n          exact_mod_cast min_le_right _ _\n        calc ((min NU (NM / v) : ℕ) : ℝ) ≤ (NM : ℝ) / v := h2.trans this\n          _ ≤ M / v := div_le_div_of_nonneg_right hNM hv0.le\n      have hK0 : (0 : ℝ) ≤ ((min NU (NM / v) : ℕ) : ℝ) := Nat.cast_nonneg _\n      calc (Λ v : ℝ) * v * ∑ u ∈ Icc 1 (min NU (NM / v)), (if Odd u ∧ q ∣ u then (u : ℝ) else 0)\n          ≤ (Λ v : ℝ) * v * (((min NU (NM / v) : ℕ) : ℝ) ^ 2 / (4 * q) +\n              3 * ((min NU (NM / v) : ℕ) : ℝ) / 4) := by gcongr\n        _ ≤ (Λ v : ℝ) * v * ((M / v) ^ 2 / (4 * q) + 3 * (M / v) / 4) := by gcongr\n        _ = _ := by field_simp\n    · rw [if_neg hc, if_pos hc, zero_add]\n      have hle : ∑ u ∈ Icc 1 NU, (if (Odd (v * u) ∧ q ∣ v * u) ∧ v * u ≤ NM then (u : ℝ) else 0) ≤\n          ∑ u ∈ Icc 1 NU, (if Odd u then (u : ℝ) else 0) := sum_le_sum fun u _ => by\n        have hodd : Odd (v * u) ↔ Odd u := by\n          rw [Nat.odd_mul]; exact ⟨fun h => h.2, fun h => ⟨hvo, h⟩⟩\n        split_ifs with h1 h2 <;> first | exact le_rfl | exact absurd (hodd.1 h1.1.1) h2 |\n          exact Nat.cast_nonneg _\n      have h2 := sum_odd_le NU\n      calc (Λ v : ℝ) * v * ∑ u ∈ Icc 1 NU, (if (Odd (v * u) ∧ q ∣ v * u) ∧ v * u ≤ NM then (u : ℝ) else 0)\n          ≤ (Λ v : ℝ) * v * (((NU : ℝ) + 1) ^ 2 / 4) := by gcongr; exact hle.trans h2\n        _ ≤ _ := by gcongr\n  refine (sum_le_sum hv).trans ?_\n  rw [sum_add_distrib]\n  -- The coprime part.\n  have hA : ∑ v ∈ Icc 1 NV, (if Nat.Coprime q v then (Λ v : ℝ) / v * (M ^ 2 / (4 * q)) +\n      (Λ v : ℝ) * (3 * M / 4) else 0) ≤ M ^ 2 * Real.log V / (4 * q) + 3 * c₄ / 4 * M * V := by\n    have h2 : ∑ v ∈ Icc 1 NV, (if Nat.Coprime q v then (Λ v : ℝ) / v * (M ^ 2 / (4 * q)) +\n        (Λ v : ℝ) * (3 * M / 4) else 0) ≤\n        (∑ v ∈ Icc 1 NV, (Λ v : ℝ) / v) * (M ^ 2 / (4 * q)) +\n          (∑ v ∈ Icc 1 NV, (Λ v : ℝ)) * (3 * M / 4) := by\n      rw [sum_mul, sum_mul, ← sum_add_distrib]\n      refine sum_le_sum fun v _ => ?_\n      split_ifs\n      · exact le_rfl\n      · have := ArithmeticFunction.vonMangoldt_nonneg (n := v)\n        positivity\n    refine h2.trans ?_\n    have h12 := Prelim.sum_vonMangoldt_div_le_log hV\n    have h15 := Prelim.sum_vonMangoldt_lt (show 0 < V by linarith)\n    have hc4 : (1.03883 : ℝ) ≤ c₄ := by unfold c₄; norm_num\n    have : (∑ v ∈ Icc 1 NV, (Λ v : ℝ)) * (3 * M / 4) ≤ 3 * c₄ / 4 * M * V := by\n      have : (∑ v ∈ Icc 1 NV, (Λ v : ℝ)) ≤ c₄ * V := by\n        have : 1.03883 * V ≤ c₄ * V := mul_le_mul_of_nonneg_right hc4 (by linarith)\n        linarith\n      calc (∑ v ∈ Icc 1 NV, (Λ v : ℝ)) * (3 * M / 4) ≤ (c₄ * V) * (3 * M / 4) := by gcongr\n        _ = _ := by ring\n    have h3 : (∑ v ∈ Icc 1 NV, (Λ v : ℝ) / v) * (M ^ 2 / (4 * q)) ≤\n        Real.log V * (M ^ 2 / (4 * q)) := by gcongr\n    have : Real.log V * (M ^ 2 / (4 * q)) = M ^ 2 * Real.log V / (4 * q) := by ring\n    linarith\n  -- The non-coprime part.\n  have hB : ∑ v ∈ Icc 1 NV, (if ¬ Nat.Coprime q v then (Λ v : ℝ) * v * ((U + 1) ^ 2 / 4) else 0) ≤\n      3 / 2 * (U + 1) ^ 2 * V * Real.log q / 4 := by\n    have hD := sum_vonMangoldt_mul_not_coprime_le hq hV\n    have e : ∑ v ∈ Icc 1 NV, (if ¬ Nat.Coprime q v then (Λ v : ℝ) * v * ((U + 1) ^ 2 / 4) else 0) =\n        (∑ v ∈ Icc 1 NV, (if ¬ Nat.Coprime q v then (Λ v : ℝ) * v else 0)) * ((U + 1) ^ 2 / 4) := by\n      rw [sum_mul]; refine sum_congr rfl fun v _ => ?_; split_ifs <;> ring\n    rw [e]\n    calc (∑ v ∈ Icc 1 NV, (if ¬ Nat.Coprime q v then (Λ v : ℝ) * v else 0)) * ((U + 1) ^ 2 / 4)\n        ≤ (3 / 2 * V * Real.log q) * ((U + 1) ^ 2 / 4) := by gcongr\n      _ = _ := by ring\n  linarith",
+            "line": 589,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_abs_coefI2_mul_le",
+            "lines": [
+              589,
+              776
+            ],
+            "conclusion": "`Σ_{a≤M, a odd, q∣a} |c(a)| a ≤ M² log V/(4q) + (3c₄/4) M V + (3/2)(U+1)² V log q/4`; the last term carries an extra factor `3/2` (from `sum_vonMangoldt_mul_not_coprime_le`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L589-L776"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          83
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "A.5 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no standalone Si; it defines the rescaled G_H(z)=Si(Hz)/pi (docstring), a different normalised quantity.",
+  "subject": [
+    {
+      "location": {
+        "page": 298,
+        "rect": [
+          0.25926,
+          0.42116,
+          0.56816,
+          0.03602
+        ]
+      },
+      "title": "Display, p. 288",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.5 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.GH",
+        "module": "TernaryGoldbach.Helfgott.HHBound",
+        "lines": [
+          45,
+          46
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.GH"
+          },
+          "snippet": {
+            "text": "/-- `G_H(z) = ∫_0^z sin(Hv)/(πv) dv = Si(Hz)/π`. -/\nnoncomputable def GH (H z : ℝ) : ℝ := ∫ v in (0 : ℝ)..z, sH H v",
+            "line": 45,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.GH",
+            "lines": [
+              45,
+              46
+            ],
+            "conclusion": "G_H(z)=integral_0^z sH H v dv with sH H v = (H/pi) sinc(H v), i.e. Si(Hz)/pi."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/HHBound.lean",
+            "fragment": "L45-L46"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          298
+        ],
+        "printed": [
+          288
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

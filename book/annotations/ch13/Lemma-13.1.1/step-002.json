@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 13.1.1 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean assumes g non-increasing outright, so no running maximum h is introduced.",
+  "subject": [
+    {
+      "location": {
+        "page": 256,
+        "rect": [
+          0.26253,
+          0.15773,
+          0.56162,
+          0.02898
+        ]
+      },
+      "title": "Lemma 13.1.1 step 2: Text, p. 246",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 13.1.1 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          26,
+          29
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abel_le"
+          },
+          "snippet": {
+            "text": "theorem abel_le {f g F : ℕ → ℝ} {a b : ℕ} (hab : a ≤ b)\n    (hg : ∀ n, a ≤ n → n < b → g (n + 1) ≤ g n) (hg0 : 0 ≤ g b)\n    (hS : ∀ n, a ≤ n → n ≤ b → ∑ m ∈ Icc a n, f m ≤ F n) :\n    ∑ n ∈ Icc a b, f n * g n ≤ g a * F a + ∑ n ∈ Ioc a b, g n * (F n - F (n - 1)) := by",
+            "line": 26,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+            "lines": [
+              23,
+              46
+            ],
+            "conclusion": "Hypotheses: g non-increasing on [a,b] (hg), g b ≥ 0, partial sums ≤ F (hS)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L26-L29"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          256
+        ],
+        "printed": [
+          246
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

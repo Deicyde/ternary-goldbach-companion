@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.3 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Only the q=1 trivial part is matched; the 'We also have' that introduces (somos) is not a separate Lean step.",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.26253,
+          0.48335,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Lemma 4.1.3 step 9: Text, p. 56",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.3 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          2115,
+          2119
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_1_3"
+          },
+          "snippet": {
+            "text": "  rcases Nat.lt_or_ge q 2 with hq2 | hq2\n  · have : q = 1 := by omega\n    subst this\n    simp only [Nat.sub_self, Finset.Icc_eq_empty (by norm_num : ¬ (1 ≤ 0)), Finset.sum_empty] at hle\n    exact ⟨hle.trans hR1, hle.trans hR2⟩",
+            "line": 2115,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_3",
+            "lines": [
+              2083,
+              2183
+            ],
+            "conclusion": "Case q=1: the sum over residues is empty, so both bounds follow from nonnegativity of the right sides."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L2115-L2119"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

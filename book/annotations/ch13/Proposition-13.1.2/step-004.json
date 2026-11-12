@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 13.1.2 step 4",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Unnormalized; stated as total minus I r₁ (equal to the complement integral by h2).",
+  "subject": [
+    {
+      "location": {
+        "page": 257,
+        "rect": [
+          0.17462,
+          0.6348,
+          0.56162,
+          0.03483
+        ]
+      },
+      "title": "Proposition 13.1.2 step 4: Display, p. 247",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 13.1.2 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          106,
+          108
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_13_1_2"
+          },
+          "snippet": {
+            "text": "    have h2 : ∫ ω in (M r₁)ᶜ, u ω ∂μ = (∫ ω, u ω ∂μ) - I r₁ := by\n      have := integral_add_compl (hM r₁) hu\n      simp only [hI]; linarith",
+            "line": 106,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+            "lines": [
+              88,
+              139
+            ],
+            "conclusion": "∫_{(M r₁)ᶜ} u = ∫u − I r₁ (h2), matching f(r₁) via line 112."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L106-L108"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          257
+        ],
+        "printed": [
+          247
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

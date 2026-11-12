@@ -1,0 +1,81 @@
+{
+  "id": "1.4 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Only `f_{≤W}` is a definition (`trunc`, natural cutoffs, real arithmetic functions); `f_{>W}` appears as `f - trunc f W` (e.g. `μ - trunc μ U` in `vaughan`).",
+  "subject": [
+    {
+      "location": {
+        "page": 27,
+        "rect": [
+          0.17135,
+          0.51547,
+          0.56816,
+          0.03932
+        ]
+      },
+      "title": "Display, p. 17",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.4 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.trunc",
+        "module": "TernaryGoldbach.MinorArcs.Vaughan",
+        "lines": [
+          24,
+          26
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.trunc"
+          },
+          "snippet": {
+            "text": "/-- The truncation `f_{≤U}(n) = f(n) [n ≤ U]`. -/\ndef trunc (f : ArithmeticFunction ℝ) (U : ℕ) : ArithmeticFunction ℝ :=\n  ⟨fun n => if n ≤ U then f n else 0, by simp⟩",
+            "line": 24,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.trunc",
+            "lines": [
+              24,
+              26
+            ],
+            "conclusion": "`trunc f U n = f n` if `n ≤ U`, else `0`: the truncation `f_{≤U}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Vaughan.lean",
+            "fragment": "L24-L26"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          27
+        ],
+        "printed": [
+          17
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "6.2 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean keeps the two coefficients `3c₁/2√(2x/c₂)` and `20c₀c₂^{3/2}/(3π²)√(2x)` separate in `bound_4_41` (with `log(2x/c₂)`, `log(2ex/c₂)`) and bounds them numerically at the first choice; there is no constant `c_{9,I}`.",
+  "subject": [
+    {
+      "location": {
+        "page": 113,
+        "rect": [
+          0.17135,
+          0.43335,
+          0.56816,
+          0.04562
+        ]
+      },
+      "title": "Display, p. 103",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI",
+        "lines": [
+          205,
+          223
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_41_first"
+          },
+          "snippet": {
+            "text": "  have td : 3 * c₁ / 2 * √(2 * S ^ 6 / c₂) * Real.log (2 * S ^ 6 / c₂) ≤ 0.0001 * S ^ 5 := by\n    have h1 : √(2 * S ^ 6 / c₂) ≤ 1.7325 * S ^ 3 := by\n      rw [Real.sqrt_le_left (by positivity), div_le_iff₀ (by linarith)]\n      nlinarith [pow_pos hS0' 6]\n    have h2 : Real.log (2 * S ^ 6 / c₂) ≤ 1.11 + 0.0894 * S := by\n      have : 2 * S ^ 6 / c₂ ≤ 3.0013 * S ^ 6 := by\n        rw [div_le_iff₀ (by linarith)]; nlinarith [pow_pos hS0' 6]\n      refine (Real.log_le_log (by positivity) this).trans ?_\n      rw [Real.log_mul (by norm_num) (by positivity), Real.log_pow]\n      have := log_le_div_exp (show (0 : ℝ) < 3.0013 by norm_num)\n      have : 3.0013 / rexp 1 ≤ 3.0013 / 2.7182818283 := div_le_div_of_nonneg_left (by norm_num)\n        (by norm_num) he'.le\n      push_cast; nlinarith\n    have h0 : 0 ≤ Real.log (2 * S ^ 6 / c₂) := Real.log_nonneg (by\n      rw [le_div_iff₀ (by linarith)]; nlinarith [pow_pos hS0' 6])\n    calc 3 * c₁ / 2 * √(2 * S ^ 6 / c₂) * Real.log (2 * S ^ 6 / c₂)\n        ≤ 3 * 1.0000001 / 2 * (1.7325 * S ^ 3) * (1.11 + 0.0894 * S) := by gcongr\n      _ ≤ 0.0001 * S ^ 5 := by nlinarith [pow_pos hS0' 3, pow_pos hS0' 4]\n  -- Term e.",
+            "line": 205,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+            "lines": [
+              69,
+              258
+            ],
+            "conclusion": "At the first choice, `3c₁/2 √(2x/c₂) log(2x/c₂) ≤ 0.0001 x^{5/6}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI.lean",
+            "fragment": "L205-L223"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI",
+        "lines": [
+          224,
+          254
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_41_first"
+          },
+          "snippet": {
+            "text": "  have te : 20 * c₀ * c₂ ^ (3 / 2 : ℝ) / (3 * π ^ 2) * √(2 * S ^ 6) *\n      Real.log (2 * rexp 1 * S ^ 6 / c₂) ≤ 0.00062 * S ^ 5 := by\n    have hc32 : c₂ ^ (3 / 2 : ℝ) ≤ 0.545 := by\n      have hc0 : 0 ≤ c₂ := by linarith\n      rw [show (3 / 2 : ℝ) = 1 + 1 / 2 by norm_num, Real.rpow_add' hc0 (by norm_num), Real.rpow_one,\n        ← Real.sqrt_eq_rpow]\n      have : √c₂ ≤ 0.8165 := by rw [Real.sqrt_le_left (by norm_num)]; nlinarith\n      nlinarith [Real.sqrt_nonneg c₂]\n    have h1 : 20 * c₀ * c₂ ^ (3 / 2 : ℝ) / (3 * π ^ 2) ≤ 11.8 := by\n      rw [div_le_iff₀ (by positivity)]\n      have : c₀ = 32 := rfl\n      rw [this]\n      have : (0 : ℝ) ≤ c₂ ^ (3 / 2 : ℝ) := by positivity\n      nlinarith\n    have h2 : √(2 * S ^ 6) ≤ 1.4143 * S ^ 3 := by\n      rw [Real.sqrt_le_left (by positivity)]; nlinarith [pow_pos hS0' 6]\n    have h3 : Real.log (2 * rexp 1 * S ^ 6 / c₂) ≤ 2.1 + 0.0894 * S := by\n      have : 2 * rexp 1 * S ^ 6 / c₂ ≤ 8.16 * S ^ 6 := by\n        rw [div_le_iff₀ (by linarith)]; nlinarith [pow_pos hS0' 6]\n      refine (Real.log_le_log (by positivity) this).trans ?_\n      rw [Real.log_mul (by norm_num) (by positivity), Real.log_pow]\n      have h8 := Real.log_le_sub_one_of_pos (show (0 : ℝ) < 8.16 / 8 by norm_num)\n      rw [Real.log_div (by norm_num) (by norm_num), show (8 : ℝ) = 2 ^ 3 by norm_num,\n        Real.log_pow] at h8\n      have := Real.log_two_lt_d9\n      push_cast at h8; push_cast; nlinarith\n    have h0 : 0 ≤ Real.log (2 * rexp 1 * S ^ 6 / c₂) := Real.log_nonneg (by\n      rw [le_div_iff₀ (by linarith)]; nlinarith [pow_pos hS0' 6])\n    have : (0 : ℝ) ≤ 20 * c₀ * c₂ ^ (3 / 2 : ℝ) / (3 * π ^ 2) := by\n      have : (0 : ℝ) < c₀ := by norm_num [c₀]\n      positivity",
+            "line": 224,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+            "lines": [
+              69,
+              258
+            ],
+            "conclusion": "At the first choice, `(20c₀c₂^{3/2}/3π²) √(2x) log(2ex/c₂) ≤ 0.00062 x^{5/6}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI.lean",
+            "fragment": "L224-L254"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          113
+        ],
+        "printed": [
+          103
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

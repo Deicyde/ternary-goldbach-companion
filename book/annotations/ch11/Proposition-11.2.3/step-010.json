@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 11.2.3 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] integrates the $L_{2r}/r$ term against $\\max(1,1/w)\\varphi$, getting factor 1.398 (inside $\\hat g$) instead of $|\\varphi|_1$, because its per-scale parameter is $\\min(1,w)r$.",
+  "subject": [
+    {
+      "location": {
+        "page": 234,
+        "rect": [
+          0.26253,
+          0.3942,
+          0.56162,
+          0.03884
+        ]
+      },
+      "title": "Proposition 11.2.3 step 10: Display, p. 224",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 11.2.3 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          149,
+          153
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one"
+          },
+          "snippet": {
+            "text": "  have hL : Lg (2 * (w * n)) / (w * n) ≤ Lg (2 * n) / n / w := by\n    rw [div_div, mul_comm n w]\n    exact div_le_div_of_nonneg_right (Lg_monotoneOn (show 2 * (w * n) ∈ Ici (1340 : ℝ) by\n      simp only [mem_Ici]; linarith) (show 2 * n ∈ Ici (1340 : ℝ) by simp only [mem_Ici]; linarith)\n      (by nlinarith)) (by positivity)",
+            "line": 149,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+            "lines": [
+              97,
+              167
+            ],
+            "conclusion": "For $w\\le1$: $L_{2wn}/(wn)\\le (L_{2n}/n)/w$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L149-L153"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          402,
+          407
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat"
+          },
+          "snippet": {
+            "text": "  have hint : ∫ w in Ici w₀, G w * phi w ≤ 1.398 * M := by\n    have : ∫ w in Ici w₀, G w * phi w = M * ∫ w in Ici w₀, max 1 (1 / w) * phi w := by\n      rw [← integral_const_mul]; congr 1; ext w; simp only [hG]; ring\n    rw [this]\n    have := integral_max_inv_phi_le hw₀ hw₀1\n    nlinarith",
+            "line": 402,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+            "lines": [
+              356,
+              413
+            ],
+            "conclusion": "With the majorant $G(w)=\\max(g_y(n),h(y))\\max(1,1/w)$, $\\int_{w_0}^\\infty G\\varphi\\le 1.398\\max(g_y(n),h(y))$ via `integral_max_inv_phi_le`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L402-L407"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          234
+        ],
+        "printed": [
+          224
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.4 step 15",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] proves Plancherel as an equality for the specific η = t²e^{-t²/2} (|η|_2² = 3√π/8), not for general η; the text's inequality with the factor 1/2π and truncation to [1,T₀] is not stated.",
+  "subject": [
+    {
+      "location": {
+        "page": 183,
+        "rect": [
+          0.17462,
+          0.79069,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 9.1.4 step 15: Text, p. 173",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4 step 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_G_half",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherel",
+        "lines": [
+          87,
+          121
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_norm_sq_G_half"
+          },
+          "snippet": {
+            "text": "/-- **Mellin–Plancherel**: `∫ |G_δ(1/2 + it)|² dt = 2π ∫₀^∞ (u² e^{−u²/2})² du`. -/\ntheorem integral_norm_sq_G_half (δ : ℝ) :\n    ∫ t : ℝ, ‖Gr (((1 / 2 : ℝ) : ℂ) + t * I) δ 0‖ ^ 2 =\n      2 * π * ∫ u in Ioi (0:ℝ), (u ^ 2 * Real.exp (-u ^ 2 / 2)) ^ 2 := by\n  simp_rw [G_half_eq_fourier]\n  have h1 := Measure.integral_comp_div (fun ξ : ℝ => ‖𝓕 (Fhalf δ) ξ‖ ^ 2) (2 * π)\n  rw [h1, abs_of_pos (by positivity), smul_eq_mul,\n    TernaryGoldbach.integral_norm_sq_fourier (integrable_Fhalf δ) (memLp_Fhalf δ)]\n  congr 1\n  -- `∫ e^{−u} |fδ(e^{−u})|² du = ∫₀^∞ |fδ|²` via `mellin_eq_fourier` at `s = 1`\n  set g : ℝ → ℂ := fun v => (((v ^ 2 * Real.exp (-v ^ 2 / 2)) ^ 2 : ℝ) : ℂ) with hg\n  have hm := mellin_eq_fourier g (s := (1 : ℂ))\n  simp only [Complex.one_re, Complex.one_im, zero_div] at hm\n  rw [Real.fourier_eq] at hm\n  simp only [inner_zero_right, neg_zero, Real.fourierChar_apply, mul_zero, Complex.ofReal_zero,\n    zero_mul, Complex.exp_zero, Circle.smul_def] at hm\n  simp only [one_smul] at hm\n  rw [mellin] at hm\n  have hL : ∫ t in Ioi (0:ℝ), (t : ℂ) ^ ((1:ℂ) - 1) • g t =\n      ((∫ u in Ioi (0:ℝ), (u ^ 2 * Real.exp (-u ^ 2 / 2)) ^ 2 : ℝ) : ℂ) := by\n    simp only [sub_self, Complex.cpow_zero, one_smul, hg]; exact integral_ofReal\n  have hpt : ∀ v : ℝ, Real.exp (-1 * v) • g (Real.exp (-v)) = ((‖Fhalf δ v‖ ^ 2 : ℝ) : ℂ) := by\n    intro v\n    rw [Complex.real_smul, hg, ← Complex.ofReal_mul]\n    congr 1\n    rw [norm_Fhalf]\n    have h5 : Real.exp (-(5 / 2) * v) ^ 2 = Real.exp (-v) ^ 5 := by\n      rw [← Real.exp_nat_mul, ← Real.exp_nat_mul]; congr 1; push_cast; ring\n    have h1 : Real.exp (-1 * v) = Real.exp (-v) := by ring_nf\n    rw [h1, mul_pow (Real.exp (-(5 / 2) * v)), h5]\n    ring\n  have hR : ∫ v, Real.exp (-1 * v) • g (Real.exp (-v)) = ((∫ x, ‖Fhalf δ x‖ ^ 2 : ℝ) : ℂ) := by\n    simp_rw [hpt]; exact integral_ofReal\n  rw [hL, hR] at hm\n  exact_mod_cast hm.symm",
+            "line": 87,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_G_half",
+            "lines": [
+              87,
+              121
+            ],
+            "conclusion": "Plancherel: `∫_ℝ ‖G_δ(1/2+it)‖² dt = 2π ∫_0^∞ (u²e^{-u²/2})² du`, an equality for the specific η."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherel.lean",
+            "fragment": "L87-L121"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          183
+        ],
+        "printed": [
+          173
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.2.4 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean states the min as two bounds and the log gain for R <= W' with R² = (q(ν+υ))^-1 allowed, not with the log of (q(ν+υ))^-1 itself and the factor 2; R<=W' is an extra hypothesis.",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.48523,
+          0.56162,
+          0.04005
+        ]
+      },
+      "title": "Proposition 5.2.4 step 12: Display, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.odd_block_bound",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          507,
+          510
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.odd_block_bound"
+          },
+          "snippet": {
+            "text": "    (∑ m ∈ s, ‖primeExpSum W' W (α * m)‖ ^ 2 ≤ (W - W' + x / (|δ| * q)) * logSqSum W' W) ∧\n    (∀ R : ℝ, 1 ≤ R → R ≤ W' → q * R ^ 2 * ((q + Δ) * |δ| / x) ≤ 1 →\n      Nat.totient q / q * Real.log R * ∑ m ∈ s, ‖primeExpSum W' W (α * m)‖ ^ 2 ≤\n        (W - W' + x / (|δ| * q)) * logSqSum W' W) := by",
+            "line": 507,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.odd_block_bound",
+            "lines": [
+              500,
+              572
+            ],
+            "conclusion": "Large-sieve bound: sum <= (W-W'+x/(|δ|q))Σ(log p)², and (φ(q)/q) log R·sum <= same for admissible R."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L507-L510"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          592,
+          595
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_c"
+          },
+          "snippet": {
+            "text": "    (S2 α x U' W' W ≤ (W - W' + x / (|δ| * q)) * logSqSum W' W) ∧\n    (∀ R : ℝ, 1 ≤ R → R ≤ W' → R ^ 2 ≤ x / (|δ| * q) / (q + x / (4 * W)) →\n      Nat.totient q / q * Real.log R * S2 α x U' W' W ≤\n        (W - W' + x / (|δ| * q)) * logSqSum W' W) := by",
+            "line": 592,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+            "lines": [
+              584,
+              621
+            ],
+            "conclusion": "(5.56): S2 <= (W-W'+x/|δ|q)Σ and (φ(q)/q)log R·S2 <= same for 1<=R<=W', R² <= (x/|δq|)/(q+x/4W)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L592-L595"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

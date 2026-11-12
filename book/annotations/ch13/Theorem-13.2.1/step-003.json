@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 13.2.1 step 3",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same fact in contrapositive, packaged for all q as r ≤ max(1,|δ|/δ₀)q: for q ≤ r, α ∉ 𝔐_{δ₀,r} forces |δ|q ≥ δ₀r (the hypotheses q ≤ r, |δ|q < δ₀r of `mem_majorArcs_of_approx`); the parity bounds q' ≤ r (odd) and q' ≤ 2r (even) are its two cases. The 'in particular |δ| ≥ 8' is not stated separately.",
+  "subject": [
+    {
+      "location": {
+        "page": 259,
+        "rect": [
+          0.17462,
+          0.71081,
+          0.56162,
+          0.05
+        ]
+      },
+      "title": "Theorem 13.2.1 step 3: Text, p. 249",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.mem_majorArcs_of_approx",
+        "module": "TernaryGoldbach.MinorArcs.OffArcs",
+        "lines": [
+          33,
+          67
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.mem_majorArcs_of_approx"
+          },
+          "snippet": {
+            "text": "  have hα : α = m / (2 * q) + δ / (2 * y) := by\n    have : α = (a / q + δ / y + k) / 2 := by linarith\n    rw [this, hm]; push_cast\n    field_simp; ring\n  -- `|δ/(2y)| < δ₀ r/(2 q y)`\n  have hrad : |δ / (2 * y)| < δ₀ * r / (2 * q * y) := by\n    rw [abs_div, abs_of_pos (by positivity : (0 : ℝ) < 2 * y), div_lt_div_iff₀ (by positivity)\n      (by positivity)]\n    nlinarith\n  have hmem : ∀ (c ρ : ℝ), |α - c| < ρ → α ∈ Set.Ioo (c - ρ) (c + ρ) := fun c ρ h => by\n    rw [abs_lt] at h; constructor <;> linarith\n  by_cases hpar : Odd q ∧ Even m\n  · obtain ⟨hqo, b, hb⟩ := hpar\n    left\n    refine Set.mem_iUnion₂.2 ⟨q, ⟨hq1, hqr, hqo⟩, Set.mem_iUnion₂.2 ⟨b, ?_, hmem _ _ ?_⟩⟩\n    · have : IsCoprime (2 * b) (q : ℤ) := by rw [two_mul, ← hb]; exact hcopm\n      exact this.of_mul_left_right\n    · rw [hα, show (m : ℝ) = 2 * b by rw [hb]; push_cast; ring]\n      convert hrad using 2; field_simp; ring\n  · right\n    have hmo : Odd m := by\n      rcases Nat.even_or_odd q with hqe | hqo\n      · obtain ⟨j, hj⟩ := hqe\n        refine Int.not_even_iff_odd.1 fun hme => ?_\n        have h2 : (2 : ℤ) ∣ m := hme.two_dvd\n        have h2q : (2 : ℤ) ∣ (q : ℤ) := ⟨j, by rw [hj]; push_cast; ring⟩\n        have := Int.isUnit_iff.1 (hcopm.isUnit_of_dvd' h2 h2q)\n        omega\n      · exact Int.not_even_iff_odd.1 fun hme => hpar ⟨hqo, hme⟩\n    have hcop2 : IsCoprime m ((2 * q : ℕ) : ℤ) := by\n      push_cast; exact (Int.isCoprime_two_right.mpr hmo).mul_right hcopm\n    refine Set.mem_iUnion₂.2 ⟨2 * q, ⟨by omega, by push_cast; linarith, even_two_mul q⟩,\n      Set.mem_iUnion₂.2 ⟨m, hcop2, hmem _ _ ?_⟩⟩\n    rw [hα]; push_cast\n    convert hrad using 2; field_simp; ring",
+            "line": 33,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.mem_majorArcs_of_approx",
+            "lines": [
+              25,
+              67
+            ],
+            "conclusion": "From `Approx2 α y δ a q Q` writes α = m/(2q) + δ/(2y) with m = a + kq, and splits on parity: q odd with m even gives odd denominator q ≤ r, otherwise reduced denominator 2q ≤ 2r; so q ≤ r and |δ|q < δ₀r put α in 𝔐_{δ₀,r}(y)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/OffArcs.lean",
+            "fragment": "L33-L67"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.le_rAlpha_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.OffArcs",
+        "lines": [
+          71,
+          82
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.le_rAlpha_of_not_mem"
+          },
+          "snippet": {
+            "text": "theorem le_rAlpha_of_not_mem {α y δ δ₀ r Q : ℝ} {a : ℤ} {q : ℕ} (hy : 0 < y) (hδ₀ : 0 < δ₀)\n    (h : Approx2 α y δ a q Q) (hα : α ∉ majorArcs δ₀ r y) :\n    r ≤ max 1 (|δ| / δ₀) * q := by\n  by_contra hlt\n  push Not at hlt\n  have hq0 : (0 : ℝ) ≤ q := Nat.cast_nonneg q\n  have h1 : (q : ℝ) < r := lt_of_le_of_lt (by nlinarith [le_max_left 1 (|δ| / δ₀)]) hlt\n  have h2 : |δ| / δ₀ * q < r := lt_of_le_of_lt\n    (mul_le_mul_of_nonneg_right (le_max_right _ _) hq0) hlt\n  refine hα (mem_majorArcs_of_approx hy h h1.le ?_)\n  rw [div_mul_eq_mul_div, div_lt_iff₀ hδ₀] at h2\n  linarith",
+            "line": 71,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.le_rAlpha_of_not_mem",
+            "lines": [
+              69,
+              82
+            ],
+            "conclusion": "If α ∉ 𝔐_{δ₀,r}(y) and 2α = a/q + δ/y (mod 1) then r ≤ max(1,|δ|/δ₀)·q (contrapositive of `mem_majorArcs_of_approx`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/OffArcs.lean",
+            "fragment": "L71-L82"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          259
+        ],
+        "printed": [
+          249
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

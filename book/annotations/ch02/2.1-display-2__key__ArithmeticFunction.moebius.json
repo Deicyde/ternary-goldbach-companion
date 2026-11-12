@@ -1,0 +1,83 @@
+{
+  "id": "2.1 display 2",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 41,
+        "rect": [
+          0.17135,
+          0.59726,
+          0.56816,
+          0.03931
+        ]
+      },
+      "title": "Display, p. 31",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2.1 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "ArithmeticFunction.moebius",
+        "module": "Mathlib.NumberTheory.ArithmeticFunction.Moebius",
+        "lines": [
+          49,
+          53
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "ArithmeticFunction.moebius"
+          },
+          "snippet": {
+            "text": "/-- `μ` is the Möbius function. If `n` is squarefree with an even number of distinct prime factors,\n  `μ n = 1`. If `n` is squarefree with an odd number of distinct prime factors, `μ n = -1`.\n  If `n` is not squarefree, `μ n = 0`. -/\ndef moebius : ArithmeticFunction ℤ :=\n  ⟨fun n => if Squarefree n then (-1) ^ cardFactors n else 0, by simp⟩",
+            "line": 49,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "ArithmeticFunction.moebius",
+            "lines": [
+              49,
+              53
+            ],
+            "conclusion": "`μ n = (-1)^{Ω(n)}` if `n` squarefree, else `0`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/NumberTheory/ArithmeticFunction/Moebius.lean",
+            "fragment": "L49-L53"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          41
+        ],
+        "printed": [
+          31
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 24",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[H]'s display is the (4.50) expression with the parameters U = 500 sqrt6 x^{1/3}, V = x^{1/3}/3 substituted and q-dependence bounded away; Lean keeps the expression generic (`bound_4_50`, U = floor(1225T), V = floor(T/3)) and bounds it in `b450_second`. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 137,
+        "rect": [
+          0.17135,
+          0.30886,
+          0.56816,
+          0.07807
+        ]
+      },
+      "title": "Display, p. 127",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_50",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          193,
+          201
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_50"
+          },
+          "snippet": {
+            "text": "/-- The main term (4.50) of [H, Lemma 4.2.4]. **Corrected**: the last term has a factor `3/2` that [H] lacks. [H, (4.55)] bounds\n`∑_{p^α ≤ V, p | q} (log p) p^α` by `V log q`, but `∑_{α : p^α ≤ V} p^α` can exceed `V` (e.g.\n`V = 9`, `p = 3`); it is at most `(3/2) V` for odd `p` (`sum_vonMangoldt_mul_not_coprime_le`). -/\nnoncomputable def bound_4_50 (x δ : ℝ) (q : ℕ) (U V : ℝ) : ℝ :=\n  let D := U * V\n  x / (2 * q) * minInv c₀ (π * δ) * Real.log (V * q) +\n    (1 / 4 - 1 / π ^ 2) * c₀ *\n      (D ^ 2 * Real.log V / (2 * q * x) + 3 * c₄ / 2 * (U * V ^ 2 / x) +\n        3 / 2 * ((U + 1) ^ 2 * V / (2 * x) * Real.log q))",
+            "line": 193,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_50",
+            "lines": [
+              193,
+              201
+            ],
+            "conclusion": "Definition of the (4.50) bound: `x/(2q) minInv(c0, pi delta) log(Vq) + (1/4 - 1/pi^2) c0 (D^2 log V/(2qx) + 3 c4/2 U V^2/x + 3/2 (U+1)^2 V/(2x) log q)`, `D = UV`, `minInv` the min(1, 4c0'/delta^2)-type factor."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L193-L201"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          137
+        ],
+        "printed": [
+          127
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

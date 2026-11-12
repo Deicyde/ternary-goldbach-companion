@@ -1,0 +1,81 @@
+{
+  "id": "7.1 display 10",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "First line: prop_9_5_1 gives it with error 1e-8 x log x only; second line numerics from integral_etaPlus_sq_log with Lean's constants, combined in prop_7_1_5' as the E2 form. Both only for x >= 4.9e26 (book 1e12) and with PlattGRH assumed.",
+  "subject": [
+    {
+      "location": {
+        "page": 150,
+        "rect": [
+          0.25926,
+          0.63774,
+          0.56816,
+          0.06252
+        ]
+      },
+      "title": "Display, p. 140",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7.1 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          886,
+          955
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log"
+          },
+          "snippet": {
+            "text": "/-- **[H, (9.94)]**: `∫₀^∞ η₊²(t) log(xt) dt = (0.640206 + O*(1.95·10⁻⁶)) log x − 0.021095 + O*(5.3·10⁻⁷)`\nfor `x ≥ 1`. The errors here are at most `2.6·10⁻⁷ log x + 3.8·10⁻⁷`: the cross terms are\n`O(H⁻⁴)` by Parseval (`abs_integral_Dg_mul_le`), not `O(H^{−7/2})` as with [H]'s Cauchy–Schwarz. -/\ntheorem integral_etaPlus_sq_log {x : ℝ} (hx : 1 ≤ x) :\n    |(∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t)) - (0.640206 * Real.log x - 0.021095)| ≤\n      1.95e-6 * Real.log x + 5.3e-7 := by\n  obtain ⟨⟨a1, a2⟩, ⟨b1, b2⟩, m0, m1⟩ := etaO_numerics\n  rw [← integral_gL_mul_W0] at a1 a2\n  rw [← integral_gL_mul_W1] at b1 b2\n  have hx0 : 0 < x := by linarith\n  set L := Real.log x with hL\n  have hL0 : 0 ≤ L := Real.log_nonneg hx\n  rw [integral_etaPlus_sq_log_eq hx0]\n  -- the six pieces\n  have iA : Integrable fun u => gL u * W0 u := memLp_gL.integrable_mul memLp_W0\n  have iB : Integrable fun u => gL u * W1 u := memLp_gL.integrable_mul memLp_W1\n  have iC : Integrable fun u => Dg u * W0 u := memLp_Dg.integrable_mul memLp_W0\n  have iD : Integrable fun u => Dg u * W1 u := memLp_Dg.integrable_mul memLp_W1\n  have mE : AEStronglyMeasurable (fun u => Dg u ^ 2 * Ew u) :=\n    ((continuous_Dg.pow 2).mul continuous_Ew).aestronglyMeasurable\n  have iE : Integrable fun u => Dg u ^ 2 * Ew u :=\n    Integrable.mono' (integrable_Dg_sq.mul_const (1 / 2)) mE (Filter.Eventually.of_forall fun u => by\n      rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (sq_nonneg _) (Ew_nonneg u))]\n      exact mul_le_mul_of_nonneg_left (Ew_le u) (sq_nonneg _))\n  have mF : AEStronglyMeasurable (fun u => Dg u ^ 2 * Ew u * u) :=\n    (((continuous_Dg.pow 2).mul continuous_Ew).mul continuous_id).aestronglyMeasurable\n  have hF : ∀ u, |Dg u ^ 2 * Ew u * u| ≤ Dg u ^ 2 * 0.37 := by\n    intro u\n    rw [abs_mul, abs_mul, abs_of_nonneg (sq_nonneg _), abs_of_nonneg (Ew_nonneg u), mul_assoc,\n      mul_comm (Ew u)]\n    exact mul_le_mul_of_nonneg_left (abs_mul_Ew_le u) (sq_nonneg _)\n  have iF : Integrable fun u => Dg u ^ 2 * Ew u * u :=\n    Integrable.mono' (integrable_Dg_sq.mul_const 0.37) mF\n      (Filter.Eventually.of_forall fun u => by rw [Real.norm_eq_abs]; exact hF u)\n  have hexp : (fun u => (gL u + Dg u) ^ 2 * Ew u * (L + u)) = fun u =>\n      L * (gL u * W0 u) + gL u * W1 u + 2 * L * (Dg u * W0 u) + 2 * (Dg u * W1 u) +\n        L * (Dg u ^ 2 * Ew u) + Dg u ^ 2 * Ew u * u := by\n    ext u; simp only [W0, W1]; ring\n  rw [hexp, integral_six_add (iA.const_mul L) iB (iC.const_mul (2 * L)) (iD.const_mul 2)\n      (iE.const_mul L) iF,\n    integral_const_mul, integral_const_mul, integral_const_mul, integral_const_mul]\n  -- bounds\n  have hD2 := integral_Dg_sq_le\n  have hC0 := abs_integral_Dg_mul_le hasDerivAt_W0 hasDerivAt_W0' integrable_W0 integrable_W0'\n    integrable_W0'' integrable_W0''_sq memLp_W0 continuous_W0 m0 (lam := 1.6) (by norm_num)\n  have hC1 := abs_integral_Dg_mul_le hasDerivAt_W1 hasDerivAt_W1' integrable_W1 integrable_W1'\n    integrable_W1'' integrable_W1''_sq memLp_W1 continuous_W1 m1 (lam := 0.4) (by norm_num)\n  have hQ0 : |∫ u, Dg u ^ 2 * Ew u| ≤ 368 / 200 ^ 4 / 2 := by\n    rw [abs_of_nonneg (integral_nonneg fun u => mul_nonneg (sq_nonneg _) (Ew_nonneg u))]\n    calc ∫ u, Dg u ^ 2 * Ew u ≤ ∫ u, Dg u ^ 2 * (1 / 2) :=\n          integral_mono iE (integrable_Dg_sq.mul_const _)\n            fun u => mul_le_mul_of_nonneg_left (Ew_le u) (sq_nonneg _)\n      _ = (∫ u, Dg u ^ 2) / 2 := by rw [integral_mul_const]; ring\n      _ ≤ 368 / 200 ^ 4 / 2 := by linarith\n  have hQ1 : |∫ u, Dg u ^ 2 * Ew u * u| ≤ 0.37 * (368 / 200 ^ 4) := by\n    calc |∫ u, Dg u ^ 2 * Ew u * u| ≤ ∫ u, |Dg u ^ 2 * Ew u * u| := abs_integral_le_integral_abs\n      _ ≤ ∫ u, Dg u ^ 2 * 0.37 := integral_mono iF.abs (integrable_Dg_sq.mul_const _) hF\n      _ = 0.37 * ∫ u, Dg u ^ 2 := by rw [integral_mul_const]; ring\n      _ ≤ 0.37 * (368 / 200 ^ 4) := by linarith\n  set A := ∫ u, gL u * W0 u\n  set B := ∫ u, gL u * W1 u\n  set C0 := ∫ u, Dg u * W0 u\n  set C1 := ∫ u, Dg u * W1 u\n  set Q0 := ∫ u, Dg u ^ 2 * Ew u\n  set Q1 := ∫ u, Dg u ^ 2 * Ew u * u\n  rw [abs_le] at hC0 hC1 hQ0 hQ1 ⊢\n  norm_num at hC0 hC1 hQ0 hQ1 a1 a2 b1 b2 ⊢\n  constructor <;> nlinarith [mul_le_mul_of_nonneg_left hC0.1 hL0, mul_le_mul_of_nonneg_left hC0.2 hL0,\n    mul_le_mul_of_nonneg_left hQ0.1 hL0, mul_le_mul_of_nonneg_left hQ0.2 hL0,\n    mul_le_mul_of_nonneg_left a1 hL0, mul_le_mul_of_nonneg_left a2 hL0]",
+            "line": 886,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+            "lines": [
+              886,
+              955
+            ],
+            "conclusion": "For x >= 1: `|∫_{Ioi 0} etaPlus^2 log(xt) dt - (0.640206 log x - 0.021095)| ≤ 1.95e-6 log x + 5.3e-7`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L886-L955"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          150
+        ],
+        "printed": [
+          140
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

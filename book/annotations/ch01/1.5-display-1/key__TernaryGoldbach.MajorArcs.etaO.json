@@ -1,0 +1,80 @@
+{
+  "id": "1.5 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 35,
+        "rect": [
+          0.17135,
+          0.71745,
+          0.56816,
+          0.03931
+        ]
+      },
+      "title": "Display, p. 25",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.5 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.etaO",
+        "module": "TernaryGoldbach.MajorArcs.EtaCirc",
+        "lines": [
+          29,
+          30
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.etaO"
+          },
+          "snippet": {
+            "text": "/-- **`η◦`** ([H, (11.3)]): `t³(2 - t)³ e^{t - 1/2 - t²/2}` on `[0, 2]`, `0` elsewhere. -/\nnoncomputable def etaO (t : ℝ) : ℝ := (Icc (0 : ℝ) 2).indicator P0 t",
+            "line": 29,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.etaO",
+            "lines": [
+              29,
+              30
+            ],
+            "conclusion": "`etaO = (Icc 0 2).indicator P0`: `η◦(t) = t³(2-t)³e^{-(t-1)²/2}` on `[0,2]`, `0` elsewhere."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaCirc.lean",
+            "fragment": "L29-L30"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          35
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

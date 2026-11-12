@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part: the last equalities, i.e. the value $\\kappa^{-3}(\\frac{49}{48}\\sqrt{\\pi/2}-\\frac94c_1+\\sqrt{\\pi/2}c_1^2)$ of the full-range second moment. [L] works with the full-range integral directly, so the first inequality (truncation at $2+c_1/\\varkappa$) is not needed.",
+  "subject": [
+    {
+      "location": {
+        "page": 272,
+        "rect": [
+          0.25926,
+          0.53557,
+          0.56816,
+          0.15138
+        ]
+      },
+      "title": "Display, p. 262",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_sq_sub_mul_etaU",
+        "module": "TernaryGoldbach.MajorArcs.CMain",
+        "lines": [
+          408,
+          423
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_sq_sub_mul_etaU"
+          },
+          "snippet": {
+            "text": "theorem integral_sq_sub_mul_etaU (c : ℝ) :\n    ∫ u, (u - c) ^ 2 * etaU u = 49 / 48 * √(π / 2) - 9 / 4 * c + c ^ 2 * √(π / 2) := by\n  have i0 := integrable_pow_mul_etaU 0 (by norm_num)\n  have i1 := integrable_pow_mul_etaU 1 (by norm_num)\n  have i2 := integrable_pow_mul_etaU 2 (by norm_num)\n  have e : (fun u => (u - c) ^ 2 * etaU u) =\n      fun u => u ^ 2 * etaU u - 2 * c * (u ^ 1 * etaU u) + c ^ 2 * (u ^ 0 * etaU u) := by\n    ext u; ring\n  have iA : Integrable fun u => u ^ 2 * etaU u - 2 * c * (u ^ 1 * etaU u) := i2.sub (i1.const_mul _)\n  have iB : Integrable fun u => c ^ 2 * (u ^ 0 * etaU u) := i0.const_mul _\n  have iC : Integrable fun u => 2 * c * (u ^ 1 * etaU u) := i1.const_mul _\n  rw [e, integral_add iA iB, integral_sub i2 iC,\n    integral_const_mul, integral_const_mul, integral_pow_mul_etaU, integral_pow_mul_etaU,\n    integral_pow_mul_etaU, eta2_moment0, eta2_moment1, eta2_moment2, phi_moment0, phi_moment1,\n    phi_moment2]\n  ring",
+            "line": 408,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_sq_sub_mul_etaU",
+            "lines": [
+              407,
+              423
+            ],
+            "conclusion": "$\\int(u-c)^2\\eta_*(u)\\,du=\\frac{49}{48}\\sqrt{\\pi/2}-\\frac94c+c^2\\sqrt{\\pi/2}$, from the moments of $\\eta_2$ ($1,\\,9/16,\\,49/144$) and $\\varphi$ ($\\sqrt{\\pi/2},\\,2,\\,3\\sqrt{\\pi/2}$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
+            "fragment": "L408-L423"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          272
+        ],
+        "printed": [
+          262
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

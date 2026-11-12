@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 9.5.1 step 22",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean supplies L2 bounds for $\\eta_+^2$ and $\\eta_+^2\\log$ to a generic bound with $T_0=500$ fixed; there is no positivity step for $\\sqrt{T_0}\\log T_0-\\log(2\\pi\\sqrt e)\\sqrt{T_0}$ and no simplification to $2.445\\sqrt{T_0}\\log T_0+50.034$.",
+  "subject": [
+    {
+      "location": {
+        "page": 200,
+        "rect": [
+          0.26253,
+          0.68796,
+          0.56162,
+          0.06246
+        ]
+      },
+      "title": "Proposition 9.5.1 step 22: Text, p. 190",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          284,
+          291
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le"
+          },
+          "snippet": {
+            "text": "  refine norm_SsumG_zeta_le_gen goodSmoothing_phi1 hx (by norm_num) hRH phi1_zero (mellin_half_eq phi1)\n    (hasDerivAt_flineG hp) (continuous_flineDG hp) (by positivity) (by positivity)\n    (integrable_norm_sq_flineG hp) (integrable_norm_sq_flineDG hp) ?_ ?_ (by positivity) le_rfl\n    (Real.exp_pos _).le rhoP_lt_one le_rfl zero_lt_one phi1_tail (by norm_num) (by positivity) phi1_vert\n  · rw [integral_norm_sq_flineG hp]\n    exact mul_le_mul_of_nonneg_left integral_phi1_sq_le (by positivity)\n  · rw [integral_norm_sq_flineDG hp]\n    exact mul_le_mul_of_nonneg_left integral_log_sq_phi1_sq_le (by positivity)",
+            "line": 284,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+            "lines": [
+              276,
+              291
+            ],
+            "conclusion": "Applies the generic bound to $\\eta_+^2$ with $T_0=500$, supplying $Q_1=2\\pi\\cdot65.5$, $Q_2=2\\pi\\cdot147.7$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L284-L291"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi2_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          302,
+          309
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_phi2_le"
+          },
+          "snippet": {
+            "text": "  refine norm_SsumG_zeta_le_gen goodSmoothing_phi2 hx (by norm_num) hRH phi2_zero (mellin_half_eq phi2)\n    (hasDerivAt_flineG hp) (continuous_flineDG hp) (by positivity) (by positivity)\n    (integrable_norm_sq_flineG hp) (integrable_norm_sq_flineDG hp) ?_ ?_ (by positivity) le_rfl\n    (Real.exp_pos _).le rhoP_lt_one le_rfl zero_lt_one phi2_tail (by norm_num) (by positivity) phi2_vert\n  · rw [integral_norm_sq_flineG hp]\n    exact mul_le_mul_of_nonneg_left integral_phi2_sq_le (by positivity)\n  · rw [integral_norm_sq_flineDG hp]\n    exact mul_le_mul_of_nonneg_left integral_log_sq_phi2_sq_le (by positivity)",
+            "line": 302,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi2_le",
+            "lines": [
+              293,
+              309
+            ],
+            "conclusion": "Same for $\\eta_+^2\\log$, with $Q_1=2\\pi\\cdot147.7$, $Q_2=2\\pi\\cdot338.2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L302-L309"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_zeta_le_gen",
+        "module": "TernaryGoldbach.Explicit.ExplicitBoundGen",
+        "lines": [
+          172,
+          221
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_zeta_le_gen"
+          },
+          "snippet": {
+            "text": "/-- **Explicit-formula bound, general smoothing, `ζ`.** -/\ntheorem norm_SsumG_zeta_le_gen {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {x : ℝ} (hx : 1 ≤ x)\n    {T0 : ℝ} (hT0 : 50 ≤ T0)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ T0 → ρ.re = 1 / 2)\n    {G0 : ℝ} (hM0 : ‖mellin φ 0‖ ≤ G0)\n    {F F' : ℝ → ℂ} (hMF : ∀ t : ℝ, mellin φ (((1 / 2 : ℝ) : ℂ) + t * I) = F t)\n    (hF : ∀ t, HasDerivAt F (F' t) t) (hF' : Continuous F')\n    {Q1 Q2 : ℝ} (hQ1 : 0 < Q1) (hQ2 : 0 < Q2)\n    (hF2 : Integrable fun t => ‖F t‖ ^ 2) (hF2' : Integrable fun t => ‖F' t‖ ^ 2)\n    (hFQ : ∫ t, ‖F t‖ ^ 2 ≤ Q1) (hFQ' : ∫ t, ‖F' t‖ ^ 2 ≤ Q2)\n    {EB' EA' ρB ρA : ℝ} (hEB : 0 ≤ EB') (hEA : 0 ≤ EA') (hρB0 : 0 ≤ ρB) (hρB1 : ρB < 1)\n    (hρA0 : 0 ≤ ρA) (hρA1 : ρA < 1)\n    (htail : ∀ s : ℂ, 0 < s.re → s.re < 1 → T0 < |s.im| →\n      ‖mellin φ s‖ ≤ EB' * ρB ^ ⌊(|s.im| - T0) / 4.4⌋₊ + EA' * ρA ^ ⌊(|s.im| - T0) / 4.4⌋₊)\n    {Kv θv : ℝ} (hθv : 0 < θv) (hKv : 0 ≤ Kv)\n    (hv : ∀ y : ℝ, ‖mellin φ (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤ Kv * Real.exp (-(θv * |y|))) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) φ x - mellin φ 1 * x‖ ≤ G0 * Z3g BPz2 0 +\n      √x * E1g BPz2 T0 Q1 Q2 + x * E2g BPz2 10 T0 EB' EA' ρB ρA +\n        x ^ (-(1 / 2) : ℝ) * VgL 3 Kv θv / (2 * π) := by\n  have hx0 : 0 < x := by linarith\n  obtain ⟨Tk, -, hlim⟩ := explicit_formula_zeta hφ hx0\n  set I0 := ∫ y : ℝ, hZeta φ x (((-1 / 2 : ℝ) : ℂ) + y * I) with hI0\n  have hG : ∀ ρ : ℂ, zetaF ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ T0 → ρ.re = 1 / 2 := by\n    intro ρ h0 h1 h2 h3\n    have hρ1 : ρ ≠ 1 := by intro h; rw [h] at h2; simp at h2\n    have : riemannZeta ρ = 0 := by\n      rw [zetaF_of_ne hρ1] at h0\n      rcases mul_eq_zero.1 h0 with h | h\n      · exact absurd (sub_eq_zero.1 h) hρ1\n      · exact h\n    exact hRH ρ this h1 h2 h3\n  have hb : ∀ T : ℝ, ‖∑ u ∈ zerosRectD zetaF T, (multRectD zetaF T u : ℂ) * (mellin φ u * (x : ℂ) ^ u)‖ ≤\n      G0 * Z3g BPz2 0 + √x * E1g BPz2 T0 Q1 Q2 + x * E2g BPz2 10 T0 EB' EA' ρB ρA := fun T =>\n    zero_sum_boundG polyDatum_zeta2 (fun T u hu => zerosRectD_zetaF_cases hu) hT0 hG (mellin φ) hM0\n      hMF hF hF' hQ1 hQ2 hF2 hF2' hFQ hFQ' hEB hEA hρB0 hρB1 hρA0 hρA1 htail hx T\n  have h1 : ‖mellin φ 1 * x - SsumG (1 : DirichletCharacter ℂ 1) φ x - (1 / (2 * π) : ℂ) * I0‖ ≤\n      G0 * Z3g BPz2 0 + √x * E1g BPz2 T0 Q1 Q2 + x * E2g BPz2 10 T0 EB' EA' ρB ρA :=\n    le_of_tendsto' ((continuous_norm.tendsto _).comp hlim) fun k => hb (Tk k)\n  have h2 : ‖(1 / (2 * π) : ℂ) * I0‖ ≤ x ^ (-(1 / 2) : ℝ) * VgL 3 Kv θv / (2 * π) := by\n    rw [norm_mul]\n    have : ‖(1 / (2 * π) : ℂ)‖ = 1 / (2 * π) := by\n      rw [norm_div, norm_one, norm_mul, Complex.norm_ofNat, Complex.norm_real, Real.norm_eq_abs,\n        abs_of_pos Real.pi_pos]\n    rw [this, div_mul_eq_mul_div, one_mul]\n    exact div_le_div_of_nonneg_right (norm_integral_hZeta_le_gen hθv hKv hv hx0) (by positivity)\n  have e : SsumG (1 : DirichletCharacter ℂ 1) φ x - mellin φ 1 * x =\n      -((mellin φ 1 * x - SsumG (1 : DirichletCharacter ℂ 1) φ x - (1 / (2 * π) : ℂ) * I0) +\n        (1 / (2 * π) : ℂ) * I0) := by ring\n  rw [e, norm_neg]\n  exact (norm_add_le _ _).trans (by linarith)",
+            "line": 172,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_zeta_le_gen",
+            "lines": [
+              172,
+              221
+            ],
+            "conclusion": "Generic explicit-formula bound whose $\\sqrt x\\,E_1(T_0,Q_1,Q_2)$ term carries the zero sum up to $T_0$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBoundGen.lean",
+            "fragment": "L172-L221"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          200
+        ],
+        "printed": [
+          190
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

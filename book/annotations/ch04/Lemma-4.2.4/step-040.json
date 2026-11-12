@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 40",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean expands with `D'+2q` and gives `(D'+12q)(log P - 1/2) <= D'(log D' - 1/2) + q(2+12 log 5D)`; the displayed `D'+3q/2` expansion and the `19/18` rewriting do not appear.",
+  "subject": [
+    {
+      "location": {
+        "page": 85,
+        "rect": [
+          0.17462,
+          0.57809,
+          0.56162,
+          0.112
+        ]
+      },
+      "title": "Lemma 4.2.4 step 40: Display, p. 75",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.hasDerivAt_F₄",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          52,
+          56
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.hasDerivAt_F₄"
+          },
+          "snippet": {
+            "text": "/-- `d/dt [(t²/2)(log t - 1/2)] = t log t`. -/\ntheorem hasDerivAt_F₄ {t : ℝ} (ht : 0 < t) :\n    HasDerivAt (fun t => t ^ 2 / 2 * (Real.log t - 1 / 2)) (t * Real.log t) t := by\n  have h := ((hasDerivAt_pow 2 t).div_const 2).mul ((Real.hasDerivAt_log ht.ne').sub_const (1 / 2))\n  convert h using 1; simp; field_simp; ring",
+            "line": 52,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.hasDerivAt_F₄",
+            "lines": [
+              52,
+              56
+            ],
+            "conclusion": "`F(t)=t^2/2 (log t - 1/2)` has derivative `t log t`, giving the first line."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L52-L56"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.R2W_simp",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          384,
+          455
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.R2W_simp"
+          },
+          "snippet": {
+            "text": "/-- Simplification of `sum_R2W` in case (b): for `q/2 < D' ≤ c₂x/q`, `1 ≤ D' ≤ D`, `2 ≤ x`. -/\ntheorem R2W_simp {x D D' : ℝ} {q : ℕ} (hq : 1 ≤ q) (hx : 2 ≤ x) (hD'q : (q : ℝ) / 2 < D')\n    (hD'1 : 1 ≤ D') (hD'c : D' ≤ c₂ * x / q) (hD'D : D' ≤ D) :\n    10 * c₀ * q / (3 * π ^ 2 * x) * ((D' + 2 * q) ^ 2 / 2 * (Real.log (D' + 2 * q) - 1 / 2) + 1 / 4) ≤\n      2 * √c₀ / π * (D' * (Real.log D' - 1 / 2)) +\n        (2 * √c₀ / π * √(2 * c₂ * x) * (2 + 12 * Real.log (5 * D)) + 5 * c₀ / (6 * π ^ 2)) := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hq1 : (1 : ℝ) ≤ q := by exact_mod_cast hq\n  have hx0 : 0 < x := by linarith\n  have hc0 := c₀_pos\n  have hc2 := c₂_pos\n  have hc21 := c₂_lt_one\n  have hD'0 : 0 < D' := by linarith\n  set P := D' + 2 * q with hPdef\n  have hP0 : 0 < P := by positivity\n  have hP5 : P ≤ 5 * D := by simp only [P]; linarith\n  have hL0 : 0 ≤ Real.log P - 1 / 2 := by\n    have := Real.log_le_log (by norm_num) (show (3 : ℝ) ≤ P by simp only [P]; linarith)\n    linarith [one_le_log_three]\n  have hqD' : (q : ℝ) * D' ≤ c₂ * x := by rw [le_div_iff₀ hq0] at hD'c; linarith\n  have hq2 : (q : ℝ) ^ 2 ≤ 2 * c₂ * x := by\n    have : (q : ℝ) / 2 * q < c₂ * x := by\n      have := mul_lt_mul_of_pos_right (hD'q.trans_le hD'c) hq0\n      rwa [div_mul_cancel₀ _ hq0.ne'] at this\n    nlinarith\n  have hqx : (q : ℝ) ≤ x := by nlinarith\n  have hqP : (q : ℝ) * P ^ 2 ≤ c₂ * x * (D' + 12 * q) := by\n    have e : (q : ℝ) * P ^ 2 = (q * D') * D' + 4 * q * (q * D') + 4 * q * q ^ 2 := by\n      simp only [P]; ring\n    rw [e]\n    have h1 : (q * D') * D' ≤ (c₂ * x) * D' := mul_le_mul_of_nonneg_right hqD' hD'0.le\n    have h2 : 4 * q * (q * D') ≤ 4 * q * (c₂ * x) := mul_le_mul_of_nonneg_left hqD' (by positivity)\n    have h3 : 4 * q * q ^ 2 ≤ 4 * q * (2 * c₂ * x) := mul_le_mul_of_nonneg_left hq2 (by positivity)\n    nlinarith\n  -- `(D' + 12q) L ≤ D'(log D' - 1/2) + 2q + 12q log(5D)`.\n  have hLD' : D' * (Real.log P - 1 / 2) ≤ D' * (Real.log D' - 1 / 2) + 2 * q := by\n    have h := Real.log_le_sub_one_of_pos (div_pos hP0 hD'0)\n    rw [Real.log_div hP0.ne' hD'0.ne'] at h\n    have e : D' * (P / D' - 1) = 2 * q := by simp only [P]; field_simp; ring\n    nlinarith\n  have hLq : Real.log P - 1 / 2 ≤ Real.log (5 * D) := by\n    have := Real.log_le_log hP0 hP5; linarith\n  have hlog5 : 0 ≤ Real.log (5 * D) := Real.log_nonneg (by linarith)\n  have hk : 0 ≤ 2 * √c₀ / π := by positivity\n  have hqs : (q : ℝ) ≤ √(2 * c₂ * x) := Real.le_sqrt_of_sq_le hq2\n  have hmain : 10 * c₀ * q / (3 * π ^ 2 * x) * (P ^ 2 / 2 * (Real.log P - 1 / 2)) ≤\n      2 * √c₀ / π * ((D' + 12 * q) * (Real.log P - 1 / 2)) := by\n    rw [← c₂_identity]\n    have e : 10 * c₀ * q / (3 * π ^ 2 * x) * (P ^ 2 / 2 * (Real.log P - 1 / 2)) =\n        5 * c₀ / (3 * π ^ 2) * (q * P ^ 2 / x) * (Real.log P - 1 / 2) := by field_simp; ring\n    rw [e]\n    have h : (q : ℝ) * P ^ 2 / x ≤ c₂ * (D' + 12 * q) := by\n      rw [div_le_iff₀ hx0]; linarith\n    calc 5 * c₀ / (3 * π ^ 2) * (q * P ^ 2 / x) * (Real.log P - 1 / 2)\n        ≤ 5 * c₀ / (3 * π ^ 2) * (c₂ * (D' + 12 * q)) * (Real.log P - 1 / 2) := by gcongr\n      _ = _ := by ring\n  have hquarter : 10 * c₀ * q / (3 * π ^ 2 * x) * (1 / 4) ≤ 5 * c₀ / (6 * π ^ 2) := by\n    rw [show 10 * c₀ * q / (3 * π ^ 2 * x) * (1 / 4) = 5 * c₀ / (6 * π ^ 2) * (q / x) by\n      field_simp; ring]\n    exact mul_le_of_le_one_right (by positivity) ((div_le_one hx0).2 hqx)\n  have hsplit : (D' + 12 * q) * (Real.log P - 1 / 2) ≤\n      D' * (Real.log D' - 1 / 2) + q * (2 + 12 * Real.log (5 * D)) := by\n    have := mul_le_mul_of_nonneg_left hLq (show (0 : ℝ) ≤ 12 * q by positivity)\n    nlinarith\n  have hq' : (q : ℝ) * (2 + 12 * Real.log (5 * D)) ≤ √(2 * c₂ * x) * (2 + 12 * Real.log (5 * D)) :=\n    mul_le_mul_of_nonneg_right hqs (by positivity)\n  have h1 := mul_le_mul_of_nonneg_left hsplit hk\n  have h2 := mul_le_mul_of_nonneg_left hq' hk\n  calc 10 * c₀ * q / (3 * π ^ 2 * x) * (P ^ 2 / 2 * (Real.log P - 1 / 2) + 1 / 4)\n      = 10 * c₀ * q / (3 * π ^ 2 * x) * (P ^ 2 / 2 * (Real.log P - 1 / 2)) +\n        10 * c₀ * q / (3 * π ^ 2 * x) * (1 / 4) := by ring\n    _ ≤ _ := by nlinarith",
+            "line": 384,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.R2W_simp",
+            "lines": [
+              384,
+              455
+            ],
+            "conclusion": "Expands `F(D'+2q)` in terms of `D' log D'` and `q`-terms (with `P = D'+2q`), bounded using `qP^2 <= c2 x (D'+12q)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L384-L455"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          85
+        ],
+        "printed": [
+          75
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

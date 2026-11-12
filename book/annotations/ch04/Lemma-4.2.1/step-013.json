@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.1 step 13",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Bound is for η̂₂ at −δ/2 (odd-n scaling), giving min(1, c₀/(πδ)²) with minInv = 1 at δ = 0; used at lines 647-652 of norm_mainPart_le.",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17462,
+          0.33049,
+          0.56162,
+          0.01644
+        ]
+      },
+      "title": "Lemma 4.2.1 step 13: Text, p. 59",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_eta2hat_le_minInv",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          541,
+          549
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_eta2hat_le_minInv"
+          },
+          "snippet": {
+            "text": "theorem norm_eta2hat_le_minInv (δ : ℝ) : ‖eta2hat (-(δ / 2))‖ ≤ minInv c₀ (π * δ) := by\n  unfold minInv\n  split_ifs with h\n  · exact norm_eta2hat_le_one _\n  · have hδ : δ ≠ 0 := fun h' => h (by rw [h', mul_zero])\n    refine le_min (norm_eta2hat_le_one _) ?_\n    have := norm_eta2hat_le (-(δ / 2)) (by simpa using hδ)\n    refine this.trans (le_of_eq ?_)\n    congr 1; ring",
+            "line": 541,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_eta2hat_le_minInv",
+            "lines": [
+              541,
+              549
+            ],
+            "conclusion": "`‖η̂₂(−δ/2)‖ ≤ minInv c₀ (πδ)`, i.e. `≤ min(1, c₀/(πδ)²)` from `‖η̂₂‖ ≤ 1` and `‖η̂₂(t)‖ ≤ c₀/(2πt)²`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L541-L549"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

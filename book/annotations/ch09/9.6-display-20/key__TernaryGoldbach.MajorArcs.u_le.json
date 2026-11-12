@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 20",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same inference (T0-H)/(π|δ|) >= u0 from |δ| <= 6e5, but at fixed T0 = 1e8 with u0 = 26.5 (u_le) instead of T0 = H + 600000πt with ratio >= t.",
+  "subject": [
+    {
+      "location": {
+        "page": 206,
+        "rect": [
+          0.25926,
+          0.53378,
+          0.56816,
+          0.03406
+        ]
+      },
+      "title": "Display, p. 196",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.u_le",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          236,
+          243
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.u_le"
+          },
+          "snippet": {
+            "text": "theorem u_le {δ D u0 T0 q : ℝ} (hq : 0 < q) (hδ : |δ| ≤ D / q) (hu0 : 0 ≤ u0)\n    (h : u0 * (3.1416 * (D / q)) ≤ T0 - 200) : δ ≠ 0 → u0 ≤ (T0 - 200) / (π * |δ|) := by\n  intro hδ0\n  have hpi := Real.pi_lt_d4\n  have hd : 0 < |δ| := abs_pos.2 hδ0\n  rw [le_div_iff₀ (by positivity)]\n  have h1 : π * |δ| ≤ 3.1416 * (D / q) := mul_le_mul hpi.le hδ (abs_nonneg _) (by norm_num)\n  exact (mul_le_mul_of_nonneg_left h1 hu0).trans h",
+            "line": 236,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.u_le",
+            "lines": [
+              236,
+              243
+            ],
+            "conclusion": "If |δ| <= D/q and u0·3.1416·D/q <= T0-200 then u0 <= (T0-200)/(π|δ|), the inference of the display with u0 in place of t."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L236-L243"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          206
+        ],
+        "printed": [
+          196
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

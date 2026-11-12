@@ -1,0 +1,81 @@
+{
+  "id": "3 display 11",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has a different error quantity for the non-coprime terms (1.94 K log q + 1, then 1e-15 x) and no K_{q,1} = (1+sqrt q)(log x)^2|eta|_inf.",
+  "subject": [
+    {
+      "location": {
+        "page": 16,
+        "rect": [
+          0.20371,
+          0.76323,
+          0.63183,
+          0.02554
+        ]
+      },
+      "title": "Display, p. 16",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          64,
+          68
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le"
+          },
+          "snippet": {
+            "text": "/-- **The terms with `(n, q) > 1`**: for `x ≥ 10⁴` and `x² ≤ 2^K`,\n`Σ_{(n,q)>1} Λ(n) |η₊(n/x)| ≤ 1.94 K log q + 1`. -/\ntheorem sum_noncoprime_etaPlus_le {x : ℝ} (hx : 1e4 ≤ x) {q K : ℕ} (hq : 1 ≤ q)\n    (hK : x ^ 2 ≤ 2 ^ K) :\n    ∑' n, ‖cP x n - coprimePart q (cP x) n‖ ≤ 1.94 * K * Real.log q + 1 := by",
+            "line": 64,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+            "lines": [
+              64,
+              157
+            ],
+            "conclusion": "For $x\\ge10^4$, $x^2\\le2^K$: $\\sum_{(n,q)>1}\\Lambda(n)|\\eta_+(n/x)|\\le1.94K\\log q+1$, the bound on the non-coprime part."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L64-L68"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          16
+        ],
+        "printed": [
+          16
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.3 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

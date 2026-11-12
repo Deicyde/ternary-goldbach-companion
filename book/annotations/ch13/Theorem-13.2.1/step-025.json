@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 13.2.1 step 25",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no symbolic $E=((C_0+C_2)\\log x+2C_0+C_1)\\sqrt x$; the quantity is $\\sum_n$ of the non-prime-or-small terms, bounded numerically by $8\\cdot10^{-11}x$ (constant $8.4029\\cdot10^{-12}$ in [H]).",
+  "subject": [
+    {
+      "location": {
+        "page": 261,
+        "rect": [
+          0.17462,
+          0.74094,
+          0.56162,
+          0.01583
+        ]
+      },
+      "title": "Theorem 13.2.1 step 25: Text, p. 251",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.E_le_14_28",
+        "module": "TernaryGoldbach.MinorArcs.EBound",
+        "lines": [
+          277,
+          366
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.E_le_14_28"
+          },
+          "snippet": {
+            "text": "/-- **[H, (14.28)], our constant**: `E ≤ 8·10⁻¹¹ x` for `x ≥ 4.9·10²⁶`. -/\ntheorem E_le_14_28 {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∑' n : ℕ, (if n.Prime ∧ √x < n then 0 else (Λ n * etaPlus (n / x)) ^ 2) ≤ 8e-11 * x := by\n  have hx1 : 1 ≤ x := by linarith\n  have hx0 : 0 < x := by linarith\n  have htsum := Real.tsum_le_of_sum_range_le (fun n => eTerm_nonneg x n) (E_partial hx1)\n  refine le_trans (le_of_eq ?_) (htsum.trans ?_)\n  · rfl\n  set s := √x with hs\n  set L := Real.log x with hL\n  have hs0 : 0 < s := Real.sqrt_pos.2 hx0\n  have hss : s * s = x := Real.mul_self_sqrt hx0.le\n  have hs13 : (2.2135e13 : ℝ) ≤ s := Real.le_sqrt_of_sq_le (by norm_num; linarith)\n  have hL0 : 0 ≤ L := Real.log_nonneg hx1\n  -- `L/s ≤ 61.5/2.2135e13`\n  have hLs : L / s ≤ 61.5 / 2.2135e13 := by\n    have he2 : Real.exp 2 ≤ (4.9e26 : ℝ) := by\n      have := Real.exp_one_lt_d9\n      have h : Real.exp 2 = Real.exp 1 ^ 2 := by rw [← Real.exp_nat_mul]; norm_num\n      rw [h]; nlinarith [Real.exp_pos 1]\n    have hanti := Real.log_div_sqrt_antitoneOn (Set.mem_Ici.2 he2) (Set.mem_Ici.2 (he2.trans hx)) hx\n    simp only at hanti\n    have hl : Real.log (4.9e26 : ℝ) ≤ 61.5 := by\n      rw [Real.log_le_iff_le_exp (by norm_num)]\n      have h1 := Real.exp_one_gt_d9\n      have h2 := Real.quadratic_le_exp_of_nonneg (x := 1 / 2) (by norm_num)\n      have e : Real.exp 61.5 = Real.exp 1 ^ 61 * Real.exp (1 / 2) := by\n        rw [← Real.exp_nat_mul, ← Real.exp_add]; norm_num\n      rw [e]\n      have h3 : (2.7182818283 : ℝ) ^ 61 ≤ Real.exp 1 ^ 61 := pow_le_pow_left₀ (by norm_num) h1.le 61\n      have h4 : (4.9e26 : ℝ) ≤ 2.7182818283 ^ 61 * 1.625 := by norm_num\n      have h5 : (0 : ℝ) ≤ 2.7182818283 ^ 61 := by norm_num\n      nlinarith\n    have hsq : (2.2135e13 : ℝ) ≤ √(4.9e26 : ℝ) := Real.le_sqrt_of_sq_le (by norm_num)\n    have hlpos : 0 ≤ Real.log (4.9e26 : ℝ) := Real.log_nonneg (by norm_num)\n    refine hanti.trans ?_\n    calc Real.log (4.9e26 : ℝ) / √(4.9e26 : ℝ) ≤ 61.5 / √(4.9e26 : ℝ) :=\n          div_le_div_of_nonneg_right hl (Real.sqrt_nonneg _)\n      _ ≤ 61.5 / 2.2135e13 := div_le_div_of_nonneg_left (by norm_num) (by norm_num) hsq\n  -- numerical constants\n  have hsq2 : √2 ≤ 1.41422 := by rw [Real.sqrt_le_left (by norm_num)]; norm_num\n  have hsq2' : 1.41421 ≤ √2 := Real.le_sqrt_of_sq_le (by norm_num)\n  have hl2 : Real.log 2 ≤ 0.6931471808 := Real.log_two_lt_d9.le\n  have hl20 : 0 ≤ Real.log 2 := Real.log_nonneg (by norm_num)\n  have hq1 : 1 / (1 - √2 / 4) ≤ 1.54693 := by\n    rw [div_le_iff₀ (by linarith)]; linarith\n  have hq2 : 1 / (1 - √2 / 4) ^ 2 ≤ 2.393 := by\n    rw [div_le_iff₀ (by nlinarith)]; nlinarith\n  have hc0 : 1.4262 * 2.32 ^ 2 * √2 ≤ 10.8561 := by nlinarith\n  have hc00 : 0 ≤ 1.4262 * 2.32 ^ 2 * √2 := by positivity\n  have hq10 : 0 ≤ 1 / (1 - √2 / 4) := by\n    have : 0 < 1 - √2 / 4 := by linarith\n    positivity\n  have hq20 : 0 ≤ 1 / (1 - √2 / 4) ^ 2 := by positivity\n  -- `RHS ≤ s (24.12 L + 18.01)`\n  have hA : 1.94 ^ 2 * (L / 2 * (1.03883 * s) + L * (1.4262 * s)) ≤ 7.3226 * (s * L) := by\n    have : 0 ≤ s * L := mul_nonneg hs0.le hL0\n    nlinarith\n  have hB : 1.4262 * 2.32 ^ 2 * √2 * s *\n      (Real.log 2 * (1 / (1 - √2 / 4) ^ 2) + L * (1 / (1 - √2 / 4))) ≤\n      s * (10.8561 * (0.6931471808 * 2.393) + 10.8561 * 1.54693 * L) := by\n    have h1 : Real.log 2 * (1 / (1 - √2 / 4) ^ 2) ≤ 0.6931471808 * 2.393 :=\n      mul_le_mul hl2 hq2 hq20 (by norm_num)\n    have h2 : L * (1 / (1 - √2 / 4)) ≤ 1.54693 * L := by\n      rw [mul_comm]; exact mul_le_mul_of_nonneg_right hq1 hL0\n    have h3 : 0 ≤ Real.log 2 * (1 / (1 - √2 / 4) ^ 2) + L * (1 / (1 - √2 / 4)) := by positivity\n    have h4 : 1.4262 * 2.32 ^ 2 * √2 *\n        (Real.log 2 * (1 / (1 - √2 / 4) ^ 2) + L * (1 / (1 - √2 / 4))) ≤\n        10.8561 * (0.6931471808 * 2.393 + 1.54693 * L) :=\n      mul_le_mul hc0 (by linarith) h3 (by norm_num)\n    have e : 1.4262 * 2.32 ^ 2 * √2 * s *\n        (Real.log 2 * (1 / (1 - √2 / 4) ^ 2) + L * (1 / (1 - √2 / 4))) =\n        s * (1.4262 * 2.32 ^ 2 * √2 *\n        (Real.log 2 * (1 / (1 - √2 / 4) ^ 2) + L * (1 / (1 - √2 / 4)))) := by ring\n    rw [e]\n    have := mul_le_mul_of_nonneg_left h4 hs0.le\n    linarith\n  -- `s (a L + b) ≤ 8e-11 s²`\n  have hLs' : L ≤ 61.5 / 2.2135e13 * s := by rwa [div_le_iff₀ hs0] at hLs\n  have hfin : 7.3226 * (s * L) + s * (10.8561 * (0.6931471808 * 2.393) + 10.8561 * 1.54693 * L) ≤\n      8e-11 * (s * s) := by\n    have e : 7.3226 * (s * L) + s * (10.8561 * (0.6931471808 * 2.393) + 10.8561 * 1.54693 * L) =\n        s * ((7.3226 + 10.8561 * 1.54693) * L + 10.8561 * (0.6931471808 * 2.393)) := by ring\n    rw [e, show (8e-11 : ℝ) * (s * s) = s * (8e-11 * s) by ring]\n    apply mul_le_mul_of_nonneg_left _ hs0.le\n    have : (7.3226 + 10.8561 * 1.54693) * L ≤ (7.3226 + 10.8561 * 1.54693) * (61.5 / 2.2135e13 * s) :=\n      mul_le_mul_of_nonneg_left hLs' (by norm_num)\n    nlinarith\n  rw [← hss]\n  linarith",
+            "line": 277,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.E_le_14_28",
+            "lines": [
+              277,
+              366
+            ],
+            "conclusion": "$\\sum_n [\\text{not (prime, }>\\sqrt x)]\\,(\\Lambda(n)\\eta_+(n/x))^2\\le 8\\cdot10^{-11}x$ for $x\\ge4.9\\cdot10^{26}$, i.e. a numerical bound for the book's $E$ with a larger constant."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "fragment": "L277-L366"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_sq_sum_a₂_le",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          138,
+          144
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_sq_sum_a₂_le"
+          },
+          "snippet": {
+            "text": "theorem norm_sq_sum_a₂_le {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∑' n, ‖a₂ x n‖ ^ 2 ≤ 8e-11 * x := by\n  refine le_trans (le_of_eq ?_) (E_le_14_28 hx)\n  congr 1; ext n\n  unfold a₂; split_ifs\n  · simp\n  · rw [Complex.norm_real, Real.norm_eq_abs, sq_abs]",
+            "line": 138,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_sq_sum_a₂_le",
+            "lines": [
+              138,
+              144
+            ],
+            "conclusion": "$\\sum_n\\|a_2(x,n)\\|^2\\le 8\\cdot10^{-11}x$, where `a₂ x n` is $\\Lambda(n)\\eta_+(n/x)$ unless $n$ is a prime $>\\sqrt x$ (the coefficients of $S_{2,\\eta_+}$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L138-L144"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          261
+        ],
+        "printed": [
+          251
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "Lemma 4.2.1 step 27",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same split (`D > M` forces `M = Qr/2`) with Lean's constants and unrounded `Qr`; applies the first-sum bound with M = Qr/2.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.26253,
+          0.46973,
+          0.56162,
+          0.02884
+        ]
+      },
+      "title": "Lemma 4.2.1 step 27: Text, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 27",
+          "quads": [
+            [
+              0.38503,
+              0.46973,
+              0.82415,
+              0.46973,
+              0.82415,
+              0.48469,
+              0.38503,
+              0.48469
+            ],
+            [
+              0.26253,
+              0.48482,
+              0.56005,
+              0.48482,
+              0.56005,
+              0.49857,
+              0.26253,
+              0.49857
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1181,
+          1195
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hA1' : ∑ n ∈ Ioc ⌊(0 : ℝ)⌋ ⌊M⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      2 * √c₀ / π * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q := by\n    refine hA1.trans ?_\n    have e1 : (q : ℝ) * M ^ 2 / x ≤ c₂ * M := by\n      have : (q : ℝ) * M ^ 2 / x = (q * M / x) * M := by ring\n      rw [this]; exact mul_le_mul_of_nonneg_right hqM hM0.le\n    have e2 : 3 * (q : ℝ) ^ 2 * M / x ≤ 3 * c₂ * q := by\n      have : 3 * (q : ℝ) ^ 2 * M / x = 3 * q * (q * M / x) := by ring\n      rw [this]; nlinarith\n    have e3 : 2 * (q : ℝ) ^ 3 / x ≤ 4 * c₂ * q := by\n      rw [div_le_iff₀ hx]; nlinarith\n    calc 5 * c₀ / (3 * π ^ 2) * (q * M ^ 2 / x + 3 * q ^ 2 * M / x + 2 * q ^ 3 / x)\n        ≤ 5 * c₀ / (3 * π ^ 2) * (c₂ * M + 3 * c₂ * q + 4 * c₂ * q) := by gcongr\n      _ = 5 * c₀ * c₂ / (3 * π ^ 2) * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q := by ring\n      _ = _ := by rw [c₂_identity]",
+            "line": 1181,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "First sum bounded by `2√c₀/π·M + 35c₀c₂/3π² q` for `M ≤ Qr/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1181-L1195"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1218,
+          1221
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hMeq : M = Qr / 2 := by\n    rcases min_choice (Qr / 2) D with h | h\n    · rw [hMdef, h]\n    · exfalso; rw [hMdef, h] at hDM; linarith",
+            "line": 1218,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "When `D > M`, `M = Qr/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1218-L1221"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

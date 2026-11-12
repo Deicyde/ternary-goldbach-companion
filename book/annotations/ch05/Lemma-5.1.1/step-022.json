@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.1 step 22",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean sums over odd `r = d s <= y` with `d | r` (equivalent rearrangement of the odd `(d,s)` double sum, `1/(d sqrt s) = 1/sqrt(r d)`), with `<=` in place of `<`.",
+  "subject": [
+    {
+      "location": {
+        "page": 93,
+        "rect": [
+          0.17462,
+          0.73853,
+          0.56162,
+          0.05454
+        ]
+      },
+      "title": "Lemma 5.1.1 step 22: Display, p. 83",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          117,
+          175
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le"
+          },
+          "snippet": {
+            "text": "/-- `∑_{r ≤ y odd} ∑_{d | r} 1/√(rd) ≤ (1 - 2^{-3/2}) ζ(3/2) √y`. -/\ntheorem sum_odd_divisors_le {y : ℝ} (hy : 0 ≤ y) :\n    ∑ r ∈ (Icc 1 ⌊y⌋₊).filter Odd, ∑ d ∈ r.divisors, 1 / √((r : ℝ) * d) ≤\n      (1 - 2 ^ (-(3 / 2) : ℝ)) * (riemannZeta (3 / 2)).re * √y := by\n  set K := ⌊y⌋₊\n  set F := (Icc 1 K).filter Odd\n  rw [sum_comm' (t' := F) (s' := fun d => F.filter (d ∣ ·))]\n  swap\n  · intro r d\n    simp only [F, mem_filter, mem_Icc, Nat.mem_divisors]\n    constructor\n    · rintro ⟨⟨⟨h1, h2⟩, ho⟩, hd, hr0⟩\n      have hd0 : 0 < d := Nat.pos_of_dvd_of_pos hd (by omega)\n      exact ⟨⟨⟨⟨h1, h2⟩, ho⟩, hd⟩, ⟨hd0, (Nat.le_of_dvd (by omega) hd).trans h2⟩,\n        Odd.of_dvd_nat ho hd⟩\n    · rintro ⟨⟨⟨⟨h1, h2⟩, ho⟩, hd⟩, _⟩\n      exact ⟨⟨⟨h1, h2⟩, ho⟩, hd, by omega⟩\n  rw [mul_comm _ (√y)]\n  refine le_trans ?_ (mul_le_mul_of_nonneg_left (sum_odd_rpow_le_zeta K) (sqrt_nonneg y))\n  rw [mul_sum]\n  refine sum_le_sum fun d hd => ?_\n  simp only [F, mem_filter, mem_Icc] at hd\n  obtain ⟨⟨hd1, hdK⟩, hdo⟩ := hd\n  have hd0 : (0 : ℝ) < d := by exact_mod_cast hd1\n  -- Inner sum over multiples `r = d t`.\n  have himg : F.filter (d ∣ ·) = ((Icc 1 (K / d)).filter Odd).image (d * ·) := by\n    ext r\n    simp only [F, mem_filter, mem_Icc, mem_image]\n    constructor\n    · rintro ⟨⟨⟨h1, h2⟩, ho⟩, ⟨t, rfl⟩⟩\n      refine ⟨t, ⟨⟨?_, ?_⟩, (Nat.odd_mul.1 ho).2⟩, rfl⟩\n      · rcases Nat.eq_zero_or_pos t with rfl | ht\n        · simp at h1\n        · exact ht\n      · exact (Nat.le_div_iff_mul_le hd1).2 (by rw [mul_comm]; exact h2)\n    · rintro ⟨t, ⟨⟨h1, h2⟩, ho⟩, rfl⟩\n      refine ⟨⟨⟨Nat.one_le_iff_ne_zero.2 (by positivity), ?_⟩, Nat.odd_mul.2 ⟨hdo, ho⟩⟩,\n        dvd_mul_right _ _⟩\n      have := (Nat.le_div_iff_mul_le hd1).1 h2\n      rw [mul_comm]; exact this\n  rw [himg, sum_image (fun a _ b _ h => Nat.eq_of_mul_eq_mul_left hd1 h)]\n  have hterm : ∀ t ∈ (Icc 1 (K / d)).filter Odd,\n      1 / √(((d * t : ℕ) : ℝ) * d) = 1 / d * (1 / √(t : ℝ)) := by\n    intro t _\n    push_cast\n    rw [show (d : ℝ) * t * d = d ^ 2 * t by ring, sqrt_mul (by positivity), sqrt_sq hd0.le]\n    field_simp\n  rw [sum_congr rfl hterm, ← mul_sum]\n  have h1 := sum_odd_inv_sqrt_le (K / d)\n  have h2 : ((K / d : ℕ) : ℝ) ≤ y / d := by\n    refine (Nat.cast_div_le).trans ?_\n    gcongr; exact Nat.floor_le hy\n  calc 1 / (d : ℝ) * ∑ t ∈ (Icc 1 (K / d)).filter Odd, 1 / √(t : ℝ)\n      ≤ 1 / d * √(y / d) := by\n        gcongr; exact h1.trans (sqrt_le_sqrt h2)\n    _ = √y * (1 / (d : ℝ) ^ (3 / 2 : ℝ)) := by\n        rw [rpow_three_halves _ hd0.le, sqrt_div' _ hd0.le]\n        have : 0 < √(d : ℝ) := sqrt_pos.2 hd0\n        field_simp",
+            "line": 117,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+            "lines": [
+              117,
+              175
+            ],
+            "conclusion": "`sum_{r <= y odd} sum_{d|r} 1/sqrt(r d) <= (1-2^{-3/2}) zeta(3/2) sqrt y`, the double sum over odd `d` and odd `s` with `r = d s`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L117-L175"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_rpow_le_zeta",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          81,
+          102
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_rpow_le_zeta"
+          },
+          "snippet": {
+            "text": "/-- `∑_{d ≤ K odd} d^{-3/2} ≤ (1 - 2^{-3/2}) ζ(3/2)`. -/\ntheorem sum_odd_rpow_le_zeta (K : ℕ) :\n    ∑ d ∈ (Icc 1 K).filter Odd, 1 / (d : ℝ) ^ (3 / 2 : ℝ) ≤\n      (1 - 2 ^ (-(3 / 2) : ℝ)) * (riemannZeta (3 / 2)).re := by\n  set f : ℕ → ℝ := fun n => 1 / (n : ℝ) ^ (3 / 2 : ℝ)\n  have hf : Summable f := Real.summable_one_div_nat_rpow.2 (by norm_num)\n  have hf0 : ∀ n, 0 ≤ f n := fun n => by simp only [f]; positivity\n  have heven : ∀ k : ℕ, f (2 * k) = 2 ^ (-(3 / 2) : ℝ) * f k := fun k => by\n    simp only [f]; push_cast\n    rw [mul_rpow (by norm_num) (Nat.cast_nonneg _), rpow_neg (by norm_num)]\n    field_simp\n  have hse : Summable fun k => f (2 * k) := by\n    simp_rw [heven]; exact hf.mul_left _\n  have hso : Summable fun k => f (2 * k + 1) :=\n    hf.comp_injective (fun a b h => by omega)\n  have hsplit := tsum_even_add_odd hse hso\n  simp_rw [heven] at hsplit\n  rw [tsum_mul_left] at hsplit\n  have hodd : ∑' k, f (2 * k + 1) = (1 - 2 ^ (-(3 / 2) : ℝ)) * ∑' n, f n := by linarith\n  rw [zeta_three_halves_eq, ← show ∑' n, f n = ∑' n : ℕ, 1 / (n : ℝ) ^ (3 / 2 : ℝ) from rfl,\n    ← hodd, sum_filter_odd_Icc]\n  exact hso.sum_le_tsum _ (fun i _ => hf0 _)",
+            "line": 81,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_rpow_le_zeta",
+            "lines": [
+              81,
+              102
+            ],
+            "conclusion": "`sum_{d <= K odd} d^{-3/2} <= (1-2^{-3/2}) zeta(3/2)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L81-L102"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          93
+        ],
+        "printed": [
+          83
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

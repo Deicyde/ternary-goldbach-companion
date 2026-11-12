@@ -1,0 +1,81 @@
+{
+  "id": "10.3 display 9",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] never writes the even-q integrals separately: arcs are indexed by Qset with width via qt, and the even/odd equality is used only through the weights mPhi(2q)=[q odd]mPhi(q); the equality of the integral terms is implicit.",
+  "subject": [
+    {
+      "location": {
+        "page": 220,
+        "rect": [
+          0.25926,
+          0.41152,
+          0.56816,
+          0.05618
+        ]
+      },
+      "title": "Display, p. 210",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.3 display 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_mPhi",
+        "module": "TernaryGoldbach.MajorArcs.SumMuPhi",
+        "lines": [
+          68,
+          106
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_Qset_mPhi"
+          },
+          "snippet": {
+            "text": "/-- **The moduli of `𝔐_{8,r₀}`**: `Σ_{q ∈ Qset r₀} μ²(q)/φ(q) = 2 Σ_{q ≤ r₀ odd} μ²(q)/φ(q)`. -/\ntheorem sum_Qset_mPhi :\n    ∑ q ∈ Qset 150000, mPhi q = 2 * ∑ q ∈ (Icc 1 150000).filter Odd, mPhi q := by\n  have hQ : Qset 150000 = (Icc 1 300000).filter fun q => (qt q : ℝ) ≤ 2 * 150000 := by\n    unfold Qset; congr 1; norm_num\n  rw [hQ, ← Finset.sum_filter_add_sum_filter_not _ Odd]\n  have h1 : ((Icc 1 300000).filter fun q => (qt q : ℝ) ≤ 2 * 150000).filter Odd =\n      (Icc 1 150000).filter Odd := by\n    ext q\n    rw [Finset.mem_filter, Finset.mem_filter, Finset.mem_filter, Finset.mem_Icc, Finset.mem_Icc]\n    unfold qt\n    constructor\n    · rintro ⟨⟨⟨h1, -⟩, h2⟩, ho⟩\n      rw [if_neg (Nat.not_even_iff_odd.2 ho)] at h2\n      have : q ≤ 150000 := by exact_mod_cast (by push_cast at h2; linarith : (q : ℝ) ≤ 150000)\n      exact ⟨⟨h1, this⟩, ho⟩\n    · rintro ⟨⟨h1, h2⟩, ho⟩\n      refine ⟨⟨⟨h1, by omega⟩, ?_⟩, ho⟩\n      rw [if_neg (Nat.not_even_iff_odd.2 ho)]\n      have : (q : ℝ) ≤ 150000 := by exact_mod_cast h2\n      push_cast; linarith\n  have h2 : ((Icc 1 300000).filter fun q => (qt q : ℝ) ≤ 2 * 150000).filter (fun q => ¬Odd q) =\n      (Icc 1 150000).image (fun q => 2 * q) := by\n    ext q\n    rw [Finset.mem_filter, Finset.mem_filter, Finset.mem_Icc, Finset.mem_image, Nat.not_odd_iff_even]\n    simp only [Finset.mem_Icc]\n    unfold qt\n    constructor\n    · rintro ⟨⟨⟨h1, h3⟩, -⟩, ⟨k, rfl⟩⟩\n      exact ⟨k, ⟨by omega, by omega⟩, by ring⟩\n    · rintro ⟨k, ⟨hk1, hk2⟩, rfl⟩\n      refine ⟨⟨⟨by omega, by omega⟩, ?_⟩, ⟨k, by ring⟩⟩\n      rw [if_pos ⟨k, by ring⟩]\n      have : (k : ℝ) ≤ 150000 := by exact_mod_cast hk2\n      push_cast; linarith\n  rw [h1, h2, sum_image (fun a _ b _ h => by omega)]\n  simp_rw [mPhi_two_mul]\n  rw [← sum_filter]\n  ring",
+            "line": 68,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_mPhi",
+            "lines": [
+              68,
+              106
+            ],
+            "conclusion": "The moduli of the arcs (odd $q\\le r$, even $q\\le2r$) give twice the odd sum of $\\mu^2/\\phi$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/SumMuPhi.lean",
+            "fragment": "L68-L106"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          220
+        ],
+        "printed": [
+          210
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7 display 40",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "$\\digamma$ is defined identically; [L] bounds it at $r=150000$ only through $\\sqrt{\\digamma}\\le s_1=2.332969$ in `c0_g0` (with $e^\\gamma\\le1.7882$), i.e. $\\digamma\\lesssim5.4427$, weaker than $5.42506$.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.20371,
+          0.46932,
+          0.63183,
+          0.03605
+        ]
+      },
+      "title": "Display, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Fr",
+        "module": "TernaryGoldbach.MinorArcs.GBound",
+        "lines": [
+          25,
+          27
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Fr"
+          },
+          "snippet": {
+            "text": "/-- `Ϝ(r) = e^γ log log r + 2.50637 / log log r` [H, Lemma C.2.2]. -/\nnoncomputable def Fr (r : ℝ) : ℝ :=\n  rexp eulerMascheroniConstant * Real.log (Real.log r) + 2.50637 / Real.log (Real.log r)",
+            "line": 25,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Fr",
+            "lines": [
+              25,
+              27
+            ],
+            "conclusion": "Defines $\\digamma(r)=e^\\gamma\\log\\log r+2.50637/\\log\\log r$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GBound.lean",
+            "fragment": "L25-L27"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.3 display 11, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

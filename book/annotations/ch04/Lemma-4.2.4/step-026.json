@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 26",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same purpose (log-weighted sum over m <= M, q not dividing m) but by a different argument: weight log M times the (A1) bound, giving log M (2 sqrt(c0)/pi M + 35 c0 c2/(3pi^2) q) instead of (5 c0 c2/(3 pi^2)) M log(M/sqrt e) + (20 c0/3pi^2)(2c2)^{3/2} sqrt(x) log x.",
+  "subject": [
+    {
+      "location": {
+        "page": 84,
+        "rect": [
+          0.26253,
+          0.30251,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.4 step 26: Text, p. 74",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          964,
+          978
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hA1' : ∑ n ∈ Ioc ⌊(0 : ℝ)⌋ ⌊M⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      2 * √c₀ / π * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q := by\n    refine hA1.trans ?_\n    have e1 : (q : ℝ) * M ^ 2 / x ≤ c₂ * M := by\n      have : (q : ℝ) * M ^ 2 / x = (q * M / x) * M := by ring\n      rw [this]; exact mul_le_mul_of_nonneg_right hqM hM0.le\n    have e2 : 3 * (q : ℝ) ^ 2 * M / x ≤ 3 * c₂ * q := by\n      have : 3 * (q : ℝ) ^ 2 * M / x = 3 * q * (q * M / x) := by ring\n      rw [this]; nlinarith\n    have e3 : 2 * (q : ℝ) ^ 3 / x ≤ 4 * c₂ * q := by\n      rw [div_le_iff₀ hx]; nlinarith\n    calc 5 * c₀ / (3 * π ^ 2) * (q * M ^ 2 / x + 3 * q ^ 2 * M / x + 2 * q ^ 3 / x)\n        ≤ 5 * c₀ / (3 * π ^ 2) * (c₂ * M + 3 * c₂ * q + 4 * c₂ * q) := by gcongr\n      _ = 5 * c₀ * c₂ / (3 * π ^ 2) * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q := by ring\n      _ = _ := by rw [c₂_identity]",
+            "line": 964,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+            "lines": [
+              880,
+              1126
+            ],
+            "conclusion": "Range (A1) simplified using q M/x <= c2: sum over n <= M, q not dividing n, of Tn is at most 2 sqrt(c0)/pi M + 35 c0 c2/(3 pi^2) q."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L964-L978"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          980,
+          991
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hW1 : ∑ n ∈ Ioc 0 ⌊M⌋, Real.log n * (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      Real.log M * (2 * √c₀ / π * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q) := by\n    have hpt : ∀ n ∈ Ioc 0 ⌊M⌋, Real.log n * (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n        Real.log M * (if (q : ℤ) ∣ n then 0 else Tn α x n) := by\n      intro n hn\n      refine mul_le_mul_of_nonneg_right ?_ (by split_ifs; exacts [le_rfl, Tn_nonneg _ _ _])\n      rw [mem_Ioc] at hn\n      have h1 : (1 : ℝ) ≤ n := by exact_mod_cast (show (1 : ℤ) ≤ n by omega)\n      exact Real.log_le_log (by linarith) ((Int.cast_le.2 hn.2).trans (Int.floor_le _))\n    refine (sum_le_sum hpt).trans ?_\n    rw [← mul_sum]\n    exact mul_le_mul_of_nonneg_left hA1' (Real.log_nonneg hM1)",
+            "line": 980,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+            "lines": [
+              880,
+              1126
+            ],
+            "conclusion": "Weights each term of the range m <= M, q not dividing m, by log M and applies the (A1) bound `sum_A1` (as simplified in `hA1'`): sum of log m |T_m| is at most log M (2 sqrt(c0)/pi M + 35 c0 c2/(3 pi^2) q)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L980-L991"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          84
+        ],
+        "printed": [
+          74
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

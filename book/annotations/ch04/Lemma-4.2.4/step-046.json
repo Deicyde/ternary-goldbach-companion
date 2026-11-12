@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 46",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves bound_4_51 for general D' = min(c2 x/q, D) and R, with explicit case splits (R < D or not, q/2 < D' or not), rather than checking validity of the display afterwards.",
+  "subject": [
+    {
+      "location": {
+        "page": 86,
+        "rect": [
+          0.26253,
+          0.57052,
+          0.56162,
+          0.03403
+        ]
+      },
+      "title": "Lemma 4.2.4 step 46: Text, p. 76",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 46"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          696,
+          755
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB"
+          },
+          "snippet": {
+            "text": "  -- Step 4: the `D log D` terms: `(2√c₀/π) T2 + Bc T3 ≤ Bc D (log D - 1/2)`.\n  have hDD : 0 ≤ D * (Real.log D - 1 / 2) := by\n    have : 1 / 2 ≤ Real.log D := by\n      have h4 : (1 : ℝ) ≤ Real.log 4 := by\n        rw [← Real.log_exp 1]\n        exact Real.log_le_log (Real.exp_pos 1) (by have := Real.exp_one_lt_d9; linarith)\n      have : Real.log 4 = 2 * Real.log 2 := by\n        rw [show (4 : ℝ) = 2 ^ 2 by norm_num, Real.log_pow]; norm_num\n      have := Real.log_le_log (by norm_num) hD2\n      linarith\n    nlinarith\n  have hT : 2 * √c₀ / π * T2 + Bc * T3 ≤ Bc * (D * (Real.log D - 1 / 2)) := by\n    by_cases hRD : R < D\n    · rw [hT3def, if_pos hRD]\n      have hD'eq : D' = c₂ * x / q := by\n        rcases min_choice (c₂ * x / q) D with h | h\n        · exact h\n        · exfalso; have : D' = D := h; linarith\n      have hRc : c₂ * x / q ≤ R := hD'eq ▸ hD'R\n      have hR0 : 0 < R := by\n        have : 0 < c₂ * x / q := by positivity\n        linarith\n      have hRR₀ : R₀ ≤ R := by\n        rw [hR₀def, ← Real.sqrt_sq hR0.le]\n        refine Real.sqrt_le_sqrt ?_\n        have : c₂ * x / 2 = (c₂ * x / q) * (q / 2) := by field_simp\n        rw [this, sq]\n        exact mul_le_mul hRc hqR (by positivity) hR0.le\n      have hlR : 1 / 2 ≤ Real.log R := half_le_log (hR₀3.trans hRR₀)\n      by_cases hP : (q : ℝ) / 2 < D' ∧ 1 ≤ D'\n      · rw [hT2def, if_pos hP]\n        have hRD' : R = D' := max_eq_left hP.1.le\n        rw [hRD']\n        rw [hRD'] at hlR\n        have hT2 : 0 ≤ D' * (Real.log D' - 1 / 2) := by nlinarith\n        have := mul_le_mul_of_nonneg_right hBc' hT2\n        have e : Bc * (D' * (Real.log D' - 1 / 2)) + Bc * (D * (Real.log D - 1) - D' * (Real.log D' - 1)) =\n            Bc * (D * (Real.log D - 1 / 2)) - Bc * ((D - D') / 2) := by ring\n        have : 0 ≤ Bc * ((D - D') / 2) := mul_nonneg hBc (by linarith)\n        linarith\n      · rw [hT2def, if_neg hP, mul_zero, zero_add]\n        have : R * (Real.log R - 1) ≥ -(R / 2) := by nlinarith\n        have : D * (Real.log D - 1) - R * (Real.log R - 1) ≤ D * (Real.log D - 1 / 2) := by\n          nlinarith\n        exact mul_le_mul_of_nonneg_left this hBc\n    · rw [hT3def, if_neg hRD, mul_zero, add_zero]\n      by_cases hP : (q : ℝ) / 2 < D' ∧ 1 ≤ D'\n      · rw [hT2def, if_pos hP]\n        have hm := mul_log_sub_mono (c := 1 / 2) (by linarith [hP.2]) hD'D\n          (by have := Real.log_nonneg hP.2; linarith)\n        rcases le_total 0 (D' * (Real.log D' - 1 / 2)) with h0 | h0\n        · calc 2 * √c₀ / π * (D' * (Real.log D' - 1 / 2))\n              ≤ Bc * (D' * (Real.log D' - 1 / 2)) := mul_le_mul_of_nonneg_right hBc' h0\n            _ ≤ Bc * (D * (Real.log D - 1 / 2)) := mul_le_mul_of_nonneg_left hm hBc\n        · have : 2 * √c₀ / π * (D' * (Real.log D' - 1 / 2)) ≤ 0 :=\n            mul_nonpos_of_nonneg_of_nonpos (by positivity) h0\n          have := mul_nonneg hBc hDD\n          linarith\n      · rw [hT2def, if_neg hP, mul_zero]\n        exact mul_nonneg hBc hDD",
+            "line": 696,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+            "lines": [
+              458,
+              769
+            ],
+            "conclusion": "hT: (2 sqrt c0/pi) T2 + Bc T3 <= Bc D(log D - 1/2), by cases R < D / R >= D and q/2 < D' or not, covering D' = D and R = q/2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L696-L755"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          628,
+          695
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB"
+          },
+          "snippet": {
+            "text": "  have hW3 : ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Real.log n * Tn α x n ≤\n      3 * c₁ / 2 * (√(2 * x / c₂) * (Real.log (3 * R₀) + 1) +\n        x / q * Real.log D * logPlus (D / (c₂ * x / q))) +\n      Bc * (q * (√3 * Real.log (3 * D) + (2 + Real.log D / 2) * logPlus (D / (q / 2))) + T3) := by\n    by_cases hRD : R < D\n    · rw [hT3def, if_pos hRD]\n      have hD'eq : D' = c₂ * x / q := by\n        rcases min_choice (c₂ * x / q) D with h | h\n        · exact h\n        · exfalso; have : D' = D := h; linarith\n      have hRc : c₂ * x / q ≤ R := hD'eq ▸ hD'R\n      have hR0 : 0 < R := by\n        have : 0 < c₂ * x / q := by positivity\n        linarith\n      have hRR₀ : R₀ ≤ R := by\n        rw [hR₀def, ← Real.sqrt_sq hR0.le]\n        refine Real.sqrt_le_sqrt ?_\n        have : c₂ * x / 2 = (c₂ * x / q) * (q / 2) := by field_simp\n        rw [this, sq]\n        exact mul_le_mul hRc hqR (by positivity) hR0.le\n      have hR1 : 1 ≤ R := hR₀1.trans hRR₀\n      have h := sum_R3W hx hq hcop h2α hqQ hδ hR1 hqR hRD (α := α)\n      rw [← hc₁def] at h\n      refine h.trans ?_\n      have hlDR : 0 ≤ Real.log (D / R) := Real.log_nonneg (by rw [le_div_iff₀ hR0]; linarith)\n      have hl1 : Real.log (D / R) ≤ logPlus (D / (c₂ * x / q)) :=\n        log_le_logPlus (by positivity) (div_le_div_of_nonneg_left hD0.le (by positivity) hRc)\n      have hl2 : Real.log (D / R) ≤ logPlus (D / (q / 2)) :=\n        log_le_logPlus (by positivity) (div_le_div_of_nonneg_left hD0.le (by positivity) hqR)\n      have hx3 : x * (Real.log (3 * R) / R) ≤ √(2 * x / c₂) * (Real.log (3 * R₀) + 1) := by\n        rw [hsx]\n        have := log_three_mul_div_le (by linarith) hRR₀\n        calc x * (Real.log (3 * R) / R) ≤ x * ((Real.log (3 * R₀) + 1) / R₀) :=\n              mul_le_mul_of_nonneg_left this hx.le\n          _ = _ := by ring\n      have hl3 : Real.log (3 * R) ≤ Real.log (3 * D) := Real.log_le_log (by positivity) (by linarith)\n      have hA : 3 * c₁ / 2 * x * (Real.log (3 * R) / R + Real.log D / q * Real.log (D / R)) ≤\n          3 * c₁ / 2 * (√(2 * x / c₂) * (Real.log (3 * R₀) + 1) +\n            x / q * Real.log D * logPlus (D / (c₂ * x / q))) := by\n        have e : 3 * c₁ / 2 * x * (Real.log (3 * R) / R + Real.log D / q * Real.log (D / R)) =\n            3 * c₁ / 2 * (x * (Real.log (3 * R) / R) + x / q * Real.log D * Real.log (D / R)) := by\n          ring\n        rw [e]\n        have : x / q * Real.log D * Real.log (D / R) ≤ x / q * Real.log D * logPlus (D / (c₂ * x / q)) :=\n          mul_le_mul_of_nonneg_left hl1 (by positivity)\n        gcongr\n      have hB : q * √3 * Real.log (3 * R) + (D * (Real.log D - 1) - R * (Real.log R - 1)) +\n            2 * q * Real.log (D / R) + q / 2 * Real.log D * Real.log (D / R) ≤\n          q * (√3 * Real.log (3 * D) + (2 + Real.log D / 2) * logPlus (D / (q / 2))) +\n            (D * (Real.log D - 1) - R * (Real.log R - 1)) := by\n        have h1 : q * √3 * Real.log (3 * R) ≤ q * √3 * Real.log (3 * D) :=\n          mul_le_mul_of_nonneg_left hl3 (by positivity)\n        have h2 : 2 * q * Real.log (D / R) ≤ 2 * q * logPlus (D / (q / 2)) :=\n          mul_le_mul_of_nonneg_left hl2 (by positivity)\n        have h3 : q / 2 * Real.log D * Real.log (D / R) ≤ q / 2 * Real.log D * logPlus (D / (q / 2)) :=\n          mul_le_mul_of_nonneg_left hl2 (by positivity)\n        nlinarith\n      have hB' := mul_le_mul_of_nonneg_left hB hBc\n      have e2 : 2 * √(c₀ * c₁) / π = Bc := rfl\n      rw [e2]\n      linarith\n    · rw [hT3def, if_neg hRD, Ioc_eq_empty (not_lt.2 (Int.floor_mono (not_lt.1 hRD))), sum_empty,\n        add_zero]\n      have : 0 ≤ √(2 * x / c₂) * (Real.log (3 * R₀) + 1) := by positivity\n      have : 0 ≤ q * (√3 * Real.log (3 * D) + (2 + Real.log D / 2) * logPlus (D / (q / 2))) := by\n        have := Real.log_nonneg (show (1 : ℝ) ≤ 3 * D by linarith)\n        positivity\n      positivity",
+            "line": 628,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+            "lines": [
+              458,
+              769
+            ],
+            "conclusion": "hW3 with the cases R < D and R >= D (empty range)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L628-L695"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          86
+        ],
+        "printed": [
+          76
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

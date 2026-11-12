@@ -1,0 +1,81 @@
+{
+  "id": "A.3 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds $|(M\\eta_+)'(1/2+it)|_2$ (for $\\eta_+ e(\\delta t)$, all $\\delta$) by Plancherel and a sup-norm bound on $\\eta_+$, not by Young's inequality with $|Mh_H|_1|(M\\eta_\\diamondsuit)'|_2$; the resulting constant is weaker.",
+  "subject": [
+    {
+      "location": {
+        "page": 295,
+        "rect": [
+          0.17135,
+          0.46076,
+          0.56816,
+          0.03336
+        ]
+      },
+      "title": "Display, p. 285",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.3 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherelGen",
+        "lines": [
+          143,
+          144
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG"
+          },
+          "snippet": {
+            "text": "theorem integral_norm_sq_flineDG (hp : PlancherelData φ C c) :\n    ∫ t, ‖flineDG φ t‖ ^ 2 = 2 * π * ∫ v in Ioi (0:ℝ), Real.log v ^ 2 * ‖φ v‖ ^ 2 := by",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG",
+            "lines": [
+              143,
+              165
+            ],
+            "conclusion": "Plancherel for the derivative line function: $\\int|\\texttt{flineDG}\\,\\varphi(t)|^2dt = 2\\pi\\int_0^\\infty \\log^2 v\\,|\\varphi(v)|^2dv$, the Lean form of $|(M\\varphi)'(1/2+it)|_2^2 = 2\\pi|\\varphi\\cdot\\log|_2^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherelGen.lean",
+            "fragment": "L143-L144"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          295
+        ],
+        "printed": [
+          285
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

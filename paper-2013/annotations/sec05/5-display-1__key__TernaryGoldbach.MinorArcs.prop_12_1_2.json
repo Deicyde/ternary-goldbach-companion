@@ -1,0 +1,81 @@
+{
+  "id": "5 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean treats the (10.5) arcs `majorArcs`, $\\delta_0\\ge2$, even $q\\le 2Q_0$ and doubled arguments (Prop 12.1.2), not the arcs (12.1) with $q\\le Q_0$ of Prop 12.1.1; the max is replaced by any bound $C$.",
+  "subject": [
+    {
+      "location": {
+        "page": 31,
+        "rect": [
+          0.20371,
+          0.76839,
+          0.63183,
+          0.04282
+        ]
+      },
+      "title": "Display, p. 31",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_1_2",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          291,
+          299
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_12_1_2"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop. 12.1.2]** (with `δ₀ ≥ 2`, see the module docstring).  Let `aₙ` be supported on\nprimes `> √x`, in `ℓ¹`; `δ₀ ≥ 2`, `Q₀ ≥ 1`, `δ₀Q₀² ≤ x/2`, `Q = √(x/2δ₀)`.  If\n`G_q(2Q₀/sq) ≤ C G_q(2Q/sq)` for every even `q ≤ 2Q₀` and `1 ≤ s ≤ 2Q₀/q`, then\n`∫_{𝔐_{δ₀,Q₀}} |S(α)|² dα ≤ C Σ |aₙ|²`. -/\ntheorem prop_12_1_2 {x δ₀ Q₀ C : ℝ} {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    (hδ₀ : 2 ≤ δ₀) (hQ₀ : 1 ≤ Q₀) (hx : δ₀ * Q₀ ^ 2 ≤ x / 2)\n    (hC : ∀ q : ℕ, 1 ≤ q → Even q → (q : ℝ) ≤ 2 * Q₀ → ∀ s : ℝ, 1 ≤ s → s ≤ 2 * Q₀ / q →\n      Gq q (2 * Q₀ / (s * q)) ≤ C * Gq q (2 * √(x / (2 * δ₀)) / (s * q))) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤ C * ∑' n, ‖a n‖ ^ 2 := by",
+            "line": 291,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_12_1_2",
+            "lines": [
+              291,
+              372
+            ],
+            "conclusion": "For $a_n$ prime-supported above $\\sqrt x$ in $\\ell^1$, $\\int_{\\mathfrak M_{\\delta_0,Q_0}}|S|^2\\le C\\sum|a_n|^2$ whenever $C$ bounds the even-$q\\le2Q_0$ quotients $G_q(2Q_0/sq)/G_q(2Q/sq)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L291-L299"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          31
+        ],
+        "printed": [
+          31
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 12.1 display 1, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

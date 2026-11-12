@@ -1,0 +1,83 @@
+{
+  "id": "Proposition 9.5.1 step 2",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 199,
+        "rect": [
+          0.17462,
+          0.19945,
+          0.56162,
+          0.04378
+        ]
+      },
+      "title": "Proposition 9.5.1 step 2: Display, p. 189",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          314,
+          326
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_5_1"
+          },
+          "snippet": {
+            "text": "  have hA : ((∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 : ℝ) : ℂ) =\n      (Real.log x : ℂ) * SsumG χ phi1 x + SsumG χ phi2 x := by\n    rw [Complex.ofReal_tsum, SsumG, SsumG, ← tsum_mul_left, ← (hs1.mul_left _).tsum_add hs2]\n    congr 1; ext n\n    rw [hχ]\n    rcases Nat.eq_zero_or_pos n with rfl | hn\n    · simp\n    · have hlog : Real.log n = Real.log x + Real.log (n / x) := by\n        rw [Real.log_div (by positivity) hx0.ne']; ring\n      simp only [phi2, phi1]\n      rw [hlog]\n      push_cast\n      ring",
+            "line": 314,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+            "lines": [
+              297,
+              351
+            ],
+            "conclusion": "`∑' Λ n log n etaPlus(n/x)^2 = log x * SsumG χ phi1 x + SsumG χ phi2 x` (case n=0 trivial, n>0 uses log n = log x + log(n/x))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L314-L326"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          199
+        ],
+        "printed": [
+          189
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

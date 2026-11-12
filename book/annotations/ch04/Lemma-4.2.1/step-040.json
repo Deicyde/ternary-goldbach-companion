@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.1 step 40",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "R = max(D', q/2) with D' = min(c₂x/q, D) covers both text cases; the R<m≤D bound is the odd-m η₂ block bound (3c₁/2).",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.26253,
+          0.37062,
+          0.56162,
+          0.06031
+        ]
+      },
+      "title": "Lemma 4.2.1 step 40: Text, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          839,
+          842
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "  set D' := min (c₂ * x / q) D with hD'def\n  have hD'0 : 0 ≤ D' := le_min (by positivity) (by linarith)\n  have hD'D : D' ≤ D := min_le_right _ _\n  set R := max D' ((q : ℝ) / 2)",
+            "line": 839,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "`D' = min(c₂x/q, D)` and `R = max D' (q/2)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L839-L842"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          866,
+          916
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "  have h2 : ∑ n ∈ Ioc (0 : ℤ) ⌊D⌋, g n ≤\n      ∑ n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋, Tn α x n +\n      ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) +\n      ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Tn α x n := by\n    have hpt : ∀ n ∈ Ioc (0 : ℤ) ⌊D⌋, g n ≤\n        (if n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋ then Tn α x n else 0) +\n        (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) +\n        (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by\n      intro n hn\n      have hT := Tn_nonneg α x n\n      have hgT : g n ≤ Tn α x n := by simp only [g]; split_ifs <;> linarith\n      rw [mem_Ioc] at hn\n      by_cases hA : n ≤ ⌊(q : ℝ) / 2⌋\n      · rw [if_pos (mem_Ioc.2 ⟨hn.1, hA⟩)]\n        have : 0 ≤ (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) := by\n          split_ifs <;> linarith\n        have : 0 ≤ (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by split_ifs <;> linarith\n        linarith\n      push Not at hA\n      by_cases hB : n ≤ ⌊D'⌋\n      · rw [if_pos (mem_Ioc.2 ⟨hA, hB⟩), if_neg (by rw [mem_Ioc]; omega)]\n        have : 0 ≤ (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by split_ifs <;> linarith\n        by_cases hd : (q : ℤ) ∣ n\n        · rw [if_pos hd]\n          have hnD' : (n : ℝ) ≤ D' := (Int.cast_le.2 hB).trans (Int.floor_le _)\n          have : g n = 0 := by\n            simp only [g]; rw [if_neg (not_not.2 ⟨hd, hnD'.trans hMD'⟩)]\n          linarith\n        · rw [if_neg hd]; linarith\n      push Not at hB\n      have hnR : ⌊R⌋ < n := by\n        have h1 : D' < n := by\n          have := Int.lt_floor_add_one D'\n          have : ((⌊D'⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hB\n          linarith\n        have h2 : (q : ℝ) / 2 < n := by\n          have := Int.lt_floor_add_one ((q : ℝ) / 2)\n          have : ((⌊(q : ℝ) / 2⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hA\n          linarith\n        have : R < n := max_lt h1 h2\n        exact Int.floor_lt.2 this\n      rw [if_neg (by rw [mem_Ioc]; omega), if_neg (by rw [mem_Ioc]; omega),\n        if_pos (mem_Ioc.2 ⟨hnR, hn.2⟩)]\n      linarith\n    refine (sum_le_sum hpt).trans ?_\n    rw [sum_add_distrib, sum_add_distrib, sum_ite_mem, sum_ite_mem, sum_ite_mem]\n    refine add_le_add (add_le_add ?_ ?_) ?_\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => Tn_nonneg _ _ _\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => by\n        split_ifs <;> first | exact le_rfl | exact Tn_nonneg _ _ _\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => Tn_nonneg _ _ _",
+            "line": 866,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "Splits the range into `m ≤ q/2`, `q/2 < m ≤ D'`, `R < m ≤ D`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L866-L916"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          966,
+          973
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "  rcases lt_or_ge R D with hRD | hRD\n  · -- Range (R3) is non-empty, so `D' = c₂x/q`.\n    have hD'eq : D' = c₂ * x / q := by\n      rcases min_choice (c₂ * x / q) D with h | h\n      · exact h\n      · exfalso; have : D' = D := h; linarith\n    have hR0 : 0 < R := by linarith\n    have hB3 := sum_R3 hx hq hcop h2α hqQ hδ hqR hRD (α := α)",
+            "line": 966,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "If R < D, applies `sum_R3` to `R < m ≤ D`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L966-L973"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

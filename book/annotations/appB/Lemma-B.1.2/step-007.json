@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.1.2 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds the first derivative of the $\\widehat f$ part (Lipschitz in $x=2\\pi t$) for its grid, not $(\\widehat f)''$, and only on $0\\le t\\le 2$.",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.26253,
+          0.82211,
+          0.56162,
+          0.02724
+        ]
+      },
+      "title": "Lemma B.1.2 step 7: Display, p. 292",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.1.2 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Jq_sub_le",
+        "module": "TernaryGoldbach.MinorArcs.Eta2DDTaylor",
+        "lines": [
+          50,
+          73
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Jq_sub_le"
+          },
+          "snippet": {
+            "text": "theorem norm_Jq_sub_le {a b x x' : ℝ} (ha : 0 < a) (hab : a ≤ b) :\n    ‖Jq a b (x / (2 * π)) - Jq a b (x' / (2 * π))‖ ≤ |x - x'| / a * (b - a) := by\n  have hpos : ∀ u ∈ Set.uIcc a b, 0 < u := fun u hu => by\n    rw [Set.uIcc_of_le hab] at hu; exact ha.trans_le hu.1\n  have hint : ∀ y : ℝ, IntervalIntegrable (fun u => e (-(u * y)) * (((u ^ 2)⁻¹ : ℝ) : ℂ)) volume a b :=\n    fun y => ((continuous_E y).continuousOn.mul\n      (continuous_ofReal.comp_continuousOn (by\n        simpa using continuousOn_inv_pow ha hab 1 2))).intervalIntegrable\n  unfold Jq\n  rw [← intervalIntegral.integral_sub (hint _) (hint _)]\n  have hb : |b - a| = b - a := abs_of_nonneg (by linarith)\n  rw [← hb]\n  refine intervalIntegral.norm_integral_le_of_norm_le_const fun u hu => ?_\n  have hu' : u ∈ Set.uIcc a b := Set.uIoc_subset_uIcc hu\n  have hu0 := hpos u hu'\n  have hau : a ≤ u := by rw [Set.uIcc_of_le hab] at hu'; exact hu'.1\n  rw [← sub_mul, norm_mul, e_eq_cexp, e_eq_cexp, Complex.norm_real, Real.norm_eq_abs,\n    abs_of_pos (by positivity)]\n  have h1 := norm_cexp_sub_le (u * x) (u * x')\n  rw [show u * x - u * x' = u * (x - x') by ring, abs_mul, abs_of_pos hu0] at h1\n  calc ‖cexp (-I * ((u * x : ℝ) : ℂ)) - cexp (-I * ((u * x' : ℝ) : ℂ))‖ * (u ^ 2)⁻¹\n      ≤ u * |x - x'| * (u ^ 2)⁻¹ := mul_le_mul_of_nonneg_right h1 (by positivity)\n    _ = |x - x'| / u := by field_simp\n    _ ≤ |x - x'| / a := div_le_div_of_nonneg_left (abs_nonneg _) ha hau",
+            "line": 50,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_Jq_sub_le",
+            "lines": [
+              50,
+              73
+            ],
+            "conclusion": "Regularity of the $\\widehat f$ part: $\\|J(a,b)(x/2\\pi)-J(a,b)(x'/2\\pi)\\|\\le |x-x'|(b-a)/a$, a first-derivative (Lipschitz) bound from $|u\\cdot u^{-2}|$ rather than the second-derivative bound $|(\\widehat f)''|\\le(2\\pi)^2|x^2f|_1$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2DDTaylor.lean",
+            "fragment": "L50-L73"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

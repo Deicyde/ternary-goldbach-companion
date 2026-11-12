@@ -1,0 +1,192 @@
+{
+  "id": "Theorem 6.3 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The Dirichlet approximation is taken at each scale wy (fresh per w) rather than once at y = x/kappa with Q=(3/4)y^{2/3}; the parity case analysis (a'/q' = a/2q or (a+q)/2q, q' in {q,2q}) is mem_majorArcs_of_approx.",
+  "subject": [
+    {
+      "location": {
+        "page": 49,
+        "rect": [
+          0.20698,
+          0.63484,
+          0.62529,
+          0.10094
+        ]
+      },
+      "title": "Theorem 6.3 step 1: Text, p. 49",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          330,
+          330
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  set y := x / κ with hy_def",
+            "line": 330,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "`set y := x / κ`: the set-up y = x/κ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L330-L330"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.exists_approx2",
+        "module": "TernaryGoldbach.MinorArcs.SecondChoice",
+        "lines": [
+          22,
+          40
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.exists_approx2"
+          },
+          "snippet": {
+            "text": "/-- Dirichlet: for `Q ≥ 1` there is an approximation `2α = a/q + δ/x (mod 1)` with `q ≤ Q`,\n`|δ/x| ≤ 1/qQ`. -/\ntheorem exists_approx2 (α : ℝ) {x : ℝ} (hx : 0 < x) {Q : ℝ} (hQ : 1 ≤ Q) :\n    ∃ (δ : ℝ) (a : ℤ) (q : ℕ), Approx2 α x δ a q Q := by\n  set n := ⌊Q⌋₊\n  have hn : 0 < n := Nat.floor_pos.2 hQ\n  obtain ⟨r, hr, hrden⟩ := Real.exists_rat_abs_sub_le_and_den_le (2 * α) hn\n  have hq1 : 1 ≤ r.den := r.den_pos\n  have hq0 : (0 : ℝ) < r.den := by exact_mod_cast hq1\n  have hcast : (r : ℝ) = r.num / r.den := Rat.cast_def r\n  refine ⟨x * (2 * α - r.num / r.den), r.num, r.den, hq1, ?_, ⟨0, ?_⟩, ?_, ?_⟩\n  · rw [Int.isCoprime_iff_gcd_eq_one]; exact r.reduced\n  · field_simp; push_cast; ring\n  · rw [mul_div_cancel_left₀ _ hx.ne', ← hcast]\n    refine hr.trans ?_\n    apply one_div_le_one_div_of_le (by positivity)\n    rw [mul_comm (r.den : ℝ)]\n    exact mul_le_mul_of_nonneg_right (Nat.lt_floor_add_one Q).le hq0.le\n  · exact le_trans (by exact_mod_cast hrden) (Nat.floor_le (by linarith))",
+            "line": 22,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.exists_approx2",
+            "lines": [
+              22,
+              40
+            ],
+            "conclusion": "Dirichlet: for Q >= 1 there are delta, a, q with 2 alpha = a/q + delta/x (mod 1), q <= Q, |delta/x| <= 1/(qQ)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondChoice.lean",
+            "fragment": "L22-L40"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+        "lines": [
+          118,
+          123
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem"
+          },
+          "snippet": {
+            "text": "  obtain ⟨δ, a, q, h⟩ := exists_approx2 α hz0 hQ1\n  have hy' : Approx2 α y (δ / w) a q (3 / 4 * z ^ (2 / 3 : ℝ)) := by\n    obtain ⟨h1, h2, ⟨k, hk⟩, h4, h5⟩ := h\n    have e : δ / w / y = δ / z := by rw [hz_def]; field_simp\n    exact ⟨h1, h2, ⟨k, by rw [e]; exact hk⟩, by rw [e]; exact h4, h5⟩\n  have hr := le_rAlpha_of_not_mem hy0 (by norm_num) hy' hα",
+            "line": 118,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+            "lines": [
+              105,
+              142
+            ],
+            "conclusion": "Applies it at scale z = wy with Q = (3/4) z^{2/3}, rescales to the approximation of 2 alpha at scale y, and gets min(1,w) n <= max(1,|delta|/8) q for alpha outside the arcs M_{8,n}(y)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "fragment": "L118-L123"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.mem_majorArcs_of_approx",
+        "module": "TernaryGoldbach.MinorArcs.OffArcs",
+        "lines": [
+          25,
+          67
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.mem_majorArcs_of_approx"
+          },
+          "snippet": {
+            "text": "theorem mem_majorArcs_of_approx {α y δ δ₀ r Q : ℝ} {a : ℤ} {q : ℕ} (hy : 0 < y)\n    (h : Approx2 α y δ a q Q) (hqr : (q : ℝ) ≤ r) (hδ : |δ| * q < δ₀ * r) :\n    α ∈ majorArcs δ₀ r y := by\n  obtain ⟨hq1, hcop, ⟨k, hk⟩, -, -⟩ := h\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq1\n  set m : ℤ := a + k * q with hm\n  have hcopm : IsCoprime m (q : ℤ) := by\n    simpa [hm] using hcop.add_mul_right_left k\n  have hα : α = m / (2 * q) + δ / (2 * y) := by\n    have : α = (a / q + δ / y + k) / 2 := by linarith\n    rw [this, hm]; push_cast\n    field_simp; ring\n  -- `|δ/(2y)| < δ₀ r/(2 q y)`\n  have hrad : |δ / (2 * y)| < δ₀ * r / (2 * q * y) := by\n    rw [abs_div, abs_of_pos (by positivity : (0 : ℝ) < 2 * y), div_lt_div_iff₀ (by positivity)\n      (by positivity)]\n    nlinarith\n  have hmem : ∀ (c ρ : ℝ), |α - c| < ρ → α ∈ Set.Ioo (c - ρ) (c + ρ) := fun c ρ h => by\n    rw [abs_lt] at h; constructor <;> linarith\n  by_cases hpar : Odd q ∧ Even m\n  · obtain ⟨hqo, b, hb⟩ := hpar\n    left\n    refine Set.mem_iUnion₂.2 ⟨q, ⟨hq1, hqr, hqo⟩, Set.mem_iUnion₂.2 ⟨b, ?_, hmem _ _ ?_⟩⟩\n    · have : IsCoprime (2 * b) (q : ℤ) := by rw [two_mul, ← hb]; exact hcopm\n      exact this.of_mul_left_right\n    · rw [hα, show (m : ℝ) = 2 * b by rw [hb]; push_cast; ring]\n      convert hrad using 2; field_simp; ring\n  · right\n    have hmo : Odd m := by\n      rcases Nat.even_or_odd q with hqe | hqo\n      · obtain ⟨j, hj⟩ := hqe\n        refine Int.not_even_iff_odd.1 fun hme => ?_\n        have h2 : (2 : ℤ) ∣ m := hme.two_dvd\n        have h2q : (2 : ℤ) ∣ (q : ℤ) := ⟨j, by rw [hj]; push_cast; ring⟩\n        have := Int.isUnit_iff.1 (hcopm.isUnit_of_dvd' h2 h2q)\n        omega\n      · exact Int.not_even_iff_odd.1 fun hme => hpar ⟨hqo, hme⟩\n    have hcop2 : IsCoprime m ((2 * q : ℕ) : ℤ) := by\n      push_cast; exact (Int.isCoprime_two_right.mpr hmo).mul_right hcopm\n    refine Set.mem_iUnion₂.2 ⟨2 * q, ⟨by omega, by push_cast; linarith, even_two_mul q⟩,\n      Set.mem_iUnion₂.2 ⟨m, hcop2, hmem _ _ ?_⟩⟩\n    rw [hα]; push_cast\n    convert hrad using 2; field_simp; ring",
+            "line": 25,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.mem_majorArcs_of_approx",
+            "lines": [
+              25,
+              67
+            ],
+            "conclusion": "Parity analysis: alpha = m/(2q) + delta/(2y), with m even and q odd giving denominator q, else reduced denominator 2q, so the arc condition holds."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/OffArcs.lean",
+            "fragment": "L25-L67"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          49
+        ],
+        "printed": [
+          49
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

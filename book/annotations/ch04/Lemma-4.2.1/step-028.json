@@ -1,0 +1,106 @@
+{
+  "id": "Lemma 4.2.1 step 28",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean takes the second approximation from real Qr = x/|δq| by Dirichlet at ⌊(1+ε)Qr⌋; the book uses Q' = ⌈(1+ε)Q⌉. The motivating remark about multiples of q' is not formalized.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.26253,
+          0.48482,
+          0.56162,
+          0.1054
+        ]
+      },
+      "title": "Lemma 4.2.1 step 28: Text, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 28",
+          "quads": [
+            [
+              0.5626,
+              0.48482,
+              0.82415,
+              0.48482,
+              0.82415,
+              0.50055,
+              0.5626,
+              0.50055
+            ],
+            [
+              0.26253,
+              0.4987,
+              0.82415,
+              0.4987,
+              0.82415,
+              0.59022,
+              0.26253,
+              0.59022
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1222,
+          1236
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  set ξ := (a : ℝ) / q + δ / x\n  have hξ : |ξ - a / q| = 1 / (q * Qr) := by\n    simp only [ξ, add_sub_cancel_left]\n    rw [eq_div_iff (by positivity)]; linarith [hexact]\n  obtain ⟨a', q', hq'1, hcop', hq'Q', happ', hq'low⟩ := second_approx hq hcop hqQr hε hξ\n  have hq'0 : (0 : ℝ) < q' := by exact_mod_cast hq'1\n  set δ' := x * (ξ - a' / q')\n  have hδ'x : δ' / x = ξ - a' / q' := by simp only [δ']; field_simp\n  have h2α' : 2 * α = a' / q' + δ' / x + k := by rw [hδ'x, h2α]; ring\n  have hδ' : |δ' / x| * (q' * ((1 + ε) * Qr)) ≤ 1 := by\n    rw [hδ'x]\n    have := happ'\n    rw [le_div_iff₀ (by positivity)] at this; linarith\n  have hA2 := sum_R3' hx hq'1 hcop' h2α' hq'Q' hδ' hM0 hDM (α := α)\n  rw [← hc₁def] at hA2",
+            "line": 1222,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "Sets `ξ = a/q + δ/x`, applies `second_approx` to get `a'/q'` with `|ξ − a'/q'| ≤ 1/(q'(1+ε)Qr)` and `q' ≥ εQr/(1+ε)`, and rewrites `2α = a'/q' + δ'/x + k` for use on the range above M."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1222-L1236"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "6.2 display 44",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean bounds the integral term by term with A = W_0 as upper limit, giving 4 sqrt(kap1) sqrt(x W_0) sqrt(log W_0); the display's last sqrt(log W) means sqrt(log W_0).",
+  "subject": [
+    {
+      "location": {
+        "page": 124,
+        "rect": [
+          0.25926,
+          0.70626,
+          0.56816,
+          0.03909
+        ]
+      },
+      "title": "Display, p. 114",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 44"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_G53_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          342,
+          351
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_G53_le"
+          },
+          "snippet": {
+            "text": "  have J3 : ∫ W in V..A, g3 W ≤ √(Real.log A) * (2 * √A) := by\n    calc ∫ W in V..A, g3 W ≤ ∫ W in V..A, √(Real.log A) * g5 W := by\n          refine intervalIntegral.integral_mono_on hVA i3 (i5.const_mul _) fun W hW => ?_\n          simp only [g3, g5]; rw [mul_one_div]\n          exact div_le_div_of_nonneg_right (hmono W hW) (Real.sqrt_nonneg _)\n      _ = √(Real.log A) * (2 * √A - 2 * √V) := by\n          rw [intervalIntegral.integral_const_mul, integral_inv_sqrt hV0 hVA]\n      _ ≤ _ := by\n          have : 0 ≤ √V := Real.sqrt_nonneg _\n          nlinarith",
+            "line": 342,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_G53_le",
+            "lines": [
+              292,
+              375
+            ],
+            "conclusion": "The integral of sqrt(log W)/sqrt W over [V, A] is at most sqrt(log A) * 2 sqrt A."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L342-L351"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_G53_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          368,
+          369
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_G53_le"
+          },
+          "snippet": {
+            "text": "  have e3 : c3 * (√(Real.log A) * (2 * √A)) = √κ * (√x * √(Real.log A) * √A) := by\n    simp only [c3]; ring",
+            "line": 368,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_G53_le",
+            "lines": [
+              292,
+              375
+            ],
+            "conclusion": "Times c3 = sqrt(kappa) sqrt(x)/2 this is sqrt(kappa) sqrt(x) sqrt(log A) sqrt A; with the factor 4 it gives 4 sqrt(kappa_1) sqrt(x A) sqrt(log A)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L368-L369"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          124
+        ],
+        "printed": [
+          114
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

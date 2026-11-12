@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 40",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same range check |delta q| <= x/(theta U) before applying the case (b) bound, but with Lean's Q0: |delta q| <= x/Q0 = 349T (not = U) and theta = 8 (not 4), giving 8|delta|q <= 2792T <= T^2/1225 <= x/U. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 141,
+        "rect": [
+          0.17135,
+          0.39818,
+          0.56816,
+          0.03797
+        ]
+      },
+      "title": "Display, p. 131",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.b_facts",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIb",
+        "lines": [
+          241,
+          253
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.b_facts"
+          },
+          "snippet": {
+            "text": "/-- Common facts for case (b): `4T/3 < |δ|q ≤ 349T`. -/\ntheorem b_facts {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hδq : 8 * (T / 6) < |δ| * q) :\n    4 * T / 3 < |δ| * q ∧ |δ| * q ≤ 349 * T := by\n  have hT0 : 0 < T := by linarith\n  obtain ⟨hq1, -, -, hδQ, -⟩ := h\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq1\n  refine ⟨by linarith, ?_⟩\n  rw [abs_div, abs_of_pos (by positivity : (0 : ℝ) < T ^ 3), div_le_div_iff₀ (by positivity)\n    (by unfold Q2; positivity), one_mul] at hδQ\n  unfold Q2 at hδQ\n  have : |δ| * q * T ^ 2 ≤ 349 * T * T ^ 2 := by nlinarith\n  exact le_of_mul_le_mul_right this (by positivity)",
+            "line": 241,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.b_facts",
+            "lines": [
+              241,
+              253
+            ],
+            "conclusion": "For `8(T/6) < |delta|q`: `4T/3 < |delta| q <= 349 T`, i.e. |delta| q <= x/Q0 (Q0 = T^2/349)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIb.lean",
+            "fragment": "L241-L253"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          141
+        ],
+        "printed": [
+          131
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

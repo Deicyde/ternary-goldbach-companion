@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 25",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean's enclosures have width 1e-9 and 2e-8, not O(1e-14) and O(1e-15); the log(xt)=log x+log t split is in integral_etaPlus_sq_log.",
+  "subject": [
+    {
+      "location": {
+        "page": 207,
+        "rect": [
+          0.17135,
+          0.43944,
+          0.56816,
+          0.05547
+        ]
+      },
+      "title": "Display, p. 197",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.PolyNum.integral_P0_sq",
+        "module": "TernaryGoldbach.MajorArcs.EtaONum",
+        "lines": [
+          139,
+          165
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.PolyNum.integral_P0_sq"
+          },
+          "snippet": {
+            "text": "/-- **`0.640205997 ≤ ∫₀² η◦² ≤ 0.640205998`** (value `0.6402059973663…`). -/\ntheorem integral_P0_sq : 0.640205997 ≤ ∫ t in (0 : ℝ)..2, P0 t ^ 2 * 1 ∧\n    ∫ t in (0 : ℝ)..2, P0 t ^ 2 * 1 ≤ 0.640205998 := by\n  have hI := integral_pow_mul_pH 0 2 csA 6\n  push_cast at hI\n  have hc : Continuous fun t : ℝ => P0 t ^ 2 * 1 := by unfold P0; fun_prop\n  have hd : |(∫ t in (0 : ℝ)..2, P0 t ^ 2 * 1) - ∫ t in (0 : ℝ)..2, t ^ 6 * pH csA t| ≤\n      (15 / (14 ! * 14)) * |(2 : ℝ) - 0| := by\n    have hp : IntervalIntegrable (fun t : ℝ => t ^ 6 * pH csA t) volume 0 2 :=\n      ((continuous_pow 6).mul (continuous_pH csA)).intervalIntegrable _ _\n    rw [← intervalIntegral.integral_sub (hc.intervalIntegrable _ _) hp]\n    rw [← Real.norm_eq_abs]\n    refine intervalIntegral.norm_integral_le_of_norm_le_const fun t ht => ?_\n    rw [uIoc_of_le (by norm_num)] at ht\n    rw [Real.norm_eq_abs, mul_one]\n    have h := P0_sq_approx ht.1.le ht.2\n    have h6 : (t * (2 - t)) ^ 6 ≤ 1 := pow_le_one₀ (tt_le ht.1.le ht.2).1 (tt_le ht.1.le ht.2).2\n    calc _ ≤ (t * (2 - t)) ^ 6 * (15 / (14 ! * 14)) := h\n      _ ≤ 1 * (15 / (14 ! * 14)) := mul_le_mul_of_nonneg_right h6 (by positivity)\n      _ = _ := one_mul _\n  rw [hI] at hd\n  have hq := csA_val\n  have q1 := (Rat.cast_le (K := ℝ)).2 hq.1\n  have q2 := (Rat.cast_le (K := ℝ)).2 hq.2\n  push_cast at q1 q2 hd\n  rw [abs_le] at hd\n  constructor <;> nlinarith [hd.1, hd.2]",
+            "line": 139,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.PolyNum.integral_P0_sq",
+            "lines": [
+              139,
+              165
+            ],
+            "conclusion": "0.640205997<=int_0^2 P0^2<=0.640205998."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaONum.lean",
+            "fragment": "L139-L165"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          207
+        ],
+        "printed": [
+          197
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

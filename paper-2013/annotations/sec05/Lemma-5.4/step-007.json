@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.4 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Bound is `0.86 + 0.4 log(qR)` (needs `log q ≥ 3` and `hcc`, `hh`), not `e^γ(log(Q₀/sq + log q) + 0.658)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.20698,
+          0.78872,
+          0.62529,
+          0.03541
+        ]
+      },
+      "title": "Lemma 5.4 step 7: Display, p. 37",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.4 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          135,
+          144
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hX' : X ≤ 0.86 + 0.4 * Real.log ((q : ℝ) * R) := by\n    have e1 : 2.50637 / Real.log V ≤ 2.50637 / Real.log (Real.log q) :=\n      div_le_div_of_nonneg_left (by norm_num) (by linarith) hlV1\n    have e2 : Real.exp Real.eulerMascheroniConstant * Real.log V ≤\n        Real.exp Real.eulerMascheroniConstant * Real.log c' +\n          Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) := by\n      rw [← mul_add]; exact mul_le_mul_of_nonneg_left hlogV hγ0.le\n    have e3 : Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) ≤\n        0.4 * Real.log ((q : ℝ) * R) := by nlinarith\n    linarith",
+            "line": 135,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "`hX'`: `P/φ(P) ≤ 0.86 + 0.4 log(qR)` with `R = Q₀/(sq)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L135-L144"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 12.2.2 step 7, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 13",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's first-line terms carry `1.0064`, the factor `(1+(1+ε)(1+V/Q)/e)` on `2√(c₀c₊)/π · UV` (collecting the `U/e` term of the second line), and `qV ≤ Q` is applied directly to the `35c₀c₂/(3π²)` term.",
+  "subject": [
+    {
+      "location": {
+        "page": 115,
+        "rect": [
+          0.17135,
+          0.81365,
+          0.56816,
+          0.04254
+        ]
+      },
+      "title": "Display, p. 105",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_32_v_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Large",
+        "lines": [
+          132,
+          134
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_32_v_le"
+          },
+          "snippet": {
+            "text": "        (2 * √(c₀ * cPlus x U V) / π * (1 + (1 + ε) * (1 + V / Q) / rexp 1) * U +\n          3 / 2 * cPlus x U V * (2 + (1 + ε) / ε * logPlus (2 * U * V * |δ| * q / x)) * (x / Q) +\n          35 * c₀ * c₂ / (3 * π ^ 2) * q) := by",
+            "line": 132,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_32_v_le",
+            "lines": [
+              124,
+              214
+            ],
+            "conclusion": "Per `v`: the (4.32) terms at `x/v`, `q_v`, `Q/v` are `≤ 2√(c₀c₊)/π (1+(1+ε)(1+V/Q)/e) U + 3c₊/2 (2+((1+ε)/ε) log⁺(2UV|δ|q/x)) x/Q + 35c₀c₂/(3π²) q` plus the `min(⌊y⌋+1,2U)` term."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Large.lean",
+            "fragment": "L132-L134"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          115
+        ],
+        "printed": [
+          105
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

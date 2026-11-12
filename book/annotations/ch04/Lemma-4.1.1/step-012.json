@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.1.1 step 12",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Display 12's bound appears only implicitly (not as its own `have`); the sum is first rewritten into residue form by `residue_formΦ` and `F ≤ min` hypotheses.",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17462,
+          0.17976,
+          0.56162,
+          0.04498
+        ]
+      },
+      "title": "Lemma 4.1.1 step 12: Display, p. 53",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          616,
+          626
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₁'"
+          },
+          "snippet": {
+            "text": "  calc ∑ k ∈ Finset.range K, (F k + F (q - 1 - k)) + (if q % 2 = 1 then F K else 0)\n      ≤ 2 * A + C * (∑ k ∈ Finset.Ico 1 K, (g k + g (k + 1)) + g K) := by\n        rw [hpeel]\n        have := Finset.sum_le_sum hpair\n        rw [← Finset.mul_sum] at this\n        nlinarith [hFA 0, hFA (q - 1)]\n    _ = 2 * A + C * (fq q (1 / 2) + 2 * ∑ j ∈ Finset.Icc 2 K, fq q (j - 1 / 2)) := by\n        rw [htel, hg1]\n    _ ≤ 2 * A + C * (6 * q ^ 2 / π ^ 2) := by\n        gcongr\n        linarith",
+            "line": 616,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+            "lines": [
+              549,
+              627
+            ],
+            "conclusion": "The residue sum is `≤ 2A + C(f_q(1/2) + 2(q/π)cot(π/q))` (then bounded by `6q²/π² C`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L616-L626"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.fq_half_add_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          532,
+          533
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.fq_half_add_le"
+          },
+          "snippet": {
+            "text": "  have e1 : fq q (1 / 2) = 1 / Real.sin t ^ 2 := by\n    simp only [fq, ht]; ring_nf",
+            "line": 532,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.fq_half_add_le",
+            "lines": [
+              522,
+              547
+            ],
+            "conclusion": "`f_q(1/2) = 1/sin²(π/(2q))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L532-L533"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

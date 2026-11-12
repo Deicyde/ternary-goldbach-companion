@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.1 step 20",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same bound sqrt(y/d); Lean proves it by induction, not by 1 + (1/2) int; sum is over t<=floor(y/d), not s<y/d.",
+  "subject": [
+    {
+      "location": {
+        "page": 93,
+        "rect": [
+          0.17462,
+          0.64718,
+          0.56162,
+          0.05466
+        ]
+      },
+      "title": "Lemma 5.1.1 step 20: Display, p. 83",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_inv_sqrt_le",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          60,
+          68
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_inv_sqrt_le"
+          },
+          "snippet": {
+            "text": "/-- `∑_{t ≤ K odd} 1/√t ≤ √K`. -/\ntheorem sum_odd_inv_sqrt_le (K : ℕ) :\n    ∑ t ∈ (Icc 1 K).filter Odd, 1 / √(t : ℝ) ≤ √(K : ℝ) := by\n  rw [sum_filter_odd_Icc]\n  push_cast\n  refine (sum_range_inv_sqrt_odd _).trans (sqrt_le_sqrt ?_)\n  have : 2 * ((K + 1) / 2) ≤ K + 1 := Nat.mul_div_le _ _\n  have : (2 * ((K + 1) / 2 : ℕ) : ℝ) ≤ K + 1 := by exact_mod_cast this\n  linarith",
+            "line": 60,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_inv_sqrt_le",
+            "lines": [
+              60,
+              68
+            ],
+            "conclusion": "Sum over odd t<=K of 1/sqrt t is <= sqrt K."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L60-L68"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          165,
+          171
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le"
+          },
+          "snippet": {
+            "text": "  have h1 := sum_odd_inv_sqrt_le (K / d)\n  have h2 : ((K / d : ℕ) : ℝ) ≤ y / d := by\n    refine (Nat.cast_div_le).trans ?_\n    gcongr; exact Nat.floor_le hy\n  calc 1 / (d : ℝ) * ∑ t ∈ (Icc 1 (K / d)).filter Odd, 1 / √(t : ℝ)\n      ≤ 1 / d * √(y / d) := by\n        gcongr; exact h1.trans (sqrt_le_sqrt h2)",
+            "line": 165,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+            "lines": [
+              117,
+              175
+            ],
+            "conclusion": "Sum over odd t<=K/d of 1/sqrt t is <= sqrt(K/d) <= sqrt(y/d)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L165-L171"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          93
+        ],
+        "printed": [
+          83
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

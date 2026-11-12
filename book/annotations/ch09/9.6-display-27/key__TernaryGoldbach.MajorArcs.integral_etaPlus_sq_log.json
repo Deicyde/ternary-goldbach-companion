@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 27",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean's bound for int (eta_+-eta_o)^2 log(xt) is about 1.15e-7 log x + 8.5e-8 (via 368/H^4), weaker than the displayed 5.903e-12 log x + 2.143e-12.",
+  "subject": [
+    {
+      "location": {
+        "page": 207,
+        "rect": [
+          0.17135,
+          0.71335,
+          0.56816,
+          0.05658
+        ]
+      },
+      "title": "Display, p. 197",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          933,
+          944
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log"
+          },
+          "snippet": {
+            "text": "  have hQ0 : |∫ u, Dg u ^ 2 * Ew u| ≤ 368 / 200 ^ 4 / 2 := by\n    rw [abs_of_nonneg (integral_nonneg fun u => mul_nonneg (sq_nonneg _) (Ew_nonneg u))]\n    calc ∫ u, Dg u ^ 2 * Ew u ≤ ∫ u, Dg u ^ 2 * (1 / 2) :=\n          integral_mono iE (integrable_Dg_sq.mul_const _)\n            fun u => mul_le_mul_of_nonneg_left (Ew_le u) (sq_nonneg _)\n      _ = (∫ u, Dg u ^ 2) / 2 := by rw [integral_mul_const]; ring\n      _ ≤ 368 / 200 ^ 4 / 2 := by linarith\n  have hQ1 : |∫ u, Dg u ^ 2 * Ew u * u| ≤ 0.37 * (368 / 200 ^ 4) := by\n    calc |∫ u, Dg u ^ 2 * Ew u * u| ≤ ∫ u, |Dg u ^ 2 * Ew u * u| := abs_integral_le_integral_abs\n      _ ≤ ∫ u, Dg u ^ 2 * 0.37 := integral_mono iF.abs (integrable_Dg_sq.mul_const _) hF\n      _ = 0.37 * ∫ u, Dg u ^ 2 := by rw [integral_mul_const]; ring\n      _ ≤ 0.37 * (368 / 200 ^ 4) := by linarith",
+            "line": 933,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+            "lines": [
+              886,
+              955
+            ],
+            "conclusion": "hQ0, hQ1: |int D^2 E|<=368/200^4/2 and |int D^2 E u|<=0.37*368/200^4."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L933-L944"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          207
+        ],
+        "printed": [
+          197
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7.1 display 8",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean's bound (7.5e-8 + 7.7e6/√x)/√q for x >= 4.9e26 is implied by the book's bound there; weaker constants and narrower x range.",
+  "subject": [
+    {
+      "location": {
+        "page": 150,
+        "rect": [
+          0.25926,
+          0.39754,
+          0.56816,
+          0.03585
+        ]
+      },
+      "title": "Display, p. 140",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7.1 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_even",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          629,
+          680
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_even"
+          },
+          "snippet": {
+            "text": "/-- **[H, Thm 7.1.4], even `q ≤ 300000`** (Platt's verification at `max(10⁸/q, 200 + 7.5·10⁷/q)`), our\nconstants: `|E| ≤ (7.5·10⁻⁸ + 7.7·10⁶/√x)/√q` for `x ≥ 4.9·10²⁶`, `|δ| ≤ 1.2·10⁶/q`. -/\ntheorem thm_7_1_4_even {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} [NeZero q] (heven : Even q) (hq : q ≤ 300000)\n    (χ : DirichletCharacter ℂ q) (hχ : χ.IsPrimitive) {δ : ℝ} (hδ : |δ| ≤ 1200000 / q) :\n    ‖Schar χ (fun n => ((Λ n * etaPlus (n / x) : ℝ) : ℂ)) (δ / x) -\n        (if q = 1 then 𝓕 (fun u => (etaPlus u : ℂ)) (-δ) * x else 0)‖ ≤\n      ((7.5e-8 + 7.7e6 / √x) / √q) * x := by\n  have hx0 : 0 < x := by linarith\n  have hq0 : (0:ℝ) < q := by exact_mod_cast Nat.pos_of_ne_zero (NeZero.ne q)\n  have hq2 : 2 ≤ q := by obtain ⟨k, hk⟩ := heven; have := NeZero.ne q; omega\n  have hq1 : q ≠ 1 := by omega\n  have hq' : (q:ℝ) ≤ 300000 := by exact_mod_cast hq\n  have hq2' : (2:ℝ) ≤ q := by exact_mod_cast hq2\n  have hD : |δ| ≤ 6e5 := hδ.trans (by rw [div_le_iff₀ hq0]; nlinarith)\n  by_cases h125 : q ≤ 125000\n  · have h125' : (q:ℝ) ≤ 125000 := by exact_mod_cast h125\n    have hT0 : 200 + max (10 * π * |δ|) 50 ≤ 1e8 / q := by\n      refine hT0_of hq0 hδ ?_ (by rw [le_div_iff₀ hq0]; nlinarith)\n      rw [show (1e8 : ℝ) / q - 200 = (1e8 - 200 * q) / q by field_simp]\n      exact div_le_div_of_nonneg_right (by nlinarith) hq0.le\n    have h := prop_9_4_2 (x := x) (by linarith) δ χ hχ hT0 (platt_grh hq χ hχ)\n    rw [if_neg hq1] at h ⊢\n    refine h.trans (mul_le_mul_of_nonneg_right ?_ hx0.le)\n    unfold err942N\n    rw [if_neg hq1]\n    have hE1 := E1P_le (q := q) (T0 := 1e8 / q) (Cq := 1.010467e8) (Z := 145.21) (S1 := 28515) (S2 := 37864)\n      (by positivity) (by\n        rw [show (1e8 : ℝ) / q + 3.48 = (1e8 + 3.48 * q) / q by field_simp]\n        exact div_le_div_of_nonneg_right (by nlinarith) hq0.le)\n      (ZL_le hq2 hq) (by norm_num) (by norm_num) (by norm_num) (by norm_num)\n    by_cases h60 : q ≤ 60000\n    · exact errP_le_of hx hq hD hE1 (by norm_num) (E2_R2s hq2 h60 hδ) (by norm_num)\n    · exact errP_le_of hx hq hD hE1 (by norm_num) (E2_R2m (by omega) h125 hδ) (by norm_num)\n  · have h125' : (125000:ℝ) < q := by exact_mod_cast (not_le.1 h125)\n    have hT0 : 200 + max (10 * π * |δ|) 50 ≤ 200 + 7.5e7 / q := by\n      refine hT0_of hq0 hδ ?_ (by\n        have : (250:ℝ) ≤ 7.5e7 / q := by rw [le_div_iff₀ hq0]; nlinarith\n        linarith)\n      rw [show (200 + 7.5e7 / q - 200 : ℝ) = 7.5e7 / q by ring]\n      exact div_le_div_of_nonneg_right (by norm_num) hq0.le\n    have hG : GRHUpTo χ (200 + 7.5e7 / q) :=\n      (platt_even heven (by omega) χ hχ).mono (le_max_right _ _)\n    have h := prop_9_4_2 (x := x) (by linarith) δ χ hχ hT0 hG\n    rw [if_neg hq1] at h ⊢\n    refine h.trans (mul_le_mul_of_nonneg_right ?_ hx0.le)\n    unfold err942N\n    rw [if_neg hq1]\n    refine errP_le_of hx hq hD (E1P_le (Cq := 1.36044e8) (Z := 143.21) (S1 := 33086) (S2 := 43934)\n      (by positivity) ?_ (ZL_R3_le (not_le.1 h125) hq) (by norm_num) (by norm_num) (by norm_num)\n      (by norm_num)) (by norm_num) (E2_R3 (not_le.1 h125) hq hδ) (by norm_num)\n    rw [show (200 + 7.5e7 / q + 3.48 : ℝ) = (203.48 * q + 7.5e7) / q by field_simp; ring]\n    exact div_le_div_of_nonneg_right (by nlinarith) hq0.le",
+            "line": 629,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_even",
+            "lines": [
+              629,
+              680
+            ],
+            "conclusion": "Even q <= 3e5, primitive chi, |δ| <= 1.2e6/q, x >= 4.9e26: same sum identity with error ((7.5e-8+7.7e6/√x)/√q) x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L629-L680"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          150
+        ],
+        "printed": [
+          140
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

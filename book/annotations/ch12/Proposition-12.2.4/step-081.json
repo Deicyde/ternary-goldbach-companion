@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 12.2.4 step 81",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same place (small $q$, bounding the max of $\\mathrm{err}$ over $R<\\lambda(q)$) but [L] replaces the computation by the reduction to $\\Phi(q,\\lfloor R\\rfloor,L)\\le0$ for all $q<2.2\\cdot10^{10}$ with $c_+=2$, proved structurally; no $3.3\\cdot10^9$ split, no (luce)/(agammen) form.",
+  "subject": [
+    {
+      "location": {
+        "page": 251,
+        "rect": [
+          0.17462,
+          0.77725,
+          0.56162,
+          0.04538
+        ]
+      },
+      "title": "Proposition 12.2.4 step 81: Text, p. 241",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.2.4 step 81"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.checkC2_suffices",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot7",
+        "lines": [
+          83,
+          144
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.checkC2_suffices"
+          },
+          "snippet": {
+            "text": "/-- **The reduction to `Φ`**: Prop 12.2.4 with `c₊ = 2` holds at `R = Q₀/sq` if\n`Φ(q, ⌊R⌋, max(log q, log(10⁵/(⌊R⌋ + 1)))) ≤ 0`. -/\ntheorem checkC2_suffices {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs : 1 ≤ s)\n    (hR : 1 ≤ Q₀ / (s * q))\n    (hC : Phi2 q ⌊Q₀ / (s * q)⌋₊\n      (max (Real.log q) (Real.log (1e5 / ((⌊Q₀ / (s * q)⌋₊ : ℝ) + 1)))) ≤ 0) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 2) / (Real.log Q + cE) * Gq q (Q / (s * q)) := by\n  obtain ⟨c, hc1, hc2, hram⟩ := ramare_Gq\n  refine star_suffices2 hQ hQ₀ hρ hq hs hc1 hc2 ?_\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hsq : 0 < s * q := by positivity\n  set R := Q₀ / (s * q)\n  set n := ⌊R⌋₊\n  have hR0 : 0 < R := by linarith\n  have hn1 : 1 ≤ n := Nat.le_floor (by exact_mod_cast hR)\n  have hn0 : (0 : ℝ) < n := by exact_mod_cast hn1\n  have hnR : (n : ℝ) ≤ R := Nat.floor_le hR0.le\n  have hRn : R < (n : ℝ) + 1 := Nat.lt_floor_add_one R\n  set K := (q : ℝ) / Nat.totient q\n  have hK := qphi_pos hq\n  have hKk : K * (Nat.totient q / q) = 1 := by\n    have : (0 : ℝ) < Nat.totient q := by exact_mod_cast Nat.totient_pos.2 (by omega)\n    simp only [K]; field_simp\n  have hf := f1q_pos q\n  have he2 := e2_bound hq hQ hs hR hram\n  have hGn : Gq q R = Gq q n := by unfold Gq; rw [Nat.floor_natCast]\n  have hRn3 : R ^ (-(1 / 3 : ℝ)) ≤ 1 / (n : ℝ) ^ (1 / 3 : ℝ) := by\n    rw [Real.rpow_neg hR0.le, ← one_div]\n    exact one_div_le_one_div_of_le (by positivity) (Real.rpow_le_rpow hn0.le hnR (by norm_num))\n  have hsqR : s * q = Q₀ / R := by simp only [R]; field_simp\n  have hmax : max (Real.log q) (Real.log (1e5 / ((n : ℝ) + 1))) ≤ Real.log (s * q) := by\n    refine max_le (Real.log_le_log hq0 (by nlinarith)) ?_\n    rw [hsqR]\n    refine Real.log_le_log (by positivity) ?_\n    rw [div_le_div_iff₀ (by positivity) hR0]; nlinarith\n  have hlogR : Real.log n ≤ Real.log R := Real.log_le_log hn0 hnR\n  unfold Phi2 at hC\n  have hmx0 : 0 ≤ max 0 (-(Gq q (Q / (s * q)) -\n      (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q))) := le_max_left _ _\n  calc K * ((Gq q R - (Nat.totient q / q) * (Real.log R + c + Sq q)) +\n        0.6586 * max 0 (-(Gq q (Q / (s * q)) -\n          (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q))))\n      = K * Gq q n - (Real.log R + c + Sq q) + K * (0.6586 * max 0 (-(Gq q (Q / (s * q)) -\n          (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q)))) := by\n        rw [hGn, mul_add, mul_sub, ← mul_assoc, hKk, one_mul]\n    _ ≤ K * Gq q n - (Real.log n + 1.3325822 + Sq q) +\n          K * (0.6586 * (7.284 * 0.03685 * (1 / (n : ℝ) ^ (1 / 3 : ℝ)) * f1q q)) := by\n        gcongr\n        exact he2.trans (by gcongr)\n    _ ≤ K * Gq q n - Real.log n - 1.3325822 - Sq q +\n          0.1768 * K * f1q q / (n : ℝ) ^ (1 / 3 : ℝ) := by\n        have : 0 ≤ K * f1q q / (n : ℝ) ^ (1 / 3 : ℝ) := by positivity\n        rw [mul_one_div]\n        have e : K * (0.6586 * (7.284 * 0.03685 / (n : ℝ) ^ (1 / 3 : ℝ) * f1q q)) =\n            0.6586 * 7.284 * 0.03685 * (K * f1q q / (n : ℝ) ^ (1 / 3 : ℝ)) := by ring\n        have e2 : 0.1768 * K * f1q q / (n : ℝ) ^ (1 / 3 : ℝ) =\n            0.1768 * (K * f1q q / (n : ℝ) ^ (1 / 3 : ℝ)) := by ring\n        rw [e, e2]; nlinarith\n    _ ≤ 0.3414 * (max (Real.log q) (Real.log (1e5 / ((n : ℝ) + 1))) - Sq q) + 0.6674177 := by\n        linarith\n    _ ≤ 0.3414 * (Real.log (s * q) - Sq q) + 0.6674177 := by gcongr",
+            "line": 83,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.checkC2_suffices",
+            "lines": [
+              83,
+              144
+            ],
+            "conclusion": "Reduction of Prop 12.2.4 (with $c_+=2$) at $R=Q_0/sq$ to $\\Phi(q,\\lfloor R\\rfloor,\\cdot)\\le0$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot7.lean",
+            "fragment": "L83-L144"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          251
+        ],
+        "printed": [
+          241
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

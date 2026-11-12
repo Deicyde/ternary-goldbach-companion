@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 14",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses `y=x/v/(|δ|q_v)` in place of `⌊y⌋+1` in the logarithm, which costs a factor `(1+V/Q)`, giving `(1+V/Q)U/e` per `v`; the sum over `v` uses `∑Λ ≤ 1.0064 V` (`typeI2_le_large`), not `1.0004`.",
+  "subject": [
+    {
+      "location": {
+        "page": 116,
+        "rect": [
+          0.25926,
+          0.21303,
+          0.56816,
+          0.08345
+        ]
+      },
+      "title": "Display, p. 106",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_32_v_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Large",
+        "lines": [
+          169,
+          196
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_32_v_le"
+          },
+          "snippet": {
+            "text": "  have hmy : m ≤ (1 + V / Q) * y := by\n    refine (min_le_left _ _).trans ?_\n    have h1 := Nat.floor_le hy0.le\n    have h2 : 1 ≤ V / Q * y := by\n      rw [show V / Q * y = y / (Q / V) by field_simp, le_div_iff₀ (by positivity)]; linarith\n    nlinarith\n  set Lg := logPlus (2 * U / y) with hLg\n  have hLg0 : 0 ≤ Lg := logPlus_nonneg _\n  have hyL : y * Lg ≤ 2 * U / rexp 1 := mul_logPlus_div_le hy0 (by positivity)\n  have hLL : Lg ≤ logPlus (2 * U * V * |δ| * q / x) := by\n    refine logPlus_le_logPlus (by positivity) ?_\n    rw [hy, show 2 * U / (x / v / (|δ| * s)) = 2 * U * v * |δ| * s / x by field_simp]\n    gcongr\n  have hsq : √(c₀ * (1 + eta2'L1 / (x / v / U))) ≤ √(c₀ * c) := Real.sqrt_le_sqrt (by gcongr)\n  unfold bound_4_32\n  simp only []\n  rw [← hs, ← hy, ← hm, ← hLg]\n  have hxQ : x / v / (Q / v) = x / Q := by field_simp\n  rw [hxQ]\n  have hmL : m * (1 / 2 * Lg) ≤ (1 + V / Q) * U / rexp 1 := by\n    calc m * (1 / 2 * Lg) ≤ (1 + V / Q) * y * (1 / 2 * Lg) := by gcongr\n      _ = (1 + V / Q) / 2 * (y * Lg) := by ring\n      _ ≤ (1 + V / Q) / 2 * (2 * U / rexp 1) := by gcongr\n      _ = (1 + V / Q) * U / rexp 1 := by ring\n  have hA : 0 ≤ 2 * √(c₀ * c) / π := by positivity\n  have t1 : 2 * √(c₀ * (1 + eta2'L1 / (x / v / U))) / π *\n      (U + (1 + ε) * m * (√(3 + 2 * ε) + 1 / 2 * Lg)) ≤\n      2 * √(c₀ * c) / π * (U + (1 + ε) * m * (√(3 + 2 * ε) + 1 / 2 * Lg)) := by",
+            "line": 169,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_32_v_le",
+            "lines": [
+              124,
+              214
+            ],
+            "conclusion": "With `y = x/v/(|δ|q_v)`, `m = min(⌊y⌋+1,2U) ≤ (1+V/Q) y` and `y·log⁺(2U/y) ≤ 2U/e`, so `m · (1/2) log⁺(2U/y) ≤ (1+V/Q) U/e`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Large.lean",
+            "fragment": "L169-L196"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          116
+        ],
+        "printed": [
+          106
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

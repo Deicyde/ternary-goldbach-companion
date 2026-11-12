@@ -1,0 +1,120 @@
+{
+  "id": "Lemma C.2.2 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not split on q>=27 or use monotonicity of Digamma in r; it applies Thm 15 at the k-th prime x with k=omega(q)>=4 and replaces q by the primorial via the exchange argument, then uses monotonicity of t -> G t + c/t.",
+  "subject": [
+    {
+      "location": {
+        "page": 313,
+        "rect": [
+          0.17462,
+          0.20696,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Lemma C.2.2 step 1: Text, p. 303",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma C.2.2 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.F_all",
+        "module": "TernaryGoldbach.Prelim.MertensProduct",
+        "lines": [
+          2220,
+          2228
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.F_all"
+          },
+          "snippet": {
+            "text": "theorem F_all {x : ℕ} (hx : x.Prime) (h5 : 5 ≤ x) :\n    ∏ p ∈ (Icc 1 x).filter Nat.Prime, ((p : ℝ) / (p - 1)) <\n      Real.exp Real.eulerMascheroniConstant * Real.log (thetaN x) +\n        2.50637 / Real.log (thetaN x) := by\n  rcases le_or_gt x (10 ^ 5) with h | h\n  · exact MertProd.mertens_product_kernel x hx h5 h\n  rcases lt_or_ge x (10 ^ 12) with h' | h'\n  · exact F_mid (by omega) h'\n  · exact F_large h'",
+            "line": 2220,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.F_all",
+            "lines": [
+              2220,
+              2228
+            ],
+            "conclusion": "RS62 Thm 15 in product form for primes x>=5: prod_{p<=x} p/(p-1) < e^gamma log theta(x) + 2.50637/log theta(x)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L2220-L2228"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct",
+        "lines": [
+          2286,
+          2301
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.div_totient_lt"
+          },
+          "snippet": {
+            "text": "  set x := Nat.nth Nat.Prime (k - 1) with hx\n  have himg := image_nth k (by omega)\n  have hinj : Set.InjOn (Nat.nth Nat.Prime) (range k : Set ℕ) :=\n    (Nat.nth_strictMono Nat.infinite_setOfPred_prime).injective.injOn\n  have hprodF : ∏ i ∈ range k, ((Nat.nth Nat.Prime i : ℝ) / (Nat.nth Nat.Prime i - 1)) =\n      ∏ p ∈ (Icc 1 x).filter Nat.Prime, ((p : ℝ) / (p - 1)) := by\n    rw [← himg, prod_image (fun a ha b hb h => hinj ha hb h)]\n  have hθ : thetaN x = Real.log (∏ i ∈ range k, (Nat.nth Nat.Prime i : ℝ)) := by\n    rw [thetaN, ← himg, sum_image (fun a ha b hb h => hinj ha hb h), Real.log_prod]\n    intro i _\n    exact_mod_cast (Nat.prime_nth_prime i).pos.ne'\n  have hx7 : 7 ≤ x := by\n    rw [hx, ← Nat.nth_prime_three_eq_seven]\n    exact Nat.nth_monotone Nat.infinite_setOfPred_prime (by omega)\n  have hF := F_all (Nat.prime_nth_prime (k - 1)) (le_trans (by norm_num : 5 ≤ 7) hx7)\n  rw [← hx] at hF",
+            "line": 2286,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+            "lines": [
+              2256,
+              2352
+            ],
+            "conclusion": "For k>=4 distinct primes, sets x=p_k and applies F_all at x, then compares with log r."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L2286-L2301"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          313
+        ],
+        "printed": [
+          303
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

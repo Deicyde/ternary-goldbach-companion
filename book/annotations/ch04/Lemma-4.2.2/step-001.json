@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.2 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Parameters are set up as in the text with 2α, but Q is the unrounded x/(|δ|q) rather than a floor, and M is the explicit Mof; Q, a', q' arise by obtain/set inside the case proofs.",
+  "subject": [
+    {
+      "location": {
+        "page": 74,
+        "rect": [
+          0.26253,
+          0.18301,
+          0.56162,
+          0.04537
+        ]
+      },
+      "title": "Lemma 4.2.2 step 1: Text, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Mof",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          52,
+          57
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Mof"
+          },
+          "snippet": {
+            "text": "/-- `M = min(Q/2, D)` with `Q = x/|δq|` (`M = D` if `δ = 0`).  [H, proof of Lemma 4.2.1] uses\n`Q = ⌊x/|δq|⌋`; the statement of [H, Lemma 4.2.2] only needs `M ∈ [min(Q₀/2, D), D]`, which\nholds for this `M` too, and the unrounded `Q` avoids an issue with the rounding (with `⌊·⌋`,\n`c₂x/q ≤ Q/2` can fail by less than `1/2` when `|δ| ≤ 1/2c₂`). -/\nnoncomputable def Mof (x δ : ℝ) (q : ℕ) (D : ℝ) : ℝ :=\n  if δ = 0 then D else min (x / (|δ| * q) / 2) D",
+            "line": 52,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Mof",
+            "lines": [
+              52,
+              57
+            ],
+            "conclusion": "Defines `M = min(Q/2, D)` with `Q = x/(|δ|q)` (`M = D` if `δ = 0`), the Lean version of the text's `M`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L52-L57"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1299,
+          1324
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB"
+          },
+          "snippet": {
+            "text": "  obtain ⟨Q, hqQ, hδ, hD'Q, hMQ⟩ : ∃ Q : ℝ, (q : ℝ) ≤ Q ∧ |δ / x| * (q * Q) ≤ 1 ∧\n      min (c₂ * x / q) D ≤ Q / 2 ∧ Mof x δ q D = min (Q / 2) D := by\n    by_cases hδ0 : δ = 0\n    · refine ⟨max Q₀ (2 * D), hqQ₀.trans (le_max_left _ _), by simp [hδ0], ?_, ?_⟩\n      · have := le_max_right Q₀ (2 * D)\n        exact (min_le_right _ _).trans (by linarith)\n      · rw [Mof, if_pos hδ0, min_eq_right]\n        have := le_max_right Q₀ (2 * D); linarith\n    · have hδpos : 0 < |δ| := abs_pos.2 hδ0\n      have hQ₀le : Q₀ ≤ x / (|δ| * q) := by\n        rw [abs_div, abs_of_pos hx, div_le_div_iff₀ hx (by positivity)] at hδQ₀\n        rw [le_div_iff₀ (by positivity)]; nlinarith\n      refine ⟨x / (|δ| * q), hqQ₀.trans hQ₀le, ?_, ?_, by rw [Mof, if_neg hδ0]⟩\n      · rw [abs_div, abs_of_pos hx]; field_simp; rfl\n      · rcases hcase with hc | hc\n        · refine (min_le_left _ _).trans ?_\n          have h1 : 2 * c₂ * |δ| ≤ 1 := by\n            rw [le_div_iff₀ (by positivity)] at hc; linarith\n          have e : c₂ * x / q = (2 * c₂ * |δ|) * (x / (|δ| * q) / 2) := by field_simp\n          rw [e]; exact mul_le_of_le_one_left (by positivity) h1\n        · exact (min_le_right _ _).trans (hc.trans (by linarith))\n  set M := Mof x δ q D\n  have hMD : M ≤ D := by rw [hMQ]; exact min_le_right _ _\n  have hM0 : 0 ≤ M := by\n    rw [hMQ]; exact le_min (by linarith) (by linarith)\n  have hMD' : min (c₂ * x / q) D ≤ M := by rw [hMQ]; exact le_min hD'Q (min_le_right _ _)",
+            "line": 1299,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+            "lines": [
+              1288,
+              1342
+            ],
+            "conclusion": "Chooses an approximation parameter `Q ≥ q` with `|δ/x| q Q ≤ 1`, `min(c₂x/q, D) ≤ Q/2`, and `Mof x δ q D = min(Q/2, D)`; the approximation is `2α = a/q + δ/x + k`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1299-L1324"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1218,
+          1231
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hMeq : M = Qr / 2 := by\n    rcases min_choice (Qr / 2) D with h | h\n    · rw [hMdef, h]\n    · exfalso; rw [hMdef, h] at hDM; linarith\n  set ξ := (a : ℝ) / q + δ / x\n  have hξ : |ξ - a / q| = 1 / (q * Qr) := by\n    simp only [ξ, add_sub_cancel_left]\n    rw [eq_div_iff (by positivity)]; linarith [hexact]\n  obtain ⟨a', q', hq'1, hcop', hq'Q', happ', hq'low⟩ := second_approx hq hcop hqQr hε hξ\n  have hq'0 : (0 : ℝ) < q' := by exact_mod_cast hq'1\n  set δ' := x * (ξ - a' / q')\n  have hδ'x : δ' / x = ξ - a' / q' := by simp only [δ']; field_simp\n  have h2α' : 2 * α = a' / q' + δ' / x + k := by rw [hδ'x, h2α]; ring\n  have hδ' : |δ' / x| * (q' * ((1 + ε) * Qr)) ≤ 1 := by",
+            "line": 1218,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "Case (a): obtains the second approximation `a'/q'` of `ξ = a/q + δ/x` via `second_approx`, with `δ'` and `2α = a'/q' + δ'/x + k`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1218-L1231"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          74
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

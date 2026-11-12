@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 24",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "The same expansion with eta_o = g E and eta_+-eta_o = D, in the variable u=log t, so the log(xt) weight splits as log x + u.",
+  "subject": [
+    {
+      "location": {
+        "page": 207,
+        "rect": [
+          0.17135,
+          0.33795,
+          0.56816,
+          0.07313
+        ]
+      },
+      "title": "Display, p. 197",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          920,
+          923
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log"
+          },
+          "snippet": {
+            "text": "  have hexp : (fun u => (gL u + Dg u) ^ 2 * Ew u * (L + u)) = fun u =>\n      L * (gL u * W0 u) + gL u * W1 u + 2 * L * (Dg u * W0 u) + 2 * (Dg u * W1 u) +\n        L * (Dg u ^ 2 * Ew u) + Dg u ^ 2 * Ew u * u := by\n    ext u; simp only [W0, W1]; ring",
+            "line": 920,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+            "lines": [
+              886,
+              955
+            ],
+            "conclusion": "hexp expands (g+D)^2 (log x+u) into six terms: the eta_o^2, 2(eta_+-eta_o)eta_o and (eta_+-eta_o)^2 parts, each with log x and u weights."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L920-L923"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          207
+        ],
+        "printed": [
+          197
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

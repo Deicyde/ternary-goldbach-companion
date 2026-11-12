@@ -1,0 +1,156 @@
+{
+  "id": "Corollary 9.3.3 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean effectively bounds $\\int e^{-0.1065\\cdot10^2(1/w^2-1)}\\eta_2(w)dw$ by $\\int\\eta_2=1$ (via monotonicity in $w$), not by $0.006446$; hence $1.578$ stays where (9.61) has $0.0102$.",
+  "subject": [
+    {
+      "location": {
+        "page": 194,
+        "rect": [
+          0.26253,
+          0.40187,
+          0.56162,
+          0.03883
+        ]
+      },
+      "title": "Corollary 9.3.3 step 11: Display, p. 184",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err932_le_Er",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          236,
+          240
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err932_le_Er"
+          },
+          "snippet": {
+            "text": "  have h1 : T0 * Real.log (q * T0 / (2 * π)) * (6.11 * Real.exp (-0.1598 * T0) + 1.578 * expδ T0 (δ * r)) ≤\n      T0 * Real.log (q * T0 / (2 * π)) * (6.11 * Real.exp (-0.1598 * T0) + 1.578 * expδ T0 δ) := by\n    have := expδ_mono (T0 := T0) (δ := δ) hr hr1\n    have : 0 ≤ T0 * Real.log (q * T0 / (2 * π)) := mul_nonneg hT hL1\n    gcongr",
+            "line": 236,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err932_le_Er",
+            "lines": [
+              232,
+              255
+            ],
+            "conclusion": "In $err_{\\eta,\\chi}(\\delta r,rx)$, the Gaussian term is bounded by $e^{-0.1065T_0^2/(\\pi\\delta r)^2}\\le e^{-0.1065T_0^2/(\\pi\\delta)^2}$ for $0<r\\le1$ (`expδ_mono`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L236-L240"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.expδ_mono",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          199,
+          215
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.expδ_mono"
+          },
+          "snippet": {
+            "text": "theorem expδ_mono {T0 δ r : ℝ} (hr : 0 < r) (hr1 : r ≤ 1) : expδ T0 (δ * r) ≤ expδ T0 δ := by\n  unfold expδ\n  by_cases hδ : δ = 0\n  · simp [hδ]\n  · have hδr : δ * r ≠ 0 := mul_ne_zero hδ hr.ne'\n    rw [if_neg hδr, if_neg hδ, Real.exp_le_exp]\n    have h1 : (π * (δ * r)) ^ 2 ≤ (π * δ) ^ 2 := by\n      have : (π * (δ * r)) ^ 2 = (π * δ) ^ 2 * r ^ 2 := by ring\n      rw [this]\n      have : r ^ 2 ≤ 1 := by nlinarith\n      have : 0 ≤ (π * δ) ^ 2 := sq_nonneg _\n      nlinarith\n    have h0 : 0 < (π * (δ * r)) ^ 2 := by positivity\n    have : T0 ^ 2 / (π * δ) ^ 2 ≤ T0 ^ 2 / (π * (δ * r)) ^ 2 :=\n      div_le_div_of_nonneg_left (sq_nonneg _) h0 h1\n    rw [mul_div_assoc, mul_div_assoc]\n    linarith",
+            "line": 199,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.expδ_mono",
+            "lines": [
+              199,
+              215
+            ],
+            "conclusion": "`expδ T0 (δ*r) ≤ expδ T0 δ` for $0<r\\le1$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L199-L215"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_eta2_Er_le",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          289,
+          289
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_eta2_Er_le"
+          },
+          "snippet": {
+            "text": "  rw [moment0]",
+            "line": 289,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_eta2_Er_le",
+            "lines": [
+              264,
+              301
+            ],
+            "conclusion": "The averaged exponential term is integrated against $\\eta_2$ with $\\int\\eta_2=1$ (`moment0`), keeping the coefficient $1.578$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L289-L289"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          194
+        ],
+        "printed": [
+          184
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

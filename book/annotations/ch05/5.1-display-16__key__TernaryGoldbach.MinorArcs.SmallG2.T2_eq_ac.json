@@ -1,0 +1,81 @@
+{
+  "id": "5.1 display 16",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean shows $T_2(S)=\\alpha_n+\\beta_n/S$ with $n=\\lfloor S\\rfloor$ for $v=2$, $S<700$ (and `H2B.T2_eq` for $n\\le15$); the book's $G_v$ is a majorant of this form, which Lean does not define.",
+  "subject": [
+    {
+      "location": {
+        "page": 102,
+        "rect": [
+          0.25926,
+          0.17373,
+          0.56816,
+          0.01737
+        ]
+      },
+      "title": "Display, p. 92",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5.1 display 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.SmallG2.T2_eq_ac",
+        "module": "TernaryGoldbach.MinorArcs.T2Small",
+        "lines": [
+          444,
+          446
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.SmallG2.T2_eq_ac"
+          },
+          "snippet": {
+            "text": "/-- **`T₂(S) = a(n) − a(⌊n/2⌋)/2 + (c(n) − c(⌊n/2⌋))/S`** for `S ∈ [n, n+1)`. -/\ntheorem T2_eq_ac {n : ℕ} (hn : 1 ≤ n) {S : ℝ} (h1 : (n : ℝ) ≤ S) (h2 : S < n + 1) :\n    T2 S = areal n - areal (n / 2) / 2 + (creal n - creal (n / 2)) / S := by",
+            "line": 444,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.SmallG2.T2_eq_ac",
+            "lines": [
+              444,
+              494
+            ],
+            "conclusion": "For $S\\in[n,n+1)$, $n\\ge1$: `T2 S = areal n - areal (n/2)/2 + (creal n - creal (n/2))/S`, i.e. $T_2(S)=\\alpha_n+\\beta_n/S$ exactly with $\\alpha_n,\\beta_n$ depending only on $\\lfloor S\\rfloor$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Small.lean",
+            "fragment": "L444-L446"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          102
+        ],
+        "printed": [
+          92
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

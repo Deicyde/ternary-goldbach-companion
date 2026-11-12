@@ -1,0 +1,192 @@
+{
+  "id": "Theorem 6.3 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no cap at r₁=(3/8)y^{4/15}: levels n run to a free r₂ ≤ y^{1/3}/6 (`NumericsGoal`), g n = y ĝ(y,n) with ĝ built from gx and max with h.",
+  "subject": [
+    {
+      "location": {
+        "page": 50,
+        "rect": [
+          0.20698,
+          0.28952,
+          0.62529,
+          0.04301
+        ]
+      },
+      "title": "Theorem 6.3 step 10: Display, p. 50",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          350,
+          351
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY"
+          },
+          "snippet": {
+            "text": "/-- `ĝ(y, n) = 1.398 max(g_y(n), h(y)) + 17 (670/n)³/3`. -/\nnoncomputable def ghatY (y n : ℝ) : ℝ := 1.398 * max (gx y n) (hfun y) + 17 * (670 / n) ^ 3 / 3",
+            "line": 350,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+            "lines": [
+              350,
+              351
+            ],
+            "conclusion": "Defines `ĝ(y,n) = 1.398 max(g_y(n), h(y)) + 17(670/n)^3/3`; the max with h makes `g ≥ h` hold by construction."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L350-L351"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          387,
+          387
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  set g : ℕ → ℝ := fun n => y * ghatY y n with hg_def",
+            "line": 387,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "Sets `g n = y · ĝ(y,n)` as the level function, used for 150000 ≤ n ≤ r₂."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L387-L387"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.NumericsGoal",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          85,
+          87
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.NumericsGoal"
+          },
+          "snippet": {
+            "text": "  ∃ r₂ : ℕ, 150000 < r₂ ∧ (20000 * (r₂ : ℝ)) ^ 2 ≤ x / 784 ∧\n    2 * (r₂ : ℝ) ≤ (2 * √(x / 784)) ^ (0.6 : ℝ) ∧ (r₂ : ℝ) ≤ (x / κ) ^ (1 / 3 : ℝ) / 6 ∧\n    2.16e20 * r₂ ≤ 670 * (x / κ) ∧ cL (r₂ - 1) ≤ Dx x ∧ Mexpr x r₂ ≤ 1.037",
+            "line": 85,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.NumericsGoal",
+            "lines": [
+              83,
+              87
+            ],
+            "conclusion": "Top level r₂ with 150000 < r₂ ≤ y^{1/3}/6 and further size conditions, in place of r₁ = (3/8)y^{4/15}."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L85-L87"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+        "module": "TernaryGoldbach.MinorArcs.Thm1321",
+        "lines": [
+          153,
+          163
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired"
+          },
+          "snippet": {
+            "text": "theorem thm_13_2_1_repaired {x : ℝ} (hx : 0 < x) {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    {g : ℕ → ℝ} {r₀ r₁ : ℕ} (h01 : r₀ ≤ r₁) (hr₀ : 1e5 ≤ (r₀ : ℝ))\n    (hx₁ : (20000 * (r₁ : ℝ)) ^ 2 ≤ x / 784) (hρ : 2 * (r₁ : ℝ) ≤ (2 * √(x / 784)) ^ (0.6 : ℝ))\n    (hg : ∀ n, r₀ ≤ n → n < r₁ → g (n + 1) ≤ g n) (hg0 : 0 ≤ g r₁)\n    (hv₀ : ∀ α ∉ majorArcs 8 r₀ x, ‖S etaStar x α‖ ≤ g r₀)\n    (hv : ∀ n, r₀ < n → n ≤ r₁ → ∀ α ∉ majorArcs 8 n (x / κ), ‖S etaStar x α‖ ≤ g n) :\n    ∫ α in Ioc 0 1 \\ majorArcs 8 r₀ x, ‖expTsum a α‖ ^ 2 * ‖S etaStar x α‖ ≤\n      g r₀ * (Hl2y x (∑' n, ‖a n‖ ^ 2) r₁ r₀ -\n          ∫ α in Ioc 0 1 ∩ majorArcs 8 r₀ x, ‖expTsum a α‖ ^ 2) +\n        ∑ n ∈ Finset.Ioc r₀ r₁, g n * (Hl2y x (∑' n, ‖a n‖ ^ 2) r₁ n -\n          Hl2y x (∑' n, ‖a n‖ ^ 2) r₁ (n - 1)) := by",
+            "line": 153,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+            "lines": [
+              147,
+              211
+            ],
+            "conclusion": "Statement with top level r1 (a natural number) and g only used on r0 <= n <= r1, g non-increasing with g(r1) >= 0; no extension of g beyond r1."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Thm1321.lean",
+            "fragment": "L153-L163"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          50
+        ],
+        "printed": [
+          50
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

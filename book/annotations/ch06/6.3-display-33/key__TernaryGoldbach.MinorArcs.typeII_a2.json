@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 33",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[H]'s display bounds (2t/3 - log 6c)^{3/2} - (t/3 - log 3)^{3/2} <= 0.35189 t^{3/2} by exact subtraction ((2^{3/2} - 1)(t/3 - log 3)^{3/2}); Lean's analogous term for the large-q range is bounded in `typeII_a2` without the subtraction (1.8857 L^{3/2}, 2/3 * 2^{3/2}) and, for case (a1), by a derivative-free bound via `three_halves_sub_le`; so the quantity and the argument differ. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 140,
+        "rect": [
+          0.25926,
+          0.2634,
+          0.56816,
+          0.07877
+        ]
+      },
+      "title": "Display, p. 130",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_a2",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIb",
+        "lines": [
+          79,
+          91
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_a2"
+          },
+          "snippet": {
+            "text": "  have hW : 2 / 3 * (Real.log (T ^ 3 / U2 T) * √(Real.log (T ^ 3 / U2 T)) -\n      Real.log (V2 T) * √(Real.log (V2 T))) ≤ 1.8857 * (L * √L) := by\n    have h1 : √(Real.log (T ^ 3 / U2 T)) ≤ √2 * √L := by\n      rw [← Real.sqrt_mul (by norm_num)]; exact Real.sqrt_le_sqrt hla\n    have h2 : 0 ≤ Real.log (V2 T) * √(Real.log (V2 T)) := by positivity\n    have h3 : Real.log (T ^ 3 / U2 T) * √(Real.log (T ^ 3 / U2 T)) ≤ 2 * L * (√2 * √L) :=\n      mul_le_mul hla h1 (Real.sqrt_nonneg _) (by linarith)\n    have := sqrt2_le\n    nlinarith\n  -- the `x/√V` term.\n  have hVl1 : 1 ≤ Real.log (V2 T) := by\n    rw [Real.le_log_iff_exp_le hV0]; linarith [Real.exp_one_lt_d9, V2_ge_50000 hT]\n  have hVlL : Real.log (V2 T) ≤ L := Real.log_le_log hV0 (by linarith [V2_le hT0])",
+            "line": 79,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_a2",
+            "lines": [
+              20,
+              163
+            ],
+            "conclusion": "`(2/3)(log(x/U)^{3/2} - log(V)^{3/2}) <= 1.8857 L^{3/2}`: the 3/2-power difference at q ~ x/16U, bounded crudely by (2/3) 2^{3/2} L^{3/2} (the subtracted V term dropped)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIb.lean",
+            "fragment": "L79-L91"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          140
+        ],
+        "printed": [
+          130
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.1.2 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "`f` is not a Lean function; its two nonzero pieces occur as integrands of `Jq` in the second integration by parts.",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.26253,
+          0.54269,
+          0.56162,
+          0.05642
+        ]
+      },
+      "title": "Lemma B.1.2 step 3: Display, p. 292",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.1.2 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2DD_eq",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier",
+        "lines": [
+          173,
+          178
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2DD_eq"
+          },
+          "snippet": {
+            "text": "  have hJ1 : ∫ u in (1 / 4 : ℝ)..(1 / 2), e (-(u * t)) * ((-4 * (u ^ 2)⁻¹ : ℝ) : ℂ) =\n      -4 * Jq (1 / 4) (1 / 2) t := by\n    rw [Jq, ← intervalIntegral.integral_const_mul]; congr 1; ext u; push_cast; ring\n  have hJ2 : ∫ u in (1 / 2 : ℝ)..1, e (-(u * t)) * ((4 * (u ^ 2)⁻¹ : ℝ) : ℂ) =\n      4 * Jq (1 / 2) 1 t := by\n    rw [Jq, ← intervalIntegral.integral_const_mul]; congr 1; ext u; push_cast; ring",
+            "line": 173,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eta2DD_eq",
+            "lines": [
+              151,
+              185
+            ],
+            "conclusion": "The integrands `-4/u²` on `[1/4,1/2]` and `4/u²` on `[1/2,1]` (that is, `f`) appear as `-4 Jq (1/4) (1/2)` and `4 Jq (1/2) 1`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L173-L178"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

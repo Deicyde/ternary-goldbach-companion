@@ -1,0 +1,83 @@
+{
+  "id": "Lemma 5.1.1 step 11",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 93,
+        "rect": [
+          0.17462,
+          0.15793,
+          0.56162,
+          0.014
+        ]
+      },
+      "title": "Lemma 5.1.1 step 11: Text, p. 83",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.fsq",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          225,
+          228
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.fsq"
+          },
+          "snippet": {
+            "text": "/-- `f(X) = ∑_{m ≤ X sq-free} 1 + ½ ∑_{m > X sq-free} X²/m²` [H, p. 83]. -/\nnoncomputable def fsq (X : ℝ) : ℝ :=\n  ∑' m : ℕ, if Squarefree m ∧ m ≠ 0 then (if (m : ℝ) ≤ X then 1 else X ^ 2 / (2 * (m : ℝ) ^ 2))\n    else 0",
+            "line": 225,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.fsq",
+            "lines": [
+              225,
+              228
+            ],
+            "conclusion": "Definition of `f(X)` (`fsq`) used in the total error `sum_e fsq(sqrt(b/e))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L225-L228"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          93
+        ],
+        "printed": [
+          83
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

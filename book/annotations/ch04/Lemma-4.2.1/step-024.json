@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.1 step 24",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves the step's bound (4.24) for odd m, η₂ and Lean's c₂ = 6π/5√c₀, via lemma_4_1_2 on blocks; the constants are Lean's (5c₀/3π² for odd m), not the book's.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.26253,
+          0.20343,
+          0.56162,
+          0.01696
+        ]
+      },
+      "title": "Lemma 4.2.1 step 24: Text, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1137,
+          1141
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  set M := Mof x δ q D\n  have hMdef : M = min (Qr / 2) D := by simp only [M, Mof, if_neg hδ0]; rfl\n  have hM0 : 0 < M := by rw [hMdef]; exact lt_min (by positivity) (by linarith)\n  have hMQ : M ≤ Qr / 2 := by rw [hMdef]; exact min_le_left _ _\n  have hMD : M ≤ D := by rw [hMdef]; exact min_le_right _ _",
+            "line": 1137,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`M = Mof x δ q D = min(Qr/2, D)` with the unrounded `Qr = x/(|δ|q)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1137-L1141"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1150,
+          1156
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hqM : q * M / x ≤ c₂ := by\n    have h1 : q * M / x ≤ q * (Qr / 2) / x := by gcongr\n    have h2 : (q : ℝ) * (Qr / 2) / x = 1 / (2 * |δ|) := by rw [hQrdef]; field_simp\n    have h3 : 1 / (2 * |δ|) ≤ c₂ := by\n      rw [div_le_iff₀ (by positivity)]\n      rw [div_le_iff₀ (by positivity)] at hδ; linarith\n    linarith",
+            "line": 1150,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`q M/x ≤ c₂`, i.e. `M ≤ c₂ x/q`, from `M ≤ Qr/2` and `|δ| ≥ 1/2c₂`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1150-L1156"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_A1",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          294,
+          378
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_A1"
+          },
+          "snippet": {
+            "text": "/-- **Range (A1)** of [H, Lemma 4.2.2, case (a)], i.e. [H, (4.16)] doubled, before simplifying:\n`∑_{m ≤ M, q ∤ m} |T_{m,∘}| ≤ (5c₀/3π²)(qM²/x + 3q²M/x + 2q³/x)` for `M ≤ Q/2`. -/\ntheorem sum_A1 {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {D' : ℝ} (hD'0 : 0 ≤ D') (hD'Q : D' ≤ Q / 2) :\n    ∑ n ∈ Ioc ⌊(0 : ℝ)⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      5 * c₀ / (3 * π ^ 2) * (q * D' ^ 2 / x + 3 * q ^ 2 * D' / x + 2 * q ^ 3 / x) := by\n  have happ := approx_of hq hcop hqQ hδ\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hV := eta2'L1_pos\n  have hc0 : (0 : ℝ) < c₀ := by unfold c₀; norm_num\n  set J := ⌈(D' - 0) / q⌉₊\n  have hblocks := sum_Ioc_le_blocks (G := fun n => if (q : ℤ) ∣ n then 0 else Tn α x n)\n    (fun n => by split_ifs; exacts [le_rfl, Tn_nonneg _ _ _]) hq J 0 D' (nblocks_spec hq0)\n  refine hblocks.trans ?_\n  set A := x / 2 + eta2'L1 / 2\n  -- Each block.\n  have hblock : ∀ j ∈ range J,\n      ∑ n ∈ Ioc ⌊(0 : ℝ) + j * q⌋ ⌊min ((0 : ℝ) + (j + 1) * q) D'⌋,\n          (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n        10 * c₀ * q ^ 3 / (3 * π ^ 2 * x) * ((j : ℝ) + 1) := by\n    intro j _\n    set y₁ := (0 : ℝ) + j * q\n    set y₂ := min ((0 : ℝ) + (j + 1) * q) D'\n    set C := c₀ / 2 * ((0 : ℝ) + (j + 1) * q) / x\n    have hbound : 0 ≤ 10 * c₀ * q ^ 3 / (3 * π ^ 2 * x) * ((j : ℝ) + 1) := by positivity\n    rcases le_or_gt y₂ y₁ with h12 | h12\n    · rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono h12))]; simpa using hbound\n    have hy₂ : y₂ ≤ Q / 2 := (min_le_right _ _).trans hD'Q\n    have h12' := (lemma_4_1_2 happ (y₁ := y₁) (y₂ := y₂) (by positivity) h12\n      (by simp only [y₁, y₂]; have := min_le_left ((0 : ℝ) + (j + 1) * q) D'; linarith)\n      hy₂ (A := A) (C := C) (by positivity) (by positivity))\n    have hterm : ∀ n ∈ Ioc ⌊y₁⌋ ⌊y₂⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n        (if (q : ℤ) ∣ n then 0 else min A (C / Real.sin (π * (a / q + δ / x) * n) ^ 2)) := by\n      intro n hn\n      split_ifs with hdvd\n      · exact le_rfl\n      rw [mem_Ioc] at hn\n      have hy10 : (0 : ℝ) ≤ y₁ := by positivity\n      have hn1 : (0 : ℤ) < n := lt_of_le_of_lt (Int.floor_nonneg.2 hy10) hn.1\n      have hnR : (n : ℝ) ≤ y₂ := (Int.cast_le.2 hn.2).trans (Int.floor_le _)\n      have hcast : ((n.toNat : ℕ) : ℤ) = n := Int.toNat_of_nonneg hn1.le\n      have hmR : ((n.toNat : ℕ) : ℝ) = n := by exact_mod_cast hcast\n      have hm : 1 ≤ n.toNat := by omega\n      have hne : Real.sin (π * (a / q + δ / x) * ((n.toNat : ℕ) : ℤ)) ≠ 0 := by\n        rw [hcast]\n        exact sin_ne_zero_of_approx happ hdvd (by\n          rw [abs_of_pos (by exact_mod_cast hn1)]; linarith)\n      have := (norm_Todd_le_min_sin hx h2α hm hne (A := A) (B := eta2'L1 / 2) (C := C)\n        (by\n          rw [hmR]; simp only [A]\n          have : (1 : ℝ) ≤ n := by exact_mod_cast hn1\n          have : x / (2 * n) ≤ x / 2 := div_le_div_of_nonneg_left hx.le (by norm_num) (by linarith)\n          linarith) le_rfl\n        (by\n          rw [hmR]; simp only [C]\n          have : (n : ℝ) ≤ (0 : ℝ) + (j + 1) * q := hnR.trans (min_le_left _ _)\n          rw [show c₀ / 2 * ((0 : ℝ) + (j + 1) * q) / x = ((0 : ℝ) + (j + 1) * q) / x * (c₀ / 2)\n            by ring]\n          exact mul_le_mul_of_nonneg_right (div_le_div_of_nonneg_right this hx.le) (by positivity))).1\n      rw [hcast] at this\n      exact this\n    refine (sum_le_sum hterm).trans (h12'.trans ((min_le_left _ _).trans (le_of_eq ?_)))\n    simp only [C]; field_simp; ring\n  refine (sum_le_sum hblock).trans ?_\n  rw [← mul_sum]\n  have hsumj : ∑ j ∈ range J, ((j : ℝ) + 1) = J * (J + 1) / 2 := by\n    clear hblock hblocks\n    induction J with\n    | zero => simp\n    | succ J ih => rw [sum_range_succ, ih]; push_cast; ring\n  rw [hsumj]\n  have hJ : (J : ℝ) ≤ D' / q + 1 := by\n    rcases le_or_gt D' 0 with h | h\n    · have : J = 0 := Nat.ceil_eq_zero.2 (div_nonpos_of_nonpos_of_nonneg (by linarith) hq0.le)\n      rw [this]; push_cast; positivity\n    · have := nblocks_le hq0 (a := 0) (b := D') (by linarith)\n      exact this.le.trans (le_of_eq (by ring))\n  have hJ0 : (0 : ℝ) ≤ J := Nat.cast_nonneg _\n  have hJJ : (J : ℝ) * (J + 1) ≤ (D' / q + 1) * (D' / q + 2) := by\n    apply mul_le_mul hJ (by linarith) (by positivity) (by positivity)\n  calc 10 * c₀ * q ^ 3 / (3 * π ^ 2 * x) * (J * (J + 1) / 2)\n      ≤ 10 * c₀ * q ^ 3 / (3 * π ^ 2 * x) * ((D' / q + 1) * (D' / q + 2) / 2) := by\n        gcongr\n    _ = _ := by field_simp; ring",
+            "line": 294,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_A1",
+            "lines": [
+              294,
+              378
+            ],
+            "conclusion": "For `D' ≤ Q/2`, the sum over `n ≤ D'`, `q ∤ n` of `Tn` is at most `(5c₀/3π²)(qD'²/x + 3q²D'/x + 2q³/x)`, by blocks of length `q` and the `min(A, C/sin²)` bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L294-L378"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

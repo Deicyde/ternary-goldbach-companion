@@ -1,0 +1,117 @@
+{
+  "id": "6.2 display 32",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean works with the product S1*P inside the AM-GM step rather than the square-root integrand itself, with log W/log(W/2q) written as 1 + log 2q/log(W/2q) and the factor 4 absorbed into x sqrt(m/2phi).",
+  "subject": [
+    {
+      "location": {
+        "page": 121,
+        "rect": [
+          0.17135,
+          0.34706,
+          0.56816,
+          0.04309
+        ]
+      },
+      "title": "Display, p. 111",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.pointwise_gen'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          60,
+          66
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.pointwise_gen'"
+          },
+          "snippet": {
+            "text": "  set h := H2 (x / (W * U)) + zeta3 * √(x / W) / U\n  have hS1 : S1 x U W ≤ x / W * h := by\n    refine (S1_bound hx hW0 hU1).trans (le_of_eq ?_)\n    simp only [h, zeta3]\n    rw [rpow_three_halves _ hx.le, rpow_three_halves _ hW0.le, Real.sqrt_div' _ hW0.le]\n    have : 0 < √W := Real.sqrt_pos.2 hW0\n    field_simp",
+            "line": 60,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.pointwise_gen'",
+            "lines": [
+              32,
+              167
+            ],
+            "conclusion": "S1 x U W <= (x/W) h with h = H2(x/(WU)) + zeta3 sqrt(x/W)/U, the factor under the square root in the display (2h = 2H2 + (kappa_4/2) sqrt((x/WU)/U))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L60-L66"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.pointwise_gen'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          104,
+          114
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.pointwise_gen'"
+          },
+          "snippet": {
+            "text": "  have T1 : a * √P ≤ x * √(m / (2 * Nat.totient q)) *\n      ((β * (1 + Real.log c / L) + h / β) / 2) := by\n    have e1 : x / W * h * P = (x * √(m / (2 * Nat.totient q))) ^ 2 *\n        ((β * (1 + Real.log c / L)) * (h / β)) := by\n      simp only [P]\n      rw [mul_pow, Real.sq_sqrt (by positivity), hlogW]\n      field_simp; try ring\n    rw [← Real.sqrt_mul (by positivity), e1, Real.sqrt_mul (by positivity),\n      Real.sqrt_sq (by positivity)]\n    gcongr\n    exact sqrt_le_amgm (by positivity) (by positivity)",
+            "line": 104,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.pointwise_gen'",
+            "lines": [
+              32,
+              167
+            ],
+            "conclusion": "The product S1 * P (P the main S2 term with log W/L, c = 2q, m = 1/4) is rewritten as (x sqrt(m/2phi))^2 (beta(1+log c/L))(h/beta) and bounded by AM-GM."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L104-L114"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          121
+        ],
+        "printed": [
+          111
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

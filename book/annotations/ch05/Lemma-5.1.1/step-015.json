@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.1 step 15",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's proof of the bound checks `floor X < 200` and uses `4 | m` above, as in the text, but the constant is 1.27 directly; the application is per pair `(r1,r2)` over `e | 2 r1 r2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 93,
+        "rect": [
+          0.17462,
+          0.31748,
+          0.56162,
+          0.04739
+        ]
+      },
+      "title": "Lemma 5.1.1 step 15: Text, p. 83",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.Small.fsq_le'",
+        "module": "TernaryGoldbach.Prelim.SmallFsq",
+        "lines": [
+          398,
+          463
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.Small.fsq_le'"
+          },
+          "snippet": {
+            "text": "/-- **`f(X) ≤ 1.27 X` for `X ≥ 0`** ([H, p. 83]). -/\ntheorem fsq_le' {X : ℝ} (hX : 0 ≤ X) : ∑' m, fsqTerm X m ≤ 1.27 * X := by\n  rw [fsq_split hX]\n  obtain ⟨n, hn⟩ : ∃ n, ⌊X⌋₊ = n := ⟨_, rfl⟩\n  have hn1 : (n : ℝ) ≤ X := by rw [← hn]; exact Nat.floor_le hX\n  have hn2 : X < n + 1 := by rw [← hn]; exact Nat.lt_floor_add_one X\n  rw [hn]\n  obtain ⟨S, hSdef⟩ : ∃ S, ∑' k, sqInd (k + (n + 1)) / ((k + (n + 1) : ℕ) : ℝ) ^ 2 = S :=\n    ⟨_, rfl⟩\n  rw [hSdef]\n  have hS0 : 0 ≤ S := by\n    rw [← hSdef]; exact tsum_nonneg fun k => div_nonneg (sqInd_nonneg _) (by positivity)\n  have hX2 : 0 ≤ X ^ 2 / 2 := by positivity\n  rcases lt_or_ge n 200 with h200 | h200\n  · -- the kernel-checked range\n    obtain ⟨hc1, hc2⟩ := chk_prop h200\n    have hQ : ∑ m ∈ range (n + 1), sqInd m ≤ ((Qc n : ℚ) : ℝ) := by\n      unfold Qc; push_cast; exact sum_le_sum fun m _ => sqInd_le_cq m\n    have hS : S ≤ ((Sc n : ℚ) : ℝ) := by\n      have hMn : n < Mn n := by unfold Mn; split_ifs <;> omega\n      have h := tail_le (n + 1) (Mn n - n) (by omega) (by omega)\n      have e : ((Mn n - n + (n + 1) : ℕ) : ℝ) - 1 = (Mn n : ℝ) := by\n        rw [show Mn n - n + (n + 1) = Mn n + 1 by omega]; push_cast; ring\n      rw [e, hSdef] at h\n      unfold Sc; push_cast at h ⊢; exact h\n    have hSc0 : (0 : ℝ) ≤ ((Sc n : ℚ) : ℝ) := hS0.trans hS\n    have hc1' := (Rat.cast_le (K := ℝ)).2 hc1\n    have hc2' := (Rat.cast_le (K := ℝ)).2 hc2\n    push_cast at hc1' hc2'\n    have hmono : X ^ 2 / 2 * S ≤ X ^ 2 / 2 * ((Sc n : ℚ) : ℝ) := mul_le_mul_of_nonneg_left hS hX2\n    -- concavity between `n` and `n + 1`\n    have ht0 : 0 ≤ X - n := by linarith\n    have ht1 : 0 ≤ n + 1 - X := by linarith\n    have hconc : ((Qc n : ℚ) : ℝ) + X ^ 2 / 2 * ((Sc n : ℚ) : ℝ) ≤ 1.27 * X := by\n      nlinarith [mul_nonneg ht1 (sub_nonneg.2 hc1'), mul_nonneg ht0 (sub_nonneg.2 hc2'),\n        mul_nonneg (mul_nonneg ht0 ht1) hSc0]\n    linarith\n  · -- `n ≥ 200`\n    have hQ := Q_le n\n    have hn0 : (200 : ℝ) ≤ n := by exact_mod_cast h200\n    have hS : S ≤ 1 / (n : ℝ) := by\n      have hs : Summable (fun k : ℕ => 1 / ((k + (n + 1) : ℕ) : ℝ) ^ 2) :=\n        (summable_nat_add_iff (n + 1)).2 (Real.summable_one_div_nat_pow.2 one_lt_two)\n      have h1 : ∑' k, sqInd (k + (n + 1)) / ((k + (n + 1) : ℕ) : ℝ) ^ 2 ≤\n          ∑' k : ℕ, 1 / ((k + (n + 1) : ℕ) : ℝ) ^ 2 :=\n        Summable.tsum_le_tsum (fun k => div_le_div_of_nonneg_right (sqInd_le_one _) (by positivity))\n          (summable_sqInd_div (n + 1)) hs\n      have h2 := tsum_inv_sq_tail (M := n + 1) (by omega)\n      have e : ((n + 1 : ℕ) : ℝ) - 1 = n := by push_cast; ring\n      rw [e] at h2\n      rw [hSdef] at h1\n      linarith\n    have hQ' : ((n - n / 4 : ℕ) : ℝ) ≤ (3 * n + 3) / 4 := by\n      have h4 : n ≤ 4 * (n / 4) + 3 := by omega\n      have h4' : ((n : ℕ) : ℝ) ≤ 4 * ((n / 4 : ℕ) : ℝ) + 3 := by exact_mod_cast h4\n      rw [Nat.cast_sub (Nat.div_le_self n 4)]\n      linarith\n    have hnpos : (0 : ℝ) < n := by linarith\n    have hXS : X ^ 2 / 2 * S ≤ X ^ 2 / 2 * (1 / (n : ℝ)) := mul_le_mul_of_nonneg_left hS hX2\n    have hXn : X ^ 2 / 2 * (1 / (n : ℝ)) ≤ X / 2 + X / 400 := by\n      have h1 : X ^ 2 ≤ X * (n + 1) := by nlinarith\n      have h2 : X ≤ X * n / 200 := by\n        rw [le_div_iff₀ (by norm_num)]; nlinarith\n      rw [mul_one_div, div_div, div_le_iff₀ (by positivity)]\n      nlinarith\n    linarith",
+            "line": 398,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.Small.fsq_le'",
+            "lines": [
+              398,
+              463
+            ],
+            "conclusion": "Proof of `fsq X <= 1.27 X`: kernel-checked numerics for `floor X < 200`, and `Q(n) <= n - floor(n/4)` (multiples of 4 are not squarefree) with tail `<= 1/n` above."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SmallFsq.lean",
+            "fragment": "L398-L463"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_1_1_term",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          290,
+          292
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_1_1_term"
+          },
+          "snippet": {
+            "text": "  calc ∑ e ∈ (2 * (r₁ * r₂)).divisors, fsq √(bL z r₁ r₂ / e)\n      ≤ ∑ e ∈ (2 * (r₁ * r₂)).divisors, 1.27 * g e :=\n        sum_le_sum fun e _ => fsq_le (sqrt_nonneg _)",
+            "line": 290,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_1_1_term",
+            "lines": [
+              211,
+              321
+            ],
+            "conclusion": "Applying `fsq_le` termwise: `sum_e fsq(sqrt(b/e)) <= 1.27 sum_e sqrt(b/e)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L290-L292"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          93
+        ],
+        "printed": [
+          83
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

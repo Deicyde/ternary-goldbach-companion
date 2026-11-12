@@ -1,0 +1,81 @@
+{
+  "id": "9.4 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the high-zero tail by E2g (EB, EA majorants, Jensen windows, H=200) inside zero_sum_boundG, not by the displayed bound with 11.308, 16.147 and log(qT0/2pi); the Lean lemma has no displayed-form statement. Text error, confirmed by two skeptics and `scripts/checks/steps/9_4_display_1.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17135,
+          0.23002,
+          0.56816,
+          0.05741
+        ]
+      },
+      "title": "Display, p. 185",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.4 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_boundG",
+        "module": "TernaryGoldbach.Explicit.ZeroSumGen",
+        "lines": [
+          199,
+          325
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_boundG"
+          },
+          "snippet": {
+            "text": "/-- **The sum over zeros** (generic). -/\ntheorem zero_sum_boundG (hp : PolyDatum f B κ)\n    (hcls : ∀ T : ℝ, ∀ u ∈ zerosRectD f T, f u = 0 ∧ (u = 0 ∨ (0 < u.re ∧ u.re < 1)))\n    {T0 : ℝ} (hT0 : 50 ≤ T0)\n    (hG : ∀ ρ : ℂ, f ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ T0 → ρ.re = 1 / 2)\n    (M : ℂ → ℂ) {G0 : ℝ} (hM0 : ‖M 0‖ ≤ G0)\n    {F F' : ℝ → ℂ} (hMF : ∀ t : ℝ, M (((1 / 2 : ℝ) : ℂ) + t * I) = F t)\n    (hF : ∀ t, HasDerivAt F (F' t) t) (hF' : Continuous F')\n    {Q1 Q2 : ℝ} (hQ1 : 0 < Q1) (hQ2 : 0 < Q2)\n    (hF2 : Integrable fun t => ‖F t‖ ^ 2) (hF2' : Integrable fun t => ‖F' t‖ ^ 2)\n    (hFQ : ∫ t, ‖F t‖ ^ 2 ≤ Q1) (hFQ' : ∫ t, ‖F' t‖ ^ 2 ≤ Q2)\n    {EB' EA' ρB ρA : ℝ} (hEB : 0 ≤ EB') (hEA : 0 ≤ EA') (hρB0 : 0 ≤ ρB) (hρB1 : ρB < 1)\n    (hρA0 : 0 ≤ ρA) (hρA1 : ρA < 1)\n    (htail : ∀ s : ℂ, 0 < s.re → s.re < 1 → T0 < |s.im| →\n      ‖M s‖ ≤ EB' * ρB ^ ⌊(|s.im| - T0) / 4.4⌋₊ + EA' * ρA ^ ⌊(|s.im| - T0) / 4.4⌋₊)\n    {x : ℝ} (hx : 1 ≤ x) (T : ℝ) :\n    ‖∑ u ∈ zerosRectD f T, (multRectD f T u : ℂ) * (M u * (x : ℂ) ^ u)‖ ≤\n      G0 * Z3g B 0 + √x * E1g B T0 Q1 Q2 + x * E2g B κ T0 EB' EA' ρB ρA := by\n  set Z := zerosRectD f T with hZ\n  set m : ℂ → ℝ := fun u => (multRectD f T u : ℝ) with hmdef\n  have hm : ∀ u, 0 ≤ m u := fun u => Nat.cast_nonneg _\n  have hx0 : 0 < x := by linarith\n  have hT00 : 0 < T0 := by linarith\n  have h1 : ‖∑ u ∈ Z, (multRectD f T u : ℂ) * (M u * (x : ℂ) ^ u)‖ ≤\n      ∑ u ∈ Z, m u * (‖M u‖ * x ^ u.re) := by\n    refine (norm_sum_le _ _).trans (Finset.sum_le_sum fun u _ => ?_)\n    rw [norm_mul, norm_mul, Complex.norm_natCast, norm_cpow_x hx0]\n  refine h1.trans ?_\n  rw [← Finset.sum_filter_add_sum_filter_not Z (fun u => u = 0),\n    ← Finset.sum_filter_add_sum_filter_not (Z.filter fun u => ¬ u = 0) (fun u => |u.im| ≤ T0)]\n  have hcases : ∀ u ∈ Z.filter (fun u => ¬ u = 0), f u = 0 ∧ 0 < u.re ∧ u.re < 1 := by\n    intro u hu\n    obtain ⟨huZ, hu0⟩ := Finset.mem_filter.1 hu\n    obtain ⟨hL, hc⟩ := hcls T u huZ\n    rcases hc with h | h\n    · exact absurd h hu0\n    · exact ⟨hL, h⟩\n  have hG00 : 0 ≤ G0 := (norm_nonneg _).trans hM0\n  -- the zero at `0`\n  have hA : ∑ u ∈ Z.filter (fun u => u = 0), m u * (‖M u‖ * x ^ u.re) ≤ G0 * Z3g B 0 := by\n    have hcount := sum_multRectD_le hp (Z.filter fun u => u = 0) (Finset.filter_subset _ _) 0\n      (r := 3) (by norm_num) (by norm_num) (fun u hu => by\n        rw [(Finset.mem_filter.1 hu).2]; norm_num)\n    have hpt : ∀ u ∈ Z.filter (fun u => u = 0), m u * (‖M u‖ * x ^ u.re) ≤ m u * G0 := by\n      intro u hu\n      rw [(Finset.mem_filter.1 hu).2, Complex.zero_re, Real.rpow_zero, mul_one]\n      exact mul_le_mul_of_nonneg_left hM0 (hm 0)\n    refine (Finset.sum_le_sum hpt).trans ?_\n    rw [← Finset.sum_mul, mul_comm]\n    have : ∑ u ∈ Z.filter (fun u => u = 0), m u ≤ Z3g B 0 := by\n      unfold Z3g; simpa using hcount\n    exact mul_le_mul_of_nonneg_left this hG00\n  -- zeros on the critical line, `|γ| ≤ T₀`\n  have hB : ∑ u ∈ (Z.filter fun u => ¬ u = 0).filter (fun u => |u.im| ≤ T0),\n      m u * (‖M u‖ * x ^ u.re) ≤ √x * E1g B T0 Q1 Q2 := by\n    set S := (Z.filter fun u => ¬ u = 0).filter (fun u => |u.im| ≤ T0) with hS\n    have hSZ : S ⊆ Z := (Finset.filter_subset _ _).trans (Finset.filter_subset _ _)\n    have hre : ∀ u ∈ S, u.re = 1 / 2 := by\n      intro u hu\n      obtain ⟨hu1, hu2⟩ := Finset.mem_filter.1 hu\n      obtain ⟨hL, hr1, hr2⟩ := hcases u hu1\n      exact hG u hL hr1 hr2 hu2\n    have him : ∀ u ∈ S, |u.im| ≤ T0 := fun u hu => (Finset.mem_filter.1 hu).2\n    have heq : ∀ u ∈ S, m u * (‖M u‖ * x ^ u.re) = √x * (m u * ‖F u.im‖) := by\n      intro u hu\n      have hu' : u = ((1 / 2 : ℝ) : ℂ) + (u.im : ℂ) * I := by\n        apply Complex.ext <;> simp [hre u hu]\n      rw [hre u hu, ← Real.sqrt_eq_rpow, ← hMF u.im, ← hu']; ring\n    rw [Finset.sum_congr rfl heq, ← Finset.mul_sum]\n    refine mul_le_mul_of_nonneg_left ?_ (Real.sqrt_nonneg _)\n    have hJ := lt_Jl hT00.le\n    have hJh : 0 < (Jl T0 : ℝ) * 3.48 := by linarith\n    have hZL0 : 0 ≤ ZLg B T0 :=\n      div_nonneg (hp.log_pos _).le (log_ratio_pos (by norm_num) (by norm_num)).le\n    refine (sum_window_le m (fun u _ => hm u) (h := 3.48) (by norm_num) (Jl T0) hJ him hZL0\n      (fun k => count_line_windowG hp hT00.le S hSZ hre him k) hF hF').trans ?_\n    unfold E1g\n    refine mul_le_mul_of_nonneg_left ?_ hZL0\n    have hFc : Continuous F := continuous_iff_continuousAt.2 fun t => (hF t).continuousAt\n    have e : (Jl T0 : ℝ) * 3.48 - -(Jl T0 * 3.48) = 2 * (Jl T0 * 3.48) := by ring\n    have i1 := intervalIntegral_norm_le_sqrt hFc hF2 hQ1 hFQ (a := -(Jl T0 * 3.48))\n      (b := Jl T0 * 3.48) (by linarith)\n    have i2 := intervalIntegral_norm_le_sqrt hF' hF2' hQ2 hFQ' (a := -(Jl T0 * 3.48))\n      (b := Jl T0 * 3.48) (by linarith)\n    rw [e] at i1 i2\n    have := mul_le_mul_of_nonneg_left i1 (by positivity : (0:ℝ) ≤ 1 / 3.48)\n    linarith\n  -- zeros above `T₀`\n  have hC : ∑ u ∈ (Z.filter fun u => ¬ u = 0).filter (fun u => ¬ |u.im| ≤ T0),\n      m u * (‖M u‖ * x ^ u.re) ≤ x * E2g B κ T0 EB' EA' ρB ρA := by\n    set S := (Z.filter fun u => ¬ u = 0).filter (fun u => ¬ |u.im| ≤ T0) with hS\n    have hSZ : S ⊆ Z := (Finset.filter_subset _ _).trans (Finset.filter_subset _ _)\n    have hre : ∀ u ∈ S, 0 < u.re ∧ u.re < 1 := fun u hu => (hcases u (Finset.mem_filter.1 hu).1).2\n    have him : ∀ u ∈ S, T0 < |u.im| := fun u hu => not_le.1 (Finset.mem_filter.1 hu).2\n    set idx : ℂ → ℕ := fun u => ⌊(|u.im| - T0) / 4.4⌋₊ with hidx\n    have hpt : ∀ u ∈ S, m u * (‖M u‖ * x ^ u.re) ≤\n        x * (m u * (EB' * ρB ^ idx u) + m u * (EA' * ρA ^ idx u)) := by\n      intro u hu\n      obtain ⟨hr1, hr2⟩ := hre u hu\n      have hGb := htail u hr1 hr2 (him u hu)\n      have hxr : x ^ u.re ≤ x := by\n        calc x ^ u.re ≤ x ^ (1:ℝ) := Real.rpow_le_rpow_of_exponent_le hx hr2.le\n          _ = x := Real.rpow_one x\n      have hGn := norm_nonneg (M u)\n      calc m u * (‖M u‖ * x ^ u.re) ≤ m u * ((EB' * ρB ^ idx u + EA' * ρA ^ idx u) * x) :=\n            mul_le_mul_of_nonneg_left (mul_le_mul hGb hxr (Real.rpow_nonneg hx0.le _) (hGn.trans hGb)) (hm u)\n        _ = _ := by ring\n    refine (Finset.sum_le_sum hpt).trans ?_\n    rw [← Finset.mul_sum]\n    refine mul_le_mul_of_nonneg_left ?_ hx0.le\n    rw [Finset.sum_add_distrib]\n    have hZw : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => idx u = k), m u ≤ 2 * Z3g B T0 + 2 * c3g κ T0 * (k + 1) :=\n      fun k => count_tail_windowG hp hT00 S hSZ hre him k\n    have hZ3 : 0 ≤ Z3g B T0 :=\n      div_nonneg (hp.log_pos _).le (log_ratio_pos (by norm_num) (by norm_num)).le\n    have hc3 : 0 ≤ c3g κ T0 :=\n      div_nonneg (div_nonneg (mul_nonneg hp.κ_nonneg (by norm_num)) hT00.le)\n        (log_ratio_pos (by norm_num) (by norm_num)).le\n    have g1 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3g B T0) (c := 2 * c3g κ T0)\n      (E := EB') (ρ := ρB) (by linarith) (by linarith) hEB hρB0 hρB1 (fun k => by\n        have := hZw k; linarith)\n    have g2 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3g B T0) (c := 2 * c3g κ T0)\n      (E := EA') (ρ := ρA) (by linarith) (by linarith) hEA hρA0 hρA1 (fun k => by\n        have := hZw k; linarith)\n    unfold E2g\n    linarith\n  linarith",
+            "line": 199,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_boundG",
+            "lines": [
+              199,
+              325
+            ],
+            "conclusion": "The zero sum of a Mellin majorant above T0 is bounded by G0*Z3g + sqrt(x)*E1g + x*E2g, counting zeros by Jensen windows of height 4.4."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumGen.lean",
+            "fragment": "L199-L325"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

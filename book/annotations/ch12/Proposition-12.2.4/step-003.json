@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 12.2.4 step 3",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same inference as the next display, with 0.6274 for omega and c for c_E; implicit in nlinarith.",
+  "subject": [
+    {
+      "location": {
+        "page": 246,
+        "rect": [
+          0.26253,
+          0.58059,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Proposition 12.2.4 step 3: Text, p. 236",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.2.4 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.star_core",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
+        "lines": [
+          90,
+          99
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.star_core"
+          },
+          "snippet": {
+            "text": "  have hst' : e1 + 0.6274 * max 0 (-e2) ≤ k * (0.3726 * (a - S) + 0.0274177) := by\n    have := mul_le_mul_of_nonneg_left hst hk.le\n    rwa [← mul_assoc, hkK, one_mul] at this\n  have hmax : -e2 ≤ max 0 (-e2) := le_max_right _ _\n  have hmax0 : 0 ≤ max 0 (-e2) := le_max_left _ _\n  have hθ0 : 0 ≤ θ := div_nonneg (by linarith) hLc.le\n  have h1 : e1 - θ * e2 ≤ e1 + 0.6274 * max 0 (-e2) := by nlinarith\n  have h2 : k * (0.3726 * (a - S) + 0.0274177) ≤ k * ((1.36 - c) + (1 - θ) * (a - S)) := by\n    apply mul_le_mul_of_nonneg_left _ hk.le; nlinarith\n  have key : k * (l - a + c + S) + e1 ≤ θ * (k * (L - a + c + S) + e2) := by nlinarith",
+            "line": 90,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.star_core",
+            "lines": [
+              80,
+              102
+            ],
+            "conclusion": "hst', h1, h2 combine to e1 - theta*e2 <= k((1.36-c)+(1-theta)(a-S)), which gives key (elsyn)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L90-L99"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          246
+        ],
+        "printed": [
+          236
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

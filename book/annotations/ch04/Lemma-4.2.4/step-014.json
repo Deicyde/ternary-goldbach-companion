@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.4 step 14",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same contribution for `η₂`; Lean bounds it by `Σ |c(a)| a` over odd `a ≤ M`, `q∣a`, not over the text's `u` squarefree, `uv` odd, `Λ(v)` sum (4.55).",
+  "subject": [
+    {
+      "location": {
+        "page": 83,
+        "rect": [
+          0.17462,
+          0.15793,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.4 step 14: Text, p. 73",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          857,
+          874
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le"
+          },
+          "snippet": {
+            "text": "  have h2 : ‖∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then (coefI2 U V a : ℂ) * E a else 0)‖ ≤\n      c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) *\n        (M ^ 2 * Real.log V / (4 * q) + 3 * c₄ / 4 * M * V + 3 / 2 * (U + 1) ^ 2 * V * Real.log q / 4) := by\n    refine (norm_sum_le _ _).trans ?_\n    have hterm : ∀ a ∈ Icc 1 NM, ‖(if Odd a ∧ q ∣ a then (coefI2 U V a : ℂ) * E a else 0)‖ ≤\n        c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) * (if Odd a ∧ q ∣ a then |coefI2 U V a| * a else 0) := by\n      intro a ha\n      by_cases h : Odd a ∧ q ∣ a\n      · rw [if_pos h, if_pos h, norm_mul, Complex.norm_real, Real.norm_eq_abs]\n        have hE2 := (hE a h.1 h.2 (mem_Icc.1 ha).1 (mem_Icc.1 ha).2).2\n        calc |coefI2 U V a| * ‖E a‖ ≤ |coefI2 U V a| * (a / x * (c₀ / (2 * π ^ 2)) * (π ^ 2 - 4)) :=\n              mul_le_mul_of_nonneg_left hE2 (abs_nonneg _)\n          _ = _ := by field_simp\n      · rw [if_neg h, if_neg h, norm_zero, mul_zero]\n    refine (sum_le_sum hterm).trans ?_\n    rw [← mul_sum]\n    have hpi2 : (0 : ℝ) ≤ π ^ 2 - 4 := by have := Real.pi_gt_three; nlinarith\n    exact mul_le_mul_of_nonneg_left (sum_abs_coefI2_mul_le hU hV hM0 hqo) (by positivity)",
+            "line": 857,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+            "lines": [
+              785,
+              897
+            ],
+            "conclusion": "The error terms satisfy `‖Σ c(a) E(a)‖ ≤ c₀(π²-4)/(2π²x) * Σ_{a≤M, a odd, q∣a} |c(a)| a`, using `‖E‖ ≤ (a/x)(c₀/2π²)(π²-4)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L857-L874"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          83
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

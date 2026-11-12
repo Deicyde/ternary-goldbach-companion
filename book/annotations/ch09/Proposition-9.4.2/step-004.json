@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.4.2 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the eta_+ norms by integral_etaPlus_sq_le (H=200) and the Mellin bound on Re s=-1/2, not by (mastodon),(miran) with H>=25.",
+  "subject": [
+    {
+      "location": {
+        "page": 198,
+        "rect": [
+          0.26253,
+          0.15703,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Proposition 9.4.2 step 4: Text, p. 188",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.4.2 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_le",
+        "module": "TernaryGoldbach.MajorArcs.Prop942",
+        "lines": [
+          22,
+          25
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_le"
+          },
+          "snippet": {
+            "text": "theorem integral_etaPlus_sq_le : ∫ v in Ioi (0:ℝ), etaPlus v ^ 2 ≤ 0.6403 := by\n  have h := abs_integral_sq_etaPlus_sub_le\n  rw [integral_sq_etaPlus_eq_Ioi] at h\n  linarith [(abs_le.1 h).2]",
+            "line": 22,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_le",
+            "lines": [
+              22,
+              25
+            ],
+            "conclusion": "The integral of eta_+^2 over (0,inf) is at most 0.6403 (H=200)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop942.lean",
+            "fragment": "L22-L25"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_vert",
+        "module": "TernaryGoldbach.Explicit.EtaPlusBound",
+        "lines": [
+          143,
+          147
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_vert"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_fP_vert (δ y : ℝ) :\n    ‖mellin (fP δ) (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤\n      Cg * (300 * Real.exp 1) * (2 * aH) * Real.exp (-(thP δ * |y|)) := by\n  have h := norm_mellin_fP_uniform δ (s := ((-1 / 2 : ℝ) : ℂ) + y * I) (by simp) (by simp; norm_num)\n  simpa using h",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_vert",
+            "lines": [
+              143,
+              147
+            ],
+            "conclusion": "Mellin transform of fP delta on Re s=-1/2 is bounded by a constant times exp(-thP|y|)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusBound.lean",
+            "fragment": "L143-L147"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          198
+        ],
+        "printed": [
+          188
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "10.4 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds the non-coprime terms pointwise ($\\sum_{(n,q)>1}\\Lambda(n)\\eta_+(n/x)\\le10^{-15}x$) and inserts $D=10^{-15}x$ into the per-modulus residual (sum_residual_le), instead of integrating over $\\mathbb{R}/\\mathbb{Z}$ with Cauchy-Schwarz and Plancherel; the $\\Lambda^2$ sums and $\\log r$ factor do not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 222,
+        "rect": [
+          0.25926,
+          0.63718,
+          0.56816,
+          0.17503
+        ]
+      },
+      "title": "Display, p. 212",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.4 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          313,
+          321
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le"
+          },
+          "snippet": {
+            "text": "/-- `|S_{η₊}(α) − S'_q(α)| ≤ 10⁻¹⁵ x`. -/\ntheorem norm_S_sub_coprime_le {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000)\n    (α : ℝ) : ‖S etaPlus x α - expTsum (coprimePart q (cP x)) α‖ ≤ 1e-15 * x := by\n  have hx0 : 0 < x := by linarith\n  have hc := summable_cP hx0\n  have ha : Summable fun n => ‖coprimePart q (cP x) n‖ :=\n    hc.of_nonneg_of_le (fun n => norm_nonneg _) (norm_coprimePart_le q (cP x))\n  rw [S_etaPlus_eq_expTsum, ← expTsum_sub hc ha]\n  exact (norm_expTsum_le_tsum (summable_sub_coprimePart hx0 q) α).trans (coprime_split hx hq1 hq)",
+            "line": 313,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+            "lines": [
+              313,
+              321
+            ],
+            "conclusion": "$|S_{\\eta_+}(\\alpha)-S'_q(\\alpha)|\\le10^{-15}x$ pointwise for all $\\alpha$, covering the terms with $(n,q)>1$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L313-L321"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          222
+        ],
+        "printed": [
+          212
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

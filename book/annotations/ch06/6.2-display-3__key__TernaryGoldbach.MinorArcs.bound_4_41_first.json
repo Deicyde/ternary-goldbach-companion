@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not prove this maximisation; it bounds the `q·log(q/c₂)·log⁺(U/(q/2))` term of (4.41) numerically at the first choice of parameters.",
+  "subject": [
+    {
+      "location": {
+        "page": 112,
+        "rect": [
+          0.25926,
+          0.82371,
+          0.56816,
+          0.03451
+        ]
+      },
+      "title": "Display, p. 102",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI",
+        "lines": [
+          156,
+          204
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_41_first"
+          },
+          "snippet": {
+            "text": "  have tc : (2 * eta2'L1 / π * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * S ^ 6))) *\n      Real.log (S ^ 6) + 2 * √(c₀ * c₁) / π * (√3 + 1 / 2 * logPlus (U / (q / 2))) *\n        Real.log (q / c₂)) * q ≤ 0.00004 * S ^ 5 := by\n    have hmax : max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * S ^ 6))) = 1 := by\n      refine max_eq_left ?_\n      have harg : c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * S ^ 6) ≤ 2 := by\n        rw [div_le_iff₀ (by positivity)]\n        have he3 : rexp 3 ≤ 20.1 := by\n          calc rexp 3 = rexp 1 ^ 3 := by rw [← Real.exp_nat_mul]; norm_num\n            _ ≤ 2.7182818286 ^ 3 := pow_le_pow_left₀ (Real.exp_pos 1).le he.le 3\n            _ ≤ 20.1 := by norm_num\n        have hq2 : (q : ℝ) ^ 2 ≤ S ^ 4 := by nlinarith\n        have : c₀ * rexp 3 * q ^ 2 ≤ 32 * 20.1 * S ^ 4 := by\n          have : c₀ = 32 := rfl\n          rw [this]; gcongr\n        have : 2 * (4 * π * eta2'L1 * S ^ 6) ≥ 2 * (4 * 3.1415 * 5.5 * S ^ 6) := by\n          have : (5.5 : ℝ) ≤ eta2'L1 := by unfold eta2'L1; have := Real.log_two_gt_d9; linarith\n          gcongr\n        nlinarith [pow_pos hS0' 4, pow_pos hS0' 6]\n      have := Real.log_le_sub_one_of_pos (show 0 < c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * S ^ 6) by\n        have : (0 : ℝ) < c₀ := by norm_num [c₀]\n        positivity)\n      linarith\n    rw [hmax]\n    have hlx : Real.log (S ^ 6) ≤ 0.0894 * S := by rw [Real.log_pow]; push_cast; linarith\n    have hlp : logPlus (U / (q / 2)) ≤ 0.0596 * S := by\n      unfold logPlus\n      refine max_le ?_ (by positivity)\n      have h1 : U / (q / 2) ≤ S ^ 4 := by\n        rw [div_le_iff₀ (by positivity)]; nlinarith [pow_pos hS0' 4]\n      calc Real.log (U / (q / 2)) ≤ Real.log (S ^ 4) := Real.log_le_log (by positivity) h1\n        _ ≤ 0.0596 * S := by rw [Real.log_pow]; push_cast; linarith\n    have hlq : Real.log (q / c₂) ≤ 0.0298 * S := by\n      have h1 : (q : ℝ) / c₂ ≤ S ^ 2 := by\n        rw [div_le_iff₀ (by linarith)]; nlinarith\n      exact (Real.log_le_log (by positivity) h1).trans hlogT'\n    have hlq0 : 0 ≤ Real.log (q / c₂) := Real.log_nonneg (by\n      rw [le_div_iff₀ (by linarith)]; linarith)\n    have hη' : 2 * eta2'L1 / π ≤ 3.5304 := by rw [div_le_iff₀ (by linarith)]; nlinarith\n    have hs3 : √3 ≤ 1.7321 := by rw [Real.sqrt_le_left (by norm_num)]; norm_num\n    calc (2 * eta2'L1 / π * 1 * Real.log (S ^ 6) + 2 * √(c₀ * c₁) / π *\n          (√3 + 1 / 2 * logPlus (U / (q / 2))) * Real.log (q / c₂)) * q\n        ≤ (3.5304 * 1 * (0.0894 * S) + 3.6015 * (1.7321 + 1 / 2 * (0.0596 * S)) * (0.0298 * S)) *\n            (S ^ 2 / 6) := by\n          have : 0 ≤ Real.log (S ^ 6) := Real.log_nonneg (one_le_pow₀ (by linarith))\n          have : 0 ≤ logPlus (U / (q / 2)) := logPlus_nonneg _\n          gcongr\n      _ ≤ 0.00004 * S ^ 5 := by nlinarith [pow_pos hS0' 3, pow_pos hS0' 4, pow_pos hS0' 5]\n  -- Term d.",
+            "line": 156,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+            "lines": [
+              69,
+              258
+            ],
+            "conclusion": "At the first choice, with `log⁺(U/(q/2)) ≤ 0.0596 S` and `log(q/c₂) ≤ 0.0298 S`, the `q`-terms of (4.41) are `≤ 0.00004 x^{5/6}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI.lean",
+            "fragment": "L156-L204"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          112
+        ],
+        "printed": [
+          102
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

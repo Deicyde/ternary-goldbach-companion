@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 9.5.1 step 39",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the same quantity (Mellin transform of eta_+^2) at zeros above 500, with a geometric-window bound exp(-60)*exp(-2.64)^k instead of f(tau).",
+  "subject": [
+    {
+      "location": {
+        "page": 202,
+        "rect": [
+          0.26253,
+          0.2867,
+          0.56162,
+          0.01808
+        ]
+      },
+      "title": "Proposition 9.5.1 step 39: Display, p. 192",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.phi1_tail",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          216,
+          229
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.phi1_tail"
+          },
+          "snippet": {
+            "text": "theorem phi1_tail (s : ℂ) (h0 : 0 < s.re) (h1 : s.re < 1) (hT : 500 < |s.im|) :\n    ‖mellin phi1 s‖ ≤ (Cg * (2 * aH)) ^ 2 * 8 * Real.exp (-60) * Real.exp (-2.64) ^ ⌊(|s.im| - 500) / 4.4⌋₊ +\n      0 * 0 ^ ⌊(|s.im| - 500) / 4.4⌋₊ := by\n  have h := norm_mellin_phi1_le (c := 0.6) (by norm_num) le_rfl (s := s) (by linarith) (by linarith)\n  have he := exp_window_le hT 0\n  rw [zero_add, zero_sub] at he\n  have hc : 0 ≤ (Cg * (2 * aH)) ^ 2 * 8 := by positivity\n  rw [zero_mul, add_zero]\n  refine h.trans ?_\n  calc (Cg * (2 * aH)) ^ 2 * 8 * Real.exp (400 * 0.6) * Real.exp (-(0.6 * |s.im|))\n      = (Cg * (2 * aH)) ^ 2 * 8 * (Real.exp 240 * Real.exp (-(0.6 * |s.im|))) := by norm_num; ring\n    _ ≤ (Cg * (2 * aH)) ^ 2 * 8 * (Real.exp (-60) * Real.exp (-2.64) ^ ⌊(|s.im| - 500) / 4.4⌋₊) :=\n        mul_le_mul_of_nonneg_left he hc\n    _ = _ := by ring",
+            "line": 216,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.phi1_tail",
+            "lines": [
+              216,
+              229
+            ],
+            "conclusion": "For 0<Re s<1 and |Im s|>500, `‖mellin phi1 s‖` is at most a constant times `exp(-60)*exp(-2.64)^⌊(|Im s|-500)/4.4⌋`, a geometric-window decay bound on the Mellin transform of `phi1` (the square of eta_+)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L216-L229"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          202
+        ],
+        "printed": [
+          192
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

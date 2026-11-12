@@ -15,6 +15,14 @@ One record per (item, linked declaration), and per statement of the item in lean
 absence (`noMatch`) for an item judged not formalized whose absence was searched at the pin; one
 record with an empty object for any other item that links nothing.  Every record names all the item's regions.
 
+The unnumbered displays outside proofs are items of kind `display`, written like the numbered ones
+(one record per declaration, or one checked absence).  The steps of an item's proof are records of
+kind `proof_step` in the item's folder, `<item>/step-001.json`, ...: each end names the `lines` of a
+declaration with their snippet and `proof_context`, and a `noMatch` step names the declarations it was
+checked against, with no snippet (proof_overlay; formal-companion docs/overlay.md section 7).  An item
+with a proof always has a folder.  The displays and steps come from data/<overlay>-displays.json,
+data/<overlay>-steps.json, their -mapping.json files and data/<overlay>-regions-steps.json.
+
 Usage: python3 -I scripts/produce.py [<repository root>]
 """
 import collections
@@ -129,6 +137,130 @@ def title_of(item):
     return f"{TITLE[item['kind']]} {item['number']}"
 
 
+# A display's or a step's relation -> its record's status (formal-companion's proof-step fixture).
+STEP_STATUS = {'exactMatch': 'formalized', 'closeMatch': 'formalized', 'broadMatch': 'formalized',
+               'noMatch': 'not_formalized'}
+
+
+def step_note(r):
+    """The mapping's note in at most two sentences, keeping the one that cites a confirmed text error."""
+    s = sentences(r.get('note') or '')
+    if len(s) > 2 and r.get('text_error'):
+        cites = [x for x in s[1:] if r['text_error']['evidence'] in x or 'confirmed' in x]
+        s = [s[0], cites[-1]] if cites else s
+    return ' '.join(s[:2])
+
+
+def step_provenance(r):
+    v = r['verification']
+    steps = v.get('steps') or v.get('book_verification', {}).get('steps') or []
+    method = '; '.join(steps)
+    if v.get('carried_from'):
+        method = f"carried from {v['carried_from']}, the same LaTeX" + (f' ({method})' if method else '')
+    return {'actor': 'agent', 'method': method, 'confirmed_by_human': False}
+
+
+def proof_overlay(root, overlay, pdf, lean, mathlib, folder):
+    """The unnumbered displays outside proofs and the proof steps of `overlay`, from
+    data/<overlay>-{displays,steps}.json (the segmentation), data/<overlay>-{displays,steps}-mapping.json
+    (the links) and data/<overlay>-regions-steps.json (the regions).  `folder(record)` is the section
+    folder of a display.  Returns ({path: record} of the display items, {item id: [step records in
+    proof order]})."""
+    data = lambda n: json.load(open(os.path.join(root, 'data', n), encoding='utf-8'))
+    regions = data(f'{overlay}-regions-steps.json')
+    if regions['pdf']['sha256'] != pdf['sha256']:
+        sys.exit(f'{overlay}-regions-steps.json is of another PDF')
+    offset = pdf['printed_page_offset']
+    texts = {d['id']: d for d in data(f'{overlay}-displays.json')['displays']}
+    texts.update({s['id']: s for s in data(f'{overlay}-steps.json')['steps']})
+    maps = {k: data(f'{overlay}-{k}-mapping.json') for k in ('displays', 'steps')}
+    for m in maps.values():
+        if m['lean']['commit'] != lean['commit'] or m['mathlib']['commit'] != mathlib['commit'] or m['mapped'] != m['total']:
+            sys.exit(f"{overlay}-{m['kind']}-mapping.json is of another pin, or incomplete")
+
+    def end(e, snippet):
+        repo = lean if e['repo'] == 'lean' else mathlib
+        a, b = e['lines']
+        ext = {'declaration': {'id': e['declaration']}}
+        if snippet:
+            ext['snippet'] = {'text': e['snippet'], 'line': a, 'truncated': False}
+            ext['proof_context'] = {k: e['proof_context'][k] for k in ('declaration', 'lines', 'conclusion')}
+        ext['destination'] = {'resolution': 'exact', 'href': f"{repo['uri']}/blob/{repo['commit']}/{e['file']}",
+                              'fragment': f'L{a}-L{b}'}
+        o = {'location': {'declaration': e['declaration'], 'module': e['module'], 'lines': [a, b]}}
+        if snippet:
+            o['role'] = 'key'
+        o['extensions'] = {NS: ext}
+        if e['repo'] != 'lean':  # an end with its own uri takes nothing from the template: write it whole
+            o = {'type': 'lean', 'uri': repo['uri'], 'version': repo['commit'], **o}
+        return o
+
+    def subject(rid, title):
+        regs = regions['displays'].get(rid) or regions['steps'].get(rid)
+        if not regs:
+            sys.exit(f'{rid}: no region')
+        out = []
+        for n, g in enumerate(regs):
+            ext = {'region': f'{rid}#{n}' if len(regs) > 1 else rid}
+            if g.get('quads'):
+                ext['quads'] = g['quads']
+            out.append({'location': {'page': g['page'], 'rect': g['rect']}, 'title': title, 'extensions': {NS: ext}})
+        return out
+
+    def record(r, kind, title, ends, extra=None):
+        subj = subject(r['id'], title)
+        pages = sorted({s['location']['page'] for s in subj})
+        ext = {'locator': {'physical': pages, 'printed': [p - offset for p in pages if p - offset >= 1]},
+               'provenance': step_provenance(r), **(extra or {})}
+        out = {'id': r['id'], 'kind': kind, 'status': STEP_STATUS.get(r['relation'], 'partial'),
+               'relation': r['relation']}
+        note = step_note(r)
+        if note:
+            out['note'] = note
+        out.update(subject=subj, object=ends, extensions={NS: ext})
+        return out
+
+    displays = {}
+    for r in maps['displays']['records']:
+        d = texts[r['id']]
+        absent = r['relation'] == 'noMatch'
+        if absent:  # one checked absence, naming the declarations it was checked against
+            groups = {'noMatch': [end(e, False) for e in r['ends']]}
+        else:  # one record per declaration, one end per range of it
+            groups = {}
+            for e in r['ends']:
+                groups.setdefault(f"key__{e['declaration']}", []).append(end(e, True))
+        recs = [(k, record(r, 'display', d['title'], ends)) for k, ends in groups.items()]
+        sec = folder(d)
+        if len(recs) == 1:
+            paths = [f"{sec}/{file_name(r['id'] + '__' + recs[0][0], '.json')}"]
+        else:
+            names = [file_name(k, '.json') for k, _ in recs]
+            clash = collections.Counter(n.lower() for n in names)
+            names = [file_name(k, '.json', force_hash=clash[n.lower()] > 1) for (k, _), n in zip(recs, names)]
+            paths = [f"{sec}/{file_name(r['id'])}/{n}" for n in names]
+        for p, (_, rec) in zip(paths, recs):
+            displays[p] = rec
+
+    steps = collections.defaultdict(list)
+    for r in maps['steps']['records']:
+        s = texts[r['id']]
+        pages = sorted({g['page'] - offset for g in regions['steps'][r['id']]})
+        where = f'p. {pages[0]}' if len(pages) == 1 else f'pp. {pages[0]}–{pages[-1]}'
+        title = f"{r['id']}: {'Display' if s['kind'] == 'display' else 'Text'}, {where}"
+        absent = r['relation'] == 'noMatch'
+        extra = {'proof': {'kind': r['proof_kind']}} if r.get('proof_kind') and not absent else None
+        rec = record(r, 'proof_step', title, [end(e, not absent) for e in r['ends']], extra)
+        steps[r['item']].append((s['step'], rec))
+    steps = {k: [rec for _, rec in sorted(v, key=lambda x: x[0])] for k, v in steps.items()}
+    return displays, steps
+
+
+def step_files(folder, step_records):
+    """`<item folder>/step-001.json`, ...: names that sort in the order of the proof."""
+    return {f'{folder}/step-{n:03d}.json': r for n, r in enumerate(step_records, 1)}
+
+
 def main():
     root = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data = lambda n: json.load(open(os.path.join(root, 'data', n), encoding='utf-8'))
@@ -166,6 +298,7 @@ def main():
             end = {'type': 'lean', 'uri': repo['uri'], 'version': repo['commit'], **end}
         return end
 
+    display_files, steps = proof_overlay(root, 'book', pdf, lean, mathlib, folder_of)
     out_dir = os.path.join(root, 'book', 'annotations')
     if os.path.isdir(out_dir):
         shutil.rmtree(out_dir)
@@ -265,9 +398,9 @@ def main():
         records.sort(key=lambda r: (r.get('relation') != 'noMatch',
                                     ROLES.index(r['object'][0]['role']) if r['object'] and 'role' in r['object'][0] else -1,
                                     r['object'][0]['location']['declaration'] if r['object'] and 'location' in r['object'][0] else ''))
-        if len(records) == 1:
+        if len(records) == 1 and it['id'] not in steps:
             paths = [f"{folder}/{file_name(key_of(records[0], False), '.json')}"]
-        else:
+        else:  # an item with several records, or with a proof: a folder
             sub = file_name(it['id'])
             keys = [key_of(r, True) for r in records]
             names = [file_name(k, '.json') for k in keys]
@@ -276,12 +409,23 @@ def main():
             if len({n.lower() for n in names}) != len(names):
                 sys.exit(f"{it['id']}: two records share a file name")
             paths = [f"{folder}/{sub}/{n}" for n in names]
-        for p, r in zip(paths, records):
+        proof = step_files(f"{folder}/{file_name(it['id'])}", steps.pop(it['id'], []))
+        counts['proof_steps'] += len(proof)
+        for p, r in list(zip(paths, records)) + list(proof.items()):
             if p.lower() in {q.lower() for q in files}:
                 sys.exit(f'two files named {p}')
             files[p] = r
             counts['records'] += 1
             counts[f"relation.{r.get('relation', 'none')}"] += 1
+    if steps:
+        sys.exit(f'steps of items not in the overlay: {sorted(steps)}')
+    for p, r in display_files.items():
+        if p.lower() in {q.lower() for q in files}:
+            sys.exit(f'two files named {p}')
+        files[p] = r
+        counts['display_records'] += 1
+        counts[f"relation.{r.get('relation', 'none')}"] += 1
+    counts['displays'] = len({r['id'] for r in display_files.values()})
     with open(os.path.join(out_dir, '_defaults.json'), 'w', encoding='utf-8') as f:
         json.dump(defaults, f, indent=2, ensure_ascii=False)
         f.write('\n')

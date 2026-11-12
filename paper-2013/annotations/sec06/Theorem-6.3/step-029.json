@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 6.3 step 29",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's c₊ is 2 and c₋ is c_E, not 2.3912/0.6294, the scale is x/784 rather than x/16, and the discrete form replaces the jump estimate 7/15+(-2.14938+(8/15)log κ)/(log x+2c⁻); the numerical verification of the 0.6 condition is the hypothesis hρ of `NumericsGoal`.",
+  "subject": [
+    {
+      "location": {
+        "page": 51,
+        "rect": [
+          0.20698,
+          0.69434,
+          0.62529,
+          0.07419
+        ]
+      },
+      "title": "Theorem 6.3 step 29: Text, p. 51",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+        "module": "TernaryGoldbach.MinorArcs.Thm1321",
+        "lines": [
+          147,
+          155
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired"
+          },
+          "snippet": {
+            "text": "/-- **[H, Thm 13.2.1], repaired** (discrete (13.6), mixed family). For `aₙ` supported on\nprimes `> √x`, `T = Σ|aₙ|²`, levels `10⁵ ≤ r₀ ≤ r₁` with `(20000 r₁)² ≤ x/784` and\n`2r₁ ≤ (2√(x/784))^{0.6}`, `g` non-increasing with `g(r₁) ≥ 0`: if `|S_{η_*}(α, x)| ≤ g(r₀)` off\n`𝔐_{8,r₀}(x)`, and `|S_{η_*}(α, x)| ≤ g(n)` off `𝔐_{8,n}(x/κ)` for `r₀ < n ≤ r₁`, then\n`∫_{(0,1] \\ 𝔐_{8,r₀}(x)} |S₁|²|S_{η_*}| ≤ g(r₀)(H(r₀) − I₀) + Σ_{r₀<n≤r₁} g(n)(H(n) − H(n−1))`\nwith `H = Hl2y x T r₁` and `I₀ = ∫_{(0,1] ∩ 𝔐_{8,r₀}(x)} |S₁|²`. -/\ntheorem thm_13_2_1_repaired {x : ℝ} (hx : 0 < x) {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    {g : ℕ → ℝ} {r₀ r₁ : ℕ} (h01 : r₀ ≤ r₁) (hr₀ : 1e5 ≤ (r₀ : ℝ))\n    (hx₁ : (20000 * (r₁ : ℝ)) ^ 2 ≤ x / 784) (hρ : 2 * (r₁ : ℝ) ≤ (2 * √(x / 784)) ^ (0.6 : ℝ))",
+            "line": 147,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+            "lines": [
+              147,
+              211
+            ],
+            "conclusion": "Hypotheses `(20000 r₁)² ≤ x/784` and `2r₁ ≤ (2√(x/784))^{0.6}` are the conditions for applying `cor_12_2_5`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Thm1321.lean",
+            "fragment": "L147-L155"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          375,
+          396
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.cor_12_2_5"
+          },
+          "snippet": {
+            "text": "/-- **[H, Cor. 12.2.5, (12.42)]** (with `δ₀ ≥ 2`).  Let `Q₀ ≥ 10⁵`, `δ₀ ≥ 2`,\n`(20000 Q₀)² ≤ x/2δ₀`, `Q = √(x/2δ₀)`, `2Q₀ ≤ (2Q)^{0.6}`.  Then\n`∫_{𝔐_{δ₀,Q₀}} |S|² ≤ (log 2Q₀ + 2)/(log 2Q + c_E) Σ|aₙ|²`. -/\ntheorem cor_12_2_5 {x δ₀ Q₀ : ℝ} {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    (hQ₀ : 1e5 ≤ Q₀) (hδ₀ : 2 ≤ δ₀) (hx : (20000 * Q₀) ^ 2 ≤ x / (2 * δ₀))\n    (hρ : 2 * Q₀ ≤ (2 * √(x / (2 * δ₀))) ^ (0.6 : ℝ)) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤\n      (Real.log (2 * Q₀) + 2) / (Real.log (2 * √(x / (2 * δ₀))) + cE) * ∑' n, ‖a n‖ ^ 2 := by\n  set Q := √(x / (2 * δ₀)) with hQdef\n  have hQ0 : 0 ≤ x / (2 * δ₀) := le_trans (by positivity) hx\n  have hQ : 20000 * Q₀ ≤ Q := by\n    rw [hQdef]; exact Real.le_sqrt_of_sq_le hx\n  refine prop_12_1_2 ha hδ₀ (by linarith) ?_ fun q hq _ hq2 s hs hsq => ?_\n  · have h1 : Q₀ ^ 2 ≤ x / (2 * δ₀) := le_trans (by nlinarith) hx\n    have h2 : δ₀ * Q₀ ^ 2 ≤ δ₀ * (x / (2 * δ₀)) := mul_le_mul_of_nonneg_left h1 (by linarith)\n    have h3 : δ₀ * (x / (2 * δ₀)) = x / 2 := by field_simp\n    linarith\n  · have h2Q₀ : (0 : ℝ) < 2 * Q₀ := by linarith\n    have hlog : Real.log (2 * Q₀) ≤ 0.6 * Real.log (2 * Q) := by\n      have := Real.log_le_log h2Q₀ hρ\n      rwa [Real.log_rpow (by nlinarith)] at this\n    exact prop_12_2_4 (by linarith) (by linarith) hlog hq hq2 hs hsq",
+            "line": 375,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+            "lines": [
+              375,
+              396
+            ],
+            "conclusion": "The ℓ² bound over arcs (12.42) under the admissibility condition on Q₀."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L375-L396"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          51
+        ],
+        "printed": [
+          51
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

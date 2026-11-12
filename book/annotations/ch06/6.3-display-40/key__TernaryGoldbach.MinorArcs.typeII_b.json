@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 40",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same range check |delta q| <= x/(theta U) before applying the case (b) bound, but with Lean's Q0: |delta q| <= x/Q0 = 349T (not = U) and theta = 8 (not 4), giving 8|delta|q <= 2792T <= T^2/1225 <= x/U. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 141,
+        "rect": [
+          0.17135,
+          0.39818,
+          0.56816,
+          0.03797
+        ]
+      },
+      "title": "Display, p. 131",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_b",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIb",
+        "lines": [
+          758,
+          769
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_b"
+          },
+          "snippet": {
+            "text": "  have key := typeII_641 (θ := 8) (ρ := T / 6 / Q2 T) (U := U2 T) (V := V2 T) hq1 hcop h2α hδQ hδ8.le (by positivity)\n    (x_le_Q2_sq hT) hρ1 hqρ (one_le_U2 hT) (by linarith [V2_ge_2e6 hT])\n    (by have := V2_le hT0; nlinarith)\n    (by\n      have : 8 * |δ| * q ≤ 2792 * T := by nlinarith\n      have : 2792 * T ≤ T ^ 2 / 1225 := by rw [le_div_iff₀ (by norm_num)]; nlinarith\n      nlinarith)\n    (by\n      have h1 : (1 + T ^ 3 / (2 * U2 T * Q2 T)) / 4 * rexp 1 ≤ 8 := by nlinarith [Real.exp_pos 1]\n      have h2 := mul_le_mul_of_nonneg_left h1 hδq0.le\n      have e : |δ| * q * (1 + T ^ 3 / (2 * U2 T * Q2 T)) / 4 * rexp 1 =\n          |δ| * q * ((1 + T ^ 3 / (2 * U2 T * Q2 T)) / 4 * rexp 1) := by ring",
+            "line": 758,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_b",
+            "lines": [
+              739,
+              790
+            ],
+            "conclusion": "Hypotheses of `typeII_641` (theta = 8): `8|delta|q <= 2792 T <= T^2/1225 <= x/U`, i.e. |delta q| <= x/(theta U)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIb.lean",
+            "fragment": "L758-L769"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          141
+        ],
+        "printed": [
+          131
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

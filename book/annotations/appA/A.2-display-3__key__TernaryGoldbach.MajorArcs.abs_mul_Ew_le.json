@@ -1,0 +1,81 @@
+{
+  "id": "A.2 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] only proves `sup t³e^{-t²}|log t| ≤ 0.37` (split at t=1 as in the text) rather than the value 0.14882234545.",
+  "subject": [
+    {
+      "location": {
+        "page": 294,
+        "rect": [
+          0.25926,
+          0.67429,
+          0.56816,
+          0.05349
+        ]
+      },
+      "title": "Display, p. 284",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.2 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.abs_mul_Ew_le",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          482,
+          533
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.abs_mul_Ew_le"
+          },
+          "snippet": {
+            "text": "/-- `|u| E(u) ≤ 0.37`: with `s = eᵘ`, `≤ s² e^{−s²} ≤ 1/e` for `s ≤ 1` and `≤ s⁴e^{−s²}/e ≤ 4/e³`\nfor `s ≥ 1`. -/\ntheorem abs_mul_Ew_le (u : ℝ) : |u| * Ew u ≤ 0.37 := by\n  have he := Real.exp_one_gt_d9\n  set s := Real.exp u with hs\n  have hs0 : 0 < s := Real.exp_pos u\n  have hE : Ew u = s ^ 3 * Real.exp (-s ^ 2) := rfl\n  rcases le_or_gt u 0 with hu | hu\n  · -- `|u| = −u ≤ e^{−u}`, so `|u| E ≤ s² e^{−s²} ≤ e^{−1}`\n    have h1 : -u ≤ Real.exp (-u) := by have := Real.add_one_le_exp (-u); linarith\n    have h2 : Real.exp (-u) * s = 1 := by rw [hs, ← Real.exp_add]; simp\n    have h3 : s ^ 2 * Real.exp (-s ^ 2) ≤ Real.exp (-1) := by\n      have := Real.add_one_le_exp (s ^ 2 - 1)\n      have e1 : Real.exp (s ^ 2 - 1) * Real.exp (-s ^ 2) = Real.exp (-1) := by\n        rw [← Real.exp_add]; congr 1; ring\n      have := Real.exp_pos (-s ^ 2)\n      nlinarith\n    have h4 : Real.exp (-1) ≤ 0.37 := by\n      rw [Real.exp_neg, inv_le_comm₀ (Real.exp_pos 1) (by norm_num)]; norm_num; linarith\n    rw [abs_of_nonpos hu, hE]\n    have hE0 : 0 ≤ s ^ 3 * Real.exp (-s ^ 2) := by positivity\n    calc -u * (s ^ 3 * Real.exp (-s ^ 2)) ≤ Real.exp (-u) * (s ^ 3 * Real.exp (-s ^ 2)) :=\n          mul_le_mul_of_nonneg_right h1 hE0\n      _ = s ^ 2 * Real.exp (-s ^ 2) * (Real.exp (-u) * s) := by ring\n      _ = s ^ 2 * Real.exp (-s ^ 2) := by rw [h2, mul_one]\n      _ ≤ 0.37 := h3.trans h4\n  · -- `u ≤ e^{u−1} = s/e`, so `|u| E ≤ s⁴ e^{−s²}/e ≤ 4/e³`\n    have h1 : u ≤ Real.exp (u - 1) := by have := Real.add_one_le_exp (u - 1); linarith\n    have h2 : Real.exp (u - 1) = s * Real.exp (-1) := by rw [hs, ← Real.exp_add]; ring_nf\n    have h3 : s ^ 4 * Real.exp (-s ^ 2) ≤ 4 * Real.exp (-2) := by\n      have h := Real.add_one_le_exp (s ^ 2 / 2 - 1)\n      have hp : 0 ≤ s ^ 2 / 2 := by positivity\n      have hsq : (s ^ 2 / 2) ^ 2 ≤ Real.exp (s ^ 2 / 2 - 1) ^ 2 := pow_le_pow_left₀ hp (by linarith) 2\n      have e1 : Real.exp (s ^ 2 / 2 - 1) ^ 2 * Real.exp (-s ^ 2) = Real.exp (-2) := by\n        rw [← Real.exp_nat_mul, ← Real.exp_add]; congr 1; push_cast; ring\n      have := Real.exp_pos (-s ^ 2)\n      nlinarith\n    have h4 : 4 * Real.exp (-2) * Real.exp (-1) ≤ 0.37 := by\n      rw [mul_assoc, ← Real.exp_add]\n      have : Real.exp (-2 + -1) = (Real.exp 1 ^ 3)⁻¹ := by\n        rw [← Real.exp_nat_mul, ← Real.exp_neg]; congr 1; norm_num\n      rw [this]\n      have : (2.7 : ℝ) ^ 3 ≤ Real.exp 1 ^ 3 := pow_le_pow_left₀ (by norm_num) (by linarith) 3\n      rw [mul_inv_le_iff₀ (by positivity)]; nlinarith\n    rw [abs_of_pos hu, hE]\n    have hE0 : 0 ≤ s ^ 3 * Real.exp (-s ^ 2) := by positivity\n    calc u * (s ^ 3 * Real.exp (-s ^ 2)) ≤ Real.exp (u - 1) * (s ^ 3 * Real.exp (-s ^ 2)) :=\n          mul_le_mul_of_nonneg_right h1 hE0\n      _ = s ^ 4 * Real.exp (-s ^ 2) * Real.exp (-1) := by rw [h2]; ring\n      _ ≤ 4 * Real.exp (-2) * Real.exp (-1) :=\n          mul_le_mul_of_nonneg_right h3 (Real.exp_pos _).le\n      _ ≤ 0.37 := h4",
+            "line": 482,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.abs_mul_Ew_le",
+            "lines": [
+              482,
+              533
+            ],
+            "conclusion": "`|u| Ew(u) ≤ 0.37`, i.e. `t³e^{-t²}|log t| ≤ 0.37` for `t=e^u`, by cases `u ≤ 0` and `u > 0`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L482-L533"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          294
+        ],
+        "printed": [
+          284
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "C.2 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] has only the lower bound, with `1.064` instead of `1.312` and for `r ≥ 20000` instead of `r ≥ 182`; the upper bound `log r + 1.354` is absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 310,
+        "rect": [
+          0.25926,
+          0.4579,
+          0.56816,
+          0.04099
+        ]
+      },
+      "title": "Display, p. 300",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "C.2 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.G_ge_log",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          15,
+          24
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.G_ge_log"
+          },
+          "snippet": {
+            "text": "/-- `G(t) ≥ log t + 1.064` for `t ≥ 20000`, from (12.12). -/\ntheorem G_ge_log {t : ℝ} (ht : 20000 ≤ t) : Real.log t + 1.064 ≤ Gq 1 t := by\n  obtain ⟨c, hc1, -, hram⟩ := ramare_Gq\n  have h := (abs_le.1 (hram 1 le_rfl t (by linarith))).1\n  have hS : Sq 1 = 0 := by simp [Sq]\n  have hf : f1q 1 = 1 := by simp [f1q]\n  rw [hS, hf] at h\n  simp only [Nat.totient_one, Nat.cast_one, div_one, one_mul, mul_one, add_zero] at h\n  have := rpow_neg_third_le ht\n  nlinarith",
+            "line": 15,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.G_ge_log",
+            "lines": [
+              15,
+              24
+            ],
+            "conclusion": "`G_1(t) = ∑_{r≤t} μ²(r)/φ(r) ≥ log t + 1.064` for `t ≥ 20000`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L15-L24"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          310
+        ],
+        "printed": [
+          300
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

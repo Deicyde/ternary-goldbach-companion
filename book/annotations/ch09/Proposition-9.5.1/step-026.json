@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 9.5.1 step 26",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part established: the Mellin transform of $t^2e^{-t^2}$. Lean gets $M(\\eta_+^2\\log)$ as $M(\\eta_+^2)'$ (`hasDerivAt_mellin_phi1`), not via $\\Gamma'(s/2+1)/4$, and replaces (moses)/$F_x$ with the convolution over $|\\xi|\\le a$ in `mellin_phi1_eq`.",
+  "subject": [
+    {
+      "location": {
+        "page": 201,
+        "rect": [
+          0.17462,
+          0.15373,
+          0.56162,
+          0.05241
+        ]
+      },
+      "title": "Proposition 9.5.1 step 26: Text, p. 191",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.mellin_g0",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          111,
+          121
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.mellin_g0"
+          },
+          "snippet": {
+            "text": "theorem mellin_g0 {s : ℂ} (hs : -2 < s.re) : mellin g0 s = (1 / 2 : ℂ) * Complex.Gamma ((s + 2) / 2) := by\n  have e1 : g0 = fun t : ℝ => (t : ℂ) ^ (2 : ℂ) • ((Real.exp (-(t ^ (2 : ℝ))) : ℝ) : ℂ) := by\n    ext t\n    simp only [g0, smul_eq_mul, Real.rpow_two]\n    push_cast\n    rw [Complex.cpow_two]\n  rw [e1, mellin_cpow_smul, mellin_comp_rpow (fun v : ℝ => ((Real.exp (-v) : ℝ) : ℂ)) _ 2, abs_two,\n    ← Complex.GammaIntegral_eq_mellin, ← Complex.Gamma_eq_integral (by simp; linarith)]\n  simp only [Complex.real_smul]\n  push_cast\n  ring",
+            "line": 111,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.mellin_g0",
+            "lines": [
+              111,
+              121
+            ],
+            "conclusion": "$M(t^2e^{-t^2})(s)=\\tfrac12\\Gamma((s+2)/2)$ for $\\Re s>-2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L111-L121"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          201
+        ],
+        "printed": [
+          191
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

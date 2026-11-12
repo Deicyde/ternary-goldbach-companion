@@ -1,0 +1,81 @@
+{
+  "id": "1.5 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "[L] writes `h(t/y)` for `h(t y^{-1})` and `H` for `R`.",
+  "subject": [
+    {
+      "location": {
+        "page": 36,
+        "rect": [
+          0.25926,
+          0.19617,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Display, p. 26",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.5 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.hH",
+        "module": "TernaryGoldbach.Helfgott.Defs",
+        "lines": [
+          37,
+          39
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.hH"
+          },
+          "snippet": {
+            "text": "/-- `h_H(t) = ∫₀^∞ h(t/y) F_H(y) dy/y` [H, (7.6)]. -/\nnoncomputable def hH (H t : ℝ) : ℝ :=\n  ∫ y in Set.Ioi (0:ℝ), hBase (t / y) * F H y / y",
+            "line": 37,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.hH",
+            "lines": [
+              37,
+              39
+            ],
+            "conclusion": "`hH H t = ∫_{y>0} hBase(t/y) F_H(y)/y dy`; with `H = R` this is `h_R(t) = ∫ h(t y^{-1}) F_R(y) dy/y`, `F_H(y) = sin(H log y)/(π log y)` (`F`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L37-L39"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          36
+        ],
+        "printed": [
+          26
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

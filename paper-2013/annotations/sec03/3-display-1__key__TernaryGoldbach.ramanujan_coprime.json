@@ -1,0 +1,81 @@
+{
+  "id": "3 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Only the last equality (evaluation of the Ramanujan sum to mu(q/q')) is in [L]. The reduction via orthogonality mod q' and the parametrisation a=a_0+kq' are not carried out: [L] restricts coefficients to (n,q)=1 (coprimePart) and never forms chi*(a_0) for non-coprime a_0.",
+  "subject": [
+    {
+      "location": {
+        "page": 12,
+        "rect": [
+          0.20371,
+          0.11497,
+          0.63183,
+          0.13196
+        ]
+      },
+      "title": "Display, p. 12",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.ramanujan_coprime",
+        "module": "TernaryGoldbach.MinorArcs.Montgomery",
+        "lines": [
+          75,
+          76
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.ramanujan_coprime"
+          },
+          "snippet": {
+            "text": "theorem ramanujan_coprime (q n : ℕ) (hq : 1 ≤ q) (hn : Nat.Coprime n q) :\n    ∑ a ∈ (range q).filter q.Coprime, e (a * n / q) = μ q := by",
+            "line": 75,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.ramanujan_coprime",
+            "lines": [
+              74,
+              134
+            ],
+            "conclusion": "The final Ramanujan-sum evaluation $\\sum_{k \\bmod m,(k,m)=1} e(kb/m)=\\mu(m)$ for $(b,m)=1$, applied with $m=q/q'$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Montgomery.lean",
+            "fragment": "L75-L76"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          12
+        ],
+        "printed": [
+          12
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.1 display 1, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 5.1.2 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has one exponent s (1/9 or 1/2), an inequality for the inner sum instead of an identity, and H_d in place of the d', d'' sums; no (s_1,s_2) form.",
+  "subject": [
+    {
+      "location": {
+        "page": 96,
+        "rect": [
+          0.26253,
+          0.55125,
+          0.56162,
+          0.18486
+        ]
+      },
+      "title": "Lemma 5.1.2 step 12: Display, p. 86",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.tsum_Hd_rpow",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler",
+        "lines": [
+          89,
+          109
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.tsum_Hd_rpow"
+          },
+          "snippet": {
+            "text": "theorem tsum_Hd_rpow {d p : ℕ} (hp : p.Prime) {s : ℝ} (hs1 : s < 1) :\n    ∑' e, Hd d (p ^ e) * ((p ^ e : ℕ) : ℝ) ^ s = if p ≠ 2 ∧ ¬ p ∣ d then ell s p else cfac s p := by\n  have hlt := rpow_lt_self' hs1 hp.two_le\n  have hp0 : (0 : ℝ) < p := by exact_mod_cast hp.pos\n  set r := (p : ℝ) ^ s / p with hr\n  have hr0 : 0 ≤ r := by positivity\n  have hr1 : r < 1 := by rw [hr, div_lt_one hp0]; exact hlt\n  rw [(summable_Hd_rpow hp hs1).tsum_eq_zero_add]\n  simp only [pow_zero, (isMultiplicative_Hd d).map_one, Nat.cast_one, Real.one_rpow, mul_one]\n  simp_rw [Hd_rpow_prime_pow hp s, ← hr]\n  rw [tsum_mul_left]\n  have hg : ∑' e : ℕ, r ^ (e + 1) = r / (1 - r) := by\n    simp_rw [pow_succ]\n    rw [tsum_mul_right, tsum_geometric_of_lt_one hr0 hr1, div_eq_inv_mul]\n  rw [hg, hr]\n  have h1 : (p : ℝ) - (p : ℝ) ^ s ≠ 0 := ne_of_gt (sub_pos.2 hlt)\n  have h3 : (p : ℝ) + 1 ≠ 0 := by positivity\n  unfold kapH ell cfac\n  split_ifs\n  all_goals field_simp\n  all_goals ring",
+            "line": 89,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.tsum_Hd_rpow",
+            "lines": [
+              89,
+              109
+            ],
+            "conclusion": "Local factor of the inner sum: $\\sum_e H_d(p^e)p^{es}=\\ell_s(p)$ for odd $p\\nmid d$, $c_s(p)$ otherwise."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L89-L109"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_Hd_rpow_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler",
+        "lines": [
+          112,
+          115
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_Hd_rpow_le"
+          },
+          "snippet": {
+            "text": "theorem sum_Hd_rpow_le {d : ℕ} (hd : Odd d) {s : ℝ} (hs0 : 0 ≤ s) (hs1 : s < 1) (A : ℕ) :\n    ∑ a ∈ Icc 1 A, Hd d a * (a : ℝ) ^ s ≤\n      cfac s 2 * (∏ p ∈ (Nat.primesBelow (A + 1)).filter (· ≠ 2), ell s p) *\n        ∏ p ∈ d.primeFactors, rho s p := by",
+            "line": 112,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_Hd_rpow_le",
+            "lines": [
+              111,
+              168
+            ],
+            "conclusion": "$\\sum_{a\\le A}H_d(a)a^s\\le c_s(2)\\prod_{2<p\\le A}\\ell_s(p)\\prod_{p\\mid d}\\rho_s(p)$ for odd $d$: the inner sum with the $p\\mid d$ factors pulled out."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L112-L115"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gmain",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler",
+        "lines": [
+          172,
+          174
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gmain"
+          },
+          "snippet": {
+            "text": "/-- `g_s(d) = f(d)² d^{2s} ∏_{p∣d} ρ_s(p)²`. -/\nnoncomputable def gmain (s : ℝ) (d : ℕ) : ℝ :=\n  fo d ^ 2 * ((d : ℝ) ^ s) ^ 2 * (∏ p ∈ d.primeFactors, rho s p) ^ 2",
+            "line": 172,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gmain",
+            "lines": [
+              172,
+              174
+            ],
+            "conclusion": "The d-summand $g_s(d)=f(d)^2d^{2s}\\prod_{p\\mid d}\\rho_s(p)^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L172-L174"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          96
+        ],
+        "printed": [
+          86
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

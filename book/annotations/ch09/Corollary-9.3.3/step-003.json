@@ -1,0 +1,84 @@
+{
+  "id": "Corollary 9.3.3 step 3",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Support of eta2 is (1/4,1) (mem_Ioo_of_eta2_ne); the text writes [-1/4,1]. Lean's prop_9_3_2 applied at r x has its own error err932N.",
+  "subject": [
+    {
+      "location": {
+        "page": 193,
+        "rect": [
+          0.17462,
+          0.65635,
+          0.56162,
+          0.01737
+        ]
+      },
+      "title": "Corollary 9.3.3 step 3: Text, p. 183",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.cor_9_3_3",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          654,
+          668
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.cor_9_3_3"
+          },
+          "snippet": {
+            "text": "  have hpt : ∀ᵐ r ∂μ, ‖f r‖ ≤ x * (eta2 r * ErN q T0 δ x r) := by\n    refine (ae_restrict_iff' measurableSet_Ioi).2 (Eventually.of_forall fun r (hr : 0 < r) => ?_)\n    by_cases hη : eta2 r = 0\n    · simp [hf, hw, hη]\n    · obtain ⟨hr4, hr1⟩ := mem_Ioo_of_eta2_ne hη\n      have hT0' : max (10 * π * |δ * r|) 50 ≤ T0 := by\n        refine le_trans (max_le_max ?_ le_rfl) hT0\n        rw [abs_mul, abs_of_pos hr]\n        have h0 : 0 ≤ 10 * π * |δ| := by have := Real.pi_pos; positivity\n        calc 10 * π * (|δ| * r) = 10 * π * |δ| * r := by ring\n          _ ≤ 10 * π * |δ| * 1 := mul_le_mul_of_nonneg_left hr1.le h0\n          _ = 10 * π * |δ| := mul_one _\n      have hp := prop_9_3_2 (x := r * x) (by nlinarith) (δ * r) χ hχ hT0' hG\n      rw [show δ * r / (r * x) = δ / x by field_simp] at hp\n      have hE := err932N_le_ErN (q := q) hT0 hx0 hr hr1.le",
+            "line": 654,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.cor_9_3_3",
+            "lines": [
+              486,
+              686
+            ],
+            "conclusion": "For r with eta2 r != 0 (so r in (1/4,1)) applies prop_9_3_2 at (x,delta) := (r x, delta r), giving the sum at scale w x with same phase delta/x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L654-L668"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          193
+        ],
+        "printed": [
+          183
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

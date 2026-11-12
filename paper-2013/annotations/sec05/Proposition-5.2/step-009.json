@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.2 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Bombieri's identity enters as `totient_mul_sum_units_lift`, used to write `Σ_b |S(b/q+β)|²` through characters (equality in `Farc_eq`), not as an inequality `Σ_1 ≤ …` from Thm 7A.",
+  "subject": [
+    {
+      "location": {
+        "page": 35,
+        "rect": [
+          0.20698,
+          0.07362,
+          0.62529,
+          0.01728
+        ]
+      },
+      "title": "Proposition 5.2 step 9: Text, p. 35",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.totient_mul_sum_units_lift",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri",
+        "lines": [
+          186,
+          220
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.totient_mul_sum_units_lift"
+          },
+          "snippet": {
+            "text": "/-- **Bombieri's identity, lifted to a common modulus `L`**: for `q ∣ L` and `aₙ` supported on\n`n` coprime to `L`,\n`φ(q) Σ_{b unit mod q} |S(b/q + β)|² = Σ_{Ψ mod L, cond Ψ ∣ q} w(q, cond Ψ) |S_{Ψ⁻¹}(β)|²`. -/\ntheorem totient_mul_sum_units_lift {q L : ℕ} [NeZero q] [NeZero L] (hqL : q ∣ L) {a : ℕ → ℂ}\n    (ha : Summable fun n => ‖a n‖) (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) (β : ℝ) :\n    q.totient * ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2 =\n      ∑ Ψ : DirichletCharacter ℂ L,\n        (if Ψ.conductor ∣ q then wq q Ψ.conductor else 0) * ‖Schar Ψ⁻¹ a β‖ ^ 2 := by\n  classical\n  have hcopq : ∀ n, a n ≠ 0 → Nat.Coprime n q := fun n hn => (hcop n hn).coprime_dvd_right hqL\n  rw [totient_mul_sum_units ha hcopq]\n  -- the right side as a sum over the image of `changeLevel`\n  have himg : (univ : Finset (DirichletCharacter ℂ q)).image (DirichletCharacter.changeLevel hqL) =\n      univ.filter (fun Ψ : DirichletCharacter ℂ L => Ψ.conductor ∣ q) := by\n    ext Ψ\n    simp only [mem_image, mem_univ, true_and, mem_filter]\n    constructor\n    · rintro ⟨ψ, rfl⟩\n      rw [DirichletCharacter.conductor_changeLevel]\n      exact DirichletCharacter.conductor_dvd_level ψ\n    · intro h\n      have hm := (DirichletCharacter.mem_conductorSet_iff_conductor_dvd Ψ hqL).2 h\n      rw [DirichletCharacter.mem_conductorSet_iff] at hm\n      obtain ⟨_, ψ, hψ⟩ := hm\n      exact ⟨ψ, hψ.symm⟩\n  simp_rw [ite_mul, zero_mul]\n  rw [← sum_filter, ← himg, sum_image fun ψ₁ _ ψ₂ _ h => DirichletCharacter.changeLevel_injective hqL h]\n  refine sum_congr rfl fun ψ _ => ?_\n  have hS : Schar (DirichletCharacter.changeLevel hqL ψ)⁻¹ a β = Schar ψ⁻¹ a β := by\n    unfold Schar\n    refine tsum_congr fun n => ?_\n    by_cases han : a n = 0\n    · simp [han]\n    rw [← map_inv, changeLevel_apply_natCast, if_pos (hcop n han)]\n  rw [DirichletCharacter.conductor_changeLevel, norm_sq_gaussSum, hS, wq]",
+            "line": 186,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.totient_mul_sum_units_lift",
+            "lines": [
+              186,
+              220
+            ],
+            "conclusion": "Bombieri's identity at a common modulus `L`: `φ(q) Σ_{b mod q}^* |S(b/q+β)|²` expressed through characters mod `L` of conductor dividing `q` (the [Bom74, Thm 7A] input)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L186-L220"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          143,
+          148
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Farc_eq"
+          },
+          "snippet": {
+            "text": "theorem Farc_eq {L : ℕ} [NeZero L] {a : ℕ → ℂ} {δ₀ R x β : ℝ} (hx : 0 < x)\n    (hqL : ∀ q ∈ Qset R, q ∣ L) (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) :\n    Farc a δ₀ R x β = ∑ Ψ : DirichletCharacter ℂ L, ‖Schar Ψ⁻¹ a β‖ ^ 2 *\n      (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * Gq (qt Ψ.conductor) ((mR δ₀ R x β : ℕ) / qt Ψ.conductor))) := by",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+            "lines": [
+              140,
+              169
+            ],
+            "conclusion": "For `L` divisible by all `q ∈ Qset R` and `a` supported coprime to `L`, `F_R(β) = Σ_{Ψ mod L} ‖S_{Ψ⁻¹}(β)‖² (c/φ(c)) κ_c G_{c̃}(m_R(β)/c̃)` with `c = cond Ψ`; proof by Bombieri's identity and `weight_sum`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L143-L148"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          35
+        ],
+        "printed": [
+          35
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.1.2 step 9, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

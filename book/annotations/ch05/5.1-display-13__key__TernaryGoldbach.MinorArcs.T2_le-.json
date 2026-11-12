@@ -1,0 +1,81 @@
+{
+  "id": "5.1 display 13",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "First line, $v=2$ only: $\\frac12\\frac{\\phi(2)}{2}\\sum g_2(m)\\log(1+1/m)=\\frac14\\int_1^{10^4}g_2/y\\approx0.360576$, proved as an upper bound over $m<10^4$ (`Ire`). The $v=1$ value and the second line ($\\sum|g_v|(5m^2+2m+1)$) are absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 101,
+        "rect": [
+          0.17135,
+          0.50048,
+          0.56816,
+          0.08958
+        ]
+      },
+      "title": "Display, p. 91",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5.1 display 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+        "module": "TernaryGoldbach.MinorArcs.T2Bound",
+        "lines": [
+          56,
+          67
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.T2_le'"
+          },
+          "snippet": {
+            "text": "  have hD : (D : ℝ) = 10 ^ 30 := DR\n  rw [hD] at hI hJ\n  have hIf : ((Ifin : ℤ) : ℝ) = 1442305043071741356929337106029717587029646414197648482569251 := by\n    norm_num [Ifin]\n  have hJf : ((Jfin : ℕ) : ℝ) = 9218553783470309560072038260070108962893361103201224033363762 := by\n    norm_num [Jfin]\n  rw [hIf] at hI\n  rw [hJf] at hJ\n  have hI' : ∫ y in (1 : ℝ)..10000, g2 y / y ≤ 1.4423050431 := by\n    have := (le_div_iff₀' (by norm_num : (0 : ℝ) < (10 ^ 30) ^ 2)).2 hI\n    refine this.trans ?_\n    norm_num",
+            "line": 56,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+            "lines": [
+              22,
+              73
+            ],
+            "conclusion": "With $D=10^{30}$ kernel data `Ifin`, gives $\\int_1^{10^4}g_2/y\\le1.4423050431$, so $\\frac14\\int\\le0.360576\\ldots$ for $v=2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Bound.lean",
+            "fragment": "L56-L67"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          101
+        ],
+        "printed": [
+          91
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

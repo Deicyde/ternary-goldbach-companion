@@ -1,0 +1,81 @@
+{
+  "id": "7 display 68",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same decomposition (major arcs $+$ $O^*$ minor arcs) with weaker constants: Lean has $1.049$ and $1.0376$ (difference $0.0114$) in place of $1.058259$, $0.97392$ ($0.08433$); stated for the real part of the weighted count `repSum`.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.20371,
+          0.09416,
+          0.63183,
+          0.16669
+        ]
+      },
+      "title": "Display, p. 70",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 68"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.repSum_lower_bound",
+        "module": "TernaryGoldbach.Helfgott.Main",
+        "lines": [
+          29,
+          51
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.repSum_lower_bound"
+          },
+          "snippet": {
+            "text": "/-- Steps 1–2: the full weighted count is at least `(1.049 - 1.0376) x²/κ`. -/\ntheorem repSum_lower_bound (N : ℕ) (hN : Odd N) (hN27 : 10 ^ 27 ≤ N) :\n    (1.049 - 1.0376) * xOf N ^ 2 / κ ≤ repSum (fun _ => True) N := by\n  set M := majorArcs 8 r₀ (xOf N)\n  obtain ⟨hint, hid⟩ := circle_identity_input N (by omega)\n  have hsplit := integral_inter_add_sdiff (measurableSet_majorArcs 8 r₀ (xOf N)) hint\n  have hmaj := major_arcs_input N hN hN27\n  have hmin := minor_arcs_input N hN27\n  -- The minor arc contribution is bounded by the integral of the norm.\n  have hnorm : ‖∫ α in Set.Ioc (0:ℝ) 1 \\ M, integrand N α‖ ≤ 1.0376 * xOf N ^ 2 / κ := by\n    refine (norm_integral_le_integral_norm _).trans (le_of_eq_of_le ?_ hmin)\n    refine setIntegral_congr_fun (measurableSet_Ioc.diff (measurableSet_majorArcs _ _ _)) ?_\n    intro α _\n    simp only [integrand, norm_mul, norm_pow, norm_e, mul_one]\n    ring\n  have hre : repSum (fun _ => True) N =\n      (∫ α in Set.Ioc (0:ℝ) 1 ∩ M, integrand N α).re +\n        (∫ α in Set.Ioc (0:ℝ) 1 \\ M, integrand N α).re := by\n    rw [← Complex.add_re, hsplit, hid, ofReal_re]\n  have := neg_le_of_abs_le ((Complex.abs_re_le_norm _).trans hnorm)\n  rw [hre]\n  simp only [κ, M] at hmaj this ⊢\n  linarith",
+            "line": 29,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.repSum_lower_bound",
+            "lines": [
+              29,
+              51
+            ],
+            "conclusion": "For odd $N\\ge10^{27}$, $(1.049-1.0376)x^2/\\kappa\\le$ `repSum (fun _ => True) N`: splits the circle integral into $\\mathfrak M_{8,r_0}$ and its complement, bounds the first below and the norm of the second above, and takes real parts."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Main.lean",
+            "fragment": "L29-L51"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

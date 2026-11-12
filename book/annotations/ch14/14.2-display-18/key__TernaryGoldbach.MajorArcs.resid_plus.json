@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 18",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "This numerical bound is for the cross-term error $E_{\\eta_*}A_{\\eta_+}+E_{\\eta_+}(\\ldots)|\\eta_*|_2$; [L] bounds the analogous error with residual bounds $7.83\\cdot10^{-13}x^2$, $1.34\\cdot10^{-11}y^2$ and `pointwise_bound` ($3.67\\cdot10^{-6}x/\\kappa$ and $8.85\\cdot10^{-7}x$ coefficients), not by this expression.",
+  "subject": [
+    {
+      "location": {
+        "page": 276,
+        "rect": [
+          0.25926,
+          0.52295,
+          0.56816,
+          0.07219
+        ]
+      },
+      "title": "Display, p. 266",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.resid_plus",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          232,
+          260
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.resid_plus"
+          },
+          "snippet": {
+            "text": "/-- **`η₊`**: `Σ_b |S_{η₊}(b/q + β) − μ(q)/φ(q) η̂₊(−βx) x|² ≤ 7.83·10⁻¹³ x²`. -/\ntheorem resid_plus {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) {β : ℝ}\n    (hβ : |β * x| ≤ 1200000 / qt q) :\n    ∑ b ∈ Bset q, ‖S etaPlus x ((b : ℝ) / q + β) - (μ q : ℂ) / q.totient * (𝓕 etaPC (-(β * x)) * x)‖ ^ 2 ≤\n      7.83e-13 * x ^ 2 := by\n  obtain ⟨hq1, hqt', hq3⟩ := mem_Qset_bounds hq\n  haveI : NeZero q := ⟨by omega⟩\n  have hx0 : 0 < x := by linarith\n  set a := coprimePart q (cP x)\n  have ha : Summable fun n => ‖a n‖ :=\n    (summable_cP hx0).of_nonneg_of_le (fun n => norm_nonneg _) (TernaryGoldbach.MinorArcs.norm_coprimePart_le q _)\n  have hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q := fun n hn => by\n    by_contra h; exact hn (by simp [a, TernaryGoldbach.MinorArcs.coprimePart, h])\n  obtain ⟨⟨-, hup⟩, hpr⟩ := arc_chars hx hq1 hqt' hβ\n  have hE : ∑ b ∈ Bset q, ‖expTsum a ((b : ℝ) / q + β) - (μ q : ℂ) / q.totient * expTsum a β‖ ^ 2 ≤\n      (4.25e-7 * x) ^ 2 := by\n    rw [sum_Bset_sq_sub_principal ha hcop]; linarith\n  have h := sum_residual_le (T := S etaPlus x) (S' := expTsum a) (m := (μ q : ℂ) / q.totient)\n    (A := 𝓕 etaPC (-(β * x)) * x) (q := q) (β := β) (D := 1e-15 * x)\n    (fun α => norm_S_sub_coprime_le hx hq1 hq3 α) (by positivity) hE hpr\n  have hφ := totient_bounds hq1 hq3\n  have hm := totient_mul_norm_sq_le hq1\n  refine h.trans ?_\n  have h1 : (q.totient : ℝ) * (1e-15 * x) ^ 2 ≤ 300000 * (1e-15 * x) ^ 2 :=\n    mul_le_mul_of_nonneg_right hφ.2 (by positivity)\n  have h2 : (q.totient : ℝ) * ‖(μ q : ℂ) / q.totient‖ ^ 2 * (2.83e-7 * x) ^ 2 ≤ (2.83e-7 * x) ^ 2 := by\n    have := mul_le_mul_of_nonneg_right hm (by positivity : (0:ℝ) ≤ (2.83e-7 * x) ^ 2)\n    linarith\n  nlinarith",
+            "line": 232,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.resid_plus",
+            "lines": [
+              232,
+              260
+            ],
+            "conclusion": "$\\sum_b|S_{\\eta_+}(b/q+\\beta)-\\mu(q)/\\phi(q)\\,\\widehat{\\eta_+}(-\\beta x)x|^2\\le7.83\\cdot10^{-13}x^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L232-L260"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          276
+        ],
+        "printed": [
+          266
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

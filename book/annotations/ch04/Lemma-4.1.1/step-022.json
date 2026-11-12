@@ -1,0 +1,192 @@
+{
+  "id": "Lemma 4.1.1 step 22",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean states the split as hypotheses over `F` (not as a display); `s = qδ₂`. Same decomposition `3A` + two families `min(A, C f_q(r'-1/2 ∓ s))`.",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17462,
+          0.6852,
+          0.56162,
+          0.04649
+        ]
+      },
+      "title": "Lemma 4.1.1 step 22: Text, p. 53",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          657,
+          660
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₂'"
+          },
+          "snippet": {
+            "text": "  have hpeel : ∑ k ∈ Finset.range K, (F k + F (q - 1 - k)) =\n      (F 0 + F (q - 1)) + (∑ k ∈ Finset.Ico 1 K, F k + ∑ k ∈ Finset.Ico 1 K, F (q - 1 - k)) := by\n    rw [Finset.range_eq_Ico, Finset.sum_eq_sum_Ico_succ_bot (by omega), Finset.sum_add_distrib]\n    simp",
+            "line": 657,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+            "lines": [
+              635,
+              725
+            ],
+            "conclusion": "Peels `F 0 + F (q-1)` (residues `0`, `-1`) from the pair sum."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L657-L660"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          662,
+          674
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₂'"
+          },
+          "snippet": {
+            "text": "  have hhigh : ∑ k ∈ Finset.Ico 1 K, F (q - 1 - k) ≤ 2 * (q / π) * √(A * C) := by\n    rw [Finset.sum_Ico_eq_sum_range]\n    refine le_trans (Finset.sum_le_sum fun i hi => ?_) (hI2 (u₁ := 3 / 2 - s) (m := K - 1)\n      (by linarith) ?_)\n    · rw [Finset.mem_range] at hi\n      have hcast : ((q - 1 - (1 + i) : ℕ) : ℝ) = q - ((i + 2 : ℕ) : ℝ) := by\n        rw [Nat.cast_sub (by omega), Nat.cast_sub (by omega)]; push_cast; ring\n      refine le_min (hFA _) ((hFC _ (by omega) (by omega)).trans (mul_le_mul_of_nonneg_left ?_ hC))\n      have := fq_high (k := i + 2) hq0 hs1 (by omega)\n        (by have : ((i + 2 : ℕ) : ℝ) ≤ K := by exact_mod_cast (by omega : i + 2 ≤ K)\n            linarith) hs0 (hτ (q - 1 - (1 + i)))\n      rw [hcast]; convert this using 2; push_cast; ring\n    · rw [Nat.cast_sub (by omega)]; push_cast; linarith",
+            "line": 662,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+            "lines": [
+              635,
+              725
+            ],
+            "conclusion": "High residues `q-1-k`, `1≤k<K`, bounded by `G(3/2 - s + i)` with `G = min(A, C f_q)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L662-L674"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          676,
+          721
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₂'"
+          },
+          "snippet": {
+            "text": "  have hlow : ∑ k ∈ Finset.Ico 1 K, F k + (if q % 2 = 1 then F K else 0) ≤\n      A + 2 * (q / π) * √(A * C) := by\n    have hI2nn : 0 ≤ 2 * (q / π) * √(A * C) := by positivity\n    rcases Nat.lt_or_ge K 2 with hK2 | hK2\n    · have hK1' : K = 1 := by omega\n      rw [hK1', Finset.Ico_self, Finset.sum_empty, zero_add]\n      split_ifs <;> linarith [hFA 1]\n    have hsplit : ∑ k ∈ Finset.Ico 1 K, F k = F 1 + ∑ i ∈ Finset.range (K - 2), F (2 + i) := by\n      rw [Finset.sum_eq_sum_Ico_succ_bot (by omega), Finset.sum_Ico_eq_sum_range]\n    have hterm : ∀ i, 2 + i ≤ K → ((2 + i : ℕ) : ℝ) + s ≤ q / 2 →\n        F (2 + i) ≤ G (3 / 2 + s + i) := by\n      intro i hiK hRs\n      refine le_min (hFA _) ((hFC _ (by omega) (by omega)).trans (mul_le_mul_of_nonneg_left ?_ hC))\n      have := fq_low hq0 hs0 (by omega : 1 ≤ 2 + i) hRs (hτ (2 + i))\n      convert this using 2; push_cast; ring\n    rw [hsplit]\n    split_ifs with ho\n    · -- `q` odd: the family runs up to `K`.\n      have hq' : (2 * K + 1 : ℝ) = q := by exact_mod_cast (by omega : 2 * K + 1 = q)\n      have hfam : ∑ i ∈ Finset.range (K - 2), F (2 + i) + F K ≤\n          ∑ i ∈ Finset.range (K - 2 + 1), G (3 / 2 + s + i) := by\n        rw [Finset.sum_range_succ]\n        refine add_le_add (Finset.sum_le_sum fun i hi => ?_) ?_\n        · rw [Finset.mem_range] at hi\n          refine hterm i (by omega) ?_\n          have : ((2 + i : ℕ) : ℝ) + 1 ≤ K := by exact_mod_cast (by omega : 2 + i + 1 ≤ K)\n          linarith\n        · have h := hterm (K - 2) (by omega) (by\n            rw [show 2 + (K - 2) = K by omega]; linarith)\n          rw [show 2 + (K - 2) = K by omega] at h\n          exact h\n      have := hI2 (u₁ := 3 / 2 + s) (m := K - 2 + 1) (by linarith)\n        (by rw [Nat.cast_add, Nat.cast_sub (by omega)]; push_cast; linarith)\n      linarith [hFA 1]\n    · -- `q` even.\n      have hq' : (2 * K : ℝ) = q := by exact_mod_cast (by omega : 2 * K = q)\n      have hfam : ∑ i ∈ Finset.range (K - 2), F (2 + i) ≤\n          ∑ i ∈ Finset.range (K - 2), G (3 / 2 + s + i) := by\n        refine Finset.sum_le_sum fun i hi => ?_\n        rw [Finset.mem_range] at hi\n        refine hterm i (by omega) ?_\n        have : ((2 + i : ℕ) : ℝ) + 1 ≤ K := by exact_mod_cast (by omega : 2 + i + 1 ≤ K)\n        linarith\n      have := hI2 (u₁ := 3 / 2 + s) (m := K - 2) (by linarith)\n        (by rw [Nat.cast_sub (by omega)]; push_cast; linarith)\n      linarith [hFA 1]",
+            "line": 676,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+            "lines": [
+              635,
+              725
+            ],
+            "conclusion": "`F 1` bounded by `A`; low residues `2..K` bounded by `G(3/2+s+i)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L676-L721"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          722,
+          725
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₂'"
+          },
+          "snippet": {
+            "text": "  rw [hpeel]\n  have h4 : 4 * (q : ℝ) / π * √(A * C) = 2 * (2 * (q / π) * √(A * C)) := by ring\n  rw [h4]\n  linarith [hFA 0, hFA (q - 1)]",
+            "line": 722,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+            "lines": [
+              635,
+              725
+            ],
+            "conclusion": "Assembles the three `A`-terms and the two sums."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L722-L725"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

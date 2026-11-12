@@ -1,0 +1,80 @@
+{
+  "id": "2.3 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 42,
+        "rect": [
+          0.25926,
+          0.68524,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Display, p. 32",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2.3 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.fourier",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          49,
+          50
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.fourier"
+          },
+          "snippet": {
+            "text": "/-- The Fourier transform `f̂(t) = ∫ e(-xt) f(x) dx` [H, §2.3]. -/\nnoncomputable def fourier (f : ℝ → ℝ) (t : ℝ) : ℂ := ∫ x, e (-(x * t)) * f x",
+            "line": 49,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.fourier",
+            "lines": [
+              49,
+              50
+            ],
+            "conclusion": "Defines `fourier f t = ∫ e(-(x t)) f(x) dx` for real-valued `f`, the book's `f̂(t)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L49-L50"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          42
+        ],
+        "printed": [
+          32
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

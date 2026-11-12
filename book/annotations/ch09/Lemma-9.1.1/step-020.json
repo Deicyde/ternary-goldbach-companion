@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.1.1 step 20",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not shift the line integral directly; it uses a rectangle identity and lets the height T_k tend to infinity, with the Re s=3/2 line in place of Re s=2 and the residue at 0 absorbed into the zero sum.",
+  "subject": [
+    {
+      "location": {
+        "page": 176,
+        "rect": [
+          0.26253,
+          0.45881,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma 9.1.1 step 20: Text, p. 166",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.rect_identity",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          305,
+          345
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.rect_identity"
+          },
+          "snippet": {
+            "text": "/-- **Part B**: the residue theorem on `[−1/2, 3/2] × [−T, T]`, if `L` has no zeros on the horizontal\nsides. -/\ntheorem rect_identity {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {x : ℝ} (hx : 0 < x) {T : ℝ}\n    (hT : 0 < T)\n    (hbot : ∀ σ ∈ [[(-1 / 2 : ℝ), 3 / 2]], χ.LFunction ((σ : ℂ) + ((-T : ℝ) : ℂ) * I) ≠ 0)\n    (htop : ∀ σ ∈ [[(-1 / 2 : ℝ), 3 / 2]], χ.LFunction ((σ : ℂ) + ((T : ℝ) : ℂ) * I) ≠ 0) :\n    rectInt (fun s => logDeriv χ.LFunction s * (mellin φ s * (x : ℂ) ^ s)) (zT T) (wT T) =\n      2 * π * I * ∑ u ∈ zerosRect χ T, (multRect χ T u : ℂ) * (mellin φ u * (x : ℂ) ^ u) := by\n  have hf : Differentiable ℂ χ.LFunction := DirichletCharacter.differentiable_LFunction hχ1\n  have hf2 : χ.LFunction 2 ≠ 0 :=\n    DirichletCharacter.LFunction_ne_zero_of_one_le_re χ (Or.inl hχ1) (by norm_num)\n  have hR : 0 < RT T := by unfold RT; linarith\n  have hrect : [[(zT T).re, (wT T).re]] ×ℂ [[(zT T).im, (wT T).im]] ⊆ Metric.ball 2 (RT T / 2) := by\n    intro s hs\n    rw [mem_reProdIm, zT_re, wT_re, zT_im, wT_im, Set.uIcc_of_le (by norm_num),\n      Set.uIcc_of_le (by linarith)] at hs\n    rw [Metric.mem_ball, dist_eq_norm, RT]\n    refine lt_of_le_of_lt (Complex.norm_le_abs_re_add_abs_im _) ?_\n    simp only [Complex.sub_re, Complex.sub_im, Complex.re_ofNat, Complex.im_ofNat, sub_zero]\n    have h1 : |s.re - 2| ≤ 5 / 2 := by rw [abs_le]; constructor <;> linarith [hs.1.1, hs.1.2]\n    have h2 : |s.im| ≤ T := by rw [abs_le]; constructor <;> linarith [hs.2.1, hs.2.2]\n    linarith\n  have hbd : NoZerosOnSides χ.LFunction (zT T) (wT T) := by\n    refine ⟨fun σ hσ => ?_, fun σ hσ => ?_, fun y _ => ?_, fun y _ => ?_⟩\n    · rw [zT_re, wT_re] at hσ; simpa using hbot σ hσ\n    · rw [zT_re, wT_re] at hσ; simpa using htop σ hσ\n    · exact DirichletCharacter.LFunction_ne_zero_of_one_le_re χ (Or.inl hχ1) (by simp; norm_num)\n    · exact LFunction_ne_zero_strip hχ hχ1 (by simp; norm_num) (by simp; norm_num)\n  set U : Set ℂ := {s | -1 < s.re} with hU\n  have hUo : IsOpen U := isOpen_lt continuous_const Complex.continuous_re\n  have hsubU : [[(zT T).re, (wT T).re]] ×ℂ [[(zT T).im, (wT T).im]] ⊆ U := by\n    intro s hs\n    rw [mem_reProdIm, zT_re, wT_re, Set.uIcc_of_le (by norm_num)] at hs\n    show -1 < s.re; linarith [hs.1.1]\n  have hh : DifferentiableOn ℂ (fun s => mellin φ s * (x : ℂ) ^ s) U := by\n    intro s hs\n    have hx0 : (x : ℂ) ≠ 0 := by exact_mod_cast hx.ne'\n    exact ((hφ.diff s hs).mul\n      (differentiableAt_id.const_cpow (Or.inl hx0))).differentiableWithinAt\n  exact rectInt_logDeriv_mul hf hR hf2 (by simp; norm_num) (by simp; linarith) hrect hbd hUo hsubU hh",
+            "line": 305,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.rect_identity",
+            "lines": [
+              305,
+              345
+            ],
+            "conclusion": "Rectangle identity: contour integral of hIntG around the rectangle equals 2 pi i times the sum of multiplicity-weighted residues at zerosRect."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L305-L345"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.explicit_formula_gen",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          984,
+          1093
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.explicit_formula_gen"
+          },
+          "snippet": {
+            "text": "/-- **The explicit formula** ([H, Lemma 9.1.1] for `η(t) = t² e^{−t²/2}`, `χ` primitive, `χ ≠ 1`):\nalong heights `T_k ∈ [k+1, k+2]`,\n`Σ_{ρ ∈ (−1/2, 3/2) × (−T_k, T_k)} m_ρ G_δ(ρ) x^ρ → −S − (1/2π) ∫ (L'/L)(−1/2+iy) G_δ(−1/2+iy) x^{−1/2+iy} dy`,\nwhere `S = Σ Λ(n) χ(n) e(δn/x) η(n/x)`. (The sum includes the trivial zero `s = 0` when `χ` is even.) -/\ntheorem explicit_formula_gen {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {x : ℝ} (hx : 0 < x) :\n    ∃ T : ℕ → ℝ, (∀ k : ℕ, T k ∈ Icc ((k : ℝ) + 1) ((k : ℝ) + 2)) ∧\n      Tendsto (fun k => ∑ u ∈ zerosRect χ (T k), (multRect χ (T k) u : ℂ) * (mellin φ u * (x : ℂ) ^ u))\n        atTop (𝓝 (-SsumG χ φ x - (1 / (2 * π) : ℂ) *\n          ∫ y : ℝ, hIntG χ φ x (((-1 / 2 : ℝ) : ℂ) + y * I))) := by\n  choose T hT hgood using fun k : ℕ => good_height hχ hχ1 (k + 1)\n  have hT' : ∀ k : ℕ, T k ∈ Icc ((k : ℝ) + 1) ((k : ℝ) + 2) := fun k => by\n    have := hT k; push_cast at this; constructor <;> linarith [this.1, this.2]\n  refine ⟨T, hT', ?_⟩\n  have hTpos : ∀ k, 0 < T k := fun k => by linarith [(hT' k).1, (Nat.cast_nonneg k : (0:ℝ) ≤ k)]\n  set Rinf := ∫ y : ℝ, hIntG χ φ x (((3 / 2 : ℝ) : ℂ) + y * I) with hRinf\n  set Linf := ∫ y : ℝ, hIntG χ φ x (((-1 / 2 : ℝ) : ℂ) + y * I) with hLinf\n  set Sk := fun k => ∑ u ∈ zerosRect χ (T k), (multRect χ (T k) u : ℂ) * (mellin φ u * (x : ℂ) ^ u)\n  set Bot := fun k => ∫ σ in (-1 / 2 : ℝ)..(3 / 2 : ℝ), hIntG χ φ x ((σ : ℂ) + ((-T k : ℝ) : ℂ) * I)\n  set Top := fun k => ∫ σ in (-1 / 2 : ℝ)..(3 / 2 : ℝ), hIntG χ φ x ((σ : ℂ) + ((T k : ℝ) : ℂ) * I)\n  set Right := fun k => ∫ y in (-T k)..(T k), hIntG χ φ x (((3 / 2 : ℝ) : ℂ) + y * I)\n  set Left := fun k => ∫ y in (-T k)..(T k), hIntG χ φ x (((-1 / 2 : ℝ) : ℂ) + y * I)\n  -- the rectangle identity, expanded\n  have hrect : ∀ k, Bot k - Top k + I * Right k - I * Left k = 2 * π * I * Sk k := by\n    intro k\n    have h := rect_identity hχ hχ1 hφ hx (hTpos k) (fun σ hσ => ((hgood k σ hσ).1).2)\n      (fun σ hσ => ((hgood k σ hσ).1).1)\n    rw [← h]\n    unfold rectInt\n    simp only [zT_re, zT_im, wT_re, wT_im, smul_eq_mul]\n    rfl\n  -- the horizontal sides\n  have hside : ∀ k, ∀ S : ℝ, (S = T k ∨ S = -T k) →\n      ‖∫ σ in (-1 / 2 : ℝ)..(3 / 2 : ℝ), hIntG χ φ x ((σ : ℂ) + (S : ℂ) * I)‖ ≤\n        Hk N (k + 1) * Real.exp (-(c * ((k + 1 : ℕ) : ℝ))) * (K * (x ^ (3 / 2 : ℝ) + x ^ (-1 / 2 : ℝ))) *\n          |(3 / 2 : ℝ) - (-1 / 2)| := by\n    intro k S hS\n    refine intervalIntegral.norm_integral_le_of_norm_le_const fun σ hσ => ?_\n    have hσ' : σ ∈ [[(-1 / 2 : ℝ), 3 / 2]] := Set.uIoc_subset_uIcc hσ\n    have hσ2 : -1 / 2 ≤ σ ∧ σ ≤ 3 / 2 := by\n      rw [Set.uIcc_of_le (by norm_num)] at hσ'; exact hσ'\n    have hb : ‖logDeriv χ.LFunction ((σ : ℂ) + (S : ℂ) * I)‖ ≤ Hk N (k + 1) := by\n      rcases hS with rfl | rfl\n      · exact ((hgood k σ hσ').2).1\n      · exact ((hgood k σ hσ').2).2\n    have hS' : |S| = T k := by\n      rcases hS with rfl | rfl\n      · exact abs_of_pos (hTpos k)\n      · rw [abs_neg]; exact abs_of_pos (hTpos k)\n    have hG := hφ.strip ((σ : ℂ) + (S : ℂ) * I) (by simp; linarith) (by simp; linarith)\n    have him : ((σ : ℂ) + (S : ℂ) * I).im = S := by simp\n    have hre : ((σ : ℂ) + (S : ℂ) * I).re = σ := by simp\n    rw [him, hS'] at hG\n    have hexp : Real.exp (-(c * T k)) ≤ Real.exp (-(c * ((k + 1 : ℕ) : ℝ))) := by\n      refine Real.exp_le_exp.2 ?_\n      have := (hT' k).1; push_cast; nlinarith [hφ.c_pos]\n    have hK : 0 ≤ K := hφ.K_nonneg\n    have hxσ := rpow_le_of_mem hx hσ2.1 hσ2.2\n    have hHk0 : 0 ≤ Hk N (k + 1) := le_trans (norm_nonneg _) hb\n    rw [hIntG, norm_mul, norm_mul, norm_cpow_x hx, hre]\n    calc ‖logDeriv χ.LFunction ((σ : ℂ) + (S : ℂ) * I)‖ *\n          (‖mellin φ ((σ : ℂ) + (S : ℂ) * I)‖ * x ^ σ)\n        ≤ Hk N (k + 1) * (K * Real.exp (-(c * ((k + 1 : ℕ) : ℝ))) *\n          (x ^ (3 / 2 : ℝ) + x ^ (-1 / 2 : ℝ))) := by\n          gcongr\n          exact hG.trans (mul_le_mul_of_nonneg_left hexp hK)\n      _ = _ := by ring\n  have hdecay : Tendsto (fun k : ℕ => Hk N (k + 1) * Real.exp (-(c * ((k + 1 : ℕ) : ℝ))) *\n      (K * (x ^ (3 / 2 : ℝ) + x ^ (-1 / 2 : ℝ))) * |(3 / 2 : ℝ) - (-1 / 2)|) atTop (𝓝 0) := by\n    have h := ((tendsto_Hk_exp N hφ.c_pos).comp (tendsto_add_atTop_nat 1)).mul_const\n      (K * (x ^ (3 / 2 : ℝ) + x ^ (-1 / 2 : ℝ)))\n    rw [zero_mul] at h\n    have h2 := h.mul_const |(3 / 2 : ℝ) - (-1 / 2)|\n    rw [zero_mul] at h2\n    exact h2\n  have hBot : Tendsto Bot atTop (𝓝 0) := by\n    rw [tendsto_zero_iff_norm_tendsto_zero]\n    exact squeeze_zero (fun _ => norm_nonneg _) (fun k => hside k (-T k) (Or.inr rfl)) hdecay\n  have hTop : Tendsto Top atTop (𝓝 0) := by\n    rw [tendsto_zero_iff_norm_tendsto_zero]\n    exact squeeze_zero (fun _ => norm_nonneg _) (fun k => hside k (T k) (Or.inl rfl)) hdecay\n  have hTtop : Tendsto T atTop atTop :=\n    tendsto_atTop_mono (fun k => (hT' k).1) (tendsto_natCast_atTop_atTop.atTop_add tendsto_const_nhds)\n  have hRight : Tendsto Right atTop (𝓝 Rinf) :=\n    intervalIntegral_tendsto_integral (integrable_hInt_right hχ1 hφ hx)\n      (tendsto_neg_atTop_atBot.comp hTtop) hTtop\n  have hLeft : Tendsto Left atTop (𝓝 Linf) :=\n    intervalIntegral_tendsto_integral (integrable_hInt_left hχ hχ1 hφ hx)\n      (tendsto_neg_atTop_atBot.comp hTtop) hTtop\n  -- `R∞ = −2π S`\n  have hR : Rinf = -(2 * π * SsumG χ φ x) := by\n    rw [hRinf, SsumG_eq_line χ hφ hx]\n    have : (fun y : ℝ => hIntG χ φ x (((3 / 2 : ℝ) : ℂ) + y * I)) =\n        fun y : ℝ => -Fline χ φ x (((3 / 2 : ℝ) : ℂ) + y * I) := funext fun y => hIntG_eq_neg_Fline χ φ x _\n    rw [this, integral_neg]\n    have hπ : (π : ℂ) ≠ 0 := by exact_mod_cast Real.pi_ne_zero\n    rw [← mul_assoc, show (2 * (π : ℂ)) * (1 / (2 * π)) = 1 by field_simp, one_mul]\n  have hSk : ∀ k, Sk k = (Bot k - Top k + I * Right k - I * Left k) / (2 * π * I) := by\n    intro k\n    have hne : (2 * π * I : ℂ) ≠ 0 := by\n      refine mul_ne_zero (mul_ne_zero two_ne_zero (by exact_mod_cast Real.pi_ne_zero)) I_ne_zero\n    rw [hrect k]; field_simp\n  have hlim := ((((hBot.sub hTop).add (hRight.const_mul I)).sub (hLeft.const_mul I)).div_const\n    (2 * π * I))\n  rw [show Sk = fun k => (Bot k - Top k + I * Right k - I * Left k) / (2 * π * I) from funext hSk]\n  convert hlim using 2\n  rw [hR]\n  have hπ : (π : ℂ) ≠ 0 := by exact_mod_cast Real.pi_ne_zero\n  field_simp\n  ring",
+            "line": 984,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.explicit_formula_gen",
+            "lines": [
+              984,
+              1093
+            ],
+            "conclusion": "Rectangle zero sums over zerosRect (including s=0 for even chi) tend to -S minus (1/2pi) times the integral on Re s=-1/2; there is no separate residue term R."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L984-L1093"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          176
+        ],
+        "printed": [
+          166
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

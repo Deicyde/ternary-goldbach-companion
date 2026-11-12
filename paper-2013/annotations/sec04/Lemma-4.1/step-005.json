@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The step concludes $|v|_2|w|_2=\\langle v,w\\rangle+O^*(2.71|w-v|_2^2)$ by multiplying the Taylor estimate by $|v|_2^2$; [L] reaches the same comparison of $\\langle v,w\\rangle$ with $|v|_2|w|_2$ for the case used ($|w|_2=|v|_2$) by exact polarization, with constant ½ and no multiplication step.",
+  "subject": [
+    {
+      "location": {
+        "page": 24,
+        "rect": [
+          0.20698,
+          0.3058,
+          0.62529,
+          0.02267
+        ]
+      },
+      "title": "Lemma 4.1 step 5: Text, p. 24",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
+        "module": "TernaryGoldbach.MajorArcs.CMain",
+        "lines": [
+          152,
+          161
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.conv2_ge"
+          },
+          "snippet": {
+            "text": "  have hpt : ∀ t, etaO t * etaO (ρ - t) =\n      (etaO t ^ 2 + etaO (t + s) ^ 2 - (etaO (t + s) - etaO t) ^ 2) / 2 := fun t => by\n    rw [hsym]; ring\n  have heq : conv2 ρ = (∫ t, etaO t ^ 2) - (1 / 2) * ∫ t, (etaO (t + s) - etaO t) ^ 2 := by\n    unfold conv2\n    simp_rw [hpt]\n    have h1 : Integrable fun t => etaO t ^ 2 + etaO (t + s) ^ 2 := integrable_etaO_sq.add hshift\n    rw [integral_div, integral_sub h1 hdiff, integral_add integrable_etaO_sq hshift,\n      integral_add_right_eq_self (fun t => etaO t ^ 2) s]\n    ring",
+            "line": 152,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
+            "lines": [
+              138,
+              164
+            ],
+            "conclusion": "Exact polarization $\\eta_\\circ(t)\\eta_\\circ(\\rho-t)=\\tfrac12(\\eta_\\circ(t)^2+\\eta_\\circ(t+s)^2-(\\eta_\\circ(t+s)-\\eta_\\circ(t))^2)$ integrated with translation invariance gives `conv2 ρ = ‖η◦‖₂² − ½∫(η◦(t+s)−η◦(t))²`, i.e. $\\langle v,w\\rangle=|v|_2|w|_2-\\tfrac12|v-w|_2^2$ for $|w|_2=|v|_2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
+            "fragment": "L152-L161"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          24
+        ],
+        "printed": [
+          24
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 11.1.1 step 5, the same LaTeX (mapper (sonnet); verifier (sonnet); absence audit (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

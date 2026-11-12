@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 25",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean states the S2 bound with logSqSum and applies logSqSum_le_half (V >= 2e6 instead of V > 117) separately; the second line is the rearrangement P1+P2+P3 in pointwise_53 (max(1/2,rho) = r/2).",
+  "subject": [
+    {
+      "location": {
+        "page": 119,
+        "rect": [
+          0.17135,
+          0.44085,
+          0.56816,
+          0.07009
+        ]
+      },
+      "title": "Display, p. 109",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2_le_53",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          513,
+          525
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2_le_53"
+          },
+          "snippet": {
+            "text": "theorem S2_le_53 {α x Q ρ : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) (hρ : 0 < ρ) (hρ1 : ρ ≤ 1) (hqρ : (q : ℝ) ≤ ρ * Q)\n    (hx : 0 < x) {U V : ℕ} {W : ℝ} (hV : 0 < (V : ℝ)) (hVW : (V : ℝ) ≤ W) :\n    S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (2 * (max 1 (2 * ρ) * x ^ 2 / (16 * q) + q * x) / x + max 1 (2 * ρ) * x / (2 * W) + W / 2) *\n        logSqSum (max V (W / 2)) W := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hW : 0 < W := by linarith\n  have h := prop_5_2_4_a hq hcop hα hρ hρ1 hqρ hx hW (le_max_right _ _) (max_le hVW (by linarith))\n    (le_max_right _ _) (U' := max (U : ℝ) (x / (2 * W)))\n  refine h.trans (le_of_eq ?_)\n  congr 1\n  field_simp; ring",
+            "line": 513,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.S2_le_53",
+            "lines": [
+              512,
+              525
+            ],
+            "conclusion": "For q <= rho*Q, S2 with W' = max V (W/2), U' = max U (x/2W) is at most (2M/x + r x/(2W) + W/2) times logSqSum, with M = r x^2/(16 q) + q x and r = max 1 (2 rho), i.e. (r(x/8q + x/2W) + W/2 + 2q) times logSqSum."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L513-L525"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          119
+        ],
+        "printed": [
+          109
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

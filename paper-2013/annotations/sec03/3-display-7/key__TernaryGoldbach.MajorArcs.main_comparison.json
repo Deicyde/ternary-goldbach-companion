@@ -1,0 +1,81 @@
+{
+  "id": "3 display 7",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same chain (sup bound on eta_*, Plancherel for the L2 differences) but [L] uses AM-GM (2360|P-O|^2+|P+O|^2/9440) instead of Cauchy-Schwarz, numeric constants for |eta_*|_1 and eps_0, and has no sum over q (no 2.82643 factor).",
+  "subject": [
+    {
+      "location": {
+        "page": 14,
+        "rect": [
+          0.20371,
+          0.80823,
+          0.63183,
+          0.09046
+        ]
+      },
+      "title": "Display, p. 14",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.main_comparison",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          674,
+          693
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.main_comparison"
+          },
+          "snippet": {
+            "text": "  have hAM : ∀ β, ‖G β - F β‖ ≤\n      0.02558 * x * (2360 * ‖P β - O β‖ ^ 2 + 1 / 9440 * ‖P β + O β‖ ^ 2) := by\n    intro β\n    have e1 : G β - F β = (P β - O β) * (P β + O β) * Sx β * E β := by simp only [hG, hF]; ring\n    rw [e1, norm_mul, norm_mul, norm_mul, hEn, mul_one]\n    have h1 : ‖P β - O β‖ * ‖P β + O β‖ ≤ 2360 * ‖P β - O β‖ ^ 2 + 1 / 9440 * ‖P β + O β‖ ^ 2 := by\n      nlinarith [sq_nonneg (4720 * ‖P β - O β‖ - ‖P β + O β‖)]\n    calc ‖P β - O β‖ * ‖P β + O β‖ * ‖Sx β‖ ≤\n          (2360 * ‖P β - O β‖ ^ 2 + 1 / 9440 * ‖P β + O β‖ ^ 2) * (0.02558 * x) :=\n          mul_le_mul h1 (hSn β) (norm_nonneg _) (by positivity)\n      _ = _ := by ring\n  have hgi : Integrable fun β => 0.02558 * x * (2360 * ‖P β - O β‖ ^ 2 + 1 / 9440 * ‖P β + O β‖ ^ 2) :=\n    ((iPm.const_mul 2360).add (iPp.const_mul (1 / 9440))).const_mul _\n  have hI1 : ‖∫ β in Ioc (-w) w, (G β - F β)‖ ≤ 1.3886e-5 * x ^ 2 := by\n    refine (norm_integral_le_of_norm_le hgi.integrableOn (Filter.Eventually.of_forall hAM)).trans ?_\n    refine (setIntegral_le_integral hgi (Filter.Eventually.of_forall fun β => by\n      simp only [Pi.zero_apply]; positivity)).trans ?_\n    rw [integral_const_mul, integral_add (iPm.const_mul 2360) (iPp.const_mul (1 / 9440)),\n      integral_const_mul, integral_const_mul]\n    nlinarith [mul_le_mul_of_nonneg_left hIPm hx.le, mul_le_mul_of_nonneg_left hIPp hx.le]",
+            "line": 674,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.main_comparison",
+            "lines": [
+              559,
+              712
+            ],
+            "conclusion": "Pointwise $|G-F|=|P-O||P+O||S_*|\\le 0.02558x(2360|P-O|^2+|P+O|^2/9440)$ and its integral $\\le1.3886\\cdot10^{-5}x^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L674-L693"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          14
+        ],
+        "printed": [
+          14
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.2 display 3, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

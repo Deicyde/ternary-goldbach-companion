@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.2 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Introduces the expansion of `∑ μ(r)/σ(r)`; Lean carries it as `S_d(M)=∑ H_d(a) m(M/a)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 95,
+        "rect": [
+          0.17462,
+          0.5633,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.1.2 step 3: Text, p. 85",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Sd_eq",
+        "module": "TernaryGoldbach.MinorArcs.G2Moebius",
+        "lines": [
+          181,
+          186
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Sd_eq"
+          },
+          "snippet": {
+            "text": "/-- **`S_d(M) = ∑_{a ≤ M} H_d(a) m(M/a)`**, `m(K) = ∑_{b ≤ K} μ(b)/b`. -/\ntheorem Sd_eq (d M : ℕ) :\n    Sd d M = ∑ a ∈ Icc 1 M, Hd d a * ∑ b ∈ Icc 1 (M / a), (μ b : ℝ) / b := by\n  have h := sum_Ioc_mul_eq_sum_sum (Hd d) Mu M\n  rw [Hd_mul_Mu] at h\n  exact h",
+            "line": 181,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Sd_eq",
+            "lines": [
+              181,
+              186
+            ],
+            "conclusion": "`S_d(M)=∑_{a≤M} H_d(a) m(M/a)` with `H_d=F_d∗(1/id)` multiplicative, `m(K)=∑_{b≤K}μ(b)/b`, `S_d(M)=∑_{r≤M,(r,d)=1} f(r)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Moebius.lean",
+            "fragment": "L181-L186"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          95
+        ],
+        "printed": [
+          85
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

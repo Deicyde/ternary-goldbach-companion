@@ -1,0 +1,81 @@
+{
+  "id": "A.3 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "[L] proves the identity for any `φ` with `PlancherelData` and is instantiated at `φ = η₊(t)e(δt)` (any δ), with dt/2π in place of ds/2πi on Re s = 1/2.",
+  "subject": [
+    {
+      "location": {
+        "page": 295,
+        "rect": [
+          0.17135,
+          0.37912,
+          0.56816,
+          0.04252
+        ]
+      },
+      "title": "Display, p. 285",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.3 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.mellin_half_eq",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherelGen",
+        "lines": [
+          62,
+          67
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.mellin_half_eq"
+          },
+          "snippet": {
+            "text": "theorem mellin_half_eq (φ : ℝ → ℂ) (t : ℝ) :\n    mellin φ (((1 / 2 : ℝ) : ℂ) + t * I) = flineG φ t := by\n  rw [mellin_eq_fourier, flineG]\n  simp only [add_re, ofReal_re, mul_re, I_re, mul_zero, ofReal_im, I_im, mul_one, sub_self, add_zero,\n    add_im, mul_im, zero_add]\n  rfl",
+            "line": 62,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.mellin_half_eq",
+            "lines": [
+              62,
+              67
+            ],
+            "conclusion": "`mellin φ (1/2 + it) = flineG φ t`: F(t) = Mφ(1/2+it)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherelGen.lean",
+            "fragment": "L62-L67"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          295
+        ],
+        "printed": [
+          285
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

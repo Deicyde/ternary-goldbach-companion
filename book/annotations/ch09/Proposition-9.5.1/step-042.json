@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 42",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean replaces Lemma garmola (integral of $f$ against the zero density) with counts per window of height 4.4 summed against a geometric decay $\\rho^k$; the Mellin transform is that of $\\eta_+^2$, not $\\eta_{+,2}$.",
+  "subject": [
+    {
+      "location": {
+        "page": 202,
+        "rect": [
+          0.26253,
+          0.41324,
+          0.56162,
+          0.01519
+        ]
+      },
+      "title": "Proposition 9.5.1 step 42: Text, p. 192",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.count_tail_windowG",
+        "module": "TernaryGoldbach.Explicit.ZeroSumGen",
+        "lines": [
+          121,
+          188
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.count_tail_windowG"
+          },
+          "snippet": {
+            "text": "theorem count_tail_windowG (hp : PolyDatum f B κ) {T T0 : ℝ} (hT0 : 0 < T0) (S : Finset ℂ)\n    (hS : S ⊆ zerosRectD f T) (hre : ∀ u ∈ S, 0 < u.re ∧ u.re < 1) (him : ∀ u ∈ S, T0 < |u.im|)\n    (k : ℕ) :\n    ∑ u ∈ S.filter (fun u => ⌊(|u.im| - T0) / 4.4⌋₊ = k), (multRectD f T u : ℝ) ≤\n      2 * Z3g B T0 + 2 * c3g κ T0 * (k + 1) := by\n  set F := S.filter (fun u => ⌊(|u.im| - T0) / 4.4⌋₊ = k) with hF\n  set c := T0 + ((k : ℝ) + 1 / 2) * 4.4 with hc\n  have hL3 := log_ratio_pos (r := 3) (by norm_num) (by norm_num)\n  have hpos : ∀ u ∈ F, (k : ℝ) * 4.4 ≤ |u.im| - T0 ∧ |u.im| - T0 < ((k : ℝ) + 1) * 4.4 := by\n    intro u hu\n    obtain ⟨huS, hk⟩ := Finset.mem_filter.1 hu\n    have h0 : 0 ≤ (|u.im| - T0) / 4.4 := div_nonneg (by linarith [him u huS]) (by norm_num)\n    have h1 := Nat.floor_le h0\n    have h2 := Nat.lt_floor_add_one ((|u.im| - T0) / 4.4)\n    rw [hk] at h1 h2\n    constructor\n    · rwa [le_div_iff₀ (by norm_num)] at h1\n    · rwa [div_lt_iff₀ (by norm_num)] at h2\n  have hcount : ∀ (F' : Finset ℂ), F' ⊆ F → ∀ c' : ℝ, |c'| = c →\n      (∀ u ∈ F', ‖u - (2 + c' * I)‖ ≤ 3) →\n        ∑ u ∈ F', (multRectD f T u : ℝ) ≤ Z3g B T0 + c3g κ T0 * (k + 1) := by\n    intro F' hF' c' hc' hball\n    have h1 := sum_multRectD_le hp F' ((hF'.trans (Finset.filter_subset _ _)).trans hS) c'\n      (r := 3) (by norm_num) (by norm_num) hball\n    have h2 : Real.log (B c' / 0.355) ≤ Real.log (B T0 / 0.355) + κ * (((k : ℝ) + 1 / 2) * 4.4) / T0 := by\n      have e : Real.log (B c' / 0.355) ≤ Real.log (B (T0 + ((k : ℝ) + 1 / 2) * 4.4) / 0.355) := by\n        apply hp.log_mono\n        rw [hc', hc, abs_of_pos (by positivity : (0:ℝ) < T0 + ((k : ℝ) + 1 / 2) * 4.4)]\n      exact e.trans (hp.growth T0 _ hT0 (by positivity))\n    have h3 : κ * (((k : ℝ) + 1 / 2) * 4.4) / T0 ≤ κ * 4.4 / T0 * (k + 1) := by\n      rw [div_mul_eq_mul_div, div_le_div_iff_of_pos_right hT0]\n      have := hp.κ_nonneg\n      nlinarith\n    refine h1.trans ?_\n    unfold Z3g c3g\n    rw [div_add' _ _ _ hL3.ne', div_le_div_iff_of_pos_right hL3]\n    rw [show κ * 4.4 / T0 / Real.log (10 / 3) * ((k : ℝ) + 1) * Real.log (10 / 3) =\n      κ * 4.4 / T0 * (k + 1) by field_simp]\n    linarith\n  rw [← Finset.sum_filter_add_sum_filter_not F (fun u => 0 < u.im)]\n  have hp' := hcount (F.filter fun u => 0 < u.im) (Finset.filter_subset _ _) c\n    (abs_of_pos (by positivity)) (fun u hu => by\n      obtain ⟨huF, him0⟩ := Finset.mem_filter.1 hu\n      obtain ⟨hp1, hp2⟩ := hpos u huF\n      obtain ⟨hr1, hr2⟩ := hre u (Finset.mem_filter.1 huF).1\n      rw [abs_of_pos him0] at hp1 hp2\n      refine norm_le_of_re_im (a := 2) (b := 2.2) (by norm_num) ?_ ?_ (by norm_num)\n      · simp only [Complex.sub_re, Complex.add_re, Complex.re_ofNat, Complex.mul_re, Complex.ofReal_re,\n          Complex.I_re, mul_zero, Complex.ofReal_im, Complex.I_im, mul_one, sub_zero]\n        rw [abs_le]; constructor <;> linarith\n      · simp only [Complex.sub_im, Complex.add_im, Complex.im_ofNat, Complex.mul_im, Complex.ofReal_re,\n          Complex.I_re, mul_zero, Complex.ofReal_im, Complex.I_im, mul_one, zero_add]\n        rw [abs_le]; constructor <;> linarith)\n  have hn := hcount (F.filter fun u => ¬ 0 < u.im) (Finset.filter_subset _ _) (-c)\n    (by rw [abs_neg, abs_of_pos (by positivity)]) (fun u hu => by\n      obtain ⟨huF, him0⟩ := Finset.mem_filter.1 hu\n      obtain ⟨hp1, hp2⟩ := hpos u huF\n      obtain ⟨hr1, hr2⟩ := hre u (Finset.mem_filter.1 huF).1\n      push Not at him0\n      rw [abs_of_nonpos him0] at hp1 hp2\n      refine norm_le_of_re_im (a := 2) (b := 2.2) (by norm_num) ?_ ?_ (by norm_num)\n      · simp only [Complex.sub_re, Complex.add_re, Complex.re_ofNat, Complex.mul_re, Complex.ofReal_re,\n          Complex.I_re, mul_zero, Complex.ofReal_im, Complex.I_im, mul_one, sub_zero]\n        rw [abs_le]; constructor <;> linarith\n      · simp only [Complex.sub_im, Complex.add_im, Complex.im_ofNat, Complex.mul_im, Complex.ofReal_re,\n          Complex.I_re, mul_zero, Complex.ofReal_im, Complex.I_im, mul_one, zero_add]\n        rw [abs_le]; constructor <;> linarith)\n  linarith",
+            "line": 121,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.count_tail_windowG",
+            "lines": [
+              121,
+              188
+            ],
+            "conclusion": "Counts zeros (with multiplicity) in the $k$-th window of height 4.4 above $T_0$ by $2Z_3+2c_3(k+1)$, the zero-counting input replacing Lemma garmola's density integral."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumGen.lean",
+            "fragment": "L121-L188"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_boundG",
+        "module": "TernaryGoldbach.Explicit.ZeroSumGen",
+        "lines": [
+          309,
+          321
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_boundG"
+          },
+          "snippet": {
+            "text": "    rw [Finset.sum_add_distrib]\n    have hZw : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => idx u = k), m u ≤ 2 * Z3g B T0 + 2 * c3g κ T0 * (k + 1) :=\n      fun k => count_tail_windowG hp hT00 S hSZ hre him k\n    have hZ3 : 0 ≤ Z3g B T0 :=\n      div_nonneg (hp.log_pos _).le (log_ratio_pos (by norm_num) (by norm_num)).le\n    have hc3 : 0 ≤ c3g κ T0 :=\n      div_nonneg (div_nonneg (mul_nonneg hp.κ_nonneg (by norm_num)) hT00.le)\n        (log_ratio_pos (by norm_num) (by norm_num)).le\n    have g1 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3g B T0) (c := 2 * c3g κ T0)\n      (E := EB') (ρ := ρB) (by linarith) (by linarith) hEB hρB0 hρB1 (fun k => by\n        have := hZw k; linarith)\n    have g2 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3g B T0) (c := 2 * c3g κ T0)\n      (E := EA') (ρ := ρA) (by linarith) (by linarith) hEA hρA0 hρA1 (fun k => by",
+            "line": 309,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_boundG",
+            "lines": [
+              199,
+              325
+            ],
+            "conclusion": "For zeros with $|\\Im u|>T_0$, the window counts `count_tail_windowG` and `sum_geom_windows` bound $\\sum m_u(E_B\\rho_B^{k(u)}+E_A\\rho_A^{k(u)})$ by the geometric-series term `E2g`, in place of integrating $f(T)$ against the zero density."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumGen.lean",
+            "fragment": "L309-L321"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          202
+        ],
+        "printed": [
+          192
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

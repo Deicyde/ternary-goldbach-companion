@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.1.1 step 6",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Index shifted by one (Lean `k` = book `k-1`) and shift `s = qδ₂`; Lean's majorization form `b+c=a+d` replaces the book's bare 'convex-up'.",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.26253,
+          0.57995,
+          0.56162,
+          0.03792
+        ]
+      },
+      "title": "Lemma 4.1.1 step 6: Display, p. 52",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.convexOn_fq",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          209,
+          218
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.convexOn_fq"
+          },
+          "snippet": {
+            "text": "theorem convexOn_fq {q : ℝ} (hq : 0 < q) : ConvexOn ℝ (Ioo 0 q) (fq q) := by\n  have h := convexOn_inv_sin_sq.comp_linearMap ((π / q) • LinearMap.id)\n  refine (h.subset ?_ (convex_Ioo 0 q)).congr fun u _ => ?_\n  · intro u hu\n    simp only [mem_preimage, LinearMap.smul_apply, LinearMap.id_apply, smul_eq_mul, mem_Ioo]\n    constructor\n    · exact mul_pos (div_pos Real.pi_pos hq) hu.1\n    · rw [div_mul_eq_mul_div, div_lt_iff₀ hq]; nlinarith [Real.pi_pos, hu.2]\n  · simp only [Function.comp_apply, LinearMap.smul_apply, LinearMap.id_apply, smul_eq_mul, fq]\n    ring_nf",
+            "line": 209,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.convexOn_fq",
+            "lines": [
+              209,
+              218
+            ],
+            "conclusion": "`f_q(u) = 1/sin²(πu/q)` is convex on `(0,q)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L209-L218"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "ConvexOn.add_le_add_of_majorize",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          63,
+          87
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "ConvexOn.add_le_add_of_majorize"
+          },
+          "snippet": {
+            "text": "/-- Pairing (\"majorization\"): for convex `f` and `a ≤ b ≤ c ≤ d` with `b + c = a + d`,\n`f b + f c ≤ f a + f d`. -/\ntheorem _root_.ConvexOn.add_le_add_of_majorize {s : Set ℝ} {f : ℝ → ℝ} (hf : ConvexOn ℝ s f)\n    {a b c d : ℝ} (ha : a ∈ s) (hd : d ∈ s) (hab : a ≤ b) (hbc : b ≤ c) (hcd : c ≤ d)\n    (hsum : b + c = a + d) : f b + f c ≤ f a + f d := by\n  rcases eq_or_lt_of_le (hab.trans (hbc.trans hcd)) with had | had\n  · have : a = b := le_antisymm hab (by linarith)\n    have : c = d := le_antisymm hcd (by linarith)\n    subst_vars; rfl\n  have hda : d - a ≠ 0 := (sub_pos.2 had).ne'\n  have hc' : c = a + d - b := by linarith\n  set l := (d - b) / (d - a)\n  have hl0 : 0 ≤ l := div_nonneg (by linarith) (by linarith)\n  have hl1 : l ≤ 1 := (div_le_one (by linarith)).2 (by linarith)\n  have hb : l • a + (1 - l) • d = b := by\n    simp only [smul_eq_mul, l]; field_simp; ring\n  have hc : (1 - l) • a + l • d = c := by\n    simp only [smul_eq_mul, l]; rw [hc']; field_simp; ring\n  have h1 : f (l • a + (1 - l) • d) ≤ l • f a + (1 - l) • f d :=\n    hf.2 ha hd hl0 (by linarith) (by ring)\n  have h2 : f ((1 - l) • a + l • d) ≤ (1 - l) • f a + l • f d :=\n    hf.2 ha hd (by linarith) hl0 (by ring)\n  rw [hb] at h1; rw [hc] at h2\n  simp only [smul_eq_mul] at h1 h2\n  linarith",
+            "line": 63,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "ConvexOn.add_le_add_of_majorize",
+            "lines": [
+              63,
+              87
+            ],
+            "conclusion": "For convex `f`, `a ≤ b ≤ c ≤ d`, `b+c=a+d`: `f b + f c ≤ f a + f d`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L63-L87"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          585,
+          587
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₁'"
+          },
+          "snippet": {
+            "text": "    have hmaj := (convexOn_fq hq0).add_le_add_of_majorize (a := k - 1 / 2) (b := k - 1 / 2 + s)\n      (c := k + 1 / 2 - s) (d := k + 1 / 2) ⟨by linarith, by linarith⟩ ⟨by linarith, by linarith⟩\n      (by linarith) (by linarith) (by linarith) (by ring)",
+            "line": 585,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+            "lines": [
+              549,
+              627
+            ],
+            "conclusion": "Applies it with `a = k-1/2, b = k-1/2+s, c = k+1/2-s, d = k+1/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L585-L587"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

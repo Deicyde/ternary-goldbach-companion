@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "The min is split over two lemmas; the quotient form follows from `(2πt)² = 4π²t²` and `96/4 = 24`.",
+  "subject": [
+    {
+      "location": {
+        "page": 112,
+        "rect": [
+          0.25926,
+          0.59079,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Display, p. 102",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          221,
+          222
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay"
+          },
+          "snippet": {
+            "text": "theorem norm_fourier_logeta2_le_decay (t : ℝ) :\n    (2 * π * t) ^ 2 * ‖fourier (fun u => Real.log u * eta2 u) t‖ ≤ 96 * Real.log 2 := by",
+            "line": 221,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay",
+            "lines": [
+              220,
+              283
+            ],
+            "conclusion": "`(2πt)² ‖(log·η₂)^(t)‖ ≤ 96 log 2`, i.e. `‖(log·η₂)^(t)‖ ≤ 24 log 2/(π² t²)`; at `t = -δ` this is the second entry of the min."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L221-L222"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          112
+        ],
+        "printed": [
+          102
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "5.1 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean defines only $v=2$ (odd $r_1r_2$); $g_1$ and general $v$ are absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 94,
+        "rect": [
+          0.25926,
+          0.63729,
+          0.56816,
+          0.06357
+        ]
+      },
+      "title": "Display, p. 84",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5.1 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.g2",
+        "module": "TernaryGoldbach.MinorArcs.T2Defs",
+        "lines": [
+          41,
+          45
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.g2"
+          },
+          "snippet": {
+            "text": "/-- `g₂(t)` [H, Lemma 5.1.2]. -/\nnoncomputable def g2 (t : ℝ) : ℝ :=\n  ∑ r₁ ∈ Icc 1 ⌊t⌋₊, ∑ r₂ ∈ Icc 1 ⌊t⌋₊,\n    if Nat.Coprime r₁ r₂ ∧ Odd (r₁ * r₂) then\n      (μ r₁ : ℝ) * μ r₂ / ((σ 1 r₁ : ℝ) * σ 1 r₂) else 0",
+            "line": 41,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.g2",
+            "lines": [
+              41,
+              45
+            ],
+            "conclusion": "`g2 t` is $g_2(t)$: the sum over $r_1,r_2\\le\\lfloor t\\rfloor$, coprime with $r_1r_2$ odd, of $\\mu(r_1)\\mu(r_2)/(\\sigma(r_1)\\sigma(r_2))$; this is $g_v$ for $v=2$ only."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Defs.lean",
+            "fragment": "L41-L45"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          94
+        ],
+        "printed": [
+          84
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

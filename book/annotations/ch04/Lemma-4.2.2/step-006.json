@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.2 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean computes the transform of the shifted, doubled-variable function h(u)=f(2u+1) (factor x/2m, phase e(k/2), argument kx/2m - δ/2), which equals the text's f̂(k/2)/2 up to the phase; f̂ itself is not stated; η = η₂.",
+  "subject": [
+    {
+      "location": {
+        "page": 74,
+        "rect": [
+          0.26253,
+          0.51964,
+          0.56162,
+          0.03436
+        ]
+      },
+      "title": "Lemma 4.2.2 step 6: Display, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          245,
+          256
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Todd_main"
+          },
+          "snippet": {
+            "text": "  have hF : ∀ k : ℤ, 𝓕 h k =\n      (x / (2 * m) : ℝ) * (e (k / 2) * eta2hat (k * x / (2 * m) - δ / 2)) := by\n    intro k\n    rw [hhG, fourier_comp_affine G two_pos 1 k]\n    simp only [G]\n    rw [fourier_mul_e (fun v => (eta2 (m / x * v + 0) : ℂ)) β,\n      fourier_comp_affine (fun u => (eta2 u : ℂ)) hlam 0, zero_mul, zero_div, e_zero, one_mul]\n    have : ((k : ℝ) / 2 - β) / (m / x) = k * x / (2 * m) - δ / 2 := by\n      simp only [β]; field_simp\n    rw [this, eta2hat]\n    push_cast\n    field_simp",
+            "line": 245,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+            "lines": [
+              220,
+              322
+            ],
+            "conclusion": "`𝓕h(k) = (x/(2m)) e(k/2) η̂₂(kx/(2m) - δ/2)` for `h(u) = G(2u+1)`, via `fourier_comp_affine` and `fourier_mul_e`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L245-L256"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          74
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

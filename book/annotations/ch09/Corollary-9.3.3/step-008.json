@@ -1,0 +1,192 @@
+{
+  "id": "Corollary 9.3.3 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean states the four moments; for w^{-1} it proves only <= 1.92182, not the equality 4(log 2)^2.",
+  "subject": [
+    {
+      "location": {
+        "page": 194,
+        "rect": [
+          0.26253,
+          0.25539,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Corollary 9.3.3 step 8: Text, p. 184",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.moment0",
+        "module": "TernaryGoldbach.MajorArcs.Eta2Moments",
+        "lines": [
+          51,
+          56
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.moment0"
+          },
+          "snippet": {
+            "text": "/-- `∫_{r>0} η₂ = 1`. -/\ntheorem moment0 : ∫ r in Ioi 0, eta2 r = 1 := by\n  rw [← integral_abs_eta2, setIntegral_eq_integral_of_forall_compl_eq_zero]\n  · exact integral_congr_ae (Filter.Eventually.of_forall fun r => (abs_of_nonneg (eta2_nonneg r)).symm)\n  · intro r hr\n    exact eta2_eq_zero fun h => hr (mem_Ioi.2 (by linarith [h.1]))",
+            "line": 51,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.moment0",
+            "lines": [
+              51,
+              56
+            ],
+            "conclusion": "int_{r>0} eta2 = 1."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Eta2Moments.lean",
+            "fragment": "L51-L56"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.moment_half",
+        "module": "TernaryGoldbach.MajorArcs.Eta2Moments",
+        "lines": [
+          129,
+          151
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.moment_half"
+          },
+          "snippet": {
+            "text": "/-- `∫_{r>0} η₂(r)/√r = 24 − 32/√2 ≤ 1.37259`. -/\ntheorem moment_half : ∫ r in Ioi 0, eta2 r * (1 / √r) ≤ 1.37259 := by\n  rw [setIntegral_eta2_mul (contOn_inv_sqrt (by norm_num))]\n  have hL := integral_eq_of_deriv (a := 1 / 4) (b := 1 / 2) (by norm_num) (by norm_num)\n    (fun r hr => hasDerivAt_Fhalf (c := 4) (by norm_num) hr)\n    (contOn_log_mul (by norm_num) (by norm_num) (contOn_inv_sqrt (by norm_num)))\n  have hR := integral_eq_of_deriv (a := 1 / 2) (b := 1) (by norm_num) (by norm_num)\n    (fun r hr => hasDerivAt_Fhalf (c := 1) (by norm_num) hr)\n    (contOn_log_mul (by norm_num) (by norm_num) (contOn_inv_sqrt (by norm_num)))\n  have eR : ∫ r in (1 / 2 : ℝ)..1, -4 * Real.log r * (1 / √r) =\n      -∫ r in (1 / 2 : ℝ)..1, 4 * Real.log (1 * r) * (1 / √r) := by\n    rw [← intervalIntegral.integral_neg]; congr 1; ext r; rw [one_mul]; ring\n  rw [hL, eR, hR]\n  simp only [one_mul]\n  have e1 : Real.log (4 * (1 / 2 : ℝ)) = Real.log 2 := by norm_num\n  have e2 : Real.log (4 * (1 / 4 : ℝ)) = 0 := by norm_num\n  have e3 : Real.log (1 / 2 : ℝ) = -Real.log 2 := by rw [one_div, Real.log_inv]\n  have e4 : √(1 / 4 : ℝ) = 1 / 2 := by\n    rw [show (1 / 4 : ℝ) = (1 / 2) ^ 2 by norm_num, Real.sqrt_sq (by norm_num)]\n  rw [e1, e2, e3, e4, Real.log_one, Real.sqrt_one]\n  obtain ⟨hs1, hs2⟩ := sqrt_half_bounds\n  have := Real.log_two_lt_d9\n  nlinarith",
+            "line": 129,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.moment_half",
+            "lines": [
+              129,
+              151
+            ],
+            "conclusion": "int eta2(r)/sqrt r <= 1.37259."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Eta2Moments.lean",
+            "fragment": "L129-L151"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.moment_one",
+        "module": "TernaryGoldbach.MajorArcs.Eta2Moments",
+        "lines": [
+          153,
+          173
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.moment_one"
+          },
+          "snippet": {
+            "text": "/-- `∫_{r>0} η₂(r)/r = 4 (log 2)² ≤ 1.92182`. -/\ntheorem moment_one : ∫ r in Ioi 0, eta2 r * (1 / r) ≤ 1.92182 := by\n  rw [setIntegral_eta2_mul (contOn_inv (by norm_num))]\n  have hL := integral_eq_of_deriv (a := 1 / 4) (b := 1 / 2) (by norm_num) (by norm_num)\n    (fun r hr => hasDerivAt_Fone (c := 4) (by norm_num) hr)\n    (contOn_log_mul (by norm_num) (by norm_num) (contOn_inv (by norm_num)))\n  have hR := integral_eq_of_deriv (a := 1 / 2) (b := 1) (by norm_num) (by norm_num)\n    (fun r hr => hasDerivAt_Fone (c := 1) (by norm_num) hr)\n    (contOn_log_mul (by norm_num) (by norm_num) (contOn_inv (by norm_num)))\n  have eR : ∫ r in (1 / 2 : ℝ)..1, -4 * Real.log r * (1 / r) =\n      -∫ r in (1 / 2 : ℝ)..1, 4 * Real.log (1 * r) * (1 / r) := by\n    rw [← intervalIntegral.integral_neg]; congr 1; ext r; rw [one_mul]; ring\n  rw [hL, eR, hR]\n  simp only [one_mul]\n  have e1 : Real.log (4 * (1 / 2 : ℝ)) = Real.log 2 := by norm_num\n  have e2 : Real.log (4 * (1 / 4 : ℝ)) = 0 := by norm_num\n  have e3 : Real.log (1 / 2 : ℝ) = -Real.log 2 := by rw [one_div, Real.log_inv]\n  rw [e1, e2, e3, Real.log_one]\n  have h1 := Real.log_two_lt_d9\n  have h2 := Real.log_two_gt_d9\n  nlinarith",
+            "line": 153,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.moment_one",
+            "lines": [
+              153,
+              173
+            ],
+            "conclusion": "int eta2(r)/r <= 1.92182 (the equality 4(log 2)^2 appears only in the docstring)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Eta2Moments.lean",
+            "fragment": "L153-L173"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.moment_3half",
+        "module": "TernaryGoldbach.MajorArcs.Eta2Moments",
+        "lines": [
+          175,
+          202
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.moment_3half"
+          },
+          "snippet": {
+            "text": "/-- `∫_{r>0} η₂(r)/(r√r) = 48 − 64/√2 ≤ 2.74517`. -/\ntheorem moment_3half : ∫ r in Ioi 0, eta2 r * (1 / (r * √r)) ≤ 2.74517 := by\n  rw [setIntegral_eta2_mul (contOn_inv_mul_sqrt (by norm_num))]\n  have hL := integral_eq_of_deriv (a := 1 / 4) (b := 1 / 2) (by norm_num) (by norm_num)\n    (fun r hr => hasDerivAt_F3half (c := 4) (by norm_num) hr)\n    (contOn_log_mul (by norm_num) (by norm_num) (contOn_inv_mul_sqrt (by norm_num)))\n  have hR := integral_eq_of_deriv (a := 1 / 2) (b := 1) (by norm_num) (by norm_num)\n    (fun r hr => hasDerivAt_F3half (c := 1) (by norm_num) hr)\n    (contOn_log_mul (by norm_num) (by norm_num) (contOn_inv_mul_sqrt (by norm_num)))\n  have eR : ∫ r in (1 / 2 : ℝ)..1, -4 * Real.log r * (1 / (r * √r)) =\n      -∫ r in (1 / 2 : ℝ)..1, 4 * Real.log (1 * r) * (1 / (r * √r)) := by\n    rw [← intervalIntegral.integral_neg]; congr 1; ext r; rw [one_mul]; ring\n  rw [hL, eR, hR]\n  simp only [one_mul]\n  have e1 : Real.log (4 * (1 / 2 : ℝ)) = Real.log 2 := by norm_num\n  have e2 : Real.log (4 * (1 / 4 : ℝ)) = 0 := by norm_num\n  have e3 : Real.log (1 / 2 : ℝ) = -Real.log 2 := by rw [one_div, Real.log_inv]\n  have e4 : √(1 / 4 : ℝ) = 1 / 2 := by\n    rw [show (1 / 4 : ℝ) = (1 / 2) ^ 2 by norm_num, Real.sqrt_sq (by norm_num)]\n  rw [e1, e2, e3, e4, Real.log_one, Real.sqrt_one]\n  obtain ⟨hs1, hs2⟩ := sqrt_half_bounds\n  have hpos : 0 < √(1 / 2 : ℝ) := by linarith\n  have := Real.log_two_lt_d9\n  have h3 : -8 * (Real.log 2 + 2) / √(1 / 2 : ℝ) - -8 * (0 + 2) / (1 / 2) +\n      -(-8 * (0 + 2) / 1 - -8 * (-Real.log 2 + 2) / √(1 / 2 : ℝ)) =\n      48 - 32 / √(1 / 2 : ℝ) := by field_simp; ring\n  rw [h3, sub_le_iff_le_add, ← sub_le_iff_le_add', le_div_iff₀ hpos]\n  nlinarith",
+            "line": 175,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.moment_3half",
+            "lines": [
+              175,
+              202
+            ],
+            "conclusion": "int eta2(r)/(r sqrt r) <= 2.74517."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Eta2Moments.lean",
+            "fragment": "L175-L202"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          194
+        ],
+        "printed": [
+          184
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.1.4 step 21",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] shows `fline` has derivative `flineD` (G_δ' via the log-weighted integrand) for the specific η; the Mellin statement for general η is not stated.",
+  "subject": [
+    {
+      "location": {
+        "page": 184,
+        "rect": [
+          0.26253,
+          0.28499,
+          0.56162,
+          0.03403
+        ]
+      },
+      "title": "Lemma 9.1.4 step 21: Text, p. 174",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4 step 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.hasDerivAt_fline",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherel",
+        "lines": [
+          227,
+          234
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.hasDerivAt_fline"
+          },
+          "snippet": {
+            "text": "theorem hasDerivAt_fline (δ t : ℝ) : HasDerivAt (fline δ) (flineD δ t) t := by\n  have h := Real.hasDerivAt_fourier (integrable_Fhalf δ) (integrable_smul_Fhalf δ) (t / (2 * π))\n  have h2 : HasDerivAt (fun t : ℝ => t / (2 * π)) (1 / (2 * π)) t := by\n    simpa using (hasDerivAt_id t).div_const (2 * π)\n  have h3 := h.scomp t h2\n  have e : fline δ = 𝓕 (Fhalf δ) ∘ fun t : ℝ => t / (2 * π) := funext fun t => fline_eq δ t\n  rw [e]\n  exact h3",
+            "line": 227,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.hasDerivAt_fline",
+            "lines": [
+              227,
+              234
+            ],
+            "conclusion": "`fline δ` has derivative `flineD δ t`, so G_δ'(1/2+it) is the Fourier-side transform of the log-weighted integrand (specific η)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherel.lean",
+            "fragment": "L227-L234"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.flineD",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherel",
+        "lines": [
+          204,
+          205
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.flineD"
+          },
+          "snippet": {
+            "text": "/-- `f'(t)`. -/\nnoncomputable def flineD (δ t : ℝ) : ℂ := (1 / (2 * π) : ℝ) • 𝓕 (FhalfD δ) (t / (2 * π))",
+            "line": 204,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.flineD",
+            "lines": [
+              204,
+              205
+            ],
+            "conclusion": "`flineD δ t` is the derivative of `fline` (G_δ' on the critical line), defined by a Fourier transform, not bounded trivially."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherel.lean",
+            "fragment": "L204-L205"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          184
+        ],
+        "printed": [
+          174
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

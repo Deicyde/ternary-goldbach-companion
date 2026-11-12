@@ -1,0 +1,84 @@
+{
+  "id": "Theorem 3.1.1 step 3",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "With `s=√ρ` the right side is `a/(2√ρ) + (√ρ/2) b`; Lean states it for general `a,b`; the constant 0.67506 in `b` is replaced by 0.7468 in the application.",
+  "subject": [
+    {
+      "location": {
+        "page": 143,
+        "rect": [
+          0.17462,
+          0.33948,
+          0.56162,
+          0.0407
+        ]
+      },
+      "title": "Theorem 3.1.1 step 3: Display, p. 133",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 3.1.1 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sqrt_mul_sqrt_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceMain",
+        "lines": [
+          97,
+          103
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sqrt_mul_sqrt_le"
+          },
+          "snippet": {
+            "text": "/-- `√a √b ≤ (a/s + s b)/2`. -/\ntheorem sqrt_mul_sqrt_le {a b s : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) (hs : 0 < s) :\n    √a * √b ≤ (a / s + s * b) / 2 := by\n  rw [← Real.sqrt_mul ha]\n  rw [Real.sqrt_le_left (by positivity)]\n  have : (a / s + s * b) ^ 2 - 4 * (a * b) = (a / s - s * b) ^ 2 := by field_simp; ring\n  nlinarith [sq_nonneg (a / s - s * b)]",
+            "line": 97,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sqrt_mul_sqrt_le",
+            "lines": [
+              97,
+              103
+            ],
+            "conclusion": "`√a·√b ≤ (a/s + s·b)/2` for `a,b ≥ 0`, `s > 0`, the AM-GM step with `s = √ρ`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceMain.lean",
+            "fragment": "L97-L103"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          143
+        ],
+        "printed": [
+          133
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

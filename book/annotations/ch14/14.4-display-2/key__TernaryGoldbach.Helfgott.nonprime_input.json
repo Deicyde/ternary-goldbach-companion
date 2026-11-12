@@ -1,0 +1,81 @@
+{
+  "id": "14.4 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] proves the same two-step bound with weaker constants: `ψ-θ+log 2 ≤ 1.6001 √N` for `1.4263 √N` and `ψ ≤ 1.387 N` for `1.03883 N`, product `≤ 2.2194 N^{3/2}` not `1.48169`. The RS62 `ψ(y)<1.03883 y` is in [L] (`Prelim.sum_vonMangoldt_lt`) but not used here.",
+  "subject": [
+    {
+      "location": {
+        "page": 286,
+        "rect": [
+          0.25926,
+          0.4108,
+          0.56816,
+          0.10096
+        ]
+      },
+      "title": "Display, p. 276",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.4 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs",
+        "lines": [
+          144,
+          149
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.nonprime_input"
+          },
+          "snippet": {
+            "text": "  calc repSum (fun _ => True) N - repSum (fun n => n.Prime ∧ Odd n) N\n      ≤ 3 * (400 ^ 2 * 6.2) * Real.log N * (psi N - theta N + Real.log 2) * psi N := h\n    _ ≤ 3 * (400 ^ 2 * 6.2) * Real.log N * (1.6001 * √N) * (1.387 * N) := by\n        gcongr; linarith\n    _ = (3 * (400 ^ 2 * 6.2) * 1.6001 * 1.387) * (N * √N) * Real.log N := by ring\n    _ ≤ 6.7e6 * (N * √N) * Real.log N := by gcongr; norm_num",
+            "line": 144,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+            "lines": [
+              116,
+              149
+            ],
+            "conclusion": "calc: count ≤ 3(400²·6.2) log N (ψ-θ+log 2) ψ ≤ 3(400²·6.2) log N (1.6001√N)(1.387N) ≤ 6.7e6 N√N log N."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "fragment": "L144-L149"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          286
+        ],
+        "printed": [
+          276
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

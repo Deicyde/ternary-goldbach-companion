@@ -1,0 +1,120 @@
+{
+  "id": "Corollary 9.3.3 step 2",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean's term r uses phi(n/(rx)) with phase e(n delta/x) fixed; the display's rewriting delta n/x = delta w n/(w x) is that same phase, and the range (1/4,1) is implicit in eta2's support (Ioi 0 integral).",
+  "subject": [
+    {
+      "location": {
+        "page": 193,
+        "rect": [
+          0.17462,
+          0.54362,
+          0.56162,
+          0.10566
+        ]
+      },
+      "title": "Corollary 9.3.3 step 2: Display, p. 183",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.etaU_eq",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          48,
+          66
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.etaU_eq"
+          },
+          "snippet": {
+            "text": "/-- `η_*(u) = ∫_{r>0} η₂(r) η(u/r) dr/r` for all `u` (with `η` cut off at `0`). -/\ntheorem etaU_eq (u : ℝ) : etaU u = ∫ r in Ioi 0, eta2 r * phiPos (u / r) / r := by\n  rcases le_or_gt u 0 with hu | hu\n  · have h1 : etaU u = 0 := by\n      unfold etaU\n      rw [setIntegral_congr_fun measurableSet_Ioi (g := fun _ => (0:ℝ)) fun w (hw : 0 < w) => by\n        simp only [eta2_eq_zero_of_nonpos (div_nonpos_of_nonpos_of_nonneg hu hw.le), zero_mul,\n          zero_div]]\n      simp\n    rw [h1, setIntegral_congr_fun measurableSet_Ioi (g := fun _ => (0:ℝ)) fun r (hr : 0 < r) => by\n      unfold phiPos\n      rw [if_neg (not_lt.2 (div_nonpos_of_nonpos_of_nonneg hu hr.le))]; simp]\n    simp\n  · have hκ : (0:ℝ) < κ := by rw [TernaryGoldbach.Helfgott.κ]; norm_num\n    have h1 : etaU u = etaStar (u / κ) := by\n      rw [etaStar_eq_etaU (by positivity), mul_div_cancel₀ _ hκ.ne']\n    rw [h1, etaStar, mul_div_cancel₀ _ hκ.ne', mellinConv]\n    refine setIntegral_congr_fun measurableSet_Ioi fun r (hr : 0 < r) => ?_\n    unfold phiPos; rw [if_pos (by positivity)]",
+            "line": 48,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.etaU_eq",
+            "lines": [
+              48,
+              66
+            ],
+            "conclusion": "eta_*(u) = int_{r>0} eta2(r) phi(u/r) dr/r, the Mellin convolution form of eta_*."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L48-L66"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.cor_9_3_3",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          613,
+          639
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.cor_9_3_3"
+          },
+          "snippet": {
+            "text": "  have hIF : ∀ n, ∫ r, F n r ∂μ = ((Λ n * etaU (n / x) : ℝ) : ℂ) * χ (n : ZMod q) * e (n * (δ / x)) -\n      if n = 0 then ∫ r, G r ∂μ else 0 := by\n    intro n\n    by_cases hn : n = 0\n    · subst hn\n      simp only [hF, hterm0, zero_sub, if_true, integral_neg, Nat.cast_zero,\n        ArithmeticFunction.map_zero, zero_mul, Complex.ofReal_zero, zero_sub]\n    · simp only [hF, hn, if_false, sub_zero]\n      have e1 : ∀ r, term n r = ((w r * (Λ n * phi (n / (r * x))) : ℝ) : ℂ) *\n          (χ (n : ZMod q) * e (n * (δ / x))) := fun r => by simp only [hterm]; push_cast; ring\n      simp only [e1]\n      rw [integral_mul_const, integral_complex_ofReal]\n      have e2 : ∫ r, w r * (Λ n * phi (n / (r * x))) ∂μ = Λ n * etaU (n / x) := by\n        rw [etaU_eq, ← integral_const_mul]\n        refine setIntegral_congr_fun measurableSet_Ioi fun r (hr : 0 < r) => ?_\n        have hn0 : (0 : ℝ) < n := by exact_mod_cast Nat.pos_of_ne_zero hn\n        have : phiPos (n / x / r) = phi (n / (r * x)) := by\n          unfold phiPos; rw [if_pos (by positivity)]; congr 1; field_simp\n        simp only [hw, this]; ring\n      rw [e2]; push_cast; ring\n  have hc : HasSum (fun n : ℕ => ((Λ n * etaU (n / x) : ℝ) : ℂ) * χ (n : ZMod q) * e (n * (δ / x)))\n      (∫ r, f r ∂μ + ∫ r, G r ∂μ) := by\n    have := (hS.add (hasSum_ite_eq 0 (∫ r, G r ∂μ)))\n    simp only [hIF, sub_add_cancel] at this\n    exact this\n  have hSchar : Schar χ (fun n => ((Λ n * etaU (n / x) : ℝ) : ℂ)) (δ / x) =\n      ∫ r, f r ∂μ + ∫ r, G r ∂μ := hc.tsum_eq",
+            "line": 613,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.cor_9_3_3",
+            "lines": [
+              486,
+              686
+            ],
+            "conclusion": "Interchanges sum and integral by dominated convergence: sum_n Lambda(n)chi(n)e(delta n/x) eta_*(n/x) = int_{r>0} (sum ...phi(n/(rx))) eta2(r)/r dr (hIF, hc, hSchar)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L613-L639"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          193
+        ],
+        "printed": [
+          183
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "Lemma 4.2.2 step 17",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "c₀ is the fixed constant 32 in Lean (formula in c₀ unchanged); the text's discussion of why not to reset c₂ has no Lean counterpart.",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.17462,
+          0.44999,
+          0.56162,
+          0.05953
+        ]
+      },
+      "title": "Lemma 4.2.2 step 17: Text, p. 65",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 17",
+          "quads": [
+            [
+              0.2151,
+              0.44999,
+              0.73624,
+              0.44999,
+              0.73624,
+              0.47108,
+              0.2151,
+              0.47108
+            ],
+            [
+              0.17462,
+              0.4665,
+              0.73624,
+              0.4665,
+              0.73624,
+              0.50952,
+              0.17462,
+              0.50952
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.c₂",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          46,
+          47
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.c₂"
+          },
+          "snippet": {
+            "text": "/-- `c₂ = 6π / (5√c₀)` [H, Lemma 4.2.2]. -/\nnoncomputable def c₂ : ℝ := 6 * π / (5 * √c₀)",
+            "line": 46,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.c₂",
+            "lines": [
+              46,
+              47
+            ],
+            "conclusion": "`c₂ = 6π/(5√c₀)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L46-L47"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.c₂_identity",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          797,
+          804
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.c₂_identity"
+          },
+          "snippet": {
+            "text": "/-- [H, (4.37)]: `5c₀c₂/(3π²) = 2√c₀/π`. -/\ntheorem c₂_identity : 5 * c₀ * c₂ / (3 * π ^ 2) = 2 * √c₀ / π := by\n  have h := c₀_pos\n  have hs : √c₀ * √c₀ = c₀ := Real.mul_self_sqrt h.le\n  have hs0 : 0 < √c₀ := Real.sqrt_pos.2 h\n  unfold c₂\n  field_simp\n  rw [Real.sq_sqrt h.le]; ring",
+            "line": 797,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.c₂_identity",
+            "lines": [
+              797,
+              804
+            ],
+            "conclusion": "(4.37): `5 c₀ c₂/(3π²) = 2√c₀/π`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L797-L804"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

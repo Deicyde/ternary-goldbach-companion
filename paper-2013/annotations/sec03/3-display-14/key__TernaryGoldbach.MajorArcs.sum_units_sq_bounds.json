@@ -1,0 +1,81 @@
+{
+  "id": "3 display 14",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does this for eta_+ only, with sharp-free uniform errors (4.25e-7 x, 2.83e-7 x) from Thm 7.1.4 in place of err_{eta,chi}; it gives bounds in the shape mu^2/phi|S|^2 <= sum <= mu^2/phi|S|^2 + E^2 rather than the displayed O* expansion with (2|eta|_1+err) and q max err^2 + K_{q,2}x terms.",
+  "subject": [
+    {
+      "location": {
+        "page": 17,
+        "rect": [
+          0.20371,
+          0.11562,
+          0.63183,
+          0.19369
+        ]
+      },
+      "title": "Display, p. 17",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_units_sq_bounds",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          189,
+          231
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_units_sq_bounds"
+          },
+          "snippet": {
+            "text": "/-- **Principal and non-principal parts** of `Σ_b |S(b/q + β)|²` for `aₙ` supported on `(n, q) = 1`:\n`μ²(q)/φ(q) |S(β)|² ≤ Σ_b |S(b/q + β)|² ≤ μ²(q)/φ(q) |S(β)|² + E²` when\n`|τ(ψ)| |S_{ψ⁻¹}(β)| ≤ E` for all `ψ ≠ 1`. -/\ntheorem sum_units_sq_bounds {q : ℕ} [NeZero q] {a : ℕ → ℂ} (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q) (β : ℝ) {E : ℝ}\n    (hE : ∀ ψ : DirichletCharacter ℂ q, ψ ≠ 1 →\n      ‖gaussSum ψ ZMod.stdAddChar‖ * ‖Schar ψ⁻¹ a β‖ ≤ E) :\n    (if Squarefree q then (1 : ℝ) else 0) / q.totient * ‖expTsum a β‖ ^ 2 ≤\n        ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2 ∧\n      ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2 ≤\n        (if Squarefree q then (1 : ℝ) else 0) / q.totient * ‖expTsum a β‖ ^ 2 + E ^ 2 := by\n  classical\n  set F := ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2\n  have key := totient_mul_sum_units ha hcop β\n  rw [← Finset.add_sum_erase _ _ (Finset.mem_univ (1 : DirichletCharacter ℂ q)), inv_one,\n    Schar_one_eq_expTsum hcop, norm_sq_gaussSum_one] at key\n  set R := ∑ ψ ∈ (univ : Finset (DirichletCharacter ℂ q)).erase 1,\n    ‖gaussSum ψ ZMod.stdAddChar‖ ^ 2 * ‖Schar ψ⁻¹ a β‖ ^ 2\n  set m : ℝ := if Squarefree q then (1 : ℝ) else 0\n  have hR0 : 0 ≤ R := sum_nonneg fun _ _ => by positivity\n  have hcard : (univ : Finset (DirichletCharacter ℂ q)).card = q.totient := by\n    rw [Finset.card_univ, ← Nat.card_eq_fintype_card,\n      DirichletCharacter.card_eq_totient_of_hasEnoughRootsOfUnity]\n  have hφ : (0 : ℝ) < q.totient := by\n    exact_mod_cast Nat.totient_pos.2 (Nat.pos_of_ne_zero (NeZero.ne q))\n  have hR : R ≤ q.totient * E ^ 2 := by\n    calc R ≤ ∑ ψ ∈ (univ : Finset (DirichletCharacter ℂ q)).erase 1, E ^ 2 := by\n          refine sum_le_sum fun ψ hψ => ?_\n          rw [← mul_pow]\n          exact pow_le_pow_left₀ (by positivity) (hE ψ (Finset.ne_of_mem_erase hψ)) 2\n      _ = (((univ : Finset (DirichletCharacter ℂ q)).erase 1).card : ℝ) * E ^ 2 := by\n          rw [sum_const, nsmul_eq_mul]\n      _ ≤ q.totient * E ^ 2 := by\n          gcongr\n          rw [← hcard]; exact_mod_cast Finset.card_erase_le\n  have hF : F = (m * ‖expTsum a β‖ ^ 2 + R) / q.totient := by\n    rw [eq_div_iff hφ.ne']; linarith\n  rw [hF]\n  constructor\n  · rw [div_mul_eq_mul_div]\n    exact div_le_div_of_nonneg_right (by linarith) hφ.le\n  · rw [div_mul_eq_mul_div, div_add' _ _ _ hφ.ne']\n    exact div_le_div_of_nonneg_right (by nlinarith) hφ.le",
+            "line": 189,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_units_sq_bounds",
+            "lines": [
+              189,
+              231
+            ],
+            "conclusion": "Sum over units b mod q of |S(b/q+beta)|^2 lies between mu^2(q)/phi(q)|S(beta)|^2 and that plus E^2, E bounding |tau(psi)||S_psi(beta)| for psi != 1."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L189-L231"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          17
+        ],
+        "printed": [
+          17
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

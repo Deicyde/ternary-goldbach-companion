@@ -1,0 +1,81 @@
+{
+  "id": "5.1 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean treats the odd-$n$ sum by counting odd integers in an interval ($\\frac14\\int g_2/y$ main term, error $\\le1$ per $y$), not by Euler-Maclaurin with $B_2$; the $\\log(1+1/m)$ appears as $\\int_m^{m+1}dy/y$ (`Ire`).",
+  "subject": [
+    {
+      "location": {
+        "page": 100,
+        "rect": [
+          0.25926,
+          0.184,
+          0.56816,
+          0.15129
+        ]
+      },
+      "title": "Display, p. 90",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5.1 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_T2_sub_le",
+        "module": "TernaryGoldbach.MinorArcs.T2Basic",
+        "lines": [
+          225,
+          227
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_T2_sub_le"
+          },
+          "snippet": {
+            "text": "/-- **`|T₂(S) − ¼ ∫₁^S g₂(y)/y dy| ≤ S⁻¹ ∫₁^S |g₂|`** for `S ≥ 1`. -/\ntheorem abs_T2_sub_le {S : ℝ} (hS : 1 ≤ S) :\n    |T2 S - 1 / 4 * (∫ y in (1 : ℝ)..S, g2 y / y)| ≤ S⁻¹ * ∫ y in (1 : ℝ)..S, |g2 y| := by",
+            "line": 225,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_T2_sub_le",
+            "lines": [
+              225,
+              268
+            ],
+            "conclusion": "$|T_2(S)-\\frac14\\int_1^S g_2(y)/y\\,dy|\\le S^{-1}\\int_1^S|g_2|$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Basic.lean",
+            "fragment": "L225-L227"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          100
+        ],
+        "printed": [
+          90
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

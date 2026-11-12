@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.2 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Connective step: takes the relation of the display it introduces; Lean sums the error terms over m' ≤ ⌊M/q⌋ and bounds by D in place of M, as an inequality.",
+  "subject": [
+    {
+      "location": {
+        "page": 74,
+        "rect": [
+          0.26253,
+          0.7378,
+          0.56162,
+          0.01503
+        ]
+      },
+      "title": "Lemma 4.2.2 step 8: Text, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          653,
+          664
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPart_le"
+          },
+          "snippet": {
+            "text": "  · -- The error terms.\n    refine (norm_sum_le _ _).trans ?_\n    have hterm : ∀ m' ∈ Icc 1 N, ‖(if Odd m' then (μ (q * m') : ℂ) * E m' else 0)‖ ≤\n        q * c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) * (if Odd m' then (m' : ℝ) else 0) := by\n      intro m' hm'\n      by_cases ho : Odd m'\n      · rw [if_pos ho, if_pos ho, norm_mul]\n        have hmu : ‖(μ (q * m') : ℂ)‖ ≤ 1 := by\n          rw [Complex.norm_intCast]; exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n        have hE2 := (hE m' ho (mem_Icc.1 hm').2).2\n        calc ‖(μ (q * m') : ℂ)‖ * ‖E m'‖ ≤ 1 * ‖E m'‖ := by gcongr\n          _ ≤ _ := by rw [one_mul]; refine hE2.trans (le_of_eq ?_); push_cast; field_simp",
+            "line": 653,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+            "lines": [
+              578,
+              677
+            ],
+            "conclusion": "Each error term of `mainPart` has norm at most `q c₀ (π²-4)/(2π² x) · [m' odd] m'`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L653-L664"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          529,
+          536
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_le"
+          },
+          "snippet": {
+            "text": "/-- `∑_{m ≤ N, m odd} m ≤ ((N + 1)/2)²`. -/\ntheorem sum_odd_le (N : ℕ) :\n    (∑ m ∈ Icc 1 N, (if Odd m then (m : ℝ) else 0)) ≤ ((N : ℝ) + 1) ^ 2 / 4 := by\n  rcases Nat.even_or_odd' N with ⟨K, rfl | rfl⟩\n  · rw [(sum_odd_Icc K).1]; push_cast\n    have : (0 : ℝ) ≤ K := Nat.cast_nonneg K\n    nlinarith\n  · rw [(sum_odd_Icc K).2]; push_cast; nlinarith",
+            "line": 529,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_le",
+            "lines": [
+              529,
+              536
+            ],
+            "conclusion": "`∑_{m ≤ N, m odd} m ≤ (N+1)²/4`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L529-L536"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          74
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "id": "Lemma 4.2.3 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Parts: the substitution of η_{(x/m)} and the bounds with ρ = x/m are carried out (η = η₂, ρ ≥ 4 via 4m ≤ x). The set-up of Q', a', q' is absent: Lean takes Q = x/(|δ|q) directly and uses block sums (sum_Ioc_le_blocks) instead of the progression a'/q'.",
+  "subject": [
+    {
+      "location": {
+        "page": 76,
+        "rect": [
+          0.26253,
+          0.66875,
+          0.56162,
+          0.06422
+        ]
+      },
+      "title": "Lemma 4.2.3 step 1: Text, p. 66",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          19,
+          20
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2log"
+          },
+          "snippet": {
+            "text": "/-- `η_(ρ)(t) = log(ρt) η₂(t)`. -/\nnoncomputable def eta2log (ρ t : ℝ) : ℝ := Real.log (ρ * t) * eta2 t",
+            "line": 19,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eta2log",
+            "lines": [
+              19,
+              20
+            ],
+            "conclusion": "`eta2log ρ t = log(ρt) η₂(t)` is `η_(ρ)(t) = (log ρt) η(t)`; with ρ = x/m this is `η_{(x/m)}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L19-L20"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.innerLog_eq_ToddG",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          18,
+          21
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.innerLog_eq_ToddG"
+          },
+          "snippet": {
+            "text": "theorem innerLog_eq_ToddG {α x : ℝ} (hx : 0 < x) {m : ℕ} (hm : 1 ≤ m) :\n    ∑ n ∈ Icc 1 ⌊x⌋₊,\n        (if Odd n then (Real.log n : ℂ) * e (α * m * n) * (eta2 (m * n / x) : ℂ) else 0) =\n      ToddG (eta2log (x / m)) α x m := by",
+            "line": 18,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.innerLog_eq_ToddG",
+            "lines": [
+              17,
+              59
+            ],
+            "conclusion": "`∑_{n odd} (log n) e(αmn) η₂(mn/x) = T_{m,∘}(α)` for the smoothing `eta2log (x/m)`, i.e. the substitution `log n · η(mn/x) = η_{(x/m)}(mn/x)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L18-L21"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.smoothData_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          241,
+          245
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.smoothData_eta2log"
+          },
+          "snippet": {
+            "text": "theorem smoothData_eta2log : SmoothData (eta2log ρ) (Real.log ρ) (eta2'L1 * Real.log ρ)\n    (c₀ * Real.log ρ) :=\n  ⟨continuous_eta2log hρ, hasCompactSupport_eta2log, integral_abs_eta2log_le hρ,\n    by have := eta2'L1_pos; have := Real.log_nonneg (show (1 : ℝ) ≤ ρ by linarith); positivity,\n    eVariationOn_eta2log_le hρ, eta2log_fourier_bound hρ⟩",
+            "line": 241,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.smoothData_eta2log",
+            "lines": [
+              240,
+              245
+            ],
+            "conclusion": "`eta2log ρ` satisfies the smoothing hypotheses ([H, (4.38)]) for ρ ≥ 4 with `K = c₀ log ρ`, so the Poisson/(4.36) machinery applies with ρ = x/m."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L241-L245"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_3_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          1200,
+          1224
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_3_caseB"
+          },
+          "snippet": {
+            "text": "  obtain ⟨Q, hqQ, hδ, hD'Q, hMQ⟩ : ∃ Q : ℝ, (q : ℝ) ≤ Q ∧ |δ / x| * (q * Q) ≤ 1 ∧\n      min (c₂ * x / q) D ≤ Q / 2 ∧ Mof x δ q D = min (Q / 2) D := by\n    by_cases hδ0 : δ = 0\n    · refine ⟨max Q₀ (2 * D), hqQ₀.trans (le_max_left _ _), by simp [hδ0], ?_, ?_⟩\n      · have := le_max_right Q₀ (2 * D)\n        exact (min_le_right _ _).trans (by linarith)\n      · rw [Mof, if_pos hδ0, min_eq_right]\n        have := le_max_right Q₀ (2 * D); linarith\n    · have hδpos : 0 < |δ| := abs_pos.2 hδ0\n      have hQ₀le : Q₀ ≤ x / (|δ| * q) := by\n        rw [abs_div, abs_of_pos hx0, div_le_div_iff₀ hx0 (by positivity)] at hδQ₀\n        rw [le_div_iff₀ (by positivity)]; nlinarith\n      refine ⟨x / (|δ| * q), hqQ₀.trans hQ₀le, ?_, ?_, by rw [Mof, if_neg hδ0]⟩\n      · rw [abs_div, abs_of_pos hx0]; field_simp; rfl\n      · rcases hcase with hc | hc\n        · refine (min_le_left _ _).trans ?_\n          have h1 : 2 * c₂ * |δ| ≤ 1 := by\n            rw [le_div_iff₀ (by positivity)] at hc; linarith\n          have e : c₂ * x / q = (2 * c₂ * |δ|) * (x / (|δ| * q) / 2) := by field_simp\n          rw [e]; exact mul_le_of_le_one_left (by positivity) h1\n        · exact (min_le_right _ _).trans (hc.trans (by linarith))\n  set M := Mof x δ q D\n  have hMD : M ≤ D := by rw [hMQ]; exact min_le_right _ _\n  have hM0 : 0 ≤ M := by rw [hMQ]; exact le_min (by linarith) (by linarith)\n  have hMD' : min (c₂ * x / q) D ≤ M := by rw [hMQ]; exact le_min hD'Q (min_le_right _ _)",
+            "line": 1200,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_3_caseB",
+            "lines": [
+              1184,
+              1242
+            ],
+            "conclusion": "Chooses `Q` (as `x/(|δ|q)`, or `max Q₀ 2D` if δ=0) and `M = Mof x δ q D = min(Q/2, D)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L1200-L1224"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          76
+        ],
+        "printed": [
+          66
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

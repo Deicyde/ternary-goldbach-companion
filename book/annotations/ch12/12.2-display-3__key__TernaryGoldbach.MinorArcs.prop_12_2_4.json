@@ -1,0 +1,81 @@
+{
+  "id": "12.2 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Third condition is $\\rho\\le0.6$ written as $\\log Q_0\\le0.6\\log Q$.",
+  "subject": [
+    {
+      "location": {
+        "page": 246,
+        "rect": [
+          0.25926,
+          0.33923,
+          0.56816,
+          0.01995
+        ]
+      },
+      "title": "Display, p. 236",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "12.2 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot6",
+        "lines": [
+          69,
+          71
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_12_2_4"
+          },
+          "snippet": {
+            "text": "theorem prop_12_2_4 {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) (_hqQ : (q : ℝ) ≤ Q₀) {s : ℝ}\n    (hs : 1 ≤ s) (hsQ : s ≤ Q₀ / q) :",
+            "line": 69,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+            "lines": [
+              68,
+              98
+            ],
+            "conclusion": "Hypotheses `hQ : 20000 * Q₀ ≤ Q`, `hQ₀ : 1e5 ≤ Q₀`, `hρ : log Q₀ ≤ 0.6 * log Q` of Prop 12.2.4."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot6.lean",
+            "fragment": "L69-L71"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          246
+        ],
+        "printed": [
+          236
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

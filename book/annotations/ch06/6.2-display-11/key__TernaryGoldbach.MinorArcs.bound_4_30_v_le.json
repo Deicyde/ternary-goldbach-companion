@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 11",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's main terms use `muBound` (`2.8`), `0.511` for `∑Λ v v`, `c₀(1/8-1/2π²)=c_{10,I}/4` exactly, and `log q` in place of `log V` in the `V q log` and `U²V` terms.",
+  "subject": [
+    {
+      "location": {
+        "page": 115,
+        "rect": [
+          0.17135,
+          0.50288,
+          0.56816,
+          0.08255
+        ]
+      },
+      "title": "Display, p. 105",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_30_v_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum",
+        "lines": [
+          105,
+          111
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_30_v_le"
+          },
+          "snippet": {
+            "text": "/-- [H, (6.6)], per `v`: (4.30) for `x/v`, `q_v = q/(q,v)`. Here `M₀ = min(Q/2V, U)`. -/\ntheorem bound_4_30_v_le {x δ Q U V : ℝ} {q v : ℕ} (hq : 1 ≤ q) (hx : 0 < x)\n    (hδQ : |δ| * q * Q ≤ x) (hU : 0 < U) (hQ : 0 < Q) (hv : 1 ≤ v) (hvV : (v : ℝ) ≤ V) :\n    bound_4_30 (x / v) δ (q / Nat.gcd q v) U ≤\n      x / (2 * q) * minInv c₀ (π * δ) * muBound (min (Q / (2 * V)) U) q * (Nat.gcd q v / v) +\n        c₀ * (1 / 8 - 1 / (2 * π ^ 2)) / x * (U ^ 2 / q * v * Nat.gcd q v + (2 * U + q) * v) := by\n  have hv0 : (0 : ℝ) < v := by exact_mod_cast hv",
+            "line": 105,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_30_v_le",
+            "lines": [
+              105,
+              170
+            ],
+            "conclusion": "Per `v`: `bound_4_30` at `x/v`, `q_v = q/(q,v)` is `≤ (x/2q) min(1,c₀/(πδ)²) muBound(min(Q/2V,U)) q (q,v)/v + c₀(1/8-1/2π²)/x (U²/q · v (q,v) + (2U+q) v)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L105-L111"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          115
+        ],
+        "printed": [
+          105
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

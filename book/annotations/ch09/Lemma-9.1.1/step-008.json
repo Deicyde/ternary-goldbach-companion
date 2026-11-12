@@ -1,0 +1,152 @@
+{
+  "id": "Lemma 9.1.1 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has holomorphy on `ℜs > −1` (assumed in general, proved on `ℜs > −2` for $t^2e^{-t^2/2}$) with no pole at 0, instead of continuing $sG_\\delta(s)$ via $M(tf'(t))(s)=-sMf(s)$ to $(I-1)\\cup I$.",
+  "subject": [
+    {
+      "location": {
+        "page": 175,
+        "rect": [
+          0.17462,
+          0.5827,
+          0.56162,
+          0.04595
+        ]
+      },
+      "title": "Lemma 9.1.1 step 8: Text, p. 165",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 8",
+          "quads": [
+            [
+              0.39928,
+              0.5827,
+              0.73624,
+              0.5827,
+              0.73624,
+              0.59966,
+              0.39928,
+              0.59966
+            ],
+            [
+              0.17462,
+              0.59823,
+              0.73624,
+              0.59823,
+              0.73624,
+              0.61311,
+              0.17462,
+              0.61311
+            ],
+            [
+              0.17462,
+              0.61248,
+              0.25892,
+              0.61248,
+              0.25892,
+              0.62865,
+              0.17462,
+              0.62865
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.GoodSmoothing",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          54,
+          54
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.GoodSmoothing"
+          },
+          "snippet": {
+            "text": "  diff : ∀ s : ℂ, -1 < s.re → DifferentiableAt ℂ (mellin φ) s",
+            "line": 54,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.GoodSmoothing",
+            "lines": [
+              49,
+              56
+            ],
+            "conclusion": "Field `diff` of `GoodSmoothing`: `mellin φ` is differentiable at every `s` with `-1 < ℜs`, including `s = 0`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L54-L54"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.differentiableAt_G",
+        "module": "TernaryGoldbach.Explicit.GMellin",
+        "lines": [
+          66,
+          72
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.differentiableAt_G"
+          },
+          "snippet": {
+            "text": "/-- `G_δ` is holomorphic on `ℜs > −2`. -/\ntheorem differentiableAt_G (δ : ℝ) {s : ℂ} (hs : -2 < s.re) :\n    DifferentiableAt ℂ (fun s => Gr s δ 0) s := by\n  have h := mellin_differentiableAt_of_isBigO_rpow_exp (f := fδ δ) (a := 1) (b := -2) one_pos\n    ((continuous_fδ δ).locallyIntegrable.locallyIntegrableOn _) (fδ_isBigO_top δ) (fδ_isBigO_bot δ) hs\n  have e : mellin (fδ δ) = fun s => Gr s δ 0 := funext (mellin_fδ δ)\n  rwa [e] at h",
+            "line": 66,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.differentiableAt_G",
+            "lines": [
+              66,
+              72
+            ],
+            "conclusion": "For $\\eta=t^2e^{-t^2/2}$, `G_δ = mellin (fδ δ)` is holomorphic on `ℜs > −2` (Mathlib `mellin_differentiableAt_of_isBigO_rpow_exp`), with no pole at 0; this discharges `GoodSmoothing.diff` in `goodSmoothing_fδ`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/GMellin.lean",
+            "fragment": "L66-L72"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          175
+        ],
+        "printed": [
+          165
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

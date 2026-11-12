@@ -1,0 +1,142 @@
+{
+  "id": "Lemma 4.2.2 step 16",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean proves the odd-n range bounds directly (sum_R1, sum_R2, sum_A1, sum_R3') rather than by editing the proof of 4.2.1; like the text it does not exploit odd support of m.",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.17462,
+          0.42034,
+          0.56162,
+          0.04603
+        ]
+      },
+      "title": "Lemma 4.2.2 step 16: Text, p. 65",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 16",
+          "quads": [
+            [
+              0.17462,
+              0.42034,
+              0.73624,
+              0.42034,
+              0.73624,
+              0.44986,
+              0.17462,
+              0.44986
+            ],
+            [
+              0.17462,
+              0.44923,
+              0.21458,
+              0.44923,
+              0.21458,
+              0.46637,
+              0.17462,
+              0.46637
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          848,
+          955
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "  -- Step 1: drop `μ` and the parity of `m`, and pass to integer indices.\n  set g : ℤ → ℝ := fun n => if ¬ ((q : ℤ) ∣ n ∧ (n : ℝ) ≤ M) then Tn α x n else 0\n  have h1 : ‖restPart α x D M q‖ ≤ ∑ n ∈ Ioc (0 : ℤ) ⌊D⌋, g n := by\n    rw [restPart]\n    refine (norm_sum_le _ _).trans ?_\n    have hfl : ((⌊D⌋₊ : ℕ) : ℤ) = ⌊D⌋ := Int.natCast_floor_eq_floor (by linarith)\n    rw [← hfl, ← sum_Icc_eq_Ioc_int]\n    refine sum_le_sum fun m hm => ?_\n    simp only [g, Tn, Int.toNat_natCast]\n    by_cases h : Odd m ∧ ¬ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M)\n    · rw [if_pos h, if_pos (by\n        intro ⟨hd, hle⟩; exact h.2 ⟨by exact_mod_cast hd, by exact_mod_cast hle⟩), norm_mul]\n      have : ‖(μ m : ℂ)‖ ≤ 1 := by\n        rw [Complex.norm_intCast]; exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n      calc ‖(μ m : ℂ)‖ * ‖Todd α x m‖ ≤ 1 * ‖Todd α x m‖ := by gcongr\n        _ = _ := one_mul _\n    · rw [if_neg h, norm_zero]; split_ifs <;> simp [norm_nonneg]\n  -- Step 2: split the range.\n  have h2 : ∑ n ∈ Ioc (0 : ℤ) ⌊D⌋, g n ≤\n      ∑ n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋, Tn α x n +\n      ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) +\n      ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Tn α x n := by\n    have hpt : ∀ n ∈ Ioc (0 : ℤ) ⌊D⌋, g n ≤\n        (if n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋ then Tn α x n else 0) +\n        (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) +\n        (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by\n      intro n hn\n      have hT := Tn_nonneg α x n\n      have hgT : g n ≤ Tn α x n := by simp only [g]; split_ifs <;> linarith\n      rw [mem_Ioc] at hn\n      by_cases hA : n ≤ ⌊(q : ℝ) / 2⌋\n      · rw [if_pos (mem_Ioc.2 ⟨hn.1, hA⟩)]\n        have : 0 ≤ (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) := by\n          split_ifs <;> linarith\n        have : 0 ≤ (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by split_ifs <;> linarith\n        linarith\n      push Not at hA\n      by_cases hB : n ≤ ⌊D'⌋\n      · rw [if_pos (mem_Ioc.2 ⟨hA, hB⟩), if_neg (by rw [mem_Ioc]; omega)]\n        have : 0 ≤ (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by split_ifs <;> linarith\n        by_cases hd : (q : ℤ) ∣ n\n        · rw [if_pos hd]\n          have hnD' : (n : ℝ) ≤ D' := (Int.cast_le.2 hB).trans (Int.floor_le _)\n          have : g n = 0 := by\n            simp only [g]; rw [if_neg (not_not.2 ⟨hd, hnD'.trans hMD'⟩)]\n          linarith\n        · rw [if_neg hd]; linarith\n      push Not at hB\n      have hnR : ⌊R⌋ < n := by\n        have h1 : D' < n := by\n          have := Int.lt_floor_add_one D'\n          have : ((⌊D'⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hB\n          linarith\n        have h2 : (q : ℝ) / 2 < n := by\n          have := Int.lt_floor_add_one ((q : ℝ) / 2)\n          have : ((⌊(q : ℝ) / 2⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hA\n          linarith\n        have : R < n := max_lt h1 h2\n        exact Int.floor_lt.2 this\n      rw [if_neg (by rw [mem_Ioc]; omega), if_neg (by rw [mem_Ioc]; omega),\n        if_pos (mem_Ioc.2 ⟨hnR, hn.2⟩)]\n      linarith\n    refine (sum_le_sum hpt).trans ?_\n    rw [sum_add_distrib, sum_add_distrib, sum_ite_mem, sum_ite_mem, sum_ite_mem]\n    refine add_le_add (add_le_add ?_ ?_) ?_\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => Tn_nonneg _ _ _\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => by\n        split_ifs <;> first | exact le_rfl | exact Tn_nonneg _ _ _\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => Tn_nonneg _ _ _\n  -- Step 3: the three bounds.\n  have hR1 := sum_R1 hx hq hcop h2α hqQ hδ (α := α)\n  have hB2 : ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      2 * √c₀ / π * (D' + 11 / 2 * q) := by\n    rcases le_or_gt D' ((q : ℝ) / 2) with hle | hlt\n    · rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hle)), sum_empty]; positivity\n    have h := sum_R2 hx hq hcop h2α hqQ hδ hD'0 hD'Q (α := α)\n    refine h.trans ?_\n    have hD'c : D' ≤ c₂ * x / q := min_le_left _ _\n    have hq2 : (q : ℝ) ^ 2 ≤ 2 * c₂ * x := by\n      have : (q : ℝ) / 2 < c₂ * x / q := hlt.trans_le hD'c\n      rw [lt_div_iff₀ hq0] at this; nlinarith\n    have e1 : (q : ℝ) * D' ^ 2 / x ≤ c₂ * D' := by\n      rw [div_le_iff₀ hx]\n      have : (q : ℝ) * D' ≤ c₂ * x := by rw [le_div_iff₀ hq0] at hD'c; linarith\n      nlinarith\n    have e2 : 3 * (q : ℝ) ^ 2 * D' / x ≤ 3 * c₂ * q := by\n      rw [div_le_iff₀ hx]\n      have : (q : ℝ) * D' ≤ c₂ * x := by rw [le_div_iff₀ hq0] at hD'c; linarith\n      nlinarith\n    have e3 : 5 * (q : ℝ) ^ 3 / (4 * x) ≤ 5 / 2 * c₂ * q := by\n      rw [div_le_iff₀ (by positivity)]; nlinarith\n    have hk : 0 ≤ 5 * c₀ / (3 * π ^ 2) := by positivity\n    calc 5 * c₀ / (3 * π ^ 2) * (q * D' ^ 2 / x + 3 * q ^ 2 * D' / x + 5 * q ^ 3 / (4 * x))\n        ≤ 5 * c₀ / (3 * π ^ 2) * (c₂ * D' + 3 * c₂ * q + 5 / 2 * c₂ * q) := by gcongr\n      _ = 5 * c₀ * c₂ / (3 * π ^ 2) * (D' + 11 / 2 * q) := by ring\n      _ = _ := by rw [c₂_identity]\n  have hB2pos : 0 ≤ 2 * √c₀ / π * (D' + 11 / 2 * q) := by positivity\n  have hB1pos : 0 ≤ 2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) := by\n    have := le_max_left 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x)))\n    have : (0 : ℝ) ≤ max 1 _ := le_trans zero_le_one this\n    positivity\n  have hlog1 := logPlus_nonneg (D / (c₂ * x / q))\n  have hlog2 := logPlus_nonneg (D / (q / 2))\n  have hsqrt3 : √(3 * c₀ * c₁) = √3 * √(c₀ * c₁) := by\n    rw [mul_assoc, Real.sqrt_mul (by norm_num)]\n  have hD'R : D' ≤ R := le_max_left _ _\n  have hqR : (q : ℝ) / 2 ≤ R := le_max_right _ _\n  -- Step 4: combine.",
+            "line": 848,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "Drops μ and the parity of m, splits the range into R1, R2, R3 and applies the odd-n versions `sum_R1`, `sum_R2`, `sum_R3`; case (a) is the analogue below."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L848-L955"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1196,
+          1286
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  refine (norm_restPart_le_sum (by linarith)).trans (hsplit.trans ?_)\n  unfold bound_4_32\n  simp only []\n  rw [← hc₁def, ← hQrdef]\n  have hfl1 : Qr ≤ (⌊Qr⌋₊ : ℝ) + 1 := (Nat.lt_floor_add_one Qr).le\n  have hpos1 : 0 ≤ min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) := le_min (by positivity) (by linarith)\n  have hlog := logPlus_nonneg (2 * D / Qr)\n  have hpos2 : 0 ≤ 2 * √(c₀ * c₁) / π * ((1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n      (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) := by positivity\n  have hpos3 : 0 ≤ 3 / 2 * c₁ * (2 + (1 + ε) / ε * logPlus (2 * D / Qr)) * (x / Q₀) := by\n    positivity\n  rcases le_or_gt D M with hDM | hDM\n  · -- No terms above `M`.\n    rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hDM)), sum_empty, add_zero]\n    have hcancel : 2 * √c₀ / π * M ≤ 2 * √(c₀ * c₁) / π * D := by\n      have := Real.pi_pos; gcongr\n    have e : 2 * √(c₀ * c₁) / π * (D + (1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n        (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) = 2 * √(c₀ * c₁) / π * D +\n        2 * √(c₀ * c₁) / π * ((1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n        (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) := by ring\n    rw [e]; linarith\n  -- Terms above `M = Qr/2`: the second approximation.\n  have hMeq : M = Qr / 2 := by\n    rcases min_choice (Qr / 2) D with h | h\n    · rw [hMdef, h]\n    · exfalso; rw [hMdef, h] at hDM; linarith\n  set ξ := (a : ℝ) / q + δ / x\n  have hξ : |ξ - a / q| = 1 / (q * Qr) := by\n    simp only [ξ, add_sub_cancel_left]\n    rw [eq_div_iff (by positivity)]; linarith [hexact]\n  obtain ⟨a', q', hq'1, hcop', hq'Q', happ', hq'low⟩ := second_approx hq hcop hqQr hε hξ\n  have hq'0 : (0 : ℝ) < q' := by exact_mod_cast hq'1\n  set δ' := x * (ξ - a' / q')\n  have hδ'x : δ' / x = ξ - a' / q' := by simp only [δ']; field_simp\n  have h2α' : 2 * α = a' / q' + δ' / x + k := by rw [hδ'x, h2α]; ring\n  have hδ' : |δ' / x| * (q' * ((1 + ε) * Qr)) ≤ 1 := by\n    rw [hδ'x]\n    have := happ'\n    rw [le_div_iff₀ (by positivity)] at this; linarith\n  have hA2 := sum_R3' hx hq'1 hcop' h2α' hq'Q' hδ' hM0 hDM (α := α)\n  rw [← hc₁def] at hA2\n  -- Bound the pieces of `hA2`.\n  have hDMlog : 0 ≤ Real.log (D / M) := Real.log_nonneg (by rw [le_div_iff₀ hM0]; linarith)\n  have hlogeq : Real.log (D / M) ≤ logPlus (2 * D / Qr) := by\n    rw [hMeq, show D / (Qr / 2) = 2 * D / Qr by field_simp]; exact le_max_left _ _\n  have hxM : x / M ≤ 2 * (x / Q₀) := by\n    rw [hMeq, show x / (Qr / 2) = 2 * (x / Qr) by field_simp]\n    gcongr\n  have hxq' : x / q' ≤ (1 + ε) / ε * (x / Q₀) := by\n    have h1 : x / q' ≤ x / (ε * Qr / (1 + ε)) := div_le_div_of_nonneg_left hx.le (by positivity) hq'low\n    have h2 : x / (ε * Qr / (1 + ε)) = (1 + ε) / ε * (x / Qr) := by field_simp\n    have h3 : x / Qr ≤ x / Q₀ := div_le_div_of_nonneg_left hx.le hQ₀0 hQ₀Qr\n    rw [h2] at h1\n    exact h1.trans (mul_le_mul_of_nonneg_left h3 (by positivity))\n  have hsqrt : √(1 + q' / M) ≤ √(3 + 2 * ε) := by\n    apply Real.sqrt_le_sqrt\n    rw [hMeq, div_div_eq_mul_div]\n    have : (q' : ℝ) * 2 / Qr ≤ 2 * (1 + ε) := by\n      rw [div_le_iff₀ hQrpos]; nlinarith\n    linarith\n  have hq'min : (q' : ℝ) ≤ (1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) := by\n    refine hq'Q'.trans (mul_le_mul_of_nonneg_left (le_min hfl1 ?_) (by linarith))\n    rw [hMeq] at hDM; linarith\n  have hk1 : 0 ≤ 3 * c₁ / 2 := by positivity\n  have hk2 : 0 ≤ 2 * √(c₀ * c₁) / π := by positivity\n  have hpart1 : 3 * c₁ / 2 * (x / M + x / q' * Real.log (D / M)) ≤\n      3 / 2 * c₁ * (2 + (1 + ε) / ε * logPlus (2 * D / Qr)) * (x / Q₀) := by\n    have : x / q' * Real.log (D / M) ≤ (1 + ε) / ε * (x / Q₀) * logPlus (2 * D / Qr) :=\n      mul_le_mul hxq' hlogeq hDMlog (by positivity)\n    calc 3 * c₁ / 2 * (x / M + x / q' * Real.log (D / M))\n        ≤ 3 * c₁ / 2 * (2 * (x / Q₀) + (1 + ε) / ε * (x / Q₀) * logPlus (2 * D / Qr)) := by\n          gcongr\n      _ = _ := by ring\n  have hpart2 : 2 * √(c₀ * c₁) / π * q' * (√(1 + q' / M) + (D - M) / q' + 1 / 2 * Real.log (D / M)) ≤\n      2 * √(c₀ * c₁) / π * ((1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n        (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) + 2 * √(c₀ * c₁) / π * (D - M) := by\n    have e : 2 * √(c₀ * c₁) / π * q' * (√(1 + q' / M) + (D - M) / q' + 1 / 2 * Real.log (D / M)) =\n        2 * √(c₀ * c₁) / π * (q' * (√(1 + q' / M) + 1 / 2 * Real.log (D / M))) +\n          2 * √(c₀ * c₁) / π * (D - M) := by field_simp; ring\n    rw [e]\n    gcongr\n  have hcancel : 2 * √c₀ / π * M ≤ 2 * √(c₀ * c₁) / π * M := by\n    have := Real.pi_pos; gcongr\n  have e : 2 * √(c₀ * c₁) / π * (D + (1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n      (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) = 2 * √(c₀ * c₁) / π * D +\n      2 * √(c₀ * c₁) / π * ((1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n      (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) := by ring\n  rw [e]\n  have e2 : 2 * √(c₀ * c₁) / π * (D - M) = 2 * √(c₀ * c₁) / π * D - 2 * √(c₀ * c₁) / π * M := by\n    ring\n  linarith",
+            "line": 1196,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "Case (a) rest part: same drop of μ and parity, ranges bounded by `sum_A1` and `sum_R3'` with the second approximation."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1196-L1286"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

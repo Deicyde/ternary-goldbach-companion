@@ -1,0 +1,81 @@
+{
+  "id": "10.2 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] writes the coefficient as coefN N q (product over p|q of (1-[p|N]p)/(p-1)^3) rather than mu(q/(q,N)) phi((q,N)) mu(q)^3/phi(q)^3, and puts the main terms hat(eta_+)(-beta x)x, hat(eta_*)(-beta x)x in place of S_{eta_+,chi_0*}(delta/x,x), S_{eta_*,chi_0*}(delta/x,x).",
+  "subject": [
+    {
+      "location": {
+        "page": 214,
+        "rect": [
+          0.25926,
+          0.8127,
+          0.56816,
+          0.04367
+        ]
+      },
+      "title": "Display, p. 204",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.coef_eq",
+        "module": "TernaryGoldbach.MajorArcs.Singular",
+        "lines": [
+          147,
+          171
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.coef_eq"
+          },
+          "snippet": {
+            "text": "/-- **The main-term coefficient**: `(μ(q)/φ(q))³ Σ_{b ∈ Bset q} e(−N b/q) = ∏_{p∣q} a_p(N)`. -/\ntheorem coef_eq {N q : ℕ} (hq : 1 ≤ q) :\n    ((μ q : ℂ) / q.totient) ^ 3 * ∑ b ∈ TernaryGoldbach.MinorArcs.Bset q, e (-(N * ((b : ℝ) / q))) =\n      (coefN N q : ℂ) := by\n  unfold coefN\n  split_ifs with hsq\n  · have hR := moebius_mul_ramanujan hsq N\n    have hB : TernaryGoldbach.MinorArcs.Bset q = (range q).filter q.Coprime := by\n      unfold TernaryGoldbach.MinorArcs.Bset\n      exact filter_congr fun b _ => Nat.coprime_comm\n    have hsum : ∑ b ∈ TernaryGoldbach.MinorArcs.Bset q, e (-(N * ((b : ℝ) / q))) =\n        (starRingEnd ℂ) (∑ a ∈ (range q).filter q.Coprime, e (a * N / q)) := by\n      rw [hB, map_sum]; refine sum_congr rfl fun b _ => ?_\n      rw [← e_neg_eq_conj]; congr 1; ring\n    have hconj : (μ q : ℂ) * ∑ b ∈ TernaryGoldbach.MinorArcs.Bset q, e (-(N * ((b : ℝ) / q))) =\n        ((∏ p ∈ q.primeFactors, (1 - divW N p) : ℝ) : ℂ) := by\n      rw [hsum, show (μ q : ℂ) = (starRingEnd ℂ) (μ q) by simp, ← map_mul, hR, Complex.conj_ofReal]\n    rw [div_pow, moebius_cube, div_mul_eq_mul_div, hconj]\n    have ht : ((q.totient : ℕ) : ℂ) = ((∏ p ∈ q.primeFactors, ((p : ℝ) - 1) : ℝ) : ℂ) := by\n      rw [← totient_of_squarefree hsq]; push_cast; rfl\n    rw [ht]\n    unfold aP\n    rw [prod_div_distrib, prod_pow]\n    push_cast; ring\n  · rw [ArithmeticFunction.moebius_eq_zero_of_not_squarefree hsq]; simp",
+            "line": 147,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.coef_eq",
+            "lines": [
+              147,
+              171
+            ],
+            "conclusion": "$(\\mu(q)/\\phi(q))^3\\sum_{b\\in Bset\\ q} e(-Nb/q)=\\mathrm{coefN}(N,q)=\\prod_{p|q}a_p(N)$, the Ramanujan-sum coefficient (equal to $\\mu(q/(q,N))\\phi((q,N))\\mu(q)^3/\\phi(q)^3$ for squarefree $q$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L147-L171"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          214
+        ],
+        "printed": [
+          204
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 9.5.1 step 23",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's low-zero term comes from Plancherel windows for $\\phi_1$ and $\\phi_2$ separately at $T_0=500$ (log $x$ enters by combining them), not $(2.445\\sqrt{T_0}\\log T_0+50.034)\\log x$ from Lemma hausierer.",
+  "subject": [
+    {
+      "location": {
+        "page": 200,
+        "rect": [
+          0.26253,
+          0.75869,
+          0.56162,
+          0.02073
+        ]
+      },
+      "title": "Proposition 9.5.1 step 23: Display, p. 190",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          280,
+          280
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le"
+          },
+          "snippet": {
+            "text": "      (Cg * (2 * aH)) ^ 2 * 8 * Z3g BPz2 0 + √x * E1g BPz2 500 (2 * π * 65.5) (2 * π * 147.7) +",
+            "line": 280,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+            "lines": [
+              276,
+              291
+            ],
+            "conclusion": "For $\\phi_1=\\eta_+^2$ the zeros with $|\\Im\\rho|\\le500$ contribute $\\le\\sqrt x\\,E_1(B_{P,z2},500,2\\pi\\cdot65.5,2\\pi\\cdot147.7)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L280-L280"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi2_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          297,
+          297
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_phi2_le"
+          },
+          "snippet": {
+            "text": "      2 * ((Cg * (2 * aH)) ^ 2 * 8) * Z3g BPz2 0 + √x * E1g BPz2 500 (2 * π * 147.7) (2 * π * 338.2) +",
+            "line": 297,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi2_le",
+            "lines": [
+              293,
+              309
+            ],
+            "conclusion": "For $\\phi_2=\\eta_+^2\\log$ the same term is $\\sqrt x\\,E_1(B_{P,z2},500,2\\pi\\cdot147.7,2\\pi\\cdot338.2)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L297-L297"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.E1z500_le",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          97,
+          101
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.E1z500_le"
+          },
+          "snippet": {
+            "text": "/-- `E₁` at `T₀ = 500`, from `√(2π Q · 2(T₀ + 3.48)) ≤ S`. -/\ntheorem E1z500_le {Q1 Q2 S1 S2 : ℝ} (hQ1 : 0 ≤ Q1) (hQ2 : 0 ≤ Q2)\n    (hS1 : 2 * 3.1416 * Q1 * (2 * 503.48) ≤ S1 ^ 2) (hS2 : 2 * 3.1416 * Q2 * (2 * 503.48) ≤ S2 ^ 2)\n    (hS1p : 0 ≤ S1) (hS2p : 0 ≤ S2) :\n    E1g BPz2 500 (2 * π * Q1) (2 * π * Q2) ≤ 50.84 * (S1 / 3.48 + S2) := by",
+            "line": 97,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.E1z500_le",
+            "lines": [
+              97,
+              126
+            ],
+            "conclusion": "$E_1$ at $T_0=500$ is bounded numerically: $E_1\\le50.84(S_1/3.48+S_2)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L97-L101"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          200
+        ],
+        "printed": [
+          190
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

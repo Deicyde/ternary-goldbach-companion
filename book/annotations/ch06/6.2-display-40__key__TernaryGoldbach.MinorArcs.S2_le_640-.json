@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 40",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean proves the final inequality in one step (via q <= x/(8Q), W <= x/U) rather than through the displayed chain of intermediate fractions.",
+  "subject": [
+    {
+      "location": {
+        "page": 123,
+        "rect": [
+          0.17135,
+          0.41429,
+          0.56816,
+          0.07781
+        ]
+      },
+      "title": "Display, p. 113",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2_le_640'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          455,
+          465
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2_le_640'"
+          },
+          "snippet": {
+            "text": "  have hRcond : R ^ 2 ≤ x / (|δ| * q) / (q + x / (4 * W)) := by\n    rw [hR2, div_le_div_iff₀ (by positivity) (by positivity)]\n    have hqx : (q : ℝ) ≤ x / (8 * Q) := by rw [le_div_iff₀ (by positivity)]; linarith\n    have hqW : q * W ≤ x * ε₁ / 4 := by\n      have := mul_le_mul hqx hWx hW0.le (by positivity)\n      refine this.trans (le_of_eq ?_)\n      simp only [ε₁]; field_simp; ring\n    simp only [c]\n    rw [show x / (|δ| * q) * (|δ| * q * (1 + ε₁) / 4) = x * (1 + ε₁) / 4 by field_simp]\n    have : W * (q + x / (4 * W)) = q * W + x / 4 := by field_simp; try ring\n    rw [this]; linarith",
+            "line": 455,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.S2_le_640'",
+            "lines": [
+              385,
+              484
+            ],
+            "conclusion": "With c = |delta| q (1 + x/2UQ)/4 and R^2 = W/c, proves R^2 <= (x/|delta q|)/(q + x/4W), using q <= x/8Q and W <= x/U (q W <= x eps_1/4), i.e. x/|delta q| (q + x/4W)^{-1} >= 4W/(|delta| q (1 + x/2UQ))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L455-L465"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          123
+        ],
+        "printed": [
+          113
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

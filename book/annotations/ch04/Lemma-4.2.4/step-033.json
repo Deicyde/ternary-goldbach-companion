@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 33",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean also adds the two ranges (m <= M and m > M) at this point (`hsplit`, then `hT` and the final linarith), but with its own constants and without the inequality (4.5x) of the next display.",
+  "subject": [
+    {
+      "location": {
+        "page": 85,
+        "rect": [
+          0.17462,
+          0.15793,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.4 step 33: Text, p. 75",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          1097,
+          1109
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hT : Real.log M * (2 * √c₀ / π * M) + Bc * T3 ≤ Bc * (D * (Real.log D - 1) + M) := by\n    have h1 : Real.log M * (2 * √c₀ / π * M) ≤ Bc * (M * Real.log M) := by\n      have := mul_le_mul_of_nonneg_right hBc' (mul_nonneg hM0.le hlogM)\n      linarith\n    by_cases hDM : M < D\n    · rw [hT3def, if_pos hDM]\n      have e : Bc * (M * Real.log M) + Bc * (D * (Real.log D - 1) - M * (Real.log M - 1)) =\n          Bc * (D * (Real.log D - 1) + M) := by ring\n      linarith\n    · rw [hT3def, if_neg hDM, mul_zero, add_zero]\n      have hMDe : M = D := le_antisymm hMD (not_lt.1 hDM)\n      have e : Bc * (M * Real.log M) = Bc * (D * (Real.log D - 1) + M) := by rw [hMDe]; ring\n      linarith",
+            "line": 1097,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+            "lines": [
+              880,
+              1126
+            ],
+            "conclusion": "Combines the D log D terms: log M (2 sqrt(c0)/pi) M + Bc T3 <= Bc (D(log D - 1) + M)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L1097-L1109"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          1111,
+          1126
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA"
+          },
+          "snippet": {
+            "text": "  refine (norm_restPartI2_le_sum hU hV).trans ?_\n  rw [← hDdef]\n  refine hsplit.trans ?_\n  unfold bound_4_52\n  simp only []\n  rw [← hc₁def, ← hBcdef, ← hQrdef, ← hYdef]\n  have hlogDe : Real.log (D / rexp 1) = Real.log D - 1 := by\n    rw [Real.log_div hD0.ne' (by positivity), Real.log_exp]\n  rw [hlogDe]\n  have hMY : Bc * M ≤ Bc * ((1 + ε) * Y * (1 / 2)) := by\n    refine mul_le_mul_of_nonneg_left ?_ hBc\n    nlinarith\n  have hq : Real.log M * (35 * c₀ * c₂ / (3 * π ^ 2) * q) ≤ 35 * c₀ * c₂ / (3 * π ^ 2) * q * Real.log D := by\n    have := mul_le_mul_of_nonneg_right hlogMD (show 0 ≤ 35 * c₀ * c₂ / (3 * π ^ 2) * q by positivity)\n    linarith\n  linarith",
+            "line": 1111,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+            "lines": [
+              880,
+              1126
+            ],
+            "conclusion": "Final assembly: restPartI2 norm <= split at M <= log M * (A1 sum) + (A2 sum) <= bound_4_52."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L1111-L1126"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          85
+        ],
+        "printed": [
+          75
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

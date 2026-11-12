@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.3 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part carried: the invocation of [RS62 (3.42)] (`div_totient_lt`, conditional on `PlattGRH`); the value `ε₀ = 0.001102` has no [L] counterpart (constant 1.039 from `psiN_le`).",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.20698,
+          0.24669,
+          0.62529,
+          0.01863
+        ]
+      },
+      "title": "Lemma 5.3 step 3: Text, p. 37",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.3 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct",
+        "lines": [
+          2258,
+          2260
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.div_totient_lt"
+          },
+          "snippet": {
+            "text": "theorem div_totient_lt {q : ℕ} (hq : 1 ≤ q) {r : ℝ} (hr : 3 ≤ r) (hqr : (q : ℝ) ≤ r) :\n    (q : ℝ) / Nat.totient q < Real.exp Real.eulerMascheroniConstant * Real.log (Real.log r) +\n      2.50637 / Real.log (Real.log r) := by",
+            "line": 2258,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+            "lines": [
+              2256,
+              2352
+            ],
+            "conclusion": "Under `PlattGRH`, `q/φ(q) < e^γ log log r + 2.50637/log log r` for `q ≥ 1`, `r ≥ max(3,q)`: the [RS62 (3.42)] bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L2258-L2260"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          121,
+          121
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hX := TernaryGoldbach.Prelim.div_totient_lt hP0 hexpV hPV",
+            "line": 121,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "Applies `div_totient_lt` to `P` with `r = e^V`, the use of [RS62 (3.42)] at this point."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L121-L121"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 12.2.1 step 3, the same LaTeX (mapper (sonnet); verifier (sonnet); judge (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

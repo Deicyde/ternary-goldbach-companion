@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 28",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not perform the substitution W = 2qt or state the identity; it bounds the W-integral directly with a different estimate, so the t-integral of 1/sqrt(t log t) never appears.",
+  "subject": [
+    {
+      "location": {
+        "page": 120,
+        "rect": [
+          0.25926,
+          0.50777,
+          0.56816,
+          0.04177
+        ]
+      },
+      "title": "Display, p. 110",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          251,
+          260
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_Ggen_le'"
+          },
+          "snippet": {
+            "text": "  have J6 : ∫ W in A..x / U, f6 W ≤\n      2 * rexp 1 * √c + 4 * √(x / U / Real.log (x / U / c)) := by\n    rw [intervalIntegral.integral_congr (g := fun W => 1 / (√W * √(Real.log (W / c))))\n      fun W hW => by\n        have h0 := hpos W hW\n        have h1 := Real.sqrt_pos.2 (hLpos W hW)\n        simp only [f6]\n        rw [div_eq_div_iff (by positivity) (by positivity), one_mul,\n          ← mul_assoc, Real.mul_self_sqrt h0.le]]\n    exact integral_inv_sqrt_log_le hc0 hcV hVU",
+            "line": 251,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+            "lines": [
+              172,
+              282
+            ],
+            "conclusion": "The integral of f6 = sqrt(W)/(W sqrt(log(W/c))) = 1/(sqrt(W) sqrt(log(W/c))) over [A, x/U] is rewritten and bounded directly by integral_inv_sqrt_log_le, with sqrt(log c) kept outside."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L251-L260"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          120
+        ],
+        "printed": [
+          110
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

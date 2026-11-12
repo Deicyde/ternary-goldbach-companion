@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 42",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The polynomial inequality of [H] (valid for log V >= 1) that proves the derivative negative is replaced in Lean by `decay_M3b`, a different inequality in ell = log u with hypothesis L' >= 17; [H]'s inequality (log(16V/e^3))^2 log 16V > (log V)^3 itself does not occur. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 141,
+        "rect": [
+          0.17135,
+          0.77606,
+          0.56816,
+          0.07636
+        ]
+      },
+      "title": "Display, p. 131",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.decay_M3b",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIb",
+        "lines": [
+          230,
+          239
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.decay_M3b"
+          },
+          "snippet": {
+            "text": "/-- `(c + ℓ)²(L'' + ℓ) ≤ c² L'' e^ℓ` for `c = 3.4658`, `L'' ≥ 17`. -/\ntheorem decay_M3b {L' ℓ : ℝ} (hL : 17 ≤ L') (hℓ : 0 ≤ ℓ) :\n    (3.4658 + ℓ) ^ 2 * (L' + ℓ) ≤ 3.4658 ^ 2 * L' * rexp ℓ := by\n  have he := Real.sum_le_exp_of_nonneg hℓ 4\n  norm_num [Finset.sum_range_succ, Nat.factorial] at he\n  have h3 : 0 ≤ ℓ ^ 3 := by positivity\n  have h2 : 0 ≤ ℓ ^ 2 := by positivity\n  have hL0 : 0 ≤ L' := by linarith\n  nlinarith [mul_nonneg hL0 hℓ, mul_nonneg hL0 h2, mul_nonneg hL0 h3, mul_le_mul_of_nonneg_left he\n    (by positivity : (0 : ℝ) ≤ 3.4658 ^ 2 * L')]",
+            "line": 230,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.decay_M3b",
+            "lines": [
+              230,
+              239
+            ],
+            "conclusion": "`(3.4658 + ell)^2 (L' + ell) <= 3.4658^2 L' e^ell` for L' >= 17, ell >= 0: the polynomial inequality that makes the case (b) 3/2-power term decay in u."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIb.lean",
+            "fragment": "L230-L239"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          141
+        ],
+        "printed": [
+          131
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

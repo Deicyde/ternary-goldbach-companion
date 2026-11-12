@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 18",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "`κ₀` appears only as the literal `1.27` in `zeta3` and `S1_bound`.",
+  "subject": [
+    {
+      "location": {
+        "page": 118,
+        "rect": [
+          0.25926,
+          0.46086,
+          0.56816,
+          0.01738
+        ]
+      },
+      "title": "Display, p. 108",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S1_bound",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIS1",
+        "lines": [
+          399,
+          402
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S1_bound"
+          },
+          "snippet": {
+            "text": "`S₁(U, W) ≤ (x/W) H₂(x/(WU)) + 1.27 ζ(3/2)³ x^{3/2}/(W^{3/2} U)`. -/\ntheorem S1_bound {x U W : ℝ} (hx : 0 < x) (hW : 0 < W) (hU : 1 ≤ U) :\n    S1 x U W ≤ x / W * H2 (x / (W * U)) +\n      1.27 * (riemannZeta (3 / 2)).re ^ 3 * x ^ (3 / 2 : ℝ) / (W ^ (3 / 2 : ℝ) * U) := by",
+            "line": 399,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.S1_bound",
+            "lines": [
+              398,
+              484
+            ],
+            "conclusion": "`S₁(U,W) ≤ (x/W) H₂(x/WU) + 1.27 ζ(3/2)³ x^{3/2}/(W^{3/2}U)`, with `κ₀ = 1.27`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+            "fragment": "L399-L402"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          118
+        ],
+        "printed": [
+          108
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

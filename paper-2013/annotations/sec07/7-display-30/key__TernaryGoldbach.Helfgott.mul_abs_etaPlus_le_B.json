@@ -1,0 +1,81 @@
+{
+  "id": "7 display 30",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] proves the pointwise bounds $|\\eta_+|\\le1.94$ and $t|\\eta_+(t)|\\le2.32$, which give $\\sup_{r\\ge t}|\\eta_+(r)|\\le\\min(1.94,2.32/t)$; constants are weaker than $1.07996$, $1.19073$ (NOTES: needs Appendix A sup norms).",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.20371,
+          0.59815,
+          0.63183,
+          0.03868
+        ]
+      },
+      "title": "Display, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.mul_abs_etaPlus_le_B",
+        "module": "TernaryGoldbach.Helfgott.HHBound",
+        "lines": [
+          444,
+          455
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.mul_abs_etaPlus_le_B"
+          },
+          "snippet": {
+            "text": "/-- `t |η₊(t)| ≤ 2.32` for `t ≥ 0` (cf. [H, (14.24)]: `1.19073`). -/\ntheorem mul_abs_etaPlus_le_B {t : ℝ} (ht : 0 ≤ t) : t * |etaPlus t| ≤ 2.32 := by\n  unfold etaPlus\n  rw [abs_mul, abs_mul, abs_of_nonneg ht, abs_of_pos (Real.exp_pos _)]\n  have h1 := abs_hH200_le ht\n  have h2 := phi_le_two_div_e t\n  unfold phi at h2\n  have h3 : 0 ≤ t ^ 2 * Real.exp (-t ^ 2 / 2) := by positivity\n  calc t * (|hH 200 t| * t * Real.exp (-t ^ 2 / 2)) = |hH 200 t| * (t ^ 2 * Real.exp (-t ^ 2 / 2)) := by\n        ring\n    _ ≤ 3.15 * 0.7358 := mul_le_mul h1 h2 h3 (by norm_num)\n    _ ≤ 2.32 := by norm_num",
+            "line": 444,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.mul_abs_etaPlus_le_B",
+            "lines": [
+              444,
+              455
+            ],
+            "conclusion": "$t|\\eta_+(t)|\\le 2.32$ for $t\\ge0$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/HHBound.lean",
+            "fragment": "L444-L455"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.3 display 1, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "10.2 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] writes the coefficient as coefN N q (product over p|q of (1-[p|N]p)/(p-1)^3) rather than mu(q/(q,N)) phi((q,N)) mu(q)^3/phi(q)^3, and puts the main terms hat(eta_+)(-beta x)x, hat(eta_*)(-beta x)x in place of S_{eta_+,chi_0*}(delta/x,x), S_{eta_*,chi_0*}(delta/x,x).",
+  "subject": [
+    {
+      "location": {
+        "page": 214,
+        "rect": [
+          0.25926,
+          0.8127,
+          0.56816,
+          0.04367
+        ]
+      },
+      "title": "Display, p. 204",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.pointwise_bound",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          787,
+          792
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.pointwise_bound"
+          },
+          "snippet": {
+            "text": "  have hid : (m * Ap) ^ 2 * (m * Au) * ∑ b ∈ Bset q, e (-(N * ((b : ℝ) / q + β))) =\n      (coefN N q : ℂ) * (Ap ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β))) := by\n    rw [← coef_eq hq1, ← hAs, hm]\n    have : ∀ b ∈ Bset q, e (-(N * ((b : ℝ) / q + β))) = e (-(N * ((b : ℝ) / q))) * e (-(N * β)) := by\n      intro b _; rw [← TernaryGoldbach.e_add]; congr 1; ring\n    rw [sum_congr rfl this, ← sum_mul]; ring",
+            "line": 787,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.pointwise_bound",
+            "lines": [
+              759,
+              803
+            ],
+            "conclusion": "`hid`: $(mA_p)^2(mA_u)\\sum_b e(-N(b/q+\\beta))=\\mathrm{coefN}(N,q)\\cdot(A_p^2A_u e(-N\\beta))$, the sum over $a$ of the principal-character term."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L787-L792"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          214
+        ],
+        "printed": [
+          204
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

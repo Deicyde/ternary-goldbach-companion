@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 13.1.2 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] proves it for integers $n$ only (text: real $x\\in[r_0,r_1)$), unnormalised by $\\sum|a_n|^2$.",
+  "subject": [
+    {
+      "location": {
+        "page": 258,
+        "rect": [
+          0.26253,
+          0.15703,
+          0.56162,
+          0.01808
+        ]
+      },
+      "title": "Proposition 13.1.2 step 8: Text, p. 248",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 13.1.2 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          122,
+          133
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_13_1_2"
+          },
+          "snippet": {
+            "text": "  have hS : ∀ n, r₀ ≤ n → n ≤ r₁ → ∑ m ∈ Icc r₀ n, f m ≤ H n - I r₀ := by\n    intro n hn hn1\n    have tele : ∀ k, r₀ ≤ k → k ≤ r₁ → ∑ m ∈ Ico r₀ k, f m = I k - I r₀ := by\n      intro k hk hk1\n      induction k, hk using Nat.le_induction with\n      | base => simp\n      | succ k hk ih =>\n        rw [sum_Ico_succ_top hk, ih (by omega)]\n        simp only [hf, ite_eq_left (show k < r₁ by omega)]; ring\n    rw [← Finset.Ico_add_one_right_eq_Icc, sum_Ico_succ_top hn, tele n hn hn1]\n    rcases lt_or_eq_of_le hn1 with h | h\n    · simp only [hf, ite_eq_left h]; linarith [hH n hn h]",
+            "line": 122,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+            "lines": [
+              88,
+              139
+            ],
+            "conclusion": "`hS`: $\\sum_{m\\in[r_0,n]}f(m)\\le H(n)-I(r_0)$ for integers $r_0\\le n<r_1$, by telescoping (`tele`) and `hH` (unnormalised)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L122-L133"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          258
+        ],
+        "printed": [
+          248
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

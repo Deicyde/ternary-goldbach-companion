@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 11.2.4 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds `R'` by `0.27125/ℓ`, decreasing in ℓ, and takes ℓ ≥ 2.5; it does not prove monotonicity of `s(2-1/(1+s))/log(1+s)` or of the left side of (11.25) in ℓ.",
+  "subject": [
+    {
+      "location": {
+        "page": 235,
+        "rect": [
+          0.17462,
+          0.53485,
+          0.56162,
+          0.04495
+        ]
+      },
+      "title": "Lemma 11.2.4 step 7: Text, p. 225",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 11.2.4 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Rs_deriv_le",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          129,
+          136
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Rs_deriv_le"
+          },
+          "snippet": {
+            "text": "theorem Rs_deriv_le {B s : ℝ} (hs : 0 ≤ Real.log 8 + s) (hB : s < B) :\n    0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.27125 / (B - s) := by\n  have hBs : 0 < B - s := by linarith\n  have h2 : 0 < 2 * B - s + Real.log 8 := by linarith\n  rw [mul_div_assoc']\n  rw [div_le_div_iff₀ (by positivity) hBs]\n  have : (B + Real.log 8) * (B - s) ≤ (B - s) * (2 * B - s + Real.log 8) := by nlinarith\n  nlinarith",
+            "line": 129,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Rs_deriv_le",
+            "lines": [
+              129,
+              136
+            ],
+            "conclusion": "`R'(s) ≤ 0.27125/(B-s)` (derivative of `R` in `s` bounded by `1/ℓ` scale)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L129-L136"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          188,
+          191
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.QA_antitoneOn"
+          },
+          "snippet": {
+            "text": "    have hRd := Rs_deriv_le (B := B) (s := s) (by linarith) hsB\n    have hRd' : 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.1085 := by\n      refine hRd.trans ?_\n      rw [div_le_iff₀ (by linarith)]; nlinarith",
+            "line": 188,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+            "lines": [
+              163,
+              213
+            ],
+            "conclusion": "With `B - s ≥ 2.5` (i.e. ℓ ≥ 2.5), `R' ≤ 0.27125/(B-s) ≤ 0.1085`: the worst case is the smallest ℓ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L188-L191"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          235
+        ],
+        "printed": [
+          225
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

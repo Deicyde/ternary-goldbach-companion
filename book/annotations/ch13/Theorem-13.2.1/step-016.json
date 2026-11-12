@@ -1,0 +1,84 @@
+{
+  "id": "Theorem 13.2.1 step 16",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Different form of the triangle inequality: Lean splits the integral itself with (1+t),(1+1/t) factors instead of bounding the square root of the integral by the sum of the two square roots.",
+  "subject": [
+    {
+      "location": {
+        "page": 260,
+        "rect": [
+          0.26253,
+          0.76878,
+          0.56162,
+          0.08703
+        ]
+      },
+      "title": "Theorem 13.2.1 step 16: Display, p. 250",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          345,
+          367
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hstep1 : ∫ α in A, ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 ≤\n      (1 + t) * (∫ α in A, ‖expTsum (a₁ x) α‖ ^ 2 * v α) +\n        (1 + 1 / t) * ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2 := by\n    have i1 : IntegrableOn (fun α => ‖expTsum (a₁ x) α‖ ^ 2 * v α) A :=\n      integrableOn_Ioc_of_continuous (c1.mul hv) A hAsub\n    have i2 : IntegrableOn (fun α => v α * ‖expTsum (a₂ x) α‖ ^ 2) A :=\n      integrableOn_Ioc_of_continuous (hv.mul c2) A hAsub\n    have hcS : Continuous fun α => ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 :=\n      hv.mul ((TernaryGoldbach.continuous_expTsum (Helfgott.summable_etaPlus hx0)).norm.pow 2)\n    have e : (1 + t) * (∫ α in A, ‖expTsum (a₁ x) α‖ ^ 2 * v α) +\n        (1 + 1 / t) * ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2 =\n        ∫ α in A, ((1 + t) * (‖expTsum (a₁ x) α‖ ^ 2 * v α) +\n          (1 + 1 / t) * (v α * ‖expTsum (a₂ x) α‖ ^ 2)) := by\n      rw [integral_add (i1.const_mul _) (i2.const_mul _), integral_const_mul, integral_const_mul]\n    rw [e]\n    refine setIntegral_mono_on (integrableOn_Ioc_of_continuous hcS A hAsub)\n      ((i1.const_mul _).add (i2.const_mul _)) hA fun α _ => ?_\n    have h := norm_add_sq_le (expTsum (a₁ x) α) (expTsum (a₂ x) α) ht\n    rw [← S_etaPlus_eq hx0] at h\n    have hv0 : 0 ≤ v α := norm_nonneg _\n    have := mul_le_mul_of_nonneg_left h hv0\n    simp only [v] at this ⊢\n    nlinarith",
+            "line": 345,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "∫_A |S_{η*}||S_{η₊}|² ≤ (1+t)∫_A |S₁|²|S_{η*}| + (1+1/t)∫_A |S_{η*}||S₂|², A = (0,1] ∖ 𝔐_{8,r₀}(x), t = 5·10⁻⁴."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L345-L367"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          260
+        ],
+        "printed": [
+          250
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

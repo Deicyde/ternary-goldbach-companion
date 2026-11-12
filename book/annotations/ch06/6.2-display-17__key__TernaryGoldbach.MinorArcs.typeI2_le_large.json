@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 17",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean states the `|δ| ≥ 1/2c₂` coefficients symbolically in `typeI2_le_large` (`2√(c₀c₊)/π`, `3c₊/2`, `35c₀c₂/3π²`, with `1.0064`); no numerical constants `c_{13,I₂}`…`c_{17,I₂}` are computed.",
+  "subject": [
+    {
+      "location": {
+        "page": 117,
+        "rect": [
+          0.17135,
+          0.50684,
+          0.56816,
+          0.14794
+        ]
+      },
+      "title": "Display, p. 107",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_large",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Large",
+        "lines": [
+          231,
+          237
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_le_large"
+          },
+          "snippet": {
+            "text": "        1.0064 * (2 * √(c₀ * cPlus x U V) / π * (1 + (1 + ε) * (1 + V / Q) / rexp 1)) * (U * V) +\n        1.0064 * (3 / 2 * cPlus x U V * (2 + (1 + ε) / ε * logPlus (2 * U * V * |δ| * q / x))) *\n          (x * V / Q) +\n        1.0064 * (35 * c₀ * c₂ / (3 * π ^ 2)) * Q +\n        2 * √(c₀ * cPlus x U V) / π * (1 + ε) * √(3 + 2 * ε) *\n          (x / (|δ| * q) * (1.03883 + Real.log q + logPlus (6 * U * V * |δ| * q / (√2 * x))) +\n            1.0064 * V) := by",
+            "line": 231,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_large",
+            "lines": [
+              217,
+              359
+            ],
+            "conclusion": "The `|δ| ≥ 1/2c₂` terms of `|S_{I,2}|`: `1.0064(2√(c₀c₊)/π(1+(1+ε)(1+V/Q)/e)) UV + 1.0064(3c₊/2(2+((1+ε)/ε)log⁺(2UV|δ|q/x))) xV/Q + 1.0064(35c₀c₂/3π²) Q + (2√(c₀c₊)/π)(1+ε)√(3+2ε)((x/|δ|q)(1.03883+log q+log⁺(6UV|δ|q/√2x)) + 1.0064 V)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Large.lean",
+            "fragment": "L231-L237"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          117
+        ],
+        "printed": [
+          107
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

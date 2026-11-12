@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.2 step 36",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no $C_{2,s_1,s_2}$ (it never compares $v=2$ with $v=1$); the prime 2 enters its $v=2$ Euler product only through $c_s(2)=1/(1-2^{s-1})$, bounded numerically ($\\le3.4148$ at $s=1/2$, the factor $(1-2^{-1/2})^{-1}$ of the text's bound).",
+  "subject": [
+    {
+      "location": {
+        "page": 98,
+        "rect": [
+          0.26253,
+          0.47745,
+          0.56162,
+          0.05477
+        ]
+      },
+      "title": "Lemma 5.1.2 step 36: Display, p. 88",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 36"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.cfac2_two",
+        "module": "TernaryGoldbach.MinorArcs.G2Numerics",
+        "lines": [
+          301,
+          305
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.cfac2_two"
+          },
+          "snippet": {
+            "text": "theorem cfac2_two : cfac (1 / 2) 2 ≤ 3.4148 := by\n  have h : (2 : ℝ) ^ ((1 : ℝ) / 2) ≤ 1.4143 :=\n    rpow_le_of_pow_le (k := 2) (by norm_num) (by norm_num) (by norm_num) (by norm_num)\n  have := cfac_le_of (p := 2) (by exact_mod_cast h) (by norm_num)\n  refine this.trans ?_; norm_num",
+            "line": 301,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.cfac2_two",
+            "lines": [
+              301,
+              305
+            ],
+            "conclusion": "$c_{1/2}(2)=2/(2-\\sqrt2)=1/(1-2^{-1/2})\\le3.4148$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Numerics.lean",
+            "fragment": "L301-L305"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.cfac9_two",
+        "module": "TernaryGoldbach.MinorArcs.G2Numerics",
+        "lines": [
+          371,
+          373
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.cfac9_two"
+          },
+          "snippet": {
+            "text": "theorem cfac9_two : cfac (1 / 9) 2 ≤ 2.175 := by\n  have := cfac_le_of (p := 2) (by exact_mod_cast two_rpow9) (by norm_num)\n  refine this.trans ?_; norm_num",
+            "line": 371,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.cfac9_two",
+            "lines": [
+              371,
+              373
+            ],
+            "conclusion": "$c_{1/9}(2)=2/(2-2^{1/9})\\le2.175$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Numerics.lean",
+            "fragment": "L371-L373"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          98
+        ],
+        "printed": [
+          88
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

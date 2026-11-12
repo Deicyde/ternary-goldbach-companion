@@ -1,0 +1,119 @@
+{
+  "id": "Proposition 9.5.1 step 1",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 199,
+        "rect": [
+          0.17462,
+          0.15578,
+          0.56162,
+          0.03442
+        ]
+      },
+      "title": "Proposition 9.5.1 step 1: Text, p. 189",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.phi1",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          182,
+          183
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.phi1"
+          },
+          "snippet": {
+            "text": "/-- `φ₁ = η₊²`. -/\nnoncomputable def phi1 (t : ℝ) : ℂ := ((etaPlus t ^ 2 : ℝ) : ℂ)",
+            "line": 182,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.phi1",
+            "lines": [
+              182,
+              183
+            ],
+            "conclusion": "`phi1 t = (etaPlus t ^ 2 : ℂ)`, i.e. $\\eta_{+,0}=\\eta_+^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L182-L183"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.phi2",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          184,
+          185
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.phi2"
+          },
+          "snippet": {
+            "text": "/-- `φ₂ = η₊² log`. -/\nnoncomputable def phi2 (t : ℝ) : ℂ := (Real.log t : ℂ) * phi1 t",
+            "line": 184,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.phi2",
+            "lines": [
+              184,
+              185
+            ],
+            "conclusion": "`phi2 t = log t * phi1 t`, i.e. $\\eta_{+,1}=\\eta_+^2\\log t$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L184-L185"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          199
+        ],
+        "printed": [
+          189
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

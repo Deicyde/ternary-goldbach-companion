@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 12.2.4 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "c_Δ appears as `1.36 − c` (c = c_E) in `h2` and as the numeral 0.0274177 in `hstar` and `kapQ`; ω(ρ) is fixed at 0.6274, so 1−ω>0 is the numeral 0.3726.",
+  "subject": [
+    {
+      "location": {
+        "page": 247,
+        "rect": [
+          0.17462,
+          0.15703,
+          0.56162,
+          0.01698
+        ]
+      },
+      "title": "Proposition 12.2.4 step 8: Text, p. 237",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.2.4 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.star_core",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
+        "lines": [
+          97,
+          98
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.star_core"
+          },
+          "snippet": {
+            "text": "  have h2 : k * (0.3726 * (a - S) + 0.0274177) ≤ k * ((1.36 - c) + (1 - θ) * (a - S)) := by\n    apply mul_le_mul_of_nonneg_left _ hk.le; nlinarith",
+            "line": 97,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.star_core",
+            "lines": [
+              80,
+              102
+            ],
+            "conclusion": "h2 uses c_Delta as (1.36 - c) in k((1.36-c)+(1-theta)(a-S)) and bounds it below by k(0.3726(a-S)+0.0274177)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L97-L98"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.star_suffices",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
+        "lines": [
+          108,
+          112
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.star_suffices"
+          },
+          "snippet": {
+            "text": "    (hstar : (q : ℝ) / Nat.totient q *\n        ((Gq q (Q₀ / (s * q)) - (Nat.totient q / q) * (Real.log (Q₀ / (s * q)) + c + Sq q)) +\n          0.6274 * max 0 (-(Gq q (Q / (s * q)) -\n            (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q)))) ≤\n      0.3726 * (Real.log (s * q) - Sq q) + 0.0274177) :",
+            "line": 108,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.star_suffices",
+            "lines": [
+              104,
+              134
+            ],
+            "conclusion": "Hypothesis `hstar`: (q/φ(q))(e1 + 0.6274 max(0,−e2)) ≤ 0.3726(log sq − S_q) + 0.0274177, i.e. (12.26) with ω = 0.6274 and c_Δ = 1.36 − c_E ≈ 0.0274177."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L108-L112"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.kapQ",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
+        "lines": [
+          30,
+          31
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.kapQ"
+          },
+          "snippet": {
+            "text": "/-- `κ(q) = 0.3726 (log q − S_q) + 0.0274177` ([H, (12.31)] with `ω = 0.6274`, `c_Δ = 1.36 − c_E`). -/\nnoncomputable def kapQ (q : ℕ) : ℝ := 0.3726 * (Real.log q - Sq q) + 0.0274177",
+            "line": 30,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.kapQ",
+            "lines": [
+              30,
+              31
+            ],
+            "conclusion": "κ(q) = 0.3726(log q − S_q) + 0.0274177, the right-hand constant with 1 − ω = 0.3726 and c_Δ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L30-L31"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          247
+        ],
+        "printed": [
+          237
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

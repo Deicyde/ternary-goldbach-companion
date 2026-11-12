@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 37",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no $\\kappa_7$: it keeps the exact term $8\\zeta(3/2)^3\\sqrt{x/V}/U$ in place of $2\\kappa_7$ and bounds it numerically ($\\le0.2355$) only at its chosen $U,V$, not via $U^2V\\ge5\\cdot10^5x$ and $\\kappa_4\\le 90.5671$.",
+  "subject": [
+    {
+      "location": {
+        "page": 122,
+        "rect": [
+          0.25926,
+          0.24015,
+          0.56816,
+          0.03816
+        ]
+      },
+      "title": "Display, p. 112",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.zeta_term_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceParams",
+        "lines": [
+          133,
+          151
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.zeta_term_le"
+          },
+          "snippet": {
+            "text": "theorem zeta_term_le (hT : 6e6 ≤ T) (ht : 0 < t) (htT : t ≤ T / 3) :\n    8 * zeta3 * √(T ^ 3 / V1 T) / U1 T t ≤ 0.2355 := by\n  have hT0 : 0 < T := by linarith\n  have hU := U1_ge hT ht htT\n  have h3 := sqrt_ge_2449 hT\n  have hU0 : 0 < (U1 T t : ℝ) := lt_of_lt_of_le (by positivity) hU\n  have hV := V1_ge hT0\n  have hV0 : 0 < (V1 T : ℝ) := by linarith\n  have hζ := zeta3_le\n  have hζ0 := zeta3_nonneg\n  -- `√(x/V) ≤ 0.4767 T`.\n  have h1 : √(T ^ 3 / V1 T) ≤ 0.4767 * T := by\n    rw [Real.sqrt_le_left (by positivity), div_le_iff₀ hV0]\n    nlinarith\n  rw [div_le_iff₀ hU0]\n  have hsT : 0 < √T := by positivity\n  calc 8 * zeta3 * √(T ^ 3 / V1 T) ≤ 8 * 27 * (0.4767 * T) := by gcongr\n    _ ≤ 0.2355 * (0.1924 * (T * √T)) := by nlinarith\n    _ ≤ 0.2355 * (U1 T t : ℝ) := by gcongr",
+            "line": 133,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.zeta_term_le",
+            "lines": [
+              132,
+              151
+            ],
+            "conclusion": "At the first choice of parameters `U1 T t`, `V1 T` ($x=T^3$, $T\\ge 6\\cdot10^6$) the replacement term satisfies $8\\zeta(3/2)^3\\sqrt{x/V}/U\\le 0.2355$, the analogue of $2\\kappa_7\\le 0.2562$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceParams.lean",
+            "fragment": "L133-L151"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          122
+        ],
+        "printed": [
+          112
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

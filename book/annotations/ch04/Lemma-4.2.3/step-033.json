@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.3 step 33",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Parts: the geometric-mean bound and the sum replacing (kostas); `R` is `max(c₂x/q,q/2)` in the text but `max(D',q/2)` in `norm_restPartL_le_caseB` (`sum_R3L` assumes `R ≥ both`).",
+  "subject": [
+    {
+      "location": {
+        "page": 80,
+        "rect": [
+          0.26253,
+          0.15773,
+          0.56162,
+          0.04756
+        ]
+      },
+      "title": "Lemma 4.2.3 step 33: Text, p. 70",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          987,
+          987
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB"
+          },
+          "snippet": {
+            "text": "  set R := max D' ((q : ℝ) / 2)",
+            "line": 987,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+            "lines": [
+              968,
+              1182
+            ],
+            "conclusion": "`R := max D' (q/2)` (`D'=min(c₂x/q,D)`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L987-L987"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          846,
+          856
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3L"
+          },
+          "snippet": {
+            "text": "  have hxR : x / R ≤ √(2 * x / c₂) := by\n    rw [Real.le_sqrt (by positivity) (by positivity), div_pow, div_le_div_iff₀ (by positivity) hc2]\n    have h1 : x / R ≤ q / c₂ := by\n      rw [div_le_div_iff₀ hR0 hc2]; rw [div_le_iff₀ hq0] at hRc; linarith\n    have h2 : x / R ≤ 2 * x / q := by\n      rw [div_le_div_iff₀ hR0 hq0]; nlinarith\n    have h3 : (x / R) ^ 2 ≤ (q / c₂) * (2 * x / q) := by\n      rw [sq]; exact mul_le_mul h1 h2 (by positivity) (by positivity)\n    rw [div_pow] at h3\n    have e : (q / c₂) * (2 * x / q) = 2 * x / c₂ := by field_simp\n    rw [e, div_le_div_iff₀ (by positivity) hc2] at h3; linarith",
+            "line": 846,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+            "lines": [
+              650,
+              904
+            ],
+            "conclusion": "`x/R ≤ √(2x/c₂)` by bounding `min(q/c₂,2x/q)` by the geometric mean."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L846-L856"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          796,
+          831
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3L"
+          },
+          "snippet": {
+            "text": "  have hii : ∑ j ∈ range (K + 1), √(1 + q / (R + j * q)) * (lx - Real.log (R + j * q)) ≤\n      √(1 + q / R) * (lx - Real.log R) +\n        (D * (1 + lx - Real.log D) - R * (1 + lx - Real.log R)) / q +\n        1 / 2 * ((Real.log D - Real.log R) * (lx - Real.log R)) := by\n    rw [sum_range_succ']\n    simp only [CharP.cast_eq_zero, zero_mul, add_zero, Nat.cast_add, Nat.cast_one]\n    have hterm : ∀ i ∈ range K, √(1 + q / (R + (i + 1) * q)) * (lx - Real.log (R + (i + 1) * q)) ≤\n        (lx - Real.log (R + (i + 1) * q)) + q / 2 * ((lx - Real.log (R + (i + 1) * q)) / (R + (i + 1) * q)) := by\n      intro i _\n      have hy : 0 < R + ((i : ℝ) + 1) * q := by positivity\n      have hyD : R + ((i : ℝ) + 1) * q ≤ D := by\n        have : (i : ℝ) + 1 ≤ K := by\n          have := mem_range.1 ‹i ∈ range K›; exact_mod_cast this\n        nlinarith\n      have hl : 0 ≤ lx - Real.log (R + (i + 1) * q) := by\n        simp only [lx]; linarith [Real.log_le_log hy (hyD.trans hDx)]\n      have hs : √(1 + q / (R + (i + 1) * q)) ≤ 1 + q / (2 * (R + (i + 1) * q)) := by\n        rw [Real.sqrt_le_left (by positivity)]\n        have : 0 ≤ q / (R + (i + 1) * q) := by positivity\n        have e : q / (2 * (R + (i + 1) * q)) = q / (R + (i + 1) * q) / 2 := by field_simp\n        rw [e]; nlinarith [sq_nonneg (q / (R + (i + 1) * q))]\n      calc √(1 + q / (R + (i + 1) * q)) * (lx - Real.log (R + (i + 1) * q))\n          ≤ (1 + q / (2 * (R + (i + 1) * q))) * (lx - Real.log (R + (i + 1) * q)) :=\n            mul_le_mul_of_nonneg_right hs hl\n        _ = _ := by field_simp\n    refine (add_le_add_left (sum_le_sum hterm) _).trans ?_\n    rw [sum_add_distrib, ← mul_sum]\n    have h1 : ∑ i ∈ range K, (lx - Real.log (R + (i + 1) * q)) ≤\n        (D * (1 + lx - Real.log D) - R * (1 + lx - Real.log R)) / q := by\n      rw [le_div_iff₀ hq0, mul_comm]; linarith\n    have h2 : q / 2 * ∑ i ∈ range K, (lx - Real.log (R + (i + 1) * q)) / (R + (i + 1) * q) ≤\n        1 / 2 * ((Real.log D - Real.log R) * (lx - Real.log R)) := by\n      have : q * ∑ i ∈ range K, (lx - Real.log (R + (i + 1) * q)) / (R + (i + 1) * q) ≤\n          (Real.log D - Real.log R) * (lx - Real.log R) := by linarith\n      linarith\n    linarith",
+            "line": 796,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+            "lines": [
+              650,
+              904
+            ],
+            "conclusion": "`∑_j √(1+q/(R+jq)) log(x/(R+jq)) ≤ √(1+q/R)log(x/R)+(D(1+lx-log D)-R(1+lx-log R))/q+(1/2)log(D/R)log(x/R)`, the replacement of (kostas)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L796-L831"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          80
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

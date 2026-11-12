@@ -1,0 +1,81 @@
+{
+  "id": "13.1 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean assumes $g$ non-increasing (text: any $g$, with the running max) and gives the discrete sum, which equals the integral form for non-increasing $g$; it needs no sign on $f$, no regularity of $F$, and the partial-sum bound only at integers.",
+  "subject": [
+    {
+      "location": {
+        "page": 255,
+        "rect": [
+          0.17135,
+          0.72945,
+          0.56816,
+          0.04306
+        ]
+      },
+      "title": "Display, p. 245",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "13.1 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          23,
+          27
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abel_le"
+          },
+          "snippet": {
+            "text": "/-- Abel summation, inequality form: if `g` is non-increasing and `≥ 0` on `[a, b]` and the\npartial sums `S(n) = Σ_{a ≤ m ≤ n} f(m)` satisfy `S(n) ≤ F(n)`, then\n`Σ_{a ≤ n ≤ b} f(n) g(n) ≤ g(a) F(a) + Σ_{a < n ≤ b} g(n)(F(n) − F(n−1))`. -/\ntheorem abel_le {f g F : ℕ → ℝ} {a b : ℕ} (hab : a ≤ b)\n    (hg : ∀ n, a ≤ n → n < b → g (n + 1) ≤ g n) (hg0 : 0 ≤ g b)",
+            "line": 23,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+            "lines": [
+              23,
+              46
+            ],
+            "conclusion": "For non-increasing $g\\ge0$ at $b$ and partial sums $\\sum_{a\\le m\\le n}f(m)\\le F(n)$: $\\sum_{a\\le n\\le b}f(n)g(n)\\le g(a)F(a)+\\sum_{a<n\\le b}g(n)(F(n)-F(n-1))$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L23-L27"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          255
+        ],
+        "printed": [
+          245
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

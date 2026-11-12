@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 22",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's q=1 error term has Z3g/E1g/E2g/VgL pieces at T0=1e8, not (1.634 log T0+12.43)sqrt T0+34.51, 6600009/x.",
+  "subject": [
+    {
+      "location": {
+        "page": 206,
+        "rect": [
+          0.25926,
+          0.66315,
+          0.56816,
+          0.05213
+        ]
+      },
+      "title": "Display, p. 196",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.errPZ_le",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          484,
+          555
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.errPZ_le"
+          },
+          "snippet": {
+            "text": "/-- **The error for `q = 1`** at `T₀ = 10⁸`. -/\ntheorem errPZ_le {x : ℝ} (hx : 4.9e26 ≤ x) {δ : ℝ} (hδ : |δ| ≤ 6e5) :\n    errPZ 1e8 δ x ≤ 1e-18 + 6.24e6 / √x := by\n  have hx0 : 0 < x := by linarith\n  have hsx := sqrt_x_ge' hx\n  -- `E₁`\n  have hE1 : E1g BPz2 1e8 (2 * π * 0.6403) (2 * π * 1.129) ≤ 6.24e6 := by\n    set A := (Jl 1e8 : ℝ) * 3.48 with hA\n    have hA1 : A ≤ 1e8 + 3.48 := by\n      rw [hA]; unfold Jl; push_cast\n      have := Nat.floor_le (show (0:ℝ) ≤ 1e8 / 3.48 by positivity)\n      rw [le_div_iff₀ (by norm_num)] at this\n      linarith\n    have hA0 : 0 ≤ A := by positivity\n    have hpi := Real.pi_lt_d4\n    have h1 : √(2 * π * 0.6403 * (2 * A)) ≤ 28367 := by\n      rw [Real.sqrt_le_left (by norm_num)]; nlinarith [Real.pi_pos]\n    have h2 : √(2 * π * 1.129 * (2 * A)) ≤ 37667 := by\n      rw [Real.sqrt_le_left (by norm_num)]; nlinarith [Real.pi_pos]\n    have hZ := ZLz_le\n    have hZ0 : 0 ≤ ZLg BPz2 1e8 :=\n      div_nonneg (Explicit.polyDatum_zeta2.log_pos _).le\n        (Explicit.log_ratio_pos (by norm_num) (by norm_num)).le\n    unfold E1g\n    rw [← hA]\n    have hX : (1 / 3.48) * √(2 * π * 0.6403 * (2 * A)) + √(2 * π * 1.129 * (2 * A)) ≤ 45818.5 := by\n      have := mul_le_mul_of_nonneg_left h1 (by norm_num : (0:ℝ) ≤ 1 / 3.48)\n      norm_num at this ⊢; linarith\n    have hX0 : 0 ≤ (1 / 3.48) * √(2 * π * 0.6403 * (2 * A)) + √(2 * π * 1.129 * (2 * A)) := by\n      positivity\n    calc ZLg BPz2 1e8 * ((1 / 3.48) * √(2 * π * 0.6403 * (2 * A)) + √(2 * π * 1.129 * (2 * A)))\n        ≤ 136.1 * 45818.5 := mul_le_mul hZ hX hX0 (by norm_num)\n      _ ≤ 6.24e6 := by norm_num\n  -- `E₂`\n  have hD : |δ| ≤ 6e5 / (1:ℝ) := by simpa using hδ\n  have hZ0 : 0 ≤ Z3g BPz2 1e8 :=\n    div_nonneg (Explicit.polyDatum_zeta2.log_pos _).le (Explicit.log_ratio_pos (by norm_num) (by norm_num)).le\n  have hE2 : E2g BPz2 10 1e8 (Cg * (2 * aH) * EB (1e8 - 200)) (Cg * (2 * aH) * EA (1e8 - 200) δ) rhoB\n      (rhoA δ) ≤ 1e-19 := by\n    refine (E2_gen_le (T1 := 1000) (u0 := 26.5) (Z := 166.2) (C := 3.66e-7) (IA := 2.22e5) (EBb := 9e-30)\n      (EAb := 4.13e-30) (by norm_num) (by norm_num) (EBb_small (by norm_num) (by norm_num)) (by norm_num)\n      (u_le one_pos hD (by norm_num) (by norm_num)) EAb_265 hZ0 Z3z_le\n      (c3g_nonneg (by norm_num) (by norm_num)) (c3g_le (by norm_num) (by norm_num) le_rfl (by norm_num))\n      (IA_le hδ (by norm_num))).trans (by norm_num)\n  -- `E₀`, `V`\n  have hZ : Z3g BPz2 0 ≤ 33.23 := by\n    unfold Z3g\n    have h := log_BPz2_zero_le\n    have hl := log_ratio_3_ge\n    rw [div_le_iff₀ (by linarith)]\n    nlinarith [Explicit.polyDatum_zeta2.log_pos 0]\n  have hZ00 : 0 ≤ Z3g BPz2 0 :=\n    div_nonneg (Explicit.polyDatum_zeta2.log_pos _).le (Explicit.log_ratio_pos (by norm_num) (by norm_num)).le\n  have ha : Cg * 300 * (2 * aH) * Z3g BPz2 0 / x ≤ 1e-20 := by\n    have hc := cE0_le\n    have hc0 : 0 ≤ Cg * 300 * (2 * aH) := by have := cA_nonneg; nlinarith\n    have h1 : Cg * 300 * (2 * aH) * Z3g BPz2 0 ≤ 38772 * 33.23 := mul_le_mul hc hZ hZ00 (by norm_num)\n    rw [div_le_iff₀ hx0]\n    nlinarith\n  have hV := VgL_le (D := 3) (by norm_num) (by norm_num) hδ\n  have hd : VgL 3 (Cg * (300 * Real.exp 1) * (2 * aH)) (thP δ) / (2 * π * (x * √x)) ≤ 1e-20 := by\n    have hpi := Real.pi_gt_three\n    have hxx : 1e26 * 2e13 ≤ x * √x := mul_le_mul (by linarith) (by linarith) (by norm_num) hx0.le\n    rw [div_le_iff₀ (by positivity)]\n    have : 1e-20 * (2 * 3 * (1e26 * 2e13)) ≤ 1e-20 * (2 * π * (x * √x)) := by\n      apply mul_le_mul_of_nonneg_left _ (by norm_num); nlinarith\n    have : (2e19 : ℝ) ≤ 1e-20 * (2 * 3 * (1e26 * 2e13)) := by norm_num\n    linarith\n  have hb : E1g BPz2 1e8 (2 * π * 0.6403) (2 * π * 1.129) / √x ≤ 6.24e6 / √x :=\n    div_le_div_of_nonneg_right hE1 (Real.sqrt_nonneg _)\n  unfold errPZ\n  linarith",
+            "line": 484,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.errPZ_le",
+            "lines": [
+              484,
+              555
+            ],
+            "conclusion": "errPZ 1e8 δ x <= 1e-18+6.24e6/sqrt x for x>=4.9e26, |δ|<=6e5."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L484-L555"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          206
+        ],
+        "printed": [
+          196
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

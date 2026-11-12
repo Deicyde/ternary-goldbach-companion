@@ -1,0 +1,81 @@
+{
+  "id": "14.4 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] proves the same two-step bound with weaker constants: `ψ-θ+log 2 ≤ 1.6001 √N` for `1.4263 √N` and `ψ ≤ 1.387 N` for `1.03883 N`, product `≤ 2.2194 N^{3/2}` not `1.48169`. The RS62 `ψ(y)<1.03883 y` is in [L] (`Prelim.sum_vonMangoldt_lt`) but not used here.",
+  "subject": [
+    {
+      "location": {
+        "page": 286,
+        "rect": [
+          0.25926,
+          0.4108,
+          0.56816,
+          0.10096
+        ]
+      },
+      "title": "Display, p. 276",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.4 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.sum_ΛBad_le",
+        "module": "TernaryGoldbach.Helfgott.NonPrime",
+        "lines": [
+          84,
+          109
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.sum_ΛBad_le"
+          },
+          "snippet": {
+            "text": "theorem sum_ΛBad_le (N : ℕ) : ∑ n ∈ range (N + 1), ΛBad n ≤ psi N - theta N + Real.log 2 := by\n  classical\n  have hsplit : psi N - theta N = ∑ n ∈ range (N + 1), if n.Prime then 0 else Λ n := by\n    rw [psi, theta, ← sum_sub_distrib]\n    refine sum_congr rfl fun n _ => ?_\n    split_ifs <;> ring\n  have hlog2 : ∑ n ∈ range (N + 1), (if n = 2 then Real.log 2 else 0) ≤ Real.log 2 := by\n    rw [sum_ite_eq' (range (N + 1)) 2 (fun _ => Real.log 2)]\n    split_ifs\n    · exact le_rfl\n    · exact Real.log_nonneg (by norm_num)\n  rw [hsplit]\n  refine le_trans ?_ (add_le_add le_rfl hlog2)\n  rw [← sum_add_distrib]\n  refine sum_le_sum fun n _ => ?_\n  unfold ΛBad Good\n  have h2 : (0:ℝ) ≤ Real.log 2 := Real.log_nonneg (by norm_num)\n  by_cases hp : n.Prime\n  · by_cases ho : Odd n\n    · simp only [hp, ho, and_self, ite_true]\n      split_ifs <;> linarith\n    · have : n = 2 := (hp.eq_two_or_odd').resolve_right ho\n      subst this\n      simp [hp, ho, vonMangoldt_apply_prime hp]\n  · simp only [hp, false_and, ite_false, ite_true]\n    split_ifs <;> simp [vonMangoldt_nonneg, h2]",
+            "line": 84,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.sum_ΛBad_le",
+            "lines": [
+              83,
+              109
+            ],
+            "conclusion": "`∑_{n≤N, n even or non-prime} Λ(n) ≤ ψ(N) - θ(N) + log 2` (`ΛBad` = Λ off odd primes)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/NonPrime.lean",
+            "fragment": "L84-L109"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          286
+        ],
+        "printed": [
+          276
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

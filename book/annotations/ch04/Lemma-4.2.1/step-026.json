@@ -1,0 +1,106 @@
+{
+  "id": "Lemma 4.2.1 step 26",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean splits on `D ≤ M` with `M = min(Qr/2, D)` and unrounded `Qr`, not on `D ≤ (Q+1)/2`; the second sum is empty in the same sense. Text error, confirmed by two skeptics and `scripts/checks/steps/lemma_4_2_1_step_26.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.26253,
+          0.45472,
+          0.56162,
+          0.02998
+        ]
+      },
+      "title": "Lemma 4.2.1 step 26: Text, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 26",
+          "quads": [
+            [
+              0.26253,
+              0.45472,
+              0.82415,
+              0.45472,
+              0.82415,
+              0.4696,
+              0.26253,
+              0.4696
+            ],
+            [
+              0.26253,
+              0.46896,
+              0.38432,
+              0.46896,
+              0.38432,
+              0.48469,
+              0.26253,
+              0.48469
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1207,
+          1216
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  rcases le_or_gt D M with hDM | hDM\n  · -- No terms above `M`.\n    rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hDM)), sum_empty, add_zero]\n    have hcancel : 2 * √c₀ / π * M ≤ 2 * √(c₀ * c₁) / π * D := by\n      have := Real.pi_pos; gcongr\n    have e : 2 * √(c₀ * c₁) / π * (D + (1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n        (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) = 2 * √(c₀ * c₁) / π * D +\n        2 * √(c₀ * c₁) / π * ((1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n        (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) := by ring\n    rw [e]; linarith",
+            "line": 1207,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "If `D ≤ M` the range above `M` is empty (`Ioc_eq_empty`) and the first-sum bound with `2√c₀/π·M ≤ 2√(c₀c₁)/π·D` finishes."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1207-L1216"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

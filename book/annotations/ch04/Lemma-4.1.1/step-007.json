@@ -1,0 +1,192 @@
+{
+  "id": "Lemma 4.1.1 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves convexity of 1/sin² only on (0,π), which is all the pair bound needs; the text asserts it on (0,∞), where it fails. Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_4_1_1_step_7.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.26253,
+          0.62673,
+          0.56162,
+          0.03393
+        ]
+      },
+      "title": "Lemma 4.1.1 step 7: Text, p. 52",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.convexOn_inv_sin_sq",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          43,
+          61
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.convexOn_inv_sin_sq"
+          },
+          "snippet": {
+            "text": "/-- `x ↦ 1/sin² x` is convex on `(0, π)`. -/\ntheorem convexOn_inv_sin_sq : ConvexOn ℝ (Ioo 0 π) fun x => 1 / Real.sin x ^ 2 := by\n  have hsin : ConcaveOn ℝ (Ioo 0 π) Real.sin :=\n    strictConcaveOn_sin_Icc.concaveOn.subset Ioo_subset_Icc_self (convex_Ioo 0 π)\n  have himg : Real.sin '' Ioo 0 π ⊆ Ioi 0 := by\n    rintro _ ⟨x, hx, rfl⟩; exact Real.sin_pos_of_pos_of_lt_pi hx.1 hx.2\n  have hconv : Convex ℝ (Real.sin '' Ioo 0 π) :=\n    ((isPreconnected_Ioo.image _ Real.continuous_sin.continuousOn).ordConnected).convex\n  have hg : ConvexOn ℝ (Real.sin '' Ioo 0 π) fun y : ℝ => y ^ (-2 : ℤ) :=\n    (convexOn_zpow (-2)).subset himg hconv\n  have hanti : AntitoneOn (fun y : ℝ => y ^ (-2 : ℤ)) (Real.sin '' Ioo 0 π) := by\n    intro y hy z hz hyz\n    have hy0 : 0 < y := himg hy\n    simp only [zpow_neg, zpow_ofNat]\n    exact inv_anti₀ (by positivity) (pow_le_pow_left₀ hy0.le hyz 2)\n  have := hg.comp_concaveOn hsin hanti\n  refine this.congr fun x _ => ?_\n  simp only [Function.comp_apply, zpow_neg, one_div]\n  norm_cast",
+            "line": 43,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.convexOn_inv_sin_sq",
+            "lines": [
+              43,
+              61
+            ],
+            "conclusion": "x ↦ 1/sin²x is convex on (0,π)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L43-L61"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          570,
+          591
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₁'"
+          },
+          "snippet": {
+            "text": "  have hpair : ∀ k ∈ Finset.Ico 1 K, F k + F (q - 1 - k) ≤ C * (g k + g (k + 1)) := by\n    intro k hk\n    rw [Finset.mem_Ico] at hk\n    have hk1 : (1 : ℝ) ≤ k := by exact_mod_cast hk.1\n    have hkK : (k : ℝ) + 1 ≤ K := by exact_mod_cast hk.2\n    have h1 : F k ≤ C * fq q (k - 1 / 2 + s) :=\n      (hFC _ (by omega) (by omega)).trans (mul_le_mul_of_nonneg_left\n        (fq_low hq0 hs0 hk.1 (by linarith) (hτ k)) hC)\n    have hcast : ((q - 1 - k : ℕ) : ℝ) = q - ((k + 1 : ℕ) : ℝ) := by\n      rw [Nat.cast_sub (by omega), Nat.cast_sub (by omega)]; push_cast; ring\n    have h2 : F (q - 1 - k) ≤ C * fq q (k + 1 / 2 - s) := by\n      refine (hFC _ (by omega) (by omega)).trans (mul_le_mul_of_nonneg_left ?_ hC)\n      have := fq_high (k := k + 1) hq0 hs1 (by omega) (by push_cast; linarith) hs0\n        (hτ (q - 1 - k))\n      rw [hcast]; convert this using 2; push_cast; ring\n    have hmaj := (convexOn_fq hq0).add_le_add_of_majorize (a := k - 1 / 2) (b := k - 1 / 2 + s)\n      (c := k + 1 / 2 - s) (d := k + 1 / 2) ⟨by linarith, by linarith⟩ ⟨by linarith, by linarith⟩\n      (by linarith) (by linarith) (by linarith) (by ring)\n    have hg : g k + g (k + 1) = fq q (k - 1 / 2) + fq q (k + 1 / 2) := by\n      simp only [g]; push_cast; ring_nf\n    rw [hg]\n    nlinarith [mul_le_mul_of_nonneg_left hmaj hC]",
+            "line": 570,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+            "lines": [
+              549,
+              627
+            ],
+            "conclusion": "For 1 ≤ k < ⌊q/2⌋ the residues k and q-1-k satisfy F k + F(q-1-k) ≤ C(f_q(k-1/2)+f_q(k+1/2)), using convexity of f_q on (0,q) (`convexOn_fq`, from `convexOn_inv_sin_sq`) via majorization."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L570-L591"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          616,
+          622
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₁'"
+          },
+          "snippet": {
+            "text": "  calc ∑ k ∈ Finset.range K, (F k + F (q - 1 - k)) + (if q % 2 = 1 then F K else 0)\n      ≤ 2 * A + C * (∑ k ∈ Finset.Ico 1 K, (g k + g (k + 1)) + g K) := by\n        rw [hpeel]\n        have := Finset.sum_le_sum hpair\n        rw [← Finset.mul_sum] at this\n        nlinarith [hFA 0, hFA (q - 1)]\n    _ = 2 * A + C * (fq q (1 / 2) + 2 * ∑ j ∈ Finset.Icc 2 K, fq q (j - 1 / 2)) := by",
+            "line": 616,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+            "lines": [
+              549,
+              627
+            ],
+            "conclusion": "Sum of the pair bounds plus the odd leftover is at most `2A + C(∑_{k=1}^{K-1}(g k + g(k+1)) + g K)`, rewritten as `2A + C(f_q(1/2) + 2∑_{j=2}^K f_q(j-1/2))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L616-L622"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.pair_telescope",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          511,
+          518
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.pair_telescope"
+          },
+          "snippet": {
+            "text": "/-- Telescoping: `∑_{k=1}^{K-1} (g k + g (k+1)) + g K = g 1 + 2 ∑_{j=2}^{K} g j`. -/\ntheorem pair_telescope (g : ℕ → ℝ) (K : ℕ) (hK : 1 ≤ K) :\n    ∑ k ∈ Finset.Ico 1 K, (g k + g (k + 1)) + g K = g 1 + 2 * ∑ j ∈ Finset.Icc 2 K, g j := by\n  induction K, hK using Nat.le_induction with\n  | base => simp\n  | succ K hK ih =>\n    rw [Finset.sum_Ico_succ_top hK, Finset.sum_Icc_succ_top (by omega)]\n    linarith",
+            "line": 511,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.pair_telescope",
+            "lines": [
+              511,
+              518
+            ],
+            "conclusion": "Telescoping `∑_{k=1}^{K-1}(g k + g(k+1)) + g K = g 1 + 2∑_{j=2}^K g j`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L511-L518"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

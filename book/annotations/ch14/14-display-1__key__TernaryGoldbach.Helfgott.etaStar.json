@@ -1,0 +1,81 @@
+{
+  "id": "14 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean fixes $\\varkappa=\\kappa=49$ (`κ := 49`); `eta2` is defined directly as $4\\max(\\log2-|\\log2t|,0)$.",
+  "subject": [
+    {
+      "location": {
+        "page": 269,
+        "rect": [
+          0.17135,
+          0.40797,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Display, p. 259",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.etaStar",
+        "module": "TernaryGoldbach.Helfgott.Defs",
+        "lines": [
+          54,
+          55
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.etaStar"
+          },
+          "snippet": {
+            "text": "/-- `η_*(t) = (η₂ *_M φ)(κt)`. -/\nnoncomputable def etaStar (t : ℝ) : ℝ := mellinConv eta2 phi (κ * t)",
+            "line": 54,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.etaStar",
+            "lines": [
+              54,
+              55
+            ],
+            "conclusion": "`etaStar t = mellinConv eta2 phi (κ * t)` with `phi t = t^2 e^{-t^2/2}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L54-L55"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          269
+        ],
+        "printed": [
+          259
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

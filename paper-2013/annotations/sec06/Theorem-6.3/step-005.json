@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 6.3 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean's monotonicity is for the specific g_x (φ=δ₁-type bound on η₂) on [670, x^{1/3}/6], not for general φ and r ≥ 175 (Lemma vinc); the pointwise bound is at η₂ level and then integrated against phi.",
+  "subject": [
+    {
+      "location": {
+        "page": 49,
+        "rect": [
+          0.20698,
+          0.87923,
+          0.62529,
+          0.01728
+        ]
+      },
+      "title": "Theorem 6.3 step 5: Text, p. 49",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+        "lines": [
+          134,
+          141
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem"
+          },
+          "snippet": {
+            "text": "  rcases le_or_gt (q : ℝ) (z ^ (1 / 3 : ℝ) / 6) with hq | hq\n  · have key := norm_S_eta2_le_gx hz h hq (by linarith)\n    have hup := r_le_cube_root hz h hq\n    have hmono := gx_antitoneOn hz ⟨hlow, hrw.trans hup⟩ ⟨hlow.trans hrw, hup⟩ hrw\n    calc ‖S eta2 z α‖ ≤ gx z (max 1 (|δ| / 8) * q) * z := key\n      _ ≤ G * z := by\n          gcongr\n          exact hmono.trans (hG1 (hrw.trans hup))",
+            "line": 134,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+            "lines": [
+              105,
+              142
+            ],
+            "conclusion": "Case `q ≤ z^{1/3}/6`: `‖S_{η₂}(α,z)‖ ≤ gx z (max(1,|δ|/8)q) z`, then `gx_antitoneOn` and `hrw : r ≤ max(1,|δ|/8) q` give the bound `G z`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "fragment": "L134-L141"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          264,
+          297
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_antitoneOn"
+          },
+          "snippet": {
+            "text": "/-- **[H, Lemma 11.2.4] for a single scale** (our `g_x`): `r ↦ g_x(r)` is non-increasing on\n`[670, x^{1/3}/6]`. -/\ntheorem gx_antitoneOn {x : ℝ} (hx : 2.16e20 ≤ x) : AntitoneOn (gx x) (Icc 670 (x ^ (1 / 3 : ℝ) / 6)) := by\n  obtain ⟨hT, -, -, -⟩ := cube_root_facts hx\n  have hx0 : 0 < x := by linarith\n  obtain ⟨T, hTdef⟩ : ∃ T, T = x ^ (1 / 3 : ℝ) := ⟨_, rfl⟩\n  rw [← hTdef] at hT ⊢\n  obtain ⟨B, hBdef⟩ : ∃ B, B = Real.log (9 * T / 4.008) := ⟨_, rfl⟩\n  have hB : 8.5 ≤ B := by\n    rw [hBdef, Real.le_log_iff_exp_le (by positivity)]\n    have : rexp 8.5 ≤ rexp 9 := Real.exp_le_exp.2 (by norm_num)\n    have h9 : (8200 : ℝ) ≤ 9 * T / 4.008 := by rw [le_div_iff₀ (by norm_num)]; nlinarith\n    linarith [exp_nine_le]\n  have hsub : Icc 670 (T / 6) ⊆ Icc (rexp 6) (rexp (B - 2.5)) := by\n    intro r hr\n    refine ⟨exp_six_le.trans hr.1, hr.2.trans ?_⟩\n    rw [Real.exp_sub, hBdef, Real.exp_log (by positivity), le_div_iff₀ (Real.exp_pos _)]\n    have h1 : T / 6 * rexp 2.5 ≤ T / 6 * 13.4 := by gcongr; exact exp_two_point_five_le\n    have h2 : T / 6 * 13.4 ≤ 9 * T / 4.008 := by\n      rw [le_div_iff₀ (by norm_num)]; nlinarith\n    linarith\n  have hA := (antitoneOn_comp_log (QA_antitoneOn hB)).mono hsub\n  have hC := (antitoneOn_comp_log (QC_antitoneOn (B - 2.5))).mono hsub\n  intro a ha b hb hab\n  have ha0 : 0 < a := by linarith [ha.1]\n  have hb0 : 0 < b := by linarith [hb.1]\n  rw [gx_eq hx0 ha0, gx_eq hx0 hb0, ← hTdef, ← hBdef]\n  have h1 := hA ha hb hab\n  have h2 := hC ha hb hab\n  simp only at h1 h2\n  have h3 : 2.526 / √(2 * b) ≤ 2.526 / √(2 * a) :=\n    div_le_div_of_nonneg_left (by norm_num) (by positivity) (Real.sqrt_le_sqrt (by linarith))\n  have h4 := div_le_div_of_nonneg_right h1 (Real.sqrt_nonneg 2)\n  linarith",
+            "line": 264,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+            "lines": [
+              264,
+              297
+            ],
+            "conclusion": "`g_x` is antitone on `[670, x^{1/3}/6]`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L264-L297"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          49
+        ],
+        "printed": [
+          49
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

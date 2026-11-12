@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 13.2.1 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same two-step argument (Thm 3.1.1 first case, then antitonicity of g) but for the single-scale g_z at each scale z = wy, giving g_z(min(1,w)n) rather than g_{y,φ}(r); the cases q ≤ r and r < q are not separated.",
+  "subject": [
+    {
+      "location": {
+        "page": 260,
+        "rect": [
+          0.26253,
+          0.15578,
+          0.56162,
+          0.01844
+        ]
+      },
+      "title": "Theorem 13.2.1 step 6: Text, p. 250",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.le_rAlpha_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.OffArcs",
+        "lines": [
+          71,
+          82
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.le_rAlpha_of_not_mem"
+          },
+          "snippet": {
+            "text": "theorem le_rAlpha_of_not_mem {α y δ δ₀ r Q : ℝ} {a : ℤ} {q : ℕ} (hy : 0 < y) (hδ₀ : 0 < δ₀)\n    (h : Approx2 α y δ a q Q) (hα : α ∉ majorArcs δ₀ r y) :\n    r ≤ max 1 (|δ| / δ₀) * q := by\n  by_contra hlt\n  push Not at hlt\n  have hq0 : (0 : ℝ) ≤ q := Nat.cast_nonneg q\n  have h1 : (q : ℝ) < r := lt_of_le_of_lt (by nlinarith [le_max_left 1 (|δ| / δ₀)]) hlt\n  have h2 : |δ| / δ₀ * q < r := lt_of_le_of_lt\n    (mul_le_mul_of_nonneg_right (le_max_right _ _) hq0) hlt\n  refine hα (mem_majorArcs_of_approx hy h h1.le ?_)\n  rw [div_mul_eq_mul_div, div_lt_iff₀ hδ₀] at h2\n  linarith",
+            "line": 71,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.le_rAlpha_of_not_mem",
+            "lines": [
+              69,
+              82
+            ],
+            "conclusion": "If α ∉ 𝔐_{δ₀,r}(y) and 2α = a/q + δ/y (mod 1) then r ≤ max(1,|δ|/δ₀)·q (contrapositive of `mem_majorArcs_of_approx`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/OffArcs.lean",
+            "fragment": "L71-L82"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+        "lines": [
+          126,
+          141
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem"
+          },
+          "snippet": {
+            "text": "  have hrw : min 1 w * n ≤ max 1 (|δ| / 8) * q := by\n    have e : w * (|δ| / w) / 8 = |δ| / 8 := by field_simp\n    rw [e] at hmm\n    rw [abs_div, abs_of_pos hw0] at hr\n    calc min 1 w * n ≤ min 1 w * (max 1 (|δ| / w / 8) * q) :=\n          mul_le_mul_of_nonneg_left hr (le_min zero_le_one hw0.le)\n      _ = min 1 w * max 1 (|δ| / w / 8) * q := by ring\n      _ ≤ max 1 (|δ| / 8) * q := mul_le_mul_of_nonneg_right hmm hq0\n  rcases le_or_gt (q : ℝ) (z ^ (1 / 3 : ℝ) / 6) with hq | hq\n  · have key := norm_S_eta2_le_gx hz h hq (by linarith)\n    have hup := r_le_cube_root hz h hq\n    have hmono := gx_antitoneOn hz ⟨hlow, hrw.trans hup⟩ ⟨hlow.trans hrw, hup⟩ hrw\n    calc ‖S eta2 z α‖ ≤ gx z (max 1 (|δ| / 8) * q) * z := key\n      _ ≤ G * z := by\n          gcongr\n          exact hmono.trans (hG1 (hrw.trans hup))",
+            "line": 126,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+            "lines": [
+              105,
+              142
+            ],
+            "conclusion": "With r_w = max(1,|δ|/8)q ≥ min(1,w)n (from `le_rAlpha_of_not_mem` and `min_mul_max_le`) and q ≤ z^{1/3}/6, `gx_antitoneOn` gives g_z(r_w) ≤ g_z(min(1,w)n), so |S_{η₂}(α,z)| ≤ g_z(min(1,w)n)·z."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "fragment": "L126-L141"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          260
+        ],
+        "printed": [
+          250
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "14.1 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] replaces $\\delta_0r\\log(2e^2r)(E^2+K_{r,2}/x)$ by per-modulus errors $(4.25\\cdot10^{-7}x)^2$ (non-principal) and $(10^{-15}x)^2$ (non-coprime) integrated over each arc and summed via card_Qset_le; $1.00393\\cdot10^{-8}$ does not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 270,
+        "rect": [
+          0.25926,
+          0.68626,
+          0.56816,
+          0.02433
+        ]
+      },
+      "title": "Display, p. 260",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.1 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.arc_chars",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          343,
+          354
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.arc_chars"
+          },
+          "snippet": {
+            "text": "/-- **[H, §10.3] for one modulus `q`** (`q̃ ≤ 3·10⁵`, `|βx| ≤ 1.2·10⁶/q̃`, `x ≥ 4.9·10²⁶`), with\n`S'_q = Σ_{(n,q)=1} Λ(n) η₊(n/x) e(nα)`:\n`μ²(q)/φ(q) |S'_q(β)|² ≤ Σ_b |S'_q(b/q + β)|² ≤ μ²(q)/φ(q) |S'_q(β)|² + (4.25·10⁻⁷ x)²` and\n`|S'_q(β) − η̂₊(−βx) x| ≤ 2.83·10⁻⁷ x`. -/\ntheorem arc_chars {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hqt : (qt q : ℝ) ≤ 300000)\n    {β : ℝ} (hβ : |β * x| ≤ 1200000 / qt q) :\n    ((if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cP x)) β‖ ^ 2 ≤\n        ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cP x)) ((b : ℝ) / q + β)‖ ^ 2 ∧\n      ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cP x)) ((b : ℝ) / q + β)‖ ^ 2 ≤\n        (if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cP x)) β‖ ^ 2 +\n          (4.25e-7 * x) ^ 2) ∧\n      ‖expTsum (coprimePart q (cP x)) β - 𝓕 etaPC (-(β * x)) * x‖ ≤ 2.83e-7 * x := by",
+            "line": 343,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.arc_chars",
+            "lines": [
+              343,
+              465
+            ],
+            "conclusion": "Second conjunct: $\\sum_b|S'_q(b/q+\\beta)|^2\\le\\mu^2(q)/\\phi(q)|S'_q(\\beta)|^2+(4.25\\cdot10^{-7}x)^2$ (non-principal characters)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L343-L354"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          270
+        ],
+        "printed": [
+          260
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.5 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Connective introducing the sufficient condition; [L]'s condition is hypothesis `hh` with `hcc`, a different quantity (see step 9).",
+  "subject": [
+    {
+      "location": {
+        "page": 38,
+        "rect": [
+          0.20698,
+          0.80683,
+          0.62529,
+          0.01728
+        ]
+      },
+      "title": "Lemma 5.5 step 8: Text, p. 38",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.5 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          78,
+          80
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "    (hcc : Real.exp Real.eulerMascheroniConstant * Real.log c' +\n      2.50637 / Real.log (Real.log q) ≤ 0.86)\n    (hh : Real.log q + 1.039 * (Q₀ / (s * q)) ≤ c' * ((q : ℝ) * (Q₀ / (s * q))) ^ ((2 : ℝ) / 9)) :",
+            "line": 78,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "Hypotheses: $e^\\gamma\\log c'+2.50637/\\log\\log q\\le0.86$ and $\\log q+1.039R\\le c'(qR)^{2/9}$, $R=Q_0/sq$: [L]'s sufficient smallness condition."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L78-L80"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          128,
+          144
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hlogV : Real.log V ≤ Real.log c' + (2 / 9) * Real.log ((q : ℝ) * R) := by\n    have := Real.log_le_log (by linarith) hh\n    rwa [Real.log_mul hc'.ne' (by positivity), Real.log_rpow hqR] at this\n  have hγ := TernaryGoldbach.MinorArcs.exp_gamma_le_sharp\n  have hγ0 : 0 < Real.exp Real.eulerMascheroniConstant := Real.exp_pos _\n  have hq1 : (1 : ℝ) ≤ q := by exact_mod_cast hq\n  have hlqR : 0 ≤ Real.log ((q : ℝ) * R) := Real.log_nonneg (one_le_mul_of_one_le_of_one_le hq1 hR)\n  have hX' : X ≤ 0.86 + 0.4 * Real.log ((q : ℝ) * R) := by\n    have e1 : 2.50637 / Real.log V ≤ 2.50637 / Real.log (Real.log q) :=\n      div_le_div_of_nonneg_left (by norm_num) (by linarith) hlV1\n    have e2 : Real.exp Real.eulerMascheroniConstant * Real.log V ≤\n        Real.exp Real.eulerMascheroniConstant * Real.log c' +\n          Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) := by\n      rw [← mul_add]; exact mul_le_mul_of_nonneg_left hlogV hγ0.le\n    have e3 : Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) ≤\n        0.4 * Real.log ((q : ℝ) * R) := by nlinarith\n    linarith",
+            "line": 128,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "Taking logs of the condition: $\\log V\\le\\log c'+\\tfrac29\\log(qR)$, hence $P/\\varphi(P)\\le0.86+0.4\\log(qR)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L128-L144"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          38
+        ],
+        "printed": [
+          38
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 12.2.3 step 8, the same LaTeX (mapper (sonnet); verifier (sonnet); absence audit (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

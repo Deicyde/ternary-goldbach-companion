@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 9.1.4 step 30",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L]'s analogue is `√x·E1b` with E1b from window counts and Sobolev bounds, with no log qT₀ √T₀ terms and no |η/√t|_1 term; the constants differ (about 12 times weaker).",
+  "subject": [
+    {
+      "location": {
+        "page": 184,
+        "rect": [
+          0.26253,
+          0.64807,
+          0.56162,
+          0.09981
+        ]
+      },
+      "title": "Lemma 9.1.4 step 30: Display, p. 174",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4 step 30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          486,
+          505
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "  have hB : ∑ u ∈ (Z.filter fun u => ¬ u = 0).filter (fun u => |u.im| ≤ T0),\n      m u * (‖Gr u δ 0‖ * x ^ u.re) ≤ √x * E1b N T0 := by\n    set S := (Z.filter fun u => ¬ u = 0).filter (fun u => |u.im| ≤ T0) with hS\n    have hSZ : S ⊆ Z := (Finset.filter_subset _ _).trans (Finset.filter_subset _ _)\n    have hre : ∀ u ∈ S, u.re = 1 / 2 := by\n      intro u hu\n      obtain ⟨hu1, hu2⟩ := Finset.mem_filter.1 hu\n      obtain ⟨hL, hr1, hr2⟩ := hcases u hu1\n      exact hG u hL hr1 hr2 hu2\n    have him : ∀ u ∈ S, |u.im| ≤ T0 := fun u hu => (Finset.mem_filter.1 hu).2\n    have heq : ∀ u ∈ S, m u * (‖Gr u δ 0‖ * x ^ u.re) = √x * (m u * ‖fline δ u.im‖) := by\n      intro u hu\n      have hu' : u = ((1 / 2 : ℝ) : ℂ) + (u.im : ℂ) * I := by\n        apply Complex.ext <;> simp [hre u hu]\n      rw [hre u hu, ← Real.sqrt_eq_rpow, fline, ← hu']; ring\n    rw [Finset.sum_congr rfl heq, ← Finset.mul_sum]\n    refine mul_le_mul_of_nonneg_left ?_ (Real.sqrt_nonneg _)\n    exact sum_window_fline_le m (fun u _ => hm u) (h := 3.48) (by norm_num) hT00.le (Jl T0)\n      (lt_Jl hT00.le) him (ZL_nonneg N T0)\n      (fun k => count_line_window hχ hχ1 hT00.le S hSZ hre him k) δ",
+            "line": 486,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "Under GRH up to T₀ (`hG`), zeros with |γ|≤T₀ lie on Re=1/2 (`hre`), and the sum is bounded by `√x * E1b` via `sum_window_fline_le` and `count_line_window`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L486-L505"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.sum_window_fline_le",
+        "module": "TernaryGoldbach.Explicit.LineZeros",
+        "lines": [
+          179,
+          196
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.sum_window_fline_le"
+          },
+          "snippet": {
+            "text": "/-- **Zeros on the critical line**: under the window hypothesis, with `T₀ < Jh`,\n`Σ m_u |G_δ(1/2 + iℑu)| ≤ Z ((1/h)√(2π·0.6647·2Jh) + √(2π·0.1707·2Jh))`. -/\ntheorem sum_window_fline_le {S : Finset ℂ} (m : ℂ → ℝ) (hm : ∀ u ∈ S, 0 ≤ m u) {h T0 Z : ℝ}\n    (hh : 0 < h) (hT0 : 0 ≤ T0) (J : ℕ) (hJ : T0 < J * h) (hS : ∀ u ∈ S, |u.im| ≤ T0) (hZ0 : 0 ≤ Z)\n    (hZ : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => (⌊u.im / h⌋ + J).toNat = k), m u ≤ Z) (δ : ℝ) :\n    ∑ u ∈ S, m u * ‖fline δ u.im‖ ≤\n      Z * ((1 / h) * √(2 * π * 0.6647 * (2 * (J * h))) + √(2 * π * 0.1707 * (2 * (J * h)))) := by\n  have hJh : 0 < (J : ℝ) * h := by linarith\n  refine (sum_window_le m hm hh J hJ hS hZ0 hZ (hasDerivAt_fline δ) (continuous_flineD δ)).trans ?_\n  refine mul_le_mul_of_nonneg_left ?_ hZ0\n  have e : (J : ℝ) * h - -(J * h) = 2 * (J * h) := by ring\n  have h1 := intervalIntegral_norm_le_sqrt (continuous_fline δ) (integrable_norm_sq_fline δ)\n    (by positivity) (integral_norm_sq_fline_le δ) (a := -(J * h)) (b := J * h) (by linarith)\n  have h2 := intervalIntegral_norm_le_sqrt (continuous_flineD δ) (integrable_norm_sq_flineD δ)\n    (by positivity) (integral_norm_sq_flineD_le δ) (a := -(J * h)) (b := J * h) (by linarith)\n  rw [e] at h1 h2\n  have := mul_le_mul_of_nonneg_left h1 (by positivity : (0:ℝ) ≤ 1 / h)\n  linarith",
+            "line": 179,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.sum_window_fline_le",
+            "lines": [
+              179,
+              196
+            ],
+            "conclusion": "`Σ m_u‖fline δ (Im u)‖ ≤ Z((1/h)√(2π·0.6647·2Jh)+√(2π·0.1707·2Jh))`: Sobolev window bound with Plancherel norms, no log q T₀ √T₀ terms."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LineZeros.lean",
+            "fragment": "L179-L196"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.E1b",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          304,
+          306
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.E1b"
+          },
+          "snippet": {
+            "text": "noncomputable def E1b (N : ℕ) (T0 : ℝ) : ℝ :=\n  ZL N T0 * ((1 / 3.48) * √(2 * π * 0.6647 * (2 * (Jl T0 * 3.48))) +\n    √(2 * π * 0.1707 * (2 * (Jl T0 * 3.48))))",
+            "line": 304,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.E1b",
+            "lines": [
+              304,
+              306
+            ],
+            "conclusion": "`E1b N T0` is Lean's critical-line zero bound, ZL·(…) with J=⌊T₀/3.48⌋+1, replacing (9.29) for these zeros."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L304-L306"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          184
+        ],
+        "printed": [
+          174
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

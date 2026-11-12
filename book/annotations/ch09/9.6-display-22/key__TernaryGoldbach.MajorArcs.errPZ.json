@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 22",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's q=1 error term has Z3g/E1g/E2g/VgL pieces at T0=1e8, not (1.634 log T0+12.43)sqrt T0+34.51, 6600009/x.",
+  "subject": [
+    {
+      "location": {
+        "page": 206,
+        "rect": [
+          0.25926,
+          0.66315,
+          0.56816,
+          0.05213
+        ]
+      },
+      "title": "Display, p. 196",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.errPZ",
+        "module": "TernaryGoldbach.MajorArcs.Prop942",
+        "lines": [
+          55,
+          59
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.errPZ"
+          },
+          "snippet": {
+            "text": "/-- The error term for `q = 1`. -/\nnoncomputable def errPZ (T0 δ x : ℝ) : ℝ :=\n  Cg * 300 * (2 * aH) * Z3g BPz2 0 / x + E1g BPz2 T0 (2 * π * 0.6403) (2 * π * 1.129) / √x +\n    E2g BPz2 10 T0 (Cg * (2 * aH) * EB (T0 - 200)) (Cg * (2 * aH) * EA (T0 - 200) δ) rhoB (rhoA δ) +\n    VgL 3 (Cg * (300 * Real.exp 1) * (2 * aH)) (thP δ) / (2 * π * (x * √x))",
+            "line": 55,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.errPZ",
+            "lines": [
+              55,
+              59
+            ],
+            "conclusion": "The q=1 error term E0/x+E1g/sqrt x+E2g+VgL/(2 pi x sqrt x) at T0 and δ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop942.lean",
+            "fragment": "L55-L59"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          206
+        ],
+        "printed": [
+          196
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

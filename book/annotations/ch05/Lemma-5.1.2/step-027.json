@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.2 step 27",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean replaces the concavity-of-log exponent argument by the exponential inequality 1+t ≤ e^t with exponent 1/9.",
+  "subject": [
+    {
+      "location": {
+        "page": 98,
+        "rect": [
+          0.26253,
+          0.15773,
+          0.56162,
+          0.0165
+        ]
+      },
+      "title": "Lemma 5.1.2 step 27: Text, p. 88",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_m_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Bound",
+        "lines": [
+          46,
+          68
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_m_le"
+          },
+          "snippet": {
+            "text": "  by_cases h : 11815 ≤ x / u\n  · have hR := TernaryGoldbach.Prelim.ramare_moebius h\n    have hw : 9 ≤ Real.log (x / u) := le_trans log_11815_ge9 (Real.log_le_log (by norm_num) h)\n    have hv : 0 ≤ Real.log u := Real.log_natCast_nonneg u\n    have hsplit : Real.log x = Real.log u + Real.log (x / u) := by\n      rw [Real.log_div hx0.ne' hu0.ne']; ring\n    have hexp : 1 + Real.log u / 9 ≤ (u : ℝ) ^ ((1 : ℝ) / 9) := by\n      rw [Real.rpow_def_of_pos hu0]\n      have := Real.add_one_le_exp (Real.log u * (1 / 9))\n      linarith\n    have key : Real.log x ≤ (u : ℝ) ^ ((1 : ℝ) / 9) * Real.log (x / u) := by\n      rw [hsplit]\n      have : (1 + Real.log u / 9) * Real.log (x / u) ≤\n          (u : ℝ) ^ ((1 : ℝ) / 9) * Real.log (x / u) :=\n        mul_le_mul_of_nonneg_right hexp (by linarith)\n      nlinarith [mul_nonneg hv (by linarith : (0 : ℝ) ≤ Real.log (x / u) - 9)]\n    have hw0 : 0 < Real.log (x / u) := by linarith\n    calc _ ≤ 0.03 / Real.log (x / u) := hR\n      _ ≤ 0.03 * (u : ℝ) ^ ((1 : ℝ) / 9) / Real.log x := by\n        rw [div_le_div_iff₀ hw0 hlx]\n        have := mul_le_mul_of_nonneg_left key (by norm_num : (0 : ℝ) ≤ 0.03)\n        linarith\n      _ ≤ _ := le_add_of_nonneg_right hB0",
+            "line": 46,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_m_le",
+            "lines": [
+              36,
+              74
+            ],
+            "conclusion": "For x/u ≥ 11815, log x ≤ u^{1/9} log(x/u) via 1+log u/9 ≤ u^{1/9}, converting 0.03/log(x/u) to 0.03 u^{1/9}/log x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Bound.lean",
+            "fragment": "L46-L68"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          98
+        ],
+        "printed": [
+          88
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

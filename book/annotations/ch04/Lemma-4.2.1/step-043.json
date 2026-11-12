@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 43",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's bound_4_31 has 2|η'|₁/π and 55c₀c₂/6π², 3c₁/(2c₂) q and 2√(3c₀c₁)/π q terms; the shape is the book's with odd-m constants.",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.26253,
+          0.76306,
+          0.56162,
+          0.01479
+        ]
+      },
+      "title": "Lemma 4.2.1 step 43: Text, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          956,
+          1007
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "  refine h1.trans (h2.trans ?_)\n  unfold bound_4_31\n  simp only []\n  rw [← hc₁def, c₂_identity', hsqrt3]\n  have hB2' : ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      2 * √c₀ / π * D' + 11 * √c₀ / π * q := hB2.trans (le_of_eq (by ring))\n  have hpos1 : 0 ≤ 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) := by positivity\n  have hpos2 : 0 ≤ √(c₀ * c₁) / π * q * logPlus (D / (q / 2)) := by positivity\n  have hpos3 : 0 ≤ 2 * (√3 * √(c₀ * c₁)) / π * q := by positivity\n  have hpos4 : 0 ≤ 3 * c₁ / (2 * c₂) * q := by positivity\n  rcases lt_or_ge R D with hRD | hRD\n  · -- Range (R3) is non-empty, so `D' = c₂x/q`.\n    have hD'eq : D' = c₂ * x / q := by\n      rcases min_choice (c₂ * x / q) D with h | h\n      · exact h\n      · exfalso; have : D' = D := h; linarith\n    have hR0 : 0 < R := by linarith\n    have hB3 := sum_R3 hx hq hcop h2α hqQ hδ hqR hRD (α := α)\n    rw [← hc₁def] at hB3\n    have hxR : x / R ≤ q / c₂ := by\n      rw [div_le_div_iff₀ hR0 hc2]\n      have : c₂ * x / q ≤ R := hD'eq ▸ hD'R\n      rw [div_le_iff₀ hq0] at this; linarith\n    have hl1 : Real.log (D / R) ≤ logPlus (D / (c₂ * x / q)) :=\n      log_le_logPlus (by positivity) (div_le_div_of_nonneg_left (by linarith) (by positivity)\n        (hD'eq ▸ hD'R))\n    have hl2 : Real.log (D / R) ≤ logPlus (D / (q / 2)) :=\n      log_le_logPlus (by positivity) (div_le_div_of_nonneg_left (by linarith) (by positivity) hqR)\n    have hB3' : ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Tn α x n ≤\n        3 * c₁ / 2 * (q / c₂ + x / q * logPlus (D / (c₂ * x / q))) +\n          2 * √(c₀ * c₁) / π * q * (√3 + (D - R) / q + 1 / 2 * logPlus (D / (q / 2))) := by\n      refine hB3.trans ?_\n      gcongr\n    have hB3'' : ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Tn α x n ≤\n        3 * c₁ / (2 * c₂) * q + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n          2 * (√3 * √(c₀ * c₁)) / π * q + 2 * √(c₀ * c₁) / π * (D - R) +\n          √(c₀ * c₁) / π * q * logPlus (D / (q / 2)) :=\n      hB3'.trans (le_of_eq (by field_simp; ring))\n    have hcancel : 2 * √c₀ / π * D' ≤ 2 * √(c₀ * c₁) / π * R := by\n      have := Real.pi_pos\n      gcongr\n    calc _ ≤ 2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n          (2 * √c₀ / π * D' + 11 * √c₀ / π * q) +\n          (3 * c₁ / (2 * c₂) * q + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n            2 * (√3 * √(c₀ * c₁)) / π * q + 2 * √(c₀ * c₁) / π * (D - R) +\n            √(c₀ * c₁) / π * q * logPlus (D / (q / 2))) := by linarith\n      _ ≤ 2 * √(c₀ * c₁) / π * D + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n          √(c₀ * c₁) / π * q * logPlus (D / (q / 2)) +\n          2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n          (2 * (√3 * √(c₀ * c₁)) / π * q + 3 * c₁ / (2 * c₂) * q + 11 * √c₀ / π * q) := by\n          linarith\n      _ = _ := by ring",
+            "line": 956,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "Combines the three range bounds (first q/2 terms, middle, R<m≤D) into `bound_4_31`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L956-L1007"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_31",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          143,
+          149
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_31"
+          },
+          "snippet": {
+            "text": "/-- The error term (4.31) of [H, Lemma 4.2.2], with `c₁ = 1 + |η'|₁/(x/D)`. -/\nnoncomputable def bound_4_31 (x : ℝ) (q : ℕ) (D : ℝ) : ℝ :=\n  let c₁ := 1 + eta2'L1 / (x / D)\n  2 * √(c₀ * c₁) / π * D + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n    √(c₀ * c₁) / π * q * logPlus (D / (q / 2)) +\n    2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n    (2 * √(3 * c₀ * c₁) / π + 3 * c₁ / (2 * c₂) + 55 * c₀ * c₂ / (6 * π ^ 2)) * q",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_31",
+            "lines": [
+              143,
+              149
+            ],
+            "conclusion": "Statement of (4.31) with Lean's constants."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L143-L149"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

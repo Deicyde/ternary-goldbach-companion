@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 12.1.1 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean gives only `≤` (arcs may overlap after periodisation) and uses the (10.5)-type arcs with radius `δ₀R/(q̃x)`, `q̃ = q` or `2q`, over `q̃ ≤ 2R`, not the (12.1) arcs; the text writes equality (12.2).",
+  "subject": [
+    {
+      "location": {
+        "page": 238,
+        "rect": [
+          0.26253,
+          0.41916,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Proposition 12.1.1 step 1: Text, p. 228",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_majorArcs_le",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs",
+        "lines": [
+          92,
+          94
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_majorArcs_le"
+          },
+          "snippet": {
+            "text": "theorem integral_majorArcs_le {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    (hg0 : ∀ α, 0 ≤ g α) {δ₀ R x : ℝ} (hx : 0 < x) (hδ : 0 ≤ δ₀ * R) (hw : δ₀ * R ≤ x) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ R x, g α ≤",
+            "line": 92,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_majorArcs_le",
+            "lines": [
+              90,
+              178
+            ],
+            "conclusion": "For `g ≥ 0` continuous 1-periodic, `∫_{(0,1]∩𝔐_{δ₀,R}} g ≤ Σ_{q∈Qset R} Σ_{b∈Bset q} ∫_{J_{q,b}} g`, `J_{q,b}` the arc of radius `δ₀R/(q̃x)` about `b/q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "fragment": "L92-L94"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          238
+        ],
+        "printed": [
+          228
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

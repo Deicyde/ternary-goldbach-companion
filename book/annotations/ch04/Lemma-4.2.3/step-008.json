@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.3 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves the sum identity (μ(qm')/m' = μ(q)[(m',2q)=1]μ(m')/m') and uses the corrected prefactor x/(2q) with η̂(-δ/2) (bound_4_40); the printed prefactor x μ(q)/q η̂(-δ) is not what Lean establishes. Text typo, confirmed by two skeptics and the Lean (TernaryGoldbach/MinorArcs/TypeI.lean:bound_4_40).",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17462,
+          0.29885,
+          0.56162,
+          0.0611
+        ]
+      },
+      "title": "Lemma 4.2.3 step 8: Display, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.moebius_odd_term_w",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          153,
+          155
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.moebius_odd_term_w"
+          },
+          "snippet": {
+            "text": "theorem moebius_odd_term_w {q : ℕ} (hq : Odd q) (m : ℕ) (w : ℝ) :\n    (if Odd m then ((μ (q * m) : ℤ) : ℝ) / m * w else 0) =\n      (μ q : ℝ) * (if Nat.Coprime m (2 * q) then (μ m : ℝ) / m * w else 0) := by",
+            "line": 153,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.moebius_odd_term_w",
+            "lines": [
+              152,
+              167
+            ],
+            "conclusion": "For odd q: `[m odd] μ(qm)/m · w(m) = μ(q)·[(m,2q)=1] μ(m)/m · w(m)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L153-L155"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartL_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          306,
+          310
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPartL_le"
+          },
+          "snippet": {
+            "text": "    have hmu : (∑ m' ∈ Icc 1 N, (if Odd m' then ((μ (q * m') : ℤ) : ℝ) / m' *\n          Real.log (x / (m' * q)) else 0)) =\n        (μ q : ℝ) * muSum M q (2 * q) fun m => Real.log (x / (m * q)) := by\n      rw [muSum, mul_sum]\n      exact sum_congr rfl fun m' _ => moebius_odd_term_w hqo m' _",
+            "line": 306,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartL_le",
+            "lines": [
+              181,
+              377
+            ],
+            "conclusion": "`∑_{m' ≤ N, m' odd} μ(qm')/m' · log(x/(m'q)) = μ(q)· muSum M q (2q) (log(x/(·q)))`, the sum over `(m,2q)=1`, `m ≤ M/q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L306-L310"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

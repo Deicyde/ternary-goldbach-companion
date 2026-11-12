@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.1.4 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same Cauchy-Schwarz tool, but unweighted (no log(qT/2pi) factor) and over [-Jh,Jh], giving sqrt(A*2Jh).",
+  "subject": [
+    {
+      "location": {
+        "page": 183,
+        "rect": [
+          0.17462,
+          0.67692,
+          0.56162,
+          0.0427
+        ]
+      },
+      "title": "Lemma 9.1.4 step 12: Display, p. 173",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.intervalIntegral_norm_le_sqrt",
+        "module": "TernaryGoldbach.Explicit.LineZeros",
+        "lines": [
+          47,
+          79
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.intervalIntegral_norm_le_sqrt"
+          },
+          "snippet": {
+            "text": "/-- **Cauchy–Schwarz on an interval** (via AM–GM): `∫_a^b |g| ≤ √(A(b − a))` if `∫ |g|² ≤ A`. -/\ntheorem intervalIntegral_norm_le_sqrt {g : ℝ → ℂ} (hg : Continuous g)\n    (hg2 : Integrable fun t => ‖g t‖ ^ 2) {A : ℝ} (hA : 0 < A) (hgA : ∫ t, ‖g t‖ ^ 2 ≤ A)\n    {a b : ℝ} (hab : a < b) :\n    ∫ t in a..b, ‖g t‖ ≤ √(A * (b - a)) := by\n  set L := b - a with hL\n  have hL0 : 0 < L := by rw [hL]; linarith\n  set s := √(A * L) with hs\n  have hs0 : 0 < s := Real.sqrt_pos.2 (by positivity)\n  have hs2 : s ^ 2 = A * L := Real.sq_sqrt (by positivity)\n  set c := s / L with hc\n  have hc0 : 0 < c := by positivity\n  have hpt : ∀ t, ‖g t‖ ≤ ‖g t‖ ^ 2 / (2 * c) + c / 2 := by\n    intro t\n    rw [div_add_div _ _ (by positivity) (by norm_num), le_div_iff₀ (by positivity)]\n    nlinarith [sq_nonneg (‖g t‖ - c)]\n  have hgc := hg\n  have i1 : IntervalIntegrable (fun t => ‖g t‖ ^ 2 / (2 * c)) volume a b :=\n    (by fun_prop : Continuous fun t => ‖g t‖ ^ 2 / (2 * c)).intervalIntegrable _ _\n  have i2 : IntervalIntegrable (fun t => ‖g t‖ ^ 2 / (2 * c) + c / 2) volume a b :=\n    (by fun_prop : Continuous fun t => ‖g t‖ ^ 2 / (2 * c) + c / 2).intervalIntegrable _ _\n  have h1 : ∫ t in a..b, ‖g t‖ ≤ ∫ t in a..b, (‖g t‖ ^ 2 / (2 * c) + c / 2) :=\n    intervalIntegral.integral_mono_on hab.le (hg.norm.intervalIntegrable _ _) i2 fun t _ => hpt t\n  have h2 : ∫ t in a..b, ‖g t‖ ^ 2 ≤ A := by\n    rw [intervalIntegral.integral_of_le hab.le]\n    exact (setIntegral_le_integral hg2 (Eventually.of_forall fun t => by positivity)).trans hgA\n  rw [intervalIntegral.integral_add i1 intervalIntegrable_const, intervalIntegral.integral_div, intervalIntegral.integral_const,\n    smul_eq_mul] at h1\n  have h3 : (∫ t in a..b, ‖g t‖ ^ 2) / (2 * c) ≤ A / (2 * c) :=\n    div_le_div_of_nonneg_right h2 (by positivity)\n  have h4 : A / (2 * c) + (b - a) * (c / 2) = s := by\n    rw [← hL, hc]; field_simp; nlinarith [hs2]\n  linarith",
+            "line": 47,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.intervalIntegral_norm_le_sqrt",
+            "lines": [
+              47,
+              79
+            ],
+            "conclusion": "Cauchy-Schwarz on an interval (via AM-GM): int_a^b|g| <= sqrt(A(b-a)) when int|g|^2<=A, with unweighted g."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LineZeros.lean",
+            "fragment": "L47-L79"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.sum_window_fline_le",
+        "module": "TernaryGoldbach.Explicit.LineZeros",
+        "lines": [
+          190,
+          191
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.sum_window_fline_le"
+          },
+          "snippet": {
+            "text": "  have h1 := intervalIntegral_norm_le_sqrt (continuous_fline δ) (integrable_norm_sq_fline δ)\n    (by positivity) (integral_norm_sq_fline_le δ) (a := -(J * h)) (b := J * h) (by linarith)",
+            "line": 190,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.sum_window_fline_le",
+            "lines": [
+              179,
+              196
+            ],
+            "conclusion": "Cauchy-Schwarz (`intervalIntegral_norm_le_sqrt`) with `integral_norm_sq_fline_le`: $\\int_{-Jh}^{Jh}|G_\\delta(1/2+it)|\\,dt\\le\\sqrt{2\\pi\\cdot 0.6647\\cdot 2Jh}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LineZeros.lean",
+            "fragment": "L190-L191"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          183
+        ],
+        "printed": [
+          173
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

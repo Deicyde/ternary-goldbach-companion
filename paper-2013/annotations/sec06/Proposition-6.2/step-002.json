@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 6.2 step 2",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Unnormalized; f stored as a difference of integrals, equal to the layer integral by e2.",
+  "subject": [
+    {
+      "location": {
+        "page": 48,
+        "rect": [
+          0.20698,
+          0.13356,
+          0.62529,
+          0.04234
+        ]
+      },
+      "title": "Proposition 6.2 step 2: Display, p. 48",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 6.2 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          112,
+          112
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_13_1_2"
+          },
+          "snippet": {
+            "text": "  set f : ℕ → ℝ := fun n => if n < r₁ then I (n + 1) - I n else (∫ ω, u ω ∂μ) - I r₁ with hf",
+            "line": 112,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+            "lines": [
+              88,
+              139
+            ],
+            "conclusion": "f n = I(n+1) − I n."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L112-L112"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.layer_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          74,
+          77
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.layer_le"
+          },
+          "snippet": {
+            "text": "    have e2 : ∫ ω in M (k + 1), u ω ∂μ = (∫ ω in M k, u ω ∂μ) + ∫ ω in M (k + 1) \\ M k, u ω ∂μ := by\n      have : M (k + 1) = M k ∪ (M (k + 1) \\ M k) := (union_sdiff_cancel (hmono (by omega))).symm\n      conv_lhs => rw [this]\n      rw [setIntegral_union disjoint_sdiff_right ((hM _).diff (hM _)) hu.integrableOn hu.integrableOn]",
+            "line": 74,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.layer_le",
+            "lines": [
+              50,
+              86
+            ],
+            "conclusion": "e2: ∫_{M(k+1)} u = ∫_{M k} u + ∫_{M(k+1)\\M k} u, so I(k+1)−I k is the integral over the layer."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L74-L77"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          48
+        ],
+        "printed": [
+          48
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 13.1.2 step 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

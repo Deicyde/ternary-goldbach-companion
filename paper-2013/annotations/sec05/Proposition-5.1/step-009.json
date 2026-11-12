@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.1 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Citation of Bombieri's Thm 7A proof; Lean reproduces its content as `gauss_induced` and `norm_sq_gaussSum` (Gauss sum of an induced character) rather than the `qr`-level identity of step 10.",
+  "subject": [
+    {
+      "location": {
+        "page": 32,
+        "rect": [
+          0.20698,
+          0.81183,
+          0.62529,
+          0.01728
+        ]
+      },
+      "title": "Proposition 5.1 step 9: Text, p. 32",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.1 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.gauss_induced",
+        "module": "TernaryGoldbach.Prelim.GaussInduced",
+        "lines": [
+          66,
+          73
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.gauss_induced"
+          },
+          "snippet": {
+            "text": "/-- **Gauss sum of an induced character**: for `f` periodic mod `N`, completely multiplicative,\nand zero off the residues coprime to `N`,\n`Σ_{b < Nr, (b, Nr) = 1} f(b) e(b/Nr) = μ(r) f(r) Σ_{c < N} f(c) e(c/N)`. -/\ntheorem gauss_induced {N r : ℕ} (hN : 1 ≤ N) (hr : 1 ≤ r) (f : ℕ → ℂ)\n    (hper : ∀ b, f (b + N) = f b) (hmul : ∀ a b, f (a * b) = f a * f b)\n    (hzero : ∀ b, ¬ Nat.Coprime b N → f b = 0) :\n    ∑ b ∈ (range (N * r)).filter (fun b => Nat.Coprime b (N * r)), f b * e (b / (N * r)) =\n      μ r * f r * ∑ c ∈ range N, f c * e (c / N) := by",
+            "line": 66,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.gauss_induced",
+            "lines": [
+              66,
+              143
+            ],
+            "conclusion": "`Σ_{b<Nr,(b,Nr)=1} f(b) e(b/Nr) = μ(r) f(r) Σ_{c<N} f(c) e(c/N)` for multiplicative `f` mod `N`, i.e. the Gauss sum of a character induced from modulus `N` to `Nr` is `μ(r) f(r) τ`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/GaussInduced.lean",
+            "fragment": "L66-L73"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_sq_gaussSum",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri",
+        "lines": [
+          135,
+          138
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_sq_gaussSum"
+          },
+          "snippet": {
+            "text": "theorem norm_sq_gaussSum {q : ℕ} [NeZero q] (ψ : DirichletCharacter ℂ q) :\n    ‖gaussSum ψ ZMod.stdAddChar‖ ^ 2 =\n      if Squarefree (q / ψ.conductor) ∧ Nat.Coprime (q / ψ.conductor) ψ.conductor\n      then (ψ.conductor : ℝ) else 0 := by",
+            "line": 135,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_sq_gaussSum",
+            "lines": [
+              133,
+              179
+            ],
+            "conclusion": "For any `ψ` mod `q` with conductor `c`, `|τ(ψ)|² = c` if `q/c` is squarefree and coprime to `c`, else 0, proved via `gauss_induced` and primitive `|τ|²=c`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L135-L138"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          32
+        ],
+        "printed": [
+          32
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.1.1 step 9, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

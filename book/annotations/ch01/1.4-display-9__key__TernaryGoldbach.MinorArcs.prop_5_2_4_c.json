@@ -1,0 +1,81 @@
+{
+  "id": "1.4 display 9",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same bound up to the heuristic substitution `Σ(log p)² ≈ (W/2) log W`; the gain is `log R` with `R² ≈ (x/|δq|)/(q+x/4W)` (R capped at `W'`) rather than `log(W/|δ|q)`, and the factor is `φ(q)/q` times `log R` on the left.",
+  "subject": [
+    {
+      "location": {
+        "page": 33,
+        "rect": [
+          0.17135,
+          0.77368,
+          0.56816,
+          0.03892
+        ]
+      },
+      "title": "Display, p. 23",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.4 display 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          588,
+          595
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_c"
+          },
+          "snippet": {
+            "text": "theorem prop_5_2_4_c {α x δ U' W' W : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hx : 0 < x) (hW : 0 < W)\n    (hδ0 : δ ≠ 0) (hcond : x / (4 * W) + q ≤ x / (|δ| * q)) (hU' : x / (2 * W) ≤ U')\n    (hW' : 0 ≤ W') :\n    (S2 α x U' W' W ≤ (W - W' + x / (|δ| * q)) * logSqSum W' W) ∧\n    (∀ R : ℝ, 1 ≤ R → R ≤ W' → R ^ 2 ≤ x / (|δ| * q) / (q + x / (4 * W)) →\n      Nat.totient q / q * Real.log R * S2 α x U' W' W ≤\n        (W - W' + x / (|δ| * q)) * logSqSum W' W) := by",
+            "line": 588,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+            "lines": [
+              584,
+              621
+            ],
+            "conclusion": "If `x/4W + q ≤ x/|δ|q`: `S₂ ≤ (W-W'+x/|δ|q) Σ (log p)²`, and `(φ(q)/q) log R · S₂ ≤ (W-W'+x/|δ|q) Σ (log p)²` for `1 ≤ R ≤ W'`, `R² ≤ (x/|δq|)/(q+x/4W)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L588-L595"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          33
+        ],
+        "printed": [
+          23
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

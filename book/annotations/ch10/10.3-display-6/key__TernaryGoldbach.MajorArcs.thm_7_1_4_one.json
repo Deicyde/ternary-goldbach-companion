@@ -1,0 +1,81 @@
+{
+  "id": "10.3 display 6",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has no named quantity $ET_{\\eta,s}$; it uses a uniform explicit bound on the principal-character error over the arc.",
+  "subject": [
+    {
+      "location": {
+        "page": 219,
+        "rect": [
+          0.17135,
+          0.55736,
+          0.56816,
+          0.02489
+        ]
+      },
+      "title": "Display, p. 209",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.3 display 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_one",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          569,
+          575
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_one"
+          },
+          "snippet": {
+            "text": "/-- **[H, Thm 7.1.4], `q = 1`** (our constants), from `prop_9_4_2` at `T₀ = 10⁸` and Platt's\nverification: for `x ≥ 4.9·10²⁶`, `|δ| ≤ 6·10⁵`, `S_{η₊}(δ/x, x) = η̂₊(-δ) x + E x`,\n`|E| ≤ 10⁻¹⁸ + 6.24·10⁶/√x`. -/\ntheorem thm_7_1_4_one {x : ℝ} (hx : 4.9e26 ≤ x) (χ : DirichletCharacter ℂ 1) {δ : ℝ}\n    (hδ : |δ| ≤ 600000) :\n    ‖Schar χ (fun n => ((Λ n * etaPlus (n / x) : ℝ) : ℂ)) (δ / x) -\n        𝓕 (fun u => (etaPlus u : ℂ)) (-δ) * x‖ ≤ (1e-18 + 6.24e6 / √x) * x := by",
+            "line": 569,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_one",
+            "lines": [
+              569,
+              588
+            ],
+            "conclusion": "For $q=1$, $|\\delta|\\le6\\cdot10^5$: $|S_{\\eta_+}(\\delta/x)-\\hat\\eta_+(-\\delta)x|\\le(10^{-18}+6.24\\cdot10^6/\\sqrt x)x$, an explicit bound on $\\mathrm{err}_{\\eta_+,\\chi_T}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L569-L575"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          219
+        ],
+        "printed": [
+          209
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

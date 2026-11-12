@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 15",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the same bound with `1.0064 V` in place of `1.0004 V` (weaker `ψ` constant).",
+  "subject": [
+    {
+      "location": {
+        "page": 116,
+        "rect": [
+          0.25926,
+          0.35983,
+          0.56816,
+          0.21259
+        ]
+      },
+      "title": "Display, p. 106",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_min_floor_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Large",
+        "lines": [
+          15,
+          117
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_min_floor_le"
+          },
+          "snippet": {
+            "text": "/-- [H, p. 106]: `∑_{v ≤ V} Λ(v) min(⌊x/v/|δ|q_v⌋ + 1, 2U)`\n`≤ (x/|δ|q)(1.03883 + log q + log⁺(6UV|δ|q/√2x)) + 1.0064 V`. -/\ntheorem sum_min_floor_le {x δ U V : ℝ} {q : ℕ} (hq : 1 ≤ q) (hx : 0 < x) (hδ : 0 < |δ|)\n    (hU : 0 < U) (hV : 2.5e7 ≤ V) :\n    ∑ v ∈ Icc 1 ⌊V⌋₊, (Λ v : ℝ) *\n        min ((⌊x / v / (|δ| * ((q / Nat.gcd q v : ℕ) : ℝ))⌋₊ : ℝ) + 1) (2 * U) ≤\n      x / (|δ| * q) * (1.03883 + Real.log q + logPlus (6 * U * V * |δ| * q / (√2 * x))) +\n        1.0064 * V := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hV0 : 0 < V := by linarith\n  set N := ⌊V⌋₊ with hN\n  have hN1 : 1 ≤ N := Nat.le_floor (by norm_num; linarith)\n  have hNV : (N : ℝ) ≤ V := Nat.floor_le hV0.le\n  set v₀ := x / (2 * U * |δ| * q) with hv₀\n  have hv₀0 : 0 < v₀ := by positivity\n  set M := ⌊v₀⌋₊ with hM\n  set B := x / (|δ| * q) with hB\n  have hB0 : 0 < B := by positivity\n  have hΛ : ∀ v, (0 : ℝ) ≤ Λ v := fun v => ArithmeticFunction.vonMangoldt_nonneg\n  rw [← sum_filter_add_sum_filter_not (Icc 1 N) (fun v => v ≤ M)]\n  -- Small `v`: the minimum is at most `2U`.\n  have p1 : ∑ v ∈ (Icc 1 N).filter (fun v => v ≤ M), (Λ v : ℝ) *\n      min ((⌊x / v / (|δ| * ((q / Nat.gcd q v : ℕ) : ℝ))⌋₊ : ℝ) + 1) (2 * U) ≤ 1.03883 * B := by\n    calc _ ≤ ∑ v ∈ Icc 1 M, (Λ v : ℝ) * (2 * U) := by\n          refine (sum_le_sum fun v _ => mul_le_mul_of_nonneg_left (min_le_right _ _) (hΛ v)).trans\n            (sum_le_sum_of_subset_of_nonneg ?_ fun v _ _ => mul_nonneg (hΛ v) (by positivity))\n          intro v hv; simp only [mem_filter, mem_Icc] at hv ⊢; omega\n      _ = 2 * U * ∑ v ∈ Icc 1 M, (Λ v : ℝ) := by rw [mul_sum]; exact sum_congr rfl fun _ _ => by ring\n      _ ≤ 2 * U * (1.03883 * v₀) :=\n          mul_le_mul_of_nonneg_left (Prelim.sum_vonMangoldt_lt hv₀0).le (by positivity)\n      _ = 1.03883 * B := by simp only [hv₀, hB]; field_simp\n  -- Large `v`: the minimum is at most `x(q,v)/(v|δ|q) + 1`.\n  set S := (Icc 1 N).filter (fun v => ¬v ≤ M) with hS\n  have hSsub : S ⊆ Icc 1 N := filter_subset _ _\n  have p2a : ∑ v ∈ S, (Λ v : ℝ) *\n      min ((⌊x / v / (|δ| * ((q / Nat.gcd q v : ℕ) : ℝ))⌋₊ : ℝ) + 1) (2 * U) ≤\n      B * ∑ v ∈ S, (Λ v : ℝ) * (1 / v) * Nat.gcd q v + ∑ v ∈ S, (Λ v : ℝ) := by\n    rw [mul_sum, ← sum_add_distrib]\n    refine sum_le_sum fun v hv => ?_\n    have hv1 : 1 ≤ v := (mem_Icc.1 (hSsub hv)).1\n    have hv0 : (0 : ℝ) < v := by exact_mod_cast hv1\n    have hg : (0 : ℝ) < Nat.gcd q v := by exact_mod_cast Nat.gcd_pos_of_pos_left v hq\n    have hy : x / v / (|δ| * ((q / Nat.gcd q v : ℕ) : ℝ)) = B * (1 / v * Nat.gcd q v) := by\n      rw [cast_div_gcd q v hq, hB]; field_simp\n    have h1 : min ((⌊x / v / (|δ| * ((q / Nat.gcd q v : ℕ) : ℝ))⌋₊ : ℝ) + 1) (2 * U) ≤\n        B * (1 / v * Nat.gcd q v) + 1 := by\n      refine (min_le_left _ _).trans ?_\n      rw [hy]\n      have := Nat.floor_le (show 0 ≤ B * (1 / v * Nat.gcd q v) by positivity)\n      linarith\n    calc (Λ v : ℝ) * min _ _ ≤ (Λ v : ℝ) * (B * (1 / v * Nat.gcd q v) + 1) :=\n          mul_le_mul_of_nonneg_left h1 (hΛ v)\n      _ = _ := by ring\n  have p2b := sum_vonMangoldt_gcd_div_subset_le hq hSsub\n  have p2c : ∑ v ∈ S, (Λ v : ℝ) ≤ 1.0064 * V := by\n    refine (sum_le_sum_of_subset_of_nonneg hSsub fun v _ _ => hΛ v).trans ?_\n    have := Prelim.sum_vonMangoldt_le_a14 (y := V) (by linarith)\n    rwa [← hN] at this\n  -- `∑_{v ∈ S} Λ(v)/v ≤ log⁺(6UV|δ|q/√2x)`.\n  have p2d : ∑ v ∈ S, (Λ v : ℝ) * (1 / v) ≤ logPlus (6 * U * V * |δ| * q / (√2 * x)) := by\n    by_cases hMN : M ≤ N\n    · have hsplit := sum_filter_add_sum_filter_not (Icc 1 N) (fun v => v ≤ M)\n        (fun v => (Λ v : ℝ) * (1 / v))\n      have hfilt : (Icc 1 N).filter (fun v => v ≤ M) = Icc 1 M := by\n        ext v; simp only [mem_filter, mem_Icc]; omega\n      rw [hfilt] at hsplit\n      have hall : ∑ v ∈ Icc 1 N, (Λ v : ℝ) * (1 / v) ≤ Real.log V := by\n        have := Prelim.sum_vonMangoldt_div_le_log (x := V) (by linarith)\n        rw [← hN] at this\n        simpa [div_eq_mul_inv] using this\n      have hsmall : Real.log v₀ - Real.log (3 / √2) ≤ ∑ v ∈ Icc 1 M, (Λ v : ℝ) * (1 / v) := by\n        by_cases hv1 : 1 ≤ v₀\n        · have := Prelim.log_sub_le_sum_vonMangoldt_div hv1\n          rw [← hM] at this\n          simpa [div_eq_mul_inv] using this\n        · push Not at hv1\n          have h1 : Real.log v₀ < 0 := Real.log_neg hv₀0 hv1\n          have h2 : 0 < Real.log (3 / √2) := Real.log_pos (by\n            rw [one_lt_div (by positivity)]\n            have : √2 < 2 := by\n              rw [show (2 : ℝ) = √4 by rw [show (4 : ℝ) = 2 ^ 2 by norm_num,\n                Real.sqrt_sq (by norm_num)]]\n              exact Real.sqrt_lt_sqrt (by norm_num) (by norm_num)\n            linarith)\n          have : 0 ≤ ∑ v ∈ Icc 1 M, (Λ v : ℝ) * (1 / v) :=\n            sum_nonneg fun v _ => mul_nonneg (hΛ v) (by positivity)\n          linarith\n      have heq : Real.log V - (Real.log v₀ - Real.log (3 / √2)) =\n          Real.log (6 * U * V * |δ| * q / (√2 * x)) := by\n        rw [sub_sub_eq_add_sub, ← Real.log_mul hV0.ne' (by positivity),\n          ← Real.log_div (by positivity) hv₀0.ne']\n        congr 1\n        simp only [hv₀]\n        field_simp\n        ring\n      have : ∑ v ∈ S, (Λ v : ℝ) * (1 / v) ≤ Real.log (6 * U * V * |δ| * q / (√2 * x)) := by\n        rw [← heq]; linarith\n      exact this.trans (le_max_left _ _)\n    · have hSe : S = ∅ := by\n        ext v; simp only [hS, mem_filter, mem_Icc, notMem_empty, iff_false]; omega\n      rw [hSe, sum_empty]; exact logPlus_nonneg _\n  have := mul_le_mul_of_nonneg_left (p2b.trans (add_le_add_left p2d _)) hB0.le\n  nlinarith",
+            "line": 15,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_min_floor_le",
+            "lines": [
+              15,
+              117
+            ],
+            "conclusion": "`∑_{v ≤ V} Λ(v) min(⌊x/v/(|δ|q_v)⌋+1, 2U) ≤ (x/|δq|)(1.03883 + log q + log⁺(6UV|δ|q/√2x)) + 1.0064 V`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Large.lean",
+            "fragment": "L15-L117"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          116
+        ],
+        "printed": [
+          106
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

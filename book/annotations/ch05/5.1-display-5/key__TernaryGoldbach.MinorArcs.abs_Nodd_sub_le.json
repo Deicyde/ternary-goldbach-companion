@@ -1,0 +1,81 @@
+{
+  "id": "5.1 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean treats the odd-$n$ sum by counting odd integers in an interval ($\\frac14\\int g_2/y$ main term, error $\\le1$ per $y$), not by Euler-Maclaurin with $B_2$; the $\\log(1+1/m)$ appears as $\\int_m^{m+1}dy/y$ (`Ire`).",
+  "subject": [
+    {
+      "location": {
+        "page": 100,
+        "rect": [
+          0.25926,
+          0.184,
+          0.56816,
+          0.15129
+        ]
+      },
+      "title": "Display, p. 90",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5.1 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_Nodd_sub_le",
+        "module": "TernaryGoldbach.MinorArcs.T2Basic",
+        "lines": [
+          199,
+          205
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_Nodd_sub_le"
+          },
+          "snippet": {
+            "text": "theorem abs_Nodd_sub_le {S y : ℝ} (hy : 1 ≤ y) (hyS : y ≤ S) : |Nodd S y - S / (4 * y)| ≤ 1 := by\n  rw [Nodd_eq hy hyS]\n  have hy0 : 0 < y := by linarith\n  have hS0 : 0 < S := by linarith\n  have h := abs_card_odd_sub_le (α := S / (2 * y)) (by positivity)\n  have e : S / (2 * y) / 2 = S / (4 * y) := by ring\n  rwa [e] at h",
+            "line": 199,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_Nodd_sub_le",
+            "lines": [
+              199,
+              205
+            ],
+            "conclusion": "$|N_S(y)-S/(4y)|\\le1$, the odd-integer count in $(\\alpha,2\\alpha]$ equals $S/4y$ up to $1$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Basic.lean",
+            "fragment": "L199-L205"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          100
+        ],
+        "printed": [
+          90
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

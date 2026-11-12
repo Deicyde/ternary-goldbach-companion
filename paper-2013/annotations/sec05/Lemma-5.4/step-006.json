@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.4 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] does not call a Lemma 12.2.1; it bounds `P/φ(P)` directly with a different constant form.",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.20698,
+          0.77473,
+          0.62529,
+          0.01386
+        ]
+      },
+      "title": "Lemma 5.4 step 6: Text, p. 37",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.4 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          111,
+          144
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  set V := Real.log q + 1.039 * R with hVdef\n  have hVq : Real.log q ≤ V := by rw [hVdef]; linarith\n  have hV3 : 3 ≤ V := by linarith\n  have hPV : (P : ℝ) ≤ Real.exp V := by\n    have hl := log_prod_primeSetRq_le hR0.le hq\n    have hPpos : (0 : ℝ) < P := by exact_mod_cast hP0\n    calc (P : ℝ) = Real.exp (Real.log P) := (Real.exp_log hPpos).symm\n      _ ≤ Real.exp V := Real.exp_le_exp.2 hl\n  have hexpV : (3 : ℝ) ≤ Real.exp V := by\n    have := Real.add_one_le_exp V; linarith\n  have hX := TernaryGoldbach.Prelim.div_totient_lt hP0 hexpV hPV\n  rw [Real.log_exp] at hX\n  have hllq : 1 ≤ Real.log (Real.log q) := by\n    rw [Real.le_log_iff_exp_le (by linarith)]\n    have := Real.exp_one_lt_d9; linarith\n  have hlV1 : Real.log (Real.log q) ≤ Real.log V := Real.log_le_log (by linarith) hVq\n  have hqR : 0 < (q : ℝ) * R := by positivity\n  have hlogV : Real.log V ≤ Real.log c' + (2 / 9) * Real.log ((q : ℝ) * R) := by\n    have := Real.log_le_log (by linarith) hh\n    rwa [Real.log_mul hc'.ne' (by positivity), Real.log_rpow hqR] at this\n  have hγ := TernaryGoldbach.MinorArcs.exp_gamma_le_sharp\n  have hγ0 : 0 < Real.exp Real.eulerMascheroniConstant := Real.exp_pos _\n  have hq1 : (1 : ℝ) ≤ q := by exact_mod_cast hq\n  have hlqR : 0 ≤ Real.log ((q : ℝ) * R) := Real.log_nonneg (one_le_mul_of_one_le_of_one_le hq1 hR)\n  have hX' : X ≤ 0.86 + 0.4 * Real.log ((q : ℝ) * R) := by\n    have e1 : 2.50637 / Real.log V ≤ 2.50637 / Real.log (Real.log q) :=\n      div_le_div_of_nonneg_left (by norm_num) (by linarith) hlV1\n    have e2 : Real.exp Real.eulerMascheroniConstant * Real.log V ≤\n        Real.exp Real.eulerMascheroniConstant * Real.log c' +\n          Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) := by\n      rw [← mul_add]; exact mul_le_mul_of_nonneg_left hlogV hγ0.le\n    have e3 : Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) ≤\n        0.4 * Real.log ((q : ℝ) * R) := by nlinarith\n    linarith",
+            "line": 111,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "Bounds `X = P/φ(P) ≤ 0.86 + 0.4 log(qR)` from `div_totient_lt` and `log_prod_primeSetRq_le`, without Lemma 12.2.1."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L111-L144"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 12.2.2 step 6, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

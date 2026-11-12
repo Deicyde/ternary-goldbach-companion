@@ -1,0 +1,192 @@
+{
+  "id": "Lemma 4.1.3 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's quantity is the grid sum over j/2 (about twice the book's sum) with lower endpoint a=pi/2q and logTanHalf, so (B/a) = 2Bq/pi replaces B q/pi; the algebra with arcsin(C/B) and sqrt(B^2-C^2) is the same.",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.26253,
+          0.19522,
+          0.56162,
+          0.16217
+        ]
+      },
+      "title": "Lemma 4.1.3 step 4: Display, p. 56",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.3 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_hBC_half_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1833,
+          1890
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_hBC_half_le"
+          },
+          "snippet": {
+            "text": "/-- `∑_{j=1}^{q-1} h(j/2) ≤ h(1/2) + 2 ∫_{1/2}^{q/2} h`. -/\ntheorem sum_hBC_half_le {B C : ℝ} {q : ℕ} (hq : 2 ≤ q) (hB : 0 ≤ B) (hC : 0 ≤ C) :\n    ∑ j ∈ Finset.Icc 1 (q - 1), hBC B C q ((j : ℝ) / 2) ≤\n      hBC B C q (1 / 2) + 2 * ∫ u in (1 / 2 : ℝ)..(q / 2), hBC B C q u := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast (by omega : 0 < q)\n  have hq2 : (2 : ℝ) ≤ q := by exact_mod_cast hq\n  have hII : ∀ a b : ℝ, 0 < a → b < q → a ≤ b → IntervalIntegrable (hBC B C q) volume a b :=\n    fun a b ha hb hab => (continuousOn_hBC hq0 ha hb).intervalIntegrable_of_Icc hab\n  rw [Finset.sum_eq_add_sum_sdiff_singleton_of_mem (by simp; omega : 1 ∈ Finset.Icc 1 (q - 1)),\n    show Finset.Icc 1 (q - 1) \\ {1} = Finset.Icc 2 (q - 1) by ext x; simp; omega]\n  simp only [Nat.cast_one]\n  refine add_le_add le_rfl ?_\n  -- Each `h(j/2)` is at most twice the integral over `[(j-1)/2, j/2]`.\n  have hterm : ∀ j ∈ Finset.Icc 2 (q - 1),\n      hBC B C q ((j : ℝ) / 2) ≤ 2 * ∫ u in (((j : ℝ) - 1) / 2)..((j : ℝ) / 2), hBC B C q u := by\n    intro j hj\n    have hj2 : (2 : ℝ) ≤ j := by exact_mod_cast (Finset.mem_Icc.1 hj).1\n    have hjq : (j : ℝ) ≤ q - 1 := by\n      have := (Finset.mem_Icc.1 hj).2\n      have : (j : ℝ) ≤ ((q - 1 : ℕ) : ℝ) := by exact_mod_cast this\n      rwa [Nat.cast_sub (by omega), Nat.cast_one] at this\n    have h := intervalIntegral.integral_mono_on (by linarith) intervalIntegrable_const\n      (hII (((j : ℝ) - 1) / 2) ((j : ℝ) / 2) (by linarith) (by linarith) (by linarith))\n      fun u hu => hBC_anti hB hC hq0 (by linarith [hu.1]) hu.2 (by linarith)\n    rw [intervalIntegral.integral_const, smul_eq_mul] at h\n    linarith\n  have hsum : ∑ j ∈ Finset.Icc 2 (q - 1), ∫ u in (((j : ℝ) - 1) / 2)..((j : ℝ) / 2), hBC B C q u =\n      ∫ u in (1 / 2 : ℝ)..((q : ℝ) - 1) / 2, hBC B C q u := by\n    have h := intervalIntegral.sum_integral_adjacent_intervals (μ := volume) (f := hBC B C q)\n      (a := fun i : ℕ => ((i : ℝ) + 1) / 2) (n := q - 2) fun i hi => by\n        have : (i : ℝ) + 3 ≤ q := by exact_mod_cast (by omega : i + 3 ≤ q)\n        show IntervalIntegrable (hBC B C q) volume (((i : ℝ) + 1) / 2) ((((i + 1 : ℕ) : ℝ) + 1) / 2)\n        push_cast\n        exact hII _ _ (by positivity) (by linarith) (by linarith)\n    simp only [Nat.cast_zero, zero_add] at h\n    rw [show (((q - 2 : ℕ) : ℝ) + 1) / 2 = ((q : ℝ) - 1) / 2 by\n      rw [Nat.cast_sub hq]; push_cast; ring] at h\n    rw [← h]\n    refine Finset.sum_bij (fun j _ => j - 2) ?_ ?_ ?_ ?_\n    · intro j hj; simp only [Finset.mem_Icc] at hj; simp only [Finset.mem_range]; omega\n    · intro a ha b hb hab; simp only [Finset.mem_Icc] at ha hb; omega\n    · intro i hi; simp only [Finset.mem_range] at hi\n      exact ⟨i + 2, by simp only [Finset.mem_Icc]; omega, by simp⟩\n    · intro j hj; simp only [Finset.mem_Icc] at hj\n      push_cast [Nat.cast_sub hj.1]; ring_nf\n  have htail : ∫ u in (1 / 2 : ℝ)..((q : ℝ) - 1) / 2, hBC B C q u ≤\n      ∫ u in (1 / 2 : ℝ)..(q / 2), hBC B C q u := by\n    have e := intervalIntegral.integral_add_adjacent_intervals (μ := volume) (a := (1 / 2 : ℝ))\n      (b := ((q : ℝ) - 1) / 2) (c := q / 2) (hII _ _ (by norm_num) (by linarith) (by linarith))\n      (hII _ _ (by linarith) (by linarith) (by linarith))\n    have := intervalIntegral.integral_nonneg (μ := volume) (show ((q : ℝ) - 1) / 2 ≤ q / 2 by linarith)\n      fun u hu => hBC_nonneg (u := u) hB hC hq0 (by linarith [hu.1]) (by linarith [hu.2])\n    linarith\n  calc ∑ j ∈ Finset.Icc 2 (q - 1), hBC B C q ((j : ℝ) / 2)\n      ≤ ∑ j ∈ Finset.Icc 2 (q - 1), 2 * ∫ u in (((j : ℝ) - 1) / 2)..((j : ℝ) / 2), hBC B C q u :=\n        Finset.sum_le_sum hterm\n    _ = 2 * ∫ u in (1 / 2 : ℝ)..((q : ℝ) - 1) / 2, hBC B C q u := by rw [← Finset.mul_sum, hsum]\n    _ ≤ _ := by linarith",
+            "line": 1833,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_hBC_half_le",
+            "lines": [
+              1833,
+              1890
+            ],
+            "conclusion": "Sum_{j=1}^{q-1} h(j/2) <= h(1/2) + 2 int_{1/2}^{q/2} h, using h decreasing."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1833-L1890"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_hBC",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1895,
+          1901
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_hBC"
+          },
+          "snippet": {
+            "text": "theorem integral_hBC {B C : ℝ} {q : ℝ} (hq : 0 < q) :\n    ∫ u in (1 / 2 : ℝ)..(q / 2), hBC B C q u = q / π * ∫ v in (π / (2 * q))..(π / 2), mBC B C v := by\n  have hpq : π / q ≠ 0 := (div_pos Real.pi_pos hq).ne'\n  have : hBC B C q = fun u => mBC B C ((π / q) * u) := by\n    funext u; simp only [hBC, mBC]; ring_nf\n  rw [this, intervalIntegral.integral_comp_mul_left (fun v => mBC B C v) hpq, smul_eq_mul, inv_div]\n  congr 2 <;> field_simp <;> ring_nf <;> simp",
+            "line": 1895,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_hBC",
+            "lines": [
+              1895,
+              1901
+            ],
+            "conclusion": "int_{1/2}^{q/2} h = (q/pi) int_{pi/2q}^{pi/2} mBC (change of variable)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1895-L1901"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_mBC_le_split",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1910,
+          1940
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_mBC_le_split"
+          },
+          "snippet": {
+            "text": "/-- Splitting `∫_a^{π/2} min(B/sin, C/sin²)` at `w`. -/\ntheorem integral_mBC_le_split {B C a w : ℝ} (hB : 0 ≤ B) (hC : 0 ≤ C) (ha : 0 < a) (haw : a ≤ w)\n    (hw : w ≤ π / 2) :\n    ∫ v in a..(π / 2), mBC B C v ≤\n      B * (logTanHalf w - logTanHalf a) + C * (Real.cos w / Real.sin w) := by\n  have hpi := Real.pi_pos\n  have hII : ∀ x y, 0 < x → x ≤ y → y ≤ π / 2 → IntervalIntegrable (mBC B C) volume x y :=\n    fun x y hx hxy hy => (continuousOn_mBC hx (by linarith)).intervalIntegrable_of_Icc hxy\n  have hsin : ∀ v ∈ Icc a (π / 2), 0 < Real.sin v := fun v hv =>\n    Real.sin_pos_of_pos_of_lt_pi (by linarith [hv.1]) (by linarith [hv.2])\n  rw [← intervalIntegral.integral_add_adjacent_intervals (b := w) (hII _ _ ha haw hw)\n    (hII _ _ (by linarith) hw le_rfl)]\n  have h1 : ∫ v in a..w, mBC B C v ≤ B * (logTanHalf w - logTanHalf a) := by\n    have hg : IntervalIntegrable (fun v => B * (1 / Real.sin v)) volume a w :=\n      (continuousOn_const.mul (continuousOn_const.div Real.continuous_sin.continuousOn\n        fun v hv => (hsin v ⟨hv.1, hv.2.trans hw⟩).ne')).intervalIntegrable_of_Icc haw\n    have := intervalIntegral.integral_mono_on haw (hII _ _ ha haw hw) hg\n      fun v _ => (min_le_left (B / Real.sin v) (C / Real.sin v ^ 2)).trans (le_of_eq (by ring))\n    rw [intervalIntegral.integral_const_mul, integral_inv_sin ha haw (by linarith)] at this\n    exact this\n  have h2 : ∫ v in w..(π / 2), mBC B C v ≤ C * (Real.cos w / Real.sin w) := by\n    have hw0 : 0 < w := by linarith\n    have hg : IntervalIntegrable (fun v => C * (1 / Real.sin v ^ 2)) volume w (π / 2) :=\n      (continuousOn_const.mul (continuousOn_const.div (Real.continuous_sin.continuousOn.pow 2)\n        fun v hv => pow_ne_zero 2 (hsin v ⟨by linarith [hv.1], hv.2⟩).ne')).intervalIntegrable_of_Icc hw\n    have := intervalIntegral.integral_mono_on hw (hII _ _ hw0 hw le_rfl) hg\n      fun v _ => (min_le_right (B / Real.sin v) (C / Real.sin v ^ 2)).trans (le_of_eq (by ring))\n    rw [intervalIntegral.integral_const_mul, integral_inv_sin_sq hw0 hw (by linarith),\n      Real.cos_pi_div_two, zero_div, sub_zero] at this\n    exact this\n  linarith",
+            "line": 1910,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_mBC_le_split",
+            "lines": [
+              1910,
+              1940
+            ],
+            "conclusion": "int_a^{pi/2} min(B/sin,C/sin^2) <= B(logTanHalf w - logTanHalf a) + C cot w for a<=w<=pi/2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1910-L1940"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.final_4_1_3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          2013,
+          2032
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.final_4_1_3"
+          },
+          "snippet": {
+            "text": "      have hJ := integral_mBC_le_split hB.le hC ha haw hw2\n      have hFw : logTanHalf w = Real.log x - Real.log (1 + y) := by\n        simp only [logTanHalf, hsw, hcw]\n      have hCcot : C * (Real.cos w / Real.sin w) = B * y := by\n        rw [hsw, hcw, hCx]; field_simp\n      rw [hFw, hCcot] at hJ\n      have hlog : Real.log (C * rexp 3 / (B * (2 * a))) = Real.log x + 3 - Real.log 2 - Real.log a := by\n        rw [hCx, show x * B * rexp 3 / (B * (2 * a)) = x * rexp 3 / 2 / a by field_simp; try ring,\n          Real.log_div (by positivity) ha.ne', Real.log_div (by positivity) (by norm_num),\n          Real.log_mul (by positivity) (by positivity), Real.log_exp]\n        try ring\n      have hconc := log_one_add_ge hy0 hy1\n      have hJ' : (∫ v in a..(π / 2), mBC B C v) / a ≤\n          B / a * (Real.log x - Real.log (1 + y) + Real.log (2 / a) + y) := by\n        rw [div_le_iff₀ ha]\n        have : B / a * (Real.log x - Real.log (1 + y) + Real.log (2 / a) + y) * a =\n            B * (Real.log x - Real.log (1 + y) + Real.log (2 / a) + y) := by field_simp\n        rw [this]\n        have h2 := mul_le_mul_of_nonneg_left hF hB.le\n        linarith only [hJ, h2]",
+            "line": 2013,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.final_4_1_3",
+            "lines": [
+              1953,
+              2079
+            ],
+            "conclusion": "With w=arcsin(C/B), y=sqrt(1-x^2): logTanHalf w = log x - log(1+y), C cot w = B y, so the integral is at most B(log x - log(1+y) + log(2/a) + y)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L2013-L2032"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

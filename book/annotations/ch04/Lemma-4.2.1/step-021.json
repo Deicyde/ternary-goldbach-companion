@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.1 step 21",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part carried: Lemma 4.1.2 is used for m ≤ M (in Lean's Lemma 4.2.2 analogue, first bound only). Lean does not compare the two bounds, and its c₂ = 6π/(5√c₀) (TypeI.lean:46) lacks the factor (1+√(13/3)) of the text's c₂.",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17462,
+          0.73063,
+          0.56162,
+          0.092
+        ]
+      },
+      "title": "Lemma 4.2.1 step 21: Text, p. 59",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_A1",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          323,
+          356
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_A1"
+          },
+          "snippet": {
+            "text": "    have h12' := (lemma_4_1_2 happ (y₁ := y₁) (y₂ := y₂) (by positivity) h12\n      (by simp only [y₁, y₂]; have := min_le_left ((0 : ℝ) + (j + 1) * q) D'; linarith)\n      hy₂ (A := A) (C := C) (by positivity) (by positivity))\n    have hterm : ∀ n ∈ Ioc ⌊y₁⌋ ⌊y₂⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n        (if (q : ℤ) ∣ n then 0 else min A (C / Real.sin (π * (a / q + δ / x) * n) ^ 2)) := by\n      intro n hn\n      split_ifs with hdvd\n      · exact le_rfl\n      rw [mem_Ioc] at hn\n      have hy10 : (0 : ℝ) ≤ y₁ := by positivity\n      have hn1 : (0 : ℤ) < n := lt_of_le_of_lt (Int.floor_nonneg.2 hy10) hn.1\n      have hnR : (n : ℝ) ≤ y₂ := (Int.cast_le.2 hn.2).trans (Int.floor_le _)\n      have hcast : ((n.toNat : ℕ) : ℤ) = n := Int.toNat_of_nonneg hn1.le\n      have hmR : ((n.toNat : ℕ) : ℝ) = n := by exact_mod_cast hcast\n      have hm : 1 ≤ n.toNat := by omega\n      have hne : Real.sin (π * (a / q + δ / x) * ((n.toNat : ℕ) : ℤ)) ≠ 0 := by\n        rw [hcast]\n        exact sin_ne_zero_of_approx happ hdvd (by\n          rw [abs_of_pos (by exact_mod_cast hn1)]; linarith)\n      have := (norm_Todd_le_min_sin hx h2α hm hne (A := A) (B := eta2'L1 / 2) (C := C)\n        (by\n          rw [hmR]; simp only [A]\n          have : (1 : ℝ) ≤ n := by exact_mod_cast hn1\n          have : x / (2 * n) ≤ x / 2 := div_le_div_of_nonneg_left hx.le (by norm_num) (by linarith)\n          linarith) le_rfl\n        (by\n          rw [hmR]; simp only [C]\n          have : (n : ℝ) ≤ (0 : ℝ) + (j + 1) * q := hnR.trans (min_le_left _ _)\n          rw [show c₀ / 2 * ((0 : ℝ) + (j + 1) * q) / x = ((0 : ℝ) + (j + 1) * q) / x * (c₀ / 2)\n            by ring]\n          exact mul_le_mul_of_nonneg_right (div_le_div_of_nonneg_right this hx.le) (by positivity))).1\n      rw [hcast] at this\n      exact this\n    refine (sum_le_sum hterm).trans (h12'.trans ((min_le_left _ _).trans (le_of_eq ?_)))",
+            "line": 323,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_A1",
+            "lines": [
+              294,
+              378
+            ],
+            "conclusion": "Applies Lemma 4.1.2 (`lemma_4_1_2`) to each block y₁<m≤y₂, q ∤ m, y₂-y₁ ≤ q, y₂ ≤ Q/2 of the range m ≤ M (odd-n sums T_{m,∘}), and line 356 keeps only the first bound (20/3π²)Cq²."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L323-L356"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

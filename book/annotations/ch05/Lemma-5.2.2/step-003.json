@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.2.2 step 3",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Sum runs over the odd m of the block rather than m0+1..m0+q; same tool and same constant W-W'+2q.",
+  "subject": [
+    {
+      "location": {
+        "page": 105,
+        "rect": [
+          0.17462,
+          0.48539,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.2.2 step 3: Text, p. 95",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_a",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          176,
+          199
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_a"
+          },
+          "snippet": {
+            "text": "    have hls := large_sieve_primes (B.filter Odd) (fun m : ℤ => α * m) (δ := 1 / (2 * q))\n      (W' := W') (W := W)\n      (by positivity) (by rw [div_le_one (by positivity)]; linarith) (by\n        intro m hm m' hm' hne\n        rw [mem_filter] at hm hm'\n        have h1 := hBsub m hm.1\n        have h2 := hBsub m' hm'.1\n        have hdiff : |((m - m' : ℤ) : ℝ)| / 2 ≤ (K : ℝ) - 1 := by\n          obtain ⟨u, hu⟩ := hm.2\n          obtain ⟨u', hu'⟩ := hm'.2\n          have h3 : |m - m'| ≤ 2 * (K : ℤ) - 2 := by rw [abs_le]; constructor <;> omega\n          have h4 : ((|m - m'| : ℤ) : ℝ) ≤ 2 * (K : ℝ) - 2 := by exact_mod_cast h3\n          rw [← Int.cast_abs]; push_cast at h4 ⊢; linarith\n        have hsep := sep_odd hq hcop hα hQ hm.2 hm'.2 hne hdiff (by\n          have : (K : ℝ) ≤ q := by exact_mod_cast hKq\n          linarith)\n        refine le_trans ?_ hsep\n        have : ((K : ℝ) - 1) / (q * Q) ≤ (Q / 2) / (q * Q) :=\n          div_le_div_of_nonneg_right hKQ.le (by positivity)\n        have e : (Q / 2) / (q * Q) = 1 / (2 * q) := by field_simp\n        have e2 : 1 / (q : ℝ) - 1 / (2 * q) = 1 / (2 * q) := by field_simp; ring\n        linarith) hW'\n    rw [one_div, inv_inv] at hls\n    exact hls",
+            "line": 176,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_a",
+            "lines": [
+              131,
+              210
+            ],
+            "conclusion": "Applies large_sieve_primes to the odd m of a block with delta = 1/(2q), giving sum |S(alpha m)|^2 <= (W-W'+2q) sum (log p)^2 (after inv_inv)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L176-L199"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.large_sieve_primes",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          29,
+          66
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.large_sieve_primes"
+          },
+          "snippet": {
+            "text": "/-- The large sieve (optimal form) for `S(β)`: for `δ`-separated points (`0 < δ ≤ 1`),\n`∑_r |S(β_r)|² ≤ (W - W' + δ⁻¹) ∑ (log p)²`. -/\ntheorem large_sieve_primes {ι : Type*} (s : Finset ι) (β : ι → ℝ) {δ : ℝ} (hδ : 0 < δ)\n    (hδ1 : δ ≤ 1)\n    (hsep : ∀ r ∈ s, ∀ r' ∈ s, r ≠ r' → δ ≤ |(β r - β r') - round (β r - β r')|)\n    {W' W : ℝ} (hW' : 0 ≤ W') :\n    ∑ r ∈ s, ‖primeExpSum W' W (β r)‖ ^ 2 ≤ (W - W' + δ⁻¹) * logSqSum W' W := by\n  rcases lt_or_ge ⌊W'⌋₊ ⌊W⌋₊ with hlt | hge\n  · set M := ⌊W'⌋₊\n    set N := ⌊W⌋₊ - M\n    have hMN : M + N = ⌊W⌋₊ := by omega\n    set a : ℕ → ℂ := fun n => if n.Prime then (Real.log n : ℂ) else 0\n    have hS : ∀ t, primeExpSum W' W t = ∑ n ∈ Ioc M (M + N), a n * e (t * n) := by\n      intro t\n      rw [primeExpSum, hMN, sum_filter]\n      refine sum_congr rfl fun n _ => ?_\n      simp only [a]; split_ifs <;> simp\n    have hL : logSqSum W' W = ∑ n ∈ Ioc M (M + N), ‖a n‖ ^ 2 := by\n      rw [logSqSum, hMN, sum_filter]\n      refine sum_congr rfl fun n _ => ?_\n      simp only [a]; split_ifs\n      · rw [Complex.norm_real, Real.norm_eq_abs, sq_abs]\n      · simp\n    simp_rw [hS]\n    rw [hL]\n    refine (Prelim.large_sieve_opt s β hδ hδ1 hsep M N a).trans ?_\n    refine mul_le_mul_of_nonneg_right ?_ (sum_nonneg fun _ _ => sq_nonneg _)\n    have hW0 : 0 ≤ W := by\n      by_contra h; push Not at h\n      have : ⌊W⌋₊ = 0 := Nat.floor_eq_zero.2 (by linarith)\n      omega\n    have h1 : (⌊W⌋₊ : ℝ) ≤ W := Nat.floor_le hW0\n    have h2 : W' < (⌊W'⌋₊ : ℝ) + 1 := Nat.lt_floor_add_one W'\n    have hN : (N : ℝ) = ⌊W⌋₊ - ⌊W'⌋₊ := by\n      simp only [N, M]; rw [Nat.cast_sub hlt.le]\n    rw [hN]; linarith\n  · have hempty : Ioc ⌊W'⌋₊ ⌊W⌋₊ = ∅ := Ioc_eq_empty (not_lt.2 hge)\n    simp [primeExpSum, logSqSum, hempty]",
+            "line": 29,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.large_sieve_primes",
+            "lines": [
+              29,
+              66
+            ],
+            "conclusion": "Large sieve for prime sums over delta-separated points: sum <= (W-W'+delta^-1) sum (log p)^2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L29-L66"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          105
+        ],
+        "printed": [
+          95
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

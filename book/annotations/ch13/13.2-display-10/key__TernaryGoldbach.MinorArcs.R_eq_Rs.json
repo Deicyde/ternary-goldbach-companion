@@ -1,0 +1,81 @@
+{
+  "id": "13.2 display 10",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same function in the variable s=log r = t - log 8 (t=log 4t'), with B = log(36 z^{1/3}/2.004) - log 8; Lean's Rs includes the affine map 0.27125*R°+0.41415 (it is R, not R°).",
+  "subject": [
+    {
+      "location": {
+        "page": 265,
+        "rect": [
+          0.17135,
+          0.40764,
+          0.56816,
+          0.04392
+        ]
+      },
+      "title": "Display, p. 255",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "13.2 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.R_eq_Rs",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          99,
+          106
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.R_eq_Rs"
+          },
+          "snippet": {
+            "text": "theorem R_eq_Rs {x r : ℝ} (hx : 0 < x) (hr : 0 < r) :\n    R x (2 * r) = Rs (Real.log (9 * x ^ (1 / 3 : ℝ) / 4.008)) (Real.log r) := by\n  unfold R Rs\n  have hT : 0 < x ^ (1 / 3 : ℝ) := by positivity\n  rw [show 4 * (2 * r) = 8 * r by ring, Real.log_mul (by norm_num) hr.ne',\n    show 9 * x ^ (1 / 3 : ℝ) / (2.004 * (2 * r)) = 9 * x ^ (1 / 3 : ℝ) / 4.008 / r by\n      field_simp; ring,\n    Real.log_div (by positivity) hr.ne']",
+            "line": 99,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.R_eq_Rs",
+            "lines": [
+              99,
+              106
+            ],
+            "conclusion": "Shows R x (2r) = Rs B (log r), the same function in the variable s=log r."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L99-L106"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          265
+        ],
+        "printed": [
+          255
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

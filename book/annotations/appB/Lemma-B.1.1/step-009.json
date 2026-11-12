@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.1.1 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "This is the quantity being bounded; Lean bounds it as `‖4z³-16z+16‖ = 4|g|·1` (constant 31.4821/4 = 7.870525 vs 7.87052).",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.26253,
+          0.32066,
+          0.56162,
+          0.02436
+        ]
+      },
+      "title": "Lemma B.1.1 step 9: Display, p. 292",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.1.1 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_trig_le",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier",
+        "lines": [
+          257,
+          279
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_trig_le"
+          },
+          "snippet": {
+            "text": "/-- `|4z³ − 16z + 16| ≤ 31.4821` on the unit circle. -/\ntheorem norm_trig_le (z : ℂ) (hz : ‖z‖ = 1) : ‖4 * z ^ 3 - 16 * z + 16‖ ≤ 31.4821 := by\n  have hn : z.re ^ 2 + z.im ^ 2 = 1 := by\n    have := Complex.sq_norm z; rw [hz, Complex.normSq_apply] at this; nlinarith\n  set x := z.re; set y := z.im\n  have hz' : z = x + y * I := (Complex.re_add_im z).symm\n  have hw : ‖4 * z ^ 3 - 16 * z + 16‖ ^ 2 = 512 * x ^ 3 - 256 * x ^ 2 - 896 * x + 656 := by\n    rw [Complex.sq_norm, Complex.normSq_apply, hz']\n    simp only [pow_succ, pow_zero, one_mul, mul_re, mul_im, add_re, add_im, sub_re, sub_im, ofReal_re,\n      ofReal_im, I_re, I_im, re_ofNat, im_ofNat]\n    have hy : y ^ 2 = 1 - x ^ 2 := by linarith\n    have h4 : y ^ 4 = (1 - x ^ 2) ^ 2 := by rw [show y ^ 4 = (y ^ 2) ^ 2 by ring, hy]\n    have h6 : y ^ 6 = (1 - x ^ 2) ^ 3 := by rw [show y ^ 6 = (y ^ 2) ^ 3 by ring, hy]\n    ring_nf\n    rw [h6, h4, hy]\n    ring\n  have hx1 : -1 ≤ x := by nlinarith [sq_nonneg y]\n  have hx2 : x ≤ 1 := by nlinarith [sq_nonneg y]\n  have hP : 512 * x ^ 3 - 256 * x ^ 2 - 896 * x + 656 ≤ 991.1226 := by\n    nlinarith [mul_nonneg (sq_nonneg (x + 0.61507)) (by linarith : (0:ℝ) ≤ 1.7302 - x),\n      sq_nonneg (x + 0.61507)]\n  have h0 : 0 ≤ ‖4 * z ^ 3 - 16 * z + 16‖ := norm_nonneg _\n  nlinarith",
+            "line": 257,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_trig_le",
+            "lines": [
+              257,
+              279
+            ],
+            "conclusion": "`‖4z³−16z+16‖ ≤ 31.4821` on the unit circle, i.e. `|g(t)| ≤ 7.870525` with `z = e(-t/4)`, proved by an exact polynomial bound in `Re z`, not a grid."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L257-L279"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

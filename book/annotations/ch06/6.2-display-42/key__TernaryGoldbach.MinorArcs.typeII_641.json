@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 42",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same main term and Phi, but 2 kappa_7 is replaced by 0.0924 + 8 zeta3 sqrt(x/V)/U (corrected (5.36) constant and the explicit zeta term).",
+  "subject": [
+    {
+      "location": {
+        "page": 124,
+        "rect": [
+          0.25926,
+          0.28489,
+          0.56816,
+          0.04106
+        ]
+      },
+      "title": "Display, p. 114",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_641",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          626,
+          643
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_641"
+          },
+          "snippet": {
+            "text": "theorem typeII_641 {α x δ Q ρ θ : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (h2α : 2 * α = a / q + δ / x + k) (hδQ : |δ / x| ≤ 1 / (q * Q)) (hδ8 : 8 ≤ |δ|) (hx : 0 < x)\n    (hQx : x ≤ Q ^ 2) (hρ1 : ρ < 1) (hqρ : (q : ℝ) ≤ ρ * Q) {U V : ℕ} (hU : 1 ≤ U)\n    (hV : (2000000 : ℝ) ≤ V) (hVA : (V : ℝ) ≤ θ * |δ| * q) (hAU : θ * |δ| * q ≤ x / U)\n    (hθ : |δ| * q * (1 + x / (2 * U * Q)) / 4 * rexp 1 ≤ θ * |δ| * q) :\n    let c := |δ| * q * (1 + x / (2 * U * Q)) / 4\n    ‖typeII α x U V‖ ≤\n      4 * x * √(2 / |δ| / (2 * Nat.totient q)) * √((Real.log (x / (U * (θ * |δ| * q))) +\n        Real.log c * (Real.log (Real.log (x / U / c)) -\n          Real.log (Real.log (θ * |δ| * q / c)))) *\n        (0.15107 * Real.log (x / (U * (θ * |δ| * q))) + 0.0231 + 2 * zeta3 * √(x / (θ * |δ| * q)) / U)) +\n      4 * √(kap1 x U V * q * x / (2 * Nat.totient q)) * (2 * √(x / U) + √(Real.log c) *\n        (2 * rexp 1 * √c + 4 * √(x / U / Real.log (x / U / c)))) +\n      4 * (√(kap1 x U V) * (√(x ^ 2 / (2 * |δ| * q) + x ^ 2 / (16 * (1 - ρ) * Q)) * (2 / 3 *\n        (Real.log (θ * |δ| * q) * √(Real.log (θ * |δ| * q)) - Real.log V * √(Real.log V))) +\n        √(1 / (2 * (1 - ρ))) * x * (√(Real.log V) + 1 / √(Real.log V)) / √V +\n        √x * √(Real.log (θ * |δ| * q)) * √(θ * |δ| * q))) +\n      8 * 1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) / √V := by",
+            "line": 626,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_641",
+            "lines": [
+              623,
+              667
+            ],
+            "conclusion": "For W_0 = theta|delta q| > V the same main term with 4x sqrt(2/|delta|/2phi) sqrt((Lambda + Phi)(0.15107 Lambda + 0.0231 + 2 zeta3 sqrt(x/W_0)/U))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L626-L643"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          124
+        ],
+        "printed": [
+          114
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

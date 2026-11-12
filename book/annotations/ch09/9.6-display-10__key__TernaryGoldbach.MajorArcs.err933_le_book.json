@@ -1,0 +1,117 @@
+{
+  "id": "9.6 display 10",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's hB, hC bound the eta_* error terms (3*1.92182+11|δ|), (2.74517+6*1.37259|δ|) with RHS 1322/sqrt q, not the displayed (6+22|δ|), (3+17|δ|) with 2644/q.",
+  "subject": [
+    {
+      "location": {
+        "page": 205,
+        "rect": [
+          0.17135,
+          0.22478,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Display, p. 195",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err933_le_book",
+        "module": "TernaryGoldbach.MajorArcs.Cor713",
+        "lines": [
+          205,
+          214
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err933_le_book"
+          },
+          "snippet": {
+            "text": "  have hB : (3 * 1.92182 + 11 * |δ|) / y ≤ 1322 * (v * u) + 0.0006 * u := by\n    have e : (3 * 1.92182 + 11 * |δ|) / y = (3 * 1.92182 + 11 * |δ|) * u * u := by\n      rw [hyt, hu]; field_simp\n    rw [e]\n    have h1 : (3 * 1.92182 + 11 * |δ|) * u ≤ 0.0006 + 1322 * v := by\n      have : (3 * 1.92182 + 11 * |δ|) * u ≤ (3 * 1.92182 + 11 * (1.2e6 * v)) * 1e-4 :=\n        mul_le_mul (by linarith) hu4 hu0.le (by positivity)\n      linarith\n    have := mul_le_mul_of_nonneg_right h1 hu0.le\n    linarith",
+            "line": 205,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err933_le_book",
+            "lines": [
+              152,
+              235
+            ],
+            "conclusion": "hB: (3*1.92182+11|δ|)/y <= 1322/(sqrt q sqrt y)+0.0006/sqrt y."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L205-L214"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err933_le_book",
+        "module": "TernaryGoldbach.MajorArcs.Cor713",
+        "lines": [
+          215,
+          230
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err933_le_book"
+          },
+          "snippet": {
+            "text": "  have hC : (Real.log q + 6) * (2.74517 + 6 * 1.37259 * |δ|) / (y * t) ≤ 2 * (v * u) + 0.000001 * u := by\n    have e : (Real.log q + 6) * (2.74517 + 6 * 1.37259 * |δ|) / (y * t) =\n        (Real.log q + 6) * (2.74517 + 6 * 1.37259 * |δ|) * (u * u) * u := by\n      rw [hyt, hu]; field_simp\n    rw [e]\n    have huu : u * u ≤ 1e-8 := by\n      calc u * u ≤ 1e-4 * 1e-4 := mul_le_mul hu4 hu4 hu0.le (by norm_num)\n        _ = 1e-8 := by norm_num\n    have h1 : (Real.log q + 6) * (2.74517 + 6 * 1.37259 * |δ|) * (u * u) ≤\n        (12.62 + 6) * (2.74517 + 6 * 1.37259 * (1.2e6 * v)) * 1e-8 := by\n      apply mul_le_mul _ huu (by positivity) (by positivity)\n      exact mul_le_mul (by linarith) (by linarith) (by positivity) (by linarith)\n    have h2 : (12.62 + 6) * (2.74517 + 6 * 1.37259 * (1.2e6 * v)) * 1e-8 ≤ 0.000001 + 2 * v := by\n      linarith\n    have := mul_le_mul_of_nonneg_right (h1.trans h2) hu0.le\n    linarith",
+            "line": 215,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err933_le_book",
+            "lines": [
+              152,
+              235
+            ],
+            "conclusion": "hC: (log q+6)(2.74517+6*1.37259|δ|)/(y sqrt y) <= 2/(sqrt q sqrt y)+1e-6/sqrt y."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L215-L230"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          205
+        ],
+        "printed": [
+          195
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

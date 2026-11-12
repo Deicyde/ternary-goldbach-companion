@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 28",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean iterates the one-kernel convolution `mellin_hHc_mul` twice instead of forming $M(h_H^2)$ as the self-convolution of $Mh_H$.",
+  "subject": [
+    {
+      "location": {
+        "page": 201,
+        "rect": [
+          0.17462,
+          0.29609,
+          0.56162,
+          0.01555
+        ]
+      },
+      "title": "Proposition 9.5.1 step 28: Text, p. 191",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.phi1_eq",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          209,
+          215
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.phi1_eq"
+          },
+          "snippet": {
+            "text": "theorem phi1_eq {t : ℝ} (ht : 0 < t) : phi1 t = hHc t * (hHc t * g0 t) := by\n  have he : Real.exp (-t ^ 2 / 2) ^ 2 = Real.exp (-t ^ 2) := by\n    rw [← Real.exp_nat_mul]; congr 1; push_cast; ring\n  have e : (hH 200 t * t * Real.exp (-t ^ 2 / 2)) ^ 2 =\n      hH 200 t * (hH 200 t * (t ^ 2 * Real.exp (-t ^ 2))) := by\n    rw [mul_pow, mul_pow, he]; ring\n  rw [phi1, TernaryGoldbach.Helfgott.etaPlus, e, ← hH_eq_hHc ht, g0]; push_cast; ring",
+            "line": 209,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.phi1_eq",
+            "lines": [
+              209,
+              215
+            ],
+            "conclusion": "$\\eta_+^2=h_H\\cdot(h_H\\cdot t^2e^{-t^2})$ for $t>0$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L209-L215"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.mellin_phi1_eq",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          222,
+          229
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.mellin_phi1_eq"
+          },
+          "snippet": {
+            "text": "theorem mellin_phi1_eq {s : ℂ} (hs : -2 < s.re) :\n    mellin phi1 s = ∫ ξ in Icc (-aH) aH,\n      𝓕 gC ξ * mellin (fun t => hHc t * g0 t) (s + ((2 * π * ξ : ℝ) : ℂ) * I) := by\n  have : mellin phi1 s = mellin (fun t => hHc t * (hHc t * g0 t)) s :=\n    setIntegral_congr_fun measurableSet_Ioi fun t (ht : 0 < t) => by simp only; rw [phi1_eq ht]\n  rw [this]\n  exact mellin_hHc_mul (continuousOn_hg0.aestronglyMeasurable measurableSet_Ioi) (C := 3.15) (b := 2)\n    (by norm_num) hg0_le (by linarith)",
+            "line": 222,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.mellin_phi1_eq",
+            "lines": [
+              222,
+              229
+            ],
+            "conclusion": "$M(\\eta_+^2)(s)=\\int_{|\\xi|\\le a_H}\\hat g_C(\\xi)\\,M(h_H\\,t^2e^{-t^2})(s+2\\pi i\\xi)\\,d\\xi$, by `mellin_hHc_mul`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L222-L229"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          201
+        ],
+        "printed": [
+          191
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

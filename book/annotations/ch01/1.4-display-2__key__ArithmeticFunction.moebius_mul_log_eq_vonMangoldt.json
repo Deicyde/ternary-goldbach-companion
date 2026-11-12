@@ -1,0 +1,84 @@
+{
+  "id": "1.4 display 2",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Mathlib's identity; [L]'s Vaughan proof uses its ingredients `μ*ζ = 1` and `Λ*ζ = log`.",
+  "subject": [
+    {
+      "location": {
+        "page": 27,
+        "rect": [
+          0.17135,
+          0.22572,
+          0.56816,
+          0.01693
+        ]
+      },
+      "title": "Display, p. 17",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.4 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "ArithmeticFunction.moebius_mul_log_eq_vonMangoldt",
+        "module": "Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt",
+        "lines": [
+          130,
+          132
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "ArithmeticFunction.moebius_mul_log_eq_vonMangoldt"
+          },
+          "snippet": {
+            "text": "@[simp]\ntheorem moebius_mul_log_eq_vonMangoldt : (μ : ArithmeticFunction ℝ) * log = Λ := by\n  rw [mul_comm]; simp",
+            "line": 130,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "ArithmeticFunction.moebius_mul_log_eq_vonMangoldt",
+            "lines": [
+              130,
+              132
+            ],
+            "conclusion": "`(μ : ArithmeticFunction ℝ) * log = Λ` as Dirichlet convolution."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/NumberTheory/ArithmeticFunction/VonMangoldt.lean",
+            "fragment": "L130-L132"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          27
+        ],
+        "printed": [
+          17
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 7",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "The 'We notice that' sentence is signposting for step 8.",
+  "subject": [
+    {
+      "location": {
+        "page": 82,
+        "rect": [
+          0.26253,
+          0.43266,
+          0.56162,
+          0.0165
+        ]
+      },
+      "title": "Lemma 4.2.4 step 7: Text, p. 72",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_sum_moebius_odd_dvd_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          164,
+          168
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_sum_moebius_odd_dvd_le"
+          },
+          "snippet": {
+            "text": "  have h2 := Prelim.abs_sum_moebius_div_coprime_le_one (R / q') (q := 2 * q') (by omega)\n  simp only [mul_one] at h2 ⊢\n  calc 1 / (q' : ℝ) * (|(μ q' : ℝ)| * |∑ w ∈ Icc 1 ⌊R / q'⌋₊,\n        (if Nat.Coprime w (2 * q') then (μ w : ℝ) / w else 0)|) ≤ 1 / q' * (1 * 1) := by gcongr\n    _ = 1 / q' := by ring",
+            "line": 164,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_sum_moebius_odd_dvd_le",
+            "lines": [
+              146,
+              168
+            ],
+            "conclusion": "Uses `Prelim.abs_sum_moebius_div_coprime_le_one` (Granville-Ramare, `|Σ_{n ≤ x,(n,q)=1} μ(n)/n| ≤ 1`) with modulus `2q'` to bound the `u`-sum by `1`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L164-L168"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.abs_sum_moebius_div_coprime_le_one",
+        "module": "TernaryGoldbach.Prelim.MoebiusCoprime",
+        "lines": [
+          69,
+          127
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.abs_sum_moebius_div_coprime_le_one"
+          },
+          "snippet": {
+            "text": "/-- **[H, (2.20)]** (Granville–Ramaré [GR96, Lemma 10.2]):\n`|∑_{n ≤ x, (n, q) = 1} μ(n)/n| ≤ 1` for all `x` and all `q ≥ 1`. -/\ntheorem abs_sum_moebius_div_coprime_le_one (x : ℝ) {q : ℕ} (_hq : 1 ≤ q) :\n    |∑ n ∈ Icc 1 ⌊x⌋₊, (if Nat.Coprime n q then (μ n : ℝ) / n else 0)| ≤ 1 := by\n  set N := ⌊x⌋₊\n  rcases Nat.eq_zero_or_pos N with hN | hN\n  · simp [hN]\n  have hNr : (0 : ℝ) < N := by exact_mod_cast hN\n  have hIcc : Icc 1 N = Ioc 0 N := Finset.Icc_succ_left_eq_Ioc 0 N\n  -- `fr n = N/n - ⌊N/n⌋`.\n  set fr : ℕ → ℝ := fun n => (N : ℝ) / n - ((N / n : ℕ) : ℝ) with hfr\n  have hfr_bd : ∀ n ∈ Ioc 0 N, 0 ≤ fr n ∧ fr n < 1 := by\n    intro n hn\n    have hn0 : (0 : ℝ) < n := by exact_mod_cast (mem_Ioc.1 hn).1\n    have hdm := Nat.div_add_mod N n\n    have hmod := Nat.mod_lt N (mem_Ioc.1 hn).1\n    have hN' : (N : ℝ) = n * ((N / n : ℕ) : ℝ) + ((N % n : ℕ) : ℝ) := by exact_mod_cast hdm.symm\n    have hmod' : ((N % n : ℕ) : ℝ) < n := by exact_mod_cast hmod\n    have : fr n = ((N % n : ℕ) : ℝ) / n := by\n      simp only [hfr]; rw [hN']; field_simp; ring\n    rw [this]\n    exact ⟨by positivity, (div_lt_one hn0).2 hmod'⟩\n  have hfr1 : fr 1 = 0 := by simp [hfr]\n  -- The identity `∑ g = ∑ f ⌊N/n⌋`.\n  have hid : ∑ n ∈ Ioc 0 N, (gCop q n : ℝ) = ∑ n ∈ Ioc 0 N, (muCop q n : ℝ) * ((N / n : ℕ) : ℝ) := by\n    have := ArithmeticFunction.sum_Ioc_mul_zeta_eq_sum (muCop q) N\n    rw [← gCop] at this\n    have h := congrArg (Int.cast : ℤ → ℝ) this\n    push_cast at h\n    exact h\n  -- `N · S = ∑ (g n + f n · fr n)`.\n  have hS : (N : ℝ) * ∑ n ∈ Icc 1 N, (if Nat.Coprime n q then (μ n : ℝ) / n else 0) =\n      ∑ n ∈ Ioc 0 N, ((gCop q n : ℝ) + (muCop q n : ℝ) * fr n) := by\n    rw [sum_add_distrib, hid, ← sum_add_distrib, hIcc, mul_sum]\n    refine sum_congr rfl fun n hn => ?_\n    have hn0 : (n : ℝ) ≠ 0 := by exact_mod_cast (mem_Ioc.1 hn).1.ne'\n    simp only [hfr, muCop_apply]\n    split_ifs <;> push_cast <;> field_simp <;> ring\n  -- Each term is in `[-1, 1]`.\n  have hterm : ∀ n ∈ Ioc 0 N, |(gCop q n : ℝ) + (muCop q n : ℝ) * fr n| ≤ 1 := by\n    intro n hn\n    obtain ⟨h0, h1⟩ := hfr_bd n hn\n    by_cases hc : n.Coprime q\n    · by_cases hn1 : n = 1\n      · subst hn1; rw [hfr1]; simp [(isMultiplicative_gCop q).map_one]\n      · rw [gCop_of_coprime hc, if_neg hn1, muCop_apply, if_pos hc]\n        have hμ : |(μ n : ℝ)| ≤ 1 := by exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n        push_cast\n        rw [zero_add, abs_mul, abs_of_nonneg h0]\n        nlinarith [abs_nonneg (μ n : ℝ)]\n    · rw [muCop_apply, if_neg hc]\n      rcases gCop_zero_or_one q n with h | h <;> simp [h]\n  have hbound : |(N : ℝ) * ∑ n ∈ Icc 1 N, (if Nat.Coprime n q then (μ n : ℝ) / n else 0)| ≤ N := by\n    rw [hS]\n    refine (abs_sum_le_sum_abs _ _).trans ?_\n    refine (sum_le_sum hterm).trans ?_\n    simp\n  rw [abs_mul, abs_of_pos hNr] at hbound\n  exact le_of_mul_le_mul_left (by linarith) hNr",
+            "line": 69,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.abs_sum_moebius_div_coprime_le_one",
+            "lines": [
+              69,
+              127
+            ],
+            "conclusion": "`|Σ_{n ≤ x, gcd(n,q)=1} μ(n)/n| ≤ 1`, i.e. (eq:grara)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MoebiusCoprime.lean",
+            "fragment": "L69-L127"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          82
+        ],
+        "printed": [
+          72
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

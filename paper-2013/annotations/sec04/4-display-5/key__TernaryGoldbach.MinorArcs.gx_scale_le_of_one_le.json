@@ -1,0 +1,81 @@
+{
+  "id": "4 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean never forms the piecewise function or compares $g$ and $h$ at the crossover $x=(6r)^3$; it proves the two branch monotonicities separately and majorises by the max.",
+  "subject": [
+    {
+      "location": {
+        "page": 26,
+        "rect": [
+          0.20371,
+          0.56424,
+          0.63183,
+          0.04347
+        ]
+      },
+      "title": "Display, p. 26",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "4 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          169,
+          193
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+          },
+          "snippet": {
+            "text": "/-- **Scaling of `g`**: for `w ≥ 1`, `g_{wy}(n) ≤ g_y(n)`. -/\ntheorem gx_scale_le_of_one_le {y n w : ℝ} (hy : 0 < y) (hw : 1 ≤ w)\n    (hn : 670 ≤ n) (hny : n ≤ y ^ (1 / 3 : ℝ) / 6) :\n    gx (w * y) n ≤ gx y n := by\n  have hw0 : 0 < w := by linarith\n  have hY : 0 < y ^ (1 / 3 : ℝ) := by positivity\n  have hYw : y ^ (1 / 3 : ℝ) ≤ (w * y) ^ (1 / 3 : ℝ) :=\n    Real.rpow_le_rpow hy.le (by nlinarith) (by norm_num)\n  have hR : R (w * y) (2 * n) ≤ R y (2 * n) := by\n    refine R_le_R (by linarith) le_rfl ?_ ?_\n    · rw [one_lt_div (by positivity)]; nlinarith\n    · exact div_le_div_of_nonneg_right (by linarith) (by positivity)\n  have hR0 : 0 ≤ R (w * y) (2 * n) := R_nonneg (by linarith) (by linarith)\n  have hl0 : 0 ≤ Real.log (2 * n) := Real.log_nonneg (by linarith)\n  have hF0 := Fr_pos hn\n  have hA : (R (w * y) (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) ≤\n      (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) :=\n    mul_le_mul_of_nonneg_right (by nlinarith) (Real.sqrt_nonneg _)\n  have hC : (w * y) ^ (-1 / 6 : ℝ) ≤ y ^ (-1 / 6 : ℝ) :=\n    Real.rpow_le_rpow_of_nonpos hy (by nlinarith) (by norm_num)\n  unfold gx\n  have := div_le_div_of_nonneg_right (show (R (w * y) (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 ≤\n    (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 by linarith) (Real.sqrt_nonneg (2 * n))\n  have := mul_le_mul_of_nonneg_left hC (show (0:ℝ) ≤ 3.8 by norm_num)\n  linarith",
+            "line": 169,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+            "lines": [
+              169,
+              193
+            ],
+            "conclusion": "For $w\\ge1$, $670\\le n\\le y^{1/3}/6$: $g_{wy}(n)\\le g_y(n)$, so the $g$-branch is non-increasing in $x$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L169-L193"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          26
+        ],
+        "printed": [
+          26
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 11.2 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

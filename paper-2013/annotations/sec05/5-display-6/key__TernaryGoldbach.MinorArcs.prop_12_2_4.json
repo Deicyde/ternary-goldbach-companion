@@ -1,0 +1,81 @@
+{
+  "id": "5 display 6",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean has c_+ = 2 instead of 1.36 and delta0 >= 2 instead of delta0 >= 1; arcs in (0,1]; assumes PlattGRH.",
+  "subject": [
+    {
+      "location": {
+        "page": 44,
+        "rect": [
+          0.20371,
+          0.61542,
+          0.63183,
+          0.04234
+        ]
+      },
+      "title": "Display, p. 44",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5 display 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot6",
+        "lines": [
+          68,
+          98
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_12_2_4"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop 12.2.4] with `c₊ = 2`** (for [H]'s `1.36`). -/\ntheorem prop_12_2_4 {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) (_hqQ : (q : ℝ) ≤ Q₀) {s : ℝ}\n    (hs : 1 ≤ s) (hsQ : s ≤ Q₀ / q) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 2) / (Real.log Q + cE) * Gq q (Q / (s * q)) := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hsq : 0 < s * q := by positivity\n  have hR : 1 ≤ Q₀ / (s * q) := by\n    rw [le_div_iff₀ hsq, one_mul]; rw [le_div_iff₀ hq0] at hsQ; exact hsQ\n  have hLQ : 0 < Real.log Q + cE := by\n    have : 0 < Real.log Q := Real.log_pos (by linarith)\n    unfold cE; linarith\n  have hG' := Gq_nonneg_q q (Q / (s * q))\n  set R := Q₀ / (s * q) with hRdef\n  rcases le_or_gt 22000000000 q with hbig | hsmall\n  · -- large `q`: [H]'s argument, with `1.36`\n    refine weaken_136 hG' hLQ ?_\n    rcases le_or_gt (lamQ q) R with hL | hL\n    · exact regionL hQ hQ₀ hρ hq hs hR hL\n    have hq' : (22000000000 : ℝ) ≤ q := by exact_mod_cast hbig\n    have hlq : 3 ≤ Real.log q := by\n      have := log_Q1_ge.trans (Real.log_le_log (by norm_num) hq'); linarith\n    exact regionS hQ hQ₀ hρ hq hs hR (by norm_num) hlq (hcc_large hbig) (large_q_hS hbig hR hL)\n  · -- `q < 2.2·10¹⁰`: the reduction to `Φ`\n    refine checkC2_suffices hQ hQ₀ hρ hq hs hR ?_\n    set n := ⌊R⌋₊\n    have hn1 : 1 ≤ n := Nat.le_floor (by exact_mod_cast hR)\n    rcases le_or_gt n 3 with hn3 | hn4\n    · exact Phi2_small hq hsmall hn1 hn3\n    · have h := Phi2_reduce hn1 (fun A hA => Phi2_base hA (by omega)) q hq hsmall\n      exact (Phi2_anti q n (le_max_left _ _)).trans h",
+            "line": 68,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+            "lines": [
+              68,
+              98
+            ],
+            "conclusion": "Gq q (Q0/(s q)) <= (log Q0 + 2)/(log Q + cE) * Gq q (Q/(s q)) for 20000 Q0 <= Q, Q0>=1e5, log Q0 <= 0.6 log Q."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot6.lean",
+            "fragment": "L68-L98"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          44
+        ],
+        "printed": [
+          44
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

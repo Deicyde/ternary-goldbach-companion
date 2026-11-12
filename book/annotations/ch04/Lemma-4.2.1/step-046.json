@@ -1,0 +1,106 @@
+{
+  "id": "Lemma 4.2.1 step 46",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves bound_4_31 in both cases by case split on R < D; the book splits on c₂x/q < D.",
+  "subject": [
+    {
+      "location": {
+        "page": 73,
+        "rect": [
+          0.17462,
+          0.221,
+          0.56162,
+          0.02957
+        ]
+      },
+      "title": "Lemma 4.2.1 step 46: Text, p. 63",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 46",
+          "quads": [
+            [
+              0.69717,
+              0.221,
+              0.73624,
+              0.221,
+              0.73624,
+              0.23548,
+              0.69717,
+              0.23548
+            ],
+            [
+              0.17462,
+              0.23405,
+              0.73624,
+              0.23405,
+              0.73624,
+              0.25058,
+              0.17462,
+              0.25058
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          966,
+          1020
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "  rcases lt_or_ge R D with hRD | hRD\n  · -- Range (R3) is non-empty, so `D' = c₂x/q`.\n    have hD'eq : D' = c₂ * x / q := by\n      rcases min_choice (c₂ * x / q) D with h | h\n      · exact h\n      · exfalso; have : D' = D := h; linarith\n    have hR0 : 0 < R := by linarith\n    have hB3 := sum_R3 hx hq hcop h2α hqQ hδ hqR hRD (α := α)\n    rw [← hc₁def] at hB3\n    have hxR : x / R ≤ q / c₂ := by\n      rw [div_le_div_iff₀ hR0 hc2]\n      have : c₂ * x / q ≤ R := hD'eq ▸ hD'R\n      rw [div_le_iff₀ hq0] at this; linarith\n    have hl1 : Real.log (D / R) ≤ logPlus (D / (c₂ * x / q)) :=\n      log_le_logPlus (by positivity) (div_le_div_of_nonneg_left (by linarith) (by positivity)\n        (hD'eq ▸ hD'R))\n    have hl2 : Real.log (D / R) ≤ logPlus (D / (q / 2)) :=\n      log_le_logPlus (by positivity) (div_le_div_of_nonneg_left (by linarith) (by positivity) hqR)\n    have hB3' : ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Tn α x n ≤\n        3 * c₁ / 2 * (q / c₂ + x / q * logPlus (D / (c₂ * x / q))) +\n          2 * √(c₀ * c₁) / π * q * (√3 + (D - R) / q + 1 / 2 * logPlus (D / (q / 2))) := by\n      refine hB3.trans ?_\n      gcongr\n    have hB3'' : ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Tn α x n ≤\n        3 * c₁ / (2 * c₂) * q + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n          2 * (√3 * √(c₀ * c₁)) / π * q + 2 * √(c₀ * c₁) / π * (D - R) +\n          √(c₀ * c₁) / π * q * logPlus (D / (q / 2)) :=\n      hB3'.trans (le_of_eq (by field_simp; ring))\n    have hcancel : 2 * √c₀ / π * D' ≤ 2 * √(c₀ * c₁) / π * R := by\n      have := Real.pi_pos\n      gcongr\n    calc _ ≤ 2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n          (2 * √c₀ / π * D' + 11 * √c₀ / π * q) +\n          (3 * c₁ / (2 * c₂) * q + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n            2 * (√3 * √(c₀ * c₁)) / π * q + 2 * √(c₀ * c₁) / π * (D - R) +\n            √(c₀ * c₁) / π * q * logPlus (D / (q / 2))) := by linarith\n      _ ≤ 2 * √(c₀ * c₁) / π * D + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n          √(c₀ * c₁) / π * q * logPlus (D / (q / 2)) +\n          2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n          (2 * (√3 * √(c₀ * c₁)) / π * q + 3 * c₁ / (2 * c₂) * q + 11 * √c₀ / π * q) := by\n          linarith\n      _ = _ := by ring\n  · -- Range (R3) is empty.\n    rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hRD)), sum_empty, add_zero]\n    have hcancel : 2 * √c₀ / π * D' ≤ 2 * √(c₀ * c₁) / π * D := by\n      have := Real.pi_pos\n      gcongr\n    calc _ ≤ 2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n          (2 * √c₀ / π * D' + 11 * √c₀ / π * q) := by linarith\n      _ ≤ 2 * √(c₀ * c₁) / π * D + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n          √(c₀ * c₁) / π * q * logPlus (D / (q / 2)) +\n          2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n          (2 * (√3 * √(c₀ * c₁)) / π * q + 3 * c₁ / (2 * c₂) * q + 11 * √c₀ / π * q) := by\n          linarith\n      _ = _ := by ring",
+            "line": 966,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "Both branches `R < D` and `R ≥ D` prove the same bound `bound_4_31`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L966-L1020"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          73
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

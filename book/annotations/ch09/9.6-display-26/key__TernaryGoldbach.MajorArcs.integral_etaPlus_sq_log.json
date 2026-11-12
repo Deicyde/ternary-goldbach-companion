@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 26",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the cross term by Parseval on the Fourier tails (O(H^-4), about 2.6e-7 log x), not by Cauchy-Schwarz with 274.86/H^{7/2}; the displayed 1.944e-6 log x is not derived.",
+  "subject": [
+    {
+      "location": {
+        "page": 207,
+        "rect": [
+          0.17135,
+          0.55726,
+          0.56816,
+          0.1061
+        ]
+      },
+      "title": "Display, p. 197",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          929,
+          932
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log"
+          },
+          "snippet": {
+            "text": "  have hC0 := abs_integral_Dg_mul_le hasDerivAt_W0 hasDerivAt_W0' integrable_W0 integrable_W0'\n    integrable_W0'' integrable_W0''_sq memLp_W0 continuous_W0 m0 (lam := 1.6) (by norm_num)\n  have hC1 := abs_integral_Dg_mul_le hasDerivAt_W1 hasDerivAt_W1' integrable_W1 integrable_W1'\n    integrable_W1'' integrable_W1''_sq memLp_W1 continuous_W1 m1 (lam := 0.4) (by norm_num)",
+            "line": 929,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+            "lines": [
+              886,
+              955
+            ],
+            "conclusion": "hC0, hC1: the cross terms with W0 (lam=1.6) and W1 (lam=0.4) are O(H^-4)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L929-L932"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          207
+        ],
+        "printed": [
+          197
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

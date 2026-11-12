@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 18",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the log-weighted L2 norms of phi1, phi2 (147.7, 338.2) separately instead of $|\\eta_{+,2}\\log t|_2$.",
+  "subject": [
+    {
+      "location": {
+        "page": 200,
+        "rect": [
+          0.26253,
+          0.434,
+          0.56162,
+          0.01502
+        ]
+      },
+      "title": "Proposition 9.5.1 step 18: Text, p. 190",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_log_sq_phi1_sq_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          146,
+          164
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_log_sq_phi1_sq_le"
+          },
+          "snippet": {
+            "text": "theorem integral_log_sq_phi1_sq_le :\n    ∫ v in Ioi (0:ℝ), Real.log v ^ 2 * ‖phi1 v‖ ^ 2 ≤ 147.7 := by\n  have hi := ((integrableOn_mom 5).add (integrableOn_mom 3)).const_mul 98.4561\n  refine (integral_mono_of_nonneg (Eventually.of_forall fun v => by positivity) hi\n    ((ae_restrict_iff' measurableSet_Ioi).2 (Eventually.of_forall fun v (hv : 0 < v) => ?_))).trans ?_\n  · have h1 := log_sq_le' hv\n    have h2 := norm_phi1_sq_le hv\n    have h0 : 0 ≤ Real.log v ^ 2 := sq_nonneg _\n    have hE := Real.exp_pos (-v ^ 2)\n    calc Real.log v ^ 2 * ‖phi1 v‖ ^ 2 ≤ (v + v⁻¹) * (98.4561 * (v ^ 4 * Real.exp (-v ^ 2))) :=\n          mul_le_mul h1 h2 (by positivity) (by positivity)\n      _ = 98.4561 * (v ^ 5 * Real.exp (-v ^ 2) + v ^ 3 * Real.exp (-v ^ 2)) := by\n          field_simp\n  · rw [integral_const_mul]\n    simp only [Pi.add_apply]\n    rw [integral_add (integrableOn_mom 5) (integrableOn_mom 3), integral_mom, integral_mom]\n    rw [show ((5:ℕ) + 1 : ℝ) / 2 = 3 by norm_num, show ((3:ℕ) + 1 : ℝ) / 2 = 2 by norm_num,\n      show (3:ℝ) = 2 + 1 by norm_num, Real.Gamma_add_one (by norm_num), Real.Gamma_two]\n    norm_num",
+            "line": 146,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.integral_log_sq_phi1_sq_le",
+            "lines": [
+              146,
+              164
+            ],
+            "conclusion": "$\\int\\log^2v\\,\\|\\phi_1\\|^2\\le147.7$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L146-L164"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_log_sq_phi2_sq_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          172,
+          200
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_log_sq_phi2_sq_le"
+          },
+          "snippet": {
+            "text": "theorem integral_log_sq_phi2_sq_le :\n    ∫ v in Ioi (0:ℝ), Real.log v ^ 2 * ‖phi2 v‖ ^ 2 ≤ 338.2 := by\n  have hi := (((integrableOn_mom 6).add ((integrableOn_mom 4).const_mul 2)).add\n    (integrableOn_mom 2)).const_mul 98.4561\n  refine (integral_mono_of_nonneg (Eventually.of_forall fun v => by positivity) hi\n    ((ae_restrict_iff' measurableSet_Ioi).2 (Eventually.of_forall fun v (hv : 0 < v) => ?_))).trans ?_\n  · rw [norm_phi2_sq]\n    have h1 := log_sq_le' hv\n    have h1' : Real.log v ^ 2 * Real.log v ^ 2 ≤ (v + v⁻¹) * (v + v⁻¹) :=\n      mul_le_mul h1 h1 (sq_nonneg _) (by positivity)\n    have h2 := norm_phi1_sq_le hv\n    have hE := Real.exp_pos (-v ^ 2)\n    calc Real.log v ^ 2 * (Real.log v ^ 2 * ‖phi1 v‖ ^ 2)\n        = (Real.log v ^ 2 * Real.log v ^ 2) * ‖phi1 v‖ ^ 2 := by ring\n      _ ≤ ((v + v⁻¹) * (v + v⁻¹)) * (98.4561 * (v ^ 4 * Real.exp (-v ^ 2))) :=\n          mul_le_mul h1' h2 (by positivity) (by positivity)\n      _ = 98.4561 * (v ^ 6 * Real.exp (-v ^ 2) + 2 * (v ^ 4 * Real.exp (-v ^ 2)) +\n          v ^ 2 * Real.exp (-v ^ 2)) := by field_simp; ring\n  · rw [integral_const_mul]\n    simp only [Pi.add_apply]\n    have i64 : IntegrableOn (fun v : ℝ => v ^ 6 * Real.exp (-v ^ 2) + 2 * (v ^ 4 * Real.exp (-v ^ 2)))\n        (Ioi 0) := (integrableOn_mom 6).add ((integrableOn_mom 4).const_mul 2)\n    rw [integral_add i64 (integrableOn_mom 2), integral_add (integrableOn_mom 6)\n      ((integrableOn_mom 4).const_mul 2), integral_const_mul, integral_mom, integral_mom, integral_mom]\n    rw [show ((6:ℕ) + 1 : ℝ) / 2 = 7 / 2 by norm_num, show ((4:ℕ) + 1 : ℝ) / 2 = 5 / 2 by norm_num,\n      show ((2:ℕ) + 1 : ℝ) / 2 = 3 / 2 by norm_num, Gamma_seven_halves, Gamma_five_halves,\n      Gamma_three_halves]\n    have := sqrt_pi_bounds.2\n    nlinarith",
+            "line": 172,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.integral_log_sq_phi2_sq_le",
+            "lines": [
+              172,
+              200
+            ],
+            "conclusion": "$\\int\\log^2v\\,\\|\\phi_2\\|^2\\le338.2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L172-L200"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          200
+        ],
+        "printed": [
+          190
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

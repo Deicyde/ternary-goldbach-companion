@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 16",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's T_{m,∘} sums over odd n only and uses η₂, as a tsum over n = 2r+1.",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17462,
+          0.44139,
+          0.56162,
+          0.03846
+        ]
+      },
+      "title": "Lemma 4.2.1 step 16: Display, p. 59",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Todd",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          95,
+          97
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Todd"
+          },
+          "snippet": {
+            "text": "/-- `T_{m,∘}(α) = ∑_{n odd} e(αmn) η₂(mn/x)` [H, (4.35)], with `n = 2r + 1`. -/\nnoncomputable def Todd (α x : ℝ) (m : ℕ) : ℂ :=\n  ∑' r : ℤ, e (α * m * (2 * r + 1)) * (eta2 (m * (2 * r + 1) / x) : ℂ)",
+            "line": 95,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Todd",
+            "lines": [
+              95,
+              97
+            ],
+            "conclusion": "`T_{m,∘}(α) = ∑_{r∈ℤ} e(αm(2r+1))η₂(m(2r+1)/x)`, the inner sum over odd n."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L95-L97"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.inner_eq_Todd",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          696,
+          730
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.inner_eq_Todd"
+          },
+          "snippet": {
+            "text": "theorem inner_eq_Todd {α x : ℝ} (hx : 0 < x) {m : ℕ} (hm : 1 ≤ m) :\n    ∑ n ∈ Icc 1 ⌊x⌋₊, (if Odd n then e (α * m * n) * (eta2 (m * n / x) : ℂ) else 0) =\n      Todd α x m := by\n  set N := ⌊x⌋₊\n  set K := (N + 1) / 2\n  have hmR : (1 : ℝ) ≤ m := by exact_mod_cast hm\n  rw [sum_Icc_odd_eq N (fun n => e (α * m * n) * (eta2 (m * n / x) : ℂ)), Todd]\n  rw [tsum_eq_sum (s := (range K).map Nat.castEmbedding)]\n  · rw [sum_map]; refine sum_congr rfl fun r _ => ?_; simp\n  · intro r hr\n    simp only [mem_map, mem_range, Nat.castEmbedding_apply, not_exists, not_and] at hr\n    rw [Helfgott.eta2_eq_zero, Complex.ofReal_zero, mul_zero]\n    simp only [Set.mem_Ioo, not_and_or, not_lt]\n    rcases lt_or_ge r 0 with h | h\n    · left\n      have : (2 * (r : ℝ) + 1) ≤ 0 := by\n        have : r ≤ -1 := by omega\n        have : (r : ℝ) ≤ -1 := by exact_mod_cast this\n        linarith\n      have : m * (2 * (r : ℝ) + 1) / x ≤ 0 :=\n        div_nonpos_of_nonpos_of_nonneg (mul_nonpos_of_nonneg_of_nonpos (by linarith) this) hx.le\n      linarith\n    · right\n      have hrK : K ≤ r.toNat := by\n        by_contra hlt; push Not at hlt\n        exact hr r.toNat hlt (Int.toNat_of_nonneg h)\n      have h2K : N + 1 ≤ 2 * K + 1 := by omega\n      have hr' : ((N : ℝ) + 1) ≤ 2 * r + 1 := by\n        have : (N + 1 : ℤ) ≤ 2 * r + 1 := by\n          have : (K : ℤ) ≤ r := by\n            have := Int.toNat_of_nonneg h; omega\n          omega\n        exact_mod_cast this\n      have hxN : x < N + 1 := Nat.lt_floor_add_one x\n      rw [le_div_iff₀ hx]",
+            "line": 696,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.inner_eq_Todd",
+            "lines": [
+              695,
+              731
+            ],
+            "conclusion": "The finite inner sum over odd n ≤ x in `typeI` equals `Todd α x m`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L696-L730"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

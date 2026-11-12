@@ -1,0 +1,81 @@
+{
+  "id": "1.3 display 4",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Mathlib's statement is for arbitrary `σ` under convergence hypotheses (the text's 'fast enough decay'); [L] uses `σ = 3/2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.17135,
+          0.77431,
+          0.56816,
+          0.03834
+        ]
+      },
+      "title": "Display, p. 11",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.3 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.GoodSmoothing.eq_mellinInv",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          88,
+          97
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.GoodSmoothing.eq_mellinInv"
+          },
+          "snippet": {
+            "text": "/-- Mellin inversion on `ℜs = 3/2`. -/\ntheorem GoodSmoothing.eq_mellinInv {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {y : ℝ}\n    (hy : 0 < y) :\n    φ y = (1 / (2 * π)) • ∫ t : ℝ, (y : ℂ) ^ (-(((3 / 2 : ℝ) : ℂ) + t * I)) •\n      mellin φ (((3 / 2 : ℝ) : ℂ) + t * I) := by\n  have hvert : Complex.VerticalIntegrable (mellin φ) (3 / 2) := by\n    rw [Complex.VerticalIntegrable]\n    exact hφ.integrable_line (σ := 3 / 2) (by norm_num) le_rfl\n  have h := mellinInv_mellin_eq (3 / 2) φ hy hφ.conv hvert (hφ.continuousAt y hy)\n  rw [← h, mellinInv]",
+            "line": 88,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.GoodSmoothing.eq_mellinInv",
+            "lines": [
+              88,
+              97
+            ],
+            "conclusion": "The instance used in [L]: `φ y = (1/2π) ∫ y^{-(3/2+it)} mellin φ (3/2+it) dt` for `GoodSmoothing φ`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L88-L97"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21
+        ],
+        "printed": [
+          11
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

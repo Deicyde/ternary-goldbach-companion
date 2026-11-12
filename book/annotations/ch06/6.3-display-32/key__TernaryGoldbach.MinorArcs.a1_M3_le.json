@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 32",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same device (difference of 3/2 powers <= (3/2) sqrt(a) (a-b)) but for [L]'s term, which has a - b = log 8 (theta = 8: log 16q - log 2q) instead of [H]'s log 4, and no q = y endpoint term (log 8y)^{3/2} - (log 2y)^{3/2} in case (a1); [H]'s numeric 1.20083 sqrt t does not occur. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 140,
+        "rect": [
+          0.25926,
+          0.18447,
+          0.56816,
+          0.03899
+        ]
+      },
+      "title": "Display, p. 130",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a1_M3_le",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIa",
+        "lines": [
+          551,
+          572
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a1_M3_le"
+          },
+          "snippet": {
+            "text": "  have hAV1 : A - Vl ≤ 2.0795 + ℓ := by\n    have h1 : (2 : ℝ) * 8 * q / V2 T ≤ 8.0001 * u := by\n      rw [div_le_iff₀ hV0, hqu]; nlinarith [mul_le_mul_of_nonneg_left hV hu0.le, mul_pos hu0 hT0]\n    have := Real.log_le_log (by positivity) h1\n    rw [Real.log_div (by positivity) hV0.ne', Real.log_mul (by norm_num) hu0.ne'] at this\n    rw [hAdef, hVldef, hℓdef]; linarith [log_8_le]\n  have hAV2 : A - Vl ≤ L - 6.0119 := by\n    have h1 : (2 : ℝ) * 8 * q / V2 T ≤ T / 408.32 := by\n      rw [div_le_div_iff₀ hV0 (by norm_num)]\n      have : 2 * 8 * (q : ℝ) * 1224.99 ≤ T ^ 2 := by linarith\n      nlinarith [mul_le_mul_of_nonneg_left hV hT0.le]\n    have := Real.log_le_log (by positivity) h1\n    rw [Real.log_div (by positivity) hV0.ne', Real.log_div hT0.ne' (by norm_num)] at this\n    rw [hAdef, hVldef, hLdef]; linarith [log_408326_ge]\n  have hA0 : 0 ≤ A := by linarith\n  -- `√κ`.\n  have hκ := kap1_le_second hT\n  have hsκ : √(kap1 (T ^ 3) (U2 T) (V2 T)) ≤ 0.49075 := by\n    rw [Real.sqrt_le_left (by norm_num)]; linarith\n  -- The four pieces.\n  have hW : 2 / 3 * (A * √A - Vl * √Vl) ≤ √A * (A - Vl) :=\n    three_halves_sub_le (by linarith) hVA",
+            "line": 551,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.a1_M3_le",
+            "lines": [
+              505,
+              689
+            ],
+            "conclusion": "With A = log(16q), Vl = log V: `A - Vl <= 2.0795 + ell` (log 8 at ell = 0) and `(2/3)(A sqrt A - Vl sqrt Vl) <= sqrt A (A - Vl)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIa.lean",
+            "fragment": "L551-L572"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          140
+        ],
+        "printed": [
+          130
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

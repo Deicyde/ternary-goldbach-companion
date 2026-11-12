@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.1.1 step 44",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part: the Dirichlet-series comparison $|L'/L(\\sigma+it)|\\le\\sum\\Lambda(n)n^{-3/2}$ at real part $3/2$; Lean uses it on the line $\\Re s=3/2$, not for $L'/L(1-s,\\bar\\chi)$ via the functional equation, and has no numerical value $1.50524$.",
+  "subject": [
+    {
+      "location": {
+        "page": 178,
+        "rect": [
+          0.26253,
+          0.15703,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma 9.1.1 step 44: Text, p. 168",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 44"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_logDeriv_L_right",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          738,
+          740
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_logDeriv_L_right"
+          },
+          "snippet": {
+            "text": "/-- `|L'/L(3/2 + iy)| ≤ C₃`. -/\ntheorem norm_logDeriv_L_right {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (y : ℝ) :\n    ‖logDeriv χ.LFunction (((3 / 2 : ℝ) : ℂ) + y * I)‖ ≤ C3 := by",
+            "line": 738,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_logDeriv_L_right",
+            "lines": [
+              738,
+              763
+            ],
+            "conclusion": "$|L'/L(3/2+iy,\\chi)|\\le C_3=\\sum_n\\Lambda(n)n^{-3/2}$, by termwise comparison of the Dirichlet series ($|\\chi(n)|\\le1$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L738-L740"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.C3",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          725,
+          726
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.C3"
+          },
+          "snippet": {
+            "text": "/-- `C₃ = Σ Λ(n) n^{−3/2}`. -/\nnoncomputable def C3 : ℝ := ∑' n : ℕ, Λ n * (n : ℝ) ^ (-(3 / 2 : ℝ))",
+            "line": 725,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.C3",
+            "lines": [
+              725,
+              726
+            ],
+            "conclusion": "$C_3=\\sum_n\\Lambda(n)n^{-3/2}$ ($=-\\zeta'/\\zeta(3/2)$, not proved in Lean)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L725-L726"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          178
+        ],
+        "printed": [
+          168
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

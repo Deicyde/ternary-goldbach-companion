@@ -1,0 +1,81 @@
+{
+  "id": "14.3 display 7",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] uses $\\int_0^{w_0}\\varphi\\le w_0^3/3$ with $w_0=670/n$ and weight $17$ (giving the term $17(670/n)^3/3$ of $\\hat g$) in place of $C_{\\varphi,3}$ with $1.04488/\\sqrt{\\pi/2}$ and $w_0=2/\\log(x/\\varkappa)$; the quantity $C_{\\varphi,3}$ is not defined.",
+  "subject": [
+    {
+      "location": {
+        "page": 278,
+        "rect": [
+          0.25926,
+          0.58432,
+          0.56816,
+          0.03998
+        ]
+      },
+      "title": "Display, p. 268",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.3 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          394,
+          413
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat"
+          },
+          "snippet": {
+            "text": "    · exact (gx_scale_le hy0 hw0 hlow hny).trans\n        (mul_le_mul_of_nonneg_right (le_max_left _ _) (le_max_of_le_left zero_le_one))\n    · rw [hfun_mul_self (by linarith)]\n      refine mul_le_mul_of_nonneg_right ?_ (by linarith)\n      exact (hfun_scale_le (exp_nine_le_y hy) hw0 (exp_nine_le.trans (by linarith))).trans\n        (mul_le_mul_of_nonneg_right (le_max_right _ _) (le_max_of_le_left zero_le_one))\n  have key := norm_S_etaStar_le_of_pointwise_Ici hx hw₀ hpw hGi\n  have hM0 : 0 ≤ M := (hfun_nonneg (by linarith)).trans (le_max_right _ _)\n  have hint : ∫ w in Ici w₀, G w * phi w ≤ 1.398 * M := by\n    have : ∫ w in Ici w₀, G w * phi w = M * ∫ w in Ici w₀, max 1 (1 / w) * phi w := by\n      rw [← integral_const_mul]; congr 1; ext w; simp only [hG]; ring\n    rw [this]\n    have := integral_max_inv_phi_le hw₀ hw₀1\n    nlinarith\n  have hI2 := integral_phi_Ioo_le hw₀.le\n  refine key.trans ?_\n  unfold ghatY\n  rw [← hM, ← hw₀_def]\n  gcongr\n  linarith",
+            "line": 394,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+            "lines": [
+              356,
+              413
+            ],
+            "conclusion": "Uses `gx_scale_le`, `integral_max_inv_phi_le` and `integral_phi_Ioo_le` to bound $|S_{\\eta_*}|$ off the arcs by $y\\hat g(y,n)$, where $\\hat g=1.398\\max(g_y(n),h(y))+17(670/n)^3/3$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L394-L413"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          278
+        ],
+        "printed": [
+          268
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "id": "Lemma 4.2.4 step 22",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 83,
+        "rect": [
+          0.17462,
+          0.77491,
+          0.56162,
+          0.01754
+        ]
+      },
+      "title": "Lemma 4.2.4 step 22: Text, p. 73",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          1168,
+          1173
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_4"
+          },
+          "snippet": {
+            "text": "    (1 / (2 * c₂) ≤ |δ| → ∀ ε, 0 < ε → ε ≤ 1 →\n      ‖typeI2 α x U V‖ ≤ bound_4_50 x δ q U V + bound_4_52 x δ q U V Q₀ ε) := by\n  have hQ₀2 : 2 ≤ Q₀ := by\n    have := Real.add_one_le_exp (1 : ℝ); linarith\n  exact ⟨lemma_4_2_4_caseB h hx hU hV hD2,\n    fun hδ ε hε hε1 => lemma_4_2_4_caseA h hQ₀2 (by linarith) hU hV hδ hε hε1⟩",
+            "line": 1168,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4",
+            "lines": [
+              1159,
+              1173
+            ],
+            "conclusion": "For `1/(2c₂) ≤ |δ|` and `ε ∈ (0,1]`, `‖typeI2‖ ≤ bound_4_50 + bound_4_52` via `lemma_4_2_4_caseA`; the other case is `|δ| ≤ 1/(2c₂) ∨ UV ≤ Q₀/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L1168-L1173"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          1131,
+          1134
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseA"
+          },
+          "snippet": {
+            "text": "theorem lemma_4_2_4_caseA {α x δ Q₀ U V : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q₀)\n    (hQ₀2 : 2 ≤ Q₀) (hx : 0 < x) (hU : 1 ≤ U) (hV : 1 ≤ V) (hδ : 1 / (2 * c₂) ≤ |δ|) {ε : ℝ}\n    (hε : 0 < ε) (hε1 : ε ≤ 1) :\n    ‖typeI2 α x U V‖ ≤ bound_4_50 x δ q U V + bound_4_52 x δ q U V Q₀ ε := by",
+            "line": 1131,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseA",
+            "lines": [
+              1129,
+              1156
+            ],
+            "conclusion": "Case (a), under the hypothesis `1/(2c₂) ≤ |δ|`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L1131-L1134"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          83
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

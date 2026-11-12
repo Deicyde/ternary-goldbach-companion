@@ -1,0 +1,81 @@
+{
+  "id": "A.3 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "[L] proves the identity for any `φ` with `PlancherelData` and is instantiated at `φ = η₊(t)e(δt)` (any δ), with dt/2π in place of ds/2πi on Re s = 1/2.",
+  "subject": [
+    {
+      "location": {
+        "page": 295,
+        "rect": [
+          0.17135,
+          0.37912,
+          0.56816,
+          0.04252
+        ]
+      },
+      "title": "Display, p. 285",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.3 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherelGen",
+        "lines": [
+          143,
+          165
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG"
+          },
+          "snippet": {
+            "text": "theorem integral_norm_sq_flineDG (hp : PlancherelData φ C c) :\n    ∫ t, ‖flineDG φ t‖ ^ 2 = 2 * π * ∫ v in Ioi (0:ℝ), Real.log v ^ 2 * ‖φ v‖ ^ 2 := by\n  have hpi : 0 < 2 * π := by positivity\n  have e1 : ∀ t, ‖flineDG φ t‖ ^ 2 = (1 / (2 * π)) ^ 2 * ‖𝓕 (PhiDG φ) (t / (2 * π))‖ ^ 2 := by\n    intro t\n    rw [flineDG, norm_smul, mul_pow, Real.norm_eq_abs, abs_of_pos (by positivity)]\n  simp_rw [e1]\n  rw [integral_const_mul]\n  have h1 := Measure.integral_comp_div (fun ξ : ℝ => ‖𝓕 (PhiDG φ) ξ‖ ^ 2) (2 * π)\n  rw [h1, abs_of_pos hpi, smul_eq_mul, TernaryGoldbach.integral_norm_sq_fourier\n    (integrable_memLp_PhiDG hp).1 (integrable_memLp_PhiDG hp).2]\n  have e2 : ∀ x, ‖PhiDG φ x‖ ^ 2 = (2 * π) ^ 2 * (x ^ 2 * ‖PhiG φ x‖ ^ 2) := by\n    intro x\n    have e : PhiDG φ x = (-2 * π * I) * (x • PhiG φ x) := by\n      rw [PhiDG, smul_eq_mul, Complex.real_smul]; ring\n    rw [e, norm_mul, norm_smul, Real.norm_eq_abs]\n    have : ‖-2 * π * I‖ = 2 * π := by\n      rw [norm_mul, norm_mul, Complex.norm_I, mul_one, norm_neg, Complex.norm_ofNat, Complex.norm_real,\n        Real.norm_eq_abs, abs_of_pos Real.pi_pos]\n    rw [this, mul_pow, mul_pow (|x|), sq_abs]\n  simp_rw [e2]\n  rw [integral_const_mul, integral_sq_mul_norm_sq_PhiG]\n  field_simp",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG",
+            "lines": [
+              143,
+              165
+            ],
+            "conclusion": "`∫ ‖flineDG φ t‖² dt = 2π ∫₀^∞ (log v)² ‖φ v‖² dv` for `φ` with `PlancherelData`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherelGen.lean",
+            "fragment": "L143-L165"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          295
+        ],
+        "printed": [
+          285
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

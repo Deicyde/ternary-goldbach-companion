@@ -1,0 +1,156 @@
+{
+  "id": "Corollary 9.3.3 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean combines (9.57) with the moments to get err933 but keeps 1.578 where (9.61) has 0.0102, and its cor_9_3_3 finally uses err933N.",
+  "subject": [
+    {
+      "location": {
+        "page": 194,
+        "rect": [
+          0.26253,
+          0.4499,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Corollary 9.3.3 step 12: Text, p. 184",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_eta2_Er_le",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          264,
+          301
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_eta2_Er_le"
+          },
+          "snippet": {
+            "text": "theorem integral_eta2_Er_le {q : ℕ} (hq : 1 ≤ q) {T0 : ℝ} (hT0 : 50 ≤ T0) {δ x : ℝ} (hx : 0 < x) :\n    ∫ r in Ioi 0, eta2 r * Er q T0 δ x r ≤ err933 q T0 δ x := by\n  obtain ⟨hL1, hL2, hL3⟩ := log_nonneg_of hq hT0\n  set c0 := T0 * Real.log (q * T0 / (2 * π)) * (6.11 * Real.exp (-0.1598 * T0) + 1.578 * expδ T0 δ) +\n      11 * |δ| / x\n  set c1 := (1.22 * √T0 * Real.log (q * T0) + 5.056 * √T0 + 1.423 * Real.log q + 37.19) / √x +\n      (Real.log q + 6) * (6 * |δ|) / (x * √x)\n  set c2 := 3 / x\n  set c3 := (Real.log q + 6) / (x * √x)\n  have hI0 := integrableOn_eta2_mul (g := fun _ => (1 : ℝ)) continuousOn_const\n  have hI1 := integrableOn_eta2_mul (g := fun r => 1 / √r) (contOn_inv_sqrt (by norm_num))\n  have hI2 := integrableOn_eta2_mul (g := fun r => 1 / r) (contOn_inv (by norm_num))\n  have hI3 := integrableOn_eta2_mul (g := fun r => 1 / (r * √r)) (contOn_inv_mul_sqrt (by norm_num))\n  have e : (fun r => eta2 r * Er q T0 δ x r) = fun r =>\n      ((c0 * (eta2 r * 1) + c1 * (eta2 r * (1 / √r))) + c2 * (eta2 r * (1 / r))) +\n        c3 * (eta2 r * (1 / (r * √r))) := by\n    funext r; unfold Er; ring\n  have hA : IntegrableOn (fun r => c0 * (eta2 r * 1) + c1 * (eta2 r * (1 / √r))) (Ioi 0) :=\n    (hI0.const_mul c0).add (hI1.const_mul c1)\n  have hB : IntegrableOn (fun r => c0 * (eta2 r * 1) + c1 * (eta2 r * (1 / √r)) +\n      c2 * (eta2 r * (1 / r))) (Ioi 0) := hA.add (hI2.const_mul c2)\n  rw [e, integral_add hB (hI3.const_mul c3), integral_add hA (hI2.const_mul c2),\n    integral_add (hI0.const_mul c0) (hI1.const_mul c1), integral_const_mul, integral_const_mul,\n    integral_const_mul, integral_const_mul]\n  simp only [mul_one]\n  rw [moment0]\n  have m1 := moment_half\n  have m2 := moment_one\n  have m3 := moment_3half\n  have hc1 : 0 ≤ c1 := by positivity\n  have hc2 : 0 ≤ c2 := by positivity\n  have hc3 : 0 ≤ c3 := by positivity\n  have := mul_le_mul_of_nonneg_left m1 hc1\n  have := mul_le_mul_of_nonneg_left m2 hc2\n  have := mul_le_mul_of_nonneg_left m3 hc3\n  have hfin : c0 * 1 + c1 * 1.37259 + c2 * 1.92182 + c3 * 2.74517 = err933 q T0 δ x := by\n    simp only [c0, c1, c2, c3]; unfold err933; field_simp; ring\n  linarith",
+            "line": 264,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_eta2_Er_le",
+            "lines": [
+              264,
+              301
+            ],
+            "conclusion": "int eta2 * Er <= err933, keeping 1.578 on the delta-exponential (no 0.0102)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L264-L301"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err932_le_Er",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          232,
+          255
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err932_le_Er"
+          },
+          "snippet": {
+            "text": "theorem err932_le_Er {q : ℕ} (hq : 1 ≤ q) {T0 : ℝ} (hT0 : 50 ≤ T0) {δ x r : ℝ} (hx : 0 < x)\n    (hr : 0 < r) (hr1 : r ≤ 1) : err932 q T0 (δ * r) (r * x) ≤ Er q T0 δ x r := by\n  obtain ⟨hL1, hL2, hL3⟩ := log_nonneg_of hq hT0\n  have hT : 0 ≤ T0 := by linarith\n  have h1 : T0 * Real.log (q * T0 / (2 * π)) * (6.11 * Real.exp (-0.1598 * T0) + 1.578 * expδ T0 (δ * r)) ≤\n      T0 * Real.log (q * T0 / (2 * π)) * (6.11 * Real.exp (-0.1598 * T0) + 1.578 * expδ T0 δ) := by\n    have := expδ_mono (T0 := T0) (δ := δ) hr hr1\n    have : 0 ≤ T0 * Real.log (q * T0 / (2 * π)) := mul_nonneg hT hL1\n    gcongr\n  have hsr : 0 < √r := Real.sqrt_pos.2 hr\n  have hsx : 0 < √x := Real.sqrt_pos.2 hx\n  have hsrx : √(r * x) = √r * √x := Real.sqrt_mul hr.le x\n  have hab : |δ * r| = |δ| * r := by rw [abs_mul, abs_of_pos hr]\n  unfold err932 Er\n  rw [hsrx, hab]\n  have e : (1.22 * √T0 * Real.log (q * T0) + 5.056 * √T0 + 1.423 * Real.log q + 37.19) / (√r * √x) +\n      (3 + 11 * (|δ| * r)) / (r * x) + (Real.log q + 6) * (1 + 6 * (|δ| * r)) / (r * x * (√r * √x)) =\n      11 * |δ| / x + ((1.22 * √T0 * Real.log (q * T0) + 5.056 * √T0 + 1.423 * Real.log q + 37.19) / √x +\n        (Real.log q + 6) * (6 * |δ|) / (x * √x)) * (1 / √r) +\n      3 / x * (1 / r) + (Real.log q + 6) / (x * √x) * (1 / (r * √r)) := by\n    have hrr : √r * √r = r := Real.mul_self_sqrt hr.le\n    field_simp\n    nlinarith [hrr]\n  linarith",
+            "line": 232,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err932_le_Er",
+            "lines": [
+              232,
+              255
+            ],
+            "conclusion": "err932(q,T0,delta r,r x) <= Er(...) against the moments."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L232-L255"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err933",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          187,
+          192
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err933"
+          },
+          "snippet": {
+            "text": "/-- The error term of [H, Cor 9.3.3] as obtained from (9.57) and the `η₂`-moments (we keep the\ncoefficient `1.578` on the `δ`-exponential, as [H, §9.6] does). -/\nnoncomputable def err933 (q : ℕ) (T0 δ x : ℝ) : ℝ :=\n  T0 * Real.log (q * T0 / (2 * π)) * (6.11 * Real.exp (-0.1598 * T0) + 1.578 * expδ T0 δ) +\n    1.37259 * (1.22 * √T0 * Real.log (q * T0) + 5.056 * √T0 + 1.423 * Real.log q + 37.19) / √x +\n    (3 * 1.92182 + 11 * |δ|) / x + (Real.log q + 6) * (2.74517 + 6 * 1.37259 * |δ|) / (x * √x)",
+            "line": 187,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err933",
+            "lines": [
+              187,
+              192
+            ],
+            "conclusion": "err933 with 1.578 coefficient on the delta-exponential."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L187-L192"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          194
+        ],
+        "printed": [
+          184
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

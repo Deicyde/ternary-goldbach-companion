@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.4 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same bound for `η₂` (`c₀ = 32`); the sum bound is `(log q+log V)/q` and `minInv c₀ (πδ) = min(1, c₀/(πδ)²)` for `δ ≠ 0` (and 1 at `δ = 0`); `log(Vq)` is split with `Real.log_mul`.",
+  "subject": [
+    {
+      "location": {
+        "page": 82,
+        "rect": [
+          0.26253,
+          0.79519,
+          0.56162,
+          0.0329
+        ]
+      },
+      "title": "Lemma 4.2.4 step 12: Display, p. 72",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          845,
+          856
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le"
+          },
+          "snippet": {
+            "text": "  have h1 : ‖((x / 2 : ℝ) : ℂ) * η0 *\n      ((∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then coefI2 U V a * (1 / a) else 0) : ℝ) : ℂ)‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) * Real.log (V * q) := by\n    rw [norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,\n      Real.norm_eq_abs, abs_of_pos (by positivity)]\n    have hS := abs_sum_coefI2_div_le hU hV hM0 hqo\n    have hη := norm_eta2hat_le_minInv δ\n    have := minInv_nonneg c₀ (π * δ) hc0.le\n    rw [Real.log_mul (by linarith) hq0.ne']\n    calc x / 2 * ‖η0‖ * |∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then coefI2 U V a * (1 / a) else 0)|\n        ≤ x / 2 * minInv c₀ (π * δ) * ((Real.log q + Real.log V) / q) := by gcongr\n      _ = _ := by field_simp; ring",
+            "line": 845,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+            "lines": [
+              785,
+              897
+            ],
+            "conclusion": "The `η̂`-term `‖(x/2) η0 Σ c(a)/a‖ ≤ x/(2q) * minInv c₀ (πδ) * log(Vq)`, using `abs_sum_coefI2_div_le` and `norm_eta2hat_le_minInv`; `minInv c₀ (πδ) = min(1, c₀/(πδ)²)` for `δ ≠ 0`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L845-L856"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          82
+        ],
+        "printed": [
+          72
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

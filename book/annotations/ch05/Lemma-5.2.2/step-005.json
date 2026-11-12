@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.2.2 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Odd-m version with A1-A0 <= 2 varrho q (and varrho*rho<1) in place of A1-A0 <= varrho q; no all-m statement in Lean.",
+  "subject": [
+    {
+      "location": {
+        "page": 105,
+        "rect": [
+          0.17462,
+          0.58487,
+          0.56162,
+          0.03052
+        ]
+      },
+      "title": "Lemma 5.2.2 step 5: Text, p. 95",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          215,
+          254
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_2_3_c {α Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) {ϱ ρ : ℝ} (hϱ : 0 ≤ ϱ) (hϱ1 : ϱ ≤ 1) (hρ : 0 ≤ ρ)\n    (hϱρ : ϱ * ρ < 1) (hqρ : (q : ℝ) ≤ ρ * Q) {W' W : ℝ} (hW' : 0 ≤ W') {A₀ A₁ : ℝ}\n    (hA : A₁ - A₀ ≤ 2 * ϱ * q) :\n    oddSqSum α W' W A₀ A₁ ≤ (W - W' + q / (1 - ϱ * ρ)) * logSqSum W' W := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hQ : 0 < Q := by\n    rcases eq_or_lt_of_le hρ with h | h\n    · rw [← h] at hqρ; linarith\n    · nlinarith\n  rw [oddSqSum, ← sum_filter]\n  have h1ϱρ : 0 < 1 - ϱ * ρ := by linarith\n  have hls := large_sieve_primes ((Ioc ⌊A₀⌋ ⌊A₁⌋).filter Odd) (fun m : ℤ => α * m)\n    (δ := (1 - ϱ * ρ) / q) (W' := W') (W := W) (by positivity) (by\n      rw [div_le_one hq0]; have : 0 ≤ ϱ * ρ := by positivity\n      have : (1 : ℝ) ≤ q := by exact_mod_cast hq\n      linarith) (by\n      intro m hm m' hm' hne\n      rw [mem_filter, mem_Ioc] at hm hm'\n      have hlt : ((|m - m'| : ℤ) : ℝ) < A₁ - A₀ := by\n        have h1 : (⌊A₁⌋ : ℝ) ≤ A₁ := Int.floor_le _\n        have h2 : A₀ < (⌊A₀⌋ : ℝ) + 1 := Int.lt_floor_add_one _\n        have : |m - m'| ≤ ⌊A₁⌋ - ⌊A₀⌋ - 1 := by rw [abs_le]; omega\n        have : ((|m - m'| : ℤ) : ℝ) ≤ ⌊A₁⌋ - ⌊A₀⌋ - 1 := by exact_mod_cast this\n        linarith\n      have hdiff : |((m - m' : ℤ) : ℝ)| / 2 ≤ ϱ * q := by\n        rw [← Int.cast_abs]; linarith\n      have hsep := sep_odd hq hcop hα hQ hm.2 hm'.2 hne (K := |((m - m' : ℤ) : ℝ)| / 2) le_rfl (by\n        have : ϱ * q ≤ q := by nlinarith\n        rw [← Int.cast_abs]; linarith)\n      refine le_trans ?_ hsep\n      have h5 : |((m - m' : ℤ) : ℝ)| / 2 / (q * Q) ≤ ϱ * q / (q * Q) :=\n        div_le_div_of_nonneg_right hdiff (by positivity)\n      have : ϱ * q / (q * Q) ≤ ϱ * ρ / q := by\n        rw [div_le_div_iff₀ (by positivity) hq0]\n        have := mul_le_mul_of_nonneg_left hqρ (show 0 ≤ ϱ * q by positivity)\n        nlinarith\n      have e : (1 - ϱ * ρ) / q = 1 / q - ϱ * ρ / q := by ring\n      linarith) hW'\n  rwa [inv_div] at hls",
+            "line": 215,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c",
+            "lines": [
+              212,
+              254
+            ],
+            "conclusion": "For odd m, with A1-A0 <= 2*varrho*q and q <= rho*Q, applies the large sieve once without splitting: sum <= (W-W'+q/(1-varrho*rho)) sum (log p)^2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L215-L254"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          105
+        ],
+        "printed": [
+          95
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

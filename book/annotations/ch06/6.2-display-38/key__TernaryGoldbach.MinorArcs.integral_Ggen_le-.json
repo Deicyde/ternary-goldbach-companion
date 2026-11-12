@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 38",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the same contribution but keeps the explicit term 2 zeta3 sqrt(x/V)/U instead of replacing it by kappa_7/2 (no U^2 V >= 5e5 x assumption).",
+  "subject": [
+    {
+      "location": {
+        "page": 122,
+        "rect": [
+          0.25926,
+          0.3048,
+          0.56816,
+          0.03755
+        ]
+      },
+      "title": "Display, p. 112",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          273,
+          276
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_Ggen_le'"
+          },
+          "snippet": {
+            "text": "  have e4 : zeta3 * √x / U * (2 / √A) = 2 * zeta3 * √(x / A) / U := by\n    rw [Real.sqrt_div' _ hV.le]; ring\n  have K3 := mul_le_mul_of_nonneg_left I3' hc2\n  have K4 := mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left J4 hz) hc2",
+            "line": 273,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+            "lines": [
+              172,
+              282
+            ],
+            "conclusion": "The contribution of the zeta3 sqrt(x)/U (W^{3/2})^{-1} summand is x sqrt(m/2phi)/(2 beta) * 2 zeta3 sqrt(x/A)/U."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L273-L276"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          122
+        ],
+        "printed": [
+          112
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

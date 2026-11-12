@@ -1,0 +1,153 @@
+{
+  "id": "6 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves a single numeric bound $1.0376x^2/\\kappa$ (given `NumericsGoal`) for the fixed specialisation; no $(\\sqrt{\\cdot}+\\sqrt{\\cdot})^2$ form, and $M$ is `Mexpr` with $\\hat g$ and corrected scales.",
+  "subject": [
+    {
+      "location": {
+        "page": 49,
+        "rect": [
+          0.20371,
+          0.09016,
+          0.63183,
+          0.04642
+        ]
+      },
+      "title": "Display, p. 49",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          345,
+          367
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hstep1 : ∫ α in A, ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 ≤\n      (1 + t) * (∫ α in A, ‖expTsum (a₁ x) α‖ ^ 2 * v α) +\n        (1 + 1 / t) * ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2 := by\n    have i1 : IntegrableOn (fun α => ‖expTsum (a₁ x) α‖ ^ 2 * v α) A :=\n      integrableOn_Ioc_of_continuous (c1.mul hv) A hAsub\n    have i2 : IntegrableOn (fun α => v α * ‖expTsum (a₂ x) α‖ ^ 2) A :=\n      integrableOn_Ioc_of_continuous (hv.mul c2) A hAsub\n    have hcS : Continuous fun α => ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 :=\n      hv.mul ((TernaryGoldbach.continuous_expTsum (Helfgott.summable_etaPlus hx0)).norm.pow 2)\n    have e : (1 + t) * (∫ α in A, ‖expTsum (a₁ x) α‖ ^ 2 * v α) +\n        (1 + 1 / t) * ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2 =\n        ∫ α in A, ((1 + t) * (‖expTsum (a₁ x) α‖ ^ 2 * v α) +\n          (1 + 1 / t) * (v α * ‖expTsum (a₂ x) α‖ ^ 2)) := by\n      rw [integral_add (i1.const_mul _) (i2.const_mul _), integral_const_mul, integral_const_mul]\n    rw [e]\n    refine setIntegral_mono_on (integrableOn_Ioc_of_continuous hcS A hAsub)\n      ((i1.const_mul _).add (i2.const_mul _)) hA fun α _ => ?_\n    have h := norm_add_sq_le (expTsum (a₁ x) α) (expTsum (a₂ x) α) ht\n    rw [← S_etaPlus_eq hx0] at h\n    have hv0 : 0 ≤ v α := norm_nonneg _\n    have := mul_le_mul_of_nonneg_left h hv0\n    simp only [v] at this ⊢\n    nlinarith",
+            "line": 345,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "Splits $|S_{\\eta_+}|^2\\le(1+t)|S_1|^2+(1+1/t)|S_2|^2$ with fixed $t=5\\cdot10^{-4}$, in place of optimising to a square of sums."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L345-L367"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          501,
+          515
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hZ1 : ∫ α in A, ‖expTsum (a₁ x) α‖ ^ 2 * v α ≤ y * x * Mexpr x r₂ := by\n    have hAeq : A = Ioc 0 1 \\ majorArcs 8 ((150000 : ℕ) : ℝ) x := by simp only [A, hr₀]\n    rw [hAeq]\n    refine key.trans ?_\n    unfold Mexpr\n    rw [← hy_def]\n    have : y * x * (ghatY y 150000 * (cL 150000 * sig x / Dx x - 8.6294) +\n        ∑ n ∈ Finset.Ioo 150000 r₂, ghatY y n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n        ghatY y r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)) =\n        y * x * (ghatY y 150000 * (cL 150000 * sig x / Dx x - 8.6294)) +\n        y * x * (∑ n ∈ Finset.Ioo 150000 r₂, ghatY y n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n        ghatY y r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)) := by ring\n    push_cast at hbase hsum ⊢\n    rw [this]\n    exact add_le_add hbase hsum",
+            "line": 501,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "Bounds the $S_1$ part by `thm_13_2_1_repaired` $\\le y\\,x\\,$`Mexpr`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L501-L515"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          517,
+          528
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hxy : 1.0376 * x ^ 2 / κ = 1.0376 * (x * y) := by rw [hy_def]; ring\n  rw [hxy]\n  have hM' : y * x * Mexpr x r₂ ≤ y * x * 1.037 := mul_le_mul_of_nonneg_left hM (by positivity)\n  have hfin : (1 + t) * (y * x * 1.037) + (1 + 1 / t) * (22.75 * y * (8e-11 * x)) ≤\n      1.0376 * (x * y) := by\n    simp only [t]; nlinarith [mul_pos hx0 hy0]\n  have h1 : (1 + t) * (∫ α in A, ‖expTsum (a₁ x) α‖ ^ 2 * v α) ≤ (1 + t) * (y * x * 1.037) :=\n    mul_le_mul_of_nonneg_left (hZ1.trans hM') (by norm_num)\n  have h2 : (1 + 1 / t) * (∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2) ≤\n      (1 + 1 / t) * (22.75 * y * (8e-11 * x)) :=\n    mul_le_mul_of_nonneg_left hstep2 (by norm_num)\n  linarith [hstep1]",
+            "line": 517,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "Combines the parts to $1.0376x^2/\\kappa$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L517-L528"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          49
+        ],
+        "printed": [
+          49
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 13.2 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

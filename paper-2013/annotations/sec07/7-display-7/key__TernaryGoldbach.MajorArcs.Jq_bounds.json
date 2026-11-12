@@ -1,0 +1,81 @@
+{
+  "id": "7 display 7",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The Lean error terms from E² and the non-coprime part (Cn, Cb times arc length 1.2e6/x, giving 2.1675e-7 x and 1.2e-24 x per modulus) play the role of δ₀ r (log 2e² r)(E² + K/x) x, with different constants and no log 2e²r factor; the displayed constant 1.0034e-8 appears nowhere.",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.20371,
+          0.26798,
+          0.63183,
+          0.02726
+        ]
+      },
+      "title": "Display, p. 57",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Jq_bounds",
+        "module": "TernaryGoldbach.MajorArcs.L2Major",
+        "lines": [
+          100,
+          105
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Jq_bounds"
+          },
+          "snippet": {
+            "text": "theorem Jq_bounds {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) :\n    0.63907 * mPhi q * x - 9.62e-4 * mPhi q * x - 3.6e-9 * x ≤\n        ∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, ‖S etaPlus x y‖ ^ 2 ∧\n      ∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, ‖S etaPlus x y‖ ^ 2 ≤\n        0.64034 * mPhi q * x + 9.62e-4 * mPhi q * x + 2.17e-7 * x := by\n  have hx0 : 0 < x := by linarith",
+            "line": 100,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.Jq_bounds",
+            "lines": [
+              98,
+              293
+            ],
+            "conclusion": "Per modulus q ∈ Qset r₀: `Σ_b ∫_{J_{q,b}}|S_{η₊}|²` is `μ²(q)/φ(q)·(0.6392…0.64034)x` up to `9.62e-4 mPhi x + 2.17e-7 x`, the second error coming from the E² and non-coprime terms times the arc length."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "fragment": "L100-L105"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          57
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

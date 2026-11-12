@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 45",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's bound_4_51 has the same leading terms but c1 = 1 + |eta'|_1/(x/D), q(sqrt3 log 3D + (2+log D/2)log^+(D/(q/2))) for [H]'s q(sqrt3 log(c2x/q) + (log D/2) log^+(D/(q/2))), log^+(q/2), (3c1/2) sqrt(2x/c2)(log(3 sqrt(c2x/2))+1) and its own last term; D log(D/sqrt e) uses D(log D - 1/2).",
+  "subject": [
+    {
+      "location": {
+        "page": 86,
+        "rect": [
+          0.26253,
+          0.45095,
+          0.56162,
+          0.11348
+        ]
+      },
+      "title": "Lemma 4.2.4 step 45: Display, p. 76",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 45"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          757,
+          769
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB"
+          },
+          "snippet": {
+            "text": "  refine h1.trans (h2.trans ?_)\n  unfold bound_4_51\n  simp only []\n  rw [← hc₁def, ← hBcdef]\n  have hlogsq : Real.log (D / √(rexp 1)) = Real.log D - 1 / 2 := by\n    rw [Real.log_div hD0.ne' (by positivity), Real.log_sqrt (by positivity), Real.log_exp]\n  rw [hlogsq, ← hR₀def, ← hE2def]\n  have hW1' : logPlus ((q : ℝ) / 2) *\n      (2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x)))) =\n      2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) *\n        logPlus ((q : ℝ) / 2) := by ring\n  rw [hW1'] at hW1\n  linarith",
+            "line": 757,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+            "lines": [
+              458,
+              769
+            ],
+            "conclusion": "Final assembly of the three ranges into bound_4_51."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L757-L769"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_51",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          214,
+          224
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_51"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_51 (x : ℝ) (q : ℕ) (U V : ℝ) : ℝ :=\n  let D := U * V\n  let c₁ := 1 + eta2'L1 / (x / D)\n  2 * √(c₀ * c₁) / π *\n      (D * Real.log (D / √(rexp 1)) +\n        q * (√3 * Real.log (3 * D) + (2 + Real.log D / 2) * logPlus (D / (q / 2)))) +\n    3 * c₁ / 2 * (x / q) * Real.log D * logPlus (D / (c₂ * x / q)) +\n    2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) *\n      logPlus (q / 2) +\n    3 * c₁ / 2 * √(2 * x / c₂) * (Real.log (3 * √(c₂ * x / 2)) + 1) +\n    (2 * √c₀ / π * √(2 * c₂ * x) * (2 + 12 * Real.log (5 * D)) + 5 * c₀ / (6 * π ^ 2))",
+            "line": 214,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_51",
+            "lines": [
+              203,
+              224
+            ],
+            "conclusion": "The case (b) error term (4.51) in Lean's form: (2 sqrt(c0 c1)/pi)(D log(D/sqrt e) + q(sqrt3 log 3D + (2 + log D/2) log^+(D/(q/2)))) + (3c1/2)(x/q) log D log^+(D/(c2 x/q)) + (2|eta'|_1/pi) q max(...) log^+(q/2) + (3c1/2) sqrt(2x/c2)(log(3 sqrt(c2 x/2))+1) + (2 sqrt c0/pi) sqrt(2 c2 x)(2+12 log 5D) + 5c0/(6pi^2)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L214-L224"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          86
+        ],
+        "printed": [
+          76
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

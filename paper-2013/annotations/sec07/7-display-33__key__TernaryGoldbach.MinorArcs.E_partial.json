@@ -1,0 +1,81 @@
+{
+  "id": "7 display 33",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has no constant $C_{\\eta_+,2}$; the $|\\eta_+|_\\infty^2$ factor appears as $1.94^2$ multiplying the $n\\le x$ sum (`E_partial`). Relation set in the session lead's sample check (was noMatch), as for book 14.3 display 4.",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.20371,
+          0.87611,
+          0.63183,
+          0.02308
+        ]
+      },
+      "title": "Display, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+        "module": "TernaryGoldbach.MinorArcs.EBound",
+        "lines": [
+          206,
+          228
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.E_partial"
+          },
+          "snippet": {
+            "text": "  have hlow : ∑ n ∈ Icc 1 ⌊x⌋₊, eTerm x n ≤\n      1.94 ^ 2 * (Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x)) := by\n    refine (sum_le_sum fun n hn => eTerm_low hx hn).trans ?_\n    rw [← mul_sum, sum_add_distrib, ← mul_sum, ← mul_sum]\n    have hψ : ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) ≤ 1.03883 * √x := by\n      rw [← sum_filter]\n      have hsub2 : (Icc 1 ⌊x⌋₊).filter (fun n : ℕ => (n : ℝ) ≤ √x) ⊆ Icc 1 ⌊√x⌋₊ := by\n        intro n hn\n        have h := mem_filter.1 hn\n        exact mem_Icc.2 ⟨(mem_Icc.1 h.1).1, Nat.le_floor h.2⟩\n      refine (sum_le_sum_of_subset_of_nonneg hsub2 fun n _ _ =>\n        ArithmeticFunction.vonMangoldt_nonneg).trans ?_\n      exact (Prelim.sum_vonMangoldt_lt (Real.sqrt_pos.2 hx0)).le\n    have hNP : ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤ 1.4262 * √x :=\n      (Prelim.sum_vonMangoldt_nonprime_lt hx0).le\n    have : Real.log x / 2 * ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) +\n        Real.log x * ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤\n        Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x) := by\n      have := mul_le_mul_of_nonneg_left hψ (by linarith : 0 ≤ Real.log x / 2)\n      have := mul_le_mul_of_nonneg_left hNP hlx\n      linarith\n    exact mul_le_mul_of_nonneg_left this (by norm_num)\n  -- the dyadic part",
+            "line": 206,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+            "lines": [
+              172,
+              274
+            ],
+            "conclusion": "Low part $n\\le x$ of $E$: bounded by $1.94^2(\\tfrac{\\log x}2\\cdot1.03883\\sqrt x+\\log x\\cdot1.4262\\sqrt x)$ using $|\\eta_+|\\le1.94$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "fragment": "L206-L228"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); session lead sample check (opus): relation changed",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

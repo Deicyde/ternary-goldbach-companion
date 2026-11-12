@@ -1,0 +1,142 @@
+{
+  "id": "Lemma 4.2.3 step 35",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same absorption argument and the same two cases; Lean first weakens `log(√e x/D')` to `log(e x/D')`.",
+  "subject": [
+    {
+      "location": {
+        "page": 80,
+        "rect": [
+          0.26253,
+          0.31263,
+          0.56162,
+          0.09231
+        ]
+      },
+      "title": "Lemma 4.2.3 step 35: Text, p. 70",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 35",
+          "quads": [
+            [
+              0.77364,
+              0.31263,
+              0.82415,
+              0.31263,
+              0.82415,
+              0.33342,
+              0.77364,
+              0.33342
+            ],
+            [
+              0.26253,
+              0.32868,
+              0.82415,
+              0.32868,
+              0.82415,
+              0.40494,
+              0.26253,
+              0.40494
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          1085,
+          1120
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB"
+          },
+          "snippet": {
+            "text": "  have hB2 : ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else TLn α x n) ≤\n      2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D')) + T20 ∧\n      (D' ≤ (q : ℝ) / 2 → ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else TLn α x n) = 0) := by\n    refine ⟨?_, fun hle => by rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hle)), sum_empty]⟩\n    rcases le_or_gt D' ((q : ℝ) / 2) with hle | hlt\n    · rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hle)), sum_empty]\n      have : 0 ≤ D' * (1 + Real.log x - Real.log D') := by\n        rcases eq_or_lt_of_le hD'0 with h | h\n        · rw [← h]; simp\n        · exact mul_nonneg hD'0 (by linarith [Real.log_le_log h (hD'D.trans hDx)])\n      positivity\n    have h := sum_R2L hx hq hcop h2α hqQ hδ hlt hD'Q (min_le_left _ _) (hD'D.trans hD4)\n      (hD'D.trans hDe) (α := α)\n    refine h.trans ?_\n    have hD'pos : 0 < D' := by linarith\n    have hlog : Real.log (rexp (1 / 2) * x / D') = 1 / 2 + Real.log x - Real.log D' := by\n      rw [Real.log_div (by positivity) hD'pos.ne', Real.log_mul (by positivity) hx0.ne', Real.log_exp]\n    have e20 : 5 * c₀ * c₂ / (3 * π ^ 2) * (4 * √(2 * c₂ * x) * Real.log (2 * rexp 1 * x / c₂)) = T20 := by\n      rw [show 5 * c₀ * c₂ / (3 * π ^ 2) * (4 * √(2 * c₂ * x) * Real.log (2 * rexp 1 * x / c₂)) =\n        5 * c₀ * c₂ / (3 * π ^ 2) * (4 * √(2 * c₂ * x)) * Real.log (2 * rexp 1 * x / c₂) by ring,\n        c₂_rpow]\n    rw [hlog, mul_add, e20, c₂_identity]\n    have := hF1 D' hD'pos (hD'D.trans hDx)\n    have hk : 0 ≤ 2 * √c₀ / π := by positivity\n    have := mul_le_mul_of_nonneg_left this hk\n    linarith\n  have hlog1 := logPlus_nonneg (D / (c₂ * x / q))\n  have hlog2 := logPlus_nonneg (D / (q / 2))\n  have hlq : 0 ≤ Real.log (q / c₂) := Real.log_nonneg (by\n    rw [le_div_iff₀ hc2]; linarith [c₂_lt_one])\n  have hl2x : 0 ≤ Real.log (2 * x / c₂) := Real.log_nonneg (by\n    rw [le_div_iff₀ hc2]; linarith [c₂_lt_one])\n  have hD'R : D' ≤ R := le_max_left _ _\n  have hqR : (q : ℝ) / 2 ≤ R := le_max_right _ _\n  have hlogexD : Real.log (rexp 1 * x / D) = 1 + Real.log x - Real.log D := by\n    rw [Real.log_div (by positivity) (by linarith), Real.log_mul (by positivity) hx0.ne', Real.log_exp]",
+            "line": 1085,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+            "lines": [
+              968,
+              1182
+            ],
+            "conclusion": "`hB2`: the `D'` term `(5c₀c₂/3π²)D' log(√e x/D')` is first weakened to `(2√c₀/π) D'(1+log x-log D')`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L1085-L1120"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          1136,
+          1182
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB"
+          },
+          "snippet": {
+            "text": "  rcases lt_or_ge R D with hRD | hRD\n  · have hD'eq : D' = c₂ * x / q := by\n      rcases min_choice (c₂ * x / q) D with h | h\n      · exact h\n      · exfalso; have : D' = D := h; linarith\n    have hB3 := sum_R3L hx hq hcop h2α hqQ hδ hqR (hD'eq ▸ hD'R) hRD hD4 hDe (α := α)\n    rw [← hc₁def] at hB3\n    have hcancel : 2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D')) ≤\n        2 * √(c₀ * c₁) / π * (R * (1 + Real.log x - Real.log R)) := by\n      have hR0 : 0 < R := by\n        have : (0 : ℝ) < q / 2 := by positivity\n        linarith\n      have h1 : D' * (1 + Real.log x - Real.log D') ≤ R * (1 + Real.log x - Real.log R) := by\n        rcases eq_or_lt_of_le hD'0 with h | h\n        · rw [← h]; simp\n          exact mul_nonneg hR0.le (by linarith [Real.log_le_log hR0 (hRD.le.trans hDx)])\n        · exact F₁_mono h hD'R (hRD.le.trans hDx)\n      have h2 : 0 ≤ R * (1 + Real.log x - Real.log R) :=\n        mul_nonneg hR0.le (by linarith [Real.log_le_log hR0 (hRD.le.trans hDx)])\n      have := Real.pi_pos\n      calc 2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D'))\n          ≤ 2 * √c₀ / π * (R * (1 + Real.log x - Real.log R)) := by gcongr\n        _ ≤ _ := by gcongr\n    have e3 : 3 * c₁ / 2 * (√(2 * x / c₂) * Real.log (2 * x / c₂) +\n        x / q * Real.log (q / c₂) * logPlus (D / (c₂ * x / q))) =\n        3 * c₁ / 2 * √(2 * x / c₂) * Real.log (2 * x / c₂) +\n        3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) * Real.log (q / c₂) := by ring\n    have e4 : 2 * √(c₀ * c₁) / π * (√3 * q * Real.log (q / c₂) +\n        (D * (1 + Real.log x - Real.log D) - R * (1 + Real.log x - Real.log R)) +\n        q / 2 * Real.log (q / c₂) * logPlus (D / (q / 2))) =\n        2 * √(c₀ * c₁) / π * (√3 + 1 / 2 * logPlus (D / (q / 2))) * Real.log (q / c₂) * q +\n        2 * √(c₀ * c₁) / π * (D * (1 + Real.log x - Real.log D)) -\n        2 * √(c₀ * c₁) / π * (R * (1 + Real.log x - Real.log R)) := by ring\n    rw [e3, e4] at hB3\n    have hB2' := hB2.1\n    nlinarith\n  · rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hRD)), sum_empty, add_zero]\n    have hcancel : 2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D')) ≤\n        2 * √(c₀ * c₁) / π * (D * (1 + Real.log x - Real.log D)) := by\n      have := Real.pi_pos\n      have h2 : 0 ≤ D * (1 + Real.log x - Real.log D) :=\n        mul_nonneg (by linarith) (by linarith [Real.log_le_log (by linarith) hDx])\n      calc 2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D'))\n          ≤ 2 * √c₀ / π * (D * (1 + Real.log x - Real.log D)) := by gcongr\n        _ ≤ _ := by gcongr\n    have hB2' := hB2.1\n    nlinarith",
+            "line": 1136,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+            "lines": [
+              968,
+              1182
+            ],
+            "conclusion": "If `R<D`, `hcancel` absorbs it into `(2√(c₀c₁)/π) R(1+log x-log R)` by `F₁_mono`; if `D ≤ R` the `R`-sum is empty and it is bounded by `(2√(c₀c₁)/π) D(1+log x-log D)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L1136-L1182"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          80
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

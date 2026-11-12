@@ -1,0 +1,80 @@
+{
+  "id": "7 display 8",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.20371,
+          0.64232,
+          0.63183,
+          0.05752
+        ]
+      },
+      "title": "Display, p. 57",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient",
+        "module": "TernaryGoldbach.MajorArcs.SumMuPhi",
+        "lines": [
+          32,
+          36
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient"
+          },
+          "snippet": {
+            "text": "theorem sum_odd_mu_sq_div_totient :\n    6.798779 ≤ ∑ q ∈ (Icc 1 150000).filter Odd,\n        ((ArithmeticFunction.moebius q : ℤ) : ℝ) ^ 2 / q.totient ∧\n      ∑ q ∈ (Icc 1 150000).filter Odd,\n        ((ArithmeticFunction.moebius q : ℤ) : ℝ) ^ 2 / q.totient ≤ 6.79878 := by",
+            "line": 32,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient",
+            "lines": [
+              30,
+              40
+            ],
+            "conclusion": "`6.798779 ≤ Σ_{q ≤ 150000, q odd} μ²(q)/φ(q) ≤ 6.79878`, kernel-checked, so the sum begins 6.798779…."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/SumMuPhi.lean",
+            "fragment": "L32-L36"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          57
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

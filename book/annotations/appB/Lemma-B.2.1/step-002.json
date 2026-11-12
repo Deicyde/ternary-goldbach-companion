@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.2.1 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves monotonicity directly from the product of two nonnegative increasing factors, not by the sign of the derivative; interval is closed.",
+  "subject": [
+    {
+      "location": {
+        "page": 303,
+        "rect": [
+          0.17462,
+          0.44074,
+          0.56162,
+          0.03336
+        ]
+      },
+      "title": "Lemma B.2.1 step 2: Display, p. 293",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.1 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.monotoneOn_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          65,
+          76
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.monotoneOn_eta2log"
+          },
+          "snippet": {
+            "text": "theorem monotoneOn_eta2log : MonotoneOn (eta2log ρ) (Set.Icc (1 / 4) (1 / 2)) := by\n  intro s hs t ht hst\n  unfold eta2log\n  rw [Helfgott.eta2_eq_left hs.1 hs.2, Helfgott.eta2_eq_left ht.1 ht.2]\n  have hs0 : 0 < s := by linarith [hs.1]\n  have h1 : 0 ≤ Real.log (ρ * s) := Real.log_nonneg (by nlinarith [hs.1])\n  have h2 : 0 ≤ 4 * Real.log (4 * s) := by\n    have := Real.log_nonneg (show (1 : ℝ) ≤ 4 * s by linarith [hs.1]); linarith\n  have h3 : Real.log (ρ * s) ≤ Real.log (ρ * t) := Real.log_le_log (by positivity) (by nlinarith)\n  have h4 : 4 * Real.log (4 * s) ≤ 4 * Real.log (4 * t) := by\n    have := Real.log_le_log (by positivity) (show 4 * s ≤ 4 * t by linarith); linarith\n  exact mul_le_mul h3 h4 h2 (h1.trans h3)",
+            "line": 65,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.monotoneOn_eta2log",
+            "lines": [
+              65,
+              76
+            ],
+            "conclusion": "`eta2log ρ` is monotone on `[1/4,1/2]` for `ρ ≥ 4`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L65-L76"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          303
+        ],
+        "printed": [
+          293
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

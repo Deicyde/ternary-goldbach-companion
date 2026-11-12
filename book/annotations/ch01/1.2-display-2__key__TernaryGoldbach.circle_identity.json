@@ -1,0 +1,81 @@
+{
+  "id": "1.2 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] proves the product rule only for three finite ℕ-supported weights, in expanded form, with e(+nα) instead of e(-αn); there is no statement of the two-factor rule as such.",
+  "subject": [
+    {
+      "location": {
+        "page": 17,
+        "rect": [
+          0.17135,
+          0.26516,
+          0.56816,
+          0.02203
+        ]
+      },
+      "title": "Display, p. 7",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.2 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.circle_identity",
+        "module": "TernaryGoldbach.CircleMethod",
+        "lines": [
+          86,
+          99
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.circle_identity"
+          },
+          "snippet": {
+            "text": "  have key : ∀ α : ℝ, expSum X a α * expSum X b α * expSum X c α * e (-(N * α)) =\n      ∑ n₁ ∈ range (X + 1), ∑ n₂ ∈ range (X + 1), ∑ n₃ ∈ range (X + 1),\n        a n₁ * b n₂ * c n₃ * e (((n₁ + n₂ + n₃ : ℕ) - N : ℤ) * α) := by\n    intro α\n    rw [expSum, expSum, expSum, sum_mul_sum, sum_mul, sum_mul]\n    refine sum_congr rfl fun n₁ _ => ?_\n    rw [sum_mul, sum_mul]\n    refine sum_congr rfl fun n₂ _ => ?_\n    rw [mul_sum, sum_mul]\n    refine sum_congr rfl fun n₃ _ => ?_\n    have : (((n₁ + n₂ + n₃ : ℕ) - N : ℤ) : ℝ) * α = n₁ * α + n₂ * α + n₃ * α + -(N * α) := by\n      push_cast; ring\n    rw [this, e_add, e_add, e_add]\n    ring",
+            "line": 86,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.circle_identity",
+            "lines": [
+              80,
+              113
+            ],
+            "conclusion": "The product `S_a S_b S_c e(-Nα)` of exponential sums expands to `∑ a(n₁)b(n₂)c(n₃) e((n₁+n₂+n₃-N)α)`, the coefficient-level form of transform of a convolution equals the product of transforms (three factors)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/CircleMethod.lean",
+            "fragment": "L86-L99"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          17
+        ],
+        "printed": [
+          7
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

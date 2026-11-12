@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.3 step 30",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean's last term has `log(2ex/c₂)` where the text has `log(2√e x/c₂)` (weaker; NOTES.md line 52: the book's last step needs `q ≥ 2`).",
+  "subject": [
+    {
+      "location": {
+        "page": 79,
+        "rect": [
+          0.17462,
+          0.51303,
+          0.56162,
+          0.03354
+        ]
+      },
+      "title": "Lemma 4.2.3 step 30: Text, p. 69",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R2L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          464,
+          470
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R2L"
+          },
+          "snippet": {
+            "text": "theorem sum_R2L {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 1 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {D' : ℝ} (hD'q : (q : ℝ) / 2 < D') (hD'Q : D' ≤ Q / 2)\n    (hD'c : D' ≤ c₂ * x / q) (hD'4 : D' ≤ x / 4) (hD'e : D' ≤ x / rexp 1) :\n    ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else TLn α x n) ≤\n      5 * c₀ * c₂ / (3 * π ^ 2) * (D' * Real.log (rexp (1 / 2) * x / D') +\n        4 * √(2 * c₂ * x) * Real.log (2 * rexp 1 * x / c₂)) := by",
+            "line": 464,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R2L",
+            "lines": [
+              461,
+              646
+            ],
+            "conclusion": "For `q/2 < D' ≤ min(Q/2, c₂x/q, x/4, x/e)`: `∑_{q/2<n≤D', q∤n} |T_{n,∘}| ≤ (5c₀c₂/3π²)(D' log(√e x/D') + 4√(2c₂x) log(2ex/c₂))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L464-L470"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          1085,
+          1120
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB"
+          },
+          "snippet": {
+            "text": "  have hB2 : ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else TLn α x n) ≤\n      2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D')) + T20 ∧\n      (D' ≤ (q : ℝ) / 2 → ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else TLn α x n) = 0) := by\n    refine ⟨?_, fun hle => by rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hle)), sum_empty]⟩\n    rcases le_or_gt D' ((q : ℝ) / 2) with hle | hlt\n    · rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hle)), sum_empty]\n      have : 0 ≤ D' * (1 + Real.log x - Real.log D') := by\n        rcases eq_or_lt_of_le hD'0 with h | h\n        · rw [← h]; simp\n        · exact mul_nonneg hD'0 (by linarith [Real.log_le_log h (hD'D.trans hDx)])\n      positivity\n    have h := sum_R2L hx hq hcop h2α hqQ hδ hlt hD'Q (min_le_left _ _) (hD'D.trans hD4)\n      (hD'D.trans hDe) (α := α)\n    refine h.trans ?_\n    have hD'pos : 0 < D' := by linarith\n    have hlog : Real.log (rexp (1 / 2) * x / D') = 1 / 2 + Real.log x - Real.log D' := by\n      rw [Real.log_div (by positivity) hD'pos.ne', Real.log_mul (by positivity) hx0.ne', Real.log_exp]\n    have e20 : 5 * c₀ * c₂ / (3 * π ^ 2) * (4 * √(2 * c₂ * x) * Real.log (2 * rexp 1 * x / c₂)) = T20 := by\n      rw [show 5 * c₀ * c₂ / (3 * π ^ 2) * (4 * √(2 * c₂ * x) * Real.log (2 * rexp 1 * x / c₂)) =\n        5 * c₀ * c₂ / (3 * π ^ 2) * (4 * √(2 * c₂ * x)) * Real.log (2 * rexp 1 * x / c₂) by ring,\n        c₂_rpow]\n    rw [hlog, mul_add, e20, c₂_identity]\n    have := hF1 D' hD'pos (hD'D.trans hDx)\n    have hk : 0 ≤ 2 * √c₀ / π := by positivity\n    have := mul_le_mul_of_nonneg_left this hk\n    linarith\n  have hlog1 := logPlus_nonneg (D / (c₂ * x / q))\n  have hlog2 := logPlus_nonneg (D / (q / 2))\n  have hlq : 0 ≤ Real.log (q / c₂) := Real.log_nonneg (by\n    rw [le_div_iff₀ hc2]; linarith [c₂_lt_one])\n  have hl2x : 0 ≤ Real.log (2 * x / c₂) := Real.log_nonneg (by\n    rw [le_div_iff₀ hc2]; linarith [c₂_lt_one])\n  have hD'R : D' ≤ R := le_max_left _ _\n  have hqR : (q : ℝ) / 2 ≤ R := le_max_right _ _\n  have hlogexD : Real.log (rexp 1 * x / D) = 1 + Real.log x - Real.log D := by\n    rw [Real.log_div (by positivity) (by linarith), Real.log_mul (by positivity) hx0.ne', Real.log_exp]",
+            "line": 1085,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+            "lines": [
+              968,
+              1182
+            ],
+            "conclusion": "The `D'`-range sum is `0` when `D' ≤ q/2`, otherwise `sum_R2L` applies; `q²≤2c₂x` follows from `q/2<D'≤c₂x/q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L1085-L1120"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          79
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

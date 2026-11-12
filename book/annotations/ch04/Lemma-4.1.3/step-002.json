@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.3 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The Lean majorant is sum_{j=1}^{q-1} h(j/2) with h(u)=min(B/sin(pi u/q), C/sin^2(pi u/q)), not 2*sum_{r<=q/2} h(r-1/2).",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17462,
+          0.81315,
+          0.56162,
+          0.04437
+        ]
+      },
+      "title": "Lemma 4.1.3 step 2: Display, p. 55",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.3 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          2136,
+          2170
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_1_3"
+          },
+          "snippet": {
+            "text": "  have hlow : ∀ r ∈ Finset.Icc 1 L, F r ≤ hBC B C q r := by\n    intro r hr\n    have hr1 : (1 : ℝ) ≤ r := by exact_mod_cast (Finset.mem_Icc.1 hr).1\n    have hrL : (r : ℝ) ≤ L := by exact_mod_cast (Finset.mem_Icc.1 hr).2\n    have hpos := sin_pos_of_mem hq0 (by linarith : (0 : ℝ) < r) (by linarith)\n    have hbet := sin_le_of_between hq0 (by linarith : (0 : ℝ) < r)\n      (by linarith [(hτ r).1] : (r : ℝ) ≤ r + τ r) (by linarith [(hτ r).2])\n    show Φ (Real.sin (π * (r + τ r) / q) ^ 2) ≤ _\n    simp only [Φ, habs]\n    exact minBC_le_hBC hB hC hpos (hbet.trans (le_abs_self _))\n  have hhigh : ∀ k ∈ Finset.Icc 1 K, F (q - k) ≤ hBC B C q (k - 1 / 2) := by\n    intro k hk\n    have hk1 : (1 : ℝ) ≤ k := by exact_mod_cast (Finset.mem_Icc.1 hk).1\n    have hkK : (k : ℝ) ≤ K := by exact_mod_cast (Finset.mem_Icc.1 hk).2\n    have hkq : k ≤ q := by have := (Finset.mem_Icc.1 hk).2; omega\n    have hsym : Real.sin (π * (((q - k : ℕ) : ℝ) + τ (q - k)) / q) =\n        Real.sin (π * (k - τ (q - k)) / q) := by\n      rw [Nat.cast_sub hkq, show π * ((q : ℝ) - k + τ (q - k)) / q =\n        π - π * (k - τ (q - k)) / q by field_simp; ring, Real.sin_pi_sub]\n    have hpos := sin_pos_of_mem hq0 (by linarith : (0 : ℝ) < k - 1 / 2) (by linarith)\n    have hbet := sin_le_of_between hq0 (by linarith : (0 : ℝ) < k - 1 / 2)\n      (by linarith [(hτ (q - k)).2] : (k : ℝ) - 1 / 2 ≤ k - τ (q - k))\n      (by linarith [(hτ (q - k)).1])\n    show Φ (Real.sin (π * (((q - k : ℕ) : ℝ) + τ (q - k)) / q) ^ 2) ≤ _\n    rw [hsym]\n    simp only [Φ, habs]\n    exact minBC_le_hBC hB hC hpos (hbet.trans (le_abs_self _))\n  have hmerge : ∑ R ∈ Finset.Icc 1 (q - 1), F R ≤ ∑ j ∈ Finset.Icc 1 (q - 1), hBC B C q ((j : ℝ) / 2) := by\n    rw [sum_Icc_low_high F q hq1, sum_Icc_parity (fun j : ℕ => hBC B C q ((j : ℝ) / 2)) q]\n    refine add_le_add ((Finset.sum_le_sum hlow).trans (le_of_eq ?_))\n      ((Finset.sum_le_sum hhigh).trans (le_of_eq ?_))\n    · refine Finset.sum_congr rfl fun r _ => ?_; push_cast; ring_nf\n    · refine Finset.sum_congr rfl fun k hk => ?_\n      have hk1 := (Finset.mem_Icc.1 hk).1\n      push_cast [Nat.cast_sub (by omega : 1 ≤ 2 * k)]; ring_nf",
+            "line": 2136,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_3",
+            "lines": [
+              2083,
+              2183
+            ],
+            "conclusion": "Low terms are at most h(r), high terms at most h(k-1/2) with h(u)=min(B/sin(pi u/q), C/sin^2(pi u/q)); merged into the sum over the points j/2, j=1..q-1."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L2136-L2170"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

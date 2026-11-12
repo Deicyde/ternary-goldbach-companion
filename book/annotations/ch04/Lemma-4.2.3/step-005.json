@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.3 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Connective into the next display; takes its relation (see step 6).",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17462,
+          0.15793,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.3 step 5: Text, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ToddG_main",
+        "module": "TernaryGoldbach.MinorArcs.InnerSumsGen",
+        "lines": [
+          204,
+          238
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ToddG_main"
+          },
+          "snippet": {
+            "text": "  -- Step B: Poisson summation.\n  have hcont : Continuous h := by\n    simp only [h]\n    exact (continuous_e.comp (by fun_prop)).mul\n      (continuous_ofReal.comp (hg.cont.comp (by fun_prop)))\n  have hcs : HasCompactSupport h := by\n    have h1 : HasCompactSupport (fun u => (g u : ℂ)) :=\n      hg.supp.comp_left (g := fun t : ℝ => (t : ℂ)) (by simp)\n    have h2 := (h1.comp_homeomorph (Homeomorph.addRight (m / x : ℝ))).comp_homeomorph\n      (Homeomorph.mulLeft₀ (2 * m / x : ℝ) (by positivity))\n    have h3 : HasCompactSupport fun u : ℝ => (g (m * (2 * u + 1) / x) : ℂ) := by\n      convert h2 using 1; funext u; simp only [Function.comp]\n      congr 2; simp; ring\n    simp only [h]; exact h3.mul_left\n  have hP := Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable hcont one_lt_two\n    (isBigO_of_hasCompactSupport hcs 2) hsummF 0\n  simp only [zero_add, QuotientAddGroup.mk_zero, fourier_eval_zero, mul_one] at hP\n  -- Step F: separate the zero frequency.\n  refine ⟨∑' k : ℤ, if k = 0 then 0 else 𝓕 h k, ?_, ?_⟩\n  · rw [hA, hP, hsummF.tsum_eq_add_tsum_ite 0, hF 0]\n    congr 2\n    simp only [Int.cast_zero, zero_div, e_zero, one_mul, zero_mul, zero_sub]\n  · have hsn : Summable fun k : ℤ => ‖if k = 0 then (0 : ℂ) else 𝓕 h k‖ := by\n      refine Summable.of_nonneg_of_le (fun _ => norm_nonneg _) (fun k => ?_) (hs.mul_left C)\n      by_cases hk : k = 0\n      · simp [hk]\n      · simp only [hk, ite_false]; exact hbound k hk\n    refine (norm_tsum_le_tsum_norm hsn).trans ?_\n    refine (hsn.tsum_le_tsum (fun k => ?_) (hs.mul_left C)).trans ?_\n    · by_cases hk : k = 0\n      · simp [hk]\n      · simp only [hk, ite_false]; exact hbound k hk\n    · rw [tsum_mul_left]\n      have hC : 0 ≤ C := by simp only [C]; have := hg.K_nonneg; positivity\n      exact mul_le_mul_of_nonneg_left hsle hC",
+            "line": 204,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ToddG_main",
+            "lines": [
+              136,
+              238
+            ],
+            "conclusion": "Poisson summation for `h(u)=G(2u+1)`, zero frequency split off; the remaining frequencies are bounded by `C·∑_{k≠0} 1/(k-ρ)²` with `C=(m/x)(K/2π²)`, giving `|E| ≤ (m/x)(K/2π²)(π²-4)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSumsGen.lean",
+            "fragment": "L204-L238"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghat_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          180,
+          196
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghat_eta2log"
+          },
+          "snippet": {
+            "text": "/-- `η̂_(ρ) = (log·η₂)^ + log ρ · η̂₂`. -/\ntheorem ghat_eta2log (t : ℝ) :\n    ghat (eta2log ρ) t = ghat (fun u => Real.log u * eta2 u) t + Real.log ρ * eta2hat t := by\n  have hint1 : Integrable (fun v => e (-(v * t)) * (eta2log ρ v : ℂ)) :=\n    ((continuous_e.comp (by fun_prop)).mul (Complex.continuous_ofReal.comp (continuous_eta2log hρ))\n      ).integrable_of_hasCompactSupport (hasCompactSupport_eta2log.comp_left\n        (g := fun s : ℝ => (s : ℂ)) (by simp)).mul_left\n  have hint2 : Integrable (fun v => e (-(v * t)) * (eta2 v : ℂ)) :=\n    ((continuous_e.comp (by fun_prop)).mul (Complex.continuous_ofReal.comp Helfgott.continuous_eta2)\n      ).integrable_of_hasCompactSupport (Helfgott.hasCompactSupport_eta2.comp_left\n        (g := fun s : ℝ => (s : ℂ)) (by simp)).mul_left\n  have hfun : (fun v => e (-(v * t)) * ((Real.log v * eta2 v : ℝ) : ℂ)) =\n      fun v => e (-(v * t)) * (eta2log ρ v : ℂ) - (Real.log ρ : ℂ) * (e (-(v * t)) * (eta2 v : ℂ)) := by\n    funext v; rw [eta2log_eq_add hρ]; push_cast; ring\n  rw [ghat, ghat, eta2hat, fourier_eq_integral_e, fourier_eq_integral_e, fourier_eq_integral_e, hfun,\n    integral_sub hint1 (hint2.const_mul _), integral_const_mul]\n  ring",
+            "line": 180,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghat_eta2log",
+            "lines": [
+              180,
+              196
+            ],
+            "conclusion": "`η̂_(ρ) = (log·η₂)^ + log ρ · η̂₂`, the split of the transform into the `(log·η)^` and `log(x/m) η̂` parts."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L180-L196"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

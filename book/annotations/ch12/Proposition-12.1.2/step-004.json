@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 12.1.2 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Display (4) writes the integral as a sum over `q*` of `r`-sums times `‖Σ aₙ e(αn)χ(n)‖²`; [L] has the same quantity in `F_R(β) = Σ_Ψ ‖S_{Ψ⁻¹}(β)‖² (c/φ(c)) κ_c G_{c̃}(m_R/c̃)` with `m_R(β)` the largest admissible `q̃`, and no `r`-sum or `q*` index.",
+  "subject": [
+    {
+      "location": {
+        "page": 240,
+        "rect": [
+          0.26253,
+          0.72488,
+          0.56162,
+          0.13044
+        ]
+      },
+      "title": "Proposition 12.1.2 step 4: Display, p. 230",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.2 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Farc",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          136,
+          138
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Farc"
+          },
+          "snippet": {
+            "text": "/-- `F_R(β) = Σ_{q̃ ≤ 2R, |β| < w_q} Σ_{b mod q}^* |S(b/q + β)|²`. -/\nnoncomputable def Farc (a : ℕ → ℂ) (δ₀ R x β : ℝ) : ℝ :=\n  ∑ q ∈ Qset R, if |β| < wrad δ₀ R x q then ∑ b ∈ Bset q, ‖expTsum a ((b : ℝ) / q + β)‖ ^ 2 else 0",
+            "line": 136,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Farc",
+            "lines": [
+              136,
+              138
+            ],
+            "conclusion": "`F_R(β) = Σ_{q∈Qset R, |β|<w_q} Σ_b |S(b/q+β)|²`, the arc sum with the integration variable `β` factored out."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L136-L138"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          143,
+          148
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Farc_eq"
+          },
+          "snippet": {
+            "text": "theorem Farc_eq {L : ℕ} [NeZero L] {a : ℕ → ℂ} {δ₀ R x β : ℝ} (hx : 0 < x)\n    (hqL : ∀ q ∈ Qset R, q ∣ L) (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) :\n    Farc a δ₀ R x β = ∑ Ψ : DirichletCharacter ℂ L, ‖Schar Ψ⁻¹ a β‖ ^ 2 *\n      (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * Gq (qt Ψ.conductor) ((mR δ₀ R x β : ℕ) / qt Ψ.conductor))) := by",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+            "lines": [
+              140,
+              169
+            ],
+            "conclusion": "For `L` divisible by all `q ∈ Qset R` and `a` supported coprime to `L`, `F_R(β) = Σ_{Ψ mod L} ‖S_{Ψ⁻¹}(β)‖² (c/φ(c)) κ_c G_{c̃}(m_R(β)/c̃)` with `c = cond Ψ`; proof by Bombieri's identity and `weight_sum`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L143-L148"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.weight_sum",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveWeights",
+        "lines": [
+          128,
+          133
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.weight_sum"
+          },
+          "snippet": {
+            "text": "/-- **The weight of a character of conductor `c`**:\n`Σ_{q ≥ 1, q̃ ≤ X} [c ∣ q] w(q, c)/φ(q) = (c/φ(c)) κ_c G_{c̃}(X/c̃)`. -/\ntheorem weight_sum (c : ℕ) (hc : 1 ≤ c) (X : ℝ) :\n    ∑ q ∈ (Icc 1 ⌊X⌋₊).filter (fun q => (qt q : ℝ) ≤ X),\n        (if c ∣ q then TernaryGoldbach.wq q c else 0) / q.totient =\n      c / c.totient * (kap c * Gq (qt c) (X / qt c)) := by",
+            "line": 128,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.weight_sum",
+            "lines": [
+              128,
+              217
+            ],
+            "conclusion": "`Σ_{q̃ ≤ X} [c∣q] w(q,c)/φ(q) = (c/φ(c)) κ_c G_{c̃}(X/c̃)` with `κ_c = 1` for even `c`, `2` for odd `c` (odd and even `r` in `q = cr` give equal sums)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveWeights.lean",
+            "fragment": "L128-L133"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          240
+        ],
+        "printed": [
+          230
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

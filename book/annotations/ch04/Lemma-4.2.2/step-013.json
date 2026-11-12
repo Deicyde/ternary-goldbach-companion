@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.2 step 13",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Only for η = η₂; Lean states the identity with the unimodular factor e(αm) and drops it inside the norm_Todd_le proof.",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.17462,
+          0.28439,
+          0.56162,
+          0.03368
+        ]
+      },
+      "title": "Lemma 4.2.2 step 13: Display, p. 65",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Todd_eq",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          102,
+          109
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Todd_eq"
+          },
+          "snippet": {
+            "text": "theorem Todd_eq (α x : ℝ) (m : ℕ) :\n    Todd α x m = e (α * m) * ∑' r : ℤ, fodd x m r * e (2 * α * m * r) := by\n  rw [Todd, ← tsum_mul_left]\n  refine tsum_congr fun r => ?_\n  simp only [fodd]\n  rw [show (2 * m / x * (r : ℝ) + m / x) = m * (2 * r + 1) / x by ring,\n    show α * m * (2 * r + 1) = α * m + 2 * α * m * r by ring, e_add]\n  ring",
+            "line": 102,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Todd_eq",
+            "lines": [
+              102,
+              109
+            ],
+            "conclusion": "`T_{m,∘}(α) = e(αm) ∑_r η₂(m(2r+1)/x) e(2αmr)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L102-L109"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          169,
+          169
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Todd_le"
+          },
+          "snippet": {
+            "text": "  rw [Todd_eq, norm_mul, norm_e, one_mul]",
+            "line": 169,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+            "lines": [
+              161,
+              185
+            ],
+            "conclusion": "Takes norms, `‖e(αm)‖ = 1`, so `|T_{m,∘}| = |∑_r e(2αmr) η₂(m(2r+1)/x)|`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L169-L169"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

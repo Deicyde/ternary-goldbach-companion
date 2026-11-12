@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 9.1.1 step 23",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] proves $Mf(1)=\\int_0^\\infty f$ for any `φ`, but $G_\\delta(1)=\\widehat\\eta(-\\delta)$ only for the two smoothings it uses ($t^2e^{-t^2/2}$ and $\\eta_+$), not for general $\\eta$; the main term of `explicit_formula_zeta` stays `mellin φ 1`.",
+  "subject": [
+    {
+      "location": {
+        "page": 176,
+        "rect": [
+          0.26253,
+          0.62959,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 9.1.1 step 23: Text, p. 166",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.mellin_one_eq",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          286,
+          289
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.mellin_one_eq"
+          },
+          "snippet": {
+            "text": "theorem mellin_one_eq {φ : ℝ → ℂ} : mellin φ 1 = ∫ t in Ioi (0:ℝ), φ t := by\n  unfold mellin\n  refine setIntegral_congr_fun measurableSet_Ioi fun t _ => ?_\n  simp",
+            "line": 286,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.mellin_one_eq",
+            "lines": [
+              286,
+              289
+            ],
+            "conclusion": "For any `φ`, `mellin φ 1 = ∫_{(0,∞)} φ t`: $Mf(1)=\\int_0^\\infty f(t)\\,dt$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L286-L289"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.mellin_fδ_one",
+        "module": "TernaryGoldbach.Explicit.ZetaBound",
+        "lines": [
+          110,
+          123
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.mellin_fδ_one"
+          },
+          "snippet": {
+            "text": "/-- `M(1) = ∫₀^∞ t² e^{−t²/2} e(δt) dt = η̂(−δ)` (`η` cut off at `0`). -/\ntheorem mellin_fδ_one (δ : ℝ) :\n    mellin (fδ δ) 1 = 𝓕 (fun u : ℝ => ((if 0 < u then u ^ 2 * Real.exp (-u ^ 2 / 2) else 0 : ℝ) : ℂ)) (-δ) := by\n  rw [Real.fourier_real_eq_integral_exp_smul, mellin]\n  set g : ℝ → ℂ := fun v => Complex.exp (↑(-2 * π * v * -δ) * Complex.I) •\n    (((if 0 < v then v ^ 2 * Real.exp (-v ^ 2 / 2) else 0 : ℝ) : ℂ)) with hg\n  have hR : ∫ v : ℝ, g v = ∫ v in Ioi (0:ℝ), g v :=\n    (setIntegral_eq_integral_of_forall_compl_eq_zero (fun u hu => by\n      have : ¬ 0 < u := hu\n      simp [hg, this])).symm\n  rw [hR]\n  refine setIntegral_congr_fun measurableSet_Ioi fun t (ht : 0 < t) => ?_\n  simp only [hg, sub_self, Complex.cpow_zero, one_smul, if_pos ht, fδ, smul_eq_mul]\n  push_cast; ring_nf",
+            "line": 110,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.mellin_fδ_one",
+            "lines": [
+              110,
+              123
+            ],
+            "conclusion": "For $\\eta(t)=t^2e^{-t^2/2}$ (cut off at 0), `mellin (fδ δ) 1 = 𝓕 η (−δ)`: $G_\\delta(1)=\\int_0^\\infty\\eta(t)e(\\delta t)dt=\\widehat\\eta(-\\delta)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZetaBound.lean",
+            "fragment": "L110-L123"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.mellin_fP_one",
+        "module": "TernaryGoldbach.MajorArcs.Prop942",
+        "lines": [
+          37,
+          47
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.mellin_fP_one"
+          },
+          "snippet": {
+            "text": "theorem mellin_fP_one (δ : ℝ) : mellin (fP δ) 1 = 𝓕 (fun u => (etaPlus u : ℂ)) (-δ) := by\n  rw [Real.fourier_real_eq_integral_exp_smul, mellin]\n  set g : ℝ → ℂ := fun v => Complex.exp (↑(-2 * π * v * -δ) * Complex.I) • ((etaPlus v : ℝ) : ℂ) with hg\n  have hR : ∫ v : ℝ, g v = ∫ v in Ioi (0:ℝ), g v :=\n    (setIntegral_eq_integral_of_forall_compl_eq_zero (fun u hu => by\n      have : u ≤ 0 := not_lt.1 hu\n      simp [hg, etaPlus_of_nonpos this])).symm\n  rw [hR]\n  refine setIntegral_congr_fun measurableSet_Ioi fun t (ht : 0 < t) => ?_\n  simp only [hg, sub_self, Complex.cpow_zero, one_smul, fP, smul_eq_mul]\n  push_cast; ring_nf",
+            "line": 37,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.mellin_fP_one",
+            "lines": [
+              37,
+              47
+            ],
+            "conclusion": "The same identity `mellin (fP δ) 1 = 𝓕 η₊ (−δ)` for $\\eta_+$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop942.lean",
+            "fragment": "L37-L47"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          176
+        ],
+        "printed": [
+          166
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

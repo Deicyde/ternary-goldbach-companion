@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.2.3 step 13",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the smooth part for $\\eta_{(4)}$ (which is $h+\\log 4\\cdot f$) by its $L^1$ norm for all $t$, with no $1/|t|$ decay bound (B.13) and no numerical maximum on $[0,4]$.",
+  "subject": [
+    {
+      "location": {
+        "page": 304,
+        "rect": [
+          0.26253,
+          0.79,
+          0.56162,
+          0.0334
+        ]
+      },
+      "title": "Lemma B.2.3 step 13: Text, p. 294",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.3 step 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_eta2log4_le",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier",
+        "lines": [
+          403,
+          435
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_eta2log4_le"
+          },
+          "snippet": {
+            "text": "  have hI1 : ‖∫ u in (1 / 4 : ℝ)..(1 / 2), e (-(u * t)) *\n      ((8 * (1 - Real.log (4 * u)) * (u ^ 2)⁻¹ : ℝ) : ℂ)‖ ≤ 16 * Real.log 2 := by\n    have h := norm_integral_E_le (t := t) (by norm_num : (1 / 4 : ℝ) ≤ 1 / 2) d1' c1 (fun x hx => by\n      have hx0 : 0 < x := by linarith [hx.1]\n      have : Real.log (4 * x) ≤ Real.log 2 := Real.log_le_log (by positivity) (by linarith [hx.2])\n      have : 0 ≤ (x ^ 2)⁻¹ := by positivity\n      have : 0 ≤ 1 - Real.log (4 * x) := by linarith\n      positivity)\n    simp only [l1, l2] at h\n    refine h.trans (le_of_eq ?_); norm_num; ring\n  have hI2 : ‖∫ u in (1 / 2 : ℝ)..1, e (-(u * t)) *\n      ((-4 * ((2 - Real.log u - Real.log (4 * u)) * (u ^ 2)⁻¹) : ℝ) : ℂ)‖ ≤ 8 * Real.log 2 := by\n    have d2n : ∀ x ∈ Set.uIcc (1 / 2 : ℝ) 1,\n        HasDerivAt (fun u => -(-4 * ((Real.log u + Real.log (4 * u)) * u⁻¹)))\n          (-(-4 * ((2 - Real.log x - Real.log (4 * x)) * (x ^ 2)⁻¹))) x := fun x hx => (d2' x hx).neg\n    have h := norm_integral_E_le (t := t) (by norm_num : (1 / 2 : ℝ) ≤ 1) d2n c2.neg (fun x hx => by\n      have hx0 : 0 < x := by linarith [hx.1]\n      have : Real.log x ≤ 0 := Real.log_nonpos hx0.le hx.2\n      have : Real.log (4 * x) ≤ 2 * Real.log 2 := by\n        rw [← l4]; exact Real.log_le_log (by positivity) (by linarith [hx.2])\n      have : 0 ≤ (x ^ 2)⁻¹ := by positivity\n      have : 0 ≤ 2 - Real.log x - Real.log (4 * x) := by linarith\n      have := mul_nonneg this ‹0 ≤ (x ^ 2)⁻¹›\n      linarith)\n    have e : ‖∫ u in (1 / 2 : ℝ)..1, e (-(u * t)) *\n        ((-(-4 * ((2 - Real.log u - Real.log (4 * u)) * (u ^ 2)⁻¹)) : ℝ) : ℂ)‖ =\n        ‖∫ u in (1 / 2 : ℝ)..1, e (-(u * t)) *\n          ((-4 * ((2 - Real.log u - Real.log (4 * u)) * (u ^ 2)⁻¹) : ℝ) : ℂ)‖ := by\n      rw [← norm_neg, ← intervalIntegral.integral_neg]; congr 1\n      refine intervalIntegral.integral_congr fun u _ => ?_; push_cast; ring\n    rw [e] at h\n    simp only [l3, Real.log_one, l4] at h\n    refine h.trans (le_of_eq ?_); norm_num; ring",
+            "line": 403,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_eta2log4_le",
+            "lines": [
+              341,
+              445
+            ],
+            "conclusion": "`hI1`, `hI2`: the Fourier integrals of the smooth second derivative of $\\log(4u)\\eta_2$ on $[1/4,1/2]$ and $[1/2,1]$ are at most $16\\log2$ and $8\\log2$, via `norm_integral_E_le` (an $L^1$ bound by monotone antiderivative)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L403-L435"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          304
+        ],
+        "printed": [
+          294
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

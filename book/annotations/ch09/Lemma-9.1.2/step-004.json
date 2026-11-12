@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.1.2 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[H] bounds |L(s0)| below by zeta(2s0)/zeta(s0) at s0=9/8 via the Euler product; [L] bounds |L| below at Re s=2 by 2-pi^2/6 via the Dirichlet series.",
+  "subject": [
+    {
+      "location": {
+        "page": 179,
+        "rect": [
+          0.17462,
+          0.78059,
+          0.56162,
+          0.03674
+        ]
+      },
+      "title": "Lemma 9.1.2 step 4: Display, p. 169",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.2 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_LFunction_two_ge",
+        "module": "TernaryGoldbach.Explicit.ZeroCount",
+        "lines": [
+          22,
+          59
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_LFunction_two_ge"
+          },
+          "snippet": {
+            "text": "/-- `|L(s, χ) − 1| ≤ ζ(2) − 1` on `ℜs = 2`, so `|L(s, χ)| ≥ 2 − π²/6`. -/\ntheorem norm_LFunction_two_ge (χ : DirichletCharacter ℂ q) {s : ℂ} (hs : s.re = 2) :\n    2 - π ^ 2 / 6 ≤ ‖χ.LFunction s‖ := by\n  have hs1 : 1 < s.re := by rw [hs]; norm_num\n  rw [DirichletCharacter.LFunction_eq_LSeries χ hs1, LSeries]\n  have hsum := χ.LSeriesSummable_of_one_lt_re hs1\n  rw [hsum.tsum_eq_add_tsum_ite 1]\n  have h1 : LSeries.term (fun n => χ (n : ZMod q)) s 1 = 1 := by\n    simp [LSeries.term]\n  rw [h1]\n  set c : ℕ → ℝ := fun n => if n = 1 then 0 else 1 / (n : ℝ) ^ 2\n  have hc : HasSum c (π ^ 2 / 6 - 1) := by\n    have h := hasSum_zeta_two\n    have h' := h.summable.tsum_eq_add_tsum_ite 1\n    rw [h.tsum_eq] at h'\n    have : ∑' n, c n = π ^ 2 / 6 - 1 := by simp only [c]; norm_num at h' ⊢; linarith\n    rw [← this]\n    exact (h.summable.congr_cofinite (by\n      filter_upwards [Filter.eventually_cofinite_ne 1] with n hn\n      simp [c, hn])).hasSum\n  have hb : ‖∑' n, (if n = 1 then 0 else LSeries.term (fun n => χ (n : ZMod q)) s n)‖ ≤\n      π ^ 2 / 6 - 1 := by\n    refine tsum_of_norm_bounded hc fun n => ?_\n    by_cases hn : n = 1\n    · simp [c, hn]\n    · simp only [c, hn, ite_false]\n      rw [LSeries.norm_term_eq]\n      split_ifs with h0\n      · simp [h0]\n      · rw [hs]\n        have hn0 : (0:ℝ) < n := by exact_mod_cast Nat.pos_of_ne_zero h0\n        have : ‖χ (n : ZMod q)‖ ≤ 1 := DirichletCharacter.norm_le_one _ _\n        rw [Real.rpow_two]\n        exact div_le_div_of_nonneg_right this (by positivity)\n  have := norm_sub_norm_le (1 : ℂ) (-(∑' n, (if n = 1 then 0 else\n    LSeries.term (fun n => χ (n : ZMod q)) s n)))\n  rw [norm_one, norm_neg, sub_neg_eq_add] at this\n  linarith",
+            "line": 22,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_LFunction_two_ge",
+            "lines": [
+              22,
+              59
+            ],
+            "conclusion": "|L(s,chi)| >= 2 - pi^2/6 on Re s = 2, via the Dirichlet series 1 + (zeta(2)-1) error."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroCount.lean",
+            "fragment": "L22-L59"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_L_center_ge",
+        "module": "TernaryGoldbach.Explicit.LogDerivL",
+        "lines": [
+          89,
+          93
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_L_center_ge"
+          },
+          "snippet": {
+            "text": "theorem norm_L_center_ge {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (T : ℝ) :\n    0.355 ≤ ‖χ.LFunction (2 + T * I)‖ := by\n  have h := norm_LFunction_two_ge χ (s := 2 + T * I) (by simp)\n  have hpi := Real.pi_lt_d4\n  nlinarith [Real.pi_pos]",
+            "line": 89,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_L_center_ge",
+            "lines": [
+              89,
+              93
+            ],
+            "conclusion": "|L(2+iT,chi)| >= 0.355 for every chi."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LogDerivL.lean",
+            "fragment": "L89-L93"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          179
+        ],
+        "printed": [
+          169
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

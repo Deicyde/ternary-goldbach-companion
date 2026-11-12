@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has `MellinConvergent phi1 1`, `phi2 1` and the strip/tail bounds `phi1_tail`, `phi2_tail`, `phi*_vert`; no $\\ell_1$ statements on $\\eta_{+,2}$ or its derivative for $\\sigma$ ranges.",
+  "subject": [
+    {
+      "location": {
+        "page": 199,
+        "rect": [
+          0.17462,
+          0.6222,
+          0.56162,
+          0.06049
+        ]
+      },
+      "title": "Proposition 9.5.1 step 9: Text, p. 189",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          327,
+          330
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_5_1"
+          },
+          "snippet": {
+            "text": "  have m1 : MellinConvergent phi1 1 := mellinConvergent_of_isBigO_rpow_exp (a := 1) (b := -2) one_pos\n    (Explicit.continuousOn_phi1.locallyIntegrableOn measurableSet_Ioi) Explicit.phi1_isBigO_top\n    Explicit.phi1_isBigO_bot (by norm_num)\n  have m2 : MellinConvergent phi2 1 := (Explicit.hasDerivAt_mellin_phi1 (s := 1) (by norm_num)).1",
+            "line": 327,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+            "lines": [
+              297,
+              351
+            ],
+            "conclusion": "`m1`, `m2`: `MellinConvergent phi1 1` and `phi2 1` (integrability of $\\eta_+^2$, $\\eta_+^2\\log$ against $t^{0}$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L327-L330"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          276,
+          291
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le"
+          },
+          "snippet": {
+            "text": "/-- **`η₊²`**: `|Σ Λ(n) η₊²(n/x) − x ∫η₊²| ≤ G₀ Z₃ + √x E₁ + x E₂ + x^{−1/2} V/2π` under RH up to `500`. -/\ntheorem norm_SsumG_phi1_le {x : ℝ} (hx : 1 ≤ x)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ 500 → ρ.re = 1 / 2) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) phi1 x - mellin phi1 1 * x‖ ≤\n      (Cg * (2 * aH)) ^ 2 * 8 * Z3g BPz2 0 + √x * E1g BPz2 500 (2 * π * 65.5) (2 * π * 147.7) +\n      x * E2g BPz2 10 500 ((Cg * (2 * aH)) ^ 2 * 8 * Real.exp (-60)) 0 (Real.exp (-2.64)) 0 +\n      x ^ (-(1 / 2) : ℝ) * VgL 3 ((Cg * (2 * aH)) ^ 2 * 8 * Real.exp 1) (1 / 400) / (2 * π) := by\n  have hp := plancherelData_phi1\n  refine norm_SsumG_zeta_le_gen goodSmoothing_phi1 hx (by norm_num) hRH phi1_zero (mellin_half_eq phi1)\n    (hasDerivAt_flineG hp) (continuous_flineDG hp) (by positivity) (by positivity)\n    (integrable_norm_sq_flineG hp) (integrable_norm_sq_flineDG hp) ?_ ?_ (by positivity) le_rfl\n    (Real.exp_pos _).le rhoP_lt_one le_rfl zero_lt_one phi1_tail (by norm_num) (by positivity) phi1_vert\n  · rw [integral_norm_sq_flineG hp]\n    exact mul_le_mul_of_nonneg_left integral_phi1_sq_le (by positivity)\n  · rw [integral_norm_sq_flineDG hp]\n    exact mul_le_mul_of_nonneg_left integral_log_sq_phi1_sq_le (by positivity)",
+            "line": 276,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+            "lines": [
+              276,
+              291
+            ],
+            "conclusion": "Applies the generic explicit-formula bound `norm_SsumG_zeta_le_gen` to `phi1`, supplying the Plancherel/finiteness data (`plancherelData_phi1`, integrable `flineG`, `flineDG` squares, `phi1_zero`, `phi1_tail`, `phi1_vert`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L276-L291"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          199
+        ],
+        "printed": [
+          189
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

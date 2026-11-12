@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 28",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same bound for (4.52) at epsilon = 0.01 and the second parameters; [H]'s bound 1228.85 x^{2/3} log x = 3686.55 L T^2 is replaced by Lean's (3179.7 L + 8455.3) T^2 for Lean's own `bound_4_52` and parameters (the [H] intermediate sum 1144.66 + 15.107 + 68.523 is not reproduced). Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 138,
+        "rect": [
+          0.25926,
+          0.38056,
+          0.56816,
+          0.04015
+        ]
+      },
+      "title": "Display, p. 128",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.b452_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI2",
+        "lines": [
+          321,
+          325
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.b452_second"
+          },
+          "snippet": {
+            "text": "/-- (4.52) at the second parameters (`ε = 0.01`, `|δ| ≥ 1/2c₂`). -/\ntheorem b452_second {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hc : SecondCase T δ q) (hδ : 1 / (2 * c₂) ≤ |δ|) :\n    bound_4_52 (T ^ 3) δ q (U2 T) (V2 T) (Q2 T) 0.01 ≤\n      (3179.7 * Real.log T + 8455.3) * T ^ 2 := by",
+            "line": 321,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.b452_second",
+            "lines": [
+              321,
+              486
+            ],
+            "conclusion": "`bound_4_52 (T^3) delta q (U2 T) (V2 T) (Q2 T) 0.01 <= (3179.7 L + 8455.3) T^2` for |delta| >= 1/2c2, in either case of `SecondCase`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI2.lean",
+            "fragment": "L321-L325"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          138
+        ],
+        "printed": [
+          128
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

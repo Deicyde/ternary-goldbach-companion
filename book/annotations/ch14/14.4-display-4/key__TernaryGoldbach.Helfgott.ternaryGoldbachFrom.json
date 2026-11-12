@@ -1,0 +1,81 @@
+{
+  "id": "14.4 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] concludes `repSum Good N ≠ 0` from `0.0114 x²/κ - 6.7e6 N^{3/2} log N > 0`; the intermediate constants (0.04877, 7.3306, 0.00024433 N²) differ and the explicit bound `≥ 0.0002443 N²` is not stated.",
+  "subject": [
+    {
+      "location": {
+        "page": 286,
+        "rect": [
+          0.25926,
+          0.60087,
+          0.56816,
+          0.09707
+        ]
+      },
+      "title": "Display, p. 276",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.4 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachFrom",
+        "module": "TernaryGoldbach.Helfgott.Main",
+        "lines": [
+          70,
+          75
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.ternaryGoldbachFrom"
+          },
+          "snippet": {
+            "text": "  have h1 := repSum_lower_bound N hN hN27\n  have h2 := nonprime_input N hN27\n  have h3 := final_inequality_crude N hN27\n  apply isSumOfThreePrimes_of_repSum_ne_zero (P := fun n => n.Prime ∧ Odd n) (fun n h => h.1)\n  intro h0\n  linarith",
+            "line": 70,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachFrom",
+            "lines": [
+              66,
+              75
+            ],
+            "conclusion": "From `repSum True ≥ 0.0114 x²/κ`, `repSum True - repSum Good ≤ 6.7e6 N^{3/2} log N` and `final_inequality_crude`, `linarith` gives `repSum Good N > 0` (nonzero), hence three odd primes."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Main.lean",
+            "fragment": "L70-L75"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          286
+        ],
+        "printed": [
+          276
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

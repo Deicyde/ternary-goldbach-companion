@@ -1,0 +1,81 @@
+{
+  "id": "14.1 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] replaces $\\delta_0r\\log(2e^2r)(E^2+K_{r,2}/x)$ by per-modulus errors $(4.25\\cdot10^{-7}x)^2$ (non-principal) and $(10^{-15}x)^2$ (non-coprime) integrated over each arc and summed via card_Qset_le; $1.00393\\cdot10^{-8}$ does not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 270,
+        "rect": [
+          0.25926,
+          0.68626,
+          0.56816,
+          0.02433
+        ]
+      },
+      "title": "Display, p. 260",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.1 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Jq_bounds",
+        "module": "TernaryGoldbach.MajorArcs.L2Major",
+        "lines": [
+          257,
+          260
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Jq_bounds"
+          },
+          "snippet": {
+            "text": "  have hCnx : (1200000 / x) * Cn = 2.1675e-7 * x := by\n    simp only [Cn]; field_simp; ring\n  have hCbx : (1200000 / x) * Cb = 1.2e-24 * x := by\n    simp only [Cb]; field_simp; ring",
+            "line": 257,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.Jq_bounds",
+            "lines": [
+              98,
+              293
+            ],
+            "conclusion": "Integrated over the arc: $(1.2\\cdot10^6/x)C_n=2.1675\\cdot10^{-7}x$ and $(1.2\\cdot10^6/x)C_b=1.2\\cdot10^{-24}x$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "fragment": "L257-L260"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          270
+        ],
+        "printed": [
+          260
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

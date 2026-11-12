@@ -1,0 +1,81 @@
+{
+  "id": "7 display 51",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has the discrete analogue $\\sum_n\\hat g(y,n)\\log\\frac{n+1}n\\,\\sigma/D$ for $\\frac{2S}{\\log x+2c^-}\\int g/r\\,dr$, with different $g$, $D$, and upper limit $r_2$ in place of $r_1$.",
+  "subject": [
+    {
+      "location": {
+        "page": 67,
+        "rect": [
+          0.20371,
+          0.14345,
+          0.63183,
+          0.04215
+        ]
+      },
+      "title": "Display, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          460,
+          499
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hsum : ∑ n ∈ Finset.Ioc 150000 r₂, g n * (Hl2y x T r₂ n - Hl2y x T r₂ (n - 1)) ≤\n      y * x * (∑ n ∈ Finset.Ioo 150000 r₂, ghatY y n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n        ghatY y r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)) := by\n    rw [hIoc, Finset.sum_insert Finset.right_notMem_Ioo, mul_add, Finset.mul_sum, add_comm]\n    refine add_le_add (Finset.sum_le_sum fun n hn => ?_) ?_\n    · obtain ⟨hn1, hn2⟩ := Finset.mem_Ioo.1 hn\n      have hn0 : (0:ℝ) < n := by\n        have : (150000 : ℝ) < n := by exact_mod_cast hn1\n        linarith\n      rw [hHl n hn2, hHl (n - 1) (by omega)]\n      have hcast : ((n - 1 : ℕ) : ℝ) + 1 = n := by\n        rw [Nat.cast_sub (by omega)]; push_cast; ring\n      have hdiff : cL n - cL (n - 1) = Real.log (((n : ℝ) + 1) / n) := by\n        unfold cL; rw [hcast, Real.log_div (by linarith) hn0.ne']\n        rw [Real.log_mul (by norm_num) (by linarith), Real.log_mul (by norm_num) hn0.ne']; ring\n      have hlog0 : 0 ≤ Real.log (((n : ℝ) + 1) / n) :=\n        Real.log_nonneg (by rw [le_div_iff₀ hn0]; linarith)\n      have e : cL n / Dx x * T - cL (n - 1) / Dx x * T = Real.log (((n : ℝ) + 1) / n) / Dx x * T := by\n        rw [← hdiff]; ring\n      rw [e]\n      have h1 : Real.log (((n : ℝ) + 1) / n) / Dx x * T ≤\n          x * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) := by\n        have := mul_le_mul_of_nonneg_left hT (div_nonneg hlog0 hD.le)\n        have e2 : x * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) =\n            Real.log (((n : ℝ) + 1) / n) / Dx x * (sig x * x) := by ring\n        linarith\n      have := mul_le_mul_of_nonneg_left h1 (hgnn n hn1.le)\n      simp only [hg_def] at this ⊢\n      linarith\n    · rw [hHr, hHl (r₂ - 1) (by omega)]\n      have h1 : T - cL (r₂ - 1) / Dx x * T ≤ x * (sig x - cL (r₂ - 1) * sig x / Dx x) := by\n        have hc : 0 ≤ 1 - cL (r₂ - 1) / Dx x := by\n          rw [sub_nonneg, div_le_one hD]; exact hcD\n        have := mul_le_mul_of_nonneg_left hT hc\n        have e1 : T - cL (r₂ - 1) / Dx x * T = (1 - cL (r₂ - 1) / Dx x) * T := by ring\n        have e2 : x * (sig x - cL (r₂ - 1) * sig x / Dx x) = (1 - cL (r₂ - 1) / Dx x) * (sig x * x) := by\n          field_simp\n        linarith\n      have := mul_le_mul_of_nonneg_left h1 (hgnn r₂ h150.le)\n      simp only [hg_def] at this ⊢",
+            "line": 460,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "Abel summation over levels $n\\in(150000,r_2]$: $\\sum g(n)(H(n)-H(n-1))\\le yx(\\sum\\hat g(y,n)\\log\\frac{n+1}n\\sigma/D+\\hat g(y,r_2)(\\sigma-c_L\\sigma/D))$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L460-L499"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          67
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.3 display 22, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "id": "Lemma 4.2.1 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's Q' is (1+ε)Q, not ⌈(1+ε)Q⌉, and Q is real; the distinctness a'/q' ≠ a/q is proved later in the same lemma (lines 1053-1069).",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.26253,
+          0.25544,
+          0.56162,
+          0.06025
+        ]
+      },
+      "title": "Lemma 4.2.1 step 2: Text, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 2",
+          "quads": [
+            [
+              0.50838,
+              0.25544,
+              0.82415,
+              0.25544,
+              0.82415,
+              0.27239,
+              0.50838,
+              0.27239
+            ],
+            [
+              0.26253,
+              0.27053,
+              0.82415,
+              0.27053,
+              0.82415,
+              0.3006,
+              0.26253,
+              0.3006
+            ],
+            [
+              0.26253,
+              0.29874,
+              0.31131,
+              0.29874,
+              0.31131,
+              0.31569,
+              0.26253,
+              0.31569
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.second_approx",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1025,
+          1051
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.second_approx"
+          },
+          "snippet": {
+            "text": "theorem second_approx {ξ Q ε : ℝ} {a : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hqQ : (q : ℝ) ≤ Q) (hε : 0 < ε) (hexact : |ξ - a / q| = 1 / (q * Q)) :\n    ∃ (a' : ℤ) (q' : ℕ), 1 ≤ q' ∧ IsCoprime a' (q' : ℤ) ∧ (q' : ℝ) ≤ (1 + ε) * Q ∧\n      |ξ - a' / q'| ≤ 1 / (q' * ((1 + ε) * Q)) ∧ ε * Q / (1 + ε) ≤ q' := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hQ1 : 1 ≤ Q := le_trans (by exact_mod_cast hq) hqQ\n  have hQ0 : 0 < Q := by linarith\n  set Q' := (1 + ε) * Q\n  have hQ'1 : 1 ≤ Q' := by simp only [Q']; nlinarith\n  set n := ⌊Q'⌋₊\n  have hn : 0 < n := Nat.floor_pos.2 hQ'1\n  obtain ⟨r, hr, hrden⟩ := Real.exists_rat_abs_sub_le_and_den_le ξ hn\n  set a' := r.num\n  set q' := r.den\n  have hq'1 : 1 ≤ q' := r.den_pos\n  have hq'0 : (0 : ℝ) < q' := by exact_mod_cast hq'1\n  have hcast : (r : ℝ) = a' / q' := Rat.cast_def r\n  have hcop' : IsCoprime a' (q' : ℤ) := by\n    rw [Int.isCoprime_iff_gcd_eq_one]; exact r.reduced\n  have hq'Q' : (q' : ℝ) ≤ Q' := le_trans (by exact_mod_cast hrden) (Nat.floor_le (by linarith))\n  have hnQ' : Q' < n + 1 := Nat.lt_floor_add_one Q'\n  have happ : |ξ - a' / q'| ≤ 1 / (q' * Q') := by\n    rw [← hcast]\n    refine hr.trans ?_\n    apply one_div_le_one_div_of_le (by positivity)\n    rw [mul_comm (q' : ℝ)]; exact mul_le_mul_of_nonneg_right hnQ'.le hq'0.le\n  refine ⟨a', q', hq'1, hcop', hq'Q', happ, ?_⟩",
+            "line": 1025,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.second_approx",
+            "lines": [
+              1022,
+              1094
+            ],
+            "conclusion": "For real `Q ≥ q` with `|ξ−a/q| = 1/(qQ)`, Dirichlet (Mathlib `Real.exists_rat_abs_sub_le_and_den_le` at `⌊(1+ε)Q⌋`) gives reduced `a'/q'` with `q' ≤ (1+ε)Q` and `|ξ−a'/q'| ≤ 1/(q'(1+ε)Q)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1025-L1051"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

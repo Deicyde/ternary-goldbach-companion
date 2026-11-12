@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 25",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean states the S2 bound with logSqSum and applies logSqSum_le_half (V >= 2e6 instead of V > 117) separately; the second line is the rearrangement P1+P2+P3 in pointwise_53 (max(1/2,rho) = r/2).",
+  "subject": [
+    {
+      "location": {
+        "page": 119,
+        "rect": [
+          0.17135,
+          0.44085,
+          0.56816,
+          0.07009
+        ]
+      },
+      "title": "Display, p. 109",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.pointwise_53",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          147,
+          156
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.pointwise_53"
+          },
+          "snippet": {
+            "text": "  set P₁ := 2 * M / x * (W * L / 2)\n  set P₂ := r * x / (2 * W) * (W * L / 2)\n  set P₃ := W / 2 * (W * L / 2)\n  have hP₁ : 0 ≤ P₁ := by positivity\n  have hP₂ : 0 ≤ P₂ := by positivity\n  have hP₃ : 0 ≤ P₃ := by positivity\n  have hS2' : S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤ P₁ + P₂ + P₃ := by\n    refine hS2.trans ((mul_le_mul_of_nonneg_left hlog (by positivity)).trans (le_of_eq ?_))\n    simp only [P₁, P₂, P₃, L]; ring\n  have hsqrt_add : ∀ u v : ℝ, 0 ≤ u → 0 ≤ v → √(u + v) ≤ √u + √v := fun u v hu hv => by",
+            "line": 147,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.pointwise_53",
+            "lines": [
+              107,
+              207
+            ],
+            "conclusion": "Multiplying out with logSqSum <= W L/2 gives S2 <= P1 + P2 + P3 with P1 = (2M/x)(W L/2), P2 = (r x/2W)(W L/2), P3 = (W/2)(W L/2), which is the second line of the display."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L147-L156"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          119
+        ],
+        "printed": [
+          109
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

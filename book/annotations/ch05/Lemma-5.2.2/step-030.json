@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.2.2 step 30",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "t=W/q in the text corresponds to z^2=t/2 in Lean; A=1/2+1/W absorbs the +1 of the weight.",
+  "subject": [
+    {
+      "location": {
+        "page": 107,
+        "rect": [
+          0.17462,
+          0.68147,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.2.2 step 30: Text, p. 97",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.weight_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1319,
+          1340
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.weight_caseB"
+          },
+          "snippet": {
+            "text": "    calc (c * z ^ 2 - 2 / 7) / (A * (c * z ^ 2 - 2 / 7) + 3 / 2) / W\n        = (W * (A * (c * z ^ 2 - 2 / 7) + 3 / 2) / (c * z ^ 2 - 2 / 7))⁻¹ := by\n          field_simp\n      _ ≤ _ := inv_anti₀ hpos2 h3\n  have hw1 := hweight 1 (Or.inl rfl)\n  have hw2 := hweight (1 / 2) (Or.inr rfl)\n  have e1 : (1 : ℝ) / (q * 2) = 1 / (2 * q) := by ring\n  have e2 : (1 : ℝ) / (q * 2 * 2) = 1 / 2 / (2 * q) := by field_simp\n  rw [e1, e2]\n  have hT := sub_inv_le_Tz hA1 hA2 hz1 hz26\n  have hlog := two_log_le_sub_inv hz1\n  have hlogy : Real.log y = 2 * Real.log z := by rw [← hz2, Real.log_pow]; norm_num\n  have hTz : Tz A z = (1 * z ^ 2 - 2 / 7) / (A * (1 * z ^ 2 - 2 / 7) + 3 / 2) +\n      (1 / 2 * z ^ 2 - 2 / 7) / (A * (1 / 2 * z ^ 2 - 2 / 7) + 3 / 2) := by\n    unfold Tz; ring_nf\n  have hφ : (Nat.totient q : ℝ) / q ≤ 1 := by\n    rw [div_le_one hq0]; exact_mod_cast Nat.totient_le q\n  have hlog0 : 0 ≤ Real.log y := Real.log_nonneg hy1.le\n  calc Nat.totient q / q * Real.log y / W ≤ 1 * Real.log y / W := by gcongr\n    _ ≤ Tz A z / W := by rw [one_mul]; gcongr; linarith\n    _ = _ := by rw [hTz, add_div]\n    _ ≤ _ := add_le_add hw1 hw2",
+            "line": 1319,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.weight_caseB",
+            "lines": [
+              1258,
+              1340
+            ],
+            "conclusion": "Reduces to the one-variable bound by setting z^2=y=W/2q, comparing each weight with (c z^2-2/7)/(A(c z^2-2/7)+3/2)/W, c=1,1/2, and using log y=2 log z <= z-1/z <= T(z)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1319-L1340"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          107
+        ],
+        "printed": [
+          97
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

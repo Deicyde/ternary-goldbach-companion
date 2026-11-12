@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.3 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] proves monotonicity of `G t + 2.50637/t` (the form `at + b/t`), not of `a + b/t`; no `qe^m ≥ 27` condition is needed since `div_totient_lt` is for `r ≥ 3`. Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_12_2_1_step_5.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.20698,
+          0.30519,
+          0.62529,
+          0.03563
+        ]
+      },
+      "title": "Lemma 5.3 step 5: Text, p. 37",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.3 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct",
+        "lines": [
+          2331,
+          2351
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.div_totient_lt"
+          },
+          "snippet": {
+            "text": "  -- monotonicity of `t ↦ G t + c/t`\n  set t₁ := Real.log (thetaN x) with ht₁\n  set t₂ := Real.log (Real.log r) with ht₂\n  have ht₁0 : 1.386 ≤ t₁ := by\n    have : Real.log 4 ≤ t₁ := Real.log_le_log (by norm_num) hθ4\n    have e : Real.log 4 = 2 * Real.log 2 := by\n      rw [show (4 : ℝ) = 2 ^ 2 by norm_num, Real.log_pow]; norm_num\n    have := Real.log_two_gt_d9\n    linarith\n  have ht₁₂ : t₁ ≤ t₂ := Real.log_le_log (by linarith) hθr\n  have hG := exp_gamma_ge\n  have hmono : G * t₁ + 2.50637 / t₁ ≤ G * t₂ + 2.50637 / t₂ := by\n    have ht0 : 0 < t₁ := by linarith\n    have ht0' : 0 < t₂ := by linarith\n    have e : G * t₂ + 2.50637 / t₂ - (G * t₁ + 2.50637 / t₁) =\n        (t₂ - t₁) * (G - 2.50637 / (t₁ * t₂)) := by field_simp; ring\n    have h1 : 2.50637 / (t₁ * t₂) ≤ 1.625 := by\n      rw [div_le_iff₀ (by positivity)]; nlinarith\n    have : 0 ≤ (t₂ - t₁) * (G - 2.50637 / (t₁ * t₂)) :=\n      mul_nonneg (by linarith) (by linarith)\n    linarith",
+            "line": 2331,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+            "lines": [
+              2256,
+              2352
+            ],
+            "conclusion": "`hmono`: `G t₁ + 2.50637/t₁ ≤ G t₂ + 2.50637/t₂` for `1.386 ≤ t₁ ≤ t₂` (`G ≥ 1.625`), i.e. the function `t ↦ at + b/t` is increasing; this is the monotonicity step passing from `n` to `x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L2331-L2351"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 12.2.1 step 5, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

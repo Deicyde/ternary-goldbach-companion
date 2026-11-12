@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.2.3 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses ceil((A1-A0)/(2K)) blocks of length 2K (matching the (5.50) factor); the text says ceil((A1-A0)/k) blocks. The count of at most k odd numbers per block is not used separately.",
+  "subject": [
+    {
+      "location": {
+        "page": 108,
+        "rect": [
+          0.26253,
+          0.59525,
+          0.56162,
+          0.04739
+        ]
+      },
+      "title": "Lemma 5.2.3 step 3: Text, p. 98",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.3 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_a",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          150,
+          174
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_a"
+          },
+          "snippet": {
+            "text": "  set J := ⌈(A₁ - A₀) / ((2 * K : ℕ) : ℝ)⌉₊\n  have hP := logSqSum_nonneg W' W\n  have hB0 : 0 ≤ (W - W' + 2 * q) * logSqSum W' W := mul_nonneg (by linarith) hP\n  have hblocks := sum_Ioc_le_blocks (G := fun m : ℤ => if Odd m then ‖primeExpSum W' W (α * m)‖ ^ 2 else 0)\n    (fun m => by split_ifs; exacts [sq_nonneg _, le_rfl]) h2K J A₀ A₁ (nblocks_spec (by positivity))\n  rw [oddSqSum]\n  refine hblocks.trans ?_\n  -- Each block.\n  have hblock : ∀ j ∈ range J,\n      ∑ m ∈ Ioc ⌊A₀ + j * ((2 * K : ℕ) : ℝ)⌋ ⌊min (A₀ + (j + 1) * ((2 * K : ℕ) : ℝ)) A₁⌋,\n        (if Odd m then ‖primeExpSum W' W (α * m)‖ ^ 2 else 0) ≤\n        (W - W' + 2 * q) * logSqSum W' W := by\n    intro j _\n    set y := A₀ + j * ((2 * K : ℕ) : ℝ)\n    set B := Ioc ⌊y⌋ ⌊min (A₀ + (j + 1) * ((2 * K : ℕ) : ℝ)) A₁⌋\n    have hBsub : ∀ m ∈ B, ⌊y⌋ < m ∧ m ≤ ⌊y⌋ + 2 * K := by\n      intro m hm\n      rw [mem_Ioc] at hm\n      refine ⟨hm.1, hm.2.trans ?_⟩\n      have h1 : min (A₀ + (j + 1) * ((2 * K : ℕ) : ℝ)) A₁ ≤ y + ((2 * K : ℕ) : ℤ) := by\n        have := min_le_left (A₀ + (j + 1) * ((2 * K : ℕ) : ℝ)) A₁\n        simp only [y]; push_cast at this ⊢; linarith\n      have := Int.floor_mono h1\n      rw [Int.floor_add_intCast] at this\n      push_cast at this ⊢; exact this",
+            "line": 150,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_a",
+            "lines": [
+              131,
+              210
+            ],
+            "conclusion": "The range (A0,A1] is covered by `⌈(A₁-A₀)/(2K)⌉` blocks `Ioc ⌊y⌋ ⌊min(..)⌋` of at most 2K consecutive integers via `sum_Ioc_le_blocks`; the odd m of a block are fed to the large sieve."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L150-L174"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          108
+        ],
+        "printed": [
+          98
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

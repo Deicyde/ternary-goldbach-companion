@@ -1,0 +1,83 @@
+{
+  "id": "Lemma 5.2.2 step 13",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 106,
+        "rect": [
+          0.26253,
+          0.61897,
+          0.56162,
+          0.01609
+        ]
+      },
+      "title": "Lemma 5.2.2 step 13: Text, p. 96",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1398,
+          1401
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b"
+          },
+          "snippet": {
+            "text": "  rcases le_or_gt (13.5 * (q : ℝ)) W with hA | hB\n  · obtain ⟨hR2, hRQ, hRW, hK⟩ := weight_caseA (Q := Q) hq hA hQW hW hW'W hWW\n    have := odd_blocks_from_weight hq hcop hα (by linarith) hRQ (by linarith) hWW hRW hK₀ hK A₀ A₁\n    rwa [hLK] at this",
+            "line": 1398,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+            "lines": [
+              1378,
+              1433
+            ],
+            "conclusion": "Case split 13.5 q <= W versus W < 13.5 q; in the first case uses weight_caseA and odd_blocks_from_weight."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1398-L1401"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          106
+        ],
+        "printed": [
+          96
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

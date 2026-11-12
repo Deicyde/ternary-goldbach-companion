@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.1.2 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds $|L(s,\\chi)|$ in the strip (the Landau maximum) by Abel summation with $|S(t)|\\le q+1$ in integral form, not by truncating at $N=M(q)/3$; it gets $(q+1)|s|/\\Re s$ in place of $2\\sqrt3\\sqrt{M(q)}$, for the disc about $2+iT$ rather than $C_{1/2+H,H}$, and has no $M(q)$.",
+  "subject": [
+    {
+      "location": {
+        "page": 180,
+        "rect": [
+          0.26253,
+          0.33147,
+          0.56162,
+          0.02047
+        ]
+      },
+      "title": "Lemma 9.1.2 step 7: Text, p. 170",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.2 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_LFunction_le",
+        "module": "TernaryGoldbach.Explicit.LGrowth",
+        "lines": [
+          179,
+          197
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_LFunction_le"
+          },
+          "snippet": {
+            "text": "theorem norm_LFunction_le {χ : DirichletCharacter ℂ q} (hχ : χ ≠ 1) {s : ℂ} (hs : 0 < s.re) :\n    ‖χ.LFunction s‖ ≤ ((q : ℝ) + 1) * ‖s‖ / s.re := by\n  rw [LFunction_eq_mul_Iint hχ hs, norm_mul, Iint]\n  have hb : ‖∫ t in Ioi (1:ℝ), psum χ ⌊t⌋₊ * (t : ℂ) ^ (-(s + 1))‖ ≤ ((q : ℝ) + 1) / s.re := by\n    have hi := (integrableOn_Ioi_rpow_of_lt (a := -(s.re + 1)) (by linarith) one_pos).const_mul\n      ((q : ℝ) + 1)\n    refine (norm_integral_le_of_norm_le hi ((ae_restrict_iff' measurableSet_Ioi).2\n      (Filter.Eventually.of_forall fun t ht => ?_))).trans (le_of_eq ?_)\n    · have ht' : (0:ℝ) < t := lt_trans one_pos ht\n      rw [norm_mul, norm_cpow_neg ht']\n      exact mul_le_mul_of_nonneg_right (norm_psum_le hχ _) (Real.rpow_nonneg ht'.le _)\n    · rw [integral_const_mul, integral_Ioi_rpow_of_lt (by linarith) one_pos, Real.one_rpow]\n      have : s.re ≠ 0 := hs.ne'\n      field_simp\n      ring_nf\n      field_simp\n  calc ‖s‖ * ‖∫ t in Ioi (1:ℝ), psum χ ⌊t⌋₊ * (t : ℂ) ^ (-(s + 1))‖\n      ≤ ‖s‖ * (((q : ℝ) + 1) / s.re) := mul_le_mul_of_nonneg_left hb (norm_nonneg _)\n    _ = _ := by ring",
+            "line": 179,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_LFunction_le",
+            "lines": [
+              178,
+              197
+            ],
+            "conclusion": "For $\\chi\\ne 1$ and $\\Re s>0$, $|L(s,\\chi)|\\le (q+1)|s|/\\Re s$, from $L(s,\\chi)=s\\int_1^\\infty S(t)t^{-s-1}dt$ and $|S(t)|\\le q+1$ (`norm_psum_le`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LGrowth.lean",
+            "fragment": "L179-L197"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_L_le_BT",
+        "module": "TernaryGoldbach.Explicit.LogDerivL",
+        "lines": [
+          58,
+          77
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_L_le_BT"
+          },
+          "snippet": {
+            "text": "  · refine (norm_LFunction_le hχ1 (by linarith)).trans ?_\n    have hwn : ‖w‖ ≤ |T| + 22 := by\n      refine (Complex.norm_le_abs_re_add_abs_im w).trans ?_\n      rw [abs_of_pos (by linarith : (0:ℝ) < w.re)]; linarith\n    have h4 : ((N : ℝ) + 1) * ‖w‖ / w.re ≤ 4 * ((N : ℝ) + 1) * (|T| + 22) := by\n      rw [div_le_iff₀ (by linarith)]\n      have hp : 0 ≤ 4 * ((N : ℝ) + 1) * (|T| + 22) := by positivity\n      have h1 := mul_le_mul_of_nonneg_left hwn (by positivity : (0:ℝ) ≤ (N : ℝ) + 1)\n      have h2 := mul_le_mul_of_nonneg_left h hp\n      nlinarith\n    refine h4.trans ?_\n    have h9 : (1:ℝ) ≤ (N : ℝ) ^ 9 := one_le_pow₀ hN1\n    have he : (1:ℝ) ≤ Real.exp (π * (|T| + 10) / 2) := Real.one_le_exp (by positivity)\n    unfold BT\n    have hp : 0 ≤ ((N : ℝ) + 1) * (|T| + 22) := by positivity\n    calc 4 * ((N : ℝ) + 1) * (|T| + 22) = 4 * (((N : ℝ) + 1) * (|T| + 22)) := by ring\n      _ ≤ 512 * (N : ℝ) ^ 9 * (((N : ℝ) + 1) * (|T| + 22)) * Real.exp (π * (|T| + 10) / 2) := by\n        have : (4:ℝ) ≤ 512 * (N : ℝ) ^ 9 * Real.exp (π * (|T| + 10) / 2) := by nlinarith\n        nlinarith\n      _ = _ := by ring",
+            "line": 58,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_L_le_BT",
+            "lines": [
+              35,
+              77
+            ],
+            "conclusion": "On the part $\\Re w\\ge 1/4$ of the Landau disc $|w-(2+iT)|\\le 10$, `norm_LFunction_le` gives $|L(w,\\chi)|\\le 4(q+1)(|T|+22)\\le B_T$, Lean's bound for the maximum of $|L|$ that enters Landau's lemma."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LogDerivL.lean",
+            "fragment": "L58-L77"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          180
+        ],
+        "printed": [
+          170
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

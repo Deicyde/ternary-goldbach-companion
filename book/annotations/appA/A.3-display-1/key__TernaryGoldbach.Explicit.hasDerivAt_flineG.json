@@ -1,0 +1,81 @@
+{
+  "id": "A.3 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "[L] proves the identity for any `φ` with `PlancherelData` and is instantiated at `φ = η₊(t)e(δt)` (any δ), with dt/2π in place of ds/2πi on Re s = 1/2.",
+  "subject": [
+    {
+      "location": {
+        "page": 295,
+        "rect": [
+          0.17135,
+          0.37912,
+          0.56816,
+          0.04252
+        ]
+      },
+      "title": "Display, p. 285",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.3 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.hasDerivAt_flineG",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherelGen",
+        "lines": [
+          88,
+          93
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.hasDerivAt_flineG"
+          },
+          "snippet": {
+            "text": "theorem hasDerivAt_flineG (hp : PlancherelData φ C c) (t : ℝ) :\n    HasDerivAt (flineG φ) (flineDG φ t) t := by\n  have h := Real.hasDerivAt_fourier (integrable_PhiG hp) (integrable_smul_PhiG hp) (t / (2 * π))\n  have h2 : HasDerivAt (fun t : ℝ => t / (2 * π)) (1 / (2 * π)) t := by\n    simpa using (hasDerivAt_id t).div_const (2 * π)\n  exact h.scomp t h2",
+            "line": 88,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.hasDerivAt_flineG",
+            "lines": [
+              88,
+              93
+            ],
+            "conclusion": "`F' = flineDG`: the t-derivative of Mφ(1/2+it) is the Mellin transform of φ·log (up to the factor i)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherelGen.lean",
+            "fragment": "L88-L93"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          295
+        ],
+        "printed": [
+          285
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

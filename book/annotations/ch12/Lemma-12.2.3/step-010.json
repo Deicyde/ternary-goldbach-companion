@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 12.2.3 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has no closed form $c(\\sigma)$; its threshold constant $c'$ is a parameter fixed by hypothesis `hcc` (instantiated $c'=1.03$ in `large_q_hS`).",
+  "subject": [
+    {
+      "location": {
+        "page": 245,
+        "rect": [
+          0.17462,
+          0.81001,
+          0.56162,
+          0.01844
+        ]
+      },
+      "title": "Lemma 12.2.3 step 10: Text, p. 235",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 12.2.3 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          78,
+          79
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "    (hcc : Real.exp Real.eulerMascheroniConstant * Real.log c' +\n      2.50637 / Real.log (Real.log q) ≤ 0.86)",
+            "line": 78,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "$c'>0$ is constrained by $e^\\gamma\\log c'+2.50637/\\log\\log q\\le0.86$, the analogue of $e^\\gamma\\log c(\\sigma)=\\sigma-\\sigma^2/5.248-1.172$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L78-L79"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          245
+        ],
+        "printed": [
+          235
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

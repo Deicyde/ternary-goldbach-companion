@@ -1,0 +1,81 @@
+{
+  "id": "10.3 display 9",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] never writes the even-q integrals separately: arcs are indexed by Qset with width via qt, and the even/odd equality is used only through the weights mPhi(2q)=[q odd]mPhi(q); the equality of the integral terms is implicit.",
+  "subject": [
+    {
+      "location": {
+        "page": 220,
+        "rect": [
+          0.25926,
+          0.41152,
+          0.56816,
+          0.05618
+        ]
+      },
+      "title": "Display, p. 210",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.3 display 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.qt",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveWeights",
+        "lines": [
+          25,
+          26
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.qt"
+          },
+          "snippet": {
+            "text": "/-- `q̃ = q` for even `q`, `2q` for odd `q`. -/\ndef qt (q : ℕ) : ℕ := if Even q then q else 2 * q",
+            "line": 25,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.qt",
+            "lines": [
+              25,
+              26
+            ],
+            "conclusion": "`qt q = q` for even $q$, $2q$ for odd $q$, so the arc width $w_q=\\delta_0R/(\\widetilde q x)$ of $q=2q'$ equals that of odd $q'$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveWeights.lean",
+            "fragment": "L25-L26"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          220
+        ],
+        "printed": [
+          210
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

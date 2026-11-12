@@ -1,0 +1,81 @@
+{
+  "id": "14.4 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] proves the same two-step bound with weaker constants: `ψ-θ+log 2 ≤ 1.6001 √N` for `1.4263 √N` and `ψ ≤ 1.387 N` for `1.03883 N`, product `≤ 2.2194 N^{3/2}` not `1.48169`. The RS62 `ψ(y)<1.03883 y` is in [L] (`Prelim.sum_vonMangoldt_lt`) but not used here.",
+  "subject": [
+    {
+      "location": {
+        "page": 286,
+        "rect": [
+          0.25926,
+          0.4108,
+          0.56816,
+          0.10096
+        ]
+      },
+      "title": "Display, p. 276",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.4 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.psi_le",
+        "module": "TernaryGoldbach.Helfgott.Chebyshev",
+        "lines": [
+          207,
+          207
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.psi_le"
+          },
+          "snippet": {
+            "text": "theorem psi_le (N : ℕ) (hN : 10 ^ 27 ≤ N) : psi N ≤ 1.387 * N := by",
+            "line": 207,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.psi_le",
+            "lines": [
+              206,
+              218
+            ],
+            "conclusion": "`ψ(N) ≤ 1.387 N` for `N ≥ 10²⁷` (in place of [H]'s 1.03883 N)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Chebyshev.lean",
+            "fragment": "L207-L207"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          286
+        ],
+        "printed": [
+          276
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

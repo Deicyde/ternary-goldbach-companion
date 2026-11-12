@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.2 step 12",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Same change of variables; the finite sum over odd n ≤ x becomes the r-sum (the absolute-value identity is step 13).",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.17462,
+          0.25256,
+          0.56162,
+          0.0165
+        ]
+      },
+      "title": "Lemma 4.2.2 step 12: Text, p. 65",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_Icc_odd_eq",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          681,
+          693
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_Icc_odd_eq"
+          },
+          "snippet": {
+            "text": "/-- Odd `n ∈ [1, N]` are `2r + 1`, `r < (N + 1)/2`. -/\ntheorem sum_Icc_odd_eq (N : ℕ) (G : ℕ → ℂ) :\n    ∑ n ∈ Icc 1 N, (if Odd n then G n else 0) = ∑ r ∈ range ((N + 1) / 2), G (2 * r + 1) := by\n  rw [← sum_filter]\n  refine (sum_nbij' (fun n => (n - 1) / 2) (fun r => 2 * r + 1) ?_ ?_ ?_ ?_ ?_).symm.symm\n  · intro n hn; simp only [mem_filter, mem_Icc] at hn; obtain ⟨⟨h1, h2⟩, ⟨j, rfl⟩⟩ := hn\n    simp only [mem_range]; omega\n  · intro r hr; simp only [mem_range] at hr; simp only [mem_filter, mem_Icc]\n    exact ⟨⟨by omega, by omega⟩, ⟨r, rfl⟩⟩\n  · intro n hn; simp only [mem_filter, mem_Icc] at hn; obtain ⟨_, ⟨j, rfl⟩⟩ := hn; omega\n  · intro r _; omega\n  · intro n hn; simp only [mem_filter, mem_Icc] at hn; obtain ⟨_, ⟨j, rfl⟩⟩ := hn\n    congr 1; omega",
+            "line": 681,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_Icc_odd_eq",
+            "lines": [
+              681,
+              693
+            ],
+            "conclusion": "`∑_{n ∈ [1,N]} [n odd] G(n) = ∑_{r < (N+1)/2} G(2r+1)`, the change of variables `n = 2r+1`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L681-L693"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.inner_eq_Todd",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          695,
+          731
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.inner_eq_Todd"
+          },
+          "snippet": {
+            "text": "/-- The inner sum of `typeI` is `T_{m,∘}(α)`. -/\ntheorem inner_eq_Todd {α x : ℝ} (hx : 0 < x) {m : ℕ} (hm : 1 ≤ m) :\n    ∑ n ∈ Icc 1 ⌊x⌋₊, (if Odd n then e (α * m * n) * (eta2 (m * n / x) : ℂ) else 0) =\n      Todd α x m := by\n  set N := ⌊x⌋₊\n  set K := (N + 1) / 2\n  have hmR : (1 : ℝ) ≤ m := by exact_mod_cast hm\n  rw [sum_Icc_odd_eq N (fun n => e (α * m * n) * (eta2 (m * n / x) : ℂ)), Todd]\n  rw [tsum_eq_sum (s := (range K).map Nat.castEmbedding)]\n  · rw [sum_map]; refine sum_congr rfl fun r _ => ?_; simp\n  · intro r hr\n    simp only [mem_map, mem_range, Nat.castEmbedding_apply, not_exists, not_and] at hr\n    rw [Helfgott.eta2_eq_zero, Complex.ofReal_zero, mul_zero]\n    simp only [Set.mem_Ioo, not_and_or, not_lt]\n    rcases lt_or_ge r 0 with h | h\n    · left\n      have : (2 * (r : ℝ) + 1) ≤ 0 := by\n        have : r ≤ -1 := by omega\n        have : (r : ℝ) ≤ -1 := by exact_mod_cast this\n        linarith\n      have : m * (2 * (r : ℝ) + 1) / x ≤ 0 :=\n        div_nonpos_of_nonpos_of_nonneg (mul_nonpos_of_nonneg_of_nonpos (by linarith) this) hx.le\n      linarith\n    · right\n      have hrK : K ≤ r.toNat := by\n        by_contra hlt; push Not at hlt\n        exact hr r.toNat hlt (Int.toNat_of_nonneg h)\n      have h2K : N + 1 ≤ 2 * K + 1 := by omega\n      have hr' : ((N : ℝ) + 1) ≤ 2 * r + 1 := by\n        have : (N + 1 : ℤ) ≤ 2 * r + 1 := by\n          have : (K : ℤ) ≤ r := by\n            have := Int.toNat_of_nonneg h; omega\n          omega\n        exact_mod_cast this\n      have hxN : x < N + 1 := Nat.lt_floor_add_one x\n      rw [le_div_iff₀ hx]\n      nlinarith",
+            "line": 695,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.inner_eq_Todd",
+            "lines": [
+              695,
+              731
+            ],
+            "conclusion": "Rewrites the odd-n inner sum of `typeI` via `sum_Icc_odd_eq` as the r-indexed sum `Todd α x m = ∑_r e(αm(2r+1)) η₂(m(2r+1)/x)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L695-L731"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

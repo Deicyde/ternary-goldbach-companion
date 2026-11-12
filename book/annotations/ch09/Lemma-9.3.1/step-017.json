@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.3.1 step 17",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the exponential (regime-B) part of the tail by geometric window sums with Jensen counts, not by an integral against the zero density; no ratio maximisation at q=1, T_0=50 and no multiplication by 5.13.",
+  "subject": [
+    {
+      "location": {
+        "page": 190,
+        "rect": [
+          0.26253,
+          0.4012,
+          0.56162,
+          0.06246
+        ]
+      },
+      "title": "Lemma 9.3.1 step 17: Text, p. 180",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.3.1 step 17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          563,
+          566
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "    have g1 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3 N T0) (c := 2 * c3 T0)\n      (E := EB T0) (ρ := rhoB) (by linarith [Z3_nonneg N T0]) (by linarith [c3_nonneg hT00])\n      (EB_nonneg hT00.le) (Real.exp_pos _).le rhoB_lt_one (fun k => by\n        have := hZw' k; linarith)",
+            "line": 563,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "`g1`: the regime-B contributions of zeros above $T_0$, weighted by Jensen window counts, sum to at most $E_B(2Z_3/(1-\\rho_B)+2c_3/(1-\\rho_B)^2)$ via `sum_geom_windows`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L563-L566"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.E2b",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          309,
+          311
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.E2b"
+          },
+          "snippet": {
+            "text": "noncomputable def E2b (N : ℕ) (T0 δ : ℝ) : ℝ :=\n  EB T0 * (2 * Z3 N T0 / (1 - rhoB) + 2 * c3 T0 / (1 - rhoB) ^ 2) +\n    EA T0 δ * (2 * Z3 N T0 / (1 - rhoA δ) + 2 * c3 T0 / (1 - rhoA δ) ^ 2)",
+            "line": 309,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.E2b",
+            "lines": [
+              309,
+              311
+            ],
+            "conclusion": "Defines $E_2$; its first summand $E_B(\\dots)$ with $E_B=0.892T_0e^{-0.1598T_0}$ is Lean's counterpart of (jokr)'s $6.11T_0\\log(qT_0/2\\pi)e^{-0.1598T_0}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L309-L311"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          190
+        ],
+        "printed": [
+          180
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

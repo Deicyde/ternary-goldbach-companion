@@ -1,0 +1,81 @@
+{
+  "id": "7 display 65",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's counterpart bounds the discrete sum $\\sum\\hat g(y,n)\\log\\frac{n+1}{n}$ from $150001$ to $r_2$ (blocks, then $\\Xi$ terms), about $0.165+8.4\\cdot10^{-4}$, rather than $\\int_{r_0}^{r_1}g/r$ as $f_0+f_1+f_2\\le0.086918$. Text error, confirmed by two skeptics and `scripts/checks/steps/7_display_65.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.20371,
+          0.188,
+          0.63183,
+          0.04215
+        ]
+      },
+      "title": "Display, p. 69",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 65"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.asymp_goal",
+        "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+        "lines": [
+          540,
+          561
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.asymp_goal"
+          },
+          "snippet": {
+            "text": "  have hmid : ∑ n ∈ Finset.Ioo 150000 r₂, ghatY y n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) ≤\n      sD' * (0.165282706731081808 + (8.4e-4 + 1.398 * 1e-10)) := by\n    have e : ∑ n ∈ Finset.Ioo 150000 r₂, ghatY y n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) =\n        sig x / Dx x * (∑ n ∈ Finset.Ico (150001 : ℕ) 82861350433499550,\n          ghatY y n * Real.log (((n : ℝ) + 1) / n) +\n          ∑ n ∈ Finset.Ico 82861350433499550 r₂, ghatY y n * Real.log (((n : ℝ) + 1) / n)) := by\n      rw [Finset.sum_Ico_consecutive _ (by norm_num) hr₂Nn, ← Finset.Ico_add_one_left_eq_Ioo,\n        Finset.mul_sum]\n      refine Finset.sum_congr rfl fun n _ => by ring\n    rw [e]\n    have hS0 : 0 ≤ ∑ n ∈ Finset.Ico (150001 : ℕ) 82861350433499550,\n          ghatY y n * Real.log (((n : ℝ) + 1) / n) +\n          ∑ n ∈ Finset.Ico 82861350433499550 r₂, ghatY y n * Real.log (((n : ℝ) + 1) / n) := by\n      refine add_nonneg (Finset.sum_nonneg fun n hn => ?_) (Finset.sum_nonneg fun n hn => ?_)\n      all_goals\n        have hn1 : (1 : ℝ) ≤ n := by\n          have := (Finset.mem_Ico.1 hn).1; exact_mod_cast (by omega : 1 ≤ n)\n        exact mul_nonneg (ghatY_nonneg (by linarith) (by linarith))\n          (Real.log_nonneg (by rw [le_div_iff₀ (by linarith)]; linarith))\n    have hXi' : 1.398 * Ξ * (Real.log y + 3.9) ≤ 1.398 * 1e-10 := by nlinarith\n    calc sig x / Dx x * _ ≤ sD' * _ := mul_le_mul_of_nonneg_right hsD' hS0\n      _ ≤ _ := mul_le_mul_of_nonneg_left (by linarith) (by norm_num)",
+            "line": 540,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.asymp_goal",
+            "lines": [
+              384,
+              607
+            ],
+            "conclusion": "The middle sum $\\sum_{150000<n<r_2}\\hat g(y,n)\\log\\frac{n+1}{n}\\,sig/Dx\\le sD'(0.165282706731081808+8.4\\cdot10^{-4}+1.398\\cdot10^{-10})$, the discrete counterpart of $\\int_{r_0}^{r_1}g(r)\\,dr/r$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+            "fragment": "L540-L561"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

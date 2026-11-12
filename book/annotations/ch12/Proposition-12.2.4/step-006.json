@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 12.2.4 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The formula for ω(ρ) is not defined in Lean; only its worst-case value 0.6274 for ρ ≤ 0.6 is used, and with c in place of c_E.",
+  "subject": [
+    {
+      "location": {
+        "page": 246,
+        "rect": [
+          0.26253,
+          0.70382,
+          0.56162,
+          0.03434
+        ]
+      },
+      "title": "Proposition 12.2.4 step 6: Display, p. 236",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.2.4 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.star_core",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
+        "lines": [
+          88,
+          88
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.star_core"
+          },
+          "snippet": {
+            "text": "  have hθ1 : θ ≤ 0.6274 := by rw [hθ, div_le_iff₀ hLc]; nlinarith",
+            "line": 88,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.star_core",
+            "lines": [
+              80,
+              102
+            ],
+            "conclusion": "The value of ω at ρ = 0.6 is bounded by the constant 0.6274 via `hθ1`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L88-L88"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          246
+        ],
+        "printed": [
+          236
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

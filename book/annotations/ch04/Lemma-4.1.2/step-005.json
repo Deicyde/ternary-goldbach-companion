@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.2 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Only the q=1 trivial part is matched here; q=2 is done by hand (lines 1238-1254) and (pordo1) enters in trig_T2/trig_T3.",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17462,
+          0.2377,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma 4.1.2 step 5: Text, p. 55",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.2 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1234,
+          1237
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_4_1_2"
+          },
+          "snippet": {
+            "text": "  rcases Nat.lt_or_ge q 3 with hq3 | hq3\n  · interval_cases q\n    · simp only [Nat.sub_self, Finset.Icc_eq_empty (by norm_num : ¬ (1 ≤ 0)), Finset.sum_empty]\n      exact le_min hb1 (by linarith)",
+            "line": 1234,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+            "lines": [
+              1227,
+              1383
+            ],
+            "conclusion": "Case q<3: for q=1 the sum over Icc 1 0 is empty so the bound holds (0 <= both bounds)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1234-L1237"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

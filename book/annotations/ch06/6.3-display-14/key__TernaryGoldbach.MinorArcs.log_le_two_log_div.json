@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 14",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "With [L]'s `U = T²/(9√t)` and `c = 2q`, `x/U/c` is the text's `9x^{1/3}√δ₀/(2√q)`; [L] proves the ratio `≤ 2` (not `< 2`) for all `c ∈ [t, 1.0015t]` by a direct product inequality, without the worst-case-and-limit chain.",
+  "subject": [
+    {
+      "location": {
+        "page": 133,
+        "rect": [
+          0.17135,
+          0.61634,
+          0.56816,
+          0.04799
+        ]
+      },
+      "title": "Display, p. 123",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.log_le_two_log_div",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeII",
+        "lines": [
+          95,
+          97
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.log_le_two_log_div"
+          },
+          "snippet": {
+            "text": "/-- `log c ≤ 2 log(X/c)` when `c ≤ 1.0015 t`, `t ≤ T/3`, `X ≥ 9T√t`. -/\ntheorem log_le_two_log_div {T t c X : ℝ} (ht0 : 0 < t) (htT : t ≤ T / 3) (hc0 : 0 < c)\n    (hc : c ≤ 1.0015 * t) (hX : 9 * (T * √t) ≤ X) : Real.log c ≤ 2 * Real.log (X / c) := by",
+            "line": 95,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.log_le_two_log_div",
+            "lines": [
+              95,
+              112
+            ],
+            "conclusion": "log c <= 2 log(X/c) for c <= 1.0015 t, t<=T/3, X >= 9T sqrt t, i.e. log c/log(X/c) <= 2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeII.lean",
+            "fragment": "L95-L97"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          133
+        ],
+        "printed": [
+          123
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

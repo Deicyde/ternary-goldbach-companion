@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 12",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same step (bounding (6.14) at the first parameters with ε = 0.07) but [L] reaches 2.5257 x/√t + (13.767 log t + 19.997)2x/t + 0.555x^{5/6}, not [H]'s 2.49157 x/√(qδ₀) + (3.59676 log δ₀ + 27.3032 log q + 91.2218)x/(qδ₀) + (22.9378 log x + 411.228)x^{2/3}; the intermediate equality line is not in [L].",
+  "subject": [
+    {
+      "location": {
+        "page": 132,
+        "rect": [
+          0.25926,
+          0.45163,
+          0.56816,
+          0.22688
+        ]
+      },
+      "title": "Display, p. 122",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_large_rest_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2b",
+        "lines": [
+          23,
+          38
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_large_rest_first"
+          },
+          "snippet": {
+            "text": "theorem typeI2_large_rest_first {δ T : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : 1 ≤ q)\n    (hqT : (q : ℝ) ≤ T / 6) (ht2 : 2 ≤ delta0 δ * q) (htT : delta0 δ * q ≤ T / 3)\n    (hδ : 1 / (2 * c₂) ≤ |δ|) :\n    let t := delta0 δ * q\n    let U := (U1 T t : ℝ)\n    let V := (V1 T : ℝ)\n    let c := cPlus (T ^ 3) U V\n    1.0064 * (2 * √(c₀ * c) / π * (1 + (1 + 0.07) * (1 + V / (3 / 4 * T ^ 2)) / rexp 1)) * (U * V) +\n        1.0064 * (3 / 2 * c * (2 + (1 + 0.07) / 0.07 * logPlus (2 * U * V * |δ| * q / T ^ 3))) *\n          (T ^ 3 * V / (3 / 4 * T ^ 2)) +\n        1.0064 * (35 * c₀ * c₂ / (3 * π ^ 2)) * (3 / 4 * T ^ 2) +\n        2 * √(c₀ * c) / π * (1 + 0.07) * √(3 + 2 * 0.07) *\n          (T ^ 3 / (|δ| * q) * (1.03883 + Real.log q + logPlus (6 * U * V * |δ| * q / (√2 * T ^ 3))) +\n            1.0064 * V) ≤\n      2.5257 * (T ^ 3 / √t) + (13.767 * Real.log t + 19.997) * (2 * T ^ 3 / t) +\n        0.555 * (T ^ 2 * √T) := by",
+            "line": 23,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_large_rest_first",
+            "lines": [
+              21,
+              232
+            ],
+            "conclusion": "For |δ| ≥ 1/2c₂ (ε = 0.07) the remaining S_{I,2} terms are `≤ 2.5257 x/√t + (13.767 log t+19.997)·2x/t + 0.555 x^{5/6}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2b.lean",
+            "fragment": "L23-L38"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          132
+        ],
+        "printed": [
+          122
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

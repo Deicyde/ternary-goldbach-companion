@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.1 step 19",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Range `(0,π/6]` instead of `[0,π/4]`; sufficient since `t = π/(2q) ≤ π/6` for `q ≥ 3`.",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17462,
+          0.59931,
+          0.56162,
+          0.01654
+        ]
+      },
+      "title": "Lemma 4.1.1 step 19: Text, p. 53",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          177,
+          179
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le"
+          },
+          "snippet": {
+            "text": "/-- `t²/sin²t + t cot 2t ≤ 3/2` for `0 < t ≤ π/6`. -/\ntheorem sq_div_sin_sq_add_mul_cot_two_mul_le {t : ℝ} (ht : 0 < t) (ht1 : t ≤ π / 6) :\n    t ^ 2 / Real.sin t ^ 2 + t * (Real.cos (2 * t) / Real.sin (2 * t)) ≤ 3 / 2 := by",
+            "line": 177,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le",
+            "lines": [
+              177,
+              197
+            ],
+            "conclusion": "`t²/sin²t + t cot 2t ≤ 3/2` for `0<t≤π/6`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L177-L179"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

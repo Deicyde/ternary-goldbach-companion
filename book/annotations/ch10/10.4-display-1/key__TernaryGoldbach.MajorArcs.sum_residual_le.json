@@ -1,0 +1,81 @@
+{
+  "id": "10.4 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds the non-coprime terms pointwise ($\\sum_{(n,q)>1}\\Lambda(n)\\eta_+(n/x)\\le10^{-15}x$) and inserts $D=10^{-15}x$ into the per-modulus residual (sum_residual_le), instead of integrating over $\\mathbb{R}/\\mathbb{Z}$ with Cauchy-Schwarz and Plancherel; the $\\Lambda^2$ sums and $\\log r$ factor do not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 222,
+        "rect": [
+          0.25926,
+          0.63718,
+          0.56816,
+          0.17503
+        ]
+      },
+      "title": "Display, p. 212",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.4 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_residual_le",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          165,
+          193
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_residual_le"
+          },
+          "snippet": {
+            "text": "/-- A generic residual bound: `Σ_b ‖S(α_b) − m A‖² ≤ 3(φ D² + E² + φ|m|² F²)` from the three pieces. -/\ntheorem sum_residual_le {q : ℕ} {T S' : ℝ → ℂ} {m A : ℂ} {β D E F : ℝ}\n    (hD : ∀ α, ‖T α - S' α‖ ≤ D) (hD0 : 0 ≤ D)\n    (hE : ∑ b ∈ Bset q, ‖S' ((b : ℝ) / q + β) - m * S' β‖ ^ 2 ≤ E ^ 2)\n    (hF : ‖S' β - A‖ ≤ F) :\n    ∑ b ∈ Bset q, ‖T ((b : ℝ) / q + β) - m * A‖ ^ 2 ≤\n      3 * (q.totient * D ^ 2 + E ^ 2 + q.totient * ‖m‖ ^ 2 * F ^ 2) := by\n  have hpt : ∀ b ∈ Bset q, ‖T ((b : ℝ) / q + β) - m * A‖ ^ 2 ≤\n      3 * (D ^ 2 + ‖S' ((b : ℝ) / q + β) - m * S' β‖ ^ 2 + ‖m‖ ^ 2 * F ^ 2) := by\n    intro b _\n    have e : T ((b : ℝ) / q + β) - m * A = (T ((b : ℝ) / q + β) - S' ((b : ℝ) / q + β)) +\n        (S' ((b : ℝ) / q + β) - m * S' β) + m * (S' β - A) := by ring\n    rw [e]\n    refine (norm_sq_add3_le _ _ _).trans ?_\n    have h1 : ‖T ((b : ℝ) / q + β) - S' ((b : ℝ) / q + β)‖ ^ 2 ≤ D ^ 2 :=\n      pow_le_pow_left₀ (norm_nonneg _) (hD _) 2\n    have h3 : ‖m * (S' β - A)‖ ^ 2 ≤ ‖m‖ ^ 2 * F ^ 2 := by\n      rw [norm_mul, mul_pow]\n      exact mul_le_mul_of_nonneg_left (pow_le_pow_left₀ (norm_nonneg _) hF 2) (by positivity)\n    linarith\n  calc ∑ b ∈ Bset q, ‖T ((b : ℝ) / q + β) - m * A‖ ^ 2\n      ≤ ∑ b ∈ Bset q, 3 * (D ^ 2 + ‖S' ((b : ℝ) / q + β) - m * S' β‖ ^ 2 + ‖m‖ ^ 2 * F ^ 2) :=\n        sum_le_sum hpt\n    _ = 3 * ((Bset q).card * D ^ 2 + ∑ b ∈ Bset q, ‖S' ((b : ℝ) / q + β) - m * S' β‖ ^ 2 +\n          (Bset q).card * (‖m‖ ^ 2 * F ^ 2)) := by\n        rw [← mul_sum, sum_add_distrib, sum_add_distrib, sum_const, sum_const, nsmul_eq_mul,\n          nsmul_eq_mul]\n    _ ≤ 3 * (q.totient * D ^ 2 + E ^ 2 + q.totient * ‖m‖ ^ 2 * F ^ 2) := by\n        rw [card_Bset_eq]; nlinarith",
+            "line": 165,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_residual_le",
+            "lines": [
+              165,
+              193
+            ],
+            "conclusion": "A residual bound $\\sum_b|T(\\alpha_b)-mA|^2\\le3(\\phi D^2+E^2+\\phi|m|^2F^2)$ with $D$ the pointwise non-coprime error."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L165-L193"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          222
+        ],
+        "printed": [
+          212
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

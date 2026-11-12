@@ -1,0 +1,81 @@
+{
+  "id": "7 display 71",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean gets $\\ge(1.049-1.0376)x^2/\\kappa-6.7\\cdot10^6N^{3/2}\\log N>0$ (constants $0.0114$ and $6.7\\cdot10^6$ for $0.08433$ and $7.3306$); `final_inequality` proves the $7.3306$ comparison, but no $0.000422N^2$ bound is stated, only positivity.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.20371,
+          0.74767,
+          0.63183,
+          0.10662
+        ]
+      },
+      "title": "Display, p. 70",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 71"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs",
+        "lines": [
+          116,
+          149
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.nonprime_input"
+          },
+          "snippet": {
+            "text": "/-- **Non-prime and even terms**, a weaker form of [H, (14.51)]: the terms where some `nᵢ` is\neven or not prime contribute at most `6.7 · 10⁶ · N^{3/2} log N`.\n\n[H] gets the constant `7.3306` from the sharp sup norms `|η₊|_∞ ≤ 1.079955`,\n`|η_*|_∞ ≤ 1.414` and the Rosser–Schoenfeld bounds `ψ(x) < 1.03883 x`,\n`ψ(x) - θ(x) < 1.4262 √x`.  We use the easy bounds `|η₊| ≤ 400`, `|η_*| ≤ 6.2`\n(`Helfgott/SupNorms.lean`) and the elementary `ψ(N) ≤ 1.387 N`, `ψ(N) - θ(N) ≤ 1.6 √N`\n(`Helfgott/Chebyshev.lean`) instead; the final inequality still has room\n(`final_inequality_crude`).\n\n*Proved.* -/\ntheorem nonprime_input (N : ℕ) (hN27 : 10 ^ 27 ≤ N) :\n    repSum (fun _ => True) N - repSum (fun n => n.Prime ∧ Odd n) N ≤\n      6.7e6 * (N * √N) * Real.log N := by\n  have hN : 1 ≤ N := le_trans (by norm_num) hN27\n  have h := repSum_sub_le_of_bounds hN (fun t ht => abs_etaPlus_le_400 ht)\n    (fun t _ => abs_etaStar_le_const t)\n  have hpsi := psi_le N hN27\n  have hpt := psi_sub_theta_le N hN27\n  have hNr : (10 : ℝ) ^ 27 ≤ N := by exact_mod_cast hN27\n  have hsq : (10 : ℝ) ^ 13 ≤ √N := Real.le_sqrt_of_sq_le (by nlinarith)\n  have hlog2 : Real.log 2 ≤ 0.0001 * √N := by\n    have := Real.log_two_lt_d9; nlinarith\n  have hlogN : 0 ≤ Real.log N := Real.log_nonneg (by exact_mod_cast hN)\n  have hbad0 : 0 ≤ psi N - theta N + Real.log 2 :=\n    (Finset.sum_nonneg fun n _ => ΛBad_nonneg n).trans (sum_ΛBad_le N)\n  have hpsi0 : 0 ≤ psi N := Finset.sum_nonneg fun n _ => vonMangoldt_nonneg\n  have hs0 : 0 ≤ √(N : ℝ) := Real.sqrt_nonneg _\n  calc repSum (fun _ => True) N - repSum (fun n => n.Prime ∧ Odd n) N\n      ≤ 3 * (400 ^ 2 * 6.2) * Real.log N * (psi N - theta N + Real.log 2) * psi N := h\n    _ ≤ 3 * (400 ^ 2 * 6.2) * Real.log N * (1.6001 * √N) * (1.387 * N) := by\n        gcongr; linarith\n    _ = (3 * (400 ^ 2 * 6.2) * 1.6001 * 1.387) * (N * √N) * Real.log N := by ring\n    _ ≤ 6.7e6 * (N * √N) * Real.log N := by gcongr; norm_num",
+            "line": 116,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+            "lines": [
+              116,
+              149
+            ],
+            "conclusion": "The terms with some $n_i$ even or non-prime contribute at most $6.7\\cdot10^6N^{3/2}\\log N$ (in place of $7.3306N^{3/2}\\log N$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "fragment": "L116-L149"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

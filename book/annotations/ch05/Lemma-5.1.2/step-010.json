@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.2 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's analogue has one exponent `s` with weight `d^{2s}∏ρ_s(p)²` and `f(d)²`, not the two-parameter `s_1,s_2` product with `d'`, `d''` sums.",
+  "subject": [
+    {
+      "location": {
+        "page": 96,
+        "rect": [
+          0.26253,
+          0.36815,
+          0.56162,
+          0.1487
+        ]
+      },
+      "title": "Lemma 5.1.2 step 10: Display, p. 86",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gmain",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler",
+        "lines": [
+          172,
+          174
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gmain"
+          },
+          "snippet": {
+            "text": "/-- `g_s(d) = f(d)² d^{2s} ∏_{p∣d} ρ_s(p)²`. -/\nnoncomputable def gmain (s : ℝ) (d : ℕ) : ℝ :=\n  fo d ^ 2 * ((d : ℝ) ^ s) ^ 2 * (∏ p ∈ d.primeFactors, rho s p) ^ 2",
+            "line": 172,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gmain",
+            "lines": [
+              172,
+              174
+            ],
+            "conclusion": "`g_s(d)=f(d)² d^{2s} ∏_{p|d} ρ_s(p)²`, Lean's single-exponent analogue of the summand of `F_v`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L172-L174"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          96
+        ],
+        "printed": [
+          86
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

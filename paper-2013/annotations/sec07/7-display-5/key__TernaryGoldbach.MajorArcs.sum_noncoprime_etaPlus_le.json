@@ -1,0 +1,81 @@
+{
+  "id": "7 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "K_{r,2} bounds the contribution of the terms with (n,q)>1 in Lemma 10.3.1. Lean bounds the same non-coprime part directly, as a sup bound D = 10^{-15} x (entering squared as Cb in `Jq_bounds`), not as the quantity K_{r,2} with |S(0,x)| and |η|_∞ = 1.079955.",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.20371,
+          0.10456,
+          0.63183,
+          0.07482
+        ]
+      },
+      "title": "Display, p. 57",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          66,
+          67
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le"
+          },
+          "snippet": {
+            "text": "theorem sum_noncoprime_etaPlus_le {x : ℝ} (hx : 1e4 ≤ x) {q K : ℕ} (hq : 1 ≤ q)\n    (hK : x ^ 2 ≤ 2 ^ K) :",
+            "line": 66,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+            "lines": [
+              64,
+              157
+            ],
+            "conclusion": "For x ≥ 10^4, x² ≤ 2^K: `Σ_{(n,q)>1} Λ(n)|η₊(n/x)| ≤ 1.94 K log q + 1`, the bound on the prime-power terms with a common factor with q."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L66-L67"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          57
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

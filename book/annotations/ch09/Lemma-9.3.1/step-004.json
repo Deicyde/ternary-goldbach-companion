@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.3.1 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds |G_δ| at each tail zero by `norm_G_tail` (EB, EA with exponents 0.1398, 1.93) instead of Cor. amanita1 with k=2 and kappa constants.",
+  "subject": [
+    {
+      "location": {
+        "page": 189,
+        "rect": [
+          0.17462,
+          0.40121,
+          0.56162,
+          0.01587
+        ]
+      },
+      "title": "Lemma 9.3.1 step 4: Text, p. 179",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.3.1 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          519,
+          554
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "    have hpt : ∀ u ∈ S, m u * (‖Gr u δ 0‖ * x ^ u.re) ≤\n        x * (m u * (EB T0 * rhoB ^ idx u) + m u * (EA T0 δ * rhoA δ ^ idx u)) := by\n      intro u hu\n      obtain ⟨hr1, hr2⟩ := hre u hu\n      have hτ := him u hu\n      have hGt := norm_G_tail u δ (by linarith) hr2.le hT0 hτ.le\n      have hB' : Real.exp (-0.1398 * (|u.im| - T0)) ≤ rhoB ^ idx u := by\n        unfold rhoB; rw [← Real.exp_nat_mul]\n        apply Real.exp_le_exp.2\n        nlinarith [hidxle u hu]\n      have hA' : EA T0 δ * Real.exp (-1.93 * ((|u.im| - T0) / (π * |δ|))) ≤\n          EA T0 δ * rhoA δ ^ idx u := by\n        by_cases hδ : δ = 0\n        · unfold EA; simp [hδ]\n        · refine mul_le_mul_of_nonneg_left ?_ (EA_nonneg T0 δ)\n          unfold rhoA; rw [← Real.exp_nat_mul]\n          apply Real.exp_le_exp.2\n          have hδ0 : 0 < |δ| := abs_pos.2 hδ\n          have hP : 0 < π * |δ| := by positivity\n          have h1 : (idx u : ℝ) * 4.4 / (π * (|δ| + 1)) ≤ (|u.im| - T0) / (π * |δ|) := by\n            calc (idx u : ℝ) * 4.4 / (π * (|δ| + 1)) ≤ (idx u : ℝ) * 4.4 / (π * |δ|) := by\n                  apply div_le_div_of_nonneg_left (by positivity) hP; nlinarith [Real.pi_pos]\n              _ ≤ _ := div_le_div_of_nonneg_right (hidxle u hu) hP.le\n          have e : (idx u : ℝ) * -(1.93 * 4.4 / (π * (|δ| + 1))) =\n              -1.93 * ((idx u : ℝ) * 4.4 / (π * (|δ| + 1))) := by ring\n          rw [e]; nlinarith\n      have hGb : ‖Gr u δ 0‖ ≤ EB T0 * rhoB ^ idx u + EA T0 δ * rhoA δ ^ idx u := by\n        have := mul_le_mul_of_nonneg_left hB' (EB_nonneg hT00.le)\n        linarith\n      have hxr : x ^ u.re ≤ x := by\n        calc x ^ u.re ≤ x ^ (1:ℝ) := Real.rpow_le_rpow_of_exponent_le hx hr2.le\n          _ = x := Real.rpow_one x\n      have hGn := norm_nonneg (Gr u δ 0)\n      calc m u * (‖Gr u δ 0‖ * x ^ u.re) ≤ m u * ((EB T0 * rhoB ^ idx u + EA T0 δ * rhoA δ ^ idx u) * x) :=\n            mul_le_mul_of_nonneg_left (mul_le_mul hGb hxr (Real.rpow_nonneg hx0.le _) (hGn.trans hGb)) (hm u)\n        _ = _ := by ring",
+            "line": 519,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "For each zero u above T0 (0<Re u<1), m_u*(|G_δ(u)|x^Re u) <= x*(m_u*EB*rhoB^idx + m_u*EA*rhoA^idx), using `norm_G_tail` and x^Re u <= x; no pairing ρ <-> 1-ρ and no GRH."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L519-L554"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_tail",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          103,
+          166
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_tail"
+          },
+          "snippet": {
+            "text": "/-- **`|G_δ(s)|` above `T₀`**: for `−1 ≤ ℜs ≤ 1`, `|ℑs| ≥ T₀ ≥ max(10π|δ|, 50)`,\n`|G_δ(s)| ≤ E_B e^{−0.1398(|ℑs| − T₀)} + E_A e^{−1.93(|ℑs| − T₀)/(π|δ|)}`. -/\ntheorem norm_G_tail (s : ℂ) (δ : ℝ) (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1) {T0 : ℝ}\n    (hT0 : max (10 * π * |δ|) 50 ≤ T0) (hτ : T0 ≤ |s.im|) :\n    ‖Gr s δ 0‖ ≤ EB T0 * Real.exp (-0.1398 * (|s.im| - T0)) +\n      EA T0 δ * Real.exp (-1.93 * ((|s.im| - T0) / (π * |δ|))) := by\n  have h50 : 50 ≤ T0 := (le_max_right _ _).trans hT0\n  have h10 : 10 * π * |δ| ≤ T0 := (le_max_left _ _).trans hT0\n  set τ := |s.im| with hτdef\n  have hEA := EA_nonneg T0 δ\n  have hEB := EB_nonneg (by linarith : (0:ℝ) ≤ T0)\n  by_cases hreg : 3 / 2 * (π * δ) ^ 2 ≤ τ\n  · have hB := norm_G_le_regimeB s δ hs0 hs1 (by linarith) hreg\n    have h1 : τ ≤ T0 * Real.exp (0.02 * (τ - T0)) := by\n      refine (le_mul_exp_sub (by linarith) hτ).trans ?_\n      refine mul_le_mul_of_nonneg_left (Real.exp_le_exp.2 ?_) (by linarith)\n      rw [div_le_iff₀ (by linarith)]; nlinarith\n    have h2 : 0.892 * τ * Real.exp (-0.1598 * τ) ≤ EB T0 * Real.exp (-0.1398 * (τ - T0)) := by\n      unfold EB\n      calc 0.892 * τ * Real.exp (-0.1598 * τ) ≤ 0.892 * (T0 * Real.exp (0.02 * (τ - T0))) *\n            Real.exp (-0.1598 * τ) := by gcongr\n        _ = 0.892 * T0 * (Real.exp (0.02 * (τ - T0)) * Real.exp (-0.1598 * τ)) := by ring\n        _ = 0.892 * T0 * (Real.exp (-0.1598 * T0) * Real.exp (-0.1398 * (τ - T0))) := by\n            rw [← Real.exp_add, ← Real.exp_add]; congr 2; ring\n        _ = _ := by ring\n    have h3 : 0 ≤ EA T0 δ * Real.exp (-1.93 * ((τ - T0) / (π * |δ|))) := by positivity\n    linarith\n  · push Not at hreg\n    have hδ : δ ≠ 0 := by\n      rintro rfl; simp at hreg; linarith [abs_nonneg s.im]\n    have hδ0 : 0 < |δ| := abs_pos.2 hδ\n    have hA := norm_G_le_regimeA s δ hs0 hs1 (by linarith) hreg\n    set P := π * |δ| with hP\n    have hP0 : 0 < P := by positivity\n    set u := τ / P with hu\n    set u0 := T0 / P with hu0\n    have hu010 : 10 ≤ u0 := by rw [hu0, le_div_iff₀ hP0]; linarith\n    have huu0 : u0 ≤ u := div_le_div_of_nonneg_right hτ hP0.le\n    have hdiff : u - u0 = (τ - T0) / P := by rw [hu, hu0]; ring\n    have h1 : u ≤ u0 * Real.exp (0.1 * (u - u0)) := by\n      refine (le_mul_exp_sub (by linarith) huu0).trans ?_\n      refine mul_le_mul_of_nonneg_left (Real.exp_le_exp.2 ?_) (by linarith)\n      rw [div_le_iff₀ (by linarith)]; nlinarith\n    have h1' : u ^ 2 ≤ u0 ^ 2 * Real.exp (0.2 * (u - u0)) := by\n      have hu0' : 0 ≤ u := by linarith\n      have := pow_le_pow_left₀ hu0' h1 2\n      rw [mul_pow, ← Real.exp_nat_mul] at this\n      convert this using 3; push_cast; ring\n    have h2 : -0.1065 * u ^ 2 ≤ -0.1065 * u0 ^ 2 + -2.13 * (u - u0) := by nlinarith\n    have hEAeq : EA T0 δ = 0.588 * u0 ^ 2 * Real.exp (-0.1065 * u0 ^ 2) := by\n      unfold EA; rw [if_neg hδ]\n    have h3 : 0.588 * u ^ 2 * Real.exp (-0.1065 * u ^ 2) ≤\n        EA T0 δ * Real.exp (-1.93 * ((τ - T0) / P)) := by\n      rw [hEAeq, ← hdiff]\n      calc 0.588 * u ^ 2 * Real.exp (-0.1065 * u ^ 2)\n          ≤ 0.588 * (u0 ^ 2 * Real.exp (0.2 * (u - u0))) *\n              Real.exp (-0.1065 * u0 ^ 2 + -2.13 * (u - u0)) := by\n            gcongr\n        _ = 0.588 * u0 ^ 2 * (Real.exp (-0.1065 * u0 ^ 2) *\n              (Real.exp (0.2 * (u - u0)) * Real.exp (-2.13 * (u - u0)))) := by\n            rw [Real.exp_add]; ring\n        _ = _ := by rw [← Real.exp_add]; ring_nf\n    have h4 : 0 ≤ EB T0 * Real.exp (-0.1398 * (τ - T0)) := by positivity\n    linarith",
+            "line": 103,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_G_tail",
+            "lines": [
+              103,
+              166
+            ],
+            "conclusion": "For -1<=Re s<=1, |Im s|>=T0>=max(10π|δ|,50): |G_δ(s)| <= EB e^{-0.1398(|Im s|-T0)} + EA e^{-1.93(|Im s|-T0)/(π|δ|)}."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L103-L166"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          189
+        ],
+        "printed": [
+          179
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "1.5 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "`C_{η◦,η_*}` is `Cmain` (convolution form); `C₀` is never formed as an infinite Euler product: only the factors `1 + aP N p` over odd primes `p ≤ R` appear, via `coefN` (squarefree-modulus coefficients) and `sum_Qset_coefN_ge` (`≥ 1.314`).",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.17135,
+          0.38354,
+          0.56816,
+          0.07846
+        ]
+      },
+      "title": "Display, p. 27",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.5 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Cmain",
+        "module": "TernaryGoldbach.MajorArcs.CMain",
+        "lines": [
+          489,
+          490
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Cmain"
+          },
+          "snippet": {
+            "text": "/-- **`C_{η◦,η_*}(M) = ∫∫ η◦(t₁)η◦(t₂)η_*(M − t₁ − t₂) = ∫ (η◦ ∗ η◦)(M − σ) η_*(σ) dσ`** [H, (10.37)]. -/\nnoncomputable def Cmain (M : ℝ) : ℝ := ∫ σ, conv2 (M - σ) * etaS σ",
+            "line": 489,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.Cmain",
+            "lines": [
+              489,
+              490
+            ],
+            "conclusion": "`Cmain M = ∫ (η◦*η◦)(M-σ) η_*(σ) dσ`, the double integral `C_{η◦,η_*}` of `η◦(t₁)η◦(t₂)η_*(M-t₁-t₂)` with `M = n/x` (Fubini form)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
+            "fragment": "L489-L490"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          27
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

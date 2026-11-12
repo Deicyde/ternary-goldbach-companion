@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.3.1 step 31",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean adds the rhoB-part and rhoA-part sums to get x*E2b; the book adds (jokr) and the Gaussian estimate to get 6.11 and 1.578 constants.",
+  "subject": [
+    {
+      "location": {
+        "page": 191,
+        "rect": [
+          0.17462,
+          0.59505,
+          0.56162,
+          0.01583
+        ]
+      },
+      "title": "Lemma 9.3.1 step 31: Text, p. 181",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.3.1 step 31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          555,
+          572
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "    refine (Finset.sum_le_sum hpt).trans ?_\n    rw [← Finset.mul_sum]\n    refine mul_le_mul_of_nonneg_left ?_ hx0.le\n    rw [Finset.sum_add_distrib]\n    have hZw : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => idx u = k), m u ≤ 2 * Z3 N T0 + 2 * c3 T0 * (k + 1) :=\n      fun k => count_tail_window hχ hχ1 hT00 S hSZ hre him k\n    have hZw' : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => idx u = k), m u ≤ 2 * Z3 N T0 + 2 * c3 T0 * (k + 1) :=\n      hZw\n    have g1 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3 N T0) (c := 2 * c3 T0)\n      (E := EB T0) (ρ := rhoB) (by linarith [Z3_nonneg N T0]) (by linarith [c3_nonneg hT00])\n      (EB_nonneg hT00.le) (Real.exp_pos _).le rhoB_lt_one (fun k => by\n        have := hZw' k; linarith)\n    have g2 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3 N T0) (c := 2 * c3 T0)\n      (E := EA T0 δ) (ρ := rhoA δ) (by linarith [Z3_nonneg N T0]) (by linarith [c3_nonneg hT00])\n      (EA_nonneg T0 δ) (Real.exp_pos _).le (rhoA_lt_one δ) (fun k => by\n        have := hZw' k; linarith)\n    unfold E2b\n    linarith",
+            "line": 555,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "Sums the pointwise bounds over windows via `sum_geom_windows` (twice, for rhoB and rhoA) with the Jensen window counts, giving x*E2b."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L555-L572"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          191
+        ],
+        "printed": [
+          181
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

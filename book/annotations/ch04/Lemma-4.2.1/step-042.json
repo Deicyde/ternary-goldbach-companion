@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.1 step 42",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Text's integral form and log⁺(D/(q/2)) are reached in two Lean steps (sum_sqrt_le, then log ≤ log⁺ via R ≥ q/2).",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.26253,
+          0.66488,
+          0.56162,
+          0.01113
+        ]
+      },
+      "title": "Lemma 4.2.1 step 42: Text, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_sqrt_le",
+        "module": "TernaryGoldbach.MinorArcs.BlockSums",
+        "lines": [
+          94,
+          98
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_sqrt_le"
+          },
+          "snippet": {
+            "text": "/-- `∑_{j<J} √(1 + q/(R + jq)) ≤ √(1 + q/R) + (D - R)/q + (1/2) log(D/R)` when\n`R + (J-1)q ≤ D`. -/\ntheorem sum_sqrt_le {R q D : ℝ} (hR : 0 < R) (hq : 0 < q) {J : ℕ} (hJ : 1 ≤ J)\n    (hD : R + (J - 1) * q ≤ D) :\n    ∑ j ∈ range J, √(1 + q / (R + j * q)) ≤ √(1 + q / R) + (D - R) / q + 1 / 2 * Real.log (D / R) := by",
+            "line": 94,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_sqrt_le",
+            "lines": [
+              94,
+              121
+            ],
+            "conclusion": "`∑_{j<J} √(1+q/(R+jq)) ≤ √(1+q/R) + (D-R)/q + ½ log(D/R)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BlockSums.lean",
+            "fragment": "L94-L98"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          507,
+          509
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3"
+          },
+          "snippet": {
+            "text": "  have h3 : √(1 + q / R) ≤ √3 := Real.sqrt_le_sqrt (by\n    have : q / R ≤ 2 := by rw [div_le_iff₀ hR0]; linarith\n    linarith)",
+            "line": 507,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3",
+            "lines": [
+              497,
+              511
+            ],
+            "conclusion": "With R ≥ q/2, `√(1+q/R) ≤ √3`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L507-L509"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          982,
+          983
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "    have hl2 : Real.log (D / R) ≤ logPlus (D / (q / 2)) :=\n      log_le_logPlus (by positivity) (div_le_div_of_nonneg_left (by linarith) (by positivity) hqR)",
+            "line": 982,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "`log(D/R) ≤ log⁺(D/(q/2))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L982-L983"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

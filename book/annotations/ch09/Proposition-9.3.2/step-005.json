@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.3.2 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's explicit formula replaces Lemma agamon; the residue $R$ at $s=0$ appears as the $u=0$ term of the zero sum, bounded by $E_0$ instead of $c_0$.",
+  "subject": [
+    {
+      "location": {
+        "page": 192,
+        "rect": [
+          0.26253,
+          0.52152,
+          0.56162,
+          0.0165
+        ]
+      },
+      "title": "Proposition 9.3.2 step 5: Text, p. 182",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.3.2 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Ssum_le",
+        "module": "TernaryGoldbach.Explicit.ExplicitBound",
+        "lines": [
+          102,
+          106
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Ssum_le"
+          },
+          "snippet": {
+            "text": "  obtain ⟨Tk, -, hlim⟩ := explicit_formula hχ hχ1 δ hx0\n  set I0 := ∫ y : ℝ, hInt χ δ x (((-1 / 2 : ℝ) : ℂ) + y * I) with hI0\n  have h1 : ‖-Ssum χ δ x - (1 / (2 * π) : ℂ) * I0‖ ≤ E0b N + √x * E1b N T0 + x * E2b N T0 δ :=\n    le_of_tendsto' ((continuous_norm.tendsto _).comp hlim) fun k =>\n      zero_sum_bound hχ hχ1 δ hx hT0 hG (Tk k)",
+            "line": 102,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_Ssum_le",
+            "lines": [
+              95,
+              116
+            ],
+            "conclusion": "Lean applies `explicit_formula` (contour shifted to $\\Re s=-1/2$) and bounds its zero sum, which includes the point $s=0$, by `zero_sum_bound`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBound.lean",
+            "fragment": "L102-L106"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          469,
+          484
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "  have hA : ∑ u ∈ Z.filter (fun u => u = 0), m u * (‖Gr u δ 0‖ * x ^ u.re) ≤ E0b N := by\n    have hcount := sum_multRect_le hχ hχ1 (Z.filter fun u => u = 0) (Finset.filter_subset _ _) 0\n      (r := 3) (by norm_num) (by norm_num) (fun u hu => by\n        rw [(Finset.mem_filter.1 hu).2]; norm_num)\n    have hG0 : ‖Gr 0 δ 0‖ ≤ 112 := by\n      have := norm_G_uniform 0 δ (by simp) (by simp)\n      simpa using this\n    have hpt : ∀ u ∈ Z.filter (fun u => u = 0), m u * (‖Gr u δ 0‖ * x ^ u.re) ≤ m u * 112 := by\n      intro u hu\n      rw [(Finset.mem_filter.1 hu).2, Complex.zero_re, Real.rpow_zero, mul_one]\n      exact mul_le_mul_of_nonneg_left hG0 (hm 0)\n    refine (Finset.sum_le_sum hpt).trans ?_\n    rw [← Finset.sum_mul]\n    unfold E0b\n    have : ∑ u ∈ Z.filter (fun u => u = 0), m u ≤ Real.log (BP N 0 / 0.355) / Real.log (10 / 3) := hcount\n    nlinarith",
+            "line": 469,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "The contribution of $s=0$ (the book's $R$; $G_\\delta$ is regular at $0$ since $\\eta(0)=0$) is $m_0|G_\\delta(0)|\\le 112\\cdot\\log(B_P(N,0)/0.355)/\\log(10/3)=E_0$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L469-L484"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          192
+        ],
+        "printed": [
+          182
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

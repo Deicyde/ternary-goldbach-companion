@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 10",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Max stated as an upper bound for all |r| ≤ 1/2 plus the value at r = 1/2; n ≠ 0 via an `if n = 0` term in a sum over ℤ.",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.26253,
+          0.81668,
+          0.56162,
+          0.04021
+        ]
+      },
+      "title": "Lemma 4.2.1 step 10: Display, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.hasSum_inv_sq_sub_half",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          160,
+          167
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.hasSum_inv_sq_sub_half"
+          },
+          "snippet": {
+            "text": "theorem hasSum_inv_sq_sub_half :\n    HasSum (fun n : ℤ => if n = 0 then 0 else 1 / ((n : ℝ) - 1 / 2) ^ 2) (π ^ 2 - 4) := by\n  have h := hasSum_inv_sq_sub (s := 1 / 2) (by rw [mul_one_div, Real.sin_pi_div_two]; norm_num)\n  rw [mul_one_div, Real.sin_pi_div_two, one_pow, div_one] at h\n  have := h.update 0 0\n  convert this using 1\n  · funext n; by_cases hn : n = 0 <;> simp [hn, Function.update]\n  · norm_num; ring",
+            "line": 160,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.hasSum_inv_sq_sub_half",
+            "lines": [
+              159,
+              167
+            ],
+            "conclusion": "`∑_{n≠0} 1/(n−1/2)² = π²−4`, so the bound is attained at r = 1/2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L160-L167"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.tsum_inv_sq_sub_le",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          170,
+          183
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.tsum_inv_sq_sub_le"
+          },
+          "snippet": {
+            "text": "theorem tsum_inv_sq_sub_le {r : ℝ} (hr : |r| ≤ 1 / 2) :\n    Summable (fun n : ℤ => if n = 0 then 0 else 1 / ((n : ℝ) - r) ^ 2) ∧\n      ∑' n : ℤ, (if n = 0 then 0 else 1 / ((n : ℝ) - r) ^ 2) ≤ π ^ 2 - 4 := by\n  rw [← hasSum_inv_sq_sub_half.tsum_eq]\n  refine summable_tsum_le_of_pair (fun n => by split_ifs <;> positivity) (fun n => ?_) hasSum_inv_sq_sub_half.summable\n  rcases Nat.eq_zero_or_pos n with rfl | hn\n  · simp\n  have hn' : (n : ℤ) ≠ 0 := by exact_mod_cast hn.ne'\n  have hn1 : (1 : ℝ) ≤ n := by exact_mod_cast hn\n  simp only [hn', neg_eq_zero, ite_false, Int.cast_neg, Int.cast_natCast]\n  have e1 : (-(n : ℝ) - r) ^ 2 = (n + r) ^ 2 := by ring\n  have e2 : (-(n : ℝ) - 1 / 2) ^ 2 = (n + 1 / 2) ^ 2 := by ring\n  rw [e1, e2]\n  exact pair_le_half hn1 hr",
+            "line": 170,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.tsum_inv_sq_sub_le",
+            "lines": [
+              169,
+              183
+            ],
+            "conclusion": "For |r| ≤ 1/2, `∑_{n≠0} 1/(n−r)² ≤ π²−4` (and summable); with the previous end, the max over |r| ≤ 1/2 is attained at r = 1/2 and equals π²−4."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L170-L183"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

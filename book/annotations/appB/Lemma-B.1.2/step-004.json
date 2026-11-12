@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.1.2 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Only the identity $\\widehat{\\eta_2''}=4g+\\hat f$ is carried, in the sign-flipped form $(2\\pi t)^2\\hat\\eta_2=-(4g+\\hat f)$; $|f'|_1=160$ is not computed (Lean gets $80/(\\pi|t|)$ from two direct bounds in hsum).",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.26253,
+          0.6102,
+          0.56162,
+          0.03491
+        ]
+      },
+      "title": "Lemma B.1.2 step 4: Text, p. 292",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.1.2 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2DD_eq",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier",
+        "lines": [
+          151,
+          185
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2DD_eq"
+          },
+          "snippet": {
+            "text": "/-- **`(2πt)² η̂₂(t) = eta2DD t`** (two integrations by parts on each piece). -/\ntheorem eta2DD_eq {t : ℝ} (ht : t ≠ 0) :\n    ((2 * π * t) ^ 2 : ℂ) * 𝓕 (fun u => (eta2 u : ℂ)) t = eta2DD t := by\n  have pos : ∀ {a b x : ℝ}, 0 < a → a ≤ b → x ∈ Set.uIcc a b → 0 < x := fun ha hab hx => by\n    rw [Set.uIcc_of_le hab] at hx; exact ha.trans_le hx.1\n  have d1 : ∀ x ∈ Set.uIcc (1 / 4 : ℝ) (1 / 2),\n      HasDerivAt (fun u => 4 * Real.log (4 * u)) (4 * x⁻¹) x := by\n    intro x hx; have hx0 := pos (by norm_num) (by norm_num) hx\n    have := (((hasDerivAt_id' x).const_mul 4).log (by positivity)).const_mul 4\n    convert this using 1; field_simp\n  have d1' : ∀ x ∈ Set.uIcc (1 / 4 : ℝ) (1 / 2), HasDerivAt (fun u : ℝ => 4 * u⁻¹) (-4 * (x ^ 2)⁻¹) x := by\n    intro x hx; have hx0 := pos (by norm_num) (by norm_num) hx\n    convert (hasDerivAt_inv hx0.ne').const_mul 4 using 1; ring\n  have d2 : ∀ x ∈ Set.uIcc (1 / 2 : ℝ) 1, HasDerivAt (fun u => -4 * Real.log u) (-4 * x⁻¹) x := by\n    intro x hx; have hx0 := pos (by norm_num) (by norm_num) hx\n    exact (Real.hasDerivAt_log hx0.ne').const_mul (-4)\n  have d2' : ∀ x ∈ Set.uIcc (1 / 2 : ℝ) 1, HasDerivAt (fun u : ℝ => -4 * u⁻¹) (4 * (x ^ 2)⁻¹) x := by\n    intro x hx; have hx0 := pos (by norm_num) (by norm_num) hx\n    convert (hasDerivAt_inv hx0.ne').const_mul (-4) using 1; ring\n  rw [fourier_eta2_eq, mul_add,\n    ibp2 ht d1 d1' (continuousOn_inv_sq (by norm_num) (by norm_num) (-4)),\n    ibp2 ht d2 d2' (continuousOn_inv_sq (by norm_num) (by norm_num) 4)]\n  have hJ1 : ∫ u in (1 / 4 : ℝ)..(1 / 2), e (-(u * t)) * ((-4 * (u ^ 2)⁻¹ : ℝ) : ℂ) =\n      -4 * Jq (1 / 4) (1 / 2) t := by\n    rw [Jq, ← intervalIntegral.integral_const_mul]; congr 1; ext u; push_cast; ring\n  have hJ2 : ∫ u in (1 / 2 : ℝ)..1, e (-(u * t)) * ((4 * (u ^ 2)⁻¹ : ℝ) : ℂ) =\n      4 * Jq (1 / 2) 1 t := by\n    rw [Jq, ← intervalIntegral.integral_const_mul]; congr 1; ext u; push_cast; ring\n  rw [hJ1, hJ2, eta2DD]\n  have l1 : Real.log (4 * (1 / 4)) = 0 := by norm_num\n  have l2 : Real.log (4 * (1 / 2)) = Real.log 2 := by norm_num\n  have l3 : Real.log (1 / 2) = -Real.log 2 := by rw [one_div, Real.log_inv]\n  simp only [l1, l2, l3, Real.log_one]\n  push_cast\n  ring",
+            "line": 151,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eta2DD_eq",
+            "lines": [
+              151,
+              185
+            ],
+            "conclusion": "$(2\\pi t)^2\\hat\\eta_2(t)=\\mathrm{eta2DD}\\,t=16e(-t/2)-16e(-t/4)-4e(-t)+4J(1/4,1/2)-4J(1/2,1)$, i.e. $-\\widehat{\\eta_2''}=-(4g+\\hat f)$, by two integrations by parts on each piece."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L151-L185"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

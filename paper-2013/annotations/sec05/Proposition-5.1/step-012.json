@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 5.1 step 12",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean has no definition `c_r`; the Ramanujan sum appears as the left side `Σ_{a<q coprime} e(an/q)`. The text omits `i` (`e^{2πnu/r}` should be `e^{2πinu/r}`).",
+  "subject": [
+    {
+      "location": {
+        "page": 33,
+        "rect": [
+          0.20698,
+          0.09454,
+          0.62529,
+          0.04872
+        ]
+      },
+      "title": "Proposition 5.1 step 12: Display, p. 33",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.1 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.ramanujan_sum",
+        "module": "TernaryGoldbach.MajorArcs.Singular",
+        "lines": [
+          22,
+          25
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.ramanujan_sum"
+          },
+          "snippet": {
+            "text": "/-- **Ramanujan's sum**: `Σ_{a<q, (a,q)=1} e(an/q) = Σ_{d∣q} μ(d) (q/d) [q/d ∣ n]`. -/\ntheorem ramanujan_sum (q n : ℕ) (hq : 1 ≤ q) :\n    ∑ a ∈ (range q).filter q.Coprime, e (a * n / q) =\n      ∑ d ∈ q.divisors, (μ d : ℂ) * (if q / d ∣ n then ((q / d : ℕ) : ℂ) else 0) := by",
+            "line": 22,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.ramanujan_sum",
+            "lines": [
+              22,
+              65
+            ],
+            "conclusion": "`Σ_{a<q,(a,q)=1} e(an/q) = Σ_{d∣q} μ(d)(q/d)[q/d ∣ n]`, whose left side is `c_q(n)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L22-L25"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          33
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.1.1 step 12, the same LaTeX (mapper (sonnet); verifier (sonnet); judge (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

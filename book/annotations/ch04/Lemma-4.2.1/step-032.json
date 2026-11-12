@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 32",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's q' ≤ (1+ε)Qr uses the real Qr, so the book's +1 is absorbed; Lean states q' ≤ (1+ε)min(⌊Qr⌋+1, 2D) for the final form.",
+  "subject": [
+    {
+      "location": {
+        "page": 71,
+        "rect": [
+          0.17462,
+          0.15529,
+          0.56162,
+          0.01894
+        ]
+      },
+      "title": "Lemma 4.2.1 step 32: Text, p. 61",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1250,
+          1255
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hsqrt : √(1 + q' / M) ≤ √(3 + 2 * ε) := by\n    apply Real.sqrt_le_sqrt\n    rw [hMeq, div_div_eq_mul_div]\n    have : (q' : ℝ) * 2 / Qr ≤ 2 * (1 + ε) := by\n      rw [div_le_iff₀ hQrpos]; nlinarith\n    linarith",
+            "line": 1250,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`√(1+q'/M) ≤ √(3+2ε)` from `q' ≤ (1+ε)Qr`, `M = Qr/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1250-L1255"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1256,
+          1258
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hq'min : (q' : ℝ) ≤ (1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) := by\n    refine hq'Q'.trans (mul_le_mul_of_nonneg_left (le_min hfl1 ?_) (by linarith))\n    rw [hMeq] at hDM; linarith",
+            "line": 1256,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`q' ≤ (1+ε) min(⌊Qr⌋+1, 2D)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1256-L1258"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          71
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

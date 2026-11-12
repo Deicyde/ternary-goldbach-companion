@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 41",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean never forms this sqrt-integral: it bounds the integrand pointwise by Ggen (AM-GM with beta) in the general form with parameters c and m = 2/|delta|, so the display's integral is only implicit.",
+  "subject": [
+    {
+      "location": {
+        "page": 124,
+        "rect": [
+          0.25926,
+          0.18403,
+          0.56816,
+          0.06087
+        ]
+      },
+      "title": "Display, p. 114",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.pointwise_gen'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          104,
+          114
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.pointwise_gen'"
+          },
+          "snippet": {
+            "text": "  have T1 : a * √P ≤ x * √(m / (2 * Nat.totient q)) *\n      ((β * (1 + Real.log c / L) + h / β) / 2) := by\n    have e1 : x / W * h * P = (x * √(m / (2 * Nat.totient q))) ^ 2 *\n        ((β * (1 + Real.log c / L)) * (h / β)) := by\n      simp only [P]\n      rw [mul_pow, Real.sq_sqrt (by positivity), hlogW]\n      field_simp; try ring\n    rw [← Real.sqrt_mul (by positivity), e1, Real.sqrt_mul (by positivity),\n      Real.sqrt_sq (by positivity)]\n    gcongr\n    exact sqrt_le_amgm (by positivity) (by positivity)",
+            "line": 104,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.pointwise_gen'",
+            "lines": [
+              32,
+              167
+            ],
+            "conclusion": "The main-term product S1 * P with m = 2/|delta| is rewritten and bounded by AM-GM, giving the integrand whose sqrt(h log W/L) shape is the display's."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L104-L114"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          124
+        ],
+        "printed": [
+          114
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

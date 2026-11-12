@@ -1,0 +1,81 @@
+{
+  "id": "3 display 16",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds each modulus's main term by 0.640208 x mPhi(q) (numerics for |eta_+|_2^2) and sums with the exact value 2*6.798779; the symbolic inequality with |eta|_2^2 is not stated, and it is for eta_+ only.",
+  "subject": [
+    {
+      "location": {
+        "page": 18,
+        "rect": [
+          0.20371,
+          0.10009,
+          0.63183,
+          0.13608
+        ]
+      },
+      "title": "Display, p. 18",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_main_term",
+        "module": "TernaryGoldbach.MajorArcs.L2Major",
+        "lines": [
+          59,
+          75
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_main_term"
+          },
+          "snippet": {
+            "text": "/-- `∫_{−w}^{w} |η̂₊(−βx) x|² dβ = x ∫_{|δ|<wx} |η̂₊(δ)|² dδ`. -/\ntheorem integral_main_term {x w : ℝ} (hx : 0 < x) (hw : 0 ≤ w) :\n    ∫ β in -w..w, ‖𝓕 etaPC (-(β * x)) * x‖ ^ 2 =\n      x * ∫ δ in Ioo (-(w * x)) (w * x), ‖𝓕 etaPC δ‖ ^ 2 := by\n  have e1 : (fun β : ℝ => ‖𝓕 etaPC (-(β * x)) * x‖ ^ 2) =\n      fun β => x ^ 2 * (fun δ => ‖𝓕 etaPC δ‖ ^ 2) ((-x) * β) := by\n    ext β\n    rw [norm_mul, mul_pow, Complex.norm_real, Real.norm_eq_abs, sq_abs, mul_comm]\n    congr 3; ring\n  rw [e1, intervalIntegral.integral_const_mul,\n    intervalIntegral.integral_comp_mul_left (fun δ => ‖𝓕 etaPC δ‖ ^ 2) (neg_ne_zero.2 hx.ne'),\n    intervalIntegral.integral_symm, smul_eq_mul,\n    intervalIntegral.integral_of_le (by nlinarith), integral_Ioc_eq_integral_Ioo]\n  have e2 : -x * w = -(w * x) := by ring\n  have e3 : -x * -w = w * x := by ring\n  rw [e2, e3]\n  field_simp",
+            "line": 59,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_main_term",
+            "lines": [
+              59,
+              75
+            ],
+            "conclusion": "$\\int_{-w}^{w}|\\widehat{\\eta_+}(-\\beta x)x|^2d\\beta=x\\int_{|\\delta|<wx}|\\widehat{\\eta_+}(\\delta)|^2d\\delta$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "fragment": "L59-L75"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          18
+        ],
+        "printed": [
+          18
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.3 display 7, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

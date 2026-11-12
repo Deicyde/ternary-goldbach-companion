@@ -1,0 +1,122 @@
+{
+  "id": "Lemma 2.3.1 step 1",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 43,
+        "rect": [
+          0.17462,
+          0.55338,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 2.3.1 step 1: Text, p. 33",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 2.3.1 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          237,
+          241
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_tsum_le_of_fourier_bound"
+          },
+          "snippet": {
+            "text": "  have hP := Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable hg one_lt_two\n    (isBigO_of_hasCompactSupport hgs 2) hsumm.of_norm 0\n  simp only [zero_add, QuotientAddGroup.mk_zero, fourier_eval_zero, mul_one] at hP\n  change ‖∑' n : ℤ, g n‖ ≤ _\n  rw [hP]",
+            "line": 237,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+            "lines": [
+              211,
+              246
+            ],
+            "conclusion": "Poisson summation (Mathlib `Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable` at x=0) applied to `g(u)=f(u)e(αu)` gives `∑ g(n)=∑ 𝓕 g(n)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L237-L241"
+          }
+        }
+      }
+    },
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable",
+        "module": "Mathlib.Analysis.Fourier.PoissonSummation",
+        "lines": [
+          190,
+          194
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable"
+          },
+          "snippet": {
+            "text": "theorem Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable {f : ℝ → ℂ} (hc : Continuous f)\n    {b : ℝ} (hb : 1 < b) (hf : IsBigO (cocompact ℝ) f fun x : ℝ => |x| ^ (-b))\n    (hFf : Summable fun n : ℤ => 𝓕 f n) (x : ℝ) :\n    ∑' n : ℤ, f (x + n) = ∑' n : ℤ, 𝓕 f n * fourier n (x : UnitAddCircle) :=\n  Real.tsum_eq_tsum_fourier (fun K => summable_of_isBigO (Real.summable_abs_int_rpow hb)",
+            "line": 190,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable",
+            "lines": [
+              188,
+              196
+            ],
+            "conclusion": "Poisson summation for continuous `f` with `|x|^{-b}` decay and summable `𝓕 f`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/Fourier/PoissonSummation.lean",
+            "fragment": "L190-L194"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          43
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.2.1 step 3",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean's case is the closed interval $[1/2,1]$ where $\\eta_2=-4\\log t$.",
+  "subject": [
+    {
+      "location": {
+        "page": 303,
+        "rect": [
+          0.17462,
+          0.4782,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma B.2.1 step 3: Text, p. 293",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.1 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          78,
+          84
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.antitoneOn_eta2log"
+          },
+          "snippet": {
+            "text": "theorem antitoneOn_eta2log : AntitoneOn (eta2log ρ) (Set.Icc (1 / 2) 1) := by\n  intro s hs t ht hst\n  unfold eta2log\n  rw [Helfgott.eta2_eq_right hs.1 hs.2, Helfgott.eta2_eq_right ht.1 ht.2]\n  have hs0 : 0 < s := by linarith [hs.1]\n  have ht0 : 0 < t := by linarith [ht.1]\n  -- With `A = log ρ`, `u = -log s ≥ v = -log t ≥ 0`, `u ≤ log 2 ≤ A/2`: `(A-v)v ≤ (A-u)u`.",
+            "line": 78,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_eta2log",
+            "lines": [
+              78,
+              102
+            ],
+            "conclusion": "$\\eta_{(\\rho)}$ is antitone on $[1/2,1]$ for $\\rho\\ge4$, using $\\eta_2=-4\\log t$ there and $\\log\\rho\\ge2\\log2$; no derivative is computed."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L78-L84"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          303
+        ],
+        "printed": [
+          293
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

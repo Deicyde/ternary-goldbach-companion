@@ -1,0 +1,81 @@
+{
+  "id": "2.3 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean's Poisson summation requires `f` continuous, `O(|x|^{-b})` decay and summable `𝓕 f` (a quadratic bound is supplied at the use); the text assumes only compact support and quadratic decay of `f̂`, with `f` possibly piecewise continuous.",
+  "subject": [
+    {
+      "location": {
+        "page": 44,
+        "rect": [
+          0.25926,
+          0.31961,
+          0.56816,
+          0.03368
+        ]
+      },
+      "title": "Display, p. 34",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2.3 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          236,
+          240
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_tsum_le_of_fourier_bound"
+          },
+          "snippet": {
+            "text": "  -- Poisson summation at `x = 0`.\n  have hP := Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable hg one_lt_two\n    (isBigO_of_hasCompactSupport hgs 2) hsumm.of_norm 0\n  simp only [zero_add, QuotientAddGroup.mk_zero, fourier_eval_zero, mul_one] at hP\n  change ‖∑' n : ℤ, g n‖ ≤ _",
+            "line": 236,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+            "lines": [
+              211,
+              246
+            ],
+            "conclusion": "Applies it at `x = 0` to the compactly supported continuous `g(u)=f(u)e(αu)` (decay `|x|^{-2}`, summable `𝓕 g` from the second-derivative bound), giving `∑' n g n = ∑' n 𝓕 g n`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L236-L240"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          44
+        ],
+        "printed": [
+          34
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

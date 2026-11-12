@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.1.2 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same two families (half-integers k-1/2 and integers r), but the integer family runs to r<=(q-1)/2 instead of q/2; the book's range includes a term at r=q/2 for even q that the Lean split excludes.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.26253,
+          0.81315,
+          0.56162,
+          0.04437
+        ]
+      },
+      "title": "Lemma 4.1.2 step 2: Display, p. 54",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.2 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1264,
+          1283
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_4_1_2"
+          },
+          "snippet": {
+            "text": "  have hlow : ∀ r ∈ Finset.Icc 1 L, F r ≤ G r := by\n    intro r hr\n    have hr1 : (1 : ℝ) ≤ r := by exact_mod_cast (Finset.mem_Icc.1 hr).1\n    have hrL : (r : ℝ) ≤ L := by exact_mod_cast (Finset.mem_Icc.1 hr).2\n    refine min_le_min le_rfl (mul_le_mul_of_nonneg_left ?_ hC)\n    exact fq_le_of_between hq0 (by linarith) (by linarith [(hτ r).1]) (by linarith [(hτ r).2])\n  have hhigh : ∀ k ∈ Finset.Icc 1 K, F (q - k) ≤ G (k - 1 / 2) := by\n    intro k hk\n    have hk1 : (1 : ℝ) ≤ k := by exact_mod_cast (Finset.mem_Icc.1 hk).1\n    have hkK : (k : ℝ) ≤ K := by exact_mod_cast (Finset.mem_Icc.1 hk).2\n    have hkq : k ≤ q := by have := (Finset.mem_Icc.1 hk).2; omega\n    refine min_le_min le_rfl (mul_le_mul_of_nonneg_left ?_ hC)\n    have hsym : fq q (((q - k : ℕ) : ℝ) + τ (q - k)) = fq q (k - τ (q - k)) := by\n      unfold fq\n      rw [Nat.cast_sub hkq, show π * ((q : ℝ) - k + τ (q - k)) / q =\n        π - π * (k - τ (q - k)) / q by field_simp; ring, Real.sin_pi_sub]\n    show fq q (((q - k : ℕ) : ℝ) + τ (q - k)) ≤ fq q (k - 1 / 2)\n    rw [hsym]\n    exact fq_le_of_between hq0 (by linarith) (by linarith [(hτ (q - k)).2])\n      (by linarith [(hτ (q - k)).1])",
+            "line": 1264,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+            "lines": [
+              1227,
+              1383
+            ],
+            "conclusion": "Each term at low residue r (1<=r<=(q-1)/2) is at most G(r), and at high residue q-k (1<=k<=q/2) at most G(k-1/2), where G(u)=min(A, C fq q u), fq q u = 1/sin^2(pi u/q)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1264-L1283"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1284,
+          1286
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_4_1_2"
+          },
+          "snippet": {
+            "text": "  rw [sum_Icc_low_high F q hq]\n  have hS1 := Finset.sum_le_sum hlow\n  have hS2 := Finset.sum_le_sum hhigh",
+            "line": 1284,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+            "lines": [
+              1227,
+              1383
+            ],
+            "conclusion": "The sum over residues is rewritten as low plus high families and bounded termwise by the G-sums."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1284-L1286"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_Icc_low_high",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1210,
+          1224
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_Icc_low_high"
+          },
+          "snippet": {
+            "text": "/-- Split residues `1, …, q-1` into low `r ≤ (q-1)/2` and high `q - k`, `k ≤ q/2`. -/\ntheorem sum_Icc_low_high (F : ℕ → ℝ) (q : ℕ) (hq : 1 ≤ q) :\n    ∑ R ∈ Finset.Icc 1 (q - 1), F R =\n      ∑ r ∈ Finset.Icc 1 ((q - 1) / 2), F r + ∑ k ∈ Finset.Icc 1 (q / 2), F (q - k) := by\n  have hIcc : ∀ n, Finset.Icc 1 n = Finset.Ioc 0 n := fun n => by\n    ext x; simp only [Finset.mem_Icc, Finset.mem_Ioc]; omega\n  rw [hIcc, hIcc, hIcc, ← Finset.sum_Ioc_consecutive F (Nat.zero_le ((q - 1) / 2))\n    (by omega : (q - 1) / 2 ≤ q - 1)]\n  congr 1\n  refine Finset.sum_bij (fun R _ => q - R) ?_ ?_ ?_ ?_\n  · intro R hR; simp only [Finset.mem_Ioc] at hR ⊢; omega\n  · intro a ha b hb hab; simp only [Finset.mem_Ioc] at ha hb; omega\n  · intro k hk; simp only [Finset.mem_Ioc] at hk\n    exact ⟨q - k, by simp only [Finset.mem_Ioc]; omega, by omega⟩\n  · intro R hR; simp only [Finset.mem_Ioc] at hR; show F R = F (q - (q - R)); congr 1; omega",
+            "line": 1210,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_Icc_low_high",
+            "lines": [
+              1210,
+              1224
+            ],
+            "conclusion": "Residues 1..q-1 split into low r<=(q-1)/2 and high q-k, k<=q/2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1210-L1224"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          54
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

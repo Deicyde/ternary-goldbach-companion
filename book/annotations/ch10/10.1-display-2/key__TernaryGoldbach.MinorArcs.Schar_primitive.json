@@ -1,0 +1,81 @@
+{
+  "id": "10.1 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] proves the expansion for the coprime part of Lambda*eta (coprimePart), where the weight mu((q,n^inf))/phi((q,n^inf)) is 1; the identity for the full sum over all n is not formed. Also written with psi = conj chi and psi(b^{-1}) = chi(b).",
+  "subject": [
+    {
+      "location": {
+        "page": 213,
+        "rect": [
+          0.17135,
+          0.36238,
+          0.56816,
+          0.03846
+        ]
+      },
+      "title": "Display, p. 203",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.1 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Schar_primitive",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap",
+        "lines": [
+          78,
+          87
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Schar_primitive"
+          },
+          "snippet": {
+            "text": "theorem Schar_primitive {q : ℕ} [NeZero q] (ψ : DirichletCharacter ℂ q) (c : ℕ → ℂ) (β : ℝ) :\n    Schar ψ (coprimePart q c) β = Schar ψ.primitiveCharacter (coprimePart q c) β := by\n  unfold Schar\n  congr 1; ext n\n  have h := changeLevel_apply_natCast (DirichletCharacter.conductor_dvd_level ψ)\n    ψ.primitiveCharacter n\n  rw [DirichletCharacter.changeLevel_primitiveCharacter] at h\n  rw [h]\n  unfold coprimePart\n  split_ifs <;> simp",
+            "line": 78,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Schar_primitive",
+            "lines": [
+              76,
+              87
+            ],
+            "conclusion": "For coprime-supported coefficients, $S_\\psi=S_{\\chi}$ with $\\chi$ the primitive character inducing $\\psi$ (`primitiveCharacter`), i.e. the passage to $\\chi^*$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap.lean",
+            "fragment": "L78-L87"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          213
+        ],
+        "printed": [
+          203
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

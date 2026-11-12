@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 2.3.1 step 2",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean states `∑ g(n)=∑ 𝓕 g(n)` for `g=f·e(α·)` and translates `𝓕 g n = 𝓕 f (n-α)` separately; same identity rearranged.",
+  "subject": [
+    {
+      "location": {
+        "page": 43,
+        "rect": [
+          0.17462,
+          0.57342,
+          0.56162,
+          0.04355
+        ]
+      },
+      "title": "Lemma 2.3.1 step 2: Display, p. 33",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 2.3.1 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.fourier_mul_e",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          198,
+          203
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.fourier_mul_e"
+          },
+          "snippet": {
+            "text": "/-- Twisting by `e(αu)` translates the Fourier transform. -/\ntheorem fourier_mul_e (f : ℝ → ℂ) (α ξ : ℝ) :\n    𝓕 (fun u => f u * e (α * u)) ξ = 𝓕 f (ξ - α) := by\n  rw [fourier_eq_integral_e, fourier_eq_integral_e]\n  congr 1; funext v\n  rw [mul_comm (f v), ← mul_assoc, ← e_add]; congr 2; ring",
+            "line": 198,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.fourier_mul_e",
+            "lines": [
+              198,
+              203
+            ],
+            "conclusion": "`𝓕 (f·e(α·)) ξ = 𝓕 f (ξ-α)`, the twist by `e(αu)` translates the Fourier transform."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L198-L203"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          237,
+          241
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_tsum_le_of_fourier_bound"
+          },
+          "snippet": {
+            "text": "  have hP := Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable hg one_lt_two\n    (isBigO_of_hasCompactSupport hgs 2) hsumm.of_norm 0\n  simp only [zero_add, QuotientAddGroup.mk_zero, fourier_eval_zero, mul_one] at hP\n  change ‖∑' n : ℤ, g n‖ ≤ _\n  rw [hP]",
+            "line": 237,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+            "lines": [
+              211,
+              246
+            ],
+            "conclusion": "Poisson summation (Mathlib `Real.tsum_eq_tsum_fourier_of_rpow_decay_of_summable` at x=0) applied to `g(u)=f(u)e(αu)` gives `∑ g(n)=∑ 𝓕 g(n)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L237-L241"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          43
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7.1 display 11",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "E2 bound 2e-6 + 366.91/√x proved with the book's constants but for x >= 4.9e26 (text: x >= 1e12); the E1 bound is given only as the weaker |E1| <= 1e-8 (prop_9_5_1), also for x >= 4.9e26.",
+  "subject": [
+    {
+      "location": {
+        "page": 150,
+        "rect": [
+          0.25926,
+          0.71768,
+          0.56816,
+          0.03279
+        ]
+      },
+      "title": "Display, p. 140",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7.1 display 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_7_1_5'",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          354,
+          360
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_7_1_5'"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop 7.1.5]** (for `x ≥ 4.9·10²⁶`), from [H, Prop 9.5.1] (`prop_9_5_1`), Platt's verification at\n`q = 1` and the numerical value (9.94). -/\ntheorem prop_7_1_5' {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∃ E₂ : ℝ, |E₂| ≤ 2e-6 + 366.91 / √x ∧\n      ∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 =\n        0.640206 * x * Real.log x - 0.021095 * x + E₂ * x * Real.log x := by\n  have hx0 : 0 < x := by linarith",
+            "line": 354,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.prop_7_1_5'",
+            "lines": [
+              354,
+              391
+            ],
+            "conclusion": "For x >= 4.9e26 there is E2 with |E2| <= 2e-6 + 366.91/√x and `Σ' Λ(n) log n etaPlus(n/x)^2 = 0.640206 x log x - 0.021095 x + E2 x log x`, assuming only PlattGRH."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L354-L360"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          150
+        ],
+        "printed": [
+          140
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

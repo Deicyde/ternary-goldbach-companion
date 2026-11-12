@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.2 step 30",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same inference from the bound on m to a bound on g, but via termwise bounds on S_d with weights H_d, not via F_v(s1,s2,x).",
+  "subject": [
+    {
+      "location": {
+        "page": 98,
+        "rect": [
+          0.26253,
+          0.23663,
+          0.56162,
+          0.01563
+        ]
+      },
+      "title": "Lemma 5.1.2 step 30: Text, p. 88",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_Sd_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Bound",
+        "lines": [
+          79,
+          118
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_Sd_le"
+          },
+          "snippet": {
+            "text": "/-- **`|S_d(N/d)| ≤ 0.03 d^{1/9} P_{1/9}(d)/log x + √2 √d P_{1/2}(d)/√x`**. -/\ntheorem abs_Sd_le {x : ℝ} (hx : 1 < x) {d : ℕ} (hd1 : 1 ≤ d) :\n    |Sd d (⌊x⌋₊ / d)| ≤ 0.03 * (d : ℝ) ^ ((1 : ℝ) / 9) / Real.log x * PS (1 / 9) d (⌊x⌋₊ / d) +\n      √2 * √(d : ℝ) / √x * PS (1 / 2) d (⌊x⌋₊ / d) := by\n  have hx0 : 0 < x := by linarith\n  have hd0 : (0 : ℝ) < d := by exact_mod_cast hd1\n  rw [Sd_eq]\n  refine (abs_sum_le_sum_abs _ _).trans ?_\n  have hterm : ∀ a ∈ Icc 1 (⌊x⌋₊ / d),\n      |Hd d a * ∑ b ∈ Icc 1 (⌊x⌋₊ / d / a), (μ b : ℝ) / b| ≤\n        0.03 * (d : ℝ) ^ ((1 : ℝ) / 9) / Real.log x * (Hd d a * (a : ℝ) ^ ((1 : ℝ) / 9)) +\n        √2 * √(d : ℝ) / √x * (Hd d a * (a : ℝ) ^ ((1 : ℝ) / 2)) := by\n    intro a ha\n    have ha1 := (mem_Icc.1 ha).1\n    have haN := (mem_Icc.1 ha).2\n    have hda : d * a ≤ ⌊x⌋₊ := by\n      rw [Nat.le_div_iff_mul_le hd1] at haN; rw [mul_comm]; exact haN\n    have hu1 : 1 ≤ d * a := Nat.one_le_iff_ne_zero.2 (Nat.mul_ne_zero (by omega) (by omega))\n    have hux : ((d * a : ℕ) : ℝ) ≤ x :=\n      (by exact_mod_cast hda : ((d * a : ℕ) : ℝ) ≤ ⌊x⌋₊).trans (Nat.floor_le hx0.le)\n    have hfl : ⌊x⌋₊ / d / a = ⌊x / ((d * a : ℕ) : ℝ)⌋₊ := by\n      rw [Nat.div_div_eq_div_mul, Nat.floor_div_natCast]\n    have hm := abs_m_le hx hu1 hux\n    rw [← hfl] at hm\n    rw [abs_mul, abs_of_nonneg (Hd_nonneg d a)]\n    have ha0 : (0 : ℝ) ≤ a := Nat.cast_nonneg a\n    have e1 : ((d * a : ℕ) : ℝ) ^ ((1 : ℝ) / 9) =\n        (d : ℝ) ^ ((1 : ℝ) / 9) * (a : ℝ) ^ ((1 : ℝ) / 9) := by\n      push_cast; exact Real.mul_rpow hd0.le ha0\n    have e2 : √((d * a : ℕ) : ℝ) = √(d : ℝ) * (a : ℝ) ^ ((1 : ℝ) / 2) := by\n      push_cast; rw [Real.sqrt_mul hd0.le, Real.sqrt_eq_rpow (a : ℝ)]\n    rw [e1, e2] at hm\n    calc Hd d a * |∑ b ∈ Icc 1 (⌊x⌋₊ / d / a), (μ b : ℝ) / b|\n        ≤ Hd d a * (0.03 * ((d : ℝ) ^ ((1 : ℝ) / 9) * (a : ℝ) ^ ((1 : ℝ) / 9)) / Real.log x +\n          √2 * (√(d : ℝ) * (a : ℝ) ^ ((1 : ℝ) / 2)) / √x) :=\n          mul_le_mul_of_nonneg_left hm (Hd_nonneg d a)\n      _ = _ := by ring\n  refine (sum_le_sum hterm).trans (le_of_eq ?_)\n  rw [sum_add_distrib, ← mul_sum, ← mul_sum]\n  rfl",
+            "line": 79,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_Sd_le",
+            "lines": [
+              79,
+              118
+            ],
+            "conclusion": "|S_d(N/d)| ≤ 0.03 d^{1/9} P_{1/9}(d)/log x + √2 √d P_{1/2}(d)/√x, from abs_m_le termwise."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Bound.lean",
+            "fragment": "L79-L118"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_sum",
+        "module": "TernaryGoldbach.MinorArcs.G2Moebius",
+        "lines": [
+          124,
+          134
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_g2_le_sum"
+          },
+          "snippet": {
+            "text": "/-- `|g₂(x)| ≤ ∑_{d ≤ N} f(d)² S_d(N/d)²`. -/\ntheorem abs_g2_le_sum (x : ℝ) :\n    |g2 x| ≤ ∑ d ∈ Icc 1 ⌊x⌋₊, fo d ^ 2 * Sd d (⌊x⌋₊ / d) ^ 2 := by\n  rw [g2_eq_sum_moebius]\n  refine (abs_sum_le_sum_abs _ _).trans (sum_le_sum fun d _ => ?_)\n  rw [abs_mul, abs_mul, abs_of_nonneg (sq_nonneg (fo d)),\n    abs_of_nonneg (sq_nonneg (Sd d (⌊x⌋₊ / d))), mul_assoc]\n  have : |(μ d : ℝ)| ≤ 1 := by exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n  calc |(μ d : ℝ)| * (fo d ^ 2 * Sd d (⌊x⌋₊ / d) ^ 2) ≤ 1 * (fo d ^ 2 * Sd d (⌊x⌋₊ / d) ^ 2) :=\n        mul_le_mul_of_nonneg_right this (by positivity)\n    _ = _ := one_mul _",
+            "line": 124,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_sum",
+            "lines": [
+              124,
+              134
+            ],
+            "conclusion": "g₂ is bounded by the sum over d of f(d)² S_d² terms."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Moebius.lean",
+            "fragment": "L124-L134"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          98
+        ],
+        "printed": [
+          88
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

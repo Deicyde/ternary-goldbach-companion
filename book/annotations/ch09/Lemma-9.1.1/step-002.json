@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.1 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same inversion formula with `s=3/2+it`, `ds=i dt`; Lean proves it only for `GoodSmoothing φ` (instantiated at `fδ δ`, `η=t²e^{-t²/2}`), not general `η`.",
+  "subject": [
+    {
+      "location": {
+        "page": 175,
+        "rect": [
+          0.17462,
+          0.21459,
+          0.56162,
+          0.04252
+        ]
+      },
+      "title": "Lemma 9.1.1 step 2: Display, p. 165",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.GoodSmoothing.eq_mellinInv",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          88,
+          97
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.GoodSmoothing.eq_mellinInv"
+          },
+          "snippet": {
+            "text": "/-- Mellin inversion on `ℜs = 3/2`. -/\ntheorem GoodSmoothing.eq_mellinInv {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {y : ℝ}\n    (hy : 0 < y) :\n    φ y = (1 / (2 * π)) • ∫ t : ℝ, (y : ℂ) ^ (-(((3 / 2 : ℝ) : ℂ) + t * I)) •\n      mellin φ (((3 / 2 : ℝ) : ℂ) + t * I) := by\n  have hvert : Complex.VerticalIntegrable (mellin φ) (3 / 2) := by\n    rw [Complex.VerticalIntegrable]\n    exact hφ.integrable_line (σ := 3 / 2) (by norm_num) le_rfl\n  have h := mellinInv_mellin_eq (3 / 2) φ hy hφ.conv hvert (hφ.continuousAt y hy)\n  rw [← h, mellinInv]",
+            "line": 88,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.GoodSmoothing.eq_mellinInv",
+            "lines": [
+              88,
+              97
+            ],
+            "conclusion": "For `GoodSmoothing φ` and `y>0`, `φ y = (1/2π) ∫ y^{-(3/2+it)} mellin φ (3/2+it) dt`, via Mathlib `mellinInv_mellin_eq` using Mellin convergence at 3/2, integrability of `mellin φ` on the line and continuity of `φ` at `y`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L88-L97"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          175
+        ],
+        "printed": [
+          165
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

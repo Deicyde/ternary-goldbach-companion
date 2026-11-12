@@ -1,0 +1,119 @@
+{
+  "id": "Proposition 5.2.4 step 11",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.45,
+          0.56162,
+          0.03317
+        ]
+      },
+      "title": "Proposition 5.2.4 step 11: Text, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          605,
+          613
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_c"
+          },
+          "snippet": {
+            "text": "  have hres := odd_block_bound hq hcop h2α hx hδ0 s (fun m hm => (mem_filter.1 hm).2) (W' := W')\n    (W := W)\n    (Δ := x / (4 * W)) (by positivity) (by\n      intro m hm m' hm'\n      have := abs_sub_le_of_mem_Ioc (mem_filter.1 hm).1 (mem_filter.1 hm').1\n      have h2 : x / W - U' ≤ 2 * (x / (4 * W)) := by\n        have : x / W - x / (2 * W) = 2 * (x / (4 * W)) := by field_simp; ring\n        linarith\n      linarith) hcond' hW'",
+            "line": 605,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+            "lines": [
+              584,
+              621
+            ],
+            "conclusion": "`odd_block_bound` is applied with Δ=x/(4W): υ=Δ|δ|/x, ν=|δ|q/x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L605-L613"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.odd_block_bound",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          534,
+          567
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.odd_block_bound"
+          },
+          "snippet": {
+            "text": "  have hres := lemma_5_2_1 s hq aa u (ν := |δ| * q / x) (υ := Δ * |δ| / x) (W' := W') (W := W)\n    (by positivity)\n    (by positivity) (by\n      have : |δ| * q / x + Δ * |δ| / x = (q + Δ) * |δ| / x := by ring\n      rw [this]; exact hcond)\n    (by\n      intro m hm m' hm'\n      have e : u m - u m' = ((j m - j m' : ℤ) : ℝ) * (δ / x) := by simp only [u]; push_cast; ring\n      rw [e, abs_mul, hjdiff m hm m' hm', abs_div, abs_div, abs_of_pos hx]\n      have := hwidth m hm m' hm'\n      rw [abs_two]\n      have h1 : |((m - m' : ℤ) : ℝ)| / 2 ≤ Δ := by linarith\n      calc |((m - m' : ℤ) : ℝ)| / 2 * (|δ| / x) ≤ Δ * (|δ| / x) :=\n            mul_le_mul_of_nonneg_right h1 (by positivity)\n        _ = Δ * |δ| / x := by ring)\n    (by\n      intro m hm m' hm' hne hdvd\n      have hdvd' : (q : ℤ) ∣ j m - j m' := by\n        have : aa m - aa m' = (j m - j m') * a := by simp only [aa]; ring\n        rw [this] at hdvd\n        exact hcop.symm.dvd_of_dvd_mul_right hdvd\n      have hjne : j m - j m' ≠ 0 := by\n        intro h\n        have := hjdiff m hm m' hm'\n        rw [h] at this\n        push_cast at this\n        exact hne (by have : ((m : ℝ) - m') = 0 := by linarith\n                      exact_mod_cast sub_eq_zero.1 this)\n      have hq' : (q : ℝ) ≤ |((j m - j m' : ℤ) : ℝ)| := by\n        rw [← Int.cast_abs]; exact_mod_cast Int.le_of_dvd (abs_pos.2 hjne) ((dvd_abs _ _).2 hdvd')\n      have e : u m - u m' = ((j m - j m' : ℤ) : ℝ) * (δ / x) := by simp only [u]; push_cast; ring\n      rw [e, abs_mul, abs_div, abs_of_pos hx]\n      calc |δ| * q / x = q * (|δ| / x) := by ring\n        _ ≤ _ := mul_le_mul_of_nonneg_right hq' (by positivity)) hW'",
+            "line": 534,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.odd_block_bound",
+            "lines": [
+              500,
+              572
+            ],
+            "conclusion": "`lemma_5_2_1` is applied to the odd m=2j+1 with ν=|δ|q/x, υ=Δ|δ|/x, checking separation and |u m - u m'| <= υ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L534-L567"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

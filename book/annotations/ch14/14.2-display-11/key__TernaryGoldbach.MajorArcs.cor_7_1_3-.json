@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 11",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "The actual error bound for the $\\eta_*$ sum at $q=1$ in [L] is $10^{-17}+4.7\\cdot10^6/\\sqrt y$ (about $1.5\\cdot10^{-6}$ at $y=10^{25}$), weaker than $1.20665\\cdot10^{-7}$; `err933_le_book` has [H]'s expression for the abstract term `err933` but is not the bound used.",
+  "subject": [
+    {
+      "location": {
+        "page": 275,
+        "rect": [
+          0.17135,
+          0.18047,
+          0.56816,
+          0.03536
+        ]
+      },
+      "title": "Display, p. 265",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.cor_7_1_3'",
+        "module": "TernaryGoldbach.MajorArcs.Cor713",
+        "lines": [
+          807,
+          811
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.cor_7_1_3'"
+          },
+          "snippet": {
+            "text": "theorem cor_7_1_3' {y : ℝ} (hy : 1e25 ≤ y) {q : ℕ} [NeZero q] (hq : q ≤ 300000)\n    (χ : DirichletCharacter ℂ q) (hχ : χ.IsPrimitive) {δ : ℝ} (hδ : |δ| ≤ 4 * 300000 / q) :\n    ‖Schar χ (fun n => ((Λ n * etaU (n / y) : ℝ) : ℂ)) (δ / y) -\n        (if q = 1 then 𝓕 (fun u => (etaU u : ℂ)) (-δ) * y else 0)‖ ≤\n      (1e-17 + 4.7e6 / √q / √y) * y := by",
+            "line": 807,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.cor_7_1_3'",
+            "lines": [
+              803,
+              836
+            ],
+            "conclusion": "At $q=1$, $\\delta=0$, $y\\ge10^{25}$: $|\\sum\\Lambda(n)\\eta_*(n/y)-\\widehat{\\eta_*}(0)y|\\le(10^{-17}+4.7\\cdot10^6/\\sqrt y)\\,y$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L807-L811"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          275
+        ],
+        "printed": [
+          265
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

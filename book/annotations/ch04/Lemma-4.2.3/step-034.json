@@ -1,0 +1,192 @@
+{
+  "id": "Lemma 4.2.3 step 34",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean ends at `bound_4_41`, which has `log(2ex/c₂)` where the text's (4.41) has `log(2√e x/c₂)`; η=η₂.",
+  "subject": [
+    {
+      "location": {
+        "page": 80,
+        "rect": [
+          0.26253,
+          0.31263,
+          0.51108,
+          0.01592
+        ]
+      },
+      "title": "Lemma 4.2.3 step 34: Text, p. 70",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R1L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          382,
+          387
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R1L"
+          },
+          "snippet": {
+            "text": "theorem sum_R1L {α x δ Q D : ℝ} {a k : ℤ} {q : ℕ} (hx : 1 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) (hD4 : D ≤ x / 4) :\n    ∑ n ∈ Ioc 0 ⌊min ((q : ℝ) / 2) D⌋, TLn α x n ≤\n      2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) *\n        Real.log x := by",
+            "line": 382,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R1L",
+            "lines": [
+              380,
+              449
+            ],
+            "conclusion": "`∑_{n ≤ min(q/2,D)} |T_{n,∘}| ≤ (2|η₂'|₁/π) q max(1, log(c₀e³q²/(4π|η₂'|₁x))) log x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L382-L387"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R2L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          464,
+          470
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R2L"
+          },
+          "snippet": {
+            "text": "theorem sum_R2L {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 1 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {D' : ℝ} (hD'q : (q : ℝ) / 2 < D') (hD'Q : D' ≤ Q / 2)\n    (hD'c : D' ≤ c₂ * x / q) (hD'4 : D' ≤ x / 4) (hD'e : D' ≤ x / rexp 1) :\n    ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else TLn α x n) ≤\n      5 * c₀ * c₂ / (3 * π ^ 2) * (D' * Real.log (rexp (1 / 2) * x / D') +\n        4 * √(2 * c₂ * x) * Real.log (2 * rexp 1 * x / c₂)) := by",
+            "line": 464,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R2L",
+            "lines": [
+              461,
+              646
+            ],
+            "conclusion": "For `q/2 < D' ≤ min(Q/2, c₂x/q, x/4, x/e)`: `∑_{q/2<n≤D', q∤n} |T_{n,∘}| ≤ (5c₀c₂/3π²)(D' log(√e x/D') + 4√(2c₂x) log(2ex/c₂))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L464-L470"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          654,
+          663
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3L"
+          },
+          "snippet": {
+            "text": "theorem sum_R3L {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 1 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {R D : ℝ} (hRq : (q : ℝ) / 2 ≤ R) (hRc : c₂ * x / q ≤ R)\n    (hRD : R < D) (hD4 : D ≤ x / 4) (hDe : D ≤ x / rexp 1) :\n    ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, TLn α x n ≤\n      3 * (1 + eta2'L1 / (x / D)) / 2 * (√(2 * x / c₂) * Real.log (2 * x / c₂) +\n          x / q * Real.log (q / c₂) * logPlus (D / (c₂ * x / q))) +\n        2 * √(c₀ * (1 + eta2'L1 / (x / D))) / π * (√3 * q * Real.log (q / c₂) +\n          (D * (1 + Real.log x - Real.log D) - R * (1 + Real.log x - Real.log R)) +\n          q / 2 * Real.log (q / c₂) * logPlus (D / (q / 2))) := by",
+            "line": 654,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+            "lines": [
+              650,
+              904
+            ],
+            "conclusion": "For `R ≥ max(c₂x/q, q/2)`, `R<D`: `∑_{R<n≤D} |T_{n,∘}|` is at most the (3c₁/2) and (2√(c₀c₁)/π) terms of the text's (4.42-style) bound, with `log(q/c₂)`, `√(2x/c₂)` as in `kuche2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L654-L663"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          1121,
+          1182
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB"
+          },
+          "snippet": {
+            "text": "  -- Step 4: combine.\n  refine h1.trans (h2.trans ?_)\n  unfold bound_4_41\n  simp only []\n  rw [← hc₁def, hlogexD]\n  have hFD : D' * (1 + Real.log x - Real.log D') ≤ D * (1 + Real.log x - Real.log D) := by\n    rcases eq_or_lt_of_le hD'0 with h | h\n    · rw [← h]; simp\n      exact mul_nonneg (by linarith) (by linarith [Real.log_le_log (by linarith) hDx])\n    · exact F₁_mono h hD'D hDx\n  have hpos5 : 0 ≤ 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) * Real.log (q / c₂) := by\n    positivity\n  have hpos6 : 0 ≤ 2 * √(c₀ * c₁) / π * (√3 + 1 / 2 * logPlus (D / (q / 2))) * Real.log (q / c₂) * q := by\n    positivity\n  have hpos7 : 0 ≤ 3 * c₁ / 2 * √(2 * x / c₂) * Real.log (2 * x / c₂) := by positivity\n  rcases lt_or_ge R D with hRD | hRD\n  · have hD'eq : D' = c₂ * x / q := by\n      rcases min_choice (c₂ * x / q) D with h | h\n      · exact h\n      · exfalso; have : D' = D := h; linarith\n    have hB3 := sum_R3L hx hq hcop h2α hqQ hδ hqR (hD'eq ▸ hD'R) hRD hD4 hDe (α := α)\n    rw [← hc₁def] at hB3\n    have hcancel : 2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D')) ≤\n        2 * √(c₀ * c₁) / π * (R * (1 + Real.log x - Real.log R)) := by\n      have hR0 : 0 < R := by\n        have : (0 : ℝ) < q / 2 := by positivity\n        linarith\n      have h1 : D' * (1 + Real.log x - Real.log D') ≤ R * (1 + Real.log x - Real.log R) := by\n        rcases eq_or_lt_of_le hD'0 with h | h\n        · rw [← h]; simp\n          exact mul_nonneg hR0.le (by linarith [Real.log_le_log hR0 (hRD.le.trans hDx)])\n        · exact F₁_mono h hD'R (hRD.le.trans hDx)\n      have h2 : 0 ≤ R * (1 + Real.log x - Real.log R) :=\n        mul_nonneg hR0.le (by linarith [Real.log_le_log hR0 (hRD.le.trans hDx)])\n      have := Real.pi_pos\n      calc 2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D'))\n          ≤ 2 * √c₀ / π * (R * (1 + Real.log x - Real.log R)) := by gcongr\n        _ ≤ _ := by gcongr\n    have e3 : 3 * c₁ / 2 * (√(2 * x / c₂) * Real.log (2 * x / c₂) +\n        x / q * Real.log (q / c₂) * logPlus (D / (c₂ * x / q))) =\n        3 * c₁ / 2 * √(2 * x / c₂) * Real.log (2 * x / c₂) +\n        3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) * Real.log (q / c₂) := by ring\n    have e4 : 2 * √(c₀ * c₁) / π * (√3 * q * Real.log (q / c₂) +\n        (D * (1 + Real.log x - Real.log D) - R * (1 + Real.log x - Real.log R)) +\n        q / 2 * Real.log (q / c₂) * logPlus (D / (q / 2))) =\n        2 * √(c₀ * c₁) / π * (√3 + 1 / 2 * logPlus (D / (q / 2))) * Real.log (q / c₂) * q +\n        2 * √(c₀ * c₁) / π * (D * (1 + Real.log x - Real.log D)) -\n        2 * √(c₀ * c₁) / π * (R * (1 + Real.log x - Real.log R)) := by ring\n    rw [e3, e4] at hB3\n    have hB2' := hB2.1\n    nlinarith\n  · rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hRD)), sum_empty, add_zero]\n    have hcancel : 2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D')) ≤\n        2 * √(c₀ * c₁) / π * (D * (1 + Real.log x - Real.log D)) := by\n      have := Real.pi_pos\n      have h2 : 0 ≤ D * (1 + Real.log x - Real.log D) :=\n        mul_nonneg (by linarith) (by linarith [Real.log_le_log (by linarith) hDx])\n      calc 2 * √c₀ / π * (D' * (1 + Real.log x - Real.log D'))\n          ≤ 2 * √c₀ / π * (D * (1 + Real.log x - Real.log D)) := by gcongr\n        _ ≤ _ := by gcongr\n    have hB2' := hB2.1\n    nlinarith",
+            "line": 1121,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+            "lines": [
+              968,
+              1182
+            ],
+            "conclusion": "Adds `sum_R1L`, `sum_R2L`, `sum_R3L` and absorbs terms to reach `bound_4_41`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L1121-L1182"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          80
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

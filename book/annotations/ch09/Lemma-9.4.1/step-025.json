@@ -1,0 +1,139 @@
+{
+  "id": "Lemma 9.4.1 step 25",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the Gaussian-regime contribution over actual zeros as $E_A'(2Z_3/(1-\\rho_A)+2c_3/(1-\\rho_A)^2)$, not the integral (sibabita).",
+  "subject": [
+    {
+      "location": {
+        "page": 196,
+        "rect": [
+          0.26253,
+          0.8372,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 9.4.1 step 25: Text, pp. 186–187",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 25#0"
+        }
+      }
+    },
+    {
+      "location": {
+        "page": 197,
+        "rect": [
+          0.17462,
+          0.15793,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 9.4.1 step 25: Text, pp. 186–187",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 25#1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
+        "lines": [
+          291,
+          300
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_tail"
+          },
+          "snippet": {
+            "text": "  have hT0' : max (10 * π * |δ|) 50 ≤ T0 - 200 := by linarith\n  have h := norm_mellin_fP_le δ (s := s) (by linarith)\n    (B := EB (T0 - 200) * rhoB ^ k + EA (T0 - 200) δ * rhoA δ ^ k) fun ξ hξ => by\n    have hsh := abs_shift_le hξ\n    have ha : |s.im| - 200 ≤ |s.im + 2 * π * ξ| := by\n      have := abs_sub_abs_le_abs_sub s.im (-(2 * π * ξ)); rw [abs_neg] at this\n      have e : s.im - -(2 * π * ξ) = s.im + 2 * π * ξ := by ring\n      rw [e] at this; linarith\n    have hτ' : T0 - 200 < |(s - 1 + ((2 * π * ξ : ℝ) : ℂ) * I).im| := by rw [im_shift]; linarith\n    have hG := norm_G_tail_floor hT0' (by rw [re_shift]; linarith) (by rw [re_shift]; linarith) hτ'",
+            "line": 291,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+            "lines": [
+              285,
+              314
+            ],
+            "conclusion": "From $T_0\\ge 200+\\max(10\\pi|\\delta|,50)$ Lean gets $T_0-200\\ge\\max(10\\pi|\\delta|,50)$, i.e. $(T_0-200)/(\\pi|\\delta|)\\ge10$, and applies the per-zero tail bound at $T_0-200$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L291-L300"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_boundG",
+        "module": "TernaryGoldbach.Explicit.ZeroSumGen",
+        "lines": [
+          320,
+          322
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_boundG"
+          },
+          "snippet": {
+            "text": "    have g2 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3g B T0) (c := 2 * c3g κ T0)\n      (E := EA') (ρ := ρA) (by linarith) (by linarith) hEA hρA0 hρA1 (fun k => by\n        have := hZw k; linarith)",
+            "line": 320,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_boundG",
+            "lines": [
+              199,
+              325
+            ],
+            "conclusion": "The Gaussian-regime part $\\sum m_u E_A'\\rho_A^{k(u)}$ is at most $E_A'(2Z_3/(1-\\rho_A)+2c_3/(1-\\rho_A)^2)$, $E_A'=C_g2a_HE_A(T_0-200,\\delta)$ with factor $e^{-0.1065((T_0-200)/\\pi|\\delta|)^2}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumGen.lean",
+            "fragment": "L320-L322"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          196,
+          197
+        ],
+        "printed": [
+          186,
+          187
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

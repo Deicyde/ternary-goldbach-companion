@@ -1,0 +1,81 @@
+{
+  "id": "7 display 46",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds $L_{2n}/n$ at its top level $r_2=\\lfloor y^{1/4}\\rfloor$ (not [H]'s $r_1=\\frac38y^{4/15}$) with the corrected $L$; the bound is $L_{2n}/n\\le0.005n^{-1/4}$ for $n\\ge8\\cdot10^{16}$, not an expression in $\\log y\\log\\log y$.",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.20371,
+          0.09913,
+          0.63183,
+          0.11349
+        ]
+      },
+      "title": "Display, p. 66",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 46"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+        "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+        "lines": [
+          137,
+          159
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY_le_asym"
+          },
+          "snippet": {
+            "text": "  have hL : Lg (2 * n) / n ≤ 0.005 * (t ^ 4)⁻¹ := by\n    unfold Lg\n    rw [show 2 * n / 2 = n by ring]\n    have h1 : Fr n * (13 / 4 * Real.log (2 * n) + 7.82) ≤ 14.4 * t ^ 2 * (13 / 4 * (8.73 * t ^ 2) + 7.82) :=\n      mul_le_mul hF (by linarith) (by positivity) (by positivity)\n    have ht2 : (121:ℝ) ≤ t ^ 2 := by nlinarith\n    have hpoly : 14.4 * t ^ 2 * (13 / 4 * (8.73 * t ^ 2) + 7.82) + 13.66 * (8.73 * t ^ 2) + 37.55 ≤\n        412 * t ^ 4 := by\n      have e : t ^ 4 = (t ^ 2) ^ 2 := by ring\n      rw [e]; nlinarith [ht2]\n    have hnum : Fr n * (13 / 4 * Real.log (2 * n) + 7.82) + 13.66 * Real.log (2 * n) + 37.55 ≤\n        412 * t ^ 4 := by linarith\n    rw [div_le_iff₀ hn0]\n    have e : 0.005 * (t ^ 4)⁻¹ * n = 0.005 * t ^ 12 := by rw [← ht16]; field_simp\n    rw [e]\n    have : 412 * t ^ 4 ≤ 0.005 * t ^ 12 := by\n      have h8 : (82400 : ℝ) ≤ t ^ 8 := by\n        have : (11:ℝ) ^ 8 ≤ t ^ 8 := by gcongr\n        norm_num at this; linarith\n      have h412 : 412 ≤ 0.005 * t ^ 8 := by linarith\n      calc 412 * t ^ 4 ≤ 0.005 * t ^ 8 * t ^ 4 := mul_le_mul_of_nonneg_right h412 (pow_pos ht0 4).le\n        _ = 0.005 * t ^ 12 := by ring\n    linarith",
+            "line": 137,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+            "lines": [
+              55,
+              188
+            ],
+            "conclusion": "Within `ghatY_le_asym`: $L_{2n}/n\\le 0.005 n^{-1/4}$ for $n\\ge 8\\cdot10^{16}$ from $\\digamma(n)\\le14.4t^2$ and the logarithm bounds."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+            "fragment": "L137-L159"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          66
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

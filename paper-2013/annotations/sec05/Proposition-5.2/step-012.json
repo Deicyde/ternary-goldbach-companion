@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.2 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] states the bound in arc form, `Σ_{q,b}∫_{arc_Q}|S|² ≤ ∫_0^1|S|² = Σ|aₙ|²`, with the character-form `2Σ_1+Σ_2` replaced by `∫F_Q` and the constant `C` multiplied in at the end (see `prop_12_1_2`).",
+  "subject": [
+    {
+      "location": {
+        "page": 35,
+        "rect": [
+          0.20698,
+          0.37866,
+          0.62529,
+          0.04214
+        ]
+      },
+      "title": "Proposition 5.2 step 12: Display, p. 35",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs",
+        "lines": [
+          313,
+          351
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral"
+          },
+          "snippet": {
+            "text": "/-- **Disjointness**: for `δ₀Q² ≤ x/2`, `Σ_{q, b} ∫_{J_{q,b}} g ≤ ∫_0^1 g` (`g ≥ 0` continuous\n`1`-periodic). -/\ntheorem sum_arcs_le_integral {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    (hg0 : ∀ α, 0 ≤ g α) {δ₀ Q x : ℝ} (hx : 0 < x) (hδ : 0 < δ₀) (hQ : 0 < Q)\n    (hQx : δ₀ * Q ^ 2 ≤ x / 2) (hw : δ₀ * Q ≤ x) :\n    ∑ q ∈ Qset Q, ∑ b ∈ Bset q, ∫ y in arc δ₀ Q x q b, g y ≤ ∫ α in Ioc (0 : ℝ) 1, g α := by\n  set K : Finset ℤ := {-1, 0, 1}\n  have hδQ : 0 ≤ δ₀ * Q := by positivity\n  have hmem : ∀ q ∈ Qset Q, 1 ≤ q := fun q hq => (Finset.mem_Icc.1 (Finset.mem_filter.1 hq).1).1\n  have hbmem : ∀ q b, b ∈ Bset q → b < q := fun q b hb => Finset.mem_range.1 (Finset.mem_filter.1 hb).1\n  have hP : ∀ q ∈ Qset Q, ∀ b ∈ Bset q, ∫ y in arc δ₀ Q x q b, g y =\n      ∑ k ∈ K, ∫ α in Ioc (0 : ℝ) 1, (arc δ₀ Q x q b).indicator 1 (α - k) * g α := fun q hq b hb =>\n    setIntegral_eq_sum_periodize hg hper measurableSet_Ioo\n      (arc_subset hx hδQ hw (hmem q hq) (hbmem q b hb))\n  rw [Finset.sum_congr rfl fun q hq => Finset.sum_congr rfl fun b hb => hP q hq b hb]\n  have hint : ∀ (q b : ℕ) (k : ℤ), IntegrableOn\n      (fun α => (arc δ₀ Q x q b).indicator 1 (α - k) * g α) (Ioc (0 : ℝ) 1) := by\n    intro q b k\n    refine (hg.integrableOn_Icc (a := 0) (b := 1)).mono_set Ioc_subset_Icc_self |>.bdd_mul\n      (c := 1) ?_ ?_\n    · exact ((measurable_const.indicator measurableSet_Ioo).comp\n        (measurable_sub_const _)).aestronglyMeasurable\n    · exact Filter.Eventually.of_forall fun α => by simp only [indicator]; split_ifs <;> simp\n  simp_rw [← integral_finset_sum _ fun _ _ => hint _ _ _]\n  have hint2 : ∀ q b, IntegrableOn (fun α => ∑ k ∈ K, (arc δ₀ Q x q b).indicator 1 (α - k) * g α)\n      (Ioc (0 : ℝ) 1) := fun q b => integrable_finset_sum _ fun k _ => hint q b k\n  have hmerge : ∑ q ∈ Qset Q, ∑ b ∈ Bset q, ∫ α in Ioc (0 : ℝ) 1,\n      ∑ k ∈ K, (arc δ₀ Q x q b).indicator 1 (α - k) * g α =\n      ∫ α in Ioc (0 : ℝ) 1, ∑ q ∈ Qset Q, ∑ b ∈ Bset q, ∑ k ∈ K,\n        (arc δ₀ Q x q b).indicator 1 (α - k) * g α := by\n    rw [integral_finset_sum _ fun q _ => integrable_finset_sum _ fun b _ => hint2 q b]\n    exact Finset.sum_congr rfl fun q _ => (integral_finset_sum _ fun b _ => hint2 q b).symm\n  rw [hmerge]\n  refine setIntegral_mono_on ?_ ?_ measurableSet_Ioc fun α _ => ?_\n  · exact integrable_finset_sum _ fun q _ => integrable_finset_sum _ fun b _ => hint2 q b\n  · exact (hg.integrableOn_Icc (a := 0) (b := 1)).mono_set Ioc_subset_Icc_self\n  · simp_rw [← Finset.sum_mul]\n    have := sum_arc_indicator_le_one hx hδ hQ hQx α\n    nlinarith [hg0 α]",
+            "line": 313,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral",
+            "lines": [
+              313,
+              351
+            ],
+            "conclusion": "For `δ₀Q² ≤ x/2`, `Σ_{q,b} ∫_{J_{q,b}} g ≤ ∫_0^1 g` for continuous nonnegative 1-periodic `g`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "fragment": "L313-L351"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.setIntegral_norm_sq_expTsum",
+        "module": "TernaryGoldbach.MinorArcs.Plancherel",
+        "lines": [
+          29,
+          54
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.setIntegral_norm_sq_expTsum"
+          },
+          "snippet": {
+            "text": "/-- **Plancherel** for `ℓ¹` coefficients. -/\ntheorem setIntegral_norm_sq_expTsum {a : ℕ → ℂ} (ha : Summable fun n => ‖a n‖) :\n    ∫ α in Set.Ioc (0:ℝ) 1, ‖expTsum a α‖ ^ 2 = ∑' n, ‖a n‖ ^ 2 := by\n  set B := ∑' n, ‖a n‖\n  -- pointwise convergence of the partial sums\n  have hpt : ∀ α : ℝ, Tendsto (fun X : ℕ => ‖expSum X a α‖ ^ 2) atTop (𝓝 (‖expTsum a α‖ ^ 2)) := by\n    intro α\n    have hs : Summable fun n => a n * e (n * α) :=\n      Summable.of_norm (by simpa only [norm_mul_e] using ha)\n    have := (hs.hasSum.tendsto_sum_nat).comp (tendsto_add_atTop_nat 1)\n    exact ((continuous_norm.pow 2).tendsto _).comp this\n  have hlim := tendsto_integral_of_dominated_convergence (μ := volume.restrict (Set.Ioc (0:ℝ) 1))\n    (F := fun (X : ℕ) (α : ℝ) => ‖expSum X a α‖ ^ 2) (f := fun α => ‖expTsum a α‖ ^ 2)\n    (fun _ => B ^ 2)\n    (fun X => ((continuous_expSum X a).norm.pow 2).aestronglyMeasurable)\n    (integrable_const _)\n    (fun X => Eventually.of_forall fun α => by\n      rw [Real.norm_eq_abs, abs_of_nonneg (by positivity : (0:ℝ) ≤ ‖expSum X a α‖ ^ 2)]\n      exact pow_le_pow_left₀ (norm_nonneg _) (norm_expSum_le X ha α) 2)\n    (Eventually.of_forall hpt)\n  have hfun : (fun X : ℕ => ∫ α in Set.Ioc (0:ℝ) 1, ‖expSum X a α‖ ^ 2) =\n      fun X => ∑ n ∈ range (X + 1), ‖a n‖ ^ 2 := funext fun X => setIntegral_norm_sq_expSum X a\n  rw [hfun] at hlim\n  have h2 := (summable_norm_sq_of_summable_norm ha).hasSum.tendsto_sum_nat.comp\n    (tendsto_add_atTop_nat 1)\n  exact tendsto_nhds_unique hlim h2",
+            "line": 29,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.setIntegral_norm_sq_expTsum",
+            "lines": [
+              29,
+              54
+            ],
+            "conclusion": "Plancherel: `∫_{(0,1]} ‖expTsum a‖² = Σ ‖a n‖²` for `ℓ¹` coefficients."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Plancherel.lean",
+            "fragment": "L29-L54"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          35
+        ],
+        "printed": [
+          35
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.1.2 step 12, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

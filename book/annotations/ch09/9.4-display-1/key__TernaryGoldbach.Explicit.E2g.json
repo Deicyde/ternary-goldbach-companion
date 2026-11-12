@@ -1,0 +1,81 @@
+{
+  "id": "9.4 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the high-zero tail by E2g (EB, EA majorants, Jensen windows, H=200) inside zero_sum_boundG, not by the displayed bound with 11.308, 16.147 and log(qT0/2pi); the Lean lemma has no displayed-form statement. Text error, confirmed by two skeptics and `scripts/checks/steps/9_4_display_1.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17135,
+          0.23002,
+          0.56816,
+          0.05741
+        ]
+      },
+      "title": "Display, p. 185",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.4 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.E2g",
+        "module": "TernaryGoldbach.Explicit.ZeroSumGen",
+        "lines": [
+          194,
+          197
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.E2g"
+          },
+          "snippet": {
+            "text": "/-- `E₂` for a geometric tail `E_B ρ_B^k + E_A ρ_A^k`. -/\nnoncomputable def E2g (B : ℝ → ℝ) (κ T0 EB' EA' ρB ρA : ℝ) : ℝ :=\n  EB' * (2 * Z3g B T0 / (1 - ρB) + 2 * c3g κ T0 / (1 - ρB) ^ 2) +\n    EA' * (2 * Z3g B T0 / (1 - ρA) + 2 * c3g κ T0 / (1 - ρA) ^ 2)",
+            "line": 194,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.E2g",
+            "lines": [
+              194,
+              197
+            ],
+            "conclusion": "E2g is the geometric-series constant bounding the high zeros, which replaces the displayed tail bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumGen.lean",
+            "fragment": "L194-L197"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

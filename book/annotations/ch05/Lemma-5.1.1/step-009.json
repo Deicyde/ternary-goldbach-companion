@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.1 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The tail is bounded termwise per `(e,m)` for `P = 2 r1 r2`, not summed over `d_1,d_2,s_1,s_2,d_3`; the factor `1/2` comes from `b-a <= b/2`, as in the text.",
+  "subject": [
+    {
+      "location": {
+        "page": 92,
+        "rect": [
+          0.26253,
+          0.64,
+          0.56162,
+          0.04883
+        ]
+      },
+      "title": "Lemma 5.1.1 step 9: Text, p. 82",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          421,
+          433
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.cntSq_approx"
+          },
+          "snippet": {
+            "text": "    · push Not at hmX\n      have hbm : b < ((e * (m * m) : ℕ) : ℝ) := by\n        rw [hD]\n        have : X ^ 2 < (m : ℝ) ^ 2 := pow_lt_pow_left₀ hmX (Real.sqrt_nonneg _) two_ne_zero\n        rw [hX2, div_lt_iff₀ he0] at this; linarith\n      simp only [hC]\n      rw [sum_Ioc_dvd_eq_zero hbm, zero_sub, abs_neg, abs_of_nonneg (by\n        have : 0 ≤ b - a := by linarith\n        positivity), hX2]\n      rw [div_le_div_iff₀ (by positivity) (by positivity)]\n      have h0 : 0 ≤ (m : ℝ) ^ 2 := by positivity\n      have h1 : (e : ℝ) * (m : ℝ) ^ 2 * (b / e) = b * m ^ 2 := by field_simp\n      nlinarith [h1, mul_le_mul_of_nonneg_right hb2 h0]",
+            "line": 421,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+            "lines": [
+              278,
+              441
+            ],
+            "conclusion": "For squarefree `m > X = sqrt(b/e)`, the completion term `|(b-a)/(e m^2)|` is at most `X^2/(2 m^2)` (using `b <= 2a`), the `1/2 * x^2/m^2` tail of `f`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L421-L433"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          92
+        ],
+        "printed": [
+          82
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

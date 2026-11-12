@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.2.4 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves (5.54) with the extra hypotheses W >= 50000 and W' <= W.",
+  "subject": [
+    {
+      "location": {
+        "page": 109,
+        "rect": [
+          0.17462,
+          0.83456,
+          0.56162,
+          0.01894
+        ]
+      },
+      "title": "Proposition 5.2.4 step 3: Text, p. 99",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_e",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1454,
+          1457
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_e"
+          },
+          "snippet": {
+            "text": "  set D := x / W - U'\n  have hD : D ≤ x / (2 * W) := by\n    simp only [D]; have : x / W - x / (2 * W) = x / (2 * W) := by field_simp; ring\n    linarith",
+            "line": 1454,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_e",
+            "lines": [
+              1435,
+              1472
+            ],
+            "conclusion": "`D = x/W-U' ≤ x/(2W)` from U'>=x/2W."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1454-L1457"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_e",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1469,
+          1472
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_e"
+          },
+          "snippet": {
+            "text": "  calc (⌈D / (2 * q)⌉₊ : ℝ) * (q / Nat.totient q * (W / Real.log (W / (2 * q))))\n      ≤ (x / (4 * W * q) + 1) * (q / Nat.totient q * (W / Real.log (W / (2 * q)))) :=\n        mul_le_mul_of_nonneg_right hJ (by positivity)\n    _ = _ := by field_simp",
+            "line": 1469,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_e",
+            "lines": [
+              1435,
+              1472
+            ],
+            "conclusion": "(x/(4Wq)+1)(q/φ(q))W/log(W/2q) equals (x/(4φ(q)log(W/2q)) + (q/φ(q))W/log(W/2q)): (5.54)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1469-L1472"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          109
+        ],
+        "printed": [
+          99
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

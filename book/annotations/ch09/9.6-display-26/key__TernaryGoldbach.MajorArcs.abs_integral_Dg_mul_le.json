@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 26",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the cross term by Parseval on the Fourier tails (O(H^-4), about 2.6e-7 log x), not by Cauchy-Schwarz with 274.86/H^{7/2}; the displayed 1.944e-6 log x is not derived.",
+  "subject": [
+    {
+      "location": {
+        "page": 207,
+        "rect": [
+          0.17135,
+          0.55726,
+          0.56816,
+          0.1061
+        ]
+      },
+      "title": "Display, p. 197",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.abs_integral_Dg_mul_le",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          461,
+          475
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.abs_integral_Dg_mul_le"
+          },
+          "snippet": {
+            "text": "/-- `|∫ D W| ≤ (λ · 368 + M/λ)/(2 H⁴)` when `‖W''‖₂² ≤ M`. -/\ntheorem abs_integral_Dg_mul_le {W W' W'' : ℝ → ℝ} (hW : ∀ u, HasDerivAt W (W' u) u)\n    (hW' : ∀ u, HasDerivAt W' (W'' u) u) (i0 : Integrable W) (i1 : Integrable W')\n    (i2 : Integrable W'') (i22 : Integrable fun u => W'' u ^ 2) (m0 : MemLp W 2)\n    (c0 : Continuous W) {M : ℝ} (hM : ∫ u, W'' u ^ 2 ≤ M) {lam : ℝ} (hlam : 0 < lam) :\n    |∫ u, Dg u * W u| ≤ (lam * 368 + M / lam) / 2 / 200 ^ 4 := by\n  rw [← cross_eq]\n  refine (abs_cross_le i0 m0 c0 200 hlam).trans ?_\n  have hg := tail_fourier_gC_le' (H := 200) (by norm_num)\n  have hw := tail_fourier_le_deriv2 hW hW' i0 i1 i2 i22 (H := 200) (by norm_num)\n  have hw' : (∫ u, W'' u ^ 2) / 200 ^ 4 ≤ M / 200 ^ 4 := by gcongr\n  have h1 := mul_le_mul_of_nonneg_left hg hlam.le\n  have h2 := div_le_div_of_nonneg_right (hw.trans hw') hlam.le\n  calc (lam * _ + _ / lam) / 2 ≤ (lam * (368 / 200 ^ 4) + M / 200 ^ 4 / lam) / 2 := by gcongr\n    _ = (lam * 368 + M / lam) / 2 / 200 ^ 4 := by field_simp",
+            "line": 461,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.abs_integral_Dg_mul_le",
+            "lines": [
+              461,
+              475
+            ],
+            "conclusion": "|int D W|<=(lam*368+M/lam)/2/200^4 when ||W''||_2^2<=M, by Parseval and Fourier tails."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L461-L475"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          207
+        ],
+        "printed": [
+          197
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

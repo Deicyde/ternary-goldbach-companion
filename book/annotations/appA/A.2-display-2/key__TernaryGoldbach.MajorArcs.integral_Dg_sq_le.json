@@ -1,0 +1,81 @@
+{
+  "id": "A.2 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same inequality with the sup constant bounded by 0.37 in place of max e^{-t²}t³|log t| = 0.14882; ∫|h_H-h|²dt/t appears as ∫Dg² du.",
+  "subject": [
+    {
+      "location": {
+        "page": 294,
+        "rect": [
+          0.25926,
+          0.60663,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Display, p. 284",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.2 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_Dg_sq_le",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          443,
+          446
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_Dg_sq_le"
+          },
+          "snippet": {
+            "text": "theorem integral_Dg_sq_le : ∫ u, Dg u ^ 2 ≤ 368 / 200 ^ 4 := by\n  simp_rw [Dg_sq_eq]\n  rw [integral_norm_sq_gC_sub]\n  exact tail_fourier_gC_le' (by norm_num)",
+            "line": 443,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_Dg_sq_le",
+            "lines": [
+              443,
+              446
+            ],
+            "conclusion": "`∫ Dg(u)² du ≤ 368/200⁴`, where `Dg = g_H - g` in `u = log t`, so `∫ Dg² du = ∫|h_H-h|² dt/t`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L443-L446"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          294
+        ],
+        "printed": [
+          284
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

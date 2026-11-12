@@ -1,0 +1,120 @@
+{
+  "id": "Lemma B.2.3 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean computes the derivatives of the two smooth pieces of log·η₂ (second derivatives `lg1''`, `lg2''`), not the distributional η_(y)'' with log y·η₂'' and delta masses.",
+  "subject": [
+    {
+      "location": {
+        "page": 304,
+        "rect": [
+          0.26253,
+          0.21593,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma B.2.3 step 1: Text, p. 294",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.3 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.hasDerivAt_lg1'",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          97,
+          102
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.hasDerivAt_lg1'"
+          },
+          "snippet": {
+            "text": "theorem hasDerivAt_lg1' {u : ℝ} (hu : 0 < u) : HasDerivAt lg1' (lg1'' u) u := by\n  have h1 := ((hasDerivAt_id u).const_mul 4).log (by simp; positivity)\n  have h2 := Real.hasDerivAt_log hu.ne'\n  convert ((h1.add h2).const_mul 4).div (hasDerivAt_id u) hu.ne' using 1\n  · ext v; simp [lg1']\n  · simp only [lg1'', id, Pi.add_apply]; field_simp; ring",
+            "line": 97,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.hasDerivAt_lg1'",
+            "lines": [
+              97,
+              102
+            ],
+            "conclusion": "The derivative of `lg1'` (= (log·η₂)' on (1/4,1/2)) is `lg1''(u) = 4(2 - log 4u - log u)/u^2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L97-L102"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.hasDerivAt_lg2'",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          109,
+          112
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.hasDerivAt_lg2'"
+          },
+          "snippet": {
+            "text": "theorem hasDerivAt_lg2' {u : ℝ} (hu : 0 < u) : HasDerivAt lg2' (lg2'' u) u := by\n  convert ((Real.hasDerivAt_log hu.ne').const_mul (-8)).div (hasDerivAt_id u) hu.ne' using 1\n  · ext v; simp [lg2']\n  · simp only [lg2'', id]; field_simp; ring",
+            "line": 109,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.hasDerivAt_lg2'",
+            "lines": [
+              109,
+              112
+            ],
+            "conclusion": "The derivative of `lg2'` (= (log·η₂)' on (1/2,1)) is `lg2''(u) = -8(1 - log u)/u^2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L109-L112"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          304
+        ],
+        "printed": [
+          294
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

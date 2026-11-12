@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 22",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "No numeric `κ₉ ≤ 3.9086`; [L]'s coefficient `8·1.4262√(κ₁(1/2+1/U))` stays symbolic and is evaluated later with `κ₁ ≤ 0.24083`, giving about 3.96.",
+  "subject": [
+    {
+      "location": {
+        "page": 119,
+        "rect": [
+          0.17135,
+          0.1679,
+          0.56816,
+          0.0223
+        ]
+      },
+      "title": "Display, p. 109",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a1_M4_le",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIa",
+        "lines": [
+          485,
+          488
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a1_M4_le"
+          },
+          "snippet": {
+            "text": "  calc 8 * 1.4262 * T ^ 3 * √(kap1 (T ^ 3) (U2 T) (V2 T) * (1 / 2 + 1 / U2 T)) / √(V2 T)\n      = 8 * 1.4262 * √(kap1 (T ^ 3) (U2 T) (V2 T) * (1 / 2 + 1 / U2 T)) * (T ^ 3 / √(V2 T)) := by\n        ring\n    _ ≤ 8 * 1.4262 * √(0.24083 * 0.50001) * (1.73207 * (T ^ 2 * √T)) := by gcongr",
+            "line": 485,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.a1_M4_le",
+            "lines": [
+              457,
+              489
+            ],
+            "conclusion": "At the chosen parameters the coefficient is bounded by `8·1.4262·√(0.24083·0.50001)` (≈ 3.96), using `κ₁ ≤ 0.24083` in place of the text's `0.2347`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIa.lean",
+            "fragment": "L485-L488"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          119
+        ],
+        "printed": [
+          109
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

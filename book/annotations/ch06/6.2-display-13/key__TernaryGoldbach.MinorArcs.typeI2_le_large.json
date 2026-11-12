@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 13",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's first-line terms carry `1.0064`, the factor `(1+(1+ε)(1+V/Q)/e)` on `2√(c₀c₊)/π · UV` (collecting the `U/e` term of the second line), and `qV ≤ Q` is applied directly to the `35c₀c₂/(3π²)` term.",
+  "subject": [
+    {
+      "location": {
+        "page": 115,
+        "rect": [
+          0.17135,
+          0.81365,
+          0.56816,
+          0.04254
+        ]
+      },
+      "title": "Display, p. 105",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_large",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Large",
+        "lines": [
+          344,
+          353
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_le_large"
+          },
+          "snippet": {
+            "text": "  have hlast : C * (1.0064 * V) ≤\n      1.0064 * (2 * √(c₀ * c) / π * (1 + (1 + ε) * (1 + V / Q) / rexp 1)) * (U * V) +\n      1.0064 * (3 / 2 * c * (2 + (1 + ε) / ε * logPlus (2 * U * V * |δ| * q / x))) * (x * V / Q) +\n      1.0064 * (35 * c₀ * c₂ / (3 * π ^ 2)) * Q := by\n    have e2 : C * (1.0064 * V) =\n        1.0064 * (2 * √(c₀ * c) / π * (1 + (1 + ε) * (1 + V / Q) / rexp 1)) * (U * V) +\n        1.0064 * (3 / 2 * c * (2 + (1 + ε) / ε * logPlus (2 * U * V * |δ| * q / x))) *\n          (x * V / Q) + 1.0064 * (35 * c₀ * c₂ / (3 * π ^ 2) * q * V) := by\n      simp only [hC]; ring\n    rw [e2]",
+            "line": 344,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_large",
+            "lines": [
+              217,
+              359
+            ],
+            "conclusion": "`C·1.0064 V ≤ 1.0064(2√(c₀c₊)/π(1+(1+ε)(1+V/Q)/e)) UV + 1.0064(3c₊/2(…)) xV/Q + 1.0064 (35c₀c₂/3π²) Q`, using `qV ≤ Q` and `∑Λ(v) ≤ 1.0064 V`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Large.lean",
+            "fragment": "L344-L353"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          115
+        ],
+        "printed": [
+          105
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

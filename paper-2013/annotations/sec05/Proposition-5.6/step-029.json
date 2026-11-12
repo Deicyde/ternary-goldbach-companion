@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.6 step 29",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "[L] uses $\\omega\\le0.6274$ and $t^{-1/3}\\le0.03685$ (so $(1+\\beta_\\rho)$ becomes $1+0.6274\\cdot0.03685$, giving 7.4527), and multiplies by $q/\\phi(q)$.",
+  "subject": [
+    {
+      "location": {
+        "page": 40,
+        "rect": [
+          0.20698,
+          0.87555,
+          0.62529,
+          0.02237
+        ]
+      },
+      "title": "Proposition 5.6 step 29: Display, p. 40",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.6 step 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.e2_bound",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
+        "lines": [
+          142,
+          167
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.e2_bound"
+          },
+          "snippet": {
+            "text": "/-- `max(0, −e₂) ≤ 7.284 · 0.03685 · R^{−1/3} f₁(q)`. -/\ntheorem e2_bound {Q Q₀ s c : ℝ} {q : ℕ} (hq : 1 ≤ q) (hQ : 20000 * Q₀ ≤ Q) (hs : 1 ≤ s)\n    (hR : 1 ≤ Q₀ / (s * q))\n    (hram : ∀ d : ℕ, 1 ≤ d → ∀ R : ℝ, 1 ≤ R →\n      |Gq d R - (Nat.totient d / d) * (Real.log R + c + Sq d)| ≤ 7.284 * R ^ (-(1 / 3 : ℝ)) * f1q d) :\n    max 0 (-(Gq q (Q / (s * q)) - (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q))) ≤\n      7.284 * 0.03685 * (Q₀ / (s * q)) ^ (-(1 / 3 : ℝ)) * f1q q := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hsq : 0 < s * q := by positivity\n  set R := Q₀ / (s * q)\n  have htR := Q_div_ge (q := q) hQ hsq\n  have hTR : 1 ≤ Q / (s * q) := by linarith\n  have h := hram q hq _ hTR\n  have hf := f1q_pos q\n  have hR0 : 0 < R := by linarith\n  -- `(Q/(sq))^{−1/3} = (t)^{−1/3} R^{−1/3}` with `t ≥ 20000`\n  have ht : 20000 ≤ (Q / (s * q)) / R := by rw [le_div_iff₀ hR0]; linarith\n  have e : Q / (s * q) = (Q / (s * q)) / R * R := by field_simp\n  have hpow : (Q / (s * q)) ^ (-(1 / 3 : ℝ)) ≤ 0.03685 * R ^ (-(1 / 3 : ℝ)) := by\n    rw [e, Real.mul_rpow (by linarith) hR0.le]\n    exact mul_le_mul_of_nonneg_right (rpow_neg_third_le ht) (by positivity)\n  refine max_le (by positivity) ?_\n  have h2 := (abs_le.1 h).1\n  calc _ ≤ 7.284 * (Q / (s * q)) ^ (-(1 / 3 : ℝ)) * f1q q := by linarith\n    _ ≤ 7.284 * (0.03685 * R ^ (-(1 / 3 : ℝ))) * f1q q := by gcongr\n    _ = _ := by ring",
+            "line": 142,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.e2_bound",
+            "lines": [
+              142,
+              167
+            ],
+            "conclusion": "$\\max(0,-e_2)\\le 7.284\\cdot0.03685\\,R^{-1/3}f_1(q)$ using Ramaré at $tR$ with $t\\ge20000$ and $t^{-1/3}\\le0.03685$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L142-L167"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionL",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
+        "lines": [
+          204,
+          213
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionL"
+          },
+          "snippet": {
+            "text": "  calc K * ((Gq q R - (Nat.totient q / q) * (Real.log R + c + Sq q)) +\n        0.6274 * max 0 (-(Gq q (Q / (s * q)) -\n          (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q))))\n      ≤ K * (7.284 * R ^ (-(1 / 3 : ℝ)) * f1q q +\n          0.6274 * (7.284 * 0.03685 * R ^ (-(1 / 3 : ℝ)) * f1q q)) := by gcongr\n    _ ≤ K * 7.4527 * f1q q * R ^ (-(1 / 3 : ℝ)) := by\n        have : 0 ≤ K * f1q q * R ^ (-(1 / 3 : ℝ)) := by positivity\n        nlinarith\n    _ ≤ kapQ q := hmain\n    _ ≤ _ := by unfold kapQ; nlinarith",
+            "line": 204,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionL",
+            "lines": [
+              171,
+              213
+            ],
+            "conclusion": "Combines Ramaré at $R$ and $tR$ to bound $K(e_1+0.6274\\max(0,-e_2))\\le K\\cdot7.4527f_1R^{-1/3}\\le\\kappa(q)$ when $R\\ge\\lambda(q)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L204-L213"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          40
+        ],
+        "printed": [
+          40
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.2.4 step 29, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

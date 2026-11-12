@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.4 step 24",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean states q^2 <= 2 c2 x rather than q <= sqrt(2 c2 x) (equivalent); M <= c2 x/q is `hqM` and M <= D is `hMD` (909).",
+  "subject": [
+    {
+      "location": {
+        "page": 84,
+        "rect": [
+          0.26253,
+          0.15703,
+          0.56162,
+          0.01808
+        ]
+      },
+      "title": "Lemma 4.2.4 step 24: Text, p. 74",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          929,
+          941
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hqM : q * M / x ≤ c₂ := by\n    have h1 : q * M / x ≤ q * (Qr / 2) / x := by gcongr\n    have h2 : (q : ℝ) * (Qr / 2) / x = 1 / (2 * |δ|) := by rw [hQrdef]; field_simp\n    have h3 : 1 / (2 * |δ|) ≤ c₂ := by\n      rw [div_le_iff₀ (by positivity)]\n      rw [div_le_iff₀ (by positivity)] at hδ; linarith\n    linarith\n  have hq2 : (q : ℝ) ^ 2 ≤ 2 * c₂ * x := by\n    have h1 : (q : ℝ) * Q₀ ≤ 2 * c₂ * x := by\n      rw [abs_div, abs_of_pos hx, div_le_div_iff₀ hx (by positivity)] at hδQ₀\n      rw [div_le_iff₀ (by positivity)] at hδ\n      nlinarith\n    nlinarith",
+            "line": 929,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+            "lines": [
+              880,
+              1126
+            ],
+            "conclusion": "In case (a), `q*M/x <= c2` (i.e. `M <= c2 x/q`) and `q^2 <= 2 c2 x`, the latter derived from `|delta| >= 1/2c2` and `q Q0 <= ...` rather than by referring to Lemma 4.2.2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L929-L941"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          84
+        ],
+        "printed": [
+          74
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

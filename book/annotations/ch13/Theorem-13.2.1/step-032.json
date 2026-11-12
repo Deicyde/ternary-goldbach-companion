@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 13.2.1 step 32",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Monotonicity of $g$ is `hgmono` and Prop. 13.1.2 gives the bound `key`, in discrete form $g(r_0)(H(r_0)-I_0)+\\sum g(n)(H(n)-H(n-1))$ rather than the integral $\\int g H'$ with the extra jump term.",
+  "subject": [
+    {
+      "location": {
+        "page": 262,
+        "rect": [
+          0.26253,
+          0.50104,
+          0.56162,
+          0.03159
+        ]
+      },
+      "title": "Theorem 13.2.1 step 32: Text, p. 252",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          388,
+          394
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hgmono : ∀ n, 150000 ≤ n → n < r₂ → g (n + 1) ≤ g n := by\n    intro n hn hn2\n    have hn' : (150000 : ℝ) ≤ n := by exact_mod_cast hn\n    have hn2' : ((n + 1 : ℕ) : ℝ) ≤ r₂ := by exact_mod_cast hn2\n    simp only [hg_def]\n    refine mul_le_mul_of_nonneg_left (ghatY_antitone hy' (by linarith) (by push_cast; linarith)\n      (hn2'.trans hr2y)) hy0.le",
+            "line": 388,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "`hgmono`: $g(n+1)\\le g(n)$ for $150000\\le n<r_2$, from `ghatY_antitone`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L388-L394"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          412,
+          413
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have key := thm_13_2_1_repaired hx0 (primeSupported_a₁ hx0) (g := g) (r₀ := 150000) (r₁ := r₂)\n    h150.le (by norm_num) hx1 hρ hgmono hg0 hv₀ hvn",
+            "line": 412,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "`key`: applies `thm_13_2_1_repaired` to $a_1$ with $g=y\\hat g$, giving the discrete form of the bound on $\\int_A|S_1|^2|S_{\\eta_*}|$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L412-L413"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          262
+        ],
+        "printed": [
+          252
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

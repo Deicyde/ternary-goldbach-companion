@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.4.1 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same convolution representation but with Fourier transform of gC over [-aH,aH] in place of Mh(ir) over [-H,H]; kernel differs and Lean has t^2 e^{-t^2/2} shifted by 2πiξ rather than F_δ(s+1-ir).",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17462,
+          0.45476,
+          0.56162,
+          0.03834
+        ]
+      },
+      "title": "Lemma 9.4.1 step 4: Display, p. 185",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.mellin_fP_eq",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
+        "lines": [
+          133,
+          204
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.mellin_fP_eq"
+          },
+          "snippet": {
+            "text": "/-- **`M₊(s) = ∫_{|ξ| ≤ a} ĝ(ξ) G_δ(s − 1 + 2πiξ) dξ`** for `ℜs > −1`. -/\ntheorem mellin_fP_eq (δ : ℝ) {s : ℂ} (hs : -1 < s.re) :\n    mellin (fP δ) s = ∫ ξ in Icc (-aH) aH, 𝓕 gC ξ * Gr (s - 1 + ((2 * π * ξ : ℝ) : ℂ) * I) δ 0 := by\n  set g1 : ℝ → ℂ := fun t => ((t * Real.exp (-t ^ 2 / 2) : ℝ) : ℂ) * Complex.exp (2 * π * I * δ * t)\n    with hg1\n  set F : ℝ → ℝ → ℂ := fun t ξ => (t : ℂ) ^ (s - 1) *\n    (Complex.exp (↑(2 * π * ξ * Real.log t) * I) * 𝓕 gC ξ) * g1 t with hF\n  have hstep1 : mellin (fP δ) s = ∫ t in Ioi (0:ℝ), ∫ ξ in Icc (-aH) aH, F t ξ := by\n    rw [mellin]\n    refine setIntegral_congr_fun measurableSet_Ioi fun t (ht : 0 < t) => ?_\n    rw [smul_eq_mul, fP_eq ht, hHc, ← integral_mul_const, ← integral_const_mul]\n    refine setIntegral_congr_fun measurableSet_Icc fun ξ _ => ?_\n    simp only [hF, hg1]; ring\n  -- integrability on the product\n  have hσ : -1 < s.re := hs\n  have hI1 : Integrable (fun t : ℝ => Cg * (t ^ s.re * Real.exp (-t ^ 2 / 2))) (volume.restrict (Ioi 0)) := by\n    have := integrableOn_rpow_mul_exp_quad (p := s.re) (a := 1 / 2) (b := 0) hσ (by norm_num)\n    refine Integrable.congr (this.const_mul Cg) (Eventually.of_forall fun t => ?_)\n    simp only; ring_nf\n  have hprod : Integrable (Function.uncurry F)\n      ((volume.restrict (Ioi (0:ℝ))).prod (volume.restrict (Icc (-aH) aH))) := by\n    have hb : Integrable (fun p : ℝ × ℝ => Cg * (p.1 ^ s.re * Real.exp (-p.1 ^ 2 / 2)) * (1 : ℝ))\n        ((volume.restrict (Ioi (0:ℝ))).prod (volume.restrict (Icc (-aH) aH))) :=\n      Integrable.mul_prod hI1 (integrable_const (1 : ℝ))\n    refine hb.mono' ?_ ?_\n    · refine Measurable.aestronglyMeasurable ?_\n      simp only [hF, hg1]\n      have h1 : Measurable fun p : ℝ × ℝ => (p.1 : ℂ) ^ (s - 1) :=\n        (Complex.measurable_ofReal.comp measurable_fst).pow_const _\n      have h2 : Measurable fun p : ℝ × ℝ => Complex.exp (↑(2 * π * p.2 * Real.log p.1) * I) := by\n        refine Complex.measurable_exp.comp (Measurable.mul ?_ measurable_const)\n        exact Complex.measurable_ofReal.comp ((measurable_const.mul measurable_snd).mul\n          (Real.measurable_log.comp measurable_fst))\n      have h3 : Measurable fun p : ℝ × ℝ => 𝓕 gC p.2 := continuous_fourier_gC'.measurable.comp measurable_snd\n      have h4 : Measurable fun p : ℝ × ℝ => ((p.1 * Real.exp (-p.1 ^ 2 / 2) : ℝ) : ℂ) *\n          Complex.exp (2 * π * I * δ * p.1) := by\n        refine Measurable.mul ?_ ?_\n        · exact Complex.measurable_ofReal.comp (by fun_prop)\n        · exact Complex.measurable_exp.comp (measurable_const.mul (Complex.measurable_ofReal.comp measurable_fst))\n      exact (h1.mul (h2.mul h3)).mul h4\n    · rw [Measure.prod_restrict]\n      refine (ae_restrict_iff' (measurableSet_Ioi.prod measurableSet_Icc)).2\n        (Eventually.of_forall fun p hp => ?_)\n      have ht : 0 < p.1 := hp.1\n      simp only [Function.uncurry, hF, hg1, norm_mul, Complex.norm_exp_ofReal_mul_I, one_mul,\n        Complex.norm_real, Real.norm_eq_abs, mul_one]\n      have hE : ‖Complex.exp (2 * π * I * δ * p.1)‖ = 1 := by rw [Complex.norm_exp]; simp\n      have hsr : (s - 1).re = s.re - 1 := by simp\n      rw [Complex.norm_cpow_eq_rpow_re_of_pos ht, abs_of_pos ht, abs_of_pos (Real.exp_pos _), hE,\n        mul_one, hsr]\n      have hF0 := norm_fourier_gC_le p.2\n      have hpow : p.1 ^ (s.re - 1) * p.1 = p.1 ^ s.re := by\n        rw [Real.rpow_sub ht, Real.rpow_one, div_mul_cancel₀ _ ht.ne']\n      calc p.1 ^ (s.re - 1) * ‖𝓕 gC p.2‖ * (p.1 * Real.exp (-p.1 ^ 2 / 2))\n          = ‖𝓕 gC p.2‖ * ((p.1 ^ (s.re - 1) * p.1) * Real.exp (-p.1 ^ 2 / 2)) := by ring\n        _ ≤ Cg * (p.1 ^ s.re * Real.exp (-p.1 ^ 2 / 2)) := by\n            rw [hpow]; exact mul_le_mul_of_nonneg_right hF0 (by positivity)\n  rw [hstep1, integral_integral_swap hprod]\n  refine setIntegral_congr_fun measurableSet_Icc fun ξ _ => ?_\n  rw [Gr_zero_eq, ← integral_const_mul]\n  refine setIntegral_congr_fun measurableSet_Ioi fun t (ht : 0 < t) => ?_\n  simp only [hF, hg1]\n  have key := cpow_mul_exp_log ht s ξ\n  have ht2 : (t : ℂ) ^ (2 : ℂ) = ((t ^ 2 : ℝ) : ℂ) := by\n    rw [show (2 : ℂ) = ((2 : ℕ) : ℂ) by norm_num, Complex.cpow_natCast]; push_cast; ring\n  calc (t : ℂ) ^ (s - 1) * (Complex.exp (↑(2 * π * ξ * Real.log t) * I) * 𝓕 gC ξ) *\n        (((t * Real.exp (-t ^ 2 / 2) : ℝ) : ℂ) * Complex.exp (2 * π * I * δ * t))\n      = 𝓕 gC ξ * (((t : ℂ) ^ (s - 1) * Complex.exp (↑(2 * π * ξ * Real.log t) * I) * (t : ℂ)) *\n          (Real.exp (-t ^ 2 / 2) : ℂ) * Complex.exp (2 * π * I * δ * t)) := by push_cast; ring\n    _ = 𝓕 gC ξ * ((t : ℂ) ^ (s - 1 + ((2 * π * ξ : ℝ) : ℂ) * I - 1) *\n          (((t ^ 2 * Real.exp (-t ^ 2 / 2) : ℝ) : ℂ) * Complex.exp (2 * π * I * δ * t))) := by\n        rw [key, ht2]; push_cast; ring",
+            "line": 133,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.mellin_fP_eq",
+            "lines": [
+              133,
+              204
+            ],
+            "conclusion": "Mellin transform of `fP δ` (eta_+ times e(δt)) is an integral over ξ in [-aH,aH] of the Fourier transform of `gC` times a shifted Mellin transform of t^2 e^{-t^2/2} e(δt) at s-1+2πiξ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L133-L204"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 6.3 step 22",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean bounds $\\sum_{n\\le\\sqrt x}\\Lambda^2\\eta_+^2$ jointly with the $n\\le x$ non-prime terms and with $|\\eta_+|_\\infty$ replaced by $1.94$; the constant $1.03883/2=0.51942$ appears as $1.94^2\\cdot\\frac{\\log x}{2}\\cdot1.03883\\sqrt x$. Weaker: $1.94$ for the sup norm and a merged sum.",
+  "subject": [
+    {
+      "location": {
+        "page": 51,
+        "rect": [
+          0.20698,
+          0.37214,
+          0.62529,
+          0.06857
+        ]
+      },
+      "title": "Theorem 6.3 step 22: Display, p. 51",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eTerm_low",
+        "module": "TernaryGoldbach.MinorArcs.EBound",
+        "lines": [
+          66,
+          86
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eTerm_low"
+          },
+          "snippet": {
+            "text": "  have key : (Λ n : ℝ) * Λ n ≤ Real.log x / 2 * (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) +\n      Real.log x * lamNP n := by\n    by_cases hs : (n : ℝ) ≤ √x\n    · rw [if_pos hs]\n      have : (Λ n : ℝ) ≤ Real.log x / 2 := by\n        have : Real.log n ≤ Real.log √x := Real.log_le_log (by linarith) hs\n        rw [Real.log_sqrt hx0.le] at this; linarith\n      have := mul_le_mul_of_nonneg_right this hΛ0\n      have := mul_nonneg hlx hNP\n      linarith\n    · rw [if_neg hs]\n      have hnp : ¬ n.Prime := fun h => hp ⟨h, lt_of_not_ge hs⟩\n      have hl : lamNP n = Λ n := by rw [lamNP, if_neg hnp]\n      rw [hl]\n      have : (Λ n : ℝ) ≤ Real.log x := hΛlog.trans (Real.log_le_log (by linarith) hnx)\n      have := mul_le_mul_of_nonneg_right this hΛ0\n      linarith\n  calc (Λ n * etaPlus (n / x)) ^ 2 ≤ (Λ n : ℝ) * Λ n * 1.94 ^ 2 := hsq\n    _ ≤ (Real.log x / 2 * (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) + Real.log x * lamNP n) * 1.94 ^ 2 :=\n        mul_le_mul_of_nonneg_right key hA\n    _ = _ := by ring",
+            "line": 66,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eTerm_low",
+            "lines": [
+              45,
+              86
+            ],
+            "conclusion": "For $n\\le x$ with $n\\le\\sqrt x$, $\\Lambda(n)\\le\\log x/2$ so $(\\Lambda(n)\\eta_+(n/x))^2\\le 1.94^2\\cdot\\frac{\\log x}{2}\\Lambda(n)$ (the $|\\eta_+|_\\infty\\le 1.94$ bound `abs_etaPlus_le_A` stands for $|\\eta_+|_\\infty$); non-prime terms are handled by the `lamNP` summand."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "fragment": "L66-L86"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+        "module": "TernaryGoldbach.MinorArcs.EBound",
+        "lines": [
+          206,
+          227
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.E_partial"
+          },
+          "snippet": {
+            "text": "  have hlow : ∑ n ∈ Icc 1 ⌊x⌋₊, eTerm x n ≤\n      1.94 ^ 2 * (Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x)) := by\n    refine (sum_le_sum fun n hn => eTerm_low hx hn).trans ?_\n    rw [← mul_sum, sum_add_distrib, ← mul_sum, ← mul_sum]\n    have hψ : ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) ≤ 1.03883 * √x := by\n      rw [← sum_filter]\n      have hsub2 : (Icc 1 ⌊x⌋₊).filter (fun n : ℕ => (n : ℝ) ≤ √x) ⊆ Icc 1 ⌊√x⌋₊ := by\n        intro n hn\n        have h := mem_filter.1 hn\n        exact mem_Icc.2 ⟨(mem_Icc.1 h.1).1, Nat.le_floor h.2⟩\n      refine (sum_le_sum_of_subset_of_nonneg hsub2 fun n _ _ =>\n        ArithmeticFunction.vonMangoldt_nonneg).trans ?_\n      exact (Prelim.sum_vonMangoldt_lt (Real.sqrt_pos.2 hx0)).le\n    have hNP : ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤ 1.4262 * √x :=\n      (Prelim.sum_vonMangoldt_nonprime_lt hx0).le\n    have : Real.log x / 2 * ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) +\n        Real.log x * ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤\n        Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x) := by\n      have := mul_le_mul_of_nonneg_left hψ (by linarith : 0 ≤ Real.log x / 2)\n      have := mul_le_mul_of_nonneg_left hNP hlx\n      linarith\n    exact mul_le_mul_of_nonneg_left this (by norm_num)",
+            "line": 206,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+            "lines": [
+              172,
+              274
+            ],
+            "conclusion": "Sums the per-term bound over $n\\le x$ and uses `sum_vonMangoldt_lt` at $y=\\sqrt x$ to get $\\sum_{n\\le\\sqrt x}\\Lambda(n)\\le 1.03883\\sqrt x$, giving $1.94^2\\cdot\\frac{\\log x}{2}\\cdot 1.03883\\sqrt x$ plus a non-prime term $\\log x\\cdot 1.4262\\sqrt x$ in the same bound `hlow`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "fragment": "L206-L227"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          51
+        ],
+        "printed": [
+          51
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Theorem 13.2.1 step 22, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

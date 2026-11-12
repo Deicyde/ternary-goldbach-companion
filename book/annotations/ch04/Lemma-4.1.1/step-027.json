@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.1 step 27",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean avoids `arcsin x + x√(1-x²) ≤ 2x`; uses `cot w ≤ 1/w` and AM-GM equality `Aw = C/w`. Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_4_1_1_step_27.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.26253,
+          0.44299,
+          0.56162,
+          0.03354
+        ]
+      },
+      "title": "Lemma 4.1.1 step 27: Text, p. 54",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_minInvSin_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          363,
+          374
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_minInvSin_le"
+          },
+          "snippet": {
+            "text": "    have hcot : Real.cos w / Real.sin w ≤ 1 / w := by\n      have ht := Real.lt_tan hw hwpi\n      rw [Real.tan_eq_sin_div_cos] at ht\n      have hs := hsinpos w ⟨le_rfl, hwpi.le⟩\n      have hc : 0 < Real.cos w := Real.cos_pos_of_mem_Ioo ⟨by linarith, hwpi⟩\n      rw [div_le_div_iff₀ hs hw]\n      rw [lt_div_iff₀ hc] at ht\n      linarith\n    have h3 : C * (Real.cos w / Real.sin w) ≤ C / w := by\n      calc C * (Real.cos w / Real.sin w) ≤ C * (1 / w) := mul_le_mul_of_nonneg_left hcot hC\n        _ = C / w := by ring\n    linarith",
+            "line": 363,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_minInvSin_le",
+            "lines": [
+              315,
+              374
+            ],
+            "conclusion": "`cot w ≤ 1/w` (from `w < tan w`) and `A w = C/w = √(AC)`, giving `∫ ≤ 2√(AC)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L363-L374"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          54
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

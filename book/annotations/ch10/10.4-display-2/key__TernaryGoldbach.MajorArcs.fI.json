@@ -1,0 +1,81 @@
+{
+  "id": "10.4 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "The integral expression itself occurs only for delta_0 = 8, r = r_0 = 150000, the specific eta_+, eta_*, over the fundamental domain (0,1] intersected with the arcs.",
+  "subject": [
+    {
+      "location": {
+        "page": 224,
+        "rect": [
+          0.25926,
+          0.28152,
+          0.56816,
+          0.0358
+        ]
+      },
+      "title": "Display, p. 214",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.4 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.fI",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          751,
+          752
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.fI"
+          },
+          "snippet": {
+            "text": "/-- The integrand `S_{η₊}(α)² S_{η_*}(α) e(−Nα)` at a general `x`. -/\nnoncomputable def fI (N : ℕ) (x α : ℝ) : ℂ := S etaPlus x α ^ 2 * S etaStar x α * e (-(N * α))",
+            "line": 751,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.fI",
+            "lines": [
+              751,
+              752
+            ],
+            "conclusion": "$f_I(N,x,\\alpha)=S_{\\eta_+}(\\alpha,x)^2S_{\\eta_*}(\\alpha,x)e(-N\\alpha)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L751-L752"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          224
+        ],
+        "printed": [
+          214
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

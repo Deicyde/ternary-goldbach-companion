@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "[H] sets κ = 1/2, UV = x/(2√(qδ₀)) exactly; [L] takes U, V as floors (via (6.49)), so UV = x/(2√t) holds only up to the bounds (1−1/T)x/(2√t) ≤ UV ≤ x/(2√t).",
+  "subject": [
+    {
+      "location": {
+        "page": 128,
+        "rect": [
+          0.25926,
+          0.75012,
+          0.56816,
+          0.03501
+        ]
+      },
+      "title": "Display, p. 118",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.U1V1_ge",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceParams",
+        "lines": [
+          82,
+          107
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.U1V1_ge"
+          },
+          "snippet": {
+            "text": "/-- `UV ≥ (1 - 1/T) x/(2√t)`. -/\ntheorem U1V1_ge (hT : 6e6 ≤ T) (ht : 0 < t) (htT : t ≤ T / 3) :\n    (1 - 1 / T) * (T ^ 3 / (2 * √t)) ≤ (U1 T t : ℝ) * V1 T := by\n  have hT0 : 0 < T := by linarith\n  have hst : 0 < √t := Real.sqrt_pos.2 ht\n  set Ur := T ^ 2 / (9 * √t) with hUr\n  have hUr0 : 0 < Ur := by positivity\n  have hfl : Ur - 1 ≤ (U1 T t : ℝ) := by\n    unfold U1; have := Nat.lt_floor_add_one Ur; linarith\n  have hV := V1_ge hT0\n  have hUrge : 0.19245 * (T * √T) ≤ Ur := (sqrt3_div9.trans le_rfl |> fun h => by\n    have := U1_real_ge hT ht htT\n    have : 0 ≤ T * √T := by positivity\n    nlinarith)\n  have h3 := sqrt_ge_2449 hT\n  -- `1/Ur ≤ 7/(9T)`.\n  have hUrT : 9 * T ≤ 7 * Ur := by nlinarith\n  have e : Ur * (9 * T / 2) = T ^ 3 / (2 * √t) := by simp only [hUr]; field_simp\n  have hprod : (Ur - 1) * (9 * T / 2 - 1) ≤ (U1 T t : ℝ) * V1 T :=\n    mul_le_mul hfl hV (by nlinarith) (Nat.cast_nonneg _)\n  -- `(Ur - 1)(9T/2 - 1) ≥ (1 - 1/T) Ur (9T/2)`.\n  have key : (1 - 1 / T) * (Ur * (9 * T / 2)) ≤ (Ur - 1) * (9 * T / 2 - 1) := by\n    have e2 : (1 - 1 / T) * (Ur * (9 * T / 2)) = Ur * (9 * T / 2) - 9 / 2 * Ur := by\n      field_simp\n    rw [e2]; nlinarith\n  rw [← e]; linarith",
+            "line": 82,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.U1V1_ge",
+            "lines": [
+              82,
+              107
+            ],
+            "conclusion": "`UV ≥ (1−1/T)·x/(2√t)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceParams.lean",
+            "fragment": "L82-L107"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          128
+        ],
+        "printed": [
+          118
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

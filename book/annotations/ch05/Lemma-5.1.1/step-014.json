@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.1 step 14",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves `f(X) <= 1.27 X`, weaker than the printed `1.26981... X` (Lean's header notes the maximum `15/pi^2 - 1/4`).",
+  "subject": [
+    {
+      "location": {
+        "page": 93,
+        "rect": [
+          0.17462,
+          0.27191,
+          0.56162,
+          0.03436
+        ]
+      },
+      "title": "Lemma 5.1.1 step 14: Display, p. 83",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.fsq_le",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          230,
+          232
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.fsq_le"
+          },
+          "snippet": {
+            "text": "/-- [H, p. 83]: `f(X) ≤ 1.27 X` for `X ≥ 0`. Proved in `Prelim/SmallFsq.lean` (kernel-checked\nnumerics for `⌊X⌋ < 200`, an elementary bound above); the maximum is `f(2)/2 = 15/π² − 1/4 = 1.26982…`. -/\ntheorem fsq_le {X : ℝ} (hX : 0 ≤ X) : fsq X ≤ 1.27 * X := Small.fsq_le' hX",
+            "line": 230,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.fsq_le",
+            "lines": [
+              230,
+              232
+            ],
+            "conclusion": "`f(X) <= 1.27 X` for all `X >= 0`, with `f = fsq`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L230-L232"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          93
+        ],
+        "printed": [
+          83
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

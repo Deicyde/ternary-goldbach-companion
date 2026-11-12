@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.1.1 step 28",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same final bound `3A + (4q/π)√(AC)`, reached via `2·(2q/π)√(AC)` from the integral bound rather than the arcsin estimate.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.26253,
+          0.48499,
+          0.56162,
+          0.03682
+        ]
+      },
+      "title": "Lemma 4.1.1 step 28: Display, p. 54",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_G_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          455,
+          457
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_G_le"
+          },
+          "snippet": {
+            "text": "    _ ≤ q / π * (2 * √(A * C)) := by\n        rw [hcv]; exact mul_le_mul_of_nonneg_left (integral_minInvSin_le hA hC) (by positivity)\n    _ = 2 * (q / π) * √(A * C) := by ring",
+            "line": 455,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_G_le",
+            "lines": [
+              404,
+              457
+            ],
+            "conclusion": "`∑ ≤ (q/π)·2√(AC) = 2(q/π)√(AC)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L455-L457"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          722,
+          725
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₂'"
+          },
+          "snippet": {
+            "text": "  rw [hpeel]\n  have h4 : 4 * (q : ℝ) / π * √(A * C) = 2 * (2 * (q / π) * √(A * C)) := by ring\n  rw [h4]\n  linarith [hFA 0, hFA (q - 1)]",
+            "line": 722,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+            "lines": [
+              635,
+              725
+            ],
+            "conclusion": "Total `≤ 3A + 4(q/π)√(AC)` from the two families."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L722-L725"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          54
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

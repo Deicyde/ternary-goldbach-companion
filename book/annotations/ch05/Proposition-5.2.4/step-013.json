@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.2.4 step 13",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "In `prop_5_2_4_c` Lean keeps W-W'; the W/2 bound is taken in `prop_5_2_4_d` only.",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.52812,
+          0.56162,
+          0.01894
+        ]
+      },
+      "title": "Proposition 5.2.4 step 13: Text, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.odd_block_bound",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          568,
+          568
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.odd_block_bound"
+          },
+          "snippet": {
+            "text": "  have hinv : (|δ| * q / x)⁻¹ = x / (|δ| * q) := by rw [inv_div]",
+            "line": 568,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.odd_block_bound",
+            "lines": [
+              500,
+              572
+            ],
+            "conclusion": "$\\nu^{-1}=(|\\delta|q/x)^{-1}=x/(|\\delta|q)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L568-L568"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          787,
+          788
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_d"
+          },
+          "snippet": {
+            "text": "    refine hres.trans (mul_le_mul_of_nonneg_right ?_ hL)\n    linarith",
+            "line": 787,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+            "lines": [
+              730,
+              816
+            ],
+            "conclusion": "Replaces $W-W'+x/(|\\delta|q)$ by $W/2+Q'$ using W' ≥ W/2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L787-L788"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

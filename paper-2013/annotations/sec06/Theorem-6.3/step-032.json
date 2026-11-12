@@ -1,0 +1,156 @@
+{
+  "id": "Theorem 6.3 step 32",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's bound is the discrete Abel-summation form with H=Hl2y, not the integral form (eq:lili) with ∫ g/(r+1) and 0.4156 g(r_1); the added C_{φ,3} term is absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 52,
+        "rect": [
+          0.20698,
+          0.13526,
+          0.62529,
+          0.03363
+        ]
+      },
+      "title": "Theorem 6.3 step 32: Text, p. 52",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          388,
+          392
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hgmono : ∀ n, 150000 ≤ n → n < r₂ → g (n + 1) ≤ g n := by\n    intro n hn hn2\n    have hn' : (150000 : ℝ) ≤ n := by exact_mod_cast hn\n    have hn2' : ((n + 1 : ℕ) : ℝ) ≤ r₂ := by exact_mod_cast hn2\n    simp only [hg_def]",
+            "line": 388,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "`hgmono`: level function `g n = y ĝ(y,n)` is non-increasing for `150000 ≤ n < r₂`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L388-L392"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          88,
+          139
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_13_1_2"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop. 13.1.2]**, discrete form (see the module docstring). -/\ntheorem prop_13_1_2 {u v : Ω → ℝ} (hu : Integrable u μ) (huv : Integrable (fun ω => u ω * v ω) μ)\n    (hu0 : ∀ ω, 0 ≤ u ω) {M : ℕ → Set Ω} (hM : ∀ n, MeasurableSet (M n)) (hmono : Monotone M)\n    {g H : ℕ → ℝ} {r₀ r₁ : ℕ} (h01 : r₀ ≤ r₁)\n    (hg : ∀ n, r₀ ≤ n → n < r₁ → g (n + 1) ≤ g n) (hg0 : 0 ≤ g r₁)\n    (hv : ∀ n, r₀ ≤ n → n ≤ r₁ → ∀ ω ∉ M n, v ω ≤ g n)\n    (hH : ∀ n, r₀ ≤ n → n < r₁ → ∫ ω in M (n + 1), u ω ∂μ ≤ H n) (hH₁ : ∫ ω, u ω ∂μ ≤ H r₁) :\n    ∫ ω in (M r₀)ᶜ, u ω * v ω ∂μ ≤\n      g r₀ * (H r₀ - ∫ ω in M r₀, u ω ∂μ) + ∑ n ∈ Ioc r₀ r₁, g n * (H n - H (n - 1)) := by\n  set I : ℕ → ℝ := fun n => ∫ ω in M n, u ω ∂μ with hI\n  -- the last layer\n  have hlast : ∫ ω in (M r₁)ᶜ, u ω * v ω ∂μ ≤ g r₁ * ((∫ ω, u ω ∂μ) - I r₁) := by\n    have h1 : ∫ ω in (M r₁)ᶜ, u ω * v ω ∂μ ≤ ∫ ω in (M r₁)ᶜ, g r₁ * u ω ∂μ := by\n      refine setIntegral_mono_on huv.integrableOn (hu.integrableOn.const_mul _)\n        (hM _).compl fun ω hω => ?_\n      rw [mul_comm (g r₁)]\n      exact mul_le_mul_of_nonneg_left (hv r₁ h01 le_rfl ω hω) (hu0 ω)\n    rw [integral_const_mul] at h1\n    have h2 : ∫ ω in (M r₁)ᶜ, u ω ∂μ = (∫ ω, u ω ∂μ) - I r₁ := by\n      have := integral_add_compl (hM r₁) hu\n      simp only [hI]; linarith\n    rwa [h2] at h1\n  have hl := layer_le hu huv hu0 hM hmono (K := r₁) (fun n h1 h2 => hv n h1 h2.le) r₁ h01 le_rfl\n  -- write it as `Σ_{n ∈ [r₀, r₁]} f(n) g(n)`\n  set f : ℕ → ℝ := fun n => if n < r₁ then I (n + 1) - I n else (∫ ω, u ω ∂μ) - I r₁ with hf\n  have hsum : ∑ n ∈ Ico r₀ r₁, g n * (I (n + 1) - I n) + g r₁ * ((∫ ω, u ω ∂μ) - I r₁) =\n      ∑ n ∈ Icc r₀ r₁, f n * g n := by\n    rw [← Finset.Ico_add_one_right_eq_Icc, sum_Ico_succ_top (by omega)]\n    congr 1\n    · refine sum_congr rfl fun n hn => ?_\n      have : n < r₁ := (mem_Ico.1 hn).2\n      simp only [hf, ite_eq_left this]; ring\n    · simp only [hf, lt_irrefl, ite_false]; ring\n  -- partial sums telescope\n  have hS : ∀ n, r₀ ≤ n → n ≤ r₁ → ∑ m ∈ Icc r₀ n, f m ≤ H n - I r₀ := by\n    intro n hn hn1\n    have tele : ∀ k, r₀ ≤ k → k ≤ r₁ → ∑ m ∈ Ico r₀ k, f m = I k - I r₀ := by\n      intro k hk hk1\n      induction k, hk using Nat.le_induction with\n      | base => simp\n      | succ k hk ih =>\n        rw [sum_Ico_succ_top hk, ih (by omega)]\n        simp only [hf, ite_eq_left (show k < r₁ by omega)]; ring\n    rw [← Finset.Ico_add_one_right_eq_Icc, sum_Ico_succ_top hn, tele n hn hn1]\n    rcases lt_or_eq_of_le hn1 with h | h\n    · simp only [hf, ite_eq_left h]; linarith [hH n hn h]\n    · subst h; simp only [hf, lt_irrefl, ite_false]; linarith\n  have habel := abel_le (F := fun n => H n - I r₀) h01 hg hg0 hS\n  have e3 : ∑ n ∈ Ioc r₀ r₁, g n * ((H n - I r₀) - (H (n - 1) - I r₀)) =\n      ∑ n ∈ Ioc r₀ r₁, g n * (H n - H (n - 1)) := sum_congr rfl fun n _ => by ring\n  rw [e3] at habel\n  linarith",
+            "line": 88,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+            "lines": [
+              88,
+              139
+            ],
+            "conclusion": "Discrete Prop 13.1.2: `∫_{(M r₀)ᶜ} u v ≤ g r₀ (H r₀ - ∫_{M r₀} u) + Σ_{n∈(r₀,r₁]} g n (H n - H(n-1))` for non-increasing g."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L88-L139"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+        "module": "TernaryGoldbach.MinorArcs.Thm1321",
+        "lines": [
+          147,
+          211
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired"
+          },
+          "snippet": {
+            "text": "/-- **[H, Thm 13.2.1], repaired** (discrete (13.6), mixed family). For `aₙ` supported on\nprimes `> √x`, `T = Σ|aₙ|²`, levels `10⁵ ≤ r₀ ≤ r₁` with `(20000 r₁)² ≤ x/784` and\n`2r₁ ≤ (2√(x/784))^{0.6}`, `g` non-increasing with `g(r₁) ≥ 0`: if `|S_{η_*}(α, x)| ≤ g(r₀)` off\n`𝔐_{8,r₀}(x)`, and `|S_{η_*}(α, x)| ≤ g(n)` off `𝔐_{8,n}(x/κ)` for `r₀ < n ≤ r₁`, then\n`∫_{(0,1] \\ 𝔐_{8,r₀}(x)} |S₁|²|S_{η_*}| ≤ g(r₀)(H(r₀) − I₀) + Σ_{r₀<n≤r₁} g(n)(H(n) − H(n−1))`\nwith `H = Hl2y x T r₁` and `I₀ = ∫_{(0,1] ∩ 𝔐_{8,r₀}(x)} |S₁|²`. -/\ntheorem thm_13_2_1_repaired {x : ℝ} (hx : 0 < x) {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    {g : ℕ → ℝ} {r₀ r₁ : ℕ} (h01 : r₀ ≤ r₁) (hr₀ : 1e5 ≤ (r₀ : ℝ))\n    (hx₁ : (20000 * (r₁ : ℝ)) ^ 2 ≤ x / 784) (hρ : 2 * (r₁ : ℝ) ≤ (2 * √(x / 784)) ^ (0.6 : ℝ))\n    (hg : ∀ n, r₀ ≤ n → n < r₁ → g (n + 1) ≤ g n) (hg0 : 0 ≤ g r₁)\n    (hv₀ : ∀ α ∉ majorArcs 8 r₀ x, ‖S etaStar x α‖ ≤ g r₀)\n    (hv : ∀ n, r₀ < n → n ≤ r₁ → ∀ α ∉ majorArcs 8 n (x / κ), ‖S etaStar x α‖ ≤ g n) :\n    ∫ α in Ioc 0 1 \\ majorArcs 8 r₀ x, ‖expTsum a α‖ ^ 2 * ‖S etaStar x α‖ ≤\n      g r₀ * (Hl2y x (∑' n, ‖a n‖ ^ 2) r₁ r₀ -\n          ∫ α in Ioc 0 1 ∩ majorArcs 8 r₀ x, ‖expTsum a α‖ ^ 2) +\n        ∑ n ∈ Finset.Ioc r₀ r₁, g n * (Hl2y x (∑' n, ‖a n‖ ^ 2) r₁ n -\n          Hl2y x (∑' n, ‖a n‖ ^ 2) r₁ (n - 1)) := by\n  set T := ∑' n, ‖a n‖ ^ 2\n  set μ := volume.restrict (Ioc (0 : ℝ) 1)\n  set M : ℕ → Set ℝ := Mmix x r₀\n  have hM : ∀ n, MeasurableSet (M n) := fun n => by\n    simp only [M, Mmix]; split_ifs <;> exact Helfgott.measurableSet_majorArcs _ _ _\n  have hMr₀ : M r₀ = majorArcs 8 r₀ x := by simp only [M, Mmix, le_refl, ite_true]\n  have hMy : ∀ n, r₀ < n → M n = majorArcs 392 n x := fun n hn => by\n    simp only [M, Mmix, show ¬ n ≤ r₀ by omega, ite_false]\n    rw [majorArcs_div]; norm_num [TernaryGoldbach.Helfgott.κ]\n  have hcu : Continuous fun α => ‖expTsum a α‖ ^ 2 :=\n    (TernaryGoldbach.continuous_expTsum ha.2).norm.pow 2\n  have hcv : Continuous fun α => ‖S etaStar x α‖ :=\n    (TernaryGoldbach.continuous_expTsum (summable_etaStar hx)).norm\n  have hint : ∀ {f : ℝ → ℝ}, Continuous f → Integrable f μ := fun hf =>\n    hf.integrableOn_Icc.mono_set Ioc_subset_Icc_self\n  have hres : ∀ (s : Set ℝ) (f : ℝ → ℝ), MeasurableSet s →\n      ∫ α in s, f α ∂μ = ∫ α in Ioc 0 1 ∩ s, f α := fun s f hs => by\n    rw [Measure.restrict_restrict hs, inter_comm]\n  have hv' : ∀ n, r₀ ≤ n → n ≤ r₁ → ∀ α ∉ M n, ‖S etaStar x α‖ ≤ g n := by\n    intro n hn hn1 α hα\n    rcases eq_or_lt_of_le hn with h | h\n    · subst h; rw [hMr₀] at hα; exact hv₀ α hα\n    · refine hv n h hn1 α fun h' => hα ?_\n      rw [hMy n h, ← show (8 : ℝ) * κ = 392 by norm_num [TernaryGoldbach.Helfgott.κ],\n        ← majorArcs_div]\n      exact h'\n  have key := prop_13_1_2 (μ := μ) (u := fun α => ‖expTsum a α‖ ^ 2)\n    (v := fun α => ‖S etaStar x α‖) (hint hcu) (hint (hcu.mul hcv)) (fun _ => by positivity)\n    hM (Mmix_mono hx r₀) (H := Hl2y x T r₁) h01 hg hg0 hv' ?_ ?_\n  · rw [hres _ _ (hM r₀), hres _ _ (hM r₀).compl, hMr₀] at key\n    exact key\n  · intro n hn hn1\n    rw [hres _ _ (hM _), hMy (n + 1) (by omega)]\n    have h := cor_12_2_5 (Q₀ := (n : ℝ) + 1) (δ₀ := 392) ha (by\n        have : (r₀ : ℝ) ≤ n := by exact_mod_cast hn\n        linarith) (by norm_num) (by\n        rw [show 2 * (392 : ℝ) = 784 by norm_num]\n        refine le_trans ?_ hx₁\n        have hn1' : ((n : ℝ) + 1) ≤ r₁ := by exact_mod_cast hn1\n        gcongr) (by\n        have hn1' : ((n : ℝ) + 1) ≤ r₁ := by exact_mod_cast hn1\n        rw [show 2 * (392 : ℝ) = 784 by norm_num]; linarith)\n    rw [show 2 * (392 : ℝ) = 784 by norm_num] at h\n    simp only [Hl2y, ite_eq_left hn1]\n    convert h using 3; push_cast; rfl\n  · simp only [Hl2y, lt_irrefl, ite_false]\n    rw [show ∫ α, ‖expTsum a α‖ ^ 2 ∂μ = ∫ α in Ioc (0 : ℝ) 1, ‖expTsum a α‖ ^ 2 from rfl,\n      TernaryGoldbach.setIntegral_norm_sq_expTsum ha.2]",
+            "line": 147,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+            "lines": [
+              147,
+              211
+            ],
+            "conclusion": "The repaired Thm 13.2.1 bounding the integral over the complement of 𝔐_{8,r₀}(x)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Thm1321.lean",
+            "fragment": "L147-L211"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          52
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

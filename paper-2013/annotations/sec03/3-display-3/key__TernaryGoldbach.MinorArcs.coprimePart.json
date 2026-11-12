@@ -1,0 +1,81 @@
+{
+  "id": "3 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] applies the character expansion only to coprime-supported coefficients (`coprimePart`), so the weight is $1_{(n,q)=1}$ in place of $\\mu((q,n^\\infty))/\\phi((q,n^\\infty))$; non-coprime terms are paid by `coprime_split`.",
+  "subject": [
+    {
+      "location": {
+        "page": 12,
+        "rect": [
+          0.20371,
+          0.35147,
+          0.63183,
+          0.04439
+        ]
+      },
+      "title": "Display, p. 12",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.coprimePart",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap",
+        "lines": [
+          70,
+          71
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.coprimePart"
+          },
+          "snippet": {
+            "text": "/-- The restriction to `(n, q) = 1`. -/\nnoncomputable def coprimePart (q : ℕ) (c : ℕ → ℂ) (n : ℕ) : ℂ := if Nat.Coprime n q then c n else 0",
+            "line": 70,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.coprimePart",
+            "lines": [
+              70,
+              71
+            ],
+            "conclusion": "Restriction of coefficients to $(n,q)=1$: weight $1_{(n,q)=1}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap.lean",
+            "fragment": "L70-L71"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          12
+        ],
+        "printed": [
+          12
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.1 display 3, the same LaTeX (mapper (sonnet); verifier (sonnet); judge (opus))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

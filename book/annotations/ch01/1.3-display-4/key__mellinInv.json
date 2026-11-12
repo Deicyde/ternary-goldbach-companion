@@ -1,0 +1,84 @@
+{
+  "id": "1.3 display 4",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Mathlib's statement is for arbitrary `σ` under convergence hypotheses (the text's 'fast enough decay'); [L] uses `σ = 3/2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.17135,
+          0.77431,
+          0.56816,
+          0.03834
+        ]
+      },
+      "title": "Display, p. 11",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.3 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "mellinInv",
+        "module": "Mathlib.Analysis.MellinTransform",
+        "lines": [
+          94,
+          97
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "mellinInv"
+          },
+          "snippet": {
+            "text": "/-- The Mellin inverse transform of a function `f`, defined as `1 / (2π)` times\nthe integral of `y ↦ x ^ -(σ + yi) • f (σ + yi)`. -/\ndef mellinInv (σ : ℝ) (f : ℂ → E) (x : ℝ) : E :=\n  (1 / (2 * π)) • ∫ y : ℝ, (x : ℂ) ^ (-(σ + y * I)) • f (σ + y * I)",
+            "line": 94,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "mellinInv",
+            "lines": [
+              94,
+              97
+            ],
+            "conclusion": "`mellinInv σ F x = (1/2π) ∫ x^{-(σ+yi)} F(σ+yi) dy`, the integral `(1/2πi)∫_{σ-i∞}^{σ+i∞} F(s) x^{-s} ds` parametrised by `s = σ+iy`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/MellinTransform.lean",
+            "fragment": "L94-L97"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21
+        ],
+        "printed": [
+          11
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

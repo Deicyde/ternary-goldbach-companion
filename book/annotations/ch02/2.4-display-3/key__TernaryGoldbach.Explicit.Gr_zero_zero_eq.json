@@ -1,0 +1,81 @@
+{
+  "id": "2.4 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Only real `z > 0` (scaling by `a`), not complex `z` with `Re z > 0`; the contour rotation `∫_0^{z∞}` is not carried out in [L].",
+  "subject": [
+    {
+      "location": {
+        "page": 45,
+        "rect": [
+          0.17135,
+          0.56339,
+          0.56816,
+          0.07327
+        ]
+      },
+      "title": "Display, p. 35",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2.4 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.Gr_zero_zero_eq",
+        "module": "TernaryGoldbach.Explicit.GammaBounds",
+        "lines": [
+          30,
+          31
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.Gr_zero_zero_eq"
+          },
+          "snippet": {
+            "text": "  rw [e3, mellin_comp_mul_left (fun w : ℝ => ((Real.exp (-w) : ℝ) : ℂ)) _ (by norm_num),\n    ← Complex.GammaIntegral_eq_mellin, ← Complex.Gamma_eq_integral (by simp; linarith)]",
+            "line": 30,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.Gr_zero_zero_eq",
+            "lines": [
+              16,
+              41
+            ],
+            "conclusion": "Uses the two Mathlib facts to get the Mellin transform of `e^{-t/2}` as `2^s Γ(s)`, the case `z = 1/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/GammaBounds.lean",
+            "fragment": "L30-L31"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          45
+        ],
+        "printed": [
+          35
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

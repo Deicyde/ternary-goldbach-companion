@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.1 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same two ingredients (swap, multiples-in-interval count with error 1), but indexed by `e | 2 r1 r2` and `m`, with no substitution `s_i = r_i/d_i`.",
+  "subject": [
+    {
+      "location": {
+        "page": 91,
+        "rect": [
+          0.17462,
+          0.64839,
+          0.56162,
+          0.04669
+        ]
+      },
+      "title": "Lemma 5.1.1 step 2: Text, p. 81",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          343,
+          349
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.cntSq_approx"
+          },
+          "snippet": {
+            "text": "  have hcnt : cntSq P a b = ∑ e ∈ P.divisors, (μ e : ℝ) * ∑ m ∈ range (N + 1), w m * C (e * (m * m)) := by\n    rw [cntSq, sum_congr rfl hpt, sum_comm]\n    refine sum_congr rfl fun e _ => ?_\n    rw [← mul_sum, sum_comm]\n    congr 1\n    refine sum_congr rfl fun m _ => ?_\n    rw [← mul_sum]",
+            "line": 343,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+            "lines": [
+              278,
+              441
+            ],
+            "conclusion": "Order of summation is swapped so `cntSq = sum_e mu(e) sum_m w(m) C(e m^2)` with `C(D)` the number of multiples of `D` in the interval."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L343-L349"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          418,
+          420
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.cntSq_approx"
+          },
+          "snippet": {
+            "text": "    · have h := sum_Ioc_dvd_sub ha hab (D := e * (m * m))\n        (Nat.one_le_iff_ne_zero.2 (Nat.mul_ne_zero (by omega) (Nat.mul_ne_zero hm.2 hm.2)))\n      rw [hD] at h; exact h.le",
+            "line": 418,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+            "lines": [
+              278,
+              441
+            ],
+            "conclusion": "`sum_Ioc_dvd_sub` gives that the number of multiples of `D = e m^2` in `(a,b]` is `(b-a)/D + O*(1)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L418-L420"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          91
+        ],
+        "printed": [
+          81
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

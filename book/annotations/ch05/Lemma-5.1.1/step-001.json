@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.1 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same Mobius inversion, but for `v = 2` only and with `e | 2 r1 r2` in place of the separate `d1, d2, d3`; the `l`-range lower end is `max` (not the printed `min`) and Lean inverts inside `cntSq_approx` per pair `(r1,r2)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 91,
+        "rect": [
+          0.17462,
+          0.49169,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.1.1 step 1: Text, p. 81",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          296,
+          349
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.cntSq_approx"
+          },
+          "snippet": {
+            "text": "  have hpt : ∀ l ∈ I, (if Squarefree l ∧ Nat.Coprime l P then (1 : ℝ) else 0) =\n      ∑ e ∈ P.divisors, (μ e : ℝ) *\n        ∑ m ∈ range (N + 1), w m * (if e * (m * m) ∣ l then 1 else 0) := by\n    intro l hl\n    have hl0 : l ≠ 0 := by\n      have := (mem_Ioc.1 hl).1; omega\n    have hlN : l ≤ N := (mem_Ioc.1 hl).2\n    have hfac : ∀ e ∈ P.divisors, (μ e : ℝ) *\n        ∑ m ∈ range (N + 1), w m * (if e * (m * m) ∣ l then 1 else 0) =\n        (if e ∣ l then (μ e : ℝ) else 0) *\n          ∑ m ∈ range (N + 1), w m * (if m * m ∣ l then 1 else 0) := by\n      intro e he\n      rw [mul_sum, mul_sum]\n      refine sum_congr rfl fun m _ => ?_\n      simp only [hw]\n      by_cases hm : Nat.Coprime m P\n      · have hce : Nat.Coprime e (m * m) :=\n          Nat.Coprime.mul_right (hm.symm.coprime_dvd_left (Nat.dvd_of_mem_divisors he))\n            (hm.symm.coprime_dvd_left (Nat.dvd_of_mem_divisors he))\n        have : e * (m * m) ∣ l ↔ e ∣ l ∧ m * m ∣ l :=\n          ⟨fun h => ⟨(dvd_mul_right _ _).trans h, (dvd_mul_left _ _).trans h⟩,\n            fun h => hce.mul_dvd_of_dvd_of_dvd h.1 h.2⟩\n        simp only [hm, if_true, this]\n        by_cases h1 : e ∣ l <;> by_cases h2 : m * m ∣ l <;> simp [h1, h2]\n      · simp [hm]\n    rw [sum_congr rfl hfac, ← sum_mul, ← coprime_indicator hl0 hP0]\n    by_cases hc : Nat.Coprime l P\n    · rw [if_pos hc, one_mul]\n      have hset : (range (N + 1)).filter (fun m => m * m ∣ l) =\n          l.divisors.filter (fun m => m * m ∣ l) := by\n        ext m\n        simp only [mem_filter, mem_range, Nat.mem_divisors]\n        constructor\n        · rintro ⟨_, h⟩; exact ⟨⟨(dvd_mul_right m m).trans h, hl0⟩, h⟩\n        · rintro ⟨⟨h1, _⟩, h2⟩\n          exact ⟨Nat.lt_succ_of_le ((Nat.le_of_dvd (Nat.pos_of_ne_zero hl0) h1).trans hlN), h2⟩\n      simp_rw [mul_ite, mul_one, mul_zero]\n      rw [← sum_filter, hset]\n      rw [show ∑ m ∈ l.divisors.filter (fun m => m * m ∣ l), w m =\n          ∑ m ∈ l.divisors.filter (fun m => m * m ∣ l), (μ m : ℝ) from\n        sum_congr rfl fun m hm => by\n          have hmd : m ∣ l := Nat.dvd_of_mem_divisors (mem_filter.1 hm).1\n          simp only [hw, if_pos (Nat.Coprime.coprime_dvd_left hmd hc)],\n        sum_moebius_sq_dvd hl0]\n      exact if_congr ⟨fun h => h.1, fun h => ⟨h, hc⟩⟩ rfl rfl\n    · simp [hc]\n  -- Swap sums: `cnt = ∑_e μ(e) ∑_m w(m) C(e m²)`.\n  have hcnt : cntSq P a b = ∑ e ∈ P.divisors, (μ e : ℝ) * ∑ m ∈ range (N + 1), w m * C (e * (m * m)) := by\n    rw [cntSq, sum_congr rfl hpt, sum_comm]\n    refine sum_congr rfl fun e _ => ?_\n    rw [← mul_sum, sum_comm]\n    congr 1\n    refine sum_congr rfl fun m _ => ?_\n    rw [← mul_sum]",
+            "line": 296,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+            "lines": [
+              278,
+              441
+            ],
+            "conclusion": "For squarefree `P = 2 r1 r2`, the squarefree-and-coprime indicator of `l` equals `sum_{e|P} mu(e) sum_m w(m) [e m^2 | l]` (Mobius inversion for `(l,P)=1` via `coprime_indicator` and for squarefreeness via `sum_moebius_sq_dvd`), and `cntSq` is rewritten as `sum_e mu(e) sum_m w(m) C(e m^2)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L296-L349"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          91
+        ],
+        "printed": [
+          81
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

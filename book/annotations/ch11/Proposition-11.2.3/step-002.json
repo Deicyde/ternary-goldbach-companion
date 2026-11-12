@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 11.2.3 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not split `S_{η_*}` as an identity; it splits the integrand majorant at `w₀=1/K` (and also at `w₁`) with trivial bound `17` on the outer pieces, at scale `y=x/κ`.",
+  "subject": [
+    {
+      "location": {
+        "page": 233,
+        "rect": [
+          0.17462,
+          0.6971,
+          0.56162,
+          0.03884
+        ]
+      },
+      "title": "Proposition 11.2.3 step 2: Display, p. 223",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 11.2.3 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123",
+        "lines": [
+          124,
+          127
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_11_2_3"
+          },
+          "snippet": {
+            "text": "  set B : ℝ → ℝ := fun w =>\n    (Ioo 0 w₀).indicator (fun w => 17 * y * phi w) w +\n      (Icc w₀ w₁).indicator (fun w => y * (G w * phi w)) w +\n      (Ioi w₁).indicator (fun w => 17 * y * phi w) w with hB",
+            "line": 124,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+            "lines": [
+              102,
+              209
+            ],
+            "conclusion": "Defines the pointwise majorant `B(w)` splitting (0,w₀), [w₀,w₁], (w₁,∞) with `17yφ`, `yGφ`, `17yφ`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123.lean",
+            "fragment": "L124-L127"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          233
+        ],
+        "printed": [
+          223
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

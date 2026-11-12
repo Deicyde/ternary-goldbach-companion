@@ -1,0 +1,81 @@
+{
+  "id": "7 display 29",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean multiplies Σ_q c_q(N) ≥ 1.314 (not C₀ ≥ 1.3203236) by Cmain ≥ 0.800689/κ in `major_total` (about 1.052/κ in place of 1.058298/κ); the Euler product C₀ and the intermediate 1.0594001, 0.001102 do not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.20371,
+          0.33706,
+          0.63183,
+          0.07725
+        ]
+      },
+      "title": "Display, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Cmain_ge_num",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          942,
+          943
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Cmain_ge_num"
+          },
+          "snippet": {
+            "text": "theorem Cmain_ge_num {x : ℝ} (N : ℝ) (hNx : N / x = 2 + 9 / (8 * √(π / 2)) / κ) :\n    0.800689 / κ ≤ Cmain (N / x) := by",
+            "line": 942,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.Cmain_ge_num",
+            "lines": [
+              942,
+              968
+            ],
+            "conclusion": "For N/x = 2 + c₁/κ: `C_{η∘,η_*}(N/x) = Cmain ≥ 0.800689/κ`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L942-L943"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

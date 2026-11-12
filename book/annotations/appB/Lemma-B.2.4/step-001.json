@@ -1,0 +1,156 @@
+{
+  "id": "Lemma B.2.4 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves monotonicity for log(ρt)η₂ with ρ ≥ 4, not for log·η₂ (ρ=1), and uses constant sign of the second derivative of the pieces (`lg1''`, `lg2''`) rather than the sign/monotonicity of log·η₂ itself. Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_b_2_4_step_1.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 306,
+        "rect": [
+          0.26253,
+          0.15703,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Lemma B.2.4 step 1: Text, p. 296",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.4 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.monotoneOn_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          65,
+          76
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.monotoneOn_eta2log"
+          },
+          "snippet": {
+            "text": "theorem monotoneOn_eta2log : MonotoneOn (eta2log ρ) (Set.Icc (1 / 4) (1 / 2)) := by\n  intro s hs t ht hst\n  unfold eta2log\n  rw [Helfgott.eta2_eq_left hs.1 hs.2, Helfgott.eta2_eq_left ht.1 ht.2]\n  have hs0 : 0 < s := by linarith [hs.1]\n  have h1 : 0 ≤ Real.log (ρ * s) := Real.log_nonneg (by nlinarith [hs.1])\n  have h2 : 0 ≤ 4 * Real.log (4 * s) := by\n    have := Real.log_nonneg (show (1 : ℝ) ≤ 4 * s by linarith [hs.1]); linarith\n  have h3 : Real.log (ρ * s) ≤ Real.log (ρ * t) := Real.log_le_log (by positivity) (by nlinarith)\n  have h4 : 4 * Real.log (4 * s) ≤ 4 * Real.log (4 * t) := by\n    have := Real.log_le_log (by positivity) (show 4 * s ≤ 4 * t by linarith); linarith\n  exact mul_le_mul h3 h4 h2 (h1.trans h3)",
+            "line": 65,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.monotoneOn_eta2log",
+            "lines": [
+              65,
+              76
+            ],
+            "conclusion": "η_(ρ) = log(ρt)η₂ is monotone on [1/4,1/2] for ρ ≥ 4."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L65-L76"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          78,
+          102
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.antitoneOn_eta2log"
+          },
+          "snippet": {
+            "text": "theorem antitoneOn_eta2log : AntitoneOn (eta2log ρ) (Set.Icc (1 / 2) 1) := by\n  intro s hs t ht hst\n  unfold eta2log\n  rw [Helfgott.eta2_eq_right hs.1 hs.2, Helfgott.eta2_eq_right ht.1 ht.2]\n  have hs0 : 0 < s := by linarith [hs.1]\n  have ht0 : 0 < t := by linarith [ht.1]\n  -- With `A = log ρ`, `u = -log s ≥ v = -log t ≥ 0`, `u ≤ log 2 ≤ A/2`: `(A-v)v ≤ (A-u)u`.\n  set A := Real.log ρ\n  set u := -Real.log s\n  set v := -Real.log t\n  have hA : 2 * Real.log 2 ≤ A := by\n    have := Real.log_le_log (by norm_num) hρ\n    rw [show (4 : ℝ) = 2 ^ 2 by norm_num, Real.log_pow] at this; push_cast at this; linarith\n  have hu : u ≤ Real.log 2 := by\n    simp only [u]\n    have := Real.log_le_log (by norm_num) (show (1 / 2 : ℝ) ≤ s from hs.1)\n    rw [one_div, Real.log_inv] at this; linarith\n  have hvu : v ≤ u := by simp only [u, v]; linarith [Real.log_le_log hs0 hst]\n  have hv0 : 0 ≤ v := by simp only [v]; linarith [Real.log_nonpos ht0.le ht.2]\n  have es : Real.log (ρ * s) * (-4 * Real.log s) = 4 * ((A - u) * u) := by\n    rw [Real.log_mul (by linarith) hs0.ne']; simp only [A, u]; ring\n  have et : Real.log (ρ * t) * (-4 * Real.log t) = 4 * ((A - v) * v) := by\n    rw [Real.log_mul (by linarith) ht0.ne']; simp only [A, v]; ring\n  rw [es, et]\n  nlinarith",
+            "line": 78,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_eta2log",
+            "lines": [
+              78,
+              102
+            ],
+            "conclusion": "η_(ρ) is antitone on [1/2,1] for ρ ≥ 4."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L78-L102"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_abs_lg1''",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          178,
+          196
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_abs_lg1''"
+          },
+          "snippet": {
+            "text": "/-- `∫_a^b |g''| ≤ |g'(b) - g'(a)|` when `g''` has a constant sign: here `∫_{1/4}^{1/2} |g₁''| = 32 log 2`. -/\ntheorem integral_abs_lg1'' : ∫ u in (1 / 4 : ℝ)..(1 / 2), |lg1'' u| = 32 * Real.log 2 := by\n  have hpos : ∀ u ∈ Set.uIcc (1 / 4 : ℝ) (1 / 2), 0 < u := fun u hu => by\n    rw [Set.uIcc_of_le (by norm_num)] at hu; linarith [hu.1]\n  rw [intervalIntegral.integral_congr (g := lg1'') fun u hu => by\n    have h0 := hpos u hu\n    rw [Set.uIcc_of_le (by norm_num)] at hu\n    refine abs_of_nonneg ?_\n    have h1 : Real.log (4 * u) ≤ Real.log 2 := Real.log_le_log (by positivity) (by linarith [hu.2])\n    have h2 : Real.log u ≤ 0 := Real.log_nonpos h0.le (by linarith [hu.2])\n    have h3 : Real.log 2 < 1 := by\n      have := Real.log_two_lt_d9; linarith\n    unfold lg1''; apply div_nonneg _ (by positivity); linarith]\n  rw [intervalIntegral.integral_eq_sub_of_hasDerivAt (fun u hu => hasDerivAt_lg1' (hpos u hu))\n    (ContinuousOn.intervalIntegrable fun u hu => (continuousAt_lg1'' (hpos u hu)).continuousWithinAt)]\n  simp only [lg1']\n  rw [show (4 : ℝ) * (1 / 2) = 2 by norm_num, show (4 : ℝ) * (1 / 4) = 1 by norm_num, Real.log_one,\n    log_half, log_quarter]\n  ring",
+            "line": 178,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_abs_lg1''",
+            "lines": [
+              178,
+              196
+            ],
+            "conclusion": "On [1/4,1/2], lg1'' ≥ 0 (constant sign), so ∫|lg1''| = lg1'(1/2) - lg1'(1/4) = 32 log 2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L178-L196"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          306
+        ],
+        "printed": [
+          296
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.1.2 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses a per-family bound (sum_G_le) instead of the arcsin counting of Lemma 4.1.1's second approach; its argument gives A+(4q/pi)sqrt(AC), one A fewer.",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17462,
+          0.53957,
+          0.56162,
+          0.03139
+        ]
+      },
+      "title": "Lemma 4.1.2 step 11: Text, p. 55",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.2 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1360,
+          1383
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_4_1_2"
+          },
+          "snippet": {
+            "text": "  · -- Second bound.\n    have hGA : ∀ u, G u ≤ A := fun u => min_le_left _ _\n    have hG0 : ∀ u, 0 ≤ G u := fun u => le_min hA (mul_nonneg hC (fq_nonneg _ _))\n    have hfam1 : ∑ r ∈ Finset.Icc 1 L, G r ≤ 2 * (q / π) * √(A * C) := by\n      rw [← Finset.Ico_add_one_right_eq_Icc, Finset.sum_Ico_eq_sum_range, Nat.add_sub_cancel]\n      have := sum_G_le (u₁ := 1) (m := L) hq0 hA hC le_rfl (by linarith)\n      refine le_trans (le_of_eq ?_) this\n      refine Finset.sum_congr rfl fun i _ => ?_\n      simp only [G]; push_cast; ring_nf\n    have hfam2 : ∑ k ∈ Finset.Icc 1 K, G (k - 1 / 2) ≤ A + 2 * (q / π) * √(A * C) := by\n      rcases Nat.lt_or_ge K 1 with hK | hK\n      · rw [Finset.Icc_eq_empty (by omega), Finset.sum_empty]; positivity\n      rw [Finset.sum_eq_add_sum_sdiff_singleton_of_mem (by simp; omega : 1 ∈ Finset.Icc 1 K)]\n      rw [show Finset.Icc 1 K \\ {1} = Finset.Ico 2 (K + 1) by ext x; simp; omega,\n        Finset.sum_Ico_eq_sum_range, show K + 1 - 2 = K - 1 by omega]\n      refine add_le_add (hGA _) ?_\n      have := sum_G_le (u₁ := 3 / 2) (m := K - 1) hq0 hA hC (by norm_num)\n        (by rw [Nat.cast_sub hK]; push_cast; linarith)\n      refine le_trans (le_of_eq ?_) this\n      refine Finset.sum_congr rfl fun i _ => ?_\n      simp only [G]; push_cast; ring_nf\n    have h4 : 4 * (q : ℝ) / π * √(A * C) = 2 * (2 * (q / π) * √(A * C)) := by ring\n    rw [h4]\n    linarith",
+            "line": 1360,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+            "lines": [
+              1227,
+              1383
+            ],
+            "conclusion": "Second bound: each family sum of G is at most (2q/pi)sqrt(AC) (plus A for the half-integer family), so the total is at most 2A+(4q/pi)sqrt(AC)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1360-L1383"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_G_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          404,
+          457
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_G_le"
+          },
+          "snippet": {
+            "text": "/-- **I2.** For unit-spaced points `u₁, u₁ + 1, …, u₁ + m - 1` in `[1, q/2]`,\n`∑ min(A, C f_q(u)) ≤ (2q/π) √(AC)`. -/\ntheorem sum_G_le {q A C : ℝ} (hq : 0 < q) (hA : 0 ≤ A) (hC : 0 ≤ C) {u₁ : ℝ} {m : ℕ}\n    (hu₁ : 1 ≤ u₁) (hlast : u₁ + m - 1 ≤ q / 2) :\n    ∑ i ∈ Finset.range m, min A (C * fq q (u₁ + i)) ≤ 2 * (q / π) * √(A * C) := by\n  set G := fun u => min A (C * fq q u)\n  have hG0 : ∀ u, 0 ≤ G u := fun u => le_min hA (mul_nonneg hC (fq_nonneg q u))\n  have hII : ∀ a b, IntervalIntegrable G volume a b := intervalIntegrable_G hA hC\n  -- Each term is at most the integral over the unit interval to its left.\n  have hterm : ∀ i ∈ Finset.range m,\n      G (u₁ + i) ≤ ∫ u in (u₁ - 1 + i)..(u₁ - 1 + (i + 1 : ℕ)), G u := by\n    intro i hi\n    have hi' : (i : ℝ) + 1 ≤ m := by exact_mod_cast Finset.mem_range.1 hi\n    rw [intervalIntegral.integral_of_le (by push_cast; linarith)]\n    have hvol : volume.real (Ioc (u₁ - 1 + i) (u₁ - 1 + (i + 1 : ℕ))) = 1 := by\n      rw [Real.volume_real_Ioc_of_le (by push_cast; linarith)]; push_cast; ring\n    calc G (u₁ + i) = ∫ _ in Ioc (u₁ - 1 + i) (u₁ - 1 + (i + 1 : ℕ)), G (u₁ + i) := by\n          rw [setIntegral_const, hvol, one_smul]\n      _ ≤ _ := by\n          refine setIntegral_mono_on continuous_const.integrableOn_Ioc ((hII _ _).1) measurableSet_Ioc\n            fun v hv => ?_\n          simp only [mem_Ioc] at hv; push_cast at hv\n          exact min_le_min le_rfl (mul_le_mul_of_nonneg_left\n            (fq_anti hq (by linarith) (by linarith) (by linarith)) hC)\n  have hsum := intervalIntegral.sum_integral_adjacent_intervals (μ := volume) (f := G)\n    (a := fun i : ℕ => u₁ - 1 + i) (n := m) fun i _ => hII _ _\n  simp only [Nat.cast_zero, add_zero] at hsum\n  -- Compare with `∫₀^{q/2} G`.\n  have hsub : ∫ u in (u₁ - 1)..(u₁ - 1 + m), G u ≤ ∫ u in (0:ℝ)..(q / 2), G u := by\n    have e1 := intervalIntegral.integral_add_adjacent_intervals (a := 0) (b := u₁ - 1)\n      (c := q / 2) (hII 0 (u₁ - 1)) (hII (u₁ - 1) (q / 2))\n    have e2 := intervalIntegral.integral_add_adjacent_intervals (a := u₁ - 1) (b := u₁ - 1 + m)\n      (c := q / 2) (hII (u₁ - 1) (u₁ - 1 + m)) (hII (u₁ - 1 + m) (q / 2))\n    have h1 := intervalIntegral.integral_nonneg (μ := volume) (a := 0) (b := u₁ - 1)\n      (by linarith) fun u _ => hG0 u\n    have h2 := intervalIntegral.integral_nonneg (μ := volume) (a := u₁ - 1 + m) (b := q / 2)\n      (by linarith) fun u _ => hG0 u\n    linarith\n  -- Change of variables `v = πu/q`.\n  have hcv : ∫ u in (0:ℝ)..(q / 2), G u =\n      q / π * ∫ v in (0:ℝ)..(π / 2), min A (C * (1 / Real.sin v ^ 2)) := by\n    have hpq : π / q ≠ 0 := (div_pos Real.pi_pos hq).ne'\n    have : G = fun u => (fun v => min A (C * (1 / Real.sin v ^ 2))) ((π / q) * u) := by\n      funext u; simp only [G, fq]; ring_nf\n    rw [this, intervalIntegral.integral_comp_mul_left _ hpq, smul_eq_mul, inv_div]\n    congr 2 <;> field_simp <;> simp\n  calc ∑ i ∈ Finset.range m, G (u₁ + i)\n      ≤ ∑ i ∈ Finset.range m, ∫ u in (u₁ - 1 + i)..(u₁ - 1 + (i + 1 : ℕ)), G u :=\n        Finset.sum_le_sum hterm\n    _ = ∫ u in (u₁ - 1)..(u₁ - 1 + m), G u := hsum\n    _ ≤ ∫ u in (0:ℝ)..(q / 2), G u := hsub\n    _ ≤ q / π * (2 * √(A * C)) := by\n        rw [hcv]; exact mul_le_mul_of_nonneg_left (integral_minInvSin_le hA hC) (by positivity)\n    _ = 2 * (q / π) * √(A * C) := by ring",
+            "line": 404,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_G_le",
+            "lines": [
+              404,
+              457
+            ],
+            "conclusion": "A unit-spaced family of min(A, C fq) terms sums to at most (2q/pi)sqrt(AC)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L404-L457"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

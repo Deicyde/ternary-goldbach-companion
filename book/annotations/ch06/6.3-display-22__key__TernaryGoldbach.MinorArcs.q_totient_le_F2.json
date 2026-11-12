@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 22",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds q/φ(q) by 1.7882 log(2 log T) + 0.9549 (via Lemma C.2.2) instead of 1.00303·Ϝ(Q) ≤ 0.2359 log Q + 0.79 < 0.1573 log x; [L] does not use the Ramaré 1.00303 factor.",
+  "subject": [
+    {
+      "location": {
+        "page": 136,
+        "rect": [
+          0.25926,
+          0.80118,
+          0.56816,
+          0.0538
+        ]
+      },
+      "title": "Display, p. 126",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.q_totient_le_F2",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI1",
+        "lines": [
+          42,
+          63
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.q_totient_le_F2"
+          },
+          "snippet": {
+            "text": "theorem q_totient_le_F2 {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hc : SecondCase T δ q) :\n    (q : ℝ) / Nat.totient q ≤ 1.7882 * Real.log (2 * Real.log T) + 0.9549 := by\n  have hT0 : 0 < T := by linarith\n  have hL := fifteen_six_le_log hT\n  have hq1 := h.1\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq1\n  rcases hc with hc | ⟨hc, -, -⟩\n  · have hF := div_totient_le_large (q := q) (by linarith)\n    have hQT : Q2 T ≤ T ^ 2 := by\n      unfold Q2; rw [div_le_iff₀ (by norm_num)]; nlinarith [sq_nonneg T]\n    have hqT : (q : ℝ) ≤ T ^ 2 := h.2.2.2.2.trans hQT\n    have hlq : Real.log q ≤ 2 * Real.log T := by\n      have := Real.log_le_log hq0 hqT\n      rw [Real.log_pow] at this; push_cast at this; linarith\n    have hlq1 : 0 < Real.log q := Real.log_pos (by linarith)\n    have := Real.log_le_log hlq1 hlq\n    linarith\n  · have hF := div_totient_le_F0 hq1 hT hc\n    unfold a1F0 at hF\n    have := Real.log_le_log (by linarith) (show Real.log T - 1.7917 ≤ 2 * Real.log T by linarith)\n    linarith",
+            "line": 42,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.q_totient_le_F2",
+            "lines": [
+              42,
+              63
+            ],
+            "conclusion": "At the second parameters `q/φ(q) ≤ 1.7882 log(2 log T) + 0.9549`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI1.lean",
+            "fragment": "L42-L63"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          136
+        ],
+        "printed": [
+          126
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

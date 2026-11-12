@@ -1,0 +1,81 @@
+{
+  "id": "C display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the range $5<n\\le10^{27}$ only, below the smallest $n_0=1.23163\\cdot10^{27}$; no RH-height cases ($H=2.44\\cdot10^{12}$, $2.419\\cdot10^{11}$, $3.061\\cdot10^{10}$) and no values $5.90698\\cdot10^{29}$, $6.15697\\cdot10^{28}$.",
+  "subject": [
+    {
+      "location": {
+        "page": 76,
+        "rect": [
+          0.20371,
+          0.79581,
+          0.63183,
+          0.06075
+        ]
+      },
+      "title": "Display, p. 76",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "C display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+        "module": "TernaryGoldbach.Helfgott.SmallCases",
+        "lines": [
+          20,
+          40
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27"
+          },
+          "snippet": {
+            "text": "/-- **Ternary Goldbach for odd `5 < n ≤ 10²⁷`**. -/\ntheorem ternaryGoldbachUpTo_1e27 : TernaryGoldbachUpTo (10 ^ 27) := by\n  intro n hn h5 hle\n  have hBG := binary_goldbach_input\n  by_cases hsmall : n ≤ 4 * 10 ^ 18 + 3\n  · -- `n = 3 + (n − 3)`\n    have hev : Even (n - 3) := Nat.Odd.sub_odd hn (by decide)\n    obtain ⟨p, q, hp, hq, hpq⟩ := hBG (n - 3) hev (by obtain ⟨k, hk⟩ := hn; omega) (by omega)\n    exact ⟨3, p, q, Nat.prime_three, hp, hq, by omega⟩\n  · -- a prime `p ∈ [n − 4·10¹⁸, n − 4]` from rung `i` of the ladder\n    push Not at hsmall\n    have hi1 : 1 ≤ (n - 5) / 3927138875067072512 := by omega\n    have hi2 : (n - 5) / 3927138875067072512 ≤ 254638308 := by omega\n    obtain ⟨p, hp, hp1, hp2⟩ := Ladder.ladder_prime hi1 hi2\n    have hpb : p ≤ n - 4 := by omega\n    have hpa : n - 4 * 10 ^ 18 ≤ p := by omega\n    have hp2' : p ≠ 2 := by omega\n    have hpo : Odd p := hp.odd_of_ne_two hp2'\n    have hev : Even (n - p) := Nat.Odd.sub_odd hn hpo\n    obtain ⟨q, r, hq, hr, hqr⟩ := hBG (n - p) hev (by omega) (by omega)\n    exact ⟨p, q, r, hp, hq, hr, by omega⟩",
+            "line": 20,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+            "lines": [
+              20,
+              40
+            ],
+            "conclusion": "Every odd $n$ with $5<n\\le10^{27}$ is a sum of three primes (from binary Goldbach up to $4\\cdot10^{18}$ and the Proth-prime ladder)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/SmallCases.lean",
+            "fragment": "L20-L40"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          76
+        ],
+        "printed": [
+          76
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

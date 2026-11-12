@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 3.1.1 step 14",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the `0.002 C` term using `C ≤ 0.1 log t + 0.14`, leaving an additive constant, instead of `≤ 0.000047 log δ₀q`.",
+  "subject": [
+    {
+      "location": {
+        "page": 143,
+        "rect": [
+          0.17462,
+          0.8363,
+          0.56162,
+          0.01885
+        ]
+      },
+      "title": "Theorem 3.1.1 step 14: Display, p. 133",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 3.1.1 step 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.main_amgm",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceMain",
+        "lines": [
+          130,
+          131
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.main_amgm"
+          },
+          "snippet": {
+            "text": "  have h2 : 0.002 * Cxt T t / 3.68664 ≤ 0.0005425 * (0.1 * Real.log t + 0.14) := by\n    rw [div_le_iff₀ (by norm_num)]; nlinarith",
+            "line": 130,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.main_amgm",
+            "lines": [
+              105,
+              143
+            ],
+            "conclusion": "`h2`: `0.002 C/3.68664 ≤ 0.0005425 (0.1 log t + 0.14)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceMain.lean",
+            "fragment": "L130-L131"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.main_amgm",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceMain",
+        "lines": [
+          137,
+          140
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.main_amgm"
+          },
+          "snippet": {
+            "text": "  have h4 : (1 / 7.37328 + 1.84332 * 0.30214 / 2) * Real.log t + 0.0005425 * (0.1 * Real.log t) ≤\n      0.41415 * Real.log t := by\n    have : ((1 / 7.37328 + 1.84332 * 0.30214 / 2) + 0.0005425 * 0.1 : ℝ) ≤ 0.41415 := by norm_num\n    nlinarith",
+            "line": 137,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.main_amgm",
+            "lines": [
+              105,
+              143
+            ],
+            "conclusion": "`h4` absorbs `0.0005425·0.1 log t` into the coefficient `0.41415 log t`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceMain.lean",
+            "fragment": "L137-L140"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          143
+        ],
+        "printed": [
+          133
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma B.1.2 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean handles the range by conjugation symmetry (as in the text) and kernel-checked grids with Taylor polynomials and constant 32; the (elek1) subdivision on `[0,655)` is not used.",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.26253,
+          0.72334,
+          0.56162,
+          0.09345
+        ]
+      },
+      "title": "Lemma B.1.2 step 6: Text, p. 292",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.1.2 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2_fourier_bound'",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          78,
+          93
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2_fourier_bound'"
+          },
+          "snippet": {
+            "text": "/-- **[H, Lemma B.1.2, (B.6)] with `32`**: `|η̂₂''|_∞ ≤ 32`, written as `(2πt)² |η̂₂(t)| ≤ c₀`\n(`η̂''(t) = (2πit)² η̂(t)`), from `norm_eta2DD_le`. -/\ntheorem eta2_fourier_bound' (t : ℝ) :\n    (2 * π * t) ^ 2 * ‖𝓕 (fun u => (eta2 u : ℂ)) t‖ ≤ c₀ := by\n  wlog ht : 0 ≤ t generalizing t\n  · have h := this (-t) (by linarith)\n    rwa [norm_fourier_eta2_neg, show (2 * π * -t) ^ 2 = (2 * π * t) ^ 2 by ring] at h\n  rcases eq_or_lt_of_le ht with h0 | hpos\n  · subst h0; unfold c₀; norm_num\n  have hn : (2 * π * t) ^ 2 * ‖𝓕 (fun u => (eta2 u : ℂ)) t‖ = ‖eta2DD t‖ := by\n    rw [← eta2DD_eq hpos.ne', norm_mul]\n    congr 1\n    rw [show ((2 * π * t) ^ 2 : ℂ) = (((2 * π * t) ^ 2 : ℝ) : ℂ) by push_cast; ring,\n      Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (by positivity)]\n  rw [hn]; unfold c₀\n  exact norm_eta2DD_le ht",
+            "line": 78,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eta2_fourier_bound'",
+            "lines": [
+              78,
+              93
+            ],
+            "conclusion": "Negative `t` reduces to `t ≥ 0` by `norm_fourier_eta2_neg`, then `‖eta2DD t‖ ≤ 32` for `t ≥ 0` (`norm_eta2DD_le`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L78-L93"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_le",
+        "module": "TernaryGoldbach.MinorArcs.Eta2DDBound",
+        "lines": [
+          62,
+          66
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_eta2DD_le"
+          },
+          "snippet": {
+            "text": "/-- **[H, (B.6)] with `32`**: `‖eta2DD t‖ ≤ 32` for all `t ≥ 0`. -/\ntheorem norm_eta2DD_le {t : ℝ} (ht : 0 ≤ t) : ‖eta2DD t‖ ≤ 32 := by\n  rcases le_total t 2 with h | h\n  · exact norm_eta2DD_le_two ht h\n  · exact norm_eta2DD_ge_two h",
+            "line": 62,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_le",
+            "lines": [
+              62,
+              66
+            ],
+            "conclusion": "`‖eta2DD t‖ ≤ 32` for `t ≥ 0`, via kernel bisection grids."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2DDBound.lean",
+            "fragment": "L62-L66"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 12.1.1 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The set-up of `Σ` appears in Lean as `F_Q`, integrated (`∫ β, C * Farc a δ₀ Q x β` in the calc, line 365-368); there is no separate name for `Σ`.",
+  "subject": [
+    {
+      "location": {
+        "page": 239,
+        "rect": [
+          0.17462,
+          0.22018,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Proposition 12.1.1 step 7: Text, p. 229",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Farc",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          136,
+          138
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Farc"
+          },
+          "snippet": {
+            "text": "/-- `F_R(β) = Σ_{q̃ ≤ 2R, |β| < w_q} Σ_{b mod q}^* |S(b/q + β)|²`. -/\nnoncomputable def Farc (a : ℕ → ℂ) (δ₀ R x β : ℝ) : ℝ :=\n  ∑ q ∈ Qset R, if |β| < wrad δ₀ R x q then ∑ b ∈ Bset q, ‖expTsum a ((b : ℝ) / q + β)‖ ^ 2 else 0",
+            "line": 136,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Farc",
+            "lines": [
+              136,
+              138
+            ],
+            "conclusion": "Definition of `F_R(β) = Σ_{q∈Qset R, |β|<w_q} Σ_{b∈Bset q} |S(b/q+β)|²`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L136-L138"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          239
+        ],
+        "printed": [
+          229
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

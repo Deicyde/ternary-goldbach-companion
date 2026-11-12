@@ -1,0 +1,81 @@
+{
+  "id": "14.3 display 12",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "$L_{2r_0}$ is `Lg (2*150000)`; [L] bounds it inside `c0_g0` (hGa term) using $\\digamma\\le s_1^2\\approx5.4427$ and $\\log 2M\\le12.611542$, so the bound is slightly weaker than $474.608$; no standalone statement.",
+  "subject": [
+    {
+      "location": {
+        "page": 279,
+        "rect": [
+          0.17135,
+          0.82183,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Display, p. 269",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.3 display 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.c0_g0",
+        "module": "TernaryGoldbach.MinorArcs.NumericsCells",
+        "lines": [
+          10,
+          30
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.c0_g0"
+          },
+          "snippet": {
+            "text": "theorem c0_g0 : ghatY (1e25 : ℝ) ((150000 : ℕ) : ℝ) ≤ 0.060272 := by\n  refine ghatY_le_num (u := 215443200) (a₁ := 12.611542) (b₁ := 13.997915) (b₂ := 8.078748)\n    (ρ := 0.623985) (c₁ := 2.478088) (c₂ := 2.478081) (s₁ := 2.332969) (s₂ := 547.722)\n    (t₁ := 0.00006812928) (h₁ := 0.008542245) (by norm_num) (by norm_num) (by norm_num) (by norm_num)\n    (by norm_num) ?_ ?_ ?_ (by norm_num) ?_ ?_ ?_ (by norm_num) (by norm_num) (by norm_num)\n    (by norm_num) (by norm_num) ?_ ?_ (by norm_num) (by norm_num)\n  · exact (log_le_num (z := 2 * ((150000 : ℕ) : ℝ)) 12 0.611542 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num)\n  · exact (log_le_num (z := 8 * ((150000 : ℕ) : ℝ)) 13 0.997915 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num)\n  · exact (by norm_num : (8.078748 : ℝ) ≤ (8 : ℕ) + 0.078748).trans\n      (le_log_num (z := 9 * 215443200 / (4.008 * ((150000 : ℕ) : ℝ))) 8 0.078748 (by norm_num) (by norm_num) (by unfold taylor6; norm_num))\n  · exact (log_le_num (z := 1 + 13.997915 / (2 * 8.078748)) 0 0.623985 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num)\n  · refine (Real.log_le_log (Real.log_pos (by norm_num))\n      ((log_le_num (z := ((150000 : ℕ) : ℝ)) 11 0.91844 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num : ((11 : ℕ) : ℝ) + 0.91844 ≤ 11.91844))).trans ?_\n    exact (log_le_num (z := 11.91844) 2 0.478088 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num)\n  · refine (by norm_num : (2.478081 : ℝ) ≤ (2 : ℕ) + 0.478081).trans\n      ((le_log_num (z := 11.918389) 2 0.478081 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (Real.log_le_log (by norm_num) ?_))\n    exact (by norm_num : (11.918389 : ℝ) ≤ (11 : ℕ) + 0.918389).trans (le_log_num (z := ((150000 : ℕ) : ℝ)) 11 0.918389 (by norm_num) (by norm_num) (by unfold taylor6; norm_num))\n  · exact rpow_neg_sixth_le (by norm_num) (by norm_num)\n  · exact (hfun_le_num (sq := 7.587144) (by norm_num) ((log_le_num (z := 1e25) 57 0.56463 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans\n      (by norm_num : ((57 : ℕ) : ℝ) + 0.56463 ≤ 57.56463)) (by norm_num) (by norm_num)\n      (rpow_neg_sixth_le (t := 0.00006812928) (by norm_num) (by norm_num))).trans (by norm_num)",
+            "line": 10,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.c0_g0",
+            "lines": [
+              10,
+              30
+            ],
+            "conclusion": "Certified evaluation $\\hat g(10^{25},150000)\\le0.060272$ via `ghatY_le_num` with explicit bounds for $\\log 2M$, $R$ (through $\\rho$), $\\sqrt{\\digamma}$, $L$ and $h$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsCells.lean",
+            "fragment": "L10-L30"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          279
+        ],
+        "printed": [
+          269
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

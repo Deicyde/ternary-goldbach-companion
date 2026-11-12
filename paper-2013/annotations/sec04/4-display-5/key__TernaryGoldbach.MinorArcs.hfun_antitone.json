@@ -1,0 +1,81 @@
+{
+  "id": "4 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean never forms the piecewise function or compares $g$ and $h$ at the crossover $x=(6r)^3$; it proves the two branch monotonicities separately and majorises by the max.",
+  "subject": [
+    {
+      "location": {
+        "page": 26,
+        "rect": [
+          0.20371,
+          0.56424,
+          0.63183,
+          0.04347
+        ]
+      },
+      "title": "Display, p. 26",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "4 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.hfun_antitone",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          224,
+          257
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.hfun_antitone"
+          },
+          "snippet": {
+            "text": "theorem hfun_antitone {z₁ z₂ : ℝ} (h9 : rexp 9 ≤ z₁) (h12 : z₁ ≤ z₂) : hfun z₂ ≤ hfun z₁ := by\n  have hz₁ : 0 < z₁ := lt_of_lt_of_le (Real.exp_pos 9) h9\n  have hz₂ : 0 < z₂ := by linarith\n  have hs₁ : 9 ≤ Real.log z₁ := by rw [Real.le_log_iff_exp_le hz₁]; exact h9\n  have hs12 := Real.log_le_log hz₁ h12\n  have hrp : ∀ z : ℝ, 0 < z → ∀ p : ℝ, z ^ p = rexp (p * Real.log z) := fun z hz p => by\n    rw [Real.rpow_def_of_pos hz, mul_comm]\n  -- first term\n  have hA := antitoneOn_mul_exp_neg (Q := fun s => s ^ (3 / 2 : ℝ))\n    (Q' := fun s => 3 / 2 * s ^ (1 / 2 : ℝ)) (s₁ := 9) (s₂ := Real.log z₂) (p := 1 / 6)\n    (fun s hs => by\n      have := Real.hasDerivAt_rpow_const (x := s) (p := 3 / 2) (Or.inl (by linarith [hs.1]))\n      convert this using 2; norm_num)\n    (fun s hs => by\n      have hs0 : 0 < s := by linarith [hs.1]\n      have e : s ^ (3 / 2 : ℝ) = s * s ^ (1 / 2 : ℝ) := by\n        rw [← Real.rpow_one_add' hs0.le (by norm_num)]; norm_num\n      rw [e]\n      have : 0 ≤ s ^ (1 / 2 : ℝ) := by positivity\n      nlinarith [hs.1])\n  have hB := antitoneOn_mul_exp_neg (Q := fun s => s) (Q' := fun _ => 1) (s₁ := 9)\n    (s₂ := Real.log z₂) (p := 1 / 3) (fun s _ => hasDerivAt_id s) (fun s hs => by\n      linarith [hs.1])\n  have m1 : Real.log z₁ ∈ Icc 9 (Real.log z₂) := ⟨hs₁, hs12⟩\n  have m2 : Real.log z₂ ∈ Icc 9 (Real.log z₂) := ⟨hs₁.trans hs12, le_rfl⟩\n  have h1 := hA m1 m2 hs12\n  have h2 := hB m1 m2 hs12\n  simp only at h1 h2\n  unfold hfun\n  rw [hrp z₁ hz₁, hrp z₂ hz₂, hrp z₁ hz₁ (-1 / 3), hrp z₂ hz₂ (-1 / 3)]\n  have e1 : ∀ s : ℝ, rexp (-1 / 6 * s) = rexp (-(1 / 6) * s) := fun s => by ring_nf\n  have e2 : ∀ s : ℝ, rexp (-1 / 3 * s) = rexp (-(1 / 3) * s) := fun s => by ring_nf\n  rw [e1, e1, e2, e2]\n  nlinarith",
+            "line": 224,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.hfun_antitone",
+            "lines": [
+              224,
+              257
+            ],
+            "conclusion": "`hfun` (the $h$ branch) is non-increasing for $z\\ge e^9$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L224-L257"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          26
+        ],
+        "printed": [
+          26
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 11.2 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

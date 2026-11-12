@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.1.2 step 5",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same conclusion for `|t| ≥ 655` with constant 31.521. Lean bounds `4‖J‖` pieces via `norm_Jq_le` to get `80/(π|t|) ≤ 0.0389` and uses 31.4821 for `4|g|` (so 0.0389 instead of 0.03892).",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.26253,
+          0.69118,
+          0.56162,
+          0.03204
+        ]
+      },
+      "title": "Lemma B.1.2 step 5: Text, p. 292",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.1.2 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_large",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier",
+        "lines": [
+          281,
+          310
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_eta2DD_large"
+          },
+          "snippet": {
+            "text": "/-- **[H, (B.6)] for `|t| ≥ 655`**: `‖eta2DD t‖ ≤ 31.4821 + 80/(π|t|) ≤ 31.521`. -/\ntheorem norm_eta2DD_large {t : ℝ} (ht : 655 ≤ |t|) : ‖eta2DD t‖ ≤ 31.521 := by\n  have ht0 : t ≠ 0 := by intro h; rw [h, abs_zero] at ht; norm_num at ht\n  set z := e (-(1 / 4 * t))\n  have hz : ‖z‖ = 1 := norm_e _\n  have e2 : e (-(1 / 2 * t)) = z ^ 2 := by\n    rw [sq, ← e_add]; congr 1; ring\n  have e4 : e (-(1 * t)) = z ^ 4 := by\n    rw [show z ^ 4 = (z ^ 2) ^ 2 by ring, ← e2, sq, ← e_add]; congr 1; ring\n  have htrig : ‖16 * e (-(1 / 2 * t)) - 16 * e (-(1 / 4 * t)) - 4 * e (-(1 * t))‖ ≤ 31.4821 := by\n    rw [e2, e4, show 16 * z ^ 2 - 16 * z - 4 * z ^ 4 = -z * (4 * z ^ 3 - 16 * z + 16) by ring,\n      norm_mul, norm_neg, hz, one_mul]\n    exact norm_trig_le z hz\n  have hJ1 := norm_Jq_le (a := 1 / 4) (b := 1 / 2) (by norm_num) (by norm_num) ht0\n  have hJ2 := norm_Jq_le (a := 1 / 2) (b := 1) (by norm_num) (by norm_num) ht0\n  have htp : 0 < |t| := abs_pos.2 ht0\n  have hpi := Real.pi_gt_d6\n  have hsum : 4 * (1 / (π * |t| * (1 / 4) ^ 2)) + 4 * (1 / (π * |t| * (1 / 2) ^ 2)) ≤ 0.0389 := by\n    rw [show 4 * (1 / (π * |t| * (1 / 4) ^ 2)) + 4 * (1 / (π * |t| * (1 / 2) ^ 2)) = 80 / (π * |t|) by\n      field_simp; ring, div_le_iff₀ (by positivity)]\n    nlinarith\n  calc ‖eta2DD t‖ ≤ ‖16 * e (-(1 / 2 * t)) - 16 * e (-(1 / 4 * t)) - 4 * e (-(1 * t))‖ +\n        4 * ‖Jq (1 / 4) (1 / 2) t‖ + 4 * ‖Jq (1 / 2) 1 t‖ := by\n        unfold eta2DD\n        have h4 : ‖(4 : ℂ)‖ = 4 := by norm_num\n        refine (norm_sub_le _ _).trans ?_\n        refine (add_le_add_left (norm_add_le _ _) _).trans ?_\n        rw [norm_mul, norm_mul, h4]\n    _ ≤ 31.4821 + 0.0389 := by nlinarith\n    _ ≤ 31.521 := by norm_num",
+            "line": 281,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_large",
+            "lines": [
+              281,
+              310
+            ],
+            "conclusion": "For `|t| ≥ 655`, `‖eta2DD t‖ ≤ 31.4821 + 0.0389 ≤ 31.521`, using `htrig` and `norm_Jq_le`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L281-L310"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

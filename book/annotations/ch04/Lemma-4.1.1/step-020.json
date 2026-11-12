@@ -1,0 +1,119 @@
+{
+  "id": "Lemma 4.1.1 step 20",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17462,
+          0.61597,
+          0.56162,
+          0.01563
+        ]
+      },
+      "title": "Lemma 4.1.1 step 20: Text, p. 53",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.fq_half_add_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          524,
+          547
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.fq_half_add_le"
+          },
+          "snippet": {
+            "text": "theorem fq_half_add_le {q : ℝ} (hq : 3 ≤ q) :\n    fq q (1 / 2) + 2 * (q / π * (Real.cos (π / q) / Real.sin (π / q))) ≤ 6 * q ^ 2 / π ^ 2 := by\n  have hq0 : 0 < q := by linarith\n  obtain ⟨t, ht⟩ : ∃ t, t = π / (2 * q) := ⟨_, rfl⟩\n  have ht0 : 0 < t := by rw [ht]; positivity\n  have ht1 : t ≤ π / 6 := by\n    rw [ht, div_le_div_iff₀ (by positivity) (by norm_num)]; nlinarith [Real.pi_pos]\n  have key := sq_div_sin_sq_add_mul_cot_two_mul_le ht0 ht1\n  have e1 : fq q (1 / 2) = 1 / Real.sin t ^ 2 := by\n    simp only [fq, ht]; ring_nf\n  have e2 : π / q = 2 * t := by rw [ht]; field_simp\n  have e3 : q / π = 1 / (2 * t) := by rw [ht]; field_simp\n  rw [e1, e2, e3]\n  have hs : 0 < Real.sin t := Real.sin_pos_of_pos_of_lt_pi ht0 (by linarith [Real.pi_pos])\n  have e4 : 6 * q ^ 2 / π ^ 2 = 3 / 2 / t ^ 2 := by rw [ht]; field_simp; ring\n  rw [e4, le_div_iff₀ (by positivity)]\n  calc (1 / Real.sin t ^ 2 + 2 * (1 / (2 * t) * (Real.cos (2 * t) / Real.sin (2 * t)))) * t ^ 2\n      = t ^ 2 / Real.sin t ^ 2 + t * (Real.cos (2 * t) / Real.sin (2 * t)) := by\n        have h2t : t ^ 2 * (2 * (1 / (2 * t))) = t := by field_simp\n        calc (1 / Real.sin t ^ 2 + 2 * (1 / (2 * t) * (Real.cos (2 * t) / Real.sin (2 * t)))) * t ^ 2\n            = t ^ 2 / Real.sin t ^ 2 +\n                (t ^ 2 * (2 * (1 / (2 * t)))) * (Real.cos (2 * t) / Real.sin (2 * t)) := by ring\n          _ = _ := by rw [h2t]\n    _ ≤ 3 / 2 := key",
+            "line": 524,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.fq_half_add_le",
+            "lines": [
+              522,
+              547
+            ],
+            "conclusion": "For `q ≥ 3`: `f_q(1/2) + 2(q/π)cot(π/q) ≤ 6q²/π²` (with `t = π/2q`, from the `3/2` inequality)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L524-L547"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          624,
+          627
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₁'"
+          },
+          "snippet": {
+            "text": "    _ ≤ 2 * A + C * (6 * q ^ 2 / π ^ 2) := by\n        gcongr\n        linarith\n    _ = 2 * A + 6 * q ^ 2 / π ^ 2 * C := by ring",
+            "line": 624,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+            "lines": [
+              549,
+              627
+            ],
+            "conclusion": "Hence the sum is `≤ 2A + 6q²/π² · C`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L624-L627"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

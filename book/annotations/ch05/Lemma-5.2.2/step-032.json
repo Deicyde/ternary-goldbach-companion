@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.2.2 step 32",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "Lean's range of z (up to 13/5, t=2z^2 up to 13.52) exceeds the text's t<=13.5; also allows A up to 1/2+10^-4.",
+  "subject": [
+    {
+      "location": {
+        "page": 107,
+        "rect": [
+          0.17462,
+          0.75476,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma 5.2.2 step 32: Text, p. 97",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sub_inv_le_Tz",
+        "module": "TernaryGoldbach.MinorArcs.TypeIINumerics",
+        "lines": [
+          71,
+          96
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sub_inv_le_Tz"
+          },
+          "snippet": {
+            "text": "/-- `z - 1/z ≤ T(z)` for `1 ≤ z ≤ 13/5`, `1/2 ≤ A ≤ 1/2 + 10⁻⁴` (checked on a grid). -/\ntheorem sub_inv_le_Tz {A z : ℝ} (hA : 1 / 2 ≤ A) (hA2 : A ≤ 1 / 2 + 1 / 10000) (hz : 1 ≤ z)\n    (hz2 : z ≤ 13 / 5) : z - 1 / z ≤ Tz A z := by\n  have hmono : ∀ z₀ z₁ : ℝ, 1 ≤ z₀ → z₀ ≤ z → z ≤ z₁ →\n      z₁ - 1 / z₁ ≤ Tz (1 / 2 + 1 / 10000) z₀ → z - 1 / z ≤ Tz A z := by\n    intro z₀ z₁ h0 h1 h2 h3\n    have hz0 : 0 < z := by linarith\n    have : z - 1 / z ≤ z₁ - 1 / z₁ := by\n      have : 1 / z₁ ≤ 1 / z := one_div_le_one_div_of_le hz0 h2\n      linarith\n    linarith [Tz_mono (by linarith : (0 : ℝ) ≤ A) hA2 h0 h1]\n  rcases le_or_gt z (5 / 4) with h | h\n  · exact hmono 1 (5 / 4) le_rfl hz h (by unfold Tz; norm_num)\n  rcases le_or_gt z (3 / 2) with h' | h'\n  · exact hmono (5 / 4) (3 / 2) (by norm_num) h.le h' (by unfold Tz; norm_num)\n  rcases le_or_gt z (7 / 4) with h | h\n  · exact hmono (3 / 2) (7 / 4) (by norm_num) h'.le h (by unfold Tz; norm_num)\n  rcases le_or_gt z 2 with h' | h'\n  · exact hmono (7 / 4) 2 (by norm_num) h.le h' (by unfold Tz; norm_num)\n  rcases le_or_gt z (9 / 4) with h | h\n  · exact hmono 2 (9 / 4) (by norm_num) h'.le h (by unfold Tz; norm_num)\n  rcases le_or_gt z (19 / 8) with h' | h'\n  · exact hmono (9 / 4) (19 / 8) (by norm_num) h.le h' (by unfold Tz; norm_num)\n  rcases le_or_gt z (5 / 2) with h | h\n  · exact hmono (19 / 8) (5 / 2) (by norm_num) h'.le h (by unfold Tz; norm_num)\n  · exact hmono (5 / 2) (13 / 5) (by norm_num) h.le hz2 (by unfold Tz; norm_num)",
+            "line": 71,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sub_inv_le_Tz",
+            "lines": [
+              71,
+              96
+            ],
+            "conclusion": "The inequality holds for 1<=z<=13/5, i.e. 2<=t<=13.52, covering the text's 2<=t<=13.5; verified by 8 grid subintervals."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIINumerics.lean",
+            "fragment": "L71-L96"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          107
+        ],
+        "printed": [
+          97
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

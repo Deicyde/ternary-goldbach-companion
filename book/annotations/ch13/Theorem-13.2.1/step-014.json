@@ -1,0 +1,119 @@
+{
+  "id": "Theorem 13.2.1 step 14",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 260,
+        "rect": [
+          0.26253,
+          0.63847,
+          0.56162,
+          0.08445
+        ]
+      },
+      "title": "Theorem 13.2.1 step 14: Display, p. 250",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a₁",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          91,
+          93
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a₁"
+          },
+          "snippet": {
+            "text": "/-- Coefficients of `S₁`: primes `p > √x`. -/\nnoncomputable def a₁ (x : ℝ) (n : ℕ) : ℂ :=\n  if n.Prime ∧ √x < n then ((Λ n * etaPlus (n / x) : ℝ) : ℂ) else 0",
+            "line": 91,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.a₁",
+            "lines": [
+              91,
+              93
+            ],
+            "conclusion": "Coefficients of S₁: Λ(n)η₊(n/x) for n prime with n > √x, else 0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L91-L93"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a₂",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          95,
+          97
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a₂"
+          },
+          "snippet": {
+            "text": "/-- Coefficients of `S₂ = S_{η₊} - S₁`. -/\nnoncomputable def a₂ (x : ℝ) (n : ℕ) : ℂ :=\n  if n.Prime ∧ √x < n then 0 else ((Λ n * etaPlus (n / x) : ℝ) : ℂ)",
+            "line": 95,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.a₂",
+            "lines": [
+              95,
+              97
+            ],
+            "conclusion": "Coefficients of S₂: Λ(n)η₊(n/x) unless n is prime and > √x, i.e. n non-prime or n ≤ √x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L95-L97"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          260
+        ],
+        "printed": [
+          250
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

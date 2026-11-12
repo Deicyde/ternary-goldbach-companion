@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 38",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Case (b) is carried out with η₂ and odd m (bound with 2|η'|₁/π, c₀ = 32 and Lean's c₂), using lemma_4_1_3 in place of aoro and Lemma 4.1.3.",
+  "subject": [
+    {
+      "location": {
+        "page": 71,
+        "rect": [
+          0.17462,
+          0.73858,
+          0.56162,
+          0.03118
+        ]
+      },
+      "title": "Lemma 4.2.1 step 38: Text, p. 61",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1299,
+          1319
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB"
+          },
+          "snippet": {
+            "text": "  obtain ⟨Q, hqQ, hδ, hD'Q, hMQ⟩ : ∃ Q : ℝ, (q : ℝ) ≤ Q ∧ |δ / x| * (q * Q) ≤ 1 ∧\n      min (c₂ * x / q) D ≤ Q / 2 ∧ Mof x δ q D = min (Q / 2) D := by\n    by_cases hδ0 : δ = 0\n    · refine ⟨max Q₀ (2 * D), hqQ₀.trans (le_max_left _ _), by simp [hδ0], ?_, ?_⟩\n      · have := le_max_right Q₀ (2 * D)\n        exact (min_le_right _ _).trans (by linarith)\n      · rw [Mof, if_pos hδ0, min_eq_right]\n        have := le_max_right Q₀ (2 * D); linarith\n    · have hδpos : 0 < |δ| := abs_pos.2 hδ0\n      have hQ₀le : Q₀ ≤ x / (|δ| * q) := by\n        rw [abs_div, abs_of_pos hx, div_le_div_iff₀ hx (by positivity)] at hδQ₀\n        rw [le_div_iff₀ (by positivity)]; nlinarith\n      refine ⟨x / (|δ| * q), hqQ₀.trans hQ₀le, ?_, ?_, by rw [Mof, if_neg hδ0]⟩\n      · rw [abs_div, abs_of_pos hx]; field_simp; rfl\n      · rcases hcase with hc | hc\n        · refine (min_le_left _ _).trans ?_\n          have h1 : 2 * c₂ * |δ| ≤ 1 := by\n            rw [le_div_iff₀ (by positivity)] at hc; linarith\n          have e : c₂ * x / q = (2 * c₂ * |δ|) * (x / (|δ| * q) / 2) := by field_simp\n          rw [e]; exact mul_le_of_le_one_left (by positivity) h1\n        · exact (min_le_right _ _).trans (hc.trans (by linarith))",
+            "line": 1299,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+            "lines": [
+              1288,
+              1342
+            ],
+            "conclusion": "Provides Q with q ≤ Q, |δ/x| q Q ≤ 1, min(c₂x/q, D) ≤ Q/2 in case (b)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1299-L1319"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R1",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          121,
+          174
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R1"
+          },
+          "snippet": {
+            "text": "/-- **Range (R1)** of [H, Lemma 4.2.2, case (b)], i.e. [H, (4.23)] doubled:\n`∑_{m ≤ q/2} |T_{m,∘}| ≤ (2|η'|₁/π) q max(1, log(c₀e³q²/(4π|η'|₁x)))`. -/\ntheorem sum_R1 {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) :\n    ∑ n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋, Tn α x n ≤\n      2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) := by\n  have happ := approx_of hq hcop hqQ hδ\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hV := eta2'L1_pos\n  have hc0 : (0 : ℝ) < c₀ := by unfold c₀; norm_num\n  set B := eta2'L1 / 2\n  set C := c₀ * q / (4 * x)\n  have h13 := (lemma_4_1_3 happ (y₁ := 0) (y₂ := q / 2) le_rfl (by positivity) (by linarith)\n    (by linarith) (B := B) (C := C) (by positivity) (by positivity)).1\n  rw [Int.floor_zero] at h13\n  have hterm : ∀ n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋, Tn α x n ≤ (if (q : ℤ) ∣ n then 0 else\n      min (B / |Real.sin (π * (a / q + δ / x) * n)|) (C / Real.sin (π * (a / q + δ / x) * n) ^ 2)) := by\n    intro n hn\n    rw [mem_Ioc] at hn\n    have hnq : (n : ℝ) ≤ q / 2 := (Int.cast_le.2 hn.2).trans (Int.floor_le _)\n    have hn1 : (1 : ℝ) ≤ n := by exact_mod_cast hn.1\n    have hndvd : ¬ (q : ℤ) ∣ n := by\n      intro ⟨t, ht⟩\n      have : (n : ℝ) = q * t := by exact_mod_cast ht\n      have ht1 : (1 : ℤ) ≤ t := by\n        by_contra h; push Not at h\n        have : (t : ℝ) ≤ 0 := by exact_mod_cast (by omega : t ≤ 0)\n        nlinarith\n      have : (q : ℝ) ≤ n := by rw [this]; nlinarith [show (1 : ℝ) ≤ t by exact_mod_cast ht1]\n      linarith\n    rw [ite_eq_right hndvd]\n    have hm : 1 ≤ n.toNat := by omega\n    have hcast : ((n.toNat : ℕ) : ℤ) = n := Int.toNat_of_nonneg (by omega)\n    have hne : Real.sin (π * (a / q + δ / x) * ((n.toNat : ℕ) : ℤ)) ≠ 0 := by\n      rw [hcast]\n      exact sin_ne_zero_of_approx happ hndvd (by rw [abs_of_pos (by linarith)]; linarith)\n    have hmR : ((n.toNat : ℕ) : ℝ) = n := by exact_mod_cast hcast\n    have := (norm_Todd_le_min_sin hx h2α hm hne (A := x / (2 * n.toNat) + eta2'L1 / 2)\n      (B := B) (C := C) le_rfl le_rfl (by\n        rw [hmR]; simp only [C]\n        rw [show c₀ * q / (4 * x) = q / 2 / x * (c₀ / 2) by ring]\n        exact mul_le_mul_of_nonneg_right (div_le_div_of_nonneg_right hnq hx.le) (by positivity))).2\n    rw [hcast] at this\n    exact this\n  refine (sum_le_sum hterm).trans (h13.trans ?_)\n  have hX : 0 < c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x) := by positivity\n  have harg : C * rexp 3 * q / (B * π) = 2 * (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x)) := by\n    simp only [B, C]; field_simp\n  rw [harg]\n  calc 2 * B * q / π * max 2 (Real.log (2 * (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))))\n      ≤ 2 * B * q / π * (2 * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x)))) :=\n        mul_le_mul_of_nonneg_left (max_log_two_mul_le hX) (by positivity)\n    _ = _ := by simp only [B]; ring",
+            "line": 121,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R1",
+            "lines": [
+              121,
+              174
+            ],
+            "conclusion": "`∑_{m ≤ q/2} Tn ≤ (2|η₂'|₁/π) q max(1, log(c₀e³q²/(4π|η₂'|₁x)))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L121-L174"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          71
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

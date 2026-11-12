@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 35",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's final bound is bound_4_52, which keeps x/Q0 instead of using Q >= 2 sqrt(x) to get sqrt(x) terms, and has cruder constants than (eq:iulia).",
+  "subject": [
+    {
+      "location": {
+        "page": 85,
+        "rect": [
+          0.17462,
+          0.22146,
+          0.56162,
+          0.01546
+        ]
+      },
+      "title": "Lemma 4.2.4 step 35: Text, p. 75",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          1111,
+          1126
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA"
+          },
+          "snippet": {
+            "text": "  refine (norm_restPartI2_le_sum hU hV).trans ?_\n  rw [← hDdef]\n  refine hsplit.trans ?_\n  unfold bound_4_52\n  simp only []\n  rw [← hc₁def, ← hBcdef, ← hQrdef, ← hYdef]\n  have hlogDe : Real.log (D / rexp 1) = Real.log D - 1 := by\n    rw [Real.log_div hD0.ne' (by positivity), Real.log_exp]\n  rw [hlogDe]\n  have hMY : Bc * M ≤ Bc * ((1 + ε) * Y * (1 / 2)) := by\n    refine mul_le_mul_of_nonneg_left ?_ hBc\n    nlinarith\n  have hq : Real.log M * (35 * c₀ * c₂ / (3 * π ^ 2) * q) ≤ 35 * c₀ * c₂ / (3 * π ^ 2) * q * Real.log D := by\n    have := mul_le_mul_of_nonneg_right hlogMD (show 0 ≤ 35 * c₀ * c₂ / (3 * π ^ 2) * q by positivity)\n    linarith\n  linarith",
+            "line": 1111,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+            "lines": [
+              880,
+              1126
+            ],
+            "conclusion": "Final assembly: restPartI2 norm <= split at M <= log M * (A1 sum) + (A2 sum) <= bound_4_52."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L1111-L1126"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_52",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          226,
+          240
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_52"
+          },
+          "snippet": {
+            "text": "/-- The error term (4.52) of [H, Lemma 4.2.4] (case (a), `|δ| ≥ 1/2c₂`), with `D = UV`,\n`y = x/|δ|q`, **as proved** (`TypeI2Rest.lean: norm_restPartI2_le_caseA`). Same leading term\n`(2√(c₀c₁)/π) D log(D/e)` as [H]; the other terms have the same shape as [H]'s\n(`(1+ε) (y+1) (… log …)` and `(x/Q₀)(… log …)`, the latter `≤ (√x/2)(…)` since `Q₀ ≥ 2√x`) but\ncruder constants; `c₁ = 1 + |η'|₁/(x/D)` as in `bound_4_51`; `min(y+1, 2D)` as in `bound_4_32`. -/\nnoncomputable def bound_4_52 (x δ : ℝ) (q : ℕ) (U V Q₀ ε : ℝ) : ℝ :=\n  let D := U * V\n  let c₁ := 1 + eta2'L1 / (x / D)\n  let y := x / (|δ| * q)\n  let Y := min ((⌊y⌋₊ : ℝ) + 1) (2 * D)\n  2 * √(c₀ * c₁) / π * (D * Real.log (D / rexp 1) +\n      (1 + ε) * Y * (√(3 + 2 * ε) * Real.log (5 * D) + 1 / 2 +\n        (2 + Real.log D / 2) * logPlus (2 * D / y))) +\n    3 * c₁ / 2 * (2 * Real.log (5 * D) + (1 + ε) / ε * Real.log D * logPlus (2 * D / y)) * (x / Q₀) +\n    35 * c₀ * c₂ / (3 * π ^ 2) * q * Real.log D",
+            "line": 226,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_52",
+            "lines": [
+              226,
+              240
+            ],
+            "conclusion": "The case (a) error bound (4.52) in Lean's form, with x/Q0 kept (Q0 >= 2 sqrt x is not used)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L226-L240"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          85
+        ],
+        "printed": [
+          75
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

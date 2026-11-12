@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 4.5 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's per-scale step uses a fresh approximation at scale `wy` and cases `q≤(wy)^{1/3}/6` (gx) vs larger (Thm 3.1.1 second case); no `h(x/K)` constant or Lemma convet.",
+  "subject": [
+    {
+      "location": {
+        "page": 28,
+        "rect": [
+          0.20698,
+          0.74915,
+          0.62529,
+          0.06847
+        ]
+      },
+      "title": "Proposition 4.5 step 5: Text, p. 28",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 4.5 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+        "lines": [
+          105,
+          142
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem"
+          },
+          "snippet": {
+            "text": "/-- The pointwise step of Prop 11.2.3′: a fresh approximation at scale `z = wy`. If\n`α ∉ 𝔐_{8,n}(y)`, `z ≥ 2.16·10²⁰`, `min(1, w) n ≥ 670`, then `|S_{η₂}(α, z)| ≤ G z` for any `G`\nwith `G ≥ g_z(min(1, w) n)` (when `min(1, w) n ≤ z^{1/3}/6`) and `G z ≥` the second-case bound. -/\ntheorem norm_S_eta2_le_of_not_mem {α y n w G : ℝ} (hy0 : 0 < y) (hα : α ∉ majorArcs 8 n y)\n    (hw0 : 0 < w) (hz : 2.16e20 ≤ w * y) (hlow : 670 ≤ min 1 w * n)\n    (hG1 : min 1 w * n ≤ (w * y) ^ (1 / 3 : ℝ) / 6 → gx (w * y) (min 1 w * n) ≤ G)\n    (hG2 : 0.276 * (w * y) ^ (5 / 6 : ℝ) * Real.log (w * y) ^ (3 / 2 : ℝ) +\n      1234 * (w * y) ^ (2 / 3 : ℝ) * Real.log (w * y) ≤ G * (w * y)) :\n    ‖S eta2 (w * y) α‖ ≤ G * (w * y) := by\n  set z := w * y with hz_def\n  have hz0 : 0 < z := by linarith\n  obtain ⟨hTz, -, hTz23, -⟩ := cube_root_facts hz\n  have hQ1 : (1 : ℝ) ≤ 3 / 4 * z ^ (2 / 3 : ℝ) := by rw [hTz23]; nlinarith\n  obtain ⟨δ, a, q, h⟩ := exists_approx2 α hz0 hQ1\n  have hy' : Approx2 α y (δ / w) a q (3 / 4 * z ^ (2 / 3 : ℝ)) := by\n    obtain ⟨h1, h2, ⟨k, hk⟩, h4, h5⟩ := h\n    have e : δ / w / y = δ / z := by rw [hz_def]; field_simp\n    exact ⟨h1, h2, ⟨k, by rw [e]; exact hk⟩, by rw [e]; exact h4, h5⟩\n  have hr := le_rAlpha_of_not_mem hy0 (by norm_num) hy' hα\n  have hq0 : (0 : ℝ) ≤ q := Nat.cast_nonneg q\n  have hmm := min_mul_max_le hw0 (div_nonneg (abs_nonneg δ) hw0.le)\n  have hrw : min 1 w * n ≤ max 1 (|δ| / 8) * q := by\n    have e : w * (|δ| / w) / 8 = |δ| / 8 := by field_simp\n    rw [e] at hmm\n    rw [abs_div, abs_of_pos hw0] at hr\n    calc min 1 w * n ≤ min 1 w * (max 1 (|δ| / w / 8) * q) :=\n          mul_le_mul_of_nonneg_left hr (le_min zero_le_one hw0.le)\n      _ = min 1 w * max 1 (|δ| / w / 8) * q := by ring\n      _ ≤ max 1 (|δ| / 8) * q := mul_le_mul_of_nonneg_right hmm hq0\n  rcases le_or_gt (q : ℝ) (z ^ (1 / 3 : ℝ) / 6) with hq | hq\n  · have key := norm_S_eta2_le_gx hz h hq (by linarith)\n    have hup := r_le_cube_root hz h hq\n    have hmono := gx_antitoneOn hz ⟨hlow, hrw.trans hup⟩ ⟨hlow.trans hrw, hup⟩ hrw\n    calc ‖S eta2 z α‖ ≤ gx z (max 1 (|δ| / 8) * q) * z := key\n      _ ≤ G * z := by\n          gcongr\n          exact hmono.trans (hG1 (hrw.trans hup))\n  · exact ((theorem_3_1_1 hz h).2 hq).trans hG2",
+            "line": 105,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+            "lines": [
+              105,
+              142
+            ],
+            "conclusion": "Pointwise bound at scale `wy` with a fresh approximation: `‖S η₂(wy)‖ ≤ G·wy` using `gx` (q small, (11.11)) or Theorem 3.1.1 second case (q large)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "fragment": "L105-L142"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          28
+        ],
+        "printed": [
+          28
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 11.2.3 step 5, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

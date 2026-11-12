@@ -1,0 +1,81 @@
+{
+  "id": "7 display 41",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's $L_t$ (`Lg`) has the corrected form $\\digamma(t/2)(\\frac{13}{4}\\log t+7.82)+13.66\\log t+37.55$ with $\\digamma\\le1.7882\\log\\log+2.50637/\\log\\log$ certified in cells; [H]'s $L_{r}$ has $\\log2^{7/4}r^{13/4}+80/9$ etc. No standalone $\\le394.316$ is proved.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.20371,
+          0.5275,
+          0.63183,
+          0.03714
+        ]
+      },
+      "title": "Display, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+        "module": "TernaryGoldbach.MinorArcs.NumericsCore",
+        "lines": [
+          115,
+          121
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY_le_num"
+          },
+          "snippet": {
+            "text": "  have hL : Lg (2 * M) / M ≤ ((1.7882 * c₁ + 2.50637 / c₂) * (13 / 4 * a₁ + 7.82) + 13.66 * a₁ + 37.55) / M := by\n    apply div_le_div_of_nonneg_right _ hM0.le\n    unfold Lg\n    rw [show 2 * M / 2 = M by ring]\n    have := mul_le_mul hF (show 13 / 4 * Real.log (2 * M) + 7.82 ≤ 13 / 4 * a₁ + 7.82 by linarith)\n      (by linarith) (by linarith [hFpos.le.trans hF])\n    linarith",
+            "line": 115,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+            "lines": [
+              53,
+              128
+            ],
+            "conclusion": "Inside the certified evaluation of $\\hat g(Y,M)$: $L_{2M}/M\\le((1.7882c_1+2.50637/c_2)(\\tfrac{13}{4}a_1+7.82)+13.66a_1+37.55)/M$, bounding $\\digamma(M)$ by $1.7882\\log\\log M+2.50637/\\log\\log M$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsCore.lean",
+            "fragment": "L115-L121"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.3 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean converts the zero sum into integrals of $|f|$ and $|f'|$ by a Sobolev bound per window, not by a Stieltjes integral against $N^+(T,\\chi)$; it treats both signs of $\\gamma$ at once for $|\\gamma|\\le T_0$ and gives an upper bound, not an identity.",
+  "subject": [
+    {
+      "location": {
+        "page": 181,
+        "rect": [
+          0.17462,
+          0.68072,
+          0.56162,
+          0.11676
+        ]
+      },
+      "title": "Lemma 9.1.3 step 2: Display, p. 171",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.3 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.sum_window_le",
+        "module": "TernaryGoldbach.Explicit.LineZeros",
+        "lines": [
+          124,
+          139
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.sum_window_le"
+          },
+          "snippet": {
+            "text": "  have hpt : ∀ u ∈ S, ‖f u.im‖ ≤ W (idx u) := by\n    intro u hu\n    have h1 := norm_le_sobolev hf hf' (a := a (idx u)) (b := a (idx u + 1))\n      (by simp only [ha]; push_cast; nlinarith) (hwin u hu).2\n    have e : a (idx u + 1) - a (idx u) = h := by simp only [ha]; push_cast; ring\n    rw [e] at h1\n    exact h1\n  calc ∑ u ∈ S, m u * ‖f u.im‖ ≤ ∑ u ∈ S, m u * W (idx u) :=\n        Finset.sum_le_sum fun u hu => mul_le_mul_of_nonneg_left (hpt u hu) (hm u hu)\n    _ = ∑ k ∈ Finset.range (2 * J), ∑ u ∈ S.filter (fun u => idx u = k), m u * W (idx u) :=\n        (Finset.sum_fiberwise_of_maps_to (fun u hu => Finset.mem_range.2 (hwin u hu).1) _).symm\n    _ = ∑ k ∈ Finset.range (2 * J), W k * ∑ u ∈ S.filter (fun u => idx u = k), m u := by\n        refine Finset.sum_congr rfl fun k _ => ?_\n        rw [Finset.mul_sum]\n        refine Finset.sum_congr rfl fun u hu => ?_\n        rw [(Finset.mem_filter.1 hu).2]; ring",
+            "line": 124,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.sum_window_le",
+            "lines": [
+              81,
+              150
+            ],
+            "conclusion": "Each zero's $|f(\\Im u)|$ is bounded by the Sobolev bound $W_k=(1/h)\\int_{I_k}|f|+\\int_{I_k}|f'|$ on its window $I_k$ of length $h$, and the zero sum is regrouped as $\\sum_k W_k\\sum_{u\\in I_k} m_u$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LineZeros.lean",
+            "fragment": "L124-L139"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          181
+        ],
+        "printed": [
+          171
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

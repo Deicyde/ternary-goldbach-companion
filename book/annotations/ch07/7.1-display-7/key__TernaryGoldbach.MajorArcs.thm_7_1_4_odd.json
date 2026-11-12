@@ -1,0 +1,81 @@
+{
+  "id": "7.1 display 7",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean splits odd q <= 150000 (|δ| <= 6e5/q) and even q <= 3e5 (|δ| <= 1.2e6/q), matching the book's gcd(q,2) range, but only for x >= 4.9e26 (book 1e12) and with PlattGRH assumed.",
+  "subject": [
+    {
+      "location": {
+        "page": 150,
+        "rect": [
+          0.25926,
+          0.32499,
+          0.56816,
+          0.04378
+        ]
+      },
+      "title": "Display, p. 140",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7.1 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_odd",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          591,
+          626
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_odd"
+          },
+          "snippet": {
+            "text": "/-- **[H, Thm 7.1.4], odd `q ≤ 150000`** (Platt's verification at `10⁸/q`), our constants:\n`|E| ≤ (7.5·10⁻⁸ + 7.7·10⁶/√x)/√q` for `x ≥ 4.9·10²⁶`, `|δ| ≤ 6·10⁵/q`. -/\ntheorem thm_7_1_4_odd {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} [NeZero q] (hodd : Odd q) (hq : q ≤ 150000)\n    (χ : DirichletCharacter ℂ q) (hχ : χ.IsPrimitive) {δ : ℝ} (hδ : |δ| ≤ 600000 / q) :\n    ‖Schar χ (fun n => ((Λ n * etaPlus (n / x) : ℝ) : ℂ)) (δ / x) -\n        (if q = 1 then 𝓕 (fun u => (etaPlus u : ℂ)) (-δ) * x else 0)‖ ≤\n      ((7.5e-8 + 7.7e6 / √x) / √q) * x := by\n  have hx0 : 0 < x := by linarith\n  have hsx := sqrt_x_ge' hx\n  have hq0 : (0:ℝ) < q := by exact_mod_cast Nat.pos_of_ne_zero (NeZero.ne q)\n  by_cases hq1 : q = 1\n  · subst hq1\n    rw [if_pos rfl]\n    refine (thm_7_1_4_one hx χ (by simpa using hδ)).trans (mul_le_mul_of_nonneg_right ?_ hx0.le)\n    simp only [Nat.cast_one, Real.sqrt_one, div_one]\n    have : 6.24e6 / √x ≤ 7.7e6 / √x := div_le_div_of_nonneg_right (by norm_num) (by linarith)\n    linarith\n  have hq3 : 3 ≤ q := by obtain ⟨k, hk⟩ := hodd; omega\n  have hq2 : 2 ≤ q := by omega\n  have hq3' : (3:ℝ) ≤ q := by exact_mod_cast hq3\n  have hq' : (q:ℝ) ≤ 150000 := by exact_mod_cast hq\n  have hT0 : 200 + max (10 * π * |δ|) 50 ≤ 1e8 / q := by\n    refine hT0_of hq0 hδ ?_ (by rw [le_div_iff₀ hq0]; nlinarith)\n    rw [show (1e8 : ℝ) / q - 200 = (1e8 - 200 * q) / q by field_simp]\n    exact div_le_div_of_nonneg_right (by nlinarith) hq0.le\n  have h := prop_9_4_2 (x := x) (by linarith) δ χ hχ hT0 (platt_odd hodd (by omega) χ hχ)\n  rw [if_neg hq1] at h ⊢\n  refine h.trans (mul_le_mul_of_nonneg_right ?_ hx0.le)\n  unfold err942N\n  rw [if_neg hq1]\n  have hD : |δ| ≤ 6e5 := hδ.trans (by rw [div_le_iff₀ hq0]; nlinarith)\n  refine errP_le_of hx (by omega) hD (E1P_le (Cq := 1.010467e8) (Z := 145.21) (S1 := 28515) (S2 := 37864)\n    (by positivity) ?_ (ZL_le hq2 (by omega)) (by norm_num) (by norm_num) (by norm_num) (by norm_num))\n    (by norm_num) (E2_R1 hq2 hq hδ) (by norm_num)\n  rw [show (1e8 : ℝ) / q + 3.48 = (1e8 + 3.48 * q) / q by field_simp]\n  exact div_le_div_of_nonneg_right (by nlinarith) hq0.le",
+            "line": 591,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_odd",
+            "lines": [
+              591,
+              626
+            ],
+            "conclusion": "Odd q <= 150000 (q=1 included), primitive chi, |δ| <= 6e5/q, x >= 4.9e26: `‖Schar chi (Λ·etaPlus(n/x)) (δ/x) - [q=1] 𝓕 etaPlus(-δ) x‖ ≤ ((7.5e-8+7.7e6/√x)/√q) x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L591-L626"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          150
+        ],
+        "printed": [
+          140
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

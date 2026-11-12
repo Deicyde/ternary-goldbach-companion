@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 8",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[H] maximises the capped factor over x to get (7/4)log δ₀q + 6.11676; [L] bounds the same factor by 2.8·2q/φ(2q) + 2 log t + 2.63 with a different argument and different constants.",
+  "subject": [
+    {
+      "location": {
+        "page": 131,
+        "rect": [
+          0.17135,
+          0.2807,
+          0.56816,
+          0.08496
+        ]
+      },
+      "title": "Display, p. 121",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.muBound_mul_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI1",
+        "lines": [
+          68,
+          96
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.muBound_mul_le"
+          },
+          "snippet": {
+            "text": "theorem muBound_mul_le {M L : ℝ} {q : ℕ} (hq : 1 ≤ q) (hM : 0 < M) (hL : 0 ≤ L) :\n    muBound M q * L ≤ 2.8 * (2 * q / Nat.totient (2 * q)) +\n      max (L - Real.log (M / (2 * q ^ 2))) 0 := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hφ : (0 : ℝ) < Nat.totient (2 * q) := by exact_mod_cast Nat.totient_pos.2 (by omega)\n  have ha : 0 ≤ 2.8 * (2 * (q : ℝ) / Nat.totient (2 * q)) := by positivity\n  unfold muBound\n  split_ifs with h\n  · set ℓ := Real.log (M / (2 * q ^ 2))\n    have hℓ : 0 < ℓ := Real.log_pos (by rw [one_lt_div (by positivity)]; exact h)\n    set a := 2.8 * (2 * (q : ℝ) / Nat.totient (2 * q))\n    have hm0 : 0 ≤ min 1 (a / ℓ) := le_min zero_le_one (by positivity)\n    have hm1 : min 1 (a / ℓ) * ℓ ≤ a := by\n      calc min 1 (a / ℓ) * ℓ ≤ a / ℓ * ℓ := mul_le_mul_of_nonneg_right (min_le_right _ _) hℓ.le\n        _ = a := by field_simp\n    have hm2 : min 1 (a / ℓ) * (L - ℓ) ≤ max (L - ℓ) 0 := by\n      rcases le_total 0 (L - ℓ) with h' | h'\n      · calc min 1 (a / ℓ) * (L - ℓ) ≤ 1 * (L - ℓ) :=\n            mul_le_mul_of_nonneg_right (min_le_left _ _) h'\n          _ ≤ max (L - ℓ) 0 := by rw [one_mul]; exact le_max_left _ _\n      · exact (mul_nonpos_of_nonneg_of_nonpos hm0 h').trans (le_max_right _ _)\n    have : min 1 (a / ℓ) * L = min 1 (a / ℓ) * ℓ + min 1 (a / ℓ) * (L - ℓ) := by ring\n    linarith\n  · push Not at h\n    have hℓ : Real.log (M / (2 * q ^ 2)) ≤ 0 :=\n      Real.log_nonpos (by positivity) (by rw [div_le_one (by positivity)]; exact h)\n    have : L ≤ max (L - Real.log (M / (2 * q ^ 2))) 0 :=\n      le_trans (by linarith) (le_max_left _ _)\n    linarith",
+            "line": 68,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.muBound_mul_le",
+            "lines": [
+              67,
+              96
+            ],
+            "conclusion": "`muBound M q · L ≤ 2.8(2q/φ(2q)) + max(L − log(M/2q²),0)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI1.lean",
+            "fragment": "L68-L96"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          131
+        ],
+        "printed": [
+          121
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

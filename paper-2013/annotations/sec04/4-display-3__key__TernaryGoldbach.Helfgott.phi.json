@@ -1,0 +1,81 @@
+{
+  "id": "4 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no standalone $e^{-t^2/2}$; it carries $\\eta_\\heartsuit$ only inside `phi` (extra factor $t^2$) and inside `etaPlus`.",
+  "subject": [
+    {
+      "location": {
+        "page": 25,
+        "rect": [
+          0.20371,
+          0.19785,
+          0.63183,
+          0.02372
+        ]
+      },
+      "title": "Display, p. 25",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "4 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.phi",
+        "module": "TernaryGoldbach.Helfgott.Defs",
+        "lines": [
+          48,
+          49
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.phi"
+          },
+          "snippet": {
+            "text": "/-- `φ(t) = t² e^{-t²/2}`. -/\nnoncomputable def phi (t : ℝ) : ℝ := t ^ 2 * Real.exp (-t ^ 2 / 2)",
+            "line": 48,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.phi",
+            "lines": [
+              48,
+              49
+            ],
+            "conclusion": "Defines the weight $\\varphi(t)=t^2e^{-t^2/2}$ (`phi`), the function the text says it actually uses, built from $\\eta_\\heartsuit=e^{-t^2/2}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L48-L49"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          25
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 11.2 display 1, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

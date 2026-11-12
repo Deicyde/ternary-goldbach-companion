@@ -1,0 +1,81 @@
+{
+  "id": "7 display 20",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has no sup bound on t*eta_*(t); it uses the pointwise decay |eta_U(u)| <= 144 u^2 e^{-u^2/2} in the same role (tail of prime powers), with different constants.",
+  "subject": [
+    {
+      "location": {
+        "page": 60,
+        "rect": [
+          0.20371,
+          0.60356,
+          0.63183,
+          0.03904
+        ]
+      },
+      "title": "Display, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_etaU_le_gauss",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap2",
+        "lines": [
+          29,
+          30
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_etaU_le_gauss"
+          },
+          "snippet": {
+            "text": "theorem abs_etaU_le_gauss {u : ℝ} (hu : 0 < u) : |etaU u| ≤ 144 * u ^ 2 * rexp (-u ^ 2 / 2) := by\n  rw [etaU_eq_mellinConv hu]; exact Helfgott.abs_mellinConv_eta2_phi_le hu.le",
+            "line": 29,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_etaU_le_gauss",
+            "lines": [
+              29,
+              30
+            ],
+            "conclusion": "|eta_U(u)| <= 144 u^2 e^{-u^2/2} for u>0 (eta_*(t)=eta_U(kappa t)): pointwise Gaussian decay."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap2.lean",
+            "fragment": "L29-L30"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          60
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

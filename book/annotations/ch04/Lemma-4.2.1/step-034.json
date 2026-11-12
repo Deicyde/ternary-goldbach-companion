@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 34",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's final bound is bound_4_32 (constant 35c₀c₂/3π², 3/2 c₁, 2√(c₀c₁)/π (D + (1+ε)Y(√(3+2ε)+½log⁺))), with no ϖ_ε.",
+  "subject": [
+    {
+      "location": {
+        "page": 71,
+        "rect": [
+          0.17462,
+          0.40875,
+          0.56162,
+          0.01504
+        ]
+      },
+      "title": "Lemma 4.2.1 step 34: Text, p. 61",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1181,
+          1195
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hA1' : ∑ n ∈ Ioc ⌊(0 : ℝ)⌋ ⌊M⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      2 * √c₀ / π * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q := by\n    refine hA1.trans ?_\n    have e1 : (q : ℝ) * M ^ 2 / x ≤ c₂ * M := by\n      have : (q : ℝ) * M ^ 2 / x = (q * M / x) * M := by ring\n      rw [this]; exact mul_le_mul_of_nonneg_right hqM hM0.le\n    have e2 : 3 * (q : ℝ) ^ 2 * M / x ≤ 3 * c₂ * q := by\n      have : 3 * (q : ℝ) ^ 2 * M / x = 3 * q * (q * M / x) := by ring\n      rw [this]; nlinarith\n    have e3 : 2 * (q : ℝ) ^ 3 / x ≤ 4 * c₂ * q := by\n      rw [div_le_iff₀ hx]; nlinarith\n    calc 5 * c₀ / (3 * π ^ 2) * (q * M ^ 2 / x + 3 * q ^ 2 * M / x + 2 * q ^ 3 / x)\n        ≤ 5 * c₀ / (3 * π ^ 2) * (c₂ * M + 3 * c₂ * q + 4 * c₂ * q) := by gcongr\n      _ = 5 * c₀ * c₂ / (3 * π ^ 2) * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q := by ring\n      _ = _ := by rw [c₂_identity]",
+            "line": 1181,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "First-sum bound with M = Qr/2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1181-L1195"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1277,
+          1286
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hcancel : 2 * √c₀ / π * M ≤ 2 * √(c₀ * c₁) / π * M := by\n    have := Real.pi_pos; gcongr\n  have e : 2 * √(c₀ * c₁) / π * (D + (1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n      (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) = 2 * √(c₀ * c₁) / π * D +\n      2 * √(c₀ * c₁) / π * ((1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n      (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) := by ring\n  rw [e]\n  have e2 : 2 * √(c₀ * c₁) / π * (D - M) = 2 * √(c₀ * c₁) / π * D - 2 * √(c₀ * c₁) / π * M := by\n    ring\n  linarith",
+            "line": 1277,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "Adds the first-sum bound to the two pieces, using `2√c₀/π·M ≤ 2√(c₀c₁)/π·M` to cancel `-M`, to reach `bound_4_32`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1277-L1286"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          71
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

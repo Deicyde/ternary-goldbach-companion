@@ -1,0 +1,80 @@
+{
+  "id": "1.4 display 6",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 31,
+        "rect": [
+          0.17135,
+          0.63099,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Display, p. 21",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.4 display 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.mellinConv",
+        "module": "TernaryGoldbach.Helfgott.Defs",
+        "lines": [
+          26,
+          28
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.mellinConv"
+          },
+          "snippet": {
+            "text": "/-- Mellin convolution `(f *_M g)(t) = ∫₀^∞ f(r) g(t/r) dr/r`. -/\nnoncomputable def mellinConv (f g : ℝ → ℝ) (t : ℝ) : ℝ :=\n  ∫ r in Set.Ioi (0:ℝ), f r * g (t / r) / r",
+            "line": 26,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.mellinConv",
+            "lines": [
+              26,
+              28
+            ],
+            "conclusion": "`mellinConv f g t = ∫_{r>0} f(r) g(t/r)/r dr` for real functions."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L26-L28"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          31
+        ],
+        "printed": [
+          21
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

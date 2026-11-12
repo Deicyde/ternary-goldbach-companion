@@ -1,0 +1,81 @@
+{
+  "id": "12.2 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has only the second half (12.42): the (10.5) arcs with $2Q_0,2Q$, $c_+=2$ (text $1.36$), $\\delta_0\\ge2$; no statement for the arcs (12.1) with $\\log Q_0,\\log Q$.",
+  "subject": [
+    {
+      "location": {
+        "page": 252,
+        "rect": [
+          0.25926,
+          0.3797,
+          0.56816,
+          0.03885
+        ]
+      },
+      "title": "Display, p. 242",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "12.2 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          378,
+          382
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.cor_12_2_5"
+          },
+          "snippet": {
+            "text": "theorem cor_12_2_5 {x δ₀ Q₀ : ℝ} {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    (hQ₀ : 1e5 ≤ Q₀) (hδ₀ : 2 ≤ δ₀) (hx : (20000 * Q₀) ^ 2 ≤ x / (2 * δ₀))\n    (hρ : 2 * Q₀ ≤ (2 * √(x / (2 * δ₀))) ^ (0.6 : ℝ)) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤\n      (Real.log (2 * Q₀) + 2) / (Real.log (2 * √(x / (2 * δ₀))) + cE) * ∑' n, ‖a n‖ ^ 2 := by",
+            "line": 378,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+            "lines": [
+              375,
+              396
+            ],
+            "conclusion": "Cor 12.2.5 (12.42) version: $\\int_{\\mathfrak M_{\\delta_0,Q_0}}|S|^2\\le\\frac{\\log2Q_0+2}{\\log2Q+c_E}\\sum|a_n|^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L378-L382"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          252
+        ],
+        "printed": [
+          242
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

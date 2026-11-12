@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 13.2.1 step 31",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's $\\ell^\\infty$ input is $g(n)=y\\hat g(y,n)$ with $\\hat g$ containing the $17(670/n)^3/3$ term in place of $g(r)+C_{\\varphi,3}$, and a gap bound at the base level.",
+  "subject": [
+    {
+      "location": {
+        "page": 262,
+        "rect": [
+          0.26253,
+          0.4308,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Theorem 13.2.1 step 31: Text, p. 252",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          350,
+          351
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY"
+          },
+          "snippet": {
+            "text": "/-- `ĝ(y, n) = 1.398 max(g_y(n), h(y)) + 17 (670/n)³/3`. -/\nnoncomputable def ghatY (y n : ℝ) : ℝ := 1.398 * max (gx y n) (hfun y) + 17 * (670 / n) ^ 3 / 3",
+            "line": 350,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+            "lines": [
+              350,
+              351
+            ],
+            "conclusion": "$\\hat g(y,n)=1.398\\max(g_x(y,n),h(y))+17(670/n)^3/3$, the Lean replacement for $g(r)+C_{\\varphi,3}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L350-L351"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          396,
+          411
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hv₀ : ∀ α ∉ majorArcs 8 ((150000 : ℕ) : ℝ) x, ‖S etaStar x α‖ ≤ g 150000 := by\n    refine hv_of_split (y := x / κ) (fun α hα => ?_) (fun α hα => ?_)\n    · exact norm_S_etaStar_le_ghat hx0 hy (by norm_num) (by rw [← hy_def]; push_cast; linarith)\n        (by rw [← hy_def]; push_cast; linarith) hα\n    · have h1 : α ∈ majorArcs 8 r₀ (x / κ) := by rw [hr₀]; exact hα.1\n      have h2 : α ∉ majorArcs 8 r₀ x := by rw [hr₀]; exact hα.2\n      refine (norm_S_etaStar_le_gap hx h1 h2).trans ?_\n      have := ghatY_r0_ge hy\n      simp only [hg_def]; push_cast\n      nlinarith\n  have hvn : ∀ n, 150000 < n → n ≤ r₂ → ∀ α ∉ majorArcs 8 n (x / κ), ‖S etaStar x α‖ ≤ g n := by\n    intro n hn hn2 α hα\n    have hn' : (150000 : ℝ) < n := by exact_mod_cast hn\n    have hn2' : (n : ℝ) ≤ r₂ := by exact_mod_cast hn2\n    exact norm_S_etaStar_le_ghat hx0 hy (by linarith) (by rw [← hy_def]; exact hn2'.trans hr2y)\n      (by rw [← hy_def]; nlinarith) hα",
+            "line": 396,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "`hv₀`, `hvn`: $|S_{\\eta_*}(\\alpha,x)|\\le g(n)=y\\,\\hat g(y,n)$ off $\\mathfrak M_{8,n}(x/\\kappa)$ (base level also on the gap), the $\\ell^\\infty$ input of Prop. 13.1.2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L396-L411"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          262
+        ],
+        "printed": [
+          252
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.2.2 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Odd-m version; separation is 1/(qrR) - 1/Q (the 1/Q is the explicit loss from 2*alpha's O*(1/qQ) error) rather than the text's bare 1/(qrR).",
+  "subject": [
+    {
+      "location": {
+        "page": 105,
+        "rect": [
+          0.17462,
+          0.61551,
+          0.56162,
+          0.0749
+        ]
+      },
+      "title": "Lemma 5.2.2 step 6: Text, p. 95",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.frac_sep",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          864,
+          869
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.frac_sep"
+          },
+          "snippet": {
+            "text": "theorem frac_sep {q r r' b b' : ℕ} (hq : 1 ≤ q) (hr : 1 ≤ r) (hr' : 1 ≤ r')\n    (hrq : Nat.Coprime r q) (hr'q : Nat.Coprime r' q) (hb : b < r) (hb' : b' < r')\n    (hbr : Nat.Coprime r b) (hb'r : Nat.Coprime r' b') {A : ℤ}\n    (hne : ¬ ((q : ℤ) ∣ A ∧ r = r' ∧ b = b')) (u : ℝ) :\n    1 / ((q : ℝ) * r * r') - |u| ≤\n      |(A / q + b / r - b' / r' + u : ℝ) - round (A / q + b / r - b' / r' + u : ℝ)| := by",
+            "line": 864,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.frac_sep",
+            "lines": [
+              862,
+              945
+            ],
+            "conclusion": "For q-coprime r, r' and reduced b/r, b'/r', the distance of A/q + b/r - b'/r' + u to the nearest integer is at least 1/(qrr') - |u| unless the angles coincide."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L864-L869"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.odd_block_weighted",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          996,
+          1039
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.odd_block_weighted"
+          },
+          "snippet": {
+            "text": "      intro t ht t' ht' hne\n      rw [mem_filter, mem_product, mem_product] at ht ht'\n      obtain ⟨⟨hm, hr, _⟩, hb, hbr⟩ := ht\n      obtain ⟨⟨hm', hr', _⟩, hb', hb'r⟩ := ht'\n      obtain ⟨hr1, hrR, _, hrq⟩ := hCmem _ hr\n      obtain ⟨hr1', hrR', _, hr'q⟩ := hCmem _ hr'\n      obtain ⟨j, hj⟩ : ∃ j : ℤ, t.1 - t'.1 = 2 * j := by\n        obtain ⟨u, hu⟩ := hodd _ hm; obtain ⟨u', hu'⟩ := hodd _ hm'; exact ⟨u - u', by omega⟩\n      have hjq : |j| < q := by\n        have := hwidth _ hm _ hm'; rw [hj, abs_mul] at this; norm_num at this; omega\n      set ε := 2 * α - a / q - k\n      have e : β t - β t' = ((j * a : ℤ) / q + t.2.2 / t.2.1 - t'.2.2 / t'.2.1 + j * ε : ℝ) +\n          ((j * k : ℤ) : ℝ) := by\n        simp only [β, ε]\n        have : (t.1 : ℝ) - t'.1 = 2 * j := by exact_mod_cast hj\n        push_cast\n        linear_combination α * this\n      rw [e, dist_round_add_int]\n      have hfs := frac_sep hq hr1 hr1' hrq hr'q hb hb' hbr hb'r (A := j * a) (by\n        rintro ⟨hA, hrr, hbb⟩\n        have hqj : (q : ℤ) ∣ j := hcop.symm.dvd_of_dvd_mul_right hA\n        have hj0 : j = 0 := by\n          by_contra h0\n          have := Int.le_of_dvd (abs_pos.2 h0) ((dvd_abs _ _).2 hqj); omega\n        apply hne\n        have : t.1 = t'.1 := by omega\n        exact Prod.ext this (Prod.ext hrr hbb)) (j * ε)\n      refine le_trans ?_ hfs\n      simp only [δ]\n      have h1 : 1 / ((q : ℝ) * t.2.1 * R) ≤ 1 / (q * t.2.1 * t'.2.1) := by\n        have hr0 : (0 : ℝ) < t'.2.1 := by exact_mod_cast hr1'\n        apply one_div_le_one_div_of_le (by positivity)\n        exact mul_le_mul_of_nonneg_left hrR' (by positivity)\n      have h2 : |(j : ℝ) * ε| ≤ 1 / Q := by\n        rw [abs_mul]\n        have hjq' : |(j : ℝ)| ≤ q - 1 := by\n          have : |j| ≤ q - 1 := by omega\n          rw [← Int.cast_abs]; exact_mod_cast this\n        calc |(j : ℝ)| * |ε| ≤ (q - 1) * (1 / (q * Q)) :=\n              mul_le_mul hjq' hα (abs_nonneg _) (by linarith)\n          _ ≤ 1 / Q := by\n              rw [div_eq_mul_one_div 1 Q, mul_one_div, mul_one_div, div_le_div_iff₀ (by positivity) hQ]\n              nlinarith\n      linarith) hW'",
+            "line": 996,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.odd_block_weighted",
+            "lines": [
+              951,
+              1083
+            ],
+            "conclusion": "Shows the angles alpha*m + b/r (odd m in a block, r<=R, qR^2<Q) are separated by delta_r = 1/(qrR) - 1/Q > 0, using 1/(qrr') >= 1/(qrR); hypothesis qR^2<Q is hRQ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L996-L1039"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          105
+        ],
+        "printed": [
+          95
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.1 step 1",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean centres at the real c = ⌊y⌋+(q+1)/2, not at m_0 = ⌊y⌋+⌊(q+1)/2⌋, with the closed window |n-c| ≤ q/2 in place of j ∈ (-q/2,q/2]; the same residue-window set-up up to these conventions. Relation set in the session lead's sample check (was relatedMatch).",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.26253,
+          0.36622,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Lemma 4.1.1 step 1: Text, p. 52",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.residue_formΦ",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          752,
+          763
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.residue_formΦ"
+          },
+          "snippet": {
+            "text": "  set N := ⌊y⌋\n  have hfl : ⌊y + q⌋ = N + q := by\n    have := Int.floor_add_intCast y (q : ℤ); push_cast at this; exact this\n  rw [hfl]\n  set S := Finset.Ioc N (N + q)\n  set c : ℝ := N + (q + 1) / 2\n  have hdist : ∀ n ∈ S, |(n : ℝ) - c| ≤ q / 2 := by\n    intro n hn\n    rw [Finset.mem_Ioc] at hn\n    have h1 : (N : ℝ) + 1 ≤ n := by exact_mod_cast (by omega : N + 1 ≤ n)\n    have h2 : (n : ℝ) ≤ N + q := by exact_mod_cast hn.2\n    rw [abs_le]; constructor <;> simp only [c] <;> linarith",
+            "line": 752,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.residue_formΦ",
+            "lines": [
+              742,
+              870
+            ],
+            "conclusion": "Sets c = N + (q+1)/2 with N = ⌊y⌋ and shows every n in Ioc N (N+q) has |n-c| ≤ q/2 (the centred index j = n-c)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L752-L763"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus); session lead sample check (opus): relation changed",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

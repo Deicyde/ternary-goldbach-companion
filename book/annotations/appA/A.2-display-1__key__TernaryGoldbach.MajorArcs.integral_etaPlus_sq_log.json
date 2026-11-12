@@ -1,0 +1,81 @@
+{
+  "id": "A.2 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "[L] has the quantity in `u = log t` coordinates (Q1 = ∫ Dg² Ew u du) via `integral_etaPlus_sq_log_eq`; it is bounded in absolute value inside `integral_etaPlus_sq_log`.",
+  "subject": [
+    {
+      "location": {
+        "page": 294,
+        "rect": [
+          0.25926,
+          0.5412,
+          0.56816,
+          0.03883
+        ]
+      },
+      "title": "Display, p. 284",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          950,
+          950
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log"
+          },
+          "snippet": {
+            "text": "  set Q1 := ∫ u, Dg u ^ 2 * Ew u * u",
+            "line": 950,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+            "lines": [
+              886,
+              955
+            ],
+            "conclusion": "`Q1 := ∫ u, Dg u ^ 2 * Ew u * u`, the quantity `∫(η₊-η◦)² log t dt` in `u = log t` coordinates."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L950-L950"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          294
+        ],
+        "printed": [
+          284
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

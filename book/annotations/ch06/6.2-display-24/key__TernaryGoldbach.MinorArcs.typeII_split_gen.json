@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 24",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no single `W₀`; `typeII_split_gen` splits at a general `A` with `V ≤ A ≤ x/U`, `typeII_637` is the case `A=V`, `typeII_638` the case `A=2θq`.",
+  "subject": [
+    {
+      "location": {
+        "page": 119,
+        "rect": [
+          0.17135,
+          0.37576,
+          0.56816,
+          0.01737
+        ]
+      },
+      "title": "Display, p. 109",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_split_gen",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          385,
+          393
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_split_gen"
+          },
+          "snippet": {
+            "text": "theorem typeII_split_gen {α x : ℝ} {q : ℕ} (hq : 1 ≤ q) (hx : 0 < x) {U V : ℕ} (hU : 1 ≤ U)\n    (hV : (2000000 : ℝ) ≤ V) {A : ℝ} (hVA : (V : ℝ) ≤ A) (hAU : A ≤ x / U) {M r : ℝ} (hM : 0 ≤ M)\n    (hr : 0 ≤ r)\n    (hS2a : ∀ W ∈ Set.Icc (V : ℝ) A, S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (2 * M / x + r * x / (2 * W) + W / 2) * logSqSum (max V (W / 2)) W)\n    {c m : ℝ} (hc1 : 1 ≤ c) (hm : 0 < m) (hcA : c * rexp 1 ≤ A)\n    (hS2gen : ∀ W ∈ Set.Icc A (x / U), S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (m * x / (Nat.totient q * Real.log (W / c)) + q / Nat.totient q * (W / Real.log (W / c))) *\n        logSqSum (max V (W / 2)) W) :",
+            "line": 385,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_split_gen",
+            "lines": [
+              379,
+              485
+            ],
+            "conclusion": "For a split point `A ∈ [V, x/U]`, `|S_II| ≤ 4(∫_V^A G₁ + ∫_A^{x/U} G₂)`-type bound using (5.53) on `[V,A]` and (5.54) on `[A,x/U]`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L385-L393"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          119
+        ],
+        "printed": [
+          109
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

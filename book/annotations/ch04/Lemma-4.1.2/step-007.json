@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.2 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the same bound 5/4 only for 0<t<=pi/6 (book [0,pi/4]), with different Taylor polynomials (1+t^2/3+t^4/15+t^6/20), not the book's c_0 chain; sufficient for q>=3.",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17462,
+          0.34742,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma 4.1.2 step 7: Text, p. 55",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.2 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.trig_T2",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1103,
+          1120
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.trig_T2"
+          },
+          "snippet": {
+            "text": "/-- **T2.** `t²/sin²t + (t/2) cot 2t ≤ 5/4` for `0 < t ≤ π/6`. -/\ntheorem trig_T2 {t : ℝ} (ht : 0 < t) (ht1 : t ≤ π / 6) :\n    t ^ 2 / Real.sin t ^ 2 + t / 2 * (Real.cos (2 * t) / Real.sin (2 * t)) ≤ 5 / 4 := by\n  have hs : 0 < Real.sin t := Real.sin_pos_of_pos_of_lt_pi ht (by linarith [Real.pi_pos])\n  have hs2 : 0 < Real.sin (2 * t) :=\n    Real.sin_pos_of_pos_of_lt_pi (by linarith) (by linarith [Real.pi_pos])\n  have ha := mul_cos_le₂ (x := 2 * t) (by linarith) (by linarith)\n  have hb := sq_le_sin_sq₂ ht ht1\n  have ht2 : t ^ 2 ≤ 275 / 1000 := by nlinarith [Real.pi_lt_d4]\n  have h1 : t ^ 2 / Real.sin t ^ 2 ≤ 1 + t ^ 2 / 3 + t ^ 4 / 15 + t ^ 6 / 20 := by\n    rw [div_le_iff₀ (by positivity)]; exact hb\n  have h2 : t / 2 * (Real.cos (2 * t) / Real.sin (2 * t)) ≤\n      1 / 4 * (1 - (2 * t) ^ 2 / 3 - (2 * t) ^ 4 / 45) := by\n    have := mul_le_mul_of_nonneg_left (div_le_iff₀ hs2 |>.2 ha) (by norm_num : (0:ℝ) ≤ 1 / 4)\n    calc t / 2 * (Real.cos (2 * t) / Real.sin (2 * t))\n        = 1 / 4 * (2 * t * Real.cos (2 * t) / Real.sin (2 * t)) := by ring\n      _ ≤ _ := this\n  nlinarith [pow_pos ht 4, pow_pos ht 6]",
+            "line": 1103,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.trig_T2",
+            "lines": [
+              1103,
+              1120
+            ],
+            "conclusion": "t^2/sin^2 t + (t/2) cot 2t <= 5/4 for 0<t<=pi/6, from polynomial bounds sq_le_sin_sq2 and mul_cos_le2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1103-L1120"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

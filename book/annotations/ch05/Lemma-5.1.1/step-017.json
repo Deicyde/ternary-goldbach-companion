@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.1 step 17",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves only $v=2$, where its bound $(1-2^{-3/2})\\zeta(3/2)\\sqrt y$ is half the step's $2\\sqrt y\\,\\zeta(3/2)(1-2^{-3/2})$, by the text's following odd-$s$ argument (`sum_odd_inv_sqrt_le`), not $\\sum_{s<X}s^{-1/2}\\le2\\sqrt X$; general $v$ is absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 93,
+        "rect": [
+          0.17462,
+          0.52724,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.1.1 step 17: Text, p. 83",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          117,
+          120
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le"
+          },
+          "snippet": {
+            "text": "/-- `∑_{r ≤ y odd} ∑_{d | r} 1/√(rd) ≤ (1 - 2^{-3/2}) ζ(3/2) √y`. -/\ntheorem sum_odd_divisors_le {y : ℝ} (hy : 0 ≤ y) :\n    ∑ r ∈ (Icc 1 ⌊y⌋₊).filter Odd, ∑ d ∈ r.divisors, 1 / √((r : ℝ) * d) ≤\n      (1 - 2 ^ (-(3 / 2) : ℝ)) * (riemannZeta (3 / 2)).re * √y := by",
+            "line": 117,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+            "lines": [
+              117,
+              175
+            ],
+            "conclusion": "For $v=2$: $\\sum_{r\\le y\\text{ odd}}\\sum_{d\\mid r}1/\\sqrt{rd}=\\sum_{d\\text{ odd}}\\sum_{s\\le y/d\\text{ odd}}1/(d\\sqrt s)\\le(1-2^{-3/2})\\zeta(3/2)\\sqrt y$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L117-L120"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          93
+        ],
+        "printed": [
+          83
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

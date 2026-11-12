@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.3 step 15",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the sum over all `n ≤ D` with `¬(q∣n ∧ n≤M)` (oddness already dropped), the form used after step 16.",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17462,
+          0.71884,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.3 step 15: Text, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          994,
+          1010
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB"
+          },
+          "snippet": {
+            "text": "  set g : ℤ → ℝ := fun n => if ¬ ((q : ℤ) ∣ n ∧ (n : ℝ) ≤ M) then TLn α x n else 0\n  have h1 : ‖restPartL α x D M q‖ ≤ ∑ n ∈ Ioc (0 : ℤ) ⌊D⌋, g n := by\n    rw [restPartL]\n    refine (norm_sum_le _ _).trans ?_\n    have hfl : ((⌊D⌋₊ : ℕ) : ℤ) = ⌊D⌋ := Int.natCast_floor_eq_floor (by linarith)\n    rw [← hfl, ← sum_Icc_eq_Ioc_int]\n    refine sum_le_sum fun m hm => ?_\n    simp only [g, TLn, Int.toNat_natCast]\n    by_cases h : Odd m ∧ ¬ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M)\n    · rw [if_pos h, if_pos (by\n        intro ⟨hd, hle⟩; exact h.2 ⟨by exact_mod_cast hd, by exact_mod_cast hle⟩), norm_mul]\n      have : ‖(μ m : ℂ)‖ ≤ 1 := by\n        rw [Complex.norm_intCast]; exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n      calc ‖(μ m : ℂ)‖ * ‖ToddG (eta2log (x / m)) α x m‖ ≤ 1 * ‖ToddG (eta2log (x / m)) α x m‖ := by\n            gcongr\n        _ = _ := one_mul _\n    · rw [if_neg h, norm_zero]; split_ifs <;> simp [norm_nonneg]",
+            "line": 994,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+            "lines": [
+              968,
+              1182
+            ],
+            "conclusion": "`‖restPartL‖ ≤ ∑_{n≤D} g n` with `g n = TLn` unless `q∣n ∧ n ≤ M`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L994-L1010"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.2 step 26",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same Ramaré plus small-y bound, but one bound for all x via Rankin's u^{1/9}, with no split at 10^10 and no (x/t)^{...} exponent.",
+  "subject": [
+    {
+      "location": {
+        "page": 97,
+        "rect": [
+          0.17462,
+          0.72504,
+          0.56162,
+          0.01631
+        ]
+      },
+      "title": "Lemma 5.1.2 step 26: Text, p. 87",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_m_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Bound",
+        "lines": [
+          36,
+          74
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_m_le"
+          },
+          "snippet": {
+            "text": "/-- **`|m(x/u)| ≤ 0.03 u^{1/9}/log x + √2 √u/√x`** for `1 ≤ u ≤ x`, `x > 1`. -/\ntheorem abs_m_le {x : ℝ} (hx : 1 < x) {u : ℕ} (hu : 1 ≤ u) (hux : (u : ℝ) ≤ x) :\n    |∑ n ∈ Icc 1 ⌊x / u⌋₊, (μ n : ℝ) / n| ≤\n      0.03 * (u : ℝ) ^ ((1 : ℝ) / 9) / Real.log x + √2 * √(u : ℝ) / √x := by\n  have hu0 : (0 : ℝ) < u := by exact_mod_cast hu\n  have hx0 : 0 < x := by linarith\n  have hlx : 0 < Real.log x := Real.log_pos hx\n  have hy1 : 1 ≤ x / u := by rw [le_div_iff₀ hu0]; linarith\n  have hA0 : 0 ≤ 0.03 * (u : ℝ) ^ ((1 : ℝ) / 9) / Real.log x := by positivity\n  have hB0 : 0 ≤ √2 * √(u : ℝ) / √x := by positivity\n  by_cases h : 11815 ≤ x / u\n  · have hR := TernaryGoldbach.Prelim.ramare_moebius h\n    have hw : 9 ≤ Real.log (x / u) := le_trans log_11815_ge9 (Real.log_le_log (by norm_num) h)\n    have hv : 0 ≤ Real.log u := Real.log_natCast_nonneg u\n    have hsplit : Real.log x = Real.log u + Real.log (x / u) := by\n      rw [Real.log_div hx0.ne' hu0.ne']; ring\n    have hexp : 1 + Real.log u / 9 ≤ (u : ℝ) ^ ((1 : ℝ) / 9) := by\n      rw [Real.rpow_def_of_pos hu0]\n      have := Real.add_one_le_exp (Real.log u * (1 / 9))\n      linarith\n    have key : Real.log x ≤ (u : ℝ) ^ ((1 : ℝ) / 9) * Real.log (x / u) := by\n      rw [hsplit]\n      have : (1 + Real.log u / 9) * Real.log (x / u) ≤\n          (u : ℝ) ^ ((1 : ℝ) / 9) * Real.log (x / u) :=\n        mul_le_mul_of_nonneg_right hexp (by linarith)\n      nlinarith [mul_nonneg hv (by linarith : (0 : ℝ) ≤ Real.log (x / u) - 9)]\n    have hw0 : 0 < Real.log (x / u) := by linarith\n    calc _ ≤ 0.03 / Real.log (x / u) := hR\n      _ ≤ 0.03 * (u : ℝ) ^ ((1 : ℝ) / 9) / Real.log x := by\n        rw [div_le_div_iff₀ hw0 hlx]\n        have := mul_le_mul_of_nonneg_left key (by norm_num : (0 : ℝ) ≤ 0.03)\n        linarith\n      _ ≤ _ := le_add_of_nonneg_right hB0\n  · push Not at h\n    have hm := TernaryGoldbach.Prelim.m_sqrt hy1 h\n    calc _ ≤ √2 / √(x / u) := hm\n      _ = √2 * √(u : ℝ) / √x := by\n        rw [Real.sqrt_div hx0.le, div_div_eq_mul_div]\n      _ ≤ _ := le_add_of_nonneg_left hA0",
+            "line": 36,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_m_le",
+            "lines": [
+              36,
+              74
+            ],
+            "conclusion": "For 1 ≤ u ≤ x, |m(x/u)| ≤ 0.03 u^{1/9}/log x + √2 √u/√x, from Ramaré's bound and the kernel-checked |m(y)| ≤ √(2/y)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Bound.lean",
+            "fragment": "L36-L74"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          97
+        ],
+        "printed": [
+          87
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

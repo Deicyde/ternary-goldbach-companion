@@ -1,0 +1,152 @@
+{
+  "id": "Lemma 4.2.1 step 45",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean handles R ≥ D (which includes c₂x/q ≥ D) with constant 2√c₀/π instead of 5c₀c₂/6π².",
+  "subject": [
+    {
+      "location": {
+        "page": 73,
+        "rect": [
+          0.17462,
+          0.1879,
+          0.56162,
+          0.04603
+        ]
+      },
+      "title": "Lemma 4.2.1 step 45: Text, p. 63",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 45",
+          "quads": [
+            [
+              0.68479,
+              0.1879,
+              0.73624,
+              0.1879,
+              0.73624,
+              0.20442,
+              0.68479,
+              0.20442
+            ],
+            [
+              0.17462,
+              0.20272,
+              0.73624,
+              0.20272,
+              0.73624,
+              0.22088,
+              0.17462,
+              0.22088
+            ],
+            [
+              0.17462,
+              0.20929,
+              0.69707,
+              0.20929,
+              0.69707,
+              0.23393,
+              0.17462,
+              0.23393
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1010,
+          1012
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "    have hcancel : 2 * √c₀ / π * D' ≤ 2 * √(c₀ * c₁) / π * D := by\n      have := Real.pi_pos\n      gcongr",
+            "line": 1010,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "`2√c₀/π·D' ≤ 2√(c₀c₁)/π·D` since D' ≤ D."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1010-L1012"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1013,
+          1019
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "    calc _ ≤ 2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n          (2 * √c₀ / π * D' + 11 * √c₀ / π * q) := by linarith\n      _ ≤ 2 * √(c₀ * c₁) / π * D + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n          √(c₀ * c₁) / π * q * logPlus (D / (q / 2)) +\n          2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n          (2 * (√3 * √(c₀ * c₁)) / π * q + 3 * c₁ / (2 * c₂) * q + 11 * √c₀ / π * q) := by\n          linarith",
+            "line": 1013,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "Hence the bound in the case R ≥ D."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1013-L1019"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          73
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

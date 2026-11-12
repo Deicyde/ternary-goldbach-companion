@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 41",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[H] shows by the derivative that ((log t)^{3/2} - (log V)^{3/2})/sqrt t decreases for t >= 16V so it may be evaluated at the extreme t = theta*8y; Lean removes the dependence on |delta|q by a different argument (`three_halves_sub_le` plus `decay_M3b`), with no derivative identity as in the display. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 141,
+        "rect": [
+          0.17135,
+          0.66743,
+          0.56816,
+          0.07267
+        ]
+      },
+      "title": "Display, p. 131",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.b_M3_le",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIb",
+        "lines": [
+          612,
+          660
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.b_M3_le"
+          },
+          "snippet": {
+            "text": "  have hW : 2 / 3 * (A * √A - Vl * √Vl) ≤ √A * (A - Vl) :=\n    three_halves_sub_le (by linarith) hVA\n  have hW0 : 0 ≤ 2 / 3 * (A * √A - Vl * √Vl) := by\n    have := Real.sqrt_le_sqrt hVA\n    have : 0 ≤ √Vl := Real.sqrt_nonneg _\n    nlinarith\n  -- `√M ≤ x/√(2D) + x/(4√((1-ρ)Q₀))`.\n  have hM : √((T ^ 3) ^ 2 / (2 * |δ| * q) + (T ^ 3) ^ 2 / (16 * (1 - T / 6 / Q2 T) * Q2 T)) ≤\n      0.612373 * (T ^ 2 * √T) / √u + 0.0019072 * (T ^ 2 * √T) := by\n    have h1 : √((T ^ 3) ^ 2 / (2 * |δ| * q)) ≤ 0.612373 * (T ^ 2 * √T) / √u := by\n      have hsu : 0 < √u := Real.sqrt_pos.2 hu0\n      rw [Real.sqrt_le_left (by positivity), div_pow, mul_pow, mul_pow, sq (√T), hss,\n        Real.sq_sqrt hu0.le, show 2 * |δ| * q = 2 * D by rw [hDdef]; ring, hDu,\n        div_le_div_iff₀ (by positivity) hu0]\n      nlinarith [pow_pos hT0 5, mul_pos (pow_pos hT0 6) hu0]\n    have h2 : √((T ^ 3) ^ 2 / (16 * (1 - T / 6 / Q2 T) * Q2 T)) ≤ 0.0019072 * (T ^ 2 * √T) := by\n      rw [Real.sqrt_le_left (by positivity), div_le_iff₀ (by positivity)]\n      have h3 : 16 * (0.99999 * Q2 T) ≤ 16 * ((1 - T / 6 / Q2 T) * Q2 T) := by linarith\n      have h4 : (0.0019072 * (T ^ 2 * √T)) ^ 2 = 0.0019072 ^ 2 * T ^ 5 := by\n        rw [mul_pow, mul_pow, sq (√T), hss]; ring\n      rw [h4]; unfold Q2 at h3 ⊢\n      have hTT : 2449 ^ 2 ≤ T := by nlinarith\n      nlinarith [pow_pos hT0 6, pow_pos hT0 7]\n    have h12 : ∀ a b : ℝ, 0 ≤ a → 0 ≤ b → √(a + b) ≤ √a + √b := fun a b ha hb => by\n      rw [Real.sqrt_le_left (by positivity)]\n      nlinarith [Real.sq_sqrt ha, Real.sq_sqrt hb, Real.sqrt_nonneg a, Real.sqrt_nonneg b,\n        mul_nonneg (Real.sqrt_nonneg a) (Real.sqrt_nonneg b)]\n    refine (h12 _ _ (by positivity) (by positivity)).trans (by linarith)\n  -- piece 1a.\n  have hP1a : 0.612373 * (T ^ 2 * √T) / √u * (√A * (A - Vl)) ≤\n      0.612373 * (3.4658 * √(L + 2.3672)) * (T ^ 2 * √T) := by\n    have hsu : 0 < √u := Real.sqrt_pos.2 hu0\n    have hk : √A * (A - Vl) / √u ≤ 3.4658 * √(L + 2.3672) := by\n      have h1 : √A * (A - Vl) ≤ √(L + 2.3672 + ℓ) * (3.4658 + ℓ) :=\n        mul_le_mul (Real.sqrt_le_sqrt hA1) hAV1 (by linarith) (Real.sqrt_nonneg _)\n      have h2 := decay_M3b (L' := L + 2.3672) (by linarith) hℓ\n      rw [hexp] at h2\n      rw [div_le_iff₀ hsu]\n      have h3 : √(L + 2.3672 + ℓ) * (3.4658 + ℓ) ≤ 3.4658 * √(L + 2.3672) * √u := by\n        rw [← Real.sqrt_sq (show (0 : ℝ) ≤ 3.4658 + ℓ by linarith), ← Real.sqrt_mul (by positivity),\n          ← Real.sqrt_sq (show (0 : ℝ) ≤ 3.4658 by norm_num), ← Real.sqrt_mul (by norm_num),\n          ← Real.sqrt_mul (by positivity)]\n        apply Real.sqrt_le_sqrt\n        nlinarith\n      linarith\n    calc 0.612373 * (T ^ 2 * √T) / √u * (√A * (A - Vl))\n        = 0.612373 * (T ^ 2 * √T) * (√A * (A - Vl) / √u) := by ring\n      _ ≤ 0.612373 * (T ^ 2 * √T) * (3.4658 * √(L + 2.3672)) := by gcongr\n      _ = _ := by ring",
+            "line": 612,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.b_M3_le",
+            "lines": [
+              528,
+              736
+            ],
+            "conclusion": "The 3/2-power term of case (b): `(2/3)(A sqrt A - Vl sqrt Vl) <= sqrt A (A - Vl)`, and the dependence on u = 3|delta|q/(4T) is absorbed by `decay_M3b` (`(3.4658 + ell)^2 (L' + ell) <= 3.4658^2 L' e^ell`), instead of monotonicity in t."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIb.lean",
+            "fragment": "L612-L660"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          141
+        ],
+        "printed": [
+          131
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

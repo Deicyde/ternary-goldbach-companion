@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 12.1.2 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] proves only `∫_𝔐 ≤ Σ_{q,b} ∫_{arc}` (`b` over `0 ≤ b < q`, arcs `Ioo`, `q` ranging over `q̃ ≤ 2Q₀`), not the displayed equality; the odd/even split is carried by `q̃`.",
+  "subject": [
+    {
+      "location": {
+        "page": 240,
+        "rect": [
+          0.26253,
+          0.55899,
+          0.56162,
+          0.11507
+        ]
+      },
+      "title": "Proposition 12.1.2 step 2: Display, p. 230",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.2 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_majorArcs_le",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs",
+        "lines": [
+          90,
+          95
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_majorArcs_le"
+          },
+          "snippet": {
+            "text": "/-- **Covering**: `∫_{(0,1] ∩ 𝔐_{δ₀,R}} g ≤ Σ_{q, b} ∫_{J_{q,b}} g` for `g ≥ 0` continuous\n`1`-periodic. -/\ntheorem integral_majorArcs_le {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    (hg0 : ∀ α, 0 ≤ g α) {δ₀ R x : ℝ} (hx : 0 < x) (hδ : 0 ≤ δ₀ * R) (hw : δ₀ * R ≤ x) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ R x, g α ≤\n      ∑ q ∈ Qset R, ∑ b ∈ Bset q, ∫ y in arc δ₀ R x q b, g y := by",
+            "line": 90,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_majorArcs_le",
+            "lines": [
+              90,
+              178
+            ],
+            "conclusion": "For continuous nonnegative 1-periodic `g`, `∫_{(0,1] ∩ 𝔐} g ≤ Σ_{q∈Qset R} Σ_{b∈Bset q} ∫_{arc q b} g`, the integral over the major arcs bounded by the sum of integrals over the arcs around `b/q` (proof 90-178 periodizes each arc and uses `mem_majorArcs_iff`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "fragment": "L90-L95"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          240
+        ],
+        "printed": [
+          230
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

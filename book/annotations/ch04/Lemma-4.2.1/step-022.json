@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 22",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's dichotomy uses its c₂ and adds the disjunct D ≤ Q₀/2 to case (b); split is on |δ| vs 1/2c₂ rather than a question about Q/2 ≤ c₂x/q.",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17462,
+          0.82276,
+          0.56162,
+          0.03162
+        ]
+      },
+      "title": "Lemma 4.2.1 step 22: Text, p. 59",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1313,
+          1319
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB"
+          },
+          "snippet": {
+            "text": "      · rcases hcase with hc | hc\n        · refine (min_le_left _ _).trans ?_\n          have h1 : 2 * c₂ * |δ| ≤ 1 := by\n            rw [le_div_iff₀ (by positivity)] at hc; linarith\n          have e : c₂ * x / q = (2 * c₂ * |δ|) * (x / (|δ| * q) / 2) := by field_simp\n          rw [e]; exact mul_le_of_le_one_left (by positivity) h1\n        · exact (min_le_right _ _).trans (hc.trans (by linarith))",
+            "line": 1313,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+            "lines": [
+              1288,
+              1342
+            ],
+            "conclusion": "Under `|δ| ≤ 1/2c₂` shows `min(c₂x/q, D) ≤ Q/2`; under `D ≤ Q₀/2` shows it from `D ≤ Q/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1313-L1319"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1372,
+          1378
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_2"
+          },
+          "snippet": {
+            "text": "theorem lemma_4_2_2 {α x δ Q₀ D : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q₀)\n    (hQ₀ : 16 ≤ Q₀) (hD : 1 ≤ D) (hDx : D ≤ x) :\n    ((|δ| ≤ 1 / (2 * c₂) ∨ D ≤ Q₀ / 2) →\n      ‖typeI α x D‖ ≤ bound_4_30 x δ q D + bound_4_31 x q D) ∧\n    (1 / (2 * c₂) ≤ |δ| → ∀ ε, 0 < ε → ε ≤ 1 →\n      ‖typeI α x D‖ ≤ bound_4_30 x δ q D + bound_4_32 x δ q D Q₀ ε) :=\n  ⟨lemma_4_2_2_caseB h hD hDx, fun hδ _ hε _ => lemma_4_2_2_caseA h hD hDx hδ hε⟩",
+            "line": 1372,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2",
+            "lines": [
+              1371,
+              1378
+            ],
+            "conclusion": "States the two cases: `|δ| ≤ 1/2c₂ ∨ D ≤ Q₀/2` gives (4.30)+(4.31); `1/2c₂ ≤ |δ|` gives (4.30)+(4.32)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1372-L1378"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

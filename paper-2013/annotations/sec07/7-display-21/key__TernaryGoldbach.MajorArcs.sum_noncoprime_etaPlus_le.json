@@ -1,0 +1,81 @@
+{
+  "id": "7 display 21",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds the sum over prime powers dividing q (the role of LS_eta) by a different argument: sup bound on n <= x^2 via divisors of q^K and Gaussian decay beyond, not the max over p <= r of sum_alpha eta(p^alpha/x).",
+  "subject": [
+    {
+      "location": {
+        "page": 60,
+        "rect": [
+          0.20371,
+          0.74976,
+          0.63183,
+          0.1491
+        ]
+      },
+      "title": "Display, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          64,
+          67
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le"
+          },
+          "snippet": {
+            "text": "/-- **The terms with `(n, q) > 1`**: for `x ≥ 10⁴` and `x² ≤ 2^K`,\n`Σ_{(n,q)>1} Λ(n) |η₊(n/x)| ≤ 1.94 K log q + 1`. -/\ntheorem sum_noncoprime_etaPlus_le {x : ℝ} (hx : 1e4 ≤ x) {q K : ℕ} (hq : 1 ≤ q)\n    (hK : x ^ 2 ≤ 2 ^ K) :",
+            "line": 64,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+            "lines": [
+              64,
+              157
+            ],
+            "conclusion": "For x >= 1e4, x^2 <= 2^K: sum over (n,q)>1 of Lambda(n)|eta_+(n/x)| <= 1.94 K log q + 1."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L64-L67"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          60
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

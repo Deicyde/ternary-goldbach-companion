@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 8",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[H] maximises the capped factor over x to get (7/4)log δ₀q + 6.11676; [L] bounds the same factor by 2.8·2q/φ(2q) + 2 log t + 2.63 with a different argument and different constants.",
+  "subject": [
+    {
+      "location": {
+        "page": 131,
+        "rect": [
+          0.17135,
+          0.2807,
+          0.56816,
+          0.08496
+        ]
+      },
+      "title": "Display, p. 121",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI1_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI1",
+        "lines": [
+          270,
+          280
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI1_first"
+          },
+          "snippet": {
+            "text": "  -- `log(x/U) μ ≤ 2.8ρ + 2 log t + 2.63`.\n  have hLμ : Real.log (T ^ 3 / U1 T t) * muBound (U1 T t) q ≤\n      2.8 * (2 * q / Nat.totient (2 * q)) + (2 * Real.log t + 2.63) := by\n    rw [mul_comm]\n    refine (muBound_mul_le hq (by linarith) (Real.log_nonneg ?_)).trans ?_\n    · rw [le_div_iff₀ (by linarith)]; nlinarith [pow_pos hT0 2]\n    · have hqt : 2 * (q : ℝ) ≤ t := by rw [ht]; nlinarith [delta0_ge δ]\n      have := log_xq_U_le hT ht2 htT hq hqt\n      have : max (Real.log (T ^ 3 / U1 T t) - Real.log (U1 T t / (2 * q ^ 2))) 0 ≤\n          2 * Real.log t + 2.63 := max_le this (by linarith)\n      linarith",
+            "line": 270,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI1_first",
+            "lines": [
+              224,
+              315
+            ],
+            "conclusion": "`log(x/U)·μ ≤ 2.8·2q/φ(2q) + 2 log t + 2.63` (`hLμ`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI1.lean",
+            "fragment": "L270-L280"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          131
+        ],
+        "printed": [
+          121
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

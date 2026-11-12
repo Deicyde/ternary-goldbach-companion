@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 25",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same bounds with Lean's odd-m constants: the small terms give 35c₀c₂/3π² (book 35c₀c₂/6π²) and the main term 2√c₀/π (book 5c₀c₂/6π²·M).",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.26253,
+          0.37986,
+          0.56162,
+          0.07473
+        ]
+      },
+      "title": "Lemma 4.2.1 step 25: Text, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1150,
+          1162
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hqM : q * M / x ≤ c₂ := by\n    have h1 : q * M / x ≤ q * (Qr / 2) / x := by gcongr\n    have h2 : (q : ℝ) * (Qr / 2) / x = 1 / (2 * |δ|) := by rw [hQrdef]; field_simp\n    have h3 : 1 / (2 * |δ|) ≤ c₂ := by\n      rw [div_le_iff₀ (by positivity)]\n      rw [div_le_iff₀ (by positivity)] at hδ; linarith\n    linarith\n  have hq2 : (q : ℝ) ^ 2 ≤ 2 * c₂ * x := by\n    have h1 : (q : ℝ) * Q₀ ≤ 2 * c₂ * x := by\n      rw [abs_div, abs_of_pos hx, div_le_div_iff₀ hx (by positivity)] at hδQ₀\n      rw [div_le_iff₀ (by positivity)] at hδ\n      nlinarith\n    nlinarith",
+            "line": 1150,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`qM/x ≤ c₂` and `q² ≤ 2c₂x`, derived from `|δ/x| ≤ 1/(qQ₀)`, `q ≤ Q₀`, `|δ| ≥ 1/2c₂`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1150-L1162"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1184,
+          1195
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "    have e1 : (q : ℝ) * M ^ 2 / x ≤ c₂ * M := by\n      have : (q : ℝ) * M ^ 2 / x = (q * M / x) * M := by ring\n      rw [this]; exact mul_le_mul_of_nonneg_right hqM hM0.le\n    have e2 : 3 * (q : ℝ) ^ 2 * M / x ≤ 3 * c₂ * q := by\n      have : 3 * (q : ℝ) ^ 2 * M / x = 3 * q * (q * M / x) := by ring\n      rw [this]; nlinarith\n    have e3 : 2 * (q : ℝ) ^ 3 / x ≤ 4 * c₂ * q := by\n      rw [div_le_iff₀ hx]; nlinarith\n    calc 5 * c₀ / (3 * π ^ 2) * (q * M ^ 2 / x + 3 * q ^ 2 * M / x + 2 * q ^ 3 / x)\n        ≤ 5 * c₀ / (3 * π ^ 2) * (c₂ * M + 3 * c₂ * q + 4 * c₂ * q) := by gcongr\n      _ = 5 * c₀ * c₂ / (3 * π ^ 2) * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q := by ring\n      _ = _ := by rw [c₂_identity]",
+            "line": 1184,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`qM²/x ≤ c₂M`, `3q²M/x ≤ 3c₂q`, `2q³/x ≤ 4c₂q`, giving `(2√c₀/π) M + (35c₀c₂/3π²) q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1184-L1195"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

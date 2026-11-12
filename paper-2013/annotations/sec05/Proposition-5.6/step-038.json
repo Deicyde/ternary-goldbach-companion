@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.6 step 38",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Signposting: [L] does this by explicit majorant values `gHatQ` and an induction over primorials, not by Rosser-Schoenfeld.",
+  "subject": [
+    {
+      "location": {
+        "page": 41,
+        "rect": [
+          0.20698,
+          0.7089,
+          0.62529,
+          0.06557
+        ]
+      },
+      "title": "Proposition 5.6 step 38: Text, p. 41",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.6 step 38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gHatQ",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot4",
+        "lines": [
+          25,
+          30
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gHatQ"
+          },
+          "snippet": {
+            "text": "/-- An antitone majorant of `g` on the primes. -/\nnoncomputable def gHatQ (p : ℕ) : ℝ :=\n  if p ≤ 3 then 1.39953 else if p ≤ 5 then 1.36194 else if p ≤ 7 then 1.3115 else\n  if p ≤ 11 then 1.24148 else if p ≤ 13 then 1.21777 else if p ≤ 17 then 1.18326 else\n  if p ≤ 19 then 1.17031 else if p ≤ 23 then 1.14988 else if p ≤ 29 then 1.12806 else\n  if p ≤ 31 then 1.12235 else (p : ℝ) / (p - 1) * (1 + (p : ℝ) ^ (-(2 / 3 : ℝ)))",
+            "line": 25,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gHatQ",
+            "lines": [
+              25,
+              30
+            ],
+            "conclusion": "`gHatQ`: an antitone majorant of $g(p)$ with explicit numerical values for $p\\le31$ and $(p/(p-1))(1+p^{-2/3})$ above."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
+            "fragment": "L25-L30"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot5",
+        "lines": [
+          217,
+          277
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lamQ_pow_le"
+          },
+          "snippet": {
+            "text": "theorem lamQ_pow_le {q : ℕ} (hq : 22000000000 ≤ q) :\n    lamQ q ^ 7 ≤ (103 / 120 : ℝ) ^ 9 * (q : ℝ) ^ 2 := by\n  have hq1 : 1 ≤ q := by omega\n  have hq' : (22000000000 : ℝ) ≤ q := by exact_mod_cast hq\n  set k := q.primeFactors.card\n  have hlq : 23.8143 ≤ Real.log q := log_Q1_ge.trans (Real.log_le_log (by norm_num) hq')\n  have hlam0 : 0 ≤ lamQ q := by\n    unfold lamQ\n    have := kapQ_pos hq1; have := qphi_pos hq1; have := f1q_pos q\n    positivity\n  rcases Nat.lt_or_ge k 11 with hk | hk\n  · -- `k ≤ 10`\n    have hG : Gk k ≤ Gk 10 := by\n      unfold Gk\n      exact prod_le_prod_of_subset_of_one_le₀ (range_subset_range.2 (by omega))\n        (fun i _ => by linarith [one_le_ghat (Nat.nth Nat.Prime i)]) fun i _ _ => one_le_ghat _\n    have hS : Sk k ≤ Sk 10 := by\n      unfold Sk\n      exact sum_le_sum_of_subset_of_nonneg (range_subset_range.2 (by omega))\n        fun i _ _ => shat_nonneg _\n    set κ0 : ℝ := 0.3726 * (23.8143 - (2 * 1.098613 / 3 + 1.609442 / 5 + 1.94597 / 7 +\n      2.397896 / 11 + 2.564952 / 13 + 2.833241 / 17 + 2.944498 / 19 + 3.135495 / 23 +\n      3.367296 / 29)) + 0.0274177 with hκ0def\n    have hκ0 : 0 < κ0 := by norm_num [hκ0def]\n    have hκ : κ0 ≤ kapk k q := by\n      unfold kapk; have := Sk_10_le; rw [hκ0def]; nlinarith\n    obtain ⟨hlam, -⟩ := lamQ_le_k hq1 (lt_of_lt_of_le hκ0 hκ)\n    have hG0 : 0 ≤ Gk k := by\n      unfold Gk; exact prod_nonneg fun i _ => by linarith [one_le_ghat (Nat.nth Nat.Prime i)]\n    have h1 : lamQ q ≤ (7.4527 * Gk 10 / κ0) ^ 3 :=\n      hlam.trans (pow_le_pow_left₀ (div_nonneg (mul_nonneg (by norm_num) hG0) (hκ0.le.trans hκ))\n        (div_le_div₀ (mul_nonneg (by norm_num) (hG0.trans hG)) (by linarith) hκ0 hκ) 3)\n    have h2 := base_10 (κ := κ0) le_rfl\n    calc lamQ q ^ 7 ≤ ((7.4527 * Gk 10 / κ0) ^ 3) ^ 7 := pow_le_pow_left₀ hlam0 h1 7\n      _ = (7.4527 * Gk 10) ^ 21 / κ0 ^ 21 := by rw [← pow_mul, div_pow]\n      _ ≤ (103 / 120 : ℝ) ^ 9 * (22000000000 : ℝ) ^ 2 := by\n          rw [div_le_iff₀ (by positivity)]; exact h2\n      _ ≤ (103 / 120 : ℝ) ^ 9 * (q : ℝ) ^ 2 := by gcongr\n  · -- `k ≥ 11`\n    obtain ⟨hκ, hmain⟩ := IHk_all hk\n    have hprim : ((primk k : ℕ) : ℝ) ≤ q := by\n      have hPp : ∀ p ∈ q.primeFactors, p.Prime := fun p hp => Nat.prime_of_mem_primeFactors hp\n      have h2 := (TernaryGoldbach.Prelim.exch q.primeFactors hPp).2\n      have h3 : ∏ p ∈ q.primeFactors, p ≤ q := Nat.le_of_dvd (by omega) (Nat.prod_primeFactors_dvd q)\n      unfold primk; exact_mod_cast h2.trans h3\n    have hprim0 : (0 : ℝ) < primk k := by\n      unfold primk; push_cast\n      exact prod_pos fun i _ => by exact_mod_cast (Nat.prime_nth_prime i).pos\n    have hκq : kapk k (primk k) ≤ kapk k q := by\n      unfold kapk; have := Real.log_le_log hprim0 hprim; linarith\n    obtain ⟨hlam, -⟩ := lamQ_le_k hq1 (lt_of_lt_of_le hκ hκq)\n    have hG0 : 0 ≤ Gk k := by\n      unfold Gk; exact prod_nonneg fun i _ => by linarith [one_le_ghat (Nat.nth Nat.Prime i)]\n    have h1 : lamQ q ≤ (7.4527 * Gk k / kapk k (primk k)) ^ 3 :=\n      hlam.trans (pow_le_pow_left₀ (div_nonneg (mul_nonneg (by norm_num) hG0) (hκ.le.trans hκq))\n        (div_le_div₀ (mul_nonneg (by norm_num) hG0) le_rfl hκ hκq) 3)\n    calc lamQ q ^ 7 ≤ ((7.4527 * Gk k / kapk k (primk k)) ^ 3) ^ 7 := pow_le_pow_left₀ hlam0 h1 7\n      _ = (7.4527 * Gk k) ^ 21 / kapk k (primk k) ^ 21 := by rw [← pow_mul, div_pow]\n      _ ≤ (103 / 120 : ℝ) ^ 9 * ((primk k : ℕ) : ℝ) ^ 2 := by\n          rw [div_le_iff₀ (by positivity)]; exact hmain\n      _ ≤ (103 / 120 : ℝ) ^ 9 * (q : ℝ) ^ 2 := by gcongr",
+            "line": 217,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+            "lines": [
+              217,
+              277
+            ],
+            "conclusion": "For $q\\ge 2.2\\cdot10^{10}$, `lamQ q`$^7\\le a^9q^2$ with $a=1.03/1.2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
+            "fragment": "L217-L277"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          41
+        ],
+        "printed": [
+          41
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.2.4 step 38, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

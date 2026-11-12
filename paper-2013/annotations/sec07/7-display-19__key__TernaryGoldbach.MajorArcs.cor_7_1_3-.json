@@ -1,0 +1,81 @@
+{
+  "id": "7 display 19",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same quantity (error of S_{η_*}(0,x) against its main term), but Lean's constant 4.7e6/√y with y = x/κ ≥ 10^25 (about 1.5e-6) is much weaker than 1.71973e-8, which uses √x_+ in the denominator.",
+  "subject": [
+    {
+      "location": {
+        "page": 60,
+        "rect": [
+          0.20371,
+          0.46586,
+          0.63183,
+          0.03739
+        ]
+      },
+      "title": "Display, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.cor_7_1_3'",
+        "module": "TernaryGoldbach.MajorArcs.Cor713",
+        "lines": [
+          807,
+          811
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.cor_7_1_3'"
+          },
+          "snippet": {
+            "text": "theorem cor_7_1_3' {y : ℝ} (hy : 1e25 ≤ y) {q : ℕ} [NeZero q] (hq : q ≤ 300000)\n    (χ : DirichletCharacter ℂ q) (hχ : χ.IsPrimitive) {δ : ℝ} (hδ : |δ| ≤ 4 * 300000 / q) :\n    ‖Schar χ (fun n => ((Λ n * etaU (n / y) : ℝ) : ℂ)) (δ / y) -\n        (if q = 1 then 𝓕 (fun u => (etaU u : ℂ)) (-δ) * y else 0)‖ ≤\n      (1e-17 + 4.7e6 / √q / √y) * y := by",
+            "line": 807,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.cor_7_1_3'",
+            "lines": [
+              803,
+              836
+            ],
+            "conclusion": "For q = 1, δ = 0, y ≥ 10^25: `Σ Λ(n) η_*(n/x) − η̂(0) y` is bounded by `(1e-17 + 4.7e6/√y) y`, y = x/κ; η̂(0) = √(π/2) by `integral_etaU`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L807-L811"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          60
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

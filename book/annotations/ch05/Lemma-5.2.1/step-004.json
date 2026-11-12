@@ -1,0 +1,87 @@
+{
+  "id": "Lemma 5.2.1 step 4",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "Mathlib states it for y ≥ 0, text for R ≥ 1; it is used in Prelim.log_le_sum_coprime (SumMuSqPhi.lean 292-315).",
+  "subject": [
+    {
+      "location": {
+        "page": 104,
+        "rect": [
+          0.26253,
+          0.45396,
+          0.56162,
+          0.0178
+        ]
+      },
+      "title": "Lemma 5.2.1 step 4: Text, p. 94",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.1 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "log_le_harmonic_floor",
+        "module": "Mathlib.NumberTheory.Harmonic.Bounds",
+        "lines": [
+          60,
+          69
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "log_le_harmonic_floor"
+          },
+          "snippet": {
+            "text": "theorem log_le_harmonic_floor (y : ℝ) (hy : 0 ≤ y) :\n    Real.log y ≤ harmonic ⌊y⌋₊ := by\n  by_cases h0 : y = 0\n  · simp [h0]\n  · calc\n      _ ≤ Real.log ↑(Nat.floor y + 1) := ?_\n      _ ≤ _ := log_add_one_le_harmonic _\n    gcongr\n    apply (Nat.le_ceil y).trans\n    norm_cast",
+            "line": 60,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "log_le_harmonic_floor",
+            "lines": [
+              60,
+              70
+            ],
+            "conclusion": "log y ≤ ∑_{d ≤ ⌊y⌋} 1/d (harmonic ⌊y⌋) for all real y ≥ 0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/NumberTheory/Harmonic/Bounds.lean",
+            "fragment": "L60-L69"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          104
+        ],
+        "printed": [
+          94
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

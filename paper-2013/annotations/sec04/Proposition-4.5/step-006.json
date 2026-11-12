@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 4.5 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean integrates an abstract majorant `G` against φ on [w₀,w₁] (with hG2 for the large-q case) rather than `h(x/K)wx`; no `h(x/K)|φ|₁x` display.",
+  "subject": [
+    {
+      "location": {
+        "page": 28,
+        "rect": [
+          0.20698,
+          0.81775,
+          0.62529,
+          0.08055
+        ]
+      },
+      "title": "Proposition 4.5 step 6: Display, p. 28",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 4.5 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+        "lines": [
+          105,
+          142
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem"
+          },
+          "snippet": {
+            "text": "/-- The pointwise step of Prop 11.2.3′: a fresh approximation at scale `z = wy`. If\n`α ∉ 𝔐_{8,n}(y)`, `z ≥ 2.16·10²⁰`, `min(1, w) n ≥ 670`, then `|S_{η₂}(α, z)| ≤ G z` for any `G`\nwith `G ≥ g_z(min(1, w) n)` (when `min(1, w) n ≤ z^{1/3}/6`) and `G z ≥` the second-case bound. -/\ntheorem norm_S_eta2_le_of_not_mem {α y n w G : ℝ} (hy0 : 0 < y) (hα : α ∉ majorArcs 8 n y)\n    (hw0 : 0 < w) (hz : 2.16e20 ≤ w * y) (hlow : 670 ≤ min 1 w * n)\n    (hG1 : min 1 w * n ≤ (w * y) ^ (1 / 3 : ℝ) / 6 → gx (w * y) (min 1 w * n) ≤ G)\n    (hG2 : 0.276 * (w * y) ^ (5 / 6 : ℝ) * Real.log (w * y) ^ (3 / 2 : ℝ) +\n      1234 * (w * y) ^ (2 / 3 : ℝ) * Real.log (w * y) ≤ G * (w * y)) :\n    ‖S eta2 (w * y) α‖ ≤ G * (w * y) := by\n  set z := w * y with hz_def\n  have hz0 : 0 < z := by linarith\n  obtain ⟨hTz, -, hTz23, -⟩ := cube_root_facts hz\n  have hQ1 : (1 : ℝ) ≤ 3 / 4 * z ^ (2 / 3 : ℝ) := by rw [hTz23]; nlinarith\n  obtain ⟨δ, a, q, h⟩ := exists_approx2 α hz0 hQ1\n  have hy' : Approx2 α y (δ / w) a q (3 / 4 * z ^ (2 / 3 : ℝ)) := by\n    obtain ⟨h1, h2, ⟨k, hk⟩, h4, h5⟩ := h\n    have e : δ / w / y = δ / z := by rw [hz_def]; field_simp\n    exact ⟨h1, h2, ⟨k, by rw [e]; exact hk⟩, by rw [e]; exact h4, h5⟩\n  have hr := le_rAlpha_of_not_mem hy0 (by norm_num) hy' hα\n  have hq0 : (0 : ℝ) ≤ q := Nat.cast_nonneg q\n  have hmm := min_mul_max_le hw0 (div_nonneg (abs_nonneg δ) hw0.le)\n  have hrw : min 1 w * n ≤ max 1 (|δ| / 8) * q := by\n    have e : w * (|δ| / w) / 8 = |δ| / 8 := by field_simp\n    rw [e] at hmm\n    rw [abs_div, abs_of_pos hw0] at hr\n    calc min 1 w * n ≤ min 1 w * (max 1 (|δ| / w / 8) * q) :=\n          mul_le_mul_of_nonneg_left hr (le_min zero_le_one hw0.le)\n      _ = min 1 w * max 1 (|δ| / w / 8) * q := by ring\n      _ ≤ max 1 (|δ| / 8) * q := mul_le_mul_of_nonneg_right hmm hq0\n  rcases le_or_gt (q : ℝ) (z ^ (1 / 3 : ℝ) / 6) with hq | hq\n  · have key := norm_S_eta2_le_gx hz h hq (by linarith)\n    have hup := r_le_cube_root hz h hq\n    have hmono := gx_antitoneOn hz ⟨hlow, hrw.trans hup⟩ ⟨hlow.trans hrw, hup⟩ hrw\n    calc ‖S eta2 z α‖ ≤ gx z (max 1 (|δ| / 8) * q) * z := key\n      _ ≤ G * z := by\n          gcongr\n          exact hmono.trans (hG1 (hrw.trans hup))\n  · exact ((theorem_3_1_1 hz h).2 hq).trans hG2",
+            "line": 105,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+            "lines": [
+              105,
+              142
+            ],
+            "conclusion": "Pointwise bound at scale `wy` with a fresh approximation: `‖S η₂(wy)‖ ≤ G·wy` using `gx` (q small, (11.11)) or Theorem 3.1.1 second case (q large)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "fragment": "L105-L142"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_of_pointwise",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+        "lines": [
+          34,
+          103
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_of_pointwise"
+          },
+          "snippet": {
+            "text": "/-- The integration step of Prop 11.2.3: a pointwise bound `|S_{η₂}(α, wy)| ≤ G(w) wy` on\n`[w₀, w₁]`, the trivial bound elsewhere. -/\ntheorem norm_S_etaStar_le_of_pointwise {α x w₀ w₁ : ℝ} {G : ℝ → ℝ} (hx : 0 < x)\n    (hw₀ : 0 < w₀) (hw₀₁ : w₀ ≤ w₁)\n    (hpw : ∀ w ∈ Icc w₀ w₁, ‖S eta2 (w * (x / κ)) α‖ ≤ G w * (w * (x / κ)))\n    (hGi : IntegrableOn (fun w => G w * phi w) (Icc w₀ w₁)) :\n    ‖S etaStar x α‖ ≤ x / κ * ((∫ w in Icc w₀ w₁, G w * phi w) +\n      17 * ((∫ w in Ioo 0 w₀, phi w) + ∫ w in Ioi w₁, phi w)) := by\n  have hκ : (0 : ℝ) < κ := by rw [TernaryGoldbach.Helfgott.κ]; norm_num\n  set y := x / κ with hy_def\n  have hy0 : 0 < y := div_pos hx hκ\n  set B : ℝ → ℝ := fun w =>\n    (Ioo 0 w₀).indicator (fun w => 17 * y * phi w) w +\n      (Icc w₀ w₁).indicator (fun w => y * (G w * phi w)) w +\n      (Ioi w₁).indicator (fun w => 17 * y * phi w) w with hB\n  have hφi : IntegrableOn (fun w => 17 * y * phi w) univ :=\n    (integrable_phi.const_mul (17 * y)).integrableOn\n  have I1 : Integrable ((Ioo 0 w₀).indicator (fun w => 17 * y * phi w)) (volume.restrict (Ioi 0)) :=\n    (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioo).restrict\n  have I2 : Integrable ((Icc w₀ w₁).indicator (fun w => y * (G w * phi w))) (volume.restrict (Ioi 0)) :=\n    (IntegrableOn.integrable_indicator (hGi.const_mul y) measurableSet_Icc).restrict\n  have I3 : Integrable ((Ioi w₁).indicator (fun w => 17 * y * phi w)) (volume.restrict (Ioi 0)) :=\n    (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioi).restrict\n  have I12 : Integrable (fun w => (Ioo 0 w₀).indicator (fun w => 17 * y * phi w) w +\n      (Icc w₀ w₁).indicator (fun w => y * (G w * phi w)) w) (volume.restrict (Ioi 0)) := I1.add I2\n  have hBi : Integrable B (volume.restrict (Ioi 0)) := I12.add I3\n  have hpt : ∀ w ∈ Ioi (0 : ℝ), ‖S eta2 (w * y) α‖ * (phi w / w) ≤ B w := by\n    intro w (hw : 0 < w)\n    have hφw : 0 ≤ phi w / w := div_nonneg (phi_nonneg w) hw.le\n    have triv : ‖S eta2 (w * y) α‖ * (phi w / w) ≤ 17 * y * phi w := by\n      have := norm_S_eta2_le_trivial (mul_pos hw hy0) α\n      calc ‖S eta2 (w * y) α‖ * (phi w / w) ≤ 17 * (w * y) * (phi w / w) :=\n            mul_le_mul_of_nonneg_right this hφw\n        _ = 17 * y * phi w := by field_simp\n    rcases lt_or_ge w w₀ with h1 | h1\n    · have : B w = 17 * y * phi w := by\n        simp only [hB, indicator, mem_Ioo, mem_Icc, mem_Ioi, hw, h1, true_and, ite_true]\n        rw [ite_eq_right (by intro h'; linarith [h'.1]), ite_eq_right (by intro h'; linarith)]; ring\n      rw [this]; exact triv\n    rcases le_or_gt w w₁ with h2 | h2\n    · have hBw : B w = y * (G w * phi w) := by\n        simp only [hB, indicator, mem_Ioo, mem_Icc, mem_Ioi]\n        rw [ite_eq_right (by intro h'; linarith [h'.2]), ite_eq_left ⟨h1, h2⟩,\n          ite_eq_right (by intro h'; linarith)]\n        ring\n      rw [hBw]\n      calc ‖S eta2 (w * y) α‖ * (phi w / w) ≤ G w * (w * y) * (phi w / w) :=\n            mul_le_mul_of_nonneg_right (hpw w ⟨h1, h2⟩) hφw\n        _ = y * (G w * phi w) := by field_simp\n    · have : B w = 17 * y * phi w := by\n        simp only [hB, indicator, mem_Ioo, mem_Icc, mem_Ioi]\n        rw [ite_eq_right (by intro h'; linarith [h'.2]), ite_eq_right (by intro h'; linarith [h'.2]),\n          ite_eq_left h2]\n        ring\n      rw [this]; exact triv\n  refine (norm_S_etaStar_le hx α).trans ?_\n  have hf0 : 0 ≤ᵐ[volume.restrict (Ioi 0)] fun w => ‖S eta2 (w * y) α‖ * (phi w / w) :=\n    (ae_restrict_iff' measurableSet_Ioi).2 (Filter.Eventually.of_forall fun w (hw : 0 < w) =>\n      mul_nonneg (norm_nonneg _) (div_nonneg (phi_nonneg w) hw.le))\n  refine (integral_mono_of_nonneg hf0 hBi\n    ((ae_restrict_iff' measurableSet_Ioi).2 (Filter.Eventually.of_forall hpt))).trans (le_of_eq ?_)\n  simp only [hB]\n  rw [integral_add I12 I3, integral_add I1 I2, setIntegral_indicator measurableSet_Ioo,\n    setIntegral_indicator measurableSet_Icc, setIntegral_indicator measurableSet_Ioi,\n    inter_eq_right.2 Ioo_subset_Ioi_self,\n    (inter_eq_right (s := Ioi (0:ℝ)) (t := Icc w₀ w₁)).2\n      (fun w (hw : w ∈ Icc w₀ w₁) => lt_of_lt_of_le hw₀ hw.1),\n    (inter_eq_right (s := Ioi (0:ℝ)) (t := Ioi w₁)).2 (Ioi_subset_Ioi (by linarith)),\n    integral_const_mul, integral_const_mul, integral_const_mul]\n  ring",
+            "line": 34,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_of_pointwise",
+            "lines": [
+              34,
+              103
+            ],
+            "conclusion": "From a pointwise bound `‖S η₂(wy)‖ ≤ G(w)wy` on [w₀,w₁] and 17wy elsewhere, `‖S η_*‖ ≤ y(∫Gφ+17(∫_0^{w₀}φ+∫_{w₁}^∞φ))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "fragment": "L34-L103"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          28
+        ],
+        "printed": [
+          28
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 11.2.3 step 6, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

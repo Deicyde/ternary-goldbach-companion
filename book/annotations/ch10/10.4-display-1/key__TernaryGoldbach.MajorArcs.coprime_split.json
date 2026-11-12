@@ -1,0 +1,81 @@
+{
+  "id": "10.4 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds the non-coprime terms pointwise ($\\sum_{(n,q)>1}\\Lambda(n)\\eta_+(n/x)\\le10^{-15}x$) and inserts $D=10^{-15}x$ into the per-modulus residual (sum_residual_le), instead of integrating over $\\mathbb{R}/\\mathbb{Z}$ with Cauchy-Schwarz and Plancherel; the $\\Lambda^2$ sums and $\\log r$ factor do not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 222,
+        "rect": [
+          0.25926,
+          0.63718,
+          0.56816,
+          0.17503
+        ]
+      },
+      "title": "Display, p. 212",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.4 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.coprime_split",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          297,
+          305
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.coprime_split"
+          },
+          "snippet": {
+            "text": "/-- **The coprime split**: `Σ_{(n,q)>1} Λ(n)|η₊(n/x)| ≤ 10⁻¹⁵ x` for `q ≤ 3·10⁵`, `x ≥ 4.9·10²⁶`. -/\ntheorem coprime_split {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000) :\n    ∑' n, ‖cP x n - coprimePart q (cP x) n‖ ≤ 1e-15 * x := by\n  obtain ⟨K, hK, hD⟩ := exists_K hx\n  refine (sum_noncoprime_etaPlus_le (by linarith) hq1 hK).trans ?_\n  have h1 : Real.log q ≤ Real.log 300000 :=\n    Real.log_le_log (by exact_mod_cast hq1) (by exact_mod_cast hq)\n  have hK0 : (0 : ℝ) ≤ K := Nat.cast_nonneg _\n  nlinarith",
+            "line": 297,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.coprime_split",
+            "lines": [
+              297,
+              305
+            ],
+            "conclusion": "Non-coprime terms: $\\sum_{(n,q)>1}\\Lambda(n)|\\eta_+(n/x)|\\le10^{-15}x$, bounded pointwise."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L297-L305"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          222
+        ],
+        "printed": [
+          212
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

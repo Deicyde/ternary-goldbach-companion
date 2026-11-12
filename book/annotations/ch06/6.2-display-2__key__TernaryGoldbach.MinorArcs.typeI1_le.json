@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's `typeI1_le` has the same two-line shape but with `x/2q` and `(πδ)²`, `c₀=32`, `muBound` using `2.8(2q/φ(2q))` in place of `(4/5)q/φ(q)`, `2q/φ(2q)+2.67` in place of `1.00303 q/φ(q)`, and `min(2-log 4, 96 log 2/(πδ)²)` for the second line.",
+  "subject": [
+    {
+      "location": {
+        "page": 112,
+        "rect": [
+          0.25926,
+          0.65603,
+          0.56816,
+          0.08559
+        ]
+      },
+      "title": "Display, p. 102",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI1_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeITotal",
+        "lines": [
+          99,
+          107
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI1_le"
+          },
+          "snippet": {
+            "text": "theorem typeI1_le {α x δ Q₀ U : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q₀)\n    (hU : √3 ≤ U) (hUx : U ≤ min (x / 4) (x / rexp 1)) (hUQ : U ≤ Q₀ / 2) :\n    ‖typeILog α x U‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) *\n          ((2 * q / Nat.totient (2 * q) + 2.67) + Real.log (x / U) * muBound U q) +\n        x / (2 * q) * logFourierBound δ * muBound U q +\n        c₀ * (1 / 2 - 2 / π ^ 2) * (U ^ 2 / (4 * q * x) * Real.log (rexp (1 / 2) * x / U) +\n          1 / rexp 1) +\n        bound_4_41 x q U := by",
+            "line": 99,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI1_le",
+            "lines": [
+              95,
+              146
+            ],
+            "conclusion": "`|S_{I,1}| ≤ (x/2q) min(1,c₀/(πδ)²)(2q/φ(2q)+2.67+log(x/U) μ_U) + (x/2q) logFourierBound δ · μ_U + c₀(1/2-2/π²)(…) + bound_4_41`, with `μ_U = muBound U q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeITotal.lean",
+            "fragment": "L99-L107"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          112
+        ],
+        "printed": [
+          102
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

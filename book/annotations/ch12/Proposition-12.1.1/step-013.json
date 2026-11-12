@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 12.1.1 step 13",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Lean proves the two facts separately: `c_r(n)=μ(r)` for `n` coprime to `r` (`ramanujan_coprime`, not used in the Bombieri route) and `|τ(χ)|²=q` for primitive `χ` (used inside `norm_sq_gaussSum`); the `Hence` conclusion (step 14) is not part of this match. Text typo, confirmed by two skeptics and `scripts/checks/steps/proposition_12_1_1_step_13.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 239,
+        "rect": [
+          0.17462,
+          0.52629,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Proposition 12.1.1 step 13: Text, p. 229",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.ramanujan_coprime",
+        "module": "TernaryGoldbach.MinorArcs.Montgomery",
+        "lines": [
+          74,
+          76
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.ramanujan_coprime"
+          },
+          "snippet": {
+            "text": "/-- **Ramanujan sum at `n` coprime to `q`**: `∑_{a < q, (a,q)=1} e(an/q) = μ(q)`. -/\ntheorem ramanujan_coprime (q n : ℕ) (hq : 1 ≤ q) (hn : Nat.Coprime n q) :\n    ∑ a ∈ (range q).filter q.Coprime, e (a * n / q) = μ q := by",
+            "line": 74,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.ramanujan_coprime",
+            "lines": [
+              74,
+              134
+            ],
+            "conclusion": "For `(n,q)=1`, `Σ_{a<q,(a,q)=1} e(an/q) = μ(q)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Montgomery.lean",
+            "fragment": "L74-L76"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_sq_gaussSum_of_isPrimitive",
+        "module": "TernaryGoldbach.Prelim.GaussInduced",
+        "lines": [
+          174,
+          177
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_sq_gaussSum_of_isPrimitive"
+          },
+          "snippet": {
+            "text": "/-- **`|τ(χ)|² = N` for primitive `χ` mod `N`.** -/\ntheorem norm_sq_gaussSum_of_isPrimitive {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) : ‖gaussSum χ ZMod.stdAddChar‖ ^ 2 = N := by\n  classical",
+            "line": 174,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_sq_gaussSum_of_isPrimitive",
+            "lines": [
+              174,
+              227
+            ],
+            "conclusion": "For primitive `χ` mod `N`, `|τ(χ)|² = N`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/GaussInduced.lean",
+            "fragment": "L174-L177"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          239
+        ],
+        "printed": [
+          229
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

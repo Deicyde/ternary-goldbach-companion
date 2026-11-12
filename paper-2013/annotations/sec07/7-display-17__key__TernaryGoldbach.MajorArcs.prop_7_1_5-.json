@@ -1,0 +1,81 @@
+{
+  "id": "7 display 17",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "Lean gives the sum as an equality with error; the display is a consequence (Z = (1/x)Σ per the preceding line).",
+  "subject": [
+    {
+      "location": {
+        "page": 59,
+        "rect": [
+          0.20371,
+          0.87568,
+          0.63183,
+          0.0236
+        ]
+      },
+      "title": "Display, p. 59",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_7_1_5'",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          356,
+          359
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_7_1_5'"
+          },
+          "snippet": {
+            "text": "theorem prop_7_1_5' {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∃ E₂ : ℝ, |E₂| ≤ 2e-6 + 366.91 / √x ∧\n      ∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 =\n        0.640206 * x * Real.log x - 0.021095 * x + E₂ * x * Real.log x := by",
+            "line": 356,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.prop_7_1_5'",
+            "lines": [
+              354,
+              391
+            ],
+            "conclusion": "For x ≥ 4.9·10^26: `Σ Λ(n) log n η₊²(n/x) = 0.640206 x log x − 0.021095 x + E₂ x log x` with `|E₂| ≤ 2·10^{-6} + 366.91/√x`, hence ≤ (0.640206 + 2·10^{-6} + 10^{-10}) x log x < 0.640209 x log x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L356-L359"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          59
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

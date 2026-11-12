@@ -1,0 +1,80 @@
+{
+  "id": "7 display 2",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 56,
+        "rect": [
+          0.20371,
+          0.17221,
+          0.63183,
+          0.02355
+        ]
+      },
+      "title": "Display, p. 56",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.etaPlus",
+        "module": "TernaryGoldbach.Helfgott.Defs",
+        "lines": [
+          41,
+          42
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.etaPlus"
+          },
+          "snippet": {
+            "text": "/-- `η₊(t) = h₂₀₀(t) · t · e^{-t²/2}` [H, (7.4)]. -/\nnoncomputable def etaPlus (t : ℝ) : ℝ := hH 200 t * t * Real.exp (-t ^ 2 / 2)",
+            "line": 41,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.etaPlus",
+            "lines": [
+              41,
+              42
+            ],
+            "conclusion": "`etaPlus t = hH 200 t * t * exp (-t^2/2)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L41-L42"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          56
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

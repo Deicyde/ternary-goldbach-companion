@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 5.2.4 step 18",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean carries the integer block count J (J ≤ 1+x/(4W(1-ρ)Q')) instead of 1+(x/W-U)/(2(Q'-q)).",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.72054,
+          0.56162,
+          0.10236
+        ]
+      },
+      "title": "Proposition 5.2.4 step 18: Display, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          796,
+          816
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_d"
+          },
+          "snippet": {
+            "text": "  have hJ : (J : ℝ) ≤ 1 + x / (2 * W) / h := by\n    rcases le_or_gt D 0 with hD0 | hD0\n    · have : J = 0 := Nat.ceil_eq_zero.2 (div_nonpos_of_nonpos_of_nonneg hD0 hh.le)\n      rw [this]; push_cast; positivity\n    · have := (Nat.ceil_lt_add_one (show 0 ≤ D / h by positivity)).le\n      have : D / h ≤ x / (2 * W) / h := div_le_div_of_nonneg_right hD hh.le\n      linarith\n  have h1ρ : 0 < 1 - ρ := by linarith\n  have hJ' : (J : ℝ) ≤ 1 + x / (4 * W * (1 - ρ) * Q') := by\n    refine hJ.trans ?_\n    have : x / (2 * W) / h ≤ x / (4 * W * (1 - ρ) * Q') := by\n      simp only [h]\n      rw [div_div, div_le_div_iff₀ (by positivity) (by positivity)]\n      have := mul_le_mul_of_nonneg_left hgap (show 0 ≤ x * (4 * W) by positivity)\n      nlinarith\n    linarith\n  calc (J : ℝ) * (W / 2 + Q') ≤ (1 + x / (4 * W * (1 - ρ) * Q')) * (W / 2 + Q') :=\n        mul_le_mul_of_nonneg_right hJ' (by positivity)\n    _ = Q' + W / 2 + x / (8 * (1 - ρ) * Q') + x / (4 * (1 - ρ) * W) := by field_simp; ring\n    _ ≤ Q' + W / 2 + x / (8 * (1 - ρ) * Q) + x / (4 * (1 - ρ) * W) := by\n        gcongr",
+            "line": 796,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+            "lines": [
+              730,
+              816
+            ],
+            "conclusion": "$J\\le 1+\\frac{x/2W}{2(Q'-q)}\\le 1+\\frac{x}{4W(1-\\rho)Q'}$ (796-811), then $J(W/2+Q')\\le Q'+W/2+\\frac{x}{8(1-\\rho)Q'}+\\frac{x}{4(1-\\rho)W}\\le Q'+W/2+\\frac{x}{8(1-\\rho)Q}+\\frac{x}{4(1-\\rho)W}$ using $(1-\\rho)Q'\\le Q'-q$ and $Q\\le Q'$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L796-L816"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

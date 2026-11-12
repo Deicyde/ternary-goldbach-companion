@@ -1,0 +1,81 @@
+{
+  "id": "4 display 6",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's version is per scale $wy$ with $y=x/\\kappa$, fixed $\\varphi$, an abstract majorant $G$, and the trivial $17z$ in place of $C_{\\varphi,0,K}$ with constant $1.04488$; there is no single $h_\\varphi(x/K)|\\varphi|_1x$ statement.",
+  "subject": [
+    {
+      "location": {
+        "page": 28,
+        "rect": [
+          0.20371,
+          0.44177,
+          0.63183,
+          0.02017
+        ]
+      },
+      "title": "Display, p. 28",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "4 display 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+        "lines": [
+          134,
+          142
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem"
+          },
+          "snippet": {
+            "text": "  rcases le_or_gt (q : ℝ) (z ^ (1 / 3 : ℝ) / 6) with hq | hq\n  · have key := norm_S_eta2_le_gx hz h hq (by linarith)\n    have hup := r_le_cube_root hz h hq\n    have hmono := gx_antitoneOn hz ⟨hlow, hrw.trans hup⟩ ⟨hlow.trans hrw, hup⟩ hrw\n    calc ‖S eta2 z α‖ ≤ gx z (max 1 (|δ| / 8) * q) * z := key\n      _ ≤ G * z := by\n          gcongr\n          exact hmono.trans (hG1 (hrw.trans hup))\n  · exact ((theorem_3_1_1 hz h).2 hq).trans hG2",
+            "line": 134,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+            "lines": [
+              105,
+              142
+            ],
+            "conclusion": "Second case ($q>z^{1/3}/6$) at scale $z=wy$: $|S_{\\eta_2}(\\alpha,z)|\\le$ the $0.276z^{5/6}(\\log z)^{3/2}+1234z^{2/3}\\log z$ bound, via `theorem_3_1_1`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "fragment": "L134-L142"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          28
+        ],
+        "printed": [
+          28
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 11.2 display 3, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

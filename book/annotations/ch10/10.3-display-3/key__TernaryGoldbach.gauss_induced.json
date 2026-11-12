@@ -1,0 +1,80 @@
+{
+  "id": "10.3 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 218,
+        "rect": [
+          0.25926,
+          0.49181,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Display, p. 208",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.3 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.gauss_induced",
+        "module": "TernaryGoldbach.Prelim.GaussInduced",
+        "lines": [
+          66,
+          73
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.gauss_induced"
+          },
+          "snippet": {
+            "text": "/-- **Gauss sum of an induced character**: for `f` periodic mod `N`, completely multiplicative,\nand zero off the residues coprime to `N`,\n`Σ_{b < Nr, (b, Nr) = 1} f(b) e(b/Nr) = μ(r) f(r) Σ_{c < N} f(c) e(c/N)`. -/\ntheorem gauss_induced {N r : ℕ} (hN : 1 ≤ N) (hr : 1 ≤ r) (f : ℕ → ℂ)\n    (hper : ∀ b, f (b + N) = f b) (hmul : ∀ a b, f (a * b) = f a * f b)\n    (hzero : ∀ b, ¬ Nat.Coprime b N → f b = 0) :\n    ∑ b ∈ (range (N * r)).filter (fun b => Nat.Coprime b (N * r)), f b * e (b / (N * r)) =\n      μ r * f r * ∑ c ∈ range N, f c * e (c / N) := by",
+            "line": 66,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.gauss_induced",
+            "lines": [
+              66,
+              143
+            ],
+            "conclusion": "Gauss sum of an induced character: $\\sum_{b<Nr,(b,Nr)=1}f(b)e(b/Nr)=\\mu(r)f(r)\\sum_{c<N}f(c)e(c/N)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/GaussInduced.lean",
+            "fragment": "L66-L73"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          218
+        ],
+        "printed": [
+          208
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

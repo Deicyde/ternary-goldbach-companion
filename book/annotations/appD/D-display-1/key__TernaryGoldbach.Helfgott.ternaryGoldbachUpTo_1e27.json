@@ -1,0 +1,81 @@
+{
+  "id": "D display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] reaches only `10^27`, below the Platt case `n₀ = 1.23163·10^27`, and the other two cases `n₀ = 6.15697·10^28`, `5.90698·10^29` are not covered; no RH verification used.",
+  "subject": [
+    {
+      "location": {
+        "page": 316,
+        "rect": [
+          0.25926,
+          0.37392,
+          0.56816,
+          0.05615
+        ]
+      },
+      "title": "Display, p. 306",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "D display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+        "module": "TernaryGoldbach.Helfgott.SmallCases",
+        "lines": [
+          20,
+          40
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27"
+          },
+          "snippet": {
+            "text": "/-- **Ternary Goldbach for odd `5 < n ≤ 10²⁷`**. -/\ntheorem ternaryGoldbachUpTo_1e27 : TernaryGoldbachUpTo (10 ^ 27) := by\n  intro n hn h5 hle\n  have hBG := binary_goldbach_input\n  by_cases hsmall : n ≤ 4 * 10 ^ 18 + 3\n  · -- `n = 3 + (n − 3)`\n    have hev : Even (n - 3) := Nat.Odd.sub_odd hn (by decide)\n    obtain ⟨p, q, hp, hq, hpq⟩ := hBG (n - 3) hev (by obtain ⟨k, hk⟩ := hn; omega) (by omega)\n    exact ⟨3, p, q, Nat.prime_three, hp, hq, by omega⟩\n  · -- a prime `p ∈ [n − 4·10¹⁸, n − 4]` from rung `i` of the ladder\n    push Not at hsmall\n    have hi1 : 1 ≤ (n - 5) / 3927138875067072512 := by omega\n    have hi2 : (n - 5) / 3927138875067072512 ≤ 254638308 := by omega\n    obtain ⟨p, hp, hp1, hp2⟩ := Ladder.ladder_prime hi1 hi2\n    have hpb : p ≤ n - 4 := by omega\n    have hpa : n - 4 * 10 ^ 18 ≤ p := by omega\n    have hp2' : p ≠ 2 := by omega\n    have hpo : Odd p := hp.odd_of_ne_two hp2'\n    have hev : Even (n - p) := Nat.Odd.sub_odd hn hpo\n    obtain ⟨q, r, hq, hr, hqr⟩ := hBG (n - p) hev (by omega) (by omega)\n    exact ⟨p, q, r, hp, hq, hr, by omega⟩",
+            "line": 20,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+            "lines": [
+              20,
+              40
+            ],
+            "conclusion": "Every odd `n` with `5 < n ≤ 10^27` is a sum of three primes."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/SmallCases.lean",
+            "fragment": "L20-L40"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          316
+        ],
+        "printed": [
+          306
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

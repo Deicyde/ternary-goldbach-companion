@@ -1,0 +1,81 @@
+{
+  "id": "7 display 49",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds $\\hat g(y,n)\\le2n^{-1/4}+1.398(3.8y^{-1/6}+h(y))$ at the top level $r_2=\\lfloor y^{1/4}\\rfloor$ for $y\\ge10^{100}$; different top level, corrected constants ($3.8$ for $3.2K^{1/6}$), no $K$-averaging.",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.20371,
+          0.47869,
+          0.63183,
+          0.18829
+        ]
+      },
+      "title": "Display, p. 66",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 49"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+        "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+        "lines": [
+          55,
+          188
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY_le_asym"
+          },
+          "snippet": {
+            "text": "/-- Crude bound for large levels: `ĝ(y, n) ≤ 2 n^{-1/4} + 1.398 (3.8 y^{-1/6} + h(y))` for\n`8·10¹⁶ ≤ n`, `n⁴ ≤ y`, `y ≥ 10¹⁰⁰`. -/\ntheorem ghatY_le_asym {y n : ℝ} (hy : 1e100 ≤ y) (hn : 8e16 ≤ n) (hny : n ^ 4 ≤ y) :\n    ghatY y n ≤ 2 * n ^ (-1 / 4 : ℝ) + 1.398 * (3.8 * y ^ (-1 / 6 : ℝ) + hfun y) := by\n  have hy0 : 0 < y := by linarith\n  have hn0 : 0 < n := by linarith\n  set t := n ^ (1 / 16 : ℝ) with ht_def\n  have ht0 : 0 < t := by positivity\n  have ht16 : t ^ 16 = n := by\n    rw [ht_def, ← Real.rpow_natCast, ← Real.rpow_mul hn0.le]; norm_num\n  have ht11 : 11 ≤ t := by\n    by_contra h; push Not at h\n    have : t ^ 16 < 11 ^ 16 := by gcongr\n    rw [ht16] at this; norm_num at this; linarith\n  have hn8 : n ^ (1 / 8 : ℝ) = t ^ 2 := by\n    rw [ht_def, ← Real.rpow_natCast, ← Real.rpow_mul hn0.le]; norm_num\n  have hn4 : n ^ (-1 / 4 : ℝ) = (t ^ 4)⁻¹ := by\n    rw [ht_def, ← Real.rpow_natCast, ← Real.rpow_mul hn0.le, ← Real.rpow_neg hn0.le]; norm_num\n  -- logarithms\n  have hlog2n : Real.log (2 * n) ≤ 8.73 * t ^ 2 := by\n    have h := Real.log_le_rpow_div (show (0:ℝ) ≤ 2 * n by positivity) (show (0:ℝ) < 1 / 8 by norm_num)\n    rw [Real.mul_rpow (by norm_num) hn0.le, hn8] at h\n    have h2 : (2:ℝ) ^ (1 / 8 : ℝ) ≤ 1.0906 := by\n      rw [show (1.0906 : ℝ) = ((1.0906 : ℝ) ^ (8:ℕ)) ^ (1 / 8 : ℝ) by\n        rw [← Real.rpow_natCast, ← Real.rpow_mul (by norm_num)]; norm_num]\n      exact Real.rpow_le_rpow (by norm_num) (by norm_num) (by norm_num)\n    have : (2:ℝ) ^ (1 / 8 : ℝ) * t ^ 2 / (1 / 8) ≤ 8.73 * t ^ 2 := by\n      rw [div_le_iff₀ (by norm_num)]; nlinarith [sq_nonneg t]\n    linarith\n  have hlogn : Real.log n ≤ 8 * t ^ 2 := by\n    have h := Real.log_le_rpow_div hn0.le (show (0:ℝ) < 1 / 8 by norm_num)\n    rw [hn8] at h; linarith\n  have hlogn39 : 38.9 ≤ Real.log n := by\n    have := le_log_num (z := 8e16) 38 0.9 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)\n    have := Real.log_le_log (by norm_num) hn\n    norm_num at *; linarith\n  have hll : 3.6 ≤ Real.log (Real.log n) := by\n    have := le_log_num (z := 38.9) 3 0.6 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)\n    have := Real.log_le_log (by norm_num) hlogn39\n    norm_num at *; linarith\n  have hll2 : Real.log (Real.log n) ≤ 8 * t ^ 2 := by\n    have := Real.log_le_sub_one_of_pos (show 0 < Real.log n by linarith); linarith\n  have hF : Fr n ≤ 14.4 * t ^ 2 := by\n    unfold Fr\n    have hg := exp_gamma_le_sharp\n    have h1 : rexp eulerMascheroniConstant * Real.log (Real.log n) ≤ 1.7882 * (8 * t ^ 2) :=\n      mul_le_mul hg hll2 (by linarith) (by norm_num)\n    have h2 : 2.50637 / Real.log (Real.log n) ≤ 0.7 := by\n      rw [div_le_iff₀ (by linarith)]; linarith\n    nlinarith\n  have hFpos : 0 < Fr n := Fr_pos (by linarith)\n  have hsF : √(Fr n) ≤ 3.795 * t := by\n    rw [Real.sqrt_le_left (by positivity)]; nlinarith\n  have hs2n : 1.414 * t ^ 8 ≤ √(2 * n) := by\n    rw [Real.le_sqrt (by positivity) (by positivity), ← ht16]; nlinarith [pow_pos ht0 16]\n  have hR := R_le_of_pow_four hy0 (by linarith) hny\n  have hR0 : 0 ≤ R y (2 * n) := by\n    have h6 : 6 * n ≤ y ^ (1 / 3 : ℝ) := le_rpow_third (by positivity) (by\n      have : 216 * n ^ 3 ≤ n ^ 4 := by\n        have : (216:ℝ) ≤ n := by linarith\n        nlinarith [pow_pos hn0 3]\n      nlinarith)\n    exact R_nonneg (by linarith) (by linarith)\n  have hl2n0 : 0 ≤ Real.log (2 * n) := Real.log_nonneg (by linarith)\n  have hA : (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 ≤ 22 * t ^ 3 := by\n    have h1 : R y (2 * n) * Real.log (2 * n) ≤ 0.6628 * (8.73 * t ^ 2) :=\n      mul_le_mul hR hlog2n hl2n0 (by norm_num)\n    have h2 := mul_le_mul (add_le_add_right h1 0.8764) hsF (Real.sqrt_nonneg _) (by positivity)\n    nlinarith [pow_pos ht0 3]\n  have hA' : ((R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526) / √(2 * n) ≤\n      1.415 * (t ^ 4)⁻¹ := by\n    have hpos : 0 < 1.414 * t ^ 8 := by positivity\n    have hnum0 : 0 ≤ (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 := by\n      have := mul_nonneg hR0 hl2n0; positivity\n    calc ((R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526) / √(2 * n)\n        ≤ 22 * t ^ 3 / (1.414 * t ^ 8) := div_le_div₀ (by positivity) hA hpos hs2n\n      _ ≤ 1.415 * (t ^ 4)⁻¹ := by\n          rw [div_le_iff₀ hpos]\n          have : 22 * t ^ 3 ≤ 1.415 * 1.414 * t ^ 4 := by nlinarith [pow_pos ht0 3]\n          have e : 1.415 * (t ^ 4)⁻¹ * (1.414 * t ^ 8) = 1.415 * 1.414 * t ^ 4 := by\n            field_simp\n          rw [e]; exact this\n  have hL : Lg (2 * n) / n ≤ 0.005 * (t ^ 4)⁻¹ := by\n    unfold Lg\n    rw [show 2 * n / 2 = n by ring]\n    have h1 : Fr n * (13 / 4 * Real.log (2 * n) + 7.82) ≤ 14.4 * t ^ 2 * (13 / 4 * (8.73 * t ^ 2) + 7.82) :=\n      mul_le_mul hF (by linarith) (by positivity) (by positivity)\n    have ht2 : (121:ℝ) ≤ t ^ 2 := by nlinarith\n    have hpoly : 14.4 * t ^ 2 * (13 / 4 * (8.73 * t ^ 2) + 7.82) + 13.66 * (8.73 * t ^ 2) + 37.55 ≤\n        412 * t ^ 4 := by\n      have e : t ^ 4 = (t ^ 2) ^ 2 := by ring\n      rw [e]; nlinarith [ht2]\n    have hnum : Fr n * (13 / 4 * Real.log (2 * n) + 7.82) + 13.66 * Real.log (2 * n) + 37.55 ≤\n        412 * t ^ 4 := by linarith\n    rw [div_le_iff₀ hn0]\n    have e : 0.005 * (t ^ 4)⁻¹ * n = 0.005 * t ^ 12 := by rw [← ht16]; field_simp\n    rw [e]\n    have : 412 * t ^ 4 ≤ 0.005 * t ^ 12 := by\n      have h8 : (82400 : ℝ) ≤ t ^ 8 := by\n        have : (11:ℝ) ^ 8 ≤ t ^ 8 := by gcongr\n        norm_num at this; linarith\n      have h412 : 412 ≤ 0.005 * t ^ 8 := by linarith\n      calc 412 * t ^ 4 ≤ 0.005 * t ^ 8 * t ^ 4 := mul_le_mul_of_nonneg_right h412 (pow_pos ht0 4).le\n        _ = 0.005 * t ^ 12 := by ring\n    linarith\n  have hgx : gx y n ≤ 1.42 * (t ^ 4)⁻¹ + 3.8 * y ^ (-1 / 6 : ℝ) := by\n    unfold gx; linarith\n  have hε : 17 * (670 / n) ^ 3 / 3 ≤ 0.01 * (t ^ 4)⁻¹ := by\n    rw [← ht16]\n    have e : 17 * (670 / t ^ 16) ^ 3 / 3 = 17 * 670 ^ 3 / 3 * ((t ^ 4)⁻¹ * (t ^ 44)⁻¹) := by\n      field_simp\n    rw [e]\n    have h44 : (17 * 670 ^ 3 / 3 : ℝ) * (t ^ 44)⁻¹ ≤ 0.01 := by\n      rw [← div_eq_mul_inv, div_le_iff₀ (by positivity)]\n      have : (11:ℝ) ^ 44 ≤ t ^ 44 := by gcongr\n      norm_num at this ⊢; nlinarith\n    have : 0 ≤ (t ^ 4)⁻¹ := by positivity\n    nlinarith\n  have hh0 : 0 ≤ hfun y := hfun_nonneg (by linarith)\n  have hmax : max (gx y n) (hfun y) ≤ gx y n + hfun y := by\n    have : 0 ≤ gx y n := by\n      unfold gx\n      have := mul_nonneg hR0 hl2n0\n      have : 0 ≤ Lg (2 * n) / n := by\n        unfold Lg; rw [show 2 * n / 2 = n by ring]\n        have : 0 ≤ Fr n * (13 / 4 * Real.log (2 * n) + 7.82) := mul_nonneg hFpos.le (by positivity)\n        positivity\n      positivity\n    exact max_le (by linarith) (by linarith)\n  unfold ghatY\n  rw [hn4]\n  have h1 := mul_le_mul_of_nonneg_left hmax (show (0:ℝ) ≤ 1.398 by norm_num)\n  have hinv : 0 ≤ (t ^ 4)⁻¹ := by positivity\n  linarith [hgx, hε]",
+            "line": 55,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+            "lines": [
+              55,
+              188
+            ],
+            "conclusion": "For $y\\ge10^{100}$, $8\\cdot10^{16}\\le n$, $n^4\\le y$: $\\hat g(y,n)\\le 2n^{-1/4}+1.398(3.8y^{-1/6}+h(y))$, via $R_{y,2n}\\le0.6628$, $\\digamma(n)\\le 14.4t^2$, $L_{2n}/n\\le 0.005t^{-4}$ ($t=n^{1/16}$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+            "fragment": "L55-L188"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          66
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

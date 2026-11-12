@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 5.6 step 64",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same place (large-$q$ range, $\\lambda$ bounded via the first $k$ primes with $q\\ge p_1\\cdots p_k$) but by an exchange argument; no Rosser-Schoenfeld (3.16) bound $\\log q\\ge0.8009p_1$ and no $p_1\\ge31$ range split.",
+  "subject": [
+    {
+      "location": {
+        "page": 43,
+        "rect": [
+          0.20698,
+          0.29059,
+          0.62529,
+          0.07019
+        ]
+      },
+      "title": "Proposition 5.6 step 64: Text, p. 43",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.6 step 64"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot4",
+        "lines": [
+          262,
+          291
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lamQ_le_k"
+          },
+          "snippet": {
+            "text": "/-- `λ(q) ≤ (7.4527 G_k/κ_k(q))³`, `k = ω(q)`, and `p₁⋯p_k ≤ q`. -/\ntheorem lamQ_le_k {q : ℕ} (hq : 1 ≤ q) (hκ : 0 < kapk q.primeFactors.card q) :\n    lamQ q ≤ (7.4527 * Gk q.primeFactors.card / kapk q.primeFactors.card q) ^ 3 ∧\n      (primk q.primeFactors.card : ℝ) ≤ q := by\n  set P := q.primeFactors\n  have hPp : ∀ p ∈ P, p.Prime := fun p hp => Nat.prime_of_mem_primeFactors hp\n  have hg := (exch_gen gHatQ (fun n => by linarith [one_le_ghat n])\n    (fun a b ha hb hab => ghat_anti ha hb hab) P hPp).1\n  have hs := (exch_gen shat shat_nonneg (fun a b ha hb hab => shat_anti ha hb hab) P hPp).2\n  have hG : ∏ p ∈ P, gp p ≤ Gk P.card :=\n    (prod_le_prod₀ (fun p hp => by\n      have := (Nat.prime_of_mem_primeFactors hp).two_le\n      unfold gp; have := f1p_pos p\n      have h2 : (2 : ℝ) ≤ p := by exact_mod_cast (Nat.prime_of_mem_primeFactors hp).two_le\n      exact mul_nonneg (div_nonneg (by linarith) (by linarith)) this.le)\n      fun p hp => gp_le_ghat (hPp p hp)).trans hg\n  have hS : Sq q ≤ Sk P.card := (sum_le_sum fun p hp => le_shat (hPp p hp)).trans hs\n  have hkap : kapk P.card q ≤ kapQ q := by unfold kapk kapQ; linarith\n  have hX0 : 0 ≤ ∏ p ∈ P, gp p := by\n    rw [← qphi_f1q_eq hq]; exact (mul_pos (qphi_pos hq) (f1q_pos q)).le\n  constructor\n  · unfold lamQ\n    rw [show (q : ℝ) / Nat.totient q * 7.4527 * f1q q = 7.4527 * ((q : ℝ) / Nat.totient q * f1q q)\n      by ring, qphi_f1q_eq hq]\n    apply pow_le_pow_left₀ (div_nonneg (mul_nonneg (by norm_num) hX0)\n      (by linarith [kapQ_pos hq]))\n    exact div_le_div₀ (by have := le_trans hX0 hG; positivity) (by linarith) hκ hkap\n  · have h2 := (TernaryGoldbach.Prelim.exch P hPp).2\n    have h3 : ∏ p ∈ P, p ≤ q := Nat.le_of_dvd (by omega) (Nat.prod_primeFactors_dvd q)\n    unfold primk; exact_mod_cast h2.trans h3",
+            "line": 262,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
+            "lines": [
+              262,
+              291
+            ],
+            "conclusion": "For $k=\\omega(q)$, $\\lambda(q)\\le (7.4527\\,G_k/\\kappa_k(q))^3$ and $p_1\\cdots p_k\\le q$: the primes of $q$ are replaced by the first $k$ primes (exchange), using antitone majorants `gHatQ`, `shat`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
+            "fragment": "L262-L291"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          43
+        ],
+        "printed": [
+          43
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.2.4 step 64, the same LaTeX (mapper (sonnet); verifier (sonnet); judge (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

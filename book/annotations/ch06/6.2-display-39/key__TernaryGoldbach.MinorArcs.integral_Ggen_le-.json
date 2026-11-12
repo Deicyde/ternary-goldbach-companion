@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 39",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean integrates directly in W with the antiderivative log log(W/c) and does not pass through the substitution t = W/2q; the value is the same.",
+  "subject": [
+    {
+      "location": {
+        "page": 122,
+        "rect": [
+          0.25926,
+          0.45741,
+          0.56816,
+          0.07269
+        ]
+      },
+      "title": "Display, p. 112",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          241,
+          243
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_Ggen_le'"
+          },
+          "snippet": {
+            "text": "  have J2 : ∫ W in A..x / U, f2 W =\n      Real.log (Real.log (x / U / c)) - Real.log (Real.log (A / c)) :=\n    integral_inv_mul_log (by positivity) h2q hVU",
+            "line": 241,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+            "lines": [
+              172,
+              282
+            ],
+            "conclusion": "With c = 2q, A = 2 theta q: the integral of f2 over [A, x/U] is log log(x/U/c) - log log(A/c) = log log(x/2Uq) - log log theta."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L241-L243"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          122
+        ],
+        "printed": [
+          112
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

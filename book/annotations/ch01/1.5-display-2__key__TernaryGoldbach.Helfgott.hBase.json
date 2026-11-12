@@ -1,0 +1,80 @@
+{
+  "id": "1.5 display 2",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 35,
+        "rect": [
+          0.17135,
+          0.81428,
+          0.56816,
+          0.03932
+        ]
+      },
+      "title": "Display, p. 25",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.5 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.hBase",
+        "module": "TernaryGoldbach.Helfgott.Defs",
+        "lines": [
+          30,
+          32
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.hBase"
+          },
+          "snippet": {
+            "text": "/-- `h(t) = t²(2 - t)³ e^{t - 1/2}` on `[0, 2]`, zero elsewhere [H, (7.5)]. -/\nnoncomputable def hBase (t : ℝ) : ℝ :=\n  if t ∈ Set.Icc (0:ℝ) 2 then t ^ 2 * (2 - t) ^ 3 * Real.exp (t - 1 / 2) else 0",
+            "line": 30,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.hBase",
+            "lines": [
+              30,
+              32
+            ],
+            "conclusion": "`hBase t = t²(2-t)³e^{t-1/2}` on `[0,2]`, `0` elsewhere."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L30-L32"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          35
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

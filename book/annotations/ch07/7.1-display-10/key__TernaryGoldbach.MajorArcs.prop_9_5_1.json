@@ -1,0 +1,81 @@
+{
+  "id": "7.1 display 10",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "First line: prop_9_5_1 gives it with error 1e-8 x log x only; second line numerics from integral_etaPlus_sq_log with Lean's constants, combined in prop_7_1_5' as the E2 form. Both only for x >= 4.9e26 (book 1e12) and with PlattGRH assumed.",
+  "subject": [
+    {
+      "location": {
+        "page": 150,
+        "rect": [
+          0.25926,
+          0.63774,
+          0.56816,
+          0.06252
+        ]
+      },
+      "title": "Display, p. 140",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7.1 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          297,
+          351
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_5_1"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop 9.5.1]** (proved, our constants): if RH holds up to height `500` and `x ≥ 4.9·10²⁶`, then\n`Σ Λ(n) (log n) η₊²(n/x) = x ∫_0^∞ η₊²(t) log(xt) dt + O*(10⁻⁸) x log x`. -/\ntheorem prop_9_5_1 {x : ℝ} (hx : 4.9e26 ≤ x) (hG : GRHUpTo (1 : DirichletCharacter ℂ 1) 500) :\n    |∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 -\n        x * ∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t)| ≤ 1e-8 * (x * Real.log x) := by\n  have hx0 : 0 < x := by linarith\n  have hlx := log_ge_1e12 (by linarith : (1e12:ℝ) ≤ x)\n  have hlx0 : 0 < Real.log x := by linarith\n  have hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ 500 → ρ.re = 1 / 2 := by\n    intro ρ h0 h1 h2 h3\n    exact hG ρ (by rw [Explicit.LFunction_one_mod_one]; exact h0) h1 h2 h3\n  have h1 := err_phi1_le hx hRH\n  have h2 := err_phi2_le hx hRH\n  set χ := (1 : DirichletCharacter ℂ 1)\n  have hs1 := Explicit.summable_SsumG χ Explicit.goodSmoothing_phi1 hx0\n  have hs2 := Explicit.summable_SsumG χ Explicit.goodSmoothing_phi2 hx0\n  have hχ : ∀ n : ℕ, χ n = 1 := fun n => by rw [Subsingleton.elim (n : ZMod 1) 1, map_one]\n  have hA : ((∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 : ℝ) : ℂ) =\n      (Real.log x : ℂ) * SsumG χ phi1 x + SsumG χ phi2 x := by\n    rw [Complex.ofReal_tsum, SsumG, SsumG, ← tsum_mul_left, ← (hs1.mul_left _).tsum_add hs2]\n    congr 1; ext n\n    rw [hχ]\n    rcases Nat.eq_zero_or_pos n with rfl | hn\n    · simp\n    · have hlog : Real.log n = Real.log x + Real.log (n / x) := by\n        rw [Real.log_div (by positivity) hx0.ne']; ring\n      simp only [phi2, phi1]\n      rw [hlog]\n      push_cast\n      ring\n  have m1 : MellinConvergent phi1 1 := mellinConvergent_of_isBigO_rpow_exp (a := 1) (b := -2) one_pos\n    (Explicit.continuousOn_phi1.locallyIntegrableOn measurableSet_Ioi) Explicit.phi1_isBigO_top\n    Explicit.phi1_isBigO_bot (by norm_num)\n  have m2 : MellinConvergent phi2 1 := (Explicit.hasDerivAt_mellin_phi1 (s := 1) (by norm_num)).1\n  have i1 := integrableOn_of_mellinConvergent_one m1\n  have i2 := integrableOn_of_mellinConvergent_one m2\n  have hI : ((∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t) : ℝ) : ℂ) =\n      (Real.log x : ℂ) * mellin phi1 1 + mellin phi2 1 := by\n    rw [← integral_complex_ofReal, mellin_one_eq, mellin_one_eq, ← integral_const_mul,\n      ← integral_add (i1.const_mul _) i2]\n    refine setIntegral_congr_fun measurableSet_Ioi fun t (ht : 0 < t) => ?_\n    simp only [phi1, phi2]\n    rw [Real.log_mul hx0.ne' ht.ne']\n    push_cast\n    ring\n  have key : ((∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 -\n      x * ∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t) : ℝ) : ℂ) =\n      (Real.log x : ℂ) * (SsumG χ phi1 x - mellin phi1 1 * x) + (SsumG χ phi2 x - mellin phi2 1 * x) := by\n    rw [Complex.ofReal_sub, Complex.ofReal_mul, hA, hI]\n    ring\n  rw [← Real.norm_eq_abs, ← Complex.norm_real, key]\n  refine (norm_add_le _ _).trans ?_\n  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hlx0]\n  have := mul_le_mul_of_nonneg_left h1 hlx0.le\n  nlinarith",
+            "line": 297,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+            "lines": [
+              297,
+              351
+            ],
+            "conclusion": "Given GRHUpTo for the trivial character to height 500 and x >= 4.9e26: `|Σ Λ(n) log n etaPlus(n/x)^2 - x ∫_{Ioi 0} etaPlus(t)^2 log(xt) dt| ≤ 1e-8 x log x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L297-L351"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          150
+        ],
+        "printed": [
+          140
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

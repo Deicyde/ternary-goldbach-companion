@@ -1,0 +1,81 @@
+{
+  "id": "7 display 29",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean multiplies Σ_q c_q(N) ≥ 1.314 (not C₀ ≥ 1.3203236) by Cmain ≥ 0.800689/κ in `major_total` (about 1.052/κ in place of 1.058298/κ); the Euler product C₀ and the intermediate 1.0594001, 0.001102 do not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.20371,
+          0.33706,
+          0.63183,
+          0.07725
+        ]
+      },
+      "title": "Display, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_coefN_ge",
+        "module": "TernaryGoldbach.MajorArcs.Singular",
+        "lines": [
+          619,
+          620
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_Qset_coefN_ge"
+          },
+          "snippet": {
+            "text": "theorem sum_Qset_coefN_ge {N : ℕ} (hN : Odd N) :\n    1.314 ≤ ∑ q ∈ TernaryGoldbach.MinorArcs.Qset 150000, coefN N q := by",
+            "line": 619,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_coefN_ge",
+            "lines": [
+              618,
+              623
+            ],
+            "conclusion": "For odd N: `Σ_{q ∈ Qset 150000} c_q(N) ≥ 1.314`, the singular series summed over the major-arc moduli."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L619-L620"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

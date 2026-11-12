@@ -1,0 +1,81 @@
+{
+  "id": "11.2 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean never forms the piecewise function or compares $g$ and $h$ at the crossover $x=(6r)^3$; it proves the two branch monotonicities separately and majorises by the max.",
+  "subject": [
+    {
+      "location": {
+        "page": 231,
+        "rect": [
+          0.17135,
+          0.4206,
+          0.56816,
+          0.04019
+        ]
+      },
+      "title": "Display, p. 221",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "11.2 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          350,
+          351
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY"
+          },
+          "snippet": {
+            "text": "/-- `ĝ(y, n) = 1.398 max(g_y(n), h(y)) + 17 (670/n)³/3`. -/\nnoncomputable def ghatY (y n : ℝ) : ℝ := 1.398 * max (gx y n) (hfun y) + 17 * (670 / n) ^ 3 / 3",
+            "line": 350,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+            "lines": [
+              350,
+              351
+            ],
+            "conclusion": "Defines $\\hat g(y,n)=1.398\\max(g_y(n),h(y))+17(670/n)^3/3$: the max of the two branches replaces the piecewise function."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L350-L351"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          231
+        ],
+        "printed": [
+          221
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Theorem 3.1.1 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses the numeric value `s=1.84332` (`s²≈3.39797`) and no formula; the formula's 0.67506 differs from Lean's 0.7468.",
+  "subject": [
+    {
+      "location": {
+        "page": 143,
+        "rect": [
+          0.17462,
+          0.47575,
+          0.56162,
+          0.035
+        ]
+      },
+      "title": "Theorem 3.1.1 step 7: Display, p. 133",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 3.1.1 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.main_amgm",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceMain",
+        "lines": [
+          118,
+          119
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.main_amgm"
+          },
+          "snippet": {
+            "text": "  have h := sqrt_mul_sqrt_le (s := 1.84332) (a := Cxt T t * (Real.log t + 0.002) + Real.log (4 * t) / 2)\n    (b := 0.30214 * Real.log t + 0.7468) (by rw [hl4]; positivity) (by positivity) (by norm_num)",
+            "line": 118,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.main_amgm",
+            "lines": [
+              105,
+              143
+            ],
+            "conclusion": "`s = 1.84332` is the chosen AM-GM weight (`s² = 3.39797...`, matching `ρ = 3.397962...`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceMain.lean",
+            "fragment": "L118-L119"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          143
+        ],
+        "printed": [
+          133
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

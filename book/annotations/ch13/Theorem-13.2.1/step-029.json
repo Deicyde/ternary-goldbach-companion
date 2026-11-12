@@ -1,0 +1,156 @@
+{
+  "id": "Theorem 13.2.1 step 29",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean fixes $c_+=2$, $c_E=1.33258$, and $\\delta_0=392$, and the top level $r_2$ comes from `NumericsGoal` (up to about $x^{0.3}$) rather than $r_1=\\frac38y^{4/15}$; the applicability condition is `hρ`.",
+  "subject": [
+    {
+      "location": {
+        "page": 262,
+        "rect": [
+          0.26253,
+          0.23706,
+          0.56162,
+          0.06591
+        ]
+      },
+      "title": "Theorem 13.2.1 step 29: Text, p. 252",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Hl2y",
+        "module": "TernaryGoldbach.MinorArcs.Thm1321",
+        "lines": [
+          125,
+          128
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Hl2y"
+          },
+          "snippet": {
+            "text": "/-- The ℓ² majorant for the `y`-arcs: (12.42) with `δ₀ = 392` below `r₁`, `T` at `r₁`. -/\nnoncomputable def Hl2y (x T : ℝ) (r₁ n : ℕ) : ℝ :=\n  if n < r₁ then (Real.log (2 * ((n : ℝ) + 1)) + 2) / (Real.log (2 * √(x / 784)) + cE) * T\n  else T",
+            "line": 125,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Hl2y",
+            "lines": [
+              125,
+              128
+            ],
+            "conclusion": "$H(n)=\\frac{\\log(2(n+1))+2}{\\log(2\\sqrt{x/784})+c_E}T$ for $n<r_1$ and $T$ at $r_1$, with $c_E=1.33258$, $T=\\sum|a_n|^2$ (not normalised by $T$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Thm1321.lean",
+            "fragment": "L125-L128"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+        "module": "TernaryGoldbach.MinorArcs.Thm1321",
+        "lines": [
+          153,
+          158
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired"
+          },
+          "snippet": {
+            "text": "theorem thm_13_2_1_repaired {x : ℝ} (hx : 0 < x) {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    {g : ℕ → ℝ} {r₀ r₁ : ℕ} (h01 : r₀ ≤ r₁) (hr₀ : 1e5 ≤ (r₀ : ℝ))\n    (hx₁ : (20000 * (r₁ : ℝ)) ^ 2 ≤ x / 784) (hρ : 2 * (r₁ : ℝ) ≤ (2 * √(x / 784)) ^ (0.6 : ℝ))\n    (hg : ∀ n, r₀ ≤ n → n < r₁ → g (n + 1) ≤ g n) (hg0 : 0 ≤ g r₁)\n    (hv₀ : ∀ α ∉ majorArcs 8 r₀ x, ‖S etaStar x α‖ ≤ g r₀)\n    (hv : ∀ n, r₀ < n → n ≤ r₁ → ∀ α ∉ majorArcs 8 n (x / κ), ‖S etaStar x α‖ ≤ g n) :",
+            "line": 153,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+            "lines": [
+              147,
+              211
+            ],
+            "conclusion": "Hypotheses of the repaired theorem: $(20000r_1)^2\\le x/784$, $2r_1\\le(2\\sqrt{x/784})^{0.6}$, $g$ non-increasing, and the $\\ell^\\infty$ bounds `hv₀`, `hv`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Thm1321.lean",
+            "fragment": "L153-L158"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.NumericsGoal",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          83,
+          87
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.NumericsGoal"
+          },
+          "snippet": {
+            "text": "/-- **The numerical statement** (proved in `NumericsFinal.lean: numerics_M`). -/\ndef NumericsGoal (x : ℝ) : Prop :=\n  ∃ r₂ : ℕ, 150000 < r₂ ∧ (20000 * (r₂ : ℝ)) ^ 2 ≤ x / 784 ∧\n    2 * (r₂ : ℝ) ≤ (2 * √(x / 784)) ^ (0.6 : ℝ) ∧ (r₂ : ℝ) ≤ (x / κ) ^ (1 / 3 : ℝ) / 6 ∧\n    2.16e20 * r₂ ≤ 670 * (x / κ) ∧ cL (r₂ - 1) ≤ Dx x ∧ Mexpr x r₂ ≤ 1.037",
+            "line": 83,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.NumericsGoal",
+            "lines": [
+              83,
+              87
+            ],
+            "conclusion": "The existence of the top level $r_2$ with $(20000r_2)^2\\le x/784$, $2r_2\\le(2\\sqrt{x/784})^{0.6}$, $r_2\\le(x/\\kappa)^{1/3}/6$, $c_L(r_2-1)\\le D_x$, and $\\mathrm{Mexpr}\\le1.037$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L83-L87"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          262
+        ],
+        "printed": [
+          252
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

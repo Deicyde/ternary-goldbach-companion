@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.2 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean has `v=2` only (odd `r_i`, `f=fo`); the text covers `v∈{1,2}`. The `μ(d)/σ(d)²` and `(r,dv)=1` form is `μ(d)f(d)²S_d²` in Lean.",
+  "subject": [
+    {
+      "location": {
+        "page": 95,
+        "rect": [
+          0.17462,
+          0.26472,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.1.2 step 2: Text, p. 85",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.g2_eq_sum_dvd",
+        "module": "TernaryGoldbach.MinorArcs.G2Moebius",
+        "lines": [
+          40,
+          80
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.g2_eq_sum_dvd"
+          },
+          "snippet": {
+            "text": "/-- **`g₂(x) = ∑_{d ≤ N} μ(d) (∑_{r ≤ N, d ∣ r} f(r))²`**, `N = ⌊x⌋`. -/\ntheorem g2_eq_sum_dvd (x : ℝ) :\n    g2 x = ∑ d ∈ Icc 1 ⌊x⌋₊, (μ d : ℝ) * (∑ r ∈ (Icc 1 ⌊x⌋₊).filter (d ∣ ·), fo r) ^ 2 := by\n  set N := ⌊x⌋₊\n  unfold g2\n  simp_rw [g2_term_eq]\n  -- `[coprime] = ∑_{d ∣ gcd} μ(d)`\n  have hcop : ∀ r₁ r₂ : ℕ, (if Nat.Coprime r₁ r₂ then fo r₁ * fo r₂ else 0) =\n      ∑ d ∈ (Nat.gcd r₁ r₂).divisors, (μ d : ℝ) * (fo r₁ * fo r₂) := by\n    intro r₁ r₂\n    rw [← sum_mul, g2_sum_moebius_divisors]\n    simp only [Nat.Coprime]; split_ifs <;> simp\n  simp_rw [hcop]\n  -- swap: `∑_{r₁, r₂} ∑_{d ∣ (r₁, r₂)} = ∑_d ∑_{d ∣ r₁} ∑_{d ∣ r₂}`\n  have hswap : ∀ r₁ ∈ Icc 1 N, ∀ r₂ ∈ Icc 1 N,\n      ∑ d ∈ (Nat.gcd r₁ r₂).divisors, (μ d : ℝ) * (fo r₁ * fo r₂) =\n        ∑ d ∈ Icc 1 N, if d ∣ r₁ ∧ d ∣ r₂ then (μ d : ℝ) * (fo r₁ * fo r₂) else 0 := by\n    intro r₁ hr₁ r₂ hr₂\n    rw [← sum_filter]\n    refine sum_congr ?_ fun _ _ => rfl\n    ext d\n    simp only [Nat.mem_divisors, mem_filter, mem_Icc, Nat.dvd_gcd_iff]\n    have h1 := (mem_Icc.1 hr₁).1; have h2 := (mem_Icc.1 hr₁).2\n    constructor\n    · rintro ⟨⟨hd1, hd2⟩, hg⟩\n      have hpos : 0 < d := Nat.pos_of_dvd_of_pos hd1 (by omega)\n      exact ⟨⟨hpos, (Nat.le_of_dvd (by omega) hd1).trans h2⟩, hd1, hd2⟩\n    · rintro ⟨-, hd1, hd2⟩\n      exact ⟨⟨hd1, hd2⟩, (Nat.gcd_pos_of_pos_left _ (by omega)).ne'⟩\n  rw [sum_congr rfl fun r₁ hr₁ => sum_congr rfl fun r₂ hr₂ => hswap r₁ hr₁ r₂ hr₂]\n  have hin : ∀ r₁ ∈ Icc 1 N, (∑ r₂ ∈ Icc 1 N, ∑ d ∈ Icc 1 N,\n      if d ∣ r₁ ∧ d ∣ r₂ then (μ d : ℝ) * (fo r₁ * fo r₂) else 0) =\n      ∑ d ∈ Icc 1 N, ∑ r₂ ∈ Icc 1 N, if d ∣ r₁ ∧ d ∣ r₂ then (μ d : ℝ) * (fo r₁ * fo r₂) else 0 :=\n    fun _ _ => sum_comm\n  rw [sum_congr rfl hin, sum_comm]\n  refine sum_congr rfl fun d _ => ?_\n  rw [sum_filter, sq, sum_mul_sum, mul_sum]\n  refine sum_congr rfl fun r₁ _ => ?_\n  rw [mul_sum]\n  refine sum_congr rfl fun r₂ _ => ?_\n  by_cases h1 : d ∣ r₁ <;> by_cases h2 : d ∣ r₂ <;> simp [h1, h2]",
+            "line": 40,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.g2_eq_sum_dvd",
+            "lines": [
+              40,
+              80
+            ],
+            "conclusion": "`g₂(x)=∑_{d≤N} μ(d)(∑_{r≤N, d|r} f(r))²` via `[coprime]=∑_{d|gcd}μ(d)` and swapping sums, `N=⌊x⌋`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Moebius.lean",
+            "fragment": "L40-L80"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.g2_eq_sum_moebius",
+        "module": "TernaryGoldbach.MinorArcs.G2Moebius",
+        "lines": [
+          117,
+          122
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.g2_eq_sum_moebius"
+          },
+          "snippet": {
+            "text": "/-- **[H, (5.20)]**: `g₂(x) = ∑_{d ≤ N} μ(d) f(d)² S_d(N/d)²`, `N = ⌊x⌋`. -/\ntheorem g2_eq_sum_moebius (x : ℝ) :\n    g2 x = ∑ d ∈ Icc 1 ⌊x⌋₊, (μ d : ℝ) * fo d ^ 2 * Sd d (⌊x⌋₊ / d) ^ 2 := by\n  rw [g2_eq_sum_dvd]\n  refine sum_congr rfl fun d hd => ?_\n  rw [sum_dvd_fo (mem_Icc.1 hd).1]; ring",
+            "line": 117,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.g2_eq_sum_moebius",
+            "lines": [
+              117,
+              122
+            ],
+            "conclusion": "`g₂(x)=∑_{d≤N} μ(d) f(d)² S_d(N/d)²`, the last line of (5.20) for `v=2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Moebius.lean",
+            "fragment": "L117-L122"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          95
+        ],
+        "printed": [
+          85
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

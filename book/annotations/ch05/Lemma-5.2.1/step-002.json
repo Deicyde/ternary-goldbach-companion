@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.2.1 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same inequality as (toyor) in multiplied-out form, but Lean needs R ≤ W' so that primes p>W' are coprime to r, a hypothesis the text lacks.",
+  "subject": [
+    {
+      "location": {
+        "page": 104,
+        "rect": [
+          0.26253,
+          0.15793,
+          0.56162,
+          0.04649
+        ]
+      },
+      "title": "Lemma 5.2.1 step 2: Text, p. 94",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.1 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.montgomery_ineq",
+        "module": "TernaryGoldbach.MinorArcs.Montgomery",
+        "lines": [
+          136,
+          163
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.montgomery_ineq"
+          },
+          "snippet": {
+            "text": "/-- **Montgomery's inequality** (case `ω(p) = 1`): for squarefree `r` and `a(n)` supported on\n`n` coprime to `r`, `|S(α)|² ≤ φ(r) ∑_{b < r, (b,r)=1} |S(α + b/r)|²`. -/\ntheorem montgomery_ineq {r : ℕ} (hr : Squarefree r) (s : Finset ℕ) (a : ℕ → ℂ)\n    (hs : ∀ n ∈ s, Nat.Coprime n r) (α : ℝ) :\n    ‖∑ n ∈ s, a n * e (α * n)‖ ^ 2 ≤\n      (Nat.totient r : ℝ) * ∑ b ∈ (range r).filter r.Coprime,\n        ‖∑ n ∈ s, a n * e ((α + b / r) * n)‖ ^ 2 := by\n  have hr1 : 1 ≤ r := Nat.pos_of_ne_zero (by rintro rfl; exact not_squarefree_zero hr)\n  set T := (range r).filter r.Coprime\n  have hsum : ∑ b ∈ T, ∑ n ∈ s, a n * e ((α + b / r) * n) =\n      (μ r : ℂ) * ∑ n ∈ s, a n * e (α * n) := by\n    rw [sum_comm, mul_sum]\n    refine sum_congr rfl fun n hn => ?_\n    have : ∀ b ∈ T, a n * e ((α + b / r) * n) = a n * e (α * n) * e (b * n / r) := by\n      intro b _; rw [mul_assoc, ← e_add]; congr 2; ring\n    rw [sum_congr rfl this, ← mul_sum, ramanujan_coprime r n hr1 (hs n hn)]\n    ring\n  have hμ : ‖(μ r : ℂ)‖ = 1 := by\n    rw [Complex.norm_intCast]; exact_mod_cast ArithmeticFunction.abs_moebius_eq_one_of_squarefree hr\n  have h1 : ‖∑ n ∈ s, a n * e (α * n)‖ ≤ ∑ b ∈ T, ‖∑ n ∈ s, a n * e ((α + b / r) * n)‖ := by\n    have := norm_sum_le T (fun b => ∑ n ∈ s, a n * e ((α + b / r) * n))\n    rw [hsum, norm_mul, hμ, one_mul] at this; exact this\n  have h2 := sq_sum_le_card_mul_sum_sq (s := T) (f := fun b => ‖∑ n ∈ s, a n * e ((α + b / r) * n)‖)\n  have hcard : (#T : ℝ) = Nat.totient r := by rw [Nat.totient_eq_card_coprime]\n  rw [hcard] at h2\n  calc ‖∑ n ∈ s, a n * e (α * n)‖ ^ 2 ≤ (∑ b ∈ T, ‖∑ n ∈ s, a n * e ((α + b / r) * n)‖) ^ 2 :=\n        pow_le_pow_left₀ (norm_nonneg _) h1 2\n    _ ≤ _ := h2",
+            "line": 136,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.montgomery_ineq",
+            "lines": [
+              136,
+              163
+            ],
+            "conclusion": "Montgomery's inequality (ω(p)=1) for coefficients supported on n coprime to squarefree r."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Montgomery.lean",
+            "fragment": "L136-L163"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_1",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          451,
+          478
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_1"
+          },
+          "snippet": {
+            "text": "    have hMont : ∀ i ∈ s, ∀ r ∈ C, (1 / Nat.totient r : ℝ) *\n        ‖primeExpSum W' W (a i / q + u i)‖ ^ 2 ≤\n        ∑ b ∈ (range r).filter r.Coprime, ‖primeExpSum W' W (a i / q + u i + b / r)‖ ^ 2 := by\n      intro i _ r hr\n      obtain ⟨hr1, hrR, hrsq, _⟩ := hCmem r hr\n      have hφ : (0 : ℝ) < Nat.totient r := by exact_mod_cast Nat.totient_pos.2 hr1\n      have hM := montgomery_ineq hrsq ((Ioc ⌊W'⌋₊ ⌊W⌋₊).filter Nat.Prime)\n        (fun n => (Real.log n : ℂ)) (by\n          intro p hp\n          rw [mem_filter, mem_Ioc] at hp\n          refine (Nat.Prime.coprime_iff_not_dvd hp.2).2 fun hpr => ?_\n          have : p ≤ r := Nat.le_of_dvd hr1 hpr\n          have h1 : (⌊W'⌋₊ : ℝ) < p := by exact_mod_cast hp.1.1\n          have h2 : W' < (⌊W'⌋₊ : ℝ) + 1 := Nat.lt_floor_add_one W'\n          have h3 : (p : ℝ) ≤ r := by exact_mod_cast this\n          have h4 : (⌊W'⌋₊ : ℝ) + 1 ≤ p := by exact_mod_cast hp.1.1\n          have : W' < p := by linarith\n          linarith) (a i / q + u i)\n      simp only [primeExpSum] at hM ⊢\n      rw [one_div, ← div_eq_inv_mul, div_le_iff₀ hφ, mul_comm]\n      exact hM\n    have hsum : (∑ r ∈ C, (1 / Nat.totient r : ℝ)) * ∑ i ∈ s, ‖primeExpSum W' W (a i / q + u i)‖ ^ 2 ≤\n        ∑ i ∈ s, ∑ r ∈ C, ∑ b ∈ (range r).filter r.Coprime,\n          ‖primeExpSum W' W (a i / q + u i + b / r)‖ ^ 2 := by\n      rw [mul_sum]\n      refine sum_le_sum fun i hi => ?_\n      rw [sum_mul]\n      exact sum_le_sum fun r hr => hMont i hi r hr",
+            "line": 451,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_1",
+            "lines": [
+              372,
+              485
+            ],
+            "conclusion": "hMont and hsum: (∑_{r∈C} 1/φ(r))·∑_i|S(α_i)|² ≤ ∑_i∑_r∑_{a'}|S(α_i+a'/r)|², C = squarefree r ≤ R coprime to q."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L451-L478"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          104
+        ],
+        "printed": [
+          94
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

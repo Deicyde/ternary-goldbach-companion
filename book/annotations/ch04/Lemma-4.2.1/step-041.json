@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 41",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part linked: case (b) uses no second approximation, and the q | m terms are included by nonnegativity (`Tn_nonneg`). The display that 'much as before' introduces (kosto) is done differently: Lean has only x/R ≤ q/c₂, not min(q/c₂, 2x/q), and odd-m constants.",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.26253,
+          0.54978,
+          0.56162,
+          0.04913
+        ]
+      },
+      "title": "Lemma 4.2.1 step 41: Text, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          870,
+          916
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "    have hpt : ∀ n ∈ Ioc (0 : ℤ) ⌊D⌋, g n ≤\n        (if n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋ then Tn α x n else 0) +\n        (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) +\n        (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by\n      intro n hn\n      have hT := Tn_nonneg α x n\n      have hgT : g n ≤ Tn α x n := by simp only [g]; split_ifs <;> linarith\n      rw [mem_Ioc] at hn\n      by_cases hA : n ≤ ⌊(q : ℝ) / 2⌋\n      · rw [if_pos (mem_Ioc.2 ⟨hn.1, hA⟩)]\n        have : 0 ≤ (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) := by\n          split_ifs <;> linarith\n        have : 0 ≤ (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by split_ifs <;> linarith\n        linarith\n      push Not at hA\n      by_cases hB : n ≤ ⌊D'⌋\n      · rw [if_pos (mem_Ioc.2 ⟨hA, hB⟩), if_neg (by rw [mem_Ioc]; omega)]\n        have : 0 ≤ (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by split_ifs <;> linarith\n        by_cases hd : (q : ℤ) ∣ n\n        · rw [if_pos hd]\n          have hnD' : (n : ℝ) ≤ D' := (Int.cast_le.2 hB).trans (Int.floor_le _)\n          have : g n = 0 := by\n            simp only [g]; rw [if_neg (not_not.2 ⟨hd, hnD'.trans hMD'⟩)]\n          linarith\n        · rw [if_neg hd]; linarith\n      push Not at hB\n      have hnR : ⌊R⌋ < n := by\n        have h1 : D' < n := by\n          have := Int.lt_floor_add_one D'\n          have : ((⌊D'⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hB\n          linarith\n        have h2 : (q : ℝ) / 2 < n := by\n          have := Int.lt_floor_add_one ((q : ℝ) / 2)\n          have : ((⌊(q : ℝ) / 2⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hA\n          linarith\n        have : R < n := max_lt h1 h2\n        exact Int.floor_lt.2 this\n      rw [if_neg (by rw [mem_Ioc]; omega), if_neg (by rw [mem_Ioc]; omega),\n        if_pos (mem_Ioc.2 ⟨hnR, hn.2⟩)]\n      linarith\n    refine (sum_le_sum hpt).trans ?_\n    rw [sum_add_distrib, sum_add_distrib, sum_ite_mem, sum_ite_mem, sum_ite_mem]\n    refine add_le_add (add_le_add ?_ ?_) ?_\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => Tn_nonneg _ _ _\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => by\n        split_ifs <;> first | exact le_rfl | exact Tn_nonneg _ _ _\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => Tn_nonneg _ _ _",
+            "line": 870,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "Third part sums `Tn` over `R<n≤D` with no divisibility condition, using nonnegativity (`Tn_nonneg`) for the dropped terms."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L870-L916"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          973,
+          974
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "    have hB3 := sum_R3 hx hq hcop h2α hqQ hδ hqR hRD (α := α)\n    rw [← hc₁def] at hB3",
+            "line": 973,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "Case (b) bounds the range R < n ≤ D with `sum_R3` at the original approximation a/q, with no second approximation."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L973-L974"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

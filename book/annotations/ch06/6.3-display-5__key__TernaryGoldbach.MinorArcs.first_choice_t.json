@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[H] defines Q = x/(8y) for a general parameter y; [L] only has the specialisation y = T/6, Q = 3T²/4 (hard-coded in the `Approx2` hypothesis).",
+  "subject": [
+    {
+      "location": {
+        "page": 129,
+        "rect": [
+          0.17135,
+          0.74044,
+          0.56816,
+          0.03177
+        ]
+      },
+      "title": "Display, p. 119",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.first_choice_t",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeII",
+        "lines": [
+          306,
+          308
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.first_choice_t"
+          },
+          "snippet": {
+            "text": "theorem first_choice_t {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hqT : (q : ℝ) ≤ T / 6) :\n    |δ| * q ≤ 4 * T / 3 ∧ 2 ≤ delta0 δ * q ∧ delta0 δ * q ≤ T / 3 := by",
+            "line": 306,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.first_choice_t",
+            "lines": [
+              305,
+              322
+            ],
+            "conclusion": "Under the hypothesis `Approx2 α (T^3) δ a q (3/4·T^2)` it derives `|δ|q ≤ 4T/3` and `2 ≤ δ₀q ≤ T/3`, i.e. uses `Q = 3T²/4 = x/(8y)` with `y = T/6`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeII.lean",
+            "fragment": "L306-L308"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          129
+        ],
+        "printed": [
+          119
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

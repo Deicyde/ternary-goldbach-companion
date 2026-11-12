@@ -1,0 +1,81 @@
+{
+  "id": "3 display 6",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] states the hypothesis only for the concrete eta_+, eta_circ, in squared absolute form (|eta_+-eta_circ|_2^2 <= 1.15e-7); the relative bound eps_0|eta_circ|_2 is never named and is used through the numbers 1.15e-7, 2.5621.",
+  "subject": [
+    {
+      "location": {
+        "page": 14,
+        "rect": [
+          0.20371,
+          0.38319,
+          0.63183,
+          0.0194
+        ]
+      },
+      "title": "Display, p. 14",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_sq_etaPlus_sub_etaO_le'",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier2",
+        "lines": [
+          275,
+          277
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_sq_etaPlus_sub_etaO_le'"
+          },
+          "snippet": {
+            "text": "/-- **`‖η₊ − η◦‖₂² ≤ 368/(2·200⁴)`** (`≤ 1.15·10⁻⁷`). -/\ntheorem integral_sq_etaPlus_sub_etaO_le' :\n    ∫ t, (etaPlus t - etaO t) ^ 2 ≤ 368 / 2 / 200 ^ 4 := by",
+            "line": 275,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_sq_etaPlus_sub_etaO_le'",
+            "lines": [
+              275,
+              305
+            ],
+            "conclusion": "$\\int(\\eta_+-\\eta_\\circ)^2\\le 368/2/200^4\\ (\\approx1.15\\cdot10^{-7})$ for the specific $\\eta_+,\\eta_\\circ$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier2.lean",
+            "fragment": "L275-L277"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          14
+        ],
+        "printed": [
+          14
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.2 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

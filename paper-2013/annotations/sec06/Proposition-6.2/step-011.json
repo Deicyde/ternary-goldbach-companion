@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 6.2 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Discrete sum Σ g(n)(H(n)−H(n−1)) in place of ∫ g H'; no max_{r≥u} g step since g is already non-increasing.",
+  "subject": [
+    {
+      "location": {
+        "page": 48,
+        "rect": [
+          0.20698,
+          0.55671,
+          0.62529,
+          0.0837
+        ]
+      },
+      "title": "Proposition 6.2 step 11: Display, p. 48",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 6.2 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          136,
+          139
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_13_1_2"
+          },
+          "snippet": {
+            "text": "  have e3 : ∑ n ∈ Ioc r₀ r₁, g n * ((H n - I r₀) - (H (n - 1) - I r₀)) =\n      ∑ n ∈ Ioc r₀ r₁, g n * (H n - H (n - 1)) := sum_congr rfl fun n _ => by ring\n  rw [e3] at habel\n  linarith",
+            "line": 136,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+            "lines": [
+              88,
+              139
+            ],
+            "conclusion": "e3 simplifies F n−F(n−1)=H n−H(n−1); linarith concludes ∫_{(M r₀)ᶜ} u v ≤ g r₀ (H r₀ − I r₀)+Σ_{r₀<n≤r₁} g n (H n − H(n−1))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L136-L139"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          48
+        ],
+        "printed": [
+          48
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 13.1.2 step 11, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

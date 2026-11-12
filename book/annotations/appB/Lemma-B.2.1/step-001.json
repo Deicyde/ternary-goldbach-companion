@@ -1,0 +1,120 @@
+{
+  "id": "Lemma B.2.1 step 1",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean's case interval is the closed $[1/4,1/2]$, not the text's open one. The support fact is used as vanishing off $(1/4,1)$.",
+  "subject": [
+    {
+      "location": {
+        "page": 303,
+        "rect": [
+          0.17462,
+          0.41656,
+          0.56162,
+          0.01808
+        ]
+      },
+      "title": "Lemma B.2.1 step 1: Text, p. 293",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.1 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eVariationOn_eta2log_le",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          110,
+          111
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eVariationOn_eta2log_le"
+          },
+          "snippet": {
+            "text": "  have h0 : ∀ t, t ∉ Set.Ioo (1 / 4 : ℝ) 1 → f t = 0 := fun t ht => by\n    simp only [f, eta2log]; rw [Helfgott.eta2_eq_zero ht, mul_zero]",
+            "line": 110,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eVariationOn_eta2log_le",
+            "lines": [
+              104,
+              171
+            ],
+            "conclusion": "`h0`: $\\eta_{(\\rho)}(t)=0$ for $t\\notin(1/4,1)$, from `Helfgott.eta2_eq_zero` (support of $\\eta_2$ in $(1/4,1)$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L110-L111"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.monotoneOn_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          65,
+          68
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.monotoneOn_eta2log"
+          },
+          "snippet": {
+            "text": "theorem monotoneOn_eta2log : MonotoneOn (eta2log ρ) (Set.Icc (1 / 4) (1 / 2)) := by\n  intro s hs t ht hst\n  unfold eta2log\n  rw [Helfgott.eta2_eq_left hs.1 hs.2, Helfgott.eta2_eq_left ht.1 ht.2]",
+            "line": 65,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.monotoneOn_eta2log",
+            "lines": [
+              65,
+              76
+            ],
+            "conclusion": "Opens the case $t\\in[1/4,1/2]$, where $\\eta_2(t)=4\\log 4t$ (`eta2_eq_left`), for the monotonicity of $\\eta_{(\\rho)}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L65-L68"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          303
+        ],
+        "printed": [
+          293
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

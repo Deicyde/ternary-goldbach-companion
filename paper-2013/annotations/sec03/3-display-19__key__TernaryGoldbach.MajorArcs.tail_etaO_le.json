@@ -1,0 +1,81 @@
+{
+  "id": "3 display 19",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] uses the second derivative of eta_circ (bound 98/(2 pi T)^4, one-sided) rather than |eta_circ'''|_1 giving |eta'''|_1^2 q^5/(5 pi^6 (delta_0 r)^5); T = 1.2e6/qt q * x is not tied to q^5 form.",
+  "subject": [
+    {
+      "location": {
+        "page": 18,
+        "rect": [
+          0.20371,
+          0.69149,
+          0.63183,
+          0.09136
+        ]
+      },
+      "title": "Display, p. 18",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.tail_etaO_le",
+        "module": "TernaryGoldbach.MajorArcs.EtaCirc",
+        "lines": [
+          197,
+          199
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.tail_etaO_le"
+          },
+          "snippet": {
+            "text": "/-- **The tail of `η̂◦`**: `∫_{|ξ| ≥ T} |η̂◦(ξ)|² dξ ≤ 98/(2πT)⁴`. -/\ntheorem tail_etaO_le {T : ℝ} (hT : 0 < T) :\n    ∫ ξ in {ξ : ℝ | T ≤ |ξ|}, ‖𝓕 (fun t => (etaO t : ℂ)) ξ‖ ^ 2 ≤ 98 / (2 * π * T) ^ 4 := by",
+            "line": 197,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.tail_etaO_le",
+            "lines": [
+              197,
+              229
+            ],
+            "conclusion": "$\\int_{|\\xi|\\ge T}|\\widehat{\\eta_\\circ}(\\xi)|^2d\\xi\\le98/(2\\pi T)^4$; with Plancherel $\\int_{\\mathbb R}|\\widehat{\\eta_\\circ}|^2=|\\eta_\\circ|_2^2$ this gives the truncated integral."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaCirc.lean",
+            "fragment": "L197-L199"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          18
+        ],
+        "printed": [
+          18
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.3 display 10, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

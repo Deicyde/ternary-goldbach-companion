@@ -1,0 +1,80 @@
+{
+  "id": "1.5 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 35,
+        "rect": [
+          0.17135,
+          0.71745,
+          0.56816,
+          0.03931
+        ]
+      },
+      "title": "Display, p. 25",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.5 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.P0",
+        "module": "TernaryGoldbach.MajorArcs.EtaCirc",
+        "lines": [
+          17,
+          18
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.P0"
+          },
+          "snippet": {
+            "text": "/-- `η◦` on `[0, 2]`: `(t(2 - t))³ e^{-(t-1)²/2}`. -/\nnoncomputable def P0 (t : ℝ) : ℝ := (t * (2 - t)) ^ 3 * Real.exp (-(t - 1) ^ 2 / 2)",
+            "line": 17,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.P0",
+            "lines": [
+              17,
+              18
+            ],
+            "conclusion": "`P0 t = (t(2-t))³ e^{-(t-1)²/2}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaCirc.lean",
+            "fragment": "L17-L18"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          35
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

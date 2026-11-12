@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.1 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same interchange of `Σ Λ(n)χ(n)` and the line integral, justified in Lean by summability of `∫‖F n‖` using `Σ Λ(n)n^{-3/2}` and integrability of `mellin φ` on the line rather than boundedness of `G_δ`.",
+  "subject": [
+    {
+      "location": {
+        "page": 175,
+        "rect": [
+          0.17462,
+          0.26595,
+          0.56162,
+          0.03403
+        ]
+      },
+      "title": "Lemma 9.1.1 step 3: Text, p. 165",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.SsumG_eq_line",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          175,
+          227
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.SsumG_eq_line"
+          },
+          "snippet": {
+            "text": "/-- **Part A**: `S = (1/2π) ∫ (−L'/L)(3/2+it) M(3/2+it) x^{3/2+it} dt`. -/\ntheorem SsumG_eq_line {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) {φ : ℝ → ℂ} {K c : ℝ}\n    (hφ : GoodSmoothing φ K c) {x : ℝ} (hx : 0 < x) :\n    SsumG χ φ x = (1 / (2 * π) : ℂ) * ∫ t : ℝ, Fline χ φ x (((3 / 2 : ℝ) : ℂ) + t * I) := by\n  set F : ℕ → ℝ → ℂ := fun n t => (Λ n : ℂ) * χ n * Fterm φ x n t with hF\n  have hterm : ∀ n : ℕ, (Λ n : ℂ) * χ n * φ (n / x) = (1 / (2 * π) : ℂ) * ∫ t, F n t := by\n    intro n\n    rcases Nat.eq_zero_or_pos n with rfl | hn\n    · simp [hF]\n    · rw [eq_integral_Fterm hφ hx hn, hF]\n      simp only\n      rw [integral_const_mul]; ring\n  have hFi : ∀ n, Integrable (F n) := by\n    intro n\n    rcases Nat.eq_zero_or_pos n with rfl | hn\n    · have : F 0 = fun _ => 0 := by ext t; simp [hF]\n      rw [this]; exact integrable_zero _ _ _\n    · exact (integrable_Fterm hφ hx hn).const_mul _\n  have hFs : Summable fun n => ∫ t, ‖F n t‖ := by\n    have hΛ := ArithmeticFunction.LSeriesSummable_vonMangoldt (s := ((3 / 2 : ℝ) : ℂ)) (by norm_num)\n    have hΛ' : Summable fun n : ℕ => Λ n * (n : ℝ) ^ (-(3 / 2 : ℝ)) := by\n      refine hΛ.norm.congr fun n => ?_\n      rw [LSeries.norm_term_eq]\n      split_ifs with h0\n      · simp [h0]\n      · rw [Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg ArithmeticFunction.vonMangoldt_nonneg,\n          Real.rpow_neg (Nat.cast_nonneg n), div_eq_mul_inv]\n        simp\n    refine (hΛ'.mul_right (x ^ (3 / 2 : ℝ) * ∫ t : ℝ, ‖mellin φ (((3 / 2 : ℝ) : ℂ) + t * I)‖)).of_nonneg_of_le\n      (fun n => integral_nonneg fun t => norm_nonneg _) fun n => ?_\n    rcases Nat.eq_zero_or_pos n with rfl | hn\n    · simp [hF]\n    · have e : ∀ t, ‖F n t‖ = (Λ n * ‖χ n‖) * ‖Fterm φ x n t‖ := by\n        intro t\n        rw [hF]; simp only [norm_mul, Complex.norm_real, Real.norm_eq_abs,\n          abs_of_nonneg ArithmeticFunction.vonMangoldt_nonneg]\n      simp_rw [e]\n      rw [integral_const_mul, integral_norm_Fterm φ hx hn]\n      have hχ : ‖χ n‖ ≤ 1 := DirichletCharacter.norm_le_one _ _\n      have hG0 : 0 ≤ ∫ t : ℝ, ‖mellin φ (((3 / 2 : ℝ) : ℂ) + t * I)‖ :=\n        integral_nonneg fun t => norm_nonneg _\n      have hΛ0 := ArithmeticFunction.vonMangoldt_nonneg (n := n)\n      have hn0 : 0 ≤ (n : ℝ) ^ (-(3 / 2 : ℝ)) * x ^ (3 / 2 : ℝ) := by positivity\n      calc Λ n * ‖χ n‖ * ((n : ℝ) ^ (-(3 / 2 : ℝ)) * x ^ (3 / 2 : ℝ) *\n            ∫ t : ℝ, ‖mellin φ (((3 / 2 : ℝ) : ℂ) + t * I)‖)\n          ≤ Λ n * 1 * ((n : ℝ) ^ (-(3 / 2 : ℝ)) * x ^ (3 / 2 : ℝ) *\n            ∫ t : ℝ, ‖mellin φ (((3 / 2 : ℝ) : ℂ) + t * I)‖) := by gcongr\n        _ = Λ n * (n : ℝ) ^ (-(3 / 2 : ℝ)) * (x ^ (3 / 2 : ℝ) *\n            ∫ t : ℝ, ‖mellin φ (((3 / 2 : ℝ) : ℂ) + t * I)‖) := by ring\n  rw [SsumG, tsum_congr hterm, tsum_mul_left, integral_tsum_of_summable_integral_norm hFi hFs]\n  congr 1\n  refine integral_congr_ae (Eventually.of_forall fun t => ?_)\n  exact tsum_Fterm_eq χ φ hx t",
+            "line": 175,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.SsumG_eq_line",
+            "lines": [
+              175,
+              227
+            ],
+            "conclusion": "`SsumG χ φ x = (1/2π) ∫ Fline χ φ x (3/2+it) dt` by swapping `tsum` and integral (`integral_tsum_of_summable_integral_norm`, summability from `Σ Λ(n) n^{-3/2}` and `∫‖mellin φ‖` on the line) and `tsum_Fterm_eq`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L175-L227"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          175
+        ],
+        "printed": [
+          165
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

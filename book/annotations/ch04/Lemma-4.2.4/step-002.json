@@ -1,0 +1,192 @@
+{
+  "id": "Lemma 4.2.4 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same split of the terms (`uv ≤ M`, odd, `q ∣ uv`; zero for even `q`) and Taylor-type expansion, but for `η₂` with `M = min(Q/2, UV)` from `Mof` and `E` bounded by `a/x * c₀/(2π²)(π²-4)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 81,
+        "rect": [
+          0.17462,
+          0.54754,
+          0.56162,
+          0.04715
+        ]
+      },
+      "title": "Lemma 4.2.4 step 2: Text, p. 71",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          796,
+          821
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseB"
+          },
+          "snippet": {
+            "text": "  obtain ⟨Q, hqQ, hδ, hD'Q, hMQ⟩ : ∃ Q : ℝ, (q : ℝ) ≤ Q ∧ |δ / x| * (q * Q) ≤ 1 ∧\n      min (c₂ * x / q) D ≤ Q / 2 ∧ Mof x δ q D = min (Q / 2) D := by\n    by_cases hδ0 : δ = 0\n    · refine ⟨max Q₀ (2 * D), hqQ₀.trans (le_max_left _ _), by simp [hδ0], ?_, ?_⟩\n      · have := le_max_right Q₀ (2 * D)\n        exact (min_le_right _ _).trans (by linarith)\n      · rw [Mof, if_pos hδ0, min_eq_right]\n        have := le_max_right Q₀ (2 * D); linarith\n    · have hδpos : 0 < |δ| := abs_pos.2 hδ0\n      have hQ₀le : Q₀ ≤ x / (|δ| * q) := by\n        rw [abs_div, abs_of_pos hx0, div_le_div_iff₀ hx0 (by positivity)] at hδQ₀\n        rw [le_div_iff₀ (by positivity)]; nlinarith\n      refine ⟨x / (|δ| * q), hqQ₀.trans hQ₀le, ?_, ?_, by rw [Mof, if_neg hδ0]⟩\n      · rw [abs_div, abs_of_pos hx0]; field_simp; rfl\n      · rcases hcase with hc | hc\n        · refine (min_le_left _ _).trans ?_\n          have h1 : 2 * c₂ * |δ| ≤ 1 := by\n            rw [le_div_iff₀ (by positivity)] at hc; linarith\n          have e : c₂ * x / q = (2 * c₂ * |δ|) * (x / (|δ| * q) / 2) := by field_simp\n          rw [e]; exact mul_le_of_le_one_left (by positivity) h1\n        · exact (min_le_right _ _).trans (hc.trans (by linarith))\n  set M := Mof x δ q D\n  have hMD : M ≤ D := by rw [hMQ]; exact min_le_right _ _\n  have hM0 : 0 ≤ M := by\n    rw [hMQ]; exact le_min (by linarith) (by linarith)\n  have hMD' : min (c₂ * x / q) D ≤ M := by rw [hMQ]; exact le_min hD'Q (min_le_right _ _)",
+            "line": 796,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseB",
+            "lines": [
+              781,
+              841
+            ],
+            "conclusion": "Chooses `Q` with `q ≤ Q`, `|δ/x| q Q ≤ 1`, `min(c₂x/q, D) ≤ Q/2` (`Q = x/(|δ|q)` unrounded, or `max(Q₀,2D)` if `δ = 0`) and `M = Mof x δ q D = min(Q/2, D)`, as in the proof of Lemma 4.2.2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L796-L821"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.mainPartI2",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          779,
+          781
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.mainPartI2"
+          },
+          "snippet": {
+            "text": "/-- The main part of `typeI2`: `∑_{a ≤ M, a odd, q | a} c(a) T_{a,∘}(α)`. -/\nnoncomputable def mainPartI2 (α x M U V : ℝ) (q : ℕ) : ℂ :=\n  ∑ a ∈ Icc 1 ⌊M⌋₊, if Odd a ∧ q ∣ a then (coefI2 U V a : ℂ) * Todd α x a else 0",
+            "line": 779,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.mainPartI2",
+            "lines": [
+              779,
+              781
+            ],
+            "conclusion": "`mainPartI2` is the sum over `a ≤ M`, `a` odd, `q ∣ a` of `coefI2 U V a * Todd α x a` (the terms with `uv ≤ M`, `u,v` odd, `q ∣ uv`, grouped by `a = uv`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L779-L781"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          804,
+          810
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le"
+          },
+          "snippet": {
+            "text": "  rcases Nat.even_or_odd q with hqe | hqo\n  · have : mainPartI2 α x M U V q = 0 := by\n      refine sum_eq_zero fun a _ => ?_\n      rw [if_neg]; rintro ⟨ho, hd⟩\n      exact (Nat.not_even_iff_odd.2 ho) ((even_iff_two_dvd.2 (even_iff_two_dvd.1 hqe)).trans_dvd hd |>\n        fun h => h)\n    rw [this, norm_zero]; exact hRHS",
+            "line": 804,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+            "lines": [
+              785,
+              897
+            ],
+            "conclusion": "For even `q` no odd `a` is divisible by `q`, so `mainPartI2 = 0` and the bound holds trivially."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L804-L810"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          814,
+          842
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le"
+          },
+          "snippet": {
+            "text": "  have hT : ∀ a : ℕ, ∃ E : ℂ, Odd a → q ∣ a → 1 ≤ a → a ≤ NM →\n      Todd α x a = e ((a₀ + k * q) / 2) * ((x / (2 * a) : ℝ) * eta2hat (-(δ / 2)) + E) ∧\n      ‖E‖ ≤ a / x * (c₀ / (2 * π ^ 2)) * (π ^ 2 - 4) := by\n    intro a\n    by_cases h : Odd a ∧ q ∣ a ∧ 1 ≤ a ∧ a ≤ NM\n    · obtain ⟨ho, ⟨m', rfl⟩, h1, hle⟩ := h\n      have hm'o : Odd m' := (Nat.odd_mul.1 ho).2\n      have hr : |δ * (q * m' : ℕ) / x| ≤ 1 / 2 := by\n        have hqm : ((q * m' : ℕ) : ℝ) ≤ M := (by exact_mod_cast hle : ((q * m' : ℕ) : ℝ) ≤ NM).trans hNM\n        rw [abs_div, abs_mul, abs_of_pos hx, Nat.abs_cast, div_le_iff₀ hx]\n        nlinarith [abs_nonneg δ]\n      obtain ⟨E, hE1, hE2⟩ := Todd_main hx hq hm'o h2α hr\n      exact ⟨E, fun _ _ _ _ => ⟨hE1, hE2⟩⟩\n    · exact ⟨0, fun h1 h2 h3 h4 => absurd ⟨h1, h2, h3, h4⟩ h⟩\n  choose E hE using hT\n  set κ := e ((a₀ + k * q) / 2)\n  set η0 := eta2hat (-(δ / 2))\n  have hsplit : mainPartI2 α x M U V q = κ * (((x / 2 : ℝ) : ℂ) * η0 *\n        ((∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then coefI2 U V a * (1 / a) else 0) : ℝ) : ℂ) +\n      ∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then (coefI2 U V a : ℂ) * E a else 0)) := by\n    rw [mainPartI2, Complex.ofReal_sum, mul_sum, ← sum_add_distrib, mul_sum]\n    refine sum_congr rfl fun a ha => ?_\n    have ha1 : 1 ≤ a := (mem_Icc.1 ha).1\n    have haN : a ≤ NM := (mem_Icc.1 ha).2\n    by_cases h : Odd a ∧ q ∣ a\n    · rw [if_pos h, if_pos h, if_pos h, (hE a h.1 h.2 ha1 haN).1]\n      have ha0 : (0 : ℝ) < a := by exact_mod_cast ha1\n      push_cast; field_simp\n    · rw [if_neg h, if_neg h, if_neg h]; simp",
+            "line": 814,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+            "lines": [
+              785,
+              897
+            ],
+            "conclusion": "For odd `a`, `q ∣ a`, `a ≤ ⌊M⌋`, `Todd α x a = e(..)(x/(2a) * eta2hat(-δ/2) + E)` with `‖E‖ ≤ a/x * c₀/(2π²) * (π²-4)` (Todd_main), so `mainPartI2 = κ (x/2 * η0 * Σ c(a)/a + Σ c(a) E(a))`; this is the analogue of (4.50)'s expansion for `η₂`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L814-L842"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          81
+        ],
+        "printed": [
+          71
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

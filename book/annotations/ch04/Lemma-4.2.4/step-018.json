@@ -1,0 +1,83 @@
+{
+  "id": "Lemma 4.2.4 step 18",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 83,
+        "rect": [
+          0.17462,
+          0.55752,
+          0.56162,
+          0.04699
+        ]
+      },
+      "title": "Lemma 4.2.4 step 18: Display, p. 73",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_coefI2_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          20,
+          28
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_coefI2_le"
+          },
+          "snippet": {
+            "text": "/-- `|c(a)| ≤ log a` [H, p. 73]. -/\ntheorem abs_coefI2_le (U V : ℝ) (a : ℕ) : |coefI2 U V a| ≤ Real.log a := by\n  rw [coefI2, ← ArithmeticFunction.vonMangoldt_sum]\n  refine (abs_sum_le_sum_abs _ _).trans (sum_le_sum fun v _ => ?_)\n  split_ifs\n  · rw [abs_mul, abs_of_nonneg ArithmeticFunction.vonMangoldt_nonneg]\n    have : |(μ (a / v) : ℝ)| ≤ 1 := by exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n    nlinarith [ArithmeticFunction.vonMangoldt_nonneg (n := v), abs_nonneg ((μ (a / v) : ℝ))]\n  · rw [abs_zero]; exact ArithmeticFunction.vonMangoldt_nonneg",
+            "line": 20,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_coefI2_le",
+            "lines": [
+              20,
+              28
+            ],
+            "conclusion": "`|c(a)| ≤ log a` for `c = coefI2 U V`, `c(a) = Σ_{v∣a, v≤V, a/v≤U} Λ(v) μ(a/v)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L20-L28"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          83
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

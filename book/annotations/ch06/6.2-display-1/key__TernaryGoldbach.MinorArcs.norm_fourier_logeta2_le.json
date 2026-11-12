@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "The min is split over two lemmas; the quotient form follows from `(2πt)² = 4π²t²` and `96/4 = 24`.",
+  "subject": [
+    {
+      "location": {
+        "page": 112,
+        "rect": [
+          0.25926,
+          0.59079,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Display, p. 102",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          287,
+          288
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le"
+          },
+          "snippet": {
+            "text": "theorem norm_fourier_logeta2_le (t : ℝ) :\n    ‖fourier (fun u => Real.log u * eta2 u) t‖ ≤ 2 - Real.log 4 := by",
+            "line": 287,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le",
+            "lines": [
+              286,
+              344
+            ],
+            "conclusion": "`‖(log·η₂)^(t)‖ ≤ 2 - log 4` for every real `t` (B.17), with `fourier f t = ∫ e(-xt) f(x) dx` and `f = fun u => log u * eta2 u`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L287-L288"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          112
+        ],
+        "printed": [
+          102
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

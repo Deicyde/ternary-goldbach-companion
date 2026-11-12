@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "[H] sets κ = 1/2, UV = x/(2√(qδ₀)) exactly; [L] takes U, V as floors (via (6.49)), so UV = x/(2√t) holds only up to the bounds (1−1/T)x/(2√t) ≤ UV ≤ x/(2√t).",
+  "subject": [
+    {
+      "location": {
+        "page": 128,
+        "rect": [
+          0.25926,
+          0.75012,
+          0.56816,
+          0.03501
+        ]
+      },
+      "title": "Display, p. 118",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.U1V1_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceParams",
+        "lines": [
+          72,
+          80
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.U1V1_le"
+          },
+          "snippet": {
+            "text": "/-- `UV ≤ x/(2√t)`. -/\ntheorem U1V1_le (hT : 0 < T) (ht : 0 < t) :\n    (U1 T t : ℝ) * V1 T ≤ T ^ 3 / (2 * √t) := by\n  have h1 := U1_le (T := T) ht\n  have h2 := V1_le hT\n  have hst : 0 < √t := Real.sqrt_pos.2 ht\n  calc (U1 T t : ℝ) * V1 T ≤ T ^ 2 / (9 * √t) * (9 * T / 2) :=\n        mul_le_mul h1 h2 (Nat.cast_nonneg _) (by positivity)\n    _ = T ^ 3 / (2 * √t) := by field_simp",
+            "line": 72,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.U1V1_le",
+            "lines": [
+              72,
+              80
+            ],
+            "conclusion": "`UV ≤ T³/(2√t)`, i.e. `UV ≤ x/(2√(qδ₀))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceParams.lean",
+            "fragment": "L72-L80"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          128
+        ],
+        "printed": [
+          118
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

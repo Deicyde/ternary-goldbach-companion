@@ -1,0 +1,120 @@
+{
+  "id": "Lemma B.2.3 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean never writes eta_(y)'' as a distribution; it splits eta_(y) = log.eta2 + log y . eta2 and obtains jumps and smooth part of log.eta2 by integration by parts.",
+  "subject": [
+    {
+      "location": {
+        "page": 304,
+        "rect": [
+          0.26253,
+          0.24044,
+          0.56162,
+          0.05566
+        ]
+      },
+      "title": "Lemma B.2.3 step 2: Display, p. 294",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.3 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          250,
+          262
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay"
+          },
+          "snippet": {
+            "text": "  have w1 : lg1' (1 / 4) = -(32 * Real.log 2) := by\n    simp only [lg1']; rw [show (4 : ℝ) * (1 / 4) = 1 by norm_num, Real.log_one, log_quarter]; ring\n  have w2 : lg1' (1 / 2) = 0 := by\n    simp only [lg1']; rw [show (4 : ℝ) * (1 / 2) = 2 by norm_num, log_half]; ring\n  have w3 : lg2' (1 / 2) = 16 * Real.log 2 := by simp only [lg2']; rw [log_half]; ring\n  have w4 : lg2' 1 = 0 := by simp [lg2']\n  have hsum : e (-(1 / 2 * t)) * ((lg1 (1 / 2) : ℂ) / c - (lg1' (1 / 2) : ℂ) / c ^ 2) -\n        e (-(1 / 4 * t)) * ((lg1 (1 / 4) : ℂ) / c - (lg1' (1 / 4) : ℂ) / c ^ 2) + I1 / c ^ 2 +\n      ((e (-(1 * t)) * ((lg2 1 : ℂ) / c - (lg2' 1 : ℂ) / c ^ 2) -\n        e (-(1 / 2 * t)) * ((lg2 (1 / 2) : ℂ) / c - (lg2' (1 / 2) : ℂ) / c ^ 2)) + I2 / c ^ 2) =\n      ((16 * Real.log 2 : ℝ) * e (-(1 / 2 * t)) - (32 * Real.log 2 : ℝ) * e (-(1 / 4 * t)) +\n        I1 + I2) / c ^ 2 := by\n    rw [v1, v2, v3, w1, w2, w3, w4]; push_cast; field_simp; ring",
+            "line": 250,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay",
+            "lines": [
+              220,
+              283
+            ],
+            "conclusion": "Derivative jumps -32 log 2 at 1/4 and 16 log 2 at 1/2 (the delta terms) plus the smooth second derivative lg1'', lg2'' (h) are computed and assembled."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L250-L262"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghat_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          180,
+          196
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghat_eta2log"
+          },
+          "snippet": {
+            "text": "/-- `η̂_(ρ) = (log·η₂)^ + log ρ · η̂₂`. -/\ntheorem ghat_eta2log (t : ℝ) :\n    ghat (eta2log ρ) t = ghat (fun u => Real.log u * eta2 u) t + Real.log ρ * eta2hat t := by\n  have hint1 : Integrable (fun v => e (-(v * t)) * (eta2log ρ v : ℂ)) :=\n    ((continuous_e.comp (by fun_prop)).mul (Complex.continuous_ofReal.comp (continuous_eta2log hρ))\n      ).integrable_of_hasCompactSupport (hasCompactSupport_eta2log.comp_left\n        (g := fun s : ℝ => (s : ℂ)) (by simp)).mul_left\n  have hint2 : Integrable (fun v => e (-(v * t)) * (eta2 v : ℂ)) :=\n    ((continuous_e.comp (by fun_prop)).mul (Complex.continuous_ofReal.comp Helfgott.continuous_eta2)\n      ).integrable_of_hasCompactSupport (Helfgott.hasCompactSupport_eta2.comp_left\n        (g := fun s : ℝ => (s : ℂ)) (by simp)).mul_left\n  have hfun : (fun v => e (-(v * t)) * ((Real.log v * eta2 v : ℝ) : ℂ)) =\n      fun v => e (-(v * t)) * (eta2log ρ v : ℂ) - (Real.log ρ : ℂ) * (e (-(v * t)) * (eta2 v : ℂ)) := by\n    funext v; rw [eta2log_eq_add hρ]; push_cast; ring\n  rw [ghat, ghat, eta2hat, fourier_eq_integral_e, fourier_eq_integral_e, fourier_eq_integral_e, hfun,\n    integral_sub hint1 (hint2.const_mul _), integral_const_mul]\n  ring",
+            "line": 180,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghat_eta2log",
+            "lines": [
+              180,
+              196
+            ],
+            "conclusion": "eta^_(rho) = (log.eta2)^ + log rho * eta2^ (Fourier-side form of the split into log y and non-log-y parts)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L180-L196"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          304
+        ],
+        "printed": [
+          294
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

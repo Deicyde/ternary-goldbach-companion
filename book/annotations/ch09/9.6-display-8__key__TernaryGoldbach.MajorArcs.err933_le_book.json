@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 8",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean treats only the eta_* line, with the eta_2-moment factor 1.37259 on 1.22, 5.056, 1.423, 37.19 and bounds 377871 and 75.7 in place of 378854 and 75.9; the first line (eta=t^2e^{-t^2/2}, 279793, 55.2) is not carried.",
+  "subject": [
+    {
+      "location": {
+        "page": 204,
+        "rect": [
+          0.25926,
+          0.7874,
+          0.56816,
+          0.06787
+        ]
+      },
+      "title": "Display, p. 194",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err933_le_book",
+        "module": "TernaryGoldbach.MajorArcs.Cor713",
+        "lines": [
+          193,
+          204
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err933_le_book"
+          },
+          "snippet": {
+            "text": "  have hA : 1.37259 * (1.22 * (1e4 / s) * Real.log 1e8 + 5.056 * (1e4 / s) + 1.423 * Real.log q + 37.19) / t ≤\n      377871 * (v * u) + 75.7 * u := by\n    have e : 1.37259 * (1.22 * (1e4 / s) * Real.log 1e8 + 5.056 * (1e4 / s) + 1.423 * Real.log q + 37.19) / t =\n        1.37259 * (1.22e4 * Real.log 1e8 + 5.056e4) * (v * u) + 1.37259 * (1.423 * Real.log q + 37.19) * u := by\n      simp only [hu, hv]; field_simp; ring\n    rw [e]\n    have hvu : 0 ≤ v * u := by positivity\n    have h1 : 1.37259 * (1.22e4 * Real.log 1e8 + 5.056e4) * (v * u) ≤ 377871 * (v * u) := by\n      apply mul_le_mul_of_nonneg_right _ hvu; linarith\n    have h2 : 1.37259 * (1.423 * Real.log q + 37.19) * u ≤ 75.7 * u := by\n      apply mul_le_mul_of_nonneg_right _ hu0.le; linarith\n    linarith",
+            "line": 193,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err933_le_book",
+            "lines": [
+              152,
+              235
+            ],
+            "conclusion": "hA: 1.37259(1.22*(1e4/sqrt q)log 1e8+5.056*(1e4/sqrt q)+1.423 log q+37.19)/sqrt y <= 377871/(sqrt q sqrt y)+75.7/sqrt y."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L193-L204"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          204
+        ],
+        "printed": [
+          194
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

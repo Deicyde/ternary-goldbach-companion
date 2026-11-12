@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.2 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the same bound 5/3 only for 0<t<=pi/3 (book [0,pi/2]), with different polynomials (1+t^2/3+t^4/10), not the book's c_0 chain; sufficient for q>=3.",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17462,
+          0.45756,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma 4.1.2 step 9: Text, p. 55",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.2 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.trig_T3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1122,
+          1139
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.trig_T3"
+          },
+          "snippet": {
+            "text": "/-- **T3.** `t²/sin²t + t cot(3t/2) ≤ 5/3` for `0 < t ≤ π/3`. -/\ntheorem trig_T3 {t : ℝ} (ht : 0 < t) (ht1 : t ≤ π / 3) :\n    t ^ 2 / Real.sin t ^ 2 + t * (Real.cos (3 * t / 2) / Real.sin (3 * t / 2)) ≤ 5 / 3 := by\n  have hs : 0 < Real.sin t := Real.sin_pos_of_pos_of_lt_pi ht (by linarith [Real.pi_pos])\n  have hs3 : 0 < Real.sin (3 * t / 2) :=\n    Real.sin_pos_of_pos_of_lt_pi (by linarith) (by linarith [Real.pi_pos])\n  have ha := mul_cos_le₁ (x := 3 * t / 2) (by linarith) (by linarith)\n  have hb := sq_le_sin_sq₁ ht ht1\n  have ht2 : t ^ 2 ≤ 1099 / 1000 := by nlinarith [Real.pi_lt_d4]\n  have h1 : t ^ 2 / Real.sin t ^ 2 ≤ 1 + t ^ 2 / 3 + t ^ 4 / 10 := by\n    rw [div_le_iff₀ (by positivity)]; exact hb\n  have h2 : t * (Real.cos (3 * t / 2) / Real.sin (3 * t / 2)) ≤\n      2 / 3 * (1 - (3 * t / 2) ^ 2 / 3) := by\n    have := mul_le_mul_of_nonneg_left (div_le_iff₀ hs3 |>.2 ha) (by norm_num : (0:ℝ) ≤ 2 / 3)\n    calc t * (Real.cos (3 * t / 2) / Real.sin (3 * t / 2))\n        = 2 / 3 * (3 * t / 2 * Real.cos (3 * t / 2) / Real.sin (3 * t / 2)) := by ring\n      _ ≤ _ := this\n  nlinarith [pow_pos ht 4]",
+            "line": 1122,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.trig_T3",
+            "lines": [
+              1122,
+              1139
+            ],
+            "conclusion": "t^2/sin^2 t + t cot(3t/2) <= 5/3 for 0<t<=pi/3, from polynomial bounds sq_le_sin_sq1 and mul_cos_le1."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1122-L1139"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "2.1 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Notation: `1_S` is `S.indicator 1`, used e.g. as `(arc δ₀ R x q b).indicator 1` in LargeSieveArcs.lean.",
+  "subject": [
+    {
+      "location": {
+        "page": 41,
+        "rect": [
+          0.17135,
+          0.78697,
+          0.56816,
+          0.03932
+        ]
+      },
+      "title": "Display, p. 31",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2.1 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "Set.mulIndicator",
+        "module": "Mathlib.Algebra.Notation.Indicator",
+        "lines": [
+          50,
+          54
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Set.mulIndicator"
+          },
+          "snippet": {
+            "text": "/-- `Set.mulIndicator s f a` is `f a` if `a ∈ s`, `1` otherwise. -/\n@[to_additive /-- `Set.indicator s f a` is `f a` if `a ∈ s`, `0` otherwise. -/]\nnoncomputable def mulIndicator (s : Set α) (f : α → M) (x : α) : M :=\n  haveI := Classical.decPred (· ∈ s)\n  if x ∈ s then f x else 1",
+            "line": 50,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "Set.mulIndicator",
+            "lines": [
+              50,
+              54
+            ],
+            "conclusion": "`Set.indicator S f x = f x` if `x ∈ S`, else `0` (additive form of `mulIndicator`); `1_S = S.indicator 1`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Algebra/Notation/Indicator.lean",
+            "fragment": "L50-L54"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          41
+        ],
+        "printed": [
+          31
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

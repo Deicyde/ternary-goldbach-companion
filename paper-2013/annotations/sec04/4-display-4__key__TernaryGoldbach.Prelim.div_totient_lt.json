@@ -1,0 +1,80 @@
+{
+  "id": "4 display 4",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 25,
+        "rect": [
+          0.20371,
+          0.69075,
+          0.63183,
+          0.03605
+        ]
+      },
+      "title": "Display, p. 25",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "4 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct",
+        "lines": [
+          2256,
+          2260
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.div_totient_lt"
+          },
+          "snippet": {
+            "text": "/-- **[H, Lemma C.2.2]** ([RS62, Thm. 15]): `q/φ(q) < e^γ log log r + 2.50637/log log r` for `q ≥ 1`,\n`r ≥ max(3, q)`. -/\ntheorem div_totient_lt {q : ℕ} (hq : 1 ≤ q) {r : ℝ} (hr : 3 ≤ r) (hqr : (q : ℝ) ≤ r) :\n    (q : ℝ) / Nat.totient q < Real.exp Real.eulerMascheroniConstant * Real.log (Real.log r) +\n      2.50637 / Real.log (Real.log r) := by",
+            "line": 2256,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+            "lines": [
+              2256,
+              2352
+            ],
+            "conclusion": "For `1 ≤ q`, `3 ≤ r`, `q ≤ r`: `q/φ(q) < e^γ log log r + 2.50637/log log r`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L2256-L2260"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          25
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book C.2 display 5, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

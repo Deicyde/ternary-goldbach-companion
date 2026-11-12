@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.1 step 49",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses its Landau-based analogue of (peanuts) pointwise in the integrand of the line integral, not to bound the $L^2$ norm of $(L'/L)/s$.",
+  "subject": [
+    {
+      "location": {
+        "page": 178,
+        "rect": [
+          0.26253,
+          0.47784,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 9.1.1 step 49: Text, p. 168",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 49"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_integral_hIntG_le",
+        "module": "TernaryGoldbach.Explicit.ExplicitBoundGen",
+        "lines": [
+          50,
+          56
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_integral_hIntG_le"
+          },
+          "snippet": {
+            "text": "    have hL := norm_logDeriv_L_left hχ hχ1 y\n    have hLB := LB_le_linear (N := N) y\n    have hL' : ‖logDeriv χ.LFunction s‖ ≤ c₁ * (DN N + 37 + 2.6 * |y|) := by\n      refine hL.trans ?_\n      have e : Real.log (BT N y / 0.355) / Real.log 2 / (1 / 2) + 4.8 * Real.log (BT N y / 0.355) =\n          c₁ * Real.log (BT N y / 0.355) := by rw [hc₁]; ring\n      rw [e]; exact mul_le_mul_of_nonneg_left hLB hc₁0",
+            "line": 50,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_integral_hIntG_le",
+            "lines": [
+              31,
+              68
+            ],
+            "conclusion": "The line-integral bound applies Lean's $L'/L$ bound on $\\Re s=-1/2$ (`norm_logDeriv_L_left`), linearised as $\\le c_1(D_N+37+2.6|y|)$, pointwise in the integrand."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBoundGen.lean",
+            "fragment": "L50-L56"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          178
+        ],
+        "printed": [
+          168
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7 display 28",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "The set $\\mathfrak M_{8,r}$ in $\\mathbb R/\\mathbb Z$ is taken as the part in $(0,1]$ with $r=r_0=150000$; the integrand is the same.",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.20371,
+          0.11187,
+          0.63183,
+          0.0397
+        ]
+      },
+      "title": "Display, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.fI",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          751,
+          752
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.fI"
+          },
+          "snippet": {
+            "text": "/-- The integrand `S_{η₊}(α)² S_{η_*}(α) e(−Nα)` at a general `x`. -/\nnoncomputable def fI (N : ℕ) (x α : ℝ) : ℂ := S etaPlus x α ^ 2 * S etaStar x α * e (-(N * α))",
+            "line": 751,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.fI",
+            "lines": [
+              751,
+              752
+            ],
+            "conclusion": "`fI N x α` $=S_{\\eta_+}(\\alpha,x)^2S_{\\eta_*}(\\alpha,x)e(-N\\alpha)$; integrated over `Ioc 0 1 ∩ majorArcs 8 r₀ x` in `major_total`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L751-L752"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.2 display 20, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

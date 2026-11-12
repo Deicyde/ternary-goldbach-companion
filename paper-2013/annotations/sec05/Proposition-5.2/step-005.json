@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.2 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The doubling for odd modulus appears as `κ_c = 2` and `c̃ = 2c` in `weight_sum` (odd and even `r` give equal sums), not as a prefactor in front of `Σ_1`.",
+  "subject": [
+    {
+      "location": {
+        "page": 34,
+        "rect": [
+          0.20698,
+          0.45067,
+          0.62529,
+          0.03363
+        ]
+      },
+      "title": "Proposition 5.2 step 5: Text, p. 34",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.weight_sum",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveWeights",
+        "lines": [
+          128,
+          133
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.weight_sum"
+          },
+          "snippet": {
+            "text": "/-- **The weight of a character of conductor `c`**:\n`Σ_{q ≥ 1, q̃ ≤ X} [c ∣ q] w(q, c)/φ(q) = (c/φ(c)) κ_c G_{c̃}(X/c̃)`. -/\ntheorem weight_sum (c : ℕ) (hc : 1 ≤ c) (X : ℝ) :\n    ∑ q ∈ (Icc 1 ⌊X⌋₊).filter (fun q => (qt q : ℝ) ≤ X),\n        (if c ∣ q then TernaryGoldbach.wq q c else 0) / q.totient =\n      c / c.totient * (kap c * Gq (qt c) (X / qt c)) := by",
+            "line": 128,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.weight_sum",
+            "lines": [
+              128,
+              217
+            ],
+            "conclusion": "`Σ_{q̃ ≤ X} [c∣q] w(q,c)/φ(q) = (c/φ(c)) κ_c G_{c̃}(X/c̃)` with `κ_c = 1` for even `c`, `2` for odd `c` (odd and even `r` in `q = cr` give equal sums)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveWeights.lean",
+            "fragment": "L128-L133"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.kap",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveWeights",
+        "lines": [
+          28,
+          29
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.kap"
+          },
+          "snippet": {
+            "text": "/-- `κ_c = 1` for even `c`, `2` for odd `c`. -/\nnoncomputable def kap (c : ℕ) : ℝ := if Even c then 1 else 2",
+            "line": 28,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.kap",
+            "lines": [
+              28,
+              29
+            ],
+            "conclusion": "`κ_c = 1` for even `c`, `2` for odd `c`: the factor 2 for odd moduli."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveWeights.lean",
+            "fragment": "L28-L29"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          34
+        ],
+        "printed": [
+          34
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.1.2 step 5, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

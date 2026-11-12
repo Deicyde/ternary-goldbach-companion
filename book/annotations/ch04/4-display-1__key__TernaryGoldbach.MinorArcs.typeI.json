@@ -1,0 +1,81 @@
+{
+  "id": "4 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] restricts `m` and `n` to odd values, takes `η = η₂`, and sums `n` over `1..⌊x⌋` (the support of `η₂(mn/x)`) rather than all `n`.",
+  "subject": [
+    {
+      "location": {
+        "page": 61,
+        "rect": [
+          0.17135,
+          0.40337,
+          0.56816,
+          0.03905
+        ]
+      },
+      "title": "Display, p. 51",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "4 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          70,
+          73
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI"
+          },
+          "snippet": {
+            "text": "/-- The Type I sum (4.29): `∑_{m ≤ D odd} μ(m) ∑_{n odd} e(αmn) η₂(mn/x)`. -/\nnoncomputable def typeI (α x D : ℝ) : ℂ :=\n  ∑ m ∈ Icc 1 ⌊D⌋₊, if Odd m then (μ m : ℂ) *\n    ∑ n ∈ Icc 1 ⌊x⌋₊, (if Odd n then e (α * m * n) * (eta2 (m * n / x) : ℂ) else 0) else 0",
+            "line": 70,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI",
+            "lines": [
+              70,
+              73
+            ],
+            "conclusion": "`typeI α x D = ∑_{m ≤ D, m odd} μ(m) ∑_{n odd, 1≤n≤⌊x⌋} e(αmn) η₂(mn/x)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L70-L73"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          61
+        ],
+        "printed": [
+          51
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

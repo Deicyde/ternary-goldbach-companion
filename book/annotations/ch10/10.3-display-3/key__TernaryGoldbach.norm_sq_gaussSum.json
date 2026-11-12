@@ -1,0 +1,80 @@
+{
+  "id": "10.3 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 218,
+        "rect": [
+          0.25926,
+          0.49181,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Display, p. 208",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.3 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_sq_gaussSum",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri",
+        "lines": [
+          150,
+          163
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_sq_gaussSum"
+          },
+          "snippet": {
+            "text": "  have hτ : gaussSum ψ ZMod.stdAddChar = (μ r : ℂ) * f r * gaussSum χ ZMod.stdAddChar := by\n    rw [gaussSum_eq_sum_range, gaussSum_eq_sum_range]\n    have h1 : ∑ b ∈ range q, ψ (b : ZMod q) * e (b / q) =\n        ∑ b ∈ (range (c * r)).filter (fun b => Nat.Coprime b (c * r)), f b * e (b / (c * r)) := by\n      have hqR : (c : ℝ) * r = q := by rw [hqr]; push_cast; ring\n      rw [sum_filter, ← hqr, hqR]\n      refine sum_congr rfl fun b _ => ?_\n      rw [← hψ, changeLevel_apply_natCast]\n      split_ifs <;> simp [f]\n    rw [h1, gauss_induced (Nat.pos_of_ne_zero hc0) hr1 f]\n    · intro b; simp [f]\n    · intro a b; simp [f, map_mul]\n    · intro b hb; simp only [f]\n      apply MulChar.map_nonunit; rwa [ZMod.isUnit_iff_coprime]",
+            "line": 150,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_sq_gaussSum",
+            "lines": [
+              133,
+              179
+            ],
+            "conclusion": "`hτ`: with $c$ the conductor, $\\chi$ the primitive character and $r=q/c$, `gaussSum ψ = μ r * χ(r) * gaussSum χ`, i.e. $\\tau(\\chi)=\\mu(q/q^*)\\chi^*(q/q^*)\\tau(\\chi^*)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L150-L163"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          218
+        ],
+        "printed": [
+          208
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

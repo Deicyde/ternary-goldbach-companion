@@ -1,0 +1,81 @@
+{
+  "id": "14.1 display 6",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has no $L_{r,\\delta_0}$ and no $\\eta_\\circ$: it uses $\\sum_{\\mathrm{Qset}}\\mu^2/\\phi\\in[13.597558,13.59756]$ times the truncated $\\int|\\widehat{\\eta_+}|^2\\in[0.6392,0.640208]$ per modulus, and gets $8.6296x\\le\\int\\le8.79x$ in place of $8.70517\\le L\\le8.70531$.",
+  "subject": [
+    {
+      "location": {
+        "page": 271,
+        "rect": [
+          0.17135,
+          0.41161,
+          0.56816,
+          0.07565
+        ]
+      },
+      "title": "Display, p. 261",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.1 display 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.l2_major_bounds",
+        "module": "TernaryGoldbach.MajorArcs.L2Major",
+        "lines": [
+          309,
+          311
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.l2_major_bounds"
+          },
+          "snippet": {
+            "text": "theorem l2_major_bounds {x : ℝ} (hx : 4.9e26 ≤ x) :\n    8.6296 * x ≤ ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 ∧\n      ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 ≤ 8.79 * x := by",
+            "line": 309,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.l2_major_bounds",
+            "lines": [
+              307,
+              348
+            ],
+            "conclusion": "For $x\\ge 4.9\\cdot10^{26}$: $8.6296x\\le\\int_{(0,1]\\cap\\mathfrak M_{8,r_0}}|S_{\\eta_+}|^2\\le 8.79x$ (`majorArcs 8 r₀ x`, `etaPlus`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "fragment": "L309-L311"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          271
+        ],
+        "printed": [
+          261
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

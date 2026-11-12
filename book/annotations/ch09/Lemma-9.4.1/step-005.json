@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.4.1 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds one M_+(s) by the triangle inequality; no pairing |G(rho)|+|G(1-rho)| and no symmetry of |Mh|.",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17462,
+          0.5023,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma 9.4.1 step 5: Text, p. 185",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
+        "lines": [
+          221,
+          231
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_le"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_fP_le (δ : ℝ) {s : ℂ} (hs : -1 < s.re) {B : ℝ}\n    (hB : ∀ ξ ∈ Icc (-aH) aH, ‖Gr (s - 1 + ((2 * π * ξ : ℝ) : ℂ) * I) δ 0‖ ≤ B) :\n    ‖mellin (fP δ) s‖ ≤ Cg * B * (2 * aH) := by\n  rw [mellin_fP_eq δ hs]\n  have hvol : (volume (Icc (-aH) aH)).toReal = 2 * aH := by\n    rw [Real.volume_Icc, ENNReal.toReal_ofReal (by linarith [aH_pos])]; ring\n  rw [← hvol]\n  refine norm_setIntegral_le_of_norm_le_const (by rw [Real.volume_Icc]; exact ENNReal.ofReal_lt_top)\n    fun ξ hξ => ?_\n  rw [norm_mul]\n  exact mul_le_mul (norm_fourier_gC_le ξ) (hB ξ hξ) (norm_nonneg _) Cg_nonneg",
+            "line": 221,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_le",
+            "lines": [
+              221,
+              231
+            ],
+            "conclusion": "If |G_delta| <= B on the shifted line segment then |M_+(s)| <= Cg*B*2a, by the triangle inequality on the integral (Cg bounds |ghat|)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L221-L231"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

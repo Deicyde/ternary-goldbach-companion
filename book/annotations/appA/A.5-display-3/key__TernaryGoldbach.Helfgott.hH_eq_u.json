@@ -1,0 +1,81 @@
+{
+  "id": "A.5 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] integrates by parts in `u = t/y` against `G_H(log(t/u))` (`G_H = Si(H·)/π`) on `[ε,2]`, bounded by `|G_H| ≤ 3/π`; it does not subtract `h(t)` or split at `w=0` with `Si ∓ π/2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 298,
+        "rect": [
+          0.25926,
+          0.49487,
+          0.56816,
+          0.11581
+        ]
+      },
+      "title": "Display, p. 288",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.5 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.hH_eq_u",
+        "module": "TernaryGoldbach.Helfgott.HHBound",
+        "lines": [
+          274,
+          294
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.hH_eq_u"
+          },
+          "snippet": {
+            "text": "/-- Substitution `y = t/u`: `h_H(t) = ∫_0^∞ h(u) F_H(t/u) du/u`. -/\ntheorem hH_eq_u {H t : ℝ} (ht : 0 < t) :\n    hH H t = ∫ u in Set.Ioi (0:ℝ), hBase u * F H (t / u) / u := by\n  unfold hH\n  rw [← integral_comp_rpow_Ioi (fun y => hBase (t / y) * F H y / y) (p := -1) (by norm_num)]\n  set k : ℝ → ℝ := fun u => hBase u * F H (t / u) * t / u with hk\n  have h1 : ∫ x in Set.Ioi (0:ℝ), (|(-1:ℝ)| * x ^ ((-1:ℝ) - 1)) •\n      (fun y => hBase (t / y) * F H y / y) (x ^ (-1:ℝ)) = ∫ x in Set.Ioi (0:ℝ), k (t * x) := by\n    refine setIntegral_congr_fun measurableSet_Ioi fun x hx => ?_\n    have hx0 : (0:ℝ) < x := hx\n    simp only [hk, smul_eq_mul]\n    rw [Real.rpow_neg_one, show ((-1:ℝ) - 1) = -((2:ℕ):ℝ) by norm_num, Real.rpow_neg hx0.le,\n      Real.rpow_natCast]\n    have : t / (t * x) = x⁻¹ := by field_simp\n    rw [this, div_inv_eq_mul]\n    field_simp\n    norm_num\n  rw [h1, integral_comp_mul_left_Ioi k 0 ht, mul_zero, smul_eq_mul, ← MeasureTheory.integral_const_mul]\n  refine setIntegral_congr_fun measurableSet_Ioi fun u hu => ?_\n  simp only [hk]\n  field_simp",
+            "line": 274,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.hH_eq_u",
+            "lines": [
+              274,
+              294
+            ],
+            "conclusion": "`h_H(t) = ∫_0^∞ h(u) F_H(t/u) du/u` by substituting `y = t/u`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/HHBound.lean",
+            "fragment": "L274-L294"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          298
+        ],
+        "printed": [
+          288
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 11.2.3 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part: the decreasing property of $R$ in the scale (and its consequence $R_{wx,t}\\le R_{x,t}$ for $w\\ge1$); [L] has no convexity of $y\\mapsto R_{e^y,t}$ and no interpolation for $w<1$.",
+  "subject": [
+    {
+      "location": {
+        "page": 234,
+        "rect": [
+          0.26253,
+          0.44047,
+          0.56162,
+          0.03354
+        ]
+      },
+      "title": "Proposition 11.2.3 step 11: Text, p. 224",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 11.2.3 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.R_le_R",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          79,
+          82
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.R_le_R"
+          },
+          "snippet": {
+            "text": "theorem R_le_R {z z' t t' : ℝ} (ht' : 1 ≤ 4 * t') (htt : t' ≤ t)\n    (hb : 1 < 9 * z ^ (1 / 3 : ℝ) / (2.004 * t))\n    (hbb : 9 * z ^ (1 / 3 : ℝ) / (2.004 * t) ≤ 9 * z' ^ (1 / 3 : ℝ) / (2.004 * t')) :\n    R z' t' ≤ R z t := by",
+            "line": 79,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.R_le_R",
+            "lines": [
+              77,
+              95
+            ],
+            "conclusion": "$R_{z',t'}\\le R_{z,t}$ for $t'\\le t$ and $9z^{1/3}/(2.004t)\\le 9z'^{1/3}/(2.004t')$: in particular $z\\mapsto R_{z,t}$ is non-increasing."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L79-L82"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          177,
+          180
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+          },
+          "snippet": {
+            "text": "  have hR : R (w * y) (2 * n) ≤ R y (2 * n) := by\n    refine R_le_R (by linarith) le_rfl ?_ ?_\n    · rw [one_lt_div (by positivity)]; nlinarith\n    · exact div_le_div_of_nonneg_right (by linarith) (by positivity)",
+            "line": 177,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+            "lines": [
+              169,
+              193
+            ],
+            "conclusion": "For $w\\ge1$: $R_{wy,2n}\\le R_{y,2n}$, the case $w\\ge1$ of the bound that follows."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L177-L180"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          234
+        ],
+        "printed": [
+          224
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

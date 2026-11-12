@@ -1,0 +1,83 @@
+{
+  "id": "A.1 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 290,
+        "rect": [
+          0.25926,
+          0.40579,
+          0.56816,
+          0.03602
+        ]
+      },
+      "title": "Display, p. 280",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.1 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "mellin",
+        "module": "Mathlib.Analysis.MellinTransform",
+        "lines": [
+          89,
+          92
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "mellin"
+          },
+          "snippet": {
+            "text": "/-- The Mellin transform of a function `f` (for a complex exponent `s`), defined as the integral of\n`t ^ (s - 1) • f` over `Ioi 0`. -/\ndef mellin (f : ℝ → E) (s : ℂ) : E :=\n  ∫ t : ℝ in Ioi 0, (t : ℂ) ^ (s - 1) • f t",
+            "line": 89,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "mellin",
+            "lines": [
+              89,
+              92
+            ],
+            "conclusion": "Mathlib `mellin f s = ∫ t in Ioi 0, (t:ℂ)^(s-1) • f t`, the Mellin transform used throughout [L] (e.g. `mellin_fδ`, `mellin_half_eq`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/MellinTransform.lean",
+            "fragment": "L89-L92"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          290
+        ],
+        "printed": [
+          280
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

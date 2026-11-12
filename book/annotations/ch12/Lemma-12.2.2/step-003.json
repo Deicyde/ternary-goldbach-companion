@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 12.2.2 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] keeps the multiplicative form and replaces `G_P(Q/Q₀)` by `(log t + 1.064)/X` with `X = P/φ(P)`, rather than stating `G_q(R)/G_q(Q/sq) ≤ 1/G_P(Q/Q₀)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 244,
+        "rect": [
+          0.26253,
+          0.50696,
+          0.56162,
+          0.01058
+        ]
+      },
+      "title": "Lemma 12.2.2 step 3: Text, p. 234",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 12.2.2 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          156,
+          164
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hGP : (Real.log t + 1.064) / X ≤ Gq P t := by\n    rw [div_le_iff₀ hX0]; nlinarith\n  have hGqR := Gq_nonneg_q q R\n  have hmain : Gq q R * (Real.log t + 1.064) ≤ Gq q (t * R) * X := by\n    have := mul_le_mul_of_nonneg_left hGP hGqR\n    rw [mul_div_assoc'] at this\n    rw [div_le_iff₀ hX0] at this\n    calc Gq q R * (Real.log t + 1.064) ≤ Gq q R * Gq P t * X := this\n      _ ≤ Gq q (t * R) * X := mul_le_mul_of_nonneg_right h1 hX0.le",
+            "line": 156,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "`hmain`: `G_q(R)(log t + 1.064) ≤ G_q(tR)·P/φ(P)`, multiplying through instead of dividing by `G_q(Q/sq)` and `G_P(Q/Q₀)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L156-L164"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          244
+        ],
+        "printed": [
+          234
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

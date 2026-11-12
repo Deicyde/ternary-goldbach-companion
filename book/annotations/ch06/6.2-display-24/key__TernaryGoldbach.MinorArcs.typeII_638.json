@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 24",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no single `W₀`; `typeII_split_gen` splits at a general `A` with `V ≤ A ≤ x/U`, `typeII_637` is the case `A=V`, `typeII_638` the case `A=2θq`.",
+  "subject": [
+    {
+      "location": {
+        "page": 119,
+        "rect": [
+          0.17135,
+          0.37576,
+          0.56816,
+          0.01737
+        ]
+      },
+      "title": "Display, p. 109",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_638",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          570,
+          573
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_638"
+          },
+          "snippet": {
+            "text": "theorem typeII_638 {α x Q θ : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) (hx : 0 < x) {U V : ℕ} (hU : 1 ≤ U)\n    (hV : (2000000 : ℝ) ≤ V) (hQ : 3.5 * (x / U) ≤ Q) (hθ : rexp 1 ≤ θ)\n    (hVA : (V : ℝ) ≤ 2 * θ * q) (hAU : 2 * θ * q ≤ x / U) :",
+            "line": 570,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_638",
+            "lines": [
+              568,
+              599
+            ],
+            "conclusion": "With `V ≤ 2θq ≤ x/U`, `θ ≥ e`: `|S_II|` bound splitting the integral at `A = 2θq`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L570-L573"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          119
+        ],
+        "printed": [
+          109
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

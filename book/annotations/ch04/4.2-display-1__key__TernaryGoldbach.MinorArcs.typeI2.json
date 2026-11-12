@@ -1,0 +1,81 @@
+{
+  "id": "4.2 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same sum with `η = η₂` fixed and `n` summed over `1..⌊x⌋` (the support of `η₂(vun/x)`); real `U, V` enter as floors.",
+  "subject": [
+    {
+      "location": {
+        "page": 80,
+        "rect": [
+          0.25926,
+          0.43845,
+          0.56816,
+          0.04545
+        ]
+      },
+      "title": "Display, p. 70",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "4.2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          83,
+          89
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2"
+          },
+          "snippet": {
+            "text": "/-- The Type I sum (4.49):\n`∑_{v ≤ V odd} Λ(v) ∑_{u ≤ U odd} μ(u) ∑_{n odd} e(αvun) η₂(vun/x)`. -/\nnoncomputable def typeI2 (α x U V : ℝ) : ℂ :=\n  ∑ v ∈ Icc 1 ⌊V⌋₊, if Odd v then (Λ v : ℂ) *\n    ∑ u ∈ Icc 1 ⌊U⌋₊, (if Odd u then (μ u : ℂ) *\n      ∑ n ∈ Icc 1 ⌊x⌋₊,\n        (if Odd n then e (α * v * u * n) * (eta2 (v * u * n / x) : ℂ) else 0) else 0) else 0",
+            "line": 83,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2",
+            "lines": [
+              83,
+              89
+            ],
+            "conclusion": "`typeI2 α x U V = ∑_{v ≤ V odd} Λ(v) ∑_{u ≤ U odd} μ(u) ∑_{n odd, n≤⌊x⌋} e(αvun) η₂(vun/x)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L83-L89"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          80
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.4.1 step 19",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the exponential-regime contribution over actual zeros as $E_B'(2Z_3/(1-\\rho_B)+2c_3/(1-\\rho_B)^2)$, not the integral (sibenize) against the zero density.",
+  "subject": [
+    {
+      "location": {
+        "page": 196,
+        "rect": [
+          0.26253,
+          0.47053,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 9.4.1 step 19: Text, p. 186",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_boundG",
+        "module": "TernaryGoldbach.Explicit.ZeroSumGen",
+        "lines": [
+          317,
+          319
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_boundG"
+          },
+          "snippet": {
+            "text": "    have g1 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3g B T0) (c := 2 * c3g κ T0)\n      (E := EB') (ρ := ρB) (by linarith) (by linarith) hEB hρB0 hρB1 (fun k => by\n        have := hZw k; linarith)",
+            "line": 317,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_boundG",
+            "lines": [
+              199,
+              325
+            ],
+            "conclusion": "The exponential-regime part $\\sum m_u E_B'\\rho_B^{k(u)}$ of the tail sum is at most $E_B'(2Z_3/(1-\\rho_B)+2c_3/(1-\\rho_B)^2)$ by `sum_geom_windows`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumGen.lean",
+            "fragment": "L317-L319"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusBound",
+        "lines": [
+          159,
+          159
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_fP_le"
+          },
+          "snippet": {
+            "text": "      x * E2g (BP N) 11 T0 (Cg * (2 * aH) * EB (T0 - 200)) (Cg * (2 * aH) * EA (T0 - 200) δ) rhoB (rhoA δ) +",
+            "line": 159,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+            "lines": [
+              152,
+              170
+            ],
+            "conclusion": "For $\\eta_+$ ($H=200$) the coefficient is $E_B'=C_g\\cdot 2a_H\\cdot E_B(T_0-200)$, $E_B(T)=0.892\\,T e^{-0.1598T}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusBound.lean",
+            "fragment": "L159-L159"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          196
+        ],
+        "printed": [
+          186
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

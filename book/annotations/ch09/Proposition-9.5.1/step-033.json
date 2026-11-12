@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 33",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's $\\Gamma$ bound holds on $-1\\le\\Re s\\le2$ at all heights rather than $0<\\Re s\\le3/2$, $|\\Im s|\\ge25/2$; the $\\Gamma'/\\Gamma$ asymptotic introduced by 'Moreover' is not used (Cauchy estimate instead).",
+  "subject": [
+    {
+      "location": {
+        "page": 201,
+        "rect": [
+          0.17462,
+          0.6306,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Proposition 9.5.1 step 33: Text, p. 191",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Gamma_le_rot",
+        "module": "TernaryGoldbach.Explicit.GammaBounds",
+        "lines": [
+          43,
+          98
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Gamma_le_rot"
+          },
+          "snippet": {
+            "text": "/-- **Rotation bound for `Γ`**: `|Γ(x + iy)| ≤ e^{−φ|y|} Γ(x)/cos^x φ` for `x > 0`, `0 ≤ φ < π/2`. -/\ntheorem norm_Gamma_le_rot {a : ℂ} (ha : 0 < a.re) {φ : ℝ} (hφ0 : 0 ≤ φ) (hφ : φ < π / 2) :\n    ‖Complex.Gamma a‖ ≤ Real.exp (-(φ * |a.im|)) * Real.Gamma a.re * (Real.cos φ) ^ (-a.re) := by\n  set s := 2 * a - 2 with hs\n  have hsre : s.re = 2 * a.re - 2 := by simp [hs]\n  have hsim : s.im = 2 * a.im := by simp [hs]\n  have hs2 : -2 < s.re := by rw [hsre]; linarith\n  have hsa : (s + 2) / 2 = a := by rw [hs]; ring\n  have hG := Gr_zero_zero_eq s hs2\n  rw [hsa] at hG\n  have hcos : 0 < Real.cos φ := Real.cos_pos_of_mem_Ioo ⟨by linarith [Real.pi_pos], hφ⟩\n  set θ : ℝ := if 0 ≤ s.im then φ / 2 else -(φ / 2) with hθ\n  have habs : |θ| = φ / 2 := by rw [hθ]; split_ifs <;> simp [abs_of_nonneg (by linarith : (0:ℝ) ≤ φ / 2)]\n  have hsg : 0 ≤ θ * s.im := by\n    rw [hθ]; split_ifs with h\n    · exact mul_nonneg (by linarith) h\n    · push Not at h; nlinarith\n  have hcos2 : Real.cos (2 * θ) = Real.cos φ := by\n    rw [hθ]; split_ifs\n    · congr 1; ring\n    · rw [show 2 * -(φ / 2) = -φ by ring, Real.cos_neg]\n  have hrot := norm_Gr_le s 0 (θ := θ) (by rw [habs]; linarith) hs2 hsg\n  rw [habs, hcos2] at hrot\n  simp only [abs_zero, mul_zero, zero_mul, add_zero] at hrot\n  -- the Gaussian integral is a Gamma value\n  have hint := _root_.integral_rpow_mul_exp_neg_mul_rpow (p := 2) (q := s.re + 1) (b := Real.cos φ / 2)\n    (by norm_num) (by linarith) (by positivity)\n  have e : ∫ r in Ioi (0:ℝ), r ^ (s.re + 1) * Real.exp (-(Real.cos φ / 2) * r ^ 2) =\n      ∫ r in Ioi (0:ℝ), r ^ (s.re + 1) * Real.exp (-(Real.cos φ / 2) * r ^ (2:ℝ)) := by\n    refine setIntegral_congr_fun measurableSet_Ioi fun r _ => ?_\n    rw [Real.rpow_two]\n  rw [e, hint] at hrot\n  have hq : (s.re + 1 + 1) / 2 = a.re := by rw [hsre]; ring\n  rw [hq, hsim, abs_mul, abs_two] at hrot\n  -- `‖G_0(s)‖ = 2^{x−1} ‖Γ(a)‖`\n  have h2a : ‖(2:ℂ) ^ a‖ = (2:ℝ) ^ a.re := by\n    have := Complex.norm_natCast_cpow_of_pos (by norm_num : 0 < 2) a\n    simpa using this\n  rw [hG, norm_mul, norm_mul, h2a] at hrot\n  have h2x : 0 < (2:ℝ) ^ a.re := by positivity\n  have hnorm : ‖(1 / 2 : ℂ)‖ = 1 / 2 := by norm_num\n  rw [hnorm] at hrot\n  have hrpow : (Real.cos φ / 2) ^ (-(s.re + 1 + 1) / 2) = (Real.cos φ) ^ (-a.re) * (2:ℝ) ^ a.re := by\n    rw [show -(s.re + 1 + 1) / 2 = -a.re by rw [hsre]; ring, Real.div_rpow hcos.le (by norm_num),\n      Real.rpow_neg (by norm_num : (0:ℝ) ≤ 2), div_inv_eq_mul]\n  rw [hrpow] at hrot\n  have hφe : φ / 2 * (2 * |a.im|) = φ * |a.im| := by ring\n  rw [hφe] at hrot\n  -- divide by `2^{x}/2`\n  have : (1 / 2) * (2:ℝ) ^ a.re * ‖Complex.Gamma a‖ ≤\n      (1 / 2) * (2:ℝ) ^ a.re * (Real.exp (-(φ * |a.im|)) * Real.Gamma a.re * (Real.cos φ) ^ (-a.re)) := by\n    calc (1 / 2) * (2:ℝ) ^ a.re * ‖Complex.Gamma a‖\n        ≤ Real.exp (-(φ * |a.im|)) * ((Real.cos φ) ^ (-a.re) * (2:ℝ) ^ a.re * (1 / 2) * Real.Gamma a.re) :=\n          hrot\n      _ = _ := by ring\n  exact le_of_mul_le_mul_left this (by positivity)",
+            "line": 43,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_Gamma_le_rot",
+            "lines": [
+              43,
+              98
+            ],
+            "conclusion": "Rotation bound $|\\Gamma(x+iy)|\\le e^{-\\varphi|y|}\\Gamma(x)/\\cos^x\\varphi$ for $x>0$, $0\\le\\varphi<\\pi/2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/GammaBounds.lean",
+            "fragment": "L43-L98"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_g0_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          152,
+          178
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_g0_le"
+          },
+          "snippet": {
+            "text": "  have hG := norm_Gamma_le_rot (a := a) (by rw [hare]; linarith) (φ := 1.2) (by norm_num)\n    (by linarith)\n  have hc := cos_12_ge\n  have hc0 : 0 < Real.cos 1.2 := by linarith\n  have hc1 : Real.cos 1.2 ≤ 1 := Real.cos_le_one _\n  have hΓ : Real.Gamma a.re ≤ 2 := Gamma_le_two (by rw [hare]; linarith) (by rw [hare]; linarith)\n  have hΓ0 : 0 ≤ Real.Gamma a.re := (Real.Gamma_pos_of_pos (by rw [hare]; linarith)).le\n  have hcp : Real.cos 1.2 ^ (-a.re) ≤ 7.85 := by\n    rw [Real.rpow_neg hc0.le, ← Real.inv_rpow hc0.le]\n    have hi1 : 1 ≤ (Real.cos 1.2)⁻¹ := one_le_inv₀ hc0 |>.2 hc1\n    have hi2 : (Real.cos 1.2)⁻¹ ≤ 1 / 0.357 := by rw [inv_eq_one_div]; exact one_div_le_one_div_of_le (by norm_num) hc\n    calc (Real.cos 1.2)⁻¹ ^ a.re ≤ (Real.cos 1.2)⁻¹ ^ (2:ℝ) :=\n          Real.rpow_le_rpow_of_exponent_le hi1 (by rw [hare]; linarith)\n      _ = ((Real.cos 1.2)⁻¹) ^ 2 := Real.rpow_two _\n      _ ≤ (1 / 0.357) ^ 2 := pow_le_pow_left₀ (by linarith) hi2 2\n      _ ≤ 7.85 := by norm_num\n  have hcp0 : 0 ≤ Real.cos 1.2 ^ (-a.re) := Real.rpow_nonneg hc0.le _\n  have he : Real.exp (-(1.2 * |a.im|)) = Real.exp (-(0.6 * |s.im|)) := by\n    rw [haim, abs_div, abs_two]; congr 1; ring\n  rw [he] at hG\n  have hn : ‖(1 / 2 : ℂ)‖ = 1 / 2 := by rw [norm_div, norm_one, Complex.norm_ofNat]\n  rw [hn]\n  have hE := Real.exp_pos (-(0.6 * |s.im|))\n  calc 1 / 2 * ‖Complex.Gamma a‖ ≤ 1 / 2 * (Real.exp (-(0.6 * |s.im|)) * Real.Gamma a.re *\n        Real.cos 1.2 ^ (-a.re)) := by gcongr\n    _ ≤ 1 / 2 * (Real.exp (-(0.6 * |s.im|)) * 2 * 7.85) := by gcongr\n    _ ≤ 8 * Real.exp (-(0.6 * |s.im|)) := by nlinarith",
+            "line": 152,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_g0_le",
+            "lines": [
+              144,
+              178
+            ],
+            "conclusion": "Applies the rotation bound with $\\varphi=1.2$ to $\\Gamma((s+2)/2)$ and concludes $|M(t^2e^{-t^2})(s)|\\le 8e^{-0.6|\\Im s|}$ on $-1\\le\\Re s\\le 2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L152-L178"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          201
+        ],
+        "printed": [
+          191
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

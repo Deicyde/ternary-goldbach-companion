@@ -1,0 +1,120 @@
+{
+  "id": "Proposition D.0.3 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The small case and the reduction to binary Goldbach on n-p match; the prime p comes from the kernel-checked Proth ladder (window width <4e18) instead of a prime-gap bound with Delta, and n-4 is not bounded via (n-4)/Delta. Lean's small case uses p=3 explicitly.",
+  "subject": [
+    {
+      "location": {
+        "page": 316,
+        "rect": [
+          0.26253,
+          0.44117,
+          0.56162,
+          0.07882
+        ]
+      },
+      "title": "Proposition D.0.3 step 1: Text, p. 306",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition D.0.3 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+        "module": "TernaryGoldbach.Helfgott.SmallCases",
+        "lines": [
+          24,
+          28
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27"
+          },
+          "snippet": {
+            "text": "  by_cases hsmall : n ≤ 4 * 10 ^ 18 + 3\n  · -- `n = 3 + (n − 3)`\n    have hev : Even (n - 3) := Nat.Odd.sub_odd hn (by decide)\n    obtain ⟨p, q, hp, hq, hpq⟩ := hBG (n - 3) hev (by obtain ⟨k, hk⟩ := hn; omega) (by omega)\n    exact ⟨3, p, q, Nat.prime_three, hp, hq, by omega⟩",
+            "line": 24,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+            "lines": [
+              20,
+              40
+            ],
+            "conclusion": "For odd n<=4e18+3, n=3+(n-3) with n-3 even a sum of two primes by binary Goldbach."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/SmallCases.lean",
+            "fragment": "L24-L28"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+        "module": "TernaryGoldbach.Helfgott.SmallCases",
+        "lines": [
+          29,
+          39
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27"
+          },
+          "snippet": {
+            "text": "  · -- a prime `p ∈ [n − 4·10¹⁸, n − 4]` from rung `i` of the ladder\n    push Not at hsmall\n    have hi1 : 1 ≤ (n - 5) / 3927138875067072512 := by omega\n    have hi2 : (n - 5) / 3927138875067072512 ≤ 254638308 := by omega\n    obtain ⟨p, hp, hp1, hp2⟩ := Ladder.ladder_prime hi1 hi2\n    have hpb : p ≤ n - 4 := by omega\n    have hpa : n - 4 * 10 ^ 18 ≤ p := by omega\n    have hp2' : p ≠ 2 := by omega\n    have hpo : Odd p := hp.odd_of_ne_two hp2'\n    have hev : Even (n - p) := Nat.Odd.sub_odd hn hpo\n    obtain ⟨q, r, hq, hr, hqr⟩ := hBG (n - p) hev (by omega) (by omega)",
+            "line": 29,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+            "lines": [
+              20,
+              40
+            ],
+            "conclusion": "For larger n takes a ladder prime p in [n-4e18, n-4], n-p even in [4,4e18], and applies binary Goldbach to n-p."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/SmallCases.lean",
+            "fragment": "L29-L39"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          316
+        ],
+        "printed": [
+          306
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

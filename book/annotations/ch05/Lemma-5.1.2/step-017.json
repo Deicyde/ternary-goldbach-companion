@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 5.1.2 step 17",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean takes $s_1=s_2$, so its factor is (odmalicka)'s left side at $y_1=y_2=p^{s-1}$; it bounds it directly (rational bounds for $p^s$, tail $n^{-(2-2s)}/(1-\\rho_0)^2$) and evaluates the product numerically instead of proving (odmalicka).",
+  "subject": [
+    {
+      "location": {
+        "page": 97,
+        "rect": [
+          0.17462,
+          0.28665,
+          0.56162,
+          0.01759
+        ]
+      },
+      "title": "Lemma 5.1.2 step 17: Text, p. 87",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bterm_le_of",
+        "module": "TernaryGoldbach.MinorArcs.G2Numerics",
+        "lines": [
+          53,
+          54
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bterm_le_of"
+          },
+          "snippet": {
+            "text": "theorem bterm_le_of {s r : ℝ} {p : ℕ} (hX : (p : ℝ) ^ s ≤ r) (hr : r < p + 1) :\n    bterm s p ≤ (r / (p + 1 - r)) ^ 2 := by",
+            "line": 53,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bterm_le_of",
+            "lines": [
+              53,
+              58
+            ],
+            "conclusion": "$b_s(p)=(p^s/(p+1-p^s))^2\\le(r/(p+1-r))^2$ for $p^s\\le r<p+1$; with $x=1/p$, $y=p^{s-1}$, $1+b_s(p)=1+y^2/(1-y+x)^2$, the left side of (odmalicka) at $y_1=y_2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Numerics.lean",
+            "fragment": "L53-L54"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bterm_le_tail",
+        "module": "TernaryGoldbach.MinorArcs.G2Numerics",
+        "lines": [
+          94,
+          97
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bterm_le_tail"
+          },
+          "snippet": {
+            "text": "/-- Tail of `b_s`: `b_s(n) ≤ n^{−(2−2s)}/(1 − ρ₀)²` for `n ≥ P₀`, `P₀^s/P₀ ≤ ρ₀ < 1`. -/\ntheorem bterm_le_tail {s : ℝ} (hs1 : s < 1) {n P0 : ℕ} (hP0 : 1 ≤ P0) (hn : P0 ≤ n) {ρ0 : ℝ}\n    (hρ : (P0 : ℝ) ^ s / P0 ≤ ρ0) (hρ1 : ρ0 < 1) :\n    bterm s n ≤ (n : ℝ) ^ (-(2 - 2 * s)) / (1 - ρ0) ^ 2 := by",
+            "line": 94,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bterm_le_tail",
+            "lines": [
+              94,
+              113
+            ],
+            "conclusion": "For $n\\ge P_0$ with $P_0^s/P_0\\le\\rho_0<1$: $b_s(n)\\le n^{-(2-2s)}/(1-\\rho_0)^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Numerics.lean",
+            "fragment": "L94-L97"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prod_bterm9_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Numerics",
+        "lines": [
+          452,
+          454
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prod_bterm9_le"
+          },
+          "snippet": {
+            "text": "/-- **`∏_{2 < p < M} (1 + b_{1/9}(p)) ≤ 1.48`**. -/\ntheorem prod_bterm9_le (M : ℕ) :\n    ∏ p ∈ (Nat.primesBelow M).filter (· ≠ 2), (1 + bterm (1 / 9) p) ≤ 1.48 := by",
+            "line": 452,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prod_bterm9_le",
+            "lines": [
+              452,
+              479
+            ],
+            "conclusion": "$\\prod_{2<p<M}(1+b_{1/9}(p))\\le1.48$ for every $M$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Numerics.lean",
+            "fragment": "L452-L454"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          97
+        ],
+        "printed": [
+          87
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

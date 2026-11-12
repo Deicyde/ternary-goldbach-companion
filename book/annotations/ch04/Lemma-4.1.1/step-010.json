@@ -1,0 +1,155 @@
+{
+  "id": "Lemma 4.1.1 step 10",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.26253,
+          0.76716,
+          0.56162,
+          0.0485
+        ]
+      },
+      "title": "Lemma 4.1.1 step 10: Display, p. 52",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_inv_sin_sq",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          118,
+          135
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_inv_sin_sq"
+          },
+          "snippet": {
+            "text": "/-- `∫_a^b 1/sin² x dx = cot a - cot b` for `0 < a ≤ b < π`. -/\ntheorem integral_inv_sin_sq {a b : ℝ} (ha : 0 < a) (hab : a ≤ b) (hb : b < π) :\n    ∫ x in a..b, 1 / Real.sin x ^ 2 = Real.cos a / Real.sin a - Real.cos b / Real.sin b := by\n  have hsin : ∀ x ∈ uIcc a b, Real.sin x ≠ 0 := fun x hx => by\n    rw [uIcc_of_le hab] at hx\n    exact (Real.sin_pos_of_pos_of_lt_pi (by linarith [hx.1]) (by linarith [hx.2])).ne'\n  have hderiv : ∀ x ∈ uIcc a b,\n      HasDerivAt (fun x => -(Real.cos x / Real.sin x)) (1 / Real.sin x ^ 2) x := by\n    intro x hx\n    have h := ((Real.hasDerivAt_cos x).div (Real.hasDerivAt_sin x) (hsin x hx)).neg\n    convert h using 1\n    field_simp\n    rw [← Real.sin_sq_add_cos_sq x]; ring\n  rw [intervalIntegral.integral_eq_sub_of_hasDerivAt hderiv]\n  · ring\n  · refine ContinuousOn.intervalIntegrable ?_\n    exact continuousOn_const.div (Real.continuous_sin.continuousOn.pow 2)\n      fun x hx => pow_ne_zero 2 (hsin x hx)",
+            "line": 118,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_inv_sin_sq",
+            "lines": [
+              118,
+              135
+            ],
+            "conclusion": "`∫_a^b 1/sin² x dx = cot a - cot b` for `0<a≤b<π`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L118-L135"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_fq",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          227,
+          240
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_fq"
+          },
+          "snippet": {
+            "text": "/-- `∫_a^b f_q = (q/π)(cot(πa/q) - cot(πb/q))`. -/\ntheorem integral_fq {q a b : ℝ} (hq : 0 < q) (ha : 0 < a) (hab : a ≤ b) (hb : b < q) :\n    ∫ u in a..b, fq q u =\n      q / π * (Real.cos (π * a / q) / Real.sin (π * a / q) -\n        Real.cos (π * b / q) / Real.sin (π * b / q)) := by\n  have hpq : π / q ≠ 0 := (div_pos Real.pi_pos hq).ne'\n  have : (fun u => fq q u) = fun u => (fun x => 1 / Real.sin x ^ 2) ((π / q) * u) := by\n    funext u; simp only [fq]; ring_nf\n  rw [this, intervalIntegral.integral_comp_mul_left (fun x => 1 / Real.sin x ^ 2) hpq,\n    integral_inv_sin_sq]\n  · simp only [smul_eq_mul, inv_div]; ring_nf\n  · positivity\n  · exact mul_le_mul_of_nonneg_left hab (by positivity)\n  · rw [div_mul_eq_mul_div, div_lt_iff₀ hq]; nlinarith [Real.pi_pos]",
+            "line": 227,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_fq",
+            "lines": [
+              227,
+              240
+            ],
+            "conclusion": "`∫_a^b f_q = (q/π)(cot(πa/q) - cot(πb/q))` (change of variables)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L227-L240"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_fq_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          296,
+          299
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_fq_le"
+          },
+          "snippet": {
+            "text": "    _ = q / π * (Real.cos (π / q) / Real.sin (π / q)) := by\n        rw [integral_fq hq0 one_pos (by linarith) (by linarith)]\n        rw [show π * (q / 2) / q = π / 2 by field_simp, Real.cos_pi_div_two, mul_one]\n        simp",
+            "line": 296,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_fq_le",
+            "lines": [
+              242,
+              299
+            ],
+            "conclusion": "With `a=1`, `b=q/2`: `∫_1^{q/2} f_q = (q/π) cot(π/q)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L296-L299"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

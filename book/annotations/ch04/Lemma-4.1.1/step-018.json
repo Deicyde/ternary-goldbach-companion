@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.1 step 18",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same final inequality `≤ 3/2` but by a different argument (no `c₀`, no `-t²/3` intermediate), valid on `(0, π/6]`.",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17462,
+          0.51928,
+          0.56162,
+          0.07104
+        ]
+      },
+      "title": "Lemma 4.1.1 step 18: Display, p. 53",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          178,
+          197
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le"
+          },
+          "snippet": {
+            "text": "theorem sq_div_sin_sq_add_mul_cot_two_mul_le {t : ℝ} (ht : 0 < t) (ht1 : t ≤ π / 6) :\n    t ^ 2 / Real.sin t ^ 2 + t * (Real.cos (2 * t) / Real.sin (2 * t)) ≤ 3 / 2 := by\n  have hpi : t ≤ 5236 / 10000 := ht1.trans (by linarith [Real.pi_lt_d4])\n  have hS1 : t - t ^ 3 / 4 < Real.sin t := by\n    have := Real.sin_gt_sub_cube ht; nlinarith [pow_pos ht 3]\n  have hS2 := Real.sin_le ht.le\n  have hC1 := Real.one_sub_sq_div_two_le_cos (x := t)\n  have hSpos : 0 < Real.sin t := Real.sin_pos_of_pos_of_lt_pi ht (by linarith [Real.pi_gt_three])\n  have hCpos : 0 < Real.cos t := Real.cos_pos_of_mem_Ioo ⟨by linarith, by linarith [Real.pi_gt_three]⟩\n  have hcore := trig_core t (Real.sin t) (Real.cos t) ht hpi hS1 hS2 hC1\n  rw [Real.sin_two_mul, Real.cos_two_mul]\n  have h : t ^ 2 / Real.sin t ^ 2 + t * ((2 * Real.cos t ^ 2 - 1) / (2 * Real.sin t * Real.cos t)) =\n      (2 * t ^ 2 * Real.cos t + t * Real.sin t * (2 * Real.cos t ^ 2 - 1)) /\n        (2 * Real.sin t ^ 2 * Real.cos t) := by\n    field_simp\n  rw [h, div_le_iff₀ (by positivity)]\n  have hsc := Real.sin_sq_add_cos_sq t\n  have : 2 * Real.cos t ^ 2 - 1 = 1 - 2 * Real.sin t ^ 2 := by linarith\n  rw [this]\n  nlinarith [hcore]",
+            "line": 178,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le",
+            "lines": [
+              177,
+              197
+            ],
+            "conclusion": "`t²/sin²t + t cot 2t ≤ 3/2`, proved via `trig_core` and the elementary sin/cos bounds with `sin 2t = 2 sin t cos t`, `cos 2t = 2cos²t - 1`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L178-L197"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

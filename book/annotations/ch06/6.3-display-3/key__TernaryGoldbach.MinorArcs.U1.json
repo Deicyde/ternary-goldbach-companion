@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "[H] sets κ = 1/2, UV = x/(2√(qδ₀)) exactly; [L] takes U, V as floors (via (6.49)), so UV = x/(2√t) holds only up to the bounds (1−1/T)x/(2√t) ≤ UV ≤ x/(2√t).",
+  "subject": [
+    {
+      "location": {
+        "page": 128,
+        "rect": [
+          0.25926,
+          0.75012,
+          0.56816,
+          0.03501
+        ]
+      },
+      "title": "Display, p. 118",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.U1",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceParams",
+        "lines": [
+          17,
+          18
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.U1"
+          },
+          "snippet": {
+            "text": "/-- `U = ⌊T²/(9√t)⌋` [H, (6.49)] (rounded down). -/\nnoncomputable def U1 (T t : ℝ) : ℕ := ⌊T ^ 2 / (9 * √t)⌋₊",
+            "line": 17,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.U1",
+            "lines": [
+              17,
+              18
+            ],
+            "conclusion": "`U = ⌊T²/(9√t)⌋` with `T = x^{1/3}`, `t = δ₀q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceParams.lean",
+            "fragment": "L17-L18"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          128
+        ],
+        "printed": [
+          118
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 12.1.1 step 16",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean never forms the `qr`-level sums or the `Σ ≤` step dropping `r`: the weight identity `weight_sum` and `Farc_eq` give `∫F_Q` directly, and the last line `Σ_q ∫_{arcs} Σ_b |S|²` is `sum_arcs_eq_integral_Farc` for the (10.5)-type arcs.",
+  "subject": [
+    {
+      "location": {
+        "page": 239,
+        "rect": [
+          0.17462,
+          0.65828,
+          0.56162,
+          0.19704
+        ]
+      },
+      "title": "Proposition 12.1.1 step 16: Display, p. 229",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          143,
+          148
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Farc_eq"
+          },
+          "snippet": {
+            "text": "theorem Farc_eq {L : ℕ} [NeZero L] {a : ℕ → ℂ} {δ₀ R x β : ℝ} (hx : 0 < x)\n    (hqL : ∀ q ∈ Qset R, q ∣ L) (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) :\n    Farc a δ₀ R x β = ∑ Ψ : DirichletCharacter ℂ L, ‖Schar Ψ⁻¹ a β‖ ^ 2 *\n      (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * Gq (qt Ψ.conductor) ((mR δ₀ R x β : ℕ) / qt Ψ.conductor))) := by",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+            "lines": [
+              140,
+              169
+            ],
+            "conclusion": "Character expansion `F_R(β) = Σ_{Ψ mod L} |S_{Ψ⁻¹}(β)|² (c/φ(c)) κ_c G_{c̃}(m_R(β)/c̃)`, `c = cond Ψ`, where `F_R(β)` is the sum over `q` with `q̃ ≤ 2R`, `|β| < w_q` of `Σ_b |S(b/q+β)|²`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L143-L148"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.weight_sum",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveWeights",
+        "lines": [
+          128,
+          217
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.weight_sum"
+          },
+          "snippet": {
+            "text": "/-- **The weight of a character of conductor `c`**:\n`Σ_{q ≥ 1, q̃ ≤ X} [c ∣ q] w(q, c)/φ(q) = (c/φ(c)) κ_c G_{c̃}(X/c̃)`. -/\ntheorem weight_sum (c : ℕ) (hc : 1 ≤ c) (X : ℝ) :\n    ∑ q ∈ (Icc 1 ⌊X⌋₊).filter (fun q => (qt q : ℝ) ≤ X),\n        (if c ∣ q then TernaryGoldbach.wq q c else 0) / q.totient =\n      c / c.totient * (kap c * Gq (qt c) (X / qt c)) := by\n  rw [weight_sum_r c hc X]\n  congr 1\n  unfold Gq\n  rcases Nat.even_or_odd c with hce | hco\n  · -- even conductor\n    have hqt : ∀ r, qt (c * r) = c * r := fun r => by\n      unfold qt; rw [if_pos (hce.mul_right r)]\n    rw [kap, if_pos hce, one_mul, show qt c = c by unfold qt; rw [if_pos hce]]\n    refine sum_congr ?_ fun _ _ => rfl\n    ext r\n    simp only [mem_filter, mem_Icc, hqt]\n    constructor\n    · rintro ⟨⟨hr1, -⟩, hrX, hcop⟩\n      exact ⟨⟨hr1, (le_floor_div_iff hr1 hc X).2 hrX⟩, hcop⟩\n    · rintro ⟨⟨hr1, hrX⟩, hcop⟩\n      have h := (le_floor_div_iff hr1 hc X).1 hrX\n      refine ⟨⟨hr1, Nat.le_floor (le_trans ?_ h)⟩, h, hcop⟩\n      exact_mod_cast Nat.le_mul_of_pos_left r hc\n  · -- odd conductor: odd and even `r` contribute equally\n    have hc2 : ¬ Even c := Nat.not_even_iff_odd.2 hco\n    rw [kap, if_neg hc2, show qt c = 2 * c by unfold qt; rw [if_neg hc2]]\n    set A := (Icc 1 ⌊X⌋₊).filter (fun r => (qt (c * r) : ℝ) ≤ X ∧ Nat.Coprime r c)\n    set B := (Icc 1 ⌊X / ((2 * c : ℕ) : ℝ)⌋₊).filter (fun r => Nat.Coprime r (2 * c))\n    rw [← sum_filter_add_sum_filter_not A (fun r => Odd r), two_mul]\n    congr 1\n    · -- odd `r`\n      refine sum_congr ?_ fun _ _ => rfl\n      ext r\n      simp only [A, B, mem_filter, mem_Icc, Nat.coprime_mul_iff_right, Nat.coprime_two_right]\n      constructor\n      · rintro ⟨⟨⟨hr1, -⟩, hrX, hcop⟩, hodd⟩\n        have hq : qt (c * r) = 2 * c * r := by\n          unfold qt; rw [if_neg (Nat.not_even_iff_odd.2 (hco.mul hodd))]; ring\n        rw [hq] at hrX\n        exact ⟨⟨hr1, (le_floor_div_iff hr1 (by omega) X).2 hrX⟩, hodd, hcop⟩\n      · rintro ⟨⟨hr1, hrX⟩, hodd, hcop⟩\n        have hq : qt (c * r) = 2 * c * r := by\n          unfold qt; rw [if_neg (Nat.not_even_iff_odd.2 (hco.mul hodd))]; ring\n        have h := (le_floor_div_iff hr1 (by omega) X).1 hrX\n        refine ⟨⟨⟨hr1, Nat.le_floor (le_trans ?_ h)⟩, by rw [hq]; exact h, hcop⟩, hodd⟩\n        exact_mod_cast Nat.le_mul_of_pos_left r (by omega)\n    · -- even `r = 2r'`\n      have hB : ∑ r ∈ B, (μ r : ℝ) ^ 2 / r.totient =\n          ∑ r' ∈ (Icc 1 ⌊X / ((2 * c : ℕ) : ℝ)⌋₊).filter (fun r => Nat.Coprime r c),\n            ((μ (2 * r') : ℝ)) ^ 2 / (2 * r').totient := by\n        simp_rw [moebius_sq_div_totient_two_mul]\n        rw [← sum_filter, filter_filter]\n        refine sum_congr ?_ fun _ _ => rfl\n        ext r\n        simp only [B, mem_filter, Nat.coprime_mul_iff_right]\n        tauto\n      rw [hB]\n      refine Finset.sum_nbij' (fun r => r / 2) (fun r' => 2 * r') ?_ ?_ ?_ ?_ ?_\n      · intro r hr\n        simp only [A, mem_filter, mem_Icc, Nat.not_odd_iff_even] at hr ⊢\n        obtain ⟨⟨⟨hr1, -⟩, hrX, hcop⟩, hev⟩ := hr\n        obtain ⟨k, rfl⟩ := hev\n        have hk : k + k = 2 * k := by ring\n        rw [hk] at hr1 hrX hcop ⊢\n        rw [Nat.mul_div_cancel_left _ (by norm_num)]\n        have hk1 : 1 ≤ k := by omega\n        have hq : qt (c * (2 * k)) = 2 * c * k := by\n          unfold qt; rw [if_pos ((even_two_mul k).mul_left c)]; ring\n        rw [hq] at hrX\n        exact ⟨⟨hk1, (le_floor_div_iff hk1 (by omega) X).2 hrX⟩,\n          Nat.Coprime.coprime_mul_left hcop⟩\n      · intro r' hr'\n        simp only [A, mem_filter, mem_Icc, Nat.not_odd_iff_even] at hr' ⊢\n        obtain ⟨⟨hr1, hrX⟩, hcop⟩ := hr'\n        have hq : qt (c * (2 * r')) = 2 * c * r' := by\n          unfold qt; rw [if_pos ((even_two_mul r').mul_left c)]; ring\n        have h := (le_floor_div_iff hr1 (by omega) X).1 hrX\n        refine ⟨⟨⟨by omega, Nat.le_floor (le_trans ?_ h)⟩, by rw [hq]; exact h, ?_⟩, even_two_mul r'⟩\n        · push_cast; nlinarith [show (1:ℝ) ≤ c by exact_mod_cast hc, show (0:ℝ) ≤ r' by positivity]\n        · exact Nat.Coprime.mul_left ((Nat.coprime_two_left).2 hco) hcop\n      · intro r hr\n        simp only [A, mem_filter, Nat.not_odd_iff_even] at hr\n        obtain ⟨k, rfl⟩ := hr.2\n        omega\n      · intro r' _; omega\n      · intro r hr\n        simp only [A, mem_filter, Nat.not_odd_iff_even] at hr\n        obtain ⟨k, rfl⟩ := hr.2\n        rw [show k + k = 2 * k by ring, Nat.mul_div_cancel_left _ (by norm_num)]",
+            "line": 128,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.weight_sum",
+            "lines": [
+              128,
+              217
+            ],
+            "conclusion": "`Σ_{q̃ ≤ X} [c∣q] w(q,c)/φ(q) = (c/φ(c)) κ_c G_{c̃}(X/c̃)`, the evaluation of the `q = cr` sum with `μ²(r)/φ(r)`, `(r,c)=1` weights."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveWeights.lean",
+            "fragment": "L128-L217"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_eq_integral_Farc",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          272,
+          275
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_arcs_eq_integral_Farc"
+          },
+          "snippet": {
+            "text": "/-- `Σ_{q,b} ∫_{J_{q,b}} |S|² = ∫_ℝ F_R`. -/\ntheorem sum_arcs_eq_integral_Farc {a : ℕ → ℂ} (ha : Summable fun n => ‖a n‖) (δ₀ R x : ℝ) :\n    ∑ q ∈ Qset R, ∑ b ∈ Bset q, ∫ y in arc δ₀ R x q b, ‖expTsum a y‖ ^ 2 =\n      ∫ β, Farc a δ₀ R x β := by",
+            "line": 272,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_eq_integral_Farc",
+            "lines": [
+              272,
+              287
+            ],
+            "conclusion": "`Σ_q Σ_b ∫_{J_{q,b}} |S|² = ∫_ℝ F_R(β) dβ`: the arc integrals are the integral of `F_R` after translating each arc to 0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L272-L275"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          239
+        ],
+        "printed": [
+          229
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

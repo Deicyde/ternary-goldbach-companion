@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 29",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same total for S_{I,2}, any delta, case-split as in [H] on |delta| <= 1/2c2; [H]: 1230.9 x^{2/3} log x + 0.0006406 x^{2/3}(log x)^2, Lean (0.031 L^2 + 3185.8 L + 8455.3) T^2 with Lean's parameters and error terms. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 138,
+        "rect": [
+          0.25926,
+          0.48832,
+          0.56816,
+          0.04015
+        ]
+      },
+      "title": "Display, p. 128",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI2",
+        "lines": [
+          489,
+          493
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_second"
+          },
+          "snippet": {
+            "text": "/-- **`S_{I,2}` at the second parameters**: `≤ (0.031 L² + 3185.8 L + 8455.3) T²`. -/\ntheorem typeI2_second {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hc : SecondCase T δ q) :\n    ‖typeI2 α (T ^ 3) (U2 T) (V2 T)‖ ≤\n      (0.031 * Real.log T ^ 2 + 3185.8 * Real.log T + 8455.3) * T ^ 2 := by",
+            "line": 489,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_second",
+            "lines": [
+              489,
+              517
+            ],
+            "conclusion": "`‖typeI2 α (T^3) (U2 T) (V2 T)‖ <= (0.031 L^2 + 3185.8 L + 8455.3) T^2`: S_{I,2} for every delta, from (4.50) (`b450_second`) and (4.51)/(4.52) (`b451_second`, `b452_second`) via `lemma_4_2_4`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI2.lean",
+            "fragment": "L489-L493"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          138
+        ],
+        "printed": [
+          128
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

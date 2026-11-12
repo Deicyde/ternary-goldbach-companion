@@ -1,0 +1,156 @@
+{
+  "id": "Theorem 6.3 step 23",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Concludes the $S_2$ bound by the sup bound times $\\int|S_2|^2\\le E$; Lean uses the uniform bound $22.75\\,x/\\kappa$ and $E\\le8\\cdot10^{-11}x$ instead of $S_{\\eta_*}(0,x)$ and the book's $E$.",
+  "subject": [
+    {
+      "location": {
+        "page": 51,
+        "rect": [
+          0.20698,
+          0.44407,
+          0.62529,
+          0.01655
+        ]
+      },
+      "title": "Theorem 6.3 step 23: Text, p. 51",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          369,
+          382
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hstep2 : ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2 ≤ 22.75 * y * (8e-11 * x) := by\n    have i2 := integrableOn_Ioc_of_continuous c2 A hAsub\n    calc ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2\n        ≤ ∫ α in A, 22.75 * y * ‖expTsum (a₂ x) α‖ ^ 2 := by\n          refine setIntegral_mono_on (integrableOn_Ioc_of_continuous (hv.mul c2) A hAsub)\n            (i2.const_mul _) hA fun α _ => ?_\n          exact mul_le_mul_of_nonneg_right (norm_S_etaStar_le_uniform hx0 α) (by positivity)\n      _ = 22.75 * y * ∫ α in A, ‖expTsum (a₂ x) α‖ ^ 2 := integral_const_mul _ _\n      _ ≤ 22.75 * y * (8e-11 * x) := by\n          refine mul_le_mul_of_nonneg_left ?_ (by positivity)\n          refine le_trans ?_ ((TernaryGoldbach.setIntegral_norm_sq_expTsum (summable_a₂ hx0)).le.trans\n            (norm_sq_sum_a₂_le hx))\n          exact setIntegral_mono_set (integrableOn_Ioc_of_continuous c2 _ le_rfl)\n            (Eventually.of_forall fun α => by positivity) (Eventually.of_forall hAsub)",
+            "line": 369,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "`hstep2`: $\\int_A|S_{\\eta_*}||S_2|^2\\le 22.75\\,y\\int_A|S_2|^2\\le 22.75\\,y\\cdot 8\\cdot10^{-11}x$ with $y=x/\\kappa$, $A=(0,1]\\setminus\\mathfrak M_{8,r_0}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L369-L382"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_uniform",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          48,
+          65
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_uniform"
+          },
+          "snippet": {
+            "text": "/-- `|S_{η_*}(α, x)| ≤ 22.75 x/κ` for all `α`. -/\ntheorem norm_S_etaStar_le_uniform {x : ℝ} (hx : 0 < x) (α : ℝ) :\n    ‖S etaStar x α‖ ≤ 22.75 * (x / κ) := by\n  have hκ : (0:ℝ) < κ := by rw [Helfgott.κ]; norm_num\n  have hy0 : 0 < x / κ := div_pos hx hκ\n  have hGi : IntegrableOn (fun w => (17 : ℝ) * phi w) (Ici 1) :=\n    (integrable_phi.const_mul 17).integrableOn\n  have key := norm_S_etaStar_le_of_pointwise_Ici (G := fun _ => 17) (α := α) hx one_pos\n    (fun w (hw : 1 ≤ w) => norm_S_eta2_le_trivial (mul_pos (by linarith) hy0) α) hGi\n  have h1 := integral_phi_Ici_one_le\n  have h2 := integral_phi_Ioo_le (w₀ := 1) zero_le_one\n  rw [integral_const_mul] at key\n  refine key.trans ?_\n  have h3 : (17 * ∫ w in Ici (1:ℝ), phi w) + 17 * ∫ w in Ioo (0:ℝ) 1, phi w ≤ 22.75 := by\n    norm_num at h2; linarith\n  calc x / κ * ((17 * ∫ w in Ici (1:ℝ), phi w) + 17 * ∫ w in Ioo (0:ℝ) 1, phi w)\n      ≤ x / κ * 22.75 := mul_le_mul_of_nonneg_left h3 hy0.le\n    _ = 22.75 * (x / κ) := by ring",
+            "line": 48,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_uniform",
+            "lines": [
+              48,
+              65
+            ],
+            "conclusion": "$|S_{\\eta_*}(\\alpha,x)|\\le 22.75\\,x/\\kappa$ for all $\\alpha$ (replaces $S_{\\eta_*}(0,x)$ as the sup bound)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L48-L65"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_sq_sum_a₂_le",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          138,
+          144
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_sq_sum_a₂_le"
+          },
+          "snippet": {
+            "text": "theorem norm_sq_sum_a₂_le {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∑' n, ‖a₂ x n‖ ^ 2 ≤ 8e-11 * x := by\n  refine le_trans (le_of_eq ?_) (E_le_14_28 hx)\n  congr 1; ext n\n  unfold a₂; split_ifs\n  · simp\n  · rw [Complex.norm_real, Real.norm_eq_abs, sq_abs]",
+            "line": 138,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_sq_sum_a₂_le",
+            "lines": [
+              138,
+              144
+            ],
+            "conclusion": "$\\sum_n\\|a_2(x,n)\\|^2\\le 8\\cdot10^{-11}x$, where `a₂ x n` is $\\Lambda(n)\\eta_+(n/x)$ unless $n$ is a prime $>\\sqrt x$ (the coefficients of $S_{2,\\eta_+}$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L138-L144"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          51
+        ],
+        "printed": [
+          51
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Theorem 13.2.1 step 23, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 10",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] reaches 3 log q + log 108 (≤ 4.696) for the same quantity through the max-form bound, without the + 4/5 term and without maximising over y at y = 4e^{4/5}q²; [H]'s total is 3 log q + 5.48214.",
+  "subject": [
+    {
+      "location": {
+        "page": 131,
+        "rect": [
+          0.17135,
+          0.8242,
+          0.56816,
+          0.03531
+        ]
+      },
+      "title": "Display, p. 121",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.log_108_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2",
+        "lines": [
+          86,
+          91
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.log_108_le"
+          },
+          "snippet": {
+            "text": "theorem log_108_le : Real.log 108 ≤ 4.696 := by\n  have h := Real.log_le_sub_one_of_pos (show (0 : ℝ) < 108 / 128 by norm_num)\n  rw [Real.log_div (by norm_num) (by norm_num), show (128 : ℝ) = 2 ^ 7 by norm_num,\n    Real.log_pow] at h\n  have := Real.log_two_lt_d9\n  push_cast at h; linarith",
+            "line": 86,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.log_108_le",
+            "lines": [
+              86,
+              91
+            ],
+            "conclusion": "`log 108 ≤ 4.696`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2.lean",
+            "fragment": "L86-L91"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          131
+        ],
+        "printed": [
+          121
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 33",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Definition matches (`κ₄ = 4 zeta3`, κ₀ = 1.27) but the only numerical bound is `zeta3 ≤ 27` (κ₄ ≤ 108), weaker than 90.5671; the main Type II statements keep `zeta3` symbolic.",
+  "subject": [
+    {
+      "location": {
+        "page": 121,
+        "rect": [
+          0.17135,
+          0.43364,
+          0.56816,
+          0.01995
+        ]
+      },
+      "title": "Display, p. 111",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.zeta3_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoice",
+        "lines": [
+          77,
+          83
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.zeta3_le"
+          },
+          "snippet": {
+            "text": "theorem zeta3_le : zeta3 ≤ 27 := by\n  unfold zeta3\n  have h0 := zeta_three_halves_nonneg\n  have h1 := zeta_three_halves_le\n  have : (riemannZeta (3 / 2)).re ^ 3 ≤ 2.77 ^ 3 := pow_le_pow_left₀ h0 h1 3\n  norm_num at this ⊢\n  linarith",
+            "line": 77,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.zeta3_le",
+            "lines": [
+              77,
+              83
+            ],
+            "conclusion": "`zeta3 ≤ 27`, i.e. `κ₄ ≤ 108`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoice.lean",
+            "fragment": "L77-L83"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          121
+        ],
+        "printed": [
+          111
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

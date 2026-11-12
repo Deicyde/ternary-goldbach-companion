@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 12.1.1 step 14",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean obtains `|τ(ψ)|²|S_{ψ⁻¹}(β)|² = |Σ_{b mod q} ψ(b) S(b/q+β)|²` at modulus `q` for any `ψ` with weight `w(q,c)` carrying the `μ²(r)` factor, not at modulus `qr` with `q|…|² ` for primitive `χ`. Text typo, confirmed by two skeptics and `scripts/checks/steps/proposition_12_1_1_step_14.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 239,
+        "rect": [
+          0.17462,
+          0.56342,
+          0.56162,
+          0.06818
+        ]
+      },
+      "title": "Proposition 12.1.1 step 14: Display, p. 229",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.sum_char_mul_S",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri",
+        "lines": [
+          78,
+          81
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.sum_char_mul_S"
+          },
+          "snippet": {
+            "text": "theorem sum_char_mul_S {q : ℕ} [NeZero q] (ψ : DirichletCharacter ℂ q) {a : ℕ → ℂ}\n    (ha : Summable fun n => ‖a n‖) (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q) (β : ℝ) :\n    ∑ b : ZMod q, ψ b * expTsum a (b.val / q + β) =\n      gaussSum ψ ZMod.stdAddChar * Schar ψ⁻¹ a β := by",
+            "line": 78,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.sum_char_mul_S",
+            "lines": [
+              76,
+              111
+            ],
+            "conclusion": "For `aₙ` supported coprime to `q`, `Σ_{b mod q} ψ(b) S(b/q+β) = τ(ψ) S_{ψ⁻¹}(β)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L78-L81"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_sq_gaussSum",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri",
+        "lines": [
+          135,
+          138
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_sq_gaussSum"
+          },
+          "snippet": {
+            "text": "theorem norm_sq_gaussSum {q : ℕ} [NeZero q] (ψ : DirichletCharacter ℂ q) :\n    ‖gaussSum ψ ZMod.stdAddChar‖ ^ 2 =\n      if Squarefree (q / ψ.conductor) ∧ Nat.Coprime (q / ψ.conductor) ψ.conductor\n      then (ψ.conductor : ℝ) else 0 := by",
+            "line": 135,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_sq_gaussSum",
+            "lines": [
+              133,
+              179
+            ],
+            "conclusion": "For any `ψ` mod `q` with conductor `c`, `|τ(ψ)|² = c` if `q/c` is squarefree and coprime to `c`, else 0, proved via `gauss_induced` and primitive `|τ|²=c`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L135-L138"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          239
+        ],
+        "printed": [
+          229
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

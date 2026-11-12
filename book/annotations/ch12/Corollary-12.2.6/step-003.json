@@ -1,0 +1,84 @@
+{
+  "id": "Corollary 12.2.6 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds the $G_q$-ratio by Prop 12.2.4 only in Cor 12.2.5 (integral over arcs), with $c_+=2$ and $(Q_0,Q)$ replaced by $(2Q_0,2Q)$; Cor 12.2.6 itself is not assembled.",
+  "subject": [
+    {
+      "location": {
+        "page": 253,
+        "rect": [
+          0.17462,
+          0.43332,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Corollary 12.2.6 step 3: Text, p. 243",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 12.2.6 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          392,
+          396
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.cor_12_2_5"
+          },
+          "snippet": {
+            "text": "  · have h2Q₀ : (0 : ℝ) < 2 * Q₀ := by linarith\n    have hlog : Real.log (2 * Q₀) ≤ 0.6 * Real.log (2 * Q) := by\n      have := Real.log_le_log h2Q₀ hρ\n      rwa [Real.log_rpow (by nlinarith)] at this\n    exact prop_12_2_4 (by linarith) (by linarith) hlog hq hq2 hs hsq",
+            "line": 392,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+            "lines": [
+              375,
+              396
+            ],
+            "conclusion": "Supplies the $G_q$-ratio constant of Prop 12.1.2 by `prop_12_2_4` (with $c_+=2$, at $(2Q_0,2Q)$) instead of an easy bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L392-L396"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          253
+        ],
+        "printed": [
+          243
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

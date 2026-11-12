@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.2.2 step 27",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Odd-m version (5.51); needs W >= 50000.",
+  "subject": [
+    {
+      "location": {
+        "page": 107,
+        "rect": [
+          0.17462,
+          0.53764,
+          0.56162,
+          0.01614
+        ]
+      },
+      "title": "Lemma 5.2.2 step 27: Text, p. 97",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.weight_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1246,
+          1252
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.weight_caseA"
+          },
+          "snippet": {
+            "text": "    have := mul_le_mul_of_nonneg_left hS (show (0 : ℝ) ≤ 2 / W * (Nat.totient q / q) by positivity)\n    calc Nat.totient q / q * Real.log (W / (2 * q)) / W\n        = 2 / W * (Nat.totient q / q) * (1 / 2 * Real.log (W / (2 * q))) := by field_simp\n      _ ≤ 2 / W * (Nat.totient q / q) * (q / Nat.totient q *\n          ∑ r ∈ (Icc 1 ⌊R⌋₊).filter (fun r => Squarefree r ∧ Nat.Coprime r q),\n            (1 + r / R)⁻¹ / Nat.totient r) := this\n      _ = _ := by field_simp; rfl",
+            "line": 1246,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.weight_caseA",
+            "lines": [
+              1139,
+              1252
+            ],
+            "conclusion": "Concludes phi(q)/q log(W/2q)/W <= weight sum."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1246-L1252"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1399,
+          1401
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b"
+          },
+          "snippet": {
+            "text": "  · obtain ⟨hR2, hRQ, hRW, hK⟩ := weight_caseA (Q := Q) hq hA hQW hW hW'W hWW\n    have := odd_blocks_from_weight hq hcop hα (by linarith) hRQ (by linarith) hWW hRW hK₀ hK A₀ A₁\n    rwa [hLK] at this",
+            "line": 1399,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+            "lines": [
+              1378,
+              1433
+            ],
+            "conclusion": "With odd_blocks_from_weight yields (5.51) for q <= W/13.5."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1399-L1401"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          107
+        ],
+        "printed": [
+          97
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

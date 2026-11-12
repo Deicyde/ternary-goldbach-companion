@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.4 step 44",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean sums the same three ranges (m <= q/2, q/2 < m <= D', R < m <= D, empty when D <= R), with its own constants, for general D' (not only D' = c2 x/q = R).",
+  "subject": [
+    {
+      "location": {
+        "page": 86,
+        "rect": [
+          0.26253,
+          0.41762,
+          0.56162,
+          0.03317
+        ]
+      },
+      "title": "Lemma 4.2.4 step 44: Text, p. 76",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 44"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          519,
+          582
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB"
+          },
+          "snippet": {
+            "text": "  have h2 : ∑ n ∈ Ioc (0 : ℤ) ⌊D⌋, Real.log n * g n ≤\n      ∑ n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋, Real.log n * Tn α x n +\n      ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, Real.log n * (if (q : ℤ) ∣ n then 0 else Tn α x n) +\n      ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Real.log n * Tn α x n := by\n    have hpt : ∀ n ∈ Ioc (0 : ℤ) ⌊D⌋, g n ≤\n        (if n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋ then Tn α x n else 0) +\n        (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) +\n        (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by\n      intro n hn\n      have hT := Tn_nonneg α x n\n      have hgT : g n ≤ Tn α x n := by simp only [g]; split_ifs <;> linarith\n      rw [mem_Ioc] at hn\n      by_cases hA : n ≤ ⌊(q : ℝ) / 2⌋\n      · rw [if_pos (mem_Ioc.2 ⟨hn.1, hA⟩)]\n        have : 0 ≤ (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) := by\n          split_ifs <;> linarith\n        have : 0 ≤ (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by split_ifs <;> linarith\n        linarith\n      push Not at hA\n      by_cases hB : n ≤ ⌊D'⌋\n      · rw [if_pos (mem_Ioc.2 ⟨hA, hB⟩), if_neg (by rw [mem_Ioc]; omega)]\n        have : 0 ≤ (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0) := by split_ifs <;> linarith\n        by_cases hd : (q : ℤ) ∣ n\n        · rw [if_pos hd]\n          have hnD' : (n : ℝ) ≤ D' := (Int.cast_le.2 hB).trans (Int.floor_le _)\n          have : g n = 0 := by\n            simp only [g]; rw [if_neg (not_not.2 ⟨hd, hnD'.trans hMD'⟩)]\n          linarith\n        · rw [if_neg hd]; linarith\n      push Not at hB\n      have hnR : ⌊R⌋ < n := by\n        have h1 : D' < n := by\n          have := Int.lt_floor_add_one D'\n          have : ((⌊D'⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hB\n          linarith\n        have h2 : (q : ℝ) / 2 < n := by\n          have := Int.lt_floor_add_one ((q : ℝ) / 2)\n          have : ((⌊(q : ℝ) / 2⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hA\n          linarith\n        have : R < n := max_lt h1 h2\n        exact Int.floor_lt.2 this\n      rw [if_neg (by rw [mem_Ioc]; omega), if_neg (by rw [mem_Ioc]; omega),\n        if_pos (mem_Ioc.2 ⟨hnR, hn.2⟩)]\n      linarith\n    have hpt' : ∀ n ∈ Ioc (0 : ℤ) ⌊D⌋, Real.log n * g n ≤\n        (if n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋ then Real.log n * Tn α x n else 0) +\n        (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then\n          Real.log n * (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) +\n        (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Real.log n * Tn α x n else 0) := by\n      intro n hn\n      calc Real.log n * g n ≤ Real.log n * ((if n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋ then Tn α x n else 0) +\n          (if n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋ then (if (q : ℤ) ∣ n then 0 else Tn α x n) else 0) +\n          (if n ∈ Ioc ⌊R⌋ ⌊D⌋ then Tn α x n else 0)) := mul_le_mul_of_nonneg_left (hpt n hn) (hlog n)\n        _ = _ := by split_ifs <;> ring\n    have hnn : ∀ n : ℤ, 0 ≤ Real.log n * Tn α x n := fun n => mul_nonneg (hlog n) (Tn_nonneg _ _ _)\n    refine (sum_le_sum hpt').trans ?_\n    rw [sum_add_distrib, sum_add_distrib, sum_ite_mem, sum_ite_mem, sum_ite_mem]\n    refine add_le_add (add_le_add ?_ ?_) ?_\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => hnn n\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => by\n        split_ifs\n        · simp\n        · exact hnn n\n    · exact sum_le_sum_of_subset_of_nonneg inter_subset_right fun n _ _ => hnn n",
+            "line": 519,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+            "lines": [
+              458,
+              769
+            ],
+            "conclusion": "Splits the range 0 < n <= D into n <= q/2, q/2 < n <= D' (q not dividing n) and R < n <= D, bounding log-weighted sums by the three ranges."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L519-L582"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          627,
+          695
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB"
+          },
+          "snippet": {
+            "text": "  set T3 := if R < D then D * (Real.log D - 1) - R * (Real.log R - 1) else 0 with hT3def\n  have hW3 : ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Real.log n * Tn α x n ≤\n      3 * c₁ / 2 * (√(2 * x / c₂) * (Real.log (3 * R₀) + 1) +\n        x / q * Real.log D * logPlus (D / (c₂ * x / q))) +\n      Bc * (q * (√3 * Real.log (3 * D) + (2 + Real.log D / 2) * logPlus (D / (q / 2))) + T3) := by\n    by_cases hRD : R < D\n    · rw [hT3def, if_pos hRD]\n      have hD'eq : D' = c₂ * x / q := by\n        rcases min_choice (c₂ * x / q) D with h | h\n        · exact h\n        · exfalso; have : D' = D := h; linarith\n      have hRc : c₂ * x / q ≤ R := hD'eq ▸ hD'R\n      have hR0 : 0 < R := by\n        have : 0 < c₂ * x / q := by positivity\n        linarith\n      have hRR₀ : R₀ ≤ R := by\n        rw [hR₀def, ← Real.sqrt_sq hR0.le]\n        refine Real.sqrt_le_sqrt ?_\n        have : c₂ * x / 2 = (c₂ * x / q) * (q / 2) := by field_simp\n        rw [this, sq]\n        exact mul_le_mul hRc hqR (by positivity) hR0.le\n      have hR1 : 1 ≤ R := hR₀1.trans hRR₀\n      have h := sum_R3W hx hq hcop h2α hqQ hδ hR1 hqR hRD (α := α)\n      rw [← hc₁def] at h\n      refine h.trans ?_\n      have hlDR : 0 ≤ Real.log (D / R) := Real.log_nonneg (by rw [le_div_iff₀ hR0]; linarith)\n      have hl1 : Real.log (D / R) ≤ logPlus (D / (c₂ * x / q)) :=\n        log_le_logPlus (by positivity) (div_le_div_of_nonneg_left hD0.le (by positivity) hRc)\n      have hl2 : Real.log (D / R) ≤ logPlus (D / (q / 2)) :=\n        log_le_logPlus (by positivity) (div_le_div_of_nonneg_left hD0.le (by positivity) hqR)\n      have hx3 : x * (Real.log (3 * R) / R) ≤ √(2 * x / c₂) * (Real.log (3 * R₀) + 1) := by\n        rw [hsx]\n        have := log_three_mul_div_le (by linarith) hRR₀\n        calc x * (Real.log (3 * R) / R) ≤ x * ((Real.log (3 * R₀) + 1) / R₀) :=\n              mul_le_mul_of_nonneg_left this hx.le\n          _ = _ := by ring\n      have hl3 : Real.log (3 * R) ≤ Real.log (3 * D) := Real.log_le_log (by positivity) (by linarith)\n      have hA : 3 * c₁ / 2 * x * (Real.log (3 * R) / R + Real.log D / q * Real.log (D / R)) ≤\n          3 * c₁ / 2 * (√(2 * x / c₂) * (Real.log (3 * R₀) + 1) +\n            x / q * Real.log D * logPlus (D / (c₂ * x / q))) := by\n        have e : 3 * c₁ / 2 * x * (Real.log (3 * R) / R + Real.log D / q * Real.log (D / R)) =\n            3 * c₁ / 2 * (x * (Real.log (3 * R) / R) + x / q * Real.log D * Real.log (D / R)) := by\n          ring\n        rw [e]\n        have : x / q * Real.log D * Real.log (D / R) ≤ x / q * Real.log D * logPlus (D / (c₂ * x / q)) :=\n          mul_le_mul_of_nonneg_left hl1 (by positivity)\n        gcongr\n      have hB : q * √3 * Real.log (3 * R) + (D * (Real.log D - 1) - R * (Real.log R - 1)) +\n            2 * q * Real.log (D / R) + q / 2 * Real.log D * Real.log (D / R) ≤\n          q * (√3 * Real.log (3 * D) + (2 + Real.log D / 2) * logPlus (D / (q / 2))) +\n            (D * (Real.log D - 1) - R * (Real.log R - 1)) := by\n        have h1 : q * √3 * Real.log (3 * R) ≤ q * √3 * Real.log (3 * D) :=\n          mul_le_mul_of_nonneg_left hl3 (by positivity)\n        have h2 : 2 * q * Real.log (D / R) ≤ 2 * q * logPlus (D / (q / 2)) :=\n          mul_le_mul_of_nonneg_left hl2 (by positivity)\n        have h3 : q / 2 * Real.log D * Real.log (D / R) ≤ q / 2 * Real.log D * logPlus (D / (q / 2)) :=\n          mul_le_mul_of_nonneg_left hl2 (by positivity)\n        nlinarith\n      have hB' := mul_le_mul_of_nonneg_left hB hBc\n      have e2 : 2 * √(c₀ * c₁) / π = Bc := rfl\n      rw [e2]\n      linarith\n    · rw [hT3def, if_neg hRD, Ioc_eq_empty (not_lt.2 (Int.floor_mono (not_lt.1 hRD))), sum_empty,\n        add_zero]\n      have : 0 ≤ √(2 * x / c₂) * (Real.log (3 * R₀) + 1) := by positivity\n      have : 0 ≤ q * (√3 * Real.log (3 * D) + (2 + Real.log D / 2) * logPlus (D / (q / 2))) := by\n        have := Real.log_nonneg (show (1 : ℝ) ≤ 3 * D by linarith)\n        positivity\n      positivity",
+            "line": 627,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+            "lines": [
+              458,
+              769
+            ],
+            "conclusion": "hW3: the range R < n <= D bounded by the (R3) bound, with T3 = D(log D -1) - R(log R -1), and 0 if R >= D."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L627-L695"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          757,
+          769
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB"
+          },
+          "snippet": {
+            "text": "  refine h1.trans (h2.trans ?_)\n  unfold bound_4_51\n  simp only []\n  rw [← hc₁def, ← hBcdef]\n  have hlogsq : Real.log (D / √(rexp 1)) = Real.log D - 1 / 2 := by\n    rw [Real.log_div hD0.ne' (by positivity), Real.log_sqrt (by positivity), Real.log_exp]\n  rw [hlogsq, ← hR₀def, ← hE2def]\n  have hW1' : logPlus ((q : ℝ) / 2) *\n      (2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x)))) =\n      2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) *\n        logPlus ((q : ℝ) / 2) := by ring\n  rw [hW1'] at hW1\n  linarith",
+            "line": 757,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+            "lines": [
+              458,
+              769
+            ],
+            "conclusion": "Adds the three range bounds into bound_4_51."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L757-L769"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          86
+        ],
+        "printed": [
+          76
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

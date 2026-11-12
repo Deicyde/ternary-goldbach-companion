@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 43",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same case (b) Type II bound; [H] ends with 0.23511 x^{5/6}(log x)^{3/2} (bisection) while Lean's chain gives the explicit function of L, `b_numeric`: `<= 1.413 L^{3/2}` = 0.2719 t^{3/2} (`SecondTypeIIbPieces.lean` 131-148), a different constant for Lean's modified parameters (theta = 8). Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 142,
+        "rect": [
+          0.25926,
+          0.69434,
+          0.56816,
+          0.01995
+        ]
+      },
+      "title": "Display, p. 132",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_b",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIb",
+        "lines": [
+          739,
+          746
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_b"
+          },
+          "snippet": {
+            "text": "/-- **Case (b) of the second choice**: `q ≤ T/6`, `|δ| > 8`, `|δ|q > 8T/6`:\n`|S_{II}| ≤ (√(12 F₀ X₀ᵇ B₀ᵇ) + SECᵇ(L)) T^{5/2}`. -/\ntheorem typeII_b {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hq : (q : ℝ) ≤ T / 6) (hδ8 : 8 < |δ|)\n    (hδq : 8 * (T / 6) < |δ| * q) :\n    ‖typeII α (T ^ 3) (U2 T) (V2 T)‖ ≤\n      (√(12 * a1F0 (Real.log T) * bX0 (Real.log T) * bB0 (Real.log T)) + bSEC (Real.log T)) *\n        (T ^ 2 * √T) := by",
+            "line": 739,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_b",
+            "lines": [
+              739,
+              790
+            ],
+            "conclusion": "`‖typeII α (T^3) (U2 T) (V2 T)‖ <= (sqrt(12 F0 bX0 bB0) + bSEC L) T^{5/2}` in case (b) (q <= T/6, |delta| > 8, |delta|q > 8T/6), which `b_numeric` bounds by 1.413 L^{3/2} for L >= 15.6."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIb.lean",
+            "fragment": "L739-L746"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          142
+        ],
+        "printed": [
+          132
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

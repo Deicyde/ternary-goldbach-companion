@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.1.3 step 13",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean treats C>=B by the B/sin branch as the book does, but for C<B sin(pi/2q) it argues directly with a/sin a+cos a<=2 instead of relaxing C to B sin(pi/q).",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.26253,
+          0.67506,
+          0.56162,
+          0.06102
+        ]
+      },
+      "title": "Lemma 4.1.3 step 13: Text, p. 56",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.3 step 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.final_4_1_3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1968,
+          1998
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.final_4_1_3"
+          },
+          "snippet": {
+            "text": "  have hJ1 : ∫ v in a..(π / 2), mBC B C v ≤ B * Real.log (2 / a) := by\n    have := integral_mBC_le_split hB.le hC ha ha2 le_rfl\n    rw [logTanHalf_pi_div_two, Real.cos_pi_div_two, zero_div, mul_zero, add_zero, zero_sub] at this\n    nlinarith\n  have hmA : mBC B C a ≤ B / Real.sin a := min_le_left _ _\n  have hBsa : B / Real.sin a = B / a * (a / Real.sin a) := by field_simp\n  -- The `C ≥ B`-type bound.\n  have hbig : mBC B C a + (∫ v in a..(π / 2), mBC B C v) / a ≤\n      B / a * (a / Real.sin a + Real.log (2 / a)) := by\n    rw [mul_add, ← hBsa]\n    have := div_le_div_of_nonneg_right hJ1 ha.le\n    rw [show B * Real.log (2 / a) / a = B / a * Real.log (2 / a) by ring] at this\n    linarith\n  have hBa : 0 < B / a := by positivity\n  have hlogea : Real.log (rexp 2 / a) = 2 - Real.log a := by\n    rw [Real.log_div (by positivity) ha.ne', Real.log_exp]\n  refine ⟨?_, ?_⟩\n  · set x := C / B\n    have hx0 : 0 ≤ x := div_nonneg hC hB.le\n    have hCx : C = x * B := by simp only [x]; field_simp\n    rcases le_or_gt 1 x with hx1 | hx1\n    · -- `C ≥ B`.\n      have hlog : Real.log (C * rexp 3 / (B * (2 * a))) = Real.log x + 3 - Real.log 2 - Real.log a := by\n        rw [hCx, show x * B * rexp 3 / (B * (2 * a)) = x * rexp 3 / 2 / a by field_simp; try ring,\n          Real.log_div (by positivity) ha.ne', Real.log_div (by positivity) (by norm_num),\n          Real.log_mul (by positivity) (by positivity), Real.log_exp]\n        try ring\n      have hlx : 0 ≤ Real.log x := Real.log_nonneg hx1\n      refine hbig.trans (mul_le_mul_of_nonneg_left ?_ hBa.le)\n      refine le_trans ?_ (le_max_right _ _)\n      rw [hlog, hlog2a]; linarith",
+            "line": 1968,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.final_4_1_3",
+            "lines": [
+              1953,
+              2079
+            ],
+            "conclusion": "Case C>=B: only min <= B/sin is used (mBC a <= B/sin a, J <= B log(2/a)), giving the bound with max 2 (log(...)) >= log x+3-log 2-log a."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1968-L1998"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.final_4_1_3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          2045,
+          2077
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.final_4_1_3"
+          },
+          "snippet": {
+            "text": "    · -- `C < B sin a`: only the `C/sin²` branch matters.\n      have hJ := integral_mBC_le_split hB.le hC ha le_rfl ha2\n      rw [sub_self, mul_zero, zero_add] at hJ\n      have hmC : mBC B C a ≤ C / Real.sin a ^ 2 := min_le_right _ _\n      -- `a/sin a + cos a ≤ 2`.\n      have hk : a / Real.sin a + Real.cos a ≤ 2 := by\n        have h1 := sin_ge_deg3 ha.le\n        have h3 := cos_le_deg4 ha.le\n        rw [div_add' _ _ _ hsa.ne', div_le_iff₀ hsa]\n        have hsc : a ≤ Real.sin a * (2 - Real.cos a) := by\n          have e1 : (1 : ℝ) + a ^ 2 / 2 - a ^ 4 / 24 ≤ 2 - Real.cos a := by linarith\n          have ha2' : a ^ 2 ≤ 1 := by nlinarith\n          have e0 : 0 ≤ a - a ^ 3 / 6 := by nlinarith\n          have e3 : 0 ≤ 1 + a ^ 2 / 2 - a ^ 4 / 24 := by nlinarith [sq_nonneg (a ^ 2)]\n          have hmul : (a - a ^ 3 / 6) * (1 + a ^ 2 / 2 - a ^ 4 / 24) ≤ Real.sin a * (2 - Real.cos a) :=\n            mul_le_mul h1 e1 e3 hsa.le\n          have hexp : (a - a ^ 3 / 6) * (1 + a ^ 2 / 2 - a ^ 4 / 24) - a =\n              a ^ 3 * (1 / 3 - a ^ 2 / 8 + a ^ 4 / 144) := by ring\n          have hpos : 0 ≤ a ^ 3 * (1 / 3 - a ^ 2 / 8 + a ^ 4 / 144) :=\n            mul_nonneg (pow_pos ha 3).le (by nlinarith [sq_nonneg (a ^ 2)])\n          linarith\n        linarith\n      refine le_trans ?_ (mul_le_mul_of_nonneg_left (le_max_left _ _) hBa.le)\n      have hC' : C ≤ B * Real.sin a := by\n        simp only [x] at hxa; have := (div_lt_iff₀ hB).1 hxa; linarith\n      calc mBC B C a + (∫ v in a..(π / 2), mBC B C v) / a\n          ≤ C / Real.sin a ^ 2 + C * (Real.cos a / Real.sin a) / a := by\n            gcongr\n        _ = C / a * (a / Real.sin a ^ 2 + Real.cos a / Real.sin a) := by field_simp\n        _ ≤ B * Real.sin a / a * (a / Real.sin a ^ 2 + Real.cos a / Real.sin a) := by\n            gcongr\n        _ = B / a * (a / Real.sin a + Real.cos a) := by field_simp\n        _ ≤ B / a * 2 := mul_le_mul_of_nonneg_left hk hBa.le",
+            "line": 2045,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.final_4_1_3",
+            "lines": [
+              1953,
+              2079
+            ],
+            "conclusion": "Case C < B sin a: bound by the C/sin^2 branch and a/sin a + cos a <= 2, giving (B/a)*2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L2045-L2077"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

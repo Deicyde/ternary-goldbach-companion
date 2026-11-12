@@ -1,0 +1,120 @@
+{
+  "id": "Corollary 5.8 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same Ramare/Bombieri comparison by $\\max G_q$-ratio, but for the arc function $F_R(\\beta)$ (moduli $\\tilde q\\le 2R$, ratio at $(2Q_0/sq,2Q/sq)$) inside Prop 12.1.2; [L] never states the point-evaluation sum for $q\\le Q_0$ of Cor 12.2.6.",
+  "subject": [
+    {
+      "location": {
+        "page": 45,
+        "rect": [
+          0.20698,
+          0.43364,
+          0.62529,
+          0.05599
+        ]
+      },
+      "title": "Corollary 5.8 step 2: Display, p. 45",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 5.8 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          143,
+          169
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Farc_eq"
+          },
+          "snippet": {
+            "text": "theorem Farc_eq {L : ℕ} [NeZero L] {a : ℕ → ℂ} {δ₀ R x β : ℝ} (hx : 0 < x)\n    (hqL : ∀ q ∈ Qset R, q ∣ L) (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) :\n    Farc a δ₀ R x β = ∑ Ψ : DirichletCharacter ℂ L, ‖Schar Ψ⁻¹ a β‖ ^ 2 *\n      (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * Gq (qt Ψ.conductor) ((mR δ₀ R x β : ℕ) / qt Ψ.conductor))) := by\n  classical\n  have hT : ∀ q ∈ Qset R, ∑ b ∈ Bset q, ‖expTsum a ((b : ℝ) / q + β)‖ ^ 2 =\n      ∑ Ψ : DirichletCharacter ℂ L,\n        (if Ψ.conductor ∣ q then TernaryGoldbach.wq q Ψ.conductor else 0) / q.totient *\n          ‖Schar Ψ⁻¹ a β‖ ^ 2 := by\n    intro q hq\n    have hq1 : 1 ≤ q := (Finset.mem_Icc.1 (Finset.mem_filter.1 hq).1).1\n    have : NeZero q := ⟨by omega⟩\n    have hφ : (0 : ℝ) < q.totient := by exact_mod_cast Nat.totient_pos.2 (by omega)\n    rw [sum_Bset_eq_units (fun t => ‖expTsum a t‖ ^ 2) β]\n    have key := totient_mul_sum_units_lift (hqL q hq) ha hcop β\n    simp_rw [div_mul_eq_mul_div, ← Finset.sum_div, ← key]\n    field_simp\n  unfold Farc\n  rw [Finset.sum_congr rfl fun q hq => by rw [hT q hq], ← Finset.sum_filter, Qset_filter_eq hx,\n    Finset.sum_comm]\n  refine Finset.sum_congr rfl fun Ψ _ => ?_\n  have hc1 : 1 ≤ Ψ.conductor := Nat.pos_of_ne_zero (DirichletCharacter.conductor_ne_zero Ψ)\n  rw [← weight_sum Ψ.conductor hc1, Finset.mul_sum]\n  refine Finset.sum_congr rfl fun q _ => ?_\n  ring",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+            "lines": [
+              140,
+              169
+            ],
+            "conclusion": "Character expansion (Bombieri's identity `totient_mul_sum_units_lift`, the analogue of Ramare's Thm 2.1): $F_R(\\beta)=\\sum_{q}\\sum^*_b|S(b/q+\\beta)|^2$ equals $\\sum_\\Psi |S_{\\Psi^{-1}}(\\beta)|^2$ weighted by $(c/\\varphi(c))\\kappa_c G_{\\tilde c}(m_R(\\beta)/\\tilde c)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L143-L169"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Farc_le",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          225,
+          244
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Farc_le"
+          },
+          "snippet": {
+            "text": "theorem Farc_le {L : ℕ} [NeZero L] {a : ℕ → ℂ} {δ₀ Q₀ Q x β C : ℝ} (hx : 0 < x) (hQ₀ : 1 ≤ Q₀)\n    (hQQ : Q₀ ≤ Q) (hC0 : 0 ≤ C)\n    (hC : ∀ q : ℕ, 1 ≤ q → Even q → (q : ℝ) ≤ 2 * Q₀ → ∀ s : ℝ, 1 ≤ s → s ≤ 2 * Q₀ / q →\n      Gq q (2 * Q₀ / (s * q)) ≤ C * Gq q (2 * Q / (s * q)))\n    (hqL₀ : ∀ q ∈ Qset Q₀, q ∣ L) (hqL : ∀ q ∈ Qset Q, q ∣ L) (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) :\n    Farc a δ₀ Q₀ x β ≤ C * Farc a δ₀ Q x β := by\n  rw [Farc_eq hx hqL₀ ha hcop, Farc_eq hx hqL ha hcop, Finset.mul_sum]\n  refine Finset.sum_le_sum fun Ψ _ => ?_\n  have hc1 : 1 ≤ Ψ.conductor := Nat.pos_of_ne_zero (DirichletCharacter.conductor_ne_zero Ψ)\n  have hG := Gq_mR_le (δ₀ := δ₀) (x := x) (β := β) hx hQ₀ hQQ hC0 hC Ψ.conductor hc1\n  have h1 : 0 ≤ ‖Schar Ψ⁻¹ a β‖ ^ 2 := by positivity\n  have h2 : 0 ≤ (Ψ.conductor : ℝ) / Ψ.conductor.totient := by positivity\n  have h3 := kap_nonneg Ψ.conductor\n  calc ‖Schar Ψ⁻¹ a β‖ ^ 2 * (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * Gq (qt Ψ.conductor) ((mR δ₀ Q₀ x β : ℕ) / qt Ψ.conductor)))\n      ≤ ‖Schar Ψ⁻¹ a β‖ ^ 2 * (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * (C * Gq (qt Ψ.conductor) ((mR δ₀ Q x β : ℕ) / qt Ψ.conductor)))) := by\n        gcongr\n    _ = _ := by ring",
+            "line": 225,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Farc_le",
+            "lines": [
+              224,
+              244
+            ],
+            "conclusion": "Ramare's comparison: $F_{Q_0}(\\beta)\\le C\\,F_Q(\\beta)$ whenever $C$ bounds the ratios $G_q(2Q_0/sq)/G_q(2Q/sq)$; at $\\beta=0$ this is $\\sum_{\\tilde q\\le 2Q_0}\\sum^*_b|S(b/q)|^2\\le C\\sum_{\\tilde q\\le 2Q}\\sum^*_b|S(b/q)|^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L225-L244"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          45
+        ],
+        "printed": [
+          45
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Corollary 12.2.6 step 2, the same LaTeX (mapper (sonnet); verifier (sonnet); absence audit (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

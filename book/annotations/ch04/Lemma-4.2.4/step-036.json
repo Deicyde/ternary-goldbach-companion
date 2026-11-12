@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.4 step 36",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Introduces the bound of the next display; Lean proves it for `eta2` (`eta2'L1`) with `logPlus (q/2)` in place of `log(q/2)`. Text error, confirmed by two skeptics and `scripts/checks/steps/lemma_4_2_4_step_36.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 85,
+        "rect": [
+          0.17462,
+          0.36768,
+          0.56162,
+          0.01591
+        ]
+      },
+      "title": "Lemma 4.2.4 step 36: Text, p. 75",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 36"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R1W",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          101,
+          116
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R1W"
+          },
+          "snippet": {
+            "text": "/-- Weighted range (R1): `∑_{m ≤ q/2} log m |T_{m,∘}| ≤ log⁺(q/2) · (R1 bound)`. -/\ntheorem sum_R1W {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) :\n    ∑ n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋, Real.log n * Tn α x n ≤\n      logPlus ((q : ℝ) / 2) *\n        (2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x)))) := by\n  have hpt : ∀ n ∈ Ioc 0 ⌊(q : ℝ) / 2⌋, Real.log n * Tn α x n ≤ logPlus ((q : ℝ) / 2) * Tn α x n := by\n    intro n hn\n    refine mul_le_mul_of_nonneg_right ?_ (Tn_nonneg α x n)\n    rw [mem_Ioc] at hn\n    have h1 : (1 : ℝ) ≤ n := by exact_mod_cast (show (1 : ℤ) ≤ n by omega)\n    exact log_le_logPlus (by linarith) ((Int.cast_le.2 hn.2).trans (Int.floor_le _))\n  refine (sum_le_sum hpt).trans ?_\n  rw [← mul_sum]\n  exact mul_le_mul_of_nonneg_left (sum_R1 hx hq hcop h2α hqQ hδ) (logPlus_nonneg _)",
+            "line": 101,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R1W",
+            "lines": [
+              101,
+              116
+            ],
+            "conclusion": "`sum_{n<=q/2} log n |T_n| <= log+(q/2) * (2 |eta2'|_1/pi q max(1, log(c0 e^3 q^2/(4 pi |eta2'|_1 x))))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L101-L116"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          85
+        ],
+        "printed": [
+          75
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

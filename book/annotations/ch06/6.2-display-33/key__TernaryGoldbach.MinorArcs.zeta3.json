@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 33",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Definition matches (`κ₄ = 4 zeta3`, κ₀ = 1.27) but the only numerical bound is `zeta3 ≤ 27` (κ₄ ≤ 108), weaker than 90.5671; the main Type II statements keep `zeta3` symbolic.",
+  "subject": [
+    {
+      "location": {
+        "page": 121,
+        "rect": [
+          0.17135,
+          0.43364,
+          0.56816,
+          0.01995
+        ]
+      },
+      "title": "Display, p. 111",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.zeta3",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal",
+        "lines": [
+          42,
+          43
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.zeta3"
+          },
+          "snippet": {
+            "text": "/-- `κ₀ζ(3/2)³ = 1.27 ζ(3/2)³` [H, (6.16)]. -/\nnoncomputable def zeta3 : ℝ := 1.27 * (riemannZeta (3 / 2)).re ^ 3",
+            "line": 42,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.zeta3",
+            "lines": [
+              42,
+              43
+            ],
+            "conclusion": "`zeta3 = 1.27·ζ(3/2)³`, so `κ₄ = 4·zeta3`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L42-L43"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          121
+        ],
+        "printed": [
+          111
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

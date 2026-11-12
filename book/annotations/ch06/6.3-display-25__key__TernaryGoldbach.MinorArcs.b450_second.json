@@ -1,0 +1,117 @@
+{
+  "id": "6.3 display 25",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The first summand 3x^{2/3}((2/3)log x - log 18) is the same as Lean's `3 * T^2 * (2L - 2.89)`; the lower-order summand differs: [H] 0.02017 x^{2/3} log x = 0.0605 L T^2 against Lean 0.07 L T^2 + 0.0001 T^2 (different U, V), so the Lean total 6.07 L T^2 = 2.0233 x^{2/3} log x is not [H]'s 2.02017 x^{2/3} log x - 3 log 18 x^{2/3}. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 137,
+        "rect": [
+          0.17135,
+          0.47341,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Display, p. 127",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.b450_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI1",
+        "lines": [
+          454,
+          483
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.b450_second"
+          },
+          "snippet": {
+            "text": "  have hl18 : Real.log (T ^ 2 / 18) ≤ 2 * L - 2.89 := by\n    rw [Real.log_div (by positivity) (by norm_num), Real.log_pow]\n    have := le_log_num (z := 18) 2 0.89 (by norm_num) (by norm_num) (by norm_num [taylor6])\n    norm_num at this; push_cast; linarith\n  have t1 : T ^ 3 / (2 * q) * minInv c₀ (π * δ) * Real.log (V2 T * q) ≤ 3 * T ^ 2 * (2 * L - 2.89) := by\n    rcases hc with hc | hc\n    · -- `q > T/6`: monotonicity of `log(Vq)/q`.\n      have hmi : minInv c₀ (π * δ) ≤ 1 := by\n        unfold minInv; split_ifs\n        · exact le_rfl\n        · exact min_le_left _ _\n      have he : rexp 1 ≤ V2 T * (T / 6) := by\n        have := Real.exp_one_lt_d9; nlinarith\n      have hmono := log_mul_div_anti hV0 (by positivity : (0 : ℝ) < T / 6) hc.le he\n      have hlV0 : 0 ≤ Real.log (V2 T * q) := Real.log_nonneg (by nlinarith)\n      have h1 : T ^ 3 / (2 * q) * Real.log (V2 T * q) ≤ 3 * T ^ 2 * Real.log (V2 T * (T / 6)) := by\n        have e1 : T ^ 3 / (2 * q) * Real.log (V2 T * q) = T ^ 3 / 2 * (Real.log (V2 T * q) / q) := by\n          field_simp\n        have e2 : 3 * T ^ 2 * Real.log (V2 T * (T / 6)) = T ^ 3 / 2 * (Real.log (V2 T * (T / 6)) / (T / 6)) := by\n          field_simp; ring\n        rw [e1, e2]; exact mul_le_mul_of_nonneg_left hmono (by positivity)\n      have h2 : Real.log (V2 T * (T / 6)) ≤ 2 * L - 2.89 := by\n        have := Real.log_le_log (by positivity) (show V2 T * (T / 6) ≤ T ^ 2 / 18 by nlinarith)\n        linarith\n      calc T ^ 3 / (2 * q) * minInv c₀ (π * δ) * Real.log (V2 T * q)\n          ≤ T ^ 3 / (2 * q) * 1 * Real.log (V2 T * q) := by gcongr\n        _ ≤ 3 * T ^ 2 * Real.log (V2 T * (T / 6)) := by rw [mul_one]; exact h1\n        _ ≤ _ := by gcongr\n    · have hxm : T ^ 3 / (2 * q) * minInv c₀ (π * δ) ≤ 3 * T ^ 2 :=\n        (mul_le_mul_of_nonneg_left (minInv_le_delta0 δ) (by positivity)).trans",
+            "line": 454,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.b450_second",
+            "lines": [
+              434,
+              550
+            ],
+            "conclusion": "First term of (4.50): `x/(2q) minInv log(Vq) <= 3T^2(2L - 2.89)`, i.e. 3 x^{2/3}((2/3) log x - log 18) with 2.89 <= log 18, in both cases `q > T/6` and `q <= T/6`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI1.lean",
+            "fragment": "L454-L483"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.b450_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI1",
+        "lines": [
+          537,
+          550
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.b450_second"
+          },
+          "snippet": {
+            "text": "  have t2 : (1 / 4 - 1 / π ^ 2) * c₀ * (((U2 T : ℝ) * V2 T) ^ 2 * Real.log (V2 T) / (2 * q * T ^ 3) +\n      3 * c₄ / 2 * ((U2 T : ℝ) * V2 T ^ 2 / T ^ 3) +\n      3 / 2 * (((U2 T : ℝ) + 1) ^ 2 * V2 T / (2 * T ^ 3) * Real.log q)) ≤ 0.0001 * T ^ 2 + 0.07 * L * T ^ 2 := by\n    have h1 : 83368.1 * T * L + 213 + 750400 * L ≤ 0.0141 * L * T ^ 2 + 0.00001 * T ^ 2 := by\n      have : 83368.1 * T ≤ 0.0139 * T ^ 2 := by nlinarith\n      have : 750400 ≤ 0.0002 * T ^ 2 := by nlinarith\n      have : 213 ≤ 0.00001 * T ^ 2 := by nlinarith\n      have hL0 : 0 ≤ L := by linarith\n      nlinarith\n    have h2 := mul_le_mul hk (show _ ≤ 0.0141 * L * T ^ 2 + 0.00001 * T ^ 2 by linarith) s0 (by norm_num)\n    have hL0 : 0 ≤ L := by linarith\n    nlinarith [mul_nonneg hL0 (sq_nonneg T), sq_nonneg T]\n  have hL0 : 0 ≤ L := by linarith\n  nlinarith [mul_nonneg hL0 (sq_nonneg T), sq_nonneg T]",
+            "line": 537,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.b450_second",
+            "lines": [
+              434,
+              550
+            ],
+            "conclusion": "The remaining terms of (4.50) are at most `0.0001 T^2 + 0.07 L T^2`, and the total is `<= 6.07 L T^2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI1.lean",
+            "fragment": "L537-L550"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          137
+        ],
+        "printed": [
+          127
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

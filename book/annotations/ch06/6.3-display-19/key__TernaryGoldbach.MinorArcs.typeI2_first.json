@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 19",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] collects all x^{2/3}-type and x^{5/6} lower-order terms into a single 3.8 x^{5/6} (weaker than [H]'s 3.35531 x^{5/6}), from different individual terms than the sum displayed.",
+  "subject": [
+    {
+      "location": {
+        "page": 135,
+        "rect": [
+          0.17135,
+          0.38681,
+          0.56816,
+          0.05603
+        ]
+      },
+      "title": "Display, p. 125",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2c",
+        "lines": [
+          17,
+          22
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_first"
+          },
+          "snippet": {
+            "text": "theorem typeI2_first {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hqT : (q : ℝ) ≤ T / 6) :\n    ‖typeI2 α (T ^ 3) (U1 T (delta0 δ * q)) (V1 T)‖ ≤\n      2.5257 * (T ^ 3 / √(delta0 δ * q)) + 2.8 * (2 * T ^ 3 / (delta0 δ * Nat.totient q)) +\n        (15.267 * Real.log (delta0 δ * q) + 21.46) * (2 * T ^ 3 / (delta0 δ * q)) +\n        0.556 * (T ^ 2 * √T) := by",
+            "line": 17,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_first",
+            "lines": [
+              15,
+              60
+            ],
+            "conclusion": "S_{I,2} lower-order term `0.556 x^{5/6}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2c.lean",
+            "fragment": "L17-L22"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          135
+        ],
+        "printed": [
+          125
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

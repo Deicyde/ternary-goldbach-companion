@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 13",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "The set-up q<=r, |delta|<=4r/q with r=150000 (odd) or 300000 (even) appears as hypotheses of two theorems; Lean writes 4r/q as 600000/q and 1200000/q.",
+  "subject": [
+    {
+      "location": {
+        "page": 205,
+        "rect": [
+          0.17135,
+          0.46153,
+          0.56816,
+          0.01693
+        ]
+      },
+      "title": "Display, p. 195",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_even",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          629,
+          635
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_even"
+          },
+          "snippet": {
+            "text": "/-- **[H, Thm 7.1.4], even `q ≤ 300000`** (Platt's verification at `max(10⁸/q, 200 + 7.5·10⁷/q)`), our\nconstants: `|E| ≤ (7.5·10⁻⁸ + 7.7·10⁶/√x)/√q` for `x ≥ 4.9·10²⁶`, `|δ| ≤ 1.2·10⁶/q`. -/\ntheorem thm_7_1_4_even {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} [NeZero q] (heven : Even q) (hq : q ≤ 300000)\n    (χ : DirichletCharacter ℂ q) (hχ : χ.IsPrimitive) {δ : ℝ} (hδ : |δ| ≤ 1200000 / q) :\n    ‖Schar χ (fun n => ((Λ n * etaPlus (n / x) : ℝ) : ℂ)) (δ / x) -\n        (if q = 1 then 𝓕 (fun u => (etaPlus u : ℂ)) (-δ) * x else 0)‖ ≤\n      ((7.5e-8 + 7.7e6 / √x) / √q) * x := by",
+            "line": 629,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_even",
+            "lines": [
+              629,
+              680
+            ],
+            "conclusion": "Even q<=300000, |delta|<=1200000/q (r=300000)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L629-L635"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          205
+        ],
+        "printed": [
+          195
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

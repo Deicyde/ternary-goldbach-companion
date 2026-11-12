@@ -1,0 +1,81 @@
+{
+  "id": "6 display 14",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Only the first-derivative formula $f'$, for $a=1/2$, $c=1$ (times $0.27125$, shifted variable); $f''$ and general $a,b,c$ are absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 54,
+        "rect": [
+          0.20371,
+          0.56921,
+          0.63183,
+          0.04823
+        ]
+      },
+      "title": "Display, p. 54",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6 display 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Rs_hasDerivAt",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          114,
+          127
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Rs_hasDerivAt"
+          },
+          "snippet": {
+            "text": "theorem Rs_hasDerivAt {B s : ℝ} (hs : 0 ≤ Real.log 8 + s) (hB : s < B) :\n    HasDerivAt (Rs B) (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8)))) s := by\n  have hBs : B - s ≠ 0 := by linarith\n  have hu := ((hasDerivAt_id s).const_add (Real.log 8)).div\n    (((hasDerivAt_id s).const_sub B).const_mul 2) (by simp; exact hBs)\n  have hpos : 0 < 1 + (Real.log 8 + s) / (2 * (B - s)) := by\n    have : 0 ≤ (Real.log 8 + s) / (2 * (B - s)) := div_nonneg hs (by linarith)\n    linarith\n  have h2 : 2 * B - s + Real.log 8 ≠ 0 := by linarith\n  unfold Rs\n  refine ((((hu.const_add 1).log hpos.ne').const_mul 0.27125).add_const 0.41415).congr_deriv ?_\n  simp only [id, Pi.div_apply]\n  field_simp\n  ring",
+            "line": 114,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Rs_hasDerivAt",
+            "lines": [
+              114,
+              127
+            ],
+            "conclusion": "`Rs_hasDerivAt`: $\\frac{d}{ds}$`Rs B s` $=0.27125\\frac{B+\\log8}{(B-s)(2B-s+\\log8)}$, i.e. $0.27125f'$ with $a=1/2$, $c=1$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L114-L127"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          54
+        ],
+        "printed": [
+          54
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 13.2 display 11, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

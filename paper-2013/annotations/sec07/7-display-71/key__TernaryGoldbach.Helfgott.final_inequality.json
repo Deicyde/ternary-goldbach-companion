@@ -1,0 +1,81 @@
+{
+  "id": "7 display 71",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean gets $\\ge(1.049-1.0376)x^2/\\kappa-6.7\\cdot10^6N^{3/2}\\log N>0$ (constants $0.0114$ and $6.7\\cdot10^6$ for $0.08433$ and $7.3306$); `final_inequality` proves the $7.3306$ comparison, but no $0.000422N^2$ bound is stated, only positivity.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.20371,
+          0.74767,
+          0.63183,
+          0.10662
+        ]
+      },
+      "title": "Display, p. 70",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 71"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.final_inequality",
+        "module": "TernaryGoldbach.Helfgott.Numerics",
+        "lines": [
+          22,
+          66
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.final_inequality"
+          },
+          "snippet": {
+            "text": "/-- The final numerical step of [H, §14.4]: for `N ≥ 10²⁷`,\n`7.3306 N^{3/2} log N < (1.049 - 1.0376) x²/κ`. -/\ntheorem final_inequality (N : ℕ) (hN : 10 ^ 27 ≤ N) :\n    7.3306 * (N * √N) * Real.log N < (1.049 - 1.0376) * xOf N ^ 2 / κ := by\n  obtain ⟨hc0, hc1⟩ := xOf_denom_bounds\n  set c := 2 + 9 / (196 * √(2 * Real.pi)) with hc\n  have hNr : (10 : ℝ) ^ 27 ≤ N := by exact_mod_cast hN\n  have hN0 : (0 : ℝ) < N := lt_of_lt_of_le (by positivity) hNr\n  set s := √(√(N : ℝ)) with hs\n  have hs2 : s ^ 2 = √(N : ℝ) := Real.sq_sqrt (Real.sqrt_nonneg _)\n  have hs4 : s ^ 4 = (N : ℝ) := by\n    rw [show s ^ 4 = (s ^ 2) ^ 2 by ring, hs2, Real.sq_sqrt hN0.le]\n  have hs0 : 0 < s := Real.sqrt_pos.2 (Real.sqrt_pos.2 hN0)\n  have hsbig : (10 : ℝ) ^ 6 ≤ s := by\n    by_contra h\n    push Not at h\n    have : s ^ 4 < ((10 : ℝ) ^ 6) ^ 4 := pow_lt_pow_left₀ h hs0.le (by norm_num)\n    rw [hs4] at this\n    linarith [show ((10 : ℝ) ^ 6) ^ 4 ≤ 10 ^ 27 by norm_num]\n  have hlog : Real.log N = 4 * Real.log s := by\n    rw [← hs4, Real.log_pow]; push_cast; ring\n  have hlogs : Real.log s ≤ s := (Real.log_le_sub_one_of_pos hs0).trans (by linarith)\n  have hx : xOf N ^ 2 = s ^ 8 / c ^ 2 := by\n    rw [xOf, div_pow, ← hs4]; ring\n  rw [hx, hlog, ← hs2, ← hs4]\n  have hc2 : c ^ 2 ≤ 4.0804 := by nlinarith [mul_le_mul hc1 hc1 hc0.le (by norm_num)]\n  have hc2' : 0 < c ^ 2 := by positivity\n  have lhs : 7.3306 * (s ^ 4 * s ^ 2) * (4 * Real.log s) ≤ 29.3224 * s ^ 7 := by\n    have : s ^ 4 * s ^ 2 * Real.log s ≤ s ^ 4 * s ^ 2 * s :=\n      mul_le_mul_of_nonneg_left hlogs (by positivity)\n    nlinarith\n  have rhs : 0.0114 * s ^ 8 / (4.0804 * 49) ≤ (1.049 - 1.0376) * (s ^ 8 / c ^ 2) / κ := by\n    rw [κ]\n    have : s ^ 8 / 4.0804 ≤ s ^ 8 / c ^ 2 :=\n      div_le_div_of_nonneg_left (by positivity) hc2' hc2\n    have h8 : 0 ≤ s ^ 8 := by positivity\n    calc 0.0114 * s ^ 8 / (4.0804 * 49) = (1.049 - 1.0376) * (s ^ 8 / 4.0804) / 49 := by\n          ring\n      _ ≤ _ := by gcongr\n  have key : 29.3224 * s ^ 7 < 0.0114 * s ^ 8 / (4.0804 * 49) := by\n    have h7 : 0 < s ^ 7 := by positivity\n    have : s ^ 8 = s * s ^ 7 := by ring\n    rw [this, lt_div_iff₀ (by norm_num)]\n    nlinarith [mul_le_mul_of_nonneg_right hsbig h7.le]\n  linarith",
+            "line": 22,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.final_inequality",
+            "lines": [
+              22,
+              66
+            ],
+            "conclusion": "For $N\\ge10^{27}$: $7.3306N^{3/2}\\log N<(1.049-1.0376)x^2/\\kappa$ with $x=$ `xOf N`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Numerics.lean",
+            "fragment": "L22-L66"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

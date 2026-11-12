@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.1 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean states the condition as |δ|m/x ≤ 1/2 (equivalent to |x/m| ≥ 2|δ|) and applies the c₀/(2πt)² bound for η₂ with odd-n scaling x/(2m).",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.26253,
+          0.57125,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Lemma 4.2.1 step 8: Text, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1325,
+          1338
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB"
+          },
+          "snippet": {
+            "text": "  have hMδ : |δ| * M ≤ x / 2 := by\n    have h1 : |δ| * M ≤ |δ| * (Q / 2) := by\n      rw [hMQ]; exact mul_le_mul_of_nonneg_left (min_le_left _ _) (abs_nonneg _)\n    have h2 : |δ| * (q * Q) ≤ x := by\n      have e : |δ / x| * (q * Q) = |δ| * (q * Q) / x := by rw [abs_div, abs_of_pos hx]; ring\n      rw [e, div_le_one hx] at hδ; exact hδ\n    have h3 : |δ| * Q ≤ x := by\n      have : |δ| * Q ≤ |δ| * (q * Q) := by\n        have hQ0 : 0 ≤ Q := by linarith\n        have : Q ≤ q * Q := by\n          nlinarith [mul_nonneg (sub_nonneg.2 (show (1 : ℝ) ≤ q by exact_mod_cast hq)) hQ0]\n        exact mul_le_mul_of_nonneg_left this (abs_nonneg _)\n      linarith\n    linarith",
+            "line": 1325,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+            "lines": [
+              1288,
+              1342
+            ],
+            "conclusion": "Proves `|δ|·M ≤ x/2` from `M ≤ Q/2` and `|δ|·q·Q ≤ x` (case (a) analogue at lines 1358-1365)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1325-L1338"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          607,
+          615
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPart_le"
+          },
+          "snippet": {
+            "text": "    · have hr : |δ * (q * m' : ℕ) / x| ≤ 1 / 2 := by\n        have hm'N : (m' : ℝ) ≤ N := by exact_mod_cast h.2\n        rw [abs_div, abs_mul, abs_of_pos hx, Nat.abs_cast, div_le_iff₀ hx]\n        push_cast\n        have : (q : ℝ) * m' ≤ M := by\n          calc (q : ℝ) * m' ≤ q * (M / q) := by gcongr; linarith\n            _ = M := by field_simp\n        calc |δ| * (q * m') ≤ |δ| * M := mul_le_mul_of_nonneg_left this (abs_nonneg _)\n          _ ≤ 1 / 2 * x := by linarith",
+            "line": 607,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+            "lines": [
+              578,
+              677
+            ],
+            "conclusion": "Derives `|δ·qm'/x| ≤ 1/2` for `qm' ≤ M` from `|δ|M ≤ x/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L607-L615"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          265,
+          277
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Todd_main"
+          },
+          "snippet": {
+            "text": "  have hbound : ∀ k : ℤ, k ≠ 0 → ‖𝓕 h k‖ ≤ C * (1 / ((k : ℝ) - ρ) ^ 2) := by\n    intro k hk\n    rw [hF k, norm_mul, norm_mul, norm_e, one_mul, Complex.norm_real, Real.norm_eq_abs,\n      abs_of_pos (by positivity)]\n    have ht : (k : ℝ) * x / (2 * m) - δ / 2 = x / (2 * m) * ((k : ℝ) - ρ) := by\n      simp only [ρ]; field_simp\n    have hne : (k : ℝ) * x / (2 * m) - δ / 2 ≠ 0 := by\n      rw [ht]; exact mul_ne_zero (by positivity) (hkρ k hk)\n    refine (mul_le_mul_of_nonneg_left (norm_eta2hat_le _ hne) (by positivity)).trans\n      (le_of_eq ?_)\n    rw [ht]; simp only [C]\n    have := hkρ k hk\n    field_simp",
+            "line": 265,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+            "lines": [
+              220,
+              322
+            ],
+            "conclusion": "For k ≠ 0 bounds `‖𝓕h(k)‖ ≤ C/(k−ρ)²` using `‖η̂₂(t)‖ ≤ c₀/(2πt)²` (`norm_eta2hat_le`), the k = 2 case of (madge) for η₂."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L265-L277"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

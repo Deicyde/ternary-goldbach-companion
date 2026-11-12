@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 43",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses the same S2 bound (5.57) but never forms this integral of sqrt(S1 * bracket); it bounds sqrt(S1)(sqrt S2 + sqrt S3) pointwise by W G53(W) and integrates term by term.",
+  "subject": [
+    {
+      "location": {
+        "page": 124,
+        "rect": [
+          0.25926,
+          0.62679,
+          0.56816,
+          0.04141
+        ]
+      },
+      "title": "Display, p. 114",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.pointwise_53",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          147,
+          156
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.pointwise_53"
+          },
+          "snippet": {
+            "text": "  set P₁ := 2 * M / x * (W * L / 2)\n  set P₂ := r * x / (2 * W) * (W * L / 2)\n  set P₃ := W / 2 * (W * L / 2)\n  have hP₁ : 0 ≤ P₁ := by positivity\n  have hP₂ : 0 ≤ P₂ := by positivity\n  have hP₃ : 0 ≤ P₃ := by positivity\n  have hS2' : S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤ P₁ + P₂ + P₃ := by\n    refine hS2.trans ((mul_le_mul_of_nonneg_left hlog (by positivity)).trans (le_of_eq ?_))\n    simp only [P₁, P₂, P₃, L]; ring\n  have hsqrt_add : ∀ u v : ℝ, 0 ≤ u → 0 ≤ v → √(u + v) ≤ √u + √v := fun u v hu hv => by",
+            "line": 147,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.pointwise_53",
+            "lines": [
+              107,
+              207
+            ],
+            "conclusion": "Splits that S2 bound into P1 + P2 + P3 times (W L/2) and bounds sqrt(S1)(sqrt S2 + ...) pointwise."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L147-L156"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          124
+        ],
+        "printed": [
+          114
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

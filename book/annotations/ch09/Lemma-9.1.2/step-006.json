@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.2 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has Abel summation in integral form L(s)=s*int S(t)t^(-s-1)dt for Re s>0, not the split at N with explicit tail terms.",
+  "subject": [
+    {
+      "location": {
+        "page": 180,
+        "rect": [
+          0.26253,
+          0.15578,
+          0.56162,
+          0.02013
+        ]
+      },
+      "title": "Lemma 9.1.2 step 6: Text, p. 170",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.2 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.LFunction_eq_mul_Iint",
+        "module": "TernaryGoldbach.Explicit.LGrowth",
+        "lines": [
+          156,
+          176
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.LFunction_eq_mul_Iint"
+          },
+          "snippet": {
+            "text": "theorem LFunction_eq_mul_Iint {χ : DirichletCharacter ℂ q} (hχ : χ ≠ 1) {s : ℂ} (hs : 0 < s.re) :\n    χ.LFunction s = s * Iint χ s := by\n  set U := {s : ℂ | 0 < s.re}\n  have hUo : IsOpen U := isOpen_lt continuous_const Complex.continuous_re\n  have hUc : IsPreconnected U := (convex_halfSpace_re_gt 0).isPreconnected\n  have hf : AnalyticOnNhd ℂ χ.LFunction U := fun z _ =>\n    (DirichletCharacter.differentiable_LFunction hχ).analyticAt z\n  have hg : AnalyticOnNhd ℂ (fun s => s * Iint χ s) U :=\n    (differentiableOn_mul_Iint hχ).analyticOnNhd hUo\n  have h2 : (2 : ℂ) ∈ U := by show (0:ℝ) < (2:ℂ).re; norm_num\n  have hev : χ.LFunction =ᶠ[nhds (2 : ℂ)] fun s => s * Iint χ s := by\n    have hopen : {s : ℂ | 1 < s.re} ∈ nhds (2 : ℂ) :=\n      (isOpen_lt continuous_const Complex.continuous_re).mem_nhds (by show (1:ℝ) < (2:ℂ).re; norm_num)\n    filter_upwards [hopen] with s hs1\n    rw [DirichletCharacter.LFunction_eq_LSeries χ hs1]\n    have hO : (fun n : ℕ => ∑ k ∈ Icc 1 n, χ (k : ZMod q)) =O[atTop] fun n : ℕ => (n : ℝ) ^ (0 : ℝ) := by\n      refine Asymptotics.IsBigO.of_bound ((q : ℝ) + 1) (Filter.Eventually.of_forall fun n => ?_)\n      simp only [Real.rpow_zero, norm_one, mul_one]\n      exact norm_psum_le hχ n\n    exact LSeries_eq_mul_integral _ le_rfl (by linarith) (χ.LSeriesSummable_of_one_lt_re hs1) hO\n  exact hf.eqOn_of_preconnected_of_eventuallyEq hg hUc h2 hev hs",
+            "line": 156,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.LFunction_eq_mul_Iint",
+            "lines": [
+              156,
+              176
+            ],
+            "conclusion": "L(s,chi) = s * integral_1^inf S(t) t^(-s-1) dt for Re s>0 (Abel summation in integral form)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LGrowth.lean",
+            "fragment": "L156-L176"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          180
+        ],
+        "printed": [
+          170
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

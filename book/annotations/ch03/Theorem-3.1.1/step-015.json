@@ -1,0 +1,84 @@
+{
+  "id": "Theorem 3.1.1 step 15",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Introduces step 16; Lean's version has weaker constants.",
+  "subject": [
+    {
+      "location": {
+        "page": 144,
+        "rect": [
+          0.26253,
+          0.15578,
+          0.56162,
+          0.01844
+        ]
+      },
+      "title": "Theorem 3.1.1 step 15: Text, p. 134",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 3.1.1 step 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceFinal",
+        "lines": [
+          32,
+          37
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first"
+          },
+          "snippet": {
+            "text": "/-- **[H, Theorem 3.1.1] for `q ≤ x^{1/3}/6`**, in terms of `T = x^{1/3}`, with the corrected\nconstant `0.8764` (for [H]'s `0.5`) and `3.8 x^{5/6}` (for [H]'s `3.36 x^{5/6}`). -/\ntheorem theorem_3_1_1_first {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hqT : (q : ℝ) ≤ T / 6) :\n    ‖S eta2 (T ^ 3) α‖ ≤\n      ((0.27125 * Cxt T (delta0 δ * q) + 0.41415) * Real.log (delta0 δ * q) + 0.8764) /",
+            "line": 32,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first",
+            "lines": [
+              32,
+              103
+            ],
+            "conclusion": "`theorem_3_1_1_first` for `q ≤ T/6`, `T = x^{1/3}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceFinal.lean",
+            "fragment": "L32-L37"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          144
+        ],
+        "printed": [
+          134
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

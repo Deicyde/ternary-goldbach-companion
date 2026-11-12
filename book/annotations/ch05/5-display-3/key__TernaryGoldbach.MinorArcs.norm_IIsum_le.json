@@ -1,0 +1,80 @@
+{
+  "id": "5 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 89,
+        "rect": [
+          0.17135,
+          0.19424,
+          0.56816,
+          0.04002
+        ]
+      },
+      "title": "Display, p. 79",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_IIsum_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIReduction",
+        "lines": [
+          425,
+          427
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_IIsum_le"
+          },
+          "snippet": {
+            "text": "    _ ≤ √(∑ m ∈ R, |c m| ^ 2) * √(∑ m ∈ R, ‖P m‖ ^ 2) +\n          √(∑ m ∈ R, |c m| ^ 2) * √(∑ m ∈ R, ‖Q m‖ ^ 2) :=\n        add_le_add (Real.sum_mul_le_sqrt_mul_sqrt _ _ _) (Real.sum_mul_le_sqrt_mul_sqrt _ _ _)",
+            "line": 425,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_IIsum_le",
+            "lines": [
+              330,
+              431
+            ],
+            "conclusion": "Applies it to `|c m|` and `‖P m‖` (and `‖Q m‖`) to get `∑ |c m| ‖P m‖ ≤ √(∑ c²) √(∑ ‖P‖²)`, the type II Cauchy-Schwarz step."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIReduction.lean",
+            "fragment": "L425-L427"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          89
+        ],
+        "printed": [
+          79
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

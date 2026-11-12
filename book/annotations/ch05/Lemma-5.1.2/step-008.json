@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.2 step 8",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "No named f in Lean; the same quantity is written inline (here and in `RamareMoebius`, `m_sqrt`).",
+  "subject": [
+    {
+      "location": {
+        "page": 96,
+        "rect": [
+          0.26253,
+          0.29279,
+          0.56162,
+          0.02021
+        ]
+      },
+      "title": "Lemma 5.1.2 step 8: Text, p. 86",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_m_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Bound",
+        "lines": [
+          37,
+          39
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_m_le"
+          },
+          "snippet": {
+            "text": "theorem abs_m_le {x : ℝ} (hx : 1 < x) {u : ℕ} (hu : 1 ≤ u) (hux : (u : ℝ) ≤ x) :\n    |∑ n ∈ Icc 1 ⌊x / u⌋₊, (μ n : ℝ) / n| ≤\n      0.03 * (u : ℝ) ^ ((1 : ℝ) / 9) / Real.log x + √2 * √(u : ℝ) / √x := by",
+            "line": 37,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_m_le",
+            "lines": [
+              36,
+              74
+            ],
+            "conclusion": "The quantity $f(t)=|\\sum_{r\\le t}\\mu(r)/r|$ appears inline as `|∑ n ∈ Icc 1 ⌊x / u⌋₊, μ n / n|` with $t=x/u$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Bound.lean",
+            "fragment": "L37-L39"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          96
+        ],
+        "printed": [
+          86
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

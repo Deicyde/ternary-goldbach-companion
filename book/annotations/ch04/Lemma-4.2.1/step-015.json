@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 15",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's rest consists of odd m with q ∤ m or m > M (text says 'not divisible by q and larger than M'); only odd m and η₂.",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17462,
+          0.39234,
+          0.56162,
+          0.04592
+        ]
+      },
+      "title": "Lemma 4.2.1 step 15: Text, p. 59",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.restPart",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          743,
+          744
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.restPart"
+          },
+          "snippet": {
+            "text": "noncomputable def restPart (α x D M : ℝ) (q : ℕ) : ℂ :=\n  ∑ m ∈ Icc 1 ⌊D⌋₊, if Odd m ∧ ¬ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M) then (μ m : ℂ) * Todd α x m else 0",
+            "line": 743,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.restPart",
+            "lines": [
+              742,
+              744
+            ],
+            "conclusion": "`restPart α x D M q` = sum of `μ(m)·T_{m,∘}` over odd m ≤ D with ¬(q | m ∧ m ≤ M), the terms not in the main part."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L743-L744"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_sum",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1098,
+          1114
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_sum"
+          },
+          "snippet": {
+            "text": "theorem norm_restPart_le_sum {α x D M : ℝ} {q : ℕ} (hD : 0 ≤ D) :\n    ‖restPart α x D M q‖ ≤ ∑ n ∈ Ioc (0 : ℤ) ⌊D⌋,\n      (if ¬ ((q : ℤ) ∣ n ∧ (n : ℝ) ≤ M) then Tn α x n else 0) := by\n  rw [restPart]\n  refine (norm_sum_le _ _).trans ?_\n  have hfl : ((⌊D⌋₊ : ℕ) : ℤ) = ⌊D⌋ := Int.natCast_floor_eq_floor hD\n  rw [← hfl, ← sum_Icc_eq_Ioc_int]\n  refine sum_le_sum fun m hm => ?_\n  simp only [Tn, Int.toNat_natCast]\n  by_cases h : Odd m ∧ ¬ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M)\n  · rw [if_pos h, if_pos (by\n      intro ⟨hd, hle⟩; exact h.2 ⟨by exact_mod_cast hd, by exact_mod_cast hle⟩), norm_mul]\n    have : ‖(μ m : ℂ)‖ ≤ 1 := by\n      rw [Complex.norm_intCast]; exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n    calc ‖(μ m : ℂ)‖ * ‖Todd α x m‖ ≤ 1 * ‖Todd α x m‖ := by gcongr\n      _ = _ := one_mul _\n  · rw [if_neg h, norm_zero]; split_ifs <;> simp [norm_nonneg]",
+            "line": 1098,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_sum",
+            "lines": [
+              1097,
+              1114
+            ],
+            "conclusion": "`‖restPart‖ ≤ ∑_{0<n≤D, ¬(q|n ∧ n≤M)} |T_{n,∘}|`: drop μ and bound each inner sum separately."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1098-L1114"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

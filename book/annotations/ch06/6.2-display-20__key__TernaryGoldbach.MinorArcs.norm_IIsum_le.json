@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 20",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean carries `S₃ ≤ (x/2W+1)·1.4262²W = 1.4262²(x/2+W)` unrounded; the step to `1.0172x` is absorbed later as `x/2+W ≤ x(1/2+1/U)` (`pointwise_637`).",
+  "subject": [
+    {
+      "location": {
+        "page": 118,
+        "rect": [
+          0.25926,
+          0.73692,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Display, p. 108",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_IIsum_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIReduction",
+        "lines": [
+          412,
+          416
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_IIsum_le"
+          },
+          "snippet": {
+            "text": "  have hS3 : ∑ m ∈ R, ‖Q m‖ ^ 2 ≤ (x / (2 * W) + 1) * (1.4262 ^ 2 * W) := by\n    calc ∑ m ∈ R, ‖Q m‖ ^ 2 ≤ ∑ m ∈ R, (1.4262 * √W) ^ 2 :=\n          sum_le_sum fun m _ => pow_le_pow_left₀ (norm_nonneg _) (hQ m) 2\n      _ = #R * (1.4262 ^ 2 * W) := by rw [sum_const, nsmul_eq_mul, mul_pow, sq_sqrt hW.le]\n      _ ≤ _ := by gcongr",
+            "line": 412,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_IIsum_le",
+            "lines": [
+              330,
+              431
+            ],
+            "conclusion": "`∑_m ‖Q m‖² ≤ (x/2W + 1)(1.4262² W)`, the bound on `S₃(W)` (`1.4262²/2 = 1.01703`, `1.4262² = 2.03405`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIReduction.lean",
+            "fragment": "L412-L416"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          118
+        ],
+        "printed": [
+          108
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

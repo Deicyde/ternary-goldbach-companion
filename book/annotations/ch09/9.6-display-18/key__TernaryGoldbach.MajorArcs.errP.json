@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 18",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's error term (err942N) has different constants and shape than (9.70) and is bounded with 1e-17/sqrt q pieces, not the displayed 1.3482e-14+1.617e-10/q+...",
+  "subject": [
+    {
+      "location": {
+        "page": 206,
+        "rect": [
+          0.25926,
+          0.18195,
+          0.56816,
+          0.18494
+        ]
+      },
+      "title": "Display, p. 196",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.errP",
+        "module": "TernaryGoldbach.MajorArcs.Prop942",
+        "lines": [
+          49,
+          53
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.errP"
+          },
+          "snippet": {
+            "text": "/-- The error term for `q ≥ 2`. -/\nnoncomputable def errP (q : ℕ) (T0 δ x : ℝ) : ℝ :=\n  Cg * 300 * (2 * aH) * Z3g (BP q) 0 / x + E1g (BP q) T0 (2 * π * 0.6403) (2 * π * 1.129) / √x +\n    E2g (BP q) 11 T0 (Cg * (2 * aH) * EB (T0 - 200)) (Cg * (2 * aH) * EA (T0 - 200) δ) rhoB (rhoA δ) +\n    VgL (DN q) (Cg * (300 * Real.exp 1) * (2 * aH)) (thP δ) / (2 * π * (x * √x))",
+            "line": 49,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.errP",
+            "lines": [
+              49,
+              53
+            ],
+            "conclusion": "The Lean error term for q>=2 is E0/x+E1/sqrt x+E2+V/(2 pi x sqrt x) with Z3g, E1g, E2g, VgL."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop942.lean",
+            "fragment": "L49-L53"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          206
+        ],
+        "printed": [
+          196
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

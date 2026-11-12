@@ -1,0 +1,81 @@
+{
+  "id": "14.4 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] has the same split and sign argument but weaker constants (1.049 and 1.0376 for 1.058259 and 1.00948), giving 0.0114 x²/κ instead of 0.04877 x²/κ; the lower bound is stated for `repSum True N` (the integral by `circle_identity_input`) rather than for the integral.",
+  "subject": [
+    {
+      "location": {
+        "page": 285,
+        "rect": [
+          0.17135,
+          0.64583,
+          0.56816,
+          0.15268
+        ]
+      },
+      "title": "Display, p. 275",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.4 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.major_arcs_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs",
+        "lines": [
+          76,
+          78
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.major_arcs_input"
+          },
+          "snippet": {
+            "text": "theorem major_arcs_input (N : ℕ) (hN : Odd N) (hN27 : 10 ^ 27 ≤ N) :\n    1.049 * xOf N ^ 2 / κ ≤\n      (∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ (xOf N), integrand N α).re := by",
+            "line": 76,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.major_arcs_input",
+            "lines": [
+              67,
+              91
+            ],
+            "conclusion": "`Re ∫_{𝔐_{8,r₀}} S_{η₊}² S_{η_*} e(-Nα) dα ≥ 1.049 x²/κ` for odd `N ≥ 10²⁷`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "fragment": "L76-L78"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          285
+        ],
+        "printed": [
+          275
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

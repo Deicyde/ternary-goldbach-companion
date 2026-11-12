@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.1 step 25",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds each term by the integral of G over [u-1,u] by monotonicity (fq_anti), not by convexity over [r'-1±qδ₂, r'±qδ₂] of C/sin² beyond arcsin; the A-term count part is absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.26253,
+          0.30024,
+          0.56162,
+          0.05009
+        ]
+      },
+      "title": "Lemma 4.1.1 step 25: Text, p. 54",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_G_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          413,
+          427
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_G_le"
+          },
+          "snippet": {
+            "text": "  have hterm : ∀ i ∈ Finset.range m,\n      G (u₁ + i) ≤ ∫ u in (u₁ - 1 + i)..(u₁ - 1 + (i + 1 : ℕ)), G u := by\n    intro i hi\n    have hi' : (i : ℝ) + 1 ≤ m := by exact_mod_cast Finset.mem_range.1 hi\n    rw [intervalIntegral.integral_of_le (by push_cast; linarith)]\n    have hvol : volume.real (Ioc (u₁ - 1 + i) (u₁ - 1 + (i + 1 : ℕ))) = 1 := by\n      rw [Real.volume_real_Ioc_of_le (by push_cast; linarith)]; push_cast; ring\n    calc G (u₁ + i) = ∫ _ in Ioc (u₁ - 1 + i) (u₁ - 1 + (i + 1 : ℕ)), G (u₁ + i) := by\n          rw [setIntegral_const, hvol, one_smul]\n      _ ≤ _ := by\n          refine setIntegral_mono_on continuous_const.integrableOn_Ioc ((hII _ _).1) measurableSet_Ioc\n            fun v hv => ?_\n          simp only [mem_Ioc] at hv; push_cast at hv\n          exact min_le_min le_rfl (mul_le_mul_of_nonneg_left\n            (fq_anti hq (by linarith) (by linarith) (by linarith)) hC)",
+            "line": 413,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_G_le",
+            "lines": [
+              404,
+              457
+            ],
+            "conclusion": "Each term min(A, C f_q(u₁+i)) is at most ∫ of G = min(A, C f_q) over the unit interval [u₁+i-1, u₁+i], by monotonicity (`fq_anti`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L413-L427"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          54
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

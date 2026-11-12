@@ -1,0 +1,81 @@
+{
+  "id": "7 display 67",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "[L] has no named $Z_{r_0}$; the integral appears only inside the statement of `minor_total`, over the fundamental domain $(0,1]$ for $\\mathbb R/\\mathbb Z$.",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.20371,
+          0.51457,
+          0.63183,
+          0.04197
+        ]
+      },
+      "title": "Display, p. 69",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 67"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          324,
+          326
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "theorem minor_total {x : ℝ} (hx : 4.9e26 ≤ x) (hnum : NumericsGoal x) :\n    ∫ α in Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ x, ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 ≤\n      1.0376 * x ^ 2 / κ := by",
+            "line": 324,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "The minor-arc integral $\\int_{(0,1]\\setminus\\mathfrak M_{8,r_0}}|S_{\\eta_*}(\\alpha,x)||S_{\\eta_+}(\\alpha,x)|^2d\\alpha$ appears as the left side of `minor_total`, bounded by $1.0376x^2/\\varkappa$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L324-L326"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.3 display 35, the same LaTeX (mapper (sonnet); verifier (sonnet); judge (opus))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

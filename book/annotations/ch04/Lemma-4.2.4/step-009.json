@@ -1,0 +1,83 @@
+{
+  "id": "Lemma 4.2.4 step 9",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 82,
+        "rect": [
+          0.26253,
+          0.6175,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.4 step 9: Text, p. 72",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_sum_coefI2_div_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          452,
+          457
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_sum_coefI2_div_le"
+          },
+          "snippet": {
+            "text": "  refine (sum_le_sum hv).trans ?_\n  rw [← sum_mul]\n  have hC := sum_vonMangoldt_gcd_le hq1 hV\n  calc (∑ v ∈ Icc 1 NV, (Λ v : ℝ) * Nat.gcd q v / v) * (1 / q)\n      ≤ (Real.log q + Real.log V) * (1 / q) := mul_le_mul_of_nonneg_right hC (by positivity)\n    _ = _ := by ring",
+            "line": 452,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_sum_coefI2_div_le",
+            "lines": [
+              377,
+              457
+            ],
+            "conclusion": "Sums the per-`v` bounds and applies `sum_vonMangoldt_gcd_le`, concluding `|Σ_{a≤M, a odd, q∣a} c(a)/a| ≤ (log q + log V)/q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L452-L457"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          82
+        ],
+        "printed": [
+          72
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

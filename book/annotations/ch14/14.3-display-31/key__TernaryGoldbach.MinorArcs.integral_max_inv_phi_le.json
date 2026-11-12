@@ -1,0 +1,81 @@
+{
+  "id": "14.3 display 31",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has no c_φ; the K-averaging is replaced by `gx_scale_le` and `integral_max_inv_phi_le` (no 0.07455/log((log y)/2)).",
+  "subject": [
+    {
+      "location": {
+        "page": 284,
+        "rect": [
+          0.25926,
+          0.43077,
+          0.56816,
+          0.03868
+        ]
+      },
+      "title": "Display, p. 274",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.3 display 31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_max_inv_phi_le",
+        "module": "TernaryGoldbach.MinorArcs.PhiIntegrals",
+        "lines": [
+          113,
+          160
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_max_inv_phi_le"
+          },
+          "snippet": {
+            "text": "/-- **`∫_{w₀}^∞ max(1, 1/w) φ ≤ 1.398`**. -/\ntheorem integral_max_inv_phi_le {w₀ : ℝ} (hw₀ : 0 < w₀) (hw₀1 : w₀ ≤ 1) :\n    ∫ w in Ici w₀, max 1 (1 / w) * phi w ≤ 1.398 := by\n  have hsplit : Ici w₀ = Ioc w₀ 1 ∪ Ioi 1 ∪ {w₀} := by\n    ext w; simp only [mem_Ici, mem_union, mem_Ioc, mem_Ioi, mem_singleton_iff]\n    constructor\n    · intro h; rcases eq_or_lt_of_le h with h | h\n      · exact Or.inr h.symm\n      · left; by_cases h1 : w ≤ 1\n        · exact Or.inl ⟨h, h1⟩\n        · exact Or.inr (by linarith)\n    · rintro ((⟨h, _⟩ | h) | h) <;> linarith\n  have hint : IntegrableOn (fun w => max 1 (1 / w) * phi w) (Ici w₀) := by\n    refine (integrable_phi.const_mul (max 1 (1 / w₀))).integrableOn.mono' ?_ ?_\n    · exact ((measurable_const.max (measurable_const.div measurable_id)).mul\n        (by unfold phi; fun_prop)).aestronglyMeasurable\n    · refine (ae_restrict_iff' measurableSet_Ici).2 (Eventually.of_forall fun w (hw : w₀ ≤ w) => ?_)\n      have hw0 : 0 < w := lt_of_lt_of_le hw₀ hw\n      rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (le_max_of_le_left zero_le_one)\n        (phi_nonneg w))]\n      refine mul_le_mul_of_nonneg_right (max_le_max le_rfl ?_) (phi_nonneg w)\n      exact one_div_le_one_div_of_le hw₀ hw\n  rw [integral_Ici_eq_integral_Ioi, ← Ioc_union_Ioi_eq_Ioi hw₀1,\n    setIntegral_union (Ioc_disjoint_Ioi le_rfl) measurableSet_Ioi\n      (hint.mono_set (fun w hw => le_of_lt hw.1)) (hint.mono_set (fun w hw => le_of_lt\n        (lt_of_le_of_lt hw₀1 hw)))]\n  have e1 : ∫ w in Ioc w₀ 1, max 1 (1 / w) * phi w = ∫ w in Ioc w₀ 1, w * rexp (-w ^ 2 / 2) := by\n    refine setIntegral_congr_fun measurableSet_Ioc fun w hw => ?_\n    have hw0 : 0 < w := lt_trans hw₀ hw.1\n    rw [max_eq_right (by rw [le_div_iff₀ hw0]; linarith [hw.2])]\n    unfold phi; field_simp\n  have e2 : ∫ w in Ioi 1, max 1 (1 / w) * phi w = ∫ w in Ioi (1:ℝ), phi w := by\n    refine setIntegral_congr_fun measurableSet_Ioi fun w (hw : 1 < w) => ?_\n    rw [max_eq_left (by rw [div_le_iff₀ (by linarith)]; linarith), one_mul]\n  rw [e1, e2, integral_phi_Ioi_one]\n  have h1 := integral_mul_exp_Ioc_le hw₀1\n  -- `∫_1^∞ e^{-w²/2} = √(2π)/2 - ∫_0^1 e^{-w²/2}`\n  have hg := integral_gaussian_Ioi (1 / 2)\n  have hg' : ∫ w in Ioi (0:ℝ), rexp (-w ^ 2 / 2) = √(π / (1 / 2)) / 2 := by\n    rw [← hg]; congr 1; ext w; ring_nf\n  rw [← Ioc_union_Ioi_eq_Ioi zero_le_one, setIntegral_union (Ioc_disjoint_Ioi le_rfl)\n    measurableSet_Ioi integrable_exp_neg_sq_half.integrableOn\n    integrable_exp_neg_sq_half.integrableOn] at hg'\n  have h2 := integral_exp_Ioc_ge\n  have hpi : √(π / (1 / 2)) ≤ 2.50664 := by\n    rw [Real.sqrt_le_left (by norm_num), div_div_eq_mul_div]\n    have := Real.pi_lt_d6; nlinarith\n  linarith",
+            "line": 113,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_max_inv_phi_le",
+            "lines": [
+              113,
+              160
+            ],
+            "conclusion": "`∫_{w₀}^∞ max(1,1/w) φ(w) dw ≤ 1.398` for `0<w₀≤1`, the weight used in place of [H]'s K-averaging with C_{φ,2,K}."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/PhiIntegrals.lean",
+            "fragment": "L113-L160"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          284
+        ],
+        "printed": [
+          274
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

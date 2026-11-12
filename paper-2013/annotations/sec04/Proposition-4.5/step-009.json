@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 4.5 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "In [L] the $L_{2r}/r$ term is likewise independent of the scale, but because the per-scale parameter is $\\min(1,w)r$ (corrected $\\delta\\mapsto w\\delta$ scaling) it still uses monotonicity of $L$ for $w<1$.",
+  "subject": [
+    {
+      "location": {
+        "page": 29,
+        "rect": [
+          0.20698,
+          0.1451,
+          0.62529,
+          0.01863
+        ]
+      },
+      "title": "Proposition 4.5 step 9: Text, p. 29",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 4.5 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          149,
+          153
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one"
+          },
+          "snippet": {
+            "text": "  have hL : Lg (2 * (w * n)) / (w * n) ≤ Lg (2 * n) / n / w := by\n    rw [div_div, mul_comm n w]\n    exact div_le_div_of_nonneg_right (Lg_monotoneOn (show 2 * (w * n) ∈ Ici (1340 : ℝ) by\n      simp only [mem_Ici]; linarith) (show 2 * n ∈ Ici (1340 : ℝ) by simp only [mem_Ici]; linarith)\n      (by nlinarith)) (by positivity)",
+            "line": 149,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+            "lines": [
+              97,
+              167
+            ],
+            "conclusion": "For $w\\le1$: $L_{2wn}/(wn)\\le (L_{2n}/n)/w$ by `Lg_monotoneOn`; the $L$ term carries no dependence on the scale $wy$ (for $w\\ge1$ it is unchanged in `gx_scale_le_of_one_le`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L149-L153"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          29
+        ],
+        "printed": [
+          29
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 11.2.3 step 9, the same LaTeX (mapper (sonnet); verifier (sonnet); absence audit (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

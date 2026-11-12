@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves the maximum at r = 1/2 by a direct algebraic inequality on paired terms n, −n, not by convexity of 1/x².",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.26253,
+          0.78349,
+          0.56162,
+          0.02013
+        ]
+      },
+      "title": "Lemma 4.2.1 step 9: Text, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.pair_le_half",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          131,
+          157
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.pair_le_half"
+          },
+          "snippet": {
+            "text": "theorem pair_le_half {n r : ℝ} (hn : 1 ≤ n) (hr : |r| ≤ 1 / 2) :\n    1 / (n - r) ^ 2 + 1 / (n + r) ^ 2 ≤ 1 / (n - 1 / 2) ^ 2 + 1 / (n + 1 / 2) ^ 2 := by\n  have hr2 : r ^ 2 ≤ 1 / 4 := by\n    have := sq_abs r ▸ pow_le_pow_left₀ (abs_nonneg r) hr 2; linarith\n  have h1 : 0 < n - r := by linarith [neg_abs_le r, le_abs_self r]\n  have h2 : 0 < n + r := by linarith [neg_abs_le r, le_abs_self r]\n  have h3 : 0 < n - 1 / 2 := by linarith\n  have h4 : 0 < n + 1 / 2 := by linarith\n  have E : ∀ t, 0 < n - t → 0 < n + t →\n      1 / (n - t) ^ 2 + 1 / (n + t) ^ 2 = 2 * (n ^ 2 + t ^ 2) / (n ^ 2 - t ^ 2) ^ 2 := by\n    intro t ht1 ht2\n    have : n ^ 2 - t ^ 2 = (n - t) * (n + t) := by ring\n    rw [this]; field_simp; ring\n  have e1 := E r h1 h2\n  have e2 := E (1 / 2) h3 h4\n  rw [show ((1 : ℝ) / 2) ^ 2 = 1 / 4 by norm_num] at e2\n  rw [e1, e2]\n  have ha : 0 < n ^ 2 - r ^ 2 := by nlinarith\n  have hb : 0 < n ^ 2 - 1 / 4 := by nlinarith\n  rw [div_le_div_iff₀ (by positivity) (by positivity)]\n  -- `(N+a)(N-b)² ≤ (N+b)(N-a)²` with `a = r² ≤ b = 1/4`, `N = n² ≥ 1`.\n  have hN : 1 ≤ n ^ 2 := by nlinarith\n  have key : (n ^ 2 + 1 / 4) * (n ^ 2 - r ^ 2) ^ 2 - (n ^ 2 + r ^ 2) * (n ^ 2 - 1 / 4) ^ 2 =\n      (1 / 4 - r ^ 2) * (3 * (n ^ 2) ^ 2 - n ^ 2 * (r ^ 2 + 1 / 4) - r ^ 2 / 4) := by ring\n  have : 0 ≤ (1 / 4 - r ^ 2) * (3 * (n ^ 2) ^ 2 - n ^ 2 * (r ^ 2 + 1 / 4) - r ^ 2 / 4) := by\n    apply mul_nonneg (by linarith); nlinarith [sq_nonneg r]\n  nlinarith",
+            "line": 131,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.pair_le_half",
+            "lines": [
+              130,
+              157
+            ],
+            "conclusion": "For n ≥ 1, |r| ≤ 1/2: `1/(n−r)²+1/(n+r)² ≤ 1/(n−1/2)²+1/(n+1/2)²`, by direct algebra."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L131-L157"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.tsum_inv_sq_sub_le",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          170,
+          183
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.tsum_inv_sq_sub_le"
+          },
+          "snippet": {
+            "text": "theorem tsum_inv_sq_sub_le {r : ℝ} (hr : |r| ≤ 1 / 2) :\n    Summable (fun n : ℤ => if n = 0 then 0 else 1 / ((n : ℝ) - r) ^ 2) ∧\n      ∑' n : ℤ, (if n = 0 then 0 else 1 / ((n : ℝ) - r) ^ 2) ≤ π ^ 2 - 4 := by\n  rw [← hasSum_inv_sq_sub_half.tsum_eq]\n  refine summable_tsum_le_of_pair (fun n => by split_ifs <;> positivity) (fun n => ?_) hasSum_inv_sq_sub_half.summable\n  rcases Nat.eq_zero_or_pos n with rfl | hn\n  · simp\n  have hn' : (n : ℤ) ≠ 0 := by exact_mod_cast hn.ne'\n  have hn1 : (1 : ℝ) ≤ n := by exact_mod_cast hn\n  simp only [hn', neg_eq_zero, ite_false, Int.cast_neg, Int.cast_natCast]\n  have e1 : (-(n : ℝ) - r) ^ 2 = (n + r) ^ 2 := by ring\n  have e2 : (-(n : ℝ) - 1 / 2) ^ 2 = (n + 1 / 2) ^ 2 := by ring\n  rw [e1, e2]\n  exact pair_le_half hn1 hr",
+            "line": 170,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.tsum_inv_sq_sub_le",
+            "lines": [
+              169,
+              183
+            ],
+            "conclusion": "Pairs n and −n and applies `pair_le_half` to get `∑_{n≠0} 1/(n−r)² ≤ π²−4` for |r| ≤ 1/2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L170-L183"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.1.1 step 26",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Split point is `w = √(C/A)`, not `arcsin√(C/A)`; the bound `C cot w ≤ C/w` replaces `C√(A/C-1)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.26253,
+          0.35879,
+          0.56162,
+          0.07831
+        ]
+      },
+      "title": "Lemma 4.1.1 step 26: Display, p. 54",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_minInvSin_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          345,
+          362
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_minInvSin_le"
+          },
+          "snippet": {
+            "text": "    rw [← intervalIntegral.integral_add_adjacent_intervals (b := w) (hII _ _) (hII _ _)]\n    have h1 : ∫ v in (0:ℝ)..w, min A (C * (1 / Real.sin v ^ 2)) ≤ A * w := by\n      have := intervalIntegral.integral_mono_on hw.le (hII 0 w) intervalIntegrable_const\n        fun v _ => min_le_left A (C * (1 / Real.sin v ^ 2))\n      rw [intervalIntegral.integral_const, smul_eq_mul, sub_zero] at this\n      linarith\n    have hsinpos : ∀ v ∈ Icc w (π / 2), 0 < Real.sin v := fun v hv =>\n      Real.sin_pos_of_pos_of_lt_pi (by linarith [hv.1]) (by linarith [hv.2])\n    have h2 : ∫ v in w..(π / 2), min A (C * (1 / Real.sin v ^ 2)) ≤\n        C * (Real.cos w / Real.sin w) := by\n      have hcont : ContinuousOn (fun v => C * (1 / Real.sin v ^ 2)) (Icc w (π / 2)) :=\n        continuousOn_const.mul (continuousOn_const.div (Real.continuous_sin.continuousOn.pow 2)\n          fun v hv => pow_ne_zero 2 (hsinpos v hv).ne')\n      have := intervalIntegral.integral_mono_on hwpi.le (hII w (π / 2))\n        (hcont.intervalIntegrable_of_Icc hwpi.le) fun v _ => min_le_right A (C * (1 / Real.sin v ^ 2))\n      rw [intervalIntegral.integral_const_mul, integral_inv_sin_sq hw hwpi.le (by linarith),\n        Real.cos_pi_div_two, zero_div, sub_zero] at this\n      exact this",
+            "line": 345,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_minInvSin_le",
+            "lines": [
+              315,
+              374
+            ],
+            "conclusion": "Splits `∫_0^{π/2} min(A, C/sin²)` at `w=√(C/A)`: `∫_0^w ≤ Aw` and `∫_w^{π/2} ≤ C cot w`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L345-L362"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_inv_sin_sq",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          118,
+          135
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_inv_sin_sq"
+          },
+          "snippet": {
+            "text": "/-- `∫_a^b 1/sin² x dx = cot a - cot b` for `0 < a ≤ b < π`. -/\ntheorem integral_inv_sin_sq {a b : ℝ} (ha : 0 < a) (hab : a ≤ b) (hb : b < π) :\n    ∫ x in a..b, 1 / Real.sin x ^ 2 = Real.cos a / Real.sin a - Real.cos b / Real.sin b := by\n  have hsin : ∀ x ∈ uIcc a b, Real.sin x ≠ 0 := fun x hx => by\n    rw [uIcc_of_le hab] at hx\n    exact (Real.sin_pos_of_pos_of_lt_pi (by linarith [hx.1]) (by linarith [hx.2])).ne'\n  have hderiv : ∀ x ∈ uIcc a b,\n      HasDerivAt (fun x => -(Real.cos x / Real.sin x)) (1 / Real.sin x ^ 2) x := by\n    intro x hx\n    have h := ((Real.hasDerivAt_cos x).div (Real.hasDerivAt_sin x) (hsin x hx)).neg\n    convert h using 1\n    field_simp\n    rw [← Real.sin_sq_add_cos_sq x]; ring\n  rw [intervalIntegral.integral_eq_sub_of_hasDerivAt hderiv]\n  · ring\n  · refine ContinuousOn.intervalIntegrable ?_\n    exact continuousOn_const.div (Real.continuous_sin.continuousOn.pow 2)\n      fun x hx => pow_ne_zero 2 (hsin x hx)",
+            "line": 118,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_inv_sin_sq",
+            "lines": [
+              118,
+              135
+            ],
+            "conclusion": "`∫ 1/sin² = cot a - cot b`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L118-L135"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          54
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

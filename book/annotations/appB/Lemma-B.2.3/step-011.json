@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.2.3 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses log ρ ≥ log 4 to pass from the ρ=4 bound and the (B.6) bound to a bound ∝ log ρ, but not via the argument condition (B.12) and Lemma B.2.2.",
+  "subject": [
+    {
+      "location": {
+        "page": 304,
+        "rect": [
+          0.26253,
+          0.67788,
+          0.56162,
+          0.04711
+        ]
+      },
+      "title": "Lemma B.2.3 step 11: Text, p. 294",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.3 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2log_fourier_bound",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          231,
+          238
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2log_fourier_bound"
+          },
+          "snippet": {
+            "text": "  calc (2 * π * t) ^ 2 * ‖B + (Real.log ρ : ℂ) * A‖\n      ≤ (2 * π * t) ^ 2 * ‖B + (Real.log 4 : ℂ) * A‖ +\n          (Real.log ρ - Real.log 4) * ((2 * π * t) ^ 2 * ‖A‖) := by\n        have := mul_le_mul_of_nonneg_left hn hk0; nlinarith\n    _ ≤ 48 * Real.log 2 + (Real.log ρ - Real.log 4) * c₀ := by\n        have := mul_le_mul_of_nonneg_left hA (by linarith : 0 ≤ Real.log ρ - Real.log 4)\n        linarith\n    _ ≤ c₀ * Real.log ρ := by unfold c₀; nlinarith",
+            "line": 231,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eta2log_fourier_bound",
+            "lines": [
+              198,
+              238
+            ],
+            "conclusion": "Final `calc`: (2πt)^2‖B+log ρ·A‖ ≤ 48 log 2 + (log ρ - log 4)·c₀ ≤ c₀ log ρ, combining the ρ=4 bound and (B.6) by the triangle inequality, with log ρ ≥ log 4 (`hL`, line 217)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L231-L238"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          304
+        ],
+        "printed": [
+          294
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

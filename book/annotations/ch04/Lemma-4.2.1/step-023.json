@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.1 step 23",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same case and same use of the first bound, with Lean's c₂ = 6π/(5√c₀) and unrounded Q; the first bound is the block bound of `sum_A1` via Lemma 4.1.2 rather than Lemma 4.1.1.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.26253,
+          0.14891,
+          0.56162,
+          0.05439
+        ]
+      },
+      "title": "Lemma 4.2.1 step 23: Text, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1346,
+          1348
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseA"
+          },
+          "snippet": {
+            "text": "theorem lemma_4_2_2_caseA {α x δ Q₀ D : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q₀)\n    (hD : 1 ≤ D) (hDx : D ≤ x) (hδ : 1 / (2 * c₂) ≤ |δ|) {ε : ℝ} (hε : 0 < ε) :\n    ‖typeI α x D‖ ≤ bound_4_30 x δ q D + bound_4_32 x δ q D Q₀ ε := by",
+            "line": 1346,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseA",
+            "lines": [
+              1344,
+              1369
+            ],
+            "conclusion": "Case (a) hypothesis `1/(2c₂) ≤ |δ|` with conclusion (4.30)+(4.32)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1346-L1348"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1150,
+          1156
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hqM : q * M / x ≤ c₂ := by\n    have h1 : q * M / x ≤ q * (Qr / 2) / x := by gcongr\n    have h2 : (q : ℝ) * (Qr / 2) / x = 1 / (2 * |δ|) := by rw [hQrdef]; field_simp\n    have h3 : 1 / (2 * |δ|) ≤ c₂ := by\n      rw [div_le_iff₀ (by positivity)]\n      rw [div_le_iff₀ (by positivity)] at hδ; linarith\n    linarith",
+            "line": 1150,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "Shows `qM/x ≤ c₂` (M ≤ c₂x/q) from `M ≤ Qr/2` and `1/(2c₂) ≤ |δ|`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1150-L1156"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1180,
+          1195
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hA1 := sum_A1 hx hq hcop h2α hqQr hexact.le hM0.le hMQ (α := α)\n  have hA1' : ∑ n ∈ Ioc ⌊(0 : ℝ)⌋ ⌊M⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      2 * √c₀ / π * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q := by\n    refine hA1.trans ?_\n    have e1 : (q : ℝ) * M ^ 2 / x ≤ c₂ * M := by\n      have : (q : ℝ) * M ^ 2 / x = (q * M / x) * M := by ring\n      rw [this]; exact mul_le_mul_of_nonneg_right hqM hM0.le\n    have e2 : 3 * (q : ℝ) ^ 2 * M / x ≤ 3 * c₂ * q := by\n      have : 3 * (q : ℝ) ^ 2 * M / x = 3 * q * (q * M / x) := by ring\n      rw [this]; nlinarith\n    have e3 : 2 * (q : ℝ) ^ 3 / x ≤ 4 * c₂ * q := by\n      rw [div_le_iff₀ hx]; nlinarith\n    calc 5 * c₀ / (3 * π ^ 2) * (q * M ^ 2 / x + 3 * q ^ 2 * M / x + 2 * q ^ 3 / x)\n        ≤ 5 * c₀ / (3 * π ^ 2) * (c₂ * M + 3 * c₂ * q + 4 * c₂ * q) := by gcongr\n      _ = 5 * c₀ * c₂ / (3 * π ^ 2) * M + 35 * c₀ * c₂ / (3 * π ^ 2) * q := by ring\n      _ = _ := by rw [c₂_identity]",
+            "line": 1180,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "Bounds `∑_{n≤M, q∤n}|T_n|` by `sum_A1` (first bound) and simplifies with `c₂_identity`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1180-L1195"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

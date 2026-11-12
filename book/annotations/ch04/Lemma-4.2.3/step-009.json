@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.3 step 9",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean has `Odd q` in the identity and treats even `q` by `mainPartL=0`; vanishing for even `m` is built into the definition of `typeILog` (sum over odd `m`).",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17462,
+          0.36955,
+          0.56162,
+          0.01476
+        ]
+      },
+      "title": "Lemma 4.2.3 step 9: Text, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.moebius_odd_term_w",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          152,
+          167
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.moebius_odd_term_w"
+          },
+          "snippet": {
+            "text": "/-- `[m odd] μ(qm)/m · w(m) = μ(q) [(m, 2q) = 1] μ(m)/m · w(m)` for `q` odd. -/\ntheorem moebius_odd_term_w {q : ℕ} (hq : Odd q) (m : ℕ) (w : ℝ) :\n    (if Odd m then ((μ (q * m) : ℤ) : ℝ) / m * w else 0) =\n      (μ q : ℝ) * (if Nat.Coprime m (2 * q) then (μ m : ℝ) / m * w else 0) := by\n  have h := moebius_odd_term hq m\n  by_cases hm : Odd m\n  · rw [if_pos hm] at h ⊢\n    by_cases hc : Nat.Coprime m (2 * q)\n    · rw [if_pos hc] at h ⊢\n      rw [h]; ring\n    · rw [if_neg hc] at h ⊢\n      rw [h]; ring\n  · rw [if_neg hm]\n    have hc : ¬ Nat.Coprime m (2 * q) := fun hc =>\n      hm (Nat.coprime_two_right.1 (Nat.Coprime.coprime_mul_right_right hc))\n    rw [if_neg hc, mul_zero]",
+            "line": 152,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.moebius_odd_term_w",
+            "lines": [
+              152,
+              167
+            ],
+            "conclusion": "For odd `q`: `[m odd] μ(qm)/m · w(m) = μ(q) [(m,2q)=1] μ(m)/m · w(m)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L152-L167"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartL_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          220,
+          224
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPartL_le"
+          },
+          "snippet": {
+            "text": "  rcases Nat.even_or_odd q with hqe | hqo\n  · have : mainPartL α x M q = 0 := by\n      refine sum_eq_zero fun m' _ => ?_\n      rw [if_neg]; rw [Nat.not_odd_iff_even]; exact hqe.mul_right m'\n    rw [this, norm_zero]; linarith",
+            "line": 220,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartL_le",
+            "lines": [
+              181,
+              377
+            ],
+            "conclusion": "For even `q` the main part is zero (no odd `qm'`); for odd `q` the odd `m'` are those coprime to 2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L220-L224"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

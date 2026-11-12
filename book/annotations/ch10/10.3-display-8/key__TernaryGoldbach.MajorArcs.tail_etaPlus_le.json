@@ -1,0 +1,81 @@
+{
+  "id": "10.3 display 8",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] compares eta_+ with eta_circ through |a|^2 <= 2|b|^2+2|a-b|^2 and the tail, per modulus and uniformly in q; it does not form the cross term 2<|eta_circ^|,|eta^-eta_circ^|> or the q-summed error (1/2 log r + 0.85).",
+  "subject": [
+    {
+      "location": {
+        "page": 220,
+        "rect": [
+          0.25926,
+          0.17927,
+          0.56816,
+          0.20606
+        ]
+      },
+      "title": "Display, p. 210",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.3 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.tail_etaPlus_le",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusL2",
+        "lines": [
+          157,
+          159
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.tail_etaPlus_le"
+          },
+          "snippet": {
+            "text": "/-- **Tail of `η̂₊`**: `∫_{|ξ| ≥ T} |η̂₊|² ≤ 2·98/(2πT)⁴ + 19.5/200²`. -/\ntheorem tail_etaPlus_le {T : ℝ} (hT : 0 < T) :\n    ∫ ξ in {ξ : ℝ | T ≤ |ξ|}, ‖𝓕 etaPC ξ‖ ^ 2 ≤ 2 * (98 / (2 * π * T) ^ 4) + 19.5 / 200 ^ 2 := by",
+            "line": 157,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.tail_etaPlus_le",
+            "lines": [
+              157,
+              195
+            ],
+            "conclusion": "$\\int_{|\\xi|\\ge T}|\\widehat{\\eta_+}|^2\\le2\\cdot98/(2\\pi T)^4+19.5/200^2$, via $|\\widehat{\\eta_+}|^2\\le2|\\widehat{\\eta_\\circ}|^2+2|\\widehat{\\eta_+-\\eta_\\circ}|^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusL2.lean",
+            "fragment": "L157-L159"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          220
+        ],
+        "printed": [
+          210
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

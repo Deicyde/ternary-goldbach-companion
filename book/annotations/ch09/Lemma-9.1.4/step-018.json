@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.4 step 18",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's analogue of the main-term bound is Z(1/h)sqrt(2pi*0.6647*2Jh) for the fixed eta, with no sqrt((log(qT0/2pi e))^2+1) factor and with Jensen multiplicity Z in place of the density (1/pi)log.",
+  "subject": [
+    {
+      "location": {
+        "page": 184,
+        "rect": [
+          0.26253,
+          0.17136,
+          0.56162,
+          0.0397
+        ]
+      },
+      "title": "Lemma 9.1.4 step 18: Display, p. 174",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4 step 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.sum_window_fline_le",
+        "module": "TernaryGoldbach.Explicit.LineZeros",
+        "lines": [
+          190,
+          195
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.sum_window_fline_le"
+          },
+          "snippet": {
+            "text": "  have h1 := intervalIntegral_norm_le_sqrt (continuous_fline δ) (integrable_norm_sq_fline δ)\n    (by positivity) (integral_norm_sq_fline_le δ) (a := -(J * h)) (b := J * h) (by linarith)\n  have h2 := intervalIntegral_norm_le_sqrt (continuous_flineD δ) (integrable_norm_sq_flineD δ)\n    (by positivity) (integral_norm_sq_flineD_le δ) (a := -(J * h)) (b := J * h) (by linarith)\n  rw [e] at h1 h2\n  have := mul_le_mul_of_nonneg_left h1 (by positivity : (0:ℝ) ≤ 1 / h)",
+            "line": 190,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.sum_window_fline_le",
+            "lines": [
+              179,
+              196
+            ],
+            "conclusion": "Cauchy-Schwarz plus Plancherel give $\\frac1h\\int_{-Jh}^{Jh}|G_\\delta(1/2+it)|dt\\le\\frac1h\\sqrt{2\\pi\\cdot0.6647\\cdot2Jh}$, Lean's main term."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LineZeros.lean",
+            "fragment": "L190-L195"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          184
+        ],
+        "printed": [
+          174
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

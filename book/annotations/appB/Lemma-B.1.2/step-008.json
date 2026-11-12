@@ -1,0 +1,120 @@
+{
+  "id": "Lemma B.1.2 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same step (derivative bound on $4g+\\widehat f$ giving a per-cell sampling error) but first-order: Lipschitz constant $24$ in $x$ and error $12\\cdot$width, instead of $|(4g+\\widehat f)''|\\le 48\\pi^2$ and $24\\pi^2\\delta_1^2$; only on $0\\le t\\le 2$ with adaptive bisection, not $\\delta_1=0.001$.",
+  "subject": [
+    {
+      "location": {
+        "page": 303,
+        "rect": [
+          0.17462,
+          0.15529,
+          0.56162,
+          0.04901
+        ]
+      },
+      "title": "Lemma B.1.2 step 8: Text, p. 293",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.1.2 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_sub_le",
+        "module": "TernaryGoldbach.MinorArcs.Eta2DDTaylor",
+        "lines": [
+          82,
+          103
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_eta2DD_sub_le"
+          },
+          "snippet": {
+            "text": "theorem norm_eta2DD_sub_le (x x' : ℝ) :\n    ‖eta2DD (x / (2 * π)) - eta2DD (x' / (2 * π))‖ ≤ 24 * |x - x'| := by\n  have h1 := norm_e_sub_le (1 / 2) x x' (by norm_num)\n  have h2 := norm_e_sub_le (1 / 4) x x' (by norm_num)\n  have h3 := norm_e_sub_le 1 x x' (by norm_num)\n  have h4 := norm_Jq_sub_le (a := 1 / 4) (b := 1 / 2) (x := x) (x' := x') (by norm_num) (by norm_num)\n  have h5 := norm_Jq_sub_le (a := 1 / 2) (b := 1) (x := x) (x' := x') (by norm_num) (by norm_num)\n  have hE : eta2DD (x / (2 * π)) - eta2DD (x' / (2 * π)) =\n      16 * (e (-(1 / 2 * (x / (2 * π)))) - e (-(1 / 2 * (x' / (2 * π))))) -\n      16 * (e (-(1 / 4 * (x / (2 * π)))) - e (-(1 / 4 * (x' / (2 * π))))) -\n      4 * (e (-(1 * (x / (2 * π)))) - e (-(1 * (x' / (2 * π))))) +\n      4 * (Jq (1 / 4) (1 / 2) (x / (2 * π)) - Jq (1 / 4) (1 / 2) (x' / (2 * π))) -\n      4 * (Jq (1 / 2) 1 (x / (2 * π)) - Jq (1 / 2) 1 (x' / (2 * π))) := by\n    unfold eta2DD; ring\n  rw [hE]\n  have n4 : ‖(4 : ℂ)‖ = 4 := by norm_num\n  have n16 : ‖(16 : ℂ)‖ = 16 := by norm_num\n  have hd := abs_nonneg (x - x')\n  refine (norm_five_le _ _ _ _ _).trans ?_\n  simp only [norm_mul, n4, n16]\n  norm_num at h4 h5\n  nlinarith",
+            "line": 82,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_sub_le",
+            "lines": [
+              81,
+              103
+            ],
+            "conclusion": "$\\eta_2$'s $-(4g+\\widehat f)$ (`eta2DD`) is $24$-Lipschitz in $x=2\\pi t$, combining the bounds on the point-mass and $\\widehat f$ parts."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2DDTaylor.lean",
+            "fragment": "L82-L103"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.cellC_sound",
+        "module": "TernaryGoldbach.MinorArcs.Eta2DDTaylor",
+        "lines": [
+          372,
+          378
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.cellC_sound"
+          },
+          "snippet": {
+            "text": "  have hL := norm_eta2DD_sub_le x xc\n  have hd : |x - (xc : ℝ)| ≤ ((x1 : ℝ) - x0) / 2 := by\n    simp only [xc]; push_cast; rw [abs_le]; constructor <;> linarith\n  have hMdef : (M : ℝ) = 32 - 12 * ((x1 : ℝ) - x0) - errC := by simp only [M]; push_cast; ring\n  have := norm_sub_norm_le (eta2DD (x / (2 * π))) (eta2DD ((xc : ℝ) / (2 * π)))\n  have := norm_sub_norm_le (eta2DD ((xc : ℝ) / (2 * π))) (PN Nc xc)\n  linarith",
+            "line": 372,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.cellC_sound",
+            "lines": [
+              339,
+              378
+            ],
+            "conclusion": "Sampling error on a grid cell: the value at any $x$ in $[x_0,x_1]$ differs from the centre value by at most $12(x_1-x_0)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2DDTaylor.lean",
+            "fragment": "L372-L378"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          303
+        ],
+        "printed": [
+          293
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.6 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no check at r = 175 and monotone-left-side argument; it proves Q' <= Q/2 uniformly on s in [6, B-2.5] by explicit bounds, hence for r >= 670 only.",
+  "subject": [
+    {
+      "location": {
+        "page": 30,
+        "rect": [
+          0.20698,
+          0.25452,
+          0.62529,
+          0.03363
+        ]
+      },
+      "title": "Lemma 4.6 step 7: Text, p. 30",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.6 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          163,
+          213
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.QA_antitoneOn"
+          },
+          "snippet": {
+            "text": "theorem QA_antitoneOn {B : ℝ} (hB : 8.5 ≤ B) :\n    AntitoneOn (fun s => QA B s * rexp (-(1 / 2) * s)) (Icc 6 (B - 2.5)) := by\n  have hl2 : 0.69 ≤ Real.log 2 := by have := Real.log_two_gt_d9; linarith\n  have hl8 : 0 ≤ Real.log 8 := Real.log_nonneg (by norm_num)\n  refine antitoneOn_mul_exp_neg (Q' := fun s =>\n      (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * (Real.log 2 + s) +\n        Rs B s) * √(Fs s) + (Rs B s * (Real.log 2 + s) + 0.8764) *\n        ((rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2)) / (2 * √(Fs s))))\n    (fun s hs => ?_) (fun s hs => ?_)\n  · obtain ⟨hs1, hs2⟩ := hs\n    have hsB : s < B := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have hRd := Rs_hasDerivAt (B := B) (s := s) (by linarith) hsB\n    have hFd := (Fs_hasDerivAt (show (1:ℝ) < s by linarith)).sqrt (by linarith)\n    have hlin : HasDerivAt (fun s => Real.log 2 + s) 1 s := (hasDerivAt_id s).const_add _\n    unfold QA\n    exact (((hRd.mul hlin).add_const 0.8764).mul hFd).congr_deriv (by simp only [Pi.mul_apply]; ring)\n  · obtain ⟨hs1, hs2⟩ := hs\n    simp only [QA]\n    have hsB : s < B := by linarith\n    have hBs : 2.5 ≤ B - s := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have ha : 0 < √(Fs s) := Real.sqrt_pos.2 (by linarith)\n    have ha2 : √(Fs s) ^ 2 = Fs s := Real.sq_sqrt (by linarith)\n    have hR := Rs_ge (B := B) (s := s) (by linarith) hsB\n    have hRd := Rs_deriv_le (B := B) (s := s) (by linarith) hsB\n    have hRd' : 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.1085 := by\n      refine hRd.trans ?_\n      rw [div_le_iff₀ (by linarith)]; nlinarith\n    have hFd := Fs_deriv_le (show (1:ℝ) < s by linarith)\n    set D := rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2) with hD\n    have hD' : D ≤ 0.29804 := by\n      refine hFd.trans ?_; rw [div_le_iff₀ (by linarith)]; nlinarith\n    -- `D/(2√Ϝ) ≤ 0.0393 √Ϝ`\n    have hq : D / (2 * √(Fs s)) ≤ 0.0393 * √(Fs s) := by\n      rw [div_le_iff₀ (by positivity)]; nlinarith\n    set L := Real.log 2 + s\n    have hL : 6.69 ≤ L := by simp only [L]; linarith\n    set N := Rs B s * L + 0.8764\n    have hN : 0 ≤ N := by positivity\n    set a := √(Fs s)\n    have hRL : 0 ≤ 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) := by\n      have : 0 < 2 * B - s + Real.log 8 := by linarith\n      positivity\n    have t1 : (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * L + Rs B s) * a\n        ≤ (0.1085 * L + Rs B s) * a := by gcongr\n    have t2 : N * (D / (2 * a)) ≤ N * (0.0393 * a) := mul_le_mul_of_nonneg_left hq hN\n    -- `0.1085 L + R + 0.0393 N ≤ N/2`\n    have key : 0.1085 * L + Rs B s + 0.0393 * N ≤ 1 / 2 * N := by\n      simp only [N]; nlinarith\n    nlinarith [mul_le_mul_of_nonneg_right key ha.le]",
+            "line": 163,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+            "lines": [
+              163,
+              213
+            ],
+            "conclusion": "Main-term monotonicity for s in [6, B-2.5] via antitoneOn_mul_exp_neg, with elasticity bounds for R, log 2r and sqrt(Ϝ)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L163-L213"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          30
+        ],
+        "printed": [
+          30
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

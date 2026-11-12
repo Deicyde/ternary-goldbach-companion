@@ -1,0 +1,84 @@
+{
+  "id": "2.1 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Mathlib's `Λ`; `Real.log (minFac n)` is `log p` for `n = p^α`.",
+  "subject": [
+    {
+      "location": {
+        "page": 41,
+        "rect": [
+          0.17135,
+          0.52843,
+          0.56816,
+          0.03931
+        ]
+      },
+      "title": "Display, p. 31",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2.1 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "ArithmeticFunction.vonMangoldt",
+        "module": "Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt",
+        "lines": [
+          56,
+          67
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "ArithmeticFunction.vonMangoldt"
+          },
+          "snippet": {
+            "text": "/--\nThe `vonMangoldt` function is the function on natural numbers that returns `log p` if the input can\nbe expressed as `p^k` for a prime `p`.\nIn the case when `n` is a prime power, `Nat.minFac` will give the appropriate prime, as it is the\nsmallest prime factor.\n\nIn the `ArithmeticFunction` locale, we have the notation `Λ` for this function.\nThis is also available in the `ArithmeticFunction.vonMangoldt` locale, allowing for selective\naccess to the notation.\n-/\nnoncomputable def vonMangoldt : ArithmeticFunction ℝ :=\n  ⟨fun n => if IsPrimePow n then Real.log (minFac n) else 0, ite_eq_right not_isPrimePow_zero⟩",
+            "line": 56,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "ArithmeticFunction.vonMangoldt",
+            "lines": [
+              56,
+              67
+            ],
+            "conclusion": "`Λ n = log (minFac n)` if `n` is a prime power, else `0`: `log p` for `n = p^α`, `α ≥ 1`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/NumberTheory/ArithmeticFunction/VonMangoldt.lean",
+            "fragment": "L56-L67"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          41
+        ],
+        "printed": [
+          31
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

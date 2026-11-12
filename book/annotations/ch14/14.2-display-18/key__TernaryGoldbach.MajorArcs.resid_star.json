@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 18",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "This numerical bound is for the cross-term error $E_{\\eta_*}A_{\\eta_+}+E_{\\eta_+}(\\ldots)|\\eta_*|_2$; [L] bounds the analogous error with residual bounds $7.83\\cdot10^{-13}x^2$, $1.34\\cdot10^{-11}y^2$ and `pointwise_bound` ($3.67\\cdot10^{-6}x/\\kappa$ and $8.85\\cdot10^{-7}x$ coefficients), not by this expression.",
+  "subject": [
+    {
+      "location": {
+        "page": 276,
+        "rect": [
+          0.25926,
+          0.52295,
+          0.56816,
+          0.07219
+        ]
+      },
+      "title": "Display, p. 266",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.resid_star",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          263,
+          296
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.resid_star"
+          },
+          "snippet": {
+            "text": "/-- **`η_*`**: `|S_{η_*}(b/q + β) − μ(q)/φ(q) η̂(−βy) y|² ≤ 1.34·10⁻¹¹ y²` (`y = x/κ`) for each `b`. -/\ntheorem resid_star {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) {β : ℝ}\n    (hβ : |β * x| ≤ 1200000 / qt q) {b : ℕ} (hb : b ∈ Bset q) :\n    ‖S etaStar x ((b : ℝ) / q + β) - (μ q : ℂ) / q.totient *\n        (𝓕 (fun u => (etaU u : ℂ)) (-(β * (x / κ))) * ((x / κ : ℝ) : ℂ))‖ ^ 2 ≤ 1.34e-11 * (x / κ) ^ 2 := by\n  obtain ⟨hq1, hqt', hq3⟩ := mem_Qset_bounds hq\n  haveI : NeZero q := ⟨by omega⟩\n  have hx0 : 0 < x := by linarith\n  set y := x / κ with hy\n  have hy0 : 0 < y := by rw [hy]; exact div_pos hx0 kappa_pos\n  set a := coprimePart q (cU y)\n  have ha : Summable fun n => ‖a n‖ :=\n    (summable_cU hy0).of_nonneg_of_le (fun n => norm_nonneg _) (TernaryGoldbach.MinorArcs.norm_coprimePart_le q _)\n  have hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q := fun n hn => by\n    by_contra h; exact hn (by simp [a, TernaryGoldbach.MinorArcs.coprimePart, h])\n  obtain ⟨⟨-, hup⟩, hpr⟩ := arc_chars_star hx hq1 hqt' hβ\n  have hE : ∑ b ∈ Bset q, ‖expTsum a ((b : ℝ) / q + β) - (μ q : ℂ) / q.totient * expTsum a β‖ ^ 2 ≤\n      (1.49e-6 * y) ^ 2 := by\n    rw [sum_Bset_sq_sub_principal ha hcop]; linarith\n  have h := sum_residual_le (T := S etaStar x) (S' := expTsum a) (m := (μ q : ℂ) / q.totient)\n    (A := 𝓕 (fun u => (etaU u : ℂ)) (-(β * y)) * ((y : ℝ) : ℂ)) (q := q) (β := β) (D := 1e-12 * y)\n    (fun α => norm_S_star_sub_coprime_le hx hq1 hq3 α) (by positivity) hE hpr\n  have hφ := totient_bounds hq1 hq3\n  have hm := totient_mul_norm_sq_le hq1\n  have hsingle := Finset.single_le_sum\n    (f := fun b : ℕ => ‖S etaStar x ((b : ℝ) / q + β) - (μ q : ℂ) / q.totient *\n      (𝓕 (fun u => (etaU u : ℂ)) (-(β * y)) * ((y : ℝ) : ℂ))‖ ^ 2) (fun _ _ => by positivity) hb\n  refine hsingle.trans (h.trans ?_)\n  have h1 : (q.totient : ℝ) * (1e-12 * y) ^ 2 ≤ 300000 * (1e-12 * y) ^ 2 :=\n    mul_le_mul_of_nonneg_right hφ.2 (by positivity)\n  have h2 : (q.totient : ℝ) * ‖(μ q : ℂ) / q.totient‖ ^ 2 * (1.49e-6 * y) ^ 2 ≤ (1.49e-6 * y) ^ 2 := by\n    have := mul_le_mul_of_nonneg_right hm (by positivity : (0:ℝ) ≤ (1.49e-6 * y) ^ 2)\n    linarith\n  nlinarith",
+            "line": 263,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.resid_star",
+            "lines": [
+              263,
+              296
+            ],
+            "conclusion": "$|S_{\\eta_*}(b/q+\\beta)-\\mu(q)/\\phi(q)\\,\\widehat{\\eta}(-\\beta y)y|^2\\le1.34\\cdot10^{-11}y^2$, $y=x/\\kappa$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L263-L296"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          276
+        ],
+        "printed": [
+          266
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

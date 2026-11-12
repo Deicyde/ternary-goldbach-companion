@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 9.5.1 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's residue term is the Z3g term fed by `‖mellin phi 0‖` bounds; no explicit $c_0$ nor $\\eta_{+,2}(0)=0$ step.",
+  "subject": [
+    {
+      "location": {
+        "page": 199,
+        "rect": [
+          0.17462,
+          0.68282,
+          0.56162,
+          0.03177
+        ]
+      },
+      "title": "Proposition 9.5.1 step 10: Text, p. 189",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          276,
+          291
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le"
+          },
+          "snippet": {
+            "text": "/-- **`η₊²`**: `|Σ Λ(n) η₊²(n/x) − x ∫η₊²| ≤ G₀ Z₃ + √x E₁ + x E₂ + x^{−1/2} V/2π` under RH up to `500`. -/\ntheorem norm_SsumG_phi1_le {x : ℝ} (hx : 1 ≤ x)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ 500 → ρ.re = 1 / 2) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) phi1 x - mellin phi1 1 * x‖ ≤\n      (Cg * (2 * aH)) ^ 2 * 8 * Z3g BPz2 0 + √x * E1g BPz2 500 (2 * π * 65.5) (2 * π * 147.7) +\n      x * E2g BPz2 10 500 ((Cg * (2 * aH)) ^ 2 * 8 * Real.exp (-60)) 0 (Real.exp (-2.64)) 0 +\n      x ^ (-(1 / 2) : ℝ) * VgL 3 ((Cg * (2 * aH)) ^ 2 * 8 * Real.exp 1) (1 / 400) / (2 * π) := by\n  have hp := plancherelData_phi1\n  refine norm_SsumG_zeta_le_gen goodSmoothing_phi1 hx (by norm_num) hRH phi1_zero (mellin_half_eq phi1)\n    (hasDerivAt_flineG hp) (continuous_flineDG hp) (by positivity) (by positivity)\n    (integrable_norm_sq_flineG hp) (integrable_norm_sq_flineDG hp) ?_ ?_ (by positivity) le_rfl\n    (Real.exp_pos _).le rhoP_lt_one le_rfl zero_lt_one phi1_tail (by norm_num) (by positivity) phi1_vert\n  · rw [integral_norm_sq_flineG hp]\n    exact mul_le_mul_of_nonneg_left integral_phi1_sq_le (by positivity)\n  · rw [integral_norm_sq_flineDG hp]\n    exact mul_le_mul_of_nonneg_left integral_log_sq_phi1_sq_le (by positivity)",
+            "line": 276,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+            "lines": [
+              276,
+              291
+            ],
+            "conclusion": "Explicit-formula bound for $\\sum\\Lambda(n)\\eta_+^2(n/x)-x\\int\\eta_+^2$ under RH to 500, via the generic bound `norm_SsumG_zeta_le_gen`, with terms Z3g (residue/zero), E1g, E2g, and the x^{-1/2} VgL term."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L276-L291"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.phi1_zero",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          264,
+          266
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.phi1_zero"
+          },
+          "snippet": {
+            "text": "theorem phi1_zero : ‖mellin phi1 0‖ ≤ (Cg * (2 * aH)) ^ 2 * 8 := by\n  have h := norm_mellin_phi1_le (c := 0) le_rfl (by norm_num) (s := 0) (by simp) (by simp)\n  simpa using h",
+            "line": 264,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.phi1_zero",
+            "lines": [
+              264,
+              266
+            ],
+            "conclusion": "`‖mellin phi1 0‖ ≤ (Cg*2aH)^2*8`, the bound at the pole s=0 feeding the residue term Z3g."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L264-L266"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.phi2_zero",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+        "lines": [
+          268,
+          270
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.phi2_zero"
+          },
+          "snippet": {
+            "text": "theorem phi2_zero : ‖mellin phi2 0‖ ≤ 2 * ((Cg * (2 * aH)) ^ 2 * 8) := by\n  have h := norm_mellin_phi2_le (c := 0) le_rfl (by norm_num) (s := 0) (by simp; norm_num) (by simp; norm_num)\n  simpa using h",
+            "line": 268,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.phi2_zero",
+            "lines": [
+              268,
+              270
+            ],
+            "conclusion": "`‖mellin phi2 0‖ ≤ 2*((Cg*2aH)^2*8)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L268-L270"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          199
+        ],
+        "printed": [
+          189
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

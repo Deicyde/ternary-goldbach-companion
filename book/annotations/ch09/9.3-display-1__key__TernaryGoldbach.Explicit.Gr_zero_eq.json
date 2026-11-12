@@ -1,0 +1,81 @@
+{
+  "id": "9.3 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean has no separate F_δ; G_δ=Gr s δ 0 is defined by the integral with exponent s+1 (the F_δ(s+2) integrand), and Gr_zero_eq/mellin_fδ identify it with the Mellin transform of η e(δt).",
+  "subject": [
+    {
+      "location": {
+        "page": 188,
+        "rect": [
+          0.25926,
+          0.79543,
+          0.56816,
+          0.01738
+        ]
+      },
+      "title": "Display, p. 178",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.3 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.Gr_zero_eq",
+        "module": "TernaryGoldbach.Explicit.MellinRotate",
+        "lines": [
+          687,
+          699
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.Gr_zero_eq"
+          },
+          "snippet": {
+            "text": "theorem Gr_zero_eq (s : ℂ) (δ : ℝ) :\n    Gr s δ 0 = ∫ t in Ioi (0:ℝ), (t : ℂ) ^ (s - 1) *\n      (((t ^ 2 * Real.exp (-t ^ 2 / 2) : ℝ) : ℂ) * cexp (2 * π * I * δ * t)) := by\n  refine setIntegral_congr_fun measurableSet_Ioi fun t ht => ?_\n  have ht' : (t : ℂ) ≠ 0 := by exact_mod_cast (ne_of_gt (show (0:ℝ) < t from ht))\n  simp only [Jr, Complex.ofReal_zero, zero_mul, mul_zero, Complex.exp_zero, mul_one]\n  have e1 : (t : ℂ) ^ (s + 1) = (t : ℂ) ^ (s - 1) * (t : ℂ) ^ 2 := by\n    rw [show s + 1 = (s - 1) + 2 by ring, Complex.cpow_add _ _ ht']\n    norm_cast\n  rw [e1]\n  push_cast\n  rw [Complex.exp_add]\n  ring_nf",
+            "line": 687,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.Gr_zero_eq",
+            "lines": [
+              687,
+              699
+            ],
+            "conclusion": "`Gr s δ 0 = ∫_{t>0} t^{s-1}(t²e^{-t²/2})e(δt) dt` (the Mellin transform of η e(δt)), proved from the rotated integrand `Jr` whose power is r^{s+1}=r^{(s+2)-1}, the integrand of F_δ(s+2)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L687-L699"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          188
+        ],
+        "printed": [
+          178
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

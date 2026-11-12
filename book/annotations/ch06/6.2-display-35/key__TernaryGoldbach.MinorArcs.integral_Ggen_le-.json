@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 35",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same integral and bound with lower limit A (A = V gives the display); Lean carries the prefactor x sqrt(m/2phi)/(2 beta) instead of beta^{-1} x/sqrt(phi), and sqrt((x/UV)/U) is written sqrt(x/V)/U.",
+  "subject": [
+    {
+      "location": {
+        "page": 121,
+        "rect": [
+          0.17135,
+          0.81355,
+          0.56816,
+          0.04522
+        ]
+      },
+      "title": "Display, p. 111",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          273,
+          276
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_Ggen_le'"
+          },
+          "snippet": {
+            "text": "  have e4 : zeta3 * √x / U * (2 / √A) = 2 * zeta3 * √(x / A) / U := by\n    rw [Real.sqrt_div' _ hV.le]; ring\n  have K3 := mul_le_mul_of_nonneg_left I3' hc2\n  have K4 := mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left J4 hz) hc2",
+            "line": 273,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+            "lines": [
+              172,
+              282
+            ],
+            "conclusion": "zeta3 sqrt(x)/U * (2/sqrt A) = 2 zeta3 sqrt(x/A)/U, so the second-summand term is c2 * 2 zeta3 sqrt(x/A)/U."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L273-L276"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          121
+        ],
+        "printed": [
+          111
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

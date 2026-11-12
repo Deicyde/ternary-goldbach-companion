@@ -1,0 +1,81 @@
+{
+  "id": "14.1 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "$K_{r,2}$ is [H]'s error for the terms with $(n,q)>1$; [L] bounds these by $10^{-15}x$ pointwise (coprime_split) and squares it inside Jq_bounds, with no $(1+\\sqrt{300000})(\\log x)^2|\\eta_+|_\\infty$ expression and no $9.71\\cdot10^{-21}x$.",
+  "subject": [
+    {
+      "location": {
+        "page": 270,
+        "rect": [
+          0.25926,
+          0.51991,
+          0.56816,
+          0.06996
+        ]
+      },
+      "title": "Display, p. 260",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.1 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Jq_bounds",
+        "module": "TernaryGoldbach.MajorArcs.L2Major",
+        "lines": [
+          170,
+          183
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Jq_bounds"
+          },
+          "snippet": {
+            "text": "    have hb : ∀ y, (1 - t) * ‖expTsum a y‖ ^ 2 - (1 / t) * Cb ≤ G y ∧\n        G y ≤ (1 + t) * ‖expTsum a y‖ ^ 2 + (1 + 1 / t) * Cb := by\n      intro y\n      have hd := norm_S_sub_coprime_le hx hq1 hq3 y\n      have hd2 : ‖S etaPlus x y - expTsum a y‖ ^ 2 ≤ Cb := pow_le_pow_left₀ (norm_nonneg _) hd 2\n      have e : S etaPlus x y = expTsum a y + (S etaPlus x y - expTsum a y) := by ring\n      have l1 := norm_sq_add_ge (expTsum a y) (S etaPlus x y - expTsum a y) ht0\n      have l2 := norm_sq_add_le (expTsum a y) (S etaPlus x y - expTsum a y) ht0\n      rw [← e] at l1 l2\n      have h1t : 0 ≤ 1 / t := by positivity\n      have h1t' : 0 ≤ 1 + 1 / t := by positivity\n      constructor\n      · simp only [hG]; nlinarith [mul_le_mul_of_nonneg_left hd2 h1t]\n      · simp only [hG]; nlinarith [mul_le_mul_of_nonneg_left hd2 h1t']",
+            "line": 170,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.Jq_bounds",
+            "lines": [
+              98,
+              293
+            ],
+            "conclusion": "In the per-modulus $L^2$ bound, the non-coprime error enters as $C_b=(10^{-15}x)^2$ via $|u+v|^2=(1\\pm t)|u|^2+O((1+1/t)|v|^2)$, $t=10^{-4}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "fragment": "L170-L183"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          270
+        ],
+        "printed": [
+          260
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

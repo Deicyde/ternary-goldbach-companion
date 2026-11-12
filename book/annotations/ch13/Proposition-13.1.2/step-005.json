@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 13.1.2 step 5",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "The pointwise bound (13.rien) enters via hv at each integer level.",
+  "subject": [
+    {
+      "location": {
+        "page": 257,
+        "rect": [
+          0.17462,
+          0.67222,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Proposition 13.1.2 step 5: Text, p. 247",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 13.1.2 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          99,
+          110
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_13_1_2"
+          },
+          "snippet": {
+            "text": "  have hlast : ∫ ω in (M r₁)ᶜ, u ω * v ω ∂μ ≤ g r₁ * ((∫ ω, u ω ∂μ) - I r₁) := by\n    have h1 : ∫ ω in (M r₁)ᶜ, u ω * v ω ∂μ ≤ ∫ ω in (M r₁)ᶜ, g r₁ * u ω ∂μ := by\n      refine setIntegral_mono_on huv.integrableOn (hu.integrableOn.const_mul _)\n        (hM _).compl fun ω hω => ?_\n      rw [mul_comm (g r₁)]\n      exact mul_le_mul_of_nonneg_left (hv r₁ h01 le_rfl ω hω) (hu0 ω)\n    rw [integral_const_mul] at h1\n    have h2 : ∫ ω in (M r₁)ᶜ, u ω ∂μ = (∫ ω, u ω ∂μ) - I r₁ := by\n      have := integral_add_compl (hM r₁) hu\n      simp only [hI]; linarith\n    rwa [h2] at h1\n  have hl := layer_le hu huv hu0 hM hmono (K := r₁) (fun n h1 h2 => hv n h1 h2.le) r₁ h01 le_rfl",
+            "line": 99,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+            "lines": [
+              88,
+              139
+            ],
+            "conclusion": "Uses v ≤ g n off M n (hv) to bound the last layer by g r₁·(∫u − I r₁) and layer_le for the others."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L99-L110"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          257
+        ],
+        "printed": [
+          247
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "10.2 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] does the completion-of-the-integral step per modulus with a tail bound from the second derivative (98/(2 pi T)^4), not via the q-tail sum of mu^2/phi^2 giving 4.31004/r and 0.00113 |eta'''|_1^2/delta_0^5 (those constants occur nowhere in [L]).",
+  "subject": [
+    {
+      "location": {
+        "page": 216,
+        "rect": [
+          0.25926,
+          0.60393,
+          0.56816,
+          0.12491
+        ]
+      },
+      "title": "Display, p. 206",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.2 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.main_comparison",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          635,
+          651
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.main_comparison"
+          },
+          "snippet": {
+            "text": "  have hItail' : ∫ β in {β : ℝ | w ≤ |β|}, ‖O β‖ ^ 2 ≤ x * 2.47e-4 := by\n    have h := integral_indicator_comp_mul (f := fun ξ => ‖𝓕 etaOC ξ‖ ^ 2) (w := w) hx\n    rw [integral_indicator ((isClosed_le continuous_const continuous_abs).measurableSet)] at h\n    have e : (fun β => ‖O β‖ ^ 2) = fun β => x ^ 2 * ‖𝓕 etaOC (-(β * x))‖ ^ 2 := by\n      ext β; simp only [hO, norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hx]; ring\n    rw [e, integral_const_mul, h]\n    have ht := tail_etaO_le (T := w * x) (by linarith)\n    have hπ := Real.pi_gt_d2\n    have hT : 98 / (2 * π * (w * x)) ^ 4 ≤ 2.47e-4 := by\n      have h1 : (25.12 : ℝ) ≤ 2 * π * (w * x) := by nlinarith\n      have h2 : (25.12 : ℝ) ^ 4 ≤ (2 * π * (w * x)) ^ 4 := pow_le_pow_left₀ (by norm_num) h1 4\n      calc 98 / (2 * π * (w * x)) ^ 4 ≤ 98 / 25.12 ^ 4 := div_le_div_of_nonneg_left (by norm_num) (by norm_num) h2\n        _ ≤ 2.47e-4 := by norm_num\n    have hxx : x ^ 2 * x⁻¹ = x := by field_simp\n    calc x ^ 2 * (x⁻¹ * ∫ ξ in {ξ : ℝ | w * x ≤ |ξ|}, ‖𝓕 etaOC ξ‖ ^ 2) =\n          x * ∫ ξ in {ξ : ℝ | w * x ≤ |ξ|}, ‖𝓕 etaOC ξ‖ ^ 2 := by rw [← mul_assoc, hxx]\n      _ ≤ x * 2.47e-4 := mul_le_mul_of_nonneg_left (ht.trans hT) hx.le",
+            "line": 635,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.main_comparison",
+            "lines": [
+              559,
+              712
+            ],
+            "conclusion": "The tail $\\int_{|\\beta|\\ge w}|\\widehat{\\eta_\\circ}(-\\beta x)x|^2\\le x\\cdot2.47\\cdot10^{-4}$ for $wx\\ge4$, from `tail_etaO_le`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L635-L651"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          216
+        ],
+        "printed": [
+          206
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

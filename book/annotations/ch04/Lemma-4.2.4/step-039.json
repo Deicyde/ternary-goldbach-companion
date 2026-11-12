@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 39",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean evaluates the integral through the same antiderivative but with upper limit D'+2q (not D'+3q/2) and inside the sum comparison, not as an explicit integral.",
+  "subject": [
+    {
+      "location": {
+        "page": 85,
+        "rect": [
+          0.17462,
+          0.55897,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.4 step 39: Text, p. 75",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.hasDerivAt_F₄",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          52,
+          56
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.hasDerivAt_F₄"
+          },
+          "snippet": {
+            "text": "/-- `d/dt [(t²/2)(log t - 1/2)] = t log t`. -/\ntheorem hasDerivAt_F₄ {t : ℝ} (ht : 0 < t) :\n    HasDerivAt (fun t => t ^ 2 / 2 * (Real.log t - 1 / 2)) (t * Real.log t) t := by\n  have h := ((hasDerivAt_pow 2 t).div_const 2).mul ((Real.hasDerivAt_log ht.ne').sub_const (1 / 2))\n  convert h using 1; simp; field_simp; ring",
+            "line": 52,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.hasDerivAt_F₄",
+            "lines": [
+              52,
+              56
+            ],
+            "conclusion": "`d/dt [t^2/2 (log t - 1/2)] = t log t`: $t^2/2\\log(t/\\sqrt e)$ is the antiderivative of $t\\log t$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L52-L56"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R2W",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          150,
+          167
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R2W"
+          },
+          "snippet": {
+            "text": "  have hsum := sum_le_of_monotone (F := fun t => t ^ 2 / 2 * (Real.log t - 1 / 2))\n    (f := fun t => t * Real.log t) (a := 3 * q / 2) (h := q) hq0 J\n    (fun t ht => hasDerivAt_F₄ (by linarith [ht.1]))\n    (fun s hs t ht hst => by\n      have := mul_log_sub_mono (c := 0) (by linarith [hs.1]) hst\n        (by have := Real.log_nonneg (show (1 : ℝ) ≤ s by linarith [hs.1]); linarith)\n      simpa using this)\n  have hJ1 : 1 ≤ J := Nat.one_le_iff_ne_zero.2 (by\n    simp only [J, ne_eq, Nat.ceil_eq_zero, not_le]; exact div_pos (by linarith) hq0)\n  have hJD : (q : ℝ) / 2 + ((J : ℝ) - 1) * q < D' := by\n    have := lt_of_lt_nblocks hq0 (a := q / 2) (b := D') (j := J - 1) (by omega)\n    rw [Nat.cast_sub hJ1] at this; push_cast at this; linarith\n  have hmono := F₄_mono (s := 3 * q / 2 + J * q) (t := D' + 2 * q) (by nlinarith) (by linarith)\n  have hge := F₄_ge (t := 3 * q / 2) (by positivity)\n  have hS : ∑ j ∈ range J, (3 * (q : ℝ) / 2 + j * q) * Real.log (3 * q / 2 + j * q) ≤\n      ((D' + 2 * q) ^ 2 / 2 * (Real.log (D' + 2 * q) - 1 / 2) + 1 / 4) / q := by\n    rw [le_div_iff₀ hq0, mul_comm]\n    linarith",
+            "line": 150,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R2W",
+            "lines": [
+              119,
+              171
+            ],
+            "conclusion": "Integral comparison via `sum_le_of_monotone` with `hasDerivAt_F₄`, then `F₄_mono` and `F₄_ge`: the block sum $\\sum_j (3q/2+jq)\\log(3q/2+jq)$ is at most $(F(D'+2q)+1/4)/q$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L150-L167"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          85
+        ],
+        "printed": [
+          75
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 37",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds $\\Gamma(s/2+1)/2$ by $8e^{-0.6|\\Im s|}$ for all $\\Im s$ (no Stirling, no $\\Gamma'$, no $|\\tau|$ factor) instead of $|F_x(s)|\\le2.542(\\log x+\\frac12\\log|\\tau|-0.297)\\frac{|\\tau|}2e^{-\\pi|\\tau|/4}$ for $|\\Im s|\\ge25$.",
+  "subject": [
+    {
+      "location": {
+        "page": 202,
+        "rect": [
+          0.26253,
+          0.15703,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Proposition 9.5.1 step 37: Text, p. 192",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_g0_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          144,
+          146
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_g0_le"
+          },
+          "snippet": {
+            "text": "/-- `|M(t²e^{−t²})(s)| ≤ 8 e^{−0.6|ℑs|}` on `−1 ≤ ℜs ≤ 2`. -/\ntheorem norm_mellin_g0_le {s : ℂ} (h1 : -1 ≤ s.re) (h2 : s.re ≤ 2) :\n    ‖mellin g0 s‖ ≤ 8 * Real.exp (-(0.6 * |s.im|)) := by",
+            "line": 144,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_g0_le",
+            "lines": [
+              144,
+              178
+            ],
+            "conclusion": "$|\\Gamma(s/2+1)/2|=|M(t^2e^{-t^2})(s)|\\le8e^{-0.6|\\Im s|}$ on $-1\\le\\Re s\\le2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L144-L146"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_phi2_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          340,
+          343
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_phi2_le"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_phi2_le {c : ℝ} (hc0 : 0 ≤ c) (hc : c ≤ 0.6) {s : ℂ} (h1 : -1 / 2 ≤ s.re)\n    (h2 : s.re ≤ 3 / 2) :\n    ‖mellin phi2 s‖ ≤ 2 * ((Cg * (2 * aH)) ^ 2 * 8 * Real.exp (400 * c) * Real.exp (c / 2)) *\n      Real.exp (-(c * |s.im|)) := by",
+            "line": 340,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_phi2_le",
+            "lines": [
+              338,
+              379
+            ],
+            "conclusion": "The $\\log t$-weighted transform is bounded as the derivative of $M(\\eta_+^2)$ by Cauchy's estimate on circles of radius $1/2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L340-L343"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          202
+        ],
+        "printed": [
+          192
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7.1 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean states the identity for phi = t^2 e^{-t^2/2} with error bound err932N, but assumes GRHUpTo chi T0 with T0 >= max(10π|δ|,50) as a hypothesis and is never instantiated at the book's x >= 1e8, q <= 3e5, |δ| <= 4r/q.",
+  "subject": [
+    {
+      "location": {
+        "page": 148,
+        "rect": [
+          0.25926,
+          0.66191,
+          0.56816,
+          0.04378
+        ]
+      },
+      "title": "Display, p. 138",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7.1 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_3_2",
+        "module": "TernaryGoldbach.MajorArcs.Prop932",
+        "lines": [
+          90,
+          102
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_3_2"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop 9.3.2]** (proved, with our constants): `η(t) = t² e^{-t²/2}`, `x ≥ 1`, `χ`\nprimitive mod `q`, GRH up to `T₀ ≥ max(10π|δ|, 50)`:\n`Σ Λ(n) χ(n) e(δn/x) η(n/x) = [q = 1] η̂(-δ) x + O*(err932N) x`. -/\ntheorem prop_9_3_2 {x : ℝ} (hx : 1 ≤ x) (δ : ℝ) {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q)\n    (hχ : χ.IsPrimitive) {T0 : ℝ} (hT0 : max (10 * π * |δ|) 50 ≤ T0) (hG : GRHUpTo χ T0) :\n    ‖Schar χ (fun n => ((Λ n * phi (n / x) : ℝ) : ℂ)) (δ / x) -\n        (if q = 1 then 𝓕 (fun u => (phiPos u : ℂ)) (-δ) * x else 0)‖ ≤ err932N q T0 δ x * x := by\n  unfold err932N\n  by_cases hq : q = 1\n  · rw [if_pos hq, if_pos hq]\n    exact prop_9_3_2_one hx δ hq χ hχ hT0 hG\n  · rw [if_neg hq, if_neg hq, sub_zero]\n    exact prop_9_3_2_ne hx δ hq χ hχ hT0 hG",
+            "line": 90,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.prop_9_3_2",
+            "lines": [
+              90,
+              102
+            ],
+            "conclusion": "Under GRH up to T0 >= max(10 pi|delta|,50) and x >= 1, for primitive chi mod q, `‖Schar chi (Λ·phi(n/x)) (δ/x) - [q=1] 𝓕 phiPos(-δ) x‖ ≤ err932N q T0 δ x * x` with phi(t)=t^2 e^{-t^2/2}."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop932.lean",
+            "fragment": "L90-L102"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          148
+        ],
+        "printed": [
+          138
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

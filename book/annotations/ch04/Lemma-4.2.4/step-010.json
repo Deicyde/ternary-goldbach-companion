@@ -1,0 +1,83 @@
+{
+  "id": "Lemma 4.2.4 step 10",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 82,
+        "rect": [
+          0.26253,
+          0.64239,
+          0.56162,
+          0.11066
+        ]
+      },
+      "title": "Lemma 4.2.4 step 10: Display, p. 72",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_sum_coefI2_div_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          377,
+          457
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_sum_coefI2_div_le"
+          },
+          "snippet": {
+            "text": "/-- **[H, p. 72]**: `|∑_{a ≤ M, a odd, q | a} c(a)/a| ≤ (log q + log V)/q` for `q` odd. -/\ntheorem abs_sum_coefI2_div_le {U V M : ℝ} (hU : 1 ≤ U) (hV : 1 ≤ V) (hM : 0 ≤ M) {q : ℕ}\n    (hq : Odd q) :\n    |∑ a ∈ Icc 1 ⌊M⌋₊, (if Odd a ∧ q ∣ a then coefI2 U V a * (1 / a) else 0)| ≤\n      (Real.log q + Real.log V) / q := by\n  have hq1 : 1 ≤ q := hq.pos\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq1\n  set NV := ⌊V⌋₊\n  set NU := ⌊U⌋₊\n  set NM := ⌊M⌋₊\n  set N := max NM (NV * NU)\n  -- Extend the range to `N ≥ ⌊V⌋⌊U⌋`.\n  have hext : ∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then coefI2 U V a * (1 / a) else 0) =\n      ∑ a ∈ Icc 1 N, (if (Odd a ∧ q ∣ a) ∧ a ≤ NM then coefI2 U V a * (1 / a) else 0) := by\n    rw [← sum_subset (Icc_subset_Icc le_rfl (le_max_left _ _) : Icc 1 NM ⊆ Icc 1 N)\n      (fun a ha hna => by\n        simp only [mem_Icc] at ha hna\n        rw [if_neg (fun h => by omega)])]\n    refine sum_congr rfl fun a ha => ?_\n    have : a ≤ NM := (mem_Icc.1 ha).2\n    by_cases h : Odd a ∧ q ∣ a\n    · rw [if_pos h, if_pos ⟨h, this⟩]\n    · rw [if_neg h, if_neg (fun h' => h h'.1)]\n  rw [hext, sum_coefI2_eq (by linarith) (by linarith) _ _ (le_max_right _ _), sum_product]\n  refine (abs_sum_le_sum_abs _ _).trans ?_\n  -- Each `v`.\n  have hv : ∀ v ∈ Icc 1 NV, |∑ u ∈ Icc 1 NU, (if (Odd (v * u) ∧ q ∣ v * u) ∧ v * u ≤ NM then\n      (Λ v : ℝ) * (μ u : ℝ) * (1 / ((v * u : ℕ) : ℝ)) else 0)| ≤\n      (Λ v : ℝ) * Nat.gcd q v / v * (1 / q) := by\n    intro v hv\n    have hv1 : 1 ≤ v := (mem_Icc.1 hv).1\n    have hv0 : (0 : ℝ) < v := by exact_mod_cast hv1\n    have hΛ := ArithmeticFunction.vonMangoldt_nonneg (n := v)\n    have hgpos : (0 : ℝ) < Nat.gcd q v := by exact_mod_cast Nat.gcd_pos_of_pos_left v (by omega)\n    have hRHS : 0 ≤ (Λ v : ℝ) * Nat.gcd q v / v * (1 / q) := by positivity\n    rcases Nat.even_or_odd v with hve | hvo\n    · rw [sum_eq_zero fun u _ => by\n        rw [if_neg]; rintro ⟨⟨ho, _⟩, _⟩\n        exact (Nat.not_odd_iff_even.2 (hve.mul_right u)) ho]\n      simpa using hRHS\n    set q' := q / Nat.gcd q v\n    have hq'odd : Odd q' := Odd.of_dvd_nat hq (Nat.div_dvd_of_dvd (Nat.gcd_dvd_left q v))\n    have hq'eq : (q' : ℝ) = q / Nat.gcd q v := by\n      simp only [q']; rw [Nat.cast_div (Nat.gcd_dvd_left q v) hgpos.ne']\n    -- Rewrite the `u`-sum.\n    have hrw : ∑ u ∈ Icc 1 NU, (if (Odd (v * u) ∧ q ∣ v * u) ∧ v * u ≤ NM then\n        (Λ v : ℝ) * (μ u : ℝ) * (1 / ((v * u : ℕ) : ℝ)) else 0) =\n        (Λ v : ℝ) / v * ∑ u ∈ Icc 1 (min NU (NM / v)),\n          (if Odd u ∧ q' ∣ u then (μ u : ℝ) / u else 0) := by\n      rw [mul_sum]\n      rw [← sum_subset (Icc_subset_Icc le_rfl (min_le_left _ _) : Icc 1 (min NU (NM / v)) ⊆ Icc 1 NU)\n        (fun u hu hnu => by\n          rw [if_neg]\n          rintro ⟨_, hle⟩\n          simp only [mem_Icc] at hu hnu\n          have : u ≤ NM / v := (Nat.le_div_iff_mul_le hv1).2 (by rw [mul_comm]; exact hle)\n          omega)]\n      refine sum_congr rfl fun u hu => ?_\n      have hule : u ≤ NM / v := (mem_Icc.1 hu).2.trans (min_le_right _ _)\n      have hvu : v * u ≤ NM := by\n        have := (Nat.le_div_iff_mul_le hv1).1 hule; rw [mul_comm]; exact this\n      have hodd : Odd (v * u) ↔ Odd u := by\n        rw [Nat.odd_mul]; exact ⟨fun h => h.2, fun h => ⟨hvo, h⟩⟩\n      have hdvd := dvd_mul_iff_div_gcd (q := q) (v := v) (u := u) (by omega)\n      by_cases h : Odd u ∧ q' ∣ u\n      · rw [if_pos ⟨⟨hodd.2 h.1, hdvd.2 h.2⟩, hvu⟩, if_pos h]\n        have hu0 : (0 : ℝ) < u := by exact_mod_cast (mem_Icc.1 hu).1\n        push_cast; field_simp\n      · rw [if_neg (fun h' => h ⟨hodd.1 h'.1.1, hdvd.1 h'.1.2⟩), if_neg h, mul_zero]\n    rw [hrw, abs_mul, abs_of_nonneg (by positivity)]\n    have hA := abs_sum_moebius_odd_dvd_le hq'odd ((min NU (NM / v) : ℕ) : ℝ) (Nat.cast_nonneg _)\n    rw [Nat.floor_natCast] at hA\n    calc (Λ v : ℝ) / v * |∑ u ∈ Icc 1 (min NU (NM / v)), (if Odd u ∧ q' ∣ u then (μ u : ℝ) / u else 0)|\n        ≤ (Λ v : ℝ) / v * (1 / q') := mul_le_mul_of_nonneg_left hA (by positivity)\n      _ = _ := by rw [hq'eq]; field_simp\n  refine (sum_le_sum hv).trans ?_\n  rw [← sum_mul]\n  have hC := sum_vonMangoldt_gcd_le hq1 hV\n  calc (∑ v ∈ Icc 1 NV, (Λ v : ℝ) * Nat.gcd q v / v) * (1 / q)\n      ≤ (Real.log q + Real.log V) * (1 / q) := mul_le_mul_of_nonneg_right hC (by positivity)\n    _ = _ := by ring",
+            "line": 377,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_sum_coefI2_div_le",
+            "lines": [
+              377,
+              457
+            ],
+            "conclusion": "For odd `q`, `|Σ_{a≤M, a odd, q∣a} c(a)/a| ≤ (log q + log V)/q`, with `c = coefI2` the text's `Σ_{v∣a, a/U≤v≤V} Λ(v)μ(a/v)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L377-L457"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          82
+        ],
+        "printed": [
+          72
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

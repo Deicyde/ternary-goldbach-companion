@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 11",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same step (bounding (6.13) at the first parameters) but [L]'s bound has different constants and shape (2.229 x/√t + 1.8339·2x/t + 0.0429x^{5/6}) from [H]'s 2.1989x/√(qδ₀) + 3.61818x/(qδ₀) + (1.77019 log x + 29.2955)x^{2/3}.",
+  "subject": [
+    {
+      "location": {
+        "page": 132,
+        "rect": [
+          0.25926,
+          0.2921,
+          0.56816,
+          0.07044
+        ]
+      },
+      "title": "Display, p. 122",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_small_rest_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2",
+        "lines": [
+          279,
+          283
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_small_rest_first"
+          },
+          "snippet": {
+            "text": "theorem typeI2_small_rest_first {T t : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : 1 ≤ q)\n    (hqT : (q : ℝ) ≤ T / 6) (ht2 : 2 ≤ t) (htT : t ≤ T / 3) :\n    1.0064 * coefUV (cPlus (T ^ 3) (U1 T t) (V1 T)) * ((U1 T t : ℝ) * V1 T) +\n        1.0064 * coefQ (T ^ 3) q (U1 T t) (V1 T) (cPlus (T ^ 3) (U1 T t) (V1 T)) * (3 / 4 * T ^ 2) ≤\n      2.229 * (T ^ 3 / √t) + 1.8339 * (2 * T ^ 3 / t) + 0.0429 * (T ^ 2 * √T) := by",
+            "line": 279,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_small_rest_first",
+            "lines": [
+              277,
+              414
+            ],
+            "conclusion": "For |δ| ≤ 1/2c₂ the remaining S_{I,2} terms are `≤ 2.229 x/√t + 1.8339·2x/t + 0.0429 x^{5/6}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2.lean",
+            "fragment": "L279-L283"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          132
+        ],
+        "printed": [
+          122
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

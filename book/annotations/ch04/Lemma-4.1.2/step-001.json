@@ -1,0 +1,83 @@
+{
+  "id": "Lemma 4.1.2 step 1",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.26253,
+          0.75678,
+          0.56162,
+          0.04739
+        ]
+      },
+      "title": "Lemma 4.1.2 step 1: Text, p. 54",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.2 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.residue_form₂",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1418,
+          1438
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.residue_form₂"
+          },
+          "snippet": {
+            "text": "  obtain ⟨σ, hσ, hσβ⟩ : ∃ σ : ℤ, σ * σ = 1 ∧ 0 ≤ (σ : ℝ) * β := by\n    rcases le_or_gt 0 β with h0 | h0\n    · exact ⟨1, by norm_num, by simpa using h0⟩\n    · exact ⟨-1, by norm_num, by push_cast; linarith⟩\n  have hσr : (σ : ℝ) * σ = 1 := by exact_mod_cast hσ\n  have hσabs : |(σ : ℝ)| = 1 := by\n    have : |(σ : ℝ)| * |(σ : ℝ)| = 1 := by rw [← abs_mul, hσr, abs_one]\n    nlinarith [abs_nonneg (σ : ℝ)]\n  set τ' := fun n : ℤ => (σ : ℝ) * β * n / Q\n  have hτ' : ∀ n ∈ S, τ' n ∈ Icc (0 : ℝ) (1 / 2) := by\n    intro n hn\n    obtain ⟨h1, h2⟩ := hS n hn\n    have hn0 : (0 : ℝ) ≤ n := by exact_mod_cast (by omega : (0 : ℤ) ≤ n)\n    have hσβ1 : (σ : ℝ) * β ≤ 1 := by\n      calc (σ : ℝ) * β ≤ |(σ : ℝ) * β| := le_abs_self _\n        _ = |β| := by rw [abs_mul, hσabs, one_mul]\n        _ ≤ 1 := hβ\n    simp only [τ', mem_Icc]\n    constructor\n    · positivity\n    · rw [div_le_iff₀ hQ0]; nlinarith",
+            "line": 1418,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.residue_form₂",
+            "lines": [
+              1387,
+              1527
+            ],
+            "conclusion": "Choose a sign $\\sigma=\\pm1$ with $\\sigma\\beta\\ge0$ and show the shift $\\tau'(n)=\\sigma\\beta n/Q\\in[0,1/2]$ for $1\\le n\\le y_2\\le Q/2$, i.e. $|\\alpha n-an/q|\\le 1/2q$ with a sign fixed in $n$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1418-L1438"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          54
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

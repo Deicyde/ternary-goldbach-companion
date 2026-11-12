@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 39",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same role (Type II bound in the large-q range), but [H] states 0.10327 x^{5/6}(log x)^{3/2} for x/8U < q <= Q and Lean 1.413 L^{3/2} T^{5/2} = 0.2719 x^{5/6}(log x)^{3/2} for x/16U < q <= Q0 = T^2/349 (a weaker constant, wider lower range, different top of range). Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 141,
+        "rect": [
+          0.17135,
+          0.29142,
+          0.56816,
+          0.01995
+        ]
+      },
+      "title": "Display, p. 131",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_a2",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIb",
+        "lines": [
+          20,
+          23
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_a2"
+          },
+          "snippet": {
+            "text": "/-- **Case (a2)**: `x/16U < q ≤ Q₀`. -/\ntheorem typeII_a2 {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hq16 : T ^ 3 / U2 T < 16 * (q : ℝ)) :\n    ‖typeII α (T ^ 3) (U2 T) (V2 T)‖ ≤ 1.413 * (Real.log T * √(Real.log T)) * (T ^ 2 * √T) := by",
+            "line": 20,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_a2",
+            "lines": [
+              20,
+              163
+            ],
+            "conclusion": "`‖typeII α (T^3) (U2 T) (V2 T)‖ <= 1.413 L^{3/2} T^{5/2}` for x/16U < q (with q <= Q0 from `Approx2`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIb.lean",
+            "fragment": "L20-L23"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          141
+        ],
+        "printed": [
+          131
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

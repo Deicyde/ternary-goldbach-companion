@@ -1,0 +1,81 @@
+{
+  "id": "5 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "[L] takes `U` natural; the text's `U` is a real cut-off (`S1` uses a real `U` in the same sum).",
+  "subject": [
+    {
+      "location": {
+        "page": 87,
+        "rect": [
+          0.17135,
+          0.55019,
+          0.56816,
+          0.04497
+        ]
+      },
+      "title": "Display, p. 77",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.coefM",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIReduction",
+        "lines": [
+          194,
+          195
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.coefM"
+          },
+          "snippet": {
+            "text": "/-- `∑_{d | m, d > U} μ(d)`. -/\nnoncomputable def coefM (U m : ℕ) : ℂ := ∑ d ∈ m.divisors.filter (U < ·), (μ d : ℂ)",
+            "line": 194,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.coefM",
+            "lines": [
+              194,
+              195
+            ],
+            "conclusion": "`coefM U m = ∑_{d ∈ divisors m, U < d} μ(d)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIReduction.lean",
+            "fragment": "L194-L195"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          87
+        ],
+        "printed": [
+          77
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

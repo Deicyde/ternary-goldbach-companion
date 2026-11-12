@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.2 step 41",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean splits |S_d|² ≤ 2α²+2β² (no cross term, no C_v factors, no 10^10 split) instead of the three-term expansion of the text.",
+  "subject": [
+    {
+      "location": {
+        "page": 98,
+        "rect": [
+          0.26253,
+          0.66239,
+          0.56162,
+          0.10538
+        ]
+      },
+      "title": "Lemma 5.1.2 step 41: Display, p. 88",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.fo_sq_Sd_sq_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Bound",
+        "lines": [
+          158,
+          199
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.fo_sq_Sd_sq_le"
+          },
+          "snippet": {
+            "text": "/-- One term of `∑_d f(d)² S_d²`. -/\ntheorem fo_sq_Sd_sq_le {x : ℝ} (hx : 1 < x) {d : ℕ} (hd1 : 1 ≤ d) :\n    fo d ^ 2 * Sd d (⌊x⌋₊ / d) ^ 2 ≤\n      0.015913 / Real.log x ^ 2 * gmain (1 / 9) d + 527.85 / x * gsq d := by\n  have hx0 : 0 < x := by linarith\n  have hlx : 0 < Real.log x := Real.log_pos hx\n  have hg1 := gmain_nonneg (1 / 9) d\n  have hg2 := gsq_nonneg d\n  rcases Nat.even_or_odd d with he | ho\n  · have : fo d = 0 := by simp [fo, Nat.not_odd_iff_even.2 he]\n    rw [this]\n    have : 0 ≤ 0.015913 / Real.log x ^ 2 * gmain (1 / 9) d + 527.85 / x * gsq d := by positivity\n    simpa using this\n  have hS := abs_Sd_le hx hd1\n  set A := ⌊x⌋₊ / d\n  have hP1 := PS9_le ho A\n  have hP2 := PSh_le ho A\n  set R1 := ∏ p ∈ d.primeFactors, rho (1 / 9) p\n  set R2 := ∏ p ∈ d.primeFactors, rho (1 / 2) p\n  set α := 0.03 * (d : ℝ) ^ ((1 : ℝ) / 9) / Real.log x * (2.9733 * R1) with hα\n  set β := √2 * √(d : ℝ) / √x * (11.4874 * R2) with hβ\n  have hab : |Sd d A| ≤ α + β :=\n    hS.trans (add_le_add (mul_le_mul_of_nonneg_left hP1 (by positivity))\n      (mul_le_mul_of_nonneg_left hP2 (by positivity)))\n  have hsq : Sd d A ^ 2 ≤ 2 * α ^ 2 + 2 * β ^ 2 := by\n    calc Sd d A ^ 2 = |Sd d A| ^ 2 := (sq_abs _).symm\n      _ ≤ (α + β) ^ 2 := pow_le_pow_left₀ (abs_nonneg _) hab 2\n      _ ≤ 2 * α ^ 2 + 2 * β ^ 2 := by nlinarith [sq_nonneg (α - β)]\n  have hβ2 : β ^ 2 = 2 * d / x * (11.4874 * R2) ^ 2 := by\n    rw [hβ, mul_pow, div_pow, mul_pow, Real.sq_sqrt (by norm_num), Real.sq_sqrt (Nat.cast_nonneg _),\n      Real.sq_sqrt hx0.le]\n  calc fo d ^ 2 * Sd d A ^ 2 ≤ fo d ^ 2 * (2 * α ^ 2 + 2 * β ^ 2) :=\n        mul_le_mul_of_nonneg_left hsq (sq_nonneg _)\n    _ = 2 * (0.03 * 2.9733) ^ 2 / Real.log x ^ 2 * gmain (1 / 9) d +\n        2 * (2 * 11.4874 ^ 2) / x * gsq d := by\n        rw [hβ2, hα, gmain, gsq_apply]\n        field_simp\n        ring\n    _ ≤ 0.015913 / Real.log x ^ 2 * gmain (1 / 9) d + 527.85 / x * gsq d := by\n        gcongr\n        · norm_num\n        · norm_num",
+            "line": 158,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.fo_sq_Sd_sq_le",
+            "lines": [
+              158,
+              199
+            ],
+            "conclusion": "Termwise split into a 0.03²-term with weights gmain(1/9,d) and a √2-term with gsq(d)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Bound.lean",
+            "fragment": "L158-L199"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+        "module": "TernaryGoldbach.MinorArcs.G2Bound",
+        "lines": [
+          219,
+          229
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_g2_le_large"
+          },
+          "snippet": {
+            "text": "  calc 0.015913 / Real.log x ^ 2 * ∑ d ∈ Icc 1 N, gmain (1 / 9) d +\n        527.85 / x * ∑ d ∈ Icc 1 N, gsq d\n      ≤ 0.015913 / Real.log x ^ 2 * 1.48 + 527.85 / x * (1 + Real.log x) ^ 2 := by\n        gcongr\n    _ ≤ 0.0236 / Real.log x ^ 2 + 528 * (1 + Real.log x) ^ 2 / x := by\n        have e1 : 0.015913 / Real.log x ^ 2 * 1.48 = 0.02355124 / Real.log x ^ 2 := by ring\n        have e2 : 527.85 / x * (1 + Real.log x) ^ 2 = 527.85 * (1 + Real.log x) ^ 2 / x := by ring\n        rw [e1, e2]\n        gcongr\n        · norm_num\n        · norm_num",
+            "line": 219,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+            "lines": [
+              201,
+              229
+            ],
+            "conclusion": "Summing over d ≤ N gives the two-term bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Bound.lean",
+            "fragment": "L219-L229"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          98
+        ],
+        "printed": [
+          88
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

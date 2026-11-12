@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.1 step 16",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "`v = 2` only; Lean works with `r_i = d_i s_i` and `divA` in place of the `d,s` double sum (`1/(d sqrt s) = 1/sqrt(r d)`), and uses an inequality over divisors of `2 r1 r2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 93,
+        "rect": [
+          0.17462,
+          0.37522,
+          0.56162,
+          0.13989
+        ]
+      },
+      "title": "Lemma 5.1.1 step 16: Display, p. 83",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_1_1_term",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          293,
+          321
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_1_1_term"
+          },
+          "snippet": {
+            "text": "    _ = 1.27 * ∑ e ∈ (2 * (r₁ * r₂)).divisors, g e := by rw [mul_sum]\n    _ ≤ 1.27 * ∑ d₃ ∈ (2 : ℕ).divisors, ∑ d₁ ∈ r₁.divisors, ∑ d₂ ∈ r₂.divisors,\n          g (d₃ * (d₁ * d₂)) := by\n        gcongr\n        refine (sum_divisors_mul_le 2 (r₁ * r₂) g hg0).trans (sum_le_sum fun d₃ _ => ?_)\n        exact sum_divisors_mul_le r₁ r₂ (fun e => g (d₃ * e)) (fun e => hg0 _)\n    _ = 1.27 * √z * (1 + 1 / √2) * (divA r₁ * divA r₂) := by\n        have key : ∀ d₃ ∈ (2 : ℕ).divisors, ∀ d₁ ∈ r₁.divisors, ∀ d₂ ∈ r₂.divisors,\n            g (d₃ * (d₁ * d₂)) = √z * (1 / √(d₃ : ℝ)) *\n              ((1 / √((r₁ : ℝ) * d₁)) * (1 / √((r₂ : ℝ) * d₂))) := by\n          intro d₃ hd₃ d₁ hd₁ d₂ hd₂\n          have h3 : (0 : ℝ) < d₃ := by exact_mod_cast Nat.pos_of_mem_divisors hd₃\n          have h1 : (0 : ℝ) < d₁ := by exact_mod_cast Nat.pos_of_mem_divisors hd₁\n          have h2 : (0 : ℝ) < d₂ := by exact_mod_cast Nat.pos_of_mem_divisors hd₂\n          simp only [g, bL]\n          push_cast\n          rw [show z / (r₁ * r₂) / (d₃ * (d₁ * d₂)) = z / (d₃ * ((r₁ * d₁) * (r₂ * d₂))) by\n            field_simp]\n          rw [sqrt_div' _ (by positivity), sqrt_mul (by positivity), sqrt_mul (by positivity)]\n          have : 0 < √(d₃ : ℝ) := sqrt_pos.2 h3\n          have : 0 < √((r₁ : ℝ) * d₁) := sqrt_pos.2 (by positivity)\n          have : 0 < √((r₂ : ℝ) * d₂) := sqrt_pos.2 (by positivity)\n          field_simp\n        rw [sum_congr rfl fun d₃ hd₃ => sum_congr rfl fun d₁ hd₁ =>\n          sum_congr rfl fun d₂ hd₂ => key d₃ hd₃ d₁ hd₁ d₂ hd₂]\n        rw [← sum_divisors_two_inv_sqrt, divA, divA]\n        simp_rw [← mul_sum, ← sum_mul]\n        rw [← mul_sum]\n        ring",
+            "line": 293,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_1_1_term",
+            "lines": [
+              211,
+              321
+            ],
+            "conclusion": "For `v = 2`, `1.27 sum_{e|2r1r2} sqrt(b/e) <= 1.27 sqrt z (1+1/sqrt 2) divA(r1) divA(r2)`, with `divA(r) = sum_{d|r} 1/sqrt(r d)`, via `sum_divisors_mul_le` (an inequality in place of the printed equality)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L293-L321"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_1_1",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          335,
+          339
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_1_1"
+          },
+          "snippet": {
+            "text": "  refine (abs_sum_le_sum_abs _ _).trans ?_\n  refine (sum_le_sum fun r₁ hr₁ => (abs_sum_le_sum_abs _ _).trans\n    (sum_le_sum fun r₂ hr₂ => lemma_5_1_1_term hy hz hr₁ hr₂)).trans ?_\n  simp_rw [← mul_sum, ← sum_mul]\n  rw [← sq, ← sum_filter]",
+            "line": 335,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_1_1",
+            "lines": [
+              323,
+              350
+            ],
+            "conclusion": "Summing the per-pair bound over `r1,r2` gives `1.27 sqrt z (1+1/sqrt 2) (sum_{r odd <= y} divA r)^2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L335-L339"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          93
+        ],
+        "printed": [
+          83
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

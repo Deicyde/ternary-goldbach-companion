@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.2.2 step 15",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "sigma replaced by 0.30286; 1/Q<=1/(3.5W) and the chain are combined into one inequality via div_le_div_iff.",
+  "subject": [
+    {
+      "location": {
+        "page": 106,
+        "rect": [
+          0.26253,
+          0.72402,
+          0.56162,
+          0.03336
+        ]
+      },
+      "title": "Lemma 5.2.2 step 15: Display, p. 96",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.weight_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1177,
+          1185
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.weight_caseA"
+          },
+          "snippet": {
+            "text": "      have hqrR : (q : ℝ) * r * R ≤ 0.30286 * W := by\n        rw [← hqR, sq]; nlinarith [mul_le_mul_of_nonneg_left hrR hq0.le]\n      have hqrR0 : (0 : ℝ) < q * r * R := by positivity\n      have hδ : (1 - 0.30286 / 3.5) / (q * r * R) ≤ 1 / (q * r * R) - 1 / Q := by\n        have : 1 / Q ≤ (0.30286 / 3.5) / (q * r * R) := by\n          rw [div_le_div_iff₀ (by linarith) hqrR0]; nlinarith\n        have e : (1 - 0.30286 / 3.5) / (q * r * R) = 1 / (q * r * R) - (0.30286 / 3.5) / (q * r * R) := by\n          ring\n        linarith",
+            "line": 1177,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.weight_caseA",
+            "lines": [
+              1139,
+              1252
+            ],
+            "conclusion": "Shows 1/Q <= (sigma0/3.5)/(qrR) with sigma0=0.30286 from Q>=3.5W and qrR <= qR^2 = sigma0 W, hence 1/(qrR)-1/Q >= (1-sigma0/3.5)/(qrR)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1177-L1185"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          106
+        ],
+        "printed": [
+          96
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

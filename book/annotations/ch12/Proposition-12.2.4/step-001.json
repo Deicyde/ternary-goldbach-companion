@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 12.2.4 step 1",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Ramare's constant c in [1.3325822,1.3325823] replaces c_E; errors are not named, written inline.",
+  "subject": [
+    {
+      "location": {
+        "page": 246,
+        "rect": [
+          0.26253,
+          0.38898,
+          0.56162,
+          0.01738
+        ]
+      },
+      "title": "Proposition 12.2.4 step 1: Text, p. 236",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.2.4 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.star_suffices",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
+        "lines": [
+          108,
+          111
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.star_suffices"
+          },
+          "snippet": {
+            "text": "    (hstar : (q : ℝ) / Nat.totient q *\n        ((Gq q (Q₀ / (s * q)) - (Nat.totient q / q) * (Real.log (Q₀ / (s * q)) + c + Sq q)) +\n          0.6274 * max 0 (-(Gq q (Q / (s * q)) -\n            (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q)))) ≤",
+            "line": 108,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.star_suffices",
+            "lines": [
+              104,
+              134
+            ],
+            "conclusion": "The hypothesis hstar names the error e1 = G_q(R) - (phi(q)/q)(log R + c + S_q), and e2 likewise at Q/(sq), as in the definition of err_{q,R}."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L108-L111"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          246
+        ],
+        "printed": [
+          236
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

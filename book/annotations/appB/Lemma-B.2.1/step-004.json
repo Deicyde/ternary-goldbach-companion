@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.2.1 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean shows `(A-v)v ≤ (A-u)u` with `A = log ρ`, `u,v = -log` of the points, instead of `η'<0`; `ρ ≥ 4` enters via `2 log 2 ≤ A`.",
+  "subject": [
+    {
+      "location": {
+        "page": 303,
+        "rect": [
+          0.17462,
+          0.50194,
+          0.56162,
+          0.03531
+        ]
+      },
+      "title": "Lemma B.2.1 step 4: Display, p. 293",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.1 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          78,
+          102
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.antitoneOn_eta2log"
+          },
+          "snippet": {
+            "text": "theorem antitoneOn_eta2log : AntitoneOn (eta2log ρ) (Set.Icc (1 / 2) 1) := by\n  intro s hs t ht hst\n  unfold eta2log\n  rw [Helfgott.eta2_eq_right hs.1 hs.2, Helfgott.eta2_eq_right ht.1 ht.2]\n  have hs0 : 0 < s := by linarith [hs.1]\n  have ht0 : 0 < t := by linarith [ht.1]\n  -- With `A = log ρ`, `u = -log s ≥ v = -log t ≥ 0`, `u ≤ log 2 ≤ A/2`: `(A-v)v ≤ (A-u)u`.\n  set A := Real.log ρ\n  set u := -Real.log s\n  set v := -Real.log t\n  have hA : 2 * Real.log 2 ≤ A := by\n    have := Real.log_le_log (by norm_num) hρ\n    rw [show (4 : ℝ) = 2 ^ 2 by norm_num, Real.log_pow] at this; push_cast at this; linarith\n  have hu : u ≤ Real.log 2 := by\n    simp only [u]\n    have := Real.log_le_log (by norm_num) (show (1 / 2 : ℝ) ≤ s from hs.1)\n    rw [one_div, Real.log_inv] at this; linarith\n  have hvu : v ≤ u := by simp only [u, v]; linarith [Real.log_le_log hs0 hst]\n  have hv0 : 0 ≤ v := by simp only [v]; linarith [Real.log_nonpos ht0.le ht.2]\n  have es : Real.log (ρ * s) * (-4 * Real.log s) = 4 * ((A - u) * u) := by\n    rw [Real.log_mul (by linarith) hs0.ne']; simp only [A, u]; ring\n  have et : Real.log (ρ * t) * (-4 * Real.log t) = 4 * ((A - v) * v) := by\n    rw [Real.log_mul (by linarith) ht0.ne']; simp only [A, v]; ring\n  rw [es, et]\n  nlinarith",
+            "line": 78,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_eta2log",
+            "lines": [
+              78,
+              102
+            ],
+            "conclusion": "`eta2log ρ` is antitone on `[1/2,1]` for `ρ ≥ 4`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L78-L102"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          303
+        ],
+        "printed": [
+          293
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

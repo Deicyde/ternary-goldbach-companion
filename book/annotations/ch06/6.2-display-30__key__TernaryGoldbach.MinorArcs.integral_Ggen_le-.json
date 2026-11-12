@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 30",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean bounds the same two integrals but weaker: after multiplying the f6 bound by sqrt(log 2q) the log term is 4 sqrt(log 2q) sqrt((x/U)/log(x/2Uq)) against the text 2.3 sqrt(x/U)/sqrt(log(x/2Uq)) sqrt(log 2q), and there is an extra term 2e sqrt(2q log 2q).",
+  "subject": [
+    {
+      "location": {
+        "page": 120,
+        "rect": [
+          0.25926,
+          0.77024,
+          0.56816,
+          0.0833
+        ]
+      },
+      "title": "Display, p. 110",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          245,
+          260
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_Ggen_le'"
+          },
+          "snippet": {
+            "text": "  have J5 : ∫ W in A..x / U, f5 W ≤ 2 * √(x / U) := by\n    rw [intervalIntegral.integral_congr (g := fun W => 1 / √W) fun W hW => by\n      have h0 := hpos W hW\n      simp only [f5]; rw [div_eq_div_iff h0.ne' (Real.sqrt_pos.2 h0).ne', one_mul,\n        Real.mul_self_sqrt h0.le], integral_inv_sqrt hV hVU]\n    have := Real.sqrt_nonneg A; linarith\n  have J6 : ∫ W in A..x / U, f6 W ≤\n      2 * rexp 1 * √c + 4 * √(x / U / Real.log (x / U / c)) := by\n    rw [intervalIntegral.integral_congr (g := fun W => 1 / (√W * √(Real.log (W / c))))\n      fun W hW => by\n        have h0 := hpos W hW\n        have h1 := Real.sqrt_pos.2 (hLpos W hW)\n        simp only [f6]\n        rw [div_eq_div_iff (by positivity) (by positivity), one_mul,\n          ← mul_assoc, Real.mul_self_sqrt h0.le]]\n    exact integral_inv_sqrt_log_le hc0 hcV hVU",
+            "line": 245,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+            "lines": [
+              172,
+              282
+            ],
+            "conclusion": "With c = 2q: the integral of f5 = 1/sqrt W over [A, x/U] is at most 2 sqrt(x/U), and that of f6 is at most 2e sqrt c + 4 sqrt((x/U)/log(x/U/c))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L245-L260"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          120
+        ],
+        "printed": [
+          110
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

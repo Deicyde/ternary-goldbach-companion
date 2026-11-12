@@ -1,0 +1,120 @@
+{
+  "id": "Lemma B.2.3 step 3",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Introduces h; defined by lg1'', lg2''.",
+  "subject": [
+    {
+      "location": {
+        "page": 304,
+        "rect": [
+          0.26253,
+          0.30407,
+          0.56162,
+          0.01319
+        ]
+      },
+      "title": "Lemma B.2.3 step 3: Text, p. 294",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.3 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lg1''",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          84,
+          84
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lg1''"
+          },
+          "snippet": {
+            "text": "noncomputable def lg1'' (u : ℝ) : ℝ := 4 * (2 - Real.log (4 * u) - Real.log u) / u ^ 2",
+            "line": 84,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lg1''",
+            "lines": [
+              84,
+              84
+            ],
+            "conclusion": "lg1'' u = 4(2-log 4u-log u)/u^2 = h on [1/4,1/2)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L84-L84"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lg2''",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          88,
+          88
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lg2''"
+          },
+          "snippet": {
+            "text": "noncomputable def lg2'' (u : ℝ) : ℝ := -8 * (1 - Real.log u) / u ^ 2",
+            "line": 88,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lg2''",
+            "lines": [
+              88,
+              88
+            ],
+            "conclusion": "lg2'' u = -8(1-log u)/u^2 = h on [1/2,1)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L88-L88"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          304
+        ],
+        "printed": [
+          294
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

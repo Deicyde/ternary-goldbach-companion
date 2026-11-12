@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.4.2 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean checks the hypotheses of its own general lemma (not Lemmas 9.x agamon/hausierer) with its own l2/l1-type data for H=200; no l1 argument for eta_+ log t.",
+  "subject": [
+    {
+      "location": {
+        "page": 197,
+        "rect": [
+          0.17462,
+          0.66783,
+          0.56162,
+          0.07655
+        ]
+      },
+      "title": "Proposition 9.4.2 step 1: Text, p. 187",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.4.2 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.plancherelData_fP",
+        "module": "TernaryGoldbach.Explicit.EtaPlusBound",
+        "lines": [
+          65,
+          68
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.plancherelData_fP"
+          },
+          "snippet": {
+            "text": "theorem plancherelData_fP (δ : ℝ) : PlancherelData (fP δ) 3.4 1 where\n  cont := continuous_PhiG_fP δ\n  c_pos := one_pos\n  bound := norm_PhiG_fP_le δ",
+            "line": 65,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.plancherelData_fP",
+            "lines": [
+              65,
+              68
+            ],
+            "conclusion": "fP delta (eta_+ e(delta t)) satisfies the Plancherel/Mellin decay hypotheses of the general explicit-formula lemma."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusBound.lean",
+            "fragment": "L65-L68"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusBound",
+        "lines": [
+          163,
+          170
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_fP_le"
+          },
+          "snippet": {
+            "text": "  exact norm_SsumG_le_gen hχ hχ1 (goodSmoothing_fP δ) hx (by linarith [le_max_right (10 * π * |δ|) 50])\n    hG (norm_mellin_fP_zero δ) (mellin_half_eq (fP δ)) (hasDerivAt_flineG (plancherelData_fP δ))\n    (continuous_flineDG (plancherelData_fP δ)) (by positivity) (by positivity)\n    (integrable_norm_sq_flineG (plancherelData_fP δ)) (integrable_norm_sq_flineDG (plancherelData_fP δ))\n    (integral_norm_sq_flineG_fP_le δ hA) (integral_norm_sq_flineDG_fP_le δ)\n    (mul_nonneg hCa (EB_nonneg h200)) (mul_nonneg hCa (EA_nonneg _ δ)) (Real.exp_pos _).le rhoB_lt_one\n    (Real.exp_pos _).le (rhoA_lt_one δ) (fun s h1 h2 h3 => norm_mellin_fP_tail hT0 h1 h2 h3)\n    (thP_pos δ) Kv_fP_nonneg (norm_mellin_fP_vert δ)",
+            "line": 163,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+            "lines": [
+              152,
+              170
+            ],
+            "conclusion": "The hypotheses of the general explicit-formula bound norm_SsumG_le_gen (Plancherel data, integrability of squares of flineG/flineDG, Mellin bounds at 0, -1/2 and the tail) are supplied for fP delta."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusBound.lean",
+            "fragment": "L163-L170"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          197
+        ],
+        "printed": [
+          187
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

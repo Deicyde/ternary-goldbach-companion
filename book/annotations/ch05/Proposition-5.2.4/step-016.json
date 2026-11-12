@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.2.4 step 16",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds W-W'+ν^-1 by W/2+Q' inside each block, so the display (with W-W'+ν^-1 and 1+D/(2(Q'-q))) is not stated; Lean's bound uses J=ceil and (W/2+Q').",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.65577,
+          0.56162,
+          0.04005
+        ]
+      },
+      "title": "Proposition 5.2.4 step 16: Display, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          764,
+          773
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_d"
+          },
+          "snippet": {
+            "text": "  set J := ⌈(x / W - U') / h⌉₊\n  have hblocks := sum_Ioc_le_blocks_real\n    (G := fun m : ℤ => if Odd m then ‖primeExpSum W' W (α * m)‖ ^ 2 else 0)\n    (fun m => by split_ifs; exacts [sq_nonneg _, le_rfl]) hh J U' (x / W) (by\n      have := Nat.le_ceil ((x / W - U') / h); rw [div_le_iff₀ hh] at this; linarith)\n  rw [S2, oddSqSum]\n  refine hblocks.trans ?_\n  have hblock : ∀ j ∈ range J,\n      ∑ m ∈ Ioc ⌊U' + j * h⌋ ⌊min (U' + (j + 1) * h) (x / W)⌋,\n        (if Odd m then ‖primeExpSum W' W (α * m)‖ ^ 2 else 0) ≤ (W / 2 + Q') * logSqSum W' W := by",
+            "line": 764,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+            "lines": [
+              730,
+              816
+            ],
+            "conclusion": "S2 <= J·(W/2+Q')Σ(log p)² with J=⌈(x/W-U')/(2(Q'-q))⌉, each block bounded by (W/2+Q')Σ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L764-L773"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          796,
+          802
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_d"
+          },
+          "snippet": {
+            "text": "  have hJ : (J : ℝ) ≤ 1 + x / (2 * W) / h := by\n    rcases le_or_gt D 0 with hD0 | hD0\n    · have : J = 0 := Nat.ceil_eq_zero.2 (div_nonpos_of_nonpos_of_nonneg hD0 hh.le)\n      rw [this]; push_cast; positivity\n    · have := (Nat.ceil_lt_add_one (show 0 ≤ D / h by positivity)).le\n      have : D / h ≤ x / (2 * W) / h := div_le_div_of_nonneg_right hD hh.le\n      linarith",
+            "line": 796,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+            "lines": [
+              730,
+              816
+            ],
+            "conclusion": "J <= 1 + x/(2W)/h."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L796-L802"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

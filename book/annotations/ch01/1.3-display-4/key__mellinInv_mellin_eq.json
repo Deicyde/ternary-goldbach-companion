@@ -1,0 +1,84 @@
+{
+  "id": "1.3 display 4",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Mathlib's statement is for arbitrary `σ` under convergence hypotheses (the text's 'fast enough decay'); [L] uses `σ = 3/2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.17135,
+          0.77431,
+          0.56816,
+          0.03834
+        ]
+      },
+      "title": "Display, p. 11",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.3 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "mellinInv_mellin_eq",
+        "module": "Mathlib.Analysis.MellinInversion",
+        "lines": [
+          91,
+          124
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "mellinInv_mellin_eq"
+          },
+          "snippet": {
+            "text": "/-- The inverse Mellin transform of the Mellin transform applied to `x > 0` is x. -/\ntheorem mellinInv_mellin_eq (σ : ℝ) (f : ℝ → E) {x : ℝ} (hx : 0 < x) (hf : MellinConvergent f σ)\n    (hFf : VerticalIntegrable (mellin f) σ) (hfx : ContinuousAt f x) :\n    mellinInv σ (mellin f) x = f x := by\n  let g := fun (u : ℝ) => Real.exp (-σ * u) • f (Real.exp (-u))\n  replace hf : Integrable g := by\n    rw [MellinConvergent, ← rexp_neg_image_aux, integrableOn_image_iff_integrableOn_abs_deriv_smul\n      MeasurableSet.univ rexp_neg_deriv_aux rexp_neg_injOn_aux] at hf\n    replace hf : Integrable fun (x : ℝ) ↦ cexp (-↑σ * ↑x) • f (rexp (-x)) := by\n      simpa [rexp_cexp_aux] using hf\n    norm_cast at hf\n  replace hFf : Integrable (𝓕 g) := by\n    have h2π : 2 * π ≠ 0 := by simp\n    have : Integrable (𝓕 (fun u ↦ rexp (-(σ * u)) • f (rexp (-u)))) := by\n      simpa [mellin_eq_fourier, mul_div_cancel_right₀ _ h2π] using hFf.comp_mul_right' h2π\n    simp_rw [neg_mul_eq_neg_mul] at this\n    exact this\n  replace hfx : ContinuousAt g (-Real.log x) := by\n    refine ContinuousAt.fun_smul (by fun_prop) (ContinuousAt.comp ?_ (by fun_prop))\n    simpa [Real.exp_log hx] using hfx\n  calc\n    mellinInv σ (mellin f) x\n      = mellinInv σ (fun s ↦ 𝓕 g (s.im / (2 * π))) x := by\n      simp [g, mellinInv, mellin_eq_fourier]\n    _ = (x : ℂ) ^ (-σ : ℂ) • g (-Real.log x) := by\n      rw [mellinInv_eq_fourierInv _ _ hx, ← hf.fourierInv_fourier_eq hFf hfx]\n      simp [mul_div_cancel_left₀ _ (show 2 * π ≠ 0 by simp)]\n    _ = (x : ℂ) ^ (-σ : ℂ) • rexp (σ * Real.log x) • f (rexp (Real.log x)) := by simp [g]\n    _ = f x := by\n      norm_cast\n      rw [mul_comm σ, ← rpow_def_of_pos hx, Real.exp_log hx, ← Complex.ofReal_cpow hx.le]\n      norm_cast\n      rw [← smul_assoc, smul_eq_mul, Real.rpow_neg hx.le,\n        inv_mul_cancel₀ (ne_of_gt (rpow_pos_of_pos hx σ)), one_smul]",
+            "line": 91,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "mellinInv_mellin_eq",
+            "lines": [
+              91,
+              124
+            ],
+            "conclusion": "Mellin inversion: `mellinInv σ (mellin f) x = f x` for `x>0` when the Mellin transform converges at `σ`, is vertically integrable and `f` is continuous at `x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/MellinInversion.lean",
+            "fragment": "L91-L124"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21
+        ],
+        "printed": [
+          11
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

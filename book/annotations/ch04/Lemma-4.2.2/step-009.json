@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.2 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the upper bound with D in place of M and an inequality for the odd-sum, where the text writes an equality with M. Text error, confirmed by two skeptics and `scripts/checks/steps/lemma_4_2_2_step_9.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 74,
+        "rect": [
+          0.26253,
+          0.75743,
+          0.56162,
+          0.09876
+        ]
+      },
+      "title": "Lemma 4.2.2 step 9: Display, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          666,
+          677
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPart_le"
+          },
+          "snippet": {
+            "text": "    refine (sum_le_sum hterm).trans ?_\n    rw [← mul_sum]\n    have hodd := sum_odd_le N\n    have hpi2 : (0 : ℝ) ≤ π ^ 2 - 4 := by have := Real.pi_gt_three; nlinarith\n    have hND : ((N : ℝ) + 1) ^ 2 ≤ (D / q + 1) ^ 2 := by\n      have : (N : ℝ) ≤ D / q := hNM.trans (div_le_div_of_nonneg_right hMD hq0.le)\n      gcongr\n    calc q * c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) *\n          ∑ m' ∈ Icc 1 N, (if Odd m' then (m' : ℝ) else 0)\n        ≤ q * c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) * (((N : ℝ) + 1) ^ 2 / 4) := by gcongr\n      _ ≤ q * c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) * ((D / q + 1) ^ 2 / 4) := by gcongr\n      _ = _ := by field_simp; ring",
+            "line": 666,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+            "lines": [
+              578,
+              677
+            ],
+            "conclusion": "The summed error terms are at most `(q c₀/x)(1/8 - 1/(2π²))(D/q+1)²`, using `(π²-4)/(8π²) = 1/8 - 1/(2π²)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L666-L677"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          529,
+          536
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_le"
+          },
+          "snippet": {
+            "text": "/-- `∑_{m ≤ N, m odd} m ≤ ((N + 1)/2)²`. -/\ntheorem sum_odd_le (N : ℕ) :\n    (∑ m ∈ Icc 1 N, (if Odd m then (m : ℝ) else 0)) ≤ ((N : ℝ) + 1) ^ 2 / 4 := by\n  rcases Nat.even_or_odd' N with ⟨K, rfl | rfl⟩\n  · rw [(sum_odd_Icc K).1]; push_cast\n    have : (0 : ℝ) ≤ K := Nat.cast_nonneg K\n    nlinarith\n  · rw [(sum_odd_Icc K).2]; push_cast; nlinarith",
+            "line": 529,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_le",
+            "lines": [
+              529,
+              536
+            ],
+            "conclusion": "`∑_{m ≤ N, m odd} m ≤ (N+1)²/4`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L529-L536"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          74
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

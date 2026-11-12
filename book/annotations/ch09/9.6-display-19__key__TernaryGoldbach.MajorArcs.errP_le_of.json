@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 19",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's final bound has constants 7.5e-8, 7.7e6 and x>=4.9e26 (not 1.3482e-14+1.617e-10/q+(499900/sqrt q+52)/sqrt x for x>=1e12).",
+  "subject": [
+    {
+      "location": {
+        "page": 206,
+        "rect": [
+          0.25926,
+          0.403,
+          0.56816,
+          0.03585
+        ]
+      },
+      "title": "Display, p. 196",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.errP_le_of",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          429,
+          435
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.errP_le_of"
+          },
+          "snippet": {
+            "text": "/-- **The error for `q ≥ 2`**, given `E₁ ≤ K/√q` and `E₂ ≤ E₂'`, `547.73 E₂' ≤ 6.9·10⁻⁸`. -/\ntheorem errP_le_of {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} [NeZero q] (hq3 : q ≤ 300000) {T0 δ K E2b : ℝ}\n    (hδ : |δ| ≤ 6e5)\n    (hE1 : E1g (BP q) T0 (2 * π * 0.6403) (2 * π * 1.129) ≤ K / √q) (hK : K ≤ 7.66e6)\n    (hE2 : E2g (BP q) 11 T0 (Cg * (2 * aH) * EB (T0 - 200)) (Cg * (2 * aH) * EA (T0 - 200) δ) rhoB\n      (rhoA δ) ≤ E2b) (hE2b : E2b * 547.73 ≤ 6.9e-8) :\n    errP q T0 δ x ≤ (7.5e-8 + 7.7e6 / √x) / √q := by",
+            "line": 429,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.errP_le_of",
+            "lines": [
+              429,
+              482
+            ],
+            "conclusion": "errP q T0 delta x <= (7.5e-8+7.7e6/sqrt x)/sqrt q for x>=4.9e26, |delta|<=6e5, q<=3e5."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L429-L435"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          206
+        ],
+        "printed": [
+          196
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

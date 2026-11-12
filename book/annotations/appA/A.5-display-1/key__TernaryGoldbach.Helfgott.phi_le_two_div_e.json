@@ -1,0 +1,81 @@
+{
+  "id": "A.5 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves only upper bounds: |eta_circ|<=1 (no equality at 1 stated) and eta_diamond(t)*t <= 0.7358 (2/e=0.73576...); no exact sup values.",
+  "subject": [
+    {
+      "location": {
+        "page": 298,
+        "rect": [
+          0.25926,
+          0.31379,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Display, p. 288",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.5 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.phi_le_two_div_e",
+        "module": "TernaryGoldbach.Helfgott.SupNorms",
+        "lines": [
+          57,
+          71
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.phi_le_two_div_e"
+          },
+          "snippet": {
+            "text": "/-- `φ(s) = s² e^{-s²/2} ≤ 2/e ≤ 0.7358`. -/\ntheorem phi_le_two_div_e (s : ℝ) : phi s ≤ 0.7358 := by\n  unfold phi\n  have hw := Real.add_one_le_exp (s ^ 2 / 2 - 1)\n  have he : Real.exp (-1) ≤ 0.3679 := by\n    rw [Real.exp_neg, inv_eq_one_div, div_le_iff₀ (Real.exp_pos 1)]\n    nlinarith [Real.exp_one_gt_d9]\n  have hprod : Real.exp (s ^ 2 / 2 - 1) * Real.exp (-s ^ 2 / 2) = Real.exp (-1) := by\n    rw [← Real.exp_add]; congr 1; ring\n  have hpos := (Real.exp_pos (-s ^ 2 / 2)).le\n  calc s ^ 2 * Real.exp (-s ^ 2 / 2) = 2 * ((s ^ 2 / 2) * Real.exp (-s ^ 2 / 2)) := by ring\n    _ ≤ 2 * (Real.exp (s ^ 2 / 2 - 1) * Real.exp (-s ^ 2 / 2)) := by\n        gcongr; linarith\n    _ = 2 * Real.exp (-1) := by rw [hprod]\n    _ ≤ 0.7358 := by linarith",
+            "line": 57,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.phi_le_two_div_e",
+            "lines": [
+              57,
+              71
+            ],
+            "conclusion": "phi(s)=s^2 e^{-s^2/2} (= eta_diamond(t)*t) is <= 0.7358."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/SupNorms.lean",
+            "fragment": "L57-L71"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          298
+        ],
+        "printed": [
+          288
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 13",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has analogues of the √(qδ₀)-ratio and 1/|δ| ≤ 4c₂/δ₀ inequalities, with different constants (log t/√t ≤ 0.7358 rather than log(4qδ₀)/√(qδ₀) ≤ log 8/√2); the inequalities log q/√(qδ₀) ≤ √2/e and (log|δ|)/|δ| ≤ (2/(e log 2))(log δ₀)/δ₀ are not stated.",
+  "subject": [
+    {
+      "location": {
+        "page": 132,
+        "rect": [
+          0.25926,
+          0.71385,
+          0.56816,
+          0.08147
+        ]
+      },
+      "title": "Display, p. 122",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_B8x_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2",
+        "lines": [
+          512,
+          516
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_B8x_first"
+          },
+          "snippet": {
+            "text": "    calc x / (|δ| * q) * (A + logPlus (6 * U * V * |δ| * q / (√2 * x)))\n        ≤ x / (|δ| * q) * (A + logPlus (1.5 * √q * |δ|)) := by gcongr\n      _ = x / q * ((A + logPlus (1.5 * √q * |δ|)) / |δ|) := by field_simp\n      _ ≤ x / q * ((A + logPlus (1.5 * √q * (1 / (2 * c₂)))) / (1 / (2 * c₂))) := by gcongr\n      _ = x / q * (2 * c₂ * (A + logPlus (1.5 * √q * (1 / (2 * c₂))))) := by field_simp",
+            "line": 512,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_B8x_first",
+            "lines": [
+              453,
+              562
+            ],
+            "conclusion": "For δ₀ = 2, `1/|δ| ≤ 2c₂` (from |δ| ≥ 1/2c₂) is used to reduce x/(|δ|q)·(…) to a multiple of x/q."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2.lean",
+            "fragment": "L512-L516"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          132
+        ],
+        "printed": [
+          122
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7 display 43",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's base term is $\\hat g(y,150000)(cL\\,sig/Dx-8.6294)$ with $cL=\\log2(n+1)+2$, $Dx=\\log(2\\sqrt{x/784})+c_E$ (arcs $\\delta_0=392$), $sig$ with $0.640208+366.91/\\sqrt x$, $I_0\\ge8.6294x$; the bracket is never bounded separately by $8.805x$ (it is handled inside `numerics_M`). Text error, confirmed by two skeptics and `scripts/checks/steps/7_display_43.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.20371,
+          0.67582,
+          0.63183,
+          0.13624
+        ]
+      },
+      "title": "Display, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.I0_ge",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          276,
+          317
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.I0_ge"
+          },
+          "snippet": {
+            "text": "/-- `I₀ = ∫_{(0,1] ∩ 𝔐_{8,r₀}(x)} |S₁|² ≥ 8.6294 x`. -/\ntheorem I0_ge {x : ℝ} (hx : 4.9e26 ≤ x) :\n    8.6294 * x ≤ ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖expTsum (a₁ x) α‖ ^ 2 := by\n  have hx0 : 0 < x := by linarith\n  set B := Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x\n  have hB : MeasurableSet B := measurableSet_Ioc.inter (Helfgott.measurableSet_majorArcs _ _ _)\n  have hBsub : B ⊆ Ioc 0 1 := inter_subset_left\n  have hJ := l2_major_14_7 hx\n  have hJ' : 8.6296 * x ≤ ∫ α in B, ‖S etaPlus x α‖ ^ 2 := by\n    have := (abs_le.1 hJ).1; linarith\n  set t : ℝ := 1e-5\n  have ht : 0 < t := by norm_num\n  have c1 := continuous_norm_sq_expTsum (summable_a₁ hx0)\n  have c2 := continuous_norm_sq_expTsum (summable_a₂ hx0)\n  have hpt : ∀ α, ‖S etaPlus x α‖ ^ 2 ≤\n      (1 + t) * ‖expTsum (a₁ x) α‖ ^ 2 + (1 + 1 / t) * ‖expTsum (a₂ x) α‖ ^ 2 := fun α => by\n    rw [S_etaPlus_eq hx0]; exact norm_add_sq_le _ _ ht\n  have hcS : Continuous fun α => ‖S etaPlus x α‖ ^ 2 :=\n    (TernaryGoldbach.continuous_expTsum (Helfgott.summable_etaPlus hx0)).norm.pow 2\n  have h1 : ∫ α in B, ‖S etaPlus x α‖ ^ 2 ≤\n      (1 + t) * (∫ α in B, ‖expTsum (a₁ x) α‖ ^ 2) + (1 + 1 / t) * ∫ α in B, ‖expTsum (a₂ x) α‖ ^ 2 := by\n    rw [← integral_const_mul, ← integral_const_mul,\n      ← integral_add ((integrableOn_Ioc_of_continuous c1 B hBsub).const_mul _)\n        ((integrableOn_Ioc_of_continuous c2 B hBsub).const_mul _)]\n    exact setIntegral_mono_on (integrableOn_Ioc_of_continuous hcS B hBsub)\n      (((integrableOn_Ioc_of_continuous c1 B hBsub).const_mul _).add\n        ((integrableOn_Ioc_of_continuous c2 B hBsub).const_mul _)) hB fun α _ => hpt α\n  have h2 : ∫ α in B, ‖expTsum (a₂ x) α‖ ^ 2 ≤ 8e-11 * x := by\n    refine le_trans ?_ ((TernaryGoldbach.setIntegral_norm_sq_expTsum (summable_a₂ hx0)).le.trans\n      (norm_sq_sum_a₂_le hx))\n    exact setIntegral_mono_set (integrableOn_Ioc_of_continuous c2 _ le_rfl)\n      (Eventually.of_forall fun α => by positivity) (Eventually.of_forall hBsub)\n  have h3 : 0 ≤ ∫ α in B, ‖expTsum (a₂ x) α‖ ^ 2 := setIntegral_nonneg hB fun α _ => by positivity\n  have : (1 + 1 / t) * ∫ α in B, ‖expTsum (a₂ x) α‖ ^ 2 ≤ (1 + 1 / t) * (8e-11 * x) :=\n    mul_le_mul_of_nonneg_left h2 (by positivity)\n  have h4 : 8.6296 * x - (1 + 1 / t) * (8e-11 * x) ≤\n      (1 + t) * ∫ α in B, ‖expTsum (a₁ x) α‖ ^ 2 := by linarith\n  have h5 : 8.6294 * x * (1 + t) ≤ 8.6296 * x - (1 + 1 / t) * (8e-11 * x) := by\n    simp only [t]; nlinarith\n  have := le_trans h5 h4\n  rw [mul_comm (1 + t)] at this\n  exact le_of_mul_le_mul_right this (by norm_num)",
+            "line": 276,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.I0_ge",
+            "lines": [
+              276,
+              317
+            ],
+            "conclusion": "$\\int_{(0,1]\\cap\\mathfrak M_{8,r_0}}|S_1|^2\\ge 8.6294x$, Lean's counterpart of $(\\sqrt J-\\sqrt E)^2\\ge 8.6297x$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L276-L317"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

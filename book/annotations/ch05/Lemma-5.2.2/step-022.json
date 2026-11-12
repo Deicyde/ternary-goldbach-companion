@@ -1,0 +1,192 @@
+{
+  "id": "Lemma 5.2.2 step 22",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves [MV73, Lemma 8] itself (Lemma 7 plus numerics) with ranges 2-6, 6-1000, >=1000 instead of citing it for R>=100 and checking 2<=R<100; the remark about integer R is not used.",
+  "subject": [
+    {
+      "location": {
+        "page": 107,
+        "rect": [
+          0.17462,
+          0.37131,
+          0.56162,
+          0.04739
+        ]
+      },
+      "title": "Lemma 5.2.2 step 22: Text, p. 97",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.MV.lemma8_tiny",
+        "module": "TernaryGoldbach.Prelim.MVLemma8",
+        "lines": [
+          185,
+          192
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.MV.lemma8_tiny"
+          },
+          "snippet": {
+            "text": "theorem lemma8_tiny {R : ℝ} (hR2 : 2 ≤ R) (hR : R < 6) : Real.log R + 0.25068 < WR R := by\n  have hR0 : 0 < R := by linarith\n  have hn2 : 2 ≤ ⌊R⌋₊ := Nat.le_floor (by exact_mod_cast hR2)\n  have hn5 : ⌊R⌋₊ ≤ 5 := by\n    have h := (Nat.floor_lt hR0.le).2 (show R < ((6 : ℕ) : ℝ) by norm_num; linarith)\n    omega\n  obtain ⟨hA, hB⟩ := lemma8_tiny_num ⌊R⌋₊ hn2 hn5\n  exact lemma8_of_num hR2 hA hB",
+            "line": 185,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.MV.lemma8_tiny",
+            "lines": [
+              184,
+              192
+            ],
+            "conclusion": "Proves the inequality for 2<=R<6 from exact finite sums at floor(R)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MVLemma8.lean",
+            "fragment": "L185-L192"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.SmallW.lemma8_mid",
+        "module": "TernaryGoldbach.Prelim.SmallW",
+        "lines": [
+          216,
+          252
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.SmallW.lemma8_mid"
+          },
+          "snippet": {
+            "text": "/-- **[MV73, Lemma 8] for `6 ≤ R < 1000`** (kernel-checked). -/\ntheorem lemma8_mid {R : ℝ} (h6 : 6 ≤ R) (hR : R < 1000) : Real.log R + 0.25068 < WR R := by\n  by_cases h0 : R < 7\n  · exact block_ok (A := 6) (B := 7) (by norm_num) d_0 (by norm_num) u_0 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h1 : R < 9\n  · exact block_ok (A := 7) (B := 9) (by norm_num) d_1 (by norm_num) u_1 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h2 : R < 10\n  · exact block_ok (A := 9) (B := 10) (by norm_num) d_2 (by norm_num) u_2 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h3 : R < 13\n  · exact block_ok (A := 10) (B := 13) (by norm_num) d_3 (by norm_num) u_3 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h4 : R < 16\n  · exact block_ok (A := 13) (B := 16) (by norm_num) d_4 (by norm_num) u_4 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h5 : R < 21\n  · exact block_ok (A := 16) (B := 21) (by norm_num) d_5 (by norm_num) u_5 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h6 : R < 28\n  · exact block_ok (A := 21) (B := 28) (by norm_num) d_6 (by norm_num) u_6 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h7 : R < 36\n  · exact block_ok (A := 28) (B := 36) (by norm_num) d_7 (by norm_num) u_7 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h8 : R < 50\n  · exact block_ok (A := 36) (B := 50) (by norm_num) d_8 (by norm_num) u_8 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h9 : R < 70\n  · exact block_ok (A := 50) (B := 70) (by norm_num) d_9 (by norm_num) u_9 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h10 : R < 100\n  · exact block_ok (A := 70) (B := 100) (by norm_num) d_10 (by norm_num) u_10 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h11 : R < 141\n  · exact block_ok (A := 100) (B := 141) (by norm_num) d_11 (by norm_num) u_11 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h12 : R < 204\n  · exact block_ok (A := 141) (B := 204) (by norm_num) d_12 (by norm_num) u_12 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h13 : R < 295\n  · exact block_ok (A := 204) (B := 295) (by norm_num) d_13 (by norm_num) u_13 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h14 : R < 431\n  · exact block_ok (A := 295) (B := 431) (by norm_num) d_14 (by norm_num) u_14 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h15 : R < 630\n  · exact block_ok (A := 431) (B := 630) (by norm_num) d_15 (by norm_num) u_15 (by norm_num; linarith) (by norm_num; linarith)\n  by_cases h16 : R < 925\n  · exact block_ok (A := 630) (B := 925) (by norm_num) d_16 (by norm_num) u_16 (by norm_num; linarith) (by norm_num; linarith)\n  exact block_ok (A := 925) (B := 1000) (by norm_num) d_17 (by norm_num) u_17 (by norm_num; linarith) (by norm_num; linarith)",
+            "line": 216,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.SmallW.lemma8_mid",
+            "lines": [
+              216,
+              252
+            ],
+            "conclusion": "Proves it for 6<=R<1000 by kernel-checked finite computation."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SmallW.lean",
+            "fragment": "L216-L252"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.MV.lemma8_large",
+        "module": "TernaryGoldbach.Prelim.MVLemma8",
+        "lines": [
+          207,
+          208
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.MV.lemma8_large"
+          },
+          "snippet": {
+            "text": "theorem lemma8_large (h7 : ∀ r : ℕ, 6 ≤ r → Real.log r + 1.07 ≤ GS r) {R : ℝ} (hR : 1000 ≤ R) :\n    Real.log R + 0.25068 ≤ WR R := by",
+            "line": 207,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.MV.lemma8_large",
+            "lines": [
+              206,
+              371
+            ],
+            "conclusion": "Proves it for R>=1000 from [MV73, Lemma 7] by Abel summation."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MVLemma8.lean",
+            "fragment": "L207-L208"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.MV.lemma8",
+        "module": "TernaryGoldbach.Prelim.MVLemma7",
+        "lines": [
+          650,
+          657
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.MV.lemma8"
+          },
+          "snippet": {
+            "text": "/-- **[MV73, Lemma 8]** (with kernel checks for `R < 1000`): for `R ≥ 2`,\n`∑_{r ≤ R} (1 + r/R)⁻¹ μ(r)²/φ(r) > log R + 0.25068`. -/\ntheorem lemma8 {R : ℝ} (hR : 2 ≤ R) : Real.log R + 0.25068 ≤ WR R := by\n  rcases lt_or_ge R 6 with h | h\n  · exact (lemma8_tiny hR h).le\n  rcases lt_or_ge R 1000 with h' | h'\n  · exact (TernaryGoldbach.Prelim.SmallW.lemma8_mid h h').le\n  · exact lemma8_large lemma7 h'",
+            "line": 650,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.MV.lemma8",
+            "lines": [
+              650,
+              657
+            ],
+            "conclusion": "Combines the three ranges: log R + 0.25068 <= W(R) for R>=2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MVLemma7.lean",
+            "fragment": "L650-L657"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          107
+        ],
+        "printed": [
+          97
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

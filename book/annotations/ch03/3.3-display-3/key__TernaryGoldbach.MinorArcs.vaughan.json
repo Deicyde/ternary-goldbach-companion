@@ -1,0 +1,81 @@
+{
+  "id": "3.3 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same identity with `Λ_{≤V}` moved to the left and `Λ_{>V}` written `Λ - trunc Λ V`; `μ_{>U}` is `μ - trunc μ U`, and `∑_{dm|n}` is Dirichlet convolution with `ζ`.",
+  "subject": [
+    {
+      "location": {
+        "page": 56,
+        "rect": [
+          0.25926,
+          0.71535,
+          0.56816,
+          0.03483
+        ]
+      },
+      "title": "Display, p. 46",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3.3 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.vaughan",
+        "module": "TernaryGoldbach.MinorArcs.Vaughan",
+        "lines": [
+          34,
+          37
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.vaughan"
+          },
+          "snippet": {
+            "text": "theorem vaughan (U V : ℕ) :\n    (Λ : ArithmeticFunction ℝ) =\n      trunc Λ V + trunc μ U * log - trunc μ U * trunc Λ V * ζ +\n        ((μ : ArithmeticFunction ℝ) - trunc μ U) * (Λ - trunc Λ V) * ζ := by",
+            "line": 34,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.vaughan",
+            "lines": [
+              33,
+              40
+            ],
+            "conclusion": "`Λ = Λ_{≤V} + μ_{≤U}*log - μ_{≤U}*Λ_{≤V}*ζ + (μ-μ_{≤U})*(Λ-Λ_{≤V})*ζ` as arithmetic functions."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Vaughan.lean",
+            "fragment": "L34-L37"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          56
+        ],
+        "printed": [
+          46
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

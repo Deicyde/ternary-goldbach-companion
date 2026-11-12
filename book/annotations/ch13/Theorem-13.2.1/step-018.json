@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 13.2.1 step 18",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same pull-out of the sup and Plancherel, but the sup of |S_{η*}| is bounded by the uniform 22.75x/κ (not by S_{η*}(0,x) = Σ Λ(n)η*(n/x)), and Σ|a₂|² is bounded by 8·10⁻¹¹x via `E_le_14_28`; the integral is over A, not shown over all of ℝ/ℤ first.",
+  "subject": [
+    {
+      "location": {
+        "page": 261,
+        "rect": [
+          0.17462,
+          0.18139,
+          0.56162,
+          0.12185
+        ]
+      },
+      "title": "Theorem 13.2.1 step 18: Display, p. 251",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_uniform",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          48,
+          65
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_uniform"
+          },
+          "snippet": {
+            "text": "/-- `|S_{η_*}(α, x)| ≤ 22.75 x/κ` for all `α`. -/\ntheorem norm_S_etaStar_le_uniform {x : ℝ} (hx : 0 < x) (α : ℝ) :\n    ‖S etaStar x α‖ ≤ 22.75 * (x / κ) := by\n  have hκ : (0:ℝ) < κ := by rw [Helfgott.κ]; norm_num\n  have hy0 : 0 < x / κ := div_pos hx hκ\n  have hGi : IntegrableOn (fun w => (17 : ℝ) * phi w) (Ici 1) :=\n    (integrable_phi.const_mul 17).integrableOn\n  have key := norm_S_etaStar_le_of_pointwise_Ici (G := fun _ => 17) (α := α) hx one_pos\n    (fun w (hw : 1 ≤ w) => norm_S_eta2_le_trivial (mul_pos (by linarith) hy0) α) hGi\n  have h1 := integral_phi_Ici_one_le\n  have h2 := integral_phi_Ioo_le (w₀ := 1) zero_le_one\n  rw [integral_const_mul] at key\n  refine key.trans ?_\n  have h3 : (17 * ∫ w in Ici (1:ℝ), phi w) + 17 * ∫ w in Ioo (0:ℝ) 1, phi w ≤ 22.75 := by\n    norm_num at h2; linarith\n  calc x / κ * ((17 * ∫ w in Ici (1:ℝ), phi w) + 17 * ∫ w in Ioo (0:ℝ) 1, phi w)\n      ≤ x / κ * 22.75 := mul_le_mul_of_nonneg_left h3 hy0.le\n    _ = 22.75 * (x / κ) := by ring",
+            "line": 48,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_uniform",
+            "lines": [
+              48,
+              65
+            ],
+            "conclusion": "|S_{η*}(α,x)| ≤ 22.75·x/κ for all α."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L48-L65"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          369,
+          382
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hstep2 : ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2 ≤ 22.75 * y * (8e-11 * x) := by\n    have i2 := integrableOn_Ioc_of_continuous c2 A hAsub\n    calc ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2\n        ≤ ∫ α in A, 22.75 * y * ‖expTsum (a₂ x) α‖ ^ 2 := by\n          refine setIntegral_mono_on (integrableOn_Ioc_of_continuous (hv.mul c2) A hAsub)\n            (i2.const_mul _) hA fun α _ => ?_\n          exact mul_le_mul_of_nonneg_right (norm_S_etaStar_le_uniform hx0 α) (by positivity)\n      _ = 22.75 * y * ∫ α in A, ‖expTsum (a₂ x) α‖ ^ 2 := integral_const_mul _ _\n      _ ≤ 22.75 * y * (8e-11 * x) := by\n          refine mul_le_mul_of_nonneg_left ?_ (by positivity)\n          refine le_trans ?_ ((TernaryGoldbach.setIntegral_norm_sq_expTsum (summable_a₂ hx0)).le.trans\n            (norm_sq_sum_a₂_le hx))\n          exact setIntegral_mono_set (integrableOn_Ioc_of_continuous c2 _ le_rfl)\n            (Eventually.of_forall fun α => by positivity) (Eventually.of_forall hAsub)",
+            "line": 369,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "∫_A |S_{η*}||S₂|² ≤ 22.75y·∫_A|S₂|², then Plancherel (`setIntegral_norm_sq_expTsum`) gives ≤ 22.75y·Σ|a₂|² ≤ 22.75y·8·10⁻¹¹x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L369-L382"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          261
+        ],
+        "printed": [
+          251
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

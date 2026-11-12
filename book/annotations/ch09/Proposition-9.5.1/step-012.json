@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean evaluates the residue-term bound numerically with its own constants (≤4.5e6, ≤9e6), not the book's norm bounds.",
+  "subject": [
+    {
+      "location": {
+        "page": 199,
+        "rect": [
+          0.17462,
+          0.79152,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Proposition 9.5.1 step 12: Text, p. 189",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err_phi1_le",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          235,
+          239
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err_phi1_le"
+          },
+          "snippet": {
+            "text": "  have hc0 : 0 ≤ (Cg * (2 * aH)) ^ 2 := sq_nonneg _\n  have hG : (Cg * (2 * aH)) ^ 2 * 8 * Z3g BPz2 0 ≤ 4.5e6 := by\n    have := mul_le_mul (mul_le_mul_of_nonneg_right hc (by norm_num : (0:ℝ) ≤ 8)) Z3z0_le Z3z0_nonneg\n      (by norm_num)\n    linarith",
+            "line": 235,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err_phi1_le",
+            "lines": [
+              230,
+              253
+            ],
+            "conclusion": "`(Cg*2aH)^2*8*Z3g BPz2 0 ≤ 4.5e6`: numerical bound of the residue/zero term for phi1."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L235-L239"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err_phi2_le",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          261,
+          264
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err_phi2_le"
+          },
+          "snippet": {
+            "text": "  have hG : 2 * ((Cg * (2 * aH)) ^ 2 * 8) * Z3g BPz2 0 ≤ 9e6 := by\n    have := mul_le_mul (mul_le_mul_of_nonneg_right hc (by norm_num : (0:ℝ) ≤ 8)) Z3z0_le Z3z0_nonneg\n      (by norm_num)\n    nlinarith",
+            "line": 261,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err_phi2_le",
+            "lines": [
+              255,
+              284
+            ],
+            "conclusion": "`2*(Cg*2aH)^2*8*Z3g BPz2 0 ≤ 9e6`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L261-L264"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          199
+        ],
+        "printed": [
+          189
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

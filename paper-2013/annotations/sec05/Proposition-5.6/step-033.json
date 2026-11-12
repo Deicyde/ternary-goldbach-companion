@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 5.6 step 33",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] shows an antitone majorant `gHatQ` of $g(p)$ and `shat` of $\\log p/p$ (with $p=2$ replaced), rather than the monotonicity of $g$ itself and the $p\\ge7$ comparison with $p=2$.",
+  "subject": [
+    {
+      "location": {
+        "page": 41,
+        "rect": [
+          0.20698,
+          0.25789,
+          0.62529,
+          0.05411
+        ]
+      },
+      "title": "Proposition 5.6 step 33: Text, p. 41",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.6 step 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gp_le_ghat",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot4",
+        "lines": [
+          85,
+          115
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gp_le_ghat"
+          },
+          "snippet": {
+            "text": "theorem gp_le_ghat {p : ℕ} (hp : p.Prime) : gp p ≤ gHatQ p := by\n  have hp2 := hp.two_le\n  rcases Nat.lt_or_ge 31 p with h | h\n  · -- `p > 31`\n    have hp2' : (2 : ℝ) ≤ p := by exact_mod_cast hp2\n    rw [ghat_of_gt h]; unfold gp\n    exact mul_le_mul_of_nonneg_left (f1p_le_one_add hp2) (div_nonneg (by linarith) (by linarith))\n  · -- `p ≤ 31`: the explicit values\n    have key : ∀ (u : ℝ), 0 < u → u ^ 3 ≤ p → ∀ (U : ℝ),\n        (p : ℝ) / (p - 1) * ((1 + 1 / u ^ 2) / (1 + (u + u ^ 2) / ((p : ℝ) * ((p : ℝ) - 1)))) ≤ U →\n        gp p ≤ U := by\n      intro u hu0 hu U hU\n      have hp2' : (2 : ℝ) ≤ p := by exact_mod_cast hp2\n      unfold gp\n      exact (mul_le_mul_of_nonneg_left (f1p_le_of hp2 hu0 hu)\n        (div_nonneg (by linarith) (by linarith))).trans hU\n    interval_cases p\n    all_goals first\n      | (exfalso; revert hp; decide)\n      | skip\n    · exact (key 1.259921 (by norm_num) (by norm_num) 1.39953 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 1.442249 (by norm_num) (by norm_num) 1.39953 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 1.709975 (by norm_num) (by norm_num) 1.36194 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 1.912931 (by norm_num) (by norm_num) 1.3115 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 2.223980 (by norm_num) (by norm_num) 1.24148 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 2.351334 (by norm_num) (by norm_num) 1.21777 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 2.571281 (by norm_num) (by norm_num) 1.18326 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 2.668401 (by norm_num) (by norm_num) 1.17031 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 2.843866 (by norm_num) (by norm_num) 1.14988 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 3.072316 (by norm_num) (by norm_num) 1.12806 (by norm_num)).trans (by norm_num [gHatQ])\n    · exact (key 3.141380 (by norm_num) (by norm_num) 1.12235 (by norm_num)).trans (by norm_num [gHatQ])",
+            "line": 85,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gp_le_ghat",
+            "lines": [
+              85,
+              115
+            ],
+            "conclusion": "$g(p)=(p/(p-1))f_1(p)\\le$ `gHatQ p` for primes $p$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
+            "fragment": "L85-L115"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghat_anti",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot4",
+        "lines": [
+          161,
+          179
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghat_anti"
+          },
+          "snippet": {
+            "text": "theorem ghat_anti {a b : ℕ} (ha : a.Prime) (hb : b.Prime) (hab : b ≤ a) : gHatQ a ≤ gHatQ b := by\n  rcases Nat.lt_or_ge 31 b with hb31 | hb31\n  · -- both `> 31`, so both `≥ 37`\n    have hb37 : 37 ≤ b := by\n      by_contra h; interval_cases b <;> norm_num at hb\n    have ha31 : 31 < a := by omega\n    rw [ghat_of_gt ha31, ghat_of_gt hb31]\n    exact ghat_tail_anti hb37 hab\n  · rcases Nat.lt_or_ge 31 a with ha31 | ha31\n    · -- `b ≤ 31 < a`\n      have ha37 : 37 ≤ a := by\n        by_contra h; interval_cases a <;> norm_num at ha\n      have h1 : gHatQ a ≤ 1.1208 := by\n        rw [ghat_of_gt ha31]; exact ghat_tail_le ha37\n      have h2 : 1.12235 ≤ gHatQ b := by\n        unfold gHatQ; split_ifs <;> norm_num\n      linarith\n    · unfold gHatQ\n      split_ifs <;> first | omega | norm_num",
+            "line": 161,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghat_anti",
+            "lines": [
+              161,
+              179
+            ],
+            "conclusion": "`gHatQ` is antitone on primes."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
+            "fragment": "L161-L179"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.shat_anti",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot4",
+        "lines": [
+          208,
+          216
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.shat_anti"
+          },
+          "snippet": {
+            "text": "theorem shat_anti {a b : ℕ} (ha : a.Prime) (hb : b.Prime) (hab : b ≤ a) : shat a ≤ shat b := by\n  unfold shat\n  split_ifs with h1 h2 h2\n  · exact le_rfl\n  · omega\n  · have : (3 : ℝ) ≤ a := by exact_mod_cast (by have := ha.two_le; omega : 3 ≤ a)\n    exact log_div_anti (le_refl 3) this |>.trans (by push_cast; exact le_rfl)\n  · have hb3 : (3 : ℝ) ≤ b := by exact_mod_cast (by have := hb.two_le; omega : 3 ≤ b)\n    exact log_div_anti hb3 (by exact_mod_cast hab)",
+            "line": 208,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.shat_anti",
+            "lines": [
+              208,
+              216
+            ],
+            "conclusion": "`shat` ($\\log p/p$, with $\\log3/3$ at $p=2$) is antitone on primes."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
+            "fragment": "L208-L216"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          41
+        ],
+        "printed": [
+          41
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.2.4 step 33, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

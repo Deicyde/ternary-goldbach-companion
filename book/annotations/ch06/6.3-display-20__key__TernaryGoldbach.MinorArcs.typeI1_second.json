@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 20",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same step (S_{I,1} at the second choice, with a (log x)² Q term) but [L] gives a single bound (0.0407 L²+14.1L+15.7)T² for all q, case-split by SecondCase, with different constants, not [H]'s (x/q)min(1,c₀'/δ²)(⋯) + 2.89/1000 x^{2/3}(log x)² form.",
+  "subject": [
+    {
+      "location": {
+        "page": 136,
+        "rect": [
+          0.25926,
+          0.42487,
+          0.56816,
+          0.15122
+        ]
+      },
+      "title": "Display, p. 126",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI1_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI1",
+        "lines": [
+          314,
+          317
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI1_second"
+          },
+          "snippet": {
+            "text": "theorem typeI1_second {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hc : SecondCase T δ q) :\n    ‖typeILog α (T ^ 3) (U2 T)‖ ≤\n      (0.0407 * Real.log T ^ 2 + 14.1 * Real.log T + 15.7) * T ^ 2 := by",
+            "line": 314,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI1_second",
+            "lines": [
+              313,
+              431
+            ],
+            "conclusion": "At the second parameters `‖S_{I,1}‖ ≤ (0.0407 L² + 14.1 L + 15.7) T²`, `L = log T`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI1.lean",
+            "fragment": "L314-L317"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          136
+        ],
+        "printed": [
+          126
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

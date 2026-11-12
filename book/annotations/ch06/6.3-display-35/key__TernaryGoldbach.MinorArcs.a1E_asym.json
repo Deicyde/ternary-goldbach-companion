@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 35",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[H] assembles (quan) for t >= 2000 into 0.10848 t^{3/2} term by term (main term 0.10181 t^{3/2}); Lean does the analogous assembly for its own terms, for L = t/3 >= 70 (t >= 210), with total 1.413 L^{3/2} = 0.2719 t^{3/2}; none of the displayed constants 0.00012, 0.00145, 0.000048, 0.00462 occur. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 140,
+        "rect": [
+          0.25926,
+          0.44344,
+          0.56816,
+          0.10714
+        ]
+      },
+      "title": "Display, p. 130",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a1E_asym",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIaNum",
+        "lines": [
+          290,
+          291
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a1E_asym"
+          },
+          "snippet": {
+            "text": "theorem a1E_asym {L : ℝ} (hL : 70 ≤ L) : a1E L ≤ 0.1309 := by\n  have hL0 : 0 < L := by linarith",
+            "line": 290,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.a1E_asym",
+            "lines": [
+              290,
+              361
+            ],
+            "conclusion": "`a1E L <= 0.1309` for L >= 70: the coefficient of the secondary terms divided by L^{3/2}."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIaNum.lean",
+            "fragment": "L290-L291"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          140
+        ],
+        "printed": [
+          130
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

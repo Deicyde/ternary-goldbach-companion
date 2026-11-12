@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.1 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Takes the relation of the following display: Lean's main part is over odd m with (m,2q)=1 and an error (D/q+1)²-shaped bound instead of the text's.",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17462,
+          0.15703,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma 4.2.1 step 11: Text, p. 59",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          579,
+          677
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPart_le"
+          },
+          "snippet": {
+            "text": "theorem norm_mainPart_le {α x δ M D : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (h2α : 2 * α = a / q + δ / x + k) (hM0 : 0 ≤ M) (hMδ : |δ| * M ≤ x / 2) (hMD : M ≤ D) :\n    ‖mainPart α x M q‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) * |muSum M q (2 * q) fun _ => 1| +\n        c₀ * q / x * (1 / 8 - 1 / (2 * π ^ 2)) * (D / q + 1) ^ 2 := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hc0 : (0 : ℝ) < c₀ := by unfold c₀; norm_num\n  have hpi4 : (0 : ℝ) ≤ 1 / 8 - 1 / (2 * π ^ 2) := by\n    have := Real.pi_gt_three\n    rw [sub_nonneg, div_le_div_iff₀ (by positivity) (by norm_num)]; nlinarith\n  have hRHS2 : 0 ≤ c₀ * q / x * (1 / 8 - 1 / (2 * π ^ 2)) * (D / q + 1) ^ 2 := by positivity\n  have hRHS1 : 0 ≤ x / (2 * q) * minInv c₀ (π * δ) * |muSum M q (2 * q) fun _ => 1| :=\n    mul_nonneg (mul_nonneg (by positivity) (minInv_nonneg _ _ hc0.le)) (abs_nonneg _)\n  rcases Nat.even_or_odd q with hqe | hqo\n  · -- `q` even: no odd multiples of `q`.\n    have : mainPart α x M q = 0 := by\n      refine sum_eq_zero fun m' _ => ?_\n      rw [if_neg]; rw [Nat.not_odd_iff_even]; exact hqe.mul_right m'\n    rw [this, norm_zero]; linarith\n  -- `q` odd.\n  set N := ⌊M / q⌋₊\n  have hNM : (N : ℝ) ≤ M / q := Nat.floor_le (by positivity)\n  have hT : ∀ m' : ℕ, ∃ E : ℂ, Odd m' → m' ≤ N →\n      Todd α x (q * m') = e ((a + k * q) / 2) *\n        ((x / (2 * (q * m' : ℕ)) : ℝ) * eta2hat (-(δ / 2)) + E) ∧\n      ‖E‖ ≤ (q * m' : ℕ) / x * (c₀ / (2 * π ^ 2)) * (π ^ 2 - 4) := by\n    intro m'\n    by_cases h : Odd m' ∧ m' ≤ N\n    · have hr : |δ * (q * m' : ℕ) / x| ≤ 1 / 2 := by\n        have hm'N : (m' : ℝ) ≤ N := by exact_mod_cast h.2\n        rw [abs_div, abs_mul, abs_of_pos hx, Nat.abs_cast, div_le_iff₀ hx]\n        push_cast\n        have : (q : ℝ) * m' ≤ M := by\n          calc (q : ℝ) * m' ≤ q * (M / q) := by gcongr; linarith\n            _ = M := by field_simp\n        calc |δ| * (q * m') ≤ |δ| * M := mul_le_mul_of_nonneg_left this (abs_nonneg _)\n          _ ≤ 1 / 2 * x := by linarith\n      obtain ⟨E, hE1, hE2⟩ := Todd_main hx hq h.1 h2α hr\n      exact ⟨E, fun _ _ => ⟨hE1, hE2⟩⟩\n    · exact ⟨0, fun h1 h2 => absurd ⟨h1, h2⟩ h⟩\n  choose E hE using hT\n  set κ := e ((a + k * q) / 2)\n  set η0 := eta2hat (-(δ / 2))\n  have hsplit : mainPart α x M q = κ * (((x / (2 * q) : ℝ) : ℂ) * η0 *\n        ((∑ m' ∈ Icc 1 N, (if Odd m' then ((μ (q * m') : ℤ) : ℝ) / m' else 0) : ℝ) : ℂ) +\n      ∑ m' ∈ Icc 1 N, (if Odd m' then (μ (q * m') : ℂ) * E m' else 0)) := by\n    rw [mainPart, Complex.ofReal_sum, mul_sum, ← sum_add_distrib, mul_sum]\n    refine sum_congr rfl fun m' hm' => ?_\n    have hm'N : m' ≤ N := (mem_Icc.1 hm').2\n    have hm'1 : 1 ≤ m' := (mem_Icc.1 hm').1\n    have hodd : Odd (q * m') ↔ Odd m' := by\n      rw [Nat.odd_mul]; exact ⟨fun h => h.2, fun h => ⟨hqo, h⟩⟩\n    by_cases ho : Odd m'\n    · rw [if_pos (hodd.2 ho), if_pos ho, if_pos ho, (hE m' ho hm'N).1]\n      have hm'R : (0 : ℝ) < m' := by exact_mod_cast hm'1\n      push_cast\n      field_simp\n    · rw [if_neg (fun h => ho (hodd.1 h)), if_neg ho, if_neg ho]; simp\n  rw [hsplit, norm_mul, norm_e, one_mul]\n  refine (norm_add_le _ _).trans (add_le_add ?_ ?_)\n  · -- The main term.\n    have hmu : (∑ m' ∈ Icc 1 N, (if Odd m' then ((μ (q * m') : ℤ) : ℝ) / m' else 0)) =\n        (μ q : ℝ) * muSum M q (2 * q) fun _ => 1 := by\n      rw [muSum, mul_sum]\n      exact sum_congr rfl fun m' _ => moebius_odd_term hqo m'\n    rw [hmu, norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,\n      Real.norm_eq_abs, abs_of_pos (by positivity), abs_mul]\n    have hmuq : |(μ q : ℝ)| ≤ 1 := by exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n    have h1 := norm_eta2hat_le_minInv δ\n    calc x / (2 * q) * ‖η0‖ * (|(μ q : ℝ)| * |muSum M q (2 * q) fun _ => 1|)\n        ≤ x / (2 * q) * minInv c₀ (π * δ) * (1 * |muSum M q (2 * q) fun _ => 1|) := by\n          have := minInv_nonneg c₀ (π * δ) hc0.le\n          gcongr\n      _ = _ := by ring\n  · -- The error terms.\n    refine (norm_sum_le _ _).trans ?_\n    have hterm : ∀ m' ∈ Icc 1 N, ‖(if Odd m' then (μ (q * m') : ℂ) * E m' else 0)‖ ≤\n        q * c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) * (if Odd m' then (m' : ℝ) else 0) := by\n      intro m' hm'\n      by_cases ho : Odd m'\n      · rw [if_pos ho, if_pos ho, norm_mul]\n        have hmu : ‖(μ (q * m') : ℂ)‖ ≤ 1 := by\n          rw [Complex.norm_intCast]; exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n        have hE2 := (hE m' ho (mem_Icc.1 hm').2).2\n        calc ‖(μ (q * m') : ℂ)‖ * ‖E m'‖ ≤ 1 * ‖E m'‖ := by gcongr\n          _ ≤ _ := by rw [one_mul]; refine hE2.trans (le_of_eq ?_); push_cast; field_simp\n      · rw [if_neg ho, if_neg ho, norm_zero, mul_zero]\n    refine (sum_le_sum hterm).trans ?_\n    rw [← mul_sum]\n    have hodd := sum_odd_le N\n    have hpi2 : (0 : ℝ) ≤ π ^ 2 - 4 := by have := Real.pi_gt_three; nlinarith\n    have hND : ((N : ℝ) + 1) ^ 2 ≤ (D / q + 1) ^ 2 := by\n      have : (N : ℝ) ≤ D / q := hNM.trans (div_le_div_of_nonneg_right hMD hq0.le)\n      gcongr\n    calc q * c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) *\n          ∑ m' ∈ Icc 1 N, (if Odd m' then (m' : ℝ) else 0)\n        ≤ q * c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) * (((N : ℝ) + 1) ^ 2 / 4) := by gcongr\n      _ ≤ q * c₀ * (π ^ 2 - 4) / (2 * π ^ 2 * x) * ((D / q + 1) ^ 2 / 4) := by gcongr\n      _ = _ := by field_simp; ring",
+            "line": 579,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+            "lines": [
+              578,
+              677
+            ],
+            "conclusion": "Bounds `‖mainPart α x M q‖ ≤ (x/2q)·minInv c₀ (πδ)·|muSum| + c₀q/x·(1/8−1/(2π²))(D/q+1)²`: main term `(x/2q)η̂₂(−δ/2)·μ(q)·∑ μ(m)/m` plus error from `∑ (m/x)(c₀/2π²)(π²−4)` over odd m'."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L579-L677"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

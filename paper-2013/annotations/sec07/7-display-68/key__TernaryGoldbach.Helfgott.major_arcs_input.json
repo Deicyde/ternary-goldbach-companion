@@ -1,0 +1,81 @@
+{
+  "id": "7 display 68",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same decomposition (major arcs $+$ $O^*$ minor arcs) with weaker constants: Lean has $1.049$ and $1.0376$ (difference $0.0114$) in place of $1.058259$, $0.97392$ ($0.08433$); stated for the real part of the weighted count `repSum`.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.20371,
+          0.09416,
+          0.63183,
+          0.16669
+        ]
+      },
+      "title": "Display, p. 70",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 68"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.major_arcs_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs",
+        "lines": [
+          67,
+          91
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.major_arcs_input"
+          },
+          "snippet": {
+            "text": "/-- **Major arcs** [H, (14.27)], with `1.049` in place of [H]'s `1.058259`:\n`Re ∫_{𝔐_{8,r₀}} S_{η₊}(α,x)² S_{η_*}(α,x) e(-Nα) dα ≥ 1.049 x²/κ` with `r₀ = 150000`.\n\n*Proof:* `MajorArcs.major_total` (`MajorArcs/MajorTotal.lean`), following [H, §§14.1–14.2]. On the\narcs of modulus `q` the sums are compared with `μ(q)/φ(q) η̂(−βx)x` by Cor 7.1.3 and Prop 7.1.5\n(the Part II results collected in `MinorArcs/PartIICited.lean`); the singular series is bounded below\nwith `∏_{3 ≤ p ≤ r₀} p/(p − 1) ≤ 15.5` (`MajorArcs.prod_p_div_le`, from the kernel computation of\n`SmallMertensProd.lean`); and `C_{η◦,η_*}(N/x)` is computed. This uses `PlattGRH` and no other\nhypothesis. -/\ntheorem major_arcs_input (N : ℕ) (hN : Odd N) (hN27 : 10 ^ 27 ≤ N) :\n    1.049 * xOf N ^ 2 / κ ≤\n      (∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ (xOf N), integrand N α).re := by\n  have hx := xOf_ge N hN27\n  have hNx : (N : ℝ) / xOf N = 2 + 9 / (8 * √(Real.pi / 2)) / κ := by\n    have hN0 : (N : ℝ) ≠ 0 := by\n      have : 0 < N := lt_of_lt_of_le (by positivity) hN27\n      exact_mod_cast this.ne'\n    have hs : √(2 * Real.pi) = 2 * √(Real.pi / 2) := by\n      rw [show 2 * Real.pi = 2 ^ 2 * (Real.pi / 2) by ring, Real.sqrt_mul (by positivity),\n        Real.sqrt_sq (by norm_num)]\n    have hs0 : 0 < √(Real.pi / 2) := Real.sqrt_pos.2 (by positivity)\n    rw [xOf, hs, κ]\n    field_simp\n    ring\n  exact MajorArcs.major_total hN hx hNx",
+            "line": 67,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.major_arcs_input",
+            "lines": [
+              67,
+              91
+            ],
+            "conclusion": "$\\mathrm{Re}\\int_{\\mathfrak M_{8,r_0}}S_{\\eta_+}^2S_{\\eta_*}e(-N\\alpha)\\,d\\alpha\\ge1.049x^2/\\kappa$ (in place of $1.058259$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "fragment": "L67-L91"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

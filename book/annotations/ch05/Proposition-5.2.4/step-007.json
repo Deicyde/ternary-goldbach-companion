@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 5.2.4 step 7",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean uses 1/m <= max(1,2ρ)/(2q) in place of 1/(q min(2,ρ^-1)); the intermediate lines are one `calc`, and the last line equals the (5.53) bracket.",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.23649,
+          0.56162,
+          0.1047
+        ]
+      },
+      "title": "Proposition 5.2.4 step 7: Display, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          662,
+          668
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_a"
+          },
+          "snippet": {
+            "text": "  calc (⌈D / m⌉₊ : ℝ) * (W - W' + 2 * q) ≤ (D / m + 1) * (W - W' + 2 * q) :=\n        mul_le_mul_of_nonneg_right hceil (by linarith)\n    _ = D / m * (W - W') + D / m * (2 * q) + (W - W' + 2 * q) := by ring\n    _ ≤ x / (2 * W) * (max 1 (2 * ρ) / (2 * q)) * (W / 2) +\n        x / (2 * W) * (max 1 (2 * ρ) / (2 * q)) * (2 * q) + (W / 2 + 2 * q) := by\n        gcongr <;> linarith\n    _ = _ := by field_simp; ring",
+            "line": 662,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+            "lines": [
+              623,
+              668
+            ],
+            "conclusion": "`(D/m+1)(W-W'+2q) = D/m(W-W') + D/m·2q + (W-W'+2q)` and then `≤ ... (W/2) + ... (2q) + (W/2+2q)` using D<=x/2W, W-W'<=W/2, giving the (5.53) bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L662-L668"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

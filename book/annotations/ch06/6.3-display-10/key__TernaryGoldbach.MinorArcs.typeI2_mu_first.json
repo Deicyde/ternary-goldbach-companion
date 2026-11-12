@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 10",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] reaches 3 log q + log 108 (≤ 4.696) for the same quantity through the max-form bound, without the + 4/5 term and without maximising over y at y = 4e^{4/5}q²; [H]'s total is 3 log q + 5.48214.",
+  "subject": [
+    {
+      "location": {
+        "page": 131,
+        "rect": [
+          0.17135,
+          0.8242,
+          0.56816,
+          0.03531
+        ]
+      },
+      "title": "Display, p. 121",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_mu_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2",
+        "lines": [
+          122,
+          139
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_mu_first"
+          },
+          "snippet": {
+            "text": "  have hmax : max (Real.log (V1 T * q) - Real.log (M₀ / (2 * q ^ 2))) 0 ≤\n      4.696 + 3 * Real.log q := by\n    have hlq : 0 ≤ Real.log q := Real.log_nonneg hq1\n    refine max_le ?_ (by linarith)\n    rw [← Real.log_div (by positivity) (by positivity)]\n    have h1 : V1 T * q / (M₀ / (2 * q ^ 2)) ≤ 108 * q ^ 3 := by\n      rw [div_le_iff₀ (by positivity)]\n      have : (V1 T : ℝ) * q * (2 * q ^ 2) ≤ 9 * T / 2 * q * (2 * q ^ 2) := by gcongr\n      have e : 108 * (q : ℝ) ^ 3 * (M₀ / (2 * q ^ 2)) = 54 * q * M₀ := by field_simp; ring\n      rw [e]\n      have : 54 * (q : ℝ) * (T / 12) ≤ 54 * q * M₀ := by gcongr\n      have : (V1 T : ℝ) * q ≤ 9 * T / 2 * q := by gcongr\n      linarith\n    calc Real.log (V1 T * q / (M₀ / (2 * q ^ 2))) ≤ Real.log (108 * q ^ 3) :=\n          Real.log_le_log (by positivity) h1\n      _ = Real.log 108 + 3 * Real.log q := by\n          rw [Real.log_mul (by norm_num) (by positivity), Real.log_pow]; push_cast; ring\n      _ ≤ _ := by linarith [log_108_le]",
+            "line": 122,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_mu_first",
+            "lines": [
+              93,
+              169
+            ],
+            "conclusion": "`log(Vq) − log(M₀/2q²) ≤ 4.696 + 3 log q` via `Vq/(M₀/2q²) ≤ 108 q³`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2.lean",
+            "fragment": "L122-L139"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          131
+        ],
+        "printed": [
+          121
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

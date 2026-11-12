@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 13.1.1 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] does the rearrangement discretely, with $\\sum_{a<n\\le b} g(n)(F(n)-F(n-1))$ in place of $\\int_a^b h(u)F'(u)\\,du$ and no floor/integral chain; $g$ is assumed non-increasing instead of the running maximum $h$.",
+  "subject": [
+    {
+      "location": {
+        "page": 256,
+        "rect": [
+          0.26253,
+          0.45221,
+          0.56162,
+          0.1908
+        ]
+      },
+      "title": "Lemma 13.1.1 step 6: Display, p. 246",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 13.1.1 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          31,
+          43
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abel_le"
+          },
+          "snippet": {
+            "text": "  have key : ∀ k, a ≤ k → k ≤ b →\n      ∑ n ∈ Icc a k, f n * g n ≤ g a * F a + ∑ n ∈ Ioc a k, g n * (F n - F (n - 1)) -\n        g k * (F k - ∑ m ∈ Icc a k, f m) := by\n    intro k hak hkb\n    induction k, hak using Nat.le_induction with\n    | base => simp; linarith [mul_comm (f a) (g a)]\n    | succ k hak ih =>\n      have ih := ih (by omega)\n      rw [sum_Icc_succ_top (by omega), sum_Icc_succ_top (by omega), sum_Ioc_succ_top hak,\n        Nat.add_sub_cancel]\n      have hgk := hg k hak (by omega)\n      have hSk := hS k hak (by omega)\n      nlinarith [mul_le_mul_of_nonneg_right hgk (sub_nonneg.2 hSk)]",
+            "line": 31,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+            "lines": [
+              23,
+              46
+            ],
+            "conclusion": "Discrete summation by parts by induction: $\\sum_{a\\le n\\le k} f(n)g(n)\\le g(a)F(a)+\\sum_{a<n\\le k} g(n)(F(n)-F(n-1)) - g(k)(F(k)-S(k))$, the discrete counterpart of turning $\\sum F(n)(h(n)-h(n+1))$ into $h(a)F(a)-h(b)F(b)+\\int h F'$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L31-L43"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          256
+        ],
+        "printed": [
+          246
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

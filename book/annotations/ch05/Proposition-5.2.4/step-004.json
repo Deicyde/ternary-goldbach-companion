@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 5.2.4 step 4",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean adds W' ≤ W (implicit in the text).",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.15529,
+          0.56162,
+          0.01981
+        ]
+      },
+      "title": "Proposition 5.2.4 step 4: Text, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          635,
+          637
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_a"
+          },
+          "snippet": {
+            "text": "  have h := lemma_5_2_3_a hq hcop hα hqQ (by linarith) hW'W' (W' := W') (W := W) U' (x / W)\n  rw [S2]\n  refine h.trans ?_",
+            "line": 635,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+            "lines": [
+              623,
+              668
+            ],
+            "conclusion": "Applies `lemma_5_2_3_a` (5.50) with A₀=U', A₁=x/W under q ≤ ρQ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L635-L637"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

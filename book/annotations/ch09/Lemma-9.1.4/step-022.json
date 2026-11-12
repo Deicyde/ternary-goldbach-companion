@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.4 step 22",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] gives the equality ∫|G_δ'|² = 2π∫(log v)²η² for the specific η, matching the text's identity.",
+  "subject": [
+    {
+      "location": {
+        "page": 184,
+        "rect": [
+          0.26253,
+          0.3227,
+          0.56162,
+          0.03884
+        ]
+      },
+      "title": "Lemma 9.1.4 step 22: Display, p. 174",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineD",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherel",
+        "lines": [
+          253,
+          275
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_norm_sq_flineD"
+          },
+          "snippet": {
+            "text": "theorem integral_norm_sq_flineD (δ : ℝ) :\n    ∫ t, ‖flineD δ t‖ ^ 2 = 2 * π * ∫ v in Ioi (0:ℝ), Real.log v ^ 2 * etaSq v := by\n  have hpi : 0 < 2 * π := by positivity\n  have e1 : ∀ t, ‖flineD δ t‖ ^ 2 = (1 / (2 * π)) ^ 2 * ‖𝓕 (FhalfD δ) (t / (2 * π))‖ ^ 2 := by\n    intro t\n    rw [flineD, norm_smul, mul_pow, Real.norm_eq_abs, abs_of_pos (by positivity)]\n  simp_rw [e1]\n  rw [integral_const_mul]\n  have h1 := Measure.integral_comp_div (fun ξ : ℝ => ‖𝓕 (FhalfD δ) ξ‖ ^ 2) (2 * π)\n  rw [h1, abs_of_pos hpi, smul_eq_mul, TernaryGoldbach.integral_norm_sq_fourier\n    (integrable_memLp_FhalfD δ).1 (integrable_memLp_FhalfD δ).2]\n  have e2 : ∀ x, ‖FhalfD δ x‖ ^ 2 = (2 * π) ^ 2 * (x ^ 2 * ‖Fhalf δ x‖ ^ 2) := by\n    intro x\n    have e : FhalfD δ x = (-2 * π * I) * (x • Fhalf δ x) := by\n      rw [FhalfD, smul_eq_mul, Complex.real_smul]; ring\n    rw [e, norm_mul, norm_smul, Real.norm_eq_abs]\n    have : ‖-2 * π * I‖ = 2 * π := by\n      rw [norm_mul, norm_mul, Complex.norm_I, mul_one, norm_neg, Complex.norm_ofNat, Complex.norm_real,\n        Real.norm_eq_abs, abs_of_pos Real.pi_pos]\n    rw [this, mul_pow, mul_pow (|x|), sq_abs]\n  simp_rw [e2]\n  rw [integral_const_mul, integral_sq_mul_norm_sq_Fhalf]\n  field_simp",
+            "line": 253,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineD",
+            "lines": [
+              253,
+              275
+            ],
+            "conclusion": "`∫_ℝ ‖flineD δ t‖² dt = 2π ∫_0^∞ (log v)² etaSq v dv`, i.e. Plancherel for G_δ', for the specific η."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherel.lean",
+            "fragment": "L253-L275"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          184
+        ],
+        "printed": [
+          174
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

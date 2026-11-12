@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.2.2 step 7",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean applies montgomery_ineq with a(n)=log n at the point alpha*m (the phase e(alpha(m0+a)n) moved into the argument), and only for r in C (squarefree, coprime to q, r<=R<=W').",
+  "subject": [
+    {
+      "location": {
+        "page": 105,
+        "rect": [
+          0.17462,
+          0.69053,
+          0.56162,
+          0.04584
+        ]
+      },
+      "title": "Lemma 5.2.2 step 7: Text, p. 95",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.montgomery_ineq",
+        "module": "TernaryGoldbach.MinorArcs.Montgomery",
+        "lines": [
+          136,
+          141
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.montgomery_ineq"
+          },
+          "snippet": {
+            "text": "/-- **Montgomery's inequality** (case `ω(p) = 1`): for squarefree `r` and `a(n)` supported on\n`n` coprime to `r`, `|S(α)|² ≤ φ(r) ∑_{b < r, (b,r)=1} |S(α + b/r)|²`. -/\ntheorem montgomery_ineq {r : ℕ} (hr : Squarefree r) (s : Finset ℕ) (a : ℕ → ℂ)\n    (hs : ∀ n ∈ s, Nat.Coprime n r) (α : ℝ) :\n    ‖∑ n ∈ s, a n * e (α * n)‖ ^ 2 ≤\n      (Nat.totient r : ℝ) * ∑ b ∈ (range r).filter r.Coprime,",
+            "line": 136,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.montgomery_ineq",
+            "lines": [
+              136,
+              163
+            ],
+            "conclusion": "Montgomery's inequality for squarefree r: |S(alpha)|^2 <= phi(r) sum_{b<r,(b,r)=1}|S(alpha+b/r)|^2 for a supported on n coprime to r."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Montgomery.lean",
+            "fragment": "L136-L141"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.odd_block_weighted",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1058,
+          1075
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.odd_block_weighted"
+          },
+          "snippet": {
+            "text": "  have hMont : ∀ m : ℤ, ∀ r ∈ C, (1 / Nat.totient r : ℝ) * ‖primeExpSum W' W (α * m)‖ ^ 2 ≤\n      ∑ b ∈ (range r).filter r.Coprime, ‖primeExpSum W' W (α * m + b / r)‖ ^ 2 := by\n    intro m r hr\n    obtain ⟨hr1, hrR, hrsq, _⟩ := hCmem r hr\n    have hφ : (0 : ℝ) < Nat.totient r := by exact_mod_cast Nat.totient_pos.2 hr1\n    have hM := montgomery_ineq hrsq ((Ioc ⌊W'⌋₊ ⌊W⌋₊).filter Nat.Prime)\n      (fun n => (Real.log n : ℂ)) (by\n        intro p hp\n        rw [mem_filter, mem_Ioc] at hp\n        refine (Nat.Prime.coprime_iff_not_dvd hp.2).2 fun hpr => ?_\n        have : p ≤ r := Nat.le_of_dvd hr1 hpr\n        have h2 : W' < (⌊W'⌋₊ : ℝ) + 1 := Nat.lt_floor_add_one W'\n        have h3 : (p : ℝ) ≤ r := by exact_mod_cast this\n        have h4 : (⌊W'⌋₊ : ℝ) + 1 ≤ p := by exact_mod_cast hp.1.1\n        linarith) (α * m)\n    simp only [primeExpSum] at hM ⊢\n    rw [one_div, ← div_eq_inv_mul, div_le_iff₀ hφ]\n    linarith [hM]",
+            "line": 1058,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.odd_block_weighted",
+            "lines": [
+              951,
+              1083
+            ],
+            "conclusion": "Applies it with a(n)=log n on the primes in (W',W] (coprime to r since r<=R<=W'<p) to get (1/phi(r))|S(alpha m)|^2 <= sum_b |S(alpha m + b/r)|^2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1058-L1075"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          105
+        ],
+        "printed": [
+          95
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.4 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's Q is x/(|δ|q) (unrounded) rather than the text's Q from Lemma 4.2.2, and the approximation is for η₂ with `Approx2`; q', Q' enter only in the case (a) second approximation.",
+  "subject": [
+    {
+      "location": {
+        "page": 81,
+        "rect": [
+          0.17462,
+          0.51362,
+          0.56162,
+          0.03379
+        ]
+      },
+      "title": "Lemma 4.2.4 step 1: Text, p. 71",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          796,
+          821
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseB"
+          },
+          "snippet": {
+            "text": "  obtain ⟨Q, hqQ, hδ, hD'Q, hMQ⟩ : ∃ Q : ℝ, (q : ℝ) ≤ Q ∧ |δ / x| * (q * Q) ≤ 1 ∧\n      min (c₂ * x / q) D ≤ Q / 2 ∧ Mof x δ q D = min (Q / 2) D := by\n    by_cases hδ0 : δ = 0\n    · refine ⟨max Q₀ (2 * D), hqQ₀.trans (le_max_left _ _), by simp [hδ0], ?_, ?_⟩\n      · have := le_max_right Q₀ (2 * D)\n        exact (min_le_right _ _).trans (by linarith)\n      · rw [Mof, if_pos hδ0, min_eq_right]\n        have := le_max_right Q₀ (2 * D); linarith\n    · have hδpos : 0 < |δ| := abs_pos.2 hδ0\n      have hQ₀le : Q₀ ≤ x / (|δ| * q) := by\n        rw [abs_div, abs_of_pos hx0, div_le_div_iff₀ hx0 (by positivity)] at hδQ₀\n        rw [le_div_iff₀ (by positivity)]; nlinarith\n      refine ⟨x / (|δ| * q), hqQ₀.trans hQ₀le, ?_, ?_, by rw [Mof, if_neg hδ0]⟩\n      · rw [abs_div, abs_of_pos hx0]; field_simp; rfl\n      · rcases hcase with hc | hc\n        · refine (min_le_left _ _).trans ?_\n          have h1 : 2 * c₂ * |δ| ≤ 1 := by\n            rw [le_div_iff₀ (by positivity)] at hc; linarith\n          have e : c₂ * x / q = (2 * c₂ * |δ|) * (x / (|δ| * q) / 2) := by field_simp\n          rw [e]; exact mul_le_of_le_one_left (by positivity) h1\n        · exact (min_le_right _ _).trans (hc.trans (by linarith))\n  set M := Mof x δ q D\n  have hMD : M ≤ D := by rw [hMQ]; exact min_le_right _ _\n  have hM0 : 0 ≤ M := by\n    rw [hMQ]; exact le_min (by linarith) (by linarith)\n  have hMD' : min (c₂ * x / q) D ≤ M := by rw [hMQ]; exact le_min hD'Q (min_le_right _ _)",
+            "line": 796,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseB",
+            "lines": [
+              781,
+              841
+            ],
+            "conclusion": "Chooses `Q` with `q ≤ Q`, `|δ/x| q Q ≤ 1`, `min(c₂x/q, D) ≤ Q/2` (`Q = x/(|δ|q)` unrounded, or `max(Q₀,2D)` if `δ = 0`) and `M = Mof x δ q D = min(Q/2, D)`, as in the proof of Lemma 4.2.2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L796-L821"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          81
+        ],
+        "printed": [
+          71
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

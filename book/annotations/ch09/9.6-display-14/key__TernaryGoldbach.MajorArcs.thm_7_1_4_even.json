@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 14",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses T0=H+250r/q only for even q>125000 (r=3e5); for the other q it takes T0=1e8/q (or 1e8 for q=1).",
+  "subject": [
+    {
+      "location": {
+        "page": 205,
+        "rect": [
+          0.17135,
+          0.51114,
+          0.56816,
+          0.03336
+        ]
+      },
+      "title": "Display, p. 195",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_even",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          662,
+          680
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_even"
+          },
+          "snippet": {
+            "text": "  · have h125' : (125000:ℝ) < q := by exact_mod_cast (not_le.1 h125)\n    have hT0 : 200 + max (10 * π * |δ|) 50 ≤ 200 + 7.5e7 / q := by\n      refine hT0_of hq0 hδ ?_ (by\n        have : (250:ℝ) ≤ 7.5e7 / q := by rw [le_div_iff₀ hq0]; nlinarith\n        linarith)\n      rw [show (200 + 7.5e7 / q - 200 : ℝ) = 7.5e7 / q by ring]\n      exact div_le_div_of_nonneg_right (by norm_num) hq0.le\n    have hG : GRHUpTo χ (200 + 7.5e7 / q) :=\n      (platt_even heven (by omega) χ hχ).mono (le_max_right _ _)\n    have h := prop_9_4_2 (x := x) (by linarith) δ χ hχ hT0 hG\n    rw [if_neg hq1] at h ⊢\n    refine h.trans (mul_le_mul_of_nonneg_right ?_ hx0.le)\n    unfold err942N\n    rw [if_neg hq1]\n    refine errP_le_of hx hq hD (E1P_le (Cq := 1.36044e8) (Z := 143.21) (S1 := 33086) (S2 := 43934)\n      (by positivity) ?_ (ZL_R3_le (not_le.1 h125) hq) (by norm_num) (by norm_num) (by norm_num)\n      (by norm_num)) (by norm_num) (E2_R3 (not_le.1 h125) hq hδ) (by norm_num)\n    rw [show (200 + 7.5e7 / q + 3.48 : ℝ) = (203.48 * q + 7.5e7) / q by field_simp; ring]\n    exact div_le_div_of_nonneg_right (by nlinarith) hq0.le",
+            "line": 662,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_even",
+            "lines": [
+              629,
+              680
+            ],
+            "conclusion": "For q>125000 takes T0=200+7.5e7/q with Platt's hypothesis at that height."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L662-L680"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          205
+        ],
+        "printed": [
+          195
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

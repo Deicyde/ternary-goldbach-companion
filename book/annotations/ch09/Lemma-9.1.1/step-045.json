@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.1 step 45",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's counterpart of (peanuts) bounds $L'/L$ on $\\Re s=-1/2$ by Landau's lemma (growth $\\log B_y$, linear in $|y|$), with no functional equation, digamma or Euler–Maclaurin evaluation.",
+  "subject": [
+    {
+      "location": {
+        "page": 178,
+        "rect": [
+          0.26253,
+          0.21445,
+          0.56162,
+          0.03403
+        ]
+      },
+      "title": "Lemma 9.1.1 step 45: Text, p. 168",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 45"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_logDeriv_L_left",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          492,
+          496
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_logDeriv_L_left"
+          },
+          "snippet": {
+            "text": "/-- **`L'/L` on the line `ℜs = −1/2`**: `|L'/L(−1/2 + iy)| ≤ (2/log 2 + 4.8) log(B_y/0.355)`. -/\ntheorem norm_logDeriv_L_left {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (y : ℝ) :\n    ‖logDeriv χ.LFunction (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤\n      Real.log (BT N y / 0.355) / Real.log 2 / (1 / 2) + 4.8 * Real.log (BT N y / 0.355) := by",
+            "line": 492,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_logDeriv_L_left",
+            "lines": [
+              492,
+              523
+            ],
+            "conclusion": "$|L'/L(-1/2+iy,\\chi)|\\le(2/\\log2+4.8)\\log(B_y/0.355)$ for primitive $\\chi\\ne1$, by Landau's lemma at $2+iy$ and a zero count."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L492-L496"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          178
+        ],
+        "printed": [
+          168
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

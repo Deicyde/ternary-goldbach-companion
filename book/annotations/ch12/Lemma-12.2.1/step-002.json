@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 12.2.1 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] gives `log P ≤ log q + 1.039 R` (real `R`, log form) instead of `P ≤ q e^{(1+ε₀)m}` with `ε₀ = 0.001102`; weaker constant, and conditional on `PlattGRH`.",
+  "subject": [
+    {
+      "location": {
+        "page": 243,
+        "rect": [
+          0.17462,
+          0.72087,
+          0.56162,
+          0.03441
+        ]
+      },
+      "title": "Lemma 12.2.1 step 2: Display, p. 233",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 12.2.1 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.log_prod_primeSetRq_le",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          36,
+          63
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.log_prod_primeSetRq_le"
+          },
+          "snippet": {
+            "text": "/-- `log P ≤ log q + 1.039 R` for `P = ∏_{p ≤ R or p ∣ q} p`. -/\ntheorem log_prod_primeSetRq_le {R : ℝ} (hR : 0 ≤ R) {q : ℕ} (hq : 1 ≤ q) :\n    Real.log (∏ p ∈ primeSetRq R q, p : ℕ) ≤ Real.log q + 1.039 * R := by\n  have hpos : ∀ p ∈ primeSetRq R q, (0 : ℝ) < p := fun p hp => by\n    exact_mod_cast (primeSetRq_prime p hp).pos\n  rw [Nat.cast_prod, Real.log_prod (fun p hp => (hpos p hp).ne')]\n  have hnn : ∀ p ∈ primeSetRq R q, 0 ≤ Real.log (p : ℝ) := fun p _ => Real.log_natCast_nonneg p\n  have h1 : ∑ p ∈ primeSetRq R q, Real.log (p : ℝ) ≤\n      ∑ p ∈ (Icc 1 ⌊R⌋₊).filter Nat.Prime, Real.log (p : ℝ) +\n        ∑ p ∈ q.primeFactors, Real.log (p : ℝ) := by\n    unfold primeSetRq\n    rw [← sum_union_inter]\n    exact le_add_of_nonneg_right (sum_nonneg fun p _ => Real.log_natCast_nonneg p)\n  have h2 : ∑ p ∈ (Icc 1 ⌊R⌋₊).filter Nat.Prime, Real.log (p : ℝ) ≤ 1.039 * R := by\n    have h := (TernaryGoldbach.Prelim.thetaN_le_psiN ⌊R⌋₊).trans\n      (TernaryGoldbach.Prelim.psiN_le ⌊R⌋₊)\n    unfold TernaryGoldbach.Prelim.thetaN at h\n    have hf : (⌊R⌋₊ : ℝ) ≤ R := Nat.floor_le hR\n    nlinarith\n  have h3 : ∑ p ∈ q.primeFactors, Real.log (p : ℝ) ≤ Real.log q := by\n    rw [← Real.log_prod (fun p hp => by\n      have := (Nat.prime_of_mem_primeFactors hp).pos; positivity)]\n    apply Real.log_le_log (prod_pos fun p hp => by\n      exact_mod_cast (Nat.prime_of_mem_primeFactors hp).pos)\n    have : ∏ p ∈ q.primeFactors, p ≤ q := Nat.le_of_dvd (by omega) (Nat.prod_primeFactors_dvd q)\n    have h2 : ((∏ p ∈ q.primeFactors, p : ℕ) : ℝ) ≤ q := by exact_mod_cast this\n    simpa [Nat.cast_prod] using h2\n  linarith",
+            "line": 36,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.log_prod_primeSetRq_le",
+            "lines": [
+              36,
+              63
+            ],
+            "conclusion": "For `P = ∏_{p ≤ R or p ∣ q} p`, `log P ≤ log q + 1.039 R` (under `PlattGRH`), via `θ ≤ ψ ≤ 1.03883 n` and `∏_{p∣q} p ≤ q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L36-L63"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          243
+        ],
+        "printed": [
+          233
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

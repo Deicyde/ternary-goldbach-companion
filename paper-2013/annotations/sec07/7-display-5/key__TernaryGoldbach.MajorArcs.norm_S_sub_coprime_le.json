@@ -1,0 +1,81 @@
+{
+  "id": "7 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "K_{r,2} bounds the contribution of the terms with (n,q)>1 in Lemma 10.3.1. Lean bounds the same non-coprime part directly, as a sup bound D = 10^{-15} x (entering squared as Cb in `Jq_bounds`), not as the quantity K_{r,2} with |S(0,x)| and |η|_∞ = 1.079955.",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.20371,
+          0.10456,
+          0.63183,
+          0.07482
+        ]
+      },
+      "title": "Display, p. 57",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          314,
+          315
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le"
+          },
+          "snippet": {
+            "text": "theorem norm_S_sub_coprime_le {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000)\n    (α : ℝ) : ‖S etaPlus x α - expTsum (coprimePart q (cP x)) α‖ ≤ 1e-15 * x := by",
+            "line": 314,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+            "lines": [
+              313,
+              321
+            ],
+            "conclusion": "`|S_{η₊}(α) − S'_q(α)| ≤ 10^{-15} x` for q ≤ 300000, x ≥ 4.9·10^26, where S'_q keeps the terms coprime to q."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L314-L315"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          57
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

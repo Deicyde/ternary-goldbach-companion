@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.4 step 19",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean's bound is over all `n ≤ ⌊UV⌋` with `¬(q∣n ∧ n≤M)` and weights `log n * |T_n|`; the oddness of `m` is already dropped (the text drops it in the next step).",
+  "subject": [
+    {
+      "location": {
+        "page": 83,
+        "rect": [
+          0.17462,
+          0.6174,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.4 step 19: Text, p. 73",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_sum",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          845,
+          877
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_sum"
+          },
+          "snippet": {
+            "text": "/-- `‖restPartI2‖ ≤ ∑_{0 < n ≤ UV, ¬(q ∣ n ∧ n ≤ M)} log n |T_{n,∘}|` (since `|c(a)| ≤ log a`). -/\ntheorem norm_restPartI2_le_sum {α x M U V : ℝ} {q : ℕ} (hU : 0 ≤ U) (hV : 0 ≤ V) :\n    ‖restPartI2 α x M U V q‖ ≤ ∑ n ∈ Ioc (0 : ℤ) ⌊U * V⌋,\n      Real.log n * (if ¬ ((q : ℤ) ∣ n ∧ (n : ℝ) ≤ M) then Tn α x n else 0) := by\n  have hlog : ∀ n : ℤ, 0 ≤ Real.log (n : ℝ) := fun n => Real.log_intCast_nonneg n\n  set g : ℤ → ℝ := fun n => if ¬ ((q : ℤ) ∣ n ∧ (n : ℝ) ≤ M) then Tn α x n else 0\n  have hg0 : ∀ n, 0 ≤ g n := fun n => by\n    simp only [g]; split_ifs <;> first | exact Tn_nonneg _ _ _ | exact le_rfl\n  rw [restPartI2]\n  refine (norm_sum_le _ _).trans ?_\n  have hfl : ((⌊U * V⌋₊ : ℕ) : ℤ) = ⌊U * V⌋ := Int.natCast_floor_eq_floor (by positivity)\n  rw [← hfl, ← sum_Icc_eq_Ioc_int]\n  have hsub : Icc 1 (⌊V⌋₊ * ⌊U⌋₊) ⊆ Icc 1 ⌊U * V⌋₊ := Icc_subset_Icc le_rfl (Nat.le_floor (by\n    push_cast\n    calc (⌊V⌋₊ : ℝ) * ⌊U⌋₊ ≤ V * U :=\n          mul_le_mul (Nat.floor_le hV) (Nat.floor_le hU) (by positivity) hV\n      _ = U * V := by ring))\n  refine le_trans ?_ (sum_le_sum_of_subset_of_nonneg hsub fun n _ _ =>\n    mul_nonneg (hlog n) (hg0 n))\n  refine sum_le_sum fun m _ => ?_\n  by_cases h : Odd m ∧ ¬ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M)\n  · rw [if_pos h, norm_mul]\n    have hg : g (m : ℤ) = ‖Todd α x m‖ := by\n      simp only [g]\n      rw [if_pos (by\n        intro ⟨hd, hle⟩; exact h.2 ⟨by exact_mod_cast hd, by exact_mod_cast hle⟩)]\n      simp [Tn]\n    change _ ≤ Real.log ((m : ℤ) : ℝ) * g (m : ℤ)\n    rw [hg]\n    have hc : ‖(coefI2 U V m : ℂ)‖ ≤ Real.log ((m : ℤ) : ℝ) := by\n      rw [Complex.norm_real, Real.norm_eq_abs, Int.cast_natCast]; exact abs_coefI2_le U V m\n    exact mul_le_mul_of_nonneg_right hc (norm_nonneg _)\n  · rw [if_neg h, norm_zero]; exact mul_nonneg (hlog _) (hg0 _)",
+            "line": 845,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_sum",
+            "lines": [
+              845,
+              877
+            ],
+            "conclusion": "`‖restPartI2‖ ≤ Σ_{0<n≤⌊UV⌋, ¬(q∣n ∧ n≤M)} log n * |T_{n,∘}|`, from `|c(a)| ≤ log a`, with the oddness condition dropped."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L845-L877"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          83
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

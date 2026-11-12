@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 35",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[H] assembles (quan) for t >= 2000 into 0.10848 t^{3/2} term by term (main term 0.10181 t^{3/2}); Lean does the analogous assembly for its own terms, for L = t/3 >= 70 (t >= 210), with total 1.413 L^{3/2} = 0.2719 t^{3/2}; none of the displayed constants 0.00012, 0.00145, 0.000048, 0.00462 occur. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 140,
+        "rect": [
+          0.25926,
+          0.44344,
+          0.56816,
+          0.10714
+        ]
+      },
+      "title": "Display, p. 130",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a1_piece_asym",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIaPieces",
+        "lines": [
+          203,
+          209
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a1_piece_asym"
+          },
+          "snippet": {
+            "text": "theorem a1_piece_asym {L : ℝ} (hL : 70 ≤ L) :\n    √(12 * a1F0 L * a1X0 L * a1B0 L) + a1SEC L ≤ 1.413 * (L * √L) := by\n  have hm := a1M1_asym hL\n  have he := a1E_asym hL\n  have hs := a1SEC_le (show (15.6 : ℝ) ≤ L by linarith)\n  have hLL : 0 ≤ L * √L := by positivity\n  nlinarith [mul_le_mul_of_nonneg_right he hLL]",
+            "line": 203,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.a1_piece_asym",
+            "lines": [
+              203,
+              209
+            ],
+            "conclusion": "For L >= 70: `sqrt(12 F0 X0 B0) + SEC(L) <= 1.413 L^{3/2}`, from `a1M1_asym` (main term <= 1.0002 L^{3/2}), `a1E_asym` (`a1E L <= 0.1309`) and `a1SEC_le`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIaPieces.lean",
+            "fragment": "L203-L209"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          140
+        ],
+        "printed": [
+          130
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

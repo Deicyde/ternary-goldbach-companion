@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 16",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean keeps these coefficients symbolic (`coefUV`, `coefQ`, `cPlus`), with `1.0064` outside, no `ε₀` expansion and no numerical values `3.57565`, `3.53312`, …; `c_{4,I₂}+c_{9,I₂}` corresponds to `coefUV`, and `c_{10,I₂}`, `c_{5,I₂}`, `c_{12,I₂}` to the pieces of `coefQ`.",
+  "subject": [
+    {
+      "location": {
+        "page": 117,
+        "rect": [
+          0.17135,
+          0.17376,
+          0.56816,
+          0.18924
+        ]
+      },
+      "title": "Display, p. 107",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.cPlus",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum",
+        "lines": [
+          172,
+          173
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.cPlus"
+          },
+          "snippet": {
+            "text": "/-- `c₊ = 1 + |η₂'|₁/(x/UV)` [H, (6.7)]. -/\nnoncomputable def cPlus (x U V : ℝ) : ℝ := 1 + eta2'L1 / (x / (U * V))",
+            "line": 172,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.cPlus",
+            "lines": [
+              172,
+              173
+            ],
+            "conclusion": "`c₊ = 1 + |η₂'|₁/(x/(UV))` with `|η₂'|₁ = 8 log 2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L172-L173"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          117
+        ],
+        "printed": [
+          107
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

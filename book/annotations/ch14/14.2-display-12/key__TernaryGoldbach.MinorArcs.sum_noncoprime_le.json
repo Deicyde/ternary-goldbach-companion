@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 12",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] never bounds $|\\eta_*\\cdot t|_\\infty$; where [H] uses it (large prime powers in $LS_{\\eta_*}$), [L] uses the Gaussian envelope $144u^2e^{-u^2/2}$ for $n>y^2$ and $|\\eta_U|\\le6.2$ below.",
+  "subject": [
+    {
+      "location": {
+        "page": 275,
+        "rect": [
+          0.17135,
+          0.30089,
+          0.56816,
+          0.0358
+        ]
+      },
+      "title": "Display, p. 265",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_noncoprime_le",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap2",
+        "lines": [
+          98,
+          112
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_noncoprime_le"
+          },
+          "snippet": {
+            "text": "    · -- the Gaussian tail\n      push Not at hny\n      have hu : 0 < (n : ℝ) / y := by positivity\n      have h1 := abs_etaU_le_gauss hu\n      have hsq : (n : ℝ) ≤ ((n : ℝ) / y) ^ 2 := by\n        rw [div_pow, le_div_iff₀ (by positivity)]; nlinarith\n      have h2 : rexp (-((n : ℝ) / y) ^ 2 / 2) ≤ rexp (-(n : ℝ) / 2) := Real.exp_le_exp.2 (by linarith)\n      have hΛn : Λ n ≤ n := ArithmeticFunction.vonMangoldt_le_log.trans (Real.log_le_self hn0.le)\n      have h3 := cube_mul_exp_le n hn0.le\n      calc Λ n * |etaU (n / y)| ≤ n * (144 * ((n : ℝ) / y) ^ 2 * rexp (-(n : ℝ) / 2)) := by\n            refine mul_le_mul hΛn (h1.trans ?_) (abs_nonneg _) hn0.le\n            exact mul_le_mul_of_nonneg_left h2 (by positivity)\n        _ = 144 / y ^ 2 * ((n : ℝ) ^ 3 * rexp (-(n : ℝ) / 2)) := by field_simp\n        _ ≤ 144 / y ^ 2 * (384 * rexp (-(n : ℝ) / 4)) := by gcongr\n        _ = g₂ n := by simp only [g₂]; ring",
+            "line": 98,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_noncoprime_le",
+            "lines": [
+              41,
+              143
+            ],
+            "conclusion": "Tail of the non-coprime prime-power sum for $\\eta_*$ ($n>y^2$): $\\Lambda(n)|\\eta_U(n/y)|\\le(55296/y^2)e^{-n/4}$ from the Gaussian envelope."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap2.lean",
+            "fragment": "L98-L112"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          275
+        ],
+        "printed": [
+          265
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

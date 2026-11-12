@@ -1,0 +1,81 @@
+{
+  "id": "A.5 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves only upper bounds: |eta_circ|<=1 (no equality at 1 stated) and eta_diamond(t)*t <= 0.7358 (2/e=0.73576...); no exact sup values.",
+  "subject": [
+    {
+      "location": {
+        "page": 298,
+        "rect": [
+          0.25926,
+          0.31379,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Display, p. 288",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.5 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.etaO_le_one",
+        "module": "TernaryGoldbach.MajorArcs.CMain",
+        "lines": [
+          451,
+          463
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.etaO_le_one"
+          },
+          "snippet": {
+            "text": "theorem etaO_le_one (t : ℝ) : |etaO t| ≤ 1 := by\n  unfold etaO\n  by_cases h : t ∈ Icc (0 : ℝ) 2\n  · rw [indicator_of_mem h]\n    unfold P0\n    have h1 : 0 ≤ t * (2 - t) := mul_nonneg h.1 (by linarith [h.2])\n    have h2 : t * (2 - t) ≤ 1 := by nlinarith [sq_nonneg (t - 1)]\n    have h3 : Real.exp (-(t - 1) ^ 2 / 2) ≤ 1 := Real.exp_le_one_iff.2 (by nlinarith)\n    rw [abs_of_nonneg (by positivity)]\n    calc (t * (2 - t)) ^ 3 * Real.exp (-(t - 1) ^ 2 / 2) ≤ 1 ^ 3 * 1 := by\n          gcongr\n      _ = 1 := by norm_num\n  · rw [indicator_of_notMem h]; simp",
+            "line": 451,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.etaO_le_one",
+            "lines": [
+              451,
+              463
+            ],
+            "conclusion": "|eta_circ(t)| <= 1 for all t, with etaO(t)=(t(2-t))^3 e^{-(t-1)^2/2} = h(t)*t*e^{-t^2/2} on [0,2]."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
+            "fragment": "L451-L463"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          298
+        ],
+        "printed": [
+          288
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

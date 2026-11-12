@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 18",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's error term (err942N) has different constants and shape than (9.70) and is bounded with 1e-17/sqrt q pieces, not the displayed 1.3482e-14+1.617e-10/q+...",
+  "subject": [
+    {
+      "location": {
+        "page": 206,
+        "rect": [
+          0.25926,
+          0.18195,
+          0.56816,
+          0.18494
+        ]
+      },
+      "title": "Display, p. 196",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.errP_le_of",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          429,
+          482
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.errP_le_of"
+          },
+          "snippet": {
+            "text": "/-- **The error for `q ≥ 2`**, given `E₁ ≤ K/√q` and `E₂ ≤ E₂'`, `547.73 E₂' ≤ 6.9·10⁻⁸`. -/\ntheorem errP_le_of {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} [NeZero q] (hq3 : q ≤ 300000) {T0 δ K E2b : ℝ}\n    (hδ : |δ| ≤ 6e5)\n    (hE1 : E1g (BP q) T0 (2 * π * 0.6403) (2 * π * 1.129) ≤ K / √q) (hK : K ≤ 7.66e6)\n    (hE2 : E2g (BP q) 11 T0 (Cg * (2 * aH) * EB (T0 - 200)) (Cg * (2 * aH) * EA (T0 - 200) δ) rhoB\n      (rhoA δ) ≤ E2b) (hE2b : E2b * 547.73 ≤ 6.9e-8) :\n    errP q T0 δ x ≤ (7.5e-8 + 7.7e6 / √x) / √q := by\n  have hq0 : (0:ℝ) < q := by exact_mod_cast Nat.pos_of_ne_zero (NeZero.ne q)\n  have hq3' : (q:ℝ) ≤ 300000 := by exact_mod_cast hq3\n  have hs : 0 < √(q:ℝ) := Real.sqrt_pos.2 hq0\n  have hsq : √(q:ℝ) ≤ 547.73 := by rw [Real.sqrt_le_left (by norm_num)]; linarith\n  have hx0 : 0 < x := by linarith\n  have hsx := sqrt_x_ge' hx\n  have hinv : ∀ c : ℝ, 0 ≤ c → c / 547.73 ≤ c / √q := fun c hc =>\n    div_le_div_of_nonneg_left hc hs hsq\n  -- `E₀`\n  have hZ : Z3g (BP q) 0 ≤ 136.61 := by\n    have h := E0b_le (q := q) hq3\n    unfold Explicit.E0b at h\n    unfold Z3g\n    linarith\n  have hZ0 : 0 ≤ Z3g (BP q) 0 := Explicit.Z3_nonneg q 0\n  have ha : Cg * 300 * (2 * aH) * Z3g (BP q) 0 / x ≤ 1e-17 / √q := by\n    refine le_trans ?_ (hinv _ (by norm_num))\n    have hc := cE0_le\n    have hc0 : 0 ≤ Cg * 300 * (2 * aH) := by have := cA_nonneg; nlinarith\n    have h1 : Cg * 300 * (2 * aH) * Z3g (BP q) 0 ≤ 38772 * 136.61 := mul_le_mul hc hZ hZ0 (by norm_num)\n    rw [div_le_iff₀ hx0]\n    have : 1e-17 / 547.73 * 4.9e26 ≤ 1e-17 / 547.73 * x := mul_le_mul_of_nonneg_left hx (by norm_num)\n    have : (38772 * 136.61 : ℝ) ≤ 1e-17 / 547.73 * 4.9e26 := by norm_num\n    linarith\n  -- the vertical line\n  have hV := VgL_le (Explicit.DN_nonneg q) (DN_le hq3) hδ\n  have hV0 : 0 ≤ VgL (DN q) (Cg * (300 * Real.exp 1) * (2 * aH)) (thP δ) := by\n    unfold VgL\n    have := cKv_nonneg; have := log2_const_nonneg; have := Explicit.DN_nonneg q\n    have := Explicit.thP_pos δ\n    positivity\n  have hd : VgL (DN q) (Cg * (300 * Real.exp 1) * (2 * aH)) (thP δ) / (2 * π * (x * √x)) ≤\n      1e-17 / √q := by\n    refine le_trans ?_ (hinv _ (by norm_num))\n    have hpi := Real.pi_gt_three\n    have hxx : 1e26 * 2e13 ≤ x * √x := mul_le_mul (by linarith) (by linarith) (by norm_num) hx0.le\n    rw [div_le_iff₀ (by positivity)]\n    have : 1e-17 / 547.73 * (2 * 3 * (1e26 * 2e13)) ≤ 1e-17 / 547.73 * (2 * π * (x * √x)) := by\n      apply mul_le_mul_of_nonneg_left _ (by norm_num); nlinarith\n    have : (2e19 : ℝ) ≤ 1e-17 / 547.73 * (2 * 3 * (1e26 * 2e13)) := by norm_num\n    linarith\n  have hc : E2g (BP q) 11 T0 (Cg * (2 * aH) * EB (T0 - 200)) (Cg * (2 * aH) * EA (T0 - 200) δ) rhoB\n      (rhoA δ) ≤ 6.9e-8 / √q := by\n    refine hE2.trans (le_trans ?_ (hinv _ (by norm_num)))\n    rw [le_div_iff₀ (by norm_num)]; exact hE2b\n  unfold errP\n  exact combine_err hs (by linarith) ha hE1 hK hc hd",
+            "line": 429,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.errP_le_of",
+            "lines": [
+              429,
+              482
+            ],
+            "conclusion": "Given E1<=K/sqrt q, K<=7.66e6 and E2<=E2b, errP<=(7.5e-8+7.7e6/sqrt x)/sqrt q for x>=4.9e26."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L429-L482"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          206
+        ],
+        "printed": [
+          196
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

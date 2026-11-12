@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.4 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The evaluation `Σ_{u odd, q'∣u} μ(u)/u = μ(q')/q' Σ_{(w,2q')=1} μ(w)/w` is done inside `abs_sum_moebius_odd_dvd_le` with `q' = q/gcd(q,v)`, without the displayed two-term form.",
+  "subject": [
+    {
+      "location": {
+        "page": 82,
+        "rect": [
+          0.26253,
+          0.15793,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.4 step 5: Text, p. 72",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_sum_moebius_odd_dvd_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          146,
+          168
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_sum_moebius_odd_dvd_le"
+          },
+          "snippet": {
+            "text": "/-- [H, p. 72]: for `q'` odd, `|∑_{u ≤ R, u odd, q' | u} μ(u)/u| ≤ 1/q'` (by (2.20)). -/\ntheorem abs_sum_moebius_odd_dvd_le {q' : ℕ} (hq' : Odd q') (R : ℝ) (hR : 0 ≤ R) :\n    |∑ u ∈ Icc 1 ⌊R⌋₊, (if Odd u ∧ q' ∣ u then (μ u : ℝ) / u else 0)| ≤ 1 / q' := by\n  have hq1 : 1 ≤ q' := hq'.pos\n  have hq0 : (0 : ℝ) < q' := by exact_mod_cast hq1\n  rw [sum_dvd_reindex hq1 R hR]\n  have hodd : ∀ w, Odd (q' * w) ↔ Odd w := fun w => by\n    rw [Nat.odd_mul]; exact ⟨fun h => h.2, fun h => ⟨hq', h⟩⟩\n  have hterm : ∀ w ∈ Icc 1 ⌊R / q'⌋₊, (if Odd (q' * w) then (μ (q' * w) : ℝ) / ((q' * w : ℕ) : ℝ) else 0) =\n      (1 / q') * ((μ q' : ℝ) * (if Nat.Coprime w (2 * q') then (μ w : ℝ) / w * 1 else 0)) := by\n    intro w hw\n    have hw1 : (0 : ℝ) < w := by exact_mod_cast (mem_Icc.1 hw).1\n    rw [← moebius_odd_term hq' w]\n    by_cases ho : Odd w\n    · rw [if_pos ((hodd w).2 ho), if_pos ho]; push_cast; field_simp\n    · rw [if_neg (fun h => ho ((hodd w).1 h)), if_neg ho, mul_zero]\n  rw [sum_congr rfl hterm, ← mul_sum, ← mul_sum, abs_mul, abs_mul, abs_of_pos (by positivity)]\n  have h1 : |(μ q' : ℝ)| ≤ 1 := by exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n  have h2 := Prelim.abs_sum_moebius_div_coprime_le_one (R / q') (q := 2 * q') (by omega)\n  simp only [mul_one] at h2 ⊢\n  calc 1 / (q' : ℝ) * (|(μ q' : ℝ)| * |∑ w ∈ Icc 1 ⌊R / q'⌋₊,\n        (if Nat.Coprime w (2 * q') then (μ w : ℝ) / w else 0)|) ≤ 1 / q' * (1 * 1) := by gcongr\n    _ = 1 / q' := by ring",
+            "line": 146,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_sum_moebius_odd_dvd_le",
+            "lines": [
+              146,
+              168
+            ],
+            "conclusion": "For odd `q'`, `|Σ_{u≤R, u odd, q'∣u} μ(u)/u| ≤ 1/q'`: extracts `μ(q')/q'` and bounds the remaining sum over `(w,2q')=1` by 1 (Prelim.abs_sum_moebius_div_coprime_le_one, the text's (grara))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L146-L168"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          82
+        ],
+        "printed": [
+          72
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

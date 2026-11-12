@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 5.2.1 step 1",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "Lean needs only W' ≥ 0, no W,W' ≥ 1 or W' ≥ W/2, and separation ≥ ν for distinct indices with a_i ≡ a_j; the text's strict separation > ν and interval length condition are implied.",
+  "subject": [
+    {
+      "location": {
+        "page": 103,
+        "rect": [
+          0.17462,
+          0.79172,
+          0.56162,
+          0.06178
+        ]
+      },
+      "title": "Lemma 5.2.1 step 1: Text, p. 93",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.1 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sep_triples",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          262,
+          369
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sep_triples"
+          },
+          "snippet": {
+            "text": "/-- The separation of the angles `a/q + b/r + u` of [H, (5.40)–(5.41)]: for `r, r' ≤ R` coprime\nto `q`, `(b, r) = (b', r') = 1`, `|u| ≤ υ`, `qR²(ν + υ) ≤ 1`, `ν + υ ≤ 1/q`, the difference\n`t = A/q + b/r - b'/r' + u` has `‖t‖ ≥ ν`, unless `q | A`, `r = r'`, `b = b'` (where we assume\n`|u| ≥ ν`). -/\ntheorem sep_triples {q r r' b b' : ℕ} (hq : 1 ≤ q) (hr : 1 ≤ r) (hr' : 1 ≤ r')\n    (hrq : Nat.Coprime r q) (hr'q : Nat.Coprime r' q) (hb : b < r) (hb' : b' < r')\n    (hbr : Nat.Coprime r b) (hb'r : Nat.Coprime r' b') {A : ℤ} {u ν υ R : ℝ} (hν : 0 < ν)\n    (hu : |u| ≤ υ) (hRr : (r : ℝ) ≤ R) (hRr' : (r' : ℝ) ≤ R) (hR : q * R ^ 2 * (ν + υ) ≤ 1)\n    (hνυ : ν + υ ≤ 1 / q) (hcase : (q : ℤ) ∣ A → r = r' → b = b' → ν ≤ |u|) :\n    ν ≤ |(A / q + b / r - b' / r' + u : ℝ) - round (A / q + b / r - b' / r' + u : ℝ)| := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hr0 : (0 : ℝ) < r := by exact_mod_cast hr\n  have hr'0 : (0 : ℝ) < r' := by exact_mod_cast hr'\n  set M : ℤ := A * r * r' + q * (b * r' - b' * r)\n  have hM : (A / q + b / r - b' / r' : ℝ) = M / (q * r * r') := by\n    simp only [M]; push_cast; field_simp; ring\n  apply le_dist_round_of_forall\n  intro n\n  by_cases hdiv : ((q * r * r' : ℕ) : ℤ) ∣ M\n  · -- Then `r = r'`, `b = b'`, `q ∣ A`.\n    have hrq' : IsCoprime (r : ℤ) q := Nat.isCoprime_iff_coprime.2 hrq\n    have hr'q' : IsCoprime (r' : ℤ) q := Nat.isCoprime_iff_coprime.2 hr'q\n    have hbr' : IsCoprime (r : ℤ) b := Nat.isCoprime_iff_coprime.2 hbr\n    have hb'r' : IsCoprime (r' : ℤ) b' := Nat.isCoprime_iff_coprime.2 hb'r\n    have h1 : (r : ℤ) ∣ r' := by\n      have : (r : ℤ) ∣ M := dvd_trans (⟨(q : ℤ) * r', by push_cast; ring⟩ : (r : ℤ) ∣ ((q * r * r' : ℕ) : ℤ)) hdiv\n      have h2 : (r : ℤ) ∣ q * (b * r') := by\n        have e : (q : ℤ) * (b * r') = M - r * (A * r' - q * b') := by simp only [M]; ring\n        rw [e]; exact dvd_sub this (dvd_mul_right _ _)\n      exact hbr'.dvd_of_dvd_mul_left (hrq'.dvd_of_dvd_mul_left h2)\n    have h1' : (r' : ℤ) ∣ r := by\n      have : (r' : ℤ) ∣ M := dvd_trans (⟨(q : ℤ) * r, by push_cast; ring⟩ : (r' : ℤ) ∣ ((q * r * r' : ℕ) : ℤ)) hdiv\n      have h2 : (r' : ℤ) ∣ q * (b' * r) := by\n        have e : (q : ℤ) * (b' * r) = r' * (A * r + q * b) - M := by simp only [M]; ring\n        rw [e]; exact dvd_sub (dvd_mul_right _ _) this\n      exact hb'r'.dvd_of_dvd_mul_left (hr'q'.dvd_of_dvd_mul_left h2)\n    have hrr : r = r' := by\n      have := Int.dvd_antisymm (by positivity) (by positivity) h1 h1'\n      exact_mod_cast this\n    subst hrr\n    have h3 : ((q * r : ℕ) : ℤ) ∣ A * r + q * (b - b') := by\n      have e : M = r * (A * r + q * (b - b')) := by simp only [M]; ring\n      rw [e] at hdiv\n      have : ((q * r * r : ℕ) : ℤ) = r * ((q * r : ℕ) : ℤ) := by push_cast; ring\n      rw [this] at hdiv\n      exact (Int.dvd_of_mul_dvd_mul_left (by positivity) hdiv)\n    have h4 : (r : ℤ) ∣ b - b' := by\n      have : (r : ℤ) ∣ q * (b - b') := by\n        have hr3 : (r : ℤ) ∣ A * r + q * (b - b') :=\n          dvd_trans (⟨(q : ℤ), by push_cast; ring⟩ : (r : ℤ) ∣ ((q * r : ℕ) : ℤ)) h3\n        have e : (q : ℤ) * (b - b') = (A * r + q * (b - b')) - A * r := by ring\n        rw [e]; exact dvd_sub hr3 (dvd_mul_left _ _)\n      exact hrq'.dvd_of_dvd_mul_left this\n    have hbb : b = b' := by\n      obtain ⟨c, hc⟩ := h4\n      have : c = 0 := by\n        by_contra hc0\n        have : (r : ℤ) ≤ |(b : ℤ) - b'| := by\n          rw [hc, abs_mul]; nlinarith [abs_nonneg (r : ℤ), Int.one_le_abs hc0, abs_of_pos (show (0:ℤ) < r by positivity)]\n        have : |(b : ℤ) - b'| < r := by rw [abs_lt]; constructor <;> omega\n        omega\n      rw [this, mul_zero] at hc; omega\n    subst hbb\n    have h5 : (q : ℤ) ∣ A := by\n      have e : A * r + q * (b - b) = A * r := by ring\n      rw [e] at h3\n      have : ((q * r : ℕ) : ℤ) = q * r := by push_cast; ring\n      rw [this] at h3\n      exact Int.dvd_of_mul_dvd_mul_right (by positivity) h3\n    have hνu := hcase h5 rfl rfl\n    obtain ⟨k, hk⟩ := h5\n    have ht : (A / q + b / r - b / r + u : ℝ) - n = u - (n - k) := by\n      rw [hk]; push_cast; field_simp; ring\n    rw [ht]\n    by_cases hnk : n - k = 0\n    · have : ((n : ℝ) - k) = 0 := by exact_mod_cast hnk\n      rw [this, sub_zero]; exact hνu\n    · have h6 : (1 : ℝ) ≤ |((n - k : ℤ) : ℝ)| := by\n        rw [← Int.cast_abs]; exact_mod_cast Int.one_le_abs hnk\n      push_cast at h6\n      have h7 := abs_sub_abs_le_abs_sub ((n : ℝ) - k) u\n      rw [abs_sub_comm ((n : ℝ) - k) u] at h7\n      have : 1 / (q : ℝ) ≤ 1 := by rw [div_le_one hq0]; exact_mod_cast hq\n      linarith\n  · -- `‖M/(qrr')‖ ≥ 1/(qrr') ≥ 1/(qR²) ≥ ν + υ`.\n    have hne : M - n * (q * r * r' : ℕ) ≠ 0 := by\n      intro h; exact hdiv ⟨n, by linarith⟩\n    have hqrr : (0 : ℝ) < q * r * r' := by positivity\n    have h1 : 1 / ((q : ℝ) * r * r') ≤ |(M : ℝ) / (q * r * r') - n| := by\n      have e : (M : ℝ) / (q * r * r') - n = ((M - n * (q * r * r' : ℕ) : ℤ) : ℝ) / (q * r * r') := by\n        push_cast; field_simp\n      rw [e, abs_div, abs_of_pos hqrr]\n      refine div_le_div_of_nonneg_right ?_ hqrr.le\n      rw [← Int.cast_abs]; exact_mod_cast Int.one_le_abs hne\n    have h2 : ν + υ ≤ 1 / ((q : ℝ) * r * r') := by\n      rw [le_div_iff₀ hqrr]\n      calc (ν + υ) * (q * r * r') ≤ (ν + υ) * (q * R ^ 2) := by\n            apply mul_le_mul_of_nonneg_left _ (by linarith [abs_nonneg u])\n            rw [sq]\n            have := mul_le_mul hRr hRr' hr'0.le (hr0.le.trans hRr)\n            nlinarith\n        _ ≤ 1 := by linarith\n    have h3 := abs_sub_abs_le_abs_sub ((M : ℝ) / (q * r * r') - n) (-u)\n    have e2 : (A / q + b / r - b' / r' + u : ℝ) - n = ((M : ℝ) / (q * r * r') - n) - (-u) := by\n      rw [← hM]; ring\n    rw [e2]\n    rw [abs_neg] at h3\n    linarith",
+            "line": 262,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sep_triples",
+            "lines": [
+              262,
+              369
+            ],
+            "conclusion": "Separation of the angles a_i/q+u_i+b/r (here r=r'=1) is at least ν when ν+υ ≤ 1/q."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L262-L369"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.large_sieve_primes",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          29,
+          66
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.large_sieve_primes"
+          },
+          "snippet": {
+            "text": "/-- The large sieve (optimal form) for `S(β)`: for `δ`-separated points (`0 < δ ≤ 1`),\n`∑_r |S(β_r)|² ≤ (W - W' + δ⁻¹) ∑ (log p)²`. -/\ntheorem large_sieve_primes {ι : Type*} (s : Finset ι) (β : ι → ℝ) {δ : ℝ} (hδ : 0 < δ)\n    (hδ1 : δ ≤ 1)\n    (hsep : ∀ r ∈ s, ∀ r' ∈ s, r ≠ r' → δ ≤ |(β r - β r') - round (β r - β r')|)\n    {W' W : ℝ} (hW' : 0 ≤ W') :\n    ∑ r ∈ s, ‖primeExpSum W' W (β r)‖ ^ 2 ≤ (W - W' + δ⁻¹) * logSqSum W' W := by\n  rcases lt_or_ge ⌊W'⌋₊ ⌊W⌋₊ with hlt | hge\n  · set M := ⌊W'⌋₊\n    set N := ⌊W⌋₊ - M\n    have hMN : M + N = ⌊W⌋₊ := by omega\n    set a : ℕ → ℂ := fun n => if n.Prime then (Real.log n : ℂ) else 0\n    have hS : ∀ t, primeExpSum W' W t = ∑ n ∈ Ioc M (M + N), a n * e (t * n) := by\n      intro t\n      rw [primeExpSum, hMN, sum_filter]\n      refine sum_congr rfl fun n _ => ?_\n      simp only [a]; split_ifs <;> simp\n    have hL : logSqSum W' W = ∑ n ∈ Ioc M (M + N), ‖a n‖ ^ 2 := by\n      rw [logSqSum, hMN, sum_filter]\n      refine sum_congr rfl fun n _ => ?_\n      simp only [a]; split_ifs\n      · rw [Complex.norm_real, Real.norm_eq_abs, sq_abs]\n      · simp\n    simp_rw [hS]\n    rw [hL]\n    refine (Prelim.large_sieve_opt s β hδ hδ1 hsep M N a).trans ?_\n    refine mul_le_mul_of_nonneg_right ?_ (sum_nonneg fun _ _ => sq_nonneg _)\n    have hW0 : 0 ≤ W := by\n      by_contra h; push Not at h\n      have : ⌊W⌋₊ = 0 := Nat.floor_eq_zero.2 (by linarith)\n      omega\n    have h1 : (⌊W⌋₊ : ℝ) ≤ W := Nat.floor_le hW0\n    have h2 : W' < (⌊W'⌋₊ : ℝ) + 1 := Nat.lt_floor_add_one W'\n    have hN : (N : ℝ) = ⌊W⌋₊ - ⌊W'⌋₊ := by\n      simp only [N, M]; rw [Nat.cast_sub hlt.le]\n    rw [hN]; linarith\n  · have hempty : Ioc ⌊W'⌋₊ ⌊W⌋₊ = ∅ := Ioc_eq_empty (not_lt.2 hge)\n    simp [primeExpSum, logSqSum, hempty]",
+            "line": 29,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.large_sieve_primes",
+            "lines": [
+              29,
+              66
+            ],
+            "conclusion": "Large sieve in N+δ⁻¹ form for primes, δ-separated points."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L29-L66"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_1",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          409,
+          416
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_1"
+          },
+          "snippet": {
+            "text": "  constructor\n  · -- (i): the large sieve with `δ = ν`.\n    refine large_sieve_primes s (fun i => a i / q + u i) hν hν1 ?_ hW'\n    intro i hi j hj hij\n    have := hsep3 1 le_rfl (by have := (le_div_iff₀ hq0).1 hνυ; nlinarith) i hi j hj 1 1 0 0 le_rfl le_rfl (by simp) (by simp)\n      (Nat.coprime_one_left q) (Nat.coprime_one_left q) one_pos one_pos (Nat.coprime_one_left 0)\n      (Nat.coprime_one_left 0) (fun h => hij (Prod.ext_iff.1 h).1)\n    simpa using this",
+            "line": 409,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_1",
+            "lines": [
+              372,
+              485
+            ],
+            "conclusion": "Conjunct (i): ∑|S(α_i)|² ≤ (W−W'+ν⁻¹)∑(log p)²."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L409-L416"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          103
+        ],
+        "printed": [
+          93
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

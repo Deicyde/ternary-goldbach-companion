@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.1.1 step 29",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean handles all `A, C ≥ 0` uniformly (no separate `C/A>1` remark, no use of the trivial `A q` bound).",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.26253,
+          0.53105,
+          0.56162,
+          0.03159
+        ]
+      },
+      "title": "Lemma 4.1.1 step 29: Text, p. 54",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_minInvSin_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          337,
+          343
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_minInvSin_le"
+          },
+          "snippet": {
+            "text": "  rcases le_or_gt (π / 2) w with hwpi | hwpi\n  · -- `w ≥ π/2`: bound the integrand by `A`.\n    have : ∫ v in (0:ℝ)..(π / 2), min A (C * (1 / Real.sin v ^ 2)) ≤ ∫ v in (0:ℝ)..(π / 2), A :=\n      intervalIntegral.integral_mono_on (by positivity) (hII _ _) intervalIntegrable_const\n        fun v _ => min_le_left _ _\n    rw [intervalIntegral.integral_const, smul_eq_mul, sub_zero] at this\n    nlinarith",
+            "line": 337,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_minInvSin_le",
+            "lines": [
+              315,
+              374
+            ],
+            "conclusion": "Case `w ≥ π/2` (large `C/A`): bound the integrand by `A`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L337-L343"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          54
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

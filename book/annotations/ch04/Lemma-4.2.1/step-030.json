@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 30",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Block bound with 3c₁/2 in place of 3c₁ (odd m), c₁ = 1+|η₂'|₁/(x/D) (book 2x/D), blocks start at R = M rather than (Q+1)/2.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.26253,
+          0.6123,
+          0.56162,
+          0.1569
+        ]
+      },
+      "title": "Lemma 4.2.1 step 30: Display, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_Ioc_le_blocks",
+        "module": "TernaryGoldbach.MinorArcs.BlockSums",
+        "lines": [
+          11,
+          50
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_Ioc_le_blocks"
+          },
+          "snippet": {
+            "text": "/-- Split `∑_{⌊a⌋ < n ≤ ⌊b⌋} G(n)` (`G ≥ 0`) into blocks `(a + jq, min(a + (j+1)q, b)]`. -/\ntheorem sum_Ioc_le_blocks {G : ℤ → ℝ} (hG : ∀ n, 0 ≤ G n) {q : ℕ} (hq : 1 ≤ q) :\n    ∀ (J : ℕ) (a b : ℝ), b ≤ a + J * q →\n      ∑ n ∈ Ioc ⌊a⌋ ⌊b⌋, G n ≤\n        ∑ j ∈ range J, ∑ n ∈ Ioc ⌊a + j * q⌋ ⌊min (a + (j + 1) * q) b⌋, G n := by\n  intro J\n  induction J with\n  | zero =>\n    intro a b hab\n    simp only [CharP.cast_eq_zero, zero_mul, add_zero] at hab\n    rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hab))]; simp\n  | succ J ih =>\n    intro a b hab\n    rw [sum_range_succ']\n    simp only [CharP.cast_eq_zero, zero_mul, add_zero, zero_add, one_mul]\n    have hq' : (0 : ℝ) < q := by exact_mod_cast hq\n    have hih := ih (a + q) b (by push_cast at hab; linarith)\n    have hrw : ∀ j : ℕ, a + q + j * q = a + ((j + 1 : ℕ) : ℝ) * q := fun j => by push_cast; ring\n    have hrw2 : ∀ j : ℕ, a + q + (j + 1) * q = a + (((j + 1 : ℕ) : ℝ) + 1) * q := fun j => by\n      push_cast; ring\n    simp_rw [hrw, hrw2] at hih\n    rcases le_or_gt b (a + q) with hb | hb\n    · rw [min_eq_right hb]\n      have : ∑ n ∈ Ioc ⌊a + q⌋ ⌊b⌋, G n = 0 := by\n        rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hb))]; simp\n      have h0 : 0 ≤ ∑ j ∈ range J, ∑ n ∈ Ioc ⌊a + ((j + 1 : ℕ) : ℝ) * q⌋\n          ⌊min (a + (((j + 1 : ℕ) : ℝ) + 1) * q) b⌋, G n :=\n        sum_nonneg fun _ _ => sum_nonneg fun _ _ => hG _\n      linarith\n    · rw [min_eq_left hb.le]\n      have hsplit : ∑ n ∈ Ioc ⌊a⌋ ⌊b⌋, G n =\n          ∑ n ∈ Ioc ⌊a⌋ ⌊a + q⌋, G n + ∑ n ∈ Ioc ⌊a + q⌋ ⌊b⌋, G n := by\n        rw [← sum_union (Finset.disjoint_left.2 fun n h1 h2 => by\n          simp only [mem_Ioc] at h1 h2; omega)]\n        congr 1\n        ext n; simp only [mem_Ioc, mem_union]\n        have h1 : ⌊a⌋ ≤ ⌊a + q⌋ := Int.floor_mono (by linarith)\n        have h2 : ⌊a + q⌋ ≤ ⌊b⌋ := Int.floor_mono hb.le\n        omega\n      rw [hsplit]; linarith",
+            "line": 11,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_Ioc_le_blocks",
+            "lines": [
+              11,
+              50
+            ],
+            "conclusion": "Decomposition of the range into blocks of length `q'`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BlockSums.lean",
+            "fragment": "L11-L50"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.block_R3",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          380,
+          450
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.block_R3"
+          },
+          "snippet": {
+            "text": "/-- One block of range (R3) of [H, Lemma 4.2.2, case (b)]. -/\ntheorem block_R3 {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {R D : ℝ} (hR0 : 0 < R) (j : ℕ) (hyD : R + j * q < D) :\n    ∑ n ∈ Ioc ⌊R + j * q⌋ ⌊min (R + (j + 1) * q) D⌋, Tn α x n ≤\n      3 * (1 + eta2'L1 / (x / D)) / 2 * x * (1 / (R + j * q)) +\n        2 * q * √(c₀ * (1 + eta2'L1 / (x / D))) / π * √(1 + q / (R + j * q)) := by\n  have happ := approx_of hq hcop hqQ hδ\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hD0 : 0 < D := by have : (0 : ℝ) ≤ j * q := by positivity\n                         linarith\n  have hV := eta2'L1_pos\n  have hc0 : (0 : ℝ) < c₀ := by unfold c₀; norm_num\n  set c₁ := 1 + eta2'L1 / (x / D)\n  have hc₁ : 1 ≤ c₁ := by simp only [c₁]; have : 0 ≤ eta2'L1 / (x / D) := by positivity\n                          linarith\n  set y := R + j * q\n  have hy0 : 0 < y := by positivity\n  set A := c₁ * x / (2 * y)\n  set C := c₀ / 2 * (y + q) / x\n  have h11 := (lemma_4_1_1' happ y (A := A) (C := C) (by positivity) (by positivity))\n  have hsub : Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋ ⊆ Ioc ⌊y⌋ ⌊y + q⌋ := by\n    apply Ioc_subset_Ioc le_rfl (Int.floor_mono ?_)\n    have := min_le_left (R + (j + 1) * q) D; simp only [y]; linarith\n  have hterm : ∀ n ∈ Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋,\n      Tn α x n ≤ minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) := by\n    intro n hn\n    rw [mem_Ioc] at hn\n    have hyn : y < n := by\n      have := Int.lt_floor_add_one y\n      have : ((⌊y⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hn.1\n      linarith\n    have hnR : (n : ℝ) ≤ y + q := by\n      have := (Int.cast_le.2 hn.2).trans (Int.floor_le (min (R + (j + 1) * q) D))\n      have := min_le_left (R + (j + 1) * q) D\n      simp only [y] at *; push_cast at *; linarith\n    have hn1 : (0 : ℤ) < n := by exact_mod_cast (show (0 : ℝ) < n by linarith)\n    have hcast : ((n.toNat : ℕ) : ℤ) = n := Int.toNat_of_nonneg hn1.le\n    have hmR : ((n.toNat : ℕ) : ℝ) = n := by exact_mod_cast hcast\n    have hm : 1 ≤ n.toNat := by omega\n    have := norm_Todd_le_minA hx h2α hm (A := A) (C := C)\n      (by\n        rw [hmR]; simp only [A, c₁]\n        have e : (1 + eta2'L1 / (x / D)) * x / (2 * y) = x / (2 * y) + eta2'L1 * D / (2 * y) := by\n          field_simp\n        rw [e]\n        have h1 : x / (2 * n) ≤ x / (2 * y) := div_le_div_of_nonneg_left hx.le (by positivity)\n          (by linarith)\n        have h2 : eta2'L1 / 2 ≤ eta2'L1 * D / (2 * y) := by\n          rw [le_div_iff₀ (by positivity)]; nlinarith\n        linarith)\n      (by\n        rw [hmR]; simp only [C]\n        rw [show c₀ / 2 * (y + q) / x = (y + q) / x * (c₀ / 2) by ring]\n        exact mul_le_mul_of_nonneg_right (div_le_div_of_nonneg_right hnR hx.le) (by positivity))\n    rw [hcast] at this; exact this\n  calc ∑ n ∈ Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋, Tn α x n\n      ≤ ∑ n ∈ Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋, minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) :=\n        sum_le_sum hterm\n    _ ≤ ∑ n ∈ Ioc ⌊y⌋ ⌊y + q⌋, minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) :=\n        sum_le_sum_of_subset_of_nonneg hsub fun n _ _ =>\n          minA_nonneg (by positivity) (by positivity) (sq_nonneg _)\n    _ ≤ 3 * A + 4 * q / π * √(A * C) := h11.trans (min_le_right _ _)\n    _ = _ := by\n        have hAC : √(A * C) = √(c₀ * c₁) / 2 * √(1 + q / y) := by\n          rw [Real.sqrt_eq_iff_mul_self_eq (by positivity) (by positivity)]\n          have e1 : √(c₀ * c₁) / 2 * √(1 + q / y) * (√(c₀ * c₁) / 2 * √(1 + q / y)) =\n              (√(c₀ * c₁) * √(c₀ * c₁)) / 4 * (√(1 + q / y) * √(1 + q / y)) := by ring\n          rw [e1, Real.mul_self_sqrt (by positivity), Real.mul_self_sqrt (by positivity)]\n          simp only [A, C]; field_simp; norm_num\n        rw [hAC]; simp only [A]; field_simp; ring",
+            "line": 380,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.block_R3",
+            "lines": [
+              380,
+              450
+            ],
+            "conclusion": "One block: `∑ Tn ≤ (3c₁/2) x/(R+jq) + (2q√(c₀c₁)/π) √(1+q/(R+jq))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L380-L450"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

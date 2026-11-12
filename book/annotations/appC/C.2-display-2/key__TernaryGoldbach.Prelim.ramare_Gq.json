@@ -1,0 +1,81 @@
+{
+  "id": "C.2 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] has only the lower bound, with `1.064` instead of `1.312` and for `r ≥ 20000` instead of `r ≥ 182`; the upper bound `log r + 1.354` is absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 310,
+        "rect": [
+          0.25926,
+          0.4579,
+          0.56816,
+          0.04099
+        ]
+      },
+      "title": "Display, p. 300",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "C.2 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.ramare_Gq",
+        "module": "TernaryGoldbach.Prelim.Ramare",
+        "lines": [
+          26,
+          30
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.ramare_Gq"
+          },
+          "snippet": {
+            "text": "/-- **Ramaré's estimate** [Ram95, Lemma 3.4], [H, (12.12)–(12.14)]. -/\ntheorem ramare_Gq : ∃ c : ℝ, 1.3325822 ≤ c ∧ c ≤ 1.3325823 ∧ ∀ d : ℕ, 1 ≤ d → ∀ R : ℝ, 1 ≤ R →\n    |GqP d R - (Nat.totient d / d) * (Real.log R + c + SqP d)| ≤ 7.284 * R ^ (-(1 / 3 : ℝ)) * f1qP d :=\n  ⟨RamPf.cR, RamPf.cR_bounds.1, RamPf.cR_bounds.2, fun _ hd _ hR =>\n    RamPf.ramare_bound hd (by linarith)⟩",
+            "line": 26,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.ramare_Gq",
+            "lines": [
+              26,
+              30
+            ],
+            "conclusion": "Ramaré: `|G_d(R) - (φ(d)/d)(log R + c + S_d)| ≤ 7.284 R^{-1/3} f₁(d)` with `c ∈ [1.3325822, 1.3325823]`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/Ramare.lean",
+            "fragment": "L26-L30"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          310
+        ],
+        "printed": [
+          300
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

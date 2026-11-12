@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.1 step 35",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's c₂ differs from the book's, so the identity is 5c₀c₂/3π² = 2√c₀/π; the bound 2√c₀ ≤ 2√(c₀c₁) is used to absorb it (no 1/4(1+√(13/3)) factor).",
+  "subject": [
+    {
+      "location": {
+        "page": 71,
+        "rect": [
+          0.17462,
+          0.52412,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.1 step 35: Text, p. 61",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.c₂_identity",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          797,
+          804
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.c₂_identity"
+          },
+          "snippet": {
+            "text": "/-- [H, (4.37)]: `5c₀c₂/(3π²) = 2√c₀/π`. -/\ntheorem c₂_identity : 5 * c₀ * c₂ / (3 * π ^ 2) = 2 * √c₀ / π := by\n  have h := c₀_pos\n  have hs : √c₀ * √c₀ = c₀ := Real.mul_self_sqrt h.le\n  have hs0 : 0 < √c₀ := Real.sqrt_pos.2 h\n  unfold c₂\n  field_simp\n  rw [Real.sq_sqrt h.le]; ring",
+            "line": 797,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.c₂_identity",
+            "lines": [
+              797,
+              804
+            ],
+            "conclusion": "`5c₀c₂/(3π²) = 2√c₀/π` for Lean's c₂."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L797-L804"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1148,
+          1148
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hsq : √c₀ ≤ √(c₀ * c₁) := Real.sqrt_le_sqrt (by nlinarith)",
+            "line": 1148,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`√c₀ ≤ √(c₀c₁)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1148-L1148"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1277,
+          1278
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hcancel : 2 * √c₀ / π * M ≤ 2 * √(c₀ * c₁) / π * M := by\n    have := Real.pi_pos; gcongr",
+            "line": 1277,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`2√c₀/π·M ≤ 2√(c₀c₁)/π·M`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1277-L1278"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          71
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

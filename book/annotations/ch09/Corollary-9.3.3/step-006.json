@@ -1,0 +1,191 @@
+{
+  "id": "Corollary 9.3.3 step 6",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 194,
+        "rect": [
+          0.26253,
+          0.15793,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Corollary 9.3.3 step 6: Text, p. 184",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.eta2",
+        "module": "TernaryGoldbach.Helfgott.Defs",
+        "lines": [
+          44,
+          46
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.eta2"
+          },
+          "snippet": {
+            "text": "/-- `η₂(t) = 4 max(log 2 - |log 2t|, 0)` for `t > 0` (and `0` for `t ≤ 0`) [H, (11.10)]. -/\nnoncomputable def eta2 (t : ℝ) : ℝ :=\n  if 0 < t then 4 * max (Real.log 2 - |Real.log (2 * t)|) 0 else 0",
+            "line": 44,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.eta2",
+            "lines": [
+              44,
+              46
+            ],
+            "conclusion": "eta2(t) = 4 max(log 2 - |log 2t|, 0) for t>0, else 0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L44-L46"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.eta2_eq_left",
+        "module": "TernaryGoldbach.Helfgott.Eta2",
+        "lines": [
+          17,
+          25
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.eta2_eq_left"
+          },
+          "snippet": {
+            "text": "theorem eta2_eq_left {t : ℝ} (h1 : 1 / 4 ≤ t) (h2 : t ≤ 1 / 2) : eta2 t = 4 * Real.log (4 * t) := by\n  have ht : 0 < t := by linarith\n  have hl : Real.log (2 * t) ≤ 0 := Real.log_nonpos (by linarith) (by linarith)\n  have h4 : Real.log (4 * t) = Real.log 2 + Real.log (2 * t) := by\n    rw [← Real.log_mul (by norm_num) (by linarith)]; ring_nf\n  have h40 : 0 ≤ Real.log (4 * t) := Real.log_nonneg (by linarith)\n  unfold eta2\n  rw [ite_eq_left ht, abs_of_nonpos hl, max_eq_left (by linarith)]\n  rw [h4]; ring",
+            "line": 17,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.eta2_eq_left",
+            "lines": [
+              17,
+              25
+            ],
+            "conclusion": "eta2 t = 4 log(4t) on [1/4,1/2]."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Eta2.lean",
+            "fragment": "L17-L25"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.eta2_eq_right",
+        "module": "TernaryGoldbach.Helfgott.Eta2",
+        "lines": [
+          27,
+          34
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.eta2_eq_right"
+          },
+          "snippet": {
+            "text": "theorem eta2_eq_right {t : ℝ} (h1 : 1 / 2 ≤ t) (h2 : t ≤ 1) : eta2 t = -4 * Real.log t := by\n  have ht : 0 < t := by linarith\n  have hl : 0 ≤ Real.log (2 * t) := Real.log_nonneg (by linarith)\n  have h2t : Real.log (2 * t) = Real.log 2 + Real.log t := Real.log_mul (by norm_num) (by linarith)\n  have hlt : Real.log t ≤ 0 := Real.log_nonpos ht.le h2\n  unfold eta2\n  rw [ite_eq_left ht, abs_of_nonneg hl, max_eq_left (by linarith)]\n  rw [h2t]; ring",
+            "line": 27,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.eta2_eq_right",
+            "lines": [
+              27,
+              34
+            ],
+            "conclusion": "eta2 t = -4 log t on [1/2,1]."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Eta2.lean",
+            "fragment": "L27-L34"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.eta2_eq_zero",
+        "module": "TernaryGoldbach.Helfgott.Decay",
+        "lines": [
+          67,
+          80
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.eta2_eq_zero"
+          },
+          "snippet": {
+            "text": "theorem eta2_eq_zero {r : ℝ} (h : r ∉ Set.Ioo (1/4 : ℝ) 1) : eta2 r = 0 := by\n  unfold eta2\n  split_ifs with hr\n  · simp only [Set.mem_Ioo, not_and_or, not_lt] at h\n    rw [max_eq_right, mul_zero]\n    rw [sub_nonpos]\n    rcases h with h | h\n    · rw [abs_of_nonpos (Real.log_nonpos (by positivity) (by linarith))]\n      have : Real.log (2 * r) ≤ Real.log (1/2) := Real.log_le_log (by positivity) (by linarith)\n      rw [one_div, Real.log_inv] at this\n      linarith\n    · rw [abs_of_nonneg (Real.log_nonneg (by linarith))]\n      exact Real.log_le_log (by norm_num) (by linarith)\n  · rfl",
+            "line": 67,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.eta2_eq_zero",
+            "lines": [
+              67,
+              80
+            ],
+            "conclusion": "eta2 r = 0 for r outside (1/4,1)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Decay.lean",
+            "fragment": "L67-L80"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          194
+        ],
+        "printed": [
+          184
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

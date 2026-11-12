@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.2 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean inserts its |L| bound into Landau's lemma at centre $2+iT$, radius 10, with the nearby zeros subtracted; it yields no bound on $L'/L(1,\\chi)$ in terms of $M(q)$.",
+  "subject": [
+    {
+      "location": {
+        "page": 180,
+        "rect": [
+          0.26253,
+          0.39235,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 9.1.2 step 8: Text, p. 170",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.2 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.logDeriv_L_near",
+        "module": "TernaryGoldbach.Explicit.LogDerivL",
+        "lines": [
+          110,
+          118
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.logDeriv_L_near"
+          },
+          "snippet": {
+            "text": "  have h := landau (DirichletCharacter.differentiable_LFunction hχ1) hc0 (by norm_num : (0:ℝ) < 10)\n    (fun w hw => norm_L_le_BT hχ hχ1 hw) hcB hz hLz\n  refine h.trans ?_\n  have hpos : 0 < BT N T / ‖χ.LFunction (2 + T * I)‖ := div_pos (by linarith) (by linarith)\n  have hle : Real.log (BT N T / ‖χ.LFunction (2 + T * I)‖) ≤ Real.log (BT N T / 0.355) :=\n    Real.log_le_log hpos (div_le_div_of_nonneg_left (by linarith) (by norm_num) hc)\n  calc 48 * Real.log (BT N T / ‖χ.LFunction (2 + T * I)‖) / 10\n      = 4.8 * Real.log (BT N T / ‖χ.LFunction (2 + T * I)‖) := by ring\n    _ ≤ 4.8 * Real.log (BT N T / 0.355) := by gcongr",
+            "line": 110,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.logDeriv_L_near",
+            "lines": [
+              95,
+              118
+            ],
+            "conclusion": "Feeds the growth bound `norm_L_le_BT` and $|L(2+iT,\\chi)|\\ge 0.355$ into `landau` with $R=10$, giving $|L'/L(z)-\\sum_{|\\rho-c|<5} m_\\rho/(z-\\rho)|\\le 4.8\\log(B_T/0.355)$ for $|z-(2+iT)|\\le 5/2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LogDerivL.lean",
+            "fragment": "L110-L118"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          180
+        ],
+        "printed": [
+          170
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.1.3 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "q>=2 corresponds to a <= pi/4 in Lean; same quantity difference as step 11.",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.26253,
+          0.6585,
+          0.56162,
+          0.01644
+        ]
+      },
+      "title": "Lemma 4.1.3 step 12: Text, p. 56",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.3 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          2126,
+          2130
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_1_3"
+          },
+          "snippet": {
+            "text": "  set A := π / (2 * q)\n  have hA0 : 0 < A := by positivity\n  have hA1 : A ≤ π / 4 := by\n    have hq2r : (2 : ℝ) ≤ q := by exact_mod_cast hq2\n    rw [div_le_div_iff₀ (by positivity) (by norm_num)]; nlinarith [Real.pi_pos]",
+            "line": 2126,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_3",
+            "lines": [
+              2083,
+              2183
+            ],
+            "conclusion": "$a=\\pi/(2q)\\le\\pi/4$ from $q\\ge2$, the hypothesis of final_4_1_3."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L2126-L2130"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.final_4_1_3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1953,
+          1957
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.final_4_1_3"
+          },
+          "snippet": {
+            "text": "/-- The analytic bound for Lemma 4.1.3: `h(1/2) + (2q/π) J` against both right-hand sides. -/\ntheorem final_4_1_3 {B C a : ℝ} (hB : 0 < B) (hC : 0 ≤ C) (ha : 0 < a) (ha1 : a ≤ π / 4) :\n    mBC B C a + (∫ v in a..(π / 2), mBC B C v) / a ≤\n        B / a * max 2 (Real.log (C * rexp 3 / (B * (2 * a)))) ∧\n      mBC B C a + (∫ v in a..(π / 2), mBC B C v) / a ≤ B / a * Real.log (rexp 2 / a) := by",
+            "line": 1953,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.final_4_1_3",
+            "lines": [
+              1953,
+              2079
+            ],
+            "conclusion": "final_4_1_3 for $0<a\\le\\pi/4$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1953-L1957"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

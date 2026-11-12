@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 12",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's `typeI2_le_small` uses `1.0064` for `1.0004`, `log⁺(2U/q)+1/e` for `log(U/(q/2))` (no `Q ≤ 2UV/e` assumption), and keeps `c_{5,I₂}`, `c_{6,I₂}` as the unrounded `2|η₂'|₁/π·max(1,…)` and `2√(3c₀c₊)/π+3c₊/2c₂+55c₀c₂/6π²`.",
+  "subject": [
+    {
+      "location": {
+        "page": 115,
+        "rect": [
+          0.17135,
+          0.63445,
+          0.56816,
+          0.07827
+        ]
+      },
+      "title": "Display, p. 105",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.coefUV",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum",
+        "lines": [
+          175,
+          176
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.coefUV"
+          },
+          "snippet": {
+            "text": "/-- The coefficient of `UV` in (6.13): `2√(c₀c₊)/π + 3c₊/(2ec₂)`. -/\nnoncomputable def coefUV (c : ℝ) : ℝ := 2 * √(c₀ * c) / π + 3 * c / (2 * c₂ * rexp 1)",
+            "line": 175,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.coefUV",
+            "lines": [
+              175,
+              176
+            ],
+            "conclusion": "`coefUV c = 2√(c₀c)/π + 3c/(2c₂e)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L175-L176"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          115
+        ],
+        "printed": [
+          105
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

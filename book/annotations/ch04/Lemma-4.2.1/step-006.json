@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.1 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's function is h(u) = e(β(2u+1))η₂(m(2u+1)/x) over odd n (n = 2u+1), not f(u) = e((δm/x)u)η((m/x)u); the phase κ' is factored out in lines 235-238.",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.26253,
+          0.49143,
+          0.56162,
+          0.0165
+        ]
+      },
+      "title": "Lemma 4.2.1 step 6: Text, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          231,
+          233
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Todd_main"
+          },
+          "snippet": {
+            "text": "  set β : ℝ := δ * m / (2 * x)\n  set ρ : ℝ := δ * m / x\n  set h : ℝ → ℂ := fun u => e (β * (2 * u + 1)) * (eta2 (m * (2 * u + 1) / x) : ℂ)",
+            "line": 231,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+            "lines": [
+              220,
+              322
+            ],
+            "conclusion": "Defines `β = δm/(2x)`, `ρ = δm/x` and `h(u) = e(β(2u+1))·η₂(m(2u+1)/x)` (the function Poisson summation is applied to), with `G(v) = η₂((m/x)v)e(βv)` at line 240."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L231-L233"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

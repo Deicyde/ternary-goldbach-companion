@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.2 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Range s∈[1/2,1] and identity as an Euler product; Lean uses s=1/9 and 1/2 and an inequality (sum_Hd_rpow_le) for odd d.",
+  "subject": [
+    {
+      "location": {
+        "page": 96,
+        "rect": [
+          0.26253,
+          0.52547,
+          0.56162,
+          0.01808
+        ]
+      },
+      "title": "Lemma 5.1.2 step 11: Text, p. 86",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_Hd_rpow_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler",
+        "lines": [
+          111,
+          168
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_Hd_rpow_le"
+          },
+          "snippet": {
+            "text": "/-- **`∑_{a ≤ A} H_d(a) a^s ≤ c_s(2) ∏_{2 < p ≤ A} ℓ_s(p) ∏_{p ∣ d} ρ_s(p)`** (odd `d`). -/\ntheorem sum_Hd_rpow_le {d : ℕ} (hd : Odd d) {s : ℝ} (hs0 : 0 ≤ s) (hs1 : s < 1) (A : ℕ) :\n    ∑ a ∈ Icc 1 A, Hd d a * (a : ℝ) ^ s ≤\n      cfac s 2 * (∏ p ∈ (Nat.primesBelow (A + 1)).filter (· ≠ 2), ell s p) *\n        ∏ p ∈ d.primeFactors, rho s p := by\n  have h := sum_le_euler (f := fun a => Hd d a * (a : ℝ) ^ s)\n    (fun n => mul_nonneg (Hd_nonneg d n) (by positivity))\n    (by simp [(isMultiplicative_Hd d).map_one])\n    (fun {m n} hmn => by\n      simp only [(isMultiplicative_Hd d).map_mul_of_coprime hmn, Nat.cast_mul,\n        Real.mul_rpow (Nat.cast_nonneg _) (Nat.cast_nonneg _)]; ring)\n    (fun hp => by\n      simpa only [Real.norm_eq_abs] using (summable_Hd_rpow (d := d) hp hs1).abs) A\n  refine h.trans ?_\n  rw [prod_congr rfl fun p hp => tsum_Hd_rpow (d := d) (Nat.mem_primesBelow.1 hp).2 hs1]\n  have hd2 : ¬ 2 ∣ d := by rw [← even_iff_two_dvd]; exact Nat.not_even_iff_odd.2 hd\n  have hfac : ∀ p ∈ Nat.primesBelow (A + 1), (if p ≠ 2 ∧ ¬ p ∣ d then ell s p else cfac s p) =\n      (if p = 2 then cfac s 2 else ell s p) * (if p ∣ d then rho s p else 1) := by\n    intro p hp\n    have hpp := (Nat.mem_primesBelow.1 hp).2\n    by_cases h2 : p = 2\n    · subst h2; simp [hd2]\n    · by_cases hpd : p ∣ d\n      · simp [h2, hpd, ell_mul_rho hs1 hpp.two_le]\n      · simp [h2, hpd]\n  rw [prod_congr rfl hfac, prod_mul_distrib, prod_ite, ← prod_filter]\n  set P := Nat.primesBelow (A + 1)\n  have hP2 : ∀ p ∈ P, 2 ≤ p := fun p hp => (Nat.mem_primesBelow.1 hp).2.two_le\n  have hc1 := one_le_cfac hs0 hs1 (le_refl 2)\n  have hA1 : ∏ p ∈ P.filter (· = 2), cfac s 2 ≤ cfac s 2 := by\n    rw [prod_const]\n    have hcard : (P.filter (· = 2)).card ≤ 1 :=\n      card_le_one.2 fun a ha b hb => by\n        simp only [mem_filter] at ha hb; rw [ha.2, hb.2]\n    calc cfac s 2 ^ (P.filter (· = 2)).card ≤ cfac s 2 ^ 1 := pow_le_pow_right₀ hc1 hcard\n      _ = cfac s 2 := pow_one _\n  have hA3 : ∏ p ∈ P.filter (· ∣ d), rho s p ≤ ∏ p ∈ d.primeFactors, rho s p := by\n    refine prod_le_prod_of_subset_of_one_le₀ ?_ ?_ ?_\n    · intro p hp\n      simp only [mem_filter] at hp\n      exact Nat.mem_primeFactors.2 ⟨(Nat.mem_primesBelow.1 hp.1).2, hp.2, by\n        rintro rfl; exact hd2 (dvd_zero 2)⟩\n    · intro p hp\n      linarith [one_le_rho hs0 hs1 (Nat.mem_primesBelow.1 (mem_filter.1 hp).1).2.two_le]\n    · intro p hp _\n      exact one_le_rho hs0 hs1 (Nat.prime_of_mem_primeFactors hp).two_le\n  have hell0 : 0 ≤ ∏ p ∈ P.filter (fun p => ¬ p = 2), ell s p :=\n    prod_nonneg fun p hp => by\n      linarith [one_le_ell hs1 (hP2 p (mem_filter.1 hp).1)]\n  have hrho0 : 0 ≤ ∏ p ∈ P.filter (· ∣ d), rho s p :=\n    prod_nonneg fun p hp => by\n      linarith [one_le_rho hs0 hs1 (hP2 p (mem_filter.1 hp).1)]\n  have hc0 : 0 ≤ ∏ p ∈ P.filter (· = 2), cfac s 2 := prod_nonneg fun _ _ => by linarith\n  calc (∏ p ∈ P.filter (· = 2), cfac s 2) * (∏ p ∈ P.filter (fun p => ¬ p = 2), ell s p) *\n        ∏ p ∈ P.filter (· ∣ d), rho s p\n      ≤ cfac s 2 * (∏ p ∈ P.filter (fun p => ¬ p = 2), ell s p) * ∏ p ∈ d.primeFactors, rho s p := by\n        gcongr\n    _ = _ := rfl",
+            "line": 111,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_Hd_rpow_le",
+            "lines": [
+              111,
+              168
+            ],
+            "conclusion": "`∑_{a≤A}H_d(a)a^s ≤ c_s(2) ∏_{2<p≤A} ℓ_s(p) ∏_{p|d} ρ_s(p)` for odd d, 0≤s<1: Euler-product bound for the inner sum."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L111-L168"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          96
+        ],
+        "printed": [
+          86
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 37",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean works with Qr = x/(|δ|q) throughout, so the final substitution of Q is built in; the remark ϖ_ε < √3 is absent; the min(Q+1, 2D) form is in bound_4_32.",
+  "subject": [
+    {
+      "location": {
+        "page": 71,
+        "rect": [
+          0.17462,
+          0.67779,
+          0.56162,
+          0.06067
+        ]
+      },
+      "title": "Lemma 4.2.1 step 37: Text, p. 61",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1207,
+          1216
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  rcases le_or_gt D M with hDM | hDM\n  · -- No terms above `M`.\n    rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hDM)), sum_empty, add_zero]\n    have hcancel : 2 * √c₀ / π * M ≤ 2 * √(c₀ * c₁) / π * D := by\n      have := Real.pi_pos; gcongr\n    have e : 2 * √(c₀ * c₁) / π * (D + (1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n        (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) = 2 * √(c₀ * c₁) / π * D +\n        2 * √(c₀ * c₁) / π * ((1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n        (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) := by ring\n    rw [e]; linarith",
+            "line": 1207,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "The bound holds when D ≤ M (no terms above M)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1207-L1216"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_32",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          151,
+          158
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_32"
+          },
+          "snippet": {
+            "text": "/-- The error term (4.32) of [H, Lemma 4.2.2] (case `|δ| ≥ 1/2c₂`). -/\nnoncomputable def bound_4_32 (x δ : ℝ) (q : ℕ) (D Q₀ ε : ℝ) : ℝ :=\n  let c₁ := 1 + eta2'L1 / (x / D)\n  let y := x / (|δ| * q)\n  2 * √(c₀ * c₁) / π *\n      (D + (1 + ε) * min ((⌊y⌋₊ : ℝ) + 1) (2 * D) * (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / y))) +\n    3 / 2 * c₁ * (2 + (1 + ε) / ε * logPlus (2 * D / y)) * (x / Q₀) +\n    35 * c₀ * c₂ / (3 * π ^ 2) * q",
+            "line": 151,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_32",
+            "lines": [
+              151,
+              158
+            ],
+            "conclusion": "Final form with y = x/(|δ|q) in place of Q and `min(⌊y⌋+1, 2D)`, `log⁺(2D/y)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L151-L158"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          71
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

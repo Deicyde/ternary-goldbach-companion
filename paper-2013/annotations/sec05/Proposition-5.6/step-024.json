@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 5.6 step 24",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same reduction; [L] fixes $\\omega=0.6274\\ge\\omega(\\rho)$ and $c_\\Delta=0.0274177$, takes $t=Q/Q_0$, and states it per $R$ without the restriction $R>\\varpi(q)$.",
+  "subject": [
+    {
+      "location": {
+        "page": 40,
+        "rect": [
+          0.20698,
+          0.65741,
+          0.62529,
+          0.03363
+        ]
+      },
+      "title": "Proposition 5.6 step 24: Text, p. 40",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.6 step 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.star_suffices",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
+        "lines": [
+          105,
+          113
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.star_suffices"
+          },
+          "snippet": {
+            "text": "theorem star_suffices {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs : 1 ≤ s)\n    {c : ℝ} (hc1 : 1.3325822 ≤ c) (hc2 : c ≤ 1.3325823)\n    (hstar : (q : ℝ) / Nat.totient q *\n        ((Gq q (Q₀ / (s * q)) - (Nat.totient q / q) * (Real.log (Q₀ / (s * q)) + c + Sq q)) +\n          0.6274 * max 0 (-(Gq q (Q / (s * q)) -\n            (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q)))) ≤\n      0.3726 * (Real.log (s * q) - Sq q) + 0.0274177) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 1.36) / (Real.log Q + cE) * Gq q (Q / (s * q)) := by",
+            "line": 105,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.star_suffices",
+            "lines": [
+              104,
+              134
+            ],
+            "conclusion": "Prop 12.2.4 with c_+=1.36 follows from the (12.26) inequality `K(e1+0.6274 max 0 (-e2)) <= 0.3726(log sq - S_q)+0.0274177`, with omega rounded up to 0.6274."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L105-L113"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          40
+        ],
+        "printed": [
+          40
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.2.4 step 24, the same LaTeX (mapper (sonnet); verifier (sonnet); judge (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

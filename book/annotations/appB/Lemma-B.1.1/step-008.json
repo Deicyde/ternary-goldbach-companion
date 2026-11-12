@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.1.1 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean reduces to the unit circle by writing everything in `z = e(-t/4)` (so periodicity in `t` is built in), not by (elek1)/(elek2) and a grid.",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.26253,
+          0.29618,
+          0.56162,
+          0.0165
+        ]
+      },
+      "title": "Lemma B.1.1 step 8: Text, p. 292",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.1.1 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_large",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier",
+        "lines": [
+          284,
+          293
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_eta2DD_large"
+          },
+          "snippet": {
+            "text": "  set z := e (-(1 / 4 * t))\n  have hz : ‖z‖ = 1 := norm_e _\n  have e2 : e (-(1 / 2 * t)) = z ^ 2 := by\n    rw [sq, ← e_add]; congr 1; ring\n  have e4 : e (-(1 * t)) = z ^ 4 := by\n    rw [show z ^ 4 = (z ^ 2) ^ 2 by ring, ← e2, sq, ← e_add]; congr 1; ring\n  have htrig : ‖16 * e (-(1 / 2 * t)) - 16 * e (-(1 / 4 * t)) - 4 * e (-(1 * t))‖ ≤ 31.4821 := by\n    rw [e2, e4, show 16 * z ^ 2 - 16 * z - 4 * z ^ 4 = -z * (4 * z ^ 3 - 16 * z + 16) by ring,\n      norm_mul, norm_neg, hz, one_mul]\n    exact norm_trig_le z hz",
+            "line": 284,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_large",
+            "lines": [
+              281,
+              310
+            ],
+            "conclusion": "With `z = e(-t/4)`, `16e(-t/2)-16e(-t/4)-4e(-t) = -z(4z³-16z+16)` (`-4g(t)`) has norm at most 31.4821 via `norm_trig_le`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L284-L293"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

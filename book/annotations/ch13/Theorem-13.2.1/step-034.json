@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 13.2.1 step 34",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses $\\|u+v\\|^2\\le(1+t)\\|u\\|^2+(1+1/t)\\|v\\|^2$ with $t=10^{-5}$ instead of the $L^2$ triangle inequality in square roots.",
+  "subject": [
+    {
+      "location": {
+        "page": 262,
+        "rect": [
+          0.26253,
+          0.70122,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Theorem 13.2.1 step 34: Text, p. 252",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_add_sq_le",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          124,
+          135
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_add_sq_le"
+          },
+          "snippet": {
+            "text": "theorem norm_add_sq_le (u v : ℂ) {t : ℝ} (ht : 0 < t) :\n    ‖u + v‖ ^ 2 ≤ (1 + t) * ‖u‖ ^ 2 + (1 + 1 / t) * ‖v‖ ^ 2 := by\n  have h := norm_add_le u v\n  have h0 : 0 ≤ ‖u + v‖ := norm_nonneg _\n  have h1 : ‖u + v‖ ^ 2 ≤ (‖u‖ + ‖v‖) ^ 2 := pow_le_pow_left₀ h0 h 2\n  have h2 : 2 * ‖u‖ * ‖v‖ ≤ t * ‖u‖ ^ 2 + 1 / t * ‖v‖ ^ 2 := by\n    have := sq_nonneg (t * ‖u‖ - ‖v‖)\n    rw [div_mul_eq_mul_div, one_mul, ← sub_nonneg]\n    have e : t * ‖u‖ ^ 2 + ‖v‖ ^ 2 / t - 2 * ‖u‖ * ‖v‖ = (t * ‖u‖ - ‖v‖) ^ 2 / t := by\n      field_simp; ring\n    rw [e]; positivity\n  nlinarith",
+            "line": 124,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_add_sq_le",
+            "lines": [
+              124,
+              135
+            ],
+            "conclusion": "$\\|u+v\\|^2\\le(1+t)\\|u\\|^2+(1+1/t)\\|v\\|^2$ for $t>0$ (replaces the $L^2$ triangle inequality)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L124-L135"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S_etaPlus_eq",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          113,
+          122
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S_etaPlus_eq"
+          },
+          "snippet": {
+            "text": "theorem S_etaPlus_eq {x : ℝ} (hx : 0 < x) (α : ℝ) :\n    S etaPlus x α = expTsum (a₁ x) α + expTsum (a₂ x) α := by\n  unfold S expTsum\n  have s1 : Summable fun n : ℕ => a₁ x n * e (n * α) :=\n    Summable.of_norm ((summable_a₁ hx).congr fun n => by rw [TernaryGoldbach.norm_mul_e])\n  have s2 : Summable fun n : ℕ => a₂ x n * e (n * α) :=\n    Summable.of_norm ((summable_a₂ hx).congr fun n => by rw [TernaryGoldbach.norm_mul_e])\n  rw [← s1.tsum_add s2]\n  congr 1; ext n\n  unfold a₁ a₂; split_ifs <;> ring",
+            "line": 113,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.S_etaPlus_eq",
+            "lines": [
+              113,
+              122
+            ],
+            "conclusion": "$S_{\\eta_+}(\\alpha,x)=S_1+S_2$ with `a₁` the prime $>\\sqrt x$ part and `a₂` the rest."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L113-L122"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          262
+        ],
+        "printed": [
+          252
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

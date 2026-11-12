@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 21",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] uses the finite sum $\\sum_{q\\in Q}c_q(N)\\ge1.314$ in place of $C_0\\ge1.3203236$ and $0.800689/\\kappa$ for $C_{\\eta_\\circ,\\eta_*}$ (versus $1.0594003-0.001102$ over $\\kappa$ in [H]); the product feeds `major_total` with $1.049/\\kappa$, not $1.058298/49$.",
+  "subject": [
+    {
+      "location": {
+        "page": 277,
+        "rect": [
+          0.17135,
+          0.34713,
+          0.56816,
+          0.07087
+        ]
+      },
+      "title": "Display, p. 267",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_coefN_ge",
+        "module": "TernaryGoldbach.MajorArcs.Singular",
+        "lines": [
+          619,
+          621
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_Qset_coefN_ge"
+          },
+          "snippet": {
+            "text": "theorem sum_Qset_coefN_ge {N : ℕ} (hN : Odd N) :\n    1.314 ≤ ∑ q ∈ TernaryGoldbach.MinorArcs.Qset 150000, coefN N q := by\n  rw [sum_Qset_of_two_mul (coefN_two_mul hN)]",
+            "line": 619,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_coefN_ge",
+            "lines": [
+              618,
+              623
+            ],
+            "conclusion": "For odd $N$: $\\sum_{q\\in Q}c_q(N)\\ge1.314$, the truncated singular series over the major-arc moduli."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L619-L621"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          277
+        ],
+        "printed": [
+          267
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 6.2 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves only the inequality ≤ H(r₁)−I₀ from ∫u ≤ H r₁, not the equalities with 1 (no normalization, H(r₁)=1 not assumed).",
+  "subject": [
+    {
+      "location": {
+        "page": 48,
+        "rect": [
+          0.20698,
+          0.43241,
+          0.62529,
+          0.08949
+        ]
+      },
+      "title": "Proposition 6.2 step 9: Display, p. 48",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 6.2 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          122,
+          134
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_13_1_2"
+          },
+          "snippet": {
+            "text": "  have hS : ∀ n, r₀ ≤ n → n ≤ r₁ → ∑ m ∈ Icc r₀ n, f m ≤ H n - I r₀ := by\n    intro n hn hn1\n    have tele : ∀ k, r₀ ≤ k → k ≤ r₁ → ∑ m ∈ Ico r₀ k, f m = I k - I r₀ := by\n      intro k hk hk1\n      induction k, hk using Nat.le_induction with\n      | base => simp\n      | succ k hk ih =>\n        rw [sum_Ico_succ_top hk, ih (by omega)]\n        simp only [hf, ite_eq_left (show k < r₁ by omega)]; ring\n    rw [← Finset.Ico_add_one_right_eq_Icc, sum_Ico_succ_top hn, tele n hn hn1]\n    rcases lt_or_eq_of_le hn1 with h | h\n    · simp only [hf, ite_eq_left h]; linarith [hH n hn h]\n    · subst h; simp only [hf, lt_irrefl, ite_false]; linarith",
+            "line": 122,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+            "lines": [
+              88,
+              139
+            ],
+            "conclusion": "Telescoping: Σ f over Icc r₀ r₁ = ∫u − I r₀ ≤ H r₁ − I r₀ by hH₁ (case n=r₁)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L122-L134"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          48
+        ],
+        "printed": [
+          48
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 13.1.2 step 9, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

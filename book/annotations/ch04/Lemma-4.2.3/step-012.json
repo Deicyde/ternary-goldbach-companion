@@ -1,0 +1,192 @@
+{
+  "id": "Lemma 4.2.3 step 12",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "All three facts are proved: monotoneOn_f₂ is the monotonicity of t log(x/t) on (0, x/e]. The second inequality is stated with 1/(4q) for 1/q (the same inequality scaled) via F₂_mono on (0, x], a larger range.",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17462,
+          0.51722,
+          0.56162,
+          0.04673
+        ]
+      },
+      "title": "Lemma 4.2.3 step 12: Text, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.monotoneOn_f₂",
+        "module": "TernaryGoldbach.MinorArcs.SumTools",
+        "lines": [
+          119,
+          133
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.monotoneOn_f₂"
+          },
+          "snippet": {
+            "text": "/-- `t log(x/t)` is increasing on `(0, x/e]`. -/\ntheorem monotoneOn_f₂ (hx : 0 < x) :\n    MonotoneOn (fun t => t * (Real.log x - Real.log t)) (Set.Ioc 0 (x / rexp 1)) := by\n  refine monotoneOn_of_deriv_nonneg (convex_Ioc 0 (x / rexp 1)) ?_ ?_ ?_\n  · exact fun t ht => (hasDerivAt_f₂ x ht.1).continuousAt.continuousWithinAt\n  · intro t ht\n    rw [interior_Ioc] at ht\n    exact (hasDerivAt_f₂ x ht.1).differentiableAt.differentiableWithinAt\n  · intro t ht\n    rw [interior_Ioc] at ht\n    rw [(hasDerivAt_f₂ x ht.1).deriv]\n    have h1 : Real.log t ≤ Real.log x - 1 := by\n      have := Real.log_le_log ht.1 ht.2.le\n      rw [Real.log_div hx.ne' (Real.exp_pos 1).ne', Real.log_exp] at this; exact this\n    linarith",
+            "line": 119,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.monotoneOn_f₂",
+            "lines": [
+              119,
+              133
+            ],
+            "conclusion": "`t ↦ t(log x − log t)` (i.e. $t\\log(x/t)$) is monotone on `(0, x/e]`, the fact the text cites."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SumTools.lean",
+            "fragment": "L119-L133"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.F₂_mono",
+        "module": "TernaryGoldbach.MinorArcs.SumTools",
+        "lines": [
+          175,
+          176
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.F₂_mono"
+          },
+          "snippet": {
+            "text": "theorem F₂_mono {s t : ℝ} (hs : 0 < s) (hst : s ≤ t) (htx : t ≤ x) :\n    s ^ 2 / 2 * (1 / 2 + Real.log x - Real.log s) ≤ t ^ 2 / 2 * (1 / 2 + Real.log x - Real.log t) := by",
+            "line": 175,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.F₂_mono",
+            "lines": [
+              174,
+              185
+            ],
+            "conclusion": "`s²/2·(1/2+log x - log s) ≤ t²/2·(1/2+log x - log t)` for `0<s≤t≤x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SumTools.lean",
+            "fragment": "L175-L176"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartL_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          350,
+          358
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPartL_le"
+          },
+          "snippet": {
+            "text": "    have h1 : M / x * (Real.log x - Real.log M) ≤ 1 / rexp 1 := by\n      have := mul_log_le_inv_e (show 0 < M / x by positivity)\n      rw [Real.log_div hM.ne' hx.ne'] at this; linarith\n    have h2 : M ^ 2 / (4 * q) * (1 / 2 + Real.log x - Real.log M) ≤\n        D ^ 2 / (4 * q) * (1 / 2 + Real.log x - Real.log D) := by\n      have := F₂_mono hM hMD hDx\n      have e : ∀ t : ℝ, t ^ 2 / (4 * q) * (1 / 2 + Real.log x - Real.log t) =\n          (t ^ 2 / 2 * (1 / 2 + Real.log x - Real.log t)) / (2 * q) := fun t => by field_simp; ring\n      rw [e, e]; gcongr",
+            "line": 350,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartL_le",
+            "lines": [
+              181,
+              377
+            ],
+            "conclusion": "`(M/x)(log x - log M) ≤ 1/e` (from `mul_log_le_inv_e`) and `M²/(4q)(1/2+log x-log M) ≤ D²/(4q)(1/2+log x - log D)` for `M ≤ D ≤ x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L350-L358"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.mul_log_le_inv_e",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          169,
+          174
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.mul_log_le_inv_e"
+          },
+          "snippet": {
+            "text": "theorem mul_log_le_inv_e {u : ℝ} (hu : 0 < u) : u * (-Real.log u) ≤ 1 / rexp 1 := by\n  have h := Real.log_le_sub_one_of_pos (show 0 < 1 / (rexp 1 * u) by positivity)\n  rw [Real.log_div (by norm_num) (by positivity), Real.log_one, Real.log_mul (by positivity)\n    hu.ne', Real.log_exp] at h\n  have : u * (1 / (rexp 1 * u)) = 1 / rexp 1 := by field_simp\n  nlinarith",
+            "line": 169,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.mul_log_le_inv_e",
+            "lines": [
+              169,
+              174
+            ],
+            "conclusion": "`u·(-log u) ≤ 1/e` for `u>0`, i.e. `(M/x) log(x/M) ≤ 1/e`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L169-L174"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

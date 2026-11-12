@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 39",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean integrates directly in W with the antiderivative log log(W/c) and does not pass through the substitution t = W/2q; the value is the same.",
+  "subject": [
+    {
+      "location": {
+        "page": 122,
+        "rect": [
+          0.25926,
+          0.45741,
+          0.56816,
+          0.07269
+        ]
+      },
+      "title": "Display, p. 112",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_inv_mul_log",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITools",
+        "lines": [
+          62,
+          81
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_inv_mul_log"
+          },
+          "snippet": {
+            "text": "/-- `∫_a^b dW/(W log(W/c)) = log log(b/c) - log log(a/c)` for `0 < c < a ≤ b`. -/\ntheorem integral_inv_mul_log {c a b : ℝ} (hc : 0 < c) (hca : c < a) (hab : a ≤ b) :\n    ∫ W in a..b, 1 / (W * Real.log (W / c)) =\n      Real.log (Real.log (b / c)) - Real.log (Real.log (a / c)) := by\n  have hpos : ∀ W ∈ Set.uIcc a b, 0 < W ∧ 0 < Real.log (W / c) := by\n    intro W hW; rw [Set.uIcc_of_le hab] at hW\n    have : c < W := lt_of_lt_of_le hca hW.1\n    exact ⟨by linarith, Real.log_pos (by rw [one_lt_div hc]; exact this)⟩\n  refine intervalIntegral.integral_eq_sub_of_hasDerivAt\n    (f := fun W => Real.log (Real.log (W / c))) (fun W hW => ?_) ?_\n  · obtain ⟨hW0, hL⟩ := hpos W hW\n    have h1 : HasDerivAt (fun W => W / c) (1 / c) W := (hasDerivAt_id W).div_const c\n    have h2 := (h1.log (by positivity)).log hL.ne'\n    convert h2 using 1\n    field_simp\n  · refine ContinuousOn.intervalIntegrable ?_\n    refine continuousOn_const.div (continuousOn_id.mul ?_) fun W hW => ?_\n    · exact ContinuousOn.log (continuousOn_id.div_const c) fun W hW =>\n        (div_pos (hpos W hW).1 hc).ne'\n    · exact (mul_pos (hpos W hW).1 (hpos W hW).2).ne'",
+            "line": 62,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_inv_mul_log",
+            "lines": [
+              62,
+              81
+            ],
+            "conclusion": "The integral of dW/(W log(W/c)) over [a,b] equals log log(b/c) - log log(a/c)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITools.lean",
+            "fragment": "L62-L81"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          122
+        ],
+        "printed": [
+          112
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

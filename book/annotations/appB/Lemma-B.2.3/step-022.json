@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.2.3 step 22",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the bound for all t with constant c₀ = 32 in place of 31.521 (stated as (2πt)^2‖η̂_(ρ)(t)‖ ≤ c₀ log ρ, non-strict), so it covers [0,0.3]∪[3.25,3.65] with a weaker constant.",
+  "subject": [
+    {
+      "location": {
+        "page": 305,
+        "rect": [
+          0.17462,
+          0.6841,
+          0.56162,
+          0.02198
+        ]
+      },
+      "title": "Lemma B.2.3 step 22: Text, p. 295",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.3 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2log_fourier_bound",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log",
+        "lines": [
+          198,
+          238
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2log_fourier_bound"
+          },
+          "snippet": {
+            "text": "/-- **[H, Lemma B.2.3, (B.11)]**: `|η̂_(ρ)''|_∞ ≤ 31.521 log ρ` for `ρ ≥ 4`, written as\n`(2πt)² |η̂_(ρ)(t)| ≤ c₀ log ρ`. By `ghat_eta2log`, `η̂_(ρ) = (log·η₂)^ + log ρ · η̂₂`. For `ρ = 4`,\n`(2πt)² |η̂_(4)| ≤ 48 log 2 = 24 log 4` (`norm_eta2log4_le`, two integrations by parts, no numerics).\nFor `ρ > 4`, the extra `(log ρ − log 4) η̂₂` is bounded by (B.6) (`eta2_fourier_bound'`). -/\ntheorem eta2log_fourier_bound (t : ℝ) :\n    (2 * π * t) ^ 2 * ‖𝓕 (fun u => (eta2log ρ u : ℂ)) t‖ ≤ c₀ * Real.log ρ := by\n  have h4 := ghat_eta2log (ρ := 4) le_rfl t\n  have hρt := ghat_eta2log hρ t\n  set A := eta2hat t\n  set B := ghat (fun u => Real.log u * eta2 u) t\n  have hA : (2 * π * t) ^ 2 * ‖A‖ ≤ c₀ := eta2_fourier_bound' t\n  have hk : ‖((2 * π * t) ^ 2 : ℂ)‖ = (2 * π * t) ^ 2 := by\n    rw [show ((2 * π * t) ^ 2 : ℂ) = (((2 * π * t) ^ 2 : ℝ) : ℂ) by push_cast; ring,\n      Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (by positivity)]\n  have h48 : (2 * π * t) ^ 2 * ‖B + (Real.log 4 : ℂ) * A‖ ≤ 48 * Real.log 2 := by\n    have h := norm_eta2log4_le t\n    have e : 𝓕 (fun u => ((Real.log (4 * u) * eta2 u : ℝ) : ℂ)) t = ghat (eta2log 4) t := rfl\n    rw [e, h4, norm_mul, hk] at h\n    exact h\n  have hL : Real.log 4 ≤ Real.log ρ := Real.log_le_log (by norm_num) hρ\n  have hL4 : Real.log 4 = 2 * Real.log 2 := by\n    rw [show (4 : ℝ) = 2 ^ 2 by norm_num, Real.log_pow]; norm_num\n  have hl2 := Real.log_pos (by norm_num : (1 : ℝ) < 2)\n  have hsplit : B + (Real.log ρ : ℂ) * A = (B + (Real.log 4 : ℂ) * A) +\n      ((Real.log ρ - Real.log 4 : ℝ) : ℂ) * A := by push_cast; ring\n  have hn : ‖B + (Real.log ρ : ℂ) * A‖ ≤ ‖B + (Real.log 4 : ℂ) * A‖ +\n      (Real.log ρ - Real.log 4) * ‖A‖ := by\n    rw [hsplit]\n    refine (norm_add_le _ _).trans (le_of_eq ?_)\n    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (by linarith)]\n  show (2 * π * t) ^ 2 * ‖ghat (eta2log ρ) t‖ ≤ c₀ * Real.log ρ\n  rw [hρt]\n  have hk0 : 0 ≤ (2 * π * t) ^ 2 := by positivity\n  calc (2 * π * t) ^ 2 * ‖B + (Real.log ρ : ℂ) * A‖\n      ≤ (2 * π * t) ^ 2 * ‖B + (Real.log 4 : ℂ) * A‖ +\n          (Real.log ρ - Real.log 4) * ((2 * π * t) ^ 2 * ‖A‖) := by\n        have := mul_le_mul_of_nonneg_left hn hk0; nlinarith\n    _ ≤ 48 * Real.log 2 + (Real.log ρ - Real.log 4) * c₀ := by\n        have := mul_le_mul_of_nonneg_left hA (by linarith : 0 ≤ Real.log ρ - Real.log 4)\n        linarith\n    _ ≤ c₀ * Real.log ρ := by unfold c₀; nlinarith",
+            "line": 198,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eta2log_fourier_bound",
+            "lines": [
+              198,
+              238
+            ],
+            "conclusion": "For ρ ≥ 4 and all t, (2πt)^2‖η̂_(ρ)(t)‖ ≤ c₀ log ρ with c₀ = 32."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L198-L238"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          305
+        ],
+        "printed": [
+          295
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

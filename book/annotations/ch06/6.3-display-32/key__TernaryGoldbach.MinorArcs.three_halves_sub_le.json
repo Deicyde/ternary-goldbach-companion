@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 32",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same device (difference of 3/2 powers <= (3/2) sqrt(a) (a-b)) but for [L]'s term, which has a - b = log 8 (theta = 8: log 16q - log 2q) instead of [H]'s log 4, and no q = y endpoint term (log 8y)^{3/2} - (log 2y)^{3/2} in case (a1); [H]'s numeric 1.20083 sqrt t does not occur. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 140,
+        "rect": [
+          0.25926,
+          0.18447,
+          0.56816,
+          0.03899
+        ]
+      },
+      "title": "Display, p. 130",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.three_halves_sub_le",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIa",
+        "lines": [
+          138,
+          148
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.three_halves_sub_le"
+          },
+          "snippet": {
+            "text": "/-- `(2/3)(a√a - b√b) ≤ √a (a - b)` for `0 ≤ b ≤ a`. -/\ntheorem three_halves_sub_le {a b : ℝ} (hb : 0 ≤ b) (hab : b ≤ a) :\n    2 / 3 * (a * √a - b * √b) ≤ √a * (a - b) := by\n  have ha : 0 ≤ a := hb.trans hab\n  have hsa := Real.sq_sqrt ha\n  have hsb := Real.sq_sqrt hb\n  have hs : √b ≤ √a := Real.sqrt_le_sqrt hab\n  have h0 : 0 ≤ √b := Real.sqrt_nonneg _\n  -- `a√a - b√b = (√a - √b)(a + √a√b + b)` and `a + √(ab) + b ≤ 3a/2 + ... `\n  nlinarith [mul_nonneg (sub_nonneg.2 hs) (sq_nonneg (√a - √b)), mul_nonneg h0 (sub_nonneg.2 hs),\n    mul_nonneg (mul_nonneg h0 h0) (sub_nonneg.2 hs)]",
+            "line": 138,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.three_halves_sub_le",
+            "lines": [
+              138,
+              148
+            ],
+            "conclusion": "`(2/3)(a sqrt a - b sqrt b) <= sqrt a (a - b)` for 0 <= b <= a, i.e. `a^{3/2} - b^{3/2} <= (3/2) sqrt a (a - b)`, the inequality [H] gets from (x^{3/2})' = (3/2) sqrt x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIa.lean",
+            "fragment": "L138-L148"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          140
+        ],
+        "printed": [
+          130
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

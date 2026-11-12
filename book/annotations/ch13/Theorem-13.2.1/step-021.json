@@ -1,0 +1,119 @@
+{
+  "id": "Theorem 13.2.1 step 21",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 261,
+        "rect": [
+          0.17462,
+          0.57696,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Theorem 13.2.1 step 21: Text, p. 251",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_vonMangoldt_lt",
+        "module": "TernaryGoldbach.Prelim.LambdaMu",
+        "lines": [
+          335,
+          350
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_vonMangoldt_lt"
+          },
+          "snippet": {
+            "text": "/-- **[H, (2.15)]** ([RS62, Thm. 12]): `ψ(y) = ∑_{n ≤ y} Λ(n) < 1.03883 y` for `y > 0`.\nProved from `psi_bounds` (`psi_two_sided` up to `10¹⁷`, `theta_explicit` beyond). -/\ntheorem sum_vonMangoldt_lt {y : ℝ} (hy : 0 < y) :\n    ∑ n ∈ Icc 1 ⌊y⌋₊, (Λ n : ℝ) < 1.03883 * y := by\n  set n := ⌊y⌋₊ with hn\n  rcases Nat.eq_zero_or_pos n with h0 | hpos\n  · rw [h0]; simp; positivity\n  have h2 : (n : ℝ) ≤ y := Nat.floor_le hy.le\n  rcases le_or_gt n (10 ^ 17) with h | h\n  · have h1 := psi_lt_small' hpos h\n    unfold psiN at h1\n    linarith\n  · have h1 := (psi_bounds n).2 (by omega)\n    unfold psiN at h1\n    have : (0 : ℝ) < n := by exact_mod_cast hpos\n    linarith",
+            "line": 335,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.sum_vonMangoldt_lt",
+            "lines": [
+              335,
+              350
+            ],
+            "conclusion": "[RS62, Thm. 12] (2.15): $\\psi(y)<1.03883\\,y$ for $y>0$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LambdaMu.lean",
+            "fragment": "L335-L350"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+        "module": "TernaryGoldbach.MinorArcs.EBound",
+        "lines": [
+          210,
+          218
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.E_partial"
+          },
+          "snippet": {
+            "text": "    have hψ : ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) ≤ 1.03883 * √x := by\n      rw [← sum_filter]\n      have hsub2 : (Icc 1 ⌊x⌋₊).filter (fun n : ℕ => (n : ℝ) ≤ √x) ⊆ Icc 1 ⌊√x⌋₊ := by\n        intro n hn\n        have h := mem_filter.1 hn\n        exact mem_Icc.2 ⟨(mem_Icc.1 h.1).1, Nat.le_floor h.2⟩\n      refine (sum_le_sum_of_subset_of_nonneg hsub2 fun n _ _ =>\n        ArithmeticFunction.vonMangoldt_nonneg).trans ?_\n      exact (Prelim.sum_vonMangoldt_lt (Real.sqrt_pos.2 hx0)).le",
+            "line": 210,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+            "lines": [
+              172,
+              274
+            ],
+            "conclusion": "Applies the RS62 Thm 12 bound to $\\sum_{n\\le\\sqrt x}\\Lambda(n)\\le1.03883\\sqrt x$ inside the bound for $E$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "fragment": "L210-L218"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          261
+        ],
+        "printed": [
+          251
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

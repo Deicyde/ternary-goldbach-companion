@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.2 step 11",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "[L] proves disjointness for all `q̃,q̃' ≤ 2Q` (including even `q ≤ 2Q`) and for integer translates of the arcs, by the same bound `|b/q-b'/q'| ≥ 1/qq'` (`2/qq'` both even). Text typo, confirmed by two skeptics and `scripts/checks/steps/proposition_12_1_2_step_11.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 35,
+        "rect": [
+          0.20698,
+          0.2365,
+          0.62529,
+          0.13252
+        ]
+      },
+      "title": "Proposition 5.2 step 11: Text, p. 35",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.wrad_add_le",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs",
+        "lines": [
+          180,
+          202
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.wrad_add_le"
+          },
+          "snippet": {
+            "text": "/-- `w_q + w_{q'} < D/(qq')` with `D = 2` if `q, q'` are both even and `D = 1` otherwise, when\n`δ₀Q² ≤ x/2` and `q̃, q̃' ≤ 2Q`. -/\ntheorem wrad_add_le {δ₀ Q x : ℝ} (hx : 0 < x) (hδ : 0 < δ₀) (hQ : 0 < Q) (hQx : δ₀ * Q ^ 2 ≤ x / 2)\n    {q q' : ℕ} (hq : 1 ≤ q) (hq' : 1 ≤ q') (hqQ : (qt q : ℝ) ≤ 2 * Q) (hqQ' : (qt q' : ℝ) ≤ 2 * Q) :\n    wrad δ₀ Q x q + wrad δ₀ Q x q' ≤ (if Even q ∧ Even q' then 2 else 1) / (q * q') := by\n  have hqr : (0 : ℝ) < q := by exact_mod_cast hq\n  have hqr' : (0 : ℝ) < q' := by exact_mod_cast hq'\n  -- `δ₀Q/x ≤ 1/(2Q)`\n  have hk : δ₀ * Q / x ≤ 1 / (2 * Q) := by\n    rw [div_le_div_iff₀ hx (by positivity)]; nlinarith\n  have hw : ∀ p : ℕ, 1 ≤ p → wrad δ₀ Q x p ≤ 1 / (2 * Q * qt p) := by\n    intro p hp\n    have hp2 : (0 : ℝ) < qt p := by have := two_le_qt hp; exact_mod_cast (by omega : 0 < qt p)\n    unfold wrad\n    rw [show δ₀ * Q / (qt p * x) = δ₀ * Q / x / qt p by field_simp]\n    calc δ₀ * Q / x / qt p ≤ 1 / (2 * Q) / qt p := by gcongr\n      _ = 1 / (2 * Q * qt p) := by field_simp\n  refine (add_le_add (hw q hq) (hw q' hq')).trans ?_\n  unfold qt at hqQ hqQ' ⊢\n  by_cases he : Even q <;> by_cases he' : Even q' <;> simp only [he, he', if_true, if_false,\n    and_self, and_true, and_false] at hqQ hqQ' ⊢ <;> push_cast at hqQ hqQ' ⊢ <;>\n    rw [div_add_div _ _ (by positivity) (by positivity), div_le_div_iff₀ (by positivity) (by positivity)] <;>\n    nlinarith [mul_pos hqr hqr', mul_pos (mul_pos hqr hqr') hQ]",
+            "line": 180,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.wrad_add_le",
+            "lines": [
+              180,
+              202
+            ],
+            "conclusion": "For `δ₀Q² ≤ x/2` and `q̃,q̃' ≤ 2Q`, `w_q + w_{q'} ≤ D/(qq')` with `D = 2` if both `q,q'` even and `1` otherwise."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "fragment": "L180-L202"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.arcs_unique",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs",
+        "lines": [
+          204,
+          285
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.arcs_unique"
+          },
+          "snippet": {
+            "text": "/-- **The arcs at level `Q` are disjoint** (`δ₀Q² ≤ x/2`): if `α − k ∈ J_{q,b}` and\n`α − k' ∈ J_{q',b'}`, then `(q, b, k) = (q', b', k')`. -/\ntheorem arcs_unique {δ₀ Q x : ℝ} (hx : 0 < x) (hδ : 0 < δ₀) (hQ : 0 < Q) (hQx : δ₀ * Q ^ 2 ≤ x / 2)\n    {α : ℝ} {q b q' b' : ℕ} {k k' : ℤ} (hq : q ∈ Qset Q) (hb : b ∈ Bset q) (hq' : q' ∈ Qset Q)\n    (hb' : b' ∈ Bset q') (h1 : α - k ∈ arc δ₀ Q x q b) (h2 : α - k' ∈ arc δ₀ Q x q' b') :\n    q = q' ∧ b = b' ∧ k = k' := by\n  obtain ⟨hq1, hqQ⟩ := Finset.mem_filter.1 hq\n  obtain ⟨hq1', hqQ'⟩ := Finset.mem_filter.1 hq'\n  have hq1 := (Finset.mem_Icc.1 hq1).1\n  have hq1' := (Finset.mem_Icc.1 hq1').1\n  obtain ⟨hbq, hbc⟩ := Finset.mem_filter.1 hb\n  obtain ⟨hbq', hbc'⟩ := Finset.mem_filter.1 hb'\n  have hbq := Finset.mem_range.1 hbq\n  have hbq' := Finset.mem_range.1 hbq'\n  have hqr : (0 : ℝ) < q := by exact_mod_cast hq1\n  have hqr' : (0 : ℝ) < q' := by exact_mod_cast hq1'\n  set c : ℤ := b + k * q\n  set c' : ℤ := b' + k' * q'\n  have hc : (c : ℝ) / q = b / q + k := by simp only [c]; push_cast; field_simp\n  have hc' : (c' : ℝ) / q' = b' / q' + k' := by simp only [c']; push_cast; field_simp\n  have hdist : |(c : ℝ) / q - c' / q'| < wrad δ₀ Q x q + wrad δ₀ Q x q' := by\n    obtain ⟨h11, h12⟩ := h1\n    obtain ⟨h21, h22⟩ := h2\n    rw [hc, hc', abs_sub_lt_iff]; constructor <;> linarith\n  have hW := wrad_add_le hx hδ hQ hQx hq1 hq1' hqQ hqQ'\n  -- `cq' = c'q`\n  have hcross : c * q' = c' * q := by\n    by_contra hne\n    set N : ℤ := c * q' - c' * q\n    have hN : N ≠ 0 := sub_ne_zero.2 hne\n    have hexpr : (c : ℝ) / q - c' / q' = N / (q * q') := by\n      simp only [N]; push_cast; field_simp\n    rw [hexpr, abs_div, abs_of_pos (by positivity : (0:ℝ) < q * q')] at hdist\n    have hD : (if Even q ∧ Even q' then (2 : ℝ) else 1) ≤ |(N : ℝ)| := by\n      split_ifs with hev\n      · have hNe : Even N := by\n          have e1 : Even (c * q') := ((Int.even_coe_nat q').2 hev.2).mul_left c\n          have e2 : Even (c' * q) := ((Int.even_coe_nat q).2 hev.1).mul_left c'\n          exact e1.sub e2\n        obtain ⟨m, hm⟩ := hNe\n        have hm0 : m ≠ 0 := by rintro rfl; simp at hm; exact hN hm\n        have : (1 : ℤ) ≤ |m| := Int.one_le_abs hm0\n        rw [hm]; push_cast\n        rw [show (m : ℝ) + m = 2 * m by ring, abs_mul]\n        have : (1 : ℝ) ≤ |(m : ℝ)| := by exact_mod_cast this\n        norm_num; linarith\n      · exact_mod_cast Int.one_le_abs hN\n    have := lt_of_lt_of_le hdist hW\n    rw [div_lt_div_iff_of_pos_right (by positivity)] at this\n    linarith\n  -- coprimality gives `q = q'`\n  have hcop : IsCoprime c q := by\n    have : IsCoprime (b : ℤ) q := Nat.isCoprime_iff_coprime.2 hbc\n    simpa [c] using this.add_mul_right_left k\n  have hcop' : IsCoprime c' q' := by\n    have : IsCoprime (b' : ℤ) q' := Nat.isCoprime_iff_coprime.2 hbc'\n    simpa [c'] using this.add_mul_right_left k'\n  have hd1 : (q : ℤ) ∣ q' := by\n    have : (q : ℤ) ∣ c * q' := ⟨c', by rw [hcross]; ring⟩\n    exact hcop.symm.dvd_of_dvd_mul_left this\n  have hd2 : (q' : ℤ) ∣ q := by\n    have : (q' : ℤ) ∣ c' * q := ⟨c, by rw [← hcross]; ring⟩\n    exact hcop'.symm.dvd_of_dvd_mul_left this\n  have hqq : q = q' := by\n    have := Int.dvd_antisymm (by positivity) (by positivity) hd1 hd2\n    exact_mod_cast this\n  subst hqq\n  have hcc : c = c' := by\n    have hq0 : (q : ℤ) ≠ 0 := by exact_mod_cast (by omega : q ≠ 0)\n    exact mul_right_cancel₀ hq0 hcross\n  -- `b + kq = b' + k'q` with `0 ≤ b, b' < q`\n  have hkk : k = k' := by\n    have h : ((b : ℤ) - b') = (k' - k) * q := by simp only [c, c'] at hcc; linarith\n    by_contra hne\n    have : (1 : ℤ) ≤ |k' - k| := Int.one_le_abs (sub_ne_zero.2 (Ne.symm hne))\n    have hlt : |(b : ℤ) - b'| < q := by rw [abs_lt]; constructor <;> omega\n    rw [h, abs_mul, abs_of_pos (by exact_mod_cast hq1 : (0:ℤ) < q)] at hlt\n    nlinarith\n  subst hkk\n  refine ⟨rfl, ?_, rfl⟩\n  have : (b : ℤ) = b' := by simp only [c, c'] at hcc; linarith\n  exact_mod_cast this",
+            "line": 204,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.arcs_unique",
+            "lines": [
+              204,
+              285
+            ],
+            "conclusion": "For `δ₀Q² ≤ x/2`, arcs at level `Q` (with integer translates) are disjoint: `α-k ∈ J_{q,b}` and `α-k' ∈ J_{q',b'}` force `(q,b,k) = (q',b',k')`, using `|b/q - b'/q'| ≥ 1/qq'` (`≥ 2/qq'` for both even) and `wrad_add_le`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "fragment": "L204-L285"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          35
+        ],
+        "printed": [
+          35
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 12.1.2 step 11, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

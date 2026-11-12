@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.2 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Only for η = η₂ with c₀ = 32; minInv(c, πδ) is min(1, c/(πδ)²) read as 1 at δ = 0; Lean states an inequality.",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.17462,
+          0.15703,
+          0.56162,
+          0.03153
+        ]
+      },
+      "title": "Lemma 4.2.2 step 10: Text, p. 65",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          579,
+          583
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPart_le"
+          },
+          "snippet": {
+            "text": "theorem norm_mainPart_le {α x δ M D : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (h2α : 2 * α = a / q + δ / x + k) (hM0 : 0 ≤ M) (hMδ : |δ| * M ≤ x / 2) (hMD : M ≤ D) :\n    ‖mainPart α x M q‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) * |muSum M q (2 * q) fun _ => 1| +\n        c₀ * q / x * (1 / 8 - 1 / (2 * π ^ 2)) * (D / q + 1) ^ 2 := by",
+            "line": 579,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPart_le",
+            "lines": [
+              578,
+              677
+            ],
+            "conclusion": "`‖mainPart α x M q‖ ≤ (x/2q) minInv(c₀, πδ) |muSum M q (2q) 1| + (c₀ q/x)(1/8 - 1/2π²)(D/q+1)²`, i.e. (asparto) with `muSum` the sum over `m ≤ M/q`, `(m,2q)=1` of `μ(m)/m`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L579-L583"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

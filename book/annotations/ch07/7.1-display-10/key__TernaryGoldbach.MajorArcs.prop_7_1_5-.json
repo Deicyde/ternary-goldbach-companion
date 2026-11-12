@@ -1,0 +1,81 @@
+{
+  "id": "7.1 display 10",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "First line: prop_9_5_1 gives it with error 1e-8 x log x only; second line numerics from integral_etaPlus_sq_log with Lean's constants, combined in prop_7_1_5' as the E2 form. Both only for x >= 4.9e26 (book 1e12) and with PlattGRH assumed.",
+  "subject": [
+    {
+      "location": {
+        "page": 150,
+        "rect": [
+          0.25926,
+          0.63774,
+          0.56816,
+          0.06252
+        ]
+      },
+      "title": "Display, p. 140",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7.1 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_7_1_5'",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          354,
+          391
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_7_1_5'"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop 7.1.5]** (for `x ≥ 4.9·10²⁶`), from [H, Prop 9.5.1] (`prop_9_5_1`), Platt's verification at\n`q = 1` and the numerical value (9.94). -/\ntheorem prop_7_1_5' {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∃ E₂ : ℝ, |E₂| ≤ 2e-6 + 366.91 / √x ∧\n      ∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 =\n        0.640206 * x * Real.log x - 0.021095 * x + E₂ * x * Real.log x := by\n  have hx0 : 0 < x := by linarith\n  have hlx := log_ge_1e12 (by linarith : (1e12:ℝ) ≤ x)\n  have hlx0 : 0 < Real.log x := by linarith\n  have hxl : 0 < x * Real.log x := mul_pos hx0 hlx0\n  have hG : GRHUpTo (1 : DirichletCharacter ℂ 1) 500 :=\n    (platt_odd (q := 1) odd_one (by norm_num) 1 DirichletCharacter.isPrimitive_one_level_one).mono\n      (by norm_num)\n  have h1 := prop_9_5_1 hx hG\n  have h2 := integral_etaPlus_sq_log (by linarith : (1 : ℝ) ≤ x)\n  set S := ∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2\n  set I := ∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t)\n  refine ⟨(S - (0.640206 * x * Real.log x - 0.021095 * x)) / (x * Real.log x), ?_, ?_⟩\n  · rw [abs_div, abs_of_pos hxl, div_le_iff₀ hxl]\n    have e : S - (0.640206 * x * Real.log x - 0.021095 * x) =\n        (S - x * I) + x * (I - (0.640206 * Real.log x - 0.021095)) := by ring\n    rw [e]\n    have h4 : |x * (I - (0.640206 * Real.log x - 0.021095))| ≤ x * (1.95e-6 * Real.log x + 5.3e-7) := by\n      rw [abs_mul, abs_of_pos hx0]; exact mul_le_mul_of_nonneg_left h2 hx0.le\n    have h5 : x * (1.95e-6 * Real.log x + 5.3e-7) ≤ (1.95e-6 + 2e-8) * (x * Real.log x) := by\n      have : 5.3e-7 ≤ 2e-8 * Real.log x := by nlinarith\n      nlinarith\n    have h7 : (1e-8 : ℝ) + (1.95e-6 + 2e-8) ≤ 2e-6 + 366.91 / √x := by\n      have : 0 ≤ 366.91 / √x := div_nonneg (by norm_num) (Real.sqrt_nonneg _)\n      linarith\n    calc |S - x * I + x * (I - (0.640206 * Real.log x - 0.021095))|\n        ≤ |S - x * I| + |x * (I - (0.640206 * Real.log x - 0.021095))| := abs_add_le _ _\n      _ ≤ 1e-8 * (x * Real.log x) + (1.95e-6 + 2e-8) * (x * Real.log x) := by\n          linarith\n      _ = (1e-8 + (1.95e-6 + 2e-8)) * (x * Real.log x) := by ring\n      _ ≤ (2e-6 + 366.91 / √x) * (x * Real.log x) := mul_le_mul_of_nonneg_right h7 hxl.le\n  · field_simp\n    ring",
+            "line": 354,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.prop_7_1_5'",
+            "lines": [
+              354,
+              391
+            ],
+            "conclusion": "For x >= 4.9e26 there is E2 with |E2| <= 2e-6 + 366.91/√x and `Σ' Λ(n) log n etaPlus(n/x)^2 = 0.640206 x log x - 0.021095 x + E2 x log x`, assuming only PlattGRH."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L354-L391"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          150
+        ],
+        "printed": [
+          140
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

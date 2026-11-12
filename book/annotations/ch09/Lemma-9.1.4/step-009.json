@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.4 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's `fline` is G_δ(1/2+it) for the specific η, without the modulus or truncation at T₀ (the sum instead restricts to |Im u|≤T₀ via `him`).",
+  "subject": [
+    {
+      "location": {
+        "page": 183,
+        "rect": [
+          0.17462,
+          0.48054,
+          0.56162,
+          0.04019
+        ]
+      },
+      "title": "Lemma 9.1.4 step 9: Display, p. 173",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.fline",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherel",
+        "lines": [
+          198,
+          199
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.fline"
+          },
+          "snippet": {
+            "text": "/-- `f(t) = G_δ(1/2 + it)`. -/\nnoncomputable def fline (δ t : ℝ) : ℂ := Gr (((1 / 2 : ℝ) : ℂ) + t * I) δ 0",
+            "line": 198,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.fline",
+            "lines": [
+              198,
+              199
+            ],
+            "conclusion": "`fline δ t = G_δ(1/2+it)` for the specific η, with no modulus or truncation at T₀."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherel.lean",
+            "fragment": "L198-L199"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          183
+        ],
+        "printed": [
+          173
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 13",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same idea (small prime powers use $|\\eta|_\\infty$, large ones a tail bound), but [L] bounds the weighted sum $\\sum_{(n,q)>1}\\Lambda(n)|\\eta(n/x)|$ with $K=\\lceil2\\log_2x\\rceil$ and a Gaussian envelope, not $LS_\\eta=\\log r\\max_p\\sum_\\alpha\\eta(p^\\alpha/x)$ with $|\\eta\\cdot t|_\\infty$.",
+  "subject": [
+    {
+      "location": {
+        "page": 275,
+        "rect": [
+          0.17135,
+          0.43084,
+          0.56816,
+          0.17886
+        ]
+      },
+      "title": "Display, p. 265",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_noncoprime_le",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap2",
+        "lines": [
+          41,
+          43
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_noncoprime_le"
+          },
+          "snippet": {
+            "text": "theorem sum_noncoprime_le {y : ℝ} (hy : 1e25 ≤ y) {q K : ℕ} (hq : 1 ≤ q) (hK : y ^ 2 ≤ 2 ^ K) :\n    ∑' n, ‖((Λ n * etaU (n / y) : ℝ) : ℂ) - coprimePart q (fun n => ((Λ n * etaU (n / y) : ℝ) : ℂ)) n‖\n      ≤ 6.2 * K * Real.log q + 1 := by",
+            "line": 41,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_noncoprime_le",
+            "lines": [
+              41,
+              143
+            ],
+            "conclusion": "Same for $\\eta_*$ with $|\\eta_*|\\le6.2$: $\\le6.2K\\log q+1$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap2.lean",
+            "fragment": "L41-L43"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          275
+        ],
+        "printed": [
+          265
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

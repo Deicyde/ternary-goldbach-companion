@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 9.3.2 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the zeros with $|\\Im\\rho|\\le T_0$ in `zero_sum_bound`'s `hB` via Jensen line windows rather than Lemma hausierer with the explicit $N(T)$; the term `E1b` has different constants.",
+  "subject": [
+    {
+      "location": {
+        "page": 192,
+        "rect": [
+          0.26253,
+          0.47035,
+          0.56162,
+          0.01564
+        ]
+      },
+      "title": "Proposition 9.3.2 step 3: Text, p. 182",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.3.2 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          486,
+          506
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "  have hB : ∑ u ∈ (Z.filter fun u => ¬ u = 0).filter (fun u => |u.im| ≤ T0),\n      m u * (‖Gr u δ 0‖ * x ^ u.re) ≤ √x * E1b N T0 := by\n    set S := (Z.filter fun u => ¬ u = 0).filter (fun u => |u.im| ≤ T0) with hS\n    have hSZ : S ⊆ Z := (Finset.filter_subset _ _).trans (Finset.filter_subset _ _)\n    have hre : ∀ u ∈ S, u.re = 1 / 2 := by\n      intro u hu\n      obtain ⟨hu1, hu2⟩ := Finset.mem_filter.1 hu\n      obtain ⟨hL, hr1, hr2⟩ := hcases u hu1\n      exact hG u hL hr1 hr2 hu2\n    have him : ∀ u ∈ S, |u.im| ≤ T0 := fun u hu => (Finset.mem_filter.1 hu).2\n    have heq : ∀ u ∈ S, m u * (‖Gr u δ 0‖ * x ^ u.re) = √x * (m u * ‖fline δ u.im‖) := by\n      intro u hu\n      have hu' : u = ((1 / 2 : ℝ) : ℂ) + (u.im : ℂ) * I := by\n        apply Complex.ext <;> simp [hre u hu]\n      rw [hre u hu, ← Real.sqrt_eq_rpow, fline, ← hu']; ring\n    rw [Finset.sum_congr rfl heq, ← Finset.mul_sum]\n    refine mul_le_mul_of_nonneg_left ?_ (Real.sqrt_nonneg _)\n    exact sum_window_fline_le m (fun u _ => hm u) (h := 3.48) (by norm_num) hT00.le (Jl T0)\n      (lt_Jl hT00.le) him (ZL_nonneg N T0)\n      (fun k => count_line_window hχ hχ1 hT00.le S hSZ hre him k) δ\n  -- zeros above `T₀`",
+            "line": 486,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "`hB`: the zeros with $|\\Im\\rho|\\le T_0$ (on the critical line by GRH) contribute at most `√x * E1b N T0`, via `sum_window_fline_le` and Jensen line-window counts."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L486-L506"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          192
+        ],
+        "printed": [
+          182
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

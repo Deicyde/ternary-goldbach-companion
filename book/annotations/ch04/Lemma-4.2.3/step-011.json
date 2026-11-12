@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.3 step 11",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean states it as `∑_{m'≤N odd} qm' log(x/qm') ≤ M log(x/M)+(M²/4q) log(√e x/M)` (text's sum times `x`, indexed `m=qm'`), under `qN ≤ M ≤ x/e`.",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17462,
+          0.4087,
+          0.56162,
+          0.10051
+        ]
+      },
+      "title": "Lemma 4.2.3 step 11: Display, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_mul_log_le",
+        "module": "TernaryGoldbach.MinorArcs.SumTools",
+        "lines": [
+          290,
+          345
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_mul_log_le"
+          },
+          "snippet": {
+            "text": "/-- The error sum of the main term of [H, Lemma 4.2.3] (p. 67):\n`∑_{m' ≤ N odd} qm' log(x/qm') ≤ M log(x/M) + (M²/4q) log(√e x/M)` for `qN ≤ M ≤ x/e`. -/\ntheorem sum_odd_mul_log_le {x : ℝ} (hx : 0 < x) {q : ℕ} (hq : 1 ≤ q) {N : ℕ} {M : ℝ}\n    (hM0 : 0 < M) (hNM : (q : ℝ) * N ≤ M) (hMx : M ≤ x / rexp 1) :\n    ∑ m' ∈ Icc 1 N, (if Odd m' then ((q : ℝ) * m') * (Real.log x - Real.log (q * m')) else 0) ≤\n      M * (Real.log x - Real.log M) + M ^ 2 / (4 * q) * (1 / 2 + Real.log x - Real.log M) := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have he : x / rexp 1 ≤ x := div_le_self hx.le (by linarith [Real.add_one_le_exp (1:ℝ)])\n  have hRHS1 : 0 ≤ M * (Real.log x - Real.log M) :=\n    mul_nonneg hM0.le (by linarith [Real.log_le_log hM0 (hMx.trans he)])\n  have hRHS2 : 0 ≤ M ^ 2 / (4 * q) * (1 / 2 + Real.log x - Real.log M) :=\n    mul_nonneg (by positivity) (by linarith [Real.log_le_log hM0 (hMx.trans he)])\n  -- Rewrite as a sum over `i < I`, `m' = 2i + 1`.\n  have hodd := sum_Icc_odd_eq' N (fun m' : ℕ => ((q : ℝ) * m') * (Real.log x - Real.log (q * m')))\n  rw [hodd]\n  set I := (N + 1) / 2\n  rcases Nat.eq_zero_or_pos I with hI | hI\n  · rw [hI, sum_range_zero]; linarith\n  obtain ⟨K, hK⟩ : ∃ K, I = K + 1 := ⟨I - 1, by omega⟩\n  rw [hK, sum_range_succ]\n  set t : ℕ → ℝ := fun i => (q : ℝ) * ((2 * i + 1 : ℕ) : ℝ)\n  have ht : ∀ i : ℕ, t i = q + i * (2 * q) := fun i => by simp only [t]; push_cast; ring\n  have htK : t K ≤ M := by\n    have : 2 * K + 1 ≤ N := by omega\n    have : ((2 * K + 1 : ℕ) : ℝ) ≤ N := by exact_mod_cast this\n    simp only [t]; nlinarith\n  have htKx : t K ≤ x / rexp 1 := htK.trans hMx\n  have hsub : Set.Icc (q : ℝ) (q + K * (2 * q)) ⊆ Set.Ioc 0 (x / rexp 1) := fun s hs =>\n    ⟨lt_of_lt_of_le hq0 hs.1, hs.2.trans (by rw [← ht]; exact htKx)⟩\n  have hMono := sum_le_of_monotone (F := fun s => s ^ 2 / 2 * (1 / 2 + Real.log x - Real.log s))\n    (f := fun s => s * (Real.log x - Real.log s)) (a := q) (by positivity : (0 : ℝ) < 2 * q) K\n    (fun s hs => hasDerivAt_F₂ x (lt_of_lt_of_le hq0 hs.1)) ((monotoneOn_f₂ x hx).mono hsub)\n  have key : ∀ i : ℕ, (q : ℝ) + i * (2 * q) = t i := fun i => (ht i).symm\n  simp only [key] at hMono\n  have hF := F₂_mono (s := t K) (t := M) (by simp only [t]; positivity) htK (hMx.trans he)\n  have hF0 : 0 ≤ (q : ℝ) ^ 2 / 2 * (1 / 2 + Real.log x - Real.log q) := by\n    apply mul_nonneg (by positivity)\n    have : (q : ℝ) ≤ x := by\n      have h1 : t 0 ≤ t K := by simp only [t]; push_cast; nlinarith [show (0:ℝ) ≤ K by positivity]\n      have h2 : t 0 = q := by simp [t]\n      linarith [htKx.trans he]\n    linarith [Real.log_le_log hq0 this]\n  have hlast : t K * (Real.log x - Real.log (t K)) ≤ M * (Real.log x - Real.log M) :=\n    monotoneOn_f₂ x hx ⟨by simp only [t]; positivity, htKx⟩ ⟨hM0, hMx⟩ htK\n  have hsum : ∑ i ∈ range K, t i * (Real.log x - Real.log (t i)) ≤\n      M ^ 2 / (4 * q) * (1 / 2 + Real.log x - Real.log M) := by\n    have h2q : (0 : ℝ) < 2 * q := by positivity\n    have : 2 * q * ∑ i ∈ range K, t i * (Real.log x - Real.log (t i)) ≤\n        M ^ 2 / 2 * (1 / 2 + Real.log x - Real.log M) := by linarith\n    rw [show M ^ 2 / (4 * q) * (1 / 2 + Real.log x - Real.log M) =\n      (M ^ 2 / 2 * (1 / 2 + Real.log x - Real.log M)) / (2 * q) by field_simp; ring, le_div_iff₀ h2q]\n    linarith\n  have e : ∀ i : ℕ, (q : ℝ) * ((2 * i + 1 : ℕ) : ℝ) * (Real.log x - Real.log (q * ((2 * i + 1 : ℕ) : ℝ))) =\n      t i * (Real.log x - Real.log (t i)) := fun i => rfl\n  simp only [e]\n  linarith",
+            "line": 290,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_mul_log_le",
+            "lines": [
+              290,
+              345
+            ],
+            "conclusion": "`∑_{m' ≤ N odd} qm' log(x/qm') ≤ M log(x/M) + (M²/4q) log(√e x/M)` for `qN ≤ M ≤ x/e`: the text's (4.41-side) sum bound times `x`, indexed by `m=qm'`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SumTools.lean",
+            "fragment": "L290-L345"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

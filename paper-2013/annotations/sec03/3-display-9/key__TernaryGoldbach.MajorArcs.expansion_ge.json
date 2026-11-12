@@ -1,0 +1,81 @@
+{
+  "id": "3 display 9",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] never states the infinite sum equals the Euler product; it proves a lower bound for the truncated sum over q<=r_0 (Sum_{Qset} coefN >= 1.314) using the product over odd primes <=r_0 with a Rankin tail. Note a_p = -1/(p-1)^2 for p|N and 1/(p-1)^3 otherwise, so 1+a_p matches the displayed factors.",
+  "subject": [
+    {
+      "location": {
+        "page": 15,
+        "rect": [
+          0.20371,
+          0.60047,
+          0.63183,
+          0.04439
+        ]
+      },
+      "title": "Display, p. 15",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.expansion_ge",
+        "module": "TernaryGoldbach.MajorArcs.Singular",
+        "lines": [
+          297,
+          299
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.expansion_ge"
+          },
+          "snippet": {
+            "text": "/-- **Rankin's trick**: the terms with `∏ t > R` are at most `R⁻¹ ∏_p (1 + p |a_p|)`. -/\ntheorem expansion_ge (N R : ℕ) (hR : 0 < R) :\n    ∏ p ∈ oddPrimes R, (1 + aP N p) - (1 / (R : ℝ)) * ∏ p ∈ oddPrimes R, (1 + p * |aP N p|) ≤",
+            "line": 297,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.expansion_ge",
+            "lines": [
+              297,
+              331
+            ],
+            "conclusion": "$\\prod_{p}(1+a_p)-R^{-1}\\prod(1+p|a_p|)\\le$ truncated sum (expansion of the Euler product with Rankin tail)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L297-L299"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          15
+        ],
+        "printed": [
+          15
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.2 display 5, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

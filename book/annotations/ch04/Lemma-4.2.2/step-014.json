@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.2 step 14",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Only for η = η₂ with c₀ = 32 (eta2'L1 for |η'|₁).",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.17462,
+          0.32343,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 4.2.2 step 14: Text, p. 65",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          161,
+          185
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Todd_le"
+          },
+          "snippet": {
+            "text": "/-- **[H, (4.36)]**: `|T_{m,∘}(α)| ≤ min(x/2m + |η'|₁/2, (|η'|₁/2)/|sin 2πmα|,\n(m/x)(c₀/2)/sin² 2πmα)`, for `η = η₂`. -/\ntheorem norm_Todd_le (α : ℝ) :\n    ‖Todd α x m‖ ≤ x / (2 * m) + eta2'L1 / 2 ∧\n    (Real.sin (2 * π * m * α) ≠ 0 →\n      ‖Todd α x m‖ ≤ eta2'L1 / 2 / |Real.sin (2 * π * m * α)| ∧\n      ‖Todd α x m‖ ≤ m / x * (c₀ / 2) / Real.sin (2 * π * m * α) ^ 2) := by\n  have hsin : π * (2 * α * m) = 2 * π * m * α := by ring\n  rw [Todd_eq, norm_mul, norm_e, one_mul]\n  refine ⟨?_, fun hs => ⟨?_, ?_⟩⟩\n  · obtain ⟨hsumm, hle⟩ := tsum_norm_le_variation (continuous_fodd)\n      (hasCompactSupport_fodd hx hm) eta2'L1_pos.le (variation_fodd hx hm)\n    rw [integral_norm_fodd hx hm] at hle\n    refine le_trans ?_ hle\n    refine (norm_tsum_le_tsum_norm ?_).trans (le_of_eq (tsum_congr fun r => ?_))\n    · exact hsumm.congr fun r => by rw [norm_mul, norm_e, mul_one]\n    · rw [norm_mul, norm_e, mul_one]\n  · have := norm_tsum_le_variation (hasCompactSupport_fodd hx hm) eta2'L1_pos.le\n      (variation_fodd hx hm) (α := 2 * α * m) (by rwa [hsin])\n    rw [hsin] at this\n    refine this.trans (le_of_eq ?_); ring\n  · have := norm_tsum_le_of_fourier_bound (continuous_fodd) (hasCompactSupport_fodd hx hm)\n      (fourier_bound_fodd hx hm) (α := 2 * α * m) (by rwa [hsin])\n    rw [hsin] at this\n    refine this.trans (le_of_eq ?_); ring",
+            "line": 161,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+            "lines": [
+              161,
+              185
+            ],
+            "conclusion": "(4.36): `‖T_{m,∘}‖ ≤ min(x/2m + |η'|₁/2, (|η'|₁/2)/|sin 2πmα|, (m/x)(c₀/2)/sin²(2πmα))` for `η = η₂`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L161-L185"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

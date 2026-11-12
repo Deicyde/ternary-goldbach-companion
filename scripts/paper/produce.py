@@ -19,6 +19,9 @@ over only to a statement that is the same.  One more record links the item to th
 on the book's PDF (`exactMatch` for the same statement, else `relatedMatch`).  An item with no
 counterpart in [H] has one record with no relation and no object.
 
+The displays outside proofs and the proof steps are written as for the book (produce.py, proof_overlay),
+from data/paper-2013-*.json.
+
 Usage: python3 -I scripts/paper/produce.py [<repository root>]
 """
 import collections
@@ -94,6 +97,7 @@ def main():
             o.pop('type', None), o.pop('uri', None), o.pop('version', None)
         return o
 
+    display_files, steps = book.proof_overlay(root, 'paper-2013', pdf, pins['lean'], pins['mathlib'], folder_of)
     out_dir = os.path.join(root, 'paper-2013', 'annotations')
     if os.path.isdir(out_dir):
         shutil.rmtree(out_dir)
@@ -171,9 +175,9 @@ def main():
                                     r['object'][0]['location'].get('declaration', '')
                                     if r['object'] and 'location' in r['object'][0] else ''))
         folder = folder_of(it)
-        if len(records) == 1:
+        if len(records) == 1 and it['id'] not in steps:
             paths = [f"{folder}/{file_name(key_of(records[0], False), '.json')}"]
-        else:
+        else:  # an item with several records, or with a proof: a folder
             keys = [key_of(r, True) for r in records]
             names = [file_name(k, '.json') for k in keys]
             clash = collections.Counter(n.lower() for n in names)
@@ -181,12 +185,23 @@ def main():
             if len({n.lower() for n in names}) != len(names):
                 sys.exit(f"{it['id']}: two records share a file name")
             paths = [f"{folder}/{file_name(it['id'])}/{n}" for n in names]
-        for p, r in zip(paths, records):
+        proof = book.step_files(f"{folder}/{file_name(it['id'])}", steps.pop(it['id'], []))
+        counts['proof_steps'] += len(proof)
+        for p, r in list(zip(paths, records)) + list(proof.items()):
             if p.lower() in {q.lower() for q in files}:
                 sys.exit(f'two files named {p}')
             files[p] = r
             counts['records'] += 1
             counts[f"relation.{r.get('relation', 'none')}"] += 1
+    if steps:
+        sys.exit(f'steps of items not in the overlay: {sorted(steps)}')
+    for p, r in display_files.items():
+        if p.lower() in {q.lower() for q in files}:
+            sys.exit(f'two files named {p}')
+        files[p] = r
+        counts['display_records'] += 1
+        counts[f"relation.{r.get('relation', 'none')}"] += 1
+    counts['displays'] = len({r['id'] for r in display_files.values()})
     with open(os.path.join(out_dir, '_defaults.json'), 'w', encoding='utf-8') as f:
         json.dump(defaults, f, indent=2, ensure_ascii=False)
         f.write('\n')

@@ -1,0 +1,81 @@
+{
+  "id": "10.3 display 4",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Stated in squared form |tau(chi)|^2 = N; equivalent to |tau(chi*)| = sqrt(q*).",
+  "subject": [
+    {
+      "location": {
+        "page": 218,
+        "rect": [
+          0.25926,
+          0.56669,
+          0.56816,
+          0.02653
+        ]
+      },
+      "title": "Display, p. 208",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.3 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_sq_gaussSum_of_isPrimitive",
+        "module": "TernaryGoldbach.Prelim.GaussInduced",
+        "lines": [
+          174,
+          176
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_sq_gaussSum_of_isPrimitive"
+          },
+          "snippet": {
+            "text": "/-- **`|τ(χ)|² = N` for primitive `χ` mod `N`.** -/\ntheorem norm_sq_gaussSum_of_isPrimitive {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) : ‖gaussSum χ ZMod.stdAddChar‖ ^ 2 = N := by",
+            "line": 174,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_sq_gaussSum_of_isPrimitive",
+            "lines": [
+              174,
+              227
+            ],
+            "conclusion": "For primitive $\\chi$ mod $N$: $|\\tau(\\chi)|^2=N$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/GaussInduced.lean",
+            "fragment": "L174-L176"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          218
+        ],
+        "printed": [
+          208
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

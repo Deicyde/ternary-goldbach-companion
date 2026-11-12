@@ -1,0 +1,81 @@
+{
+  "id": "7 display 10",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part: the main term $|\\eta_2|_1|\\varphi|_1/\\varkappa$ of $\\int_0^\\infty\\eta_*$. [L] integrates over all of $\\mathbb R$ (`Cmain` uses `etaS` on $\\mathbb R$), so the truncation at $N/x$ and the tail integral $\\int_{\\varkappa N/xw}^\\infty\\varphi$ do not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 58,
+        "rect": [
+          0.20371,
+          0.37051,
+          0.63183,
+          0.08441
+        ]
+      },
+      "title": "Display, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaS",
+        "module": "TernaryGoldbach.MajorArcs.CMain",
+        "lines": [
+          434,
+          437
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaS"
+          },
+          "snippet": {
+            "text": "theorem integral_etaS : ∫ σ, etaS σ = √(π / 2) / κ := by\n  unfold etaS\n  rw [Measure.integral_comp_mul_left (fun u => etaU u) κ, integral_etaU, abs_of_pos (inv_pos.2 hκpos),\n    smul_eq_mul]; ring",
+            "line": 434,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaS",
+            "lines": [
+              434,
+              437
+            ],
+            "conclusion": "$\\int_{\\mathbb R}\\eta_*=|\\eta_2|_1|\\varphi|_1/\\varkappa=\\sqrt{\\pi/2}/\\kappa$ (`etaS σ = etaU (κ σ)`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
+            "fragment": "L434-L437"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          58
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.2 display 1, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7 display 9",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the main term 2·Σ μ²/φ·∫|η̂₊|² directly for η₊ (no η∘ comparison, no O*((log r+1.7)…) or η∘''' correction), giving the looser range [8.6296,8.79] x instead of [8.70517, 8.70531].",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.20371,
+          0.72509,
+          0.63183,
+          0.08375
+        ]
+      },
+      "title": "Display, p. 57",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_fourier_etaPlus_Ioo_bounds",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusL2",
+        "lines": [
+          199,
+          200
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_fourier_etaPlus_Ioo_bounds"
+          },
+          "snippet": {
+            "text": "theorem integral_fourier_etaPlus_Ioo_bounds {T : ℝ} (hT : 4 ≤ T) :\n    0.6392 ≤ ∫ ξ in Ioo (-T) T, ‖𝓕 etaPC ξ‖ ^ 2 ∧ ∫ ξ in Ioo (-T) T, ‖𝓕 etaPC ξ‖ ^ 2 ≤ 0.640208 := by",
+            "line": 199,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_fourier_etaPlus_Ioo_bounds",
+            "lines": [
+              197,
+              229
+            ],
+            "conclusion": "For T ≥ 4: `0.6392 ≤ ∫_{|ξ|<T}|η̂₊(ξ)|² dξ ≤ 0.640208`, the main-term integral in place of 0.8001287² etc."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusL2.lean",
+            "fragment": "L199-L200"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          57
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

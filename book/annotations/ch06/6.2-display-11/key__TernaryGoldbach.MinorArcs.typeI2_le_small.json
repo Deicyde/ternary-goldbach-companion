@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 11",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's main terms use `muBound` (`2.8`), `0.511` for `∑Λ v v`, `c₀(1/8-1/2π²)=c_{10,I}/4` exactly, and `log q` in place of `log V` in the `V q log` and `U²V` terms.",
+  "subject": [
+    {
+      "location": {
+        "page": 115,
+        "rect": [
+          0.17135,
+          0.50288,
+          0.56816,
+          0.08255
+        ]
+      },
+      "title": "Display, p. 105",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_small",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum",
+        "lines": [
+          303,
+          306
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_le_small"
+          },
+          "snippet": {
+            "text": "    ‖typeI2 α x U V‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) * muBound (min (Q / (2 * V)) U) q * Real.log (V * q) +\n        c₀ * (1 / 8 - 1 / (2 * π ^ 2)) / x *\n          (U ^ 2 / q * (0.511 * V ^ 2 + V * q * Real.log q) + (2 * U + q) * (0.511 * V ^ 2)) +",
+            "line": 303,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_small",
+            "lines": [
+              292,
+              404
+            ],
+            "conclusion": "`|S_{I,2}| ≤ (x/2q) min(1,c₀/(πδ)²) muBound(min(Q/2V,U)) q · log(Vq) + c₀(1/8-1/2π²)/x (U²/q (0.511V²+Vq log q) + (2U+q) 0.511V²) + …` for `|δ| ≤ 1/2c₂`, `qV ≤ Q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L303-L306"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          115
+        ],
+        "printed": [
+          105
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

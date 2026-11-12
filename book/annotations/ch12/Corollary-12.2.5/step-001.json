@@ -1,0 +1,156 @@
+{
+  "id": "Corollary 12.2.5 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean combines Props 12.1.2 and 12.2.4 only for the (12.42) half, with c₊=2 (book 1.36), δ₀≥2 (book δ₀≥1); the (12.1) half and Prop. bellen are not formalized.",
+  "subject": [
+    {
+      "location": {
+        "page": 252,
+        "rect": [
+          0.26253,
+          0.61849,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Corollary 12.2.5 step 1: Text, p. 242",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 12.2.5 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_1_2",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          291,
+          372
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_12_1_2"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop. 12.1.2]** (with `δ₀ ≥ 2`, see the module docstring).  Let `aₙ` be supported on\nprimes `> √x`, in `ℓ¹`; `δ₀ ≥ 2`, `Q₀ ≥ 1`, `δ₀Q₀² ≤ x/2`, `Q = √(x/2δ₀)`.  If\n`G_q(2Q₀/sq) ≤ C G_q(2Q/sq)` for every even `q ≤ 2Q₀` and `1 ≤ s ≤ 2Q₀/q`, then\n`∫_{𝔐_{δ₀,Q₀}} |S(α)|² dα ≤ C Σ |aₙ|²`. -/\ntheorem prop_12_1_2 {x δ₀ Q₀ C : ℝ} {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    (hδ₀ : 2 ≤ δ₀) (hQ₀ : 1 ≤ Q₀) (hx : δ₀ * Q₀ ^ 2 ≤ x / 2)\n    (hC : ∀ q : ℕ, 1 ≤ q → Even q → (q : ℝ) ≤ 2 * Q₀ → ∀ s : ℝ, 1 ≤ s → s ≤ 2 * Q₀ / q →\n      Gq q (2 * Q₀ / (s * q)) ≤ C * Gq q (2 * √(x / (2 * δ₀)) / (s * q))) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤ C * ∑' n, ‖a n‖ ^ 2 := by\n  obtain ⟨hsupp, hsum⟩ := ha\n  set Q := √(x / (2 * δ₀)) with hQdef\n  have hx0 : 0 < x := by nlinarith\n  have hδ0 : 0 < δ₀ := by linarith\n  have hQsq : Q ^ 2 = x / (2 * δ₀) := Real.sq_sqrt (by positivity)\n  have hQ0 : 0 < Q := Real.sqrt_pos.2 (by positivity)\n  have hδQ2 : δ₀ * Q ^ 2 = x / 2 := by rw [hQsq]; field_simp\n  have hQ₀Q : Q₀ ≤ Q := by\n    rw [hQdef]; apply Real.le_sqrt_of_sq_le\n    rw [le_div_iff₀ (by positivity)]; nlinarith\n  have hδx : δ₀ ≤ x / 2 := by\n    have : δ₀ * 1 ≤ δ₀ * Q₀ ^ 2 := mul_le_mul_of_nonneg_left (by nlinarith) hδ0.le\n    linarith\n  have hδQ : δ₀ * Q ≤ x := by\n    have hsq : (δ₀ * Q) ^ 2 ≤ x ^ 2 := by\n      rw [mul_pow, hQsq]\n      rw [show δ₀ ^ 2 * (x / (2 * δ₀)) = δ₀ * x / 2 by field_simp]\n      nlinarith\n    nlinarith [mul_pos hδ0 hQ0]\n  have h2Q : 2 * Q ≤ √x := by\n    apply Real.le_sqrt_of_sq_le\n    rw [mul_pow, hQsq]\n    rw [show (2 : ℝ) ^ 2 * (x / (2 * δ₀)) = 2 * x / δ₀ by field_simp, div_le_iff₀ hδ0]\n    nlinarith\n  -- the common modulus\n  set L := ∏ q ∈ Finset.Icc 1 ⌊2 * Q⌋₊, q with hL\n  have hL0 : L ≠ 0 := Finset.prod_ne_zero_iff.2 fun q hq => by\n    have := (Finset.mem_Icc.1 hq).1; omega\n  have : NeZero L := ⟨hL0⟩\n  have hqL : ∀ R, R ≤ Q → ∀ q ∈ Qset R, q ∣ L := by\n    intro R hR q hq\n    apply Finset.dvd_prod_of_mem\n    obtain ⟨hq1, -⟩ := Finset.mem_filter.1 hq\n    obtain ⟨h1, h2⟩ := Finset.mem_Icc.1 hq1\n    exact Finset.mem_Icc.2 ⟨h1, h2.trans (Nat.floor_le_floor (by linarith))⟩\n  have hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L := by\n    intro n hn\n    obtain ⟨hp, hnx⟩ := hsupp n hn\n    refine Nat.Coprime.prod_right fun q hq => ?_\n    obtain ⟨hq1, hq2⟩ := Finset.mem_Icc.1 hq\n    refine (Nat.coprime_or_dvd_of_prime hp q).resolve_right fun hdvd => ?_\n    have hle := Nat.le_of_dvd (by omega) hdvd\n    have : (q : ℝ) ≤ 2 * Q := le_trans (by exact_mod_cast hq2) (Nat.floor_le (by positivity))\n    have : (n : ℝ) ≤ q := by exact_mod_cast hle\n    linarith\n  -- `C ≥ 0`\n  have hC0 : 0 ≤ C := by\n    have h := hC 2 (by norm_num) even_two (by push_cast; linarith) 1 le_rfl (by\n      rw [le_div_iff₀ (by norm_num)]; push_cast; linarith)\n    have e1 : 2 * Q₀ / (1 * ((2 : ℕ) : ℝ)) = Q₀ := by push_cast; ring\n    rw [e1] at h\n    have hG1 := one_le_Gq_two hQ₀\n    have hGQ := Gq_nonneg 2 (2 * Q / (1 * ((2 : ℕ) : ℝ)))\n    by_contra hneg; push Not at hneg\n    nlinarith\n  -- the chain\n  set g : ℝ → ℝ := fun α => ‖expTsum a α‖ ^ 2\n  have hg : Continuous g := (TernaryGoldbach.continuous_expTsum hsum).norm.pow 2\n  have hper : Function.Periodic g 1 := fun α => by simp only [g, expTsum_periodic a α]\n  have hg0 : ∀ α, 0 ≤ g α := fun α => by positivity\n  have hδQ₀ : δ₀ * Q₀ ≤ x := by nlinarith\n  calc ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2\n      ≤ ∑ q ∈ Qset Q₀, ∑ b ∈ Bset q, ∫ y in arc δ₀ Q₀ x q b, g y :=\n        integral_majorArcs_le hg hper hg0 hx0 (by positivity) hδQ₀\n    _ = ∫ β, Farc a δ₀ Q₀ x β := sum_arcs_eq_integral_Farc hsum δ₀ Q₀ x\n    _ ≤ ∫ β, C * Farc a δ₀ Q x β :=\n        integral_mono (integrable_Farc hsum _ _ _) ((integrable_Farc hsum _ _ _).const_mul C)\n          fun β => Farc_le hx0 hQ₀ hQ₀Q hC0 hC (hqL Q₀ hQ₀Q) (hqL Q le_rfl) hsum hcop\n    _ = C * ∑ q ∈ Qset Q, ∑ b ∈ Bset q, ∫ y in arc δ₀ Q x q b, g y := by\n        rw [integral_const_mul, sum_arcs_eq_integral_Farc hsum δ₀ Q x]\n    _ ≤ C * ∫ α in Ioc (0 : ℝ) 1, g α :=\n        mul_le_mul_of_nonneg_left (sum_arcs_le_integral hg hper hg0 hx0 hδ0 hQ0 hδQ2.le hδQ) hC0\n    _ = C * ∑' n, ‖a n‖ ^ 2 := by rw [TernaryGoldbach.setIntegral_norm_sq_expTsum hsum]",
+            "line": 291,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_12_1_2",
+            "lines": [
+              291,
+              372
+            ],
+            "conclusion": "Prop 12.1.2 for δ₀≥2: arc integral ≤ C Σ|aₙ|² given the G_q quotient bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L291-L372"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot6",
+        "lines": [
+          68,
+          98
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_12_2_4"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop 12.2.4] with `c₊ = 2`** (for [H]'s `1.36`). -/\ntheorem prop_12_2_4 {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) (_hqQ : (q : ℝ) ≤ Q₀) {s : ℝ}\n    (hs : 1 ≤ s) (hsQ : s ≤ Q₀ / q) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 2) / (Real.log Q + cE) * Gq q (Q / (s * q)) := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hsq : 0 < s * q := by positivity\n  have hR : 1 ≤ Q₀ / (s * q) := by\n    rw [le_div_iff₀ hsq, one_mul]; rw [le_div_iff₀ hq0] at hsQ; exact hsQ\n  have hLQ : 0 < Real.log Q + cE := by\n    have : 0 < Real.log Q := Real.log_pos (by linarith)\n    unfold cE; linarith\n  have hG' := Gq_nonneg_q q (Q / (s * q))\n  set R := Q₀ / (s * q) with hRdef\n  rcases le_or_gt 22000000000 q with hbig | hsmall\n  · -- large `q`: [H]'s argument, with `1.36`\n    refine weaken_136 hG' hLQ ?_\n    rcases le_or_gt (lamQ q) R with hL | hL\n    · exact regionL hQ hQ₀ hρ hq hs hR hL\n    have hq' : (22000000000 : ℝ) ≤ q := by exact_mod_cast hbig\n    have hlq : 3 ≤ Real.log q := by\n      have := log_Q1_ge.trans (Real.log_le_log (by norm_num) hq'); linarith\n    exact regionS hQ hQ₀ hρ hq hs hR (by norm_num) hlq (hcc_large hbig) (large_q_hS hbig hR hL)\n  · -- `q < 2.2·10¹⁰`: the reduction to `Φ`\n    refine checkC2_suffices hQ hQ₀ hρ hq hs hR ?_\n    set n := ⌊R⌋₊\n    have hn1 : 1 ≤ n := Nat.le_floor (by exact_mod_cast hR)\n    rcases le_or_gt n 3 with hn3 | hn4\n    · exact Phi2_small hq hsmall hn1 hn3\n    · have h := Phi2_reduce hn1 (fun A hA => Phi2_base hA (by omega)) q hq hsmall\n      exact (Phi2_anti q n (le_max_left _ _)).trans h",
+            "line": 68,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+            "lines": [
+              68,
+              98
+            ],
+            "conclusion": "Quotient bound G_q(2Q₀/sq) ≤ C·G_q(2Q/sq) with c₊=2 (Prop 12.2.4)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot6.lean",
+            "fragment": "L68-L98"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          375,
+          396
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.cor_12_2_5"
+          },
+          "snippet": {
+            "text": "/-- **[H, Cor. 12.2.5, (12.42)]** (with `δ₀ ≥ 2`).  Let `Q₀ ≥ 10⁵`, `δ₀ ≥ 2`,\n`(20000 Q₀)² ≤ x/2δ₀`, `Q = √(x/2δ₀)`, `2Q₀ ≤ (2Q)^{0.6}`.  Then\n`∫_{𝔐_{δ₀,Q₀}} |S|² ≤ (log 2Q₀ + 2)/(log 2Q + c_E) Σ|aₙ|²`. -/\ntheorem cor_12_2_5 {x δ₀ Q₀ : ℝ} {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    (hQ₀ : 1e5 ≤ Q₀) (hδ₀ : 2 ≤ δ₀) (hx : (20000 * Q₀) ^ 2 ≤ x / (2 * δ₀))\n    (hρ : 2 * Q₀ ≤ (2 * √(x / (2 * δ₀))) ^ (0.6 : ℝ)) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤\n      (Real.log (2 * Q₀) + 2) / (Real.log (2 * √(x / (2 * δ₀))) + cE) * ∑' n, ‖a n‖ ^ 2 := by\n  set Q := √(x / (2 * δ₀)) with hQdef\n  have hQ0 : 0 ≤ x / (2 * δ₀) := le_trans (by positivity) hx\n  have hQ : 20000 * Q₀ ≤ Q := by\n    rw [hQdef]; exact Real.le_sqrt_of_sq_le hx\n  refine prop_12_1_2 ha hδ₀ (by linarith) ?_ fun q hq _ hq2 s hs hsq => ?_\n  · have h1 : Q₀ ^ 2 ≤ x / (2 * δ₀) := le_trans (by nlinarith) hx\n    have h2 : δ₀ * Q₀ ^ 2 ≤ δ₀ * (x / (2 * δ₀)) := mul_le_mul_of_nonneg_left h1 (by linarith)\n    have h3 : δ₀ * (x / (2 * δ₀)) = x / 2 := by field_simp\n    linarith\n  · have h2Q₀ : (0 : ℝ) < 2 * Q₀ := by linarith\n    have hlog : Real.log (2 * Q₀) ≤ 0.6 * Real.log (2 * Q) := by\n      have := Real.log_le_log h2Q₀ hρ\n      rwa [Real.log_rpow (by nlinarith)] at this\n    exact prop_12_2_4 (by linarith) (by linarith) hlog hq hq2 hs hsq",
+            "line": 375,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+            "lines": [
+              375,
+              396
+            ],
+            "conclusion": "Lean proves the (12.42) half: integral of |S|^2 over majorArcs δ₀ Q₀ x in (0,1] is at most (log 2Q₀+2)/(log 2Q+cE)·Σ|aₙ|², with δ₀≥2 and c₊=2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L375-L396"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          252
+        ],
+        "printed": [
+          242
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

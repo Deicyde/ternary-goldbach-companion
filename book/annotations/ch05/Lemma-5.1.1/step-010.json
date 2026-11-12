@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.1 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The two error contributions are combined termwise inside `cntSq_approx` over `e | 2 r1 r2` rather than added as two separate sums.",
+  "subject": [
+    {
+      "location": {
+        "page": 92,
+        "rect": [
+          0.26253,
+          0.7669,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.1.1 step 10: Text, p. 82",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          371,
+          408
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.cntSq_approx"
+          },
+          "snippet": {
+            "text": "  refine (abs_sum_le_sum_abs _ _).trans (sum_le_sum fun e he => ?_)\n  have he1 : 1 ≤ e := Nat.one_le_iff_ne_zero.2 (Nat.ne_of_gt (Nat.pos_of_mem_divisors he))\n  have he0 : (0 : ℝ) < e := by exact_mod_cast he1\n  rw [← mul_sub, abs_mul]\n  refine (mul_le_of_le_one_left (abs_nonneg _) (abs_moebius_le_one_real e)).trans ?_\n  -- Per-`e` error.\n  have hfin : ∑ m ∈ range (N + 1), w m * C (e * (m * m)) = ∑' m : ℕ, w m * C (e * (m * m)) := by\n    refine (tsum_eq_sum fun m hm => ?_).symm\n    rw [mem_range, not_lt] at hm\n    have hbm : b < ((e * (m * m) : ℕ) : ℝ) := by\n      have h1 : b < (N : ℝ) + 1 := Nat.lt_floor_add_one b\n      have h2 : N + 1 ≤ e * (m * m) := by\n        have hm1 : 1 ≤ m := le_trans (Nat.le_add_left 1 N) hm\n        calc N + 1 ≤ m := hm\n          _ ≤ m * m := Nat.le_mul_of_pos_left m hm1\n          _ ≤ e * (m * m) := Nat.le_mul_of_pos_left _ he1\n      exact lt_of_lt_of_le h1 (by exact_mod_cast h2)\n    simp only [hC]; rw [sum_Ioc_dvd_eq_zero hbm, mul_zero]\n  have hs1 : Summable fun m : ℕ => w m * C (e * (m * m)) :=\n    summable_of_ne_finset_zero (s := range (N + 1)) fun m hm => by\n      rw [mem_range, not_lt] at hm\n      have hbm : b < ((e * (m * m) : ℕ) : ℝ) := by\n        have h1 : b < (N : ℝ) + 1 := Nat.lt_floor_add_one b\n        have h2 : N + 1 ≤ e * (m * m) := by\n          have hm1 : 1 ≤ m := le_trans (Nat.le_add_left 1 N) hm\n          calc N + 1 ≤ m := hm\n            _ ≤ m * m := Nat.le_mul_of_pos_left m hm1\n            _ ≤ e * (m * m) := Nat.le_mul_of_pos_left _ he1\n        exact lt_of_lt_of_le h1 (by exact_mod_cast h2)\n      simp only [hC]; rw [sum_Ioc_dvd_eq_zero hbm, mul_zero]\n  have hs2 : Summable fun m : ℕ => w m * ((b - a) / (e * (m : ℝ) ^ 2)) := by\n    refine (hsumT.mul_left ((b - a) / e)).congr fun m => ?_\n    rcases eq_or_ne (m : ℝ) 0 with h' | h'\n    · simp [h']\n    field_simp\n  rw [hfin, ← hs1.tsum_sub hs2]\n  refine (norm_tsum_le_tsum_norm (hs1.sub hs2).norm).trans ?_\n  refine (hs1.sub hs2).norm.tsum_le_tsum (fun m => ?_) (summable_fsq_term _)",
+            "line": 371,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+            "lines": [
+              278,
+              441
+            ],
+            "conclusion": "Per divisor `e`, the sum of multiple-count error and completion tail is bounded termwise by `fsq(sqrt(b/e))`, summed over `e | P`, giving the statement `|cntSq - main| <= sum_e fsq(sqrt(b/e))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L371-L408"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          92
+        ],
+        "printed": [
+          82
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

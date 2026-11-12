@@ -1,0 +1,156 @@
+{
+  "id": "Theorem 13.2.1 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean builds the lower bound g ≥ h into ĝ by taking max(g_y(n), h(y)), so no Lemma 11.2.5-type comparison g_{y,φ}(r₁) ≥ h(2y/log y) is needed; monotonicity is for ĝ, not the truncated g.",
+  "subject": [
+    {
+      "location": {
+        "page": 260,
+        "rect": [
+          0.26253,
+          0.46624,
+          0.56162,
+          0.04827
+        ]
+      },
+      "title": "Theorem 13.2.1 step 11: Text, p. 250",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY_antitone",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          154,
+          164
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY_antitone"
+          },
+          "snippet": {
+            "text": "theorem ghatY_antitone {y n m : ℝ} (hy : 2.16e20 ≤ y) (hn : 670 ≤ n) (hnm : n ≤ m)\n    (hm : m ≤ y ^ (1 / 3 : ℝ) / 6) : ghatY y m ≤ ghatY y n := by\n  unfold ghatY\n  have h1 := gx_antitoneOn hy ⟨hn, hnm.trans hm⟩ ⟨hn.trans hnm, hm⟩ hnm\n  have hn0 : 0 < n := by linarith\n  have h2 : 17 * (670 / m) ^ 3 / 3 ≤ 17 * (670 / n) ^ 3 / 3 := by\n    have : 670 / m ≤ 670 / n := div_le_div_of_nonneg_left (by norm_num) hn0 hnm\n    have := pow_le_pow_left₀ (div_nonneg (by norm_num) (by linarith)) this 3\n    linarith\n  have h3 : max (gx y m) (hfun y) ≤ max (gx y n) (hfun y) := max_le_max h1 le_rfl\n  linarith",
+            "line": 154,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY_antitone",
+            "lines": [
+              154,
+              164
+            ],
+            "conclusion": "ĝ(y,·) is non-increasing on [670, y^{1/3}/6] for y ≥ 2.16·10²⁰."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L154-L164"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          350,
+          351
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY"
+          },
+          "snippet": {
+            "text": "/-- `ĝ(y, n) = 1.398 max(g_y(n), h(y)) + 17 (670/n)³/3`. -/\nnoncomputable def ghatY (y n : ℝ) : ℝ := 1.398 * max (gx y n) (hfun y) + 17 * (670 / n) ^ 3 / 3",
+            "line": 350,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+            "lines": [
+              350,
+              351
+            ],
+            "conclusion": "Defines ĝ(y,n) = 1.398·max(g_y(n), h(y)) + 17(670/n)³/3, the majorant used for the ℓ∞ bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L350-L351"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          388,
+          394
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hgmono : ∀ n, 150000 ≤ n → n < r₂ → g (n + 1) ≤ g n := by\n    intro n hn hn2\n    have hn' : (150000 : ℝ) ≤ n := by exact_mod_cast hn\n    have hn2' : ((n + 1 : ℕ) : ℝ) ≤ r₂ := by exact_mod_cast hn2\n    simp only [hg_def]\n    refine mul_le_mul_of_nonneg_left (ghatY_antitone hy' (by linarith) (by push_cast; linarith)\n      (hn2'.trans hr2y)) hy0.le",
+            "line": 388,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "g(n+1) ≤ g(n) for 150000 ≤ n < r₂, from `ghatY_antitone`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L388-L394"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          260
+        ],
+        "printed": [
+          250
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

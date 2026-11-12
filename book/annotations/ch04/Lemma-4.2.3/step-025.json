@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.3 step 25",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part: the practical integral bound `∫_a^b log(x/t)dt/t ≤ log(x/a)log(b/a)` (as hF3'). The concluding bound for `∑_{Q/2<m≤D}|T_m|` with ε is not formalized (see step 26).",
+  "subject": [
+    {
+      "location": {
+        "page": 79,
+        "rect": [
+          0.17462,
+          0.15388,
+          0.56162,
+          0.03705
+        ]
+      },
+      "title": "Lemma 4.2.3 step 25: Text, p. 69",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          779,
+          781
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3L"
+          },
+          "snippet": {
+            "text": "  have hF3' : -(lx - Real.log yK) ^ 2 / 2 - -(lx - Real.log R) ^ 2 / 2 ≤\n      (Real.log D - Real.log R) * (lx - Real.log R) := by\n    nlinarith",
+            "line": 779,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+            "lines": [
+              650,
+              904
+            ],
+            "conclusion": "`F₃(y_K) - F₃(R) ≤ (log D - log R)(lx - log R)`, i.e. `∫_R^{D} log(x/t) dt/t ≤ log(x/R) log(D/R)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L779-L781"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          79
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

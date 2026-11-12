@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.2 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same Landau/Borel-Caratheodory lemma, but [L] subtracts the zero sum on a disc of radius R/2 and has constant 48/R, not the zero-free form 2R log(M/|f(s0)|)/(R-r)^2.",
+  "subject": [
+    {
+      "location": {
+        "page": 179,
+        "rect": [
+          0.17462,
+          0.55854,
+          0.56162,
+          0.06246
+        ]
+      },
+      "title": "Lemma 9.1.2 step 1: Text, p. 169",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.2 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.landau",
+        "module": "TernaryGoldbach.Explicit.Landau",
+        "lines": [
+          136,
+          143
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.landau"
+          },
+          "snippet": {
+            "text": "/-- **Landau's lemma.** `f` entire, `f(c) ≠ 0`, `|f| ≤ B` on `|z − c| ≤ R`, `|f(c)| < B`. For\n`|z − c| ≤ R/4` with `f(z) ≠ 0`:\n`|f'(z)/f(z) − Σ_{|ρ−c|<R/2} m_ρ/(z − ρ)| ≤ 48 log(B/|f(c)|)/R`. -/\ntheorem landau (hf : Differentiable ℂ f) (hfc : f c ≠ 0) (hR : 0 < R) {B : ℝ}\n    (hB : ∀ z ∈ closedBall c R, ‖f z‖ ≤ B) (hBc : ‖f c‖ < B) {z : ℂ} (hz : z ∈ closedBall c (R / 4))\n    (hfz : f z ≠ 0) :\n    ‖logDeriv f z - ∑ u ∈ zerosIn f c R (R / 2), ((divB f c R u).toNat : ℂ) / (z - u)‖ ≤\n      48 * Real.log (B / ‖f c‖) / R := by",
+            "line": 136,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.landau",
+            "lines": [
+              136,
+              301
+            ],
+            "conclusion": "Landau's lemma via Borel-Caratheodory: for entire f with |f|<=B on the disc, |f'/f(z) minus the zero sum over |rho-c|<R/2| <= 48 log(B/|f(c)|)/R for |z-c|<=R/4."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/Landau.lean",
+            "fragment": "L136-L143"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          179
+        ],
+        "printed": [
+          169
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

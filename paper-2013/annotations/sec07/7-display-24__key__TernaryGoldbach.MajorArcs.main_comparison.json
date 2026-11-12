@@ -1,0 +1,81 @@
+{
+  "id": "7 display 24",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same role (η₊→η∘ replacement and cutoff-tail cost), but Lean bounds it by a single constant 2.03e-5 x² per modulus (times mPhi2) via Fourier-side tail estimates, not the expression with 2.82643, 4.3101 and |η∘'''|₁ = 32.503.",
+  "subject": [
+    {
+      "location": {
+        "page": 61,
+        "rect": [
+          0.20371,
+          0.35162,
+          0.63183,
+          0.06561
+        ]
+      },
+      "title": "Display, p. 61",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.main_comparison",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          561,
+          563
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.main_comparison"
+          },
+          "snippet": {
+            "text": "theorem main_comparison {x : ℝ} (hx : 0 < x) {w : ℝ} (hw : 0 ≤ w) (hwx : 4 ≤ w * x) (N : ℝ) :\n    ‖(∫ β in -w..w, (𝓕 etaPC (-(β * x)) * x) ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β))) -\n        (x : ℂ) ^ 2 * (Cmain (N / x) : ℂ)‖ ≤ 2.03e-5 * x ^ 2 := by",
+            "line": 561,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.main_comparison",
+            "lines": [
+              559,
+              712
+            ],
+            "conclusion": "For wx ≥ 4: `‖∫_{−w}^{w}(η̂₊x)²(η̂_*x)e(−Nβ)dβ − x²C(N/x)‖ ≤ 2.03·10^{-5} x²`, the cost of replacing η₊ by η∘ and truncating the β-integral."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L561-L563"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          61
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

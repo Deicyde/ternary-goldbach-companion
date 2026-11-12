@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 19",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean keeps `κ₁ = 2/π² + 1.27ζ(3/2)³√(x/V)/U` as an expression and bounds it by `0.23209` at its first choice of parameters; the condition `U²V ≥ 5·10⁵x` and the value `0.2347` do not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 118,
+        "rect": [
+          0.25926,
+          0.65675,
+          0.56816,
+          0.03448
+        ]
+      },
+      "title": "Display, p. 108",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.kap1",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal",
+        "lines": [
+          49,
+          50
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.kap1"
+          },
+          "snippet": {
+            "text": "/-- `κ₁ = 2/π² + κ₀ζ(3/2)³ √(x/V)/U` [H, (6.18)] (we keep it as an expression). -/\nnoncomputable def kap1 (x U V : ℝ) : ℝ := 2 / π ^ 2 + zeta3 * √(x / V) / U",
+            "line": 49,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.kap1",
+            "lines": [
+              49,
+              50
+            ],
+            "conclusion": "`kap1 x U V = 2/π² + zeta3 √(x/V)/U` (κ₁ kept as an expression)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L49-L50"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          118
+        ],
+        "printed": [
+          108
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

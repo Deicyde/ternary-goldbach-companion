@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.2.2 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Weights use W-W'+1 (large sieve length N) instead of W/2; Lean cites the optimal weighted large sieve of Montgomery-Vaughan (Prelim.large_sieve_weighted) instead of [MV73 (1.6)]; the Brun-Titchmarsh remark is not recorded.",
+  "subject": [
+    {
+      "location": {
+        "page": 106,
+        "rect": [
+          0.26253,
+          0.54329,
+          0.56162,
+          0.07556
+        ]
+      },
+      "title": "Lemma 5.2.2 step 12: Text, p. 96",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.large_sieve_primes_weighted",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          821,
+          825
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.large_sieve_primes_weighted"
+          },
+          "snippet": {
+            "text": "theorem large_sieve_primes_weighted {ι : Type*} (s : Finset ι) (β δ : ι → ℝ)\n    (hδ : ∀ r ∈ s, 0 < δ r)\n    (hsep : ∀ r ∈ s, ∀ r' ∈ s, r ≠ r' → δ r ≤ |(β r - β r') - round (β r - β r')|)\n    {W' W : ℝ} (hW' : 0 ≤ W') :\n    ∑ r ∈ s, (W - W' + 1 + 3 / 2 * (δ r)⁻¹)⁻¹ * ‖primeExpSum W' W (β r)‖ ^ 2 ≤ logSqSum W' W := by",
+            "line": 821,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.large_sieve_primes_weighted",
+            "lines": [
+              820,
+              860
+            ],
+            "conclusion": "Weighted large sieve for prime sums: sum_r (W-W'+1+(3/2)delta_r^-1)^-1 |S(beta_r)|^2 <= sum (log p)^2 for delta_r-separated points."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L821-L825"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.odd_block_weighted",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          991,
+          1039
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.odd_block_weighted"
+          },
+          "snippet": {
+            "text": "  have hLS := large_sieve_primes_weighted T β δ (W' := W') (W := W) (by\n      intro t ht\n      rw [mem_filter, mem_product, mem_product] at ht\n      obtain ⟨hr1, hrR, _, _⟩ := hCmem _ ht.1.2.1\n      exact hδpos _ hr1 hrR) (by\n      intro t ht t' ht' hne\n      rw [mem_filter, mem_product, mem_product] at ht ht'\n      obtain ⟨⟨hm, hr, _⟩, hb, hbr⟩ := ht\n      obtain ⟨⟨hm', hr', _⟩, hb', hb'r⟩ := ht'\n      obtain ⟨hr1, hrR, _, hrq⟩ := hCmem _ hr\n      obtain ⟨hr1', hrR', _, hr'q⟩ := hCmem _ hr'\n      obtain ⟨j, hj⟩ : ∃ j : ℤ, t.1 - t'.1 = 2 * j := by\n        obtain ⟨u, hu⟩ := hodd _ hm; obtain ⟨u', hu'⟩ := hodd _ hm'; exact ⟨u - u', by omega⟩\n      have hjq : |j| < q := by\n        have := hwidth _ hm _ hm'; rw [hj, abs_mul] at this; norm_num at this; omega\n      set ε := 2 * α - a / q - k\n      have e : β t - β t' = ((j * a : ℤ) / q + t.2.2 / t.2.1 - t'.2.2 / t'.2.1 + j * ε : ℝ) +\n          ((j * k : ℤ) : ℝ) := by\n        simp only [β, ε]\n        have : (t.1 : ℝ) - t'.1 = 2 * j := by exact_mod_cast hj\n        push_cast\n        linear_combination α * this\n      rw [e, dist_round_add_int]\n      have hfs := frac_sep hq hr1 hr1' hrq hr'q hb hb' hbr hb'r (A := j * a) (by\n        rintro ⟨hA, hrr, hbb⟩\n        have hqj : (q : ℤ) ∣ j := hcop.symm.dvd_of_dvd_mul_right hA\n        have hj0 : j = 0 := by\n          by_contra h0\n          have := Int.le_of_dvd (abs_pos.2 h0) ((dvd_abs _ _).2 hqj); omega\n        apply hne\n        have : t.1 = t'.1 := by omega\n        exact Prod.ext this (Prod.ext hrr hbb)) (j * ε)\n      refine le_trans ?_ hfs\n      simp only [δ]\n      have h1 : 1 / ((q : ℝ) * t.2.1 * R) ≤ 1 / (q * t.2.1 * t'.2.1) := by\n        have hr0 : (0 : ℝ) < t'.2.1 := by exact_mod_cast hr1'\n        apply one_div_le_one_div_of_le (by positivity)\n        exact mul_le_mul_of_nonneg_left hrR' (by positivity)\n      have h2 : |(j : ℝ) * ε| ≤ 1 / Q := by\n        rw [abs_mul]\n        have hjq' : |(j : ℝ)| ≤ q - 1 := by\n          have : |j| ≤ q - 1 := by omega\n          rw [← Int.cast_abs]; exact_mod_cast this\n        calc |(j : ℝ)| * |ε| ≤ (q - 1) * (1 / (q * Q)) :=\n              mul_le_mul hjq' hα (abs_nonneg _) (by linarith)\n          _ ≤ 1 / Q := by\n              rw [div_eq_mul_one_div 1 Q, mul_one_div, mul_one_div, div_le_div_iff₀ (by positivity) hQ]\n              nlinarith\n      linarith) hW'",
+            "line": 991,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.odd_block_weighted",
+            "lines": [
+              951,
+              1083
+            ],
+            "conclusion": "Applies it to the triples (m,r,b) with delta=1/(qrR)-1/Q, verifying the separation; hLS gives the bound sum (log p)^2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L991-L1039"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          106
+        ],
+        "printed": [
+          96
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "1.2 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Text calls it a simplification: [L] splits odd `q ≤ r` (radius `δ₀r/(2qx)`) from even `q ≤ 2r` (radius `δ₀r/(qx)`) and the arcs are over ℝ, not ℝ/ℤ; text's `1/(qQ)` with `Q ~ x/r` corresponds to `δ₀r/(2qx)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 17,
+        "rect": [
+          0.17135,
+          0.75884,
+          0.56816,
+          0.0518
+        ]
+      },
+      "title": "Display, p. 7",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.2 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.majorArcs",
+        "module": "TernaryGoldbach.Helfgott.Defs",
+        "lines": [
+          61,
+          68
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.majorArcs"
+          },
+          "snippet": {
+            "text": "/-- The major arcs `𝔐_{δ₀,r}` [H, (10.5)], lifted from `ℝ/ℤ` to `ℝ`: intervals of radius\n`δ₀r/(2qx)` around `a/q` for odd `q ≤ r`, and of radius `δ₀r/(qx)` for even `q ≤ 2r`,\nwhere `gcd(a, q) = 1`. -/\ndef majorArcs (δ₀ r x : ℝ) : Set ℝ :=\n  (⋃ (q : ℕ) (_ : 1 ≤ q ∧ (q : ℝ) ≤ r ∧ Odd q) (a : ℤ) (_ : IsCoprime a (q : ℤ)),\n      Set.Ioo (a / q - δ₀ * r / (2 * q * x)) (a / q + δ₀ * r / (2 * q * x))) ∪\n  (⋃ (q : ℕ) (_ : 1 ≤ q ∧ (q : ℝ) ≤ 2 * r ∧ Even q) (a : ℤ) (_ : IsCoprime a (q : ℤ)),\n      Set.Ioo (a / q - δ₀ * r / (q * x)) (a / q + δ₀ * r / (q * x)))",
+            "line": 61,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.majorArcs",
+            "lines": [
+              61,
+              68
+            ],
+            "conclusion": "`majorArcs δ₀ r x` is the union of open intervals around `a/q`, `(a,q)=1`, lifted to ℝ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L61-L68"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          17
+        ],
+        "printed": [
+          7
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

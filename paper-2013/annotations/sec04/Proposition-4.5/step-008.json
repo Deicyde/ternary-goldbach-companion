@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 4.5 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the 3.8 x^{-1/6} term pointwise per scale (factor 1/w for w<1, 1 for w>=1; constant 3.8) and integrates a majorant G, not the coarse K^{1/6} bound with constant 3.2.",
+  "subject": [
+    {
+      "location": {
+        "page": 29,
+        "rect": [
+          0.20698,
+          0.09559,
+          0.62529,
+          0.04181
+        ]
+      },
+      "title": "Proposition 4.5 step 8: Display, p. 29",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 4.5 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          154,
+          163
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one"
+          },
+          "snippet": {
+            "text": "  have hC : 3.8 * (w * y) ^ (-1 / 6 : ℝ) ≤ 3.8 * y ^ (-1 / 6 : ℝ) / w := by\n    have h1 : w ^ (-1 / 6 : ℝ) ≤ w⁻¹ := by\n      rw [← Real.rpow_neg_one]\n      exact Real.rpow_le_rpow_of_exponent_ge hw hw1 (by norm_num)\n    have := mul_le_mul_of_nonneg_left h1 (by positivity : (0:ℝ) ≤ 3.8 * y ^ (-1 / 6 : ℝ))\n    calc 3.8 * (w * y) ^ (-1 / 6 : ℝ) = 3.8 * y ^ (-1 / 6 : ℝ) * w ^ (-1 / 6 : ℝ) := by\n          rw [Real.mul_rpow hw.le hy.le]; ring\n      _ ≤ 3.8 * y ^ (-1 / 6 : ℝ) * w⁻¹ := this\n      _ = 3.8 * y ^ (-1 / 6 : ℝ) / w := by ring\n  have e : gx y n / w = ((R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526) / √(2 * n) / w +",
+            "line": 154,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+            "lines": [
+              97,
+              167
+            ],
+            "conclusion": "For w <= 1, 3.8 (wy)^{-1/6} <= 3.8 y^{-1/6}/w, bounding the x^{-1/6} term of g at scale wy."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L154-L163"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          187,
+          188
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+          },
+          "snippet": {
+            "text": "  have hC : (w * y) ^ (-1 / 6 : ℝ) ≤ y ^ (-1 / 6 : ℝ) :=\n    Real.rpow_le_rpow_of_nonpos hy (by nlinarith) (by norm_num)",
+            "line": 187,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+            "lines": [
+              169,
+              193
+            ],
+            "conclusion": "For w >= 1, (wy)^{-1/6} <= y^{-1/6}."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L187-L188"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          29
+        ],
+        "printed": [
+          29
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

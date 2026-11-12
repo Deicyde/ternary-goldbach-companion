@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 19",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The $Z$ and $LS$ terms handle the non-coprime $n$; [L] handles them instead by a uniform bound on the non-coprime part (via `sum_noncoprime_*_le`), $10^{-15}x$ and $10^{-12}x/\\kappa$, so no $43(\\log x)^2x$ term occurs; $Z_{\\eta_+^2,2}\\le0.640209\\log x$ is not used.",
+  "subject": [
+    {
+      "location": {
+        "page": 276,
+        "rect": [
+          0.25926,
+          0.68448,
+          0.56816,
+          0.03886
+        ]
+      },
+      "title": "Display, p. 266",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          314,
+          315
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le"
+          },
+          "snippet": {
+            "text": "theorem norm_S_sub_coprime_le {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000)\n    (α : ℝ) : ‖S etaPlus x α - expTsum (coprimePart q (cP x)) α‖ ≤ 1e-15 * x := by",
+            "line": 314,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+            "lines": [
+              313,
+              321
+            ],
+            "conclusion": "$|S_{\\eta_+}(\\alpha)-S'_q(\\alpha)|\\le10^{-15}x$ (non-coprime part, from `coprime_split`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L314-L315"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          276
+        ],
+        "printed": [
+          266
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

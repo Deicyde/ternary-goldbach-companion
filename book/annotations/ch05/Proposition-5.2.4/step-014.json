@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 5.2.4 step 14",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean states the quantity as x/(|δ|q)/(q+x/(4W)) in the hypothesis on R (line 593); the identity is not written as a separate equation.",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.54907,
+          0.56162,
+          0.03785
+        ]
+      },
+      "title": "Proposition 5.2.4 step 14: Display, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          615,
+          621
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_c"
+          },
+          "snippet": {
+            "text": "  refine ⟨hres.1, fun R hR hRW hR2 => hres.2 R hR hRW ?_⟩\n  have hpos : 0 < (q : ℝ) + x / (4 * W) := by positivity\n  rw [le_div_iff₀ hpos] at hR2\n  have : R ^ 2 * (q + x / (4 * W)) * (|δ| * q) ≤ x := by\n    rwa [le_div_iff₀ (by positivity)] at hR2\n  rw [mul_div_assoc', div_le_one hx]\n  nlinarith",
+            "line": 615,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+            "lines": [
+              584,
+              621
+            ],
+            "conclusion": "R² <= (x/|δq|)/(q+x/4W) is converted to q R²((q+Δ)|δ|/x) <= 1, i.e. R² <= (q(ν+υ))^-1 with ν+υ=(|δ|/x)(q+x/4W)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L615-L621"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

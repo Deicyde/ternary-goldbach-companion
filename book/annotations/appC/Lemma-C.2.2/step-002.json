@@ -1,0 +1,120 @@
+{
+  "id": "Lemma C.2.2 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same chain q/phi(q) < F(.) <= F(r), but the intermediate argument is theta(x) (primorial) in place of q, with F evaluated at e^theta(x) rather than q.",
+  "subject": [
+    {
+      "location": {
+        "page": 313,
+        "rect": [
+          0.17462,
+          0.24473,
+          0.56162,
+          0.03336
+        ]
+      },
+      "title": "Lemma C.2.2 step 2: Display, p. 303",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma C.2.2 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct",
+        "lines": [
+          2290,
+          2301
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.div_totient_lt"
+          },
+          "snippet": {
+            "text": "  have hprodF : ∏ i ∈ range k, ((Nat.nth Nat.Prime i : ℝ) / (Nat.nth Nat.Prime i - 1)) =\n      ∏ p ∈ (Icc 1 x).filter Nat.Prime, ((p : ℝ) / (p - 1)) := by\n    rw [← himg, prod_image (fun a ha b hb h => hinj ha hb h)]\n  have hθ : thetaN x = Real.log (∏ i ∈ range k, (Nat.nth Nat.Prime i : ℝ)) := by\n    rw [thetaN, ← himg, sum_image (fun a ha b hb h => hinj ha hb h), Real.log_prod]\n    intro i _\n    exact_mod_cast (Nat.prime_nth_prime i).pos.ne'\n  have hx7 : 7 ≤ x := by\n    rw [hx, ← Nat.nth_prime_three_eq_seven]\n    exact Nat.nth_monotone Nat.infinite_setOfPred_prime (by omega)\n  have hF := F_all (Nat.prime_nth_prime (k - 1)) (le_trans (by norm_num : 5 ≤ 7) hx7)\n  rw [← hx] at hF",
+            "line": 2290,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+            "lines": [
+              2256,
+              2352
+            ],
+            "conclusion": "q/phi(q) equals prod over prime factors, bounded by the product over the first k primes, which is < G log theta(x)+c/log theta(x) by F_all."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L2290-L2301"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct",
+        "lines": [
+          2340,
+          2352
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.div_totient_lt"
+          },
+          "snippet": {
+            "text": "  have ht₁₂ : t₁ ≤ t₂ := Real.log_le_log (by linarith) hθr\n  have hG := exp_gamma_ge\n  have hmono : G * t₁ + 2.50637 / t₁ ≤ G * t₂ + 2.50637 / t₂ := by\n    have ht0 : 0 < t₁ := by linarith\n    have ht0' : 0 < t₂ := by linarith\n    have e : G * t₂ + 2.50637 / t₂ - (G * t₁ + 2.50637 / t₁) =\n        (t₂ - t₁) * (G - 2.50637 / (t₁ * t₂)) := by field_simp; ring\n    have h1 : 2.50637 / (t₁ * t₂) ≤ 1.625 := by\n      rw [div_le_iff₀ (by positivity)]; nlinarith\n    have : 0 ≤ (t₂ - t₁) * (G - 2.50637 / (t₁ * t₂)) :=\n      mul_nonneg (by linarith) (by linarith)\n    linarith\n  linarith [hex.1]",
+            "line": 2340,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+            "lines": [
+              2256,
+              2352
+            ],
+            "conclusion": "theta(x)<=log r gives t1<=t2 and monotonicity gives F(theta(x)) <= F(r), concluding strict bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L2340-L2352"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          313
+        ],
+        "printed": [
+          303
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 46",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "Lean keeps sqrt(M) = x sqrt(1/(2|delta|q) + 1/(16(1-rho)Q)), which is at most the display's x(1/sqrt(2|delta|q) + 1/(4 sqrt((1-rho)Q))); so Lean's term is stronger than the displayed final line.",
+  "subject": [
+    {
+      "location": {
+        "page": 125,
+        "rect": [
+          0.17135,
+          0.2261,
+          0.56816,
+          0.12542
+        ]
+      },
+      "title": "Display, p. 115",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 46"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_G53_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          292,
+          301
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_G53_le"
+          },
+          "snippet": {
+            "text": "/-- Integrating `G53` over `[V, A]`: with `κ = κ₁`, `M = r x²/16q + qx`, `L_A = log A`,\n`∫ ≤ √κ (√M (2/3)(L_A^{3/2} - L_V^{3/2}) + √r x (√L_V + 1/√L_V)/√V + √(xA) √L_A) + c₄(2/√V - 2/√A)`. -/\ntheorem integral_G53_le {x : ℝ} (hx : 0 < x) (U V : ℝ) (M : ℝ) {r : ℝ} (hr : 0 ≤ r) {A : ℝ}\n    (hV : 1 < V) (hVA : V ≤ A) :\n    IntervalIntegrable (G53 x U V M r) volume V A ∧\n    ∫ W in V..A, G53 x U V M r W ≤\n      √(kap1 x U V) * (√M * (2 / 3 *\n        (Real.log A * √(Real.log A) - Real.log V * √(Real.log V))) +\n        √r * x * (√(Real.log V) + 1 / √(Real.log V)) / √V + √x * √(Real.log A) * √A) +\n      1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) * (2 / √V - 2 / √A) := by",
+            "line": 292,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_G53_le",
+            "lines": [
+              292,
+              375
+            ],
+            "conclusion": "The first term of the bound is sqrt(kappa) sqrt(M) (2/3)(log A^{3/2} - log V^{3/2}) with M the full coefficient of S2 (here M = x^2/2|delta|q + x^2/16(1-rho)Q from S2_le_57)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L292-L301"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          125
+        ],
+        "printed": [
+          115
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

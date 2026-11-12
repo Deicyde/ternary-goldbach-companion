@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.4 step 20",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Identification of the inner sum with `T_{m,∘}` (`Todd`) and dropping the oddness of `m` are done; the use of the bound (trompais) is in the range lemmas `sum_A1`, `sum_R*W`.",
+  "subject": [
+    {
+      "location": {
+        "page": 83,
+        "rect": [
+          0.17462,
+          0.71239,
+          0.56162,
+          0.0314
+        ]
+      },
+      "title": "Lemma 4.2.4 step 20: Text, p. 73",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_sum",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          864,
+          877
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_sum"
+          },
+          "snippet": {
+            "text": "  refine sum_le_sum fun m _ => ?_\n  by_cases h : Odd m ∧ ¬ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M)\n  · rw [if_pos h, norm_mul]\n    have hg : g (m : ℤ) = ‖Todd α x m‖ := by\n      simp only [g]\n      rw [if_pos (by\n        intro ⟨hd, hle⟩; exact h.2 ⟨by exact_mod_cast hd, by exact_mod_cast hle⟩)]\n      simp [Tn]\n    change _ ≤ Real.log ((m : ℤ) : ℝ) * g (m : ℤ)\n    rw [hg]\n    have hc : ‖(coefI2 U V m : ℂ)‖ ≤ Real.log ((m : ℤ) : ℝ) := by\n      rw [Complex.norm_real, Real.norm_eq_abs, Int.cast_natCast]; exact abs_coefI2_le U V m\n    exact mul_le_mul_of_nonneg_right hc (norm_nonneg _)\n  · rw [if_neg h, norm_zero]; exact mul_nonneg (hlog _) (hg0 _)",
+            "line": 864,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_sum",
+            "lines": [
+              845,
+              877
+            ],
+            "conclusion": "Each term `coefI2 * Todd` is bounded by `log n * Tn α x n` (`Tn = ‖Todd‖`), the oddness condition being dropped by enlarging the sum."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L864-L877"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          83
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

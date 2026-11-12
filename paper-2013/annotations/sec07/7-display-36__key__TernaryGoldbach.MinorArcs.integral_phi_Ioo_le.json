@@ -1,0 +1,81 @@
+{
+  "id": "7 display 36",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part: the integral step $\\int_0^u\\varphi\\le u^3/3$ (here $u=2/\\log(x/\\varkappa)$). Lean has no $C_{\\varphi,3}$ with the factor $1.04488/|\\varphi|_1$ and no numeric $0.2779$; the small-$w$ part of $\\varphi$ enters $\\hat g$ as $17(670/n)^3/3$ instead.",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.20371,
+          0.42681,
+          0.63183,
+          0.04361
+        ]
+      },
+      "title": "Display, p. 63",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 36"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_phi_Ioo_le",
+        "module": "TernaryGoldbach.MinorArcs.PhiIntegrals",
+        "lines": [
+          162,
+          171
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_phi_Ioo_le"
+          },
+          "snippet": {
+            "text": "theorem integral_phi_Ioo_le {w₀ : ℝ} (hw₀ : 0 ≤ w₀) : ∫ w in Ioo 0 w₀, phi w ≤ w₀ ^ 3 / 3 := by\n  rw [← integral_Ioc_eq_integral_Ioo, ← intervalIntegral.integral_of_le hw₀]\n  have h : ∫ w in (0:ℝ)..w₀, phi w ≤ ∫ w in (0:ℝ)..w₀, w ^ 2 := by\n    refine intervalIntegral.integral_mono_on hw₀ (integrable_phi.intervalIntegrable)\n      ((continuous_pow 2).intervalIntegrable _ _) fun w _ => ?_\n    unfold phi\n    have : rexp (-w ^ 2 / 2) ≤ 1 := Real.exp_le_one_iff.2 (by nlinarith)\n    nlinarith [sq_nonneg w]\n  rw [integral_pow] at h\n  linarith [show (w₀ ^ (2 + 1) - 0 ^ (2 + 1)) / (2 + 1 : ℝ) = w₀ ^ 3 / 3 by norm_num]",
+            "line": 162,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_phi_Ioo_le",
+            "lines": [
+              162,
+              171
+            ],
+            "conclusion": "For $w_0\\ge 0$, $\\int_{(0,w_0)}\\varphi \\le w_0^3/3$ with $\\varphi(w)=w^2e^{-w^2/2}$ (`phi`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/PhiIntegrals.lean",
+            "fragment": "L162-L171"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

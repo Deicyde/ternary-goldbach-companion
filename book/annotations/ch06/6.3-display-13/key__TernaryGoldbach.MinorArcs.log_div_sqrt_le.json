@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 13",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has analogues of the √(qδ₀)-ratio and 1/|δ| ≤ 4c₂/δ₀ inequalities, with different constants (log t/√t ≤ 0.7358 rather than log(4qδ₀)/√(qδ₀) ≤ log 8/√2); the inequalities log q/√(qδ₀) ≤ √2/e and (log|δ|)/|δ| ≤ (2/(e log 2))(log δ₀)/δ₀ are not stated.",
+  "subject": [
+    {
+      "location": {
+        "page": 132,
+        "rect": [
+          0.25926,
+          0.71385,
+          0.56816,
+          0.08147
+        ]
+      },
+      "title": "Display, p. 122",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.log_div_sqrt_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2",
+        "lines": [
+          68,
+          84
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.log_div_sqrt_le"
+          },
+          "snippet": {
+            "text": "theorem log_div_sqrt_le {t : ℝ} (ht : 2 ≤ t) :\n    Real.log t / √t ≤ 0.7358 ∧ 1 / √t ≤ 0.7072 := by\n  have ht0 : 0 < t := by linarith\n  have hst : 0 < √t := Real.sqrt_pos.2 ht0\n  have h2 : 1.4142 ≤ √t := by\n    rw [Real.le_sqrt (by norm_num) ht0.le]; nlinarith\n  constructor\n  · have h1 : Real.log t = 2 * Real.log √t := by\n      rw [← Real.log_rpow hst, show (2 : ℝ) = (2 : ℕ) by norm_num, Real.rpow_natCast,\n        Real.sq_sqrt ht0.le]\n    have h3 := log_le_div_exp hst\n    have h4 : (2.71828 : ℝ) ≤ rexp 1 := by have := Real.exp_one_gt_d9; linarith\n    have h5 : √t / rexp 1 ≤ √t / 2.71828 := div_le_div_of_nonneg_left hst.le (by norm_num) h4\n    rw [h1, div_le_iff₀ hst]\n    have : √t / 2.71828 ≤ 0.36788 * √t := by rw [div_le_iff₀ (by norm_num)]; nlinarith\n    nlinarith\n  · rw [div_le_iff₀ hst]; nlinarith",
+            "line": 68,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.log_div_sqrt_le",
+            "lines": [
+              68,
+              84
+            ],
+            "conclusion": "`log t/√t ≤ 0.7358` and `1/√t ≤ 0.7072` for `t ≥ 2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2.lean",
+            "fragment": "L68-L84"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          132
+        ],
+        "printed": [
+          122
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

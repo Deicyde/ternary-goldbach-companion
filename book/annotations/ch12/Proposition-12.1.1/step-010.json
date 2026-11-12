@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 12.1.1 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not form the sum `Σ_{b mod qr}`: it has `Σ_b ψ(b) S(b/q+β) = τ(ψ) S_{ψ⁻¹}(β)` for ψ mod `q` (possibly imprimitive) and `τ(ψ) = μ(r)χ(r)τ(χ)` (`gauss_induced`, the `n=1` form); `c_r(n)=μ(r)` for coprime `n` is built into this.",
+  "subject": [
+    {
+      "location": {
+        "page": 239,
+        "rect": [
+          0.17462,
+          0.39089,
+          0.56162,
+          0.05428
+        ]
+      },
+      "title": "Proposition 12.1.1 step 10: Display, p. 229",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.gauss_induced",
+        "module": "TernaryGoldbach.Prelim.GaussInduced",
+        "lines": [
+          66,
+          73
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.gauss_induced"
+          },
+          "snippet": {
+            "text": "/-- **Gauss sum of an induced character**: for `f` periodic mod `N`, completely multiplicative,\nand zero off the residues coprime to `N`,\n`Σ_{b < Nr, (b, Nr) = 1} f(b) e(b/Nr) = μ(r) f(r) Σ_{c < N} f(c) e(c/N)`. -/\ntheorem gauss_induced {N r : ℕ} (hN : 1 ≤ N) (hr : 1 ≤ r) (f : ℕ → ℂ)\n    (hper : ∀ b, f (b + N) = f b) (hmul : ∀ a b, f (a * b) = f a * f b)\n    (hzero : ∀ b, ¬ Nat.Coprime b N → f b = 0) :\n    ∑ b ∈ (range (N * r)).filter (fun b => Nat.Coprime b (N * r)), f b * e (b / (N * r)) =\n      μ r * f r * ∑ c ∈ range N, f c * e (c / N) := by",
+            "line": 66,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.gauss_induced",
+            "lines": [
+              66,
+              143
+            ],
+            "conclusion": "`Σ_{b<Nr,(b,Nr)=1} f(b) e(b/Nr) = μ(r) f(r) Σ_{c<N} f(c) e(c/N)` for multiplicative `f` mod `N`, i.e. the Gauss sum of a character induced from modulus `N` to `Nr` is `μ(r) f(r) τ`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/GaussInduced.lean",
+            "fragment": "L66-L73"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.sum_char_mul_S",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri",
+        "lines": [
+          78,
+          81
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.sum_char_mul_S"
+          },
+          "snippet": {
+            "text": "theorem sum_char_mul_S {q : ℕ} [NeZero q] (ψ : DirichletCharacter ℂ q) {a : ℕ → ℂ}\n    (ha : Summable fun n => ‖a n‖) (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q) (β : ℝ) :\n    ∑ b : ZMod q, ψ b * expTsum a (b.val / q + β) =\n      gaussSum ψ ZMod.stdAddChar * Schar ψ⁻¹ a β := by",
+            "line": 78,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.sum_char_mul_S",
+            "lines": [
+              76,
+              111
+            ],
+            "conclusion": "For `aₙ` supported coprime to `q`, `Σ_{b mod q} ψ(b) S(b/q+β) = τ(ψ) S_{ψ⁻¹}(β)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L78-L81"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          239
+        ],
+        "printed": [
+          229
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

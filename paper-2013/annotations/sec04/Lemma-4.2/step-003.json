@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean splits on omega(q)<=3 (bound 3.75 < Ϝ(r) for all r>=3) rather than on r<27 with q/phi(q)<=3 and Ϝ(r)>3; the digamma comparison is a different argument (quadratic in loglog r, not e^gamma*2.50637). Text error, confirmed by two skeptics and `scripts/checks/steps/lemma_4_2_step_3.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 25,
+        "rect": [
+          0.20698,
+          0.8621,
+          0.62529,
+          0.03656
+        ]
+      },
+      "title": "Lemma 4.2 step 3: Text, p. 25",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct",
+        "lines": [
+          2275,
+          2284
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.div_totient_lt"
+          },
+          "snippet": {
+            "text": "  rcases le_or_gt k 3 with hk3 | hk3\n  · have h1 : ∏ i ∈ range k, ((Nat.nth Nat.Prime i : ℝ) / (Nat.nth Nat.Prime i - 1)) ≤\n        ∏ i ∈ range 3, ((Nat.nth Nat.Prime i : ℝ) / (Nat.nth Nat.Prime i - 1)) :=\n      prod_le_prod_of_subset_of_one_le₀ (range_subset_range.2 hk3) (fun i _ => hgpos i)\n        (fun i _ _ => hg1 i)\n    have h2 : ∏ i ∈ range 3, ((Nat.nth Nat.Prime i : ℝ) / (Nat.nth Nat.Prime i - 1)) = 3.75 := by\n      simp only [prod_range_succ, prod_range_zero, Nat.nth_prime_zero_eq_two,\n        Nat.nth_prime_one_eq_three, Nat.nth_prime_two_eq_five]\n      norm_num\n    linarith [hex.1]",
+            "line": 2275,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+            "lines": [
+              2256,
+              2352
+            ],
+            "conclusion": "If q has at most 3 prime factors, q/phi(q) is at most the product over the first 3 primes, 2*3/2*5/4 = 3.75 (exchange lemma `exch` and `hk3` branch)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L2275-L2284"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.bigF_gt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct",
+        "lines": [
+          2236,
+          2253
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.bigF_gt"
+          },
+          "snippet": {
+            "text": "theorem bigF_gt {r : ℝ} (hr : 3 ≤ r) :\n    3.75 < Real.exp Real.eulerMascheroniConstant * Real.log (Real.log r) +\n      2.50637 / Real.log (Real.log r) := by\n  have hl1 : 1 < Real.log r := by\n    rw [Real.lt_log_iff_exp_lt (by linarith)]\n    exact Real.exp_one_lt_d9.trans_le (by linarith)\n  set t := Real.log (Real.log r)\n  have ht : 0 < t := Real.log_pos hl1\n  have hG := exp_gamma_ge\n  have h1 : 1.625 * t ≤ Real.exp Real.eulerMascheroniConstant * t :=\n    mul_le_mul_of_nonneg_right hG ht.le\n  have h2 : 3.75 < 1.625 * t + 2.50637 / t := by\n    rw [← sub_pos]\n    have e : 1.625 * t + 2.50637 / t - 3.75 = (1.625 * t ^ 2 - 3.75 * t + 2.50637) / t := by\n      field_simp; ring\n    rw [e]; apply div_pos _ ht\n    nlinarith [sq_nonneg (t - 1.15385)]\n  linarith",
+            "line": 2236,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.bigF_gt",
+            "lines": [
+              2236,
+              2253
+            ],
+            "conclusion": "For r >= 3, 3.75 < e^gamma log log r + 2.50637/log log r, using e^gamma >= 1.625."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L2236-L2253"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          25
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

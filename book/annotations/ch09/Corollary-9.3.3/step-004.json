@@ -1,0 +1,119 @@
+{
+  "id": "Corollary 9.3.3 step 4",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 193,
+        "rect": [
+          0.17462,
+          0.67916,
+          0.56162,
+          0.11194
+        ]
+      },
+      "title": "Corollary 9.3.3 step 4: Display, p. 183",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.fourier_etaU",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          68,
+          120
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.fourier_etaU"
+          },
+          "snippet": {
+            "text": "/-- `η̂_*(s) = ∫_{r>0} η₂(r) η̂(rs) dr`. -/\ntheorem fourier_etaU (s : ℝ) :\n    𝓕 (fun u => (etaU u : ℂ)) s = ∫ r in Ioi 0, (eta2 r : ℂ) * 𝓕 (fun u => (phiPos u : ℂ)) (r * s) := by\n  set F : ℝ → ℝ → ℂ := fun u r => e (-(u * s)) * ((eta2 r * phiPos (u / r) / r : ℝ) : ℂ) with hF\n  have hmeas : AEStronglyMeasurable (Function.uncurry F)\n      ((volume : Measure ℝ).prod (volume.restrict (Ioi (0:ℝ)))) := by\n    refine (Measurable.mul ?_ ?_).aestronglyMeasurable\n    · exact (TernaryGoldbach.continuous_e.comp ((continuous_fst.mul continuous_const).neg)).measurable\n    · refine Complex.measurable_ofReal.comp ?_\n      exact ((TernaryGoldbach.Helfgott.continuous_eta2.measurable.comp measurable_snd).mul\n        (measurable_phiPos.comp (measurable_fst.div measurable_snd))).div measurable_snd\n  have hnorm : ∀ u, ∀ r, 0 < r → ‖F u r‖ = eta2 r / r * phiPos (u / r) := fun u r hr => by\n    simp only [hF, norm_mul, TernaryGoldbach.norm_e, one_mul, Complex.norm_real, Real.norm_eq_abs]\n    rw [abs_div, abs_mul, abs_of_nonneg (eta2_nonneg r), abs_of_nonneg (phiPos_nonneg _),\n      abs_of_pos hr]; ring\n  have hIφ : ∀ r, 0 < r → ∫ u, phiPos (u / r) = r * ∫ u, phiPos u := fun r hr => by\n    rw [Measure.integral_comp_div, abs_of_pos hr, smul_eq_mul]\n  have hint : Integrable (Function.uncurry F)\n      ((volume : Measure ℝ).prod (volume.restrict (Ioi (0:ℝ)))) := by\n    rw [integrable_prod_iff' hmeas]\n    constructor\n    · refine (ae_restrict_iff' measurableSet_Ioi).2 (Eventually.of_forall fun r (hr : 0 < r) => ?_)\n      refine Integrable.mono' ((integrable_phiPos.comp_div hr.ne').const_mul (eta2 r / r)) ?_\n        (Eventually.of_forall fun u => (hnorm u r hr).le)\n      refine (Measurable.mul ?_ ?_).aestronglyMeasurable\n      · exact (TernaryGoldbach.continuous_e.comp ((continuous_id.mul continuous_const).neg)).measurable\n      · exact Complex.measurable_ofReal.comp (show Measurable fun u : ℝ => eta2 r * phiPos (u / r) / r\n          from (measurable_const.mul (measurable_phiPos.comp (measurable_id.div_const r))).div_const r)\n    · have h : ∀ r ∈ Ioi (0:ℝ), ∫ u, ‖Function.uncurry F (u, r)‖ = eta2 r * ∫ u, phiPos u := by\n        intro r (hr : 0 < r)\n        simp only [Function.uncurry_apply_pair]\n        rw [integral_congr_ae (Eventually.of_forall fun u => hnorm u r hr), integral_const_mul,\n          hIφ r hr]\n        field_simp\n      have hI := integrableOn_eta2_mul (g := fun _ => ∫ u, phiPos u) continuousOn_const\n      exact hI.congr_fun (fun r hr => (h r hr).symm) measurableSet_Ioi\n  have h1 : 𝓕 (fun u => (etaU u : ℂ)) s = ∫ u, ∫ r in Ioi (0:ℝ), F u r := by\n    rw [TernaryGoldbach.fourier_eq_integral_e]\n    congr 1; ext u\n    simp only [hF, etaU_eq u]\n    rw [integral_const_mul, integral_complex_ofReal]\n  rw [h1, integral_integral_swap hint]\n  refine setIntegral_congr_fun measurableSet_Ioi fun r (hr : 0 < r) => ?_\n  have e1 : ∫ u, F u r = ((eta2 r / r : ℝ) : ℂ) * ∫ u, e (-(u * s)) * (phiPos (u / r) : ℂ) := by\n    rw [← integral_const_mul]; congr 1; ext u; simp only [hF]; push_cast; ring\n  have e2 : ∫ u, e (-(u * s)) * (phiPos (u / r) : ℂ) = (r : ℂ) * 𝓕 (fun u => (phiPos u : ℂ)) (r * s) := by\n    have h := TernaryGoldbach.fourier_comp_affine (fun u => (phiPos u : ℂ)) (inv_pos.2 hr) 0 s\n    rw [TernaryGoldbach.fourier_eq_integral_e] at h\n    simp only [add_zero, zero_mul, zero_div, TernaryGoldbach.e_zero, one_mul, inv_inv] at h\n    rw [show s / r⁻¹ = r * s by field_simp, Complex.ofReal_inv, inv_inv] at h\n    rw [← h]; congr 1; ext u; rw [div_eq_inv_mul]\n  have hr' : (r : ℂ) ≠ 0 := by exact_mod_cast hr.ne'\n  rw [e1, e2]; push_cast; field_simp",
+            "line": 68,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.fourier_etaU",
+            "lines": [
+              68,
+              120
+            ],
+            "conclusion": "hat eta_*(s) = int_{r>0} eta2(r) hat eta(r s) dr."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L68-L120"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.cor_9_3_3",
+        "module": "TernaryGoldbach.MajorArcs.Cor933",
+        "lines": [
+          641,
+          650
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.cor_9_3_3"
+          },
+          "snippet": {
+            "text": "  have hIG : ∫ r, G r ∂μ = if q = 1 then 𝓕 (fun u => (etaU u : ℂ)) (-δ) * x else 0 := by\n    by_cases h1 : q = 1\n    · rw [if_pos h1, fourier_etaU, ← integral_mul_const]\n      refine setIntegral_congr_fun measurableSet_Ioi fun r (hr : 0 < r) => ?_\n      simp only [hGdef, hM, hw, if_pos h1]\n      have hr' : (r : ℂ) ≠ 0 := by exact_mod_cast hr.ne'\n      rw [show -(δ * r) = r * -δ by ring]\n      push_cast; field_simp\n    · rw [if_neg h1]\n      simp only [hGdef, hM, if_neg h1, mul_zero, integral_zero]",
+            "line": 641,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.cor_9_3_3",
+            "lines": [
+              486,
+              686
+            ],
+            "conclusion": "The main term int G = [q=1] hat eta_*(-delta) x, with G(r) = eta2(r)/r * hat eta(-delta r) r x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L641-L650"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          193
+        ],
+        "printed": [
+          183
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

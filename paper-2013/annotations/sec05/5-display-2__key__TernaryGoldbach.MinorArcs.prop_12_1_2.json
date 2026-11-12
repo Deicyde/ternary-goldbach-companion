@@ -1,0 +1,81 @@
+{
+  "id": "5 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean requires $\\delta_0\\ge2$ (text $\\delta_0\\ge1$) and states the max as a hypothesis $C$ (equivalent form); coefficients in $\\ell^1$ with prime support $>\\sqrt x$.",
+  "subject": [
+    {
+      "location": {
+        "page": 33,
+        "rect": [
+          0.20371,
+          0.75786,
+          0.63183,
+          0.06014
+        ]
+      },
+      "title": "Display, p. 33",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_1_2",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          291,
+          299
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_12_1_2"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop. 12.1.2]** (with `δ₀ ≥ 2`, see the module docstring).  Let `aₙ` be supported on\nprimes `> √x`, in `ℓ¹`; `δ₀ ≥ 2`, `Q₀ ≥ 1`, `δ₀Q₀² ≤ x/2`, `Q = √(x/2δ₀)`.  If\n`G_q(2Q₀/sq) ≤ C G_q(2Q/sq)` for every even `q ≤ 2Q₀` and `1 ≤ s ≤ 2Q₀/q`, then\n`∫_{𝔐_{δ₀,Q₀}} |S(α)|² dα ≤ C Σ |aₙ|²`. -/\ntheorem prop_12_1_2 {x δ₀ Q₀ C : ℝ} {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    (hδ₀ : 2 ≤ δ₀) (hQ₀ : 1 ≤ Q₀) (hx : δ₀ * Q₀ ^ 2 ≤ x / 2)\n    (hC : ∀ q : ℕ, 1 ≤ q → Even q → (q : ℝ) ≤ 2 * Q₀ → ∀ s : ℝ, 1 ≤ s → s ≤ 2 * Q₀ / q →\n      Gq q (2 * Q₀ / (s * q)) ≤ C * Gq q (2 * √(x / (2 * δ₀)) / (s * q))) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤ C * ∑' n, ‖a n‖ ^ 2 := by",
+            "line": 291,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_12_1_2",
+            "lines": [
+              291,
+              372
+            ],
+            "conclusion": "Same bound over `majorArcs δ₀ Q₀ x` on $(0,1]$ with $C$ any bound for the even-$q\\le2Q_0$, $1\\le s\\le 2Q_0/q$ quotients; $\\sum|a_n|^2$ is `∑' n, ‖a n‖ ^ 2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L291-L299"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          33
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 12.1 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

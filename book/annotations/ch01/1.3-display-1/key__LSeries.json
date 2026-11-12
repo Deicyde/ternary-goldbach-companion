@@ -1,0 +1,83 @@
+{
+  "id": "1.3 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 19,
+        "rect": [
+          0.17135,
+          0.43624,
+          0.56816,
+          0.04378
+        ]
+      },
+      "title": "Display, p. 9",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.3 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "LSeries",
+        "module": "Mathlib.NumberTheory.LSeries.Basic",
+        "lines": [
+          161,
+          165
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "LSeries"
+          },
+          "snippet": {
+            "text": "/-- The value of the L-series of the sequence `f` at the point `s`\nif it converges absolutely there, and `0` otherwise. -/\nnoncomputable\ndef LSeries (f : ℕ → ℂ) (s : ℂ) : ℂ :=\n  ∑' n, term f s n",
+            "line": 161,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "LSeries",
+            "lines": [
+              161,
+              165
+            ],
+            "conclusion": "`LSeries f s = Σ' n, term f s n`, with `term f s n = f n / n^s` for `n ≠ 0` and `0` at `n = 0`: the Dirichlet series `Σ_{n≥1} f(n) n^{-s}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/NumberTheory/LSeries/Basic.lean",
+            "fragment": "L161-L165"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          19
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

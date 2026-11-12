@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 11.2.4 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean proves the final inequality uniformly on `s ≥ 6` (`r ≥ e^6 ≈ 403`) in place of checking `r=670` plus monotonicity.",
+  "subject": [
+    {
+      "location": {
+        "page": 235,
+        "rect": [
+          0.17462,
+          0.7229,
+          0.56162,
+          0.03083
+        ]
+      },
+      "title": "Lemma 11.2.4 step 10: Text, p. 225",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 11.2.4 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          211,
+          213
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.QA_antitoneOn"
+          },
+          "snippet": {
+            "text": "    have key : 0.1085 * L + Rs B s + 0.0393 * N ≤ 1 / 2 * N := by\n      simp only [N]; nlinarith\n    nlinarith [mul_le_mul_of_nonneg_right key ha.le]",
+            "line": 211,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+            "lines": [
+              163,
+              213
+            ],
+            "conclusion": "The final inequality `0.1085L+R+0.0393N ≤ N/2` is verified by `nlinarith` for all `s≥6`, with no endpoint check at 670."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L211-L213"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          235
+        ],
+        "printed": [
+          225
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

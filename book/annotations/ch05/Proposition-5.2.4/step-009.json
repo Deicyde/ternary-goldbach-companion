@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 5.2.4 step 9",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "Lean applies the odd-m version (zeromb), the one that bounds S2.",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.36011,
+          0.56162,
+          0.01375
+        ]
+      },
+      "title": "Proposition 5.2.4 step 9: Text, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          215,
+          219
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_2_3_c {α Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) {ϱ ρ : ℝ} (hϱ : 0 ≤ ϱ) (hϱ1 : ϱ ≤ 1) (hρ : 0 ≤ ρ)\n    (hϱρ : ϱ * ρ < 1) (hqρ : (q : ℝ) ≤ ρ * Q) {W' W : ℝ} (hW' : 0 ≤ W') {A₀ A₁ : ℝ}\n    (hA : A₁ - A₀ ≤ 2 * ϱ * q) :\n    oddSqSum α W' W A₀ A₁ ≤ (W - W' + q / (1 - ϱ * ρ)) * logSqSum W' W := by",
+            "line": 215,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c",
+            "lines": [
+              212,
+              254
+            ],
+            "conclusion": "(5.52) for odd m with ϱ,ρ: sum <= (W-W'+q/(1-ϱρ))Σ(log p)²."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L215-L219"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_b",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          679,
+          687
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_b"
+          },
+          "snippet": {
+            "text": "  have h := lemma_5_2_3_c hq hcop hα (ϱ := x / (4 * W * q)) (ρ := 1) (by positivity) hϱ1.le\n    zero_le_one (by linarith) (by linarith) (W' := W') (W := W) (by linarith) (A₀ := U')\n    (A₁ := x / W) (by\n      have : 2 * (x / (4 * W * q)) * q = x / (2 * W) := by field_simp; ring\n      have h2 : x / W - x / (2 * W) = x / (2 * W) := by field_simp; ring\n      linarith)\n  rw [S2, mul_one] at *\n  refine h.trans (mul_le_mul_of_nonneg_right ?_ (logSqSum_nonneg _ _))\n  linarith",
+            "line": 679,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_b",
+            "lines": [
+              670,
+              687
+            ],
+            "conclusion": "Applied with ϱ=x/(4Wq), ρ=1, A0=U', A1=x/W: S2 <= (W/2+q/(1-x/(4Wq)))Σ(log p)², (5.55)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L679-L687"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

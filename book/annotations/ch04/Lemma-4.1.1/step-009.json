@@ -1,0 +1,155 @@
+{
+  "id": "Lemma 4.1.1 step 9",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.26253,
+          0.72573,
+          0.56162,
+          0.03354
+        ]
+      },
+      "title": "Lemma 4.1.1 step 9: Text, p. 52",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "ConvexOn.le_integral_of_midpoint",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          89,
+          116
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "ConvexOn.le_integral_of_midpoint"
+          },
+          "snippet": {
+            "text": "/-- Midpoint inequality (half of Hermite–Hadamard): for `f` convex and continuous on\n`[m - 1/2, m + 1/2]`, `f m ≤ ∫_{m-1/2}^{m+1/2} f`. -/\ntheorem _root_.ConvexOn.le_integral_of_midpoint {s : Set ℝ} {f : ℝ → ℝ} (hf : ConvexOn ℝ s f) {m : ℝ}\n    (hs : Icc (m - 1 / 2) (m + 1 / 2) ⊆ s) (hc : ContinuousOn f (Icc (m - 1 / 2) (m + 1 / 2))) :\n    f m ≤ ∫ x in (m - 1 / 2)..(m + 1 / 2), f x := by\n  have hint : IntervalIntegrable f MeasureTheory.volume (m - 1 / 2) (m + 1 / 2) :=\n    hc.intervalIntegrable_of_Icc (by linarith)\n  -- Reflection `x ↦ 2m - x` preserves the interval.\n  have hrefl : ∫ x in (m - 1 / 2)..(m + 1 / 2), f (2 * m - x) = ∫ x in (m - 1 / 2)..(m + 1 / 2), f x := by\n    rw [intervalIntegral.integral_comp_sub_left]; ring_nf\n  have hint' : IntervalIntegrable (fun x => f (2 * m - x)) MeasureTheory.volume\n      (m - 1 / 2) (m + 1 / 2) := by\n    refine ContinuousOn.intervalIntegrable_of_Icc (by linarith) ?_\n    refine hc.comp (continuous_const.sub continuous_id).continuousOn fun x hx => ?_\n    simp only [mem_Icc, id] at hx ⊢; constructor <;> linarith [hx.1, hx.2]\n  have hpt : ∀ x ∈ Icc (m - 1 / 2) (m + 1 / 2), 2 * f m ≤ f x + f (2 * m - x) := by\n    intro x hx\n    have hx' : 2 * m - x ∈ s := hs ⟨by linarith [hx.2], by linarith [hx.1]⟩\n    have := hf.2 (hs hx) hx' (by norm_num : (0:ℝ) ≤ 1 / 2) (by norm_num : (0:ℝ) ≤ 1 / 2)\n      (by norm_num)\n    simp only [smul_eq_mul] at this\n    rw [show 1 / 2 * x + 1 / 2 * (2 * m - x) = m by ring] at this\n    linarith\n  have := intervalIntegral.integral_mono_on (by linarith) intervalIntegrable_const\n    (hint.add hint') hpt\n  rw [intervalIntegral.integral_add hint hint', hrefl, intervalIntegral.integral_const] at this\n  simp only [smul_eq_mul] at this\n  linarith",
+            "line": 89,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "ConvexOn.le_integral_of_midpoint",
+            "lines": [
+              89,
+              116
+            ],
+            "conclusion": "For convex continuous `f`, `f m ≤ ∫_{m-1/2}^{m+1/2} f`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L89-L116"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_fq_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          248,
+          255
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_fq_le"
+          },
+          "snippet": {
+            "text": "  have hHH : ∀ j ∈ Finset.Icc 2 K, fq q (j - 1 / 2) ≤ ∫ u in ((j : ℝ) - 1)..j, fq q u := by\n    intro j hj\n    have hj2 : (2 : ℝ) ≤ j := by exact_mod_cast (Finset.mem_Icc.1 hj).1\n    have hjK : (j : ℝ) ≤ K := by exact_mod_cast (Finset.mem_Icc.1 hj).2\n    have h := (convexOn_fq hq0).le_integral_of_midpoint (m := j - 1 / 2)\n      (fun u hu => ⟨by linarith [hu.1], by linarith [hu.2]⟩)\n      (continuousOn_fq hq0 (by linarith) (by linarith))\n    convert h using 2 <;> ring",
+            "line": 248,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_fq_le",
+            "lines": [
+              242,
+              299
+            ],
+            "conclusion": "Applies it to `f_q` on each unit interval `[j-1,j]`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L248-L255"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          558,
+          561
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₁'"
+          },
+          "snippet": {
+            "text": "  rcases Nat.lt_or_ge q 3 with hq3 | hq3\n  · interval_cases q\n    · simp; linarith [hFA 0]\n    · simp; linarith [hFA 0, hFA 1]",
+            "line": 558,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+            "lines": [
+              549,
+              627
+            ],
+            "conclusion": "Case `q < 3` (i.e. `q ≤ 2`) done separately, bounding by `A`; main argument for `q ≥ 3`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L558-L561"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

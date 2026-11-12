@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 41",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean never forms this sqrt-integral: it bounds the integrand pointwise by Ggen (AM-GM with beta) in the general form with parameters c and m = 2/|delta|, so the display's integral is only implicit.",
+  "subject": [
+    {
+      "location": {
+        "page": 124,
+        "rect": [
+          0.25926,
+          0.18403,
+          0.56816,
+          0.06087
+        ]
+      },
+      "title": "Display, p. 114",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2_le_640'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          388,
+          396
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2_le_640'"
+          },
+          "snippet": {
+            "text": "theorem S2_le_640' {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (h2α : 2 * α = a / q + δ / x + k) (hδQ : |δ / x| ≤ 1 / (q * Q)) (hδ8 : 8 ≤ |δ|) (hx : 0 < x)\n    (hQx : x ≤ Q ^ 2) {U V : ℕ} (hU : 1 ≤ U) {A : ℝ} (hVA : (V : ℝ) ≤ A)\n    (hcV : |δ| * q * (1 + x / (2 * U * Q)) / 4 * rexp 1 ≤ A)\n    {W : ℝ} (hW : W ∈ Set.Icc A (x / U)) :\n    S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (2 / |δ| * x / (Nat.totient q * Real.log (W / (|δ| * q * (1 + x / (2 * U * Q)) / 4))) +\n        q / Nat.totient q * (W / Real.log (W / (|δ| * q * (1 + x / (2 * U * Q)) / 4)))) *\n        logSqSum (max V (W / 2)) W := by",
+            "line": 388,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.S2_le_640'",
+            "lines": [
+              385,
+              484
+            ],
+            "conclusion": "For |delta| >= 8 and W in [A, x/U], S2 <= ((2/|delta|) x/(phi L) + (q/phi) W/L) logSqSum with L = log(W/c), c = |delta| q (1 + x/2UQ)/4."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L388-L396"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          124
+        ],
+        "printed": [
+          114
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

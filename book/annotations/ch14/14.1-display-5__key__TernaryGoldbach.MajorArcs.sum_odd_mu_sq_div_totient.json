@@ -1,0 +1,81 @@
+{
+  "id": "14.1 display 5",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "The decimal value is stated as the interval $[6.798779,6.79878]$.",
+  "subject": [
+    {
+      "location": {
+        "page": 271,
+        "rect": [
+          0.17135,
+          0.31498,
+          0.56816,
+          0.05226
+        ]
+      },
+      "title": "Display, p. 261",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.1 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient",
+        "module": "TernaryGoldbach.MajorArcs.SumMuPhi",
+        "lines": [
+          32,
+          37
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient"
+          },
+          "snippet": {
+            "text": "theorem sum_odd_mu_sq_div_totient :\n    6.798779 ≤ ∑ q ∈ (Icc 1 150000).filter Odd,\n        ((ArithmeticFunction.moebius q : ℤ) : ℝ) ^ 2 / q.totient ∧\n      ∑ q ∈ (Icc 1 150000).filter Odd,\n        ((ArithmeticFunction.moebius q : ℤ) : ℝ) ^ 2 / q.totient ≤ 6.79878 := by\n  have h := TernaryGoldbach.Prelim.SmallMuPhi.sum_bounds",
+            "line": 32,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient",
+            "lines": [
+              30,
+              40
+            ],
+            "conclusion": "$6.798779\\le\\sum_{q\\le150000,\\,q\\text{ odd}}\\mu^2(q)/\\phi(q)\\le6.79878$ (kernel-checked), `Icc 1 150000` filtered by `Odd`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/SumMuPhi.lean",
+            "fragment": "L32-L37"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          271
+        ],
+        "printed": [
+          261
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

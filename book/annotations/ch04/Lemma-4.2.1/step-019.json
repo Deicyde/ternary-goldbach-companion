@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 19",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's A = x/2+|η'|₁/2 (uses n ≥ 1, not y₁) and C = (c₀/2)·y₂/x (not (c₀/4)y₂/x), for odd n; blocks start at jq and (in case (b)) q/2+jq (`block_R2`, lines 199-252).",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17462,
+          0.56911,
+          0.56162,
+          0.01808
+        ]
+      },
+      "title": "Lemma 4.2.1 step 19: Text, p. 59",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le_min_sin",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          86,
+          104
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Todd_le_min_sin"
+          },
+          "snippet": {
+            "text": "theorem norm_Todd_le_min_sin {α x δ : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x)\n    (h2α : 2 * α = a / q + δ / x + k) {m : ℕ} (hm : 1 ≤ m)\n    (hne : Real.sin (π * (a / q + δ / x) * (m : ℤ)) ≠ 0) {A B C : ℝ}\n    (hA : x / (2 * m) + eta2'L1 / 2 ≤ A) (hB : eta2'L1 / 2 ≤ B) (hC : m / x * (c₀ / 2) ≤ C) :\n    ‖Todd α x m‖ ≤ min A (C / Real.sin (π * (a / q + δ / x) * (m : ℤ)) ^ 2) ∧\n    ‖Todd α x m‖ ≤ min (B / |Real.sin (π * (a / q + δ / x) * (m : ℤ))|)\n      (C / Real.sin (π * (a / q + δ / x) * (m : ℤ)) ^ 2) := by\n  have hs := sin_sq_two_pi_mul h2α (m : ℝ) ⟨m, by simp⟩\n  push_cast at hs hne ⊢\n  have habs : |Real.sin (2 * π * m * α)| = |Real.sin (π * (a / q + δ / x) * m)| := by\n    rw [← sq_eq_sq₀ (abs_nonneg _) (abs_nonneg _), sq_abs, sq_abs, hs]\n  have hne' : Real.sin (2 * π * m * α) ≠ 0 := by\n    intro h; apply hne; rw [← abs_eq_zero, ← habs, h, abs_zero]\n  obtain ⟨h1, h2⟩ := norm_Todd_le hx hm α\n  obtain ⟨h2a, h2b⟩ := h2 hne'\n  have hC' : ‖Todd α x m‖ ≤ C / Real.sin (π * (a / q + δ / x) * m) ^ 2 := by\n    refine h2b.trans ?_; rw [hs]; exact div_le_div_of_nonneg_right hC (sq_nonneg _)\n  refine ⟨le_min (h1.trans hA) hC', le_min ?_ hC'⟩\n  refine h2a.trans ?_; rw [habs]; exact div_le_div_of_nonneg_right hB (abs_nonneg _)",
+            "line": 86,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le_min_sin",
+            "lines": [
+              85,
+              104
+            ],
+            "conclusion": "Rewrites (4.36) with `sin(π(a/q+δ/x)m)` and constants A, C for use in the block lemmas."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L86-L104"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_A1",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          326,
+          357
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_A1"
+          },
+          "snippet": {
+            "text": "    have hterm : ∀ n ∈ Ioc ⌊y₁⌋ ⌊y₂⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n        (if (q : ℤ) ∣ n then 0 else min A (C / Real.sin (π * (a / q + δ / x) * n) ^ 2)) := by\n      intro n hn\n      split_ifs with hdvd\n      · exact le_rfl\n      rw [mem_Ioc] at hn\n      have hy10 : (0 : ℝ) ≤ y₁ := by positivity\n      have hn1 : (0 : ℤ) < n := lt_of_le_of_lt (Int.floor_nonneg.2 hy10) hn.1\n      have hnR : (n : ℝ) ≤ y₂ := (Int.cast_le.2 hn.2).trans (Int.floor_le _)\n      have hcast : ((n.toNat : ℕ) : ℤ) = n := Int.toNat_of_nonneg hn1.le\n      have hmR : ((n.toNat : ℕ) : ℝ) = n := by exact_mod_cast hcast\n      have hm : 1 ≤ n.toNat := by omega\n      have hne : Real.sin (π * (a / q + δ / x) * ((n.toNat : ℕ) : ℤ)) ≠ 0 := by\n        rw [hcast]\n        exact sin_ne_zero_of_approx happ hdvd (by\n          rw [abs_of_pos (by exact_mod_cast hn1)]; linarith)\n      have := (norm_Todd_le_min_sin hx h2α hm hne (A := A) (B := eta2'L1 / 2) (C := C)\n        (by\n          rw [hmR]; simp only [A]\n          have : (1 : ℝ) ≤ n := by exact_mod_cast hn1\n          have : x / (2 * n) ≤ x / 2 := div_le_div_of_nonneg_left hx.le (by norm_num) (by linarith)\n          linarith) le_rfl\n        (by\n          rw [hmR]; simp only [C]\n          have : (n : ℝ) ≤ (0 : ℝ) + (j + 1) * q := hnR.trans (min_le_left _ _)\n          rw [show c₀ / 2 * ((0 : ℝ) + (j + 1) * q) / x = ((0 : ℝ) + (j + 1) * q) / x * (c₀ / 2)\n            by ring]\n          exact mul_le_mul_of_nonneg_right (div_le_div_of_nonneg_right this hx.le) (by positivity))).1\n      rw [hcast] at this\n      exact this\n    refine (sum_le_sum hterm).trans (h12'.trans ((min_le_left _ _).trans (le_of_eq ?_)))\n    simp only [C]; field_simp; ring",
+            "line": 326,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_A1",
+            "lines": [
+              294,
+              378
+            ],
+            "conclusion": "For n in a block (y₁,y₂] with y₁ = jq, y₂ ≤ min((j+1)q, D'), q ∤ n, y₂ ≤ Q/2: `|T_{n,∘}| ≤ min(A, C/sin²)` with A = x/2+|η'|₁/2 and C = (c₀/2)(j+1)q/x, then `lemma_4_1_2` bounds the block."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L326-L357"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

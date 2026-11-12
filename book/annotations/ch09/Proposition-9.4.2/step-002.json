@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 9.4.2 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean applies its single general bound norm_SsumG_le_gen rather than three lemmas; the R-term constant is Z3g-based, not c_0 of (marenostrum).",
+  "subject": [
+    {
+      "location": {
+        "page": 197,
+        "rect": [
+          0.17462,
+          0.74451,
+          0.56162,
+          0.04636
+        ]
+      },
+      "title": "Proposition 9.4.2 step 2: Text, p. 187",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.4.2 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusBound",
+        "lines": [
+          157,
+          160
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_fP_le"
+          },
+          "snippet": {
+            "text": "    ‖SsumG χ (fP δ) x‖ ≤ Cg * 300 * (2 * aH) * Z3g (BP N) 0 +\n      √x * E1g (BP N) T0 (2 * π * A) (2 * π * 1.129) +\n      x * E2g (BP N) 11 T0 (Cg * (2 * aH) * EB (T0 - 200)) (Cg * (2 * aH) * EA (T0 - 200) δ) rhoB (rhoA δ) +\n      x ^ (-(1 / 2) : ℝ) * VgL (DN N) (Cg * (300 * Real.exp 1) * (2 * aH)) (thP δ) / (2 * π) := by",
+            "line": 157,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+            "lines": [
+              152,
+              170
+            ],
+            "conclusion": "The bound has constant term Cg*300*(2aH)*Z3g(BP N) 0, the analogue of the R term, plus the sqrt x, E2g and VgL terms from the general lemma."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusBound.lean",
+            "fragment": "L157-L160"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          197
+        ],
+        "printed": [
+          187
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

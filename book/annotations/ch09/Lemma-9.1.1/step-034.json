@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.1 step 34",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not evaluate $R$: the $s=0$ term $m_0G_\\delta(0)$ stays in the zero sum (nonzero only if $L(0,\\chi)=0$) and is bounded by a zero count times $|G_\\delta(0)|$, without proving $m_0=1$ for even $\\chi$.",
+  "subject": [
+    {
+      "location": {
+        "page": 177,
+        "rect": [
+          0.17462,
+          0.36593,
+          0.56162,
+          0.03931
+        ]
+      },
+      "title": "Lemma 9.1.1 step 34: Display, p. 167",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          469,
+          484
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "  have hA : ∑ u ∈ Z.filter (fun u => u = 0), m u * (‖Gr u δ 0‖ * x ^ u.re) ≤ E0b N := by\n    have hcount := sum_multRect_le hχ hχ1 (Z.filter fun u => u = 0) (Finset.filter_subset _ _) 0\n      (r := 3) (by norm_num) (by norm_num) (fun u hu => by\n        rw [(Finset.mem_filter.1 hu).2]; norm_num)\n    have hG0 : ‖Gr 0 δ 0‖ ≤ 112 := by\n      have := norm_G_uniform 0 δ (by simp) (by simp)\n      simpa using this\n    have hpt : ∀ u ∈ Z.filter (fun u => u = 0), m u * (‖Gr u δ 0‖ * x ^ u.re) ≤ m u * 112 := by\n      intro u hu\n      rw [(Finset.mem_filter.1 hu).2, Complex.zero_re, Real.rpow_zero, mul_one]\n      exact mul_le_mul_of_nonneg_left hG0 (hm 0)\n    refine (Finset.sum_le_sum hpt).trans ?_\n    rw [← Finset.sum_mul]\n    unfold E0b\n    have : ∑ u ∈ Z.filter (fun u => u = 0), m u ≤ Real.log (BP N 0 / 0.355) / Real.log (10 / 3) := hcount\n    nlinarith",
+            "line": 469,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "The contribution of $s=0$ to the zero sum, $\\sum_{u=0}m_u|G_\\delta(u)|$, is at most `E0b N`, using $|G_\\delta(0)|\\le112$ and a Jensen count of the zeros at $0$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L469-L484"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          177
+        ],
+        "printed": [
+          167
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

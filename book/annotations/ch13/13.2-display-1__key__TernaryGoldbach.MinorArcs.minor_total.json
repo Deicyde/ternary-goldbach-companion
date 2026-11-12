@@ -1,0 +1,81 @@
+{
+  "id": "13.2 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean states the integral only for fixed $r_0=150000$, $\\varphi=t^2e^{-t^2/2}$, $\\kappa=49$; $\\mathbb R/\\mathbb Z$ is `Ioc 0 1`.",
+  "subject": [
+    {
+      "location": {
+        "page": 258,
+        "rect": [
+          0.25926,
+          0.7569,
+          0.56816,
+          0.0385
+        ]
+      },
+      "title": "Display, p. 248",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "13.2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          324,
+          326
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "theorem minor_total {x : ℝ} (hx : 4.9e26 ≤ x) (hnum : NumericsGoal x) :\n    ∫ α in Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ x, ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 ≤\n      1.0376 * x ^ 2 / κ := by",
+            "line": 324,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "The integral $\\int_{(0,1]\\setminus\\mathfrak M_{8,r_0}}\\|S_{\\eta_*}(\\alpha,x)\\|\\|S_{\\eta_+}(\\alpha,x)\\|^2d\\alpha$ with `r₀ = 150000`, bounded by $1.0376x^2/\\kappa$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L324-L326"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          258
+        ],
+        "printed": [
+          248
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

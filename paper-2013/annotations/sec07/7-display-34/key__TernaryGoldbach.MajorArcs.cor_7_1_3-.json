@@ -1,0 +1,81 @@
+{
+  "id": "7 display 34",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same statement S_{η_*}(0,x) = (√(π/2) + O*(err)) x/κ, but Lean's err ≈ 4.7e6/√(x/κ) is weaker than 1.9075e-8.",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.20371,
+          0.18359,
+          0.63183,
+          0.0382
+        ]
+      },
+      "title": "Display, p. 63",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.cor_7_1_3'",
+        "module": "TernaryGoldbach.MajorArcs.Cor713",
+        "lines": [
+          807,
+          811
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.cor_7_1_3'"
+          },
+          "snippet": {
+            "text": "theorem cor_7_1_3' {y : ℝ} (hy : 1e25 ≤ y) {q : ℕ} [NeZero q] (hq : q ≤ 300000)\n    (χ : DirichletCharacter ℂ q) (hχ : χ.IsPrimitive) {δ : ℝ} (hδ : |δ| ≤ 4 * 300000 / q) :\n    ‖Schar χ (fun n => ((Λ n * etaU (n / y) : ℝ) : ℂ)) (δ / y) -\n        (if q = 1 then 𝓕 (fun u => (etaU u : ℂ)) (-δ) * y else 0)‖ ≤\n      (1e-17 + 4.7e6 / √q / √y) * y := by",
+            "line": 807,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.cor_7_1_3'",
+            "lines": [
+              803,
+              836
+            ],
+            "conclusion": "For q = 1, δ = 0: `Σ Λ(n) η_*(n/x) = η̂(0)·y + E y` with `|E| ≤ 1e-17 + 4.7e6/√y`, y = x/κ."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L807-L811"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

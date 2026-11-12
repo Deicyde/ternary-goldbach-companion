@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 9.5.1 step 29",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's kernel factor is $(C_g\\cdot2a_H)^2$ (sup of $|\\hat g_C|$ times length, per convolution) and the shift bound $400=2H$, instead of $|M(h_H^2)|_1\\le|Mh_H|_1^2/2\\pi\\le41.73727$ and support in $[-2H,2H]$.",
+  "subject": [
+    {
+      "location": {
+        "page": 201,
+        "rect": [
+          0.17462,
+          0.35698,
+          0.56162,
+          0.03393
+        ]
+      },
+      "title": "Proposition 9.5.1 step 29: Text, p. 191",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_phi1_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          256,
+          274
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_phi1_le"
+          },
+          "snippet": {
+            "text": "/-- **`|M(η₊²)(s)| ≤ (2a C_g)² · 8 e^{400c} e^{−c|ℑs|}`** on `−1 ≤ ℜs ≤ 2`, `0 ≤ c ≤ 0.6`. -/\ntheorem norm_mellin_phi1_le {c : ℝ} (hc0 : 0 ≤ c) (hc : c ≤ 0.6) {s : ℂ} (h1 : -1 ≤ s.re)\n    (h2 : s.re ≤ 2) :\n    ‖mellin phi1 s‖ ≤ (Cg * (2 * aH)) ^ 2 * 8 * Real.exp (400 * c) * Real.exp (-(c * |s.im|)) := by\n  rw [mellin_phi1_eq (by linarith)]\n  refine (norm_integral_gC_le (B := Cg * (8 * (Real.exp (200 * c) * (Real.exp (200 * c) *\n    Real.exp (-(c * |s.im|))))) * (2 * aH)) fun ξ hξ => ?_).trans (le_of_eq ?_)\n  · have hre : (s + ((2 * π * ξ : ℝ) : ℂ) * I).re = s.re := by simp\n    have him : (s + ((2 * π * ξ : ℝ) : ℂ) * I).im = s.im + 2 * π * ξ := by simp\n    have h := norm_mellin_hg0_le hc0 hc (w := s + ((2 * π * ξ : ℝ) : ℂ) * I) (by rw [hre]; exact h1)\n      (by rw [hre]; exact h2)\n    rw [him] at h\n    refine h.trans ?_\n    have h4 := exp_shift_le (y := s.im) hc0 (abs_shift_le hξ)\n    have := Cg_nonneg; have := aH_pos\n    gcongr\n  · have : Real.exp (400 * c) = Real.exp (200 * c) * Real.exp (200 * c) := by\n      rw [← Real.exp_add]; ring_nf\n    rw [this]; ring",
+            "line": 256,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_phi1_le",
+            "lines": [
+              256,
+              274
+            ],
+            "conclusion": "$|M(\\eta_+^2)(s)|\\le(2a_HC_g)^2\\cdot8e^{400c}e^{-c|\\Im s|}$ on $-1\\le\\Re s\\le2$: each convolution shifts $\\Im s$ by at most $200$ and contributes a factor $C_g\\cdot2a_H$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L256-L274"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          201
+        ],
+        "printed": [
+          191
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 48",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same argument and constants; Lean states it for a finite upper limit A (uniform in A) instead of infinity.",
+  "subject": [
+    {
+      "location": {
+        "page": 125,
+        "rect": [
+          0.17135,
+          0.52493,
+          0.56816,
+          0.11669
+        ]
+      },
+      "title": "Display, p. 115",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 48"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_sqrt_log_div_W32_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          210,
+          288
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_sqrt_log_div_W32_le"
+          },
+          "snippet": {
+            "text": "/-- [H, §6.2.3]: `∫_V^A √(log W)/W^{3/2} dW ≤ (2/√V)(√(log V) + 1/√(log V))` for `1 < V ≤ A`\n(via `√(log W) ≤ √(log V) + (log W - log V)/(2√(log V))` and `∫_V^∞ log(W/V) W^{-3/2} dW = 4/√V`). -/\ntheorem integral_sqrt_log_div_W32_le {V A : ℝ} (hV : 1 < V) (hVA : V ≤ A) :\n    ∫ W in V..A, √(Real.log W) / (W * √W) ≤\n      2 * (√(Real.log V) + 1 / √(Real.log V)) / √V := by\n  have hV0 : 0 < V := by linarith\n  have hlV : 0 < Real.log V := Real.log_pos hV\n  set k := √(Real.log V) with hk\n  have hk0 : 0 < k := Real.sqrt_pos.2 hlV\n  have hkk : k * k = Real.log V := Real.mul_self_sqrt hlV.le\n  have hpos : ∀ W ∈ Set.uIcc V A, 1 < W := fun W hW => by\n    rw [Set.uIcc_of_le hVA] at hW; linarith [hW.1]\n  have hW0 : ∀ W ∈ Set.uIcc V A, W ≠ 0 := fun W hW => by linarith [hpos W hW]\n  have hsq0 : ∀ W ∈ Set.uIcc V A, √W ≠ 0 := fun W hW =>\n    (Real.sqrt_pos.2 (by linarith [hpos W hW])).ne'\n  have hsq : ContinuousOn (fun W : ℝ => √W) (Set.uIcc V A) := Real.continuous_sqrt.continuousOn\n  have hlogc : ContinuousOn (fun W => Real.log W) (Set.uIcc V A) :=\n    ContinuousOn.log continuousOn_id hW0\n  have i1 : IntervalIntegrable (fun W => √(Real.log W) / (W * √W)) volume V A :=\n    ((Real.continuous_sqrt.comp_continuousOn hlogc).div (continuousOn_id.mul hsq)\n      fun W hW => mul_ne_zero (hW0 W hW) (hsq0 W hW)).intervalIntegrable\n  have i4 : IntervalIntegrable (fun W => 1 / (W * √W)) volume V A :=\n    (continuousOn_const.div (continuousOn_id.mul hsq)\n      fun W hW => mul_ne_zero (hW0 W hW) (hsq0 W hW)).intervalIntegrable\n  have i6 : IntervalIntegrable (fun W => (Real.log W - Real.log V) / (W * √W)) volume V A :=\n    ((hlogc.sub continuousOn_const).div (continuousOn_id.mul hsq)\n      fun W hW => mul_ne_zero (hW0 W hW) (hsq0 W hW)).intervalIntegrable\n  -- `∫ (log W - log V)/W^{3/2} = G(A) - G(V)`, `G(W) = -2(log W - log V)/√W - 4/√W`.\n  have hI6 : ∫ W in V..A, (Real.log W - Real.log V) / (W * √W) =\n      (-2 * (Real.log A - Real.log V) / √A - 4 / √A) -\n        (-2 * (Real.log V - Real.log V) / √V - 4 / √V) := by\n    refine intervalIntegral.integral_eq_sub_of_hasDerivAt\n      (f := fun W => -2 * (Real.log W - Real.log V) / √W - 4 / √W) (fun W hW => ?_) i6\n    have hW := hpos W hW\n    have hW0' : 0 < W := by linarith\n    have hs : 0 < √W := Real.sqrt_pos.2 hW0'\n    have h1 := (((Real.hasDerivAt_log hW0'.ne').sub_const (Real.log V)).const_mul (-2)).div\n      (Real.hasDerivAt_sqrt hW0'.ne') hs.ne'\n    have h2 := (hasDerivAt_const W (4 : ℝ)).div (Real.hasDerivAt_sqrt hW0'.ne') hs.ne'\n    convert h1.sub h2 using 1\n    have hss : √W * √W = W := Real.mul_self_sqrt hW0'.le\n    field_simp\n    rw [show √W ^ 2 = W by rw [sq, hss]]\n    ring\n  have hmono : ∀ W ∈ Set.Icc V A, √(Real.log W) / (W * √W) ≤\n      k * (1 / (W * √W)) + 1 / (2 * k) * ((Real.log W - Real.log V) / (W * √W)) := by\n    intro W hW\n    have hW1 : 0 < W * √W := mul_pos (by linarith [hW.1]) (Real.sqrt_pos.2 (by linarith [hW.1]))\n    have hlW : 0 ≤ Real.log W := Real.log_nonneg (by linarith [hW.1])\n    have hsW := Real.sq_sqrt hlW\n    have key : √(Real.log W) ≤ k + (Real.log W - Real.log V) / (2 * k) := by\n      rw [← sub_nonneg]\n      have : k + (Real.log W - Real.log V) / (2 * k) - √(Real.log W) =\n          (√(Real.log W) - k) ^ 2 / (2 * k) := by\n        field_simp; linear_combination hkk - hsW\n      rw [this]; positivity\n    calc √(Real.log W) / (W * √W) ≤ (k + (Real.log W - Real.log V) / (2 * k)) / (W * √W) :=\n          div_le_div_of_nonneg_right key hW1.le\n      _ = _ := by ring\n  have hJ := intervalIntegral.integral_mono_on hVA i1 ((i4.const_mul k).add (i6.const_mul _)) hmono\n  rw [intervalIntegral.integral_add (i4.const_mul k) (i6.const_mul _),\n    intervalIntegral.integral_const_mul, intervalIntegral.integral_const_mul,\n    integral_inv_mul_sqrt_eq hV0 hVA, hI6] at hJ\n  refine hJ.trans ?_\n  have hA0 : 0 < √A := Real.sqrt_pos.2 (by linarith)\n  have hsV : 0 < √V := Real.sqrt_pos.2 hV0\n  have hlA : Real.log V ≤ Real.log A := Real.log_le_log hV0 hVA\n  have t1 : 0 ≤ k * (2 / √A) := by positivity\n  have t2 : 0 ≤ 1 / (2 * k) * (2 * (Real.log A - Real.log V) / √A + 4 / √A) := by\n    have : 0 ≤ Real.log A - Real.log V := by linarith\n    positivity\n  have e : 2 * (k + 1 / k) / √V = k * (2 / √V) + 1 / (2 * k) * (4 / √V) := by\n    field_simp; ring\n  rw [e]\n  have e2 : k * (2 / √V - 2 / √A) + 1 / (2 * k) * (-2 * (Real.log A - Real.log V) / √A - 4 / √A -\n      (-2 * (Real.log V - Real.log V) / √V - 4 / √V)) =\n      k * (2 / √V) + 1 / (2 * k) * (4 / √V) - k * (2 / √A) -\n        1 / (2 * k) * (2 * (Real.log A - Real.log V) / √A + 4 / √A) := by ring\n  rw [e2]; linarith",
+            "line": 210,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_sqrt_log_div_W32_le",
+            "lines": [
+              210,
+              288
+            ],
+            "conclusion": "For 1 < V <= A, the integral of sqrt(log W)/(W sqrt W) over [V, A] is at most 2(sqrt(log V) + 1/sqrt(log V))/sqrt V, proved via sqrt(log W) <= sqrt(log V) + (log W - log V)/(2 sqrt(log V)) and the integral of log(W/V) W^{-3/2} equal to 4/sqrt V."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L210-L288"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          125
+        ],
+        "printed": [
+          115
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

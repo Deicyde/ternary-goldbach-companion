@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 12.1.1 step 2",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "note": "The cited identity is Bombieri's at `β = 0`; Lean proves it for every shift `β`, indexed by characters mod a common `L` with weight `w(q,cond)`, instead of primitive characters mod `q*`.",
+  "subject": [
+    {
+      "location": {
+        "page": 238,
+        "rect": [
+          0.26253,
+          0.51038,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Proposition 12.1.1 step 2: Text, p. 228",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.totient_mul_sum_units_lift",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri",
+        "lines": [
+          186,
+          192
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.totient_mul_sum_units_lift"
+          },
+          "snippet": {
+            "text": "/-- **Bombieri's identity, lifted to a common modulus `L`**: for `q ∣ L` and `aₙ` supported on\n`n` coprime to `L`,\n`φ(q) Σ_{b unit mod q} |S(b/q + β)|² = Σ_{Ψ mod L, cond Ψ ∣ q} w(q, cond Ψ) |S_{Ψ⁻¹}(β)|²`. -/\ntheorem totient_mul_sum_units_lift {q L : ℕ} [NeZero q] [NeZero L] (hqL : q ∣ L) {a : ℕ → ℂ}\n    (ha : Summable fun n => ‖a n‖) (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) (β : ℝ) :\n    q.totient * ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2 =\n      ∑ Ψ : DirichletCharacter ℂ L,",
+            "line": 186,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.totient_mul_sum_units_lift",
+            "lines": [
+              186,
+              220
+            ],
+            "conclusion": "For `q ∣ L` and `aₙ` supported coprime to `L`, `φ(q) Σ_{b unit mod q} |S(b/q+β)|² = Σ_{Ψ mod L, cond Ψ ∣ q} w(q,cond Ψ) |S_{Ψ⁻¹}(β)|²` with `w(q,c)=c` when `q/c` squarefree and coprime to `c`, else 0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L186-L192"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          238
+        ],
+        "printed": [
+          228
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

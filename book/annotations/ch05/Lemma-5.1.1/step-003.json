@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.1 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The error terms are not displayed separately: Lean bounds the combined error per `(e,m)` directly, merging this (dbaerr) term with the completion terms of step 9.",
+  "subject": [
+    {
+      "location": {
+        "page": 92,
+        "rect": [
+          0.26253,
+          0.15793,
+          0.56162,
+          0.01245
+        ]
+      },
+      "title": "Lemma 5.1.1 step 3: Text, p. 82",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          408,
+          420
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.cntSq_approx"
+          },
+          "snippet": {
+            "text": "  refine (hs1.sub hs2).norm.tsum_le_tsum (fun m => ?_) (summable_fsq_term _)\n  set X := Real.sqrt (b / e)\n  have hX2 : X ^ 2 = b / e := Real.sq_sqrt (div_nonneg hb0 he0.le)\n  rw [Real.norm_eq_abs, ← mul_sub, abs_mul]\n  by_cases hm : Squarefree m ∧ m ≠ 0\n  · rw [if_pos hm]\n    have hm1 : (1 : ℝ) ≤ m := by exact_mod_cast Nat.one_le_iff_ne_zero.2 hm.2\n    have hD : ((e * (m * m) : ℕ) : ℝ) = e * (m : ℝ) ^ 2 := by push_cast; ring\n    refine (mul_le_of_le_one_left (abs_nonneg _) (hw1 m)).trans ?_\n    split_ifs with hmX\n    · have h := sum_Ioc_dvd_sub ha hab (D := e * (m * m))\n        (Nat.one_le_iff_ne_zero.2 (Nat.mul_ne_zero (by omega) (Nat.mul_ne_zero hm.2 hm.2)))\n      rw [hD] at h; exact h.le",
+            "line": 408,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+            "lines": [
+              278,
+              441
+            ],
+            "conclusion": "For each squarefree `m <= sqrt(b/e)`, the multiple-count error is at most 1 (the `if m <= X then 1` branch of `fsq`), giving the error part of the main/error split."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L408-L420"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          92
+        ],
+        "printed": [
+          82
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

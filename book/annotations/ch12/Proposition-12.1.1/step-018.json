@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 12.1.1 step 18",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same inequality-and-Plancherel step, for the (10.5)-type arcs (`q̃ ≤ 2Q`) in place of the arcs with `q ≤ Q`; Lean bounds the arc sum by `∫_0^1 |S|²` and then equals `Σ‖aₙ‖²`.",
+  "subject": [
+    {
+      "location": {
+        "page": 240,
+        "rect": [
+          0.26253,
+          0.22675,
+          0.56162,
+          0.03885
+        ]
+      },
+      "title": "Proposition 12.1.1 step 18: Display, p. 230",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs",
+        "lines": [
+          315,
+          318
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral"
+          },
+          "snippet": {
+            "text": "theorem sum_arcs_le_integral {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    (hg0 : ∀ α, 0 ≤ g α) {δ₀ Q x : ℝ} (hx : 0 < x) (hδ : 0 < δ₀) (hQ : 0 < Q)\n    (hQx : δ₀ * Q ^ 2 ≤ x / 2) (hw : δ₀ * Q ≤ x) :\n    ∑ q ∈ Qset Q, ∑ b ∈ Bset q, ∫ y in arc δ₀ Q x q b, g y ≤ ∫ α in Ioc (0 : ℝ) 1, g α := by",
+            "line": 315,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral",
+            "lines": [
+              313,
+              351
+            ],
+            "conclusion": "`Σ_{q,b} ∫_{J_{q,b}} g ≤ ∫_0^1 g` for `g ≥ 0` continuous 1-periodic, `δ₀Q² ≤ x/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "fragment": "L315-L318"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.setIntegral_norm_sq_expTsum",
+        "module": "TernaryGoldbach.MinorArcs.Plancherel",
+        "lines": [
+          29,
+          31
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.setIntegral_norm_sq_expTsum"
+          },
+          "snippet": {
+            "text": "/-- **Plancherel** for `ℓ¹` coefficients. -/\ntheorem setIntegral_norm_sq_expTsum {a : ℕ → ℂ} (ha : Summable fun n => ‖a n‖) :\n    ∫ α in Set.Ioc (0:ℝ) 1, ‖expTsum a α‖ ^ 2 = ∑' n, ‖a n‖ ^ 2 := by",
+            "line": 29,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.setIntegral_norm_sq_expTsum",
+            "lines": [
+              29,
+              54
+            ],
+            "conclusion": "Plancherel: `∫_{(0,1]} |S|² = Σ |aₙ|²` for `ℓ¹` coefficients."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Plancherel.lean",
+            "fragment": "L29-L31"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          240
+        ],
+        "printed": [
+          230
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

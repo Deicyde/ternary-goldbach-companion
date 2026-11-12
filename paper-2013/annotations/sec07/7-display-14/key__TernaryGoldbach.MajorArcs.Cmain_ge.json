@@ -1,0 +1,81 @@
+{
+  "id": "7 display 14",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same bracket $\\frac{49}{48}\\sqrt{\\pi/2}-\\frac{(9/4)^2}{2\\sqrt{2\\pi}}\\le0.2696413$ at $c_1$, but [L] multiplies by $8.82$ (a Lipschitz bound) instead of $2.71|\\eta_\\circ'|_2^2=7.4188$, a weaker constant, and gets no $2.0002/\\kappa^3$ statement.",
+  "subject": [
+    {
+      "location": {
+        "page": 59,
+        "rect": [
+          0.20371,
+          0.10646,
+          0.63183,
+          0.08254
+        ]
+      },
+      "title": "Display, p. 59",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Cmain_ge",
+        "module": "TernaryGoldbach.MajorArcs.CMain",
+        "lines": [
+          494,
+          498
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Cmain_ge"
+          },
+          "snippet": {
+            "text": "theorem Cmain_ge (c : ℝ) :\n    (∫ t, etaO t ^ 2) * (√(π / 2) / κ) -\n        8.82 * ((49 / 48 * √(π / 2) - 9 / 4 * c + c ^ 2 * √(π / 2)) / κ ^ 3) ≤\n      Cmain (2 + c / κ) := by\n  have hS0 : ∀ σ, 0 ≤ etaS σ := fun σ => etaU_nonneg _",
+            "line": 494,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.Cmain_ge",
+            "lines": [
+              492,
+              529
+            ],
+            "conclusion": "$C_{\\eta_\\circ,\\eta_*}(2+c/\\kappa)\\ge\\|\\eta_\\circ\\|_2^2\\sqrt{\\pi/2}/\\kappa-8.82\\,(\\frac{49}{48}\\sqrt{\\pi/2}-\\frac94c+c^2\\sqrt{\\pi/2})/\\kappa^3$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
+            "fragment": "L494-L498"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          59
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.2 display 7, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

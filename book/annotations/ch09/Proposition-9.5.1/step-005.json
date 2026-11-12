@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean never forms $\\eta_{+,2}$; it keeps phi1, phi2 and combines them as $\\log x\\cdot$phi1 + phi2 in the sum and the integral.",
+  "subject": [
+    {
+      "location": {
+        "page": 199,
+        "rect": [
+          0.17462,
+          0.31702,
+          0.56162,
+          0.01933
+        ]
+      },
+      "title": "Proposition 9.5.1 step 5: Text, p. 189",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          314,
+          326
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_5_1"
+          },
+          "snippet": {
+            "text": "  have hA : ((∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 : ℝ) : ℂ) =\n      (Real.log x : ℂ) * SsumG χ phi1 x + SsumG χ phi2 x := by\n    rw [Complex.ofReal_tsum, SsumG, SsumG, ← tsum_mul_left, ← (hs1.mul_left _).tsum_add hs2]\n    congr 1; ext n\n    rw [hχ]\n    rcases Nat.eq_zero_or_pos n with rfl | hn\n    · simp\n    · have hlog : Real.log n = Real.log x + Real.log (n / x) := by\n        rw [Real.log_div (by positivity) hx0.ne']; ring\n      simp only [phi2, phi1]\n      rw [hlog]\n      push_cast\n      ring",
+            "line": 314,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+            "lines": [
+              297,
+              351
+            ],
+            "conclusion": "`∑' Λ n log n etaPlus(n/x)^2 = log x * SsumG χ phi1 x + SsumG χ phi2 x` (case n=0 trivial, n>0 uses log n = log x + log(n/x))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L314-L326"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          333,
+          341
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_5_1"
+          },
+          "snippet": {
+            "text": "  have hI : ((∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t) : ℝ) : ℂ) =\n      (Real.log x : ℂ) * mellin phi1 1 + mellin phi2 1 := by\n    rw [← integral_complex_ofReal, mellin_one_eq, mellin_one_eq, ← integral_const_mul,\n      ← integral_add (i1.const_mul _) i2]\n    refine setIntegral_congr_fun measurableSet_Ioi fun t (ht : 0 < t) => ?_\n    simp only [phi1, phi2]\n    rw [Real.log_mul hx0.ne' ht.ne']\n    push_cast\n    ring",
+            "line": 333,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+            "lines": [
+              297,
+              351
+            ],
+            "conclusion": "The integral version: $\\int\\eta_+^2\\log(xt)=\\log x\\,\\mathrm{mellin}\\,\\phi_1\\,1+\\mathrm{mellin}\\,\\phi_2\\,1$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L333-L341"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          199
+        ],
+        "printed": [
+          189
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

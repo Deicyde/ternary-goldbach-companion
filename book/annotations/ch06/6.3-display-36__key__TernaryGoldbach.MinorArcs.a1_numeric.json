@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 36",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[H] gets 0.275964 t^{3/2} on log(2.16e20) <= t <= log 2000 by interval arithmetic; Lean gets 1.413 L^{3/2} (= 0.2719 t^{3/2}, a smaller constant but for different, modified terms) for all L = t/3 >= 15.6, without a separate t >= 2000 argument. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 140,
+        "rect": [
+          0.25926,
+          0.60969,
+          0.56816,
+          0.01879
+        ]
+      },
+      "title": "Display, p. 130",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 36"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a1_numeric",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIaPieces",
+        "lines": [
+          211,
+          213
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a1_numeric"
+          },
+          "snippet": {
+            "text": "/-- **The numerical inequality of case (a1)**: `√(12 F₀X₀B₀) + SEC(L) ≤ 1.413 L^{3/2}`. -/\ntheorem a1_numeric {L : ℝ} (hL : 15.6 ≤ L) :\n    √(12 * a1F0 L * a1X0 L * a1B0 L) + a1SEC L ≤ 1.413 * (L * √L) := by",
+            "line": 211,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.a1_numeric",
+            "lines": [
+              211,
+              238
+            ],
+            "conclusion": "For all L >= 15.6: `sqrt(12 F0 X0 B0) + SEC(L) <= 1.413 L^{3/2}`, by interval arithmetic on pieces `a1_piece_0 .. a1_piece_11` and `a1_piece_asym`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIaPieces.lean",
+            "fragment": "L211-L213"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          140
+        ],
+        "printed": [
+          130
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

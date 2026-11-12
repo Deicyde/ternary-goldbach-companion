@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 9.3.2 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's constant $V$ (via $|G_\\delta(s)|\\le112e^{-\\theta_\\delta|\\Im s|}$ and $|L'/L|$ growth) replaces $(\\log q+6.01)(|\\eta'|_2+2\\pi|\\delta||\\eta|_2)\\le(\\log q+6.01)(0.881+5.123|\\delta|)$; no $\\ell_2$ norm is computed.",
+  "subject": [
+    {
+      "location": {
+        "page": 192,
+        "rect": [
+          0.26253,
+          0.58756,
+          0.56162,
+          0.0178
+        ]
+      },
+      "title": "Proposition 9.3.2 step 8: Display, p. 182",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.3.2 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Ssum_le",
+        "module": "TernaryGoldbach.Explicit.ExplicitBound",
+        "lines": [
+          107,
+          114
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Ssum_le"
+          },
+          "snippet": {
+            "text": "  have h2 : ‖(1 / (2 * π) : ℂ) * I0‖ ≤ x ^ (-(1 / 2) : ℝ) * Vb N δ / (2 * π) := by\n    rw [norm_mul]\n    have : ‖(1 / (2 * π) : ℂ)‖ = 1 / (2 * π) := by\n      rw [norm_div, norm_one, norm_mul, Complex.norm_ofNat, Complex.norm_real, Real.norm_eq_abs,\n        abs_of_pos Real.pi_pos]\n    rw [this, div_mul_eq_mul_div, one_mul]\n    exact div_le_div_of_nonneg_right (norm_integral_hInt_le hχ hχ1 δ hx0) (by positivity)\n  have e : Ssum χ δ x = -((-Ssum χ δ x - (1 / (2 * π) : ℂ) * I0) + (1 / (2 * π) : ℂ) * I0) := by ring",
+            "line": 107,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_Ssum_le",
+            "lines": [
+              95,
+              116
+            ],
+            "conclusion": "The line $\\Re s=-1/2$ contributes $\\le x^{-1/2}V/(2\\pi)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBound.lean",
+            "fragment": "L107-L114"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_integral_hInt_le",
+        "module": "TernaryGoldbach.Explicit.ExplicitBound",
+        "lines": [
+          54,
+          57
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_integral_hInt_le"
+          },
+          "snippet": {
+            "text": "/-- **The line `ℜs = −1/2`**: `|∫ hInt(−1/2 + iy) dy| ≤ x^{−1/2} V`. -/\ntheorem norm_integral_hInt_le {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (δ : ℝ) {x : ℝ} (hx : 0 < x) :\n    ‖∫ y : ℝ, hInt χ δ x (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤ x ^ (-(1 / 2) : ℝ) * Vb N δ := by",
+            "line": 54,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_integral_hInt_le",
+            "lines": [
+              54,
+              93
+            ],
+            "conclusion": "$|\\int L'/L(s)G_\\delta(s)x^s\\,dy|\\le x^{-1/2}V$ on $\\Re s=-1/2$, from $|G_\\delta|\\le112e^{-\\theta_\\delta|y|}$ and a linear bound on $|L'/L|$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBound.lean",
+            "fragment": "L54-L57"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.Vb",
+        "module": "TernaryGoldbach.Explicit.ExplicitBound",
+        "lines": [
+          50,
+          52
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.Vb"
+          },
+          "snippet": {
+            "text": "/-- The vertical-line constant `V = 112 (2/log 2 + 4.8)((D_N + 37)(2/θ_δ) + 2.6 (2/θ_δ²))`. -/\nnoncomputable def Vb (N : ℕ) (δ : ℝ) : ℝ :=\n  112 * (2 / Real.log 2 + 4.8) * ((DN N + 37) * (2 / thetaD δ) + 2.6 * (2 / thetaD δ ^ 2))",
+            "line": 50,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.Vb",
+            "lines": [
+              50,
+              52
+            ],
+            "conclusion": "$V=112(2/\\log2+4.8)((D_N+37)(2/\\theta_\\delta)+2.6(2/\\theta_\\delta^2))$, $\\theta_\\delta=0.28/(1+|\\delta|)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBound.lean",
+            "fragment": "L50-L52"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          192
+        ],
+        "printed": [
+          182
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

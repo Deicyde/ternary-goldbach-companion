@@ -1,0 +1,81 @@
+{
+  "id": "3 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds Sum_{(n,q)>1} Lambda(n)|eta_+(n/x)| by an inequality (1.94 K log q + 1) instead of stating the exact identity sum_{p|q} log p sum_{alpha>=1} eta(p^alpha/x); eta_+ only.",
+  "subject": [
+    {
+      "location": {
+        "page": 12,
+        "rect": [
+          0.20371,
+          0.43394,
+          0.63183,
+          0.05536
+        ]
+      },
+      "title": "Display, p. 12",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          99,
+          115
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le"
+          },
+          "snippet": {
+            "text": "    · obtain ⟨p, k, hp, hk, rfl⟩ :=\n        (isPrimePow_nat_iff _).1 (ArithmeticFunction.vonMangoldt_ne_zero_iff.1 hΛ)\n      have hpq : p ∣ q := by\n        by_contra h\n        exact hc (Nat.Coprime.pow_left k ((Nat.Prime.coprime_iff_not_dvd hp).2 h))\n      have hkK : k ≤ K := by\n        have h1 : (2 : ℝ) ^ k ≤ (p : ℝ) ^ k := pow_le_pow_left₀ (by norm_num)\n          (by exact_mod_cast hp.two_le) k\n        have h2 : (2 : ℝ) ^ k ≤ 2 ^ K := by push_cast at hny; linarith\n        exact (pow_le_pow_iff_right₀ (by norm_num : (1:ℝ) < 2)).1 h2\n      have hdvd : p ^ k ∣ q ^ K := (pow_dvd_pow_of_dvd hpq k).trans (pow_dvd_pow q hkK)\n      have hmem : p ^ k ∈ (q ^ K).divisors :=\n        Nat.mem_divisors.2 ⟨hdvd, pow_ne_zero _ (by omega)⟩\n      have : g₁ (p ^ k) = 1.94 * Λ (p ^ k) := by simp only [g₁, hmem, ite_true]\n      rw [this]\n      have := Helfgott.abs_etaPlus_le_A (t := ((p ^ k : ℕ) : ℝ) / x) (by positivity)\n      nlinarith [ArithmeticFunction.vonMangoldt_nonneg (n := p ^ k)]",
+            "line": 99,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_noncoprime_etaPlus_le",
+            "lines": [
+              64,
+              157
+            ],
+            "conclusion": "A term with $(n,q)>1$ and $\\Lambda(n)\\ne0$ is a prime power $p^k$ with $p\\mid q$; the sum over such $n$ is bounded by $1.94\\sum \\Lambda(p^k)$ over these prime powers (divisors of $q^K$) plus a tail."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L99-L115"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          12
+        ],
+        "printed": [
+          12
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.1 display 4, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

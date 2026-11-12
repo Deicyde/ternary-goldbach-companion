@@ -1,0 +1,81 @@
+{
+  "id": "1.3 display 6",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Shows the band-limited form only for the specific `h_H` (`h̃(r) = ĝ(-r/2π)/2π`), not for a general `h` supported on `[-R,R]`.",
+  "subject": [
+    {
+      "location": {
+        "page": 23,
+        "rect": [
+          0.17135,
+          0.75581,
+          0.56816,
+          0.03834
+        ]
+      },
+      "title": "Display, p. 13",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.3 display 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.hH_eq_fourier",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier",
+        "lines": [
+          271,
+          294
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.hH_eq_fourier"
+          },
+          "snippet": {
+            "text": "/-- **Fubini**: `h_H(t) = ∫_{|ξ| ≤ H/2π} e(ξ log t) ĝ(ξ) dξ`. -/\ntheorem hH_eq_fourier {H t : ℝ} (hH0 : 0 < H) (ht : 0 < t) :\n    (hH H t : ℂ) = ∫ ξ in Icc (-(H / (2 * π))) (H / (2 * π)),\n      Complex.exp (↑(2 * π * ξ * Real.log t) * I) * 𝓕 gC ξ := by\n  set a := H / (2 * π)\n  set L := Real.log t\n  rw [hH_eq_conv hH0 ht, ← integral_complex_ofReal]\n  have step1 : ∫ v, ((gL (L - v) * sH H v : ℝ) : ℂ) =\n      ∫ v, ∫ ξ in Icc (-a) a, (gL (L - v) : ℂ) * Complex.exp (↑(2 * π * ξ * v) * I) := by\n    refine integral_congr_ae ?_\n    filter_upwards [ae_ne_zero_real] with v hv\n    rw [integral_const_mul, ← sH_eq_integral hH0 hv]; push_cast; ring\n  rw [step1, integral_integral_swap]\n  · exact setIntegral_congr_fun measurableSet_Icc fun ξ _ => integral_shift_char L ξ\n  · have hg : Integrable (fun v => ‖gL (L - v)‖) := (integrable_gL.comp_sub_left L).norm\n    have h1 : Integrable (fun _ : ℝ => (1 : ℝ)) (volume.restrict (Icc (-a) a)) := integrable_const 1\n    refine Integrable.mono' (hg.mul_prod h1) ?_ (Filter.Eventually.of_forall fun p => ?_)\n    · refine Measurable.aestronglyMeasurable ?_\n      exact (Complex.measurable_ofReal.comp (measurable_gL.comp (measurable_const.sub measurable_fst))).mul\n        (by fun_prop)\n    · rcases p with ⟨v, ξ⟩\n      simp only [Function.uncurry_apply_pair, norm_mul, Complex.norm_exp_ofReal_mul_I, mul_one,\n        Complex.norm_real]\n      exact le_rfl",
+            "line": 271,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.hH_eq_fourier",
+            "lines": [
+              271,
+              294
+            ],
+            "conclusion": "`h_H(t) = ∫_{|ξ|≤H/2π} e(ξ log t) ĝ(ξ) dξ` with `g(u) = h(e^u)`; with `r = -2πξ` this is `∫_{-H}^{H} h̃(r) t^{-ir} dr`, i.e. `h_H` is Mellin-band-limited with `R = H`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L271-L294"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          23
+        ],
+        "printed": [
+          13
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

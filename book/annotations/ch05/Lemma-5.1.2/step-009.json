@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.2 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds `|m|` by two powers (`u^{1/9}/log x` and `√(2u/x)`), via Ramaré's bound, not by a combination of `t^{-δ}`, `δ∈[0,1/2)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 96,
+        "rect": [
+          0.26253,
+          0.31313,
+          0.56162,
+          0.04643
+        ]
+      },
+      "title": "Lemma 5.1.2 step 9: Text, p. 86",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_m_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Bound",
+        "lines": [
+          36,
+          74
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_m_le"
+          },
+          "snippet": {
+            "text": "/-- **`|m(x/u)| ≤ 0.03 u^{1/9}/log x + √2 √u/√x`** for `1 ≤ u ≤ x`, `x > 1`. -/\ntheorem abs_m_le {x : ℝ} (hx : 1 < x) {u : ℕ} (hu : 1 ≤ u) (hux : (u : ℝ) ≤ x) :\n    |∑ n ∈ Icc 1 ⌊x / u⌋₊, (μ n : ℝ) / n| ≤\n      0.03 * (u : ℝ) ^ ((1 : ℝ) / 9) / Real.log x + √2 * √(u : ℝ) / √x := by\n  have hu0 : (0 : ℝ) < u := by exact_mod_cast hu\n  have hx0 : 0 < x := by linarith\n  have hlx : 0 < Real.log x := Real.log_pos hx\n  have hy1 : 1 ≤ x / u := by rw [le_div_iff₀ hu0]; linarith\n  have hA0 : 0 ≤ 0.03 * (u : ℝ) ^ ((1 : ℝ) / 9) / Real.log x := by positivity\n  have hB0 : 0 ≤ √2 * √(u : ℝ) / √x := by positivity\n  by_cases h : 11815 ≤ x / u\n  · have hR := TernaryGoldbach.Prelim.ramare_moebius h\n    have hw : 9 ≤ Real.log (x / u) := le_trans log_11815_ge9 (Real.log_le_log (by norm_num) h)\n    have hv : 0 ≤ Real.log u := Real.log_natCast_nonneg u\n    have hsplit : Real.log x = Real.log u + Real.log (x / u) := by\n      rw [Real.log_div hx0.ne' hu0.ne']; ring\n    have hexp : 1 + Real.log u / 9 ≤ (u : ℝ) ^ ((1 : ℝ) / 9) := by\n      rw [Real.rpow_def_of_pos hu0]\n      have := Real.add_one_le_exp (Real.log u * (1 / 9))\n      linarith\n    have key : Real.log x ≤ (u : ℝ) ^ ((1 : ℝ) / 9) * Real.log (x / u) := by\n      rw [hsplit]\n      have : (1 + Real.log u / 9) * Real.log (x / u) ≤\n          (u : ℝ) ^ ((1 : ℝ) / 9) * Real.log (x / u) :=\n        mul_le_mul_of_nonneg_right hexp (by linarith)\n      nlinarith [mul_nonneg hv (by linarith : (0 : ℝ) ≤ Real.log (x / u) - 9)]\n    have hw0 : 0 < Real.log (x / u) := by linarith\n    calc _ ≤ 0.03 / Real.log (x / u) := hR\n      _ ≤ 0.03 * (u : ℝ) ^ ((1 : ℝ) / 9) / Real.log x := by\n        rw [div_le_div_iff₀ hw0 hlx]\n        have := mul_le_mul_of_nonneg_left key (by norm_num : (0 : ℝ) ≤ 0.03)\n        linarith\n      _ ≤ _ := le_add_of_nonneg_right hB0\n  · push Not at h\n    have hm := TernaryGoldbach.Prelim.m_sqrt hy1 h\n    calc _ ≤ √2 / √(x / u) := hm\n      _ = √2 * √(u : ℝ) / √x := by\n        rw [Real.sqrt_div hx0.le, div_div_eq_mul_div]\n      _ ≤ _ := le_add_of_nonneg_left hA0",
+            "line": 36,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_m_le",
+            "lines": [
+              36,
+              74
+            ],
+            "conclusion": "For `u≤x`: `|m(x/u)| ≤ 0.03 u^{1/9}/log x + √(2u/x)`, a combination of two powers `u^{δ}` bounding `|∑_{r≤x/u} μ(r)/r|`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Bound.lean",
+            "fragment": "L36-L74"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_Sd_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Bound",
+        "lines": [
+          79,
+          118
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_Sd_le"
+          },
+          "snippet": {
+            "text": "/-- **`|S_d(N/d)| ≤ 0.03 d^{1/9} P_{1/9}(d)/log x + √2 √d P_{1/2}(d)/√x`**. -/\ntheorem abs_Sd_le {x : ℝ} (hx : 1 < x) {d : ℕ} (hd1 : 1 ≤ d) :\n    |Sd d (⌊x⌋₊ / d)| ≤ 0.03 * (d : ℝ) ^ ((1 : ℝ) / 9) / Real.log x * PS (1 / 9) d (⌊x⌋₊ / d) +\n      √2 * √(d : ℝ) / √x * PS (1 / 2) d (⌊x⌋₊ / d) := by\n  have hx0 : 0 < x := by linarith\n  have hd0 : (0 : ℝ) < d := by exact_mod_cast hd1\n  rw [Sd_eq]\n  refine (abs_sum_le_sum_abs _ _).trans ?_\n  have hterm : ∀ a ∈ Icc 1 (⌊x⌋₊ / d),\n      |Hd d a * ∑ b ∈ Icc 1 (⌊x⌋₊ / d / a), (μ b : ℝ) / b| ≤\n        0.03 * (d : ℝ) ^ ((1 : ℝ) / 9) / Real.log x * (Hd d a * (a : ℝ) ^ ((1 : ℝ) / 9)) +\n        √2 * √(d : ℝ) / √x * (Hd d a * (a : ℝ) ^ ((1 : ℝ) / 2)) := by\n    intro a ha\n    have ha1 := (mem_Icc.1 ha).1\n    have haN := (mem_Icc.1 ha).2\n    have hda : d * a ≤ ⌊x⌋₊ := by\n      rw [Nat.le_div_iff_mul_le hd1] at haN; rw [mul_comm]; exact haN\n    have hu1 : 1 ≤ d * a := Nat.one_le_iff_ne_zero.2 (Nat.mul_ne_zero (by omega) (by omega))\n    have hux : ((d * a : ℕ) : ℝ) ≤ x :=\n      (by exact_mod_cast hda : ((d * a : ℕ) : ℝ) ≤ ⌊x⌋₊).trans (Nat.floor_le hx0.le)\n    have hfl : ⌊x⌋₊ / d / a = ⌊x / ((d * a : ℕ) : ℝ)⌋₊ := by\n      rw [Nat.div_div_eq_div_mul, Nat.floor_div_natCast]\n    have hm := abs_m_le hx hu1 hux\n    rw [← hfl] at hm\n    rw [abs_mul, abs_of_nonneg (Hd_nonneg d a)]\n    have ha0 : (0 : ℝ) ≤ a := Nat.cast_nonneg a\n    have e1 : ((d * a : ℕ) : ℝ) ^ ((1 : ℝ) / 9) =\n        (d : ℝ) ^ ((1 : ℝ) / 9) * (a : ℝ) ^ ((1 : ℝ) / 9) := by\n      push_cast; exact Real.mul_rpow hd0.le ha0\n    have e2 : √((d * a : ℕ) : ℝ) = √(d : ℝ) * (a : ℝ) ^ ((1 : ℝ) / 2) := by\n      push_cast; rw [Real.sqrt_mul hd0.le, Real.sqrt_eq_rpow (a : ℝ)]\n    rw [e1, e2] at hm\n    calc Hd d a * |∑ b ∈ Icc 1 (⌊x⌋₊ / d / a), (μ b : ℝ) / b|\n        ≤ Hd d a * (0.03 * ((d : ℝ) ^ ((1 : ℝ) / 9) * (a : ℝ) ^ ((1 : ℝ) / 9)) / Real.log x +\n          √2 * (√(d : ℝ) * (a : ℝ) ^ ((1 : ℝ) / 2)) / √x) :=\n          mul_le_mul_of_nonneg_left hm (Hd_nonneg d a)\n      _ = _ := by ring\n  refine (sum_le_sum hterm).trans (le_of_eq ?_)\n  rw [sum_add_distrib, ← mul_sum, ← mul_sum]\n  rfl",
+            "line": 79,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_Sd_le",
+            "lines": [
+              79,
+              118
+            ],
+            "conclusion": "`|S_d(N/d)|` is bounded termwise by `H_d(a)|m(N/(da))|` and `abs_m_le`, giving `P_{1/9}`, `P_{1/2}` sums."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Bound.lean",
+            "fragment": "L79-L118"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          96
+        ],
+        "printed": [
+          86
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

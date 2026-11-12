@@ -1,0 +1,192 @@
+{
+  "id": "Lemma 4.1.2 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the displayed bound for q>=3 and with the corrected integer range; the four terms are those of the display.",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17462,
+          0.185,
+          0.56162,
+          0.04174
+        ]
+      },
+      "title": "Lemma 4.1.2 step 4: Display, p. 55",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.2 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1292,
+          1306
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_4_1_2"
+          },
+          "snippet": {
+            "text": "    have hlowC : ∑ r ∈ Finset.Icc 1 L, G r ≤ C * (fq q 1 + ∑ r ∈ Finset.Icc 2 L, fq q r) := by\n      rw [Finset.sum_eq_add_sum_sdiff_singleton_of_mem (by simp; omega : 1 ∈ Finset.Icc 1 L)]\n      rw [show Finset.Icc 1 L \\ {1} = Finset.Icc 2 L by ext x; simp; omega, mul_add,\n        Finset.mul_sum]\n      refine add_le_add ?_ (Finset.sum_le_sum fun r _ => min_le_right _ _)\n      show G ((1 : ℕ) : ℝ) ≤ C * fq q 1\n      rw [Nat.cast_one]; exact min_le_right _ _\n    have hhighC : ∑ k ∈ Finset.Icc 1 K, G (k - 1 / 2) ≤\n        C * (fq q (1 / 2) + ∑ k ∈ Finset.Icc 2 K, fq q (k - 1 / 2)) := by\n      rw [Finset.sum_eq_add_sum_sdiff_singleton_of_mem (by simp; omega : 1 ∈ Finset.Icc 1 K)]\n      rw [show Finset.Icc 1 K \\ {1} = Finset.Icc 2 K by ext x; simp; omega, mul_add,\n        Finset.mul_sum]\n      refine add_le_add ?_ (Finset.sum_le_sum fun k _ => min_le_right _ _)\n      show G (((1 : ℕ) : ℝ) - 1 / 2) ≤ C * fq q (1 / 2)\n      rw [Nat.cast_one, show (1 : ℝ) - 1 / 2 = 1 / 2 by norm_num]; exact min_le_right _ _",
+            "line": 1292,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+            "lines": [
+              1227,
+              1383
+            ],
+            "conclusion": "Each family's sum of G is at most C times (first term + sum of fq over the remaining points): C(fq q 1 + sum_{r=2}^L fq q r) and C(fq q (1/2) + sum_{k=2}^K fq q (k-1/2))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1292-L1306"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_fq_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          242,
+          299
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_fq_le"
+          },
+          "snippet": {
+            "text": "/-- **I1.** `∑_{j=2}^{K} f_q(j - 1/2) ≤ (q/π) cot(π/q)` for `2 ≤ 2K ≤ q`. -/\ntheorem sum_fq_le {q : ℝ} {K : ℕ} (hq : 2 < q) (hK : (K : ℝ) ≤ q / 2) :\n    ∑ j ∈ Finset.Icc 2 K, fq q (j - 1 / 2) ≤\n      q / π * (Real.cos (π / q) / Real.sin (π / q)) := by\n  have hq0 : 0 < q := by linarith\n  -- Midpoint inequality on each `[j - 1, j]`.\n  have hHH : ∀ j ∈ Finset.Icc 2 K, fq q (j - 1 / 2) ≤ ∫ u in ((j : ℝ) - 1)..j, fq q u := by\n    intro j hj\n    have hj2 : (2 : ℝ) ≤ j := by exact_mod_cast (Finset.mem_Icc.1 hj).1\n    have hjK : (j : ℝ) ≤ K := by exact_mod_cast (Finset.mem_Icc.1 hj).2\n    have h := (convexOn_fq hq0).le_integral_of_midpoint (m := j - 1 / 2)\n      (fun u hu => ⟨by linarith [hu.1], by linarith [hu.2]⟩)\n      (continuousOn_fq hq0 (by linarith) (by linarith))\n    convert h using 2 <;> ring\n  have hcot0 : 0 ≤ Real.cos (π / q) / Real.sin (π / q) := by\n    have h1 : π / q < π / 2 := by\n      rw [div_lt_div_iff₀ hq0 (by norm_num)]; nlinarith [Real.pi_pos]\n    have h0 : 0 < π / q := by positivity\n    exact div_nonneg (Real.cos_nonneg_of_mem_Icc ⟨by linarith, h1.le⟩)\n      (Real.sin_pos_of_pos_of_lt_pi h0 (by linarith)).le\n  rcases Nat.lt_or_ge K 2 with hK2 | hK2\n  · rw [Finset.Icc_eq_empty (by omega), Finset.sum_empty]\n    exact mul_nonneg (by positivity) hcot0\n  -- Sum of adjacent integrals.\n  have hsum : ∑ j ∈ Finset.Icc 2 K, ∫ u in ((j : ℝ) - 1)..j, fq q u = ∫ u in (1 : ℝ)..K, fq q u := by\n    have h := intervalIntegral.sum_integral_adjacent_intervals (μ := volume)\n      (f := fq q) (a := fun k : ℕ => (k : ℝ) + 1) (n := K - 1) fun k hk => by\n        have hk2 : k + 2 ≤ K := by omega\n        have : (k : ℝ) + 2 ≤ K := by exact_mod_cast hk2\n        have hc := continuousOn_fq hq0 (a := (k : ℝ) + 1) (b := (k : ℝ) + 1 + 1)\n          (by positivity) (by linarith)\n        show IntervalIntegrable (fq q) volume ((k : ℝ) + 1) (((k + 1 : ℕ) : ℝ) + 1)\n        push_cast\n        exact hc.intervalIntegrable_of_Icc (by linarith)\n    simp only [Nat.cast_zero, zero_add] at h\n    rw [show ((K - 1 : ℕ) : ℝ) + 1 = K by rw [Nat.cast_sub (by omega)]; ring] at h\n    rw [← h]\n    refine Finset.sum_bij (fun k _ => k - 2) ?_ ?_ ?_ ?_\n    · intro j hj; simp only [Finset.mem_Icc] at hj; simp only [Finset.mem_range]; omega\n    · intro a ha b hb hab; simp only [Finset.mem_Icc] at ha hb; omega\n    · intro k hk; simp only [Finset.mem_range] at hk\n      exact ⟨k + 2, by simp only [Finset.mem_Icc]; omega, by simp⟩\n    · intro j hj; simp only [Finset.mem_Icc] at hj\n      push_cast [Nat.cast_sub hj.1]; ring_nf\n  have hKq : ∫ u in (1 : ℝ)..K, fq q u ≤ ∫ u in (1 : ℝ)..(q / 2), fq q u := by\n    have hK1 : (1 : ℝ) ≤ K := by exact_mod_cast (by omega : 1 ≤ K)\n    rw [← intervalIntegral.integral_add_adjacent_intervals (b := (K : ℝ))\n      ((continuousOn_fq hq0 one_pos (by linarith)).intervalIntegrable_of_Icc hK1)\n      ((continuousOn_fq hq0 (by linarith) (by linarith)).intervalIntegrable_of_Icc hK)]\n    have := intervalIntegral.integral_nonneg (μ := volume) hK fun u _ => fq_nonneg q u\n    linarith\n  calc ∑ j ∈ Finset.Icc 2 K, fq q (j - 1 / 2)\n      ≤ ∑ j ∈ Finset.Icc 2 K, ∫ u in ((j : ℝ) - 1)..j, fq q u := Finset.sum_le_sum hHH\n    _ ≤ ∫ u in (1 : ℝ)..(q / 2), fq q u := hsum ▸ hKq\n    _ = q / π * (Real.cos (π / q) / Real.sin (π / q)) := by\n        rw [integral_fq hq0 one_pos (by linarith) (by linarith)]\n        rw [show π * (q / 2) / q = π / 2 by field_simp, Real.cos_pi_div_two, mul_one]\n        simp",
+            "line": 242,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_fq_le",
+            "lines": [
+              242,
+              299
+            ],
+            "conclusion": "sum_{j=2}^K fq q (j-1/2) <= (q/pi) cot(pi/q) for K<=q/2 (integral comparison)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L242-L299"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_fq_int_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1144,
+          1207
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_fq_int_le"
+          },
+          "snippet": {
+            "text": "/-- Midpoint sums at integer points: `∑_{r=2}^{L} f_q(r) ≤ (q/π) cot(3π/2q)` for `2L + 1 ≤ q`. -/\ntheorem sum_fq_int_le {q : ℝ} {L : ℕ} (hq : 3 ≤ q) (hL : 2 * (L : ℝ) + 1 ≤ q) :\n    ∑ r ∈ Finset.Icc 2 L, fq q r ≤\n      q / π * (Real.cos (3 * π / (2 * q)) / Real.sin (3 * π / (2 * q))) := by\n  have hq0 : 0 < q := by linarith\n  have hcot0 : 0 ≤ Real.cos (3 * π / (2 * q)) / Real.sin (3 * π / (2 * q)) := by\n    have h1 : 3 * π / (2 * q) ≤ π / 2 := by\n      rw [div_le_div_iff₀ (by positivity) (by norm_num)]; nlinarith [Real.pi_pos]\n    have h0 : 0 < 3 * π / (2 * q) := by positivity\n    exact div_nonneg (Real.cos_nonneg_of_mem_Icc ⟨by linarith, h1⟩)\n      (Real.sin_pos_of_pos_of_lt_pi h0 (by linarith [Real.pi_pos])).le\n  rcases Nat.lt_or_ge L 2 with hL2 | hL2\n  · rw [Finset.Icc_eq_empty (by omega), Finset.sum_empty]\n    exact mul_nonneg (by positivity) hcot0\n  have hHH : ∀ r ∈ Finset.Icc 2 L, fq q r ≤ ∫ u in ((r : ℝ) - 1 / 2)..(r + 1 / 2), fq q u := by\n    intro r hr\n    have hr2 : (2 : ℝ) ≤ r := by exact_mod_cast (Finset.mem_Icc.1 hr).1\n    have hrL : (r : ℝ) ≤ L := by exact_mod_cast (Finset.mem_Icc.1 hr).2\n    exact (convexOn_fq hq0).le_integral_of_midpoint (m := r)\n      (fun u hu => ⟨by linarith [hu.1], by linarith [hu.2]⟩)\n      (continuousOn_fq hq0 (by linarith) (by linarith))\n  have hsum : ∑ r ∈ Finset.Icc 2 L, ∫ u in ((r : ℝ) - 1 / 2)..(r + 1 / 2), fq q u =\n      ∫ u in (3 / 2 : ℝ)..(L + 1 / 2), fq q u := by\n    have h := intervalIntegral.sum_integral_adjacent_intervals (μ := MeasureTheory.volume)\n      (f := fq q) (a := fun k : ℕ => (k : ℝ) + 3 / 2) (n := L - 1) fun k hk => by\n        have hk2 : k + 2 ≤ L := by omega\n        have : (k : ℝ) + 2 ≤ L := by exact_mod_cast hk2\n        have hc := continuousOn_fq hq0 (a := (k : ℝ) + 3 / 2) (b := (k : ℝ) + 3 / 2 + 1)\n          (by positivity) (by linarith)\n        show IntervalIntegrable (fq q) MeasureTheory.volume ((k : ℝ) + 3 / 2)\n          (((k + 1 : ℕ) : ℝ) + 3 / 2)\n        push_cast; ring_nf at hc ⊢\n        exact hc.intervalIntegrable_of_Icc (by linarith)\n    simp only [Nat.cast_zero, zero_add] at h\n    rw [show ((L - 1 : ℕ) : ℝ) + 3 / 2 = L + 1 / 2 by rw [Nat.cast_sub (by omega)]; ring] at h\n    rw [← h]\n    refine Finset.sum_bij (fun r _ => r - 2) ?_ ?_ ?_ ?_\n    · intro r hr; simp only [Finset.mem_Icc] at hr; simp only [Finset.mem_range]; omega\n    · intro a ha b hb hab; simp only [Finset.mem_Icc] at ha hb; omega\n    · intro k hk; simp only [Finset.mem_range] at hk\n      exact ⟨k + 2, by simp only [Finset.mem_Icc]; omega, by simp⟩\n    · intro r hr; simp only [Finset.mem_Icc] at hr\n      push_cast [Nat.cast_sub hr.1]; ring_nf\n  have hLq : ∫ u in (3 / 2 : ℝ)..(L + 1 / 2), fq q u ≤ ∫ u in (3 / 2 : ℝ)..(q / 2), fq q u := by\n    have hL1 : (3 / 2 : ℝ) ≤ L + 1 / 2 := by\n      have : (2 : ℝ) ≤ L := by exact_mod_cast hL2\n      linarith\n    have e := intervalIntegral.integral_add_adjacent_intervals (a := (3 / 2 : ℝ))\n      (b := (L : ℝ) + 1 / 2) (c := q / 2) (μ := MeasureTheory.volume)\n      ((continuousOn_fq hq0 (by norm_num) (by linarith)).intervalIntegrable_of_Icc hL1)\n      ((continuousOn_fq hq0 (by linarith) (by linarith)).intervalIntegrable_of_Icc\n        (by linarith))\n    have := intervalIntegral.integral_nonneg (μ := MeasureTheory.volume)\n      (show (L : ℝ) + 1 / 2 ≤ q / 2 by linarith) fun u _ => fq_nonneg q u\n    linarith\n  calc ∑ r ∈ Finset.Icc 2 L, fq q r\n      ≤ ∑ r ∈ Finset.Icc 2 L, ∫ u in ((r : ℝ) - 1 / 2)..(r + 1 / 2), fq q u :=\n        Finset.sum_le_sum hHH\n    _ ≤ ∫ u in (3 / 2 : ℝ)..(q / 2), fq q u := hsum ▸ hLq\n    _ = _ := by\n        rw [integral_fq hq0 (by norm_num) (by linarith) (by linarith)]\n        rw [show π * (q / 2) / q = π / 2 by field_simp, Real.cos_pi_div_two,\n          show π * (3 / 2) / q = 3 * π / (2 * q) by ring]\n        simp",
+            "line": 1144,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_fq_int_le",
+            "lines": [
+              1144,
+              1207
+            ],
+            "conclusion": "sum_{r=2}^L fq q r <= (q/pi) cot(3pi/2q) for 2L+1<=q (integral comparison by convexity)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1144-L1207"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1347,
+          1357
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_4_1_2"
+          },
+          "snippet": {
+            "text": "    calc ∑ r ∈ Finset.Icc 1 L, F r + ∑ k ∈ Finset.Icc 1 K, F (q - k)\n        ≤ C * (fq q 1 + ∑ r ∈ Finset.Icc 2 L, fq q r) +\n            C * (fq q (1 / 2) + ∑ k ∈ Finset.Icc 2 K, fq q (k - 1 / 2)) :=\n          add_le_add (hS1.trans hlowC) (hS2.trans hhighC)\n      _ ≤ C * (5 * q ^ 2 / (3 * π ^ 2)) + C * (5 * q ^ 2 / π ^ 2) := by\n          have e1 := mul_le_mul_of_nonneg_left\n            (show fq q 1 + ∑ r ∈ Finset.Icc 2 L, fq q r ≤ 5 * q ^ 2 / (3 * π ^ 2) by linarith) hC\n          have e2 := mul_le_mul_of_nonneg_left\n            (show fq q (1 / 2) + ∑ k ∈ Finset.Icc 2 K, fq q (k - 1 / 2) ≤ 5 * q ^ 2 / π ^ 2 by\n              linarith) hC\n          linarith",
+            "line": 1347,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_4_1_2",
+            "lines": [
+              1227,
+              1383
+            ],
+            "conclusion": "Sum of the two families is at most C(fq q 1 + (q/pi)cot(3pi/2q)) + C(fq q (1/2) + (q/pi)cot(pi/q)), with fq q 1 = 1/sin^2(pi/q), fq q (1/2)=1/sin^2(pi/2q)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1347-L1357"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

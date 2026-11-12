@@ -1,0 +1,81 @@
+{
+  "id": "14.3 display 14",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds $c_L\\sigma/D-8.6294$ with $c_L=\\log(2(n+1))+2$, $D=\\log(2\\sqrt{x/784})+c_E$ ($\\delta_0=392$) and $I_0\\ge8.6294x$; constants differ from $c^\\pm$, $13.9716$, $9.2598$ and $(\\sqrt J-\\sqrt E)^2\\ge8.6297x$.",
+  "subject": [
+    {
+      "location": {
+        "page": 280,
+        "rect": [
+          0.25926,
+          0.3754,
+          0.56816,
+          0.12594
+        ]
+      },
+      "title": "Display, p. 270",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.3 display 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          443,
+          457
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hbase : g 150000 * (Hl2y x T r₂ 150000 - ∫ α in Ioc 0 1 ∩ majorArcs 8 ((150000 : ℕ) : ℝ) x,\n      ‖expTsum (a₁ x) α‖ ^ 2) ≤ y * x * (ghatY y 150000 * (cL 150000 * sig x / Dx x - 8.6294)) := by\n    rw [hHl 150000 h150]\n    have h1 : cL 150000 / Dx x * T ≤ cL 150000 / Dx x * (sig x * x) :=\n      mul_le_mul_of_nonneg_left hT (div_nonneg (hcL _) hD.le)\n    have h2 : cL 150000 / Dx x * T - ∫ α in Ioc 0 1 ∩ majorArcs 8 ((150000 : ℕ) : ℝ) x,\n        ‖expTsum (a₁ x) α‖ ^ 2 ≤ x * (cL 150000 * sig x / Dx x - 8.6294) := by\n      have e : x * (cL 150000 * sig x / Dx x - 8.6294) = cL 150000 / Dx x * (sig x * x) - 8.6294 * x := by\n        field_simp\n      rw [e]; push_cast at hI ⊢; linarith\n    have := mul_le_mul_of_nonneg_left h2 (hgnn 150000 le_rfl)\n    simp only [hg_def] at this ⊢\n    push_cast at this ⊢\n    linarith [this]\n  -- the sum",
+            "line": 443,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "Base term: $g(r_0)(H(r_0)-\\int_{\\mathfrak M_{8,r_0}}|S_1|^2)\\le yx\\,\\hat g(y,150000)(c_L(150000)\\sigma/D-8.6294)$ using $T\\le\\sigma x$ and $I_0\\ge8.6294x$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L443-L457"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          280
+        ],
+        "printed": [
+          270
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

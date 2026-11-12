@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.3 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's zero-count input is a local Jensen upper bound per disc, proved in [L], in place of the cited asymptotic $N(T,\\chi)=\\frac{T}{\\pi}\\log\\frac{qT}{2\\pi e}+O^*(g_\\chi(T))$; there is no main term and no lower bound.",
+  "subject": [
+    {
+      "location": {
+        "page": 181,
+        "rect": [
+          0.17462,
+          0.80376,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 9.1.3 step 3: Text, p. 171",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.3 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_count_poly",
+        "module": "TernaryGoldbach.Explicit.ZeroSums",
+        "lines": [
+          77,
+          80
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_count_poly"
+          },
+          "snippet": {
+            "text": "theorem zero_count_poly {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (T : ℝ) {r : ℝ} (hr : 0 < r) (hr10 : r < 10) :\n    ((∑ᶠ u, MeromorphicOn.divisor χ.LFunction (Metric.closedBall (2 + T * I) |r|) u : ℤ) : ℝ) ≤\n      Real.log (BP N T / 0.355) / Real.log (10 / r) := by",
+            "line": 77,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_count_poly",
+            "lines": [
+              76,
+              95
+            ],
+            "conclusion": "Jensen's formula: $L(s,\\chi)$ ($\\chi\\ne1$ primitive) has at most $\\log(B'_T/0.355)/\\log(10/r)$ zeros in $|s-(2+iT)|\\le r$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSums.lean",
+            "fragment": "L77-L80"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          181
+        ],
+        "printed": [
+          171
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "1.5 display 6",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] states the identity only for consecutive integer levels n, n+1 of the nested arcs 𝔐_{8,n} inside the layer-peeling lemma (and uses `u = |S|²`); the text's s is arbitrary.",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.17135,
+          0.56357,
+          0.56816,
+          0.03661
+        ]
+      },
+      "title": "Display, p. 27",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.5 display 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.layer_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          74,
+          77
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.layer_le"
+          },
+          "snippet": {
+            "text": "    have e2 : ∫ ω in M (k + 1), u ω ∂μ = (∫ ω in M k, u ω ∂μ) + ∫ ω in M (k + 1) \\ M k, u ω ∂μ := by\n      have : M (k + 1) = M k ∪ (M (k + 1) \\ M k) := (union_sdiff_cancel (hmono (by omega))).symm\n      conv_lhs => rw [this]\n      rw [setIntegral_union disjoint_sdiff_right ((hM _).diff (hM _)) hu.integrableOn hu.integrableOn]",
+            "line": 74,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.layer_le",
+            "lines": [
+              50,
+              86
+            ],
+            "conclusion": "For a monotone family of measurable sets `M n`, `∫_{M(k+1)} u = ∫_{M k} u + ∫_{M(k+1) \\ M k} u`, i.e. the integral over the layer between two arc levels is the difference of the integrals."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L74-L77"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          27
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 5.1.2 step 16",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has the same Euler factor $1+xy/((1+x)(1-y))$ (`ell`, $x=1/p$, $y=p^{s-1}$) but bounds it by rational upper bounds for $p^s$ and a tail estimate, then evaluates the product numerically, instead of the bound $(1-x^3)/((1-xy)(1-xy^2))$ that leads to zeta values.",
+  "subject": [
+    {
+      "location": {
+        "page": 97,
+        "rect": [
+          0.17462,
+          0.21506,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.1.2 step 16: Text, p. 87",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ell_le_of",
+        "module": "TernaryGoldbach.MinorArcs.G2Numerics",
+        "lines": [
+          42,
+          43
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ell_le_of"
+          },
+          "snippet": {
+            "text": "theorem ell_le_of {s r : ℝ} {p : ℕ} (hX : (p : ℝ) ^ s ≤ r) (hr : r < p) :\n    ell s p ≤ 1 + r / ((p + 1) * (p - r)) := by",
+            "line": 42,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ell_le_of",
+            "lines": [
+              42,
+              51
+            ],
+            "conclusion": "$\\ell_s(p)=1+p^s/((p+1)(p-p^s))\\le1+r/((p+1)(p-r))$ whenever $p^s\\le r<p$; with $x=1/p$, $y=p^{s-1}$, $\\ell_s(p)=1+xy/((1+x)(1-y))$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Numerics.lean",
+            "fragment": "L42-L43"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ell_sub_one_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Numerics",
+        "lines": [
+          74,
+          77
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ell_sub_one_le"
+          },
+          "snippet": {
+            "text": "/-- Tail of `ℓ_s`: `ℓ_s(n) − 1 ≤ n^{−(2−s)}/(1 − ρ₀)` for `n ≥ P₀`, `P₀^s/P₀ ≤ ρ₀ < 1`. -/\ntheorem ell_sub_one_le {s : ℝ} (hs1 : s < 1) {n P0 : ℕ} (hP0 : 1 ≤ P0) (hn : P0 ≤ n) {ρ0 : ℝ}\n    (hρ : (P0 : ℝ) ^ s / P0 ≤ ρ0) (hρ1 : ρ0 < 1) :\n    ell s n - 1 ≤ (n : ℝ) ^ (-(2 - s)) / (1 - ρ0) := by",
+            "line": 74,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ell_sub_one_le",
+            "lines": [
+              74,
+              92
+            ],
+            "conclusion": "For $n\\ge P_0$ with $P_0^s/P_0\\le\\rho_0<1$: $\\ell_s(n)-1\\le n^{-(2-s)}/(1-\\rho_0)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Numerics.lean",
+            "fragment": "L74-L77"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prod_ell9_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Numerics",
+        "lines": [
+          427,
+          429
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prod_ell9_le"
+          },
+          "snippet": {
+            "text": "/-- **`∏_{2 < p < M} ℓ_{1/9}(p) ≤ 1.367`**. -/\ntheorem prod_ell9_le (M : ℕ) :\n    ∏ p ∈ (Nat.primesBelow M).filter (· ≠ 2), ell (1 / 9) p ≤ 1.367 := by",
+            "line": 427,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prod_ell9_le",
+            "lines": [
+              427,
+              450
+            ],
+            "conclusion": "$\\prod_{2<p<M}\\ell_{1/9}(p)\\le1.367$ for every $M$, from these factor bounds (primes below 30 exactly, the tail via $\\exp$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Numerics.lean",
+            "fragment": "L427-L429"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          97
+        ],
+        "printed": [
+          87
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

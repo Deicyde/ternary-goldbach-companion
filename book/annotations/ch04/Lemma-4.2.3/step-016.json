@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.3 step 16",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part: ignoring oddness, and the small-|δ| (or `D ≤ Q₀/2`) case; the large-|δ| bound is not formalized.",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17462,
+          0.80701,
+          0.56162,
+          0.04649
+        ]
+      },
+      "title": "Lemma 4.2.3 step 16: Text, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          994,
+          1010
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB"
+          },
+          "snippet": {
+            "text": "  set g : ℤ → ℝ := fun n => if ¬ ((q : ℤ) ∣ n ∧ (n : ℝ) ≤ M) then TLn α x n else 0\n  have h1 : ‖restPartL α x D M q‖ ≤ ∑ n ∈ Ioc (0 : ℤ) ⌊D⌋, g n := by\n    rw [restPartL]\n    refine (norm_sum_le _ _).trans ?_\n    have hfl : ((⌊D⌋₊ : ℕ) : ℤ) = ⌊D⌋ := Int.natCast_floor_eq_floor (by linarith)\n    rw [← hfl, ← sum_Icc_eq_Ioc_int]\n    refine sum_le_sum fun m hm => ?_\n    simp only [g, TLn, Int.toNat_natCast]\n    by_cases h : Odd m ∧ ¬ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M)\n    · rw [if_pos h, if_pos (by\n        intro ⟨hd, hle⟩; exact h.2 ⟨by exact_mod_cast hd, by exact_mod_cast hle⟩), norm_mul]\n      have : ‖(μ m : ℂ)‖ ≤ 1 := by\n        rw [Complex.norm_intCast]; exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n      calc ‖(μ m : ℂ)‖ * ‖ToddG (eta2log (x / m)) α x m‖ ≤ 1 * ‖ToddG (eta2log (x / m)) α x m‖ := by\n            gcongr\n        _ = _ := one_mul _\n    · rw [if_neg h, norm_zero]; split_ifs <;> simp [norm_nonneg]",
+            "line": 994,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+            "lines": [
+              968,
+              1182
+            ],
+            "conclusion": "Oddness of `m` dropped in `g`, bounding `‖restPartL‖` by a sum over all `n`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L994-L1010"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_3_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          1186,
+          1190
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_3_caseB"
+          },
+          "snippet": {
+            "text": "`log` analogue (`eta2_fourier_bound'`, `eta2log_fourier_bound`). -/\ntheorem lemma_4_2_3_caseB {α x δ Q₀ D : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q₀)\n    (hD : √3 ≤ D) (hDx : D ≤ min (x / 4) (x / rexp 1))\n    (hcase : |δ| ≤ 1 / (2 * c₂) ∨ D ≤ Q₀ / 2) :\n    ‖typeILog α x D‖ ≤ bound_4_40 x δ q D + bound_4_41 x q D := by",
+            "line": 1186,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_3_caseB",
+            "lines": [
+              1184,
+              1242
+            ],
+            "conclusion": "Hypothesis `hcase : |δ| ≤ 1/2c₂ ∨ D ≤ Q₀/2`: only the small-δ case is stated."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L1186-L1190"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

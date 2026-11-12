@@ -1,0 +1,81 @@
+{
+  "id": "14.2 display 18",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "This numerical bound is for the cross-term error $E_{\\eta_*}A_{\\eta_+}+E_{\\eta_+}(\\ldots)|\\eta_*|_2$; [L] bounds the analogous error with residual bounds $7.83\\cdot10^{-13}x^2$, $1.34\\cdot10^{-11}y^2$ and `pointwise_bound` ($3.67\\cdot10^{-6}x/\\kappa$ and $8.85\\cdot10^{-7}x$ coefficients), not by this expression.",
+  "subject": [
+    {
+      "location": {
+        "page": 276,
+        "rect": [
+          0.25926,
+          0.52295,
+          0.56816,
+          0.07219
+        ]
+      },
+      "title": "Display, p. 266",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.2 display 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.pointwise_bound",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          759,
+          803
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.pointwise_bound"
+          },
+          "snippet": {
+            "text": "/-- **The pointwise estimate** at `α = b/q + β`, summed over `b`. -/\ntheorem pointwise_bound (N : ℕ) {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) {β : ℝ}\n    (hβ : |β * x| ≤ 1200000 / qt q) :\n    ‖∑ b ∈ Bset q, fI N x ((b : ℝ) / q + β) -\n        (coefN N q : ℂ) * ((𝓕 etaPC (-(β * x)) * x) ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β)))‖ ≤\n      (3.67e-6 * (x / κ) + 8.85e-7 * x / 9) * ∑ b ∈ Bset q, ‖S etaPlus x ((b : ℝ) / q + β)‖ ^ 2 +\n        9 * 8.85e-7 * x / 2 * mPhi2 q * ‖𝓕 etaUC (-(β * (x / κ))) * ((x / κ : ℝ) : ℂ)‖ ^ 2 +\n        8.85e-7 * x / 9 * mPhi q * ‖𝓕 etaPC (-(β * x)) * x‖ ^ 2 := by\n  obtain ⟨hq1, hqt', hq3⟩ := mem_Qset_bounds hq\n  have hx0 : 0 < x := by linarith\n  have hy0 : 0 < x / κ := div_pos hx0 kappa_pos\n  have hφ : (q.totient : ℝ) ≠ 0 := by exact_mod_cast (Nat.totient_pos.2 (by omega)).ne'\n  set m : ℂ := (μ q : ℂ) / q.totient with hm\n  set Ap : ℂ := 𝓕 etaPC (-(β * x)) * x with hAp\n  set Au : ℂ := 𝓕 etaUC (-(β * (x / κ))) * ((x / κ : ℝ) : ℂ) with hAu\n  have hAs : Au = 𝓕 etaSC (-(β * x)) * x := As_eq β\n  have hρ : ∑ b ∈ Bset q, ‖S etaPlus x ((b : ℝ) / q + β) - m * Ap‖ ^ 2 ≤ (8.85e-7 * x) ^ 2 := by\n    refine (resid_plus hx hq hβ).trans ?_; nlinarith\n  have hU : ∀ b ∈ Bset q, ‖S etaStar x ((b : ℝ) / q + β) - m * Au‖ ≤ 3.67e-6 * (x / κ) := by\n    intro b hb\n    have h := resid_star hx hq hβ hb\n    have h2 : ‖S etaStar x ((b : ℝ) / q + β) - m * Au‖ ^ 2 ≤ (3.67e-6 * (x / κ)) ^ 2 := by\n      refine h.trans ?_; nlinarith\n    exact (pow_le_pow_iff_left₀ (norm_nonneg _) (by positivity) two_ne_zero).1 h2\n  have heb : ∀ b ∈ Bset q, ‖e (-(N * ((b : ℝ) / q + β)))‖ = 1 := fun b _ => TernaryGoldbach.norm_e _\n  have hmain := sum_cubic_error (s := Bset q) (fun b => S etaPlus x ((b : ℝ) / q + β))\n    (fun b => S etaStar x ((b : ℝ) / q + β)) (fun b => e (-(N * ((b : ℝ) / q + β)))) (m * Ap) (m * Au)\n    (by positivity : (0:ℝ) < 8.85e-7 * x) heb hU hρ\n  have hid : (m * Ap) ^ 2 * (m * Au) * ∑ b ∈ Bset q, e (-(N * ((b : ℝ) / q + β))) =\n      (coefN N q : ℂ) * (Ap ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β))) := by\n    rw [← coef_eq hq1, ← hAs, hm]\n    have : ∀ b ∈ Bset q, e (-(N * ((b : ℝ) / q + β))) = e (-(N * ((b : ℝ) / q))) * e (-(N * β)) := by\n      intro b _; rw [← TernaryGoldbach.e_add]; congr 1; ring\n    rw [sum_congr rfl this, ← sum_mul]; ring\n  have h1 : ‖m * Au‖ ^ 2 = mPhi2 q * ‖Au‖ ^ 2 := by\n    rw [norm_mul, mul_pow, hm, norm_moebius_div_sq_le]; rfl\n  have h2 : 2 * ((Bset q).card : ℝ) * ‖m * Ap‖ ^ 2 = 2 * (mPhi q * ‖Ap‖ ^ 2) := by\n    rw [card_Bset_eq, norm_mul, mul_pow, hm, norm_moebius_div_sq_le]\n    unfold mPhi; field_simp\n  rw [hid, h1, h2] at hmain\n  have e1 : ∑ b ∈ Bset q, fI N x ((b : ℝ) / q + β) = ∑ b ∈ Bset q, S etaPlus x ((b : ℝ) / q + β) ^ 2 *\n      S etaStar x ((b : ℝ) / q + β) * e (-(N * ((b : ℝ) / q + β))) := rfl\n  rw [e1]\n  refine hmain.trans (le_of_eq ?_)\n  ring",
+            "line": 759,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.pointwise_bound",
+            "lines": [
+              759,
+              803
+            ],
+            "conclusion": "Pointwise bound of $\\sum_b S_+^2S_*e(-N\\alpha)$ against the main term, via `sum_cubic_error` with residual bounds `resid_plus`, `resid_star`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L759-L803"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          276
+        ],
+        "printed": [
+          266
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

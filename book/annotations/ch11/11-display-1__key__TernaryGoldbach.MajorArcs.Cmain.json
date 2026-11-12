@@ -1,0 +1,81 @@
+{
+  "id": "11 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "[L] defines the constant as the convolution form int (eta_circ*eta_circ)(M-sigma) eta_*(sigma) dsigma over R, equal to the double integral over [0,inf)^2 by a change of variables; M = N/x.",
+  "subject": [
+    {
+      "location": {
+        "page": 227,
+        "rect": [
+          0.17135,
+          0.49469,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Display, p. 217",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "11 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Cmain",
+        "module": "TernaryGoldbach.MajorArcs.CMain",
+        "lines": [
+          489,
+          490
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Cmain"
+          },
+          "snippet": {
+            "text": "/-- **`C_{η◦,η_*}(M) = ∫∫ η◦(t₁)η◦(t₂)η_*(M − t₁ − t₂) = ∫ (η◦ ∗ η◦)(M − σ) η_*(σ) dσ`** [H, (10.37)]. -/\nnoncomputable def Cmain (M : ℝ) : ℝ := ∫ σ, conv2 (M - σ) * etaS σ",
+            "line": 489,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.Cmain",
+            "lines": [
+              489,
+              490
+            ],
+            "conclusion": "$C_{\\eta_\\circ,\\eta_*}(M)=\\int(\\eta_\\circ*\\eta_\\circ)(M-\\sigma)\\eta_*(\\sigma)\\,d\\sigma$ with `conv2 ρ = ∫ t, etaO t * etaO (ρ - t)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
+            "fragment": "L489-L490"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          227
+        ],
+        "printed": [
+          217
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

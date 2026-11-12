@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.3 step 29",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same bound for η=η₂ (`|η'|₁=eta2'L1`); Lean sums over `n ≤ min(q/2,D)`, a smaller range than `m ≤ q/2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 79,
+        "rect": [
+          0.17462,
+          0.44514,
+          0.56162,
+          0.01808
+        ]
+      },
+      "title": "Lemma 4.2.3 step 29: Text, p. 69",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R1L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          382,
+          387
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R1L"
+          },
+          "snippet": {
+            "text": "theorem sum_R1L {α x δ Q D : ℝ} {a k : ℤ} {q : ℕ} (hx : 1 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) (hD4 : D ≤ x / 4) :\n    ∑ n ∈ Ioc 0 ⌊min ((q : ℝ) / 2) D⌋, TLn α x n ≤\n      2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) *\n        Real.log x := by",
+            "line": 382,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R1L",
+            "lines": [
+              380,
+              449
+            ],
+            "conclusion": "`∑_{n ≤ min(q/2,D)} |T_{n,∘}| ≤ (2|η₂'|₁/π) q max(1, log(c₀e³q²/(4π|η₂'|₁x))) log x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L382-L387"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          79
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

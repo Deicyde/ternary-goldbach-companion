@@ -1,0 +1,81 @@
+{
+  "id": "5.1 display 10",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same shape (main term at small $m$, error terms, tail), but Lean has no $c_{v,i}$, no $\\log 2/C_0$ term and no $c_{v,4}/2s(\\log S/2s)^2$ sum; the tail is bounded by `tail_integral_le`.",
+  "subject": [
+    {
+      "location": {
+        "page": 101,
+        "rect": [
+          0.17135,
+          0.17752,
+          0.56816,
+          0.13309
+        ]
+      },
+      "title": "Display, p. 91",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5.1 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+        "module": "TernaryGoldbach.MinorArcs.T2Bound",
+        "lines": [
+          27,
+          73
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.T2_le'"
+          },
+          "snippet": {
+            "text": "  have hT := abs_T2_sub_le (show (1 : ℝ) ≤ S by linarith)\n  have hT' : T2 S ≤ 1 / 4 * (∫ y in (1 : ℝ)..S, g2 y / y) + S⁻¹ * ∫ y in (1 : ℝ)..S, |g2 y| :=\n    sub_le_iff_le_add'.1 (abs_le.1 hT).2\n  obtain ⟨hI, hJ⟩ := I_J_XX\n  have htail := tail_integral_le h\n  -- split at `10⁴`\n  have e1 := intervalIntegral.integral_add_adjacent_intervals\n    (intervalIntegrable_g2_div le_rfl (by norm_num : (1 : ℝ) ≤ 10000))\n    (intervalIntegrable_g2_div (by norm_num) h)\n  have e2 := intervalIntegral.integral_add_adjacent_intervals\n    (intervalIntegrable_abs_g2 zero_le_one (by norm_num : (1 : ℝ) ≤ 10000))\n    (intervalIntegrable_abs_g2 (by norm_num) h)\n  have h3 : ∫ y in (10000 : ℝ)..S, g2 y / y ≤ ∫ y in (10000 : ℝ)..S, |g2 y| / y :=\n    intervalIntegral.integral_mono_on h (intervalIntegrable_g2_div (by norm_num) h)\n      (G2Tail.intervalIntegrable_abs_g2_div (by norm_num) h) fun y hy =>\n        div_le_div_of_nonneg_right (le_abs_self _) (by linarith [hy.1])\n  have h4 : S⁻¹ * ∫ y in (10000 : ℝ)..S, |g2 y| ≤ ∫ y in (10000 : ℝ)..S, |g2 y| / y := by\n    rw [← intervalIntegral.integral_const_mul]\n    refine intervalIntegral.integral_mono_on h ((intervalIntegrable_abs_g2 (by norm_num) h).const_mul _)\n      (G2Tail.intervalIntegrable_abs_g2_div (by norm_num) h) fun y hy => ?_\n    have hy0 : 0 < y := by linarith [hy.1]\n    rw [inv_mul_eq_div]\n    exact div_le_div_of_nonneg_left (abs_nonneg _) hy0 hy.2\n  have h5 : S⁻¹ * ∫ y in (1 : ℝ)..10000, |g2 y| ≤ (∫ y in (1 : ℝ)..10000, |g2 y|) / 10000 := by\n    rw [inv_mul_eq_div]\n    exact div_le_div_of_nonneg_left (intervalIntegral.integral_nonneg (by norm_num)\n      fun y _ => abs_nonneg _) (by norm_num) h\n  rw [← e1, ← e2] at hT'\n  -- the numbers\n  have hD : (D : ℝ) = 10 ^ 30 := DR\n  rw [hD] at hI hJ\n  have hIf : ((Ifin : ℤ) : ℝ) = 1442305043071741356929337106029717587029646414197648482569251 := by\n    norm_num [Ifin]\n  have hJf : ((Jfin : ℕ) : ℝ) = 9218553783470309560072038260070108962893361103201224033363762 := by\n    norm_num [Jfin]\n  rw [hIf] at hI\n  rw [hJf] at hJ\n  have hI' : ∫ y in (1 : ℝ)..10000, g2 y / y ≤ 1.4423050431 := by\n    have := (le_div_iff₀' (by norm_num : (0 : ℝ) < (10 ^ 30) ^ 2)).2 hI\n    refine this.trans ?_\n    norm_num\n  have hJ' : ∫ y in (1 : ℝ)..10000, |g2 y| ≤ 9.2185538 := by\n    have := (le_div_iff₀' (by norm_num : (0 : ℝ) < (10 ^ 30) ^ 2)).2 hJ\n    refine this.trans ?_\n    norm_num\n  rw [mul_add, mul_add] at hT'\n  linarith",
+            "line": 27,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+            "lines": [
+              22,
+              73
+            ],
+            "conclusion": "Bounds $T_2(S)$ by the main term $\\frac14\\int_1^{10^4}g_2/y\\le0.3605763$ plus $S^{-1}\\int_1^{10^4}|g_2|\\le9.22/S$ plus the tail $\\frac54\\cdot0.0045$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Bound.lean",
+            "fragment": "L27-L73"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          101
+        ],
+        "printed": [
+          91
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

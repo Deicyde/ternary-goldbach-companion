@@ -1,0 +1,84 @@
+{
+  "id": "Theorem 6.3 step 15",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses |S₁+S₂|² ≤ (1+t)|S₁|² + (1+1/t)|S₂|² with t = 5·10⁻⁴ (weights |S_{η*}|), not the weighted Minkowski/square-root form; the constant (1+t) and (1+1/t) multiply the two integrals.",
+  "subject": [
+    {
+      "location": {
+        "page": 50,
+        "rect": [
+          0.20698,
+          0.60728,
+          0.62529,
+          0.02027
+        ]
+      },
+      "title": "Theorem 6.3 step 15: Text, p. 50",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_add_sq_le",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          124,
+          135
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_add_sq_le"
+          },
+          "snippet": {
+            "text": "theorem norm_add_sq_le (u v : ℂ) {t : ℝ} (ht : 0 < t) :\n    ‖u + v‖ ^ 2 ≤ (1 + t) * ‖u‖ ^ 2 + (1 + 1 / t) * ‖v‖ ^ 2 := by\n  have h := norm_add_le u v\n  have h0 : 0 ≤ ‖u + v‖ := norm_nonneg _\n  have h1 : ‖u + v‖ ^ 2 ≤ (‖u‖ + ‖v‖) ^ 2 := pow_le_pow_left₀ h0 h 2\n  have h2 : 2 * ‖u‖ * ‖v‖ ≤ t * ‖u‖ ^ 2 + 1 / t * ‖v‖ ^ 2 := by\n    have := sq_nonneg (t * ‖u‖ - ‖v‖)\n    rw [div_mul_eq_mul_div, one_mul, ← sub_nonneg]\n    have e : t * ‖u‖ ^ 2 + ‖v‖ ^ 2 / t - 2 * ‖u‖ * ‖v‖ = (t * ‖u‖ - ‖v‖) ^ 2 / t := by\n      field_simp; ring\n    rw [e]; positivity\n  nlinarith",
+            "line": 124,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_add_sq_le",
+            "lines": [
+              124,
+              135
+            ],
+            "conclusion": "|u+v|² ≤ (1+t)|u|² + (1+1/t)|v|² for t > 0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L124-L135"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          50
+        ],
+        "printed": [
+          50
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Theorem 13.2.1 step 15, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

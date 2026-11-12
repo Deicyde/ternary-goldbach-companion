@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.1.1 step 40",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean estimates $L'/L$ on $\\Re s=-1/2$ at this point of the argument, but via Landau's lemma (norm_logDeriv_L_left), not the functional equation and the digamma expansion.",
+  "subject": [
+    {
+      "location": {
+        "page": 177,
+        "rect": [
+          0.17462,
+          0.53553,
+          0.56162,
+          0.02899
+        ]
+      },
+      "title": "Lemma 9.1.1 step 40: Text, p. 167",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1 step 40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_integral_hIntG_le",
+        "module": "TernaryGoldbach.Explicit.ExplicitBoundGen",
+        "lines": [
+          31,
+          68
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_integral_hIntG_le"
+          },
+          "snippet": {
+            "text": "/-- **The line `ℜs = −1/2`**, general smoothing, `χ`. -/\ntheorem norm_integral_hIntG_le {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {φ : ℝ → ℂ} {Kv θv : ℝ} (hθv : 0 < θv) (hKv : 0 ≤ Kv)\n    (hv : ∀ y : ℝ, ‖mellin φ (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤ Kv * Real.exp (-(θv * |y|)))\n    {x : ℝ} (hx : 0 < x) :\n    ‖∫ y : ℝ, hIntG χ φ x (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤ x ^ (-(1 / 2) : ℝ) * VgL (DN N) Kv θv := by\n  set c₁ := 2 / Real.log 2 + 4.8 with hc₁\n  have hc₁0 : 0 ≤ c₁ := by have := Real.log_pos (by norm_num : (1:ℝ) < 2); positivity\n  have hD : 0 ≤ DN N + 37 := by linarith [DN_nonneg N]\n  set g : ℝ → ℝ := fun y => x ^ (-(1 / 2) : ℝ) * Kv * c₁ *\n    ((DN N + 37) * Real.exp (-(θv * |y|)) + 2.6 * (|y| * Real.exp (-(θv * |y|)))) with hg\n  have hgi : Integrable g :=\n    (((integrable_exp_neg_abs hθv).const_mul (DN N + 37)).add\n      ((integrable_abs_mul_exp hθv).const_mul 2.6)).const_mul _\n  have hpt : ∀ y : ℝ, ‖hIntG χ φ x (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤ g y := by\n    intro y\n    set s : ℂ := ((-1 / 2 : ℝ) : ℂ) + y * I with hs\n    have hsre : s.re = -1 / 2 := by simp [hs]\n    rw [hIntG, norm_mul, norm_mul, norm_cpow_x hx, hsre]\n    have hL := norm_logDeriv_L_left hχ hχ1 y\n    have hLB := LB_le_linear (N := N) y\n    have hL' : ‖logDeriv χ.LFunction s‖ ≤ c₁ * (DN N + 37 + 2.6 * |y|) := by\n      refine hL.trans ?_\n      have e : Real.log (BT N y / 0.355) / Real.log 2 / (1 / 2) + 4.8 * Real.log (BT N y / 0.355) =\n          c₁ * Real.log (BT N y / 0.355) := by rw [hc₁]; ring\n      rw [e]; exact mul_le_mul_of_nonneg_left hLB hc₁0\n    have hGs := hv y\n    have hxp : 0 ≤ x ^ (-1 / 2 : ℝ) := Real.rpow_nonneg hx.le _\n    have e2 : x ^ (-1 / 2 : ℝ) = x ^ (-(1 / 2) : ℝ) := by norm_num\n    calc ‖logDeriv χ.LFunction s‖ * (‖mellin φ s‖ * x ^ (-1 / 2 : ℝ))\n        ≤ (c₁ * (DN N + 37 + 2.6 * |y|)) * (Kv * Real.exp (-(θv * |y|)) * x ^ (-1 / 2 : ℝ)) :=\n          mul_le_mul hL' (mul_le_mul_of_nonneg_right hGs hxp) (by positivity) (by positivity)\n      _ = g y := by rw [hg, e2]; ring\n  refine (norm_integral_le_of_norm_le hgi (Eventually.of_forall hpt)).trans (le_of_eq ?_)\n  rw [hg, integral_const_mul, integral_add ((integrable_exp_neg_abs hθv).const_mul _)\n    ((integrable_abs_mul_exp hθv).const_mul _), integral_const_mul, integral_const_mul,\n    integral_exp_neg_mul_abs hθv, integral_abs_mul_exp_neg_mul_abs hθv]\n  unfold VgL; rw [← hc₁]; ring",
+            "line": 31,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_integral_hIntG_le",
+            "lines": [
+              31,
+              68
+            ],
+            "conclusion": "For primitive $\\chi\\ne1$ and a smoothing with $|M(-1/2+iy)|\\le K_v e^{-\\theta_v|y|}$, the line integral on $\\Re s=-1/2$ is at most $x^{-1/2}\\,\\mathrm{VgL}(D_N,K_v,\\theta_v)$, using the Landau-based pointwise bound on $L'/L$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBoundGen.lean",
+            "fragment": "L31-L68"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_logDeriv_L_left",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          492,
+          523
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_logDeriv_L_left"
+          },
+          "snippet": {
+            "text": "/-- **`L'/L` on the line `ℜs = −1/2`**: `|L'/L(−1/2 + iy)| ≤ (2/log 2 + 4.8) log(B_y/0.355)`. -/\ntheorem norm_logDeriv_L_left {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (y : ℝ) :\n    ‖logDeriv χ.LFunction (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤\n      Real.log (BT N y / 0.355) / Real.log 2 / (1 / 2) + 4.8 * Real.log (BT N y / 0.355) := by\n  set z : ℂ := ((-1 / 2 : ℝ) : ℂ) + y * I with hz\n  have hzc : z ∈ Metric.closedBall (2 + y * I) (10 / 4) := by\n    rw [Metric.mem_closedBall, dist_eq_norm, hz]\n    have : ((-1 / 2 : ℝ) : ℂ) + y * I - (2 + y * I) = ((-5 / 2 : ℝ) : ℂ) := by push_cast; ring\n    rw [this, Complex.norm_real, Real.norm_eq_abs]; norm_num\n  have hLz : χ.LFunction z ≠ 0 := LFunction_ne_zero_strip hχ hχ1 (by simp [hz]; norm_num)\n    (by simp [hz]; norm_num)\n  refine norm_logDeriv_L_le hχ hχ1 hzc (by norm_num) (fun u hu => ?_) hLz\n  have hLu : χ.LFunction u = 0 := by\n    have hf := DirichletCharacter.differentiable_LFunction hχ1\n    obtain ⟨hur, hu0⟩ := mem_zerosIn hu\n    have huR : u ∈ Metric.closedBall (2 + y * I) 10 := by\n      rw [Metric.mem_closedBall, dist_eq_norm]; linarith\n    rw [divB, MeromorphicOn.AnalyticOnNhd.divisor_apply\n      (fun z _ => hf.analyticAt z : AnalyticOnNhd ℂ χ.LFunction (Metric.closedBall _ 10)) huR] at hu0\n    by_contra hne\n    exact hu0 (by rw [(hf.analyticAt u).analyticOrderAt_eq_zero.2 hne]; simp)\n  have hre : u.re ≤ -1 ∨ 0 ≤ u.re := by\n    by_contra hcon\n    push Not at hcon\n    exact LFunction_ne_zero_strip hχ hχ1 hcon.1 hcon.2 hLu\n  have := Complex.abs_re_le_norm (z - u)\n  have hzre : z.re = -1 / 2 := by simp [hz]\n  rw [Complex.sub_re, hzre] at this\n  rcases hre with h | h\n  · rw [abs_of_nonneg (by linarith)] at this; linarith\n  · rw [abs_of_nonpos (by linarith)] at this; linarith",
+            "line": 492,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_logDeriv_L_left",
+            "lines": [
+              492,
+              523
+            ],
+            "conclusion": "Pointwise bound on $|L'/L|$ for $\\Re s=-1/2$ by Landau's lemma (linear in $|y|$ via $\\log B_T$), not via the functional equation and digamma."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L492-L523"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          177
+        ],
+        "printed": [
+          167
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

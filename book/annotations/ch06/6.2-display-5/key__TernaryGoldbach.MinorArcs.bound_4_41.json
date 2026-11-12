@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean keeps the two coefficients `3c₁/2√(2x/c₂)` and `20c₀c₂^{3/2}/(3π²)√(2x)` separate in `bound_4_41` (with `log(2x/c₂)`, `log(2ex/c₂)`) and bounds them numerically at the first choice; there is no constant `c_{9,I}`.",
+  "subject": [
+    {
+      "location": {
+        "page": 113,
+        "rect": [
+          0.17135,
+          0.43335,
+          0.56816,
+          0.04562
+        ]
+      },
+      "title": "Display, p. 103",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_41",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          177,
+          185
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_41"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_41 (x : ℝ) (q : ℕ) (D : ℝ) : ℝ :=\n  let c₁ := 1 + eta2'L1 / (x / D)\n  2 * √(c₀ * c₁) / π * D * Real.log (rexp 1 * x / D) +\n    3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) * Real.log (q / c₂) +\n    (2 * eta2'L1 / π * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) *\n        Real.log x +\n      2 * √(c₀ * c₁) / π * (√3 + 1 / 2 * logPlus (D / (q / 2))) * Real.log (q / c₂)) * q +\n    3 * c₁ / 2 * √(2 * x / c₂) * Real.log (2 * x / c₂) +\n    20 * c₀ * c₂ ^ (3 / 2 : ℝ) / (3 * π ^ 2) * √(2 * x) * Real.log (2 * rexp 1 * x / c₂)",
+            "line": 177,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_41",
+            "lines": [
+              174,
+              185
+            ],
+            "conclusion": "Defines the (4.41) error term, including `3c₁/2 (x/q) log⁺(D/(c₂x/q)) log(q/c₂)`, the `q`-terms with `(√3 + ½log⁺(D/(q/2)))log(q/c₂)`, and the `√x` terms `3c₁/2 √(2x/c₂) log(2x/c₂) + (20c₀c₂^{3/2}/3π²) √(2x) log(2ex/c₂)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L177-L185"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          113
+        ],
+        "printed": [
+          103
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

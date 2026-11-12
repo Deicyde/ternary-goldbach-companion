@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.2.2 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Odd-m, w_r with W-W'+1; the middle expression (douben) appears as the T-sum.",
+  "subject": [
+    {
+      "location": {
+        "page": 106,
+        "rect": [
+          0.26253,
+          0.38529,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.2.2 step 11: Text, p. 96",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.odd_block_weighted",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1041,
+          1083
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.odd_block_weighted"
+          },
+          "snippet": {
+            "text": "  have hT : ∑ t ∈ T, (W - W' + 1 + 3 / 2 * (δ t)⁻¹)⁻¹ * ‖primeExpSum W' W (β t)‖ ^ 2 =\n      ∑ m ∈ s, ∑ r ∈ C, w r *\n        ∑ b ∈ (range r).filter r.Coprime, ‖primeExpSum W' W (α * m + b / r)‖ ^ 2 := by\n    rw [sum_filter, sum_product]\n    refine sum_congr rfl fun m _ => ?_\n    rw [sum_product]\n    refine sum_congr rfl fun r hr => ?_\n    have hrN : r ≤ N := (mem_Icc.1 (mem_filter.1 hr).1).2\n    have hset : (range r).filter r.Coprime = (range N).filter (fun b => b < r ∧ r.Coprime b) := by\n      ext b; simp only [mem_filter, mem_range]; constructor\n      · rintro ⟨h1, h2⟩; exact ⟨h1.trans_le hrN, h1, h2⟩\n      · rintro ⟨_, h1, h2⟩; exact ⟨h1, h2⟩\n    rw [hset, sum_filter, mul_sum]\n    refine sum_congr rfl fun b _ => ?_\n    split_ifs <;> simp [β, δ, w]\n  rw [hT] at hLS\n  -- Montgomery.\n  have hMont : ∀ m : ℤ, ∀ r ∈ C, (1 / Nat.totient r : ℝ) * ‖primeExpSum W' W (α * m)‖ ^ 2 ≤\n      ∑ b ∈ (range r).filter r.Coprime, ‖primeExpSum W' W (α * m + b / r)‖ ^ 2 := by\n    intro m r hr\n    obtain ⟨hr1, hrR, hrsq, _⟩ := hCmem r hr\n    have hφ : (0 : ℝ) < Nat.totient r := by exact_mod_cast Nat.totient_pos.2 hr1\n    have hM := montgomery_ineq hrsq ((Ioc ⌊W'⌋₊ ⌊W⌋₊).filter Nat.Prime)\n      (fun n => (Real.log n : ℂ)) (by\n        intro p hp\n        rw [mem_filter, mem_Ioc] at hp\n        refine (Nat.Prime.coprime_iff_not_dvd hp.2).2 fun hpr => ?_\n        have : p ≤ r := Nat.le_of_dvd hr1 hpr\n        have h2 : W' < (⌊W'⌋₊ : ℝ) + 1 := Nat.lt_floor_add_one W'\n        have h3 : (p : ℝ) ≤ r := by exact_mod_cast this\n        have h4 : (⌊W'⌋₊ : ℝ) + 1 ≤ p := by exact_mod_cast hp.1.1\n        linarith) (α * m)\n    simp only [primeExpSum] at hM ⊢\n    rw [one_div, ← div_eq_inv_mul, div_le_iff₀ hφ]\n    linarith [hM]\n  refine le_trans ?_ hLS\n  rw [sum_mul, sum_comm]\n  refine sum_le_sum fun r hr => ?_\n  rw [mul_sum]\n  refine sum_le_sum fun m _ => ?_\n  calc w r * (1 / Nat.totient r : ℝ) * ‖primeExpSum W' W (α * m)‖ ^ 2\n      = w r * ((1 / Nat.totient r : ℝ) * ‖primeExpSum W' W (α * m)‖ ^ 2) := by ring\n    _ ≤ _ := mul_le_mul_of_nonneg_left (hMont m r hr) (hw0 r hr)",
+            "line": 1041,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.odd_block_weighted",
+            "lines": [
+              951,
+              1083
+            ],
+            "conclusion": "hT rewrites the weighted sum over triples (m,r,b) as sum_m sum_r w_r sum_b |S(alpha m + b/r)|^2, and the final chain bounds the weighted left side by it."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1041-L1083"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          106
+        ],
+        "printed": [
+          96
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

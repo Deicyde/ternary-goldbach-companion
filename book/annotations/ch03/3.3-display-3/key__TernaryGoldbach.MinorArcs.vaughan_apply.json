@@ -1,0 +1,81 @@
+{
+  "id": "3.3 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same identity with `Λ_{≤V}` moved to the left and `Λ_{>V}` written `Λ - trunc Λ V`; `μ_{>U}` is `μ - trunc μ U`, and `∑_{dm|n}` is Dirichlet convolution with `ζ`.",
+  "subject": [
+    {
+      "location": {
+        "page": 56,
+        "rect": [
+          0.25926,
+          0.71535,
+          0.56816,
+          0.03483
+        ]
+      },
+      "title": "Display, p. 46",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3.3 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.vaughan_apply",
+        "module": "TernaryGoldbach.MinorArcs.Vaughan",
+        "lines": [
+          43,
+          48
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.vaughan_apply"
+          },
+          "snippet": {
+            "text": "theorem vaughan_apply {U V n : ℕ} (hn : V < n) :\n    Λ n = (trunc μ U * log) n - (trunc μ U * trunc Λ V * ζ) n +\n      (((μ : ArithmeticFunction ℝ) - trunc μ U) * (Λ - trunc Λ V) * ζ) n := by\n  have h := congrArg (fun f : ArithmeticFunction ℝ => f n) (vaughan U V)\n  simp only [ArithmeticFunction.add_apply, sub_apply', trunc_apply, ite_eq_right (not_le.2 hn), zero_add] at h\n  exact h",
+            "line": 43,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.vaughan_apply",
+            "lines": [
+              42,
+              48
+            ],
+            "conclusion": "The same identity pointwise for `n > V`, where `Λ_{>V}(n) = Λ(n)`: `Λ n = (μ_{≤U}*log)(n) - (μ_{≤U}*Λ_{≤V}*ζ)(n) + ((μ-μ_{≤U})*(Λ-Λ_{≤V})*ζ)(n)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Vaughan.lean",
+            "fragment": "L43-L48"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          56
+        ],
+        "printed": [
+          46
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

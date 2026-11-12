@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 21",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean obtains `4∫√(S₁S₃)dW/W ≤ 8·1.4262 x√(κ₁(1/2+1/U))/√V`, with `1.4262²(1/2+1/U)` in place of `1.0172`.",
+  "subject": [
+    {
+      "location": {
+        "page": 118,
+        "rect": [
+          0.25926,
+          0.78978,
+          0.56816,
+          0.06831
+        ]
+      },
+      "title": "Display, p. 108",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.pointwise_637",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal",
+        "lines": [
+          171,
+          184
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.pointwise_637"
+          },
+          "snippet": {
+            "text": "  have T3 : a * √S3 ≤ 1.4262 * x * √(κ * (1 / 2 + 1 / U)) / √W := by\n    have ha : a ≤ √(κ * x / W) := Real.sqrt_le_sqrt (by\n      rw [show κ * x / W = x / W * κ by ring]; exact mul_le_mul_of_nonneg_left hhk (by positivity))\n    have hS3 : κ * x / W * S3 ≤ (1.4262 * x * √(κ * (1 / 2 + 1 / U)) / √W) ^ 2 := by\n      have hl : κ * x / W * S3 = 1.4262 ^ 2 * κ * x * (x / 2 + W) / W := by\n        simp only [S3]; field_simp; try ring\n      rw [hl, div_pow, mul_pow, mul_pow, Real.sq_sqrt (by positivity), Real.sq_sqrt hW0.le]\n      apply div_le_div_of_nonneg_right _ hW0.le\n      have hWU : W ≤ x * (1 / U) := by rw [mul_one_div]; exact hWx\n      have h1 : κ * x * W ≤ κ * x * (x * (1 / U)) := mul_le_mul_of_nonneg_left hWU (by positivity)\n      nlinarith\n    calc a * √S3 ≤ √(κ * x / W) * √S3 := mul_le_mul_of_nonneg_right ha (Real.sqrt_nonneg _)\n      _ = √(κ * x / W * S3) := (Real.sqrt_mul (by positivity) _).symm\n      _ ≤ _ := Real.sqrt_le_left (by positivity) |>.2 hS3",
+            "line": 171,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.pointwise_637",
+            "lines": [
+              76,
+              208
+            ],
+            "conclusion": "`√(S₁) · √S₃ ≤ 1.4262 x √(κ₁(1/2+1/U))/√W` for `W ∈ [V, x/U]`, from `S₁ ≤ κ₁ x/W` and `S₃ ≤ 1.4262²(x/2 + W)`, `W ≤ x/U`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L171-L184"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          118
+        ],
+        "printed": [
+          108
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

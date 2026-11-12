@@ -1,0 +1,81 @@
+{
+  "id": "14.1 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The $5.19\\delta_0r\\,ET(|\\eta_+|_1+ET/2)$ cross term of Lemma 10.3.1 is replaced by the squared principal-character error with the $t=10^{-4}$ splitting (plus the relative error $9.62\\cdot10^{-4}m_qx$); the value $0.075272$ does not occur.",
+  "subject": [
+    {
+      "location": {
+        "page": 270,
+        "rect": [
+          0.25926,
+          0.62517,
+          0.56816,
+          0.03813
+        ]
+      },
+      "title": "Display, p. 260",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.1 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.arc_chars",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          445,
+          465
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.arc_chars"
+          },
+          "snippet": {
+            "text": "  · -- the principal character: [H, Thm 7.1.4] for `q = 1`\n    have hδ1 : |β * x| ≤ 600000 := by\n      refine hβ.trans ?_\n      rw [div_le_iff₀ hqt0]; nlinarith\n    have h1 := thm_7_1_4_one hx (1 : DirichletCharacter ℂ 1) hδ1\n    rw [hδx, Schar_level_one] at h1\n    have h2 : expTsum a β = expTsum (cP x) β - expTsum (cP x - a) β := by\n      rw [expTsum_sub hc ha]; ring\n    have h3 := (norm_expTsum_le_tsum hca β).trans hDa\n    have hsx := sqrt_x_ge hx\n    have h4 : 6.24e6 / √x ≤ 6.24e6 / 2.2135e13 :=\n      div_le_div_of_nonneg_left (by norm_num) (by norm_num) hsx\n    rw [h2]\n    calc ‖expTsum (cP x) β - expTsum (cP x - a) β - 𝓕 etaPC (-(β * x)) * x‖\n        ≤ ‖expTsum (cP x) β - 𝓕 etaPC (-(β * x)) * x‖ + ‖expTsum (cP x - a) β‖ := by\n          have := norm_sub_le (expTsum (cP x) β - 𝓕 etaPC (-(β * x)) * x) (expTsum (cP x - a) β)\n          calc _ = ‖expTsum (cP x) β - 𝓕 etaPC (-(β * x)) * x - expTsum (cP x - a) β‖ := by\n                congr 1; ring\n            _ ≤ _ := this\n      _ ≤ (1e-18 + 6.24e6 / √x) * x + 1e-15 * x := add_le_add h1 h3\n      _ ≤ 2.83e-7 * x := by nlinarith",
+            "line": 445,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.arc_chars",
+            "lines": [
+              343,
+              465
+            ],
+            "conclusion": "Principal-character part on the arc: $|S'_q(\\beta)-\\widehat{\\eta_+}(-\\beta x)x|\\le2.83\\cdot10^{-7}x$ for $|\\beta x|\\le1.2\\cdot10^6/\\tilde q$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L445-L465"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          270
+        ],
+        "printed": [
+          260
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

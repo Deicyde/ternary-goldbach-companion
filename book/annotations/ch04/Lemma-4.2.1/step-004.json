@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.1 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's split is over odd m and odd n with 2α = a/q+δ/x+k and unrounded Q; Lemma 4.1.1 (couscous) is not used for this split, and Poisson summation is in the next step (Todd_main).",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.26253,
+          0.36484,
+          0.56162,
+          0.06158
+        ]
+      },
+      "title": "Lemma 4.2.1 step 4: Text, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Mof",
+        "module": "TernaryGoldbach.MinorArcs.TypeI",
+        "lines": [
+          52,
+          57
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Mof"
+          },
+          "snippet": {
+            "text": "/-- `M = min(Q/2, D)` with `Q = x/|δq|` (`M = D` if `δ = 0`).  [H, proof of Lemma 4.2.1] uses\n`Q = ⌊x/|δq|⌋`; the statement of [H, Lemma 4.2.2] only needs `M ∈ [min(Q₀/2, D), D]`, which\nholds for this `M` too, and the unrounded `Q` avoids an issue with the rounding (with `⌊·⌋`,\n`c₂x/q ≤ Q/2` can fail by less than `1/2` when `|δ| ≤ 1/2c₂`). -/\nnoncomputable def Mof (x δ : ℝ) (q : ℕ) (D : ℝ) : ℝ :=\n  if δ = 0 then D else min (x / (|δ| * q) / 2) D",
+            "line": 52,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Mof",
+            "lines": [
+              52,
+              57
+            ],
+            "conclusion": "Defines `M = min(Qr/2, D)` with unrounded `Qr = x/(|δ|q)` (`M = D` if δ = 0)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L52-L57"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI_eq_main_add_rest",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          746,
+          790
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI_eq_main_add_rest"
+          },
+          "snippet": {
+            "text": "theorem typeI_eq_main_add_rest {α x M D : ℝ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q) (hM0 : 0 ≤ M)\n    (hMD : M ≤ D) : typeI α x D = mainPart α x M q + restPart α x D M q := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  rw [typeI_eq_sum_Todd hx, restPart, mainPart]\n  have hsplit : ∀ m ∈ Icc 1 ⌊D⌋₊, (if Odd m then (μ m : ℂ) * Todd α x m else 0) =\n      (if Odd m ∧ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M) then (μ m : ℂ) * Todd α x m else 0) +\n      (if Odd m ∧ ¬ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M) then (μ m : ℂ) * Todd α x m else 0) := by\n    intro m _\n    by_cases h1 : Odd m <;> by_cases h2 : ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M) <;> simp [h1, h2]\n  rw [sum_congr rfl hsplit, sum_add_distrib]\n  congr 1\n  rw [← sum_filter, ← sum_filter]\n  refine (sum_nbij' (fun m => m / q) (fun m' => q * m') ?_ ?_ ?_ ?_ ?_)\n  · intro m hm\n    simp only [mem_filter, mem_Icc] at hm\n    obtain ⟨⟨h1, h2⟩, hodd, ⟨t, rfl⟩, hle⟩ := hm\n    simp only [mem_filter, mem_Icc]\n    have ht : q * t / q = t := Nat.mul_div_cancel_left t (by omega)\n    rw [ht]\n    have ht1 : 1 ≤ t := by\n      rcases Nat.eq_zero_or_pos t with h | h\n      · subst h; simp at h1\n      · exact h\n    refine ⟨⟨ht1, ?_⟩, hodd⟩\n    apply Nat.le_floor\n    rw [le_div_iff₀ hq0]; push_cast at hle ⊢; linarith\n  · intro m' hm'\n    simp only [mem_filter, mem_Icc] at hm' ⊢\n    obtain ⟨⟨h1, h2⟩, hodd⟩ := hm'\n    have hle : ((q * m' : ℕ) : ℝ) ≤ M := by\n      have := Nat.floor_le (show 0 ≤ M / q by positivity)\n      have h2' : (m' : ℝ) ≤ M / q := le_trans (by exact_mod_cast h2) this\n      push_cast; rw [le_div_iff₀ hq0] at h2'; linarith\n    refine ⟨⟨Nat.one_le_iff_ne_zero.2 (Nat.mul_ne_zero (by omega) (by omega)), ?_⟩, hodd,\n      ⟨m', rfl⟩, hle⟩\n    exact Nat.le_floor (hle.trans hMD)\n  · intro m hm\n    simp only [mem_filter] at hm\n    obtain ⟨_, _, hdvd, _⟩ := hm\n    exact Nat.mul_div_cancel' hdvd\n  · intro m' _; exact Nat.mul_div_cancel_left m' (by omega)\n  · intro m hm\n    simp only [mem_filter] at hm\n    obtain ⟨_, hodd, hdvd, _⟩ := hm\n    rw [Nat.mul_div_cancel' hdvd]",
+            "line": 746,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI_eq_main_add_rest",
+            "lines": [
+              746,
+              790
+            ],
+            "conclusion": "Splits `typeI α x D` into `mainPart` (odd m = qm' ≤ M, q | m) and `restPart` (all other terms)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L746-L790"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.e_phase",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          205,
+          218
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.e_phase"
+          },
+          "snippet": {
+            "text": "theorem e_phase {α x δ : ℝ} {a k₀ : ℤ} {q m' : ℕ} (hx : 0 < x) (hq : 1 ≤ q) (hm' : Odd m')\n    (h2α : 2 * α = a / q + δ / x + k₀) (r : ℤ) :\n    e (α * ((q * m' : ℕ) : ℝ) * (2 * r + 1)) =\n      e ((a + k₀ * q) / 2) * e (δ * ((q * m' : ℕ) : ℝ) / (2 * x) * (2 * r + 1)) := by\n  obtain ⟨j, rfl⟩ := hm'\n  have hq0 : (q : ℝ) ≠ 0 := by\n    have : (1 : ℝ) ≤ q := by exact_mod_cast hq\n    linarith\n  have hα : α = (a / q + δ / x + k₀) / 2 := by linarith\n  have : α * ((q * (2 * j + 1) : ℕ) : ℝ) * (2 * r + 1) =\n      (a + k₀ * q) / 2 + δ * ((q * (2 * j + 1) : ℕ) : ℝ) / (2 * x) * (2 * r + 1) +\n        (((a + k₀ * q) * (2 * j * r + j + r) : ℤ) : ℝ) := by\n    rw [hα]; push_cast; field_simp; ring\n  rw [this, e_add, e_add, e_intCast, mul_one]",
+            "line": 205,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.e_phase",
+            "lines": [
+              203,
+              218
+            ],
+            "conclusion": "For m = qm' (m' odd) the phase factors as `e(αm(2r+1)) = κ'·e((δm/2x)(2r+1))`, i.e. e(αmn) reduces to a δ-phase."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L205-L218"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

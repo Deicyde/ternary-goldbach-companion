@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.3 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has the two monotonicities for its own g and h (different constants, h for z >= e^9, g for n >= 670) but not the reduction to h(x1) >= g_{x1}(r) at x1=(6r)^3 nor the bound x1 > e^12.5; it uses max(g,h) instead.",
+  "subject": [
+    {
+      "location": {
+        "page": 26,
+        "rect": [
+          0.20698,
+          0.64086,
+          0.62529,
+          0.05252
+        ]
+      },
+      "title": "Lemma 4.3 step 1: Text, p. 26",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.3 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.hfun_antitone",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          224,
+          257
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.hfun_antitone"
+          },
+          "snippet": {
+            "text": "theorem hfun_antitone {z₁ z₂ : ℝ} (h9 : rexp 9 ≤ z₁) (h12 : z₁ ≤ z₂) : hfun z₂ ≤ hfun z₁ := by\n  have hz₁ : 0 < z₁ := lt_of_lt_of_le (Real.exp_pos 9) h9\n  have hz₂ : 0 < z₂ := by linarith\n  have hs₁ : 9 ≤ Real.log z₁ := by rw [Real.le_log_iff_exp_le hz₁]; exact h9\n  have hs12 := Real.log_le_log hz₁ h12\n  have hrp : ∀ z : ℝ, 0 < z → ∀ p : ℝ, z ^ p = rexp (p * Real.log z) := fun z hz p => by\n    rw [Real.rpow_def_of_pos hz, mul_comm]\n  -- first term\n  have hA := antitoneOn_mul_exp_neg (Q := fun s => s ^ (3 / 2 : ℝ))\n    (Q' := fun s => 3 / 2 * s ^ (1 / 2 : ℝ)) (s₁ := 9) (s₂ := Real.log z₂) (p := 1 / 6)\n    (fun s hs => by\n      have := Real.hasDerivAt_rpow_const (x := s) (p := 3 / 2) (Or.inl (by linarith [hs.1]))\n      convert this using 2; norm_num)\n    (fun s hs => by\n      have hs0 : 0 < s := by linarith [hs.1]\n      have e : s ^ (3 / 2 : ℝ) = s * s ^ (1 / 2 : ℝ) := by\n        rw [← Real.rpow_one_add' hs0.le (by norm_num)]; norm_num\n      rw [e]\n      have : 0 ≤ s ^ (1 / 2 : ℝ) := by positivity\n      nlinarith [hs.1])\n  have hB := antitoneOn_mul_exp_neg (Q := fun s => s) (Q' := fun _ => 1) (s₁ := 9)\n    (s₂ := Real.log z₂) (p := 1 / 3) (fun s _ => hasDerivAt_id s) (fun s hs => by\n      linarith [hs.1])\n  have m1 : Real.log z₁ ∈ Icc 9 (Real.log z₂) := ⟨hs₁, hs12⟩\n  have m2 : Real.log z₂ ∈ Icc 9 (Real.log z₂) := ⟨hs₁.trans hs12, le_rfl⟩\n  have h1 := hA m1 m2 hs12\n  have h2 := hB m1 m2 hs12\n  simp only at h1 h2\n  unfold hfun\n  rw [hrp z₁ hz₁, hrp z₂ hz₂, hrp z₁ hz₁ (-1 / 3), hrp z₂ hz₂ (-1 / 3)]\n  have e1 : ∀ s : ℝ, rexp (-1 / 6 * s) = rexp (-(1 / 6) * s) := fun s => by ring_nf\n  have e2 : ∀ s : ℝ, rexp (-1 / 3 * s) = rexp (-(1 / 3) * s) := fun s => by ring_nf\n  rw [e1, e1, e2, e2]\n  nlinarith",
+            "line": 224,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.hfun_antitone",
+            "lines": [
+              224,
+              257
+            ],
+            "conclusion": "h(z) = 0.276 z^{-1/6} (log z)^{3/2} + 1234 z^{-1/3} log z is non-increasing for z >= e^9, via antitoneOn_mul_exp_neg."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L224-L257"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          169,
+          193
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+          },
+          "snippet": {
+            "text": "/-- **Scaling of `g`**: for `w ≥ 1`, `g_{wy}(n) ≤ g_y(n)`. -/\ntheorem gx_scale_le_of_one_le {y n w : ℝ} (hy : 0 < y) (hw : 1 ≤ w)\n    (hn : 670 ≤ n) (hny : n ≤ y ^ (1 / 3 : ℝ) / 6) :\n    gx (w * y) n ≤ gx y n := by\n  have hw0 : 0 < w := by linarith\n  have hY : 0 < y ^ (1 / 3 : ℝ) := by positivity\n  have hYw : y ^ (1 / 3 : ℝ) ≤ (w * y) ^ (1 / 3 : ℝ) :=\n    Real.rpow_le_rpow hy.le (by nlinarith) (by norm_num)\n  have hR : R (w * y) (2 * n) ≤ R y (2 * n) := by\n    refine R_le_R (by linarith) le_rfl ?_ ?_\n    · rw [one_lt_div (by positivity)]; nlinarith\n    · exact div_le_div_of_nonneg_right (by linarith) (by positivity)\n  have hR0 : 0 ≤ R (w * y) (2 * n) := R_nonneg (by linarith) (by linarith)\n  have hl0 : 0 ≤ Real.log (2 * n) := Real.log_nonneg (by linarith)\n  have hF0 := Fr_pos hn\n  have hA : (R (w * y) (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) ≤\n      (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) :=\n    mul_le_mul_of_nonneg_right (by nlinarith) (Real.sqrt_nonneg _)\n  have hC : (w * y) ^ (-1 / 6 : ℝ) ≤ y ^ (-1 / 6 : ℝ) :=\n    Real.rpow_le_rpow_of_nonpos hy (by nlinarith) (by norm_num)\n  unfold gx\n  have := div_le_div_of_nonneg_right (show (R (w * y) (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 ≤\n    (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 by linarith) (Real.sqrt_nonneg (2 * n))\n  have := mul_le_mul_of_nonneg_left hC (show (0:ℝ) ≤ 3.8 by norm_num)\n  linarith",
+            "line": 169,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+            "lines": [
+              169,
+              193
+            ],
+            "conclusion": "For w >= 1 and 670 <= n <= y^{1/3}/6, g_{wy}(n) <= g_y(n): x |-> g_x(n) is non-increasing (Lean's gx)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L169-L193"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          26
+        ],
+        "printed": [
+          26
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

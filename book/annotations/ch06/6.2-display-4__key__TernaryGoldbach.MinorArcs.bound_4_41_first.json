@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not prove this maximisation; at the first choice of parameters the `log⁺(U/(c₂x/q))` factor is zero, so the term vanishes.",
+  "subject": [
+    {
+      "location": {
+        "page": 113,
+        "rect": [
+          0.17135,
+          0.1961,
+          0.56816,
+          0.03696
+        ]
+      },
+      "title": "Display, p. 103",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI",
+        "lines": [
+          149,
+          155
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_41_first"
+          },
+          "snippet": {
+            "text": "  have tb : 3 * c₁ / 2 * (S ^ 6 / q) * logPlus (U / (c₂ * S ^ 6 / q)) * Real.log (q / c₂) = 0 := by\n    rw [logPlus_eq_zero (by positivity)]\n    · ring\n    rw [div_le_one (by positivity), le_div_iff₀ (by positivity)]\n    have : U * q ≤ 0.0786 * S ^ 4 * (S ^ 2 / 6) := mul_le_mul hU2 hqT (by positivity) (by positivity)\n    nlinarith [pow_pos hS0' 6]\n  -- Term c.",
+            "line": 149,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+            "lines": [
+              69,
+              258
+            ],
+            "conclusion": "At the first choice (`U q ≤ 0.0786 S⁴ · S²/6`), `log⁺(U/(c₂x/q)) = 0`, so the term `3c₁/2 (x/q) log⁺(U/(c₂x/q)) log(q/c₂)` vanishes."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI.lean",
+            "fragment": "L149-L155"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          113
+        ],
+        "printed": [
+          103
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

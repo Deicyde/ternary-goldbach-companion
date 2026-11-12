@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.5 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] replaces the algebra lowering the right side of (12.22) to $(1-\\rho)(\\log Q_0+\\sigma)+1.312\\rho^2$ by one polynomial inequality with $\\sigma=1.36$, $c_E$ and $1.064$ in place of $1.312$, and $\\rho\\le0.6$.",
+  "subject": [
+    {
+      "location": {
+        "page": 38,
+        "rect": [
+          0.20698,
+          0.53695,
+          0.62529,
+          0.09471
+        ]
+      },
+      "title": "Lemma 5.5 step 3: Display, p. 38",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.5 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          66,
+          71
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.poly_regionS"
+          },
+          "snippet": {
+            "text": "theorem poly_regionS {X l L : ℝ} (hX : X ≤ 0.4 * l + 0.86) (hX0 : 0 ≤ X) (hl : 11.5 ≤ l)\n    (hρ : l ≤ 0.6 * L) : X * (L + 1.33258) ≤ (l + 1.36) * (L - l + 1.064) := by\n  have hLc : 0 ≤ L + 1.33258 := by linarith\n  have h06 : 0 ≤ 0.6 * l + 0.5 := by linarith\n  have hLl : 0 ≤ 0.6 * L - l := by linarith\n  nlinarith [mul_nonneg h06 hLl, mul_le_mul_of_nonneg_right hX hLc]",
+            "line": 66,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
+            "lines": [
+              65,
+              71
+            ],
+            "conclusion": "$X(L+1.33258)\\le(l+1.36)(L-l+1.064)$ for $X\\le0.4l+0.86$, $l\\ge11.5$, $l\\le0.6L$: the sufficient inequality corresponding to (12.22), proved by `nlinarith`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L66-L71"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          171,
+          173
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hD : X * (L + cE) ≤ (l + 1.36) * (Real.log t + 1.064) := by\n    rw [hlogt]; unfold cE\n    exact poly_regionS (by linarith) hX0.le hl5 hρ",
+            "line": 171,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "Applies `poly_regionS` with $l=\\log Q_0$, $L=\\log Q$, $\\log t=L-l$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L171-L173"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          38
+        ],
+        "printed": [
+          38
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 12.2.3 step 3, the same LaTeX (mapper (sonnet); verifier (sonnet); absence audit (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

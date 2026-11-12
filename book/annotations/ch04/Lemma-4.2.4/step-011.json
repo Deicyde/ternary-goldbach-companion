@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same inference for `η₂`: the `η̂(-δ/2)` terms are `(x/2) η0 Σ c(a)/a`, bounded using the previous estimate.",
+  "subject": [
+    {
+      "location": {
+        "page": 82,
+        "rect": [
+          0.26253,
+          0.76493,
+          0.56162,
+          0.03013
+        ]
+      },
+      "title": "Lemma 4.2.4 step 11: Text, p. 72",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          814,
+          842
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le"
+          },
+          "snippet": {
+            "text": "  have hT : ∀ a : ℕ, ∃ E : ℂ, Odd a → q ∣ a → 1 ≤ a → a ≤ NM →\n      Todd α x a = e ((a₀ + k * q) / 2) * ((x / (2 * a) : ℝ) * eta2hat (-(δ / 2)) + E) ∧\n      ‖E‖ ≤ a / x * (c₀ / (2 * π ^ 2)) * (π ^ 2 - 4) := by\n    intro a\n    by_cases h : Odd a ∧ q ∣ a ∧ 1 ≤ a ∧ a ≤ NM\n    · obtain ⟨ho, ⟨m', rfl⟩, h1, hle⟩ := h\n      have hm'o : Odd m' := (Nat.odd_mul.1 ho).2\n      have hr : |δ * (q * m' : ℕ) / x| ≤ 1 / 2 := by\n        have hqm : ((q * m' : ℕ) : ℝ) ≤ M := (by exact_mod_cast hle : ((q * m' : ℕ) : ℝ) ≤ NM).trans hNM\n        rw [abs_div, abs_mul, abs_of_pos hx, Nat.abs_cast, div_le_iff₀ hx]\n        nlinarith [abs_nonneg δ]\n      obtain ⟨E, hE1, hE2⟩ := Todd_main hx hq hm'o h2α hr\n      exact ⟨E, fun _ _ _ _ => ⟨hE1, hE2⟩⟩\n    · exact ⟨0, fun h1 h2 h3 h4 => absurd ⟨h1, h2, h3, h4⟩ h⟩\n  choose E hE using hT\n  set κ := e ((a₀ + k * q) / 2)\n  set η0 := eta2hat (-(δ / 2))\n  have hsplit : mainPartI2 α x M U V q = κ * (((x / 2 : ℝ) : ℂ) * η0 *\n        ((∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then coefI2 U V a * (1 / a) else 0) : ℝ) : ℂ) +\n      ∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then (coefI2 U V a : ℂ) * E a else 0)) := by\n    rw [mainPartI2, Complex.ofReal_sum, mul_sum, ← sum_add_distrib, mul_sum]\n    refine sum_congr rfl fun a ha => ?_\n    have ha1 : 1 ≤ a := (mem_Icc.1 ha).1\n    have haN : a ≤ NM := (mem_Icc.1 ha).2\n    by_cases h : Odd a ∧ q ∣ a\n    · rw [if_pos h, if_pos h, if_pos h, (hE a h.1 h.2 ha1 haN).1]\n      have ha0 : (0 : ℝ) < a := by exact_mod_cast ha1\n      push_cast; field_simp\n    · rw [if_neg h, if_neg h, if_neg h]; simp",
+            "line": 814,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+            "lines": [
+              785,
+              897
+            ],
+            "conclusion": "For odd `a`, `q ∣ a`, `a ≤ ⌊M⌋`, `Todd α x a = e(..)(x/(2a) * eta2hat(-δ/2) + E)` with `‖E‖ ≤ a/x * c₀/(2π²) * (π²-4)` (Todd_main), so `mainPartI2 = κ (x/2 * η0 * Σ c(a)/a + Σ c(a) E(a))`; this is the analogue of (4.50)'s expansion for `η₂`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L814-L842"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          845,
+          856
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le"
+          },
+          "snippet": {
+            "text": "  have h1 : ‖((x / 2 : ℝ) : ℂ) * η0 *\n      ((∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then coefI2 U V a * (1 / a) else 0) : ℝ) : ℂ)‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) * Real.log (V * q) := by\n    rw [norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Real.norm_eq_abs,\n      Real.norm_eq_abs, abs_of_pos (by positivity)]\n    have hS := abs_sum_coefI2_div_le hU hV hM0 hqo\n    have hη := norm_eta2hat_le_minInv δ\n    have := minInv_nonneg c₀ (π * δ) hc0.le\n    rw [Real.log_mul (by linarith) hq0.ne']\n    calc x / 2 * ‖η0‖ * |∑ a ∈ Icc 1 NM, (if Odd a ∧ q ∣ a then coefI2 U V a * (1 / a) else 0)|\n        ≤ x / 2 * minInv c₀ (π * δ) * ((Real.log q + Real.log V) / q) := by gcongr\n      _ = _ := by field_simp; ring",
+            "line": 845,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_mainPartI2_le",
+            "lines": [
+              785,
+              897
+            ],
+            "conclusion": "The `η̂`-term `‖(x/2) η0 Σ c(a)/a‖ ≤ x/(2q) * minInv c₀ (πδ) * log(Vq)`, using `abs_sum_coefI2_div_le` and `norm_eta2hat_le_minInv`; `minInv c₀ (πδ) = min(1, c₀/(πδ)²)` for `δ ≠ 0`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L845-L856"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          82
+        ],
+        "printed": [
+          72
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

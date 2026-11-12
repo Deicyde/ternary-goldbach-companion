@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 7",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the same shape with `2.8(2q/φ(2q))` in place of `(4/5)q/φ(q)` (weaker constant); the bound for `M_v`, `q_v` is obtained from it by `muBound_anti` in `bound_4_30_v_le`.",
+  "subject": [
+    {
+      "location": {
+        "page": 114,
+        "rect": [
+          0.25926,
+          0.79877,
+          0.56816,
+          0.05655
+        ]
+      },
+      "title": "Display, p. 104",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_muSum_one_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeITotal",
+        "lines": [
+          32,
+          51
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_muSum_one_le"
+          },
+          "snippet": {
+            "text": "theorem abs_muSum_one_le {U : ℝ} {q : ℕ} (hq : 1 ≤ q) (hU : 0 < U) :\n    |muSum U q (2 * q) fun _ => 1| ≤ muBound U q := by\n  have h2q : 1 ≤ 2 * q := by omega\n  have h1 : |muSum U q (2 * q) fun _ => 1| ≤ 1 := by\n    have := Prelim.abs_sum_moebius_div_coprime_le_one (U / q) h2q\n    simpa [muSum] using this\n  unfold muBound\n  split_ifs with h\n  · refine le_min h1 ?_\n    have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n    have h2 : ((2 * q : ℕ) : ℝ) < U / q := by\n      push_cast; rw [lt_div_iff₀ hq0]; nlinarith\n    have := Prelim.abs_sum_moebius_div_coprime_le_log h2q h2\n    have e1 : (muSum U q (2 * q) fun _ => 1) =\n        ∑ n ∈ Icc 1 ⌊U / q⌋₊, (if Nat.Coprime n (2 * q) then (μ n : ℝ) / n else 0) := by\n      simp [muSum]\n    have e2 : U / q / ((2 * q : ℕ) : ℝ) = U / (2 * q ^ 2) := by push_cast; field_simp\n    rw [e1]; refine this.trans (le_of_eq ?_)\n    rw [e2]; push_cast; ring\n  · exact h1",
+            "line": 32,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_muSum_one_le",
+            "lines": [
+              32,
+              51
+            ],
+            "conclusion": "`|∑_{m ≤ U/q, (m,2q)=1} μ(m)/m| ≤ muBound U q = min(1, 2.8(2q/φ(2q))/log(U/2q²))` (the log branch only when `2q² < U`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeITotal.lean",
+            "fragment": "L32-L51"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          114
+        ],
+        "printed": [
+          104
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

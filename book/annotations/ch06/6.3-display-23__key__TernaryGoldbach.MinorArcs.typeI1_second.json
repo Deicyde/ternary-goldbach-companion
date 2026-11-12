@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 23",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md). Text error, confirmed by two skeptics and `scripts/checks/steps/6_3_display_23.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 137,
+        "rect": [
+          0.17135,
+          0.21434,
+          0.56816,
+          0.05451
+        ]
+      },
+      "title": "Display, p. 127",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI1_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI1",
+        "lines": [
+          313,
+          317
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI1_second"
+          },
+          "snippet": {
+            "text": "/-- **`S_{I,1}` at the second parameters**: `≤ (0.0407 L² + 14.1 L + 15.7) T²`. -/\ntheorem typeI1_second {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hc : SecondCase T δ q) :\n    ‖typeILog α (T ^ 3) (U2 T)‖ ≤\n      (0.0407 * Real.log T ^ 2 + 14.1 * Real.log T + 15.7) * T ^ 2 := by",
+            "line": 313,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI1_second",
+            "lines": [
+              313,
+              431
+            ],
+            "conclusion": "`‖typeILog α (T^3) (U2 T)‖ ≤ (0.0407 L^2 + 14.1 L + 15.7) T^2`: the S_{I,1} bound at the second parameters, for every case of `SecondCase`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI1.lean",
+            "fragment": "L313-L317"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          137
+        ],
+        "printed": [
+          127
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

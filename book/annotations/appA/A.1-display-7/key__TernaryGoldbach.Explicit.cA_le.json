@@ -1,0 +1,81 @@
+{
+  "id": "A.1 display 7",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds the ℓ¹-norm of Mh_H (the truncated Mh) by the crude constant-bound argument |Mh(it)| ≤ C_0 over |t| ≤ H, not by integrating the piecewise min of C_0..C_4 decay bounds; no C_1..C_4 and no 16.1939176.",
+  "subject": [
+    {
+      "location": {
+        "page": 293,
+        "rect": [
+          0.17135,
+          0.36156,
+          0.56816,
+          0.11737
+        ]
+      },
+      "title": "Display, p. 283",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.1 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.cA_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusCg",
+        "lines": [
+          89,
+          91
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.cA_le"
+          },
+          "snippet": {
+            "text": "theorem cA_le : Cg * (2 * aH) ≤ 129.24 := by\n  have := Cg_le; have := two_aH_le; have := Cg_nonneg; have := aH_pos\n  nlinarith",
+            "line": 89,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.cA_le",
+            "lines": [
+              89,
+              91
+            ],
+            "conclusion": "`Cg·(2a) ≤ 129.24` with `a = H/2π`, `H = 200`: bound on `∫_{|ξ|≤a}|ĝ|` up to the factor 2π, from the pointwise bound |ĝ| ≤ C_0 only."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusCg.lean",
+            "fragment": "L89-L91"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          293
+        ],
+        "printed": [
+          283
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

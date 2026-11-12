@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.1 step 21",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Inference to the d-sum bound; Lean indexes by odd r = d t <= floor(y) with d | r and uses <= in place of <.",
+  "subject": [
+    {
+      "location": {
+        "page": 93,
+        "rect": [
+          0.17462,
+          0.71397,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.1.1 step 21: Text, p. 83",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          164,
+          175
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le"
+          },
+          "snippet": {
+            "text": "  rw [sum_congr rfl hterm, ← mul_sum]\n  have h1 := sum_odd_inv_sqrt_le (K / d)\n  have h2 : ((K / d : ℕ) : ℝ) ≤ y / d := by\n    refine (Nat.cast_div_le).trans ?_\n    gcongr; exact Nat.floor_le hy\n  calc 1 / (d : ℝ) * ∑ t ∈ (Icc 1 (K / d)).filter Odd, 1 / √(t : ℝ)\n      ≤ 1 / d * √(y / d) := by\n        gcongr; exact h1.trans (sqrt_le_sqrt h2)\n    _ = √y * (1 / (d : ℝ) ^ (3 / 2 : ℝ)) := by\n        rw [rpow_three_halves _ hd0.le, sqrt_div' _ hd0.le]\n        have : 0 < √(d : ℝ) := sqrt_pos.2 hd0\n        field_simp",
+            "line": 164,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+            "lines": [
+              117,
+              175
+            ],
+            "conclusion": "Applying the inner bound `sum_odd_inv_sqrt_le (K/d)` and $K/d\\le y/d$ gives $\\frac1d\\sum_{t\\le K/d\\text{ odd}}t^{-1/2}\\le \\sqrt y\\, d^{-3/2}$ for each odd $d$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L164-L175"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_rpow_le_zeta",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+        "lines": [
+          82,
+          84
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_rpow_le_zeta"
+          },
+          "snippet": {
+            "text": "theorem sum_odd_rpow_le_zeta (K : ℕ) :\n    ∑ d ∈ (Icc 1 K).filter Odd, 1 / (d : ℝ) ^ (3 / 2 : ℝ) ≤\n      (1 - 2 ^ (-(3 / 2) : ℝ)) * (riemannZeta (3 / 2)).re := by",
+            "line": 82,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_odd_rpow_le_zeta",
+            "lines": [
+              81,
+              102
+            ],
+            "conclusion": "$\\sum_{d\\le K\\text{ odd}} d^{-3/2}\\le(1-2^{-3/2})\\zeta(3/2)$, used at line 135 of `sum_odd_divisors_le`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L82-L84"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          93
+        ],
+        "printed": [
+          83
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

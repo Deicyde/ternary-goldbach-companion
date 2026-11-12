@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 5.2.4 step 5",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean keeps $\\lceil D/m\\rceil$ with $m=\\min(2q,Q)$ and bounds it by $D/m+1$ and $1/m\\le \\max(1,2\\rho)/(2q)=1/(q\\min(2,\\rho^{-1}))$ separately; the display is not stated as one inequality.",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.26253,
+          0.17573,
+          0.56162,
+          0.04149
+        ]
+      },
+      "title": "Proposition 5.2.4 step 5: Display, p. 100",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          635,
+          637
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_a"
+          },
+          "snippet": {
+            "text": "  have h := lemma_5_2_3_a hq hcop hα hqQ (by linarith) hW'W' (W' := W') (W := W) U' (x / W)\n  rw [S2]\n  refine h.trans ?_",
+            "line": 635,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+            "lines": [
+              623,
+              668
+            ],
+            "conclusion": "`lemma_5_2_3_a` (5.50) gives $S_2\\le\\lceil (x/W-U')/m\\rceil (W-W'+2q)\\sum(\\log p)^2$ with $m=\\min(2q,Q)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L635-L637"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          638,
+          645
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_a"
+          },
+          "snippet": {
+            "text": "  set m := min (2 * (q : ℝ)) Q\n  have hm0 : 0 < m := lt_min (by positivity) hQ\n  have hm : 1 / m ≤ max 1 (2 * ρ) / (2 * q) := by\n    rcases min_choice (2 * (q : ℝ)) Q with h | h\n    · rw [show m = 2 * (q : ℝ) from h, div_le_div_iff₀ (by positivity) (by positivity)]\n      nlinarith [le_max_left 1 (2 * ρ)]\n    · rw [show m = Q from h, div_le_div_iff₀ hQ (by positivity)]\n      nlinarith [le_max_right 1 (2 * ρ)]",
+            "line": 638,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+            "lines": [
+              623,
+              668
+            ],
+            "conclusion": "$1/\\min(2q,Q)\\le \\max(1,2\\rho)/(2q)$, i.e. $\\min(2q,Q)\\ge q\\min(2,\\rho^{-1})$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L638-L645"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          657,
+          657
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_a"
+          },
+          "snippet": {
+            "text": "  have hceil : (⌈D / m⌉₊ : ℝ) ≤ D / m + 1 := (Nat.ceil_lt_add_one (by positivity)).le",
+            "line": 657,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_a",
+            "lines": [
+              623,
+              668
+            ],
+            "conclusion": "$\\lceil D/m\\rceil\\le D/m+1$ with $m=\\min(2q,Q)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L657-L657"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

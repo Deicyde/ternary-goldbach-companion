@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 11.2.4 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's log-derivative condition is `Q' ≤ Q/2` in `s = log r` for the main term with `0.8764` and `√Ϝ`, not the log-derivative of (11.23)'s function.",
+  "subject": [
+    {
+      "location": {
+        "page": 235,
+        "rect": [
+          0.17462,
+          0.35073,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Lemma 11.2.4 step 4: Text, p. 225",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 11.2.4 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          163,
+          171
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.QA_antitoneOn"
+          },
+          "snippet": {
+            "text": "theorem QA_antitoneOn {B : ℝ} (hB : 8.5 ≤ B) :\n    AntitoneOn (fun s => QA B s * rexp (-(1 / 2) * s)) (Icc 6 (B - 2.5)) := by\n  have hl2 : 0.69 ≤ Real.log 2 := by have := Real.log_two_gt_d9; linarith\n  have hl8 : 0 ≤ Real.log 8 := Real.log_nonneg (by norm_num)\n  refine antitoneOn_mul_exp_neg (Q' := fun s =>\n      (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * (Real.log 2 + s) +\n        Rs B s) * √(Fs s) + (Rs B s * (Real.log 2 + s) + 0.8764) *\n        ((rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2)) / (2 * √(Fs s))))\n    (fun s hs => ?_) (fun s hs => ?_)",
+            "line": 163,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+            "lines": [
+              163,
+              213
+            ],
+            "conclusion": "Antitonicity of `QA(B,s)e^{-s/2}` (main term `(R log 2r + 0.8764)√Ϝ`) is reduced via `antitoneOn_mul_exp_neg` to `Q' ≤ Q/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L163-L171"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_mul_exp_neg",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          23,
+          39
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.antitoneOn_mul_exp_neg"
+          },
+          "snippet": {
+            "text": "/-- If `Q' ≤ p Q` on `[s₁, s₂]`, then `s ↦ Q(s) e^{-ps}` is antitone there. -/\ntheorem antitoneOn_mul_exp_neg {Q Q' : ℝ → ℝ} {s₁ s₂ p : ℝ}\n    (hd : ∀ s ∈ Icc s₁ s₂, HasDerivAt Q (Q' s) s) (hle : ∀ s ∈ Icc s₁ s₂, Q' s ≤ p * Q s) :\n    AntitoneOn (fun s => Q s * rexp (-p * s)) (Icc s₁ s₂) := by\n  have hD : ∀ s ∈ Icc s₁ s₂, HasDerivAt (fun s => Q s * rexp (-p * s))\n      (Q' s * rexp (-p * s) + Q s * (rexp (-p * s) * (-p))) s := by\n    intro s hs\n    have h1 : HasDerivAt (fun s => -p * s) (-p) s := by\n      simpa using (hasDerivAt_id s).const_mul (-p)\n    exact (hd s hs).mul h1.exp\n  refine antitoneOn_of_deriv_nonpos (convex_Icc _ _)\n    (fun s hs => (hD s hs).continuousAt.continuousWithinAt)\n    (fun s hs => (hD s (interior_subset hs)).differentiableAt.differentiableWithinAt) fun s hs => ?_\n  rw [(hD s (interior_subset hs)).deriv]\n  have := hle s (interior_subset hs)\n  have he := (Real.exp_pos (-p * s)).le\n  nlinarith [mul_nonneg (sub_nonneg.2 this) he]",
+            "line": 23,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_mul_exp_neg",
+            "lines": [
+              23,
+              39
+            ],
+            "conclusion": "If `Q' ≤ pQ` on `[s₁,s₂]` then `Q(s)e^{-ps}` is antitone."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L23-L39"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          235
+        ],
+        "printed": [
+          225
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

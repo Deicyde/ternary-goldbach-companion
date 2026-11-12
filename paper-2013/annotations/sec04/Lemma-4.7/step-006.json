@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.7 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Only the definition of Fr is carried; the numerical bound >=5.68721 is absent (Fs_ge gives only 3.8).",
+  "subject": [
+    {
+      "location": {
+        "page": 30,
+        "rect": [
+          0.20698,
+          0.56561,
+          0.62529,
+          0.03605
+        ]
+      },
+      "title": "Lemma 4.7 step 6: Display, p. 30",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.7 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Fr",
+        "module": "TernaryGoldbach.MinorArcs.GBound",
+        "lines": [
+          25,
+          27
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Fr"
+          },
+          "snippet": {
+            "text": "/-- `Ϝ(r) = e^γ log log r + 2.50637 / log log r` [H, Lemma C.2.2]. -/\nnoncomputable def Fr (r : ℝ) : ℝ :=\n  rexp eulerMascheroniConstant * Real.log (Real.log r) + 2.50637 / Real.log (Real.log r)",
+            "line": 25,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Fr",
+            "lines": [
+              25,
+              27
+            ],
+            "conclusion": "Defines Fr(r)=e^gamma log log r+2.50637/log log r."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GBound.lean",
+            "fragment": "L25-L27"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          30
+        ],
+        "printed": [
+          30
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 11.2.5 step 5, the same LaTeX (mapper (sonnet); verifier (sonnet); judge (opus))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

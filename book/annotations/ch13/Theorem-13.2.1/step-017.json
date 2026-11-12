@@ -1,0 +1,84 @@
+{
+  "id": "Theorem 13.2.1 step 17",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Introduces the S₂ bound (display 18); Lean bounds max|S_{η*}| by 22.75y, not by S_{η*}(0,x), and uses Plancherel on the subset A.",
+  "subject": [
+    {
+      "location": {
+        "page": 261,
+        "rect": [
+          0.17462,
+          0.15793,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Theorem 13.2.1 step 17: Text, p. 251",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          369,
+          382
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hstep2 : ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2 ≤ 22.75 * y * (8e-11 * x) := by\n    have i2 := integrableOn_Ioc_of_continuous c2 A hAsub\n    calc ∫ α in A, v α * ‖expTsum (a₂ x) α‖ ^ 2\n        ≤ ∫ α in A, 22.75 * y * ‖expTsum (a₂ x) α‖ ^ 2 := by\n          refine setIntegral_mono_on (integrableOn_Ioc_of_continuous (hv.mul c2) A hAsub)\n            (i2.const_mul _) hA fun α _ => ?_\n          exact mul_le_mul_of_nonneg_right (norm_S_etaStar_le_uniform hx0 α) (by positivity)\n      _ = 22.75 * y * ∫ α in A, ‖expTsum (a₂ x) α‖ ^ 2 := integral_const_mul _ _\n      _ ≤ 22.75 * y * (8e-11 * x) := by\n          refine mul_le_mul_of_nonneg_left ?_ (by positivity)\n          refine le_trans ?_ ((TernaryGoldbach.setIntegral_norm_sq_expTsum (summable_a₂ hx0)).le.trans\n            (norm_sq_sum_a₂_le hx))\n          exact setIntegral_mono_set (integrableOn_Ioc_of_continuous c2 _ le_rfl)\n            (Eventually.of_forall fun α => by positivity) (Eventually.of_forall hAsub)",
+            "line": 369,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "∫_A |S_{η*}||S₂|² ≤ 22.75y·∫_A|S₂|² ≤ 22.75y·(8·10⁻¹¹x)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L369-L382"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          261
+        ],
+        "printed": [
+          251
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

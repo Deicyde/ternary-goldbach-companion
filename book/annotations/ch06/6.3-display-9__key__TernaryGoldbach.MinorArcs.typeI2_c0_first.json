@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 9",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] bounds the analogue of the c_{8,I_2}(x/4q²δ₀ + 2UV²/x + qV²/x) terms with its own constants (0.152·2x/t + 0.0005x^{5/6}) rather than [H]'s 0.29315 x/(q²δ₀) + (0.08679 log x+0.39161)x^{2/3}+0.00153√x; the c_{10,I} log term is not separated in this form.",
+  "subject": [
+    {
+      "location": {
+        "page": 131,
+        "rect": [
+          0.17135,
+          0.55231,
+          0.56816,
+          0.10978
+        ]
+      },
+      "title": "Display, p. 121",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_c0_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2",
+        "lines": [
+          172,
+          177
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_c0_first"
+          },
+          "snippet": {
+            "text": "theorem typeI2_c0_first {T t : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : 1 ≤ q) (hqT : (q : ℝ) ≤ T / 6)\n    (ht2 : 2 ≤ t) (htT : t ≤ T / 3) :\n    c₀ * (1 / 8 - 1 / (2 * π ^ 2)) / T ^ 3 *\n        ((U1 T t : ℝ) ^ 2 / q * (0.511 * (V1 T : ℝ) ^ 2 + V1 T * q * Real.log q) +\n          (2 * U1 T t + q) * (0.511 * (V1 T : ℝ) ^ 2)) ≤\n      0.152 * (2 * T ^ 3 / t) + 0.0005 * (T ^ 2 * √T) := by",
+            "line": 172,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeI2_c0_first",
+            "lines": [
+              171,
+              260
+            ],
+            "conclusion": "The c₀(1/8 − 1/2π²) terms of S_{I,2} (the `U²/q(0.511V² + Vq log q) + (2U+q)0.511V²` part) are `≤ 0.152·2x/t + 0.0005 x^{5/6}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2.lean",
+            "fragment": "L172-L177"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          131
+        ],
+        "printed": [
+          121
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 16",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean combines terms by `err_rel` for x ≥ 4.9e26 rather than x ≥ 1e8, giving 2.7e-9 x and 4.1e-9 x.",
+  "subject": [
+    {
+      "location": {
+        "page": 200,
+        "rect": [
+          0.26253,
+          0.2591,
+          0.56162,
+          0.01844
+        ]
+      },
+      "title": "Proposition 9.5.1 step 16: Text, p. 190",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err_phi1_le",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          230,
+          253
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err_phi1_le"
+          },
+          "snippet": {
+            "text": "theorem err_phi1_le {x : ℝ} (hx : 4.9e26 ≤ x)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ 500 → ρ.re = 1 / 2) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) phi1 x - mellin phi1 1 * x‖ ≤ 2.7e-9 * x := by\n  have hx0 : 0 < x := by linarith\n  have hc := cA_sq_le\n  have hc0 : 0 ≤ (Cg * (2 * aH)) ^ 2 := sq_nonneg _\n  have hG : (Cg * (2 * aH)) ^ 2 * 8 * Z3g BPz2 0 ≤ 4.5e6 := by\n    have := mul_le_mul (mul_le_mul_of_nonneg_right hc (by norm_num : (0:ℝ) ≤ 8)) Z3z0_le Z3z0_nonneg\n      (by norm_num)\n    linarith\n  have hE1 := E1z500_le (Q1 := 65.5) (Q2 := 147.7) (S1 := 644) (S2 := 967) (by norm_num) (by norm_num)\n    (by norm_num) (by norm_num) (by norm_num) (by norm_num)\n  have hEB : (Cg * (2 * aH)) ^ 2 * 8 * Real.exp (-60) ≤ 16703 * 8 * 1e-26 :=\n    mul_le_mul (mul_le_mul_of_nonneg_right hc (by norm_num)) exp_neg60_le (Real.exp_pos _).le\n      (by norm_num)\n  have hE2 := E2z500_le (EB := (Cg * (2 * aH)) ^ 2 * 8 * Real.exp (-60)) (by positivity)\n  have hK : (Cg * (2 * aH)) ^ 2 * 8 * Real.exp 1 ≤ 16703 * 8 * 2.7182818286 :=\n    mul_le_mul (mul_le_mul_of_nonneg_right hc (by norm_num)) Real.exp_one_lt_d9.le (Real.exp_pos _).le\n      (by norm_num)\n  have hV := VgL400_le hK (by positivity)\n  refine (Explicit.norm_SsumG_phi1_le (by linarith) hRH).trans ?_\n  refine (err_rel hx hG (by norm_num) hE1 (by norm_num) (hE2.trans (mul_le_mul_of_nonneg_right hEB\n    (by norm_num))) hV (by norm_num)).trans (mul_le_mul_of_nonneg_right ?_ hx0.le)\n  norm_num",
+            "line": 230,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err_phi1_le",
+            "lines": [
+              230,
+              253
+            ],
+            "conclusion": "`‖SsumG phi1 x - mellin phi1 1 * x‖ ≤ 2.7e-9 x` for x ≥ 4.9e26 by `err_rel` from the explicit-formula bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L230-L253"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err_phi2_le",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          255,
+          284
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err_phi2_le"
+          },
+          "snippet": {
+            "text": "theorem err_phi2_le {x : ℝ} (hx : 4.9e26 ≤ x)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ 500 → ρ.re = 1 / 2) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) phi2 x - mellin phi2 1 * x‖ ≤ 4.1e-9 * x := by\n  have hx0 : 0 < x := by linarith\n  have hc := cA_sq_le\n  have hc0 : 0 ≤ (Cg * (2 * aH)) ^ 2 := sq_nonneg _\n  have hG : 2 * ((Cg * (2 * aH)) ^ 2 * 8) * Z3g BPz2 0 ≤ 9e6 := by\n    have := mul_le_mul (mul_le_mul_of_nonneg_right hc (by norm_num : (0:ℝ) ≤ 8)) Z3z0_le Z3z0_nonneg\n      (by norm_num)\n    nlinarith\n  have hE1 := E1z500_le (Q1 := 147.7) (Q2 := 338.2) (S1 := 967) (S2 := 1463) (by norm_num)\n    (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)\n  have hEB : 2 * (Cg * (2 * aH)) ^ 2 * 8 * Real.exp (0.3 - 60) ≤ 2 * 16703 * 8 * 3e-26 := by\n    have := mul_le_mul (mul_le_mul_of_nonneg_right hc (by norm_num : (0:ℝ) ≤ 8)) exp_neg597_le\n      (Real.exp_pos _).le (by norm_num)\n    nlinarith\n  have hE2 := E2z500_le (EB := 2 * (Cg * (2 * aH)) ^ 2 * 8 * Real.exp (0.3 - 60)) (by positivity)\n  have he800 : Real.exp (1 / 800) ≤ Real.exp 1 := Real.exp_le_exp.2 (by norm_num)\n  have hK : 2 * ((Cg * (2 * aH)) ^ 2 * 8 * Real.exp 1 * Real.exp (1 / 800)) ≤\n      2 * (16703 * 8 * 2.7182818286 * 2.7182818286) := by\n    have he := Real.exp_one_lt_d9.le\n    have h1 : (Cg * (2 * aH)) ^ 2 * 8 * Real.exp 1 ≤ 16703 * 8 * 2.7182818286 :=\n      mul_le_mul (mul_le_mul_of_nonneg_right hc (by norm_num)) he (Real.exp_pos _).le (by norm_num)\n    have h2 := mul_le_mul h1 (he800.trans he) (Real.exp_pos _).le (by norm_num)\n    linarith\n  have hV := VgL400_le hK (by positivity)\n  refine (Explicit.norm_SsumG_phi2_le (by linarith) hRH).trans ?_\n  refine (err_rel hx hG (by norm_num) hE1 (by norm_num) (hE2.trans (mul_le_mul_of_nonneg_right hEB\n    (by norm_num))) hV (by norm_num)).trans (mul_le_mul_of_nonneg_right ?_ hx0.le)\n  norm_num",
+            "line": 255,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err_phi2_le",
+            "lines": [
+              255,
+              284
+            ],
+            "conclusion": "The same for phi2 with `4.1e-9 x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L255-L284"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          200
+        ],
+        "printed": [
+          190
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

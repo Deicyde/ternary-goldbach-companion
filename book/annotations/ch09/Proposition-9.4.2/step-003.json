@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.4.2 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the $s=0$ term by a uniform Mellin bound times a Jensen count, not $c_0$ by $\\ell_1$ norms and $\\Gamma$-values ($6.536232+9.319578|\\delta|$).",
+  "subject": [
+    {
+      "location": {
+        "page": 197,
+        "rect": [
+          0.17462,
+          0.79587,
+          0.56162,
+          0.06363
+        ]
+      },
+      "title": "Proposition 9.4.2 step 3: Display, p. 187",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.4.2 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_zero",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
+        "lines": [
+          276,
+          283
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_zero"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_fP_zero (δ : ℝ) : ‖mellin (fP δ) 0‖ ≤ Cg * 300 * (2 * aH) :=\n  norm_mellin_fP_le δ (s := 0) (by norm_num) (B := 300) fun ξ hξ => by\n    have hG := norm_G_uniform_ext ((0:ℂ) - 1 + ((2 * π * ξ : ℝ) : ℂ) * I) δ\n      (by rw [re_shift]; norm_num) (by rw [re_shift]; norm_num)\n    refine hG.trans ?_\n    have : Real.exp (-(thetaD δ * |((0:ℂ) - 1 + ((2 * π * ξ : ℝ) : ℂ) * I).im|)) ≤ 1 :=\n      Real.exp_le_one_iff.2 (by have := thetaD_pos δ; nlinarith [abs_nonneg ((0:ℂ) - 1 + ((2 * π * ξ : ℝ) : ℂ) * I).im])\n    linarith",
+            "line": 276,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_zero",
+            "lines": [
+              276,
+              283
+            ],
+            "conclusion": "$|M(\\eta_+e(\\delta\\cdot))(0)|\\le C_g\\cdot300\\cdot2a_H$, uniformly in $\\delta$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L276-L283"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusBound",
+        "lines": [
+          157,
+          157
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_fP_le"
+          },
+          "snippet": {
+            "text": "    ‖SsumG χ (fP δ) x‖ ≤ Cg * 300 * (2 * aH) * Z3g (BP N) 0 +",
+            "line": 157,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+            "lines": [
+              152,
+              170
+            ],
+            "conclusion": "The $s=0$ contribution enters the bound as $C_g\\cdot300\\cdot2a_H\\cdot Z_3(B_P(N),0)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusBound.lean",
+            "fragment": "L157-L157"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          197
+        ],
+        "printed": [
+          187
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

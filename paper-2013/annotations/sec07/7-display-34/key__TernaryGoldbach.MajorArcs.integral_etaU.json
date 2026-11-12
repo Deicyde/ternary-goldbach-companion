@@ -1,0 +1,81 @@
+{
+  "id": "7 display 34",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same statement S_{η_*}(0,x) = (√(π/2) + O*(err)) x/κ, but Lean's err ≈ 4.7e6/√(x/κ) is weaker than 1.9075e-8.",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.20371,
+          0.18359,
+          0.63183,
+          0.0382
+        ]
+      },
+      "title": "Display, p. 63",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaU",
+        "module": "TernaryGoldbach.MajorArcs.CMain",
+        "lines": [
+          401,
+          405
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaU"
+          },
+          "snippet": {
+            "text": "theorem integral_etaU : ∫ u, etaU u = √(π / 2) := by\n  have := integral_pow_mul_etaU 0\n  simp only [pow_zero, one_mul] at this\n  rw [this, show (fun v : ℝ => eta2 v) = fun v => v ^ 0 * eta2 v by ext; simp, eta2_moment0,\n    show (fun w : ℝ => phi w) = fun w => w ^ 0 * phi w by ext; simp, phi_moment0, one_mul]",
+            "line": 401,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaU",
+            "lines": [
+              401,
+              405
+            ],
+            "conclusion": "`∫ etaU = √(π/2)`, so η̂(0) = |η_*|₁ κ = √(π/2)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
+            "fragment": "L401-L405"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "2 display 1",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 9,
+        "rect": [
+          0.20371,
+          0.43098,
+          0.63183,
+          0.04181
+        ]
+      },
+      "title": "Display, p. 9",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.fourier_eq_integral_e",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          193,
+          196
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.fourier_eq_integral_e"
+          },
+          "snippet": {
+            "text": "/-- `𝓕 f(ξ) = ∫ e(-vξ) f(v) dv`. -/\ntheorem fourier_eq_integral_e (f : ℝ → ℂ) (ξ : ℝ) : 𝓕 f ξ = ∫ v, e (-(v * ξ)) * f v := by\n  rw [Real.fourier_real_eq]\n  simp_rw [Circle.smul_def, fourierChar_eq_e, smul_eq_mul]",
+            "line": 193,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.fourier_eq_integral_e",
+            "lines": [
+              193,
+              196
+            ],
+            "conclusion": "Mathlib's Fourier transform satisfies fhat(xi) = integral over R of e(-v xi) f(v) dv, the paper's normalisation."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L193-L196"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          9
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7 display 47",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] gives only a crude bound $\\sqrt{\\digamma(n)}\\le3.795t$; no $-1.43644/(2\\sqrt{e^\\gamma\\log\\log y})$ refinement and no monotonicity of $\\digamma$ at $r_1$ here (`Fr_monotoneOn` is used elsewhere).",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.20371,
+          0.24927,
+          0.63183,
+          0.03659
+        ]
+      },
+      "title": "Display, p. 66",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 47"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+        "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+        "lines": [
+          106,
+          107
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY_le_asym"
+          },
+          "snippet": {
+            "text": "  have hsF : √(Fr n) ≤ 3.795 * t := by\n    rw [Real.sqrt_le_left (by positivity)]; nlinarith",
+            "line": 106,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+            "lines": [
+              55,
+              188
+            ],
+            "conclusion": "$\\sqrt{\\digamma(n)}\\le3.795\\,n^{1/16}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+            "fragment": "L106-L107"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          66
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.3 display 18, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "id": "Lemma 4.1.1 step 4",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.26253,
+          0.4819,
+          0.56162,
+          0.06051
+        ]
+      },
+      "title": "Lemma 4.1.1 step 4: Text, p. 52",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          616,
+          621
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₁'"
+          },
+          "snippet": {
+            "text": "  calc ∑ k ∈ Finset.range K, (F k + F (q - 1 - k)) + (if q % 2 = 1 then F K else 0)\n      ≤ 2 * A + C * (∑ k ∈ Finset.Ico 1 K, (g k + g (k + 1)) + g K) := by\n        rw [hpeel]\n        have := Finset.sum_le_sum hpair\n        rw [← Finset.mul_sum] at this\n        nlinarith [hFA 0, hFA (q - 1)]",
+            "line": 616,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.core_bound₁'",
+            "lines": [
+              549,
+              627
+            ],
+            "conclusion": "`F 0 + F (q-1) ≤ 2A` and the remaining residues `1 ≤ R ≤ q-2` are bounded by `C f_q(R+τ_R)` via `hFC` (hypothesis, line 554)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L616-L621"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_1'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          919,
+          931
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_1_1'"
+          },
+          "snippet": {
+            "text": "  have hFC : ∀ R : ℕ, 1 ≤ R → R + 2 ≤ q →\n      minA A C (Real.sin (π * (R + τ R) / q) ^ 2) ≤ C * fq q (R + τ R) := by\n    intro R h1 h2\n    have hR1 : (1 : ℝ) ≤ R := by exact_mod_cast h1\n    have hR2 : (R : ℝ) + 2 ≤ q := by exact_mod_cast h2\n    obtain ⟨t1, t2⟩ := hτ R\n    have hpos : 0 < Real.sin (π * (R + τ R) / q) := by\n      apply Real.sin_pos_of_pos_of_lt_pi\n      · apply div_pos (mul_pos Real.pi_pos (by linarith)) hq0\n      · rw [div_lt_iff₀ hq0]; nlinarith [Real.pi_pos]\n    unfold minA\n    rw [if_neg (by positivity)]\n    exact (min_le_right _ _).trans (le_of_eq (by rw [fq, mul_one_div]))",
+            "line": 919,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_1'",
+            "lines": [
+              905,
+              933
+            ],
+            "conclusion": "Discharges `hFC`: for `1 ≤ R`, `R+2 ≤ q`, `minA A C (sin²) ≤ C·fq q (R+τ R)` since `sin > 0`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L919-L931"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

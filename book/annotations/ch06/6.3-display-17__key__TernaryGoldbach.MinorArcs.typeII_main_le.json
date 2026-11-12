@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 17",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same step (log δ₀(1+ε₁)q ≤ log δ₀q + log(1+ε₁) ≤ log δ₀q + ε₁), but [L] uses the numerical bound ε₁ ≤ 0.0015 (c ≤ 1.0015t) and gets + 0.0015 (then 0.002), not + ε₁.",
+  "subject": [
+    {
+      "location": {
+        "page": 134,
+        "rect": [
+          0.25926,
+          0.55978,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Display, p. 124",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_main_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoice",
+        "lines": [
+          288,
+          294
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_main_le"
+          },
+          "snippet": {
+            "text": "  have hlogc : Real.log c ≤ Real.log t + 0.0015 := by\n    have h1 : Real.log c ≤ Real.log (1.0015 * t) := Real.log_le_log hc0 hc\n    rw [Real.log_mul (by norm_num) ht0.ne'] at h1\n    have : Real.log 1.0015 ≤ 0.0015 := by\n      have := Real.log_le_sub_one_of_pos (show (0 : ℝ) < 1.0015 by norm_num)\n      linarith\n    linarith",
+            "line": 288,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_main_le",
+            "lines": [
+              227,
+              313
+            ],
+            "conclusion": "`log c ≤ log t + 0.0015` from `c ≤ 1.0015 t` and `log 1.0015 ≤ 0.0015` (`log_le_sub_one_of_pos`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoice.lean",
+            "fragment": "L288-L294"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          134
+        ],
+        "printed": [
+          124
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

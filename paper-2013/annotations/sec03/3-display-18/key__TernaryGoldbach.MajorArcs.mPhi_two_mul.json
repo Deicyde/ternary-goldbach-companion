@@ -1,0 +1,81 @@
+{
+  "id": "3 display 18",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] never writes the even-q integrals separately: arcs are indexed by Qset with width via qt, and the even/odd equality is used only through the weights mPhi(2q)=[q odd]mPhi(q); the equality of the integral terms is implicit.",
+  "subject": [
+    {
+      "location": {
+        "page": 18,
+        "rect": [
+          0.20371,
+          0.5859,
+          0.63183,
+          0.06168
+        ]
+      },
+      "title": "Display, p. 18",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.mPhi_two_mul",
+        "module": "TernaryGoldbach.MajorArcs.SumMuPhi",
+        "lines": [
+          51,
+          66
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.mPhi_two_mul"
+          },
+          "snippet": {
+            "text": "theorem mPhi_two_mul (q : ℕ) : mPhi (2 * q) = if Odd q then mPhi q else 0 := by\n  split_ifs with ho\n  · have hcop : Nat.Coprime 2 q := (Nat.coprime_two_left).2 ho\n    have hsq : Squarefree (2 * q) ↔ Squarefree q := by\n      rw [Nat.squarefree_mul hcop]; simp [Nat.squarefree_two]\n    unfold mPhi\n    rw [Nat.totient_mul hcop, Nat.totient_two, one_mul]\n    simp only [hsq]\n  · have he : Even q := Nat.not_odd_iff_even.1 ho\n    obtain ⟨k, rfl⟩ := he\n    have hns : ¬Squarefree (2 * (k + k)) := by\n      intro hs\n      have h4 : 2 * 2 ∣ 2 * (k + k) := ⟨k, by ring⟩\n      have := hs 2 h4\n      norm_num at this\n    unfold mPhi; rw [if_neg hns, zero_div]",
+            "line": 51,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.mPhi_two_mul",
+            "lines": [
+              51,
+              66
+            ],
+            "conclusion": "$\\mu^2(2q)/\\phi(2q)=[q\\ odd]\\,\\mu^2(q)/\\phi(q)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/SumMuPhi.lean",
+            "fragment": "L51-L66"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          18
+        ],
+        "printed": [
+          18
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.3 display 9, the same LaTeX (mapper (sonnet); verifier (sonnet); judge (opus))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

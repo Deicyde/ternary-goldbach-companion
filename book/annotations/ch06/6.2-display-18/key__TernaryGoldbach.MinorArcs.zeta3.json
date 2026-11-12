@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 18",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "note": "`κ₀` appears only as the literal `1.27` in `zeta3` and `S1_bound`.",
+  "subject": [
+    {
+      "location": {
+        "page": 118,
+        "rect": [
+          0.25926,
+          0.46086,
+          0.56816,
+          0.01738
+        ]
+      },
+      "title": "Display, p. 108",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.zeta3",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal",
+        "lines": [
+          42,
+          43
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.zeta3"
+          },
+          "snippet": {
+            "text": "/-- `κ₀ζ(3/2)³ = 1.27 ζ(3/2)³` [H, (6.16)]. -/\nnoncomputable def zeta3 : ℝ := 1.27 * (riemannZeta (3 / 2)).re ^ 3",
+            "line": 42,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.zeta3",
+            "lines": [
+              42,
+              43
+            ],
+            "conclusion": "`zeta3 = 1.27 · ζ(3/2)³`, i.e. `κ₀ = 1.27`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L42-L43"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          118
+        ],
+        "printed": [
+          108
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

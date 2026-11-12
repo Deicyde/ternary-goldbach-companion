@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.1 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same computation for the odd-n function: scale 2m/x instead of m/x, giving x/(2m), argument kx/(2m) − δ/2 and an extra phase e(k/2).",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.26253,
+          0.52279,
+          0.56162,
+          0.03375
+        ]
+      },
+      "title": "Lemma 4.2.1 step 7: Display, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          240,
+          256
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Todd_main"
+          },
+          "snippet": {
+            "text": "  set G : ℝ → ℂ := fun v => (eta2 (m / x * v + 0) : ℂ) * e (β * v)\n  have hhG : h = fun u => G (2 * u + 1) := by\n    funext u; simp only [h, G]; rw [show (m : ℝ) / x * (2 * u + 1) + 0 = m * (2 * u + 1) / x by ring]\n    ring\n  have hlam : (0 : ℝ) < m / x := by positivity\n  have hF : ∀ k : ℤ, 𝓕 h k =\n      (x / (2 * m) : ℝ) * (e (k / 2) * eta2hat (k * x / (2 * m) - δ / 2)) := by\n    intro k\n    rw [hhG, fourier_comp_affine G two_pos 1 k]\n    simp only [G]\n    rw [fourier_mul_e (fun v => (eta2 (m / x * v + 0) : ℂ)) β,\n      fourier_comp_affine (fun u => (eta2 u : ℂ)) hlam 0, zero_mul, zero_div, e_zero, one_mul]\n    have : ((k : ℝ) / 2 - β) / (m / x) = k * x / (2 * m) - δ / 2 := by\n      simp only [β]; field_simp\n    rw [this, eta2hat]\n    push_cast\n    field_simp",
+            "line": 240,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Todd_main",
+            "lines": [
+              220,
+              322
+            ],
+            "conclusion": "Computes `𝓕h(k) = (x/2m)·e(k/2)·η̂₂(kx/2m − δ/2)` by scaling and modulation (`fourier_comp_affine`, `fourier_mul_e`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L240-L256"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

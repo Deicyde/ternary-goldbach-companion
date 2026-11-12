@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 12.2.4 step 19",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same move (small R covered by the lemma-type region, large R by the main argument) with threshold lamQ q (12.33) instead of c(c_+) max(Rq,Q_{0,min})^{(1-rho)e^{-gamma}} - log q; no implication to a lower bound on R is derived.",
+  "subject": [
+    {
+      "location": {
+        "page": 247,
+        "rect": [
+          0.17462,
+          0.60854,
+          0.56162,
+          0.03159
+        ]
+      },
+      "title": "Proposition 12.2.4 step 19: Text, p. 237",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.2.4 step 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot6",
+        "lines": [
+          85,
+          90
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_12_2_4"
+          },
+          "snippet": {
+            "text": "    rcases le_or_gt (lamQ q) R with hL | hL\n    · exact regionL hQ hQ₀ hρ hq hs hR hL\n    have hq' : (22000000000 : ℝ) ≤ q := by exact_mod_cast hbig\n    have hlq : 3 ≤ Real.log q := by\n      have := log_Q1_ge.trans (Real.log_le_log (by norm_num) hq'); linarith\n    exact regionS hQ hQ₀ hρ hq hs hR (by norm_num) hlq (hcc_large hbig) (large_q_hS hbig hR hL)",
+            "line": 85,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+            "lines": [
+              68,
+              98
+            ],
+            "conclusion": "For q>=2.2e10 splits on lamQ q <= R: regionL for large R, regionS (the Lemma 12.2.1-12.2.3 analogue) for R<lamQ q."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot6.lean",
+            "fragment": "L85-L90"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          247
+        ],
+        "printed": [
+          237
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

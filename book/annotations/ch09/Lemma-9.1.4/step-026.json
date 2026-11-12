@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.1.4 step 26",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's combined bound Z((1/h)sqrt(2pi*0.6647*2Jh)+sqrt(2pi*0.1707*2Jh)) is for fixed eta and has no log(qT0), 1/2, or 17.21 terms.",
+  "subject": [
+    {
+      "location": {
+        "page": 184,
+        "rect": [
+          0.26253,
+          0.47329,
+          0.56162,
+          0.07147
+        ]
+      },
+      "title": "Lemma 9.1.4 step 26: Display, p. 174",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4 step 26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.sum_window_fline_le",
+        "module": "TernaryGoldbach.Explicit.LineZeros",
+        "lines": [
+          179,
+          196
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.sum_window_fline_le"
+          },
+          "snippet": {
+            "text": "/-- **Zeros on the critical line**: under the window hypothesis, with `T₀ < Jh`,\n`Σ m_u |G_δ(1/2 + iℑu)| ≤ Z ((1/h)√(2π·0.6647·2Jh) + √(2π·0.1707·2Jh))`. -/\ntheorem sum_window_fline_le {S : Finset ℂ} (m : ℂ → ℝ) (hm : ∀ u ∈ S, 0 ≤ m u) {h T0 Z : ℝ}\n    (hh : 0 < h) (hT0 : 0 ≤ T0) (J : ℕ) (hJ : T0 < J * h) (hS : ∀ u ∈ S, |u.im| ≤ T0) (hZ0 : 0 ≤ Z)\n    (hZ : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => (⌊u.im / h⌋ + J).toNat = k), m u ≤ Z) (δ : ℝ) :\n    ∑ u ∈ S, m u * ‖fline δ u.im‖ ≤\n      Z * ((1 / h) * √(2 * π * 0.6647 * (2 * (J * h))) + √(2 * π * 0.1707 * (2 * (J * h)))) := by\n  have hJh : 0 < (J : ℝ) * h := by linarith\n  refine (sum_window_le m hm hh J hJ hS hZ0 hZ (hasDerivAt_fline δ) (continuous_flineD δ)).trans ?_\n  refine mul_le_mul_of_nonneg_left ?_ hZ0\n  have e : (J : ℝ) * h - -(J * h) = 2 * (J * h) := by ring\n  have h1 := intervalIntegral_norm_le_sqrt (continuous_fline δ) (integrable_norm_sq_fline δ)\n    (by positivity) (integral_norm_sq_fline_le δ) (a := -(J * h)) (b := J * h) (by linarith)\n  have h2 := intervalIntegral_norm_le_sqrt (continuous_flineD δ) (integrable_norm_sq_flineD δ)\n    (by positivity) (integral_norm_sq_flineD_le δ) (a := -(J * h)) (b := J * h) (by linarith)\n  rw [e] at h1 h2\n  have := mul_le_mul_of_nonneg_left h1 (by positivity : (0:ℝ) ≤ 1 / h)\n  linarith",
+            "line": 179,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.sum_window_fline_le",
+            "lines": [
+              179,
+              196
+            ],
+            "conclusion": "For eta=t^2 e^{-t^2/2}, zeros with |Im|<=T0 and window multiplicity <=Z satisfy sum m|G_delta(1/2+i gamma)| <= Z((1/h)sqrt(2pi*0.6647*2Jh)+sqrt(2pi*0.1707*2Jh)), by Sobolev windows and Cauchy-Schwarz, with no log q term."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LineZeros.lean",
+            "fragment": "L179-L196"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          184
+        ],
+        "printed": [
+          174
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

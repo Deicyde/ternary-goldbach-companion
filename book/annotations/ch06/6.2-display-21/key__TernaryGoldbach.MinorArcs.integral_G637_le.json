@@ -1,0 +1,117 @@
+{
+  "id": "6.2 display 21",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean obtains `4∫√(S₁S₃)dW/W ≤ 8·1.4262 x√(κ₁(1/2+1/U))/√V`, with `1.4262²(1/2+1/U)` in place of `1.0172`.",
+  "subject": [
+    {
+      "location": {
+        "page": 118,
+        "rect": [
+          0.25926,
+          0.78978,
+          0.56816,
+          0.06831
+        ]
+      },
+      "title": "Display, p. 108",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_G637_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal",
+        "lines": [
+          283,
+          283
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_G637_le"
+          },
+          "snippet": {
+            "text": "  have J4 : ∫ W in (V : ℝ)..x / U, f4 W ≤ 2 / √V := integral_inv_mul_sqrt_le hV hVU",
+            "line": 283,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_G637_le",
+            "lines": [
+              213,
+              321
+            ],
+            "conclusion": "`∫_V^{x/U} dW/(W√W) ≤ 2/√V`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L283-L283"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_G637_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal",
+        "lines": [
+          319,
+          319
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_G637_le"
+          },
+          "snippet": {
+            "text": "  have K7 := mul_le_mul_of_nonneg_left J4 hc4",
+            "line": 319,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_G637_le",
+            "lines": [
+              213,
+              321
+            ],
+            "conclusion": "The `S₃`-term of the integrand integrates to `≤ 1.4262 x √(κ₁(1/2+1/U)) · 2/√V`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L319-L319"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          118
+        ],
+        "printed": [
+          108
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

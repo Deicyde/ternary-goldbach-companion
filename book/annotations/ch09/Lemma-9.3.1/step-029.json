@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.3.1 step 29",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same factor $e^{-0.1065(T_0/\\pi|\\delta|)^2}$, but Lean's coefficient is $0.588u_0^2(2Z_3/(1-\\rho_A)+2c_3/(1-\\rho_A)^2)$ from Jensen windows, not (caplor) $\\le1.578T_0\\log(qT_0/2\\pi)$.",
+  "subject": [
+    {
+      "location": {
+        "page": 191,
+        "rect": [
+          0.17462,
+          0.44603,
+          0.56162,
+          0.02164
+        ]
+      },
+      "title": "Lemma 9.3.1 step 29: Text, p. 181",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.3.1 step 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          567,
+          570
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "    have g2 := sum_geom_windows m (fun u _ => hm u) idx (Z0 := 2 * Z3 N T0) (c := 2 * c3 T0)\n      (E := EA T0 δ) (ρ := rhoA δ) (by linarith [Z3_nonneg N T0]) (by linarith [c3_nonneg hT00])\n      (EA_nonneg T0 δ) (Real.exp_pos _).le (rhoA_lt_one δ) (fun k => by\n        have := hZw' k; linarith)",
+            "line": 567,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "The Gaussian-regime part $\\sum m_u E_A\\rho_A^{k(u)}$ of the tail sum is at most $E_A(2Z_3/(1-\\rho_A)+2c_3/(1-\\rho_A)^2)$ by `sum_geom_windows`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L567-L570"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.EA",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          91,
+          93
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.EA"
+          },
+          "snippet": {
+            "text": "/-- `0.588 u₀² e^{−0.1065 u₀²}`, `u₀ = T₀/(π|δ|)` (regime A at `T₀`), `0` at `δ = 0`. -/\nnoncomputable def EA (T0 δ : ℝ) : ℝ :=\n  if δ = 0 then 0 else 0.588 * (T0 / (π * |δ|)) ^ 2 * Real.exp (-0.1065 * (T0 / (π * |δ|)) ^ 2)",
+            "line": 91,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.EA",
+            "lines": [
+              91,
+              93
+            ],
+            "conclusion": "$E_A=0.588\\,u_0^2e^{-0.1065u_0^2}$, $u_0=T_0/(\\pi|\\delta|)$: the factor $e^{-0.1065(T_0/\\pi|\\delta|)^2}$ times a coefficient."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L91-L93"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          191
+        ],
+        "printed": [
+          181
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

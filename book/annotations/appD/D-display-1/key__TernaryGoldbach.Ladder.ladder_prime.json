@@ -1,0 +1,81 @@
+{
+  "id": "D display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] reaches only `10^27`, below the Platt case `n₀ = 1.23163·10^27`, and the other two cases `n₀ = 6.15697·10^28`, `5.90698·10^29` are not covered; no RH verification used.",
+  "subject": [
+    {
+      "location": {
+        "page": 316,
+        "rect": [
+          0.25926,
+          0.37392,
+          0.56816,
+          0.05615
+        ]
+      },
+      "title": "Display, p. 306",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "D display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Ladder.ladder_prime",
+        "module": "TernaryGoldbach.Ladder.Main",
+        "lines": [
+          17,
+          25
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Ladder.ladder_prime"
+          },
+          "snippet": {
+            "text": "/-- **The prime ladder**: a prime in `[(111616 i − 2047)·2⁴⁵ + 1, 111616 i·2⁴⁵ + 1]` for\n`1 ≤ i ≤ 254638308`. -/\ntheorem ladder_prime {i : ℕ} (h1 : 1 ≤ i) (h2 : i ≤ 254638308) :\n    ∃ p, p.Prime ∧ (111616 * i - 2047) * 35184372088832 + 1 ≤ p ∧\n      p ≤ 111616 * i * 35184372088832 + 1 := by\n  obtain ⟨p, hp, h3, h4⟩ :=\n    prime_of_runsOK runsOK_all (le_refl 1) (by norm_num) (by norm_num) h1 (by omega)\n  rw [show (2 : ℕ) ^ 45 = 35184372088832 by norm_num] at h3 h4\n  exact ⟨p, hp, h3, h4⟩",
+            "line": 17,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Ladder.ladder_prime",
+            "lines": [
+              17,
+              25
+            ],
+            "conclusion": "Kernel-checked prime ladder up to `10^27`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Ladder/Main.lean",
+            "fragment": "L17-L25"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          316
+        ],
+        "printed": [
+          306
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

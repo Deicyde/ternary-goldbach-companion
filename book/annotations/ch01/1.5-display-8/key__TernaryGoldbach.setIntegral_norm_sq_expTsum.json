@@ -1,0 +1,81 @@
+{
+  "id": "1.5 display 8",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Explicit-constant version with `log s → log 2Q₀ + 2` and `log x → 2 log(2Q) ≈ log(2x/δ₀)`, so the factor is about `2 log s/log x`; for coefficients supported on primes `>√x` (not `Λη₊` with prime powers and small primes), arcs `𝔐_{δ₀,Q₀}` with `δ₀ ≥ 2`, and `Q₀ ≥ 10⁵`.",
+  "subject": [
+    {
+      "location": {
+        "page": 38,
+        "rect": [
+          0.25926,
+          0.44928,
+          0.56816,
+          0.03722
+        ]
+      },
+      "title": "Display, p. 28",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.5 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.setIntegral_norm_sq_expTsum",
+        "module": "TernaryGoldbach.MinorArcs.Plancherel",
+        "lines": [
+          30,
+          31
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.setIntegral_norm_sq_expTsum"
+          },
+          "snippet": {
+            "text": "theorem setIntegral_norm_sq_expTsum {a : ℕ → ℂ} (ha : Summable fun n => ‖a n‖) :\n    ∫ α in Set.Ioc (0:ℝ) 1, ‖expTsum a α‖ ^ 2 = ∑' n, ‖a n‖ ^ 2 := by",
+            "line": 30,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.setIntegral_norm_sq_expTsum",
+            "lines": [
+              29,
+              54
+            ],
+            "conclusion": "`Σ'|a(n)|² = ∫_{(0,1]} |expTsum a|²` (Plancherel), turning the right side into `∫_{ℝ/ℤ}|S|²`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Plancherel.lean",
+            "fragment": "L30-L31"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          38
+        ],
+        "printed": [
+          28
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

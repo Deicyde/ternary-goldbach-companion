@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.2 step 22",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds its own sum by an Euler product `∏(1+b_s(p))` and evaluates numerically (constant 1.48 for `s=1/9`), not the `ζ`-product bound with `s_1,s_2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 97,
+        "rect": [
+          0.17462,
+          0.47927,
+          0.56162,
+          0.01683
+        ]
+      },
+      "title": "Lemma 5.1.2 step 22: Text, p. 87",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_d_main_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler",
+        "lines": [
+          209,
+          220
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_d_main_le"
+          },
+          "snippet": {
+            "text": "/-- **`∑_{d ≤ N} f(d)² d^{2s} ∏_{p∣d} ρ_s(p)² ≤ ∏_{2 < p ≤ N} (1 + b_s(p))`**. -/\ntheorem sum_d_main_le {s : ℝ} (hs1 : s < 1) (N : ℕ) :\n    ∑ d ∈ Icc 1 N, gmain s d ≤\n      ∏ p ∈ (Nat.primesBelow (N + 1)).filter (· ≠ 2), (1 + bterm s p) := by\n  have h := sum_le_euler (f := gmain s) (gmain_nonneg s) (gmain_one s) (fun h => gmain_mul s h)\n    (fun {p} hp => by\n      refine summable_of_ne_finset_zero (s := range 2) fun e he => ?_\n      simp only [mem_range, not_lt] at he\n      simp [gmain_prime_pow hp s he]) N\n  refine h.trans (le_of_eq ?_)\n  rw [prod_congr rfl fun p hp => tsum_gmain (Nat.mem_primesBelow.1 hp).2 hs1, prod_ite,\n    prod_const_one, one_mul]",
+            "line": 209,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_d_main_le",
+            "lines": [
+              209,
+              220
+            ],
+            "conclusion": "`∑_{d≤N} g_s(d) ≤ ∏_{2<p≤N}(1+b_s(p))` via multiplicativity and an Euler product (`sum_le_euler`, `tsum_gmain`), `b_s(p)=(p^s/(p+1-p^s))²`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L209-L220"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prod_bterm9_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Numerics",
+        "lines": [
+          452,
+          479
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prod_bterm9_le"
+          },
+          "snippet": {
+            "text": "/-- **`∏_{2 < p < M} (1 + b_{1/9}(p)) ≤ 1.48`**. -/\ntheorem prod_bterm9_le (M : ℕ) :\n    ∏ p ∈ (Nat.primesBelow M).filter (· ≠ 2), (1 + bterm (1 / 9) p) ≤ 1.48 := by\n  have hT2 : ∀ p ∈ ({3, 5, 7, 11, 13, 17, 19, 23, 29} : Finset ℕ), 2 ≤ p := by decide\n  have hb0 : ∀ p, 0 ≤ bterm (1 / 9) p := fun p => by unfold bterm; positivity\n  have hA : ∏ p ∈ ({3, 5, 7, 11, 13, 17, 19, 23, 29} : Finset ℕ), (1 + bterm (1 / 9) p) ≤ 1.3258 := by\n    refine (prod_le_prod₀ (g := fun p => 1 + (U9 p / (p + 1 - U9 p)) ^ 2)\n      (fun p _ => by linarith [hb0 p])\n      fun p hp => by\n        have := bterm_le_of (rpow9_le_U hp).1 (by linarith [(rpow9_le_U hp).2])\n        linarith).trans ?_\n    rw [prod_insert (by decide), prod_insert (by decide), prod_insert (by decide),\n      prod_insert (by decide), prod_insert (by decide), prod_insert (by decide),\n      prod_insert (by decide), prod_insert (by decide), prod_singleton]\n    norm_num [U9]\n  have h := prod_split_le (f := fun p => 1 + bterm (1 / 9) p) (M := M) (P0 := 30) (A := 1.3258)\n    (τ := 0.1038) odd_primes_lt_30 (fun p _ => by linarith [hb0 p]) hT2 hA ?_ (by norm_num)\n    (by norm_num)\n  · exact h.trans (by norm_num)\n  · have hb : ∀ n ∈ Ico 30 M, (1 + bterm (1 / 9) n) - 1 ≤\n        (n : ℝ) ^ (-(2 - 2 * ((1 : ℝ) / 9))) / (1 - 0.0487) ^ 2 := fun n hn => by\n      rw [add_sub_cancel_left]\n      exact bterm_le_tail (by norm_num) (P0 := 30) (by norm_num) (mem_Ico.1 hn).1\n        (by exact_mod_cast rpow9_30) (by norm_num)\n    refine (sum_le_sum hb).trans ?_\n    rw [← sum_div, div_le_iff₀ (by norm_num)]\n    have := tail9_b M\n    linarith",
+            "line": 452,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prod_bterm9_le",
+            "lines": [
+              452,
+              479
+            ],
+            "conclusion": "Numerical bound on `∏(1+b_{1/9}(p))` (constant 1.48 used in `abs_g2_le_large`), in place of zeta values."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Numerics.lean",
+            "fragment": "L452-L479"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          97
+        ],
+        "printed": [
+          87
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

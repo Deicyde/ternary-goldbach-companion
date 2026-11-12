@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.4.1 step 9",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds one ‖mellin (fP δ) s‖ at a time by an EB/EA geometric tail, not the sum |G(ρ)|+|G(1-ρ)| by f(τ).",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17462,
+          0.72418,
+          0.56162,
+          0.01808
+        ]
+      },
+      "title": "Lemma 9.4.1 step 9: Display, p. 185",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
+        "lines": [
+          285,
+          314
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_tail"
+          },
+          "snippet": {
+            "text": "/-- **The tail above `T₀`** (`T₀ ≥ 200 + max(10π|δ|, 50)`). -/\ntheorem norm_mellin_fP_tail {δ T0 : ℝ} (hT0 : 200 + max (10 * π * |δ|) 50 ≤ T0) {s : ℂ}\n    (hr1 : 0 < s.re) (hr2 : s.re < 1) (hτ : T0 < |s.im|) :\n    ‖mellin (fP δ) s‖ ≤ Cg * (2 * aH) * EB (T0 - 200) * rhoB ^ ⌊(|s.im| - T0) / 4.4⌋₊ +\n      Cg * (2 * aH) * EA (T0 - 200) δ * rhoA δ ^ ⌊(|s.im| - T0) / 4.4⌋₊ := by\n  set k := ⌊(|s.im| - T0) / 4.4⌋₊ with hk\n  have hT0' : max (10 * π * |δ|) 50 ≤ T0 - 200 := by linarith\n  have h := norm_mellin_fP_le δ (s := s) (by linarith)\n    (B := EB (T0 - 200) * rhoB ^ k + EA (T0 - 200) δ * rhoA δ ^ k) fun ξ hξ => by\n    have hsh := abs_shift_le hξ\n    have ha : |s.im| - 200 ≤ |s.im + 2 * π * ξ| := by\n      have := abs_sub_abs_le_abs_sub s.im (-(2 * π * ξ)); rw [abs_neg] at this\n      have e : s.im - -(2 * π * ξ) = s.im + 2 * π * ξ := by ring\n      rw [e] at this; linarith\n    have hτ' : T0 - 200 < |(s - 1 + ((2 * π * ξ : ℝ) : ℂ) * I).im| := by rw [im_shift]; linarith\n    have hG := norm_G_tail_floor hT0' (by rw [re_shift]; linarith) (by rw [re_shift]; linarith) hτ'\n    rw [im_shift] at hG\n    refine hG.trans ?_\n    have hkk : k ≤ ⌊(|s.im + 2 * π * ξ| - (T0 - 200)) / 4.4⌋₊ := by\n      rw [hk]; apply Nat.floor_le_floor\n      apply div_le_div_of_nonneg_right _ (by norm_num); linarith\n    have hB1 : rhoB ^ ⌊(|s.im + 2 * π * ξ| - (T0 - 200)) / 4.4⌋₊ ≤ rhoB ^ k :=\n      pow_le_pow_of_le_one (Real.exp_pos _).le rhoB_lt_one.le hkk\n    have hA1 : rhoA δ ^ ⌊(|s.im + 2 * π * ξ| - (T0 - 200)) / 4.4⌋₊ ≤ rhoA δ ^ k :=\n      pow_le_pow_of_le_one (Real.exp_pos _).le (rhoA_lt_one δ).le hkk\n    have hEB := EB_nonneg (by linarith [le_max_right (10 * π * |δ|) 50] : (0:ℝ) ≤ T0 - 200)\n    have hEA := EA_nonneg (T0 - 200) δ\n    gcongr\n  refine h.trans (le_of_eq ?_)\n  ring",
+            "line": 285,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+            "lines": [
+              285,
+              314
+            ],
+            "conclusion": "For T0 ≥ 200+max(10π|δ|,50), 0<Re s<1, |Im s|>T0: ‖mellin (fP δ) s‖ ≤ Cg·2aH·(EB(T0-200)ρB^k + EA(T0-200,δ)ρA^k), k=⌊(|Im s|-T0)/4.4⌋."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L285-L314"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

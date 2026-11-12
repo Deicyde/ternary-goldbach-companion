@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 2.3.1 step 6",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Connective for the display of step 7; takes its relation.",
+  "subject": [
+    {
+      "location": {
+        "page": 43,
+        "rect": [
+          0.17462,
+          0.7691,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 2.3.1 step 6: Text, p. 33",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 2.3.1 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          224,
+          232
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_tsum_le_of_fourier_bound"
+          },
+          "snippet": {
+            "text": "  have hpt : ∀ n : ℤ, ‖𝓕 g n‖ ≤ K / (4 * π ^ 2) * (1 / ((n : ℝ) - α) ^ 2) := by\n    intro n\n    rw [fourier_mul_e]\n    have h := hK (n - α)\n    have hpos : 0 < (2 * π * ((n : ℝ) - α)) ^ 2 := by\n      have := hαn n; positivity\n    rw [show K / (4 * π ^ 2) * (1 / ((n : ℝ) - α) ^ 2) = K / (2 * π * ((n : ℝ) - α)) ^ 2 by\n      field_simp; ring]\n    rw [le_div_iff₀ hpos]; linarith",
+            "line": 224,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+            "lines": [
+              211,
+              246
+            ],
+            "conclusion": "For each n, `‖𝓕 g n‖ ≤ K/(4π²)·1/(n-α)²`, from the hypothesis `(2πt)²‖𝓕 f t‖ ≤ K` at `t=n-α`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L224-L232"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          242,
+          246
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_tsum_le_of_fourier_bound"
+          },
+          "snippet": {
+            "text": "  calc ‖∑' n : ℤ, 𝓕 g n‖ ≤ ∑' n : ℤ, ‖𝓕 g n‖ := norm_tsum_le_tsum_norm hsumm\n    _ ≤ ∑' n : ℤ, K / (4 * π ^ 2) * (1 / ((n : ℝ) - α) ^ 2) :=\n        hsumm.tsum_le_tsum hpt (hsum.summable.mul_left _)\n    _ = K / (4 * π ^ 2) * (π ^ 2 / Real.sin (π * α) ^ 2) := by rw [tsum_mul_left, hsum.tsum_eq]\n    _ = _ := by field_simp",
+            "line": 242,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+            "lines": [
+              211,
+              246
+            ],
+            "conclusion": "Triangle inequality, termwise bound `hpt`, and `hasSum_inv_sq_sub` give `‖∑ 𝓕 g n‖ ≤ K/(4π²)·π²/sin²(πα) = K/(4 sin²(πα))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L242-L246"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          43
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

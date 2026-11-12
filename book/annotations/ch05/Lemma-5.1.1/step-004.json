@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.1 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Completion is carried out per `e` as a `tsum` over `m`, not on the `d_i, s_i` form, and for `P = 2 r1 r2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 92,
+        "rect": [
+          0.26253,
+          0.27016,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.1.1 step 4: Text, p. 82",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          357,
+          369
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.cntSq_approx"
+          },
+          "snippet": {
+            "text": "  have hmain : (b - a) * (6 / Real.pi ^ 2 * (P / σ 1 P)) = ∑ e ∈ P.divisors, (μ e : ℝ) *\n      ∑' m : ℕ, w m * ((b - a) / (e * (m : ℝ) ^ 2)) := by\n    rw [← sqfree_density hP, hT, sum_mul, mul_sum]\n    refine sum_congr rfl fun e _ => ?_\n    rw [← tsum_mul_left]\n    have : ∑' m : ℕ, w m * ((b - a) / (e * (m : ℝ) ^ 2)) = ∑' m : ℕ, (b - a) / e * (w m / m ^ 2) :=\n      tsum_congr fun m => by\n        rcases eq_or_ne (e : ℝ) 0 with h | h\n        · simp [h]\n        rcases eq_or_ne (m : ℝ) 0 with h' | h'\n        · simp [h']\n        field_simp\n    rw [this, tsum_mul_left, tsum_mul_left]; ring",
+            "line": 357,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+            "lines": [
+              278,
+              441
+            ],
+            "conclusion": "The main term is taken as the full `tsum` over all `m` of `w m (b-a)/(e m^2)` (sum completed over all `m`), equal to `(b-a)(6/pi^2) P/sigma(P)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L357-L369"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          377,
+          388
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.cntSq_approx"
+          },
+          "snippet": {
+            "text": "  have hfin : ∑ m ∈ range (N + 1), w m * C (e * (m * m)) = ∑' m : ℕ, w m * C (e * (m * m)) := by\n    refine (tsum_eq_sum fun m hm => ?_).symm\n    rw [mem_range, not_lt] at hm\n    have hbm : b < ((e * (m * m) : ℕ) : ℝ) := by\n      have h1 : b < (N : ℝ) + 1 := Nat.lt_floor_add_one b\n      have h2 : N + 1 ≤ e * (m * m) := by\n        have hm1 : 1 ≤ m := le_trans (Nat.le_add_left 1 N) hm\n        calc N + 1 ≤ m := hm\n          _ ≤ m * m := Nat.le_mul_of_pos_left m hm1\n          _ ≤ e * (m * m) := Nat.le_mul_of_pos_left _ he1\n      exact lt_of_lt_of_le h1 (by exact_mod_cast h2)\n    simp only [hC]; rw [sum_Ioc_dvd_eq_zero hbm, mul_zero]",
+            "line": 377,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+            "lines": [
+              278,
+              441
+            ],
+            "conclusion": "Terms with `m > N` vanish, so the finite `m`-sum equals the `tsum`, which makes the difference with the completed sum a tail."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L377-L388"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          92
+        ],
+        "printed": [
+          82
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "13.2 display 10",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same function in the variable s=log r = t - log 8 (t=log 4t'), with B = log(36 z^{1/3}/2.004) - log 8; Lean's Rs includes the affine map 0.27125*R°+0.41415 (it is R, not R°).",
+  "subject": [
+    {
+      "location": {
+        "page": 265,
+        "rect": [
+          0.17135,
+          0.40764,
+          0.56816,
+          0.04392
+        ]
+      },
+      "title": "Display, p. 255",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "13.2 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Rs",
+        "module": "TernaryGoldbach.MinorArcs.GMono",
+        "lines": [
+          95,
+          97
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Rs"
+          },
+          "snippet": {
+            "text": "/-- `R_{x,2e^s} = 0.27125 log(1 + (log 8 + s)/(2(B - s))) + 0.41415`, `B = log(9x^{1/3}/4.008)`. -/\nnoncomputable def Rs (B s : ℝ) : ℝ :=\n  0.27125 * Real.log (1 + (Real.log 8 + s) / (2 * (B - s))) + 0.41415",
+            "line": 95,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Rs",
+            "lines": [
+              95,
+              97
+            ],
+            "conclusion": "Defines R_{x,2e^s} = 0.27125 log(1+(log 8+s)/(2(B-s)))+0.41415 with B=log(9x^{1/3}/4.008)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L95-L97"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          265
+        ],
+        "printed": [
+          255
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

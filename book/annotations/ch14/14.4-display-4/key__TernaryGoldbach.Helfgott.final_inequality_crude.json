@@ -1,0 +1,81 @@
+{
+  "id": "14.4 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] concludes `repSum Good N ≠ 0` from `0.0114 x²/κ - 6.7e6 N^{3/2} log N > 0`; the intermediate constants (0.04877, 7.3306, 0.00024433 N²) differ and the explicit bound `≥ 0.0002443 N²` is not stated.",
+  "subject": [
+    {
+      "location": {
+        "page": 286,
+        "rect": [
+          0.25926,
+          0.60087,
+          0.56816,
+          0.09707
+        ]
+      },
+      "title": "Display, p. 276",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "14.4 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.final_inequality_crude",
+        "module": "TernaryGoldbach.Helfgott.Numerics",
+        "lines": [
+          71,
+          72
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.final_inequality_crude"
+          },
+          "snippet": {
+            "text": "theorem final_inequality_crude (N : ℕ) (hN : 10 ^ 27 ≤ N) :\n    6.7e6 * (N * √N) * Real.log N < (1.049 - 1.0376) * xOf N ^ 2 / κ := by",
+            "line": 71,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.final_inequality_crude",
+            "lines": [
+              68,
+              144
+            ],
+            "conclusion": "For `N ≥ 10²⁷`, `6.7e6 N^{3/2} log N < (1.049-1.0376) x²/κ` with `x = xOf N`, `κ = 49`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Numerics.lean",
+            "fragment": "L71-L72"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          286
+        ],
+        "printed": [
+          276
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

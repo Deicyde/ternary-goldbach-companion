@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 12.2.2 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same role (pass from the $q$-dependent bound to one in $\\log Q_0$), but [L]'s quantity is $\\log(qR)$, bounded via $qR=Q_0/s$, not $Q_0/sq+\\log q$ maximized at $q=1$ by a derivative.",
+  "subject": [
+    {
+      "location": {
+        "page": 244,
+        "rect": [
+          0.26253,
+          0.79076,
+          0.56162,
+          0.03785
+        ]
+      },
+      "title": "Lemma 12.2.2 step 10: Display, p. 234",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 12.2.2 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          146,
+          149
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hqRQ : Real.log ((q : ℝ) * R) ≤ Real.log Q₀ := by\n    apply Real.log_le_log hqR\n    have e : (q : ℝ) * R = Q₀ / s := by rw [hRdef]; field_simp\n    rw [e]; exact div_le_self hQ₀0.le hs",
+            "line": 146,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "$\\log(qR)\\le\\log Q_0$ since $qR=Q_0/s\\le Q_0$ ($s\\ge1$), removing the $q$-dependence of the bound $P/\\varphi(P)\\le0.86+0.4\\log(qR)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L146-L149"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          244
+        ],
+        "printed": [
+          234
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

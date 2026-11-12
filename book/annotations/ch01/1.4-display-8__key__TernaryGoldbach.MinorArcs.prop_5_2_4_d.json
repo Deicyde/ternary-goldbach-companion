@@ -1,0 +1,81 @@
+{
+  "id": "1.4 display 8",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text's display is a heuristic count of large-sieve applications (about `x/(4Q)` blocks) times `Σ|f|² ≈ (W/2) log W`; [L] gives a different explicit bound with additive terms `x/(8(1-ρ)Q)` and `x/(4(1-ρ)W)`, keeping `Σ (log p)²` unreduced.",
+  "subject": [
+    {
+      "location": {
+        "page": 33,
+        "rect": [
+          0.17135,
+          0.56916,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Display, p. 23",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "1.4 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          732,
+          737
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_d"
+          },
+          "snippet": {
+            "text": "theorem prop_5_2_4_d {α x δ Q ρ U' W' W : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hδQ : |δ / x| ≤ 1 / (q * Q))\n    (hρ1 : ρ < 1) (hqρ : (q : ℝ) ≤ ρ * Q) (hx : 0 < x) (hW : 0 < W) (hδ0 : δ ≠ 0)\n    (hW'W : W / 2 ≤ W') (hU' : x / (2 * W) ≤ U') :\n    S2 α x U' W' W ≤\n      (x / (|δ| * q) + W / 2 + x / (8 * (1 - ρ) * Q) + x / (4 * (1 - ρ) * W)) * logSqSum W' W := by",
+            "line": 732,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_d",
+            "lines": [
+              730,
+              816
+            ],
+            "conclusion": "For `δ ≠ 0`, `q ≤ ρQ`: `S₂ ≤ (x/|δq| + W/2 + x/(8(1-ρ)Q) + x/(4(1-ρ)W)) Σ_{W'<p≤W} (log p)²`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L732-L737"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          33
+        ],
+        "printed": [
+          23
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

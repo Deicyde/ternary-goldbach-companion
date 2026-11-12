@@ -1,0 +1,81 @@
+{
+  "id": "10.3 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has the exact identity for the coprime part only and absorbs non-coprime terms by a pointwise bound 1e-15 x rather than the (1+sqrt q)(log x)^2|eta|_inf, K_{q,1}(2|S_eta(0,x)|+K_{q,1}) error; the character sum is over psi with S_{psi^{-1}} (chi* via Schar_primitive).",
+  "subject": [
+    {
+      "location": {
+        "page": 218,
+        "rect": [
+          0.25926,
+          0.18936,
+          0.56816,
+          0.19564
+        ]
+      },
+      "title": "Display, p. 208",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "10.3 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          313,
+          321
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le"
+          },
+          "snippet": {
+            "text": "/-- `|S_{η₊}(α) − S'_q(α)| ≤ 10⁻¹⁵ x`. -/\ntheorem norm_S_sub_coprime_le {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000)\n    (α : ℝ) : ‖S etaPlus x α - expTsum (coprimePart q (cP x)) α‖ ≤ 1e-15 * x := by\n  have hx0 : 0 < x := by linarith\n  have hc := summable_cP hx0\n  have ha : Summable fun n => ‖coprimePart q (cP x) n‖ :=\n    hc.of_nonneg_of_le (fun n => norm_nonneg _) (norm_coprimePart_le q (cP x))\n  rw [S_etaPlus_eq_expTsum, ← expTsum_sub hc ha]\n  exact (norm_expTsum_le_tsum (summable_sub_coprimePart hx0 q) α).trans (coprime_split hx hq1 hq)",
+            "line": 313,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+            "lines": [
+              313,
+              321
+            ],
+            "conclusion": "$|S_{\\eta_+}-S'_q|\\le10^{-15}x$, the replacement of the full sum by its coprime part."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L313-L321"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          218
+        ],
+        "printed": [
+          208
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 28",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not perform the substitution W = 2qt or state the identity; it bounds the W-integral directly with a different estimate, so the t-integral of 1/sqrt(t log t) never appears.",
+  "subject": [
+    {
+      "location": {
+        "page": 120,
+        "rect": [
+          0.25926,
+          0.50777,
+          0.56816,
+          0.04177
+        ]
+      },
+      "title": "Display, p. 110",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_inv_sqrt_log_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITools",
+        "lines": [
+          121,
+          244
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_inv_sqrt_log_le"
+          },
+          "snippet": {
+            "text": "/-- A crude form of [H, (6.22)]: for `ce ≤ a ≤ b`,\n`∫_a^b dW/(√W √(log(W/c))) ≤ 2e√c + 4√(b/log(b/c))`. ([H] has `2.3 √(T/log T)` after a numerical\ncheck; we split at `ce²` instead.) -/\ntheorem integral_inv_sqrt_log_le {c a b : ℝ} (hc : 0 < c) (hca : c * rexp 1 ≤ a) (hab : a ≤ b) :\n    ∫ W in a..b, 1 / (√W * √(Real.log (W / c))) ≤\n      2 * rexp 1 * √c + 4 * √(b / Real.log (b / c)) := by\n  have he : 1 < rexp 1 := by have := Real.add_one_lt_exp (one_ne_zero); linarith\n  have ha : 0 < a := lt_of_lt_of_le (by positivity) hca\n  have hL1 : ∀ W, c * rexp 1 ≤ W → 1 ≤ Real.log (W / c) := by\n    intro W hW\n    rw [Real.le_log_iff_exp_le (div_pos (lt_of_lt_of_le (by positivity) hW) hc),\n      le_div_iff₀ hc]; linarith\n  set f : ℝ → ℝ := fun W => 1 / (√W * √(Real.log (W / c)))\n  have hcontf : ContinuousOn f (Set.Icc a b) := by\n    refine continuousOn_const.div (Real.continuous_sqrt.continuousOn.mul ?_) fun W hW => ?_\n    · refine Real.continuous_sqrt.comp_continuousOn (ContinuousOn.log\n        (continuousOn_id.div_const c) fun W hW => ?_)\n      exact (div_pos (lt_of_lt_of_le ha hW.1) hc).ne'\n    · have h1 := lt_of_lt_of_le ha hW.1\n      have h2 := hL1 W (hca.trans hW.1)\n      exact (mul_pos (Real.sqrt_pos.2 h1) (Real.sqrt_pos.2 (by linarith))).ne'\n  set m := max a (min b (c * rexp 1 ^ 2))\n  have ham : a ≤ m := le_max_left _ _\n  have hmb : m ≤ b := max_le hab (min_le_left _ _)\n  have hint : ∀ u v, a ≤ u → u ≤ v → v ≤ b → IntervalIntegrable f volume u v := fun u v hu huv hv =>\n    (hcontf.mono (Set.Icc_subset_Icc hu hv)).intervalIntegrable_of_Icc huv\n  rw [← intervalIntegral.integral_add_adjacent_intervals (hint a m le_rfl ham hmb)\n    (hint m b ham hmb le_rfl)]\n  have hF0 : 0 ≤ 4 * √(b / Real.log (b / c)) := by positivity\n  -- First piece: `f ≤ 1/√W`.\n  have h1 : ∫ W in a..m, f W ≤ 2 * rexp 1 * √c := by\n    calc ∫ W in a..m, f W ≤ ∫ W in a..m, 1 / √W := by\n          refine intervalIntegral.integral_mono_on ham (hint a m le_rfl ham hmb) ?_ fun W hW => ?_\n          · exact ContinuousOn.intervalIntegrable_of_Icc ham (continuousOn_const.div\n              Real.continuous_sqrt.continuousOn fun W hW => (Real.sqrt_pos.2\n                (lt_of_lt_of_le ha hW.1)).ne')\n          · have hW0 := lt_of_lt_of_le ha hW.1\n            have hL := hL1 W (hca.trans hW.1)\n            simp only [f]\n            rw [div_le_div_iff₀ (mul_pos (Real.sqrt_pos.2 hW0) (Real.sqrt_pos.2 (by linarith)))\n              (Real.sqrt_pos.2 hW0), one_mul, one_mul]\n            exact le_mul_of_one_le_right (Real.sqrt_nonneg _) (by\n              rw [Real.one_le_sqrt]; exact hL)\n      _ = 2 * √m - 2 * √a := integral_inv_sqrt ha ham\n      _ ≤ 2 * rexp 1 * √c := by\n          rcases le_or_gt (min b (c * rexp 1 ^ 2)) a with h | h\n          · have : m = a := max_eq_left h\n            rw [this]; simp; positivity\n          · have : m = min b (c * rexp 1 ^ 2) := max_eq_right h.le\n            have hm : √m ≤ √(c * rexp 1 ^ 2) := Real.sqrt_le_sqrt (this ▸ min_le_right _ _)\n            rw [Real.sqrt_mul hc.le, Real.sqrt_sq (by positivity)] at hm\n            have : 0 ≤ √a := Real.sqrt_nonneg a\n            nlinarith\n  -- Second piece: `f ≤ 4F'` with `F = √(W/log(W/c))`, valid for `log(W/c) ≥ 2`.\n  have h2 : ∫ W in m..b, f W ≤ 4 * √(b / Real.log (b / c)) := by\n    rcases hmb.eq_or_lt with heq | hlt\n    · rw [heq, intervalIntegral.integral_same]; exact hF0\n    have hm2 : c * rexp 1 ^ 2 ≤ m := by\n      have : min b (c * rexp 1 ^ 2) = c * rexp 1 ^ 2 := by\n        by_contra hne\n        have : min b (c * rexp 1 ^ 2) = b := (min_choice _ _).resolve_right hne\n        have := le_max_right a (min b (c * rexp 1 ^ 2)); linarith\n      rw [← this]; exact le_max_right _ _\n    have hL2 : ∀ W, m ≤ W → 2 ≤ Real.log (W / c) := by\n      intro W hW\n      rw [Real.le_log_iff_exp_le (div_pos (by nlinarith [Real.exp_pos 1]) hc), le_div_iff₀ hc,\n        show (2 : ℝ) = 1 + 1 by norm_num, Real.exp_add]\n      nlinarith\n    set F : ℝ → ℝ := fun W => √(W / Real.log (W / c))\n    set F' : ℝ → ℝ := fun W => (Real.log (W / c) - 1) / Real.log (W / c) ^ 2 /\n      (2 * √(W / Real.log (W / c)))\n    have hW0 : ∀ W, m ≤ W → 0 < W := fun W hW => lt_of_lt_of_le (lt_of_lt_of_le ha ham) hW\n    have hderiv : ∀ W ∈ Set.uIcc m b, HasDerivAt F (F' W) W := by\n      intro W hW; rw [Set.uIcc_of_le hmb] at hW\n      have hW' := hW0 W hW.1\n      have hL := hL2 W hW.1\n      have hlog : HasDerivAt (fun W => Real.log (W / c)) (1 / W) W := by\n        have h := ((hasDerivAt_id W).div_const c).log (div_pos hW' hc).ne'\n        simp only [id] at h\n        convert h using 1; field_simp\n      have hg := (hasDerivAt_id W).div hlog (by linarith)\n      have hsq := hg.sqrt (div_pos hW' (by linarith)).ne'\n      convert hsq using 1\n      · ext y; simp [F]\n      · simp only [F', id, Pi.div_apply]; field_simp\n    have hcontF' : ContinuousOn F' (Set.uIcc m b) := by\n      rw [Set.uIcc_of_le hmb]\n      have hlogc : ContinuousOn (fun W => Real.log (W / c)) (Set.Icc m b) :=\n        ContinuousOn.log (continuousOn_id.div_const c) fun W hW =>\n          (div_pos (hW0 W hW.1) hc).ne'\n      refine ContinuousOn.div (ContinuousOn.div (hlogc.sub continuousOn_const) (hlogc.pow 2)\n        fun W hW => by have := hL2 W hW.1; positivity) (continuousOn_const.mul\n          (Real.continuous_sqrt.comp_continuousOn (continuousOn_id.div hlogc fun W hW => by\n            have := hL2 W hW.1; linarith))) fun W hW => ?_\n      have := hL2 W hW.1; have := hW0 W hW.1\n      have : 0 < √(W / Real.log (W / c)) := Real.sqrt_pos.2 (by positivity)\n      positivity\n    have hint' : IntervalIntegrable F' volume m b := hcontF'.intervalIntegrable\n    calc ∫ W in m..b, f W ≤ ∫ W in m..b, 4 * F' W := by\n          refine intervalIntegral.integral_mono_on hmb (hint m b ham hmb le_rfl)\n            (hint'.const_mul 4) fun W hW => ?_\n          have hW' := hW0 W hW.1\n          have hL := hL2 W hW.1\n          set L := Real.log (W / c)\n          simp only [f, F']\n          have hsW : 0 < √W := Real.sqrt_pos.2 hW'\n          have hsL : 0 < √L := Real.sqrt_pos.2 (by linarith)\n          have hsq : √(W / L) = √W / √L := Real.sqrt_div' W (by linarith)\n          have hLL : √L * √L = L := Real.mul_self_sqrt (by linarith)\n          rw [hsq]\n          have e : 4 * ((L - 1) / L ^ 2 / (2 * (√W / √L))) = 2 * (L - 1) / (L * (√W * √L)) := by\n            have key : ∀ (L s w : ℝ), 0 < s → 0 < w → s * s = L →\n                4 * ((L - 1) / L ^ 2 / (2 * (w / s))) = 2 * (L - 1) / (L * (w * s)) := by\n              intro L s w hs hw h; subst h; field_simp; ring\n            exact key L (√L) (√W) hsL hsW hLL\n          rw [e, div_le_div_iff₀ (mul_pos hsW hsL) (by positivity)]\n          nlinarith [mul_pos hsW hsL]\n      _ = 4 * (F b - F m) := by\n          rw [intervalIntegral.integral_const_mul,\n            intervalIntegral.integral_eq_sub_of_hasDerivAt hderiv hint']\n      _ ≤ 4 * √(b / Real.log (b / c)) := by\n          have : 0 ≤ F m := Real.sqrt_nonneg _\n          simp only [F] at this ⊢; linarith\n  linarith",
+            "line": 121,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_inv_sqrt_log_le",
+            "lines": [
+              121,
+              244
+            ],
+            "conclusion": "For ce <= a <= b, the integral of dW/(sqrt W sqrt(log(W/c))) over [a,b] is at most 2e sqrt c + 4 sqrt(b/log(b/c))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITools.lean",
+            "fragment": "L121-L244"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          120
+        ],
+        "printed": [
+          110
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

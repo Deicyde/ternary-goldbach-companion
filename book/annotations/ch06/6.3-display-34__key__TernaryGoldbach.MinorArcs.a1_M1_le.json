@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 34",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same step (the first-line logarithmic factor log(x/(8Uq)) + log 2q * loglog-ratio of (hust) is bounded by an explicit function of L, then in ell = log(6q/T)), but for Lean's theta = 8 form and Lean's bound X0 (`a1X0`, `a1G`); [H]'s displayed simplification < (t/3) log t is cruder and is not in [L]. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 140,
+        "rect": [
+          0.25926,
+          0.37778,
+          0.56816,
+          0.03643
+        ]
+      },
+      "title": "Display, p. 130",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a1_M1_le",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIa",
+        "lines": [
+          225,
+          279
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a1_M1_le"
+          },
+          "snippet": {
+            "text": "  have hΛ : Λ ≤ L - 8.09 - ℓ := by\n    have h1 : T ^ 3 / (U2 T * (2 * 8 * q)) ≤ T / (3266.64 * u) := by\n      rw [div_le_div_iff₀ (by positivity) (by positivity), hqu]\n      have : 3266.64 * T ^ 2 * u ≤ U2 T * (2 * 8 * (T / 6 * u)) := by\n        have := mul_le_mul_of_nonneg_right hU (by positivity : (0 : ℝ) ≤ 16 * (T / 6 * u))\n        nlinarith\n      have hT3 : T ^ 3 = T * T ^ 2 := by ring\n      rw [hT3]; nlinarith [mul_le_mul_of_nonneg_left this hT0.le]\n    have h2 : Real.log (T / (3266.64 * u)) = L - Real.log 3266.64 - ℓ := by\n      rw [Real.log_div hT0.ne' (by positivity), Real.log_mul (by norm_num) hu0.ne']; ring\n    have : Λ ≤ Real.log (T / (3266.64 * u)) := Real.log_le_log (by positivity) h1\n    linarith [log_3266_ge]\n  -- `Φ`.\n  have h8 : 2 * 8 * (q : ℝ) / (2 * q) = 8 := by field_simp\n  have hl2q : Real.log (2 * q) = L - Real.log 3 + ℓ := by\n    have : (2 : ℝ) * q = T / 3 * u := by rw [hqu]; ring\n    rw [this, Real.log_mul (by positivity) hu0.ne', Real.log_div hT0.ne' (by norm_num)]\n  have hl3 := log3_ge\n  have hl2q0 : 0 ≤ Real.log (2 * q) := Real.log_nonneg (by linarith)\n  have hin8 : 8 ≤ T ^ 3 / U2 T / (2 * q) := by\n    rw [le_div_iff₀ (by positivity)]; linarith\n  have hinU : T ^ 3 / U2 T / (2 * q) ≤ T / (408.33 * u) := by\n    rw [div_div, div_le_div_iff₀ (by positivity) (by positivity), hqu]\n    have : 408.33 * T ^ 2 * u ≤ U2 T * (2 * (T / 6 * u)) := by\n      have := mul_le_mul_of_nonneg_right hU (by positivity : (0 : ℝ) ≤ 2 * (T / 6 * u))\n      nlinarith\n    have hT3 : T ^ 3 = T * T ^ 2 := by ring\n    rw [hT3]; nlinarith [mul_le_mul_of_nonneg_left this hT0.le]\n  have hl8 := log8_ge\n  have hlin : Real.log (T ^ 3 / U2 T / (2 * q)) ≤ L - 6.0119 := by\n    have h1 := Real.log_le_log (by positivity) hinU\n    have h2 : Real.log (T / (408.33 * u)) = L - Real.log 408.33 - ℓ := by\n      rw [Real.log_div hT0.ne' (by positivity), Real.log_mul (by norm_num) hu0.ne']; ring\n    linarith [log_408_ge]\n  have hlin0 : 2.0794 ≤ Real.log (T ^ 3 / U2 T / (2 * q)) :=\n    hl8.trans (Real.log_le_log (by norm_num) hin8)\n  set G := a1G L\n  have hGdef : G = Real.log (L - 6.0119) - 0.732 := rfl\n  have hll8 := loglog8_ge\n  have hbr0 : 0 ≤ Real.log (Real.log (T ^ 3 / U2 T / (2 * q))) - Real.log (Real.log 8) :=\n    sub_nonneg.2 (Real.log_le_log (by linarith) (Real.log_le_log (by norm_num) hin8))\n  have hbr : Real.log (Real.log (T ^ 3 / U2 T / (2 * q))) - Real.log (Real.log 8) ≤ G := by\n    have := Real.log_le_log (by linarith) hlin\n    rw [hGdef]; linarith\n  have hG0 : 0 ≤ G := hbr0.trans hbr\n  set Φ := Real.log (2 * q) * (Real.log (Real.log (T ^ 3 / U2 T / (2 * q))) -\n    Real.log (Real.log (2 * 8 * q / (2 * q))))\n  have hΦ0 : 0 ≤ Φ := by simp only [Φ]; rw [h8]; positivity\n  have hΦ : Φ ≤ (L - 1.0986 + ℓ) * G := by\n    simp only [Φ]; rw [h8]\n    exact mul_le_mul (by linarith) hbr hbr0 (by linarith)\n  set X0 := a1X0 L\n  have hX0def : X0 = (L - 8.09) + (L - 1.0986) * G := rfl\n  have hX : Λ + Φ ≤ X0 + G * ℓ := by rw [hX0def]; nlinarith\n  have hX0G : 14 * G ≤ X0 := by rw [hX0def]; nlinarith",
+            "line": 225,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.a1_M1_le",
+            "lines": [
+              186,
+              354
+            ],
+            "conclusion": "`Lambda + Phi <= X0 + G ell` with `Lambda = log(x/(U 16q)) <= L - 8.09 - ell`, `Phi = log(2q) (loglog(x/2Uq) - loglog 8) <= (L - 1.0986 + ell) G`, `G = log(L - 6.0119) - 0.732`, X0 = (L - 8.09) + (L - 1.0986) G (`a1X0`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIa.lean",
+            "fragment": "L225-L279"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          140
+        ],
+        "printed": [
+          130
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

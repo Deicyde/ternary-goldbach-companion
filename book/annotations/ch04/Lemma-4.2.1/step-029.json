@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 29",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same use of (gowo) without q∤m and Lemma 4.1.1; Lean has odd m, A = c₁x/(2y), C = c₀(y+q)/(2x), and blocks start at y = R + jq.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.26253,
+          0.59035,
+          0.56162,
+          0.01756
+        ]
+      },
+      "title": "Lemma 4.2.1 step 29: Text, p. 60",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le_minA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          67,
+          83
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Todd_le_minA"
+          },
+          "snippet": {
+            "text": "/-- [H, (4.36)] in the form used with Lemma 4.1.1: `|T_{m,∘}| ≤ minA(x/2m + |η'|₁/2, (m/x)(c₀/2), sin²)`. -/\ntheorem norm_Todd_le_minA {α x δ : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x)\n    (h2α : 2 * α = a / q + δ / x + k) {m : ℕ} (hm : 1 ≤ m) {A C : ℝ}\n    (hA : x / (2 * m) + eta2'L1 / 2 ≤ A) (hC : m / x * (c₀ / 2) ≤ C) :\n    ‖Todd α x m‖ ≤ minA A C (Real.sin (π * (a / q + δ / x) * (m : ℤ)) ^ 2) := by\n  have hs := sin_sq_two_pi_mul h2α (m : ℝ) ⟨m, by simp⟩\n  obtain ⟨h1, h2⟩ := norm_Todd_le hx hm α\n  push_cast at hs ⊢\n  unfold minA\n  split_ifs with h0\n  · exact h1.trans hA\n  · have hne : Real.sin (2 * π * m * α) ≠ 0 := by\n      intro h; apply h0; rw [← hs, h]; ring\n    refine le_min (h1.trans hA) ?_\n    refine (h2 hne).2.trans ?_\n    rw [hs]\n    exact div_le_div_of_nonneg_right hC (sq_nonneg _)",
+            "line": 67,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le_minA",
+            "lines": [
+              67,
+              83
+            ],
+            "conclusion": "`‖T_{m,∘}‖` is at most `min(A, C/sin²)` when the `A`, `C` hypotheses hold (the reduction to `min(A, C/sin²)` of (gowo))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L67-L83"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.block_R3",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          400,
+          442
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.block_R3"
+          },
+          "snippet": {
+            "text": "  have h11 := (lemma_4_1_1' happ y (A := A) (C := C) (by positivity) (by positivity))\n  have hsub : Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋ ⊆ Ioc ⌊y⌋ ⌊y + q⌋ := by\n    apply Ioc_subset_Ioc le_rfl (Int.floor_mono ?_)\n    have := min_le_left (R + (j + 1) * q) D; simp only [y]; linarith\n  have hterm : ∀ n ∈ Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋,\n      Tn α x n ≤ minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) := by\n    intro n hn\n    rw [mem_Ioc] at hn\n    have hyn : y < n := by\n      have := Int.lt_floor_add_one y\n      have : ((⌊y⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hn.1\n      linarith\n    have hnR : (n : ℝ) ≤ y + q := by\n      have := (Int.cast_le.2 hn.2).trans (Int.floor_le (min (R + (j + 1) * q) D))\n      have := min_le_left (R + (j + 1) * q) D\n      simp only [y] at *; push_cast at *; linarith\n    have hn1 : (0 : ℤ) < n := by exact_mod_cast (show (0 : ℝ) < n by linarith)\n    have hcast : ((n.toNat : ℕ) : ℤ) = n := Int.toNat_of_nonneg hn1.le\n    have hmR : ((n.toNat : ℕ) : ℝ) = n := by exact_mod_cast hcast\n    have hm : 1 ≤ n.toNat := by omega\n    have := norm_Todd_le_minA hx h2α hm (A := A) (C := C)\n      (by\n        rw [hmR]; simp only [A, c₁]\n        have e : (1 + eta2'L1 / (x / D)) * x / (2 * y) = x / (2 * y) + eta2'L1 * D / (2 * y) := by\n          field_simp\n        rw [e]\n        have h1 : x / (2 * n) ≤ x / (2 * y) := div_le_div_of_nonneg_left hx.le (by positivity)\n          (by linarith)\n        have h2 : eta2'L1 / 2 ≤ eta2'L1 * D / (2 * y) := by\n          rw [le_div_iff₀ (by positivity)]; nlinarith\n        linarith)\n      (by\n        rw [hmR]; simp only [C]\n        rw [show c₀ / 2 * (y + q) / x = (y + q) / x * (c₀ / 2) by ring]\n        exact mul_le_mul_of_nonneg_right (div_le_div_of_nonneg_right hnR hx.le) (by positivity))\n    rw [hcast] at this; exact this\n  calc ∑ n ∈ Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋, Tn α x n\n      ≤ ∑ n ∈ Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋, minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) :=\n        sum_le_sum hterm\n    _ ≤ ∑ n ∈ Ioc ⌊y⌋ ⌊y + q⌋, minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) :=\n        sum_le_sum_of_subset_of_nonneg hsub fun n _ _ =>\n          minA_nonneg (by positivity) (by positivity) (sq_nonneg _)\n    _ ≤ 3 * A + 4 * q / π * √(A * C) := h11.trans (min_le_right _ _)",
+            "line": 400,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.block_R3",
+            "lines": [
+              380,
+              450
+            ],
+            "conclusion": "On one block `y < n ≤ y+q'` the sum of `Tn` (no `q ∤ n` restriction) is at most `3A + (4q/π)√(AC)` by Lemma 4.1.1 (`lemma_4_1_1'`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L400-L442"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

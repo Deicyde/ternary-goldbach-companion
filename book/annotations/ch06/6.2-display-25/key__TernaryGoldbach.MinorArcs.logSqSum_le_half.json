@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 25",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean states the S2 bound with logSqSum and applies logSqSum_le_half (V >= 2e6 instead of V > 117) separately; the second line is the rearrangement P1+P2+P3 in pointwise_53 (max(1/2,rho) = r/2).",
+  "subject": [
+    {
+      "location": {
+        "page": 119,
+        "rect": [
+          0.17135,
+          0.44085,
+          0.56816,
+          0.07009
+        ]
+      },
+      "title": "Display, p. 109",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.logSqSum_le_half",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal",
+        "lines": [
+          35,
+          39
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.logSqSum_le_half"
+          },
+          "snippet": {
+            "text": "theorem logSqSum_le_half {W' W : ℝ} (hW : 2e6 ≤ W) (hW' : W / 2 ≤ W') :\n    logSqSum W' W ≤ 1 / 2 * W * Real.log W := by\n  refine le_trans ?_ (Prelim.sum_log_sq_primes_le hW)\n  refine sum_le_sum_of_subset_of_nonneg ?_ fun p _ _ => sq_nonneg _\n  exact filter_subset_filter _ (Ioc_subset_Ioc_left (Nat.floor_le_floor hW'))",
+            "line": 35,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.logSqSum_le_half",
+            "lines": [
+              35,
+              39
+            ],
+            "conclusion": "logSqSum W' W <= (1/2) W log W for W >= 2e6 and W' >= W/2, which turns the first line into the factor (1/2) W log W."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L35-L39"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          119
+        ],
+        "printed": [
+          109
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

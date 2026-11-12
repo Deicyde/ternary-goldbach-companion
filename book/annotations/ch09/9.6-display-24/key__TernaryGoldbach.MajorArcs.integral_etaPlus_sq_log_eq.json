@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 24",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "The same expansion with eta_o = g E and eta_+-eta_o = D, in the variable u=log t, so the log(xt) weight splits as log x + u.",
+  "subject": [
+    {
+      "location": {
+        "page": 207,
+        "rect": [
+          0.17135,
+          0.33795,
+          0.56816,
+          0.07313
+        ]
+      },
+      "title": "Display, p. 197",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log_eq",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          876,
+          884
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log_eq"
+          },
+          "snippet": {
+            "text": "/-- `∫₀^∞ η₊² log(xt) dt = ∫ (g + D)² E (log x + u) du`. -/\ntheorem integral_etaPlus_sq_log_eq {x : ℝ} (hx : 0 < x) :\n    ∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t) =\n      ∫ u, (gL u + Dg u) ^ 2 * Ew u * (Real.log x + u) := by\n  rw [← integral_comp_exp]\n  congr 1; ext u\n  rw [smul_eq_mul, Real.log_mul hx.ne' (Real.exp_pos u).ne', Real.log_exp]\n  have hD : gL u + Dg u = hH 200 (Real.exp u) := by unfold Dg; ring\n  rw [hD, etaPlus, Ew, exp_sq_eq]; ring",
+            "line": 876,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log_eq",
+            "lines": [
+              876,
+              884
+            ],
+            "conclusion": "Substitutes t=e^u: int eta_+^2 log(xt) dt = int (g+D)^2 E(u)(log x+u) du."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L876-L884"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          207
+        ],
+        "printed": [
+          197
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

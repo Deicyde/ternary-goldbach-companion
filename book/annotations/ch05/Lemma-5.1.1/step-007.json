@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 5.1.1 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean evaluates the completed main term through the product `(sum_{e|P} mu(e)/e)(sum_{(m,P)=1} mu(m)/m^2)` for squarefree `P`; the factor `z` and the weight are carried separately.",
+  "subject": [
+    {
+      "location": {
+        "page": 92,
+        "rect": [
+          0.26253,
+          0.479,
+          0.56162,
+          0.0165
+        ]
+      },
+      "title": "Lemma 5.1.1 step 7: Text, p. 82",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sqfree_density",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount",
+        "lines": [
+          194,
+          221
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sqfree_density"
+          },
+          "snippet": {
+            "text": "/-- The main-term constant: `(∑_{e|P} μ(e)/e) · ∑_{(m,P)=1} μ(m)/m² = (6/π²) · P/σ(P)`. -/\ntheorem sqfree_density {P : ℕ} (hP : Squarefree P) :\n    (∑ e ∈ P.divisors, (μ e : ℝ) / e) *\n      ∑' m : ℕ, (if Nat.Coprime m P then (μ m : ℝ) / (m : ℝ) ^ 2 else 0) =\n      6 / Real.pi ^ 2 * (P / σ 1 P) := by\n  rw [sum_moebius_div_eq_prod hP, tsum_coprime_moebius_div_sq hP.ne_zero, sigma_eq_prod hP]\n  have hP' : (P : ℝ) = ∏ p ∈ P.primeFactors, (p : ℝ) := by\n    rw [← Nat.cast_prod, Nat.prod_primeFactors_of_squarefree hP]\n  rw [hP']\n  have hp2 : ∀ p ∈ P.primeFactors, (2 : ℝ) ≤ p := fun p hp => by\n    exact_mod_cast (Nat.prime_of_mem_primeFactors hp).two_le\n  have hne : ∏ p ∈ P.primeFactors, (1 - 1 / (p : ℝ) ^ 2) ≠ 0 :=\n    prod_ne_zero_iff.2 fun p hp => by\n      have := hp2 p hp\n      have : 1 / (p : ℝ) ^ 2 < 1 := by rw [div_lt_one (by positivity)]; nlinarith\n      linarith\n  have hne2 : ∏ p ∈ P.primeFactors, ((p : ℝ) + 1) ≠ 0 :=\n    prod_ne_zero_iff.2 fun p hp => by have := hp2 p hp; positivity\n  have key : (∏ p ∈ P.primeFactors, (1 - 1 / (p : ℝ))) * ∏ p ∈ P.primeFactors, ((p : ℝ) + 1) =\n      (∏ p ∈ P.primeFactors, (1 - 1 / (p : ℝ) ^ 2)) * ∏ p ∈ P.primeFactors, (p : ℝ) := by\n    rw [← prod_mul_distrib, ← prod_mul_distrib]\n    refine prod_congr rfl fun p hp => ?_\n    have := hp2 p hp\n    field_simp\n    ring\n  have hpi : Real.pi ^ 2 ≠ 0 := by positivity\n  field_simp\n  linear_combination key",
+            "line": 194,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.sqfree_density",
+            "lines": [
+              194,
+              221
+            ],
+            "conclusion": "`(sum_{e|P} mu(e)/e) * sum_{(m,P)=1} mu(m)/m^2 = (6/pi^2) P/sigma(P)` for squarefree `P`, the evaluation of the completed main term."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L194-L221"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          92
+        ],
+        "printed": [
+          82
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

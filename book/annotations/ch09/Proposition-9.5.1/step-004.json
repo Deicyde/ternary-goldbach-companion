@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 9.5.1 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean proves the $\\eta_{+,0}$ identity for $H=200$ (`phi1_eq`, via `hHc`); the $\\eta_{+,1}$ form is just `log t * phi1 t` with no separate unfolded statement.",
+  "subject": [
+    {
+      "location": {
+        "page": 199,
+        "rect": [
+          0.17462,
+          0.28466,
+          0.56162,
+          0.02322
+        ]
+      },
+      "title": "Proposition 9.5.1 step 4: Display, p. 189",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.phi1_eq",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          209,
+          215
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.phi1_eq"
+          },
+          "snippet": {
+            "text": "theorem phi1_eq {t : ℝ} (ht : 0 < t) : phi1 t = hHc t * (hHc t * g0 t) := by\n  have he : Real.exp (-t ^ 2 / 2) ^ 2 = Real.exp (-t ^ 2) := by\n    rw [← Real.exp_nat_mul]; congr 1; push_cast; ring\n  have e : (hH 200 t * t * Real.exp (-t ^ 2 / 2)) ^ 2 =\n      hH 200 t * (hH 200 t * (t ^ 2 * Real.exp (-t ^ 2))) := by\n    rw [mul_pow, mul_pow, he]; ring\n  rw [phi1, TernaryGoldbach.Helfgott.etaPlus, e, ← hH_eq_hHc ht, g0]; push_cast; ring",
+            "line": 209,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.phi1_eq",
+            "lines": [
+              209,
+              215
+            ],
+            "conclusion": "For $t>0$, `phi1 t = hHc t*(hHc t*g0 t)` with `g0 t = t^2 exp(-t^2)`, i.e. $\\eta_+^2=h_H^2t^2e^{-t^2}$ at $H=200$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L209-L215"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.phi2",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq",
+        "lines": [
+          184,
+          185
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.phi2"
+          },
+          "snippet": {
+            "text": "/-- `φ₂ = η₊² log`. -/\nnoncomputable def phi2 (t : ℝ) : ℂ := (Real.log t : ℂ) * phi1 t",
+            "line": 184,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.phi2",
+            "lines": [
+              184,
+              185
+            ],
+            "conclusion": "`phi2 t = log t * phi1 t`, i.e. $\\eta_{+,1}=\\eta_+^2\\log t$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L184-L185"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          199
+        ],
+        "printed": [
+          189
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

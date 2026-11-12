@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 34",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean has the constant only as 0.15107 = kappa_6/4 and the literal 0.60428 in typeII_637; the additive 0.0231 (0.0924 after scaling) is also present, as the (5.36) bound is corrected. Text error, confirmed by two skeptics and `scripts/checks/steps/6_2_display_34.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 121,
+        "rect": [
+          0.17135,
+          0.69523,
+          0.56816,
+          0.01738
+        ]
+      },
+      "title": "Display, p. 111",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_H2_le",
+        "module": "TernaryGoldbach.MinorArcs.H2Bound",
+        "lines": [
+          374,
+          375
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_H2_le"
+          },
+          "snippet": {
+            "text": "theorem integral_H2_le {T : ℝ} (hT : 1 ≤ T) :\n    ∫ S in (1 : ℝ)..T, H2 S / S ≤ 0.15107 * Real.log T + 0.0231 := by",
+            "line": 374,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_H2_le",
+            "lines": [
+              369,
+              541
+            ],
+            "conclusion": "The integral of H2(S)/S over [1,T] is at most 0.15107 log T + 0.0231, so kappa_6/4 = 0.15107."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/H2Bound.lean",
+            "fragment": "L374-L375"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          121
+        ],
+        "printed": [
+          111
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

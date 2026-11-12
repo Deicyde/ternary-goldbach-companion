@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.2.2 step 28",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Even case is done quantitatively ((5.50) compared with (5.51)); odd-m analogue; q<W/2 strict in Lean.",
+  "subject": [
+    {
+      "location": {
+        "page": 107,
+        "rect": [
+          0.17462,
+          0.55391,
+          0.56162,
+          0.06163
+        ]
+      },
+      "title": "Lemma 5.2.2 step 28: Text, p. 97",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1402,
+          1429
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b"
+          },
+          "snippet": {
+            "text": "  · rcases Nat.even_or_odd q with hev | hodd\n    · -- `q` even: (5.50) is better.\n      have h := lemma_5_2_3_a hq hcop hα (by linarith : (q : ℝ) ≤ Q) (by linarith)\n        hWW (W' := W') (W := W) A₀ A₁\n      have hmin : min (2 * (q : ℝ)) Q = 2 * q := min_eq_left (by linarith)\n      rw [hmin] at h\n      refine h.trans (mul_le_mul_of_nonneg_left ?_ (Nat.cast_nonneg _))\n      refine mul_le_mul_of_nonneg_right ?_ hL\n      have hqφ : 2 ≤ (q : ℝ) / Nat.totient q := by\n        obtain ⟨m, hm⟩ := hev\n        have h2m : q = 2 * m := by omega\n        have h1 := totient_two_mul_le m\n        rw [← h2m] at h1\n        have h3 : (Nat.totient q : ℝ) ≤ m := by exact_mod_cast h1\n        have h4 : (q : ℝ) = 2 * m := by exact_mod_cast h2m\n        rw [le_div_iff₀ hφ]; linarith\n      have hy2 : W / (2 * q) ≤ 6.76 := by\n        rw [div_le_iff₀ (by positivity)]; linarith\n      have hkey := half_add_inv_mul_log_le hy1.le hy2\n      -- `W - W' + 2q ≤ W(1/2 + 2q/W) ≤ 2W/log(W/2q) ≤ (q/φ(q)) W/log(W/2q)`.\n      have h1 : W - W' + 2 * q ≤ W * (1 / 2 + 1 / (W / (2 * q))) := by\n        have : W * (1 / 2 + 1 / (W / (2 * q))) = W / 2 + 2 * q := by field_simp\n        linarith\n      have h2 : W * (1 / 2 + 1 / (W / (2 * q))) ≤ 2 * W / Real.log (W / (2 * q)) := by\n        rw [le_div_iff₀ hlog]; nlinarith\n      calc W - W' + 2 * q ≤ 2 * W / Real.log (W / (2 * q)) := h1.trans h2\n        _ = 2 * (W / Real.log (W / (2 * q))) := by ring\n        _ ≤ _ := mul_le_mul_of_nonneg_right hqφ (by positivity)",
+            "line": 1402,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+            "lines": [
+              1378,
+              1433
+            ],
+            "conclusion": "For 13.5q > W and q even, uses lemma_5_2_3_a and W-W'+2q <= (q/phi(q)) W/log(W/2q) via q/phi(q) >= 2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1402-L1429"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1430,
+          1433
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b"
+          },
+          "snippet": {
+            "text": "    · have hK := weight_caseB (Q := Q) hq hodd hB hqW hQW (by linarith) hW'W hWW\n      have := odd_blocks_from_weight hq hcop hα (R := 2) (by norm_num) (by nlinarith)\n        (by linarith) hWW (by linarith) hK₀ hK A₀ A₁\n      rwa [hLK] at this",
+            "line": 1430,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+            "lines": [
+              1378,
+              1433
+            ],
+            "conclusion": "For q odd uses R = 2 (qR^2<Q, R<=W' by linarith) with weight_caseB."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1430-L1433"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          107
+        ],
+        "printed": [
+          97
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

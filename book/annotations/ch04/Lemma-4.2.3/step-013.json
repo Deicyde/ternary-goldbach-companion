@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.3 step 13",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Connective into step 14's basic estimate. Lean proves it for η = η₂ and only when 4m ≤ x (ρ₀ = 4), with the three-way min split into two inequalities.",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17462,
+          0.56408,
+          0.56162,
+          0.01563
+        ]
+      },
+      "title": "Lemma 4.2.3 step 13: Text, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.innerLog_eq_ToddG",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          18,
+          21
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.innerLog_eq_ToddG"
+          },
+          "snippet": {
+            "text": "theorem innerLog_eq_ToddG {α x : ℝ} (hx : 0 < x) {m : ℕ} (hm : 1 ≤ m) :\n    ∑ n ∈ Icc 1 ⌊x⌋₊,\n        (if Odd n then (Real.log n : ℂ) * e (α * m * n) * (eta2 (m * n / x) : ℂ) else 0) =\n      ToddG (eta2log (x / m)) α x m := by",
+            "line": 18,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.innerLog_eq_ToddG",
+            "lines": [
+              17,
+              59
+            ],
+            "conclusion": "`∑_{n odd} (log n) e(αmn) η₂(mn/x) = T_{m,∘}` for smoothing `η_{(x/m)}` (first equality)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L18-L21"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.SmoothData.norm_ToddG_le",
+        "module": "TernaryGoldbach.MinorArcs.InnerSumsGen",
+        "lines": [
+          109,
+          113
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.SmoothData.norm_ToddG_le"
+          },
+          "snippet": {
+            "text": "theorem norm_ToddG_le (α : ℝ) :\n    ‖ToddG g α x m‖ ≤ x / (2 * m) * N + V / 2 ∧\n    (Real.sin (2 * π * m * α) ≠ 0 →\n      ‖ToddG g α x m‖ ≤ V / 2 / |Real.sin (2 * π * m * α)| ∧\n      ‖ToddG g α x m‖ ≤ m / x * (K / 2) / Real.sin (2 * π * m * α) ^ 2) := by",
+            "line": 109,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.SmoothData.norm_ToddG_le",
+            "lines": [
+              108,
+              132
+            ],
+            "conclusion": "[H, (4.36)] for a smoothing g: `‖T‖ ≤ (x/2m)N + V/2`, `≤ (V/2)/|sin 2πmα|`, `≤ (m/x)(K/2)/sin²`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSumsGen.lean",
+            "fragment": "L109-L113"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_ToddL_le_min_sin",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          108,
+          116
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_ToddL_le_min_sin"
+          },
+          "snippet": {
+            "text": "theorem norm_ToddL_le_min_sin {α x δ : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x)\n    (h2α : 2 * α = a / q + δ / x + k) {m : ℕ} (hm : 1 ≤ m) (hmx : 4 * m ≤ x)\n    (hne : Real.sin (π * (a / q + δ / x) * (m : ℤ)) ≠ 0) {A B C : ℝ}\n    (hA : x / (2 * m) + eta2'L1 / 2 ≤ A) (hB : eta2'L1 / 2 ≤ B) (hC : m / x * (c₀ / 2) ≤ C) :\n    ‖ToddG (eta2log (x / m)) α x m‖ ≤\n      Real.log (x / m) * min A (C / Real.sin (π * (a / q + δ / x) * (m : ℤ)) ^ 2) ∧\n    ‖ToddG (eta2log (x / m)) α x m‖ ≤\n      Real.log (x / m) * min (B / |Real.sin (π * (a / q + δ / x) * (m : ℤ))|)\n        (C / Real.sin (π * (a / q + δ / x) * (m : ℤ)) ^ 2) := by",
+            "line": 108,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_ToddL_le_min_sin",
+            "lines": [
+              107,
+              149
+            ],
+            "conclusion": "With `g = eta2log (x/m)`: `‖T_{m,∘}‖ ≤ log(x/m)·min(A, B/|sin|, C/sin²)` for `A ≥ x/2m+|η'|₁/2`, `B ≥ |η'|₁/2`, `C ≥ (m/x)(c₀/2)`, for `4m ≤ x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L108-L116"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7 display 42",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the corrected $g_x(r_0)$ (constants $0.8764,2.526,3.8$, no $K$-averaged $R_{x,K,\\varphi}$) inside $\\hat g=1.398\\max(g,h)+17(670/n)^3/3$, giving $\\hat g(10^{25},150000)\\le0.060272$, not $g(r_0)\\le0.041014$.",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.20371,
+          0.58373,
+          0.63183,
+          0.06612
+        ]
+      },
+      "title": "Display, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx",
+        "module": "TernaryGoldbach.MinorArcs.GBound",
+        "lines": [
+          33,
+          36
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx"
+          },
+          "snippet": {
+            "text": "/-- `g_x(r)` [H, (11.12)], with our constants `0.8764` and `3.8`. -/\nnoncomputable def gx (x r : ℝ) : ℝ :=\n  ((R x (2 * r) * Real.log (2 * r) + 0.8764) * √(Fr r) + 2.526) / √(2 * r) + Lg (2 * r) / r +\n    3.8 * x ^ (-1 / 6 : ℝ)",
+            "line": 33,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx",
+            "lines": [
+              33,
+              36
+            ],
+            "conclusion": "Defines $g_x(r)=\\frac{(R_{x,2r}\\log 2r+0.8764)\\sqrt{\\digamma(r)}+2.526}{\\sqrt{2r}}+\\frac{L_{2r}}{r}+3.8x^{-1/6}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GBound.lean",
+            "fragment": "L33-L36"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

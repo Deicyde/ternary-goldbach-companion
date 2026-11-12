@@ -1,0 +1,84 @@
+{
+  "id": "2 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Only real `z > 0` (scaling by `a`), not complex `z` with `Re z > 0`; the contour rotation `∫_0^{z∞}` is not carried out in [L].",
+  "subject": [
+    {
+      "location": {
+        "page": 10,
+        "rect": [
+          0.20371,
+          0.31113,
+          0.63183,
+          0.07929
+        ]
+      },
+      "title": "Display, p. 10",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "mellin_comp_mul_left",
+        "module": "Mathlib.Analysis.MellinTransform",
+        "lines": [
+          133,
+          148
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "mellin_comp_mul_left"
+          },
+          "snippet": {
+            "text": "theorem mellin_comp_mul_left (f : ℝ → E) (s : ℂ) {a : ℝ} (ha : 0 < a) :\n    mellin (fun t => f (a * t)) s = (a : ℂ) ^ (-s) • mellin f s := by\n  simp_rw [mellin]\n  have : EqOn (fun t : ℝ => (t : ℂ) ^ (s - 1) • f (a * t))\n      (fun t : ℝ => (a : ℂ) ^ (1 - s) • (fun u : ℝ => (u : ℂ) ^ (s - 1) • f u) (a * t))\n        (Ioi 0) := fun t ht ↦ by\n    dsimp only\n    rw [ofReal_mul, mul_cpow_ofReal_nonneg ha.le (le_of_lt ht), ← mul_smul,\n      (by ring : 1 - s = -(s - 1)), cpow_neg, inv_mul_cancel_left₀]\n    rw [Ne, cpow_eq_zero_iff, ofReal_eq_zero, not_and_or]\n    exact Or.inl ha.ne'\n  rw [setIntegral_congr_fun measurableSet_Ioi this, integral_smul,\n    integral_comp_mul_left_Ioi (fun u ↦ (u : ℂ) ^ (s - 1) • f u) _ ha,\n    mul_zero, ← Complex.coe_smul, ← mul_smul, sub_eq_add_neg,\n    cpow_add _ _ (ofReal_ne_zero.mpr ha.ne'), cpow_one, ofReal_inv,\n    mul_assoc, mul_comm, inv_mul_cancel_right₀ (ofReal_ne_zero.mpr ha.ne')]",
+            "line": 133,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "mellin_comp_mul_left",
+            "lines": [
+              133,
+              148
+            ],
+            "conclusion": "For real `a>0`, `mellin (t ↦ f(a t)) s = a^(-s) mellin f s`; with `f = e^{-x}` this gives `Γ(s)/a^s`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/MellinTransform.lean",
+            "fragment": "L133-L148"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          10
+        ],
+        "printed": [
+          10
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 2.4 display 3, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

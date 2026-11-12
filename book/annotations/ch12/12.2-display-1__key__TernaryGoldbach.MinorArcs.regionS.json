@@ -1,0 +1,117 @@
+{
+  "id": "12.2 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same chain $G_q(R)G_P(t)\\le G_q(tR)$, $G_P\\ge G/(P/\\varphi(P))$, but with $G(t)\\ge\\log t+1.064$ (not $1.312$) and $P/\\varphi(P)\\le0.86+0.4\\log(qR)$ (not $e^\\gamma(\\log(\\cdot)+0.65771)$); Lean has no standalone display of this ratio bound.",
+  "subject": [
+    {
+      "location": {
+        "page": 244,
+        "rect": [
+          0.25926,
+          0.39486,
+          0.56816,
+          0.04966
+        ]
+      },
+      "title": "Display, p. 234",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "12.2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          135,
+          144
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hX' : X ≤ 0.86 + 0.4 * Real.log ((q : ℝ) * R) := by\n    have e1 : 2.50637 / Real.log V ≤ 2.50637 / Real.log (Real.log q) :=\n      div_le_div_of_nonneg_left (by norm_num) (by linarith) hlV1\n    have e2 : Real.exp Real.eulerMascheroniConstant * Real.log V ≤\n        Real.exp Real.eulerMascheroniConstant * Real.log c' +\n          Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) := by\n      rw [← mul_add]; exact mul_le_mul_of_nonneg_left hlogV hγ0.le\n    have e3 : Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) ≤\n        0.4 * Real.log ((q : ℝ) * R) := by nlinarith\n    linarith",
+            "line": 135,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "Bounds $P/\\varphi(P)\\le 0.86+0.4\\log(qR)$ for $P=\\prod_{p\\le R\\text{ or }p\\mid q}p$ (from `div_totient_lt`, `log_prod_primeSetRq_le`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L135-L144"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          156,
+          164
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hGP : (Real.log t + 1.064) / X ≤ Gq P t := by\n    rw [div_le_iff₀ hX0]; nlinarith\n  have hGqR := Gq_nonneg_q q R\n  have hmain : Gq q R * (Real.log t + 1.064) ≤ Gq q (t * R) * X := by\n    have := mul_le_mul_of_nonneg_left hGP hGqR\n    rw [mul_div_assoc'] at this\n    rw [div_le_iff₀ hX0] at this\n    calc Gq q R * (Real.log t + 1.064) ≤ Gq q R * Gq P t * X := this\n      _ ≤ Gq q (t * R) * X := mul_le_mul_of_nonneg_right h1 hX0.le",
+            "line": 156,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "With $t=Q/Q_0$, $R=Q_0/sq$: $G_q(R)(\\log t+1.064)\\le G_q(tR)\\,P/\\varphi(P)$ from `Gq_mul_le`, `G_le_mul_Gq`, `G_ge_log`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L156-L164"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          244
+        ],
+        "printed": [
+          234
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

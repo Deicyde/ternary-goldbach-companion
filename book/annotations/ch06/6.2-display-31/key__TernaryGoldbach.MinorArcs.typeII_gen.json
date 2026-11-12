@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 31",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Lean's coefficient: `√2κ₂√(q/φ)(1 + 2√(log 2q/log(x/2Uq)))x/√U` plus an extra `2e√(2q log 2q)` term, versus text's `1 + 1.15√(…)`; weaker constant (4 vs 2.3 in the log-integral). Prefactor `4√κ₁√(qx/2φ) = κ₂√(qx/φ)/√2` matches.",
+  "subject": [
+    {
+      "location": {
+        "page": 121,
+        "rect": [
+          0.17135,
+          0.18386,
+          0.56816,
+          0.04055
+        ]
+      },
+      "title": "Display, p. 111",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_gen",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen",
+        "lines": [
+          324,
+          325
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_gen"
+          },
+          "snippet": {
+            "text": "      4 * √(kap1 x U V * q * x / (2 * Nat.totient q)) * (2 * √(x / U) + √(Real.log c) *\n        (2 * rexp 1 * √c + 4 * √(x / U / Real.log (x / U / c)))) +",
+            "line": 324,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_gen",
+            "lines": [
+              313,
+              380
+            ],
+            "conclusion": "Second term of the Type II bound: `4√(κ₁qx/2φ)(2√(x/U) + √(log c)(2e√c + 4√((x/U)/log(x/U/c))))`, `c = 2q`, i.e. the vivaldi contribution `(κ₂/√2)√(qx/φ)∫…`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L324-L325"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          121
+        ],
+        "printed": [
+          111
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

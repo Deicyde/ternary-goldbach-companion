@@ -1,0 +1,81 @@
+{
+  "id": "7 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Part: the first line S = η̂₊(0)x + O*(err)x, with Lean's error 6.24e6/√x (about 2.8e-7) in place of ET ≤ 1.1405e-8. The second line (≤ (|η₊|₁+ET)x) and the numeric ≤ 1.063x are not stated in Lean.",
+  "subject": [
+    {
+      "location": {
+        "page": 56,
+        "rect": [
+          0.20371,
+          0.85384,
+          0.63183,
+          0.04516
+        ]
+      },
+      "title": "Display, p. 56",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_one",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          572,
+          574
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_one"
+          },
+          "snippet": {
+            "text": "theorem thm_7_1_4_one {x : ℝ} (hx : 4.9e26 ≤ x) (χ : DirichletCharacter ℂ 1) {δ : ℝ}\n    (hδ : |δ| ≤ 600000) :\n    ‖Schar χ (fun n => ((Λ n * etaPlus (n / x) : ℝ) : ℂ)) (δ / x) -",
+            "line": 572,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_one",
+            "lines": [
+              569,
+              588
+            ],
+            "conclusion": "For q = 1 (trivial character) and |δ| ≤ 6·10^5, which includes δ = 0: `S_{η₊}(δ/x,x) = \\hat{η₊}(−δ) x + E x` with `|E| ≤ 10^{-18} + 6.24·10^6/√x`, in Lean `Schar χ (Λ·η₊(·/x)) (δ/x) − 𝓕 η₊(−δ)·x` bounded by `(1e-18 + 6.24e6/√x)·x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L572-L574"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          56
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

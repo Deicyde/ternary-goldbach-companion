@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.4.1 step 10",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Set-up: [L] states the bound for s with 0<Re s<1, |Im s|>T0 rather than for rho=sigma+i tau, tau>0 paired.",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17462,
+          0.75363,
+          0.56162,
+          0.0165
+        ]
+      },
+      "title": "Lemma 9.4.1 step 10: Text, p. 185",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
+        "lines": [
+          285,
+          289
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_tail"
+          },
+          "snippet": {
+            "text": "/-- **The tail above `T₀`** (`T₀ ≥ 200 + max(10π|δ|, 50)`). -/\ntheorem norm_mellin_fP_tail {δ T0 : ℝ} (hT0 : 200 + max (10 * π * |δ|) 50 ≤ T0) {s : ℂ}\n    (hr1 : 0 < s.re) (hr2 : s.re < 1) (hτ : T0 < |s.im|) :\n    ‖mellin (fP δ) s‖ ≤ Cg * (2 * aH) * EB (T0 - 200) * rhoB ^ ⌊(|s.im| - T0) / 4.4⌋₊ +\n      Cg * (2 * aH) * EA (T0 - 200) δ * rhoA δ ^ ⌊(|s.im| - T0) / 4.4⌋₊ := by",
+            "line": 285,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+            "lines": [
+              285,
+              314
+            ],
+            "conclusion": "For T0>=200+max(10 pi|delta|,50), 0<Re s<1, |Im s|>T0: |M_+(s)| <= Cg*2a*(EB(T0-200) rhoB^k + EA(T0-200,delta) rhoA^k), k=floor((|Im s|-T0)/4.4)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L285-L289"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

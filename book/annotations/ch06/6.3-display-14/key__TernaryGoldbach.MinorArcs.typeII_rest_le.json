@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 14",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "With [L]'s `U = T²/(9√t)` and `c = 2q`, `x/U/c` is the text's `9x^{1/3}√δ₀/(2√q)`; [L] proves the ratio `≤ 2` (not `< 2`) for all `c ∈ [t, 1.0015t]` by a direct product inequality, without the worst-case-and-limit chain.",
+  "subject": [
+    {
+      "location": {
+        "page": 133,
+        "rect": [
+          0.17135,
+          0.61634,
+          0.56816,
+          0.04799
+        ]
+      },
+      "title": "Display, p. 123",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_rest_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeII",
+        "lines": [
+          197,
+          198
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_rest_le"
+          },
+          "snippet": {
+            "text": "  have hratio : Real.log c ≤ 2 * Real.log (T ^ 3 / U1 T t / c) :=\n    log_le_two_log_div ht0 htT hc0 hc hxU1",
+            "line": 197,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_rest_le",
+            "lines": [
+              127,
+              303
+            ],
+            "conclusion": "Applied with X = x/U to get log c <= 2 log(x/U/c)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeII.lean",
+            "fragment": "L197-L198"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          133
+        ],
+        "printed": [
+          123
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

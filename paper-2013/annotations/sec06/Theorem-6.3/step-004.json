@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 6.3 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not use the convolution S_{η₂*_Mφ}(α,y) with Prop 11.2.1 at one scale y; it writes S_{η*} = ∫ S_{η₂}(α,wy)φ(w)dw/w, takes a fresh Dirichlet approximation at each scale wy, and integrates (Prop 11.2.3′). The resulting bound is y·ĝ(y,n)-type, not g_{y,φ}(r)|φ|₁y.",
+  "subject": [
+    {
+      "location": {
+        "page": 49,
+        "rect": [
+          0.20698,
+          0.80796,
+          0.62529,
+          0.01608
+        ]
+      },
+      "title": "Theorem 6.3 step 4: Text, p. 49",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+        "lines": [
+          134,
+          141
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem"
+          },
+          "snippet": {
+            "text": "  rcases le_or_gt (q : ℝ) (z ^ (1 / 3 : ℝ) / 6) with hq | hq\n  · have key := norm_S_eta2_le_gx hz h hq (by linarith)\n    have hup := r_le_cube_root hz h hq\n    have hmono := gx_antitoneOn hz ⟨hlow, hrw.trans hup⟩ ⟨hlow.trans hrw, hup⟩ hrw\n    calc ‖S eta2 z α‖ ≤ gx z (max 1 (|δ| / 8) * q) * z := key\n      _ ≤ G * z := by\n          gcongr\n          exact hmono.trans (hG1 (hrw.trans hup))",
+            "line": 134,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+            "lines": [
+              105,
+              142
+            ],
+            "conclusion": "For q ≤ z^{1/3}/6 and α ∉ 𝔐_{8,n}(y): |S_{η₂}(α,z)| ≤ g_z(max(1,|δ|/8)q)·z ≤ g_z(min(1,w)n)·z, using r_w ≥ min(1,w)n and `gx_antitoneOn`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "fragment": "L134-L141"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3'",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+        "lines": [
+          156,
+          169
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_11_2_3'"
+          },
+          "snippet": {
+            "text": "    (hGi : IntegrableOn (fun w => G w * phi w) (Icc w₀ w₁)) :\n    ‖S etaStar x α‖ ≤ x / κ * ((∫ w in Icc w₀ w₁, G w * phi w) +\n      17 * ((∫ w in Ioo 0 w₀, phi w) + ∫ w in Ioi w₁, phi w)) := by\n  have hκ : (0 : ℝ) < κ := by rw [TernaryGoldbach.Helfgott.κ]; norm_num\n  set y := x / κ with hy_def\n  have hy0 : 0 < y := div_pos hx hκ\n  have hn0 : 0 ≤ n := by\n    by_contra h; push Not at h; nlinarith\n  refine norm_S_etaStar_le_of_pointwise hx hw₀ (by linarith) (fun w hw => ?_) hGi\n  have hw0 : 0 < w := lt_of_lt_of_le hw₀ hw.1\n  refine norm_S_eta2_le_of_not_mem hy0 hα hw0\n    (hy.trans (mul_le_mul_of_nonneg_right hw.1 hy0.le)) ?_ (hG1 w hw) (hG2 w hw)\n  have : w₀ ≤ min 1 w := le_min hw₀1 hw.1\n  nlinarith",
+            "line": 156,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3'",
+            "lines": [
+              144,
+              169
+            ],
+            "conclusion": "Integrating the pointwise scale-wy bounds against φ(w)dw/w gives |S_{η*}(α,x)| ≤ y(∫Gφ + 17(∫_0^{w₀}φ+∫_{w₁}^∞φ))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "fragment": "L156-L169"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          49
+        ],
+        "printed": [
+          49
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Theorem 13.2.1 step 4, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

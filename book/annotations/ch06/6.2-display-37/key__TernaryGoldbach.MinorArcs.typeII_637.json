@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 37",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no $\\kappa_7$: it keeps the exact term $8\\zeta(3/2)^3\\sqrt{x/V}/U$ in place of $2\\kappa_7$ and bounds it numerically ($\\le0.2355$) only at its chosen $U,V$, not via $U^2V\\ge5\\cdot10^5x$ and $\\kappa_4\\le 90.5671$.",
+  "subject": [
+    {
+      "location": {
+        "page": 122,
+        "rect": [
+          0.25926,
+          0.24015,
+          0.56816,
+          0.03816
+        ]
+      },
+      "title": "Display, p. 112",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_637",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal",
+        "lines": [
+          338,
+          340
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_637"
+          },
+          "snippet": {
+            "text": "      x / √(2 * Nat.totient q) * √((Real.log (x / (U * V)) + Real.log (2 * q) *\n        (Real.log (Real.log (x / U / (2 * q))) - Real.log (Real.log (V / (2 * q))))) *\n        (0.60428 * Real.log (x / (U * V)) + 0.0924 + 8 * zeta3 * √(x / V) / U)) +",
+            "line": 338,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.typeII_637",
+            "lines": [
+              325,
+              410
+            ],
+            "conclusion": "The (6.37) main term carries `8 * zeta3 * √(x / V) / U` (with `zeta3` $=\\zeta(3/2)^3$) in the slot of the book's $2\\kappa_7$, kept symbolic rather than bounded by a constant."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L338-L340"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          122
+        ],
+        "printed": [
+          112
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

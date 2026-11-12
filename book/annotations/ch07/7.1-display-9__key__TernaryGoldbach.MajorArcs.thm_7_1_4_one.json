@@ -1,0 +1,81 @@
+{
+  "id": "7.1 display 9",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean's q=1 bound 1e-18 + 6.24e6/√x (x >= 4.9e26, |δ| <= 6e5) is incomparable with 4.772e-11 + 251400/√x: smaller additive constant, but about 25 times worse 1/√x term.",
+  "subject": [
+    {
+      "location": {
+        "page": 150,
+        "rect": [
+          0.25926,
+          0.46354,
+          0.56816,
+          0.03341
+        ]
+      },
+      "title": "Display, p. 140",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7.1 display 9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_one",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          569,
+          588
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_one"
+          },
+          "snippet": {
+            "text": "/-- **[H, Thm 7.1.4], `q = 1`** (our constants), from `prop_9_4_2` at `T₀ = 10⁸` and Platt's\nverification: for `x ≥ 4.9·10²⁶`, `|δ| ≤ 6·10⁵`, `S_{η₊}(δ/x, x) = η̂₊(-δ) x + E x`,\n`|E| ≤ 10⁻¹⁸ + 6.24·10⁶/√x`. -/\ntheorem thm_7_1_4_one {x : ℝ} (hx : 4.9e26 ≤ x) (χ : DirichletCharacter ℂ 1) {δ : ℝ}\n    (hδ : |δ| ≤ 600000) :\n    ‖Schar χ (fun n => ((Λ n * etaPlus (n / x) : ℝ) : ℂ)) (δ / x) -\n        𝓕 (fun u => (etaPlus u : ℂ)) (-δ) * x‖ ≤ (1e-18 + 6.24e6 / √x) * x := by\n  have hχ : χ.IsPrimitive := by\n    rw [Subsingleton.elim χ 1]; exact DirichletCharacter.isPrimitive_one_level_one\n  have hT0 : 200 + max (10 * π * |δ|) 50 ≤ (1e8 : ℝ) :=\n    hT0_of (q := 1) one_pos (by simpa using hδ) (by norm_num) (by norm_num)\n  have hG : GRHUpTo χ 1e8 := by\n    have := platt_odd (q := 1) odd_one (by norm_num) χ hχ\n    simpa using this\n  have h := prop_9_4_2 (x := x) (by linarith) δ χ hχ hT0 hG\n  simp only [ite_true] at h\n  refine h.trans (mul_le_mul_of_nonneg_right ?_ (by linarith))\n  unfold err942N\n  simp only [ite_true]\n  exact errPZ_le hx (by linarith)",
+            "line": 569,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_one",
+            "lines": [
+              569,
+              588
+            ],
+            "conclusion": "q=1, |δ| <= 6e5, x >= 4.9e26: `‖Schar chi (Λ·etaPlus(n/x)) (δ/x) - 𝓕 etaPlus(-δ) x‖ ≤ (1e-18 + 6.24e6/√x) x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L569-L588"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          150
+        ],
+        "printed": [
+          140
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 7",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean proves the outer inequality directly (T0<=1e8 replaced by qT0=1e8, delta term via expδ<=e^{-74}, not the explicit middle expression at 1000/(12 pi)); expδ=0 at delta=0; L=log(1e8/2pi)<=16.5829 used.",
+  "subject": [
+    {
+      "location": {
+        "page": 204,
+        "rect": [
+          0.25926,
+          0.61948,
+          0.56816,
+          0.09083
+        ]
+      },
+      "title": "Display, p. 194",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.first_line_le",
+        "module": "TernaryGoldbach.MajorArcs.Cor713",
+        "lines": [
+          88,
+          148
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.first_line_le"
+          },
+          "snippet": {
+            "text": "/-- The first line of the error term at `T₀ = 10⁸/q`. -/\ntheorem first_line_le {q : ℕ} (hq1 : 1 ≤ q) (hq3 : q ≤ 300000) {δ : ℝ}\n    (hδ : |δ| ≤ 4 * 300000 / q) :\n    (1e8 / q) * Real.log (q * (1e8 / q) / (2 * π)) *\n      (6.11 * Real.exp (-0.1598 * (1e8 / q)) + 1.578 * expδ (1e8 / q) δ) ≤ 2.485e-19 := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq1\n  have hq1' : (1 : ℝ) ≤ q := by exact_mod_cast hq1\n  have hq3' : (q : ℝ) ≤ 300000 := by exact_mod_cast hq3\n  set T0 : ℝ := 1e8 / q with hT0\n  have hqT : (q : ℝ) * T0 = 1e8 := by rw [hT0]; field_simp\n  rw [hqT]\n  have hL := L_le\n  have hL0 := L_nonneg\n  have hT1 : 1000 / 3 ≤ T0 := by rw [hT0, le_div_iff₀ hq0]; nlinarith\n  have hT2 : T0 ≤ 1e8 := by rw [hT0, div_le_iff₀ hq0]; nlinarith\n  -- the main part\n  have hm := mul_exp_anti (c := 0.1598) (t₀ := 1000 / 3) (t := T0) (by norm_num) (by norm_num) hT1\n  have hc := exp_c_le\n  have h1 : T0 * Real.exp (-0.1598 * T0) ≤ 1000 / 3 * 7.3551e-24 := by\n    rw [show -0.1598 * T0 = -(0.1598 * T0) by ring]\n    exact hm.trans (mul_le_mul_of_nonneg_left hc (by norm_num))\n  -- the `δ` part\n  have h2 : expδ T0 δ ≤ Real.exp (-74) := by\n    unfold expδ\n    split_ifs with hδ0\n    · exact (Real.exp_pos _).le\n    · rw [Real.exp_le_exp]\n      have hd : |δ| ≤ 1.2e6 / q := by linarith [show (4 * 300000 / q : ℝ) = 1.2e6 / q by ring]\n      have hdpos : 0 < |δ| := abs_pos.2 hδ0\n      have hπ := Real.pi_lt_d4\n      have hπ0 := Real.pi_pos\n      -- `(πδ)² ≤ (π · 1.2e6/q)² ≤ T0²/700`\n      have hpd : (π * δ) ^ 2 ≤ T0 ^ 2 / 700 := by\n        have e1 : (π * δ) ^ 2 = (π * |δ|) ^ 2 := by rw [mul_pow, mul_pow, sq_abs]\n        rw [e1]\n        have h3 : π * |δ| ≤ 3.1416 * (1.2e6 / q) := mul_le_mul hπ.le hd (abs_nonneg _) (by norm_num)\n        have h4 : (3.1416 * (1.2e6 / q)) ^ 2 ≤ T0 ^ 2 / 700 := by\n          rw [hT0, div_pow, mul_pow, div_pow]\n          rw [le_div_iff₀ (by norm_num)]\n          rw [show (3.1416 : ℝ) ^ 2 * (1.2e6 ^ 2 / (q : ℝ) ^ 2) * 700 =\n            (3.1416 ^ 2 * 1.2e6 ^ 2 * 700) / (q : ℝ) ^ 2 by ring]\n          exact div_le_div_of_nonneg_right (by norm_num) (by positivity)\n        exact (pow_le_pow_left₀ (by positivity) h3 2).trans h4\n      have hpos : 0 < (π * δ) ^ 2 := by positivity\n      have : 700 ≤ T0 ^ 2 / (π * δ) ^ 2 := by\n        rw [le_div_iff₀ hpos]; rw [le_div_iff₀ (by norm_num)] at hpd; linarith\n      rw [neg_mul, neg_div, neg_le_neg_iff, mul_div_assoc]\n      linarith\n  have h74 : Real.exp (-74) ≤ 1e-32 := by\n    rw [Real.exp_neg, inv_le_comm₀ (Real.exp_pos _) (by norm_num)]\n    have := exp_nat_ge 74\n    norm_num at this ⊢; linarith\n  have hδ0 := expδ_nonneg T0 δ\n  have hT0n : 0 ≤ T0 := by linarith\n  calc T0 * Real.log (1e8 / (2 * π)) * (6.11 * Real.exp (-0.1598 * T0) + 1.578 * expδ T0 δ)\n      = 6.11 * Real.log (1e8 / (2 * π)) * (T0 * Real.exp (-0.1598 * T0)) +\n        1.578 * Real.log (1e8 / (2 * π)) * (T0 * expδ T0 δ) := by ring\n    _ ≤ 6.11 * 16.5829 * (1000 / 3 * 7.3551e-24) + 1.578 * 16.5829 * (1e8 * 1e-32) := by\n        gcongr\n        exact h2.trans h74\n    _ ≤ 2.485e-19 := by norm_num",
+            "line": 88,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.first_line_le",
+            "lines": [
+              88,
+              148
+            ],
+            "conclusion": "For q<=3e5, |delta|<=4*3e5/q, T0=1e8/q: T0*log(qT0/2pi)*(6.11 e^{-0.1598 T0}+1.578 expδ) <= 2.485e-19, using t e^{-ct} decreasing and expδ<=e^{-74}."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L88-L148"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          204
+        ],
+        "printed": [
+          194
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

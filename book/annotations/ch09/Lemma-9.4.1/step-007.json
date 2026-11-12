@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 9.4.1 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds single values $|G_\\delta(s)|$ by `EB`/`EA` (constants 0.892, 0.588, floor-geometric decay, exponents 0.1598, 0.1065) instead of the paired bound $g(\\tau)$ with $\\kappa_{1,1}=4.017$, $\\kappa_{1,0}=4.903$; a different quantity.",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17462,
+          0.66542,
+          0.56162,
+          0.0312
+        ]
+      },
+      "title": "Lemma 9.4.1 step 7: Text, p. 185",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_tail_floor",
+        "module": "TernaryGoldbach.Explicit.ZetaBound",
+        "lines": [
+          17,
+          20
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_tail_floor"
+          },
+          "snippet": {
+            "text": "/-- The tail bound for `G_δ` in the floor form used by `zero_sum_boundG`. -/\ntheorem norm_G_tail_floor {δ T0 : ℝ} (hT0 : max (10 * π * |δ|) 50 ≤ T0) {s : ℂ} (hr1 : -1 ≤ s.re)\n    (hr2 : s.re ≤ 1) (hτ : T0 < |s.im|) :\n    ‖Gr s δ 0‖ ≤ EB T0 * rhoB ^ ⌊(|s.im| - T0) / 4.4⌋₊ +",
+            "line": 17,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_G_tail_floor",
+            "lines": [
+              17,
+              49
+            ],
+            "conclusion": "For $|\\Im s|>T_0\\ge\\max(10\\pi|\\delta|,50)$, $-1\\le\\Re s\\le 1$: `‖Gr s δ 0‖ ≤ EB T0 * rhoB^k + EA T0 δ * rhoA δ^k`, the analogue of $g(\\tau)$ (applied with $T_0-200$ in `norm_mellin_fP_tail`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZetaBound.lean",
+            "fragment": "L17-L20"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.EB",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          88,
+          89
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.EB"
+          },
+          "snippet": {
+            "text": "/-- `0.892 T₀ e^{−0.1598 T₀}` (regime B at `T₀`). -/\nnoncomputable def EB (T0 : ℝ) : ℝ := 0.892 * T0 * Real.exp (-0.1598 * T0)",
+            "line": 88,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.EB",
+            "lines": [
+              88,
+              89
+            ],
+            "conclusion": "`EB T0 = 0.892 T0 e^{-0.1598 T0}`, the exponential-regime constant."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L88-L89"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.EA",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          91,
+          93
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.EA"
+          },
+          "snippet": {
+            "text": "/-- `0.588 u₀² e^{−0.1065 u₀²}`, `u₀ = T₀/(π|δ|)` (regime A at `T₀`), `0` at `δ = 0`. -/\nnoncomputable def EA (T0 δ : ℝ) : ℝ :=\n  if δ = 0 then 0 else 0.588 * (T0 / (π * |δ|)) ^ 2 * Real.exp (-0.1065 * (T0 / (π * |δ|)) ^ 2)",
+            "line": 91,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.EA",
+            "lines": [
+              91,
+              93
+            ],
+            "conclusion": "`EA T0 δ = 0.588 u0^2 e^{-0.1065 u0^2}`, $u_0=T_0/(\\pi|\\delta|)$, the Gaussian-regime constant."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L91-L93"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

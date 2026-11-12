@@ -1,0 +1,106 @@
+{
+  "id": "Lemma 4.2.1 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Carries the inequalities |a/q-a'/q'| ≥ 1/qq', the upper bound, q'/Q+q/((1+ε)Q) ≥ 1 and q' ≥ εQ/(1+ε), with real Q and Q' = (1+ε)Q (book: Q' = ⌈(1+ε)Q⌉). The parenthetical q' ≥ 2 is not proved.",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.26253,
+          0.30072,
+          0.56162,
+          0.06224
+        ]
+      },
+      "title": "Lemma 4.2.1 step 3: Text, p. 58",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 3",
+          "quads": [
+            [
+              0.31684,
+              0.30072,
+              0.82415,
+              0.30072,
+              0.82415,
+              0.31767,
+              0.31684,
+              0.31767
+            ],
+            [
+              0.26253,
+              0.31582,
+              0.82415,
+              0.31582,
+              0.82415,
+              0.36296,
+              0.26253,
+              0.36296
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.second_approx",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1053,
+          1094
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.second_approx"
+          },
+          "snippet": {
+            "text": "  have hne : a' * q ≠ a * q' := by\n    intro heq\n    have hqq : q = q' := by\n      have h1 : (q : ℤ) ∣ q' := by\n        have : (q : ℤ) ∣ a * q' := ⟨a', by rw [← heq]; ring⟩\n        exact hcop.symm.dvd_of_dvd_mul_left this\n      have h2 : (q' : ℤ) ∣ q := by\n        have : (q' : ℤ) ∣ a' * q := ⟨a, by rw [heq]; ring⟩\n        exact hcop'.symm.dvd_of_dvd_mul_left this\n      exact_mod_cast Int.dvd_antisymm (by positivity) (by positivity) h1 h2\n    have hfrac : (a' : ℝ) / q' = a / q := by\n      rw [div_eq_div_iff hq'0.ne' hq0.ne']; exact_mod_cast heq\n    rw [hfrac, hexact, ← hqq] at happ\n    rw [div_le_div_iff₀ (by positivity) (by positivity)] at happ\n    have : (q : ℝ) * Q' ≤ q * Q := by linarith\n    have : Q' ≤ Q := le_of_mul_le_mul_left this hq0\n    simp only [Q'] at this; nlinarith\n  have hgap : 1 / ((q : ℝ) * q') ≤ |(a : ℝ) / q - a' / q'| := by\n    have h1 : (1 : ℝ) ≤ |((a * q' - a' * q : ℤ) : ℝ)| := by\n      exact_mod_cast Int.one_le_abs (sub_ne_zero.2 (Ne.symm hne))\n    have : (a : ℝ) / q - a' / q' = ((a * q' - a' * q : ℤ) : ℝ) / (q * q') := by\n      push_cast; field_simp\n    have hpos : (0 : ℝ) < q * q' := mul_pos hq0 hq'0\n    rw [this, abs_div, abs_of_pos hpos]\n    exact div_le_div_of_nonneg_right h1 hpos.le\n  have htri : |(a : ℝ) / q - a' / q'| ≤ 1 / (q * Q) + 1 / (q' * Q') := by\n    calc |(a : ℝ) / q - a' / q'| = |(ξ - a' / q') - (ξ - a / q)| := by ring_nf\n      _ ≤ |ξ - a' / q'| + |ξ - a / q| := abs_sub _ _\n      _ ≤ _ := by rw [hexact]; linarith\n  have key := hgap.trans htri\n  -- `Q ≤ q' + q/(1+ε)`.\n  have hk : Q ≤ q' + q / (1 + ε) := by\n    have e : 1 / ((q : ℝ) * q') ≤ 1 / (q * Q) + 1 / (q' * Q') := key\n    have : (q * q' * Q : ℝ) * (1 / (q * q')) ≤ (q * q' * Q) * (1 / (q * Q) + 1 / (q' * Q')) :=\n      mul_le_mul_of_nonneg_left e (by positivity)\n    have e1 : (q * q' * Q : ℝ) * (1 / (q * q')) = Q := by field_simp\n    have e2 : (q * q' * Q : ℝ) * (1 / (q * Q) + 1 / (q' * Q')) = q' + q / (1 + ε) := by\n      simp only [Q']; field_simp\n    linarith\n  have : (q : ℝ) / (1 + ε) ≤ Q / (1 + ε) := div_le_div_of_nonneg_right hqQ (by linarith)\n  have e3 : ε * Q / (1 + ε) = Q - Q / (1 + ε) := by field_simp; ring\n  linarith",
+            "line": 1053,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.second_approx",
+            "lines": [
+              1022,
+              1094
+            ],
+            "conclusion": "From a'/q' ≠ a/q (lines 1053-1069), the gap `1/(qq') ≤ |a/q - a'/q'|`, the triangle bound `≤ 1/(qQ) + 1/(q'Q')`, hence `Q ≤ q' + q/(1+ε)` and `q' ≥ εQ/(1+ε)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1053-L1094"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

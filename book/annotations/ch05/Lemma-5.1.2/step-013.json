@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.1.2 step 13",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Single-s Euler products (ell_s, 1+b_s, c_s(2)) and inequalities, in place of the two-parameter product (prof) with p|v factors.",
+  "subject": [
+    {
+      "location": {
+        "page": 96,
+        "rect": [
+          0.26253,
+          0.74649,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 5.1.2 step 13: Text, p. 86",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.tsum_Hd_rpow",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler",
+        "lines": [
+          89,
+          109
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.tsum_Hd_rpow"
+          },
+          "snippet": {
+            "text": "theorem tsum_Hd_rpow {d p : ℕ} (hp : p.Prime) {s : ℝ} (hs1 : s < 1) :\n    ∑' e, Hd d (p ^ e) * ((p ^ e : ℕ) : ℝ) ^ s = if p ≠ 2 ∧ ¬ p ∣ d then ell s p else cfac s p := by\n  have hlt := rpow_lt_self' hs1 hp.two_le\n  have hp0 : (0 : ℝ) < p := by exact_mod_cast hp.pos\n  set r := (p : ℝ) ^ s / p with hr\n  have hr0 : 0 ≤ r := by positivity\n  have hr1 : r < 1 := by rw [hr, div_lt_one hp0]; exact hlt\n  rw [(summable_Hd_rpow hp hs1).tsum_eq_zero_add]\n  simp only [pow_zero, (isMultiplicative_Hd d).map_one, Nat.cast_one, Real.one_rpow, mul_one]\n  simp_rw [Hd_rpow_prime_pow hp s, ← hr]\n  rw [tsum_mul_left]\n  have hg : ∑' e : ℕ, r ^ (e + 1) = r / (1 - r) := by\n    simp_rw [pow_succ]\n    rw [tsum_mul_right, tsum_geometric_of_lt_one hr0 hr1, div_eq_inv_mul]\n  rw [hg, hr]\n  have h1 : (p : ℝ) - (p : ℝ) ^ s ≠ 0 := ne_of_gt (sub_pos.2 hlt)\n  have h3 : (p : ℝ) + 1 ≠ 0 := by positivity\n  unfold kapH ell cfac\n  split_ifs\n  all_goals field_simp\n  all_goals ring",
+            "line": 89,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.tsum_Hd_rpow",
+            "lines": [
+              89,
+              109
+            ],
+            "conclusion": "Euler factor of the inner sum: $\\ell_s(p)$ for odd $p\\nmid d$, $c_s(p)$ otherwise."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L89-L109"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_d_main_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler",
+        "lines": [
+          209,
+          220
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_d_main_le"
+          },
+          "snippet": {
+            "text": "/-- **`∑_{d ≤ N} f(d)² d^{2s} ∏_{p∣d} ρ_s(p)² ≤ ∏_{2 < p ≤ N} (1 + b_s(p))`**. -/\ntheorem sum_d_main_le {s : ℝ} (hs1 : s < 1) (N : ℕ) :\n    ∑ d ∈ Icc 1 N, gmain s d ≤\n      ∏ p ∈ (Nat.primesBelow (N + 1)).filter (· ≠ 2), (1 + bterm s p) := by\n  have h := sum_le_euler (f := gmain s) (gmain_nonneg s) (gmain_one s) (fun h => gmain_mul s h)\n    (fun {p} hp => by\n      refine summable_of_ne_finset_zero (s := range 2) fun e he => ?_\n      simp only [mem_range, not_lt] at he\n      simp [gmain_prime_pow hp s he]) N\n  refine h.trans (le_of_eq ?_)\n  rw [prod_congr rfl fun p hp => tsum_gmain (Nat.mem_primesBelow.1 hp).2 hs1, prod_ite,\n    prod_const_one, one_mul]",
+            "line": 209,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_d_main_le",
+            "lines": [
+              209,
+              220
+            ],
+            "conclusion": "$\\sum_{d\\le N}g_s(d)\\le\\prod_{2<p\\le N}(1+b_s(p))$ via `sum_le_euler` and `tsum_gmain`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L209-L220"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          96
+        ],
+        "printed": [
+          86
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

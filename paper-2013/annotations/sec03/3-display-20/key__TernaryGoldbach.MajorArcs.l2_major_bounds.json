@@ -1,0 +1,81 @@
+{
+  "id": "3 display 20",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] sums per-modulus bounds for eta_+ with numeric main term 0.64 x; the displayed sum over q of the eta_circ integrals split as |eta_circ|^2 Sum + tail sum is not formed.",
+  "subject": [
+    {
+      "location": {
+        "page": 18,
+        "rect": [
+          0.20371,
+          0.82476,
+          0.63183,
+          0.07272
+        ]
+      },
+      "title": "Display, p. 18",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.l2_major_bounds",
+        "module": "TernaryGoldbach.MajorArcs.L2Major",
+        "lines": [
+          323,
+          348
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.l2_major_bounds"
+          },
+          "snippet": {
+            "text": "  have hlo := Finset.sum_le_sum fun q (hq : q ∈ Qset r₀) => (Jq_bounds hx hq).1\n  have hhi := Finset.sum_le_sum fun q (hq : q ∈ Qset r₀) => (Jq_bounds hx hq).2\n  have e1 : ∑ q ∈ Qset r₀, (0.63907 * mPhi q * x - 9.62e-4 * mPhi q * x - 3.6e-9 * x) =\n      (0.63907 - 9.62e-4) * x * (∑ q ∈ Qset r₀, mPhi q) - 3.6e-9 * x * (Qset r₀).card := by\n    have : ∀ q, 0.63907 * mPhi q * x - 9.62e-4 * mPhi q * x - 3.6e-9 * x =\n        ((0.63907 - 9.62e-4) * x) * mPhi q - 3.6e-9 * x := fun q => by ring\n    simp_rw [this]\n    rw [Finset.sum_sub_distrib, ← Finset.mul_sum, Finset.sum_const, nsmul_eq_mul]; ring\n  have e2 : ∑ q ∈ Qset r₀, (0.64034 * mPhi q * x + 9.62e-4 * mPhi q * x + 2.17e-7 * x) =\n      (0.64034 + 9.62e-4) * x * (∑ q ∈ Qset r₀, mPhi q) + 2.17e-7 * x * (Qset r₀).card := by\n    have : ∀ q, 0.64034 * mPhi q * x + 9.62e-4 * mPhi q * x + 2.17e-7 * x =\n        ((0.64034 + 9.62e-4) * x) * mPhi q + 2.17e-7 * x := fun q => by ring\n    simp_rw [this]\n    rw [Finset.sum_add_distrib, ← Finset.mul_sum, Finset.sum_const, nsmul_eq_mul]; ring\n  rw [e1] at hlo\n  rw [e2] at hhi\n  obtain ⟨hm1, hm2⟩ := sum_Qset_mPhi_bounds\n  have hm1' : 13.597558 ≤ ∑ q ∈ Qset r₀, mPhi q := hm1\n  have hm2' : ∑ q ∈ Qset r₀, mPhi q ≤ 13.59756 := hm2\n  have hc := card_Qset_le\n  have hc0 : (0 : ℝ) ≤ (Qset r₀).card := Nat.cast_nonneg _\n  constructor\n  · refine le_trans ?_ (hlo.trans hge)\n    nlinarith\n  · refine (hle.trans hhi).trans ?_\n    nlinarith",
+            "line": 323,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.l2_major_bounds",
+            "lines": [
+              307,
+              348
+            ],
+            "conclusion": "Sums the per-modulus bounds `Jq_bounds` over `Qset r₀`, using $\\sum_q\\mu^2/\\phi$ bounds, to bound $\\int_{\\mathfrak M}|S_{\\eta_+}|^2$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "fragment": "L323-L348"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          18
+        ],
+        "printed": [
+          18
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.3 display 11, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

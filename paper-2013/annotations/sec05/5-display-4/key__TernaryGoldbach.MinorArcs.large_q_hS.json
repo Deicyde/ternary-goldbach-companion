@@ -1,0 +1,81 @@
+{
+  "id": "5 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Different condition: Lean uses $\\log q+1.039R\\le c'(qR)^{2/9}$ (fixed $c'=1.03$) instead of $Q_0/sq\\le c(\\sigma)Q_0^{(1-\\rho)e^{-\\gamma}}-\\log q$; no $\\sigma$-family.",
+  "subject": [
+    {
+      "location": {
+        "page": 38,
+        "rect": [
+          0.20371,
+          0.36912,
+          0.63183,
+          0.03605
+        ]
+      },
+      "title": "Display, p. 38",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.large_q_hS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot5",
+        "lines": [
+          305,
+          306
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.large_q_hS"
+          },
+          "snippet": {
+            "text": "/-- **Large `q`**: for `q ≥ 2.2·10¹⁰` and `1 ≤ R < λ(q)`, `log q + 1.039 R ≤ 1.03 (qR)^{2/9}`. -/\ntheorem large_q_hS {q : ℕ} (hq : 22000000000 ≤ q) {R : ℝ} (hR1 : 1 ≤ R) (hR : R < lamQ q) :",
+            "line": 305,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.large_q_hS",
+            "lines": [
+              305,
+              340
+            ],
+            "conclusion": "For $q\\ge2.2\\cdot10^{10}$ and $1\\le R<\\lambda(q)$: $\\log q+1.039R\\le1.03(qR)^{2/9}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
+            "fragment": "L305-L306"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          38
+        ],
+        "printed": [
+          38
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 12.2 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

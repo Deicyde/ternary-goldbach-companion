@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 16",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean keeps these coefficients symbolic (`coefUV`, `coefQ`, `cPlus`), with `1.0064` outside, no `ε₀` expansion and no numerical values `3.57565`, `3.53312`, …; `c_{4,I₂}+c_{9,I₂}` corresponds to `coefUV`, and `c_{10,I₂}`, `c_{5,I₂}`, `c_{12,I₂}` to the pieces of `coefQ`.",
+  "subject": [
+    {
+      "location": {
+        "page": 117,
+        "rect": [
+          0.17135,
+          0.17376,
+          0.56816,
+          0.18924
+        ]
+      },
+      "title": "Display, p. 107",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.coefQ",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum",
+        "lines": [
+          178,
+          184
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.coefQ"
+          },
+          "snippet": {
+            "text": "/-- Our coefficient of `Q` in (6.13) (before the factor `1.0064`):\n`√(c₀c₊)/π (log⁺(2U/q) + 1/e) + (2|η₂'|₁/π) max(1, log(c₀e³q²V/4π|η₂'|₁x))`\n`+ 2√(3c₀c₊)/π + 3c₊/2c₂ + 55c₀c₂/6π²`. -/\nnoncomputable def coefQ (x : ℝ) (q : ℕ) (U V c : ℝ) : ℝ :=\n  √(c₀ * c) / π * (logPlus (2 * U / q) + 1 / rexp 1) +\n    2 * eta2'L1 / π * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 * V / (4 * π * eta2'L1 * x))) +\n    (2 * √(3 * c₀ * c) / π + 3 * c / (2 * c₂) + 55 * c₀ * c₂ / (6 * π ^ 2))",
+            "line": 178,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.coefQ",
+            "lines": [
+              178,
+              184
+            ],
+            "conclusion": "`coefQ = √(c₀c)/π(log⁺(2U/q)+1/e) + (2|η₂'|₁/π) max(1, log(c₀e³q²V/4π|η₂'|₁x)) + (2√(3c₀c)/π + 3c/2c₂ + 55c₀c₂/6π²)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L178-L184"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          117
+        ],
+        "printed": [
+          107
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

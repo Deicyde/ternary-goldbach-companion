@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.4.1 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean passes from the bound on the shifted transform to the bound on mellin (fP δ) s by integrating over ξ; no (eq:sunodo) pairing.",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17462,
+          0.69674,
+          0.56162,
+          0.0159
+        ]
+      },
+      "title": "Lemma 9.4.1 step 8: Text, p. 185",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
+        "lines": [
+          221,
+          231
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_le"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_fP_le (δ : ℝ) {s : ℂ} (hs : -1 < s.re) {B : ℝ}\n    (hB : ∀ ξ ∈ Icc (-aH) aH, ‖Gr (s - 1 + ((2 * π * ξ : ℝ) : ℂ) * I) δ 0‖ ≤ B) :\n    ‖mellin (fP δ) s‖ ≤ Cg * B * (2 * aH) := by\n  rw [mellin_fP_eq δ hs]\n  have hvol : (volume (Icc (-aH) aH)).toReal = 2 * aH := by\n    rw [Real.volume_Icc, ENNReal.toReal_ofReal (by linarith [aH_pos])]; ring\n  rw [← hvol]\n  refine norm_setIntegral_le_of_norm_le_const (by rw [Real.volume_Icc]; exact ENNReal.ofReal_lt_top)\n    fun ξ hξ => ?_\n  rw [norm_mul]\n  exact mul_le_mul (norm_fourier_gC_le ξ) (hB ξ hξ) (norm_nonneg _) Cg_nonneg",
+            "line": 221,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_le",
+            "lines": [
+              221,
+              231
+            ],
+            "conclusion": "If the shifted Gaussian-type Mellin transform is bounded by B on |ξ|≤aH, then ‖mellin (fP δ) s‖ ≤ Cg·B·2aH (bound the convolution integral by its sup)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L221-L231"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "3 display 10",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has the exact identity for the coprime part only and absorbs non-coprime terms by a pointwise bound 1e-15 x rather than the (1+sqrt q)(log x)^2|eta|_inf, K_{q,1}(2|S_eta(0,x)|+K_{q,1}) error; the character sum is over psi with S_{psi^{-1}} (chi* via Schar_primitive).",
+  "subject": [
+    {
+      "location": {
+        "page": 16,
+        "rect": [
+          0.20371,
+          0.53368,
+          0.63183,
+          0.21403
+        ]
+      },
+      "title": "Display, p. 16",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.totient_mul_sum_units",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri",
+        "lines": [
+          113,
+          120
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.totient_mul_sum_units"
+          },
+          "snippet": {
+            "text": "/-- `φ(q) Σ_{b unit} |S(b/q + β)|² = Σ_ψ |τ(ψ)|² |S_{ψ⁻¹}(β)|²`. -/\ntheorem totient_mul_sum_units {q : ℕ} [NeZero q] {a : ℕ → ℂ}\n    (ha : Summable fun n => ‖a n‖) (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q) (β : ℝ) :\n    q.totient * ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2 =\n      ∑ ψ : DirichletCharacter ℂ q, ‖gaussSum ψ ZMod.stdAddChar‖ ^ 2 * ‖Schar ψ⁻¹ a β‖ ^ 2 := by\n  rw [← parseval_chars]\n  refine sum_congr rfl fun ψ _ => ?_\n  rw [sum_char_mul_S ψ ha hcop, norm_mul, mul_pow]",
+            "line": 113,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.totient_mul_sum_units",
+            "lines": [
+              113,
+              120
+            ],
+            "conclusion": "$\\phi(q)\\sum_{b\\ unit}|S(b/q+\\beta)|^2=\\sum_\\psi|\\tau(\\psi)|^2|S_{\\psi^{-1}}(\\beta)|^2$ for coprime-supported coefficients (orthogonality of characters plus $\\sum_b\\psi(b)S(b/q+\\beta)=\\tau(\\psi)S_{\\psi^{-1}}$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L113-L120"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          16
+        ],
+        "printed": [
+          16
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.3 display 1, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

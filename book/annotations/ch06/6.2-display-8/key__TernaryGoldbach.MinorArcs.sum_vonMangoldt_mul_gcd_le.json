@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 8",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The first line holds with `0.511` in place of `0.5004` (weaker); only `j = 1` of the second line is proved, directly via `(q,v) = Σ_{d|(q,v)} φ(d)`, giving `N q log q` for the extra term instead of splitting off `(v,q)≠1`.",
+  "subject": [
+    {
+      "location": {
+        "page": 115,
+        "rect": [
+          0.17135,
+          0.18509,
+          0.56816,
+          0.08204
+        ]
+      },
+      "title": "Display, p. 105",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_gcd_le",
+        "module": "TernaryGoldbach.MinorArcs.GcdSums",
+        "lines": [
+          167,
+          170
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_gcd_le"
+          },
+          "snippet": {
+            "text": "/-- [H, §6.2.2]: `∑_{v ≤ N} Λ(v) v (q,v) ≤ ∑_{v ≤ N} Λ(v) v + N q log q`. -/\ntheorem sum_vonMangoldt_mul_gcd_le {q N : ℕ} (hq : 1 ≤ q) :\n    ∑ v ∈ Icc 1 N, (Λ v : ℝ) * v * Nat.gcd q v ≤\n      ∑ v ∈ Icc 1 N, (Λ v : ℝ) * v + N * q * Real.log q := by",
+            "line": 167,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_gcd_le",
+            "lines": [
+              167,
+              188
+            ],
+            "conclusion": "`∑_{v ≤ N} Λ(v) v (q,v) ≤ ∑_{v ≤ N} Λ(v) v + N q log q` (first power of `(q,v)`), proved via `(q,v)=∑_{d|(q,v)} φ(d)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GcdSums.lean",
+            "fragment": "L167-L170"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          115
+        ],
+        "printed": [
+          105
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

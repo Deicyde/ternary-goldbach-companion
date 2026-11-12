@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.4 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] uses `G ≥ log t + 1.064` (`t ≥ 20000`) in place of (charpy) and concludes with `(log Q₀+1.36)/(log Q+c_E)`, not `(e^γ log(...)+1.172)/(log(Q/Q₀)+1.312)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.20698,
+          0.82515,
+          0.62529,
+          0.01728
+        ]
+      },
+      "title": "Lemma 5.4 step 8: Text, p. 37",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.4 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.G_ge_log",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          15,
+          24
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.G_ge_log"
+          },
+          "snippet": {
+            "text": "/-- `G(t) ≥ log t + 1.064` for `t ≥ 20000`, from (12.12). -/\ntheorem G_ge_log {t : ℝ} (ht : 20000 ≤ t) : Real.log t + 1.064 ≤ Gq 1 t := by\n  obtain ⟨c, hc1, -, hram⟩ := ramare_Gq\n  have h := (abs_le.1 (hram 1 le_rfl t (by linarith))).1\n  have hS : Sq 1 = 0 := by simp [Sq]\n  have hf : f1q 1 = 1 := by simp [f1q]\n  rw [hS, hf] at h\n  simp only [Nat.totient_one, Nat.cast_one, div_one, one_mul, mul_one, add_zero] at h\n  have := rpow_neg_third_le ht\n  nlinarith",
+            "line": 15,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.G_ge_log",
+            "lines": [
+              15,
+              24
+            ],
+            "conclusion": "`G(t) ≥ log t + 1.064` for `t ≥ 20000`, replacing (charpy)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L15-L24"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+        "lines": [
+          171,
+          185
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS"
+          },
+          "snippet": {
+            "text": "  have hD : X * (L + cE) ≤ (l + 1.36) * (Real.log t + 1.064) := by\n    rw [hlogt]; unfold cE\n    exact poly_regionS (by linarith) hX0.le hl5 hρ\n  have hden : 0 < Real.log t + 1.064 := by linarith\n  have hLcE : 0 < L + cE := by unfold cE; linarith\n  rw [div_mul_eq_mul_div, le_div_iff₀ hLcE]\n  have hG2 := Gq_nonneg_q q (t * R)\n  calc Gq q R * (L + cE) ≤ Gq q R * ((l + 1.36) * (Real.log t + 1.064) / X) := by\n        apply mul_le_mul_of_nonneg_left _ hGqR\n        rw [le_div_iff₀ hX0]; linarith\n    _ = Gq q R * (Real.log t + 1.064) * (l + 1.36) / X := by ring\n    _ ≤ Gq q (t * R) * X * (l + 1.36) / X := by\n        apply div_le_div_of_nonneg_right _ hX0.le\n        exact mul_le_mul_of_nonneg_right hmain (by linarith)\n    _ = (l + 1.36) * Gq q (t * R) := by field_simp",
+            "line": 171,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.regionS",
+            "lines": [
+              74,
+              185
+            ],
+            "conclusion": "Concludes `G_q(R) ≤ (log Q₀ + 1.36)/(log Q + c_E)·G_q(tR)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L171-L185"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 12.2.2 step 8, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 30",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds sqrt(1+q'/y) by 1+q'/(2y) and log(y+q') by log y + q'/y termwise (`hterm`), then sums with `hS2`; the shape D log(D/e) - R log(R/e) + (q'/2) log D log(D/R) is the same but the q' log-term is 2q' log(D/R) + q' sqrt(1+q/R) log(R+q) rather than q'(log D + (sqrt(3+2eps)-1) log R).",
+  "subject": [
+    {
+      "location": {
+        "page": 84,
+        "rect": [
+          0.26253,
+          0.53365,
+          0.56162,
+          0.1737
+        ]
+      },
+      "title": "Lemma 4.2.4 step 30: Display, p. 74",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3W'",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          240,
+          281
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3W'"
+          },
+          "snippet": {
+            "text": "  have hterm : ∀ i ∈ range K, Real.log (min (R + (((i + 1 : ℕ) : ℝ) + 1) * q) D) *\n      (P1 * (1 / (R + ((i + 1 : ℕ) : ℝ) * q)) +\n        2 * q * √(c₀ * c₁) / π * √(1 + q / (R + ((i + 1 : ℕ) : ℝ) * q))) ≤\n      (P1 * Real.log D + Bc * q * q + Bc * q * (q / 2) * Real.log D) * (1 / y i) +\n        Bc * q * Real.log (y i) := by\n    intro i _\n    have hyi := hy0 i\n    have hyR : R ≤ y i := by simp only [y]; have : (0 : ℝ) ≤ ((i + 1 : ℕ) : ℝ) * q := by positivity\n                             linarith\n    have hyq : R + (((i + 1 : ℕ) : ℝ) + 1) * q = y i + q := by simp only [y]; ring\n    rw [hyq]\n    change Real.log (min (y i + q) D) * (P1 * (1 / y i) + 2 * q * √(c₀ * c₁) / π * √(1 + q / y i)) ≤ _\n    set W := Real.log (min (y i + q) D)\n    have hW0 : 0 ≤ W := Real.log_nonneg (le_min (by linarith) hD1)\n    have hWD : W ≤ Real.log D := Real.log_le_log (lt_min (by linarith) hD0) (min_le_right _ _)\n    have hWy : W ≤ Real.log (y i) + q * (1 / y i) := by\n      have h1 : W ≤ Real.log (y i + q) :=\n        Real.log_le_log (lt_min (by linarith) hD0) (min_le_left _ _)\n      have h2 : Real.log ((y i + q) / y i) ≤ (y i + q) / y i - 1 :=\n        Real.log_le_sub_one_of_pos (by positivity)\n      rw [Real.log_div (by linarith) hyi.ne'] at h2\n      have e : (y i + q) / y i - 1 = q * (1 / y i) := by field_simp; ring\n      linarith\n    have hs : √(1 + q / y i) ≤ 1 + q / y i / 2 := by\n      rw [Real.sqrt_le_iff]\n      refine ⟨by positivity, ?_⟩\n      nlinarith [sq_nonneg (q / y i)]\n    have e2 : W * √(1 + q / y i) ≤ Real.log (y i) + q * (1 / y i) + q / 2 * Real.log D * (1 / y i) := by\n      calc W * √(1 + q / y i) ≤ W * (1 + q / y i / 2) := mul_le_mul_of_nonneg_left hs hW0\n        _ = W + W * (q / 2 * (1 / y i)) := by ring\n        _ ≤ (Real.log (y i) + q * (1 / y i)) + Real.log D * (q / 2 * (1 / y i)) :=\n            add_le_add hWy (mul_le_mul_of_nonneg_right hWD (by positivity))\n        _ = _ := by ring\n    have e : 2 * q * √(c₀ * c₁) / π = Bc * q := by simp only [Bc]; ring\n    rw [e]\n    calc W * (P1 * (1 / y i) + Bc * q * √(1 + q / y i))\n        = P1 * (1 / y i) * W + Bc * q * (W * √(1 + q / y i)) := by ring\n      _ ≤ P1 * (1 / y i) * Real.log D +\n          Bc * q * (Real.log (y i) + q * (1 / y i) + q / 2 * Real.log D * (1 / y i)) :=\n          add_le_add (mul_le_mul_of_nonneg_left hWD (by have := hy0 i; positivity))\n            (mul_le_mul_of_nonneg_left e2 (by positivity))\n      _ = _ := by ring",
+            "line": 240,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3W'",
+            "lines": [
+              174,
+              341
+            ],
+            "conclusion": "Each block term log(min(y+q,D)) (P1/y + Bc q sqrt(1+q/y)) is bounded using sqrt(1+t) <= 1+t/2 and log(y+q) <= log y + q/y."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L240-L281"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3W'",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          293,
+          318
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3W'"
+          },
+          "snippet": {
+            "text": "  have hS2 : ∑ i ∈ range K, Real.log (y i) ≤\n      1 / q * (D * (Real.log D - 1) - R * (Real.log R - 1)) + Real.log (D / R) := by\n    have tel := sum_range_sub (fun i : ℕ => Real.log (R + i * q)) K\n    simp only [Nat.cast_zero, zero_mul, add_zero] at tel\n    have hsplit : ∑ i ∈ range K, Real.log (y i) =\n        ∑ i ∈ range K, Real.log (R + i * q) + (Real.log (R + K * q) - Real.log R) := by\n      rw [← tel, ← sum_add_distrib]\n      refine sum_congr rfl fun i _ => ?_\n      simp only [y]; ring\n    have hsum := sum_le_of_monotone (F := fun t => t * (Real.log t - 1)) (f := Real.log)\n      (a := R) (h := q) hq0 K (fun t ht => hasDerivAt_F₅ (by linarith [ht.1]))\n      (fun s hs t _ hst => Real.log_le_log (by linarith [hs.1]) hst)\n    have hG := mul_log_sub_mono (c := 1) (s := R + K * q) (t := D) (by positivity) hKD.le\n      (by have := Real.log_nonneg (show (1 : ℝ) ≤ R + K * q by\n            have : (0 : ℝ) ≤ K * q := by positivity\n            linarith)\n          linarith)\n    have hl : Real.log (R + K * q) - Real.log R ≤ Real.log (D / R) := by\n      rw [Real.log_div hD0.ne' hR0.ne']\n      have := Real.log_le_log (by positivity) hKD.le; linarith\n    have hS : ∑ i ∈ range K, Real.log (R + i * q) ≤\n        1 / q * (D * (Real.log D - 1) - R * (Real.log R - 1)) := by\n      beta_reduce at hsum\n      rw [one_div, ← div_eq_inv_mul, le_div_iff₀ hq0]\n      linarith\n    linarith",
+            "line": 293,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3W'",
+            "lines": [
+              174,
+              341
+            ],
+            "conclusion": "The sum of log(R + (i+1) q) over i < K is at most (1/q)(D(log D - 1) - R(log R - 1)) + log(D/R), by telescoping and comparison with the integral of log (`sum_le_of_monotone`, `hasDerivAt_F₅`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L293-L318"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          84
+        ],
+        "printed": [
+          74
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "id": "5 display 3",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 89,
+        "rect": [
+          0.17135,
+          0.19424,
+          0.56816,
+          0.04002
+        ]
+      },
+      "title": "Display, p. 79",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "5 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "Real.sum_mul_le_sqrt_mul_sqrt",
+        "module": "Mathlib.Analysis.Real.Sqrt",
+        "lines": [
+          498,
+          502
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Real.sum_mul_le_sqrt_mul_sqrt"
+          },
+          "snippet": {
+            "text": "/-- **Cauchy-Schwarz inequality** for finsets using square roots in `ℝ`. -/\nlemma sum_mul_le_sqrt_mul_sqrt (s : Finset ι) (f g : ι → ℝ) :\n    ∑ i ∈ s, f i * g i ≤ √(∑ i ∈ s, f i ^ 2) * √(∑ i ∈ s, g i ^ 2) :=\n  (le_sqrt_of_sq_le <| sum_mul_sq_le_sq_mul_sq _ _ _).trans_eq <| sqrt_mul\n    (sum_nonneg fun _ _ ↦ by positivity) _",
+            "line": 498,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "Real.sum_mul_le_sqrt_mul_sqrt",
+            "lines": [
+              498,
+              502
+            ],
+            "conclusion": "For real `f, g` on a finset, `∑ f i g i ≤ √(∑ f i²) √(∑ g i²)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/Real/Sqrt.lean",
+            "fragment": "L498-L502"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          89
+        ],
+        "printed": [
+          79
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 9.4.1 step 12",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] uses monotonicity of rho^floor in the shifted height, not decrease of f; no numerical value 16.193918 (constant is Cg*2a).",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17462,
+          0.8212,
+          0.56162,
+          0.03318
+        ]
+      },
+      "title": "Lemma 9.4.1 step 12: Text, p. 185",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1 step 12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
+        "lines": [
+          303,
+          312
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_tail"
+          },
+          "snippet": {
+            "text": "    have hkk : k ≤ ⌊(|s.im + 2 * π * ξ| - (T0 - 200)) / 4.4⌋₊ := by\n      rw [hk]; apply Nat.floor_le_floor\n      apply div_le_div_of_nonneg_right _ (by norm_num); linarith\n    have hB1 : rhoB ^ ⌊(|s.im + 2 * π * ξ| - (T0 - 200)) / 4.4⌋₊ ≤ rhoB ^ k :=\n      pow_le_pow_of_le_one (Real.exp_pos _).le rhoB_lt_one.le hkk\n    have hA1 : rhoA δ ^ ⌊(|s.im + 2 * π * ξ| - (T0 - 200)) / 4.4⌋₊ ≤ rhoA δ ^ k :=\n      pow_le_pow_of_le_one (Real.exp_pos _).le (rhoA_lt_one δ).le hkk\n    have hEB := EB_nonneg (by linarith [le_max_right (10 * π * |δ|) 50] : (0:ℝ) ≤ T0 - 200)\n    have hEA := EA_nonneg (T0 - 200) δ\n    gcongr",
+            "line": 303,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+            "lines": [
+              285,
+              314
+            ],
+            "conclusion": "Monotonicity of rho^k in the floor index after shifting by at most 200 in height; Cg*2a plays the role of |Mh|_1/(2 pi)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L303-L312"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

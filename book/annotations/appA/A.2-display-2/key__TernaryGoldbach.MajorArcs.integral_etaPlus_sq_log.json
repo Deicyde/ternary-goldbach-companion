@@ -1,0 +1,117 @@
+{
+  "id": "A.2 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same inequality with the sup constant bounded by 0.37 in place of max e^{-t²}t³|log t| = 0.14882; ∫|h_H-h|²dt/t appears as ∫Dg² du.",
+  "subject": [
+    {
+      "location": {
+        "page": 294,
+        "rect": [
+          0.25926,
+          0.60663,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Display, p. 284",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.2 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          912,
+          917
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log"
+          },
+          "snippet": {
+            "text": "  have hF : ∀ u, |Dg u ^ 2 * Ew u * u| ≤ Dg u ^ 2 * 0.37 := by\n    intro u\n    rw [abs_mul, abs_mul, abs_of_nonneg (sq_nonneg _), abs_of_nonneg (Ew_nonneg u), mul_assoc,\n      mul_comm (Ew u)]\n    exact mul_le_mul_of_nonneg_left (abs_mul_Ew_le u) (sq_nonneg _)\n  have iF : Integrable fun u => Dg u ^ 2 * Ew u * u :=",
+            "line": 912,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+            "lines": [
+              886,
+              955
+            ],
+            "conclusion": "Pointwise `|Dg(u)² Ew(u) u| ≤ 0.37 Dg(u)²`, with `Ew(u)=e^{3u}e^{-e^{2u}}` and `Dg² Ew u du = (η₊-η◦)² log t dt`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L912-L917"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog",
+        "lines": [
+          940,
+          943
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log"
+          },
+          "snippet": {
+            "text": "  have hQ1 : |∫ u, Dg u ^ 2 * Ew u * u| ≤ 0.37 * (368 / 200 ^ 4) := by\n    calc |∫ u, Dg u ^ 2 * Ew u * u| ≤ ∫ u, |Dg u ^ 2 * Ew u * u| := abs_integral_le_integral_abs\n      _ ≤ ∫ u, Dg u ^ 2 * 0.37 := integral_mono iF.abs (integrable_Dg_sq.mul_const _) hF\n      _ = 0.37 * ∫ u, Dg u ^ 2 := by rw [integral_mul_const]; ring",
+            "line": 940,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+            "lines": [
+              886,
+              955
+            ],
+            "conclusion": "`|∫ Dg² Ew u du| ≤ 0.37·∫Dg² ≤ 0.37·368/200⁴`, i.e. `|∫(η₊-η◦)² log t dt| ≤ 0.37 ∫|h_H-h|² dt/t` and then the numerical bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L940-L943"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          294
+        ],
+        "printed": [
+          284
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

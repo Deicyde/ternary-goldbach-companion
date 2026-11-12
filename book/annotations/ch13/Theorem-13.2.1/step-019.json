@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 13.2.1 step 19",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds E by dyadic blocks with sup norms |η₊| ≤ 1.94 and t|η₊(t)| ≤ 2.32 and ψ(y)−θ(y) < 1.4262√y; it defines no η̄₊(z) = sup_{t≥z}η₊(t), uses no partial summation/integration by parts.",
+  "subject": [
+    {
+      "location": {
+        "page": 261,
+        "rect": [
+          0.17462,
+          0.31247,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Theorem 13.2.1 step 19: Text, p. 251",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eTerm_block",
+        "module": "TernaryGoldbach.MinorArcs.EBound",
+        "lines": [
+          89,
+          139
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eTerm_block"
+          },
+          "snippet": {
+            "text": "theorem eTerm_block {x : ℝ} (hx : 1 ≤ x) (j : ℕ) {n : ℕ}\n    (hn : n ∈ Ioc ⌊2 ^ j * x⌋₊ ⌊2 ^ (j + 1) * x⌋₊) :\n    eTerm x n ≤ lamNP n * (((j + 1) * Real.log 2 + Real.log x) * 2.32 ^ 2 / 4 ^ j) := by\n  have hx0 : 0 < x := by linarith\n  have h1 : 2 ^ j * x < n := (Nat.floor_lt (by positivity)).1 (mem_Ioc.1 hn).1\n  have h2 : (n : ℝ) ≤ 2 ^ (j + 1) * x :=\n    le_trans (by exact_mod_cast (mem_Ioc.1 hn).2) (Nat.floor_le (by positivity))\n  have hpj : (1 : ℝ) ≤ 2 ^ j := one_le_pow₀ (by norm_num)\n  have hn0 : 0 < (n : ℝ) := lt_of_le_of_lt (by positivity) h1\n  have hxn : x < n := lt_of_le_of_lt (le_mul_of_one_le_left hx0.le hpj) h1\n  have hsx : √x < n := by\n    have hs := Real.sq_sqrt hx0.le\n    have hs0 := Real.sqrt_nonneg x\n    have : √x ≤ x := by nlinarith\n    linarith\n  have hK : 0 ≤ ((j + 1) * Real.log 2 + Real.log x) * 2.32 ^ 2 / 4 ^ j := by\n    have := Real.log_nonneg hx\n    have := Real.log_nonneg (by norm_num : (1:ℝ) ≤ 2)\n    positivity\n  by_cases hp : n.Prime\n  · rw [eTerm, if_pos ⟨hp, hsx⟩, lamNP, if_pos hp, zero_mul]\n  rw [eTerm, if_neg (fun h => hp h.1), lamNP, if_neg hp]\n  · -- not prime\n    have hΛ0 : (0 : ℝ) ≤ Λ n := ArithmeticFunction.vonMangoldt_nonneg\n    have hΛlog : (Λ n : ℝ) ≤ (j + 1) * Real.log 2 + Real.log x := by\n      refine ArithmeticFunction.vonMangoldt_le_log.trans ?_\n      have : Real.log n ≤ Real.log (2 ^ (j + 1) * x) := Real.log_le_log hn0 h2\n      rw [Real.log_mul (by positivity) hx0.ne', Real.log_pow] at this\n      push_cast at this; linarith\n    have ht : 0 < (n : ℝ) / x := by positivity\n    have hB := Helfgott.mul_abs_etaPlus_le_B ht.le\n    -- `|η₊(n/x)| ≤ 2.32/(n/x) ≤ 2.32/2ʲ`\n    have hη : |etaPlus (n / x)| ≤ 2.32 / 2 ^ j := by\n      have h2j : (2 : ℝ) ^ j < n / x := by rw [lt_div_iff₀ hx0]; exact h1\n      rw [le_div_iff₀ (by positivity)]\n      calc |etaPlus (n / x)| * 2 ^ j ≤ |etaPlus (n / x)| * (n / x) :=\n            mul_le_mul_of_nonneg_left h2j.le (abs_nonneg _)\n        _ = n / x * |etaPlus (n / x)| := by ring\n        _ ≤ 2.32 := hB\n    have hη2 : etaPlus (n / x) ^ 2 ≤ 2.32 ^ 2 / 4 ^ j := by\n      rw [← sq_abs]\n      calc |etaPlus (n / x)| ^ 2 ≤ (2.32 / 2 ^ j) ^ 2 := pow_le_pow_left₀ (abs_nonneg _) hη 2\n        _ = 2.32 ^ 2 / 4 ^ j := by\n            rw [div_pow, ← pow_mul, show (4 : ℝ) = 2 ^ 2 by norm_num, ← pow_mul, mul_comm]\n    rw [mul_pow]\n    have hq : 0 ≤ etaPlus (n / x) ^ 2 := sq_nonneg _\n    calc (Λ n : ℝ) ^ 2 * etaPlus (n / x) ^ 2 = Λ n * (Λ n * etaPlus (n / x) ^ 2) := by ring\n      _ ≤ Λ n * (((j + 1) * Real.log 2 + Real.log x) * (2.32 ^ 2 / 4 ^ j)) := by\n          apply mul_le_mul_of_nonneg_left _ hΛ0\n          exact mul_le_mul hΛlog hη2 hq (by linarith [hΛ0])\n      _ = Λ n * (((j + 1) * Real.log 2 + Real.log x) * 2.32 ^ 2 / 4 ^ j) := by ring",
+            "line": 89,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eTerm_block",
+            "lines": [
+              88,
+              139
+            ],
+            "conclusion": "On a dyadic block n ∈ (2^j x, 2^{j+1}x], the non-prime term is ≤ Λ_NP(n)·((j+1)log2+log x)·2.32²/4^j."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "fragment": "L89-L139"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+        "module": "TernaryGoldbach.MinorArcs.EBound",
+        "lines": [
+          173,
+          274
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.E_partial"
+          },
+          "snippet": {
+            "text": "theorem E_partial {x : ℝ} (hx : 1 ≤ x) (M : ℕ) :\n    ∑ n ∈ range M, eTerm x n ≤\n      1.94 ^ 2 * (Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x)) +\n        1.4262 * 2.32 ^ 2 * √2 * √x *\n          (Real.log 2 * (1 / (1 - √2 / 4) ^ 2) + Real.log x * (1 / (1 - √2 / 4))) := by\n  have hx0 : 0 < x := by linarith\n  have hlx : 0 ≤ Real.log x := Real.log_nonneg hx\n  set a : ℕ → ℕ := fun j => ⌊2 ^ j * x⌋₊ with ha\n  have hamono : Monotone a := fun i k hik => Nat.floor_le_floor (by\n    have : (2 : ℝ) ^ i ≤ 2 ^ k := pow_le_pow_right₀ (by norm_num) hik\n    nlinarith)\n  have ha0 : a 0 = ⌊x⌋₊ := by simp [ha]\n  have haM : M ≤ a M := by\n    apply Nat.le_floor\n    have h1 : (M : ℝ) ≤ 2 ^ M := by exact_mod_cast (Nat.lt_two_pow_self).le\n    have h2 : (2 : ℝ) ^ M ≤ 2 ^ M * x := le_mul_of_one_le_right (by positivity) hx\n    linarith\n  -- reduce to `Icc 1 (a M)`\n  have hE0 : eTerm x 0 = 0 := by simp [eTerm]\n  have hsub : range M ⊆ insert 0 (Icc 1 (a M)) := by\n    intro n hn\n    rcases Nat.eq_zero_or_pos n with h | h\n    · simp [h]\n    · exact mem_insert_of_mem (mem_Icc.2 ⟨h, by have := mem_range.1 hn; omega⟩)\n  have hstep1 : ∑ n ∈ range M, eTerm x n ≤ ∑ n ∈ Icc 1 (a M), eTerm x n := by\n    refine (sum_le_sum_of_subset_of_nonneg hsub fun n _ _ => eTerm_nonneg x n).trans (le_of_eq ?_)\n    rw [sum_insert (by simp), hE0, zero_add]\n  have hXa : ⌊x⌋₊ ≤ a M := by rw [← ha0]; exact hamono (Nat.zero_le M)\n  have hsplit : ∑ n ∈ Icc 1 (a M), eTerm x n =\n      ∑ n ∈ Icc 1 ⌊x⌋₊, eTerm x n + ∑ n ∈ Ioc ⌊x⌋₊ (a M), eTerm x n := by\n    rw [show Icc 1 (a M) = Ioc 0 (a M) from rfl, show Icc 1 ⌊x⌋₊ = Ioc 0 ⌊x⌋₊ from rfl,\n      sum_Ioc_consecutive _ (Nat.zero_le _) hXa]\n  -- the low part\n  have hlow : ∑ n ∈ Icc 1 ⌊x⌋₊, eTerm x n ≤\n      1.94 ^ 2 * (Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x)) := by\n    refine (sum_le_sum fun n hn => eTerm_low hx hn).trans ?_\n    rw [← mul_sum, sum_add_distrib, ← mul_sum, ← mul_sum]\n    have hψ : ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) ≤ 1.03883 * √x := by\n      rw [← sum_filter]\n      have hsub2 : (Icc 1 ⌊x⌋₊).filter (fun n : ℕ => (n : ℝ) ≤ √x) ⊆ Icc 1 ⌊√x⌋₊ := by\n        intro n hn\n        have h := mem_filter.1 hn\n        exact mem_Icc.2 ⟨(mem_Icc.1 h.1).1, Nat.le_floor h.2⟩\n      refine (sum_le_sum_of_subset_of_nonneg hsub2 fun n _ _ =>\n        ArithmeticFunction.vonMangoldt_nonneg).trans ?_\n      exact (Prelim.sum_vonMangoldt_lt (Real.sqrt_pos.2 hx0)).le\n    have hNP : ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤ 1.4262 * √x :=\n      (Prelim.sum_vonMangoldt_nonprime_lt hx0).le\n    have : Real.log x / 2 * ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) +\n        Real.log x * ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤\n        Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x) := by\n      have := mul_le_mul_of_nonneg_left hψ (by linarith : 0 ≤ Real.log x / 2)\n      have := mul_le_mul_of_nonneg_left hNP hlx\n      linarith\n    exact mul_le_mul_of_nonneg_left this (by norm_num)\n  -- the dyadic part\n  set r : ℝ := √2 / 4 with hr\n  have hr0 : 0 ≤ r := by positivity\n  have hr1 : r < 1 := by\n    have : √2 < 4 := by rw [Real.sqrt_lt' (by norm_num)]; norm_num\n    rw [hr]; linarith\n  have hblock : ∀ j, ∑ n ∈ Ioc (a j) (a (j + 1)), eTerm x n ≤\n      1.4262 * 2.32 ^ 2 * √2 * √x * (((j : ℝ) + 1) * Real.log 2 + Real.log x) * r ^ j := by\n    intro j\n    set K := (((j : ℝ) + 1) * Real.log 2 + Real.log x) * 2.32 ^ 2 / 4 ^ j with hK\n    have hK0 : 0 ≤ K := by\n      have := Real.log_nonneg (by norm_num : (1:ℝ) ≤ 2)\n      positivity\n    refine (sum_le_sum fun n hn => eTerm_block hx j hn).trans ?_\n    rw [← sum_mul]\n    have hsub3 : Ioc (a j) (a (j + 1)) ⊆ Icc 1 (a (j + 1)) := by\n      intro n hn; have := mem_Ioc.1 hn; exact mem_Icc.2 ⟨by omega, this.2⟩\n    have hs : ∑ n ∈ Ioc (a j) (a (j + 1)), lamNP n ≤ 1.4262 * √(2 ^ (j + 1) * x) := by\n      refine (sum_le_sum_of_subset_of_nonneg hsub3 fun n _ _ => lamNP_nonneg n).trans ?_\n      exact (Prelim.sum_vonMangoldt_nonprime_lt (y := 2 ^ (j + 1) * x) (by positivity)).le\n    rw [sqrt_two_pow_mul j hx0.le] at hs\n    calc (∑ n ∈ Ioc (a j) (a (j + 1)), lamNP n) * K ≤ 1.4262 * (√2 ^ (j + 1) * √x) * K :=\n          mul_le_mul_of_nonneg_right hs hK0\n      _ = 1.4262 * 2.32 ^ 2 * √2 * √x * (((j : ℝ) + 1) * Real.log 2 + Real.log x) * r ^ j := by\n          rw [hK, hr, div_pow, pow_succ]\n          field_simp\n  have hhigh : ∑ n ∈ Ioc ⌊x⌋₊ (a M), eTerm x n ≤ 1.4262 * 2.32 ^ 2 * √2 * √x *\n      (Real.log 2 * (1 / (1 - √2 / 4) ^ 2) + Real.log x * (1 / (1 - √2 / 4))) := by\n    rw [← ha0, sum_Ioc_blocks _ a hamono M]\n    refine (sum_le_sum fun j _ => hblock j).trans ?_\n    obtain ⟨g1, g2⟩ := geom_sums_le hr0 hr1 M\n    have e : ∑ j ∈ range M, 1.4262 * 2.32 ^ 2 * √2 * √x *\n        (((j : ℝ) + 1) * Real.log 2 + Real.log x) * r ^ j =\n        1.4262 * 2.32 ^ 2 * √2 * √x * (Real.log 2 * ∑ j ∈ range M, ((j : ℝ) + 1) * r ^ j +\n          Real.log x * ∑ j ∈ range M, r ^ j) := by\n      rw [mul_sum, mul_sum, ← sum_add_distrib, mul_sum]\n      refine sum_congr rfl fun j _ => by ring\n    rw [e]\n    have hc : 0 ≤ 1.4262 * 2.32 ^ 2 * √2 * √x := by positivity\n    refine mul_le_mul_of_nonneg_left ?_ hc\n    have := Real.log_nonneg (by norm_num : (1:ℝ) ≤ 2)\n    have := mul_le_mul_of_nonneg_left g2 this\n    have := mul_le_mul_of_nonneg_left g1 hlx\n    rw [hr] at *\n    linarith\n  rw [hsplit] at hstep1\n  linarith",
+            "line": 173,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+            "lines": [
+              172,
+              274
+            ],
+            "conclusion": "Partial sums of E are ≤ 1.94²(log x/2·1.03883√x + log x·1.4262√x) + 1.4262·2.32²√2√x(…), using ψ−θ < 1.4262√y."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "fragment": "L173-L274"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          261
+        ],
+        "printed": [
+          251
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

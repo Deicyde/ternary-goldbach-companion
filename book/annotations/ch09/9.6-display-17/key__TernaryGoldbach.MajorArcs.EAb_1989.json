@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 17",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the replaced majorants EB=0.892 T e^{-0.1598 T} and EA=0.588 u^2 e^{-0.1065 u^2} inside E2g, not 11.308 sqrt(T0-H)e^{..}+16.147|δ|e^{..}; numbers differ.",
+  "subject": [
+    {
+      "location": {
+        "page": 205,
+        "rect": [
+          0.17135,
+          0.76101,
+          0.56816,
+          0.09606
+        ]
+      },
+      "title": "Display, p. 195",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.EAb_1989",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          199,
+          202
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.EAb_1989"
+          },
+          "snippet": {
+            "text": "theorem EAb_1989 : 0.588 * ((19.89:ℝ) ^ 2 * Real.exp (-0.1065 * (19.89:ℝ) ^ 2)) ≤ 1.2e-16 := by\n  calc 0.588 * ((19.89:ℝ) ^ 2 * Real.exp (-0.1065 * (19.89:ℝ) ^ 2)) ≤\n        0.588 * ((19.89:ℝ) ^ 2 * 5.05e-19) := by gcongr; exact exp_neg_4213_le\n    _ ≤ 1.2e-16 := by norm_num",
+            "line": 199,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.EAb_1989",
+            "lines": [
+              199,
+              202
+            ],
+            "conclusion": "0.588*19.89^2 e^{-0.1065*19.89^2}<=1.2e-16."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L199-L202"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          205
+        ],
+        "printed": [
+          195
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

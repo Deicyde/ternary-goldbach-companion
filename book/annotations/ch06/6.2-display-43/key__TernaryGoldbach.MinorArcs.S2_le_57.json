@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 43",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean uses the same S2 bound (5.57) but never forms this integral of sqrt(S1 * bracket); it bounds sqrt(S1)(sqrt S2 + sqrt S3) pointwise by W G53(W) and integrates term by term.",
+  "subject": [
+    {
+      "location": {
+        "page": 124,
+        "rect": [
+          0.25926,
+          0.62679,
+          0.56816,
+          0.04141
+        ]
+      },
+      "title": "Display, p. 114",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2_le_57",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          528,
+          544
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2_le_57"
+          },
+          "snippet": {
+            "text": "/-- (5.57) in the shape used by `G53`: `M = x²/2|δ|q + x²/16(1-ρ)Q`, `r = 1/2(1-ρ)`. -/\ntheorem S2_le_57 {α x δ Q ρ : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (h2α : 2 * α = a / q + δ / x + k) (hδQ : |δ / x| ≤ 1 / (q * Q)) (hρ1 : ρ < 1)\n    (hqρ : (q : ℝ) ≤ ρ * Q) (hx : 0 < x) (hδ0 : δ ≠ 0) {U V : ℕ} {W : ℝ} (hV : 0 < (V : ℝ))\n    (hVW : (V : ℝ) ≤ W) (hQ : 0 < Q) :\n    S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (2 * (x ^ 2 / (2 * |δ| * q) + x ^ 2 / (16 * (1 - ρ) * Q)) / x +\n        1 / (2 * (1 - ρ)) * x / (2 * W) + W / 2) * logSqSum (max V (W / 2)) W := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hW : 0 < W := by linarith\n  have hδp : 0 < |δ| := abs_pos.2 hδ0\n  have h1ρ : 0 < 1 - ρ := by linarith\n  have h := prop_5_2_4_d hq hcop h2α hδQ hρ1 hqρ hx hW hδ0 (le_max_right _ _) (le_max_right _ _)\n    (U' := max (U : ℝ) (x / (2 * W))) (W' := max (V : ℝ) (W / 2))\n  refine h.trans (le_of_eq ?_)\n  congr 1\n  field_simp; ring",
+            "line": 528,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.S2_le_57",
+            "lines": [
+              528,
+              544
+            ],
+            "conclusion": "S2 <= (2M/x + r x/(2W) + W/2) logSqSum with M = x^2/(2|delta|q) + x^2/(16(1-rho)Q), r = 1/(2(1-rho)), i.e. the bracket (W x/2|delta q| + W^2/4 + W x/16(1-rho)Q + x/8(1-rho)) log W after logSqSum_le_half."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L528-L544"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          124
+        ],
+        "printed": [
+          114
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

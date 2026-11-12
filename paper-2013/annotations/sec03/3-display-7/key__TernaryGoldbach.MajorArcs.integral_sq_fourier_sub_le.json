@@ -1,0 +1,81 @@
+{
+  "id": "3 display 7",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same chain (sup bound on eta_*, Plancherel for the L2 differences) but [L] uses AM-GM (2360|P-O|^2+|P+O|^2/9440) instead of Cauchy-Schwarz, numeric constants for |eta_*|_1 and eps_0, and has no sum over q (no 2.82643 factor).",
+  "subject": [
+    {
+      "location": {
+        "page": 14,
+        "rect": [
+          0.20371,
+          0.80823,
+          0.63183,
+          0.09046
+        ]
+      },
+      "title": "Display, p. 14",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_sq_fourier_sub_le",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal",
+        "lines": [
+          489,
+          502
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_sq_fourier_sub_le"
+          },
+          "snippet": {
+            "text": "theorem integral_sq_fourier_sub_le :\n    ∫ ξ, ‖𝓕 etaPC ξ - 𝓕 etaOC ξ‖ ^ 2 ≤ 1.15e-7 := by\n  set D : ℝ → ℂ := fun t => etaPC t - etaOC t\n  have hD1 : Integrable D := integrable_etaPC.sub integrable_etaOC\n  have hD2 : MemLp D 2 := memLp_etaPC.sub memLp_etaOC\n  have e : (fun ξ => ‖𝓕 etaPC ξ - 𝓕 etaOC ξ‖ ^ 2) = fun ξ => ‖𝓕 D ξ‖ ^ 2 := by\n    ext ξ; rw [fourier_sub_of_integrable integrable_etaPC integrable_etaOC]\n  rw [e, TernaryGoldbach.integral_norm_sq_fourier hD1 hD2]\n  have : (fun t => ‖D t‖ ^ 2) = fun t => (etaPlus t - etaO t) ^ 2 := by\n    ext t; simp only [D, etaPC, etaOC]\n    rw [← Complex.ofReal_sub, Complex.norm_real, Real.norm_eq_abs, sq_abs]\n  rw [this]\n  have := integral_sq_etaPlus_sub_etaO_le'\n  norm_num at this ⊢; linarith",
+            "line": 489,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.integral_sq_fourier_sub_le",
+            "lines": [
+              489,
+              502
+            ],
+            "conclusion": "Plancherel: $\\int|\\widehat{\\eta_+}-\\widehat{\\eta_\\circ}|^2=|\\eta_+-\\eta_\\circ|_2^2\\le1.15\\cdot10^{-7}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L489-L502"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          14
+        ],
+        "printed": [
+          14
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.2 display 3, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

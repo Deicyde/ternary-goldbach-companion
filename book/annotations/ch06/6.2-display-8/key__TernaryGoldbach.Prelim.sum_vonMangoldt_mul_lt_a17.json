@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 8",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The first line holds with `0.511` in place of `0.5004` (weaker); only `j = 1` of the second line is proved, directly via `(q,v) = Σ_{d|(q,v)} φ(d)`, giving `N q log q` for the extra term instead of splitting off `(v,q)≠1`.",
+  "subject": [
+    {
+      "location": {
+        "page": 115,
+        "rect": [
+          0.17135,
+          0.18509,
+          0.56816,
+          0.08204
+        ]
+      },
+      "title": "Display, p. 105",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_vonMangoldt_mul_lt_a17",
+        "module": "TernaryGoldbach.Prelim.LambdaMu",
+        "lines": [
+          1362,
+          1363
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_vonMangoldt_mul_lt_a17"
+          },
+          "snippet": {
+            "text": "theorem sum_vonMangoldt_mul_lt_a17 {y : ℝ} (hy : 2.5e7 ≤ y) :\n    ∑ n ∈ Icc 1 ⌊y⌋₊, (Λ n : ℝ) * n < 1.022 * y ^ 2 / 2 := by",
+            "line": 1362,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.sum_vonMangoldt_mul_lt_a17",
+            "lines": [
+              1360,
+              1370
+            ],
+            "conclusion": "`∑_{n ≤ y} Λ(n) n < 1.022 y²/2 = 0.511 y²` for `y ≥ 2.5·10⁷`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LambdaMu.lean",
+            "fragment": "L1362-L1363"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          115
+        ],
+        "printed": [
+          105
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

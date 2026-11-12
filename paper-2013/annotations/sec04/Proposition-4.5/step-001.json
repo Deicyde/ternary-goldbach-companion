@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 4.5 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean states (11.9) at scale `y=x/κ` (η_* defined with `κ·`), not at `x`.",
+  "subject": [
+    {
+      "location": {
+        "page": 28,
+        "rect": [
+          0.20698,
+          0.56871,
+          0.62529,
+          0.01728
+        ]
+      },
+      "title": "Proposition 4.5 step 1: Text, p. 28",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 4.5 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S_etaStar_eq",
+        "module": "TernaryGoldbach.MinorArcs.EtaStar",
+        "lines": [
+          40,
+          128
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S_etaStar_eq"
+          },
+          "snippet": {
+            "text": "/-- [H, (11.9)]: `S_{η_*}(α, x) = ∫₀^∞ S_{η₂}(α, w y) φ(w) dw/w` with `y = x/κ`. -/\ntheorem S_etaStar_eq {x : ℝ} (hx : 0 < x) (α : ℝ) :\n    S etaStar x α = ∫ w in Ioi (0:ℝ), S eta2 (w * (x / κ)) α * ((phi w / w : ℝ) : ℂ) := by\n  have hκ : (0 : ℝ) < κ := by rw [κ]; norm_num\n  set y := x / κ with hy_def\n  have hy : 0 < y := div_pos hx hκ\n  set F : ℕ → ℝ → ℂ := fun n w =>\n    ((Λ n * eta2 (n / (w * y)) * (phi w / w) : ℝ) : ℂ) * TernaryGoldbach.e (n * α) with hF\n  have hphiw : ∀ w, 0 < w → phi w / w = w * Real.exp (-(1 / 2) * w ^ 2) := by\n    intro w hw\n    unfold phi\n    field_simp\n  -- `η_*(n/x)` as a `w`-integral\n  have hstar : ∀ n : ℕ, etaStar (n / x) = ∫ w in Ioi (0:ℝ), eta2 (n / (w * y)) * (phi w / w) := by\n    intro n\n    rcases Nat.eq_zero_or_pos n with rfl | hn\n    · simp only [Nat.cast_zero, zero_div]\n      unfold etaStar mellinConv\n      simp only [mul_zero, zero_div]\n      refine setIntegral_congr_fun measurableSet_Ioi fun w _ => ?_\n      have h1 : phi 0 = 0 := by simp [phi]\n      have h2 : eta2 0 = 0 := by simp [eta2]\n      simp [h1, h2]\n    · unfold etaStar\n      rw [mellinConv_eq_swap _ _ (by positivity)]\n      refine setIntegral_congr_fun measurableSet_Ioi fun w (hw : 0 < w) => ?_\n      rw [mul_div_assoc]\n      congr 2\n      rw [hy_def]\n      field_simp\n  have hstar0 : ∀ n : ℕ, 0 ≤ etaStar (n / x) := by\n    intro n\n    rw [hstar n]\n    refine setIntegral_nonneg measurableSet_Ioi fun w (hw : 0 < w) => ?_\n    have : 0 ≤ phi w := by unfold phi; positivity\n    exact mul_nonneg (eta2_nonneg _) (div_nonneg this hw.le)\n  -- measurability and domination\n  have hmeas : ∀ n : ℕ, Measurable fun w : ℝ => eta2 (n / (w * y)) * (phi w / w) := by\n    intro n\n    have hphi : Continuous phi := by unfold phi; fun_prop\n    exact (continuous_eta2.measurable.comp (measurable_const.div (measurable_id.mul_const y))).mul\n      (hphi.measurable.div measurable_id)\n  have hgauss : IntegrableOn (fun w : ℝ => w * Real.exp (-(1 / 2) * w ^ 2)) (Ioi 0) :=\n    (integrable_mul_exp_neg_mul_sq (b := 1 / 2) (by norm_num)).integrableOn\n  have hint_real : ∀ n : ℕ,\n      IntegrableOn (fun w : ℝ => eta2 (n / (w * y)) * (phi w / w)) (Ioi 0) := by\n    intro n\n    refine Integrable.mono' (hgauss.const_mul 3) (hmeas n).aestronglyMeasurable ?_\n    refine (ae_restrict_iff' measurableSet_Ioi).2 (Filter.Eventually.of_forall fun w (hw : 0 < w) => ?_)\n    rw [hphiw w hw, Real.norm_eq_abs, abs_mul, abs_of_nonneg (eta2_nonneg _),\n      abs_of_nonneg (by positivity)]\n    exact mul_le_mul_of_nonneg_right (eta2_le _) (by positivity)\n  have hFint : ∀ n, Integrable (F n) (volume.restrict (Ioi 0)) := by\n    intro n\n    have : Integrable (fun w : ℝ => ((Λ n * (eta2 (n / (w * y)) * (phi w / w)) : ℝ) : ℂ))\n        (volume.restrict (Ioi 0)) := ((hint_real n).const_mul (Λ n)).ofReal\n    refine (this.mul_const (TernaryGoldbach.e (n * α))).congr (Filter.Eventually.of_forall fun w => ?_)\n    simp only [F, mul_assoc]\n  have hFn : ∀ n, ∫ w in Ioi (0:ℝ), F n w =\n      ((Λ n * etaStar (n / x) : ℝ) : ℂ) * TernaryGoldbach.e (n * α) := by\n    intro n\n    simp only [F]\n    rw [integral_mul_const, integral_complex_ofReal, hstar n, ← integral_const_mul]\n    congr 3\n    funext w\n    ring\n  have hFnorm : ∀ n, ∫ w in Ioi (0:ℝ), ‖F n w‖ = ‖((Λ n * etaStar (n / x) : ℝ) : ℂ)‖ := by\n    intro n\n    rw [Complex.norm_real, Real.norm_eq_abs,\n      abs_of_nonneg (mul_nonneg ArithmeticFunction.vonMangoldt_nonneg (hstar0 n)), hstar n,\n      ← integral_const_mul]\n    refine setIntegral_congr_fun measurableSet_Ioi fun w (hw : 0 < w) => ?_\n    have : 0 ≤ phi w := by unfold phi; positivity\n    simp only [F, norm_mul, norm_e, mul_one, Complex.norm_real, Real.norm_eq_abs]\n    rw [abs_of_nonneg ArithmeticFunction.vonMangoldt_nonneg, abs_of_nonneg (eta2_nonneg _),\n      abs_of_nonneg (div_nonneg this hw.le)]\n    ring\n  have hsum : Summable fun n => ∫ w in Ioi (0:ℝ), ‖F n w‖ := by\n    simp only [hFnorm]\n    exact summable_etaStar hx\n  have key := integral_tsum_of_summable_integral_norm hFint hsum\n  unfold S\n  rw [tsum_congr fun n => (hFn n).symm, key]\n  refine setIntegral_congr_fun measurableSet_Ioi fun w (hw : 0 < w) => ?_\n  simp only [F]\n  rw [← tsum_mul_right]\n  refine tsum_congr fun n => ?_\n  push_cast\n  ring",
+            "line": 40,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.S_etaStar_eq",
+            "lines": [
+              40,
+              128
+            ],
+            "conclusion": "`S_{η_*}(α,x)=∫_0^∞ S_{η₂}(α,wy)φ(w)dw/w` with `y=x/κ` (formula (11.9))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EtaStar.lean",
+            "fragment": "L40-L128"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          28
+        ],
+        "printed": [
+          28
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Proposition 11.2.3 step 1, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

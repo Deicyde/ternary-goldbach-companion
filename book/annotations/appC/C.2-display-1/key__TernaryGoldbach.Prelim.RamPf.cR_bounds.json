@@ -1,0 +1,81 @@
+{
+  "id": "C.2 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Definition identical; the numerical value is proved with precision 10^{-7}, not the stated 10^{-9}/3.",
+  "subject": [
+    {
+      "location": {
+        "page": 310,
+        "rect": [
+          0.25926,
+          0.38241,
+          0.56816,
+          0.03846
+        ]
+      },
+      "title": "Display, p. 300",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "C.2 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.RamPf.cR_bounds",
+        "module": "TernaryGoldbach.Prelim.RamareNum",
+        "lines": [
+          336,
+          365
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.RamPf.cR_bounds"
+          },
+          "snippet": {
+            "text": "/-- **`1.3325822 ≤ c_E ≤ 1.3325823`.** -/\ntheorem cR_bounds : (1.3325822 : ℝ) ≤ cR ∧ cR ≤ 1.3325823 := by\n  obtain ⟨g1, g2⟩ := gamma_bounds\n  obtain ⟨x1, x2⟩ := X_bounds\n  obtain ⟨t1, t2⟩ := T_num\n  rw [cR_eq]\n  set X := AP 2000 - AN 2000 + ((∑' j, aL (2 * j + 2001)) - ∑' j, aL (2 * j + 2002))\n  have hp1 := Real.pi_gt_d20\n  have hp2 := Real.pi_lt_d20\n  set Z := π ^ 2 / 6 with hZ\n  have hZ1 : (3.14159265358979323846 : ℝ) ^ 2 / 6 ≤ Z := by\n    rw [hZ]; have := mul_le_mul hp1.le hp1.le (by norm_num) (by linarith); nlinarith\n  have hZ2 : Z ≤ (3.14159265358979323847 : ℝ) ^ 2 / 6 := by\n    rw [hZ]; have := mul_le_mul hp2.le hp2.le (by linarith) (by norm_num); nlinarith\n  have hZ0 : (0 : ℝ) < (3.14159265358979323846 : ℝ) ^ 2 / 6 := by norm_num\n  have hZpos : 0 < Z := lt_of_lt_of_le hZ0 hZ1\n  have hXneg : X < 0 := by linarith\n  have hXZ1 : 2 * (-0.10131657860671647583 : ℝ) / ((3.14159265358979323846 : ℝ) ^ 2 / 6) ≤ 2 * X / Z := by\n    rw [div_le_div_iff₀ hZ0 hZpos]\n    nlinarith [mul_le_mul_of_nonneg_left x1 hZ0.le]\n  have hXZ2 : 2 * X / Z ≤ 2 * (-0.10131657772091292918 : ℝ) / ((3.14159265358979323847 : ℝ) ^ 2 / 6) := by\n    rw [div_le_div_iff₀ hZpos (by norm_num)]\n    nlinarith [mul_le_mul_of_nonneg_left x2 hZpos.le]\n  have hl1 := Real.log_two_gt_d9\n  have hl2 := Real.log_two_lt_d9\n  have c1 : (1.3325822 : ℝ) ≤ 0.57721566469316315316 + 0.6931471803 +\n      2 * (-0.10131657860671647583 : ℝ) / ((3.14159265358979323846 : ℝ) ^ 2 / 6) + 0.18540561648805936305 := by norm_num\n  have c2 : (0.57721566594324228495 : ℝ) + 0.6931471808 +\n      2 * (-0.10131657772091292918 : ℝ) / ((3.14159265358979323847 : ℝ) ^ 2 / 6) + 0.18540562949186247907 ≤ 1.3325823 := by norm_num\n  constructor <;> linarith",
+            "line": 336,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Prelim.RamPf.cR_bounds",
+            "lines": [
+              336,
+              365
+            ],
+            "conclusion": "`1.3325822 ≤ c_E ≤ 1.3325823`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/RamareNum.lean",
+            "fragment": "L336-L365"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          310
+        ],
+        "printed": [
+          300
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "C.1 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "[L] gives only the trivial upper bound `17x`, not the two-sided asymptotic `(1+O*(ε))x + O*(0.135 x^{1/2})` under RH to `T₀`.",
+  "subject": [
+    {
+      "location": {
+        "page": 307,
+        "rect": [
+          0.17135,
+          0.79235,
+          0.56816,
+          0.03846
+        ]
+      },
+      "title": "Display, p. 297",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "C.1 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_trivial",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123",
+        "lines": [
+          29,
+          60
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_trivial"
+          },
+          "snippet": {
+            "text": "/-- The trivial bound `|S_{η₂}(α, z)| ≤ 3 ψ(z) ≤ 17 z`. -/\ntheorem norm_S_eta2_le_trivial {z : ℝ} (hz : 0 < z) (α : ℝ) : ‖S eta2 z α‖ ≤ 17 * z := by\n  unfold S\n  have hs : ∀ n ∉ Finset.range (⌊z⌋₊ + 1),\n      ((Λ n * eta2 (n / z) : ℝ) : ℂ) * TernaryGoldbach.e (n * α) = 0 := by\n    intro n hn\n    rw [Finset.mem_range, not_lt, Nat.succ_le_iff, Nat.floor_lt hz.le] at hn\n    rw [eta2_eq_zero, mul_zero, Complex.ofReal_zero, zero_mul]\n    rintro ⟨-, h1⟩\n    rw [div_lt_one hz] at h1\n    linarith\n  rw [tsum_eq_sum hs]\n  refine (norm_sum_le _ _).trans ?_\n  have h1 : ∀ n ∈ Finset.range (⌊z⌋₊ + 1),\n      ‖((Λ n * eta2 (n / z) : ℝ) : ℂ) * TernaryGoldbach.e (n * α)‖ ≤ 3 * Λ n := by\n    intro n _\n    rw [norm_mul, TernaryGoldbach.norm_e, mul_one, Complex.norm_real, Real.norm_eq_abs,\n      abs_of_nonneg (mul_nonneg ArithmeticFunction.vonMangoldt_nonneg (eta2_nonneg _))]\n    nlinarith [eta2_le (n / z), @ArithmeticFunction.vonMangoldt_nonneg n]\n  refine (Finset.sum_le_sum h1).trans ?_\n  rw [← Finset.mul_sum]\n  have hpsi : ∑ n ∈ Finset.range (⌊z⌋₊ + 1), Λ n = Chebyshev.psi z := by\n    have e : Finset.range (⌊z⌋₊ + 1) = insert 0 (Finset.Ioc 0 ⌊z⌋₊) := by\n      ext n; simp only [Finset.mem_range, Finset.mem_insert, Finset.mem_Ioc]; omega\n    rw [e, Finset.sum_insert (by simp), ArithmeticFunction.map_zero, zero_add]\n    rfl\n  rw [hpsi]\n  have h4 : Real.log 4 < 1.3863 := by\n    rw [show (4 : ℝ) = 2 ^ 2 by norm_num, Real.log_pow]\n    have := Real.log_two_lt_d9; push_cast; linarith\n  have := Chebyshev.psi_le_const_mul_self hz.le\n  nlinarith",
+            "line": 29,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_trivial",
+            "lines": [
+              29,
+              60
+            ],
+            "conclusion": "`‖S_{η₂}(α,z)‖ ≤ 3ψ(z) ≤ 17z` for `z>0`, unconditionally."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123.lean",
+            "fragment": "L29-L60"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          307
+        ],
+        "printed": [
+          297
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

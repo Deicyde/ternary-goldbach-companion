@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.1.1 step 17",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the same quantity $(t/\\sin t)^2-1-t^2/3$ by fixed polynomials (constant $1/10$ on $(0,\\pi/3]$) instead of proving $c_0$ increasing and $c_0(\\pi/4)\\le0.074807$; these bounds serve Lemma 4.1.2 (`trig_T2`, `trig_T3`), where the text reuses $c_0(\\pi/4)$, while Lean's Lemma 4.1.1 avoids $c_0$ via `trig_core`.",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17462,
+          0.48026,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Lemma 4.1.1 step 17: Text, p. 53",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1 step 17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sq_le_sin_sq₁",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1038,
+          1040
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sq_le_sin_sq₁"
+          },
+          "snippet": {
+            "text": "/-- `t² ≤ (1 + t²/3 + t⁴/10) sin² t` for `0 < t ≤ π/3`. -/\ntheorem sq_le_sin_sq₁ {t : ℝ} (ht : 0 < t) (ht1 : t ≤ π / 3) :\n    t ^ 2 ≤ (1 + t ^ 2 / 3 + t ^ 4 / 10) * Real.sin t ^ 2 := by",
+            "line": 1038,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sq_le_sin_sq₁",
+            "lines": [
+              1038,
+              1069
+            ],
+            "conclusion": "For $0<t\\le\\pi/3$, $t^2\\le(1+t^2/3+t^4/10)\\sin^2 t$, i.e. $c_0(t)\\le 1/10$ on $(0,\\pi/3]$, proved from the degree-7 Taylor lower bound for $\\sin$ (`sin_ge_deg7`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1038-L1040"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sq_le_sin_sq₂",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums",
+        "lines": [
+          1071,
+          1073
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sq_le_sin_sq₂"
+          },
+          "snippet": {
+            "text": "/-- `t² ≤ (1 + t²/3 + t⁴/15 + t⁶/20) sin² t` for `0 < t ≤ π/6`. -/\ntheorem sq_le_sin_sq₂ {t : ℝ} (ht : 0 < t) (ht1 : t ≤ π / 6) :\n    t ^ 2 ≤ (1 + t ^ 2 / 3 + t ^ 4 / 15 + t ^ 6 / 20) * Real.sin t ^ 2 := by",
+            "line": 1071,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sq_le_sin_sq₂",
+            "lines": [
+              1071,
+              1101
+            ],
+            "conclusion": "For $0<t\\le\\pi/6$, $t^2\\le(1+t^2/3+t^4/15+t^6/20)\\sin^2 t$, i.e. $c_0(t)\\le 1/15+t^2/20$ there."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1071-L1073"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Lemma B.1.2 step 2",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The Dirac masses $4\\delta_{1/4}-4\\delta_{1/2}+\\delta_1$ appear only as the boundary terms $16e(-t/2)-16e(-t/4)-4e(-t)$ of integration by parts; no measures.",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.26253,
+          0.51922,
+          0.56162,
+          0.01815
+        ]
+      },
+      "title": "Lemma B.1.2 step 2: Text, p. 292",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.1.2 step 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2DD",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier",
+        "lines": [
+          120,
+          123
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2DD"
+          },
+          "snippet": {
+            "text": "/-- **The explicit form of `(2πt)² η̂₂(t)`.** -/\nnoncomputable def eta2DD (t : ℝ) : ℂ :=\n  16 * e (-(1 / 2 * t)) - 16 * e (-(1 / 4 * t)) - 4 * e (-(1 * t)) +\n    4 * Jq (1 / 4) (1 / 2) t - 4 * Jq (1 / 2) 1 t",
+            "line": 120,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eta2DD",
+            "lines": [
+              120,
+              123
+            ],
+            "conclusion": "Defines $\\mathrm{eta2DD}\\,t=-4g(t)+4\\int_{1/4}^{1/2}e(-ut)u^{-2}du-4\\int_{1/2}^1e(-ut)u^{-2}du$, the point-mass part $-4g$ plus $-\\hat f$ (with $f=\\mp4x^{-2}$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L120-L123"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.4 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The bound `1/q'` for each `v` and the sum over `v` giving `(1/q)(...)` are carried out as `Λ(v) gcd(q,v)/v * 1/q`, not as the text's two displayed sums with `O^*`.",
+  "subject": [
+    {
+      "location": {
+        "page": 82,
+        "rect": [
+          0.26253,
+          0.1861,
+          0.56162,
+          0.23379
+        ]
+      },
+      "title": "Lemma 4.2.4 step 6: Display, p. 72",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_sum_moebius_odd_dvd_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          146,
+          168
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_sum_moebius_odd_dvd_le"
+          },
+          "snippet": {
+            "text": "/-- [H, p. 72]: for `q'` odd, `|∑_{u ≤ R, u odd, q' | u} μ(u)/u| ≤ 1/q'` (by (2.20)). -/\ntheorem abs_sum_moebius_odd_dvd_le {q' : ℕ} (hq' : Odd q') (R : ℝ) (hR : 0 ≤ R) :\n    |∑ u ∈ Icc 1 ⌊R⌋₊, (if Odd u ∧ q' ∣ u then (μ u : ℝ) / u else 0)| ≤ 1 / q' := by\n  have hq1 : 1 ≤ q' := hq'.pos\n  have hq0 : (0 : ℝ) < q' := by exact_mod_cast hq1\n  rw [sum_dvd_reindex hq1 R hR]\n  have hodd : ∀ w, Odd (q' * w) ↔ Odd w := fun w => by\n    rw [Nat.odd_mul]; exact ⟨fun h => h.2, fun h => ⟨hq', h⟩⟩\n  have hterm : ∀ w ∈ Icc 1 ⌊R / q'⌋₊, (if Odd (q' * w) then (μ (q' * w) : ℝ) / ((q' * w : ℕ) : ℝ) else 0) =\n      (1 / q') * ((μ q' : ℝ) * (if Nat.Coprime w (2 * q') then (μ w : ℝ) / w * 1 else 0)) := by\n    intro w hw\n    have hw1 : (0 : ℝ) < w := by exact_mod_cast (mem_Icc.1 hw).1\n    rw [← moebius_odd_term hq' w]\n    by_cases ho : Odd w\n    · rw [if_pos ((hodd w).2 ho), if_pos ho]; push_cast; field_simp\n    · rw [if_neg (fun h => ho ((hodd w).1 h)), if_neg ho, mul_zero]\n  rw [sum_congr rfl hterm, ← mul_sum, ← mul_sum, abs_mul, abs_mul, abs_of_pos (by positivity)]\n  have h1 : |(μ q' : ℝ)| ≤ 1 := by exact_mod_cast ArithmeticFunction.abs_moebius_le_one\n  have h2 := Prelim.abs_sum_moebius_div_coprime_le_one (R / q') (q := 2 * q') (by omega)\n  simp only [mul_one] at h2 ⊢\n  calc 1 / (q' : ℝ) * (|(μ q' : ℝ)| * |∑ w ∈ Icc 1 ⌊R / q'⌋₊,\n        (if Nat.Coprime w (2 * q') then (μ w : ℝ) / w else 0)|) ≤ 1 / q' * (1 * 1) := by gcongr\n    _ = 1 / q' := by ring",
+            "line": 146,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abs_sum_moebius_odd_dvd_le",
+            "lines": [
+              146,
+              168
+            ],
+            "conclusion": "For odd `q'`, `|Σ_{u≤R, u odd, q'∣u} μ(u)/u| ≤ 1/q'`: extracts `μ(q')/q'` and bounds the remaining sum over `(w,2q')=1` by 1 (Prelim.abs_sum_moebius_div_coprime_le_one, the text's (grara))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L146-L168"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_gcd_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
+        "lines": [
+          243,
+          268
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_gcd_le"
+          },
+          "snippet": {
+            "text": "/-- [H, p. 72]: `∑_{v ≤ V} Λ(v) gcd(q,v)/v ≤ log q + log V` (with (2.12)). -/\ntheorem sum_vonMangoldt_gcd_le {q : ℕ} (hq : 1 ≤ q) {V : ℝ} (hV : 1 ≤ V) :\n    ∑ v ∈ Icc 1 ⌊V⌋₊, (Λ v : ℝ) * Nat.gcd q v / v ≤ Real.log q + Real.log V := by\n  have hq0 : q ≠ 0 := by omega\n  set S := Icc 1 ⌊V⌋₊\n  rw [sum_congr rfl fun v hv => vonMangoldt_gcd_term q v hq0 (by have := (mem_Icc.1 hv).1; omega),\n    sum_add_distrib]\n  refine add_le_add ?_ ?_\n  · -- `∑_{v | q} Λ(v) ≤ log q`.\n    rw [← sum_filter, ← ArithmeticFunction.vonMangoldt_sum]\n    refine sum_le_sum_of_subset_of_nonneg ?_ fun _ _ _ => ArithmeticFunction.vonMangoldt_nonneg\n    intro v hv\n    simp only [mem_filter] at hv\n    exact Nat.mem_divisors.2 ⟨hv.2, hq0⟩\n  · rw [← sum_filter, ← sum_image (f := fun w => (Λ w : ℝ) / w) (injOn_div_gcd q hq0 S)]\n    refine le_trans ?_ (Prelim.sum_vonMangoldt_div_le_log hV)\n    refine sum_le_sum_of_subset_of_nonneg ?_ fun w _ _ =>\n      div_nonneg ArithmeticFunction.vonMangoldt_nonneg (Nat.cast_nonneg _)\n    intro w hw\n    simp only [mem_image, mem_filter, S, mem_Icc] at hw\n    obtain ⟨v, ⟨⟨hv1, hvV⟩, hd, hpp⟩, rfl⟩ := hw\n    simp only [mem_Icc]\n    have hg : 0 < Nat.gcd q v := Nat.gcd_pos_of_pos_left v (by omega)\n    constructor\n    · exact Nat.div_pos (Nat.le_of_dvd (by omega) (Nat.gcd_dvd_right q v)) hg\n    · exact (Nat.div_le_self v _).trans hvV",
+            "line": 243,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_gcd_le",
+            "lines": [
+              243,
+              268
+            ],
+            "conclusion": "`Σ_{v≤V} Λ(v) gcd(q,v)/v ≤ log q + log V`: split by `vonMangoldt_gcd_term` into `Σ_{v∣q}Λ(v) ≤ log q` and `Σ Λ(w)/w ≤ log V` over the injective image `w = v/gcd(q,v)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L243-L268"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          82
+        ],
+        "printed": [
+          72
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

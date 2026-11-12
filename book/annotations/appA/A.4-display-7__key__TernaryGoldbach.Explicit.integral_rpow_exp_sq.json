@@ -1,0 +1,81 @@
+{
+  "id": "A.4 display 7",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Only the Gaussian moment |t^{σ+1/2}e^{-t²/2}|₂² = Γ(σ+1)/2 is in [L] (general q); |h'√t|₂ = √(103983/(16e) - 1899e³/16) is absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 297,
+        "rect": [
+          0.17135,
+          0.68978,
+          0.56816,
+          0.03705
+        ]
+      },
+      "title": "Display, p. 287",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.4 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_rpow_exp_sq",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherel",
+        "lines": [
+          279,
+          281
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_rpow_exp_sq"
+          },
+          "snippet": {
+            "text": "theorem integral_rpow_exp_sq {q : ℝ} (hq : -1 < q) :\n    ∫ v in Ioi (0:ℝ), v ^ q * Real.exp (-v ^ (2:ℝ)) = (1 / 2) * Real.Gamma ((q + 1) / 2) :=\n  integral_rpow_mul_exp_neg_rpow (by norm_num) hq",
+            "line": 279,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.integral_rpow_exp_sq",
+            "lines": [
+              279,
+              281
+            ],
+            "conclusion": "`∫₀^∞ v^q e^{-v²} dv = ½Γ((q+1)/2)` for `q > -1`; with `q = 2σ+1` this is `Γ(σ+1)/2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherel.lean",
+            "fragment": "L279-L281"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          297
+        ],
+        "printed": [
+          287
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

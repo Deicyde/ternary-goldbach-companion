@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.4 step 42",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean defines R from D' = min(c2 x/q, D) (same value whenever the range R < m <= D is nonempty) and weights each block by log of its upper end, log(min(R+(j+1)q,D)), rather than log(jq+R).",
+  "subject": [
+    {
+      "location": {
+        "page": 86,
+        "rect": [
+          0.26253,
+          0.15703,
+          0.56162,
+          0.0323
+        ]
+      },
+      "title": "Lemma 4.2.4 step 42: Text, p. 76",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4 step 42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          480,
+          482
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB"
+          },
+          "snippet": {
+            "text": "  set R := max D' ((q : ℝ) / 2) with hRdef\n  have hD'R : D' ≤ R := le_max_left _ _\n  have hqR : (q : ℝ) / 2 ≤ R := le_max_right _ _",
+            "line": 480,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+            "lines": [
+              458,
+              769
+            ],
+            "conclusion": "Sets R = max(D', q/2) with D' = min(c2 x/q, D) (so R = max(c2 x/q, q/2) when D' = c2 x/q), R >= D' and R >= q/2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L480-L482"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3W'",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          174,
+          186
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3W'"
+          },
+          "snippet": {
+            "text": "/-- Weighted range (R3) (cf. [H, (4.61)–(4.62)]), general form: for `1 ≤ R < D`, with\n`c₁ = 1 + |η'|₁/(x/D)`,\n`∑_{R < m ≤ D} log m |T_{m,∘}| ≤ (3c₁/2) x (log(R+q)/R + (log D/q) log(D/R)) +\n(2√(c₀c₁)/π)(√(1+q/R) q log(R+q) + D(log D - 1) - R(log R - 1) + 2q log(D/R) + (q/2) log D log(D/R))`. -/\ntheorem sum_R3W' {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {R D : ℝ} (hR1 : 1 ≤ R) (hRD : R < D) :\n    ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Real.log n * Tn α x n ≤\n      3 * (1 + eta2'L1 / (x / D)) / 2 * x *\n          (Real.log (R + q) / R + Real.log D / q * Real.log (D / R)) +\n        2 * √(c₀ * (1 + eta2'L1 / (x / D))) / π *\n          (q * √(1 + q / R) * Real.log (R + q) + (D * (Real.log D - 1) - R * (Real.log R - 1)) +\n            2 * q * Real.log (D / R) + q / 2 * Real.log D * Real.log (D / R)) := by",
+            "line": 174,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3W'",
+            "lines": [
+              174,
+              341
+            ],
+            "conclusion": "General weighted range (R3) bound (statement), block weight log(min(R+(j+1)q, D))."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L174-L186"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3W'",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
+        "lines": [
+          201,
+          210
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3W'"
+          },
+          "snippet": {
+            "text": "  have hmain := sum_log_mul_le_blocks (G := Tn α x) (Tn_nonneg α x) hq J (a := R) (b := D)\n    hR0.le (nblocks_spec hq0)\n    (fun j => Real.log (min (R + (j + 1) * q) D))\n    (fun j => 3 * c₁ / 2 * x * (1 / (R + j * q)) +\n      2 * q * √(c₀ * c₁) / π * √(1 + q / (R + j * q)))\n    (fun j _ => Real.log_nonneg (le_min (by\n      have : (0 : ℝ) ≤ (j + 1) * q := by positivity\n      linarith) hD1))\n    (fun j _ t ht1 ht => Real.log_le_log (by linarith) ht)\n    (fun j hj => block_R3 hx hq hcop h2α hqQ hδ hR0 j (hlt j hj))",
+            "line": 201,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3W'",
+            "lines": [
+              174,
+              341
+            ],
+            "conclusion": "Block decomposition with weight log of the block's upper end and per-block bound `block_R3`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L201-L210"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          86
+        ],
+        "printed": [
+          76
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

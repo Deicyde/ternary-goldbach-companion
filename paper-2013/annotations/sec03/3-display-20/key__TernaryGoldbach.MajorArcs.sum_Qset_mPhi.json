@@ -1,0 +1,81 @@
+{
+  "id": "3 display 20",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] sums per-modulus bounds for eta_+ with numeric main term 0.64 x; the displayed sum over q of the eta_circ integrals split as |eta_circ|^2 Sum + tail sum is not formed.",
+  "subject": [
+    {
+      "location": {
+        "page": 18,
+        "rect": [
+          0.20371,
+          0.82476,
+          0.63183,
+          0.07272
+        ]
+      },
+      "title": "Display, p. 18",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_mPhi",
+        "module": "TernaryGoldbach.MajorArcs.SumMuPhi",
+        "lines": [
+          68,
+          70
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_Qset_mPhi"
+          },
+          "snippet": {
+            "text": "/-- **The moduli of `𝔐_{8,r₀}`**: `Σ_{q ∈ Qset r₀} μ²(q)/φ(q) = 2 Σ_{q ≤ r₀ odd} μ²(q)/φ(q)`. -/\ntheorem sum_Qset_mPhi :\n    ∑ q ∈ Qset 150000, mPhi q = 2 * ∑ q ∈ (Icc 1 150000).filter Odd, mPhi q := by",
+            "line": 68,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_mPhi",
+            "lines": [
+              68,
+              106
+            ],
+            "conclusion": "The weight sum $\\sum_q\\mu^2(q)/\\phi(q)=2\\sum_{odd}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/SumMuPhi.lean",
+            "fragment": "L68-L70"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          18
+        ],
+        "printed": [
+          18
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.3 display 11, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "3 display 14",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does this for eta_+ only, with sharp-free uniform errors (4.25e-7 x, 2.83e-7 x) from Thm 7.1.4 in place of err_{eta,chi}; it gives bounds in the shape mu^2/phi|S|^2 <= sum <= mu^2/phi|S|^2 + E^2 rather than the displayed O* expansion with (2|eta|_1+err) and q max err^2 + K_{q,2}x terms.",
+  "subject": [
+    {
+      "location": {
+        "page": 17,
+        "rect": [
+          0.20371,
+          0.11562,
+          0.63183,
+          0.19369
+        ]
+      },
+      "title": "Display, p. 17",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.arc_chars",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars",
+        "lines": [
+          343,
+          465
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.arc_chars"
+          },
+          "snippet": {
+            "text": "/-- **[H, §10.3] for one modulus `q`** (`q̃ ≤ 3·10⁵`, `|βx| ≤ 1.2·10⁶/q̃`, `x ≥ 4.9·10²⁶`), with\n`S'_q = Σ_{(n,q)=1} Λ(n) η₊(n/x) e(nα)`:\n`μ²(q)/φ(q) |S'_q(β)|² ≤ Σ_b |S'_q(b/q + β)|² ≤ μ²(q)/φ(q) |S'_q(β)|² + (4.25·10⁻⁷ x)²` and\n`|S'_q(β) − η̂₊(−βx) x| ≤ 2.83·10⁻⁷ x`. -/\ntheorem arc_chars {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hqt : (qt q : ℝ) ≤ 300000)\n    {β : ℝ} (hβ : |β * x| ≤ 1200000 / qt q) :\n    ((if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cP x)) β‖ ^ 2 ≤\n        ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cP x)) ((b : ℝ) / q + β)‖ ^ 2 ∧\n      ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cP x)) ((b : ℝ) / q + β)‖ ^ 2 ≤\n        (if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cP x)) β‖ ^ 2 +\n          (4.25e-7 * x) ^ 2) ∧\n      ‖expTsum (coprimePart q (cP x)) β - 𝓕 etaPC (-(β * x)) * x‖ ≤ 2.83e-7 * x := by\n  haveI : NeZero q := ⟨by omega⟩\n  have hx0 : 0 < x := by linarith\n  set a := coprimePart q (cP x) with ha_def\n  have hc := summable_cP hx0\n  have ha : Summable fun n => ‖a n‖ :=\n    hc.of_nonneg_of_le (fun n => norm_nonneg _) (norm_coprimePart_le q (cP x))\n  have hca := summable_sub_coprimePart hx0 q\n  have hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q := fun n hn => by\n    by_contra h; exact hn (by simp [ha_def, coprimePart, h])\n  have hqq : q ≤ qt q := by unfold qt; split_ifs <;> omega\n  have hq3 : q ≤ 300000 := by\n    have : (q : ℝ) ≤ 300000 := le_trans (by exact_mod_cast hqq) hqt\n    exact_mod_cast this\n  have hD := coprime_split hx hq1 hq3\n  have hDa : ∑' n, ‖(cP x - a) n‖ ≤ 1e-15 * x := by\n    refine le_trans (le_of_eq ?_) hD; rfl\n  have hqt2 : (2 : ℝ) ≤ qt q := by\n    have : 2 ≤ qt q := by unfold qt; split_ifs with h\n                          · obtain ⟨k, hk⟩ := h; omega\n                          · omega\n    exact_mod_cast this\n  have hqt0 : (0 : ℝ) < qt q := by linarith\n  have hδx : β * x / x = β := by field_simp\n  -- the non-principal characters\n  have hE : ∀ ψ : DirichletCharacter ℂ q, ψ ≠ 1 →\n      ‖gaussSum ψ ZMod.stdAddChar‖ * ‖Schar ψ⁻¹ a β‖ ≤ 4.25e-7 * x := by\n    intro ψ hψ\n    set c' := ψ⁻¹.conductor with hc'\n    haveI : NeZero c' := ⟨DirichletCharacter.conductor_ne_zero _⟩\n    have hc'1 : c' ≠ 1 := fun h =>\n      hψ (inv_eq_one.1 ((DirichletCharacter.eq_one_iff_conductor_eq_one (χ := ψ⁻¹)).2 h))\n    have hc'2 : 2 ≤ c' := by have := NeZero.ne c'; omega\n    have hc'q : c' ∣ q := DirichletCharacter.conductor_dvd_level _\n    have hc'le : c' ≤ q := Nat.le_of_dvd (by omega) hc'q\n    have hτ : ‖gaussSum ψ ZMod.stdAddChar‖ ≤ √(c' : ℝ) := by\n      have := norm_gaussSum_le_sqrt_conductor ψ\n      rwa [← DirichletCharacter.conductor_inv] at this\n    set χ := ψ⁻¹.primitiveCharacter\n    have hχ : χ.IsPrimitive := DirichletCharacter.primitiveCharacter_isPrimitive _\n    have hS : ‖Schar ψ⁻¹ a β‖ ≤ ‖Schar χ (cP x) β‖ + 1e-15 * x := by\n      rw [ha_def, Schar_primitive, ← ha_def]\n      have h1 : Schar χ a β = Schar χ (cP x) β - Schar χ (cP x - a) β := by\n        rw [Schar_sub _ hc ha]; ring\n      rw [h1]\n      have h2 := norm_Schar_le χ hca β\n      have := norm_sub_le (Schar χ (cP x) β) (Schar χ (cP x - a) β)\n      linarith\n    have hcr : (c' : ℝ) ≤ q := by exact_mod_cast hc'le\n    have hT : ‖Schar χ (cP x) β‖ ≤\n        ((7.5e-8 + 7.7e6 / √x) / √(c' : ℝ)) * x := by\n      rcases Nat.even_or_odd c' with hev | hod\n      · have hqev : Even q := (even_iff_two_dvd.1 hev).trans hc'q |> even_iff_two_dvd.2\n        have hqtq : qt q = q := by unfold qt; rw [if_pos hqev]\n        have hc'3 : c' ≤ 300000 := le_trans hc'le hq3\n        have hδ : |β * x| ≤ 1200000 / c' := by\n          refine hβ.trans ?_\n          rw [hqtq]\n          exact div_le_div_of_nonneg_left (by norm_num) (by exact_mod_cast (by omega : 0 < c')) hcr\n        have := thm_7_1_4_even hx hev hc'3 χ hχ hδ\n        rw [if_neg hc'1, sub_zero, hδx] at this\n        exact this\n      · have hc'pos : (0 : ℝ) < c' := by exact_mod_cast (by omega : 0 < c')\n        have key : 2 * c' ≤ qt q := by\n          unfold qt\n          split_ifs with hqe\n          · have h2 : 2 ∣ q := even_iff_two_dvd.1 hqe\n            have hcop2 : Nat.Coprime 2 c' := (Nat.coprime_two_left).2 hod\n            exact Nat.le_of_dvd (by omega) (hcop2.mul_dvd_of_dvd_of_dvd h2 hc'q)\n          · omega\n        have hkey : (2 * c' : ℝ) ≤ qt q := by exact_mod_cast key\n        have hc'3 : c' ≤ 150000 := by\n          have : (2 * c' : ℝ) ≤ 300000 := hkey.trans hqt\n          have : (c' : ℝ) ≤ 150000 := by linarith\n          exact_mod_cast this\n        have hδ : |β * x| ≤ 600000 / c' := by\n          refine hβ.trans ?_\n          rw [div_le_div_iff₀ hqt0 hc'pos]; nlinarith\n        have := thm_7_1_4_odd hx hod hc'3 χ hχ hδ\n        rw [if_neg hc'1, sub_zero, hδx] at this\n        exact this\n    have hc'3r : (c' : ℝ) ≤ 300000 := hcr.trans (by exact_mod_cast hq3)\n    have hc'2r : (2 : ℝ) ≤ c' := by exact_mod_cast hc'2\n    calc ‖gaussSum ψ ZMod.stdAddChar‖ * ‖Schar ψ⁻¹ a β‖\n        ≤ √(c' : ℝ) * (((7.5e-8 + 7.7e6 / √x) / √(c' : ℝ)) * x + 1e-15 * x) :=\n          mul_le_mul hτ (hS.trans (by linarith)) (norm_nonneg _) (Real.sqrt_nonneg _)\n      _ ≤ 4.25e-7 * x := err_scaled_le hx hc'2r hc'3r\n  refine ⟨?_, ?_⟩\n  · have hsplit := sum_units_sq_bounds ha hcop β hE\n    rw [sum_Bset_eq_units (fun t => ‖expTsum a t‖ ^ 2) β]\n    exact hsplit\n  · -- the principal character: [H, Thm 7.1.4] for `q = 1`\n    have hδ1 : |β * x| ≤ 600000 := by\n      refine hβ.trans ?_\n      rw [div_le_iff₀ hqt0]; nlinarith\n    have h1 := thm_7_1_4_one hx (1 : DirichletCharacter ℂ 1) hδ1\n    rw [hδx, Schar_level_one] at h1\n    have h2 : expTsum a β = expTsum (cP x) β - expTsum (cP x - a) β := by\n      rw [expTsum_sub hc ha]; ring\n    have h3 := (norm_expTsum_le_tsum hca β).trans hDa\n    have hsx := sqrt_x_ge hx\n    have h4 : 6.24e6 / √x ≤ 6.24e6 / 2.2135e13 :=\n      div_le_div_of_nonneg_left (by norm_num) (by norm_num) hsx\n    rw [h2]\n    calc ‖expTsum (cP x) β - expTsum (cP x - a) β - 𝓕 etaPC (-(β * x)) * x‖\n        ≤ ‖expTsum (cP x) β - 𝓕 etaPC (-(β * x)) * x‖ + ‖expTsum (cP x - a) β‖ := by\n          have := norm_sub_le (expTsum (cP x) β - 𝓕 etaPC (-(β * x)) * x) (expTsum (cP x - a) β)\n          calc _ = ‖expTsum (cP x) β - 𝓕 etaPC (-(β * x)) * x - expTsum (cP x - a) β‖ := by\n                congr 1; ring\n            _ ≤ _ := this\n      _ ≤ (1e-18 + 6.24e6 / √x) * x + 1e-15 * x := add_le_add h1 h3\n      _ ≤ 2.83e-7 * x := by nlinarith",
+            "line": 343,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.arc_chars",
+            "lines": [
+              343,
+              465
+            ],
+            "conclusion": "For eta_+ and S' (coprime part), the sum over b of |S'(b/q+beta)|^2 is mu^2(q)/phi(q)|S'(beta)|^2 plus at most (4.25e-7 x)^2, with |S'(beta) - etahat_+(-beta x) x| <= 2.83e-7 x."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L343-L465"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          17
+        ],
+        "printed": [
+          17
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

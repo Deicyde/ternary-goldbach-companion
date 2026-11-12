@@ -1,0 +1,81 @@
+{
+  "id": "9.6 display 16",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds q(T0+3.48) by 1.36044e8 for even q>125000 only; there is no bound T0<=3.751e7 since the odd and q=1 cases use T0=1e8/q or 1e8.",
+  "subject": [
+    {
+      "location": {
+        "page": 205,
+        "rect": [
+          0.17135,
+          0.70804,
+          0.56816,
+          0.01995
+        ]
+      },
+      "title": "Display, p. 195",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.6 display 16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_even",
+        "module": "TernaryGoldbach.MajorArcs.Thm714",
+        "lines": [
+          676,
+          680
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_even"
+          },
+          "snippet": {
+            "text": "    refine errP_le_of hx hq hD (E1P_le (Cq := 1.36044e8) (Z := 143.21) (S1 := 33086) (S2 := 43934)\n      (by positivity) ?_ (ZL_R3_le (not_le.1 h125) hq) (by norm_num) (by norm_num) (by norm_num)\n      (by norm_num)) (by norm_num) (E2_R3 (not_le.1 h125) hq hδ) (by norm_num)\n    rw [show (200 + 7.5e7 / q + 3.48 : ℝ) = (203.48 * q + 7.5e7) / q by field_simp; ring]\n    exact div_le_div_of_nonneg_right (by nlinarith) hq0.le",
+            "line": 676,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_even",
+            "lines": [
+              629,
+              680
+            ],
+            "conclusion": "For T0=200+7.5e7/q, T0+3.48<=(203.48 q+7.5e7)/q with Cq=1.36044e8, the analogue of qT0<=1.35e8."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L676-L680"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          205
+        ],
+        "printed": [
+          195
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "7 display 54",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds the analogous $y^{-1/6}$ contribution by $(\\log y+3.9)(3.8y^{-1/6}+h(y))\\le10^{-10}$ for $y\\ge10^{100}$ only; for $10^{25}\\le y<10^{100}$ the term is inside the certified cell values of $\\hat g$. Not $f_2\\le0.001332$.",
+  "subject": [
+    {
+      "location": {
+        "page": 67,
+        "rect": [
+          0.20371,
+          0.40297,
+          0.63183,
+          0.0194
+        ]
+      },
+      "title": "Display, p. 67",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 54"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.asymp_goal",
+        "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+        "lines": [
+          501,
+          538
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.asymp_goal"
+          },
+          "snippet": {
+            "text": "  have hmid2 : ∑ n ∈ Finset.Ico 82861350433499550 r₂, ghatY y n * Real.log (((n : ℝ) + 1) / n) ≤\n      8.4e-4 + 1.398 * Ξ * (Real.log y + 3.9) := by\n    have hpt : ∀ n ∈ Finset.Ico 82861350433499550 r₂, ghatY y n * Real.log (((n : ℝ) + 1) / n) ≤\n        2 * ((n : ℝ) ^ (-1 / 4 : ℝ) * Real.log (((n : ℝ) + 1) / n)) +\n          1.398 * Ξ * Real.log (((n : ℝ) + 1) / n) := by\n      intro n hn\n      obtain ⟨hn1, hn2⟩ := Finset.mem_Ico.1 hn\n      have hn1' : (82861350433499550 : ℝ) ≤ n := by exact_mod_cast hn1\n      have hn2' : (n : ℝ) ≤ q := (by exact_mod_cast hn2.le : (n : ℝ) ≤ r₂).trans hr₂q\n      have hn4 : (n : ℝ) ^ 4 ≤ y := by rw [← hq4]; gcongr\n      have h := ghatY_le_asym hy (by linarith) hn4\n      have hl0 : 0 ≤ Real.log (((n : ℝ) + 1) / n) :=\n        Real.log_nonneg (by rw [le_div_iff₀ (by linarith)]; linarith)\n      have := mul_le_mul_of_nonneg_right h hl0\n      rw [← hΞ] at this\n      linarith\n    refine (Finset.sum_le_sum hpt).trans ?_\n    rw [Finset.sum_add_distrib, ← Finset.mul_sum, ← Finset.mul_sum,\n      sum_Ico_log_eq (by norm_num) hr₂Nn]\n    have h1 := sum_quarter_le (N := 82861350433499550) (M := r₂) (by norm_num) hr₂Nn\n    have h2 : ((82861350433499550 : ℕ) - 1 : ℝ) ^ (-1 / 4 : ℝ) ≤ 6e-5 := by\n      have e : ((82861350433499550 : ℕ) - 1 : ℝ) = 82861350433499549 := by norm_num\n      rw [e]\n      have h := Real.rpow_le_rpow_of_nonpos (x := (1 / 6e-5 : ℝ) ^ 4) (y := 82861350433499549)\n        (z := -1 / 4) (by norm_num) (by norm_num) (by norm_num)\n      have e2 : ((1 / 6e-5 : ℝ) ^ 4) ^ (-1 / 4 : ℝ) = 6e-5 := by\n        rw [← Real.rpow_natCast, ← Real.rpow_mul (by norm_num)]; norm_num\n      linarith\n    have h3 : 0 ≤ ((r₂ : ℝ) - 1) ^ (-1 / 4 : ℝ) := by\n      have : (0:ℝ) ≤ r₂ - 1 := by linarith\n      positivity\n    have h4 : Real.log ((r₂ : ℝ) / (82861350433499550 : ℕ)) ≤ Real.log y + 3.9 := by\n      have : Real.log ((r₂ : ℝ) / (82861350433499550 : ℕ)) ≤ Real.log r₂ :=\n        Real.log_le_log (by positivity) (div_le_self (by positivity) (by norm_num))\n      have : Real.log r₂ ≤ Real.log q := Real.log_le_log (by linarith) hr₂q\n      linarith [hlogq]\n    have := mul_le_mul_of_nonneg_left h4 (show 0 ≤ 1.398 * Ξ by positivity)\n    nlinarith",
+            "line": 501,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.asymp_goal",
+            "lines": [
+              384,
+              607
+            ],
+            "conclusion": "For $82861350433499550\\le n<r_2$: $\\sum\\hat g(y,n)\\log\\frac{n+1}{n}\\le 8.4\\cdot10^{-4}+1.398\\,\\Xi\\,(\\log y+3.9)$ with $\\Xi=3.8y^{-1/6}+h(y)$; the $3.8y^{-1/6}$ term is integrated against $\\log$ steps."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+            "fragment": "L501-L538"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          67
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

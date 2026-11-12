@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.2 step 3",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean states the end result directly with integer k₀ (κ' = e((a+k₀q)/2)); the text's intermediate chain through κ ∈ {0,1} is collapsed into one field_simp identity.",
+  "subject": [
+    {
+      "location": {
+        "page": 74,
+        "rect": [
+          0.26253,
+          0.26993,
+          0.56162,
+          0.08787
+        ]
+      },
+      "title": "Lemma 4.2.2 step 3: Display, p. 64",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.e_phase",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums",
+        "lines": [
+          203,
+          218
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.e_phase"
+          },
+          "snippet": {
+            "text": "/-- The phase in [H, proof of Lemma 4.2.2]: if `2α = a/q + δ/x + k₀` and `m = qm'` with `m'` odd,\nthen `e(αm(2r+1)) = κ' e((δm/2x)(2r+1))` with `κ' = e((a + k₀q)/2)` independent of `m'`, `r`. -/\ntheorem e_phase {α x δ : ℝ} {a k₀ : ℤ} {q m' : ℕ} (hx : 0 < x) (hq : 1 ≤ q) (hm' : Odd m')\n    (h2α : 2 * α = a / q + δ / x + k₀) (r : ℤ) :\n    e (α * ((q * m' : ℕ) : ℝ) * (2 * r + 1)) =\n      e ((a + k₀ * q) / 2) * e (δ * ((q * m' : ℕ) : ℝ) / (2 * x) * (2 * r + 1)) := by\n  obtain ⟨j, rfl⟩ := hm'\n  have hq0 : (q : ℝ) ≠ 0 := by\n    have : (1 : ℝ) ≤ q := by exact_mod_cast hq\n    linarith\n  have hα : α = (a / q + δ / x + k₀) / 2 := by linarith\n  have : α * ((q * (2 * j + 1) : ℕ) : ℝ) * (2 * r + 1) =\n      (a + k₀ * q) / 2 + δ * ((q * (2 * j + 1) : ℕ) : ℝ) / (2 * x) * (2 * r + 1) +\n        (((a + k₀ * q) * (2 * j * r + j + r) : ℤ) : ℝ) := by\n    rw [hα]; push_cast; field_simp; ring\n  rw [this, e_add, e_add, e_intCast, mul_one]",
+            "line": 203,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.e_phase",
+            "lines": [
+              203,
+              218
+            ],
+            "conclusion": "For `2α = a/q + δ/x + k₀`, `m = q m'` with `m'` odd: `e(α m (2r+1)) = e((a + k₀q)/2) · e(δ m (2r+1)/(2x))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L203-L218"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          74
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "3.3 display 7",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L]'s `S1` restricts to odd `m` and to `m > max(U, x/2W)` (lower bound `x/2W` from the support of `η₂`), against the text's all `m` with `U < m ≤ x/W`.",
+  "subject": [
+    {
+      "location": {
+        "page": 59,
+        "rect": [
+          0.17135,
+          0.72666,
+          0.56816,
+          0.06885
+        ]
+      },
+      "title": "Display, p. 49",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3.3 display 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S1",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIS1",
+        "lines": [
+          52,
+          55
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S1"
+          },
+          "snippet": {
+            "text": "/-- `S₁(U, W)` [H, (5.6)] with `v = 2`. -/\nnoncomputable def S1 (x U W : ℝ) : ℝ :=\n  ∑ m ∈ Ioc ⌊max U (x / (2 * W))⌋₊ ⌊x / W⌋₊,\n    if Odd m then (∑ d ∈ m.divisors.filter (fun d : ℕ => U < (d : ℝ)), (μ d : ℝ)) ^ 2 else 0",
+            "line": 52,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.S1",
+            "lines": [
+              52,
+              55
+            ],
+            "conclusion": "`S₁(U,W) = ∑_{max(U,x/2W) < m ≤ x/W, m odd} (∑_{d>U, d|m} μ(d))²`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+            "fragment": "L52-L55"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          59
+        ],
+        "printed": [
+          49
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

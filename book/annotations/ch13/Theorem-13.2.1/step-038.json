@@ -1,0 +1,84 @@
+{
+  "id": "Theorem 13.2.1 step 38",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Leads to the lower bound for $I_0$; Lean gets $I_0\\ge8.6294x$ with $J\\ge8.6296x$ and the $(1+t)$ split instead of $(\\sqrt J-\\sqrt E)^2$.",
+  "subject": [
+    {
+      "location": {
+        "page": 263,
+        "rect": [
+          0.17462,
+          0.24613,
+          0.56162,
+          0.01702
+        ]
+      },
+      "title": "Theorem 13.2.1 step 38: Text, p. 253",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.I0_ge",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          284,
+          317
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.I0_ge"
+          },
+          "snippet": {
+            "text": "  have hJ' : 8.6296 * x ≤ ∫ α in B, ‖S etaPlus x α‖ ^ 2 := by\n    have := (abs_le.1 hJ).1; linarith\n  set t : ℝ := 1e-5\n  have ht : 0 < t := by norm_num\n  have c1 := continuous_norm_sq_expTsum (summable_a₁ hx0)\n  have c2 := continuous_norm_sq_expTsum (summable_a₂ hx0)\n  have hpt : ∀ α, ‖S etaPlus x α‖ ^ 2 ≤\n      (1 + t) * ‖expTsum (a₁ x) α‖ ^ 2 + (1 + 1 / t) * ‖expTsum (a₂ x) α‖ ^ 2 := fun α => by\n    rw [S_etaPlus_eq hx0]; exact norm_add_sq_le _ _ ht\n  have hcS : Continuous fun α => ‖S etaPlus x α‖ ^ 2 :=\n    (TernaryGoldbach.continuous_expTsum (Helfgott.summable_etaPlus hx0)).norm.pow 2\n  have h1 : ∫ α in B, ‖S etaPlus x α‖ ^ 2 ≤\n      (1 + t) * (∫ α in B, ‖expTsum (a₁ x) α‖ ^ 2) + (1 + 1 / t) * ∫ α in B, ‖expTsum (a₂ x) α‖ ^ 2 := by\n    rw [← integral_const_mul, ← integral_const_mul,\n      ← integral_add ((integrableOn_Ioc_of_continuous c1 B hBsub).const_mul _)\n        ((integrableOn_Ioc_of_continuous c2 B hBsub).const_mul _)]\n    exact setIntegral_mono_on (integrableOn_Ioc_of_continuous hcS B hBsub)\n      (((integrableOn_Ioc_of_continuous c1 B hBsub).const_mul _).add\n        ((integrableOn_Ioc_of_continuous c2 B hBsub).const_mul _)) hB fun α _ => hpt α\n  have h2 : ∫ α in B, ‖expTsum (a₂ x) α‖ ^ 2 ≤ 8e-11 * x := by\n    refine le_trans ?_ ((TernaryGoldbach.setIntegral_norm_sq_expTsum (summable_a₂ hx0)).le.trans\n      (norm_sq_sum_a₂_le hx))\n    exact setIntegral_mono_set (integrableOn_Ioc_of_continuous c2 _ le_rfl)\n      (Eventually.of_forall fun α => by positivity) (Eventually.of_forall hBsub)\n  have h3 : 0 ≤ ∫ α in B, ‖expTsum (a₂ x) α‖ ^ 2 := setIntegral_nonneg hB fun α _ => by positivity\n  have : (1 + 1 / t) * ∫ α in B, ‖expTsum (a₂ x) α‖ ^ 2 ≤ (1 + 1 / t) * (8e-11 * x) :=\n    mul_le_mul_of_nonneg_left h2 (by positivity)\n  have h4 : 8.6296 * x - (1 + 1 / t) * (8e-11 * x) ≤\n      (1 + t) * ∫ α in B, ‖expTsum (a₁ x) α‖ ^ 2 := by linarith\n  have h5 : 8.6294 * x * (1 + t) ≤ 8.6296 * x - (1 + 1 / t) * (8e-11 * x) := by\n    simp only [t]; nlinarith\n  have := le_trans h5 h4\n  rw [mul_comm (1 + t)] at this\n  exact le_of_mul_le_mul_right this (by norm_num)",
+            "line": 284,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.I0_ge",
+            "lines": [
+              276,
+              317
+            ],
+            "conclusion": "$\\int_{(0,1]\\cap\\mathfrak M_{8,r_0}}|S_1|^2\\ge8.6294x$ from $\\int|S_{\\eta_+}|^2\\ge8.6296x$ (`l2_major_14_7`), the $(1+t),(1+1/t)$ split with $t=10^{-5}$, and $\\int|S_2|^2\\le8\\cdot10^{-11}x$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L284-L317"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          263
+        ],
+        "printed": [
+          253
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

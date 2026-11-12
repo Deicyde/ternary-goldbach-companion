@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 5.2.2 step 19",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Coprime reduction is stated inverted, (q/phi(q)) times the coprime sum bounds the full sum; weight uses W-W'+1.",
+  "subject": [
+    {
+      "location": {
+        "page": 107,
+        "rect": [
+          0.17462,
+          0.18195,
+          0.56162,
+          0.11279
+        ]
+      },
+      "title": "Lemma 5.2.2 step 19: Display, p. 97",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2 step 19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.weight_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1167,
+          1216
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.weight_caseA"
+          },
+          "snippet": {
+            "text": "    have hw : ∀ r ∈ C, (2 / W) * ((1 + r / R)⁻¹ * (1 / Nat.totient r : ℝ)) ≤\n        (W - W' + 1 + 3 / 2 * (1 / (q * r * R) - 1 / Q)⁻¹)⁻¹ * (1 / Nat.totient r : ℝ) := by\n      intro r hr\n      rw [mem_filter, mem_Icc] at hr\n      have hr1 : (1 : ℝ) ≤ r := by exact_mod_cast hr.1.1\n      have hrR : (r : ℝ) ≤ R := (Nat.cast_le.2 hr.1.2).trans (Nat.floor_le hR0.le)\n      have hφ : (0 : ℝ) ≤ 1 / Nat.totient r := by positivity\n      rw [← mul_assoc]\n      refine mul_le_mul_of_nonneg_right ?_ hφ\n      -- `1/(qrR) - 1/Q ≥ (1 - σ₀/3.5)/(qrR)`.\n      have hqrR : (q : ℝ) * r * R ≤ 0.30286 * W := by\n        rw [← hqR, sq]; nlinarith [mul_le_mul_of_nonneg_left hrR hq0.le]\n      have hqrR0 : (0 : ℝ) < q * r * R := by positivity\n      have hδ : (1 - 0.30286 / 3.5) / (q * r * R) ≤ 1 / (q * r * R) - 1 / Q := by\n        have : 1 / Q ≤ (0.30286 / 3.5) / (q * r * R) := by\n          rw [div_le_div_iff₀ (by linarith) hqrR0]; nlinarith\n        have e : (1 - 0.30286 / 3.5) / (q * r * R) = 1 / (q * r * R) - (0.30286 / 3.5) / (q * r * R) := by\n          ring\n        linarith\n      have hδpos : 0 < (1 - 0.30286 / 3.5) / (q * r * R) := by positivity\n      have hinv : (1 / (q * r * R) - 1 / Q)⁻¹ ≤ ((1 - 0.30286 / 3.5) / (q * r * R))⁻¹ :=\n        inv_anti₀ hδpos hδ\n      -- `(3/2) qrR/(1 - σ₀/3.5) ≤ (W/2)(r/R) c`, `c = 0.99465`.\n      have hqRW : (q : ℝ) * R = 0.30286 * W / R := by\n        field_simp\n        linarith [hqR]\n      have h1 : 3 / 2 * ((1 - 0.30286 / 3.5) / (q * r * R))⁻¹ ≤ W / 2 * (r / R) * 0.99465 := by\n        rw [inv_div, show (q : ℝ) * r * R = r * (q * R) by ring, hqRW]\n        rw [show 3 / 2 * (r * (0.30286 * W / R) / (1 - 0.30286 / 3.5)) =\n          W / 2 * (r / R) * (3 * 0.30286 / (1 - 0.30286 / 3.5)) by field_simp]\n        gcongr; norm_num\n      -- `1 ≤ (W/2)(r/R)(1 - c)`.\n      have h2 : 1 ≤ W / 2 * (r / R) * (1 - 0.99465) := by\n        have hRW : R ≤ W / 2 * (1 - 0.99465) := by\n          have : R ^ 2 ≤ (W / 2 * (1 - 0.99465)) ^ 2 := by nlinarith\n          nlinarith\n        have : 1 / R ≤ r / R := div_le_div_of_nonneg_right hr1 hR0.le\n        have h3 : 1 ≤ W / 2 * (1 - 0.99465) * (1 / R) := by\n          rw [mul_one_div, le_div_iff₀ hR0]; linarith\n        calc (1 : ℝ) ≤ W / 2 * (1 - 0.99465) * (1 / R) := h3\n          _ ≤ W / 2 * (1 - 0.99465) * (r / R) := by gcongr\n          _ = _ := by ring\n      have hden : W - W' + 1 + 3 / 2 * (1 / (q * r * R) - 1 / Q)⁻¹ ≤ W / 2 * (1 + r / R) := by\n        have := mul_le_mul_of_nonneg_left hinv (show (0 : ℝ) ≤ 3 / 2 by norm_num)\n        nlinarith\n      have hpos : 0 < W - W' + 1 + 3 / 2 * (1 / (q * r * R) - 1 / Q)⁻¹ := by\n        have : 0 < (1 / (q * r * R) - 1 / Q)⁻¹ := inv_pos.2 (lt_of_lt_of_le hδpos hδ)\n        linarith\n      calc 2 / W * (1 + r / R)⁻¹ = (W / 2 * (1 + r / R))⁻¹ := by field_simp\n        _ ≤ _ := inv_anti₀ hpos hden",
+            "line": 1167,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.weight_caseA",
+            "lines": [
+              1139,
+              1252
+            ],
+            "conclusion": "Per-r bound (2/W)(1+r/R)^-1 /phi(r) <= w r /phi(r)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1167-L1216"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.weight_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1217,
+          1224
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.weight_caseA"
+          },
+          "snippet": {
+            "text": "    refine le_trans ?_ (sum_le_sum hw)\n    rw [← mul_sum]\n    -- The coprime reduction and [MV73, Lemma 8].\n    have hred := Prelim.sum_sqfree_div_totient_le hq (fun r => (1 + r / R)⁻¹)\n      (fun n => by positivity) (fun m n hmn => by\n        apply inv_anti₀ (by positivity)\n        have : (m : ℝ) ≤ n := by exact_mod_cast hmn\n        have := div_le_div_of_nonneg_right this hR0.le; linarith) ⌊R⌋₊",
+            "line": 1217,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.weight_caseA",
+            "lines": [
+              1139,
+              1252
+            ],
+            "conclusion": "Sums over r and applies the coprime reduction sum_{r sqfree} f <= (q/phi(q)) sum_{(r,q)=1} f (sum_sqfree_div_totient_le)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1217-L1224"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          107
+        ],
+        "printed": [
+          97
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

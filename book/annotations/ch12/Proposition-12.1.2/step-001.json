@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 12.1.2 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Introduces the arc decomposition; [L] unfolds `majorArcs` uniformly (`q̃`) and only proves `≤` for the covering.",
+  "subject": [
+    {
+      "location": {
+        "page": 240,
+        "rect": [
+          0.26253,
+          0.53537,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Proposition 12.1.2 step 1: Text, p. 230",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.2 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.mem_majorArcs_iff",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs",
+        "lines": [
+          39,
+          68
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.mem_majorArcs_iff"
+          },
+          "snippet": {
+            "text": "theorem mem_majorArcs_iff {δ₀ R x α : ℝ} :\n    α ∈ majorArcs δ₀ R x ↔ ∃ q : ℕ, 1 ≤ q ∧ (qt q : ℝ) ≤ 2 * R ∧ ∃ a : ℤ, IsCoprime a q ∧\n      |α - a / q| < wrad δ₀ R x q := by\n  simp only [majorArcs, Set.mem_union, Set.mem_iUnion, Set.mem_Ioo, exists_prop]\n  have hodd : ∀ q : ℕ, ¬ Even q → wrad δ₀ R x q = δ₀ * R / (2 * q * x) := fun q h => by\n    unfold wrad qt; rw [if_neg h]; push_cast; ring_nf\n  have hev : ∀ q : ℕ, Even q → wrad δ₀ R x q = δ₀ * R / (q * x) := fun q h => by\n    unfold wrad qt; rw [if_pos h]\n  constructor\n  · rintro (⟨q, ⟨hq1, hqR, ho⟩, a, hcop, h1, h2⟩ | ⟨q, ⟨hq1, hqR, he⟩, a, hcop, h1, h2⟩)\n    · have hne : ¬ Even q := Nat.not_even_iff_odd.2 ho\n      refine ⟨q, hq1, ?_, a, hcop, ?_⟩\n      · unfold qt; rw [if_neg hne]; push_cast; linarith\n      · rw [hodd q hne, abs_sub_lt_iff]; constructor <;> linarith\n    · refine ⟨q, hq1, ?_, a, hcop, ?_⟩\n      · unfold qt; rw [if_pos he]; exact hqR\n      · rw [hev q he, abs_sub_lt_iff]; constructor <;> linarith\n  · rintro ⟨q, hq1, hqR, a, hcop, h⟩\n    rw [abs_sub_lt_iff] at h\n    by_cases he : Even q\n    · right\n      refine ⟨q, ⟨hq1, ?_, he⟩, a, hcop, ?_, ?_⟩\n      · unfold qt at hqR; rw [if_pos he] at hqR; exact hqR\n      · rw [hev q he] at h; linarith\n      · rw [hev q he] at h; linarith\n    · left\n      refine ⟨q, ⟨hq1, ?_, Nat.not_even_iff_odd.1 he⟩, a, hcop, ?_, ?_⟩\n      · unfold qt at hqR; rw [if_neg he] at hqR; push_cast at hqR; linarith\n      · rw [hodd q he] at h; linarith\n      · rw [hodd q he] at h; linarith",
+            "line": 39,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.mem_majorArcs_iff",
+            "lines": [
+              39,
+              68
+            ],
+            "conclusion": "`α ∈ majorArcs δ₀ R x` iff some `q ≥ 1` with `q̃ ≤ 2R` (`q̃ = q` even, `2q` odd) and `a` coprime to `q` has `|α - a/q| < δ₀R/(q̃x)`, i.e. the odd/even radii of (majdef) in one uniform form."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "fragment": "L39-L68"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_majorArcs_le",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs",
+        "lines": [
+          90,
+          95
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_majorArcs_le"
+          },
+          "snippet": {
+            "text": "/-- **Covering**: `∫_{(0,1] ∩ 𝔐_{δ₀,R}} g ≤ Σ_{q, b} ∫_{J_{q,b}} g` for `g ≥ 0` continuous\n`1`-periodic. -/\ntheorem integral_majorArcs_le {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    (hg0 : ∀ α, 0 ≤ g α) {δ₀ R x : ℝ} (hx : 0 < x) (hδ : 0 ≤ δ₀ * R) (hw : δ₀ * R ≤ x) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ R x, g α ≤\n      ∑ q ∈ Qset R, ∑ b ∈ Bset q, ∫ y in arc δ₀ R x q b, g y := by",
+            "line": 90,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_majorArcs_le",
+            "lines": [
+              90,
+              178
+            ],
+            "conclusion": "For continuous nonnegative 1-periodic `g`, `∫_{(0,1] ∩ 𝔐} g ≤ Σ_{q∈Qset R} Σ_{b∈Bset q} ∫_{arc q b} g`, the integral over the major arcs bounded by the sum of integrals over the arcs around `b/q` (proof 90-178 periodizes each arc and uses `mem_majorArcs_iff`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "fragment": "L90-L95"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          240
+        ],
+        "printed": [
+          230
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

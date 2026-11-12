@@ -1,0 +1,120 @@
+{
+  "id": "Lemma B.2.3 step 6",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "$k$ appears only inside the explicit combination in `hsum`, and (B.13) is not used: $\\hat h$ is bounded by $|h|_1=48\\log2$, in Lemma B.2.4's Lean proof rather than in B.2.3's.",
+  "subject": [
+    {
+      "location": {
+        "page": 304,
+        "rect": [
+          0.26253,
+          0.43569,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma B.2.3 step 6: Text, p. 294",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.3 step 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          256,
+          262
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay"
+          },
+          "snippet": {
+            "text": "  have hsum : e (-(1 / 2 * t)) * ((lg1 (1 / 2) : ℂ) / c - (lg1' (1 / 2) : ℂ) / c ^ 2) -\n        e (-(1 / 4 * t)) * ((lg1 (1 / 4) : ℂ) / c - (lg1' (1 / 4) : ℂ) / c ^ 2) + I1 / c ^ 2 +\n      ((e (-(1 * t)) * ((lg2 1 : ℂ) / c - (lg2' 1 : ℂ) / c ^ 2) -\n        e (-(1 / 2 * t)) * ((lg2 (1 / 2) : ℂ) / c - (lg2' (1 / 2) : ℂ) / c ^ 2)) + I2 / c ^ 2) =\n      ((16 * Real.log 2 : ℝ) * e (-(1 / 2 * t)) - (32 * Real.log 2 : ℝ) * e (-(1 / 4 * t)) +\n        I1 + I2) / c ^ 2 := by\n    rw [v1, v2, v3, w1, w2, w3, w4]; push_cast; field_simp; ring",
+            "line": 256,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay",
+            "lines": [
+              220,
+              283
+            ],
+            "conclusion": "`hsum`: $c^2(\\log\\cdot\\eta_2)^\\wedge(t)=16\\log2\\,e(-t/2)-32\\log2\\,e(-t/4)+I_1+I_2$, i.e. $-16\\log2\\cdot k(t)+\\hat h(t)$ with $k(t)=2e(-t/4)-e(-t/2)$ never named."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L256-L262"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay",
+        "module": "TernaryGoldbach.MinorArcs.Eta2LogFourier",
+        "lines": [
+          264,
+          267
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay"
+          },
+          "snippet": {
+            "text": "  have hI1 : ‖I1‖ ≤ 32 * Real.log 2 :=\n    (norm_integral_lg''_le (by norm_num) t lg1'').trans integral_abs_lg1''.le\n  have hI2 : ‖I2‖ ≤ 16 * Real.log 2 :=\n    (norm_integral_lg''_le (by norm_num) t lg2'').trans integral_abs_lg2''.le",
+            "line": 264,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_le_decay",
+            "lines": [
+              220,
+              283
+            ],
+            "conclusion": "`hI1`, `hI2`: $\\|I_1\\|\\le32\\log2$, $\\|I_2\\|\\le16\\log2$, bounding $\\hat h$ by $|h|_1$ rather than by a $1/|t|$ decay bound."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2LogFourier.lean",
+            "fragment": "L264-L267"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          304
+        ],
+        "printed": [
+          294
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

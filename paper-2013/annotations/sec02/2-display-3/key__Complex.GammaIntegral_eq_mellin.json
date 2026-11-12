@@ -1,0 +1,84 @@
+{
+  "id": "2 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Only real `z > 0` (scaling by `a`), not complex `z` with `Re z > 0`; the contour rotation `∫_0^{z∞}` is not carried out in [L].",
+  "subject": [
+    {
+      "location": {
+        "page": 10,
+        "rect": [
+          0.20371,
+          0.31113,
+          0.63183,
+          0.07929
+        ]
+      },
+      "title": "Display, p. 10",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "Complex.GammaIntegral_eq_mellin",
+        "module": "Mathlib.Analysis.SpecialFunctions.Gamma.Deriv",
+        "lines": [
+          45,
+          47
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Complex.GammaIntegral_eq_mellin"
+          },
+          "snippet": {
+            "text": "/-- Rewrite the Gamma integral as an example of a Mellin transform. -/\ntheorem GammaIntegral_eq_mellin : GammaIntegral = mellin fun x => ↑(Real.exp (-x)) :=\n  funext fun s => by simp only [mellin, GammaIntegral, smul_eq_mul, mul_comm]",
+            "line": 45,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "Complex.GammaIntegral_eq_mellin",
+            "lines": [
+              45,
+              47
+            ],
+            "conclusion": "`Γ(s) = ∫ e^{-t} t^{s-1} dt` is the Mellin transform of `e^{-x}`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/SpecialFunctions/Gamma/Deriv.lean",
+            "fragment": "L45-L47"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          10
+        ],
+        "printed": [
+          10
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 2.4 display 3, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

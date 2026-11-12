@@ -1,0 +1,156 @@
+{
+  "id": "Proposition 4.5 step 14",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no convexity interpolation of R between x/K and x and no integral bound with C_{phi,2,K}; it compares R at scale wy to R at y pointwise (with the factor 1/w) and integrates the resulting majorant.",
+  "subject": [
+    {
+      "location": {
+        "page": 29,
+        "rect": [
+          0.20698,
+          0.33681,
+          0.62529,
+          0.16808
+        ]
+      },
+      "title": "Proposition 4.5 step 14: Display, p. 29",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 4.5 step 14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.R_le_R",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          77,
+          95
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.R_le_R"
+          },
+          "snippet": {
+            "text": "/-- `R_{z,t}` decreases in `z` and increases in `t` (in the range where both logarithms are\npositive): `R z' t' ≤ R z t` if `t' ≤ t` and `9z^{1/3}/(2.004 t) ≤ 9z'^{1/3}/(2.004 t')`. -/\ntheorem R_le_R {z z' t t' : ℝ} (ht' : 1 ≤ 4 * t') (htt : t' ≤ t)\n    (hb : 1 < 9 * z ^ (1 / 3 : ℝ) / (2.004 * t))\n    (hbb : 9 * z ^ (1 / 3 : ℝ) / (2.004 * t) ≤ 9 * z' ^ (1 / 3 : ℝ) / (2.004 * t')) :\n    R z' t' ≤ R z t := by\n  unfold R\n  have ht0 : 0 < t' := by linarith\n  have hu := Real.log_le_log (by linarith) (show 4 * t' ≤ 4 * t by linarith)\n  have hu0 : 0 ≤ Real.log (4 * t') := Real.log_nonneg ht'\n  have hv0 : 0 < Real.log (9 * z ^ (1 / 3 : ℝ) / (2.004 * t)) := Real.log_pos hb\n  have hv := Real.log_le_log (by linarith) hbb\n  have hq : Real.log (4 * t') / (2 * Real.log (9 * z' ^ (1 / 3 : ℝ) / (2.004 * t'))) ≤\n      Real.log (4 * t) / (2 * Real.log (9 * z ^ (1 / 3 : ℝ) / (2.004 * t))) := by\n    apply div_le_div₀ (hu0.trans hu) hu (by positivity) (by linarith)\n  have hq0 : 0 ≤ Real.log (4 * t') / (2 * Real.log (9 * z' ^ (1 / 3 : ℝ) / (2.004 * t'))) :=\n    div_nonneg hu0 (by linarith)\n  have := Real.log_le_log (by linarith) (add_le_add_right hq 1)\n  linarith",
+            "line": 77,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.R_le_R",
+            "lines": [
+              77,
+              95
+            ],
+            "conclusion": "R_{z',t'} <= R_{z,t} when t' <= t and the log argument is larger: monotonicity of R in the scale."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L77-L95"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          117,
+          129
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one"
+          },
+          "snippet": {
+            "text": "      nlinarith\n  have hR0 : 0 ≤ R (w * y) (2 * (w * n)) := R_nonneg (by nlinarith) (by\n    rw [hwy]\n    have := mul_le_mul_of_nonneg_left hw13 (by positivity : (0:ℝ) ≤ y ^ (1 / 3 : ℝ))\n    nlinarith)\n  have hl : Real.log (2 * (w * n)) ≤ Real.log (2 * n) := Real.log_le_log (by nlinarith) (by nlinarith)\n  have hl0 : 0 ≤ Real.log (2 * (w * n)) := Real.log_nonneg (by nlinarith)\n  have hF : Fr (w * n) ≤ Fr n :=\n    Fr_monotoneOn (show w * n ∈ Ici (670 : ℝ) from hn) (show n ∈ Ici (670 : ℝ) from hn670) (by nlinarith)\n  have hF0 := Fr_pos hn\n  have hnum : (R (w * y) (2 * (w * n)) * Real.log (2 * (w * n)) + 0.8764) * √(Fr (w * n)) + 2.526 ≤\n      (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 := by\n    have h1 : R (w * y) (2 * (w * n)) * Real.log (2 * (w * n)) ≤ R y (2 * n) * Real.log (2 * n) :=",
+            "line": 117,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+            "lines": [
+              97,
+              167
+            ],
+            "conclusion": "R_{wy,2wn} <= R_{y,2n} used in the scaling g_{wy}(wn) <= g_y(n)/w."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L117-L129"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123",
+        "lines": [
+          102,
+          209
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_11_2_3"
+          },
+          "snippet": {
+            "text": "/-- **[H, Prop. 11.2.3], corrected** (first case, `q` small).  Let `y = x/κ` and\n`2α = a/q + δ/y` with `(a, q) = 1`, `|δ/y| ≤ 1/(q Q_y)`, `Q_y = (3/4)y^{2/3}`; let\n`r = max(1, |δ|/8) q`.  Let `0 < w₀ ≤ 1 ≤ w₁` with `w₀ y ≥ 2.16·10²⁰`, `q ≤ (w₀y)^{1/3}/6`,\n`w₀ r ≥ 670`, and `|δ/y| ≤ 1/(q Q_{w₁y})`.  If `G(w) ≥ g_{wy}(min(1, w) r)` on `[w₀, w₁]` with\n`Gφ` integrable there, then\n`|S_{η_*}(α, x)| ≤ y (∫_{w₀}^{w₁} G φ + 17 (∫_0^{w₀} φ + ∫_{w₁}^∞ φ))`. -/\ntheorem prop_11_2_3 {α x δ w₀ w₁ : ℝ} {a : ℤ} {q : ℕ} {G : ℝ → ℝ} (hx : 0 < x)\n    (h : Approx2 α (x / κ) δ a q (3 / 4 * (x / κ) ^ (2 / 3 : ℝ)))\n    (hw₀ : 0 < w₀) (hw₀1 : w₀ ≤ 1) (hw₁ : 1 ≤ w₁) (hy : 2.16e20 ≤ w₀ * (x / κ))\n    (hq : (q : ℝ) ≤ (w₀ * (x / κ)) ^ (1 / 3 : ℝ) / 6)\n    (hr : 670 ≤ w₀ * (max 1 (|δ| / 8) * q))\n    (hδ₁ : |δ / (x / κ)| ≤ 1 / (q * (3 / 4 * (w₁ * (x / κ)) ^ (2 / 3 : ℝ))))\n    (hG : ∀ w ∈ Icc w₀ w₁, gx (w * (x / κ)) (min 1 w * (max 1 (|δ| / 8) * q)) ≤ G w)\n    (hGi : IntegrableOn (fun w => G w * phi w) (Icc w₀ w₁)) :\n    ‖S etaStar x α‖ ≤ x / κ * ((∫ w in Icc w₀ w₁, G w * phi w) +\n      17 * ((∫ w in Ioo 0 w₀, phi w) + ∫ w in Ioi w₁, phi w)) := by\n  have hκ : (0 : ℝ) < κ := by rw [TernaryGoldbach.Helfgott.κ]; norm_num\n  set y := x / κ with hy_def\n  have hy0 : 0 < y := div_pos hx hκ\n  set r := max 1 (|δ| / 8) * q with hr_def\n  have hq1 : (1 : ℝ) ≤ q := by exact_mod_cast h.1\n  -- the majorant\n  set B : ℝ → ℝ := fun w =>\n    (Ioo 0 w₀).indicator (fun w => 17 * y * phi w) w +\n      (Icc w₀ w₁).indicator (fun w => y * (G w * phi w)) w +\n      (Ioi w₁).indicator (fun w => 17 * y * phi w) w with hB\n  have hφi : IntegrableOn (fun w => 17 * y * phi w) univ :=\n    (integrable_phi.const_mul (17 * y)).integrableOn\n  have hBi : Integrable B (volume.restrict (Ioi 0)) := by\n    refine Integrable.add (Integrable.add ?_ ?_) ?_\n    · exact (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioo).restrict\n    · exact (IntegrableOn.integrable_indicator (hGi.const_mul y) measurableSet_Icc).restrict\n    · exact (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioi).restrict\n  -- pointwise bound\n  have hpt : ∀ w ∈ Ioi (0 : ℝ), ‖S eta2 (w * y) α‖ * (phi w / w) ≤ B w := by\n    intro w (hw : 0 < w)\n    have hφw : 0 ≤ phi w / w := div_nonneg (phi_nonneg w) hw.le\n    have triv : ‖S eta2 (w * y) α‖ * (phi w / w) ≤ 17 * y * phi w := by\n      have := norm_S_eta2_le_trivial (mul_pos hw hy0) α\n      calc ‖S eta2 (w * y) α‖ * (phi w / w) ≤ 17 * (w * y) * (phi w / w) :=\n            mul_le_mul_of_nonneg_right this hφw\n        _ = 17 * y * phi w := by field_simp\n    rcases lt_or_ge w w₀ with h1 | h1\n    · have : B w = 17 * y * phi w := by\n        simp only [hB, indicator, mem_Ioo, mem_Icc, mem_Ioi, hw, h1, true_and, ite_true]\n        rw [ite_eq_right (by intro h'; linarith [h'.1]), ite_eq_right (by intro h'; linarith)]; ring\n      rw [this]; exact triv\n    rcases le_or_gt w w₁ with h2 | h2\n    · have hBw : B w = y * (G w * phi w) := by\n        simp only [hB, indicator, mem_Ioo, mem_Icc, mem_Ioi]\n        rw [ite_eq_right (by intro h'; linarith [h'.2]), ite_eq_left ⟨h1, h2⟩, ite_eq_right (by intro h'; linarith)]\n        ring\n      rw [hBw]\n      -- Theorem 3.1.1 at scale `wy`\n      have hz : 2.16e20 ≤ w * y := hy.trans (by gcongr)\n      have hqz : (q : ℝ) ≤ (w * y) ^ (1 / 3 : ℝ) / 6 :=\n        hq.trans (by gcongr)\n      obtain ⟨hTz, -, hTz23, -⟩ := cube_root_facts hz\n      have hQz : (q : ℝ) ≤ 3 / 4 * (w * y) ^ (2 / 3 : ℝ) := by rw [hTz23]; nlinarith\n      have hδz : |δ / y| ≤ 1 / (q * (3 / 4 * (w * y) ^ (2 / 3 : ℝ))) :=\n        hδ₁.trans (one_div_le_one_div_of_le (by positivity) (by gcongr))\n      have h' := h.rescale hw hδz hQz\n      have hmm := min_mul_max_le hw (abs_nonneg δ)\n      have hrw : min 1 w * r ≤ max 1 (|w * δ| / 8) * q := by\n        rw [abs_mul, abs_of_pos hw, hr_def, ← mul_assoc]\n        exact mul_le_mul_of_nonneg_right hmm (by linarith)\n      have hlow : 670 ≤ min 1 w * r := by\n        have : w₀ ≤ min 1 w := le_min hw₀1 h1\n        nlinarith [show (0 : ℝ) ≤ r by positivity]\n      have key := norm_S_eta2_le_gx hz h' hqz (by linarith)\n      have hup := r_le_cube_root hz h' hqz\n      have hmono := gx_antitoneOn hz ⟨hlow, hrw.trans hup⟩ ⟨hlow.trans hrw, hup⟩ hrw\n      calc ‖S eta2 (w * y) α‖ * (phi w / w)\n          ≤ gx (w * y) (max 1 (|w * δ| / 8) * q) * (w * y) * (phi w / w) :=\n            mul_le_mul_of_nonneg_right key hφw\n        _ ≤ G w * (w * y) * (phi w / w) := by\n            gcongr\n            exact hmono.trans (hG w ⟨h1, h2⟩)\n        _ = y * (G w * phi w) := by field_simp\n    · have : B w = 17 * y * phi w := by\n        simp only [hB, indicator, mem_Ioo, mem_Icc, mem_Ioi]\n        rw [ite_eq_right (by intro h'; linarith [h'.2]), ite_eq_right (by intro h'; linarith [h'.2]), ite_eq_left h2]\n        ring\n      rw [this]; exact triv\n  -- integrate\n  refine (norm_S_etaStar_le hx α).trans ?_\n  have hf0 : 0 ≤ᵐ[volume.restrict (Ioi 0)] fun w => ‖S eta2 (w * y) α‖ * (phi w / w) :=\n    (ae_restrict_iff' measurableSet_Ioi).2 (Filter.Eventually.of_forall fun w (hw : 0 < w) =>\n      mul_nonneg (norm_nonneg _) (div_nonneg (phi_nonneg w) hw.le))\n  refine (integral_mono_of_nonneg hf0 hBi\n    ((ae_restrict_iff' measurableSet_Ioi).2 (Filter.Eventually.of_forall hpt))).trans (le_of_eq ?_)\n  have I1 : Integrable ((Ioo 0 w₀).indicator (fun w => 17 * y * phi w)) (volume.restrict (Ioi 0)) :=\n    (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioo).restrict\n  have I2 : Integrable ((Icc w₀ w₁).indicator (fun w => y * (G w * phi w))) (volume.restrict (Ioi 0)) :=\n    (IntegrableOn.integrable_indicator (hGi.const_mul y) measurableSet_Icc).restrict\n  have I3 : Integrable ((Ioi w₁).indicator (fun w => 17 * y * phi w)) (volume.restrict (Ioi 0)) :=\n    (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioi).restrict\n  have I12 : Integrable (fun w => (Ioo 0 w₀).indicator (fun w => 17 * y * phi w) w +\n      (Icc w₀ w₁).indicator (fun w => y * (G w * phi w)) w) (volume.restrict (Ioi 0)) := I1.add I2\n  simp only [hB]\n  rw [integral_add I12 I3, integral_add I1 I2, setIntegral_indicator measurableSet_Ioo,\n    setIntegral_indicator measurableSet_Icc, setIntegral_indicator measurableSet_Ioi,\n    inter_eq_right.2 Ioo_subset_Ioi_self,\n    (inter_eq_right (s := Ioi (0:ℝ)) (t := Icc w₀ w₁)).2\n      (fun w (hw : w ∈ Icc w₀ w₁) => lt_of_lt_of_le hw₀ hw.1),\n    (inter_eq_right (s := Ioi (0:ℝ)) (t := Ioi w₁)).2 (Ioi_subset_Ioi (by linarith)),\n    integral_const_mul, integral_const_mul, integral_const_mul]\n  ring",
+            "line": 102,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+            "lines": [
+              102,
+              209
+            ],
+            "conclusion": "Integration over w against phi with an abstract majorant G."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123.lean",
+            "fragment": "L102-L209"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          29
+        ],
+        "printed": [
+          29
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

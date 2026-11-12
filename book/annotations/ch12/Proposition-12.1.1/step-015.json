@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 12.1.1 step 15",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Connective; takes the relation of display 16.",
+  "subject": [
+    {
+      "location": {
+        "page": 239,
+        "rect": [
+          0.17462,
+          0.63838,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Proposition 12.1.1 step 15: Text, p. 229",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          143,
+          148
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Farc_eq"
+          },
+          "snippet": {
+            "text": "theorem Farc_eq {L : ℕ} [NeZero L] {a : ℕ → ℂ} {δ₀ R x β : ℝ} (hx : 0 < x)\n    (hqL : ∀ q ∈ Qset R, q ∣ L) (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) :\n    Farc a δ₀ R x β = ∑ Ψ : DirichletCharacter ℂ L, ‖Schar Ψ⁻¹ a β‖ ^ 2 *\n      (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * Gq (qt Ψ.conductor) ((mR δ₀ R x β : ℕ) / qt Ψ.conductor))) := by",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+            "lines": [
+              140,
+              169
+            ],
+            "conclusion": "Character expansion `F_R(β) = Σ_{Ψ mod L} |S_{Ψ⁻¹}(β)|² (c/φ(c)) κ_c G_{c̃}(m_R(β)/c̃)`, `c = cond Ψ`, where `F_R(β)` is the sum over `q` with `q̃ ≤ 2R`, `|β| < w_q` of `Σ_b |S(b/q+β)|²`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L143-L148"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_eq_integral_Farc",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          272,
+          275
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_arcs_eq_integral_Farc"
+          },
+          "snippet": {
+            "text": "/-- `Σ_{q,b} ∫_{J_{q,b}} |S|² = ∫_ℝ F_R`. -/\ntheorem sum_arcs_eq_integral_Farc {a : ℕ → ℂ} (ha : Summable fun n => ‖a n‖) (δ₀ R x : ℝ) :\n    ∑ q ∈ Qset R, ∑ b ∈ Bset q, ∫ y in arc δ₀ R x q b, ‖expTsum a y‖ ^ 2 =\n      ∫ β, Farc a δ₀ R x β := by",
+            "line": 272,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_eq_integral_Farc",
+            "lines": [
+              272,
+              287
+            ],
+            "conclusion": "`Σ_q Σ_b ∫_{J_{q,b}} |S|² = ∫_ℝ F_R(β) dβ`: the arc integrals are the integral of `F_R` after translating each arc to 0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L272-L275"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          239
+        ],
+        "printed": [
+          229
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "3 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] proves the expansion for the coprime part of Lambda*eta (coprimePart), where the weight mu((q,n^inf))/phi((q,n^inf)) is 1; the identity for the full sum over all n is not formed. Also written with psi = conj chi and psi(b^{-1}) = chi(b).",
+  "subject": [
+    {
+      "location": {
+        "page": 12,
+        "rect": [
+          0.20371,
+          0.29103,
+          0.63183,
+          0.04172
+        ]
+      },
+      "title": "Display, p. 12",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.totient_mul_norm_le",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap",
+        "lines": [
+          24,
+          37
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.totient_mul_norm_le"
+          },
+          "snippet": {
+            "text": "  have hid : ∑ ψ : DirichletCharacter ℂ q, ψ b⁻¹ * (gaussSum ψ ZMod.stdAddChar * Schar ψ⁻¹ a β) =\n      (q.totient : ℂ) * expTsum a ((b.val : ℝ) / q + β) := by\n    simp_rw [← sum_char_mul_S _ ha hcop β, mul_sum]\n    rw [sum_comm]\n    have : ∀ c : ZMod q, ∑ ψ : DirichletCharacter ℂ q, ψ b⁻¹ * (ψ c * expTsum a (c.val / q + β)) =\n        if b = c then (q.totient : ℂ) * expTsum a (c.val / q + β) else 0 := by\n      intro c\n      simp_rw [← mul_assoc, ← sum_mul, DirichletCharacter.sum_char_inv_mul_char_eq ℂ hb c]\n      split_ifs <;> simp\n    rw [sum_congr rfl fun c _ => this c, sum_ite_eq]\n    simp\n  have h1 : ‖(q.totient : ℂ) * expTsum a ((b.val : ℝ) / q + β)‖ =\n      q.totient * ‖expTsum a ((b.val : ℝ) / q + β)‖ := by\n    rw [norm_mul, Complex.norm_natCast]",
+            "line": 24,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.totient_mul_norm_le",
+            "lines": [
+              16,
+              45
+            ],
+            "conclusion": "For coefficients supported on $(n,q)=1$ and unit $b$: $\\phi(q)S(b/q+\\beta)=\\sum_\\psi \\psi(b^{-1})\\tau(\\psi)S_{\\psi^{-1}}(\\beta)$ (`hid`), the Gauss-sum expansion of the display."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap.lean",
+            "fragment": "L24-L37"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          12
+        ],
+        "printed": [
+          12
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 10.1 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

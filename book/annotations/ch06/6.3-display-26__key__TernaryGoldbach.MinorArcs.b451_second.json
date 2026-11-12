@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 26",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same bound for (4.51) (the expression [H] calls (eq:octet)) but with Lean's own version `bound_4_51` of the error term (different lower-order terms, see its docstring) and Lean's parameters: Lean (0.031 L^2 + 3025.5 L + 8360) T^2 against [H]'s 1177.76 x^{2/3} log x + 0.0006406 x^{2/3}(log x)^2. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+  "subject": [
+    {
+      "location": {
+        "page": 137,
+        "rect": [
+          0.17135,
+          0.83443,
+          0.56816,
+          0.01879
+        ]
+      },
+      "title": "Display, p. 127",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.b451_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI2",
+        "lines": [
+          85,
+          89
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.b451_second"
+          },
+          "snippet": {
+            "text": "/-- (4.51) at the second parameters in case (a). -/\ntheorem b451_second {T : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : T / 6 < q) (hqQ : (q : ℝ) ≤ T ^ 2 / 349) :\n    bound_4_51 (T ^ 3) q (U2 T) (V2 T) ≤\n      (0.031 * Real.log T ^ 2 + 3025.5 * Real.log T + 8360) * T ^ 2 := by\n  have hT0 : 0 < T := by linarith",
+            "line": 85,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.b451_second",
+            "lines": [
+              85,
+              318
+            ],
+            "conclusion": "`bound_4_51 (T^3) q (U2 T) (V2 T) <= (0.031 L^2 + 3025.5 L + 8360) T^2` for `T/6 < q <= T^2/349`: the bound of (4.51) in case |delta| <= 1/2c2."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI2.lean",
+            "fragment": "L85-L89"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          137
+        ],
+        "printed": [
+          127
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

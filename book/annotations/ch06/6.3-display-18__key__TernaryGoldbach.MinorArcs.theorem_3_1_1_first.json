@@ -1,0 +1,81 @@
+{
+  "id": "6.3 display 18",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same combining step with the same shape (13/4 log δ₀q, 13.66, 37.55 vs 13/4, 13.6516, 37.5415) but from [L]'s own I1/I2 bounds (3.8·2x/(δ₀φ) + 2.8·2x/(δ₀φ) + (…)2x/t), so the left side differs and the constants are rounded up (7.82 vs 7.81811).",
+  "subject": [
+    {
+      "location": {
+        "page": 135,
+        "rect": [
+          0.17135,
+          0.18564,
+          0.56816,
+          0.10077
+        ]
+      },
+      "title": "Display, p. 125",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.3 display 18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceFinal",
+        "lines": [
+          84,
+          103
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first"
+          },
+          "snippet": {
+            "text": "  -- `2x/(δ₀φ) ≥ 2x/t`.\n  have hXφq : 2 * T ^ 3 / t ≤ 2 * T ^ 3 / (delta0 δ * Nat.totient q) := by\n    apply div_le_div_of_nonneg_left (by positivity) (by positivity)\n    rw [ht]; exact mul_le_mul_of_nonneg_left hφq (by linarith)\n  have hL : 2 * T ^ 3 / t * ((q : ℝ) / Nat.totient q * (13 / 4 * Real.log t + 7.82) +\n      13.66 * Real.log t + 37.55) = 2 * T ^ 3 / (delta0 δ * Nat.totient q) *\n        (13 / 4 * Real.log t + 7.82) + 2 * T ^ 3 / t * (13.66 * Real.log t + 37.55) := by\n    rw [ht]; field_simp; ring\n  rw [hL]\n  have hlt0 : 0 ≤ Real.log t := Real.log_nonneg (by linarith)\n  have hX : 0 ≤ 2 * T ^ 3 / t := by positivity\n  have hS : 0 ≤ T ^ 3 / √t := by positivity\n  have hK : 0 ≤ T ^ 2 * √T := by positivity\n  have hS' : 2.526 * T ^ 3 / √t = 2.526 * (T ^ 3 / √t) := by ring\n  rw [hS']\n  -- `(3.25 log t + 1.22)(2x/(δ₀φ) - 2x/t) ≥ 0` (`7.82 = 3.8 + 2.8 + 1.22`).\n  have hspill : (13 / 4 * Real.log t + 1.22) * (2 * T ^ 3 / t) ≤\n      (13 / 4 * Real.log t + 1.22) * (2 * T ^ 3 / (delta0 δ * Nat.totient q)) :=\n    mul_le_mul_of_nonneg_left hXφq (by positivity)\n  nlinarith",
+            "line": 84,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first",
+            "lines": [
+              32,
+              103
+            ],
+            "conclusion": "Merges the φ(q)- and q-denominator terms: with `7.82 = 3.8 + 2.8 + 1.22`, `2x/t ≤ 2x/(δ₀φ(q))` gives the combined bound `2x/(δ₀φ)(13/4 log t + 7.82) + 2x/t(13.66 log t + 37.55)` (`hXφq`, `hL`, `hspill`)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceFinal.lean",
+            "fragment": "L84-L103"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          135
+        ],
+        "printed": [
+          125
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

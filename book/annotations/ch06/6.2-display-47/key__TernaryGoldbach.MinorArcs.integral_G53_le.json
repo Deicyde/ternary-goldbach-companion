@@ -1,0 +1,81 @@
+{
+  "id": "6.2 display 47",
+  "kind": "display",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean bounds the finite-range integral directly with the same final expression; the extension to infinity is implicit (bound uniform in A).",
+  "subject": [
+    {
+      "location": {
+        "page": 125,
+        "rect": [
+          0.17135,
+          0.40142,
+          0.56816,
+          0.07922
+        ]
+      },
+      "title": "Display, p. 115",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "6.2 display 47"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_G53_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge",
+        "lines": [
+          363,
+          367
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_G53_le"
+          },
+          "snippet": {
+            "text": "  have K2 := mul_le_mul_of_nonneg_left J2 hc2\n  have K3 := mul_le_mul_of_nonneg_left J3 hc3\n  have e2 : c2 * (2 * (√(Real.log V) + 1 / √(Real.log V)) / √V) =\n      √κ * (√r * x * (√(Real.log V) + 1 / √(Real.log V)) / √V) := by\n    simp only [c2]; ring",
+            "line": 363,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.integral_G53_le",
+            "lines": [
+              292,
+              375
+            ],
+            "conclusion": "The c2 term, c2 = sqrt(kappa)(sqrt r x/2) times the integral of sqrt(log W)/W^{3/2}, is bounded by sqrt(kappa) sqrt(r) x (sqrt(log V) + 1/sqrt(log V))/sqrt V; with r = 1/(2(1-rho)) and the factor 4 this is kappa_2 x/sqrt(2(1-rho)V) (...)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L363-L367"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          125
+        ],
+        "printed": [
+          115
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

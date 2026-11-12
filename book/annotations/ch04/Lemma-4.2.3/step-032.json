@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 4.2.3 step 32",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same per-`j` term (`4q/π·√(c₁c₀/4(1+q/y)) = 2q√(c₀c₁)/π·√(1+q/y)`); Lean sums over `j<⌈(D-R)/q⌉` blocks (`sum_Ioc_le_blocks`) for η=η₂.",
+  "subject": [
+    {
+      "location": {
+        "page": 79,
+        "rect": [
+          0.17462,
+          0.80673,
+          0.56162,
+          0.04916
+        ]
+      },
+      "title": "Lemma 4.2.3 step 32: Display, p. 69",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          684,
+          756
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3L"
+          },
+          "snippet": {
+            "text": "  have hblock : ∀ j ∈ range J,\n      ∑ n ∈ Ioc ⌊R + j * q⌋ ⌊min (R + (j + 1) * q) D⌋, TLn α x n ≤\n        3 * c₁ / 2 * x * ((lx - Real.log (R + j * q)) / (R + j * q)) +\n          2 * q * √(c₀ * c₁) / π * (√(1 + q / (R + j * q)) * (lx - Real.log (R + j * q))) := by\n    intro j hj\n    set y := R + j * q\n    have hy0 : 0 < y := by positivity\n    have hyD : y < D := lt_of_lt_nblocks hq0 (mem_range.1 hj)\n    set w := lx - Real.log y\n    have hw : 0 ≤ w := by simp only [w, lx]; linarith [Real.log_le_log hy0 (hyD.le.trans hDx)]\n    set A := c₁ * x / (2 * y)\n    set C := c₀ / 2 * (y + q) / x\n    have h11 := (lemma_4_1_1' happ y (A := A) (C := C) (by positivity) (by positivity))\n    have hsub : Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋ ⊆ Ioc ⌊y⌋ ⌊y + q⌋ := by\n      apply Ioc_subset_Ioc le_rfl (Int.floor_mono ?_)\n      have := min_le_left (R + (j + 1) * q) D; simp only [y]; linarith\n    have hterm : ∀ n ∈ Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋,\n        TLn α x n ≤ w * minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) := by\n      intro n hn\n      rw [mem_Ioc] at hn\n      have hyn : y < n := by\n        have := Int.lt_floor_add_one y\n        have : ((⌊y⌋ : ℤ) : ℝ) + 1 ≤ n := by exact_mod_cast hn.1\n        linarith\n      have hnD : (n : ℝ) ≤ D := (Int.cast_le.2 hn.2).trans ((Int.floor_le _).trans (min_le_right _ _))\n      have hnR : (n : ℝ) ≤ y + q := by\n        have := (Int.cast_le.2 hn.2).trans (Int.floor_le (min (R + (j + 1) * q) D))\n        have := min_le_left (R + (j + 1) * q) D\n        simp only [y] at *; push_cast at *; linarith\n      have hn1 : (0 : ℤ) < n := by exact_mod_cast (show (0 : ℝ) < n by linarith)\n      have hcast : ((n.toNat : ℕ) : ℤ) = n := Int.toNat_of_nonneg hn1.le\n      have hmR : ((n.toNat : ℕ) : ℝ) = n := by exact_mod_cast hcast\n      have hm : 1 ≤ n.toNat := by omega\n      have hmx : 4 * ((n.toNat : ℕ) : ℝ) ≤ x := by rw [hmR]; linarith\n      have := norm_ToddL_le_minA hx0 h2α hm hmx (A := A) (C := C)\n        (by\n          rw [hmR]; simp only [A, c₁]\n          have e : (1 + eta2'L1 / (x / D)) * x / (2 * y) = x / (2 * y) + eta2'L1 * D / (2 * y) := by\n            field_simp\n          rw [e]\n          have h1 : x / (2 * n) ≤ x / (2 * y) := div_le_div_of_nonneg_left hx0.le (by positivity)\n            (by linarith)\n          have h2 : eta2'L1 / 2 ≤ eta2'L1 * D / (2 * y) := by\n            rw [le_div_iff₀ (by positivity)]; nlinarith\n          linarith)\n        (by\n          rw [hmR]; simp only [C]\n          rw [show c₀ / 2 * (y + q) / x = (y + q) / x * (c₀ / 2) by ring]\n          exact mul_le_mul_of_nonneg_right (div_le_div_of_nonneg_right hnR hx0.le) (by positivity))\n      rw [hcast] at this\n      have hL : Real.log (x / ((n.toNat : ℕ) : ℝ)) ≤ w := by\n        rw [hmR, Real.log_div hx0.ne' (by linarith)]\n        simp only [w, lx]; linarith [Real.log_le_log hy0 hyn.le]\n      refine (le_trans (show TLn α x n = ‖ToddG (eta2log (x / (n.toNat : ℕ))) α x n.toNat‖ from\n        rfl).le this).trans ?_\n      exact mul_le_mul_of_nonneg_right hL (minA_nonneg (by positivity) (by positivity) (sq_nonneg _))\n    have hAC : √(A * C) = √(c₀ * c₁) / 2 * √(1 + q / y) := by\n      rw [Real.sqrt_eq_iff_mul_self_eq (by positivity) (by positivity)]\n      have e1 : √(c₀ * c₁) / 2 * √(1 + q / y) * (√(c₀ * c₁) / 2 * √(1 + q / y)) =\n          (√(c₀ * c₁) * √(c₀ * c₁)) / 4 * (√(1 + q / y) * √(1 + q / y)) := by ring\n      rw [e1, Real.mul_self_sqrt (by positivity), Real.mul_self_sqrt (by positivity)]\n      simp only [A, C]; field_simp; norm_num\n    calc ∑ n ∈ Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋, TLn α x n\n        ≤ ∑ n ∈ Ioc ⌊y⌋ ⌊min (R + (j + 1) * q) D⌋,\n            w * minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) := sum_le_sum hterm\n      _ ≤ ∑ n ∈ Ioc ⌊y⌋ ⌊y + q⌋, w * minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) :=\n          sum_le_sum_of_subset_of_nonneg hsub fun n _ _ =>\n            mul_nonneg hw (minA_nonneg (by positivity) (by positivity) (sq_nonneg _))\n      _ = w * ∑ n ∈ Ioc ⌊y⌋ ⌊y + q⌋, minA A C (Real.sin (π * (a / q + δ / x) * n) ^ 2) := by\n          rw [mul_sum]\n      _ ≤ w * (3 * A + 4 * q / π * √(A * C)) :=\n          mul_le_mul_of_nonneg_left (h11.trans (min_le_right _ _)) hw\n      _ = _ := by rw [hAC]; simp only [A, w]; field_simp; ring",
+            "line": 684,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+            "lines": [
+              650,
+              904
+            ],
+            "conclusion": "Each block of length `q` from `y=R+jq` satisfies `∑ TLn ≤ (3c₁/2) x w/y + (2q√(c₀c₁)/π) √(1+q/y) w`, `w=log x-log y`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L684-L756"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          79
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

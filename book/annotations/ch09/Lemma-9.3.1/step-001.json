@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.3.1 step 1",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Connective introducing the pairing display; Lean handles the zeros with $\\Im\\rho<-T_0$ by splitting each window count by the sign of $\\Im u$, not by pairing $\\rho$ with $1-\\rho$.",
+  "subject": [
+    {
+      "location": {
+        "page": 189,
+        "rect": [
+          0.17462,
+          0.28982,
+          0.56162,
+          0.0163
+        ]
+      },
+      "title": "Lemma 9.3.1 step 1: Text, p. 179",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.3.1 step 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.count_tail_window",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          363,
+          391
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.count_tail_window"
+          },
+          "snippet": {
+            "text": "  rw [← Finset.sum_filter_add_sum_filter_not F (fun u => 0 < u.im)]\n  have hp := hcount (F.filter fun u => 0 < u.im) (Finset.filter_subset _ _) c\n    (abs_of_pos (by positivity)) (fun u hu => by\n      obtain ⟨huF, him0⟩ := Finset.mem_filter.1 hu\n      obtain ⟨hp1, hp2⟩ := hpos u huF\n      obtain ⟨hr1, hr2⟩ := hre u (Finset.mem_filter.1 huF).1\n      rw [abs_of_pos him0] at hp1 hp2\n      refine norm_le_of_re_im (a := 2) (b := 2.2) (by norm_num) ?_ ?_ (by norm_num)\n      · simp only [Complex.sub_re, Complex.add_re, Complex.re_ofNat, Complex.mul_re, Complex.ofReal_re,\n          Complex.I_re, mul_zero, Complex.ofReal_im, Complex.I_im, mul_one, sub_zero]\n        rw [abs_le]; constructor <;> linarith\n      · simp only [Complex.sub_im, Complex.add_im, Complex.im_ofNat, Complex.mul_im, Complex.ofReal_re,\n          Complex.I_re, mul_zero, Complex.ofReal_im, Complex.I_im, mul_one, zero_add]\n        rw [abs_le]; constructor <;> linarith)\n  have hn := hcount (F.filter fun u => ¬ 0 < u.im) (Finset.filter_subset _ _) (-c)\n    (by rw [abs_neg, abs_of_pos (by positivity)]) (fun u hu => by\n      obtain ⟨huF, him0⟩ := Finset.mem_filter.1 hu\n      obtain ⟨hp1, hp2⟩ := hpos u huF\n      obtain ⟨hr1, hr2⟩ := hre u (Finset.mem_filter.1 huF).1\n      push Not at him0\n      rw [abs_of_nonpos him0] at hp1 hp2\n      refine norm_le_of_re_im (a := 2) (b := 2.2) (by norm_num) ?_ ?_ (by norm_num)\n      · simp only [Complex.sub_re, Complex.add_re, Complex.re_ofNat, Complex.mul_re, Complex.ofReal_re,\n          Complex.I_re, mul_zero, Complex.ofReal_im, Complex.I_im, mul_one, sub_zero]\n        rw [abs_le]; constructor <;> linarith\n      · simp only [Complex.sub_im, Complex.add_im, Complex.im_ofNat, Complex.mul_im, Complex.ofReal_re,\n          Complex.I_re, mul_zero, Complex.ofReal_im, Complex.I_im, mul_one, zero_add]\n        rw [abs_le]; constructor <;> linarith)\n  linarith",
+            "line": 363,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.count_tail_window",
+            "lines": [
+              325,
+              391
+            ],
+            "conclusion": "Each tail window $\\lfloor(|\\Im u|-T_0)/4.4\\rfloor=k$ is split into zeros with $\\Im u>0$ and $\\Im u\\le 0$, each half is counted by Jensen around $2\\pm ic$, giving total multiplicity $\\le 2Z_3+2c_3(k+1)$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L363-L391"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          559,
+          560
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "    have hZw : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => idx u = k), m u ≤ 2 * Z3 N T0 + 2 * c3 T0 * (k + 1) :=\n      fun k => count_tail_window hχ hχ1 hT00 S hSZ hre him k",
+            "line": 559,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "The two-sided window count `count_tail_window` is applied to all rectangle zeros with $|\\Im u|>T_0$, so the factor $2$ in $2Z_3$ carries the zeros below the real axis."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L559-L560"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          189
+        ],
+        "printed": [
+          179
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

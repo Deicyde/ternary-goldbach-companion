@@ -1,0 +1,81 @@
+{
+  "id": "4 display 5",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean never forms the piecewise function or compares $g$ and $h$ at the crossover $x=(6r)^3$; it proves the two branch monotonicities separately and majorises by the max.",
+  "subject": [
+    {
+      "location": {
+        "page": 26,
+        "rect": [
+          0.20371,
+          0.56424,
+          0.63183,
+          0.04347
+        ]
+      },
+      "title": "Display, p. 26",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "4 display 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+        "lines": [
+          350,
+          351
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY"
+          },
+          "snippet": {
+            "text": "/-- `ĝ(y, n) = 1.398 max(g_y(n), h(y)) + 17 (670/n)³/3`. -/\nnoncomputable def ghatY (y n : ℝ) : ℝ := 1.398 * max (gx y n) (hfun y) + 17 * (670 / n) ^ 3 / 3",
+            "line": 350,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+            "lines": [
+              350,
+              351
+            ],
+            "conclusion": "Defines $\\hat g(y,n)=1.398\\max(g_y(n),h(y))+17(670/n)^3/3$: the max of the two branches replaces the piecewise function."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L350-L351"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          26
+        ],
+        "printed": [
+          26
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 11.2 display 2, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

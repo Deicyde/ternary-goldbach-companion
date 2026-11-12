@@ -1,0 +1,81 @@
+{
+  "id": "2.4 display 1",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] never states `η₂ = (2·1_[1/2,1]) *_M (2·1_[1/2,1])` as a function identity (`eta2` is defined directly by `4 max(log 2 - |log 2t|, 0)`, Helfgott/Defs.lean:44-46); it proves the same convolution integral only at points `t = mn/x` with integers `m, n`, with the substitution `w = n/W` and mixed strict/non-strict inequalities.",
+  "subject": [
+    {
+      "location": {
+        "page": 45,
+        "rect": [
+          0.17135,
+          0.3786,
+          0.56816,
+          0.01846
+        ]
+      },
+      "title": "Display, p. 35",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "2.4 display 1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2_eq_integral",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIReduction",
+        "lines": [
+          79,
+          84
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2_eq_integral"
+          },
+          "snippet": {
+            "text": "theorem eta2_eq_integral {x : ℝ} (hx : 0 < x) {m n : ℕ} (hm : 1 ≤ m) (hn : 1 ≤ n) {A B : ℝ}\n    (hA : 0 < A) (hAB : A ≤ B) (hAlo : A ≤ max (x / (2 * m)) n)\n    (hhiB : min (x / m) (2 * n) ≤ B) :\n    eta2 (m * n / x) = 4 * ∫ W in A..B,\n      (if x / (2 * W) < m ∧ (m : ℝ) ≤ x / W ∧ W / 2 < n ∧ (n : ℝ) ≤ W then 1 / W else 0) := by\n  have hm0 : (0 : ℝ) < m := by exact_mod_cast hm",
+            "line": 79,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.eta2_eq_integral",
+            "lines": [
+              77,
+              161
+            ],
+            "conclusion": "For positive integers `m, n`: `η₂(mn/x) = 4∫ 1[x/2W < m ≤ x/W, W/2 < n ≤ W] dW/W`, the Mellin convolution of `2·1_[1/2,1]` with itself written as an integral over `W` of two interval indicators."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIReduction.lean",
+            "fragment": "L79-L84"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          45
+        ],
+        "printed": [
+          35
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

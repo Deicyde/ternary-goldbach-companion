@@ -1,0 +1,81 @@
+{
+  "id": "9.3 display 2",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Same exponents e^{-0.1598T0} and e^{-0.1065T0²/(πδ)²} and hypothesis T0≥max(10π|δ|,50), but Lean's constants (Jensen counts Z₃, geometric-window sums, 0.892, 0.588) are much larger than 6.11, 1.578 and have no T0 log(qT0/2π) factor; no standalone Lean statement of this display, and err932 (GRH.lean:75-79) only transcribes it.",
+  "subject": [
+    {
+      "location": {
+        "page": 189,
+        "rect": [
+          0.17135,
+          0.22748,
+          0.56816,
+          0.05342
+        ]
+      },
+      "title": "Display, p. 179",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "9.3 display 2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.E2b",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          309,
+          311
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.E2b"
+          },
+          "snippet": {
+            "text": "noncomputable def E2b (N : ℕ) (T0 δ : ℝ) : ℝ :=\n  EB T0 * (2 * Z3 N T0 / (1 - rhoB) + 2 * c3 T0 / (1 - rhoB) ^ 2) +\n    EA T0 δ * (2 * Z3 N T0 / (1 - rhoA δ) + 2 * c3 T0 / (1 - rhoA δ) ^ 2)",
+            "line": 309,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.E2b",
+            "lines": [
+              309,
+              311
+            ],
+            "conclusion": "E2b = EB(2Z₃/(1-ρ_B)+2c₃/(1-ρ_B)²)+EA(…), with EB=0.892T0e^{-0.1598T0}, EA=0.588u0²e^{-0.1065u0²}."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L309-L311"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          189
+        ],
+        "printed": [
+          179
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

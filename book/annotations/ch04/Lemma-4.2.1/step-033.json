@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 33",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean keeps the term (D-M) unmerged and uses Q₀ and 2D/Qr in place of Q; constants 3c₁/2 (odd m).",
+  "subject": [
+    {
+      "location": {
+        "page": 71,
+        "rect": [
+          0.17462,
+          0.28514,
+          0.56162,
+          0.0178
+        ]
+      },
+      "title": "Lemma 4.2.1 step 33: Text, p. 61",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1261,
+          1268
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hpart1 : 3 * c₁ / 2 * (x / M + x / q' * Real.log (D / M)) ≤\n      3 / 2 * c₁ * (2 + (1 + ε) / ε * logPlus (2 * D / Qr)) * (x / Q₀) := by\n    have : x / q' * Real.log (D / M) ≤ (1 + ε) / ε * (x / Q₀) * logPlus (2 * D / Qr) :=\n      mul_le_mul hxq' hlogeq hDMlog (by positivity)\n    calc 3 * c₁ / 2 * (x / M + x / q' * Real.log (D / M))\n        ≤ 3 * c₁ / 2 * (2 * (x / Q₀) + (1 + ε) / ε * (x / Q₀) * logPlus (2 * D / Qr)) := by\n          gcongr\n      _ = _ := by ring",
+            "line": 1261,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`(3c₁/2)(x/M + (x/q') log(D/M)) ≤ (3/2)c₁(2 + ((1+ε)/ε) log⁺(2D/Qr)) x/Q₀`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1261-L1268"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          1269,
+          1276
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hpart2 : 2 * √(c₀ * c₁) / π * q' * (√(1 + q' / M) + (D - M) / q' + 1 / 2 * Real.log (D / M)) ≤\n      2 * √(c₀ * c₁) / π * ((1 + ε) * min ((⌊Qr⌋₊ : ℝ) + 1) (2 * D) *\n        (√(3 + 2 * ε) + 1 / 2 * logPlus (2 * D / Qr))) + 2 * √(c₀ * c₁) / π * (D - M) := by\n    have e : 2 * √(c₀ * c₁) / π * q' * (√(1 + q' / M) + (D - M) / q' + 1 / 2 * Real.log (D / M)) =\n        2 * √(c₀ * c₁) / π * (q' * (√(1 + q' / M) + 1 / 2 * Real.log (D / M))) +\n          2 * √(c₀ * c₁) / π * (D - M) := by field_simp; ring\n    rw [e]\n    gcongr",
+            "line": 1269,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "lines": [
+              1117,
+              1286
+            ],
+            "conclusion": "`(2√(c₀c₁)/π) q'(√(1+q'/M) + (D-M)/q' + ½log(D/M)) ≤ (2√(c₀c₁)/π)((1+ε)min(⌊Qr⌋+1,2D)(√(3+2ε)+½log⁺(2D/Qr))) + (2√(c₀c₁)/π)(D-M)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1269-L1276"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          71
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 6.3 step 30",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean has no separate computation of the jump of $H$ at $r_1$; the top-level term $1-H(r_2-1)$ is bounded inside `Mexpr ≤ 1.037` with different constants and $\\varkappa=49$.",
+  "subject": [
+    {
+      "location": {
+        "page": 51,
+        "rect": [
+          0.20698,
+          0.77013,
+          0.62529,
+          0.12874
+        ]
+      },
+      "title": "Theorem 6.3 step 30: Display, p. 51",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3 step 30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          489,
+          500
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "    · rw [hHr, hHl (r₂ - 1) (by omega)]\n      have h1 : T - cL (r₂ - 1) / Dx x * T ≤ x * (sig x - cL (r₂ - 1) * sig x / Dx x) := by\n        have hc : 0 ≤ 1 - cL (r₂ - 1) / Dx x := by\n          rw [sub_nonneg, div_le_one hD]; exact hcD\n        have := mul_le_mul_of_nonneg_left hT hc\n        have e1 : T - cL (r₂ - 1) / Dx x * T = (1 - cL (r₂ - 1) / Dx x) * T := by ring\n        have e2 : x * (sig x - cL (r₂ - 1) * sig x / Dx x) = (1 - cL (r₂ - 1) / Dx x) * (sig x * x) := by\n          field_simp\n        linarith\n      have := mul_le_mul_of_nonneg_left h1 (hgnn r₂ h150.le)\n      simp only [hg_def] at this ⊢\n      linarith",
+            "line": 489,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "The top-level term: $g(r_2)(T-H(r_2-1))\\le yx\\,\\hat g(r_2)\\,(\\mathrm{sig}\\,x-c_L(r_2-1)\\mathrm{sig}\\,x/D_x)$, i.e. the jump $1-H(r_1^-)$ times $T$; its size is controlled via `NumericsGoal`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L489-L500"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          77,
+          81
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Mexpr"
+          },
+          "snippet": {
+            "text": "/-- The bound for `Z₁/(x · x/κ)` produced by `thm_13_2_1_repaired`. -/\nnoncomputable def Mexpr (x : ℝ) (r₂ : ℕ) : ℝ :=\n  ghatY (x / κ) 150000 * (cL 150000 * sig x / Dx x - 8.6294) +\n    ∑ n ∈ Finset.Ioo 150000 r₂, ghatY (x / κ) n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n    ghatY (x / κ) r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)",
+            "line": 77,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+            "lines": [
+              77,
+              81
+            ],
+            "conclusion": "`Mexpr` collects the base, sum and top-level terms of the bound; `numerics_M` proves it is $\\le 1.037$ (the numerical content of the book's computation of the jump of $H$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L77-L81"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          51
+        ],
+        "printed": [
+          51
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Theorem 13.2.1 step 30, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

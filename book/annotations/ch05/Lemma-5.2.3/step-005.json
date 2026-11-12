@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 5.2.3 step 5",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "All three bounds are proved, but (5.51) needs W >= 50000 and W' <= W, and (5.52) is stated (as its proof needs) for odd m only; (5.51) goes through a weight argument (`odd_blocks_from_weight`), not a relabelling of angles. Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_5_2_3_step_5.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 108,
+        "rect": [
+          0.26253,
+          0.69167,
+          0.56162,
+          0.04736
+        ]
+      },
+      "title": "Lemma 5.2.3 step 5: Text, p. 98",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.3 step 5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_a",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          131,
+          137
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_a"
+          },
+          "snippet": {
+            "text": "/-- **[H, Lemma 5.2.3], (5.50)**: if `2α = a/q + O*(1/qQ)`, `q ≤ Q`, then\n`∑_{A₀ < m ≤ A₁, m odd} |S(αm)|² ≤ ⌈(A₁ - A₀)/min(2q, Q)⌉ (W - W' + 2q) ∑ (log p)²`. -/\ntheorem lemma_5_2_3_a {α Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) (hqQ : (q : ℝ) ≤ Q) {W' W : ℝ} (hW' : 0 ≤ W')\n    (hWW : W' ≤ W) (A₀ A₁ : ℝ) :\n    oddSqSum α W' W A₀ A₁ ≤\n      ⌈(A₁ - A₀) / min (2 * (q : ℝ)) Q⌉₊ * ((W - W' + 2 * q) * logSqSum W' W) := by",
+            "line": 131,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_a",
+            "lines": [
+              131,
+              210
+            ],
+            "conclusion": "(5.50): odd-m bound with ceil((A1-A0)/min(2q,Q))(W-W'+2q)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L131-L137"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          215,
+          219
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_2_3_c {α Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) {ϱ ρ : ℝ} (hϱ : 0 ≤ ϱ) (hϱ1 : ϱ ≤ 1) (hρ : 0 ≤ ρ)\n    (hϱρ : ϱ * ρ < 1) (hqρ : (q : ℝ) ≤ ρ * Q) {W' W : ℝ} (hW' : 0 ≤ W') {A₀ A₁ : ℝ}\n    (hA : A₁ - A₀ ≤ 2 * ϱ * q) :\n    oddSqSum α W' W A₀ A₁ ≤ (W - W' + q / (1 - ϱ * ρ)) * logSqSum W' W := by",
+            "line": 215,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c",
+            "lines": [
+              212,
+              254
+            ],
+            "conclusion": "(5.52) for odd m, ϱρ<1: bound (W-W'+q/(1-ϱρ))Σ(log p)²."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L215-L219"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+        "module": "TernaryGoldbach.MinorArcs.TypeII",
+        "lines": [
+          1383,
+          1387
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_2_3_b {α Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) {W' W : ℝ} (hqW : 2 * q < W) (hQW : 3.5 * W ≤ Q)\n    (hW : 50000 ≤ W) (hW'W : W / 2 ≤ W') (hWW : W' ≤ W) (A₀ A₁ : ℝ) :\n    oddSqSum α W' W A₀ A₁ ≤\n      ⌈(A₁ - A₀) / (2 * q)⌉₊ * (q / Nat.totient q * (W / Real.log (W / (2 * q))) * logSqSum W' W) := by",
+            "line": 1383,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+            "lines": [
+              1378,
+              1433
+            ],
+            "conclusion": "(5.51) with extra hypotheses W >= 50000, W' <= W."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1383-L1387"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          108
+        ],
+        "printed": [
+          98
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

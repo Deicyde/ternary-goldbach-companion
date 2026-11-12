@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 12.1.2 step 7",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has no explicit `Σ_1`, `Σ_2` with the `r`-sums and rewriting of odd `q` with even `r`; the odd/even bookkeeping is `q̃` and `κ_c`, and the level-`Q` character sum is `∫F_Q`.",
+  "subject": [
+    {
+      "location": {
+        "page": 241,
+        "rect": [
+          0.17462,
+          0.32568,
+          0.56162,
+          0.18995
+        ]
+      },
+      "title": "Proposition 12.1.2 step 7: Display, p. 231",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.2 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          143,
+          148
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Farc_eq"
+          },
+          "snippet": {
+            "text": "theorem Farc_eq {L : ℕ} [NeZero L] {a : ℕ → ℂ} {δ₀ R x β : ℝ} (hx : 0 < x)\n    (hqL : ∀ q ∈ Qset R, q ∣ L) (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) :\n    Farc a δ₀ R x β = ∑ Ψ : DirichletCharacter ℂ L, ‖Schar Ψ⁻¹ a β‖ ^ 2 *\n      (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * Gq (qt Ψ.conductor) ((mR δ₀ R x β : ℕ) / qt Ψ.conductor))) := by",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+            "lines": [
+              140,
+              169
+            ],
+            "conclusion": "For `L` divisible by all `q ∈ Qset R` and `a` supported coprime to `L`, `F_R(β) = Σ_{Ψ mod L} ‖S_{Ψ⁻¹}(β)‖² (c/φ(c)) κ_c G_{c̃}(m_R(β)/c̃)` with `c = cond Ψ`; proof by Bombieri's identity and `weight_sum`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L143-L148"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_eq_integral_Farc",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+        "lines": [
+          272,
+          287
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_arcs_eq_integral_Farc"
+          },
+          "snippet": {
+            "text": "/-- `Σ_{q,b} ∫_{J_{q,b}} |S|² = ∫_ℝ F_R`. -/\ntheorem sum_arcs_eq_integral_Farc {a : ℕ → ℂ} (ha : Summable fun n => ‖a n‖) (δ₀ R x : ℝ) :\n    ∑ q ∈ Qset R, ∑ b ∈ Bset q, ∫ y in arc δ₀ R x q b, ‖expTsum a y‖ ^ 2 =\n      ∫ β, Farc a δ₀ R x β := by\n  unfold Farc\n  rw [integral_finset_sum _ fun q _ => integrable_ite_abs_lt (continuous_T ha q) _]\n  refine Finset.sum_congr rfl fun q _ => ?_\n  simp_rw [arc, setIntegral_Ioo_translate]\n  have hint : ∀ b ∈ Bset q, Integrable fun β =>\n      if |β| < wrad δ₀ R x q then ‖expTsum a ((b : ℝ) / q + β)‖ ^ 2 else 0 := fun b _ =>\n    integrable_ite_abs_lt (((TernaryGoldbach.continuous_expTsum ha).comp\n      (continuous_const.add continuous_id)).norm.pow 2) _\n  rw [← integral_finset_sum _ hint]\n  refine integral_congr_ae (Filter.Eventually.of_forall fun β => ?_)\n  simp only\n  split_ifs <;> simp",
+            "line": 272,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_eq_integral_Farc",
+            "lines": [
+              272,
+              287
+            ],
+            "conclusion": "`Σ_{q,b} ∫_{arc q b} |S|² = ∫_ℝ F_R(β) dβ`, translating each arc to `|β|<w_q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "fragment": "L272-L287"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          241
+        ],
+        "printed": [
+          231
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

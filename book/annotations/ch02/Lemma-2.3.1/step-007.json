@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 2.3.1 step 7",
+  "kind": "proof_step",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Lean bounds `∑‖𝓕 g n‖` (stronger than `|∑ f̂(n-α)|`) by `K/(4π²)∑1/(n-α)²` with K bounding `(2πt)²|f̂|` in place of `|f̂''|_∞`; same quantity, final value `K/(4 sin²πα)`.",
+  "subject": [
+    {
+      "location": {
+        "page": 43,
+        "rect": [
+          0.17462,
+          0.7878,
+          0.56162,
+          0.04355
+        ]
+      },
+      "title": "Lemma 2.3.1 step 7: Display, p. 33",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 2.3.1 step 7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          224,
+          232
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_tsum_le_of_fourier_bound"
+          },
+          "snippet": {
+            "text": "  have hpt : ∀ n : ℤ, ‖𝓕 g n‖ ≤ K / (4 * π ^ 2) * (1 / ((n : ℝ) - α) ^ 2) := by\n    intro n\n    rw [fourier_mul_e]\n    have h := hK (n - α)\n    have hpos : 0 < (2 * π * ((n : ℝ) - α)) ^ 2 := by\n      have := hαn n; positivity\n    rw [show K / (4 * π ^ 2) * (1 / ((n : ℝ) - α) ^ 2) = K / (2 * π * ((n : ℝ) - α)) ^ 2 by\n      field_simp; ring]\n    rw [le_div_iff₀ hpos]; linarith",
+            "line": 224,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+            "lines": [
+              211,
+              246
+            ],
+            "conclusion": "For each n, `‖𝓕 g n‖ ≤ K/(4π²)·1/(n-α)²`, from the hypothesis `(2πt)²‖𝓕 f t‖ ≤ K` at `t=n-α`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L224-L232"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.hasSum_inv_sq_sub",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          59,
+          90
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.hasSum_inv_sq_sub"
+          },
+          "snippet": {
+            "text": "/-- `∑_{n ∈ ℤ} 1/(n - s)² = π²/sin²(πs)` for `s ∉ ℤ`, via Parseval for `e(sx)` on `[0, 1]`. -/\ntheorem hasSum_inv_sq_sub {s : ℝ} (hs : Real.sin (π * s) ≠ 0) :\n    HasSum (fun n : ℤ => 1 / ((n : ℝ) - s) ^ 2) (π ^ 2 / Real.sin (π * s) ^ 2) := by\n  have hsn : ∀ n : ℤ, s ≠ n := by\n    intro n h; apply hs; rw [h, mul_comm]; exact Real.sin_int_mul_pi n\n  have hL2 : MemLp (fun x : ℝ => e (s * x)) 2 (volume.restrict (Set.Ioc 0 1)) :=\n    MemLp.of_bound ((continuous_e.comp (continuous_const.mul continuous_id)).aestronglyMeasurable)\n      1 (ae_of_all _ fun x => by simp [norm_e])\n  have h := hasSum_sq_fourierCoeffOn zero_lt_one hL2\n  simp only [norm_e, one_pow, intervalIntegral.integral_const, sub_zero, inv_one,\n    smul_eq_mul, mul_one] at h\n  have hterm : ∀ n : ℤ, ‖fourierCoeffOn zero_lt_one (fun x => e (s * x)) n‖ ^ 2 =\n      Real.sin (π * s) ^ 2 / π ^ 2 * (1 / ((n : ℝ) - s) ^ 2) := by\n    intro n\n    have hne : (s : ℝ) - n ≠ 0 := sub_ne_zero.2 (hsn n)\n    rw [fourierCoeffOn_e_mul n (hsn n), norm_div, div_pow, norm_e_sub_one_sq]\n    have : ‖(2 * π * I * ((s : ℂ) - n))‖ = 2 * π * |s - n| := by\n      have h1 : ((s : ℂ) - n) = ((s - n : ℝ) : ℂ) := by push_cast; ring\n      rw [h1, norm_mul, norm_mul, norm_mul, Complex.norm_real, Complex.norm_real, Complex.norm_I,\n        Real.norm_eq_abs, Real.norm_eq_abs, abs_of_pos Real.pi_pos, Complex.norm_ofNat, mul_one]\n    rw [this]\n    have : (n - s) ^ 2 = |s - n| ^ 2 := by rw [sq_abs]; ring\n    rw [this]\n    have := abs_pos.2 hne\n    field_simp\n    ring\n  simp_rw [hterm] at h\n  have hk : Real.sin (π * s) ^ 2 / π ^ 2 ≠ 0 := by positivity\n  have := h.mul_left (π ^ 2 / Real.sin (π * s) ^ 2)\n  convert this using 1\n  · funext n; rw [← mul_assoc, div_mul_div_comm, mul_comm (π ^ 2), div_self (by positivity), one_mul]\n  · ring",
+            "line": 59,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.hasSum_inv_sq_sub",
+            "lines": [
+              59,
+              90
+            ],
+            "conclusion": "`∑_{n∈ℤ} 1/(n-s)² = π²/sin²(πs)` for `sin πs ≠ 0`, proved via Parseval for `e(sx)` on `[0,1]`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L59-L90"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums",
+        "lines": [
+          242,
+          246
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_tsum_le_of_fourier_bound"
+          },
+          "snippet": {
+            "text": "  calc ‖∑' n : ℤ, 𝓕 g n‖ ≤ ∑' n : ℤ, ‖𝓕 g n‖ := norm_tsum_le_tsum_norm hsumm\n    _ ≤ ∑' n : ℤ, K / (4 * π ^ 2) * (1 / ((n : ℝ) - α) ^ 2) :=\n        hsumm.tsum_le_tsum hpt (hsum.summable.mul_left _)\n    _ = K / (4 * π ^ 2) * (π ^ 2 / Real.sin (π * α) ^ 2) := by rw [tsum_mul_left, hsum.tsum_eq]\n    _ = _ := by field_simp",
+            "line": 242,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+            "lines": [
+              211,
+              246
+            ],
+            "conclusion": "Triangle inequality, termwise bound `hpt`, and `hasSum_inv_sq_sub` give `‖∑ 𝓕 g n‖ ≤ K/(4π²)·π²/sin²(πα) = K/(4 sin²(πα))`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L242-L246"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          43
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

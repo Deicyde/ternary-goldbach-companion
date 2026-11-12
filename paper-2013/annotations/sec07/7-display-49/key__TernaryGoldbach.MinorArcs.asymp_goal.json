@@ -1,0 +1,81 @@
+{
+  "id": "7 display 49",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean bounds $\\hat g(y,n)\\le2n^{-1/4}+1.398(3.8y^{-1/6}+h(y))$ at the top level $r_2=\\lfloor y^{1/4}\\rfloor$ for $y\\ge10^{100}$; different top level, corrected constants ($3.8$ for $3.2K^{1/6}$), no $K$-averaging.",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.20371,
+          0.47869,
+          0.63183,
+          0.18829
+        ]
+      },
+      "title": "Display, p. 66",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 49"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.asymp_goal",
+        "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+        "lines": [
+          562,
+          601
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.asymp_goal"
+          },
+          "snippet": {
+            "text": "  -- the tail\n  have hr₂4 : (r₂ : ℝ) ^ 4 ≤ y := by rw [← hq4]; gcongr\n  have hgt := ghatY_le_asym hy (by linarith) hr₂4\n  rw [← hΞ] at hgt\n  have hr14 : (r₂ : ℝ) ^ (-1 / 4 : ℝ) ≤ 1.1893 * y ^ (-1 / 16 : ℝ) := by\n    have h1 : (r₂ : ℝ) ^ (-1 / 4 : ℝ) ≤ (q / 2) ^ (-1 / 4 : ℝ) :=\n      Real.rpow_le_rpow_of_nonpos (by positivity) hr₂q' (by norm_num)\n    have h2 : (q / 2) ^ (-1 / 4 : ℝ) = (2 : ℝ) ^ (1 / 4 : ℝ) * y ^ (-1 / 16 : ℝ) := by\n      rw [Real.div_rpow hq0.le (by norm_num), hq_def, ← Real.rpow_mul hy0.le,\n        show (1 / 4 : ℝ) * (-1 / 4) = -1 / 16 by norm_num, show (-1 / 4 : ℝ) = -(1 / 4) by norm_num,\n        Real.rpow_neg (by norm_num : (0:ℝ) ≤ 2), div_inv_eq_mul]\n      ring\n    have h3 : (2 : ℝ) ^ (1 / 4 : ℝ) ≤ 1.1893 := by\n      rw [show (1.1893 : ℝ) = ((1.1893 : ℝ) ^ (4:ℕ)) ^ (1 / 4 : ℝ) by\n        rw [← Real.rpow_natCast, ← Real.rpow_mul (by norm_num)]; norm_num]\n      exact Real.rpow_le_rpow (by norm_num) (by norm_num) (by norm_num)\n    rw [h2] at h1\n    have : 0 ≤ y ^ (-1 / 16 : ℝ) := by positivity\n    nlinarith\n  have hP1 := Phi1_le hy\n  have htail : ghatY y r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x) ≤ 2.2e-4 := by\n    have hgt0 := ghatY_nonneg (y := y) (n := r₂) (by linarith) (by linarith)\n    have hc0 : 0 ≤ cL (r₂ - 1) := by\n      unfold cL; exact add_nonneg (Real.log_nonneg (by\n        have := Nat.cast_nonneg (α := ℝ) (r₂ - 1); linarith)) (by norm_num)\n    have h1 : sig x - cL (r₂ - 1) * sig x / Dx x ≤ sig x := by\n      have : 0 ≤ cL (r₂ - 1) * sig x / Dx x := by positivity\n      linarith\n    have h2 : 0 ≤ sig x - cL (r₂ - 1) * sig x / Dx x := by\n      have e : sig x - cL (r₂ - 1) * sig x / Dx x = sig x * (1 - cL (r₂ - 1) / Dx x) := by field_simp\n      rw [e]; exact mul_nonneg hsig0 (by rw [sub_nonneg, div_le_one hDpos]; exact c5)\n    have hW0 : 0 ≤ Real.log y + 3.9 := by linarith\n    calc ghatY y r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)\n        ≤ ghatY y r₂ * sig x := mul_le_mul_of_nonneg_left h1 hgt0\n      _ ≤ (2 * (1.1893 * y ^ (-1 / 16 : ℝ)) + 1.398 * Ξ) * (0.6403 * (Real.log y + 3.9)) := by\n          refine mul_le_mul (hgt.trans (by linarith)) hsigx hsig0 (by positivity)\n      _ = 0.6403 * (2.3786 * ((Real.log y + 3.9) * y ^ (-1 / 16 : ℝ)) +\n            1.398 * ((Real.log y + 3.9) * Ξ)) := by ring\n      _ ≤ 0.6403 * (2.3786 * 1.4e-4 + 1.398 * 1e-10) := by\n          gcongr",
+            "line": 562,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.asymp_goal",
+            "lines": [
+              384,
+              607
+            ],
+            "conclusion": "Tail level $r_2=\\lfloor y^{1/4}\\rfloor$: $\\hat g(y,r_2)\\,(sig-cL(r_2-1)sig/Dx)\\le 2.2\\cdot10^{-4}$ via `ghatY_le_asym`, $r_2^{-1/4}\\le1.1893y^{-1/16}$, `Phi1_le`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+            "fragment": "L562-L601"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          66
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

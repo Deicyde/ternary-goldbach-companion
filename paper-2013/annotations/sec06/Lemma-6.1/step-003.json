@@ -1,0 +1,84 @@
+{
+  "id": "Lemma 6.1 step 3",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean works directly with g (non-increasing) and gets the Abel-summed bound in one induction; no intermediate h or inequalities f g ≤ f h.",
+  "subject": [
+    {
+      "location": {
+        "page": 46,
+        "rect": [
+          0.20698,
+          0.65921,
+          0.62529,
+          0.14334
+        ]
+      },
+      "title": "Lemma 6.1 step 3: Display, p. 46",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 6.1 step 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312",
+        "lines": [
+          31,
+          46
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abel_le"
+          },
+          "snippet": {
+            "text": "  have key : ∀ k, a ≤ k → k ≤ b →\n      ∑ n ∈ Icc a k, f n * g n ≤ g a * F a + ∑ n ∈ Ioc a k, g n * (F n - F (n - 1)) -\n        g k * (F k - ∑ m ∈ Icc a k, f m) := by\n    intro k hak hkb\n    induction k, hak using Nat.le_induction with\n    | base => simp; linarith [mul_comm (f a) (g a)]\n    | succ k hak ih =>\n      have ih := ih (by omega)\n      rw [sum_Icc_succ_top (by omega), sum_Icc_succ_top (by omega), sum_Ioc_succ_top hak,\n        Nat.add_sub_cancel]\n      have hgk := hg k hak (by omega)\n      have hSk := hS k hak (by omega)\n      nlinarith [mul_le_mul_of_nonneg_right hgk (sub_nonneg.2 hSk)]\n  have := key b hab le_rfl\n  have : 0 ≤ g b * (F b - ∑ m ∈ Icc a b, f m) := mul_nonneg hg0 (sub_nonneg.2 (hS b hab le_rfl))\n  linarith",
+            "line": 31,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+            "lines": [
+              23,
+              46
+            ],
+            "conclusion": "Induction `key` then the final `linarith` give Σ f g ≤ g(a)F(a)+Σ_{a<n≤b} g(n)(F(n)-F(n-1)) using S≤F and g(b)≥0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L31-L46"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          46
+        ],
+        "printed": [
+          46
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book Lemma 13.1.1 step 3, the same LaTeX (mapper (sonnet); verifier (sonnet))",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
+      }
+    }
+  }
+}

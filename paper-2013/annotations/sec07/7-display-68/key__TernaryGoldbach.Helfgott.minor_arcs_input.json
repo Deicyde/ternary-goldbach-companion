@@ -1,0 +1,81 @@
+{
+  "id": "7 display 68",
+  "kind": "display",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "note": "Same decomposition (major arcs $+$ $O^*$ minor arcs) with weaker constants: Lean has $1.049$ and $1.0376$ (difference $0.0114$) in place of $1.058259$, $0.97392$ ($0.08433$); stated for the real part of the weighted count `repSum`.",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.20371,
+          0.09416,
+          0.63183,
+          0.16669
+        ]
+      },
+      "title": "Display, p. 70",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 68"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.minor_arcs_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs",
+        "lines": [
+          95,
+          114
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.minor_arcs_input"
+          },
+          "snippet": {
+            "text": "/-- **Minor arcs** [H, (14.49)]:\n`∫_{(ℝ/ℤ) \\ 𝔐_{8,r₀}} |S_{η_*}(α,x)| |S_{η₊}(α,x)|² dα ≤ 1.0376 x²/κ` for `x ≥ 4.9 · 10²⁶`\n(true for `x = xOf N` when `N ≥ 10²⁷`, [H, (14.15)]).\n\n*Proved* (`MinorArcs/MinorTotal.lean: minor_total`) by \"repair 3\" of [H, Thm 13.2.1] (NOTES, \"Ch. 13:\nscale erratum\"): [H]'s proof derives its ℓ∞ input only off the arcs at scale `x/κ`; we run\nProp 13.1.2 with the arcs at scale `x/κ` above the base level, take a fresh Dirichlet\napproximation at each scale in (11.9), extend the levels to `≈ x^{0.3}`, and bound the base gap\nwith [H, Cor 7.1.3]. It uses Theorem 3.1.1, Prop 12.2.4 (with `c₊ = 2`), the Part II results\n`cor_7_1_3`, `prop_7_1_5`, `l2_major_14_7` (`MinorArcs/PartIICited.lean`) and `E_le_14_28`\n(`MinorArcs/EBound.lean`), all proved. The numerics (`numerics_M`) are proved: generated cells for\n`x ≤ 4.9·10¹⁰¹` (`scripts/gen_cells.py`) and an analytic argument beyond.\n\n(Our constant `1.0376` is weaker than [H]'s `1.00948`. [H]'s Theorem 3.1.1 has `0.5` where its\nproof gives `0.8102`; with the corrected [H, (5.36)] our Theorem 3.1.1 has `0.8764`.) -/\ntheorem minor_arcs_input (N : ℕ) (hN27 : 10 ^ 27 ≤ N) :\n    ∫ α in Set.Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ (xOf N),\n        ‖S etaStar (xOf N) α‖ * ‖S etaPlus (xOf N) α‖ ^ 2 ≤ 1.0376 * xOf N ^ 2 / κ := by\n  have hx := xOf_ge N hN27\n  exact MinorArcs.minor_total hx (MinorArcs.numerics_M hx)",
+            "line": 95,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.minor_arcs_input",
+            "lines": [
+              95,
+              114
+            ],
+            "conclusion": "$\\int_{(0,1]\\setminus\\mathfrak M_{8,r_0}}|S_{\\eta_*}||S_{\\eta_+}|^2\\le1.0376x^2/\\kappa$ (in place of $0.97392x^2/\\kappa$)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "fragment": "L95-L114"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

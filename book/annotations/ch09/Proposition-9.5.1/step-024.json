@@ -1,0 +1,84 @@
+{
+  "id": "Proposition 9.5.1 step 24",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean absorbs the $x^{-1/2}V/2\\pi$ vertical-line term for $x\\ge4.9\\cdot10^{26}$ with coefficient $10^{-40}$, not $19.064x^{-1/2}\\log x\\le0.002\\log x$ for $x\\ge10^8$.",
+  "subject": [
+    {
+      "location": {
+        "page": 200,
+        "rect": [
+          0.26253,
+          0.78861,
+          0.56162,
+          0.01815
+        ]
+      },
+      "title": "Proposition 9.5.1 step 24: Text, p. 190",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1 step 24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err_rel",
+        "module": "TernaryGoldbach.MajorArcs.Prop715",
+        "lines": [
+          209,
+          227
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err_rel"
+          },
+          "snippet": {
+            "text": "  have t4 : x ^ (-(1 / 2) : ℝ) * V / (2 * π) ≤ Vb / 1e40 * x := by\n    have hrp : x ^ (-(1 / 2) : ℝ) = 1 / √x := by\n      rw [Real.rpow_neg hx0.le, ← Real.sqrt_eq_rpow, one_div]\n    rw [hrp]\n    have hpi := Real.pi_gt_three\n    have hV0 : V ≤ Vb := hV\n    have h1 : 1 / √x * V / (2 * π) ≤ 1 / √x * Vb / (2 * π) := by\n      have : 1 / √x * V ≤ 1 / √x * Vb := mul_le_mul_of_nonneg_left hV (by positivity)\n      exact div_le_div_of_nonneg_right this (by positivity)\n    refine h1.trans ?_\n    rw [div_le_iff₀ (by positivity)]\n    have h2 : 1 / √x * Vb ≤ Vb / 2.2135e13 := by\n      rw [one_div_mul_eq_div]; exact div_le_div_of_nonneg_left hVb (by norm_num) hs\n    have h3 : Vb / 2.2135e13 ≤ Vb / 1e40 * 4.9e26 * (2 * 3) := by\n      rw [div_le_iff₀ (by norm_num)]; nlinarith\n    have h4 : Vb / 1e40 * 4.9e26 * (2 * 3) ≤ Vb / 1e40 * x * (2 * π) := by\n      apply mul_le_mul _ (by linarith) (by norm_num) (by positivity)\n      exact mul_le_mul_of_nonneg_left hx (by positivity)\n    linarith",
+            "line": 209,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.err_rel",
+            "lines": [
+              187,
+              228
+            ],
+            "conclusion": "For $x\\ge4.9\\cdot10^{26}$, $x^{-1/2}V/(2\\pi)\\le(V_b/10^{40})x$ via $\\sqrt x\\ge2.2135\\cdot10^{13}$."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L209-L227"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          200
+        ],
+        "printed": [
+          190
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

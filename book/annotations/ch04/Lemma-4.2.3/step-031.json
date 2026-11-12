@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 4.2.3 step 31",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Parts: the definition of `D'`, `D'q/x ≤ c₂`, and `q²≤2c₂x`/`q<√(2c₂x)`; `q³/x ≤ (2c₂)^{3/2}` and `D'q²/x ≤ c₂^{3/2}√(2x)` are not stated verbatim (used inside `ha`, `hb`, `hc`).",
+  "subject": [
+    {
+      "location": {
+        "page": 79,
+        "rect": [
+          0.17462,
+          0.76834,
+          0.56162,
+          0.03493
+        ]
+      },
+      "title": "Lemma 4.2.3 step 31: Text, p. 69",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.3 step 31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          984,
+          984
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB"
+          },
+          "snippet": {
+            "text": "  set D' := min (c₂ * x / q) D with hD'def",
+            "line": 984,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+            "lines": [
+              968,
+              1182
+            ],
+            "conclusion": "`D' := min(c₂x/q, D)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L984-L984"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R2L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          564,
+          568
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R2L"
+          },
+          "snippet": {
+            "text": "  have hsc : s ≤ c₂ := by simp only [s]; rw [div_le_iff₀ hx0]; rw [le_div_iff₀ hq0] at hD'c; linarith\n  have hq2 : (q : ℝ) ^ 2 ≤ 2 * c₂ * x := by\n    have : (q : ℝ) / 2 < c₂ * x / q := hD'q.trans_le hD'c\n    rw [lt_div_iff₀ hq0] at this\n    have e : (q : ℝ) ^ 2 = 2 * (q / 2 * q) := by ring",
+            "line": 564,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R2L",
+            "lines": [
+              461,
+              646
+            ],
+            "conclusion": "`q D'/x ≤ c₂` and `q² ≤ 2c₂x`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L564-L568"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R2L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof",
+        "lines": [
+          621,
+          621
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R2L"
+          },
+          "snippet": {
+            "text": "  have hqsqrt : (q : ℝ) ≤ √(2 * c₂ * x) := Real.le_sqrt_of_sq_le hq2",
+            "line": 621,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R2L",
+            "lines": [
+              461,
+              646
+            ],
+            "conclusion": "`q ≤ √(2c₂x)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L621-L621"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          79
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

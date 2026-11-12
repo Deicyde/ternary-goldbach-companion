@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 4.2.1 step 39",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Applicability condition min(c₂x/q, D) ≤ Q/2 is the hypothesis hD'Q; Lean uses odd-m constants (5c₀/3π²).",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.26253,
+          0.15578,
+          0.56162,
+          0.03442
+        ]
+      },
+      "title": "Lemma 4.2.1 step 39: Text, p. 62",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.1 step 39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          919,
+          928
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB"
+          },
+          "snippet": {
+            "text": "  have hB2 : ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      2 * √c₀ / π * (D' + 11 / 2 * q) := by\n    rcases le_or_gt D' ((q : ℝ) / 2) with hle | hlt\n    · rw [Ioc_eq_empty (not_lt.2 (Int.floor_mono hle)), sum_empty]; positivity\n    have h := sum_R2 hx hq hcop h2α hqQ hδ hD'0 hD'Q (α := α)\n    refine h.trans ?_\n    have hD'c : D' ≤ c₂ * x / q := min_le_left _ _\n    have hq2 : (q : ℝ) ^ 2 ≤ 2 * c₂ * x := by\n      have : (q : ℝ) / 2 < c₂ * x / q := hlt.trans_le hD'c\n      rw [lt_div_iff₀ hq0] at this; nlinarith",
+            "line": 919,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB",
+            "lines": [
+              827,
+              1020
+            ],
+            "conclusion": "`hB2`: for `D' > q/2`, `q² ≤ 2c₂x` follows from `q/2 < c₂x/q`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L919-L928"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R2",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof",
+        "lines": [
+          254,
+          291
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R2"
+          },
+          "snippet": {
+            "text": "/-- **Range (R2)** of [H, Lemma 4.2.2, case (b)], i.e. [H, (4.24)] doubled, before simplifying:\n`∑_{q/2 < m ≤ D', q ∤ m} |T_{m,∘}| ≤ (5c₀/3π²)(qD'²/x + 3q²D'/x + 5q³/4x)` for `D' ≤ Q/2`. -/\ntheorem sum_R2 {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {D' : ℝ} (hD'0 : 0 ≤ D') (hD'Q : D' ≤ Q / 2) :\n    ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n      5 * c₀ / (3 * π ^ 2) * (q * D' ^ 2 / x + 3 * q ^ 2 * D' / x + 5 * q ^ 3 / (4 * x)) := by\n  have happ := approx_of hq hcop hqQ hδ\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hV := eta2'L1_pos\n  have hc0 : (0 : ℝ) < c₀ := by unfold c₀; norm_num\n  set J := ⌈(D' - q / 2) / q⌉₊\n  have hblocks := sum_Ioc_le_blocks (G := fun n => if (q : ℤ) ∣ n then 0 else Tn α x n)\n    (fun n => by split_ifs; exacts [le_rfl, Tn_nonneg _ _ _]) hq J (q / 2) D' (nblocks_spec hq0)\n  refine hblocks.trans ?_\n  set A := x / 2 + eta2'L1 / 2\n  have hblock : ∀ j ∈ range J,\n      ∑ n ∈ Ioc ⌊(q : ℝ) / 2 + j * q⌋ ⌊min ((q : ℝ) / 2 + (j + 1) * q) D'⌋,\n          (if (q : ℤ) ∣ n then 0 else Tn α x n) ≤\n        10 * c₀ * q ^ 3 / (3 * π ^ 2 * x) * ((j : ℝ) + 3 / 2) :=\n    fun j _ => block_R2 hx hq hcop h2α hqQ hδ hD'Q j\n  refine (sum_le_sum hblock).trans ?_\n  rw [← mul_sum, sum_range_add_three_halves]\n  -- `J ≤ D'/q + 1/2`.\n  have hJ : (J : ℝ) ≤ D' / q + 1 / 2 := by\n    rcases le_or_gt (D' - q / 2) 0 with h | h\n    · have : J = 0 := Nat.ceil_eq_zero.2 (div_nonpos_of_nonpos_of_nonneg h hq0.le)\n      rw [this]; push_cast; positivity\n    · have := nblocks_le hq0 (a := q / 2) (b := D') (by linarith)\n      have e : (D' - q / 2) / q + 1 = D' / q + 1 / 2 := by field_simp; ring\n      linarith\n  have hJ0 : (0 : ℝ) ≤ J := Nat.cast_nonneg _\n  have hJJ : (J : ℝ) * (J + 2) ≤ (D' / q + 1 / 2) * (D' / q + 5 / 2) := by\n    apply mul_le_mul hJ (by linarith) (by positivity) (by positivity)\n  calc 10 * c₀ * q ^ 3 / (3 * π ^ 2 * x) * (J * (J + 2) / 2)\n      ≤ 10 * c₀ * q ^ 3 / (3 * π ^ 2 * x) * ((D' / q + 1 / 2) * (D' / q + 5 / 2) / 2) := by\n        gcongr\n    _ = _ := by field_simp; ring",
+            "line": 254,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sum_R2",
+            "lines": [
+              254,
+              291
+            ],
+            "conclusion": "For `D' ≤ Q/2`, `∑_{q/2<n≤D', q∤n} Tn ≤ (5c₀/3π²)(qD'²/x + 3q²D'/x + 5q³/4x)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L254-L291"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

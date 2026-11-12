@@ -1,0 +1,120 @@
+{
+  "id": "Theorem 13.2.1 step 33",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The normalising factor is $T=\\sum|a_1(n)|^2\\le\\mathrm{sig}(x)\\,x$; $|\\varphi|_1y$ is absorbed into $g=y\\hat g$.",
+  "subject": [
+    {
+      "location": {
+        "page": 262,
+        "rect": [
+          0.26253,
+          0.62779,
+          0.56162,
+          0.01779
+        ]
+      },
+      "title": "Theorem 13.2.1 step 33: Text, p. 252",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1 step 33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.T_le",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          216,
+          263
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.T_le"
+          },
+          "snippet": {
+            "text": "theorem T_le {x : ℝ} (hx : 4.9e26 ≤ x) : ∑' n, ‖a₁ x n‖ ^ 2 ≤ sig x * x := by\n  have hx0 : 0 < x := by linarith\n  obtain ⟨E₂, hE₂, heq⟩ := prop_7_1_5 (x := x) (by linarith)\n  have hlx : 0 ≤ Real.log x := Real.log_nonneg (by linarith)\n  have hpt : ∀ n : ℕ, ‖a₁ x n‖ ^ 2 ≤ Λ n * Real.log n * etaPlus (n / x) ^ 2 := by\n    intro n\n    unfold a₁\n    split_ifs with h\n    · rw [Complex.norm_real, Real.norm_eq_abs, sq_abs, mul_pow,\n        ArithmeticFunction.vonMangoldt_apply_prime h.1, sq]\n    · simp only [norm_zero, ne_eq, OfNat.ofNat_ne_zero, not_false_eq_true, zero_pow]\n      have := ArithmeticFunction.vonMangoldt_nonneg (n := n)\n      have : 0 ≤ Real.log n := Real.log_natCast_nonneg n\n      positivity\n  have hs1 : Summable fun n => ‖a₁ x n‖ ^ 2 :=\n    TernaryGoldbach.summable_norm_sq_of_summable_norm (summable_a₁ hx0)\n  have hs2 : Summable fun n : ℕ => Λ n * Real.log n * etaPlus (n / x) ^ 2 := by\n    by_contra hns\n    rw [tsum_eq_zero_of_not_summable hns] at heq\n    -- the main term is positive\n    have : 0 < 0.640206 * x * Real.log x - 0.021095 * x + E₂ * x * Real.log x := by\n      have hl : 60 ≤ Real.log x := by\n        rw [Real.le_log_iff_exp_le hx0]\n        have := Real.exp_one_lt_d9\n        calc rexp 60 = rexp 1 ^ 60 := by rw [← Real.exp_nat_mul]; norm_num\n          _ ≤ 2.7182818286 ^ 60 := by gcongr\n          _ ≤ 4.9e26 := by norm_num\n          _ ≤ x := hx\n      have hE : -(2e-6 + 366.91 / √x) ≤ E₂ := (abs_le.1 hE₂).1\n      have hsx : 0 < √x := Real.sqrt_pos.2 hx0\n      have : 366.91 / √x ≤ 1e-6 := by\n        rw [div_le_iff₀ hsx]\n        have : (1e13 : ℝ) ≤ √x := by rw [Real.le_sqrt (by norm_num) hx0.le]; linarith\n        linarith\n      have h1 : 0.64 ≤ 0.640206 + E₂ := by linarith\n      have h2 : 0.64 * 60 ≤ (0.640206 + E₂) * Real.log x := mul_le_mul h1 hl (by norm_num) (by linarith)\n      have h3 : 0 < ((0.640206 + E₂) * Real.log x - 0.021095) * x := mul_pos (by linarith) hx0\n      linarith [h3]\n    linarith\n  calc ∑' n, ‖a₁ x n‖ ^ 2 ≤ ∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 :=\n        Summable.tsum_le_tsum hpt hs1 hs2\n    _ = 0.640206 * x * Real.log x - 0.021095 * x + E₂ * x * Real.log x := heq\n    _ ≤ sig x * x := by\n        unfold sig\n        have := (abs_le.1 hE₂).2\n        have : E₂ * x * Real.log x ≤ (2e-6 + 366.91 / √x) * x * Real.log x :=\n          mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_right this hx0.le) hlx\n        nlinarith",
+            "line": 216,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.T_le",
+            "lines": [
+              216,
+              263
+            ],
+            "conclusion": "$\\sum_n\\|a_1(x,n)\\|^2=\\sum_{p>\\sqrt x}(\\log p)^2\\eta_+(p/x)^2\\le\\mathrm{sig}(x)\\,x$ from Prop. 7.1.5."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L216-L263"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+        "lines": [
+          501,
+          515
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total"
+          },
+          "snippet": {
+            "text": "  have hZ1 : ∫ α in A, ‖expTsum (a₁ x) α‖ ^ 2 * v α ≤ y * x * Mexpr x r₂ := by\n    have hAeq : A = Ioc 0 1 \\ majorArcs 8 ((150000 : ℕ) : ℝ) x := by simp only [A, hr₀]\n    rw [hAeq]\n    refine key.trans ?_\n    unfold Mexpr\n    rw [← hy_def]\n    have : y * x * (ghatY y 150000 * (cL 150000 * sig x / Dx x - 8.6294) +\n        ∑ n ∈ Finset.Ioo 150000 r₂, ghatY y n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n        ghatY y r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)) =\n        y * x * (ghatY y 150000 * (cL 150000 * sig x / Dx x - 8.6294)) +\n        y * x * (∑ n ∈ Finset.Ioo 150000 r₂, ghatY y n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n        ghatY y r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)) := by ring\n    push_cast at hbase hsum ⊢\n    rw [this]\n    exact add_le_add hbase hsum",
+            "line": 501,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+            "lines": [
+              322,
+              528
+            ],
+            "conclusion": "`hZ1`: the $S_1$ integral $\\int_A|S_1|^2|S_{\\eta_*}|\\le yx\\cdot$`Mexpr x r₂`, from `thm_13_2_1_repaired` (`key`) and the bounds on the base and sum terms."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L501-L515"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          262
+        ],
+        "printed": [
+          252
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
+      }
+    }
+  }
+}

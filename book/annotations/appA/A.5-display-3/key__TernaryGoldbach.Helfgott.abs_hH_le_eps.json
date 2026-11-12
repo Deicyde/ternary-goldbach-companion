@@ -1,0 +1,81 @@
+{
+  "id": "A.5 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] integrates by parts in `u = t/y` against `G_H(log(t/u))` (`G_H = Si(H·)/π`) on `[ε,2]`, bounded by `|G_H| ≤ 3/π`; it does not subtract `h(t)` or split at `w=0` with `Si ∓ π/2`.",
+  "subject": [
+    {
+      "location": {
+        "page": 298,
+        "rect": [
+          0.25926,
+          0.49487,
+          0.56816,
+          0.11581
+        ]
+      },
+      "title": "Display, p. 288",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "A.5 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.abs_hH_le_eps",
+        "module": "TernaryGoldbach.Helfgott.HHBound",
+        "lines": [
+          344,
+          387
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.abs_hH_le_eps"
+          },
+          "snippet": {
+            "text": "  -- far part: integration by parts\n  set Γ : ℝ → ℝ := fun u => -GH H (Real.log t - Real.log u) with hΓ\n  set g : ℝ → ℝ := fun u => sH H (Real.log t - Real.log u) / u with hg\n  have hcongr : ∫ u in ε..2, f u = ∫ u in ε..2, hP u * g u := by\n    refine intervalIntegral.integral_congr_ae ?_\n    have hne : ∀ᵐ u ∂(volume : Measure ℝ), u ≠ t := by\n      rw [ae_iff]; simp [measure_singleton]\n    filter_upwards [hne] with u hut hu\n    rw [Set.uIoc_of_le (by linarith)] at hu\n    have hu0 : 0 < u := lt_trans hε0 hu.1\n    simp only [hf, hg]\n    rw [hBase_eq_hP hu0.le hu.2, mul_div_assoc]\n    congr 2\n    have hlog : Real.log (t / u) ≠ 0 := by\n      refine Real.log_ne_zero_of_pos_of_ne_one (by positivity) ?_\n      intro h; apply hut; field_simp at h; linarith\n    rw [← Real.log_div ht.ne' hu0.ne', sH_eq hHpos.ne' hlog]\n    unfold F; ring\n  have hΓc : ContinuousOn Γ (Set.uIcc ε 2) := by\n    refine ContinuousOn.neg ((continuous_GH H).comp_continuousOn ?_)\n    refine continuousOn_const.sub (Real.continuousOn_log.mono ?_)\n    intro u hu; rw [Set.uIcc_of_le (by linarith)] at hu\n    exact (ne_of_gt (lt_of_lt_of_le hε0 hu.1))\n  have hgc : ContinuousOn g (Set.uIcc ε 2) := by\n    refine ContinuousOn.div ((continuous_sH H).comp_continuousOn ?_) continuousOn_id ?_\n    · refine continuousOn_const.sub (Real.continuousOn_log.mono ?_)\n      intro u hu; rw [Set.uIcc_of_le (by linarith)] at hu\n      exact (ne_of_gt (lt_of_lt_of_le hε0 hu.1))\n    · intro u hu; rw [Set.uIcc_of_le (by linarith)] at hu\n      exact (ne_of_gt (lt_of_lt_of_le hε0 hu.1))\n  have hibp := intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt\n    (u := hP) (u' := hP') (v := Γ) (v' := g) (a := ε) (b := 2)\n    (by unfold hP; fun_prop) hΓc\n    (fun x _ => hasDerivAt_hP x)\n    (by\n      intro x hx\n      rw [min_eq_left (by linarith), max_eq_right (by linarith)] at hx\n      have hx0 : 0 < x := lt_trans hε0 hx.1\n      have hz : HasDerivAt (fun u => Real.log t - Real.log u) (-x⁻¹) x := by\n        simpa using (Real.hasDerivAt_log hx0.ne').const_sub (Real.log t)\n      have := ((hasDerivAt_GH H (Real.log t - Real.log x)).comp x hz).neg\n      convert this using 1 <;> first | rfl |\n        (show sH H (Real.log t - Real.log x) / x = _; field_simp))\n    (continuous_hP'.intervalIntegrable _ _) hgc.intervalIntegrable",
+            "line": 344,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Helfgott.abs_hH_le_eps",
+            "lines": [
+              296,
+              411
+            ],
+            "conclusion": "Far part: with `Γ(u) = -G_H(log t - log u)`, integrates `∫_ε^2 h(u) sin(H log(t/u))/(π log(t/u)) du/u` by parts against `h'`, in the variable `u = t/y`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/HHBound.lean",
+            "fragment": "L344-L387"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          298
+        ],
+        "printed": [
+          288
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

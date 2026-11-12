@@ -1,0 +1,120 @@
+{
+  "id": "Lemma 9.1.4 step 8",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean does not apply the partial-summation lemma garmola with y=1; it applies a Sobolev window inequality (sum_window_le) to the same f=|G_delta(1/2+it)|, over all |Im|<=T0.",
+  "subject": [
+    {
+      "location": {
+        "page": 183,
+        "rect": [
+          0.17462,
+          0.45665,
+          0.56162,
+          0.0172
+        ]
+      },
+      "title": "Lemma 9.1.4 step 8: Text, p. 173",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4 step 8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound",
+        "lines": [
+          501,
+          505
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "    rw [Finset.sum_congr rfl heq, ← Finset.mul_sum]\n    refine mul_le_mul_of_nonneg_left ?_ (Real.sqrt_nonneg _)\n    exact sum_window_fline_le m (fun u _ => hm u) (h := 3.48) (by norm_num) hT00.le (Jl T0)\n      (lt_Jl hT00.le) him (ZL_nonneg N T0)\n      (fun k => count_line_window hχ hχ1 hT00.le S hSZ hre him k) δ",
+            "line": 501,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "Applies sum_window_fline_le to m_u*||fline delta (Im u)|| over critical-line zeros with |Im|<=T0, with window count from count_line_window."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L501-L505"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.sum_window_le",
+        "module": "TernaryGoldbach.Explicit.LineZeros",
+        "lines": [
+          81,
+          150
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.sum_window_le"
+          },
+          "snippet": {
+            "text": "/-- **Window sums**: if each window `[(k − J)h, (k − J + 1)h]` carries total weight `≤ Z`, then\n`Σ m_u |f(ℑu)| ≤ Z ((1/h)∫_{−Jh}^{Jh}|f| + ∫_{−Jh}^{Jh}|f'|)`. -/\ntheorem sum_window_le {S : Finset ℂ} (m : ℂ → ℝ) (hm : ∀ u ∈ S, 0 ≤ m u) {h T0 Z : ℝ} (hh : 0 < h)\n    (J : ℕ) (hJ : T0 < J * h) (hS : ∀ u ∈ S, |u.im| ≤ T0) (hZ0 : 0 ≤ Z)\n    (hZ : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => (⌊u.im / h⌋ + J).toNat = k), m u ≤ Z)\n    {f f' : ℝ → ℂ} (hf : ∀ t, HasDerivAt f (f' t) t) (hf' : Continuous f') :\n    ∑ u ∈ S, m u * ‖f u.im‖ ≤\n      Z * ((1 / h) * (∫ t in (-(J * h))..(J * h), ‖f t‖) + ∫ t in (-(J * h))..(J * h), ‖f' t‖) := by\n  have hfc : Continuous f := continuous_iff_continuousAt.2 fun t => (hf t).continuousAt\n  set idx : ℂ → ℕ := fun u => (⌊u.im / h⌋ + J).toNat with hidx\n  set a : ℕ → ℝ := fun k => ((k : ℝ) - J) * h with ha\n  set W : ℕ → ℝ := fun k => (1 / h) * (∫ t in a k..a (k + 1), ‖f t‖) + ∫ t in a k..a (k + 1), ‖f' t‖\n    with hW\n  have hW0 : ∀ k, 0 ≤ W k := by\n    intro k\n    have hak : a k ≤ a (k + 1) := by simp only [ha]; push_cast; nlinarith\n    have i1 := intervalIntegral.integral_nonneg (μ := volume) hak fun t _ => norm_nonneg (f t)\n    have i2 := intervalIntegral.integral_nonneg (μ := volume) hak fun t _ => norm_nonneg (f' t)\n    simp only [hW]; positivity\n  -- each zero lies in its window\n  have hwin : ∀ u ∈ S, idx u < 2 * J ∧ u.im ∈ Icc (a (idx u)) (a (idx u + 1)) := by\n    intro u hu\n    have hb := abs_le.1 (hS u hu)\n    have hT0h : T0 / h < J := by rw [div_lt_iff₀ hh]; exact hJ\n    have hl : -(J : ℝ) < u.im / h := by\n      rw [lt_div_iff₀ hh]; linarith\n    have hr : u.im / h < J := lt_of_le_of_lt (div_le_div_of_nonneg_right hb.2 hh.le) hT0h\n    have hfl1 : -(J : ℤ) ≤ ⌊u.im / h⌋ := by\n      rw [Int.le_floor]; push_cast; linarith\n    have hfl2 : ⌊u.im / h⌋ < J := by\n      rw [Int.floor_lt]; push_cast; exact hr\n    have hnn : 0 ≤ ⌊u.im / h⌋ + J := by linarith\n    have hk : ((idx u : ℕ) : ℤ) = ⌊u.im / h⌋ + J := Int.toNat_of_nonneg hnn\n    have hkR : ((idx u : ℕ) : ℝ) = (⌊u.im / h⌋ : ℝ) + J := by exact_mod_cast hk\n    refine ⟨by omega, ?_, ?_⟩\n    · simp only [ha]; rw [hkR]\n      have := Int.floor_le (u.im / h)\n      have : (⌊u.im / h⌋ : ℝ) * h ≤ u.im := by rwa [le_div_iff₀ hh] at this\n      nlinarith\n    · simp only [ha]; push_cast; rw [hkR]\n      have := Int.lt_floor_add_one (u.im / h)\n      have : u.im < ((⌊u.im / h⌋ : ℝ) + 1) * h := by rwa [div_lt_iff₀ hh] at this\n      nlinarith\n  have hpt : ∀ u ∈ S, ‖f u.im‖ ≤ W (idx u) := by\n    intro u hu\n    have h1 := norm_le_sobolev hf hf' (a := a (idx u)) (b := a (idx u + 1))\n      (by simp only [ha]; push_cast; nlinarith) (hwin u hu).2\n    have e : a (idx u + 1) - a (idx u) = h := by simp only [ha]; push_cast; ring\n    rw [e] at h1\n    exact h1\n  calc ∑ u ∈ S, m u * ‖f u.im‖ ≤ ∑ u ∈ S, m u * W (idx u) :=\n        Finset.sum_le_sum fun u hu => mul_le_mul_of_nonneg_left (hpt u hu) (hm u hu)\n    _ = ∑ k ∈ Finset.range (2 * J), ∑ u ∈ S.filter (fun u => idx u = k), m u * W (idx u) :=\n        (Finset.sum_fiberwise_of_maps_to (fun u hu => Finset.mem_range.2 (hwin u hu).1) _).symm\n    _ = ∑ k ∈ Finset.range (2 * J), W k * ∑ u ∈ S.filter (fun u => idx u = k), m u := by\n        refine Finset.sum_congr rfl fun k _ => ?_\n        rw [Finset.mul_sum]\n        refine Finset.sum_congr rfl fun u hu => ?_\n        rw [(Finset.mem_filter.1 hu).2]; ring\n    _ ≤ ∑ k ∈ Finset.range (2 * J), W k * Z :=\n        Finset.sum_le_sum fun k _ => mul_le_mul_of_nonneg_left (hZ k) (hW0 k)\n    _ = Z * ∑ k ∈ Finset.range (2 * J), W k := by rw [Finset.mul_sum]; exact Finset.sum_congr rfl fun k _ => by ring\n    _ = _ := by\n        congr 1\n        simp only [hW]\n        rw [Finset.sum_add_distrib, ← Finset.mul_sum,\n          intervalIntegral.sum_integral_adjacent_intervals (fun k _ => hfc.norm.intervalIntegrable _ _),\n          intervalIntegral.sum_integral_adjacent_intervals (fun k _ => hf'.norm.intervalIntegrable _ _)]\n        simp only [ha]; push_cast\n        congr 3 <;> ring",
+            "line": 81,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.sum_window_le",
+            "lines": [
+              81,
+              150
+            ],
+            "conclusion": "Sum over zeros of m_u|f(Im u)| is at most Z((1/h)int|f|+int|f'|) over [-Jh,Jh], by the Sobolev window inequality and per-window multiplicity <=Z."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LineZeros.lean",
+            "fragment": "L81-L150"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          183
+        ],
+        "printed": [
+          173
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

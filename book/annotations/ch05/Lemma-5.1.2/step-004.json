@@ -1,0 +1,156 @@
+{
+  "id": "Lemma 5.1.2 step 4",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean obtains the same expansion by the Dirichlet convolution `H_d=F_d∗(1/id)` with `H_d` multiplicative and supported on all prime powers, merging the `d'` (squarefree) and `d''` sums; no step-by-step display.",
+  "subject": [
+    {
+      "location": {
+        "page": 95,
+        "rect": [
+          0.17462,
+          0.58123,
+          0.56162,
+          0.19337
+        ]
+      },
+      "title": "Lemma 5.1.2 step 4: Display, p. 85",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.2 step 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Rc_mul_Mu",
+        "module": "TernaryGoldbach.MinorArcs.G2Moebius",
+        "lines": [
+          158,
+          176
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Rc_mul_Mu"
+          },
+          "snippet": {
+            "text": "theorem Rc_mul_Mu : Rc * Mu = 1 := by\n  ext n\n  rcases Nat.eq_zero_or_pos n with rfl | hn\n  · simp\n  rw [mul_apply, one_apply]\n  have h1 : ∀ x ∈ n.divisorsAntidiagonal, Rc x.1 * Mu x.2 = (μ x.2 : ℝ) / n := by\n    intro x hx\n    have hx' := Nat.mem_divisorsAntidiagonal.1 hx\n    have h1 : (x.1 : ℝ) ≠ 0 := by\n      have := hx'.1; intro h; apply hx'.2; rw [← this]; simp [Nat.cast_eq_zero.1 h]\n    have h2 : (x.2 : ℝ) ≠ 0 := by\n      have := hx'.1; intro h; apply hx'.2; rw [← this]; simp [Nat.cast_eq_zero.1 h]\n    rw [Rc_apply, Mu_apply, ← hx'.1]; push_cast; field_simp\n  rw [sum_congr rfl h1, ← sum_div]\n  have h2 := Nat.sum_divisorsAntidiagonal' (fun _ b => (μ b : ℝ)) (n := n)\n  rw [h2, g2_sum_moebius_divisors]\n  split_ifs with h\n  · subst h; simp\n  · simp",
+            "line": 158,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Rc_mul_Mu",
+            "lines": [
+              158,
+              176
+            ],
+            "conclusion": "`(1/id)∗(μ/id)=1`, the inversion used to pass from `F_d` to `H_d ∗ (μ/id)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Moebius.lean",
+            "fragment": "L158-L176"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Hd_mul_Mu",
+        "module": "TernaryGoldbach.MinorArcs.G2Moebius",
+        "lines": [
+          178,
+          179
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Hd_mul_Mu"
+          },
+          "snippet": {
+            "text": "theorem Hd_mul_Mu (d : ℕ) : Hd d * Mu = Fd d := by\n  rw [Hd, mul_assoc, Rc_mul_Mu, mul_one]",
+            "line": 178,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Hd_mul_Mu",
+            "lines": [
+              178,
+              179
+            ],
+            "conclusion": "`H_d ∗ (μ/id) = F_d`, the Dirichlet-convolution form of the expansion of `μ(r)/σ(r)` over `d'`, `d''`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Moebius.lean",
+            "fragment": "L178-L179"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Sd_eq",
+        "module": "TernaryGoldbach.MinorArcs.G2Moebius",
+        "lines": [
+          181,
+          186
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Sd_eq"
+          },
+          "snippet": {
+            "text": "/-- **`S_d(M) = ∑_{a ≤ M} H_d(a) m(M/a)`**, `m(K) = ∑_{b ≤ K} μ(b)/b`. -/\ntheorem Sd_eq (d M : ℕ) :\n    Sd d M = ∑ a ∈ Icc 1 M, Hd d a * ∑ b ∈ Icc 1 (M / a), (μ b : ℝ) / b := by\n  have h := sum_Ioc_mul_eq_sum_sum (Hd d) Mu M\n  rw [Hd_mul_Mu] at h\n  exact h",
+            "line": 181,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.Sd_eq",
+            "lines": [
+              181,
+              186
+            ],
+            "conclusion": "`S_d(M)=∑_{a≤M} H_d(a) m(M/a)` with `H_d=F_d∗(1/id)` multiplicative, `m(K)=∑_{b≤K}μ(b)/b`, `S_d(M)=∑_{r≤M,(r,d)=1} f(r)`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Moebius.lean",
+            "fragment": "L181-L186"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          95
+        ],
+        "printed": [
+          85
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

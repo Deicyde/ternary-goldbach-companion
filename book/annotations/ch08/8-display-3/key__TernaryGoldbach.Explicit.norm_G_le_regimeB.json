@@ -1,0 +1,81 @@
+{
+  "id": "8 display 3",
+  "kind": "display",
+  "status": "partial",
+  "relation": "hasPart",
+  "note": "Only kappa_{2,0} and kappa_{2,1} are covered: per term 0.588 y^2 and 0.892|τ|, pair 1.176 y^2 (=4.704 (|τ|/|ℓ|)^2) and 1.784|τ|, below 7.96 and 5.13; under the narrower hypotheses noted at display 2. The other four constants are absent.",
+  "subject": [
+    {
+      "location": {
+        "page": 154,
+        "rect": [
+          0.25926,
+          0.76057,
+          0.56816,
+          0.03695
+        ]
+      },
+      "title": "Display, p. 144",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "8 display 3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_le_regimeB",
+        "module": "TernaryGoldbach.Explicit.MellinRotate",
+        "lines": [
+          530,
+          577
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_le_regimeB"
+          },
+          "snippet": {
+            "text": "/-- **Regime `|τ| ≥ (3/2)(πδ)²`** ([H, Cor 8.0.2], `κ_{2,1}`): `|G_δ(s)| ≤ 0.892 |τ| e^{-0.1598|τ|}`. -/\ntheorem norm_G_le_regimeB (s : ℂ) (δ : ℝ) (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1) (hτ : 50 ≤ |s.im|)\n    (hδ : 3 / 2 * (π * δ) ^ 2 ≤ |s.im|) :\n    ‖Gr s δ 0‖ ≤ 0.892 * |s.im| * Real.exp (-0.1598 * |s.im|) := by\n  have hpi := Real.pi_gt_d2\n  have hpi' := Real.pi_lt_d2\n  have hθ : (0.28 : ℝ) < π / 4 := by linarith\n  have h := norm_Gr_le_closed s δ (θ := 0.28) (by norm_num) hθ hs0 hs1\n  have hS := sin_028_le\n  have hS0 : 0 ≤ Real.sin 0.28 := Real.sin_nonneg_of_nonneg_of_le_pi (by norm_num) (by linarith)\n  have hc := cos_two_mul_eq 0.28\n  set S := Real.sin 0.28\n  set c := Real.cos (2 * 0.28)\n  set τ := |s.im|\n  have hS2 : S ^ 2 ≤ 0.0763741 := by nlinarith\n  have hc1 : 0.847251 ≤ c := by rw [hc]; linarith\n  have hc0 : 0 < c := by linarith\n  have hδ2 : π ^ 2 * δ ^ 2 ≤ 2 / 3 * τ := by nlinarith\n  -- the exponent\n  have hb : (2 * π * |δ| * S) ^ 2 / (2 * c) ≤ 0.120192 * τ := by\n    rw [div_le_iff₀ (by positivity)]\n    have : (2 * π * |δ| * S) ^ 2 = 4 * (π ^ 2 * δ ^ 2) * S ^ 2 := by\n      rw [mul_pow, mul_pow, mul_pow, sq_abs]; ring\n    rw [this]\n    have hτ0 : 0 ≤ τ := by positivity\n    nlinarith [mul_le_mul hδ2 hS2 (sq_nonneg _) (by positivity), mul_le_mul_of_nonneg_left hc1 hτ0]\n  -- the prefactor\n  have hbc : (2 * π * |δ| * S / c) ^ 2 ≤ 0.28373 * τ := by\n    rw [div_pow, div_le_iff₀ (by positivity)]\n    have : (2 * π * |δ| * S) ^ 2 = 4 * (π ^ 2 * δ ^ 2) * S ^ 2 := by\n      rw [mul_pow, mul_pow, mul_pow, sq_abs]; ring\n    rw [this]\n    have hc2 : 0.717834 ≤ c ^ 2 := by nlinarith\n    have hτ0 : 0 ≤ τ := by positivity\n    nlinarith [mul_le_mul hδ2 hS2 (sq_nonneg _) (by positivity), mul_le_mul_of_nonneg_left hc2 hτ0]\n  obtain ⟨hsq1, hsq2⟩ := sqrt_consts (c := c) (by linarith)\n  have hpre : (1 + (2 * π * |δ| * S / c) ^ 2) * √(π / (c / 2)) + √π / (c * √(c / 2)) ≤ 0.892 * τ := by\n    have := mul_le_mul (add_le_add_left hbc 1) hsq1 (Real.sqrt_nonneg _) (by positivity)\n    nlinarith\n  have hpre0 : 0 ≤ (1 + (2 * π * |δ| * S / c) ^ 2) * √(π / (c / 2)) + √π / (c * √(c / 2)) := by\n    positivity\n  refine h.trans ?_\n  rw [← mul_assoc, ← Real.exp_add]\n  calc Real.exp (-(0.28 * τ) + (2 * π * |δ| * S) ^ 2 / (2 * c)) *\n        ((1 + (2 * π * |δ| * S / c) ^ 2) * √(π / (c / 2)) + √π / (c * √(c / 2)))\n      ≤ Real.exp (-0.1598 * τ) * (0.892 * τ) :=\n        mul_le_mul (Real.exp_le_exp.2 (by linarith)) hpre hpre0 (Real.exp_pos _).le\n    _ = _ := by ring",
+            "line": 530,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_G_le_regimeB",
+            "lines": [
+              530,
+              577
+            ],
+            "conclusion": "For -1 <= Re s <= 1, |Im s| >= 50, (3/2)(πδ)^2 <= |Im s|: `‖Gr s δ 0‖ ≤ 0.892 |τ| e^{-0.1598|τ|}`, Gr s δ 0 = G_δ(s) = F_δ(s+2)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L530-L577"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          154
+        ],
+        "printed": [
+          144
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

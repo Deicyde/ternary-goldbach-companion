@@ -1,0 +1,81 @@
+{
+  "id": "3.3 display 4",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "[L] has `v = 2` only and sums over all even `n` (powers of 2), not over `n | v`. Text typo, confirmed by two skeptics and `scripts/checks/steps/3_3_display_4.py`.",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.17135,
+          0.5379,
+          0.56816,
+          0.03483
+        ]
+      },
+      "title": "Display, p. 47",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "3.3 display 4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S0two",
+        "module": "TernaryGoldbach.MinorArcs.Decomposition",
+        "lines": [
+          90,
+          92
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S0two"
+          },
+          "snippet": {
+            "text": "/-- `S_{0,2} = ∑_{n even} Λ(n) e(αn) η₂(n/x)` [H, (3.11)] (only powers of `2` contribute). -/\nnoncomputable def S0two (α x : ℝ) : ℂ :=\n  ∑ n ∈ Icc 1 ⌊x⌋₊, if Odd n then 0 else (Λ n : ℂ) * wt α x n",
+            "line": 90,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.S0two",
+            "lines": [
+              90,
+              92
+            ],
+            "conclusion": "`S_{0,2} = ∑_{n ≤ ⌊x⌋, n even} Λ(n) e(αn) η₂(n/x)`, the remainder for `v = 2`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Decomposition.lean",
+            "fragment": "L90-L92"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          47
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

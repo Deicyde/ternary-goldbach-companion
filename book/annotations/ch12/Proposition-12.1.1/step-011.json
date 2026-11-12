@@ -1,0 +1,120 @@
+{
+  "id": "Proposition 12.1.1 step 11",
+  "kind": "proof_step",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Lean starts from an arbitrary ψ mod q and passes to its primitive χ; the identity is used at n=1 only, with $c_r(1)=\\mu(r)$ built into `gauss_induced`, and no Ramanujan sum $c_r(n)$ is named.",
+  "subject": [
+    {
+      "location": {
+        "page": 239,
+        "rect": [
+          0.17462,
+          0.4526,
+          0.56162,
+          0.01737
+        ]
+      },
+      "title": "Proposition 12.1.1 step 11: Text, p. 229",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.1 step 11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_sq_gaussSum",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri",
+        "lines": [
+          143,
+          159
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_sq_gaussSum"
+          },
+          "snippet": {
+            "text": "  set χ := ψ.primitiveCharacter\n  have hψ : DirichletCharacter.changeLevel hcq χ = ψ := DirichletCharacter.changeLevel_primitiveCharacter ψ\n  set r := q / c with hr\n  have hqr : q = c * r := (Nat.mul_div_cancel' hcq).symm\n  have hr1 : 1 ≤ r := Nat.pos_of_ne_zero (by\n    intro h0; rw [h0, mul_zero] at hqr; exact NeZero.ne q hqr)\n  set f : ℕ → ℂ := fun b => χ (b : ZMod c)\n  have hτ : gaussSum ψ ZMod.stdAddChar = (μ r : ℂ) * f r * gaussSum χ ZMod.stdAddChar := by\n    rw [gaussSum_eq_sum_range, gaussSum_eq_sum_range]\n    have h1 : ∑ b ∈ range q, ψ (b : ZMod q) * e (b / q) =\n        ∑ b ∈ (range (c * r)).filter (fun b => Nat.Coprime b (c * r)), f b * e (b / (c * r)) := by\n      have hqR : (c : ℝ) * r = q := by rw [hqr]; push_cast; ring\n      rw [sum_filter, ← hqr, hqR]\n      refine sum_congr rfl fun b _ => ?_\n      rw [← hψ, changeLevel_apply_natCast]\n      split_ifs <;> simp [f]\n    rw [h1, gauss_induced (Nat.pos_of_ne_zero hc0) hr1 f]",
+            "line": 143,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_sq_gaussSum",
+            "lines": [
+              133,
+              179
+            ],
+            "conclusion": "Sets `χ := ψ.primitiveCharacter` (modulus the conductor `c`, `r = q/c`) and writes `τ(ψ) = μ(r) χ(r) τ(χ)` via `gauss_induced`."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L143-L159"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.gauss_induced",
+        "module": "TernaryGoldbach.Prelim.GaussInduced",
+        "lines": [
+          66,
+          73
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.gauss_induced"
+          },
+          "snippet": {
+            "text": "/-- **Gauss sum of an induced character**: for `f` periodic mod `N`, completely multiplicative,\nand zero off the residues coprime to `N`,\n`Σ_{b < Nr, (b, Nr) = 1} f(b) e(b/Nr) = μ(r) f(r) Σ_{c < N} f(c) e(c/N)`. -/\ntheorem gauss_induced {N r : ℕ} (hN : 1 ≤ N) (hr : 1 ≤ r) (f : ℕ → ℂ)\n    (hper : ∀ b, f (b + N) = f b) (hmul : ∀ a b, f (a * b) = f a * f b)\n    (hzero : ∀ b, ¬ Nat.Coprime b N → f b = 0) :\n    ∑ b ∈ (range (N * r)).filter (fun b => Nat.Coprime b (N * r)), f b * e (b / (N * r)) =\n      μ r * f r * ∑ c ∈ range N, f c * e (c / N) := by",
+            "line": 66,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.gauss_induced",
+            "lines": [
+              66,
+              143
+            ],
+            "conclusion": "`Σ_{b<Nr,(b,Nr)=1} f(b)e(b/Nr) = μ(r) f(r) Σ_{c<N} f(c)e(c/N)` for multiplicative `f` mod `N` (no primitivity needed)."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/GaussInduced.lean",
+            "fragment": "L66-L73"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          239
+        ],
+        "printed": [
+          229
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain"
+      }
+    }
+  }
+}

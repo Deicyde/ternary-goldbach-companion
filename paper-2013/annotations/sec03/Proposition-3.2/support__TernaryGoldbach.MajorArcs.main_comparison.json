@@ -1,0 +1,89 @@
+{
+  "id": "Proposition 3.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.20371,
+          0.83953,
+          0.63183,
+          0.05832
+        ]
+      },
+      "title": "Proposition 3.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 3.2#0"
+        }
+      }
+    },
+    {
+      "location": {
+        "page": 22,
+        "rect": [
+          0.20371,
+          0.0723,
+          0.63183,
+          0.585
+        ]
+      },
+      "title": "Proposition 3.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 3.2#1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.main_comparison",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L561",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 561,
+            "text": "theorem main_comparison {x : ℝ} (hx : 0 < x) {w : ℝ} (hw : 0 ≤ w) (hwx : 4 ≤ w * x) (N : ℝ) :\n    ‖(∫ β in -w..w, (𝓕 etaPC (-(β * x)) * x) ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β))) -\n        (x : ℂ) ^ 2 * (Cmain (N / x) : ℂ)‖ ≤ 2.03e-5 * x ^ 2 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.main_comparison",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] Proposition 10.4.1 changed it (hypothesis |eta_+ - eta_circ|_2 < eps_0|eta_circ|_2 -> <=; definition of E_{eta,r,delta_0} uses sqrt(q^*) instead of sqrt(q)), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21,
+          22
+        ],
+        "printed": [
+          21,
+          22
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

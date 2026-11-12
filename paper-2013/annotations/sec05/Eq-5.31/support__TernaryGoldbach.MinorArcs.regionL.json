@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.31",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 40,
+        "rect": [
+          0.20371,
+          0.69462,
+          0.63183,
+          0.03605
+        ]
+      },
+      "title": "Equation (5.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionL",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L171",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 171,
+            "text": "theorem regionL {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs : 1 ≤ s)\n    (hR : 1 ≤ Q₀ / (s * q)) (hlam : lamQ q ≤ Q₀ / (s * q)) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 1.36) / (Real.log Q + cE) * Gq q (Q / (s * q)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionL",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (12.31), up to notation. Lean's main-cone form uses c₊ = 2 and bounds the tR term in advance through Ramaré's estimate; integer R suffice, as in the book's Computation paragraph.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          40
+        ],
+        "printed": [
+          40
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

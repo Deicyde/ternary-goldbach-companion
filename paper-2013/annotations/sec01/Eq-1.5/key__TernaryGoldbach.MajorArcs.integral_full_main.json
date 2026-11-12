@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.5",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 6,
+        "rect": [
+          0.20371,
+          0.13548,
+          0.63183,
+          0.04181
+        ]
+      },
+      "title": "Equation (1.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_full_main",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L380",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 380,
+            "text": "theorem integral_full_main {x : ℝ} (hx : 0 < x) (N : ℝ) :\n    ∫ β, (𝓕 etaOC (-(β * x)) * x) ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β)) =\n      (x : ℂ) ^ 2 * (Cmain (N / x) : ℂ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_full_main",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (1.38) changed it (term added: the Fourier-side integral ∫(η̂_+(-α))^2 η̂_*(-α)e(-αn/x)dα is added as the left side; the factor C_0 is dropped from the display (text says 'an infinite product … times x^2 times')), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          6
+        ],
+        "printed": [
+          6
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "counterpart in [H] sought by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

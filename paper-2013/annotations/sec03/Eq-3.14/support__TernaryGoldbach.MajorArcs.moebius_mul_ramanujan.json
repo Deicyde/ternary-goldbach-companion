@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.14",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 13,
+        "rect": [
+          0.20371,
+          0.47058,
+          0.63183,
+          0.03806
+        ]
+      },
+      "title": "Equation (3.14)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.moebius_mul_ramanujan",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L97",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 97,
+            "text": "theorem moebius_mul_ramanujan {q : ℕ} (hq : Squarefree q) (n : ℕ) :\n    (μ q : ℂ) * ∑ a ∈ (range q).filter q.Coprime, e (a * n / q) =\n      ((∏ p ∈ q.primeFactors, (1 - divW n p) : ℝ) : ℂ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.moebius_mul_ramanujan",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.14), up to notation. Same identity after d ↦ q/d; n ∈ ℕ is harmless since c_q(n) depends on n mod q.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          13
+        ],
+        "printed": [
+          13
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

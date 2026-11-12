@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.16",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 50,
+        "rect": [
+          0.20371,
+          0.39856,
+          0.63183,
+          0.03714
+        ]
+      },
+      "title": "Equation (6.16)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_le_off_arcs",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L97",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Thm1321.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 97,
+            "text": "theorem norm_S_le_off_arcs {x y Q r : ℝ} (hy : 0 < y) (hQ : 1 ≤ Q) {B : ℝ → ℝ}\n    (hB : ∀ (α δ : ℝ) (a : ℤ) (q : ℕ), Approx2 α y δ a q Q →\n      ‖S etaStar x α‖ ≤ B (max 1 (|δ| / 8) * q))\n    (hanti : AntitoneOn B (Ici r)) {α : ℝ} (hα : α ∉ majorArcs 8 r y) :\n    ‖S etaStar x α‖ ≤ B r :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_le_off_arcs",
+        "module": "TernaryGoldbach.MinorArcs.Thm1321"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (13.17) changed it (definition changed: g_{y,phi} of (eq:basia) now has L_{2r}/r and 3.36 K^{1/6}y^{-1/6} (was L_r/r and 3.2), with L_t redefined in (eq:veror); also local g now truncates g_{y,phi} (paper wrote g_{x,phi}) and monotonicity threshold r>=175 -> r>=670), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          50
+        ],
+        "printed": [
+          50
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

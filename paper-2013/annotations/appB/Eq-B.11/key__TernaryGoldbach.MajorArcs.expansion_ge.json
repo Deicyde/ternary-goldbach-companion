@@ -1,0 +1,70 @@
+{
+  "id": "Eq B.11",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.20371,
+          0.52659,
+          0.63183,
+          0.10253
+        ]
+      },
+      "title": "Equation (B.11)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq B.11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.expansion_ge",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L298",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 298,
+            "text": "theorem expansion_ge (N R : ℕ) (hR : 0 < R) :\n    ∏ p ∈ oddPrimes R, (1 + aP N p) - (1 / (R : ℝ)) * ∏ p ∈ oddPrimes R, (1 + p * |aP N p|) ≤\n      ∑ t ∈ (oddPrimes R).powerset.filter (fun t => ∏ p ∈ t, p ≤ R), ∏ p ∈ t, aP N p :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.expansion_ge",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (C.16), up to notation. Lean keeps the singular series truncated at 150000 and bounds it by Rankin's trick, so the tail (C.16) never arises.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          75
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

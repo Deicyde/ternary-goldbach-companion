@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.49",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.20371,
+          0.82156,
+          0.63183,
+          0.07832
+        ]
+      },
+      "title": "Equation (7.49)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.49"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.circle_identity_tsum",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L315",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/CircleMethod.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 315,
+            "text": "theorem circle_identity_tsum (N : ℕ) {a b c : ℕ → ℂ} (ha : Summable fun n => ‖a n‖)\n    (hb : Summable fun n => ‖b n‖) (hc : Summable fun n => ‖c n‖) :\n    IntegrableOn (fun α => expTsum a α * expTsum b α * expTsum c α * e (-(N * α)))\n        (Set.Ioc 0 1) ∧\n      ∫ α in Set.Ioc (0:ℝ) 1, expTsum a α * expTsum b α * expTsum c α * e (-(N * α)) =\n        ∑ n₁ ∈ range (N + 1), ∑ n₂ ∈ range (N + 1), ∑ n₃ ∈ range (N + 1),\n          if n₁ + n₂ + n₃ = N then a n₁ * b n₂ * c n₃ else 0 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.circle_identity_tsum",
+        "module": "TernaryGoldbach.CircleMethod"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (14.50), up to notation. Exact, with ℝ/ℤ represented by (0,1] and x = xOf N.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

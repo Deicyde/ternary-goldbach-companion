@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 5.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 33,
+        "rect": [
+          0.20371,
+          0.68386,
+          0.63183,
+          0.21307
+        ]
+      },
+      "title": "Proposition 5.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.PrimeSupported",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L36",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSievePrimes.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 36,
+            "text": "def PrimeSupported (x : ℝ) (a : ℕ → ℂ) : Prop :=\n  (∀ n, a n ≠ 0 → n.Prime ∧ √x < n) ∧ Summable fun n => ‖a n‖",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.PrimeSupported",
+        "module": "TernaryGoldbach.MinorArcs.LargeSievePrimes"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] Proposition 12.1.2, up to notation. Lean needs δ0 ≥ 2 (for 2Q ≤ √x, because its common modulus includes odd q ∈ (Q, 2Q]); the book's δ0 ≥ 1 is sound, and both applications use δ0 ≥ 8. prop_12_1_2 now carries no hypotheses.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          33
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

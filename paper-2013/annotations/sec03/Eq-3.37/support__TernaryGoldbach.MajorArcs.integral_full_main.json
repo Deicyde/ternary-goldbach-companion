@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.37",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 22,
+        "rect": [
+          0.20371,
+          0.35103,
+          0.63183,
+          0.0861
+        ]
+      },
+      "title": "Equation (3.37)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_full_main",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L380",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 380,
+            "text": "theorem integral_full_main {x : ℝ} (hx : 0 < x) (N : ℝ) :\n    ∫ β, (𝓕 etaOC (-(β * x)) * x) ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β)) =\n      (x : ℂ) ^ 2 * (Cmain (N / x) : ℂ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_full_main",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.37), up to notation. C_{η◦,η*} matches; C₀ is not defined in Lean, which bounds the truncated series by 1.314 using a kernel-checked Mertens product (prod_p_div_le) and no hypothesis.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          22
+        ],
+        "printed": [
+          22
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

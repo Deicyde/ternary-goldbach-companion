@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.4",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 10,
+        "rect": [
+          0.20371,
+          0.74733,
+          0.63183,
+          0.03874
+        ]
+      },
+      "title": "Equation (3.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.major_arcs_input",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L76",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 76,
+            "text": "theorem major_arcs_input (N : ℕ) (hN : Odd N) (hN27 : 10 ^ 27 ≤ N) :\n    1.049 * xOf N ^ 2 / κ ≤\n      (∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ (xOf N), integrand N α).re :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.major_arcs_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.4), up to notation. Formalized only for δ₀ = 8, r = 150000 and the weights (η₊,η₊,η_*); Lean bounds the real part of the integral. major_arcs_input now assumes only PlattGRH.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          10
+        ],
+        "printed": [
+          10
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

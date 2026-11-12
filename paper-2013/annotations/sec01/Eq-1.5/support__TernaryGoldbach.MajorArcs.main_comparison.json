@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.5",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 6,
+        "rect": [
+          0.20371,
+          0.13548,
+          0.63183,
+          0.04181
+        ]
+      },
+      "title": "Equation (1.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.main_comparison",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L561",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 561,
+            "text": "theorem main_comparison {x : ℝ} (hx : 0 < x) {w : ℝ} (hw : 0 ≤ w) (hwx : 4 ≤ w * x) (N : ℝ) :\n    ‖(∫ β in -w..w, (𝓕 etaPC (-(β * x)) * x) ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β))) -\n        (x : ℂ) ^ 2 * (Cmain (N / x) : ℂ)‖ ≤ 2.03e-5 * x ^ 2 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.main_comparison",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (1.38) changed it (term added: the Fourier-side integral ∫(η̂_+(-α))^2 η̂_*(-α)e(-αn/x)dα is added as the left side; the factor C_0 is dropped from the display (text says 'an infinite product … times x^2 times')), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          6
+        ],
+        "printed": [
+          6
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "counterpart in [H] sought by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

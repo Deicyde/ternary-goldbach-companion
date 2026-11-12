@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 56,
+        "rect": [
+          0.20371,
+          0.56021,
+          0.63183,
+          0.12537
+        ]
+      },
+      "title": "Equation (7.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.arc_chars",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L347",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 347,
+            "text": "theorem arc_chars {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hqt : (qt q : ℝ) ≤ 300000)\n    {β : ℝ} (hβ : |β * x| ≤ 1200000 / qt q) :\n    ((if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cP x)) β‖ ^ 2 ≤\n        ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cP x)) ((b : ℝ) / q + β)‖ ^ 2 ∧\n      ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cP x)) ((b : ℝ) / q + β)‖ ^ 2 ≤\n        (if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cP x)) β‖ ^ 2 +\n          (4.25e-7 * x) ^ 2) ∧\n      ‖expTsum (coprimePart q (cP x)) β - 𝓕 etaPC (-(β * x)) * x‖ ≤ 2.83e-7 * x :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.arc_chars",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (14.2) changed it (sqrt(q) -> sqrt(q^*); constants 6.18e-12 -> 1.3482e-14*sqrt(300000), 1.14e-10 -> 1.617e-10, 499100 -> 499900, 2.3921e-8 -> 2.3992e-8), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          56
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

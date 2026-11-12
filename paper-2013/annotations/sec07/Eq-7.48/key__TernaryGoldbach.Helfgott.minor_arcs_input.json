@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.48",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.20371,
+          0.59365,
+          0.63183,
+          0.1307
+        ]
+      },
+      "title": "Equation (7.48)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.48"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.minor_arcs_input",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L110",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 110,
+            "text": "theorem minor_arcs_input (N : ℕ) (hN27 : 10 ^ 27 ≤ N) :\n    ∫ α in Set.Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ (xOf N),\n        ‖S etaStar (xOf N) α‖ * ‖S etaPlus (xOf N) α‖ ^ 2 ≤ 1.0376 * xOf N ^ 2 / κ :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.minor_arcs_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (14.49) changed it (constants M bound 0.77671 -> 0.80508, minor-arc total 0.97392 -> 1.00948 x^2/varkappa), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

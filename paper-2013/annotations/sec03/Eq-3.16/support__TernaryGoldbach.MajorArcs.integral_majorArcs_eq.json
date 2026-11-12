@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.16",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 13,
+        "rect": [
+          0.20371,
+          0.75919,
+          0.63183,
+          0.13829
+        ]
+      },
+      "title": "Equation (3.16)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_majorArcs_eq",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L27",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 27,
+            "text": "theorem integral_majorArcs_eq {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, g α =\n      ∑ q ∈ Qset r₀, ∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, g y :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_majorArcs_eq",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.16), up to notation. Lean integrates the full integrand and peels off coefN·Mn, never forming the χ₀ term with full sums.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          13
+        ],
+        "printed": [
+          13
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

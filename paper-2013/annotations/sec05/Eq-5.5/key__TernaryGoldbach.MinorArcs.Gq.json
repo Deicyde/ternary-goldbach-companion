@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 33,
+        "rect": [
+          0.20371,
+          0.83896,
+          0.63183,
+          0.05797
+        ]
+      },
+      "title": "Equation (5.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Gq",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L29",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSievePrimes.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 29,
+            "text": "noncomputable def Gq (q : ℕ) (R : ℝ) : ℝ :=\n  ∑ r ∈ (Finset.Icc 1 ⌊R⌋₊).filter (fun r => Nat.Coprime r q), ((μ r : ℝ) ^ 2) / Nat.totient r",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Gq",
+        "module": "TernaryGoldbach.MinorArcs.LargeSievePrimes"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (12.5), up to notation. Same text as (12.2); see that entry (Prelim.GqP is a duplicate Lean definition).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          33
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

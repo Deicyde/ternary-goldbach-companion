@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.19",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 52,
+        "rect": [
+          0.20371,
+          0.17202,
+          0.63183,
+          0.07846
+        ]
+      },
+      "title": "Equation (6.19)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L89",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 89,
+            "text": "theorem prop_13_1_2 {u v : Ω → ℝ} (hu : Integrable u μ) (huv : Integrable (fun ω => u ω * v ω) μ)\n    (hu0 : ∀ ω, 0 ≤ u ω) {M : ℕ → Set Ω} (hM : ∀ n, MeasurableSet (M n)) (hmono : Monotone M)\n    {g H : ℕ → ℝ} {r₀ r₁ : ℕ} (h01 : r₀ ≤ r₁)\n    (hg : ∀ n, r₀ ≤ n → n < r₁ → g (n + 1) ≤ g n) (hg0 : 0 ≤ g r₁)\n    (hv : ∀ n, r₀ ≤ n → n ≤ r₁ → ∀ ω ∉ M n, v ω ≤ g n)\n    (hH : ∀ n, r₀ ≤ n → n < r₁ → ∫ ω in M (n + 1), u ω ∂μ ≤ H n) (hH₁ : ∫ ω, u ω ∂μ ≤ H r₁) :\n    ∫ ω in (M r₀)ᶜ, u ω * v ω ∂μ ≤\n      g r₀ * (H r₀ - ∫ ω in M r₀, u ω ∂μ) + ∑ n ∈ Ioc r₀ r₁, g n * (H n - H (n - 1)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_13_1_2",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (13.20) changed it (term changed: 0.4156 g(r_1) -> (7/15 + (-2.14938 + (8/15)log kappa)/(log x + 2c^-)) g(r_1); g also redefined), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          52
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

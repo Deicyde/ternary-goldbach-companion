@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 10,
+        "rect": [
+          0.20371,
+          0.80327,
+          0.63183,
+          0.07127
+        ]
+      },
+      "title": "Equation (3.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral_majorArcs",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L34",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcsEq.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 34,
+            "text": "theorem sum_arcs_le_integral_majorArcs {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    (hg0 : ∀ α, 0 ≤ g α) {δ₀ Q x : ℝ} (hx : 0 < x) (hδ : 0 < δ₀) (hQ : 0 < Q)\n    (hQx : δ₀ * Q ^ 2 ≤ x / 2) (hw : δ₀ * Q ≤ x) :\n    ∑ q ∈ Qset Q, ∑ b ∈ Bset q, ∫ y in arc δ₀ Q x q b, g y ≤\n      ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q x, g α :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral_majorArcs",
+        "module": "TernaryGoldbach.MajorArcs.ArcsEq"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.5), up to notation. The same Lean definition also serves Ch. 12–13 with other (δ₀, R) and other scales (LargeSieveArcs, OffArcs).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          10
+        ],
+        "printed": [
+          10
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.8",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 12,
+        "rect": [
+          0.20371,
+          0.52855,
+          0.63183,
+          0.06692
+        ]
+      },
+      "title": "Equation (3.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.totient_mul_norm_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L19",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 19,
+            "text": "theorem totient_mul_norm_le {q : ℕ} [NeZero q] {a : ℕ → ℂ}\n    (ha : Summable fun n => ‖a n‖) (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q) (β : ℝ)\n    {b : ZMod q} (hb : IsUnit b) :\n    q.totient * ‖expTsum a ((b.val : ℝ) / q + β)‖ ≤\n      ∑ ψ : DirichletCharacter ℂ q, ‖gaussSum ψ ZMod.stdAddChar‖ * ‖Schar ψ⁻¹ a β‖ :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.totient_mul_norm_le",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.8), up to notation. Lean splits off the non-coprime n first and expands in characters mod q, the route the book calls 'more obvious'.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          12
+        ],
+        "printed": [
+          12
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

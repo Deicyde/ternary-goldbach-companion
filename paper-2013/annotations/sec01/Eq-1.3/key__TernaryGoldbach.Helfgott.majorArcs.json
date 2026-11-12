@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.3",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 5,
+        "rect": [
+          0.20371,
+          0.65024,
+          0.63183,
+          0.03874
+        ]
+      },
+      "title": "Equation (1.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.majorArcs",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L64",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 64,
+            "text": "def majorArcs (δ₀ r x : ℝ) : Set ℝ :=\n  (⋃ (q : ℕ) (_ : 1 ≤ q ∧ (q : ℝ) ≤ r ∧ Odd q) (a : ℤ) (_ : IsCoprime a (q : ℤ)),\n      Set.Ioo (a / q - δ₀ * r / (2 * q * x)) (a / q + δ₀ * r / (2 * q * x))) ∪\n  (⋃ (q : ℕ) (_ : 1 ≤ q ∧ (q : ℝ) ≤ 2 * r ∧ Even q) (a : ℤ) (_ : IsCoprime a (q : ℤ)),\n      Set.Ioo (a / q - δ₀ * r / (q * x)) (a / q + δ₀ * r / (q * x)))",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.majorArcs",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (1.35), up to notation. Lean integrates over the lift (0,1] ∩ 𝔐_{8,150000} and bounds the real part from below by 1.049x²/κ (book 1.058259).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          5
+        ],
+        "printed": [
+          5
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "counterpart in [H] sought by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

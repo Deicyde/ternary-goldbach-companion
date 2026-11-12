@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.3",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 9,
+        "rect": [
+          0.20371,
+          0.76035,
+          0.63183,
+          0.04124
+        ]
+      },
+      "title": "Equation (2.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.mellin_hHc_mul",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L33",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 33,
+            "text": "theorem mellin_hHc_mul {g : ℝ → ℂ} (hg : AEStronglyMeasurable g (volume.restrict (Ioi 0)))\n    {C b : ℝ} (hC : 0 ≤ C) (hgb : ∀ t : ℝ, 0 < t → ‖g t‖ ≤ C * (t ^ b * Real.exp (-t ^ 2 / 2)))\n    {s : ℂ} (hs : 0 < s.re + b) :\n    mellin (fun t => hHc t * g t) s =\n      ∫ ξ in Icc (-aH) aH, 𝓕 gC ξ * mellin g (s + ((2 * π * ξ : ℝ) : ℂ) * I) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.mellin_hHc_mul",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (2.9), up to notation. Lean proves (2.9) only for f = h_200 on the line ℜz = 0 (written via ĝ(ξ) = Mh(−2πiξ)), which covers every use in Ch. 9.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          9
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

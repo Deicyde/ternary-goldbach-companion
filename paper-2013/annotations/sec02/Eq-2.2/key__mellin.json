@@ -1,0 +1,73 @@
+{
+  "id": "Eq 2.2",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 9,
+        "rect": [
+          0.20371,
+          0.69228,
+          0.63183,
+          0.04181
+        ]
+      },
+      "title": "Equation (2.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "mellin",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L91",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/MellinTransform.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 91,
+            "text": "def mellin (f : ℝ → E) (s : ℂ) : E :=\n  ∫ t : ℝ in Ioi 0, (t : ℂ) ^ (s - 1) • f t",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "mellin",
+        "module": "Mathlib.Analysis.MellinTransform"
+      },
+      "role": "key",
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679"
+    }
+  ],
+  "note": "As [H] (2.5), up to notation. Mathlib's mellin is the book's Mellin transform; it is 0 where the integral diverges, so Lean statements carry convergence hypotheses.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          9
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

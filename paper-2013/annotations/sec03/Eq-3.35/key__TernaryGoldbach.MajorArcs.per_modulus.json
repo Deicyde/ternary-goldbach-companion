@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.35",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.20371,
+          0.79194,
+          0.63183,
+          0.02308
+        ]
+      },
+      "title": "Equation (3.35)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.per_modulus",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L808",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 808,
+            "text": "theorem per_modulus (N : ℕ) {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) :\n    ‖(∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, fI N x y) -\n        (coefN N q : ℂ) * ((x : ℂ) ^ 2 * (Cmain (N / x) : ℂ))‖ ≤\n      (3.67e-6 * (x / κ) + 8.85e-7 * x / 9) * (∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, ‖S etaPlus x y‖ ^ 2) +\n        9 * 8.85e-7 * x / 2 * mPhi2 q * (7.78 * (x / κ)) +\n        8.85e-7 * x / 9 * mPhi q * (0.640208 * x) + mPhi2 q * (2.03e-5 * x ^ 2) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.per_modulus",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (10.35), up to notation. No Lean definitions; B* is used correctly by the book, while B₊ should carry μ²/φ rather than μ²/φ² weights (see Eq 10.34).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21
+        ],
+        "printed": [
+          21
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "counterpart in [H] sought by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

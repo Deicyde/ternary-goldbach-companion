@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.29",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 40,
+        "rect": [
+          0.20371,
+          0.38172,
+          0.63183,
+          0.02397
+        ]
+      },
+      "title": "Equation (5.29)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L75",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 75,
+            "text": "theorem regionS {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs : 1 ≤ s)\n    (hR : 1 ≤ Q₀ / (s * q)) {c' : ℝ} (hc' : 0 < c') (hlq : 3 ≤ Real.log q)\n    (hcc : Real.exp Real.eulerMascheroniConstant * Real.log c' +\n      2.50637 / Real.log (Real.log q) ≤ 0.86)\n    (hh : Real.log q + 1.039 * (Q₀ / (s * q)) ≤ c' * ((q : ℝ) * (Q₀ / (s * q))) ^ ((2 : ℝ) / 9)) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 1.36) / (Real.log Q + cE) * Gq q (Q / (s * q)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (12.29), up to notation. Lemma 12.2.3 with σ = c₊ gives denominator log Q + 1.312, not log Q + c_E, so the claim that smaller R are covered needs σ ≈ 1.3471 (c(σ) ≈ 0.908616); Lean avoids this by proving regionS with c_E.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          40
+        ],
+        "printed": [
+          40
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

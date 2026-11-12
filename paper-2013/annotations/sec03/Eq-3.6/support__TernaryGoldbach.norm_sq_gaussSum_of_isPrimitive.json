@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.6",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 11,
+        "rect": [
+          0.20371,
+          0.61146,
+          0.63183,
+          0.0375
+        ]
+      },
+      "title": "Equation (3.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_sq_gaussSum_of_isPrimitive",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L175",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/GaussInduced.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 175,
+            "text": "theorem norm_sq_gaussSum_of_isPrimitive {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) : ‖gaussSum χ ZMod.stdAddChar‖ ^ 2 = N :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.norm_sq_gaussSum_of_isPrimitive",
+        "module": "TernaryGoldbach.Prelim.GaussInduced"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.6), up to notation. Lean uses Mathlib's gaussSum; τ(χ,b) appears as gaussSum with mulShift b, and τ(χ₀,n) as the Ramanujan sum ramanujan_sum.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          11
+        ],
+        "printed": [
+          11
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.28",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.20371,
+          0.29961,
+          0.63183,
+          0.03648
+        ]
+      },
+      "title": "Equation (7.28)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_7_1_5",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L55",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/PartIICited.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 55,
+            "text": "theorem prop_7_1_5 {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∃ E₂ : ℝ, |E₂| ≤ 2e-6 + 366.91 / √x ∧\n      ∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 =\n        0.640206 * x * Real.log x - 0.021095 * x + E₂ * x * Real.log x :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_7_1_5",
+        "module": "TernaryGoldbach.MinorArcs.PartIICited"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (14.30), up to notation. Lean does not round 2·10⁻⁶ + 366.91/√x up to 3·10⁻⁶, so its coefficient 0.640208000017 is marginally sharper.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

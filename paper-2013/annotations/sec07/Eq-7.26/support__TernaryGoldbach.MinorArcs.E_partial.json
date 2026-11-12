@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.26",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.20371,
+          0.09568,
+          0.63183,
+          0.04451
+        ]
+      },
+      "title": "Equation (7.26)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.E_partial",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L173",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 173,
+            "text": "theorem E_partial {x : ℝ} (hx : 1 ≤ x) (M : ℕ) :\n    ∑ n ∈ range M, eTerm x n ≤\n      1.94 ^ 2 * (Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x)) +\n        1.4262 * 2.32 ^ 2 * √2 * √x *\n          (Real.log 2 * (1 / (1 - √2 / 4) ^ 2) + Real.log x * (1 / (1 - √2 / 4))) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+        "module": "TernaryGoldbach.MinorArcs.EBound"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (14.28) changed it (constants 2.3375 -> 2.33744, 0.60579 -> 0.60581, 0.4494 -> 0.44937, 2.9433 -> 2.94325, 5.1244 -> 5.12426, 8.4031e-12 -> 8.4029e-12), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

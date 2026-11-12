@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 4.2",
+  "kind": "lemma",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 25,
+        "rect": [
+          0.20371,
+          0.67273,
+          0.63183,
+          0.11046
+        ]
+      },
+      "title": "Lemma 4.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.exch",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L2156",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 2156,
+            "text": "theorem exch (P : Finset ℕ) (hP : ∀ p ∈ P, p.Prime) :\n    ∏ p ∈ P, ((p : ℝ) / (p - 1)) ≤\n        ∏ i ∈ range P.card, ((Nat.nth Nat.Prime i : ℝ) / (Nat.nth Nat.Prime i - 1)) ∧\n      ∏ i ∈ range P.card, Nat.nth Nat.Prime i ≤ ∏ p ∈ P, p :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.exch",
+        "module": "TernaryGoldbach.Prelim.MertensProduct"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] Lemma C.2.2, up to notation. Lean states the lemma exactly.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          25
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

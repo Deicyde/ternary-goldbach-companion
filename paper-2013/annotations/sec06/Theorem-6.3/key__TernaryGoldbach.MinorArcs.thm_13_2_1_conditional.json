@@ -1,0 +1,89 @@
+{
+  "id": "Theorem 6.3",
+  "kind": "theorem",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 48,
+        "rect": [
+          0.20371,
+          0.71865,
+          0.63183,
+          0.18168
+        ]
+      },
+      "title": "Theorem 6.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3#0"
+        }
+      }
+    },
+    {
+      "location": {
+        "page": 49,
+        "rect": [
+          0.20371,
+          0.07362,
+          0.63183,
+          0.55362
+        ]
+      },
+      "title": "Theorem 6.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3#1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.thm_13_2_1_conditional",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L45",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Thm1321.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 45,
+            "text": "theorem thm_13_2_1_conditional {x : ℝ} (hx : 0 < x) {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    {g : ℕ → ℝ} {r₀ r₁ : ℕ} (h01 : r₀ ≤ r₁) (hr₀ : 1e5 ≤ (r₀ : ℝ))\n    (hx₁ : (20000 * (r₁ : ℝ)) ^ 2 ≤ x / 16) (hρ : 2 * (r₁ : ℝ) ≤ (2 * √(x / 16)) ^ (0.6 : ℝ))\n    (hg : ∀ n, r₀ ≤ n → n < r₁ → g (n + 1) ≤ g n) (hg0 : 0 ≤ g r₁)\n    (hv : ∀ n, r₀ ≤ n → n ≤ r₁ → ∀ α ∉ majorArcs 8 n x, ‖S etaStar x α‖ ≤ g n) :\n    ∫ α in Ioc 0 1 \\ majorArcs 8 r₀ x, ‖expTsum a α‖ ^ 2 * ‖S etaStar x α‖ ≤\n      g r₀ * (Hl2 x (∑' n, ‖a n‖ ^ 2) r₁ r₀ -\n          ∫ α in Ioc 0 1 ∩ majorArcs 8 r₀ x, ‖expTsum a α‖ ^ 2) +\n        ∑ n ∈ Finset.Ioc r₀ r₁, g n * (Hl2 x (∑' n, ‖a n‖ ^ 2) r₁ n -\n          Hl2 x (∑' n, ‖a n‖ ^ 2) r₁ (n - 1)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_conditional",
+        "module": "TernaryGoldbach.MinorArcs.Thm1321"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] Theorem 13.2.1 changed it (constants c^+ 2.3912 -> 2.0532, c^- 0.6294 -> 0.6394; T uses C_{phi,3}((1/2)log(x/kappa)) instead of C_{phi,3}(log x); g now displayed explicitly (13.10) with 3.36 and L_{2r} (was 3.2, L_r via eq:basia)), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          48,
+          49
+        ],
+        "printed": [
+          48,
+          49
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

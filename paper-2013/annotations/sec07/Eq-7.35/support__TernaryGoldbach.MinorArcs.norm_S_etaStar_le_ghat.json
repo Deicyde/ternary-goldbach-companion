@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.35",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.20371,
+          0.83763,
+          0.63183,
+          0.05838
+        ]
+      },
+      "title": "Equation (7.35)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L358",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 358,
+            "text": "theorem norm_S_etaStar_le_ghat {x n α : ℝ} (hx : 0 < x) (hy : 1e25 ≤ x / κ)\n    (hn : 670 ≤ n) (hny : n ≤ (x / κ) ^ (1 / 3 : ℝ) / 6) (hny' : 2.16e20 * n ≤ 670 * (x / κ))\n    (hα : α ∉ majorArcs 8 n (x / κ)) :\n    ‖S etaStar x α‖ ≤ x / κ * ghatY (x / κ) n :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (14.37) changed it (constants 0.041061*8.805x <= 0.36155x -> 0.041568*9.2598x <= 0.38492x; c^+ 2.3912 -> 2.0532, c^- 0.6294 -> 0.6394), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "label match rejected on reading; counterpart in [H] found by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

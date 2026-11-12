@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.32",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.20371,
+          0.36154,
+          0.63183,
+          0.03605
+        ]
+      },
+      "title": "Equation (3.32)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_units_expTsum",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L90",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 90,
+            "text": "theorem sum_units_expTsum {q : ℕ} [NeZero q] {a : ℕ → ℂ} (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q) (β : ℝ) :\n    ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, expTsum a ((b.val : ℝ) / q + β) =\n      (μ q : ℂ) * expTsum a β :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_units_expTsum",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.32), up to notation. Exact up to multiplying τ(χ₀) = μ(q) by η̂₃(−δ)x/φ(q).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21
+        ],
+        "printed": [
+          21
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.4",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 9,
+        "rect": [
+          0.20371,
+          0.85797,
+          0.63183,
+          0.04181
+        ]
+      },
+      "title": "Equation (2.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_norm_sq_gC_sub",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L379",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 379,
+            "text": "theorem integral_norm_sq_gC_sub (H : ℝ) :\n    ∫ u, ‖gC u - 𝓕 (Kc H) (-u)‖ ^ 2 =\n      ∫ ξ in (Icc (-(H / (2 * π))) (H / (2 * π)))ᶜ, ‖𝓕 gC ξ‖ ^ 2 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_norm_sq_gC_sub",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (2.6), up to notation. Lean proves (2.6) only on ℜs = 1/2 under a decay hypothesis narrower than the book's L¹/L² condition; the book's uses on ℜs = −1/2 are avoided by pointwise bounds.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          9
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

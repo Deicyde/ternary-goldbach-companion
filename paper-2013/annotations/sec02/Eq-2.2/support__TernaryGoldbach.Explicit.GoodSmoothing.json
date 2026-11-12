@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.2",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 9,
+        "rect": [
+          0.20371,
+          0.69228,
+          0.63183,
+          0.04181
+        ]
+      },
+      "title": "Equation (2.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.GoodSmoothing",
+            "kind": "inductive"
+          },
+          "destination": {
+            "fragment": "L51",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 51,
+            "text": "structure GoodSmoothing (φ : ℝ → ℂ) (K c : ℝ) : Prop where\n  continuousAt : ∀ y : ℝ, 0 < y → ContinuousAt φ y\n  conv : MellinConvergent φ ((3 / 2 : ℝ) : ℂ)\n  diff : ∀ s : ℂ, -1 < s.re → DifferentiableAt ℂ (mellin φ) s\n  c_pos : 0 < c\n  strip : ∀ s : ℂ, -1 / 2 ≤ s.re → s.re ≤ 3 / 2 → ‖mellin φ s‖ ≤ K * Real.exp (-(c * |s.im|))",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.GoodSmoothing",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (2.5), up to notation. Mathlib's mellin is the book's Mellin transform; it is 0 where the integral diverges, so Lean statements carry convergence hypotheses.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          9
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

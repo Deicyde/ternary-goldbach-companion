@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.11",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 36,
+        "rect": [
+          0.20371,
+          0.20807,
+          0.63183,
+          0.03605
+        ]
+      },
+      "title": "Equation (5.11)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_divisors_gf",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L137",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot1.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 137,
+            "text": "theorem sum_divisors_gf {P : ℕ} (hP : Squarefree P) :\n    ∑ d ∈ P.divisors, gf d = (P : ℝ) / Nat.totient P :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_divisors_gf",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot1"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (12.11), up to notation. Lean has only the left inequality, for squarefree q; the right inequality is not formalized because the c₊ = 2 route does not need it.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          36
+        ],
+        "printed": [
+          36
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.9",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 58,
+        "rect": [
+          0.20371,
+          0.11001,
+          0.63183,
+          0.04439
+        ]
+      },
+      "title": "Equation (7.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.coef_eq",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L148",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 148,
+            "text": "theorem coef_eq {N q : ℕ} (hq : 1 ≤ q) :\n    ((μ q : ℂ) / q.totient) ^ 3 * ∑ b ∈ TernaryGoldbach.MinorArcs.Bset q, e (-(N * ((b : ℝ) / q))) =\n      (coefN N q : ℂ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.coef_eq",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (14.8), up to notation. C₀ has no Lean definition; Lean truncates the singular series at the moduli of 𝔐_{8,r₀} and never completes it, so the book's q > r tail term is not needed.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          58
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

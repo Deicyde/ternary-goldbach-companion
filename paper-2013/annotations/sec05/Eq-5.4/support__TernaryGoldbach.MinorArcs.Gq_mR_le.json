@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.4",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 32,
+        "rect": [
+          0.20371,
+          0.58906,
+          0.63183,
+          0.04138
+        ]
+      },
+      "title": "Equation (5.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Gq_mR_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L177",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 177,
+            "text": "theorem Gq_mR_le {δ₀ Q₀ Q x β C : ℝ} (hx : 0 < x) (hQ₀ : 1 ≤ Q₀) (hQQ : Q₀ ≤ Q) (hC0 : 0 ≤ C)\n    (hC : ∀ q : ℕ, 1 ≤ q → Even q → (q : ℝ) ≤ 2 * Q₀ → ∀ s : ℝ, 1 ≤ s → s ≤ 2 * Q₀ / q →\n      Gq q (2 * Q₀ / (s * q)) ≤ C * Gq q (2 * Q / (s * q))) (c : ℕ) (hc : 1 ≤ c) :\n    Gq (qt c) ((mR δ₀ Q₀ x β : ℕ) / qt c) ≤ C * Gq (qt c) ((mR δ₀ Q x β : ℕ) / qt c) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Gq_mR_le",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (12.4), up to notation. Step of Prop 12.1.1 only; not formalized for the (12.1) arcs.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          32
+        ],
+        "printed": [
+          32
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

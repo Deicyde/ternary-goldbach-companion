@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.9",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 48,
+        "rect": [
+          0.20371,
+          0.74156,
+          0.63183,
+          0.03648
+        ]
+      },
+      "title": "Equation (6.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.S",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L58",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 58,
+            "text": "noncomputable def S (η : ℝ → ℝ) (x α : ℝ) : ℂ :=\n  ∑' n : ℕ, ((Λ n * η (n / x) : ℝ) : ℂ) * e (n * α)",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.S",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (13.9), up to notation. The split pieces S_{1,η₊}, S_{2,η₊} are expTsum (a₁ x) and expTsum (a₂ x) (MinorTotal.lean:94–100; S_etaPlus_eq, :116).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          48
+        ],
+        "printed": [
+          48
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

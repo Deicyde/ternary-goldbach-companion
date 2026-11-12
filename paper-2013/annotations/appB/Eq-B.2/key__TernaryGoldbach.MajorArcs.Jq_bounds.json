@@ -1,0 +1,70 @@
+{
+  "id": "Eq B.2",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 73,
+        "rect": [
+          0.20371,
+          0.23963,
+          0.63183,
+          0.04414
+        ]
+      },
+      "title": "Equation (B.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq B.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Jq_bounds",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L100",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 100,
+            "text": "theorem Jq_bounds {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) :\n    0.63907 * mPhi q * x - 9.62e-4 * mPhi q * x - 3.6e-9 * x ≤\n        ∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, ‖S etaPlus x y‖ ^ 2 ∧\n      ∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, ‖S etaPlus x y‖ ^ 2 ≤\n        0.64034 * mPhi q * x + 9.62e-4 * mPhi q * x + 2.17e-7 * x :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Jq_bounds",
+        "module": "TernaryGoldbach.MajorArcs.L2Major"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (C.7), up to notation. Lean never evaluates this sum; its L² major-arc bound weights errors by μ²(q)/φ(q) instead.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          73
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

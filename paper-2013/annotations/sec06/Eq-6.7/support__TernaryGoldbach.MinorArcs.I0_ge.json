@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.7",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 47,
+        "rect": [
+          0.20371,
+          0.85296,
+          0.63183,
+          0.04234
+        ]
+      },
+      "title": "Equation (6.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.I0_ge",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L277",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 277,
+            "text": "theorem I0_ge {x : ℝ} (hx : 4.9e26 ≤ x) :\n    8.6294 * x ≤ ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖expTsum (a₁ x) α‖ ^ 2 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.I0_ge",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (13.7), up to notation. Match up to the global factor Σ|a_n|², since Lean's (13.6) is multiplied through by Σ|a_n|².",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          47
+        ],
+        "printed": [
+          47
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

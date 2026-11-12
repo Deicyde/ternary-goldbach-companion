@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.1",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 9,
+        "rect": [
+          0.20371,
+          0.53394,
+          0.63183,
+          0.04128
+        ]
+      },
+      "title": "Equation (2.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.tail_etaO_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L198",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaCirc.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 198,
+            "text": "theorem tail_etaO_le {T : ℝ} (hT : 0 < T) :\n    ∫ ξ in {ξ : ℝ | T ≤ |ξ|}, ‖𝓕 (fun t => (etaO t : ℂ)) ξ‖ ^ 2 ≤ 98 / (2 * π * T) ^ 4 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.tail_etaO_le",
+        "module": "TernaryGoldbach.MajorArcs.EtaCirc"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (2.1) changed it (typo fixed: middle bound |hat{f^{(k)}}|_inf/(2 pi t) -> /(2 pi t)^k; hypothesis 'f of fast decay' added), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          9
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

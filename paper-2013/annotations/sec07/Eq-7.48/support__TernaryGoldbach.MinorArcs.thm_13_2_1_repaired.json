@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.48",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.20371,
+          0.59365,
+          0.63183,
+          0.1307
+        ]
+      },
+      "title": "Equation (7.48)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.48"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L153",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Thm1321.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 153,
+            "text": "theorem thm_13_2_1_repaired {x : ℝ} (hx : 0 < x) {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    {g : ℕ → ℝ} {r₀ r₁ : ℕ} (h01 : r₀ ≤ r₁) (hr₀ : 1e5 ≤ (r₀ : ℝ))\n    (hx₁ : (20000 * (r₁ : ℝ)) ^ 2 ≤ x / 784) (hρ : 2 * (r₁ : ℝ) ≤ (2 * √(x / 784)) ^ (0.6 : ℝ))\n    (hg : ∀ n, r₀ ≤ n → n < r₁ → g (n + 1) ≤ g n) (hg0 : 0 ≤ g r₁)\n    (hv₀ : ∀ α ∉ majorArcs 8 r₀ x, ‖S etaStar x α‖ ≤ g r₀)\n    (hv : ∀ n, r₀ < n → n ≤ r₁ → ∀ α ∉ majorArcs 8 n (x / κ), ‖S etaStar x α‖ ≤ g n) :\n    ∫ α in Ioc 0 1 \\ majorArcs 8 r₀ x, ‖expTsum a α‖ ^ 2 * ‖S etaStar x α‖ ≤\n      g r₀ * (Hl2y x (∑' n, ‖a n‖ ^ 2) r₁ r₀ -\n          ∫ α in Ioc 0 1 ∩ majorArcs 8 r₀ x, ‖expTsum a α‖ ^ 2) +\n        ∑ n ∈ Finset.Ioc r₀ r₁, g n * (Hl2y x (∑' n, ‖a n‖ ^ 2) r₁ n -\n          Hl2y x (∑' n, ‖a n‖ ^ 2) r₁ (n - 1)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+        "module": "TernaryGoldbach.MinorArcs.Thm1321"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (14.49) changed it (constants M bound 0.77671 -> 0.80508, minor-arc total 0.97392 -> 1.00948 x^2/varkappa), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.29",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 19,
+        "rect": [
+          0.20371,
+          0.78824,
+          0.63183,
+          0.10399
+        ]
+      },
+      "title": "Equation (3.29)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.tail_etaPlus_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L158",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusL2.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 158,
+            "text": "theorem tail_etaPlus_le {T : ℝ} (hT : 0 < T) :\n    ∫ ξ in {ξ : ℝ | T ≤ |ξ|}, ‖𝓕 etaPC ξ‖ ^ 2 ≤ 2 * (98 / (2 * π * T) ^ 4) + 19.5 / 200 ^ 2 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.tail_etaPlus_le",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusL2"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.29), up to notation. Lean keeps |η₊|₂² in the main term and bounds the Fourier tail directly; it needs neither the (log r+1.7) factor nor |η◦'''|₁.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          19
+        ],
+        "printed": [
+          19
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

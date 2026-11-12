@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.7",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 11,
+        "rect": [
+          0.20371,
+          0.76851,
+          0.63183,
+          0.12842
+        ]
+      },
+      "title": "Equation (3.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.coprimePart",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L71",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 71,
+            "text": "noncomputable def coprimePart (q : ℕ) (c : ℕ → ℂ) (n : ℕ) : ℂ := if Nat.Coprime n q then c n else 0",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.coprimePart",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (10.7), up to notation. Lean never needs non-unit a₀: the non-coprime n are bounded directly (10⁻¹⁵x for η₊, 10⁻¹²x/κ for η_*).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          11
+        ],
+        "printed": [
+          11
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

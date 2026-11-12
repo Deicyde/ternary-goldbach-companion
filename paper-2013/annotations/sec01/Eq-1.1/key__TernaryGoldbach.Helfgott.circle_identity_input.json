@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.1",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 5,
+        "rect": [
+          0.20371,
+          0.24051,
+          0.63183,
+          0.08236
+        ]
+      },
+      "title": "Equation (1.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.circle_identity_input",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L37",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 37,
+            "text": "theorem circle_identity_input (N : ℕ) (hN : 0 < N) :\n    IntegrableOn (integrand N) (Set.Ioc 0 1) ∧\n      ∫ α in Set.Ioc (0:ℝ) 1, integrand N α = (repSum (fun _ => True) N : ℂ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.circle_identity_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (1.2) changed it (split into [H] (1.2)–(1.3); step rewritten: given for general f_1,f_2,f_3 via Fourier transforms (f_1*f_2*f_3)(n)=∫ f̂_1f̂_2f̂_3 e(αn) and split into two displays, instead of Σ_{n1+n2+n3=N}ΛΛΛ = ∫ S(α,x)^3 e(-Nα) = ∫_M + ∫_m), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          5
+        ],
+        "printed": [
+          5
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "counterpart in [H] sought by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

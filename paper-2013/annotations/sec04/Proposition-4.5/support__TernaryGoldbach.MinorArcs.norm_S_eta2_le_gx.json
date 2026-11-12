@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 4.5",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 28,
+        "rect": [
+          0.20371,
+          0.1281,
+          0.63183,
+          0.43411
+        ]
+      },
+      "title": "Proposition 4.5",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 4.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_gx",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L53",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GBound.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 53,
+            "text": "theorem norm_S_eta2_le_gx {α x δ : ℝ} {a : ℤ} {q : ℕ} (hx : 2.16e20 ≤ x)\n    (h : Approx2 α x δ a q (3 / 4 * x ^ (2 / 3 : ℝ))) (hq : (q : ℝ) ≤ x ^ (1 / 3 : ℝ) / 6)\n    (hr3 : 3 ≤ max 1 (|δ| / 8) * q) :\n    ‖S eta2 x α‖ ≤ gx x (max 1 (|δ| / 8) * q) * x :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_gx",
+        "module": "TernaryGoldbach.MinorArcs.GBound"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] Proposition 11.2.3 changed it (g_{x,phi} changed: L_r/r -> L_{2r}/r (new L_t), 3.2 K^{1/6} x^{-1/6} -> 3.36 K^{1/6} x^{-1/6}; h in h_phi redefined (0.276, 1234)), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          28
+        ],
+        "printed": [
+          28
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

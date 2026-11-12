@@ -1,0 +1,70 @@
+{
+  "id": "Eq B.9",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 74,
+        "rect": [
+          0.20371,
+          0.44753,
+          0.63183,
+          0.0602
+        ]
+      },
+      "title": "Equation (B.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq B.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.Small.tail_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L105",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SmallFsq.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 105,
+            "text": "theorem tail_le (N L : ℕ) (hN : 1 ≤ N) (hL : 1 ≤ L) :\n    ∑' k, sqInd (k + N) / ((k + N : ℕ) : ℝ) ^ 2 ≤\n      ∑ k ∈ range L, ((cq (k + N) : ℚ) : ℝ) / ((k + N : ℕ) : ℝ) ^ 2 + 1 / (((L + N : ℕ) : ℝ) - 1) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.Small.tail_le",
+        "module": "TernaryGoldbach.Prelim.SmallFsq"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (C.14), up to notation. The constants quoted after the lemma check out: ζ(2)/ζ(4) = 15/π² = 1.5198178 and ζ(3)/ζ(6) = 1.1815649.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          74
+        ],
+        "printed": [
+          74
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

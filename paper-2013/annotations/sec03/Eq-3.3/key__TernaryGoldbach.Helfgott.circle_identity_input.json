@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.3",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 10,
+        "rect": [
+          0.20371,
+          0.63593,
+          0.63183,
+          0.04036
+        ]
+      },
+      "title": "Equation (3.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.circle_identity_input",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L37",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 37,
+            "text": "theorem circle_identity_input (N : ℕ) (hN : 0 < N) :\n    IntegrableOn (integrand N) (Set.Ioc 0 1) ∧\n      ∫ α in Set.Ioc (0:ℝ) 1, integrand N α = (repSum (fun _ => True) N : ℂ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.circle_identity_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (10.3), up to notation. Absolute summability is the precise form of the book's decay condition. circle_identity_input (the case η₊,η₊,η_*) uses no hypothesis.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          10
+        ],
+        "printed": [
+          10
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

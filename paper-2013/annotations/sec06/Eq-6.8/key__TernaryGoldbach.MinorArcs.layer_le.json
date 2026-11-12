@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.8",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 48,
+        "rect": [
+          0.20371,
+          0.31871,
+          0.63183,
+          0.09147
+        ]
+      },
+      "title": "Equation (6.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.layer_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L52",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 52,
+            "text": "theorem layer_le {u v : Ω → ℝ} (hu : Integrable u μ) (huv : Integrable (fun ω => u ω * v ω) μ)\n    (hu0 : ∀ ω, 0 ≤ u ω) {M : ℕ → Set Ω} (hM : ∀ n, MeasurableSet (M n)) (hmono : Monotone M)\n    {g : ℕ → ℝ} {r₀ K : ℕ} (hv : ∀ n, r₀ ≤ n → n < K → ∀ ω ∉ M n, v ω ≤ g n) :\n    ∀ k, r₀ ≤ k → k ≤ K → ∫ ω in (M r₀)ᶜ, u ω * v ω ∂μ ≤\n      ∑ n ∈ Ico r₀ k, g n * ((∫ ω in M (n + 1), u ω ∂μ) - ∫ ω in M n, u ω ∂μ) +\n        ∫ ω in (M k)ᶜ, u ω * v ω ∂μ :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.layer_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (13.8), up to notation. Lean's f(n) is I(n+1) − I(n) (differences of nested integrals) rather than an integral over 𝔐_{n+1}∖𝔐_n; layer_le's e2 identifies the two.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          48
+        ],
+        "printed": [
+          48
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

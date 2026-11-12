@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.6",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 34,
+        "rect": [
+          0.20371,
+          0.49565,
+          0.63183,
+          0.12444
+        ]
+      },
+      "title": "Equation (5.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.weight_sum",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L130",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveWeights.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 130,
+            "text": "theorem weight_sum (c : ℕ) (hc : 1 ≤ c) (X : ℝ) :\n    ∑ q ∈ (Icc 1 ⌊X⌋₊).filter (fun q => (qt q : ℝ) ≤ X),\n        (if c ∣ q then TernaryGoldbach.wq q c else 0) / q.totient =\n      c / c.totient * (kap c * Gq (qt c) (X / qt c)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.weight_sum",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveWeights"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (12.6), up to notation. Lean merges both maxima into one even-q bound, which matches the book's remark that they are equal.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          34
+        ],
+        "printed": [
+          34
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

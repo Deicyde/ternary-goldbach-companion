@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 4.2",
+  "kind": "lemma",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 25,
+        "rect": [
+          0.20371,
+          0.67273,
+          0.63183,
+          0.11046
+        ]
+      },
+      "title": "Lemma 4.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.F_all",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L2220",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 2220,
+            "text": "theorem F_all {x : ℕ} (hx : x.Prime) (h5 : 5 ≤ x) :\n    ∏ p ∈ (Icc 1 x).filter Nat.Prime, ((p : ℝ) / (p - 1)) <\n      Real.exp Real.eulerMascheroniConstant * Real.log (thetaN x) +\n        2.50637 / Real.log (thetaN x) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.F_all",
+        "module": "TernaryGoldbach.Prelim.MertensProduct"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] Lemma C.2.2, up to notation. Lean states the lemma exactly.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          25
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

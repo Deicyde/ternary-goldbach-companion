@@ -1,0 +1,2466 @@
+{
+ "paper": "arXiv:1312.7748v2",
+ "book": "arXiv:1501.05438v2",
+ "method": "links2013.json (2026-11-06) joined paper and book items by LaTeX label; every match whose text differs or whose number moved, and every identical one, was re-read in both LaTeX sources for changed statements and definitions (2026-11-12); items with no label match were sought by reading",
+ "verdicts": {
+  "same": "the same statement up to notation",
+  "changed": "the same item with a changed statement (change says what)",
+  "null": "no counterpart in [H]"
+ },
+ "rejected_label_matches": [
+  {
+   "paper": "Eq 5.21",
+   "label_match": "Eq 4.24",
+   "why": "Label eq:martinu reused: paper 2817-2819 is the bound G_q(Q_0/sq)/G_q(Q/sq) <= (log Q_0+sigma)/(log Q+1.312) in Lemma lem:paniz, while book typeI.tex 919-934 is a Type I bound on sum |T_m(alpha)|; the paper's counterpart is book l2normls.tex 517-519 (label eq:marasmor, Eq 12.21), identical, in the same Lemma with identical hypotheses (513-524).",
+   "counterpart": "Eq 12.21"
+  },
+  {
+   "paper": "Eq 7.35",
+   "label_match": "Eq 5.45",
+   "why": "Label eq:roussel reused: paper 5005-5008 is the final bound g(r_0)(...)<=0.36155x, while book typeII.tex 992-995 is a large-sieve inequality; the paper's counterpart is book conclusion.tex 623-626 (label eq:jbaldwin, Eq 14.37), whose constants differ (0.041568*9.2598x <= 0.38492x, with c^+=2.0532, c^-=0.6394 at line 621 vs paper 0.041061*8.805x <= 0.36155x, c^+=2.3912, c^-=0.6294 at line 5003).",
+   "counterpart": "Eq 14.37"
+  }
+ ],
+ "items": {
+  "Corollary 1.1": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper ternvin.tex 279-281 states k<=4 after the Schnirelman history; the book's corresponding history paragraph introductionp.tex 292-306 ends with Ramare (6 primes) and Tao (5 primes), and searching all book .tex for Schnirelman / 'at most 4' / 'four primes' finds no such statement.",
+   "book": null,
+   "verdict": null,
+   "change": "removed: the book does not state the corollary (every n>1 is a sum of at most 4 primes) anywhere, numbered or not",
+   "method": "sought in [H] by reading both LaTeX sources: no counterpart"
+  },
+  "Eq 1.1": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 309-314 (eq:korto) vs book introductionp.tex 431 (eq:vanes, Eq 1.2) and 452 (eq:willow, Eq 1.3); f_i=Λ·1_{n≤x} recovers the paper's identity, and book major arcs (text before 452) are width 1/(qQ), Q≍x/r, as in the paper's c r_0/(qx).",
+   "book": "Eq 1.2",
+   "verdict": "changed",
+   "change": "split into [H] (1.2)–(1.3); step rewritten: given for general f_1,f_2,f_3 via Fourier transforms (f_1*f_2*f_3)(n)=∫ f̂_1f̂_2f̂_3 e(αn) and split into two displays, instead of Σ_{n1+n2+n3=N}ΛΛΛ = ∫ S(α,x)^3 e(-Nα) = ∫_M + ∫_m",
+   "method": "counterpart in [H] sought by reading both LaTeX sources"
+  },
+  "Eq 1.2": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 343-345 (eq:mork) vs book introductionp.tex 649-650 (eq:holo, Eq 1.6); the same corrected definition is also book Eq 7.1 (intromaj.tex 8-9, eq:trinny) and the unnumbered recall at introductionp.tex 1497.",
+   "book": "Eq 1.6",
+   "verdict": "changed",
+   "change": "definition changed: right side Σ Λ(n)χ(n)e(δn/x)η(n/x) → Σ Λ(n)e(αn)η(n/x) (the paper's display copies the twisted sum (1.4) under the name S_η(α,x))",
+   "method": "counterpart in [H] sought by reading both LaTeX sources"
+  },
+  "Eq 1.3": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 347 (eq:kamon) ∫_M S_{η+}^2 S_{η*} e(-Nα) vs book introductionp.tex 1542-1544 (eq:centi, Eq 1.35) ∫_M (S_{η+})^2 S_{η*} e(-αn): same integral, N renamed n, η+/η* the same two smoothings.",
+   "book": "Eq 1.35",
+   "verdict": "same",
+   "change": "",
+   "method": "counterpart in [H] sought by reading both LaTeX sources"
+  },
+  "Eq 1.4": {
+   "label_match": "Eq 7.2",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Definition of the twisted sum: paper 352-354 S_eta(delta/x,x) vs book intromaj.tex 33-35 S_{eta,chi}(delta/x,x); same right side, notation only.",
+   "book": "Eq 7.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 1.5": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 371-373 (eq:liz) C_0∫∫η+(t1)η+(t2)η*(N/x-(t1+t2)) vs book introductionp.tex 1575-1580 (eq:sust, Eq 1.38), whose right side is the same double integral; the book also has an unnumbered C_0 C_{η∘,η*}x^2 with η∘ in place of η+ at 1751-1758.",
+   "book": "Eq 1.38",
+   "verdict": "changed",
+   "change": "term added: the Fourier-side integral ∫(η̂_+(-α))^2 η̂_*(-α)e(-αn/x)dα is added as the left side; the factor C_0 is dropped from the display (text says 'an infinite product … times x^2 times')",
+   "method": "counterpart in [H] sought by reading both LaTeX sources"
+  },
+  "Eq 1.6": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 444-450 (eq:onedot) vs book introductionp.tex 1553-1559 (eq:katju, Eq 1.37); both say 'traditional/need to do better than' bound, losing a log; the book's display writes max \\widehat{η_*}(α) in the first line and drops absolute values on the left.",
+   "book": "Eq 1.37",
+   "verdict": "changed",
+   "change": "step rewritten: smoothed ∫_m S_{η+}^2 S_{η*} replaces ∫_m |S^3|, and the second bound uses the full Σ Λ(n)^2 η+^2(n/x) instead of |S|_2^2 - ∫_M|S|^2",
+   "method": "counterpart in [H] sought by reading both LaTeX sources"
+  },
+  "Eq 1.7": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 456-459 (eq:dadaj) ∫_{M_r}|S|^2 - ∫_{M_{r0}}|S|^2 vs the unnumbered \\[…\\] display at book introductionp.tex 1768-1772.",
+   "book": null,
+   "verdict": null,
+   "change": "only unnumbered text in book: ∫_{m_s}|S_{η+}|^2 = ∫_{M_s}|S_{η+}|^2 - ∫_M|S_{η+}|^2 (smoothed S_{η+}, parameters s,r instead of r,r_0)",
+   "method": "sought in [H] by reading both LaTeX sources: no counterpart"
+  },
+  "Eq 2.1": {
+   "label_match": "Eq 2.1",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "paper 646-654 has (2\\pi t) without power k in the first O^* and only 'differentiable k times outside finitely many points' (643-645); book 112-120 has (2\\pi t)^k and adds 'of fast decay' (109-111).",
+   "book": "Eq 2.1",
+   "verdict": "changed",
+   "change": "typo fixed: middle bound |hat{f^{(k)}}|_inf/(2 pi t) -> /(2 pi t)^k; hypothesis 'f of fast decay' added",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 2.2": {
+   "label_match": "Eq 2.5",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Definition of the Mellin transform identical: paper 665-666 vs book 222-223.",
+   "book": "Eq 2.5",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 2.3": {
+   "label_match": "Eq 2.9",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Mellin transform of a product, identical except the bibliography key of the cited reference (paper 669-671 MR1773820, book 255-257 MR1243179).",
+   "book": "Eq 2.9",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 2.4": {
+   "label_match": "Eq 2.6",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Mellin isometry identical up to the variable name t -> x (paper 676-678, book 239-241); the book adds sufficient conditions (243-246) but the statement is the same.",
+   "book": "Eq 2.6",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 2.5": {
+   "label_match": "Eq 2.10",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 682-684 has two rules (t f' and log t f); book 263-266 has the same two plus M(f')(s) = -(s-1)Mf(s-1).",
+   "book": "Eq 2.10",
+   "verdict": "changed",
+   "change": "term added: new first line M(f'(t))(s) = -(s-1) Mf(s-1)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 2.6": {
+   "label_match": "Eq 2.11",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "M eta_2 and M eta_4 formulas identical (paper 691-693, book 276-278); the book defines eta_2 = (2*1_[1/2,1]) *_M (2*1_[1/2,1]) just before (270-271), the same as the paper's (1916-1918).",
+   "book": "Eq 2.11",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.1": {
+   "label_match": "Eq 10.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 706-707, book intmajarc.tex 4-5); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.2": {
+   "label_match": "Eq 10.2",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 713-715, book intmajarc.tex 11-13); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.3": {
+   "label_match": "Eq 10.3",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "Integral of S_{eta_1}S_{eta_2}S_{eta_3}e(-N alpha) over R/Z, identical up to a spacing \\; (paper 717-719, book 21-23).",
+   "book": "Eq 10.3",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.4": {
+   "label_match": "Eq 10.4",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 726-728, book intmajarc.tex 30-32); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.4",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.5": {
+   "label_match": "Eq 10.5",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 730-736, book intmajarc.tex 34-40); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.5",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.6": {
+   "label_match": "Eq 10.6",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 781-782, book intmajarc.tex 85-86); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.6",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.7": {
+   "label_match": "Eq 10.7",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 795-804, book intmajarc.tex 99-108); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.7",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.8": {
+   "label_match": "Eq 10.8",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 893-899, book intmajarc.tex 197-203); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.8",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.9": {
+   "label_match": "Eq 10.9",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 901-902, book intmajarc.tex 205-206); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.9",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.10": {
+   "label_match": "Eq 10.10",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 923-928, book intmajarc.tex 227-232); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.10",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.11": {
+   "label_match": "Eq 10.11",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 930-933, book intmajarc.tex 234-237); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.11",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.12": {
+   "label_match": "Eq 10.12",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 979-983, book intmajarc.tex 286-290); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.12",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.13": {
+   "label_match": "Eq 10.13",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 985-986, book intmajarc.tex 292-293); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.13",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.14": {
+   "label_match": "Eq 10.14",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1000-1001, book intmajarc.tex 307-308); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.14",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.15": {
+   "label_match": "Eq 10.15",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1007-1009, book intmajarc.tex 314-316); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.15",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.16": {
+   "label_match": "Eq 10.16",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1020-1030, book intmajarc.tex 327-337); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.16",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.17": {
+   "label_match": "Eq 10.17",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1040-1050, book intmajarc.tex 347-357); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.17",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.18": {
+   "label_match": "Eq 10.18",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1063-1076, book intmajarc.tex 370-383); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.18",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.19": {
+   "label_match": "Eq 10.19",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1078-1082, book intmajarc.tex 385-389); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.19",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.20": {
+   "label_match": "Eq 10.20",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1100-1120, book intmajarc.tex 407-427); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.20",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.21": {
+   "label_match": "Eq 10.21",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1125-1129, book intmajarc.tex 432-436); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.21",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.22": {
+   "label_match": "Eq 10.22",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1167-1173, book intmajarc.tex 474-480); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.22",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.23": {
+   "label_match": "Eq 10.23",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1198-1203, book intmajarc.tex 505-510); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.23",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.24": {
+   "label_match": "Eq 10.24",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1205-1209, book intmajarc.tex 512-516); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.24",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.25": {
+   "label_match": "Eq 10.25",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "paper 1295-1303 has q*max_{chi != chi_T}|err|^2 in both last sums; book 606-614 has max q^*|err|^2 (preceded by the same change at book 580 vs paper 1269).",
+   "book": "Eq 10.25",
+   "verdict": "changed",
+   "change": "error term changed: q * max |err_{eta,chi^*}|^2 -> max q^* |err_{eta,chi^*}|^2 (conductor q^* in place of q)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 3.1": {
+   "label_match": "Lemma 10.3.1",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "paper 1429-1432 defines E with sqrt{q}; book 740-743 uses sqrt{q^*} and adds 764-766; all other hypotheses, the bound (bfpink) and the L_{r,delta_0} bounds are identical.",
+   "book": "Lemma 10.3.1",
+   "verdict": "changed",
+   "change": "definition changed: E_{eta,r,delta_0} uses sqrt(q^*) instead of sqrt(q); sentence defining chi^*, q^* added",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.26": {
+   "label_match": "Eq 10.26",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Display (paper 1420-1427 = book intmajarc.tex 731-738) is identical, but the definition of E_{eta,r,delta_0} in eq:sreda just below changed from sqrt{q}|err| (paper 1432) to sqrt{q^*}|err| (book 743), with q^* defined at book 764-766; hypotheses (r>=182, eta, eta_circ) unchanged.",
+   "book": "Eq 10.26",
+   "verdict": "changed",
+   "change": "definition changed: E_{eta,r,delta_0} in the error term now uses sqrt(q^*) (modulus of the inducing primitive character) instead of sqrt(q)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.27": {
+   "label_match": "Eq 10.27",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "paper 1432 sqrt{q}|err_{eta,chi^*}| vs book 743 sqrt{q^*}|err_{eta,chi^*}|; ET_{eta,s} and K_{r,2} identical.",
+   "book": "Eq 10.27",
+   "verdict": "changed",
+   "change": "definition changed: E_{eta,r,delta_0} with sqrt(q) -> sqrt(q^*)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.28": {
+   "label_match": "Eq 10.28",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1438-1441, book intmajarc.tex 749-752); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item. L_{r,delta_0} and the hypotheses of Lemma drujal (r>=182) are unchanged; only E in eq:sreda changed, which this display does not use.",
+   "book": "Eq 10.28",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.29": {
+   "label_match": "Eq 10.29",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1443-1452, book intmajarc.tex 754-763); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item. L_{r,delta_0} and the hypotheses of Lemma drujal (r>=182) are unchanged; only E in eq:sreda changed, which this display does not use.",
+   "book": "Eq 10.29",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.30": {
+   "label_match": "Eq 10.30",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1485-1500, book intmajarc.tex 799-814); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.30",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.31": {
+   "label_match": "Eq 10.31",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "paper 1538-1552 has sqrt{q} in front of each integral and in the final max; book 852-865 has sqrt{q^*} inside the max over chi.",
+   "book": "Eq 10.31",
+   "verdict": "changed",
+   "change": "factor sqrt(q) -> sqrt(q^*), moved inside the max over chi",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.32": {
+   "label_match": "Eq 10.32",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1560-1562, book intmajarc.tex 873-875); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.32",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.33": {
+   "label_match": "Eq 10.33",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1571-1582, book intmajarc.tex 884-895); paper section 3 (ternvin 704-1701) diffed line-by-line against intmajarc.tex: only prose/formatting changes outside the E_{eta,r,delta_0} definitions (sqrt q -> sqrt q^*), none affecting this item.",
+   "book": "Eq 10.33",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.34": {
+   "label_match": "Eq 10.34",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "paper 1599 and 1602 sqrt{q} vs book 912 and 915 sqrt{q^*}; otherwise identical.",
+   "book": "Eq 10.34",
+   "verdict": "changed",
+   "change": "factor sqrt(q) -> sqrt(q^*) in both maxima",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.35": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 1607-1610 B_*=2.82643|η*|_2^2, B_+=2.82643|η+|_2^2 (unlabelled) is identical to book intmajarc.tex 920-923 (unlabelled, Eq 10.35), with the same preceding bound by Σ μ²(q)/φ(q)² ≤ 2.82643 (paper 1583, book 896) and the same use in eq:teresa.",
+   "book": "Eq 10.35",
+   "verdict": "same",
+   "change": "",
+   "method": "counterpart in [H] sought by reading both LaTeX sources"
+  },
+  "Proposition 3.2": {
+   "label_match": "Proposition 10.4.1",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "paper 1618 strict '<' vs book 931 '<='; paper 1656 sqrt{q} vs book 969 sqrt{q^*}; the main display (1631-1643 vs 944-956) and other constants identical.",
+   "book": "Proposition 10.4.1",
+   "verdict": "changed",
+   "change": "hypothesis |eta_+ - eta_circ|_2 < eps_0|eta_circ|_2 -> <=; definition of E_{eta,r,delta_0} uses sqrt(q^*) instead of sqrt(q)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.36": {
+   "label_match": "Eq 10.36",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "paper 1631-1643 vs book 944-956 differ only in & placement; E is defined at paper 1653-1656 with sqrt{q}, at book 966-969 with sqrt{q^*}; eps_0 hypothesis paper 1618 '<' vs book 931 '<='.",
+   "book": "Eq 10.36",
+   "verdict": "changed",
+   "change": "display identical, but E_{eta,r,delta_0} it uses is redefined with sqrt(q^*) (and the hypothesis on eps_0 becomes non-strict)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.37": {
+   "label_match": "Eq 10.37",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "C_0 and C_{eta_circ,eta_*} definitions identical (paper 1645-1651, book intmajarc.tex 958-964); in the enclosing Prop. nefumo the hypothesis |eta_+-eta_circ|_2<eps_0|eta_circ|_2 became <= (paper 1618, book 931) and E in eq:vulgato became sqrt{q^*}, but neither enters these definitions.",
+   "book": "Eq 10.37",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 3.38": {
+   "label_match": "Eq 10.38",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "paper 1656 sqrt{q} vs book 969 sqrt{q^*}; A_eta, L, K_{r,2}, Z, LS identical (1658-1673 vs 971-986).",
+   "book": "Eq 10.38",
+   "verdict": "changed",
+   "change": "definition changed: E_{eta,r,delta_0} with sqrt(q) -> sqrt(q^*)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.1": {
+   "label_match": "Eq 11.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1717-1720, book optcoor.tex 16-19); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Eq 11.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.2": {
+   "label_match": "Eq 11.2",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1765-1769, book optcoor.tex 64-68); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Eq 11.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.3": {
+   "label_match": "Eq 11.3",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1771-1775, book optcoor.tex 70-74); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Eq 11.3",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.4": {
+   "label_match": "Eq 11.4",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1782-1786, book optcoor.tex 81-85); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Eq 11.4",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 4.1": {
+   "label_match": "Lemma 11.1.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1789-1794, book optcoor.tex 88-93); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Lemma 11.1.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.5": {
+   "label_match": "Eq 11.5",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1816-1831, book optcoor.tex 115-130); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Eq 11.5",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.6": {
+   "label_match": "Eq 11.6",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "Same chain of equalities for int int eta_circ eta_circ eta_*, only & alignment differs (paper 1836-1847, book 135-146); same proviso N/x >= 2.",
+   "book": "Eq 11.6",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.7": {
+   "label_match": "Eq 11.7",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1871-1874, book optcoor.tex 170-173); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Eq 11.7",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.8": {
+   "label_match": "Eq 11.8",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1888-1889, book optcoor.tex 187-188); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Eq 11.8",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.9": {
+   "label_match": "Eq 11.9",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1895-1902, book optcoor.tex 194-201); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Eq 11.9",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.10": {
+   "label_match": "Eq 11.10",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 1916-1917, book optcoor.tex 215-216); paper section 4 (ternvin 1702-1917) vs optcoor.tex 1-216: only prose/alignment changes; the changed g, L_t, h, Lemma 4.2/vinc material starts after paper line 1918 and is not used here.",
+   "book": "Eq 11.10",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 4.2": {
+   "label_match": "Lemma C.2.2",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical statement q/phi(q) < digamma(r) for r >= max(3,q) with the same digamma (paper 1925-1932 in section 4, book sumlaphi.tex 332-339 moved to appendix C); only the proof wording for q < 27 differs (paper 1937-1938, book 345-348).",
+   "book": "Lemma C.2.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.11": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 1929-1931 (eq:koop in Lemma lem:merkel, q/φ(q)<ϝ(r) for r≥max(3,q)) is identical to book sumlaphi.tex 336-338 (eq:locos, Eq C.19, same Lemma lem:merkel, same hypotheses); only the proof's last step is reworded (AM-GM).",
+   "book": "Eq C.19",
+   "verdict": "same",
+   "change": "",
+   "method": "counterpart in [H] sought by reading both LaTeX sources"
+  },
+  "Eq 4.12": {
+   "label_match": "Eq 11.11",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "paper 1947-1949 = book 233-235, but g_x is defined at paper 1951-1962 vs book 237-247 (see Eq 4.13/4.14); hypotheses on x, q, delta (1942-1945 vs 227-232) identical.",
+   "book": "Eq 11.11",
+   "verdict": "changed",
+   "change": "display identical, but g_x is redefined: L_r/r -> L_{2r}/r with new L_t, 3.2 x^{-1/6} -> 3.36 x^{-1/6}; source is the book's Theorem minmain instead of [Helf, Main Thm.]",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.13": {
+   "label_match": "Eq 11.12",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 1951-1953 vs book 237-239.",
+   "book": "Eq 11.12",
+   "verdict": "changed",
+   "change": "term L_r/r -> L_{2r}/r; constant 3.2 -> 3.36 (in 3.2 x^{-1/6})",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.14": {
+   "label_match": "Eq 11.13",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 1955-1962 vs book 241-247; the R_{x,t} lines are identical.",
+   "book": "Eq 11.13",
+   "verdict": "changed",
+   "change": "definition of L_t changed: digamma(t)(log 2^{7/4} t^{13/4} + 80/9) + log 2^{16/9} t^{80/9} + 111/5 -> digamma(t/2)(13/4 log t + 7.82) + 13.66 log t + 37.55; R_{x,t} unchanged",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.15": {
+   "label_match": "Eq 11.14",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "paper 1968-1970 = book 249-251; h defined at paper 1972-1974 vs book 253-255.",
+   "book": "Eq 11.14",
+   "verdict": "changed",
+   "change": "display identical, but h(x) is redefined (0.2727 -> 0.276, 1218 -> 1234)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.16": {
+   "label_match": "Eq 11.15",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 1973 h(x)=0.2727x^{-1/6}(log x)^{3/2}+1218x^{-1/3}log x vs book 254 0.276 ... + 1234 ....",
+   "book": "Eq 11.15",
+   "verdict": "changed",
+   "change": "constants 0.2727 -> 0.276 and 1218 -> 1234",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 4.3": {
+   "label_match": "Lemma 11.2.1",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 1984 'r >= 3 fixed' vs book 265 'r >= 11 fixed'; the referenced (syryza)/(flou) changed (paper 1951-1974 vs book 237-255).",
+   "book": "Lemma 11.2.1",
+   "verdict": "changed",
+   "change": "range r >= 3 -> r >= 11; g_x and h it refers to are redefined (L_{2r}, 3.36; 0.276, 1234)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.17": {
+   "label_match": "Eq 11.16",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Bound digamma(r) <= e^gamma log log x_1 (paper 2000-2004) vs same with x_r (book 282-286); renamed variable only, same r >= 37 range.",
+   "book": "Eq 11.16",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.18": {
+   "label_match": "Eq 11.17",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 2030-2034 vs book 317-321 (x_1 renamed x_r).",
+   "book": "Eq 11.17",
+   "verdict": "changed",
+   "change": "constant 3.2 -> 3.36; last term (13/12) e^gamma x^{-1/6} log x loglog x -> (13/2) e^gamma x^{-1/3} log x loglog x (compared against 0.2727 -> 0.276 (log x)^{3/2})",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 4.4": {
+   "label_match": "Lemma 11.2.2",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Convexity of t -> R_{e^t,r} for t >= 3 log 6r, text identical (paper 2065-2068, book 355-358), and R_{x,t} is defined identically (paper 1956-1958, book 242-244).",
+   "book": "Lemma 11.2.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Proposition 4.5": {
+   "label_match": "Proposition 11.2.3",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 2101-2112 vs book 392-403; hypotheses (2087-2095 vs 378-386) identical.",
+   "book": "Proposition 11.2.3",
+   "verdict": "changed",
+   "change": "g_{x,phi} changed: L_r/r -> L_{2r}/r (new L_t), 3.2 K^{1/6} x^{-1/6} -> 3.36 K^{1/6} x^{-1/6}; h in h_phi redefined (0.276, 1234)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.19": {
+   "label_match": "Eq 11.18",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "paper 2096-2099 = book 387-390; g_{x,phi} defined at paper 2101-2105 vs book 392-396.",
+   "book": "Eq 11.18",
+   "verdict": "changed",
+   "change": "display identical, but g_{x,phi} is redefined (L_{2r}/r, 3.36 K^{1/6}x^{-1/6})",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.20": {
+   "label_match": "Eq 11.19",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 2101-2112 vs book 392-403; R_{x,K,phi,t} identical.",
+   "book": "Eq 11.19",
+   "verdict": "changed",
+   "change": "term L_r/r -> L_{2r}/r; constant 3.2 -> 3.36 (in 3.2 K^{1/6} x^{-1/6})",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.21": {
+   "label_match": "Eq 11.20",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "C_{phi,2,K} = -int_{1/K}^1 phi(w) log w dw, identical (paper 2115-2117, book 406-408).",
+   "book": "Eq 11.20",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.22": {
+   "label_match": "Eq 11.21",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "paper 2122-2125 = book 413-416; h refers to (flou), paper 1973 vs book 254.",
+   "book": "Eq 11.21",
+   "verdict": "changed",
+   "change": "display identical, but h(x) inside h_phi is redefined (0.2727 -> 0.276, 1218 -> 1234)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 4.6": {
+   "label_match": "Lemma 11.2.4",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 2201 and 2206 vs book 492 and 497-498.",
+   "book": "Lemma 11.2.4",
+   "verdict": "changed",
+   "change": "range/hypothesis x > K(6e)^3, r >= 175 -> x > K > 1, 670 <= r <= (x/K)^{1/3}/6; g_{x,phi} redefined",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.23": {
+   "label_match": "Eq 11.22",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 2210-2212 lists three functions; book 502-505 lists four.",
+   "book": "Eq 11.22",
+   "verdict": "changed",
+   "change": "term added: r -> (log r loglog r)/r added to the list of decreasing functions",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.24": {
+   "label_match": "Eq 11.23",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 2221-2223 log(1+log 8r/(2 log(9x^{1/3}/4.008r))) sqrt(loglog r/r) vs book 515-517 with an extra factor log 2r and y in place of x.",
+   "book": "Eq 11.23",
+   "verdict": "changed",
+   "change": "factor log 2r added (and x -> y)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 4.25": {
+   "label_match": "Eq 11.24",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "paper 2233-2236 vs book 527-532 (L = log 8r, l = ell); the book's version keeps ell and adds the term 2/log 2r.",
+   "book": "Eq 11.24",
+   "verdict": "changed",
+   "change": "step rewritten: (2/2.6)/((1+L/2l)log(1+L/2l)) + 1/(log r loglog r) < 1 -> (1/l)(2 - 1/(1+L/2l))/log(1+L/2l) + 2/log 2r + 1/(log r loglog r) < 1",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 4.7": {
+   "label_match": "Lemma 11.2.5",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "paper 2250-2256 = book 565-571; (basia) and (flou) differ (paper 2101-2105, 1973 vs book 392-396, 254).",
+   "book": "Lemma 11.2.5",
+   "verdict": "changed",
+   "change": "statement text identical, but g_{x,phi} and h are redefined (L_{2r}, 3.36; 0.276, 1234)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Proposition 5.1": {
+   "label_match": "Proposition 12.1.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2356-2375, book l2normls.tex 56-75); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Proposition 12.1.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.1": {
+   "label_match": "Eq 12.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2361-2365, book l2normls.tex 61-65); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.2": {
+   "label_match": "Eq 12.2",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2373-2374, book l2normls.tex 73-74); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.3": {
+   "label_match": "Eq 12.3",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2378-2382, book l2normls.tex 78-82); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.3",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.4": {
+   "label_match": "Eq 12.4",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2413-2416, book l2normls.tex 113-116); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.4",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Proposition 5.2": {
+   "label_match": "Proposition 12.1.2",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2491-2506, book l2normls.tex 191-206); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Proposition 12.1.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.5": {
+   "label_match": "Eq 12.5",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2504-2505, book l2normls.tex 204-205); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.5",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.6": {
+   "label_match": "Eq 12.6",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2543-2551, book l2normls.tex 243-251); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.6",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.7": {
+   "label_match": "Eq 12.7",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2609-2611, book l2normls.tex 309-311); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.7",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.8": {
+   "label_match": "Eq 12.8",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2634-2635, book l2normls.tex 334-335); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.8",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.9": {
+   "label_match": "Eq 12.9",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2638-2640, book l2normls.tex 338-340); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.9",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.10": {
+   "label_match": "Eq 12.10",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2643-2649, book l2normls.tex 343-349); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.10",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.11": {
+   "label_match": "Eq 12.11",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2651-2653, book l2normls.tex 351-353); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.11",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.12": {
+   "label_match": "Eq 12.12",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2660-2663, book l2normls.tex 360-363); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.12",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.13": {
+   "label_match": "Eq 12.13",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2665-2667, book l2normls.tex 365-367); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.13",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.14": {
+   "label_match": "Eq 12.14",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2669-2671, book l2normls.tex 369-371); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.14",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.15": {
+   "label_match": "Eq 12.15",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2675-2676, book l2normls.tex 375-376); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.15",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.16": {
+   "label_match": "Eq 12.16",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2683-2685, book l2normls.tex 383-385); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.16",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.17": {
+   "label_match": "Eq 12.17",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2692-2695, book l2normls.tex 392-395); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.17",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 5.3": {
+   "label_match": "Lemma 12.2.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2733-2737, book l2normls.tex 433-437); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Lemma 12.2.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.18": {
+   "label_match": "Eq 12.18",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2735-2736, book l2normls.tex 435-436); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.18",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 5.4": {
+   "label_match": "Lemma 12.2.2",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2764-2771, book l2normls.tex 464-471); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Lemma 12.2.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.19": {
+   "label_match": "Eq 12.19",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2776-2778, book l2normls.tex 476-478); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.19",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.20": {
+   "label_match": "Eq 12.20",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2793-2798, book l2normls.tex 493-498); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.20",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 5.5": {
+   "label_match": "Lemma 12.2.3",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2813-2824, book l2normls.tex 513-524); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Lemma 12.2.3",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.21": {
+   "label_match": "Eq 4.24",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Label eq:martinu reused: paper 2817-2819 is the bound G_q(Q_0/sq)/G_q(Q/sq) <= (log Q_0+sigma)/(log Q+1.312) in Lemma lem:paniz, while book typeI.tex 919-934 is a Type I bound on sum |T_m(alpha)|; the paper's counterpart is book l2normls.tex 517-519 (label eq:marasmor, Eq 12.21), identical, in the same Lemma with identical hypotheses (513-524).",
+   "book": "Eq 12.21",
+   "verdict": "same",
+   "change": "",
+   "method": "label match rejected on reading; counterpart in [H] found by reading both LaTeX sources"
+  },
+  "Eq 5.22": {
+   "label_match": "Eq 12.22",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2828-2832, book l2normls.tex 528-532); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.22",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Proposition 5.6": {
+   "label_match": "Proposition 12.2.4",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2870-2881, book l2normls.tex 572-583); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Proposition 12.2.4",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.23": {
+   "label_match": "Eq 12.23",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2874-2876, book l2normls.tex 576-578); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.23",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.24": {
+   "label_match": "Eq 12.24",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2893-2894, book l2normls.tex 595-596); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.24",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.25": {
+   "label_match": "Eq 12.25",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2900-2904, book l2normls.tex 602-606); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.25",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.26": {
+   "label_match": "Eq 12.26",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "Condition (karka) identical, split over two lines in the book (paper 2922-2925, book 624-628); omega(rho), c_Delta and Prop. espagn hypotheses identical (paper 2870-2926, book 572-629).",
+   "book": "Eq 12.26",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.27": {
+   "label_match": "Eq 12.27",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2943-2945, book l2normls.tex 646-648); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.27",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.28": {
+   "label_match": "Eq 12.28",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2948-2949, book l2normls.tex 651-652); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.28",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.29": {
+   "label_match": "Eq 12.29",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2957-2960, book l2normls.tex 660-663); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.29",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.30": {
+   "label_match": "Eq 12.30",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2972-2975, book l2normls.tex 675-678); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.30",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.31": {
+   "label_match": "Eq 12.31",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 2991-2994, book l2normls.tex 694-697); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.31",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.32": {
+   "label_match": "Eq 12.32",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3004-3005, book l2normls.tex 707-708); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.32",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.33": {
+   "label_match": "Eq 12.33",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3012-3015, book l2normls.tex 715-718); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.33",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.34": {
+   "label_match": "Eq 12.34",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3039-3042, book l2normls.tex 742-745); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.34",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.35": {
+   "label_match": "Eq 12.35",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3044-3048, book l2normls.tex 747-751); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.35",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.36": {
+   "label_match": "Eq 12.36",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3050-3053, book l2normls.tex 753-756); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.36",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.37": {
+   "label_match": "Eq 12.37",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3055-3059, book l2normls.tex 758-762); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.37",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.38": {
+   "label_match": "Eq 12.38",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3119-3127, book l2normls.tex 822-830); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.38",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.39": {
+   "label_match": "Eq 12.39",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3155-3157, book l2normls.tex 858-860); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.39",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.40": {
+   "label_match": "Eq 12.40",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3170-3171, book l2normls.tex 873-874); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.40",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.41": {
+   "label_match": "Eq 12.41",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3403-3404, book l2normls.tex 1106-1107); paper section 5 (ternvin 2302-3528) diffed against l2normls.tex: only prose/formatting changes (plus label eq:martinu->eq:marasmor, new label eq:pensat), no symbol or hypothesis used here changed.",
+   "book": "Eq 12.41",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Corollary 5.7": {
+   "label_match": "Corollary 12.2.5",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "Text identical (paper 3418-3445, book 1121-1149), except the second display is numbered (eq:pensat) in the book; M (jokor) and M_{delta_0,r} (majdef) are defined identically in both.",
+   "book": "Corollary 12.2.5",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 5.42": {
+   "label_match": "Eq 12.43",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Trivial bound int_{M_{delta_0,r}}|S|^2 <= sum|a_n|^2, identical (paper 3448-3452, book 1152-1156).",
+   "book": "Eq 12.43",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Corollary 5.8": {
+   "label_match": "Corollary 12.2.6",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "Text identical except the macro \\mod -> \\mo (paper 3467-3482, book 1171-1186).",
+   "book": "Corollary 12.2.6",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma 6.1": {
+   "label_match": "Lemma 13.1.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3554-3566, book intminarc.tex 26-38); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Lemma 13.1.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.1": {
+   "label_match": "Eq 13.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3557-3559, book intminarc.tex 29-31); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Eq 13.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.2": {
+   "label_match": "Eq 13.2",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3569-3572, book intminarc.tex 41-44); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Eq 13.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.3": {
+   "label_match": "Eq 13.3",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3582-3584, book intminarc.tex 54-56); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Eq 13.3",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Proposition 6.2": {
+   "label_match": "Proposition 13.1.2",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3610-3652, book intminarc.tex 82-124); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Proposition 13.1.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.4": {
+   "label_match": "Eq 13.4",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3620-3623, book intminarc.tex 92-95); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Eq 13.4",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.5": {
+   "label_match": "Eq 13.5",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3628-3631, book intminarc.tex 100-103); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Eq 13.5",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.6": {
+   "label_match": "Eq 13.6",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3635-3641, book intminarc.tex 107-113); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Eq 13.6",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.7": {
+   "label_match": "Eq 13.7",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3643-3651, book intminarc.tex 115-123); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Eq 13.7",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.8": {
+   "label_match": "Eq 13.8",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 3666-3672, book intminarc.tex 138-144); paper section 6 (ternvin 3529-3696) vs intminarc.tex 1-168: only prose changes; the changed g, c^+-, T material is in Thm ostop and its proof (paper 3697ff) and is not used here.",
+   "book": "Eq 13.8",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Theorem 6.3": {
+   "label_match": "Theorem 13.2.1",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "Compared paper 3697-3755 with book intminarc.tex 169-237: c_+/c_- at 3753-3754 vs 235-236, T at 3725 vs 205, book adds eq:jadaja 187-194; optcoor.tex 392-396 vs paper 2101-2105 for g.",
+   "book": "Theorem 13.2.1",
+   "verdict": "changed",
+   "change": "constants c^+ 2.3912 -> 2.0532, c^- 0.6294 -> 0.6394; T uses C_{phi,3}((1/2)log(x/kappa)) instead of C_{phi,3}(log x); g now displayed explicitly (13.10) with 3.36 and L_{2r} (was 3.2, L_r via eq:basia)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.9": {
+   "label_match": "Eq 13.9",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Definition of S_eta(alpha,x) identical (paper 3701-3702, book intminarc.tex 173-174); the enclosing Thm ostop changed elsewhere (g now defined via eq:jadaja with L_{2r}, 3.36; T uses C_{phi,3}(log(x/kappa)/2); c^+ 2.3912->2.0532, c^- 0.6294->0.6394), but these do not enter this definition.",
+   "book": "Eq 13.9",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.10": {
+   "label_match": "Eq 13.11",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 3723-3731 vs book 203-211: S, J, E identical; T line 3725 vs 205 differs in the argument of C_{phi,3}.",
+   "book": "Eq 13.11",
+   "verdict": "changed",
+   "change": "term changed: T = C_{phi,3}(log x)(...) -> C_{phi,3}((1/2) log(x/kappa))(...)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.11": {
+   "label_match": "Eq 13.12",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 3732-3739 and book 212-219 are identical definitions of C_{eta+,0}, C_{eta+,1}, C_{eta+,2}, C_{phi,3}(K); no change in the symbols they use.",
+   "book": "Eq 13.12",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.12": {
+   "label_match": "Eq 13.13",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Display paper 3741-3751 identical to book 221-231, but the constants defined right after (paper 3753-3754, book 235-236) and g (book 187-191, optcoor 392-396) changed.",
+   "book": "Eq 13.13",
+   "verdict": "changed",
+   "change": "constants c^+ 2.3912 -> 2.0532, c^- 0.6294 -> 0.6394 in the surrounding statement; g redefined (3.2 -> 3.36, L_r -> L_{2r})",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.13": {
+   "label_match": "Eq 13.14",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Display paper 3781-3786 identical to book 264-269, but g_{y,phi} (paper 2101-2105 vs book optcoor.tex 392-396, L_t paper 1955-1961 vs optcoor 241-246) changed; book also restricts r to r_0<=r<=y^{1/3}/6 (243).",
+   "book": "Eq 13.14",
+   "verdict": "changed",
+   "change": "definition changed: g_{y,phi} of (eq:basia) now has L_{2r}/r and 3.36 K^{1/6}y^{-1/6} (was L_r/r and 3.2), with L_t redefined in (eq:veror)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.14": {
+   "label_match": "Eq 13.15",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 3791-3795 vs book 274-279: same inequality, book only splits it into aligned lines; but g_{y,phi} changed as for Eq 13.14 (optcoor.tex 392-396).",
+   "book": "Eq 13.15",
+   "verdict": "changed",
+   "change": "definition changed: g_{y,phi} of (eq:basia) now has L_{2r}/r and 3.36 K^{1/6}y^{-1/6} (was L_r/r and 3.2), with L_t redefined in (eq:veror)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.15": {
+   "label_match": "Eq 13.16",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Display paper 3797-3802 identical to book 281-286; h(x) is paper 1972-1974 (0.2727, 1218) vs book optcoor.tex 253-255 (0.276, 1234).",
+   "book": "Eq 13.16",
+   "verdict": "changed",
+   "change": "definition changed: h of (eq:flou) constants 0.2727 -> 0.276 and 1218 -> 1234",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.16": {
+   "label_match": "Eq 13.17",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Display paper 3822-3824 identical to book 307-309; definition of g at paper 3813-3814 vs book 297-298 and Lemma vinc range (paper 3816-3820 vs book 300-305) changed.",
+   "book": "Eq 13.17",
+   "verdict": "changed",
+   "change": "definition changed: g_{y,phi} of (eq:basia) now has L_{2r}/r and 3.36 K^{1/6}y^{-1/6} (was L_r/r and 3.2), with L_t redefined in (eq:veror); also local g now truncates g_{y,phi} (paper wrote g_{x,phi}) and monotonicity threshold r>=175 -> r>=670",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.17": {
+   "label_match": "Eq 13.18",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 3887-3890 and book 372-375 are the same integral with the same S_{eta*}, S_{1,eta+} and M_{8,r0}.",
+   "book": "Eq 13.18",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.18": {
+   "label_match": "Eq 13.19",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Display paper 3922-3924 identical to book 407-409, but it is built from g(r), whose definition changed (book 187-191, 297-298; optcoor.tex 392-396).",
+   "book": "Eq 13.19",
+   "verdict": "changed",
+   "change": "definition changed: g_{y,phi} of (eq:basia) now has L_{2r}/r and 3.36 K^{1/6}y^{-1/6} (was L_r/r and 3.2), with L_t redefined in (eq:veror)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.19": {
+   "label_match": "Eq 13.20",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 3930-3934 vs book 415-421: last term differs; other terms identical.",
+   "book": "Eq 13.20",
+   "verdict": "changed",
+   "change": "term changed: 0.4156 g(r_1) -> (7/15 + (-2.14938 + (8/15)log kappa)/(log x + 2c^-)) g(r_1); g also redefined",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.20": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 3937-3941 I_0 = (Σ_{p>√x}(log p)^2η+^2)^{-1}∫_{M_{8,r0}}|S_{1,η+}|^2 (unlabelled) is identical to book intminarc.tex 424-428 (unlabelled, Eq 13.21), with S_{1,η+} defined identically (paper 3831, book 316); note the neighbouring eq:lili changed (0.4156 g(r_1) → explicit (7/15 + …) g(r_1)).",
+   "book": "Eq 13.21",
+   "verdict": "same",
+   "change": "",
+   "method": "counterpart in [H] sought by reading both LaTeX sources"
+  },
+  "Eq 6.21": {
+   "label_match": "Eq 13.22",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4002-4015 and book 490-503 give the same elementary integral formulas.",
+   "book": "Eq 13.22",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.22": {
+   "label_match": "Eq 13.23",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4017-4019 and book 505-507: identical definitions of P_2, P_3.",
+   "book": "Eq 13.23",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.23": {
+   "label_match": "Eq 13.24",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4021-4023 and book 509-511: identical formula with E_1.",
+   "book": "Eq 13.24",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.24": {
+   "label_match": "Eq 13.25",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4028-4033 and book 516-521: identical list of integrals.",
+   "book": "Eq 13.25",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.25": {
+   "label_match": "Eq 13.26",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4057-4065 vs book 545-553: same inequality and equality, only a line break added; F, c_gamma unchanged (paper 4038, book 526).",
+   "book": "Eq 13.26",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.26": {
+   "label_match": "Eq 13.28",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4118-4120 and book 606-608: identical integral; R_{z,t} of (eq:veror) unchanged (paper 1956-1958, optcoor.tex 242-244).",
+   "book": "Eq 13.28",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.27": {
+   "label_match": "Eq 13.30",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4129-4132 and book 617-620: identical definition of R^circ_{z,t}.",
+   "book": "Eq 13.30",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.28": {
+   "label_match": "Eq 13.31",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4159-4162 and book 647-650: identical convexity bound.",
+   "book": "Eq 13.31",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.29": {
+   "label_match": "Eq 13.32",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4167-4200 vs book 655-688: same chain; book only removes a pair of parentheses around (P_3(r0)/sqrt r0 - P_3(r1)/sqrt r1) with signs distributed, and adds a line break.",
+   "book": "Eq 13.32",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.30": {
+   "label_match": "Eq 13.33",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Display paper 4281-4283 identical to book 769-771, but g (book 187-191) and f_1, f_2 (paper 4290-4299 vs book 778-787) changed.",
+   "book": "Eq 13.33",
+   "verdict": "changed",
+   "change": "definition changed: g_{y,phi} of (eq:basia) now has L_{2r}/r and 3.36 K^{1/6}y^{-1/6} (was L_r/r and 3.2), with L_t redefined in (eq:veror); f_1, f_2 on the right redefined in (13.34)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.31": {
+   "label_match": "Eq 13.34",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4285-4300 vs book 773-788: f_0 identical; f_1 line 4296-4297 vs 784-785, f_2 line 4299 vs 787.",
+   "book": "Eq 13.34",
+   "verdict": "changed",
+   "change": "constants in f_1: 10.102 -> 11.07, (80/9) log er_0 + 23.433 -> 13.66 log er_0 + 37.55; f_2: 3.2 -> 3.36",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 6.32": {
+   "label_match": "Eq 13.35",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4303-4332 vs book 791-820: identical definitions of I_0, J_r, I_1, c_phi (only spacing differs).",
+   "book": "Eq 13.35",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.1": {
+   "label_match": "Eq 14.1",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "Paper 4464-4469 vs book conclusion.tex 36-41.",
+   "book": "Eq 14.1",
+   "verdict": "changed",
+   "change": "constants 3.34e-11 -> 4.772e-11, 251100 -> 251400, 1.1377e-8 -> 1.1405e-8",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.2": {
+   "label_match": "Eq 14.2",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "Paper 4470-4484 vs book 42-56.",
+   "book": "Eq 14.2",
+   "verdict": "changed",
+   "change": "sqrt(q) -> sqrt(q^*); constants 6.18e-12 -> 1.3482e-14*sqrt(300000), 1.14e-10 -> 1.617e-10, 499100 -> 499900, 2.3921e-8 -> 2.3992e-8",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.3": {
+   "label_match": "Eq 14.3",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 4491-4498, book conclusion.tex 64-71); paper 4429-4560 vs conclusion.tex 1-135: eta_+, eta_circ, H=200 definitions unchanged; only zakone1/zakone2 constants and the removed eq:melancho changed, which this item does not use.",
+   "book": "Eq 14.3",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.4": {
+   "label_match": "Eq 14.4",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 4523-4524, book conclusion.tex 95-96); paper 4429-4560 vs conclusion.tex 1-135: eta_+, eta_circ, H=200 definitions unchanged; only zakone1/zakone2 constants and the removed eq:melancho changed, which this item does not use.",
+   "book": "Eq 14.4",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.5": {
+   "label_match": "Eq 14.5",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 4525-4528, book conclusion.tex 97-100); paper 4429-4560 vs conclusion.tex 1-135: eta_+, eta_circ, H=200 definitions unchanged; only zakone1/zakone2 constants and the removed eq:melancho changed, which this item does not use.",
+   "book": "Eq 14.5",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.6": {
+   "label_match": "Eq 14.13",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4530-4532 ('symbolic integration gives' 2.7375292...) vs book 234-244 (derivation from eq:ormal 219-222, same final value).",
+   "book": "Eq 14.13",
+   "verdict": "changed",
+   "change": "step rewritten: value now derived in closed form gamma-sum = (9151/128) sqrt(pi) erf(1) - 18101/(64e); numerical value 2.7375292... unchanged",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.7": {
+   "label_match": "Eq 14.6",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4539-4545 and book 109-115: identical bound 32.5023 with the same derivation.",
+   "book": "Eq 14.6",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.8": {
+   "label_match": "Eq 14.7",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4568-4572 vs book 140-144.",
+   "book": "Eq 14.7",
+   "verdict": "changed",
+   "change": "constant O^*(0.075272) -> O^*(0.075273) in the middle step; final 8.7052+O^*(0.0754) <= 8.7806 unchanged",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.9": {
+   "label_match": "Eq 14.8",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4577-4579 and book 149-151: identical definition of C_0.",
+   "book": "Eq 14.8",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.10": {
+   "label_match": "Eq 14.9",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4582-4584 and book 154-156: identical bound 1.3203236.",
+   "book": "Eq 14.9",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.11": {
+   "label_match": "Eq 14.10",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4589-4594 and book 161-166: identical expression for C_{eta_circ,eta_*}, same proviso N>=2x.",
+   "book": "Eq 14.10",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.12": {
+   "label_match": "Eq 14.11",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4618-4624 vs book 190-196; follows from tail bound (y+2/y) -> (y+1/y) at paper 4609 vs book 181.",
+   "book": "Eq 14.11",
+   "verdict": "changed",
+   "change": "term changed: (2 + 1/kappa^2) e^{-2kappa^2} -> (2 + 1/(2kappa^2)) e^{-2kappa^2}",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.13": {
+   "label_match": "Eq 14.14",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4655-4658 and book 259-262: identical bound with 0.000834 for kappa=49 (the preceding lower bound changed 1/kappa^2 -> 1/(2kappa^2), book 256, but the stated result is the same).",
+   "book": "Eq 14.14",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.14": {
+   "label_match": "Eq 14.15",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4663-4665 and book 267-269: identical choice x = 0.495461... N.",
+   "book": "Eq 14.15",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.15": {
+   "label_match": "Eq 14.16",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4669-4670 and book 273-274: identical.",
+   "book": "Eq 14.16",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.16": {
+   "label_match": "Eq 14.17",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4678-4687 vs book 282-295.",
+   "book": "Eq 14.17",
+   "verdict": "changed",
+   "change": "sqrt(q) -> sqrt(q^*); constants 4.269e-14 -> 2.485e-19, 1/sqrt(x_+) -> 1/sqrt(10^25), 380600 -> 381500, 1.9075e-8 -> 1.33805e-8",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.17": {
+   "label_match": "Eq 14.18",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4696-4702 vs book 304-310; other constants identical.",
+   "book": "Eq 14.18",
+   "verdict": "changed",
+   "change": "constant 310.84 -> 366.91",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.18": {
+   "label_match": "Eq 14.20",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4706-4712 and book 315-321: identical chain.",
+   "book": "Eq 14.20",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.19": {
+   "label_match": "Eq 14.21",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4715-4719 and book 324-328: identical bound 1.414.",
+   "book": "Eq 14.21",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.20": {
+   "label_match": "Eq 14.22",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Paper 4730-4732 and book 339-341: identical.",
+   "book": "Eq 14.22",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.21": {
+   "label_match": "Eq 14.23",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4739-4741 vs book 348-350; the error-term bound comes from paper 4734-4736 vs book 343-345.",
+   "book": "Eq 14.23",
+   "verdict": "changed",
+   "change": "constant 1.71973e-8 -> 1.20665e-7 (final 0.0362 log x unchanged)",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.22": {
+   "label_match": "Eq 14.24",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4748-4750 and book 357-359: identical display; only the source citation after it changed ([HelfMaj, B.5] -> eq:shchedrin).",
+   "book": "Eq 14.24",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.23": {
+   "label_match": "Eq 14.25",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "LS_{eta_*} <= 24.32 log x + 0.57 and LS_{eta_+} <= 18.57 log x + 28.39 with the same inputs (1.414, 1.07996, 1.19073) in paper 4764-4770 and book 373-379; only the final punctuation differs and the book adds a reference to (eq:sazar) at 380.",
+   "book": "Eq 14.25",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.24": {
+   "label_match": "Eq 14.26",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Major-arc integral C_0 C_{eta_0,eta_*} x^2 + O^*(...) in paper 4841-4849 vs book 455-463; the change comes from the bound on the second line of (opus111) at paper 4818-4822 vs book 429-433 (ET_{eta_*} 1.9075e-8 -> 1.33805e-8, 2.3921e-8 -> 2.3922e-8).",
+   "book": "Eq 14.26",
+   "verdict": "changed",
+   "change": "constants 1.7815e-6 -> 1.7316e-6, 3.8613e-5 -> 3.85628e-5, 7.881e-7 -> 7.86996e-7",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.25": {
+   "label_match": "Eq 14.27",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical lower bound 1.058259 x^2/varkappa for the major-arc integral (paper 4861-4864, book 475-478); preceding C_0 C_{eta_0,eta_*} >= 1.058298/49 is unchanged (paper 4857-4859, book 471-473; only an intermediate 1.0594001 -> 1.0594003).",
+   "book": "Eq 14.27",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.26": {
+   "label_match": "Eq 14.28",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Bound on E in paper 4895-4900 vs book 509-514, following the recomputed C_{eta_+,0}, C_{eta_+,1}, C_{eta_+,2} (paper 4880-4892, book 494-506); hypothesis x >= 4.9e26 unchanged.",
+   "book": "Eq 14.28",
+   "verdict": "changed",
+   "change": "constants 2.3375 -> 2.33744, 0.60579 -> 0.60581, 0.4494 -> 0.44937, 2.9433 -> 2.94325, 5.1244 -> 5.12426, 8.4031e-12 -> 8.4029e-12",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.27": {
+   "label_match": "Eq 14.29",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "S_{eta_*}(0,x) E <= C x^2/varkappa in paper 4908-4911 vs book 522-525 (preceding O^*(1.9075e-8) -> O^*(1.33805e-8) at paper 4905, book 519).",
+   "book": "Eq 14.29",
+   "verdict": "changed",
+   "change": "constant 1.0532e-11 -> 1.05315e-11",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.28": {
+   "label_match": "Eq 14.30",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical bound S <= 0.640209 x log x - 0.021095 x, by (malavita), paper 4914-4916, book 528-530.",
+   "book": "Eq 14.30",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.29": {
+   "label_match": "Eq 14.31",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Paper 4928-4932 vs book 542-546, same J = (8.7052 + O^*(0.0754)) x; only the value of E from Eq 7.26/14.28 changed.",
+   "book": "Eq 14.31",
+   "verdict": "changed",
+   "change": "constant 8.4031e-12 -> 8.4029e-12 inside (sqrt J - sqrt E)^2; final bound 8.6297 x unchanged",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.30": {
+   "label_match": "Eq 14.32",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical T <= 3.5776e-4 x for x/varkappa >= 10^25 (paper 4943-4945, book 557-559); only an intermediate 13.69288 -> 13.69293 in the derivation (paper 4940, book 554).",
+   "book": "Eq 14.32",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.31": {
+   "label_match": "Eq 14.33",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical bound 0.07455/log((log y)/2) with K = (log y)/2, paper 4958-4960, book 572-574.",
+   "book": "Eq 14.33",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.32": {
+   "label_match": "Eq 14.34",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical definition of R_{y,K,phi,t} as a convex combination, paper 4961-4963, book 575-577.",
+   "book": "Eq 14.34",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.33": {
+   "label_match": "Eq 14.35",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical R_{y,2r_0} <= 0.58341 (including the typo R_{y,,2r_0}), paper 4970-4974, book 584-588.",
+   "book": "Eq 14.35",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.34": {
+   "label_match": "Eq 14.36",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical R_{y/K,2r_0} <= 0.60295, paper 4975-4978, book 589-592.",
+   "book": "Eq 14.36",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.35": {
+   "label_match": "Eq 5.45",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Label eq:roussel reused: paper 5005-5008 is the final bound g(r_0)(...)<=0.36155x, while book typeII.tex 992-995 is a large-sieve inequality; the paper's counterpart is book conclusion.tex 623-626 (label eq:jbaldwin, Eq 14.37), whose constants differ (0.041568*9.2598x <= 0.38492x, with c^+=2.0532, c^-=0.6394 at line 621 vs paper 0.041061*8.805x <= 0.36155x, c^+=2.3912, c^-=0.6294 at line 5003).",
+   "book": "Eq 14.37",
+   "verdict": "changed",
+   "change": "constants 0.041061*8.805x <= 0.36155x -> 0.041568*9.2598x <= 0.38492x; c^+ 2.3912 -> 2.0532, c^- 0.6294 -> 0.6394",
+   "method": "label match rejected on reading; counterpart in [H] found by reading both LaTeX sources"
+  },
+  "Eq 7.36": {
+   "label_match": "Eq 14.38",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical R_{y,2r_1} <= 0.71215 with r_1 = (3/8) y^{4/15}, paper 5013-5025, book 631-643.",
+   "book": "Eq 14.38",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.37": {
+   "label_match": "Eq 14.39",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical expression for R_{y/K,2r_1}, same c, paper 5027-5042, book 645-660.",
+   "book": "Eq 14.39",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.38": {
+   "label_match": "Eq 14.40",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical f(t) <= 0.019562618 with the same definition of f, paper 5048-5049, book 666-667.",
+   "book": "Eq 14.40",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.39": {
+   "label_match": "Eq 14.41",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical R_{y/K,2r_1} <= 0.71392, paper 5054-5055, book 672-673.",
+   "book": "Eq 14.41",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.40": {
+   "label_match": "Eq 14.42",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical bound digamma(r_1) <= e^gamma log log y - 1.43644 for y >= 10^25, paper 5065-5071, book 683-689.",
+   "book": "Eq 14.42",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.41": {
+   "label_match": "Eq 14.43",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "(7/15) g(r_1) S bound, paper 5134-5141 vs book 760-767; the g(r_1) bound changed because the book rewrote L_{2r_1} (paper 5074-5084 vs book 692-702) and replaced 3.2 by 3.36 in the last term of g (paper 5112, book 732).",
+   "book": "Eq 14.43",
+   "verdict": "changed",
+   "change": "constants 0.30782 -> 0.30915, 0.14365 -> 0.14427, final bound 0.30386 x -> 0.30517 x",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.42": {
+   "label_match": "Eq 14.44",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical I_{1,r_0} = 5.73826..., same F and c_gamma = 1.025742, paper 5170-5172, book 798-800.",
+   "book": "Eq 14.44",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.43": {
+   "label_match": null,
+   "text_identical": null,
+   "renumbered": null,
+   "evidence": "Paper 5205-5210 (eq:marasm) vs book conclusion.tex 841-846, a commented-out copy; the live text at 860-875 has only eq:jijona, which corresponds to paper 5238-5244, not to marasm.",
+   "book": null,
+   "verdict": null,
+   "change": "removed: the display and the crude y≥10^25 route (0.68659, 0.11819) are commented out in the book, with log 800000 → log 400000 in the commented copy; the book keeps only the y≥10^150 bound eq:jijona (0.10426, 0.10439, log 400000)",
+   "method": "sought in [H] by reading both LaTeX sources: no counterpart"
+  },
+  "Eq 7.44": {
+   "label_match": "Eq 14.45",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Bound for y >= 10^150 in paper 5238-5244 vs book 868-874; same 0.10426, 0.10439, 0.49214, 0.49584, c_phi weights 0.97781/0.02219.",
+   "book": "Eq 14.45",
+   "verdict": "changed",
+   "change": "term log 800000 -> log 400000 in both denominators; final bound 0.33247 -> 0.33239",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.45": {
+   "label_match": "Eq 14.46",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical bound 0.4153461 for 10^25 <= y <= 10^140, obtained by the same bisection, paper 5257-5261, book 888-892.",
+   "book": "Eq 14.46",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.46": {
+   "label_match": "Eq 14.47",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Bound on (2S/(log x + 2c^-)) int g(r)/r dr, paper 5279-5283 vs book 910-914; the integral bound went 0.086918 -> 0.089805 since f_0 0.069219 -> 0.071498, f_1 0.016367 -> 0.016908, f_2 0.001332 -> 0.001399 (paper 5264-5272, book 895-903).",
+   "book": "Eq 14.47",
+   "verdict": "changed",
+   "change": "constant 0.111292 x -> 0.114988 x",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.47": {
+   "label_match": "Eq 14.48",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Bound on M, paper 5288-5291 vs book 919-922; the first term is paper (roussel) 5005-5008 vs book (jbaldwin) 623-626.",
+   "book": "Eq 14.48",
+   "verdict": "changed",
+   "change": "constants 0.36155+0.30386+0.111292 <= 0.77671 -> 0.38492+0.30517+0.114988 <= 0.80508",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.48": {
+   "label_match": "Eq 14.49",
+   "text_identical": false,
+   "renumbered": true,
+   "evidence": "Minor-arc total Z_{r_0}, paper 5300-5309 vs book 931-940, same r_0 = 150000 and x >= 4.9e26.",
+   "book": "Eq 14.49",
+   "verdict": "changed",
+   "change": "constants M bound 0.77671 -> 0.80508, minor-arc total 0.97392 -> 1.00948 x^2/varkappa",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.49": {
+   "label_match": "Eq 14.50",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical identity for the weighted ternary sum as an integral, paper 5316-5320, book 947-951.",
+   "book": "Eq 14.50",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq 7.50": {
+   "label_match": "Eq 14.51",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical bound on the contribution of non-prime or even n_i, paper 5345-5357, book 976-988.",
+   "book": "Eq 14.51",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma A.1": {
+   "label_match": "Lemma C.1.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 5428-5439, book sumlaphi.tex 11-22); paper App. A (ternvin 5420-5557) vs sumlaphi.tex 3-139: only environment names and line-breaking differ.",
+   "book": "Lemma C.1.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq A.1": {
+   "label_match": "Eq C.1",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 5433-5437, book sumlaphi.tex 16-20); paper App. A (ternvin 5420-5557) vs sumlaphi.tex 3-139: only environment names and line-breaking differ.",
+   "book": "Eq C.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma A.2": {
+   "label_match": "Lemma C.1.2",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 5454-5474, book sumlaphi.tex 37-57); paper App. A (ternvin 5420-5557) vs sumlaphi.tex 3-139: only environment names and line-breaking differ.",
+   "book": "Lemma C.1.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq A.2": {
+   "label_match": "Eq C.2",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 5460-5465, book sumlaphi.tex 43-48); paper App. A (ternvin 5420-5557) vs sumlaphi.tex 3-139: only environment names and line-breaking differ.",
+   "book": "Eq C.2",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq A.3": {
+   "label_match": "Eq C.3",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 5498-5499, book sumlaphi.tex 82-83); paper App. A (ternvin 5420-5557) vs sumlaphi.tex 3-139: only environment names and line-breaking differ.",
+   "book": "Eq C.3",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq A.4": {
+   "label_match": "Eq C.4",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 5512-5514, book sumlaphi.tex 96-98); paper App. A (ternvin 5420-5557) vs sumlaphi.tex 3-139: only environment names and line-breaking differ.",
+   "book": "Eq C.4",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Corollary A.3": {
+   "label_match": "Corollary C.1.3",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 5530-5540, book sumlaphi.tex 114-124); paper App. A (ternvin 5420-5557) vs sumlaphi.tex 3-139: only environment names and line-breaking differ.",
+   "book": "Corollary C.1.3",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq A.5": {
+   "label_match": "Eq C.5",
+   "text_identical": true,
+   "renumbered": false,
+   "evidence": "Texts identical (paper 5535-5538, book sumlaphi.tex 119-122); paper App. A (ternvin 5420-5557) vs sumlaphi.tex 3-139: only environment names and line-breaking differ.",
+   "book": "Eq C.5",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.1": {
+   "label_match": "Eq C.6",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical tail bound 1/r for log prod_{p>r}(1+1/(p(p-1))), paper 5565-5567, book 149-151.",
+   "book": "Eq C.6",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.2": {
+   "label_match": "Eq C.7",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical 2.591461 <= sum gcd(q,2) mu^2(q)/(phi(q) q) < 2.591463, paper 5570-5572, book 154-156.",
+   "book": "Eq C.7",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.3": {
+   "label_match": "Eq C.8",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical 1.295730 <= sum_{q odd} mu^2(q)/(phi(q) q) < 1.295732, paper 5573-5576, book 157-160.",
+   "book": "Eq C.8",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.4": {
+   "label_match": "Eq C.9",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical 2.826419 <= sum mu^2(q)/phi(q)^2 < 2.826421, paper 5581-5583, book 165-167.",
+   "book": "Eq C.9",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.5": {
+   "label_match": "Eq C.10",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical Ramare asymptotics with O^*(7.284 r^{-1/3}) and O^*(4.899 r^{-1/3}), same c_E, paper 5596-5602, book 180-186.",
+   "book": "Eq C.10",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.6": {
+   "label_match": "Eq C.11",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical (1/2) log r + 0.83 <= sum_{q odd} mu^2(q)/phi(q) <= (1/2) log r + 0.85 for r >= 195, paper 5612-5615, book 196-199.",
+   "book": "Eq C.11",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.7": {
+   "label_match": "Eq C.12",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical identity sum_{q<=2r, q even} = sum_{q<=r, q odd}, paper 5622-5625, book 206-209.",
+   "book": "Eq C.12",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.8": {
+   "label_match": "Eq C.13",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical convolution identity with the same f_j, paper 5641-5646, book 225-230.",
+   "book": "Eq C.13",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Lemma B.1": {
+   "label_match": "Lemma C.2.1",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical statement (j >= 2, A > 0, m >= 1, bound zeta(j)/zeta(2j) A^{1-j} prod_{p|m}(1+p^{-j})^{-1}), paper 5649-5657, book 233-241.",
+   "book": "Lemma C.2.1",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.9": {
+   "label_match": "Eq C.14",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical display inside the lemma, paper 5653-5656, book 237-240.",
+   "book": "Eq C.14",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.10": {
+   "label_match": "Eq C.15",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical bound 6.7345/r, paper 5703-5710, book 287-294.",
+   "book": "Eq C.15",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.11": {
+   "label_match": "Eq C.16",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical bound 2.15502/r, paper 5713-5722, book 297-306.",
+   "book": "Eq C.16",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.12": {
+   "label_match": "Eq C.17",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical bound 4.31004/r, paper 5723-5726, book 307-310.",
+   "book": "Eq C.17",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Eq B.13": {
+   "label_match": "Eq C.18",
+   "text_identical": true,
+   "renumbered": true,
+   "evidence": "Identical bound 0.64787 r + (log r)/4 + 0.425, paper 5729-5738, book 313-322.",
+   "book": "Eq C.18",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  },
+  "Proposition C.1": {
+   "label_match": "Proposition D.0.3",
+   "text_identical": false,
+   "renumbered": false,
+   "evidence": "Identical n_0 values 5.90698e29, 6.15697e28, 1.23163e27 for the same three heights H (paper 5809-5820, book othcheck.tex 68-79); only '-- H=...' became '(H=...)'.",
+   "book": "Proposition D.0.3",
+   "verdict": "same",
+   "change": "",
+   "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources"
+  }
+ }
+}

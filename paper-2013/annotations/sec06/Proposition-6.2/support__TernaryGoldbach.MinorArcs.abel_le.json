@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 6.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 47,
+        "rect": [
+          0.20371,
+          0.5315,
+          0.63183,
+          0.3638
+        ]
+      },
+      "title": "Proposition 6.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 6.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abel_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L26",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 26,
+            "text": "theorem abel_le {f g F : ℕ → ℝ} {a b : ℕ} (hab : a ≤ b)\n    (hg : ∀ n, a ≤ n → n < b → g (n + 1) ≤ g n) (hg0 : 0 ≤ g b)\n    (hS : ∀ n, a ≤ n → n ≤ b → ∑ m ∈ Icc a n, f m ≤ F n) :\n    ∑ n ∈ Icc a b, f n * g n ≤ g a * F a + ∑ n ∈ Ioc a b, g n * (F n - F (n - 1)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] Proposition 13.1.2, up to notation. Lean's discrete form implies (13.6) for integer r₁ under the book's monotonicity; it drops δ₀ ≤ x/2r₁² and needs only nested arcs.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          47
+        ],
+        "printed": [
+          47
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

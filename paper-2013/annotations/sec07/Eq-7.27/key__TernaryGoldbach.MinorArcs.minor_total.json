@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.27",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.20371,
+          0.23933,
+          0.63183,
+          0.04062
+        ]
+      },
+      "title": "Equation (7.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L324",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 324,
+            "text": "theorem minor_total {x : ℝ} (hx : 4.9e26 ≤ x) (hnum : NumericsGoal x) :\n    ∫ α in Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ x, ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 ≤\n      1.0376 * x ^ 2 / κ :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (14.29) changed it (constant 1.0532e-11 -> 1.05315e-11), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

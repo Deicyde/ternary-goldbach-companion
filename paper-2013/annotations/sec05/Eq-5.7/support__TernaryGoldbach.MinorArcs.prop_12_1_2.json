@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.7",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 35,
+        "rect": [
+          0.20371,
+          0.51269,
+          0.63183,
+          0.03747
+        ]
+      },
+      "title": "Equation (5.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_12_1_2",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L295",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 295,
+            "text": "theorem prop_12_1_2 {x δ₀ Q₀ C : ℝ} {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    (hδ₀ : 2 ≤ δ₀) (hQ₀ : 1 ≤ Q₀) (hx : δ₀ * Q₀ ^ 2 ≤ x / 2)\n    (hC : ∀ q : ℕ, 1 ≤ q → Even q → (q : ℝ) ≤ 2 * Q₀ → ∀ s : ℝ, 1 ≤ s → s ≤ 2 * Q₀ / q →\n      Gq q (2 * Q₀ / (s * q)) ≤ C * Gq q (2 * √(x / (2 * δ₀)) / (s * q))) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤ C * ∑' n, ‖a n‖ ^ 2 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_1_2",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveProof"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (12.7), up to notation. Lean never forms the max; it states the bound cross-multiplied, with s ≥ 1.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          35
+        ],
+        "printed": [
+          35
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

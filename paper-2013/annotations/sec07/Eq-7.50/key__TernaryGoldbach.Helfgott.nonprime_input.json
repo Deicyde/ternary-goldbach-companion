@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.50",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.20371,
+          0.3726,
+          0.63183,
+          0.15383
+        ]
+      },
+      "title": "Equation (7.50)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.50"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.nonprime_input",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L127",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 127,
+            "text": "theorem nonprime_input (N : ℕ) (hN27 : 10 ^ 27 ≤ N) :\n    repSum (fun _ => True) N - repSum (fun n => n.Prime ∧ Odd n) N ≤\n      6.7e6 * (N * √N) * Real.log N :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (14.51), up to notation. Exact (Lean bounds each bad term in absolute value); the numeric consequence uses the crude 6.7·10⁶ instead of [H]'s 7.3306, absorbed by final_inequality_crude.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

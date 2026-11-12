@@ -1,0 +1,70 @@
+{
+  "id": "Eq B.6",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 73,
+        "rect": [
+          0.20371,
+          0.7679,
+          0.63183,
+          0.05752
+        ]
+      },
+      "title": "Equation (B.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq B.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L32",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/SumMuPhi.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 32,
+            "text": "theorem sum_odd_mu_sq_div_totient :\n    6.798779 ≤ ∑ q ∈ (Icc 1 150000).filter Odd,\n        ((ArithmeticFunction.moebius q : ℤ) : ℝ) ^ 2 / q.totient ∧\n      ∑ q ∈ (Icc 1 150000).filter Odd,\n        ((ArithmeticFunction.moebius q : ℤ) : ℝ) ^ 2 / q.totient ≤ 6.79878 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient",
+        "module": "TernaryGoldbach.MajorArcs.SumMuPhi"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (C.11), up to notation. Lean does not state (C.11); it needs the sum only at r = 150000 and has no η → η∘ cross term.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          73
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

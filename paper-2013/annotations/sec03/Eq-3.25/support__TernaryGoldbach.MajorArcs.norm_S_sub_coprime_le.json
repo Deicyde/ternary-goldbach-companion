@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.25",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 17,
+        "rect": [
+          0.20371,
+          0.39502,
+          0.63183,
+          0.35357
+        ]
+      },
+      "title": "Equation (3.25)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L314",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 314,
+            "text": "theorem norm_S_sub_coprime_le {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000)\n    (α : ℝ) : ‖S etaPlus x α - expTsum (coprimePart q (cP x)) α‖ ≤ 1e-15 * x :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.norm_S_sub_coprime_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (10.25) changed it (error term changed: q * max |err_{eta,chi^*}|^2 -> max q^* |err_{eta,chi^*}|^2 (conductor q^* in place of q)), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          17
+        ],
+        "printed": [
+          17
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

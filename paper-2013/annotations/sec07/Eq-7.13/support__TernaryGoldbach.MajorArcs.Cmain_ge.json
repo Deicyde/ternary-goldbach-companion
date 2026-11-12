@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.13",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 59,
+        "rect": [
+          0.20371,
+          0.30121,
+          0.63183,
+          0.0382
+        ]
+      },
+      "title": "Equation (7.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Cmain_ge",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L494",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 494,
+            "text": "theorem Cmain_ge (c : ℝ) :\n    (∫ t, etaO t ^ 2) * (√(π / 2) / κ) -\n        8.82 * ((49 / 48 * √(π / 2) - 9 / 4 * c + c ^ 2 * √(π / 2)) / κ ^ 3) ≤\n      Cmain (2 + c / κ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Cmain_ge",
+        "module": "TernaryGoldbach.MajorArcs.CMain"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (14.14), up to notation. Lean's bound is 0.800689/κ, against the book's ≈ 0.801545/κ; the loss comes from 8.82 vs 7.4187 and |η∘|₂² ≥ 0.63965 vs 0.640206.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          59
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

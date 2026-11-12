@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.10",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 58,
+        "rect": [
+          0.20371,
+          0.18449,
+          0.63183,
+          0.04333
+        ]
+      },
+      "title": "Equation (7.10)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_Qset_of_two_mul",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L201",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 201,
+            "text": "theorem sum_Qset_of_two_mul {f : ℕ → ℝ} (hf : ∀ q, f (2 * q) = if Odd q then f q else 0) :\n    ∑ q ∈ TernaryGoldbach.MinorArcs.Qset 150000, f q = 2 * ∑ q ∈ (Icc 1 150000).filter Odd, f q :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_of_two_mul",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (14.9), up to notation. Lean bounds the finite sum over Qset r₀ by 1.314, not C₀.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          58
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

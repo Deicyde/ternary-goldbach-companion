@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.12",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 26,
+        "rect": [
+          0.20371,
+          0.131,
+          0.63183,
+          0.03714
+        ]
+      },
+      "title": "Equation (4.12)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.div_totient_lt",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L2258",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 2258,
+            "text": "theorem div_totient_lt {q : ℕ} (hq : 1 ≤ q) {r : ℝ} (hr : 3 ≤ r) (hqr : (q : ℝ) ≤ r) :\n    (q : ℝ) / Nat.totient q < Real.exp Real.eulerMascheroniConstant * Real.log (Real.log r) +\n      2.50637 / Real.log (Real.log r) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (11.11) changed it (display identical, but g_x is redefined: L_r/r -> L_{2r}/r with new L_t, 3.2 x^{-1/6} -> 3.36 x^{-1/6}; source is the book's Theorem minmain instead of [Helf, Main Thm.]), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          26
+        ],
+        "printed": [
+          26
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

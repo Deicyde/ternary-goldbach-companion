@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 5,
+        "rect": [
+          0.20371,
+          0.57645,
+          0.63183,
+          0.04812
+        ]
+      },
+      "title": "Equation (1.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S_etaStar_eq",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L41",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EtaStar.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 41,
+            "text": "theorem S_etaStar_eq {x : ℝ} (hx : 0 < x) (α : ℝ) :\n    S etaStar x α = ∫ w in Ioi (0:ℝ), S eta2 (w * (x / κ)) α * ((phi w / w : ℝ) : ℂ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S_etaStar_eq",
+        "module": "TernaryGoldbach.MinorArcs.EtaStar"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (1.6) changed it (definition changed: right side Σ Λ(n)χ(n)e(δn/x)η(n/x) → Σ Λ(n)e(αn)η(n/x) (the paper's display copies the twisted sum (1.4) under the name S_η(α,x))), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          5
+        ],
+        "printed": [
+          5
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "counterpart in [H] sought by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

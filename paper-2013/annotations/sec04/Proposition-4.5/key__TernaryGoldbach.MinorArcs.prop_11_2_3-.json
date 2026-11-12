@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 4.5",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 28,
+        "rect": [
+          0.20371,
+          0.1281,
+          0.63183,
+          0.43411
+        ]
+      },
+      "title": "Proposition 4.5",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 4.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_11_2_3'",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L149",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1123b.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 149,
+            "text": "theorem prop_11_2_3' {α x n w₀ w₁ : ℝ} {G : ℝ → ℝ} (hx : 0 < x)\n    (hα : α ∉ majorArcs 8 n (x / κ)) (hw₀ : 0 < w₀) (hw₀1 : w₀ ≤ 1) (hw₁ : 1 ≤ w₁)\n    (hy : 2.16e20 ≤ w₀ * (x / κ)) (hn : 670 ≤ w₀ * n)\n    (hG1 : ∀ w ∈ Icc w₀ w₁, min 1 w * n ≤ (w * (x / κ)) ^ (1 / 3 : ℝ) / 6 →\n      gx (w * (x / κ)) (min 1 w * n) ≤ G w)\n    (hG2 : ∀ w ∈ Icc w₀ w₁, 0.276 * (w * (x / κ)) ^ (5 / 6 : ℝ) * Real.log (w * (x / κ)) ^ (3 / 2 : ℝ) +\n      1234 * (w * (x / κ)) ^ (2 / 3 : ℝ) * Real.log (w * (x / κ)) ≤ G w * (w * (x / κ)))\n    (hGi : IntegrableOn (fun w => G w * phi w) (Icc w₀ w₁)) :\n    ‖S etaStar x α‖ ≤ x / κ * ((∫ w in Icc w₀ w₁, G w * phi w) +\n      17 * ((∫ w in Ioo 0 w₀, phi w) + ∫ w in Ioi w₁, phi w)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3'",
+        "module": "TernaryGoldbach.MinorArcs.Prop1123b"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] Proposition 11.2.3 changed it (g_{x,phi} changed: L_r/r -> L_{2r}/r (new L_t), 3.2 K^{1/6} x^{-1/6} -> 3.36 K^{1/6} x^{-1/6}; h in h_phi redefined (0.276, 1234)), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          28
+        ],
+        "printed": [
+          28
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

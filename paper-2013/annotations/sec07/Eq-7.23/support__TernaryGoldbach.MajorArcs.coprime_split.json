@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.23",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 61,
+        "rect": [
+          0.20371,
+          0.09391,
+          0.63183,
+          0.10425
+        ]
+      },
+      "title": "Equation (7.23)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.coprime_split",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L298",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 298,
+            "text": "theorem coprime_split {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000) :\n    ∑' n, ‖cP x n - coprimePart q (cP x) n‖ ≤ 1e-15 * x :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.coprime_split",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (14.25), up to notation. Prop 10.4.1 needs log 2r, not log r (e.g. q = 154770); then LS_{η*} ≤ 25.73 log x + 0.60 and LS_{η₊} ≤ 19.65 log x + 30.04, negligible downstream.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          61
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.9",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 12,
+        "rect": [
+          0.20371,
+          0.62119,
+          0.63183,
+          0.03648
+        ]
+      },
+      "title": "Equation (3.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.SsumG",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L100",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 100,
+            "text": "noncomputable def SsumG {N : ℕ} (χ : DirichletCharacter ℂ N) (φ : ℝ → ℂ) (x : ℝ) : ℂ :=\n  ∑' n : ℕ, (Λ n : ℂ) * χ n * φ (n / x)",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.SsumG",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (10.9), up to notation. Lean's Schar takes the weighted coefficients a(n) = Λ(n)η(n/x) as an argument; SsumG and Ssum are the explicit-formula encodings, bridged by Schar_eq_Ssum.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          12
+        ],
+        "printed": [
+          12
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.1",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 56,
+        "rect": [
+          0.20371,
+          0.49039,
+          0.63183,
+          0.06613
+        ]
+      },
+      "title": "Equation (7.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_one",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L572",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 572,
+            "text": "theorem thm_7_1_4_one {x : ℝ} (hx : 4.9e26 ≤ x) (χ : DirichletCharacter ℂ 1) {δ : ℝ}\n    (hδ : |δ| ≤ 600000) :\n    ‖Schar χ (fun n => ((Λ n * etaPlus (n / x) : ℝ) : ℂ)) (δ / x) -\n        𝓕 (fun u => (etaPlus u : ℂ)) (-δ) * x‖ ≤ (1e-18 + 6.24e6 / √x) * x :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_one",
+        "module": "TernaryGoldbach.MajorArcs.Thm714"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (14.1) changed it (constants 3.34e-11 -> 4.772e-11, 251100 -> 251400, 1.1377e-8 -> 1.1405e-8), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          56
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

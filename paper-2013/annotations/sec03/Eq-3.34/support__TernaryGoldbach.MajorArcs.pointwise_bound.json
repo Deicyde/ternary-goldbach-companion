@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.34",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.20371,
+          0.64511,
+          0.63183,
+          0.11996
+        ]
+      },
+      "title": "Equation (3.34)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.pointwise_bound",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L760",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 760,
+            "text": "theorem pointwise_bound (N : ℕ) {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) {β : ℝ}\n    (hβ : |β * x| ≤ 1200000 / qt q) :\n    ‖∑ b ∈ Bset q, fI N x ((b : ℝ) / q + β) -\n        (coefN N q : ℂ) * ((𝓕 etaPC (-(β * x)) * x) ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β)))‖ ≤\n      (3.67e-6 * (x / κ) + 8.85e-7 * x / 9) * ∑ b ∈ Bset q, ‖S etaPlus x ((b : ℝ) / q + β)‖ ^ 2 +\n        9 * 8.85e-7 * x / 2 * mPhi2 q * ‖𝓕 etaUC (-(β * (x / κ))) * ((x / κ : ℝ) : ℂ)‖ ^ 2 +\n        8.85e-7 * x / 9 * mPhi q * ‖𝓕 etaPC (-(β * x)) * x‖ ^ 2 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.pointwise_bound",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (10.34) changed it (factor sqrt(q) -> sqrt(q^*) in both maxima), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21
+        ],
+        "printed": [
+          21
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

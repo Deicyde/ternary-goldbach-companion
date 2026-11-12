@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 4.4",
+  "kind": "lemma",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 27,
+        "rect": [
+          0.20371,
+          0.67196,
+          0.63183,
+          0.03441
+        ]
+      },
+      "title": "Lemma 4.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_max_inv_phi_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L114",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/PhiIntegrals.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 114,
+            "text": "theorem integral_max_inv_phi_le {w₀ : ℝ} (hw₀ : 0 < w₀) (hw₀1 : w₀ ≤ 1) :\n    ∫ w in Ici w₀, max 1 (1 / w) * phi w ≤ 1.398 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_max_inv_phi_le",
+        "module": "TernaryGoldbach.MinorArcs.PhiIntegrals"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] Lemma 11.2.2, up to notation. Lean replaces convex interpolation of R between x/K and x by monotonicity of R and a factor max(1,1/w).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          27
+        ],
+        "printed": [
+          27
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

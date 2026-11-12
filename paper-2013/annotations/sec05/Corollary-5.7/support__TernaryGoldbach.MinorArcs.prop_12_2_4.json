@@ -1,0 +1,70 @@
+{
+  "id": "Corollary 5.7",
+  "kind": "corollary",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 44,
+        "rect": [
+          0.20371,
+          0.4513,
+          0.63183,
+          0.20647
+        ]
+      },
+      "title": "Corollary 5.7",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 5.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L69",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot6.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 69,
+            "text": "theorem prop_12_2_4 {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) (_hqQ : (q : ℝ) ≤ Q₀) {s : ℝ}\n    (hs : 1 ≤ s) (hsQ : s ≤ Q₀ / q) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 2) / (Real.log Q + cE) * Gq q (Q / (s * q)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot6"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] Corollary 12.2.5, up to notation. Lean has only the (12.42) half, with c₊ = 2 instead of 1.36 and δ₀ ≥ 2 instead of δ₀ ≥ 1; the first half (arcs (12.1)) is not formalized and not used.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          44
+        ],
+        "printed": [
+          44
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

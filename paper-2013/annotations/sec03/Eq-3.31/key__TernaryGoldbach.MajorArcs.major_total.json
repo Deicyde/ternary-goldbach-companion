@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.31",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.20371,
+          0.09416,
+          0.63183,
+          0.19234
+        ]
+      },
+      "title": "Equation (3.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.major_total",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L974",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 974,
+            "text": "theorem major_total {N : ℕ} (hN : Odd N) {x : ℝ} (hx : 4.9e26 ≤ x)\n    (hNx : (N : ℝ) / x = 2 + 9 / (8 * √(π / 2)) / κ) :\n    1.049 * x ^ 2 / κ ≤ (∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, fI N x α).re :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.major_total",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (10.31) changed it (factor sqrt(q) -> sqrt(q^*), moved inside the max over chi), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21
+        ],
+        "printed": [
+          21
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

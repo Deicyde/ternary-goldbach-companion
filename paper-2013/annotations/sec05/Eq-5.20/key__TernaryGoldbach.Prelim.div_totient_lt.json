@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.20",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.20371,
+          0.84536,
+          0.63183,
+          0.05442
+        ]
+      },
+      "title": "Equation (5.20)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.div_totient_lt",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L2258",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 2258,
+            "text": "theorem div_totient_lt {q : ℕ} (hq : 1 ≤ q) {r : ℝ} (hr : 3 ≤ r) (hqr : (q : ℝ) ≤ r) :\n    (q : ℝ) / Nat.totient q < Real.exp Real.eulerMascheroniConstant * Real.log (Real.log r) +\n      2.50637 / Real.log (Real.log r) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+        "module": "TernaryGoldbach.Prelim.MertensProduct"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (12.20), up to notation. Lean keeps the mechanism but none of the constants.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 5.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 33,
+        "rect": [
+          0.20371,
+          0.68386,
+          0.63183,
+          0.21307
+        ]
+      },
+      "title": "Proposition 5.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L315",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 315,
+            "text": "theorem sum_arcs_le_integral {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    (hg0 : ∀ α, 0 ≤ g α) {δ₀ Q x : ℝ} (hx : 0 < x) (hδ : 0 < δ₀) (hQ : 0 < Q)\n    (hQx : δ₀ * Q ^ 2 ≤ x / 2) (hw : δ₀ * Q ≤ x) :\n    ∑ q ∈ Qset Q, ∑ b ∈ Bset q, ∫ y in arc δ₀ Q x q b, g y ≤ ∫ α in Ioc (0 : ℝ) 1, g α :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] Proposition 12.1.2, up to notation. Lean needs δ0 ≥ 2 (for 2Q ≤ √x, because its common modulus includes odd q ∈ (Q, 2Q]); the book's δ0 ≥ 1 is sound, and both applications use δ0 ≥ 8. prop_12_1_2 now carries no hypotheses.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          33
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

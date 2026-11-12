@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.5",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 47,
+        "rect": [
+          0.20371,
+          0.68676,
+          0.63183,
+          0.03073
+        ]
+      },
+      "title": "Equation (6.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L358",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 358,
+            "text": "theorem norm_S_etaStar_le_ghat {x n α : ℝ} (hx : 0 < x) (hy : 1e25 ≤ x / κ)\n    (hn : 670 ≤ n) (hny : n ≤ (x / κ) ^ (1 / 3 : ℝ) / 6) (hny' : 2.16e20 * n ≤ 670 * (x / κ))\n    (hα : α ∉ majorArcs 8 n (x / κ)) :\n    ‖S etaStar x α‖ ≤ x / κ * ghatY (x / κ) n :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (13.5), up to notation. Lean asks for a pointwise bound at integer levels and no continuity of S₂.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          47
+        ],
+        "printed": [
+          47
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

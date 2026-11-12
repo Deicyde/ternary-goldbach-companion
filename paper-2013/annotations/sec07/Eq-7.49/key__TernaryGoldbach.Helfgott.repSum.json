@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.49",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.20371,
+          0.82156,
+          0.63183,
+          0.07832
+        ]
+      },
+      "title": "Equation (7.49)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.49"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.repSum",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L89",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 89,
+            "text": "noncomputable def repSum (P : ℕ → Prop) (N : ℕ) : ℝ :=\n  ∑ n₁ ∈ Finset.range (N + 1), ∑ n₂ ∈ Finset.range (N + 1), ∑ n₃ ∈ Finset.range (N + 1),\n    if n₁ + n₂ + n₃ = N ∧ P n₁ ∧ P n₂ ∧ P n₃ then\n      Λ n₁ * Λ n₂ * Λ n₃ * etaPlus (n₁ / xOf N) * etaPlus (n₂ / xOf N) *\n        etaStar (n₃ / xOf N)\n    else 0",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.repSum",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (14.50), up to notation. Exact, with ℝ/ℤ represented by (0,1] and x = xOf N.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

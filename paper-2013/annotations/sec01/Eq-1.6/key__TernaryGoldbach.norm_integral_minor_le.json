@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.6",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 7,
+        "rect": [
+          0.20371,
+          0.09817,
+          0.63183,
+          0.07655
+        ]
+      },
+      "title": "Equation (1.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_integral_minor_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L227",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/CircleMethod.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 227,
+            "text": "theorem norm_integral_minor_le (X N : ℕ) (a b c : ℕ → ℂ) {M : Set ℝ} (hM : MeasurableSet M)\n    {B : ℝ} (hB0 : 0 ≤ B) (hB : ∀ α ∈ Set.Ioc (0:ℝ) 1 \\ M, ‖expSum X a α‖ ≤ B) :\n    ‖∫ α in Set.Ioc (0:ℝ) 1 \\ M, circleIntegrand X N a b c α‖ ≤\n      B * (√(∑ n ∈ range (X + 1), ‖b n‖ ^ 2) * √(∑ n ∈ range (X + 1), ‖c n‖ ^ 2)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.norm_integral_minor_le",
+        "module": "TernaryGoldbach.CircleMethod"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (1.37) changed it (step rewritten: smoothed ∫_m S_{η+}^2 S_{η*} replaces ∫_m |S^3|, and the second bound uses the full Σ Λ(n)^2 η+^2(n/x) instead of |S|_2^2 - ∫_M|S|^2), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          7
+        ],
+        "printed": [
+          7
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "counterpart in [H] sought by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

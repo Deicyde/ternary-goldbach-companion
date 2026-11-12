@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.40",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.20371,
+          0.80997,
+          0.63183,
+          0.09085
+        ]
+      },
+      "title": "Equation (7.40)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L57",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 57,
+            "text": "theorem ghatY_le_asym {y n : ℝ} (hy : 1e100 ≤ y) (hn : 8e16 ≤ n) (hny : n ^ 4 ≤ y) :\n    ghatY y n ≤ 2 * n ^ (-1 / 4 : ℝ) + 1.398 * (3.8 * y ^ (-1 / 6 : ℝ) + hfun y) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+        "module": "TernaryGoldbach.MinorArcs.NumericsAsymp"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (14.42), up to notation. Lean has no closed form for Ϝ at the top level; Fr_monotoneOn gives monotonicity on [670,∞) only (the book says r ≥ 27).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

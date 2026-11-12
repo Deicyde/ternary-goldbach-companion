@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.1",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 5,
+        "rect": [
+          0.20371,
+          0.24051,
+          0.63183,
+          0.08236
+        ]
+      },
+      "title": "Equation (1.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.circle_identity_tsum",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L315",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/CircleMethod.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 315,
+            "text": "theorem circle_identity_tsum (N : ℕ) {a b c : ℕ → ℂ} (ha : Summable fun n => ‖a n‖)\n    (hb : Summable fun n => ‖b n‖) (hc : Summable fun n => ‖c n‖) :\n    IntegrableOn (fun α => expTsum a α * expTsum b α * expTsum c α * e (-(N * α)))\n        (Set.Ioc 0 1) ∧\n      ∫ α in Set.Ioc (0:ℝ) 1, expTsum a α * expTsum b α * expTsum c α * e (-(N * α)) =\n        ∑ n₁ ∈ range (N + 1), ∑ n₂ ∈ range (N + 1), ∑ n₃ ∈ range (N + 1),\n          if n₁ + n₂ + n₃ = N then a n₁ * b n₂ * c n₃ else 0 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.circle_identity_tsum",
+        "module": "TernaryGoldbach.CircleMethod"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (1.2) changed it (split into [H] (1.2)–(1.3); step rewritten: given for general f_1,f_2,f_3 via Fourier transforms (f_1*f_2*f_3)(n)=∫ f̂_1f̂_2f̂_3 e(αn) and split into two displays, instead of Σ_{n1+n2+n3=N}ΛΛΛ = ∫ S(α,x)^3 e(-Nα) = ∫_M + ∫_m), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          5
+        ],
+        "printed": [
+          5
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "counterpart in [H] sought by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

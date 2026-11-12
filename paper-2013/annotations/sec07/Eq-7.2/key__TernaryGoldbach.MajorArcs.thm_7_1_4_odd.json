@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 56,
+        "rect": [
+          0.20371,
+          0.56021,
+          0.63183,
+          0.12537
+        ]
+      },
+      "title": "Equation (7.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.thm_7_1_4_odd",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L593",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 593,
+            "text": "theorem thm_7_1_4_odd {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} [NeZero q] (hodd : Odd q) (hq : q ≤ 150000)\n    (χ : DirichletCharacter ℂ q) (hχ : χ.IsPrimitive) {δ : ℝ} (hδ : |δ| ≤ 600000 / q) :\n    ‖Schar χ (fun n => ((Λ n * etaPlus (n / x) : ℝ) : ℂ)) (δ / x) -\n        (if q = 1 then 𝓕 (fun u => (etaPlus u : ℂ)) (-δ) * x else 0)‖ ≤\n      ((7.5e-8 + 7.7e6 / √x) / √q) * x :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.thm_7_1_4_odd",
+        "module": "TernaryGoldbach.MajorArcs.Thm714"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (14.2) changed it (sqrt(q) -> sqrt(q^*); constants 6.18e-12 -> 1.3482e-14*sqrt(300000), 1.14e-10 -> 1.617e-10, 499100 -> 499900, 2.3921e-8 -> 2.3992e-8), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          56
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.16",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 59,
+        "rect": [
+          0.20371,
+          0.53792,
+          0.63183,
+          0.14128
+        ]
+      },
+      "title": "Equation (7.16)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.arc_chars_star",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L139",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcCharsStar.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 139,
+            "text": "theorem arc_chars_star {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hqt : (qt q : ℝ) ≤ 300000)\n    {β : ℝ} (hβ : |β * x| ≤ 1200000 / qt q) :\n    ((if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cU (x / κ))) β‖ ^ 2 ≤\n        ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cU (x / κ))) ((b : ℝ) / q + β)‖ ^ 2 ∧\n      ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cU (x / κ))) ((b : ℝ) / q + β)‖ ^ 2 ≤\n        (if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cU (x / κ))) β‖ ^ 2 +\n          (1.49e-6 * (x / κ)) ^ 2) ∧\n      ‖expTsum (coprimePart q (cU (x / κ))) β -\n        𝓕 (fun u => (etaU u : ℂ)) (-(β * (x / κ))) * ((x / κ : ℝ) : ℂ)‖ ≤ 1.49e-6 * (x / κ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.arc_chars_star",
+        "module": "TernaryGoldbach.MajorArcs.ArcCharsStar"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (14.17) changed it (sqrt(q) -> sqrt(q^*); constants 4.269e-14 -> 2.485e-19, 1/sqrt(x_+) -> 1/sqrt(10^25), 380600 -> 381500, 1.9075e-8 -> 1.33805e-8), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          59
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

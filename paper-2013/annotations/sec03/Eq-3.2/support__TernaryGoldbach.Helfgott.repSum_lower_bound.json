@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.2",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 10,
+        "rect": [
+          0.20371,
+          0.57397,
+          0.63183,
+          0.0383
+        ]
+      },
+      "title": "Equation (3.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.repSum_lower_bound",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L30",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Main.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 30,
+            "text": "theorem repSum_lower_bound (N : ℕ) (hN : Odd N) (hN27 : 10 ^ 27 ≤ N) :\n    (1.049 - 1.0376) * xOf N ^ 2 / κ ≤ repSum (fun _ => True) N :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.repSum_lower_bound",
+        "module": "TernaryGoldbach.Helfgott.Main"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.2), up to notation. Lean defines (10.2) only for the final choice η₁ = η₂ = η₊, η₃ = η_*, x = xOf N; circle_identity_tsum and tri cover general weights. repSum_lower_bound now assumes only PlattGRH and RamareMoebius.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          10
+        ],
+        "printed": [
+          10
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

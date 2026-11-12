@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.50",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.20371,
+          0.3726,
+          0.63183,
+          0.15383
+        ]
+      },
+      "title": "Equation (7.50)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.50"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.tri_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L42",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/NonPrime.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 42,
+            "text": "theorem tri_le {f g h : ℕ → ℝ} (hf : ∀ n, 0 ≤ f n) (hg : ∀ n, 0 ≤ g n) (hh : ∀ n, 0 ≤ h n)\n    {N : ℕ} {B : ℝ} (hB : ∀ n ≤ N, h n ≤ B) :\n    tri f g h N ≤ (∑ n ∈ range (N + 1), f n) * (∑ n ∈ range (N + 1), g n) * B :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.tri_le",
+        "module": "TernaryGoldbach.Helfgott.NonPrime"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (14.51), up to notation. Exact (Lean bounds each bad term in absolute value); the numeric consequence uses the crude 6.7·10⁶ instead of [H]'s 7.3306, absorbed by final_inequality_crude.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.2",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 31,
+        "rect": [
+          0.20371,
+          0.83393,
+          0.63183,
+          0.05797
+        ]
+      },
+      "title": "Equation (5.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.GqP",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L16",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/RamareGq.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 16,
+            "text": "noncomputable def GqP (q : ℕ) (R : ℝ) : ℝ :=\n  ∑ r ∈ (Finset.Icc 1 ⌊R⌋₊).filter (fun r => Nat.Coprime r q), ((μ r : ℝ) ^ 2) / Nat.totient r",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.GqP",
+        "module": "TernaryGoldbach.Prelim.RamareGq"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (12.2), up to notation. G_q depends only on the primes dividing q, which is why the two maxima in (12.6) coincide.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          31
+        ],
+        "printed": [
+          31
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

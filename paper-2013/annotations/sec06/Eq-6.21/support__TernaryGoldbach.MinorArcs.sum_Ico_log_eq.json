@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.21",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 52,
+        "rect": [
+          0.20371,
+          0.65745,
+          0.63183,
+          0.14102
+        ]
+      },
+      "title": "Equation (6.21)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_Ico_log_eq",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L141",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsCore.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 141,
+            "text": "theorem sum_Ico_log_eq {M M' : ℕ} (hM : 1 ≤ M) (hMM : M ≤ M') :\n    ∑ n ∈ Finset.Ico M M', Real.log (((n : ℝ) + 1) / n) = Real.log ((M' : ℝ) / M) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_Ico_log_eq",
+        "module": "TernaryGoldbach.MinorArcs.NumericsCore"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (13.22), up to notation. Lean never integrates in r: the discrete Thm 13.2.1 turns ∫g(r)/r dr into Σĝ(y,n)log((n+1)/n), bounded by generated block chains.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          52
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.3",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 9,
+        "rect": [
+          0.20371,
+          0.76035,
+          0.63183,
+          0.04124
+        ]
+      },
+      "title": "Equation (2.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.mellin_fP_eq",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L134",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 134,
+            "text": "theorem mellin_fP_eq (δ : ℝ) {s : ℂ} (hs : -1 < s.re) :\n    mellin (fP δ) s = ∫ ξ in Icc (-aH) aH, 𝓕 gC ξ * Gr (s - 1 + ((2 * π * ξ : ℝ) : ℂ) * I) δ 0 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.mellin_fP_eq",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (2.9), up to notation. Lean proves (2.9) only for f = h_200 on the line ℜz = 0 (written via ĝ(ξ) = Mh(−2πiξ)), which covers every use in Ch. 9.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          9
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

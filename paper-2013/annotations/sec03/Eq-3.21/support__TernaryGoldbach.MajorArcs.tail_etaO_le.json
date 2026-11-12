@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.21",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 15,
+        "rect": [
+          0.20371,
+          0.33261,
+          0.63183,
+          0.05422
+        ]
+      },
+      "title": "Equation (3.21)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.tail_etaO_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L198",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaCirc.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 198,
+            "text": "theorem tail_etaO_le {T : ℝ} (hT : 0 < T) :\n    ∫ ξ in {ξ : ℝ | T ≤ |ξ|}, ‖𝓕 (fun t => (etaO t : ℂ)) ξ‖ ^ 2 ≤ 98 / (2 * π * T) ^ 4 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.tail_etaO_le",
+        "module": "TernaryGoldbach.MajorArcs.EtaCirc"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.21), up to notation. Lean has no q-tail; its β-tail costs ≈ 1.8·10⁻⁵x² in total, against the book's ≈ 4.7·10⁻⁷x² at r = 150000.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          15
+        ],
+        "printed": [
+          15
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

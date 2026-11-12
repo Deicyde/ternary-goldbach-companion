@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.9",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 12,
+        "rect": [
+          0.20371,
+          0.62119,
+          0.63183,
+          0.03648
+        ]
+      },
+      "title": "Equation (3.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Schar",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L73",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 73,
+            "text": "noncomputable def Schar {q : ℕ} (ψ : DirichletCharacter ℂ q) (a : ℕ → ℂ) (β : ℝ) : ℂ :=\n  ∑' n : ℕ, a n * ψ (n : ZMod q) * e (n * β)",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Schar",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (10.9), up to notation. Lean's Schar takes the weighted coefficients a(n) = Λ(n)η(n/x) as an argument; SsumG and Ssum are the explicit-formula encodings, bridged by Schar_eq_Ssum.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          12
+        ],
+        "printed": [
+          12
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.4",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 5,
+        "rect": [
+          0.20371,
+          0.72916,
+          0.63183,
+          0.04812
+        ]
+      },
+      "title": "Equation (1.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Schar",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L73",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 73,
+            "text": "noncomputable def Schar {q : ℕ} (ψ : DirichletCharacter ℂ q) (a : ℕ → ℂ) (β : ℝ) : ℂ :=\n  ∑' n : ℕ, a n * ψ (n : ZMod q) * e (n * β)",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Schar",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (7.2), up to notation. The book's χ is any Dirichlet character mod q (Lean: DirichletCharacter ℂ q evaluated at (n : ZMod q)).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          5
+        ],
+        "printed": [
+          5
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.18",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 60,
+        "rect": [
+          0.20371,
+          0.10169,
+          0.63183,
+          0.06348
+        ]
+      },
+      "title": "Equation (7.18)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.norm_S_star_sub_coprime_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L100",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcCharsStar.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 100,
+            "text": "theorem norm_S_star_sub_coprime_le {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000)\n    (α : ℝ) : ‖S etaStar x α - expTsum (coprimePart q (cU (x / κ))) α‖ ≤ 1e-12 * (x / κ) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.norm_S_star_sub_coprime_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcCharsStar"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (14.20), up to notation. Valid as printed; Lean has no statement of Z_{η*²,2}.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          60
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

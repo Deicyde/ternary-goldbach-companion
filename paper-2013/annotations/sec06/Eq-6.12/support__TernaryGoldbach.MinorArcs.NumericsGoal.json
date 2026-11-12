@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.12",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 49,
+        "rect": [
+          0.20371,
+          0.48388,
+          0.63183,
+          0.0976
+        ]
+      },
+      "title": "Equation (6.12)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.NumericsGoal",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L84",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 84,
+            "text": "def NumericsGoal (x : ℝ) : Prop :=\n  ∃ r₂ : ℕ, 150000 < r₂ ∧ (20000 * (r₂ : ℝ)) ^ 2 ≤ x / 784 ∧\n    2 * (r₂ : ℝ) ≤ (2 * √(x / 784)) ^ (0.6 : ℝ) ∧ (r₂ : ℝ) ≤ (x / κ) ^ (1 / 3 : ℝ) / 6 ∧\n    2.16e20 * r₂ ≤ 670 * (x / κ) ∧ cL (r₂ - 1) ≤ Dx x ∧ Mexpr x r₂ ≤ 1.037",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.NumericsGoal",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (13.13) changed it (constants c^+ 2.3912 -> 2.0532, c^- 0.6294 -> 0.6394 in the surrounding statement; g redefined (3.2 -> 3.36, L_r -> L_{2r})), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          49
+        ],
+        "printed": [
+          49
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

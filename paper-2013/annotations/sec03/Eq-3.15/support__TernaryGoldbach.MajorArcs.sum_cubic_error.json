@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.15",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 13,
+        "rect": [
+          0.20371,
+          0.58108,
+          0.63183,
+          0.03605
+        ]
+      },
+      "title": "Equation (3.15)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_cubic_error",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L302",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 302,
+            "text": "theorem sum_cubic_error {s : Finset ℕ} (Sp Ss eb : ℕ → ℂ) (Mp Ms : ℂ) {U ρ : ℝ} (hρ : 0 < ρ)\n    (heb : ∀ b ∈ s, ‖eb b‖ = 1) (hU : ∀ b ∈ s, ‖Ss b - Ms‖ ≤ U)\n    (hR : ∑ b ∈ s, ‖Sp b - Mp‖ ^ 2 ≤ ρ ^ 2) :\n    ‖∑ b ∈ s, Sp b ^ 2 * Ss b * eb b - Mp ^ 2 * Ms * ∑ b ∈ s, eb b‖ ≤\n      U * ∑ b ∈ s, ‖Sp b‖ ^ 2 +\n        ρ / 2 * (9 * ‖Ms‖ ^ 2 + (2 * ∑ b ∈ s, ‖Sp b‖ ^ 2 + 2 * s.card * ‖Mp‖ ^ 2) / 9) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_cubic_error",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.15), up to notation. Lean isolates only the main-term product M₊²M_*, not the χ₀ term with full sums S.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          13
+        ],
+        "printed": [
+          13
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

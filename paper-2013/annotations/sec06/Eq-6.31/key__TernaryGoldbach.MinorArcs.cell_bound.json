@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.31",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 55,
+        "rect": [
+          0.20371,
+          0.53286,
+          0.63183,
+          0.16634
+        ]
+      },
+      "title": "Equation (6.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.cell_bound",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L274",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsCore.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 274,
+            "text": "theorem cell_bound {x Y L₀ L₁ cl0 clt G0 Gt : ℝ} {r₂ k : ℕ} (p : ℕ → ℕ) (G ℓ : ℕ → ℝ)\n    (hx : 4.9e26 ≤ x) (hY : 1e25 ≤ Y) (hYx : Y ≤ x / κ)\n    (hL₀ : 60 ≤ L₀) (hL₀x : L₀ ≤ Real.log x) (hL₁x : Real.log x ≤ L₁)\n    (hp0 : p 0 = 150001) (hpk : p k = r₂) (hpm : ∀ i < k, p i ≤ p (i + 1))\n    (hr2Y : (r₂ : ℝ) ≤ Y ^ (1 / 3 : ℝ) / 6)\n    (hG : ∀ i < k, ghatY Y (p i) ≤ G i) (hℓ : ∀ i < k, Real.log ((p (i + 1) : ℝ) / p i) ≤ ℓ i)\n    (hG0 : ghatY Y 150000 ≤ G0) (hGt : ghatY Y r₂ ≤ Gt)\n    (hcl0 : cL 150000 ≤ cl0) (hclt : clt ≤ cL (r₂ - 1)) (hclt0 : 0 ≤ clt) (hcD : cL (r₂ - 1) ≤ Dx x)\n    {sD' τ' : ℝ}\n    (hsD' : (0.640208000017 * L₀ - 0.021095) / (L₀ / 2 - 1.3066) ≤ sD')\n    (hτ' : (0.640208000017 * L₁ - 0.021095) * (1 - clt / (L₁ / 2 - 1.3064)) ≤ τ')\n    (hb : 8.6294 ≤ cl0 * sD') (hτ0 : 0 ≤ τ')\n    (hfin : G0 * (cl0 * sD' - 8.6294) + sD' * ∑ i ∈ Finset.range k, G i * ℓ i + Gt * τ' ≤ 1.037) :\n    Mexpr x r₂ ≤ 1.037 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.cell_bound",
+        "module": "TernaryGoldbach.MinorArcs.NumericsCore"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (13.34) changed it (constants in f_1: 10.102 -> 11.07, (80/9) log er_0 + 23.433 -> 13.66 log er_0 + 37.55; f_2: 3.2 -> 3.36), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          55
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

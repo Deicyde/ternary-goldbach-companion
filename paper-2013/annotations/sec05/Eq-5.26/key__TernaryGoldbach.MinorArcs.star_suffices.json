@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.26",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 39,
+        "rect": [
+          0.20371,
+          0.71652,
+          0.63183,
+          0.06692
+        ]
+      },
+      "title": "Equation (5.26)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.star_suffices",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L105",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 105,
+            "text": "theorem star_suffices {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs : 1 ≤ s)\n    {c : ℝ} (hc1 : 1.3325822 ≤ c) (hc2 : c ≤ 1.3325823)\n    (hstar : (q : ℝ) / Nat.totient q *\n        ((Gq q (Q₀ / (s * q)) - (Nat.totient q / q) * (Real.log (Q₀ / (s * q)) + c + Sq q)) +\n          0.6274 * max 0 (-(Gq q (Q / (s * q)) -\n            (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q)))) ≤\n      0.3726 * (Real.log (s * q) - Sq q) + 0.0274177) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 1.36) / (Real.log Q + cE) * Gq q (Q / (s * q)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.star_suffices",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (12.26), up to notation. Lean fixes ω = 0.6274 ≥ ω(0.6), valid for every ρ ≤ 0.6, so its hypothesis is slightly stronger than (12.26).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          39
+        ],
+        "printed": [
+          39
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

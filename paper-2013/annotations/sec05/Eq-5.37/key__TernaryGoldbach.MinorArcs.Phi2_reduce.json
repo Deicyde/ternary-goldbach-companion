@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.37",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 41,
+        "rect": [
+          0.20371,
+          0.57572,
+          0.63183,
+          0.07496
+        ]
+      },
+      "title": "Equation (5.37)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Phi2_reduce",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L516",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuotRed.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 516,
+            "text": "theorem Phi2_reduce {n : ℕ} (hn : 1 ≤ n) (base : ∀ A, A ∣ 30030 → Phi2 A n (Real.log A) ≤ 0) :\n    ∀ q, 1 ≤ q → q < 22000000000 → Phi2 q n (Real.log q) ≤ 0 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Phi2_reduce",
+        "module": "TernaryGoldbach.MinorArcs.LSQuotRed"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (12.37), up to notation. In the follow-up for q ≥ ∏_{p≤37, p≠7} p the denominator should be 0.8009t − log t − 1.594, not + 0.07354, needing constant ≈ 7.63; the claim survives.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          41
+        ],
+        "printed": [
+          41
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

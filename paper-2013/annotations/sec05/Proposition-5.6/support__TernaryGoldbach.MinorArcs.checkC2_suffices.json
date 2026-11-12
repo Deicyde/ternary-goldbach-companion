@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 5.6",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 39,
+        "rect": [
+          0.20371,
+          0.0712,
+          0.63183,
+          0.11817
+        ]
+      },
+      "title": "Proposition 5.6",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.checkC2_suffices",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L85",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot7.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 85,
+            "text": "theorem checkC2_suffices {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs : 1 ≤ s)\n    (hR : 1 ≤ Q₀ / (s * q))\n    (hC : Phi2 q ⌊Q₀ / (s * q)⌋₊\n      (max (Real.log q) (Real.log (1e5 / ((⌊Q₀ / (s * q)⌋₊ : ℝ) + 1)))) ≤ 0) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 2) / (Real.log Q + cE) * Gq q (Q / (s * q)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.checkC2_suffices",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot7"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] Proposition 12.2.4, up to notation. Lean proves c₊ = 2 in place of 1.36: [H]'s argument with 1.36 for q ≥ 2.2·10¹⁰, and for q < 2.2·10¹⁰ a kernel-checked Φ ≤ 0 reduction replacing [H]'s computation.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          39
+        ],
+        "printed": [
+          39
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

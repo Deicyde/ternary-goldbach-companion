@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.2",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 23,
+        "rect": [
+          0.20371,
+          0.52594,
+          0.63183,
+          0.04212
+        ]
+      },
+      "title": "Equation (4.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.hBase",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L31",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 31,
+            "text": "noncomputable def hBase (t : ℝ) : ℝ :=\n  if t ∈ Set.Icc (0:ℝ) 2 then t ^ 2 * (2 - t) ^ 3 * Real.exp (t - 1 / 2) else 0",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.hBase",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (11.2), up to notation. Notation clash in the book: (7.5), the opening of Ch. 14 and (A.1) use the same letter h for t²(2−t)³e^{t−1/2}, paired with t·e^{−t²/2}.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          23
+        ],
+        "printed": [
+          23
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

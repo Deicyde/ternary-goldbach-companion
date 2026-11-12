@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.16",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 50,
+        "rect": [
+          0.20371,
+          0.39856,
+          0.63183,
+          0.03714
+        ]
+      },
+      "title": "Equation (6.16)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.hv_of_split",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L110",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Thm1321.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 110,
+            "text": "theorem hv_of_split {x y n G : ℝ}\n    (hoff : ∀ α ∉ majorArcs 8 n y, ‖S etaStar x α‖ ≤ G)\n    (hgap : ∀ α ∈ majorArcs 8 n y \\ majorArcs 8 n x, ‖S etaStar x α‖ ≤ G) :\n    ∀ α ∉ majorArcs 8 n x, ‖S etaStar x α‖ ≤ G :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.hv_of_split",
+        "module": "TernaryGoldbach.MinorArcs.Thm1321"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (13.17) changed it (definition changed: g_{y,phi} of (eq:basia) now has L_{2r}/r and 3.36 K^{1/6}y^{-1/6} (was L_r/r and 3.2), with L_t redefined in (eq:veror); also local g now truncates g_{y,phi} (paper wrote g_{x,phi}) and monotonicity threshold r>=175 -> r>=670), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          50
+        ],
+        "printed": [
+          50
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

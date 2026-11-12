@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.19",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 52,
+        "rect": [
+          0.20371,
+          0.17202,
+          0.63183,
+          0.07846
+        ]
+      },
+      "title": "Equation (6.19)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L324",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 324,
+            "text": "theorem minor_total {x : ℝ} (hx : 4.9e26 ≤ x) (hnum : NumericsGoal x) :\n    ∫ α in Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ x, ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 ≤\n      1.0376 * x ^ 2 / κ :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "[H] (13.20) changed it (term changed: 0.4156 g(r_1) -> (7/15 + (-2.14938 + (8/15)log kappa)/(log x + 2c^-)) g(r_1); g also redefined), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          52
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

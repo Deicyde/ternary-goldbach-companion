@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.37",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 22,
+        "rect": [
+          0.20371,
+          0.35103,
+          0.63183,
+          0.0861
+        ]
+      },
+      "title": "Equation (3.37)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.coefN",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L123",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 123,
+            "text": "noncomputable def coefN (N q : ℕ) : ℝ := if Squarefree q then ∏ p ∈ q.primeFactors, aP N p else 0",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.coefN",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (10.37), up to notation. C_{η◦,η*} matches; C₀ is not defined in Lean, which bounds the truncated series by 1.314 using a kernel-checked Mertens product (prod_p_div_le) and no hypothesis.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          22
+        ],
+        "printed": [
+          22
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

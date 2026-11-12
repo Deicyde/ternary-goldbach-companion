@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.13",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 26,
+        "rect": [
+          0.20371,
+          0.19393,
+          0.63183,
+          0.0406
+        ]
+      },
+      "title": "Equation (4.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L34",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GBound.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 34,
+            "text": "noncomputable def gx (x r : ℝ) : ℝ :=\n  ((R x (2 * r) * Real.log (2 * r) + 0.8764) * √(Fr r) + 2.526) / √(2 * r) + Lg (2 * r) / r +\n    3.8 * x ^ (-1 / 6 : ℝ)",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx",
+        "module": "TernaryGoldbach.MinorArcs.GBound"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (11.12) changed it (term L_r/r -> L_{2r}/r; constant 3.2 -> 3.36 (in 3.2 x^{-1/6})), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          26
+        ],
+        "printed": [
+          26
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

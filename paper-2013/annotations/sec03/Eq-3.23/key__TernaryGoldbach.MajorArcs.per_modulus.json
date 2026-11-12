@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.23",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 16,
+        "rect": [
+          0.20371,
+          0.09265,
+          0.63183,
+          0.08514
+        ]
+      },
+      "title": "Equation (3.23)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.per_modulus",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L808",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 808,
+            "text": "theorem per_modulus (N : ℕ) {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) :\n    ‖(∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, fI N x y) -\n        (coefN N q : ℂ) * ((x : ℂ) ^ 2 * (Cmain (N / x) : ℂ))‖ ≤\n      (3.67e-6 * (x / κ) + 8.85e-7 * x / 9) * (∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, ‖S etaPlus x y‖ ^ 2) +\n        9 * 8.85e-7 * x / 2 * mPhi2 q * (7.78 * (x / κ)) +\n        8.85e-7 * x / 9 * mPhi q * (0.640208 * x) + mPhi2 q * (2.03e-5 * x ^ 2) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.per_modulus",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (10.23), up to notation. Lean keeps the singular series truncated at the major-arc moduli, Σ_{q∈Qset r₀}coefN(N,q) ≥ 1.314, instead of completing it to the Euler product C₀; the bound 1.314 uses no hypothesis.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          16
+        ],
+        "printed": [
+          16
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

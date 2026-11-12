@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.33",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 41,
+        "rect": [
+          0.20371,
+          0.09696,
+          0.63183,
+          0.04014
+        ]
+      },
+      "title": "Equation (5.33)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.star_suffices",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L105",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 105,
+            "text": "theorem star_suffices {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs : 1 ≤ s)\n    {c : ℝ} (hc1 : 1.3325822 ≤ c) (hc2 : c ≤ 1.3325823)\n    (hstar : (q : ℝ) / Nat.totient q *\n        ((Gq q (Q₀ / (s * q)) - (Nat.totient q / q) * (Real.log (Q₀ / (s * q)) + c + Sq q)) +\n          0.6274 * max 0 (-(Gq q (Q / (s * q)) -\n            (Nat.totient q / q) * (Real.log (Q / (s * q)) + c + Sq q)))) ≤\n      0.3726 * (Real.log (s * q) - Sq q) + 0.0274177) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 1.36) / (Real.log Q + cE) * Gq q (Q / (s * q)) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.star_suffices",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (12.33), up to notation. Lean's λ(q) uses constants that are worst cases over ρ ≤ 0.6, so lamQ q ≥ the book's λ(q) and regionL covers slightly fewer R. regionL is used only for q ≥ 2.2·10¹⁰.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          41
+        ],
+        "printed": [
+          41
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

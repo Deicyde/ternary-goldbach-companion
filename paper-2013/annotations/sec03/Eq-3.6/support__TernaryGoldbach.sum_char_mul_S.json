@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.6",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 11,
+        "rect": [
+          0.20371,
+          0.61146,
+          0.63183,
+          0.0375
+        ]
+      },
+      "title": "Equation (3.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.sum_char_mul_S",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L78",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 78,
+            "text": "theorem sum_char_mul_S {q : ℕ} [NeZero q] (ψ : DirichletCharacter ℂ q) {a : ℕ → ℂ}\n    (ha : Summable fun n => ‖a n‖) (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q) (β : ℝ) :\n    ∑ b : ZMod q, ψ b * expTsum a (b.val / q + β) =\n      gaussSum ψ ZMod.stdAddChar * Schar ψ⁻¹ a β :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.sum_char_mul_S",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri"
+      },
+      "role": "support"
+    }
+  ],
+  "note": "As [H] (10.6), up to notation. Lean uses Mathlib's gaussSum; τ(χ,b) appears as gaussSum with mulShift b, and τ(χ₀,n) as the Ramanujan sum ramanujan_sum.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          11
+        ],
+        "printed": [
+          11
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

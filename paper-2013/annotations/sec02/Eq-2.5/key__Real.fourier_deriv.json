@@ -1,0 +1,73 @@
+{
+  "id": "Eq 2.5",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 10,
+        "rect": [
+          0.20371,
+          0.10804,
+          0.63183,
+          0.04312
+        ]
+      },
+      "title": "Equation (2.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Real.fourier_deriv",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L792",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/Fourier/FourierTransformDeriv.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 792,
+            "text": "theorem fourier_deriv\n    {f : ℝ → E} (hf : Integrable f) (h'f : Differentiable ℝ f) (hf' : Integrable (deriv f)) :\n    𝓕 (deriv f) = fun (x : ℝ) ↦ (2 * π * I * x) • (𝓕 f x) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "Real.fourier_deriv",
+        "module": "Mathlib.Analysis.Fourier.FourierTransformDeriv"
+      },
+      "role": "key",
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679"
+    }
+  ],
+  "note": "[H] (2.10) changed it (term added: new first line M(f'(t))(s) = -(s-1) Mf(s-1)), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          10
+        ],
+        "printed": [
+          10
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

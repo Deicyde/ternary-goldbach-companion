@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.41",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.20371,
+          0.80143,
+          0.63183,
+          0.09743
+        ]
+      },
+      "title": "Equation (7.41)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.tail_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L236",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsCore.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 236,
+            "text": "theorem tail_le {x L₁ c : ℝ} (hx : 4.9e26 ≤ x) (hL : Real.log x ≤ L₁) (hc0 : 0 ≤ c)\n    (hcD : c ≤ Dx x) :\n    sig x - c * sig x / Dx x ≤\n      (0.640208000017 * L₁ - 0.021095) * (1 - c / (L₁ / 2 - (Real.log 14 - cE))) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.tail_le",
+        "module": "TernaryGoldbach.MinorArcs.NumericsCore"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (14.43) changed it (constants 0.30782 -> 0.30915, 0.14365 -> 0.14427, final bound 0.30386 x -> 0.30517 x), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          66
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

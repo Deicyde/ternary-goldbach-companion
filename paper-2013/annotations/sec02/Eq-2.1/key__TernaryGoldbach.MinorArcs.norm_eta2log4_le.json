@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.1",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 9,
+        "rect": [
+          0.20371,
+          0.53394,
+          0.63183,
+          0.04128
+        ]
+      },
+      "title": "Equation (2.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_eta2log4_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L343",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 343,
+            "text": "theorem norm_eta2log4_le (t : ℝ) :\n    ‖((2 * π * t) ^ 2 : ℂ) * 𝓕 (fun u => ((Real.log (4 * u) * eta2 u : ℝ) : ℂ)) t‖ ≤\n      48 * Real.log 2 :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_eta2log4_le",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "[H] (2.1) changed it (typo fixed: middle bound |hat{f^{(k)}}|_inf/(2 pi t) -> /(2 pi t)^k; hypothesis 'f of fast decay' added), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          9
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

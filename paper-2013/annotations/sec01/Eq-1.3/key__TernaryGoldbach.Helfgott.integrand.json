@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.3",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 5,
+        "rect": [
+          0.20371,
+          0.65024,
+          0.63183,
+          0.03874
+        ]
+      },
+      "title": "Equation (1.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.integrand",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L83",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 83,
+            "text": "noncomputable def integrand (N : ℕ) (α : ℝ) : ℂ :=\n  S etaPlus (xOf N) α ^ 2 * S etaStar (xOf N) α * e (-(N * α))",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.integrand",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (1.35), up to notation. Lean integrates over the lift (0,1] ∩ 𝔐_{8,150000} and bounds the real part from below by 1.049x²/κ (book 1.058259).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          5
+        ],
+        "printed": [
+          5
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "counterpart in [H] sought by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.42",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 44,
+        "rect": [
+          0.20371,
+          0.70228,
+          0.63183,
+          0.04234
+        ]
+      },
+      "title": "Equation (5.42)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.minor_total",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L324",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 324,
+            "text": "theorem minor_total {x : ℝ} (hx : 4.9e26 ≤ x) (hnum : NumericsGoal x) :\n    ∫ α in Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ x, ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 ≤\n      1.0376 * x ^ 2 / κ :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (12.43), up to notation. No standalone statement; the subset step and Plancherel are applied inline.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          44
+        ],
+        "printed": [
+          44
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.19",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.20371,
+          0.6765,
+          0.63183,
+          0.03927
+        ]
+      },
+      "title": "Equation (5.19)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Gq_mul_le",
+            "kind": "theorem"
+          },
+          "destination": {
+            "fragment": "L77",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot1.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 77,
+            "text": "theorem Gq_mul_le {q P : ℕ} {R t : ℝ} (hR : 0 ≤ R) (ht : 0 ≤ t)\n    (hPR : ∀ p : ℕ, p.Prime → (p : ℝ) ≤ R → p ∣ P) (hPq : ∀ p : ℕ, p.Prime → p ∣ q → p ∣ P) :\n    Gq q R * Gq P t ≤ Gq q (t * R) :=",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Gq_mul_le",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot1"
+      },
+      "role": "key"
+    }
+  ],
+  "note": "As [H] (12.19), up to notation. Lean states the multiplicative form G_q(R)·G_P(t) ≤ G_q(tR), which implies (12.19) since both G's are ≥ 1.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

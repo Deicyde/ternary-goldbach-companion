@@ -320,10 +320,16 @@
     "batch": "B047-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read introductionp.tex 630-660; grep of Real.exp (-t) over TernaryGoldbach/ hits only Gamma/digamma integrals and a decay lemma, no weight e^{-t}1_{t>=0} or Hardy-Littlewood sum."
+    }
    }
   },
   {
@@ -1829,10 +1835,16 @@
     "batch": "B048-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read notprem.tex 395-415, MoebiusBound, LiouvilleBound and SmallMoebius (kernel walk only to k<11815); no value of the Moebius sum at 10^12 appears."
+    }
    }
   },
   {
@@ -1879,10 +1891,16 @@
     "batch": "B048-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read the same files; Lean proves only (2.24)'s sqrt(2/x) for x<11815 (moebius_sqrt_kernel) and Ramare's bound beyond, never 1/(2 sqrt x) or the range up to 7727068587."
+    }
    }
   },
   {
@@ -2071,7 +2089,7 @@
    "section": "3.3",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "[L] has `v = 2` only and sums over all even `n` (powers of 2), not over `n | v`.",
+   "note": "[L] has `v = 2` only and sums over all even `n` (powers of 2), not over `n | v`. Text typo, confirmed by two skeptics and `scripts/checks/steps/3_3_display_4.py`.",
    "proof_kind": "helper",
    "ends": [
     {
@@ -2095,7 +2113,12 @@
      }
     }
    ],
-   "text_error_claim": "Typo or imprecision: the remainder over `n` not coprime to squarefree `v` runs over prime powers `p^k` with `p | v`, not `n | v`. For `v = 2`, `n | 2` omits `n = 4` (`Λ(4) = log 2`, `η(4/x) ≠ 0`), so (3.11) would not hold as printed; [L]'s `S0two` sums all even `n`.",
+   "text_error": {
+    "kind": "typo",
+    "corrected": "S_{0,v} = sum_{(n,v)>1} Lambda(n) e(alpha n) eta(n/x)",
+    "evidence": "scripts/checks/steps/3_3_display_4.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "B048-d",
     "steps": [
@@ -2150,10 +2173,16 @@
     "batch": "B048-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read intromin.tex 330-400 and Vaughan/Decomposition; no Lambda*Lambda*Lambda, F_{3,V} or Lambda log^2 identity anywhere in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -2199,10 +2228,16 @@
     "batch": "B048-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read intromin.tex 330-400 and Vaughan/Decomposition; none of F_{I,1,u}, F_{I,2,V,u}, F_{II,V,u}, F_{0,V,u} or log^3 convolutions anywhere in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -2585,10 +2620,16 @@
     "batch": "B049-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read typeII.tex 380-410; Lean defines only g2 (T2Defs) and bounds it by abs_g2_le_large; no g_1 and none of 111.536, 55.768, 0.0044325, 0.1079 occur."
+    }
    }
   },
   {
@@ -2743,10 +2784,16 @@
     "batch": "B049-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read typeII.tex 690-770, T2_le', abs_T2_sub_le route and G2Tail; Lean has no constants c_{v,i}: T2 is bounded by kernel values to 10^4 plus tail_integral_le, with no O* Euler-Maclaurin pieces."
+    }
    }
   },
   {
@@ -2826,10 +2873,16 @@
     "batch": "B049-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read typeII.tex 690-770, T2_le', abs_T2_sub_le route and G2Tail; Lean has no constants c_{v,i}: T2 is bounded by kernel values to 10^4 plus tail_integral_le, with no O* Euler-Maclaurin pieces."
+    }
    }
   },
   {
@@ -2966,10 +3019,16 @@
     "batch": "B049-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Lean bounds the whole m>10^4 tail at once (tail_integral_le, 0.0045, weighted Cauchy-Schwarz) and never isolates or evaluates the s<S/10^10 piece; consistent with the judge's confirmed noMatch for the parallel c_{v,1} term (5.1 display 14)."
+    }
    }
   },
   {
@@ -3006,10 +3065,16 @@
     "batch": "B049-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Lean has no 10^6/10^10 split of the tail and no c_{v,2},c_{v,3},c_{v,5} terms; its tail is the single bound tail_integral_le, so this evaluation is absent (as for 5.1 display 14, confirmed)."
+    }
    }
   },
   {
@@ -3276,10 +3341,16 @@
     "batch": "B049-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read typeII.tex 1235-1250 and the S2 definition; the heuristic trivial size (x/2 log x) sum (log p)^2 is stated nowhere in Lean."
+    }
    }
   },
   {
@@ -5208,7 +5279,7 @@
    "section": "6.2",
    "relation": "closeMatch",
    "class": "Faithful",
-   "note": "Lean has the constant only as 0.15107 = kappa_6/4 and the literal 0.60428 in typeII_637; the additive 0.0231 (0.0924 after scaling) is also present, as the (5.36) bound is corrected.",
+   "note": "Lean has the constant only as 0.15107 = kappa_6/4 and the literal 0.60428 in typeII_637; the additive 0.0231 (0.0924 after scaling) is also present, as the (5.36) bound is corrected. Text error, confirmed by two skeptics and `scripts/checks/steps/6_2_display_34.py`.",
    "proof_kind": "chain",
    "ends": [
     {
@@ -5258,6 +5329,12 @@
      }
     }
    ],
+   "text_error": {
+    "kind": "error",
+    "corrected": "int_1^T H_2(S)dS/S <= 0.15107 log T + 0.0231, so (quartma) gains + 0.0231/beta",
+    "evidence": "scripts/checks/steps/6_2_display_34.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "B051-d",
     "steps": [
@@ -5402,9 +5479,10 @@
   {
    "id": "6.2 display 37",
    "section": "6.2",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "kappa_7 = sqrt2 kappa_4/1000 <= 0.1281 is not defined or bounded in Lean.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean has no $\\kappa_7$: it keeps the exact term $8\\zeta(3/2)^3\\sqrt{x/V}/U$ in place of $2\\kappa_7$ and bounds it numerically ($\\le0.2355$) only at its chosen $U,V$, not via $U^2V\\ge5\\cdot10^5x$ and $\\kappa_4\\le 90.5671$.",
+   "proof_kind": "chain",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.typeII_637",
@@ -5413,9 +5491,18 @@
      "file": "TernaryGoldbach/MinorArcs/TypeIITotal.lean",
      "module": "TernaryGoldbach.MinorArcs.TypeIITotal",
      "lines": [
-      325,
-      410
-     ]
+      338,
+      340
+     ],
+     "snippet": "      x / √(2 * Nat.totient q) * √((Real.log (x / (U * V)) + Real.log (2 * q) *\n        (Real.log (Real.log (x / U / (2 * q))) - Real.log (Real.log (V / (2 * q))))) *\n        (0.60428 * Real.log (x / (U * V)) + 0.0924 + 8 * zeta3 * √(x / V) / U)) +",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.typeII_637",
+      "lines": [
+       325,
+       410
+      ],
+      "conclusion": "The (6.37) main term carries `8 * zeta3 * √(x / V) / U` (with `zeta3` $=\\zeta(3/2)^3$) in the slot of the book's $2\\kappa_7$, kept symbolic rather than bounded by a constant."
+     }
     },
     {
      "declaration": "TernaryGoldbach.MinorArcs.zeta_term_le",
@@ -5424,20 +5511,38 @@
      "file": "TernaryGoldbach/MinorArcs/FirstChoiceParams.lean",
      "module": "TernaryGoldbach.MinorArcs.FirstChoiceParams",
      "lines": [
-      132,
+      133,
       151
-     ]
+     ],
+     "snippet": "theorem zeta_term_le (hT : 6e6 ≤ T) (ht : 0 < t) (htT : t ≤ T / 3) :\n    8 * zeta3 * √(T ^ 3 / V1 T) / U1 T t ≤ 0.2355 := by\n  have hT0 : 0 < T := by linarith\n  have hU := U1_ge hT ht htT\n  have h3 := sqrt_ge_2449 hT\n  have hU0 : 0 < (U1 T t : ℝ) := lt_of_lt_of_le (by positivity) hU\n  have hV := V1_ge hT0\n  have hV0 : 0 < (V1 T : ℝ) := by linarith\n  have hζ := zeta3_le\n  have hζ0 := zeta3_nonneg\n  -- `√(x/V) ≤ 0.4767 T`.\n  have h1 : √(T ^ 3 / V1 T) ≤ 0.4767 * T := by\n    rw [Real.sqrt_le_left (by positivity), div_le_iff₀ hV0]\n    nlinarith\n  rw [div_le_iff₀ hU0]\n  have hsT : 0 < √T := by positivity\n  calc 8 * zeta3 * √(T ^ 3 / V1 T) ≤ 8 * 27 * (0.4767 * T) := by gcongr\n    _ ≤ 0.2355 * (0.1924 * (T * √T)) := by nlinarith\n    _ ≤ 0.2355 * (U1 T t : ℝ) := by gcongr",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.zeta_term_le",
+      "lines": [
+       132,
+       151
+      ],
+      "conclusion": "At the first choice of parameters `U1 T t`, `V1 T` ($x=T^3$, $T\\ge 6\\cdot10^6$) the replacement term satisfies $8\\zeta(3/2)^3\\sqrt{x/V}/U\\le 0.2355$, the analogue of $2\\kappa_7\\le 0.2562$."
+     }
     },
     {
-     "declaration": "TernaryGoldbach.MinorArcs.zeta3_le",
+     "declaration": "TernaryGoldbach.MinorArcs.typeII_first",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/FirstChoice.lean",
-     "module": "TernaryGoldbach.MinorArcs.FirstChoice",
+     "file": "TernaryGoldbach/MinorArcs/FirstChoiceTypeII.lean",
+     "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeII",
      "lines": [
-      77,
-      83
-     ]
+      364,
+      364
+     ],
+     "snippet": "  have hζ := zeta_term_le hT ht0 htT",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.typeII_first",
+      "lines": [
+       326,
+       434
+      ],
+      "conclusion": "The bound `zeta_term_le` is invoked when (6.37) is instantiated at the first choice of parameters."
+     }
     }
    ],
    "searched": {
@@ -5445,21 +5550,30 @@
      "TernaryGoldbach.MinorArcs.typeII_637",
      "TernaryGoldbach.MinorArcs.zeta_term_le",
      "TernaryGoldbach.MinorArcs.zeta3_le",
-     "TernaryGoldbach.MinorArcs.integral_Ggen_le'"
+     "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+     "TernaryGoldbach.MinorArcs.typeII_first",
+     "TernaryGoldbach.MinorArcs.kap1_le"
     ],
     "greps": [
      "0\\.1281|κ₇|kap7 in TernaryGoldbach",
-     "zeta3 in TernaryGoldbach/MinorArcs"
+     "zeta3 in TernaryGoldbach/MinorArcs",
+     "zeta_term_le|0\\.2355|8 \\* zeta3 in tg/TernaryGoldbach/MinorArcs"
     ]
    },
    "verification": {
     "batch": "B051-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "overturned",
+     "reason": "typeII_637 puts the exact term 8ζ(3/2)³√(x/V)/U in the slot of 2κ₇ (its docstring says so) and zeta_term_le bounds it by 0.2355 at the parameters used, the same numerical step by a different argument."
+    }
    }
   },
   {
@@ -5895,7 +6009,6 @@
      }
     }
    ],
-   "text_error_claim": "Typo: the final factor sqrt(log W) uses the bound variable W outside the integral; it should be sqrt(log W_0).",
    "verification": {
     "batch": "B051-d",
     "steps": [
@@ -6014,7 +6127,6 @@
      }
     }
    ],
-   "text_error_claim": "The first '=' should be '<=': sqrt(a+b) <= sqrt a + sqrt b is used to split x/(2|delta q|) + x/(16(1-rho)Q), as in the earlier (rook) display.",
    "verification": {
     "batch": "B051-d",
     "steps": [
@@ -6177,10 +6289,16 @@
     "batch": "B052-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read minarctotals.tex 1095-1150 and FirstChoiceParams/FirstChoiceMain; Lean fixes U1, V1 and never linearises log(1+log(x/UV)/log(V/2q)) or optimises kappa."
+    }
    }
   },
   {
@@ -6231,10 +6349,16 @@
     "batch": "B052-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Same files; none of kappa_1',...,kappa_5' or 0.30915, 0.27797, 1.01152, 1.18694 occur in TernaryGoldbach/ (kappa' hits are the unrelated sign e((a+k0q)/2) in InnerSums)."
+    }
    }
   },
   {
@@ -7322,7 +7446,7 @@
    "section": "6.3",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md). The same S_{I,1} bound, with a different shape: [H] has 2.4719 x^{2/3} log x + 0.00289 x^{2/3}(log x)^2, Lean (0.0407 L^2 + 14.1 L + 15.7) T^2; the Lean case split is `q > T/6` or (`q <= T/6`, `|delta| > 8`, `|delta|q > 8T/6`), the same as [H]'s.",
+   "note": "Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md). The same S_{I,1} bound, with a different shape: [H] has 2.4719 x^{2/3} log x + 0.00289 x^{2/3}(log x)^2, Lean (0.0407 L^2 + 14.1 L + 15.7) T^2; the Lean case split is `q > T/6` or (`q <= T/6`, `|delta| > 8`, `|delta|q > 8T/6`), the same as [H]'s. Text error, confirmed by two skeptics and `scripts/checks/steps/6_3_display_23.py`.",
    "proof_kind": "helper",
    "ends": [
     {
@@ -7350,6 +7474,12 @@
      }
     }
    ],
+   "text_error": {
+    "kind": "error",
+    "corrected": "with the printed x/q prefactor: <= 4.9438 x^{2/3} log x + 0.00289 x^{2/3}(log x)^2; with the corrected (4.40) (x/2q) the 2.4719 is right",
+    "evidence": "scripts/checks/steps/6_3_display_23.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "B053-d",
     "steps": [
@@ -8095,7 +8225,7 @@
    "section": "6.3",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "Same step (bounding the displayed expression by an explicit multiple of x^{5/6}(log x)^{3/2}) but for Lean's expression; the terms of [H]'s display (`2 kappa2 + sqrt3 kappa9) sqrt t`, etc.) do not appear and the constant is 1.413 L^{3/2} = 0.2719 t^{3/2} instead of [H]'s 0.10327 t^{3/2}. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md).",
+   "note": "Same step (bounding the displayed expression by an explicit multiple of x^{5/6}(log x)^{3/2}) but for Lean's expression; the terms of [H]'s display (`2 kappa2 + sqrt3 kappa9) sqrt t`, etc.) do not appear and the constant is 1.413 L^{3/2} = 0.2719 t^{3/2} instead of [H]'s 0.10327 t^{3/2}. Lean writes T = x^{1/3}, L = log T, so x^{2/3} = T^2 and log x = 3L; Lean's second choice differs from [H]'s (U = floor(1225T), V = floor(T/3), re-approximation parameter Q0 = T^2/349 instead of Q = x/U; see NOTES.md). Text error, confirmed by two skeptics and `scripts/checks/steps/6_3_display_38.py`.",
    "proof_kind": "direct",
    "ends": [
     {
@@ -8123,6 +8253,12 @@
      }
     }
    ],
+   "text_error": {
+    "kind": "error",
+    "corrected": "skip the simplification: the preceding expression is <= 0.10327 t^{3/2} for t >= log(2.16e20)",
+    "evidence": "scripts/checks/steps/6_3_display_38.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "B053-d",
     "steps": [
@@ -8408,10 +8544,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read intromaj.tex 60-110; Theorem 7.1.1 (Gaussian weight) is not formalized: Lean treats only t^2 e^{-t^2/2} (prop_9_3_2) and has no Gaussian explicit formula (Prop 9.2.2)."
+    }
    }
   },
   {
@@ -8448,10 +8590,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Same; 4.306e-22 and 650400 occur nowhere in TernaryGoldbach/, and no error bound for the Gaussian-weight twisted sum exists."
+    }
    }
   },
   {
@@ -8954,10 +9102,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9148,10 +9302,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9303,10 +9463,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9368,10 +9534,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9497,10 +9669,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9560,10 +9738,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9623,10 +9807,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9686,10 +9876,16 @@
     "batch": "B054-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9755,10 +9951,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9866,10 +10068,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -9935,10 +10143,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10088,10 +10302,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10157,10 +10377,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10226,10 +10452,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10295,10 +10527,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10364,10 +10602,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10433,10 +10677,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10502,10 +10752,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10571,10 +10827,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10640,10 +10902,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10709,10 +10977,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -10972,10 +11246,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -11041,10 +11321,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -11110,10 +11396,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -11251,10 +11543,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -11392,10 +11690,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -11533,10 +11837,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -11602,10 +11912,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -11743,10 +12059,16 @@
     "batch": "B055-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A07",
+     "ruling": "confirmed",
+     "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    }
    }
   },
   {
@@ -12039,10 +12361,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no bound on upsilon(rho): the rotation proof has no saddle point."
+    }
    }
   },
   {
@@ -12137,10 +12465,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no arccos(1/upsilon) bound; the rotation angle is fixed (0.28) or 0.1866 tau/D."
+    }
    }
   },
   {
@@ -12274,10 +12608,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no two-term same-sign factor; norm_G_le_regimeB treats both signs of delta via |delta| with one term."
+    }
    }
   },
   {
@@ -12372,10 +12712,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no e^{-c/t}/t^{k+1} maximisation in the Mellin bounds (pow_mul_exp_le in MinorArcs/NumericsAsymp is an unrelated monotonicity lemma)."
+    }
    }
   },
   {
@@ -12571,10 +12917,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no Stirling series; norm_Gamma_le_rot is a rotation bound used only for zeta/L growth."
+    }
    }
   },
   {
@@ -12669,10 +13021,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no bound on the Stirling remainder R_2."
+    }
    }
   },
   {
@@ -12767,10 +13125,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no computation of Re((s-1/2)log s - s)."
+    }
    }
   },
   {
@@ -12865,10 +13229,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no bound on |1+i sigma/tau|^{sigma-1/2}."
+    }
    }
   },
   {
@@ -12963,10 +13333,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no bound exp(1/(12|tau|)+sqrt2/(180|tau|^3)) <= 1.004177."
+    }
    }
   },
   {
@@ -13162,10 +13538,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no |Gamma(s)|e^{pi tau/2} <= |tau|^{sigma-1/2} C reduction, hence no power comparison."
+    }
    }
   },
   {
@@ -13260,10 +13642,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read mellintran.tex 1260-1420 and MellinRotate.lean (norm_Gr_le, norm_Gr_le_closed, regimes A/B), GammaBounds.lean, Digamma.lean, LGrowthLeft.lean; grep of TernaryGoldbach/ for Stirling|arccos|arctan|upsilon|saddle|1/12|0.1598|7.8|3.15683|80/3|1.004177|1.000625 finds no power of ell in the bounds, so no sqrt(3/8) estimate."
+    }
    }
   },
   {
@@ -13729,10 +14117,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read expform.tex 470-500, LogDerivL.lean, Landau.lean; grep of TernaryGoldbach/ for eulerMascheroni (only MinorArcs Fs/GMono uses), 15.07, 15.289, logDeriv at 1, q^(4/5), Polya finds no bound on |log(2pi/q)+gamma|."
+    }
    }
   },
   {
@@ -13804,10 +14198,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read expform.tex 470-510 and LogDerivL.lean; no Lean lines bound L'/L(1,chi) or the combination 3 log q + 15.289 (grep 15.07|15.289|logDeriv.*1 over TernaryGoldbach/)."
+    }
    }
   },
   {
@@ -13908,10 +14308,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read Lemma 9.1.3 (expform.tex 515-545) and ZeroSums/LineZeros/ZeroSumBound.lean; Lean bounds zero sums by Jensen windows and has no partial-summation error term, so the O*(1/4 int f/T) clause has no counterpart."
+    }
    }
   },
   {
@@ -14041,10 +14447,16 @@
     "batch": "B056-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read Lemma 9.2.1 and ZeroSumBound.lean (zero_sum_bound, E2b, count_tail_window): Lean's tail bound is for G_delta = F_delta(s+2) (weight t^2 e^{-t^2/2}), the analogue of Lemma 9.3.1, and no Lean lines bound the e^{-t^2/2} sum with 3.53, 22.5 (grep over TernaryGoldbach/)."
+    }
    }
   },
   {
@@ -14205,7 +14617,7 @@
    "section": "9.4",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "Lean bounds the high-zero tail by E2g (EB, EA majorants, Jensen windows, H=200) inside zero_sum_boundG, not by the displayed bound with 11.308, 16.147 and log(qT0/2pi); the Lean lemma has no displayed-form statement.",
+   "note": "Lean bounds the high-zero tail by E2g (EB, EA majorants, Jensen windows, H=200) inside zero_sum_boundG, not by the displayed bound with 11.308, 16.147 and log(qT0/2pi); the Lean lemma has no displayed-form statement. Text error, confirmed by two skeptics and `scripts/checks/steps/9_4_display_1.py`.",
    "proof_kind": "chain",
    "ends": [
     {
@@ -14269,6 +14681,12 @@
      }
     }
    ],
+   "text_error": {
+    "kind": "error",
+    "corrected": "Pair the zeros of L(chi) with gamma < -T_0 with the zeros of L(chi-bar) with gamma > T_0 (bounding |G_delta| and |G_{-delta}|); the stated bound then follows for all primitive chi.",
+    "evidence": "scripts/checks/steps/9_4_display_1.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "B057-d",
     "steps": [
@@ -14336,10 +14754,16 @@
     "batch": "B057-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read expform.tex 2095-2170 and Cor713/Cor933.lean: Lean checks only the eta_* arithmetic (first_line_le with 6.11, 1.578; err933_le_book); grep 3.53|2.597|7.715|9.258 over TernaryGoldbach/ finds nothing."
+    }
    }
   },
   {
@@ -14387,10 +14811,16 @@
     "batch": "B057-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Same reading of expform.tex 2095-2170 and Cor713.lean; first_line_le is the eta_* line (2.485e-19), and 4.3054e-22|4.306|1.54e-26 do not occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -14438,10 +14868,16 @@
     "batch": "B057-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Same reading; err933 has 1.22, 5.056, 1.423, 37.19 (eta_*), and 2.337|21.817|2.85|74.38 do not occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -14489,10 +14925,16 @@
     "batch": "B057-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Same reading; err933_le_book bounds by 381500/sqrt q + 76 (eta_*), and 648662 does not occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -14540,10 +14982,16 @@
     "batch": "B057-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Same reading; Cor713.lean bounds (3*1.92182+11|delta|)/y for eta_*, and the Gaussian constants 55, 1.7e7, 19, 1.2e8 do not occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -14592,10 +15040,16 @@
     "batch": "B057-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Same reading; Theorem 7.1.1's Gaussian bound 4.306e-22+(650400/sqrt q+112)/sqrt x does not occur (grep 650400|4.306 in TernaryGoldbach/); Lean proves only the eta_* form."
+    }
    }
   },
   {
@@ -16381,7 +16835,6 @@
      }
     }
    ],
-   "text_error_claim": "typo: the left side writes S_eta(a/q+delta/x, chi); the second argument should be x (S_eta(alpha,x)).",
    "verification": {
     "batch": "B058-d",
     "steps": [
@@ -17054,10 +17507,16 @@
     "batch": "B058-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read intmajarc.tex 680-720 and L2Major.lean (Jq_bounds, l2_major_bounds): errors are uniform per q (9.62e-4 mPhi q x + 2.17e-7 x) summed with card_Qset_le; no sum mu^2 gcd(q,2)/(q phi(q)) or 2.59147 (grep over TernaryGoldbach/)."
+    }
    }
   },
   {
@@ -17105,10 +17564,16 @@
     "batch": "B058-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read intmajarc.tex 710-720, L2Major.lean, SumMuPhi.lean; grep harmonic|sum_inv over MajorArcs and Prelim finds only RamareFo's odd harmonic sum (a different use); no log(2e^2 r) bound on the arc-error sum."
+    }
    }
   },
   {
@@ -17578,10 +18043,16 @@
     "batch": "B059-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read Lemma 11.2.5 (optcoor.tex 560-600) and LinftyLevels.lean: ghatY takes max(gx y n, hfun y), so the comparison g >= h is never proved (grep hfun.*gx and 4/15 over TernaryGoldbach/)."
+    }
    }
   },
   {
@@ -18010,10 +18481,16 @@
     "batch": "B059-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Illustrative asymptotic counterexample; MinorArcs has only ramare_Gq/Gq, and no G_2 vs G ratio asymptotics (grep G2|Gq over TernaryGoldbach/MinorArcs)."
+    }
    }
   },
   {
@@ -18361,10 +18838,16 @@
     "batch": "B059-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read intminarc.tex 520-545 and GMono.lean: Fs has only first-derivative facts (Fs_hasDerivAt, Fs_deriv_le) for antitonicity; no ConcaveOn/second derivative of sqrt Fs (grep ConcaveOn over MinorArcs)."
+    }
    }
   },
   {
@@ -18435,10 +18918,16 @@
     "batch": "B059-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Same reading; no tangent-line bound for sqrt(F(log r)) occurs; Lean bounds ghat by block numerics (ghatY_le_num, cell_bound)."
+    }
    }
   },
   {
@@ -18498,10 +18987,16 @@
     "batch": "B059-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read intminarc.tex 560-575; no integrals of Fr(r)/r^2 or E_1 in MinorArcs (grep expIntegral|E1 hits only unrelated files); Lean sums over integer levels (Mexpr, cell_bound)."
+    }
    }
   },
   {
@@ -18769,10 +19264,16 @@
     "batch": "B059-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read intminarc.tex 620-650 and GMono.lean: only Rs_hasDerivAt/Rs_deriv_le (first derivative) occur; no second derivative or convexity of R."
+    }
    }
   },
   {
@@ -18833,10 +19334,16 @@
     "batch": "B059-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Same reading; Lean's range conditions are t <= x^{1/3}/3 for R_nonneg (GBound.lean) and r <= y^{1/3}/6 in NumericsGoal, which serve positivity/monotonicity, not the convexity range 2 r_1 < 9 z^{1/3}/2.004; no 4/15 power occurs in MinorArcs."
+    }
    }
   },
   {
@@ -18988,7 +19495,6 @@
      }
     }
    ],
-   "text_error_claim": "Typo: $F_H(t)=\\sin(H\\log y)/(\\pi\\log y)$ should read $F_H(y)$ (or $t$ on both sides); the definition is used as $F_H(y)$ in $h_H$.",
    "verification": {
     "batch": "B059-d",
     "steps": [
@@ -19059,10 +19565,16 @@
     "batch": "B060-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read conclusion.tex 55-90 and MajorTotal.lean (pointwise_bound, per_modulus), L2Major.lean: no bound on S_{eta_+}(0,x) or 1.063 (grep over TernaryGoldbach/); K_{r,2} is not formed."
+    }
    }
   },
   {
@@ -19737,10 +20249,16 @@
     "batch": "B060-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read conclusion.tex 205-245; CMain.lean uses the Lipschitz constant 8.82 (conv2_ge), and EtaONum.lean integrates polynomial approximations of eta_o^2, not x^k e^{-x^2}; no incomplete gamma (grep gammaInc|lowerGamma)."
+    }
    }
   },
   {
@@ -19788,10 +20306,16 @@
     "batch": "B060-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Same reading; no erf occurs in TernaryGoldbach/ (grep erf), as |eta_o'|_2^2 is never evaluated."
+    }
    }
   },
   {
@@ -19987,10 +20511,16 @@
     "batch": "B060-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Re-read conclusion.tex 315-345 and Helfgott/SupNorms.lean, Decay.lean: only |eta_*| <= 6.2 and decay bounds, no eta_* log^+ sup norm; 1.921813|0.381157|0.732513 do not occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -21422,10 +21952,16 @@
     "batch": "B061-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Grep of TernaryGoldbach/MinorArcs for the function f, 2.004 with 4/3 log t, and bisection numerics finds only R/gx definitions; R_le_of_pow_four and gx_scale_le replace the R_{y/K,2r_1} computation."
+    }
    }
   },
   {
@@ -21700,10 +22236,16 @@
     "batch": "B061-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Grep 7/15|2.14938 over TernaryGoldbach/ finds nothing; Mexpr and minor_total have no 7/15 term."
+    }
    }
   },
   {
@@ -21810,10 +22352,16 @@
     "batch": "B061-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Grep 0.0169073|f1 over TernaryGoldbach/MinorArcs finds only LSQuot1's unrelated f1p/f1q; Lean has no f_1(r_0)."
+    }
    }
   },
   {
@@ -21861,10 +22409,16 @@
     "batch": "B061-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Grep 3.36|0.05699 over TernaryGoldbach/ finds nothing; the 3.8 y^{-1/6} term of gx is handled per block in chain_le."
+    }
    }
   },
   {
@@ -22040,10 +22594,16 @@
     "batch": "B061-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Grep P2|I0|0.41415^2 over MinorArcs: I0_ge is the l2 lower bound (different quantity), 0.41415 occurs only as R's floor in GMono/SecondBridge; no I_{0,r_0,r_1,z} bound."
+    }
    }
   },
   {
@@ -22184,10 +22744,16 @@
     "batch": "B061-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Grep 0.43086|0.43113|0.10426|0.10439 over TernaryGoldbach/ finds nothing; no P_2(log 2r_0)/sqrt r_0 numerics."
+    }
    }
   },
   {
@@ -22311,10 +22877,16 @@
     "batch": "B061-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A08",
+     "ruling": "confirmed",
+     "reason": "Grep 0.4153461|5.73827|0.071498 over TernaryGoldbach/ finds nothing; numerics_M bounds Mexpr cells directly."
+    }
    }
   },
   {
@@ -22979,10 +23551,16 @@
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "Grepped TernaryGoldbach/ for the roots, C_3/C_4 values and third derivatives of h; [L] defines only hP, hP', hP'' and never locates zeros of h'''."
+    }
    }
   },
   {
@@ -23078,10 +23656,16 @@
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "No fourth derivative of h or its roots anywhere in TernaryGoldbach/; [L] stops at hP'' (HHFourier2.lean)."
+    }
    }
   },
   {
@@ -23177,10 +23761,16 @@
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "[L] never forms C_4 or integrates by parts four times; tail decay uses only the L^2 norm of g'' (integral_gL''_sq_le)."
+    }
    }
   },
   {
@@ -23276,10 +23866,16 @@
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "The jump of h''' at 2 has no counterpart; [L] only uses hP''_two (h''(2)=0)."
+    }
    }
   },
   {
@@ -23315,10 +23911,16 @@
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "No lower incomplete Gamma in TernaryGoldbach/ or Mathlib; [L] never uses the closed form of Mh."
+    }
    }
   },
   {
@@ -23458,10 +24060,16 @@
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "No integral of |t+i| min(C_k ...) or |(t+i)Mh(it)|_1 bound in [L]; grep for 27.86, arsinh, (t+I) found nothing relevant."
+    }
    }
   },
   {
@@ -23723,9 +24331,10 @@
   {
    "id": "A.3 display 2",
    "section": "A.3",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] writes Mη₊ as a convolution (`mellin_fP_eq`) but never applies Young's inequality to (Mη₊)'; it bounds ‖η₊·log‖₂² by the sup-norm bound instead.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] bounds $|(M\\eta_+)'(1/2+it)|_2$ (for $\\eta_+ e(\\delta t)$, all $\\delta$) by Plancherel and a sup-norm bound on $\\eta_+$, not by Young's inequality with $|Mh_H|_1|(M\\eta_\\diamondsuit)'|_2$; the resulting constant is weaker.",
+   "proof_kind": "chain",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG",
@@ -23735,19 +24344,43 @@
      "module": "TernaryGoldbach.Explicit.MellinPlancherelGen",
      "lines": [
       143,
-      165
-     ]
+      144
+     ],
+     "snippet": "theorem integral_norm_sq_flineDG (hp : PlancherelData φ C c) :\n    ∫ t, ‖flineDG φ t‖ ^ 2 = 2 * π * ∫ v in Ioi (0:ℝ), Real.log v ^ 2 * ‖φ v‖ ^ 2 := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG",
+      "lines": [
+       143,
+       165
+      ],
+      "conclusion": "Plancherel for the derivative line function: $\\int|\\texttt{flineDG}\\,\\varphi(t)|^2dt = 2\\pi\\int_0^\\infty \\log^2 v\\,|\\varphi(v)|^2dv$, the Lean form of $|(M\\varphi)'(1/2+it)|_2^2 = 2\\pi|\\varphi\\cdot\\log|_2^2$.",
+      "notation": [
+       {
+        "math": "(M\\varphi)'(1/2+it)",
+        "lean": "flineDG φ t"
+       }
+      ]
+     }
     },
     {
-     "declaration": "TernaryGoldbach.Explicit.mellin_fP_eq",
+     "declaration": "TernaryGoldbach.Explicit.integral_log_sq_etaPlus_sq_le",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Explicit/EtaPlusMellin.lean",
-     "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
+     "file": "TernaryGoldbach/Explicit/EtaPlusBound.lean",
+     "module": "TernaryGoldbach.Explicit.EtaPlusBound",
      "lines": [
-      133,
-      204
-     ]
+      72,
+      73
+     ],
+     "snippet": "/-- `∫₀^∞ (log v)² η₊(v)² dv ≤ 1.129`. -/\ntheorem integral_log_sq_etaPlus_sq_le :",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.integral_log_sq_etaPlus_sq_le",
+      "lines": [
+       72,
+       128
+      ],
+      "conclusion": "$\\int_0^\\infty \\log^2 v\\,\\eta_+(v)^2dv \\le 1.129$, proved from the pointwise bound $|\\eta_+(v)|\\le 3.15\\,v e^{-v^2/2}$ and Gamma integrals, not from $|Mh_H|_1$."
+     }
     },
     {
      "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG_fP_le",
@@ -23758,31 +24391,50 @@
      "lines": [
       137,
       141
-     ]
+     ],
+     "snippet": "theorem integral_norm_sq_flineDG_fP_le (δ : ℝ) :\n    ∫ t, ‖flineDG (fP δ) t‖ ^ 2 ≤ 2 * π * 1.129 := by\n  rw [integral_norm_sq_flineDG (plancherelData_fP δ)]\n  simp_rw [norm_fP_sq]\n  exact mul_le_mul_of_nonneg_left integral_log_sq_etaPlus_sq_le (by positivity)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineDG_fP_le",
+      "lines": [
+       137,
+       141
+      ],
+      "conclusion": "$\\int|(M\\eta_+e(\\delta\\cdot))'(1/2+it)|^2dt \\le 2\\pi\\cdot 1.129$: an $L^2$ bound on the same quantity the display bounds by Young's inequality.",
+      "notation": [
+       {
+        "math": "\\eta_+(t)e(\\delta t)",
+        "lean": "fP δ"
+       }
+      ]
+     }
     }
    ],
    "searched": {
     "declarations": [
-     "TernaryGoldbach.Explicit.mellin_half_eq",
-     "TernaryGoldbach.Explicit.hasDerivAt_flineG",
      "TernaryGoldbach.Explicit.integral_norm_sq_flineDG",
-     "TernaryGoldbach.Explicit.plancherelData_fP",
-     "TernaryGoldbach.Explicit.mellin_fP_eq",
+     "TernaryGoldbach.Explicit.integral_log_sq_etaPlus_sq_le",
      "TernaryGoldbach.Explicit.integral_norm_sq_flineDG_fP_le",
-     "TernaryGoldbach.Explicit.integral_log_sq_etaPlus_sq_le"
+     "TernaryGoldbach.Explicit.mellin_fP_eq"
     ],
     "greps": [
-     "Young|convolution|conv in TernaryGoldbach/Explicit/ and MajorArcs/"
+     "Young|convolution in TernaryGoldbach/",
+     "flineDG in TernaryGoldbach/Explicit/"
     ]
    },
    "verification": {
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "overturned",
+     "reason": "[L] bounds the same quantity |(M eta_+)'(1/2+it)|_2 (flineDG of fP) by Plancherel plus a pointwise bound on eta_+ log, not by Young's inequality."
+    }
    }
   },
   {
@@ -24215,10 +24867,16 @@
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "[L] never differentiates eta_+ or h_H and has no L^1 norm |eta_+' t^sigma|_1; Mellin bounds on vertical lines come from norm_mellin_fP_uniform instead."
+    }
    }
   },
   {
@@ -24279,10 +24937,16 @@
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "No Cauchy-Schwarz bound for |h_H' t^{sigma+1} e^{-t^2/2}|_1 in [L]; h_H is never differentiated."
+    }
    }
   },
   {
@@ -24344,10 +25008,16 @@
     "batch": "B062-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "No L^2 norm of h_H' sqrt t in [L]; grep for derivatives of hH found none."
+    }
    }
   },
   {
@@ -24610,10 +25280,16 @@
     "batch": "B063-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "abs_hH_le_eps integrates by parts in u and bounds |h_H| via the total variation of h, never bounding d/dw h(t e^{-w/H}) by |h'|_inf or estimating h_H - h."
+    }
    }
   },
   {
@@ -24690,10 +25366,16 @@
     "batch": "B063-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "Only unrelated E₁ names (Mertens remainders, Cor713) exist in TernaryGoldbach/; no exponential integral."
+    }
    }
   },
   {
@@ -24731,10 +25413,16 @@
     "batch": "B063-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "No E_1(1/H) bound in [L]; the h_H estimate abs_hH_le_eps avoids it."
+    }
    }
   },
   {
@@ -24811,10 +25499,16 @@
     "batch": "B063-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "Grepped constants and eta_circ: [L] has no log-weighted sup bounds; HHBound.lean bounds |eta_+| and t|eta_+| directly via |h_200| <= 3.15."
+    }
    }
   },
   {
@@ -24852,10 +25546,16 @@
     "batch": "B063-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "No sup bound on eta_circ(t)/t or eta_+(t)/t in [L]."
+    }
    }
   },
   {
@@ -24893,10 +25593,16 @@
     "batch": "B063-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "mul_abs_etaPlus_le_B bounds t|eta_+| <= 2.32 via |h_200| <= 3.15 and t^2 e^{-t^2/2} <= 2/e, never bounding eta_circ(t) t."
+    }
    }
   },
   {
@@ -25107,10 +25813,16 @@
     "batch": "B063-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "[L] has only finite sums over Qset 150000 (sum_Qset_mPhi2_le) and a Rankin tail for coefN (expansion_ge), no tail of mu^2/phi^2."
+    }
    }
   },
   {
@@ -25147,10 +25859,16 @@
     "batch": "B063-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A09",
+     "ruling": "confirmed",
+     "reason": "No f_j or (2p-1)/((p-1)^2 p) in TernaryGoldbach/; the convolution identity (C.13) is not formalized."
+    }
    }
   },
   {

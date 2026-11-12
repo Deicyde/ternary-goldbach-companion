@@ -873,7 +873,6 @@
      }
     }
    ],
-   "text_error_claim": "typo: the left side writes S_eta(a/q+delta/x, chi); the second argument should be x (S_eta(alpha,x)).",
    "verification": {
     "carried_from": "book 10.3 display 1",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -1613,10 +1612,16 @@
      "batch": "B058-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Re-read intmajarc.tex 680-720 and L2Major.lean (Jq_bounds, l2_major_bounds): errors are uniform per q (9.62e-4 mPhi q x + 2.17e-7 x) summed with card_Qset_le; no sum mu^2 gcd(q,2)/(q phi(q)) or 2.59147 (grep over TernaryGoldbach/)."
+     }
     }
    }
   },
@@ -1668,10 +1673,16 @@
      "batch": "B058-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Re-read intmajarc.tex 710-720, L2Major.lean, SumMuPhi.lean; grep harmonic|sum_inv over MajorArcs and Prelim finds only RamareFo's odd harmonic sum (a different use); no log(2e^2 r) bound on the arc-error sum."
+     }
     }
    }
   },
@@ -2221,10 +2232,16 @@
      "batch": "B059-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Re-read Lemma 11.2.5 (optcoor.tex 560-600) and LinftyLevels.lean: ghatY takes max(gx y n, hfun y), so the comparison g >= h is never proved (grep hfun.*gx and 4/15 over TernaryGoldbach/)."
+     }
     }
    }
   },
@@ -3082,10 +3099,16 @@
      "batch": "B059-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Re-read intminarc.tex 520-545 and GMono.lean: Fs has only first-derivative facts (Fs_hasDerivAt, Fs_deriv_le) for antitonicity; no ConcaveOn/second derivative of sqrt Fs (grep ConcaveOn over MinorArcs)."
+     }
     }
    }
   },
@@ -3160,10 +3183,16 @@
      "batch": "B059-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Same reading; no tangent-line bound for sqrt(F(log r)) occurs; Lean bounds ghat by block numerics (ghatY_le_num, cell_bound)."
+     }
     }
    }
   },
@@ -3227,10 +3256,16 @@
      "batch": "B059-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Re-read intminarc.tex 560-575; no integrals of Fr(r)/r^2 or E_1 in MinorArcs (grep expIntegral|E1 hits only unrelated files); Lean sums over integer levels (Mexpr, cell_bound)."
+     }
     }
    }
   },
@@ -3638,10 +3673,16 @@
      "batch": "B059-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Re-read intminarc.tex 620-650 and GMono.lean: only Rs_hasDerivAt/Rs_deriv_le (first derivative) occur; no second derivative or convexity of R."
+     }
     }
    }
   },
@@ -3706,10 +3747,16 @@
      "batch": "B059-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Same reading; Lean's range conditions are t <= x^{1/3}/3 for R_nonneg (GBound.lean) and r <= y^{1/3}/6 in NumericsGoal, which serve positivity/monotonicity, not the convexity range 2 r_1 < 9 z^{1/3}/2.004; no 4/15 power occurs in MinorArcs."
+     }
     }
    }
   },
@@ -3870,7 +3917,6 @@
      }
     }
    ],
-   "text_error_claim": "Typo: $F_H(t)=\\sin(H\\log y)/(\\pi\\log y)$ should read $F_H(y)$ (or $t$ on both sides); the definition is used as $F_H(y)$ in $h_H$.",
    "verification": {
     "carried_from": "book 14 display 3",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -4648,7 +4694,7 @@
    "section": "7",
    "relation": "broadMatch",
    "class": "Faithful",
-   "note": "Lean gives the sum as an equality with error; the display is a consequence (Z = (1/x)Σ per the preceding line, so the factor x in the display is a typo).",
+   "note": "Lean gives the sum as an equality with error; the display is a consequence (Z = (1/x)Σ per the preceding line).",
    "proof_kind": "helper",
    "ends": [
     {
@@ -4672,7 +4718,7 @@
      }
     }
    ],
-   "text_error_claim": "Typo: by the preceding line Z_{η₊²,2} ≤ (1/x)Σ Λ(n)(log n)η₊²(n/x), so the bound is 0.640209 log x (as used later in '2·(0.640209 log x)·…'); the displayed factor x belongs to the sum, not to Z.",
+   "note_edited": "unconfirmed text-error wording removed or evidence added by the session lead",
    "verification": {
     "batch": "P067-d",
     "steps": [
@@ -4743,10 +4789,16 @@
      "batch": "B060-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Re-read conclusion.tex 315-345 and Helfgott/SupNorms.lean, Decay.lean: only |eta_*| <= 6.2 and decay bounds, no eta_* log^+ sup norm; 1.921813|0.381157|0.732513 do not occur in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -6151,7 +6203,7 @@
    "section": "7",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "Lean's base term is $\\hat g(y,150000)(cL\\,sig/Dx-8.6294)$ with $cL=\\log2(n+1)+2$, $Dx=\\log(2\\sqrt{x/784})+c_E$ (arcs $\\delta_0=392$), $sig$ with $0.640208+366.91/\\sqrt x$, $I_0\\ge8.6294x$; the bracket is never bounded separately by $8.805x$ (it is handled inside `numerics_M`).",
+   "note": "Lean's base term is $\\hat g(y,150000)(cL\\,sig/Dx-8.6294)$ with $cL=\\log2(n+1)+2$, $Dx=\\log(2\\sqrt{x/784})+c_E$ (arcs $\\delta_0=392$), $sig$ with $0.640208+366.91/\\sqrt x$, $I_0\\ge8.6294x$; the bracket is never bounded separately by $8.805x$ (it is handled inside `numerics_M`). Text error, confirmed by two skeptics and `scripts/checks/steps/7_display_43.py`.",
    "proof_kind": "chain",
    "ends": [
     {
@@ -6255,7 +6307,12 @@
      }
     }
    ],
-   "text_error_claim": "Numerator $13.6164$ is inconsistent with $c^+=2.3912$ stated just after the display: $\\log150001=11.9184$, so $\\log(150001)+c^+=14.3096$ (computed). With $14.3096$ the limit coefficient is $2\\cdot14.3096\\cdot0.640209=18.32$ (not $17.4347$) and the chain ends at about $(18.32-8.63)x=9.69x$, not $8.805x$.",
+   "text_error": {
+    "kind": "error",
+    "corrected": "<= 14.3096/(0.5 log x+0.6294)*(0.640209 x log x - 0.021095 x) - 8.6297x <= (18.3223-8.6297)x <= 9.6926x",
+    "evidence": "scripts/checks/steps/7_display_43.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "P068-d",
     "steps": [
@@ -6326,10 +6383,16 @@
      "batch": "B061-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Grep of TernaryGoldbach/MinorArcs for the function f, 2.004 with 4/3 log t, and bisection numerics finds only R/gx definitions; R_le_of_pow_four and gx_scale_le replace the R_{y/K,2r_1} computation."
+     }
     }
    }
   },
@@ -6640,10 +6703,16 @@
      "batch": "B061-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Grep 7/15|2.14938 over TernaryGoldbach/ finds nothing; Mexpr and minor_total have no 7/15 term."
+     }
     }
    }
   },
@@ -6793,7 +6862,7 @@
    "section": "7",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "Lean's counterpart is the $3.8y^{-1/6}$ term of $\\hat g$ summed against $\\log\\frac{n+1}{n}$ (part of $1.398\\,\\Xi(\\log y+3.9)$, $y\\ge10^{100}$); no $3.2K^{1/6}$, no $\\log\\frac{r_1}{r_0}$ with $r_1=\\frac38y^{4/15}$, no $0.05699$ constant.",
+   "note": "Lean's counterpart is the $3.8y^{-1/6}$ term of $\\hat g$ summed against $\\log\\frac{n+1}{n}$ (part of $1.398\\,\\Xi(\\log y+3.9)$, $y\\ge10^{100}$); no $3.2K^{1/6}$, no $\\log\\frac{r_1}{r_0}$ with $r_1=\\frac38y^{4/15}$, no $0.05699$ constant. Text typo, confirmed by two skeptics and `scripts/checks/steps/7_display_53.py`.",
    "proof_kind": "chain",
    "ends": [
     {
@@ -6837,6 +6906,12 @@
      }
     }
    ],
+   "text_error": {
+    "kind": "typo",
+    "corrected": "f_2(r_0,y) = 3.2 ((log y)/2)^{1/6} y^{-1/6} log((3/8)y^{4/15}/r_0) <= 3.2 (log y)^{1/6}(2y)^{-1/6}((4/15)log y + 0.05699 - log r_0)",
+    "evidence": "scripts/checks/steps/7_display_53.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "P068-d",
     "steps": [
@@ -7091,10 +7166,16 @@
      "batch": "B061-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Grep P2|I0|0.41415^2 over MinorArcs: I0_ge is the l2 lower bound (different quantity), 0.41415 occurs only as R's floor in GMono/SecondBridge; no I_{0,r_0,r_1,z} bound."
+     }
     }
    }
   },
@@ -7406,7 +7487,7 @@
    "section": "7",
    "relation": "noMatch",
    "class": "Absent",
-   "note": "No evaluation of $R_{y,r_0}$ at $y=10^{150}$ (Lean's cells and asymptotic range switch at $y=10^{100}$ with $R_{y,2n}\\le0.6628$).",
+   "note": "No evaluation of $R_{y,r_0}$ at $y=10^{150}$ (Lean's cells and asymptotic range switch at $y=10^{100}$ with $R_{y,2n}\\le0.6628$). Text error, confirmed by two skeptics and `scripts/checks/steps/7_display_62.py`.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
@@ -7464,6 +7545,12 @@
      "0.43086|0.43113|10\\^150|1e150 in TernaryGoldbach/",
      "2.004 in TernaryGoldbach/MinorArcs/"
     ]
+   },
+   "text_error": {
+    "kind": "error",
+    "corrected": "R_{y,2r_0} <= 0.27125 log(1 + log(8r_0)/(2 log(9(10^150)^{1/3}/(2.004*2r_0)))) + 0.41415 <= 0.43182; R_{2y/log y,2r_0} <= 0.43211; then 0.43182^2 P_2/sqrt r_0 <= 0.10472, 0.43211^2 P_2/sqrt r_0 <= 0.10486, (jijona) <= 0.33315",
+    "evidence": "scripts/checks/steps/7_display_62.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
    },
    "verification": {
     "batch": "P068-d",
@@ -7535,10 +7622,16 @@
      "batch": "B061-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A08",
+      "ruling": "confirmed",
+      "reason": "Grep 0.43086|0.43113|0.10426|0.10439 over TernaryGoldbach/ finds nothing; no P_2(log 2r_0)/sqrt r_0 numerics."
+     }
     }
    }
   },
@@ -7547,7 +7640,7 @@
    "section": "7",
    "relation": "noMatch",
    "class": "Absent",
-   "note": "Lean has no $f_0$ and no $0.4153461$ bisection bound for the $c_\\varphi$-averaged $\\sqrt{I_0}$ combination.",
+   "note": "Lean has no $f_0$ and no $0.4153461$ bisection bound for the $c_\\varphi$-averaged $\\sqrt{I_0}$ combination. Text error, confirmed by two skeptics and `scripts/checks/steps/7_display_64.py`.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
@@ -7606,7 +7699,12 @@
      "f_0|f0 in TernaryGoldbach/MinorArcs/"
     ]
    },
-   "text_error_claim": "The stated inequality is false: $\\sqrt{\\frac{2}{\\sqrt{150000}}5.73827}=0.172140$, so $0.4153461\\cdot0.172140=0.07150>0.069219$ (computed; $0.069219$ corresponds to a factor $0.40211$, and $0.431398\\cdot0.17214=0.07426$ matches the commented-out value). The slack in the final $M$ bound absorbs it.",
+   "text_error": {
+    "kind": "error",
+    "corrected": "f_0(r_0,y) <= 0.4153461*sqrt((2/sqrt r_0)*5.73827) <= 0.071498",
+    "evidence": "scripts/checks/steps/7_display_64.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "P068-d",
     "steps": [
@@ -7622,7 +7720,7 @@
    "section": "7",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "Lean's counterpart bounds the discrete sum $\\sum\\hat g(y,n)\\log\\frac{n+1}{n}$ from $150001$ to $r_2$ (blocks, then $\\Xi$ terms), about $0.165+8.4\\cdot10^{-4}$, rather than $\\int_{r_0}^{r_1}g/r$ as $f_0+f_1+f_2\\le0.086918$.",
+   "note": "Lean's counterpart bounds the discrete sum $\\sum\\hat g(y,n)\\log\\frac{n+1}{n}$ from $150001$ to $r_2$ (blocks, then $\\Xi$ terms), about $0.165+8.4\\cdot10^{-4}$, rather than $\\int_{r_0}^{r_1}g/r$ as $f_0+f_1+f_2\\le0.086918$. Text error, confirmed by two skeptics and `scripts/checks/steps/7_display_65.py`.",
    "proof_kind": "chain",
    "ends": [
     {
@@ -7666,7 +7764,12 @@
      }
     }
    ],
-   "text_error_claim": "Depends on display 64: $0.069219$ is not supported ($0.4153461\\cdot0.17214=0.07150$); the sum with it corrected is $0.07150+0.016367+0.001332=0.0892$. The addition $0.069219+0.016367+0.001332=0.086918$ is itself correct.",
+   "text_error": {
+    "kind": "error",
+    "corrected": "int_{r_0}^{r_1} g(r)/r dr <= 0.071498 + 0.016367 + 0.001332 <= 0.089197",
+    "evidence": "scripts/checks/steps/7_display_65.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "P068-d",
     "steps": [
@@ -8379,10 +8482,16 @@
      "batch": "B063-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A09",
+      "ruling": "confirmed",
+      "reason": "[L] has only finite sums over Qset 150000 (sum_Qset_mPhi2_le) and a Rankin tail for coefN (expansion_ge), no tail of mu^2/phi^2."
+     }
     }
    }
   },
@@ -8423,10 +8532,16 @@
      "batch": "B063-d",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A09",
+      "ruling": "confirmed",
+      "reason": "No f_j or (2p-1)/((p-1)^2 p) in TernaryGoldbach/; the convolution identity (C.13) is not formalized."
+     }
     }
    }
   },

@@ -101,10 +101,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read conv2_ge (CMain.lean 138-164) and grepped TernaryGoldbach/ for Taylor/sqrt/2.71: [L] never expands $\\sqrt{1+x}$; it uses exact polarization."
+     }
     }
    }
   },
@@ -143,10 +149,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read conv2_ge (CMain.lean 138-164) and grepped TernaryGoldbach/ for Taylor/sqrt/2.71: [L] never expands $\\sqrt{1+x}$; it uses exact polarization."
+     }
     }
    }
   },
@@ -185,10 +197,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read conv2_ge (CMain.lean 138-164) and grepped TernaryGoldbach/ for Taylor/sqrt/2.71: [L] never expands $\\sqrt{1+x}$; it uses exact polarization."
+     }
     }
    }
   },
@@ -233,9 +251,10 @@
   {
    "id": "Lemma 4.1 step 5",
    "item": "Lemma 4.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "No multiplication by |v|² step; [L] has no such inequality.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The step concludes $|v|_2|w|_2=\\langle v,w\\rangle+O^*(2.71|w-v|_2^2)$ by multiplying the Taylor estimate by $|v|_2^2$; [L] reaches the same comparison of $\\langle v,w\\rangle$ with $|v|_2|w|_2$ for the case used ($|w|_2=|v|_2$) by exact polarization, with constant ½ and no multiplication step.",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
@@ -244,9 +263,18 @@
      "file": "TernaryGoldbach/MajorArcs/CMain.lean",
      "module": "TernaryGoldbach.MajorArcs.CMain",
      "lines": [
-      138,
-      164
-     ]
+      152,
+      161
+     ],
+     "snippet": "  have hpt : ∀ t, etaO t * etaO (ρ - t) =\n      (etaO t ^ 2 + etaO (t + s) ^ 2 - (etaO (t + s) - etaO t) ^ 2) / 2 := fun t => by\n    rw [hsym]; ring\n  have heq : conv2 ρ = (∫ t, etaO t ^ 2) - (1 / 2) * ∫ t, (etaO (t + s) - etaO t) ^ 2 := by\n    unfold conv2\n    simp_rw [hpt]\n    have h1 : Integrable fun t => etaO t ^ 2 + etaO (t + s) ^ 2 := integrable_etaO_sq.add hshift\n    rw [integral_div, integral_sub h1 hdiff, integral_add integrable_etaO_sq hshift,\n      integral_add_right_eq_self (fun t => etaO t ^ 2) s]\n    ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
+      "lines": [
+       138,
+       164
+      ],
+      "conclusion": "Exact polarization $\\eta_\\circ(t)\\eta_\\circ(\\rho-t)=\\tfrac12(\\eta_\\circ(t)^2+\\eta_\\circ(t+s)^2-(\\eta_\\circ(t+s)-\\eta_\\circ(t))^2)$ integrated with translation invariance gives `conv2 ρ = ‖η◦‖₂² − ½∫(η◦(t+s)−η◦(t))²`, i.e. $\\langle v,w\\rangle=|v|_2|w|_2-\\tfrac12|v-w|_2^2$ for $|w|_2=|v|_2$."
+     }
     }
    ],
    "searched": {
@@ -265,10 +293,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "conv2_ge lines 152-161 obtain the inner-product/norm-product comparison this step concludes, by exact polarization instead of multiplying a Taylor estimate."
+     }
     }
    }
   },
@@ -455,7 +489,7 @@
    "item": "Lemma 4.2",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "Lean splits on omega(q)<=3 (bound 3.75 < Ϝ(r) for all r>=3) rather than on r<27 with q/phi(q)<=3 and Ϝ(r)>3; the digamma comparison is a different argument (quadratic in loglog r, not e^gamma*2.50637).",
+   "note": "Lean splits on omega(q)<=3 (bound 3.75 < Ϝ(r) for all r>=3) rather than on r<27 with q/phi(q)<=3 and Ϝ(r)>3; the digamma comparison is a different argument (quadratic in loglog r, not e^gamma*2.50637). Text error, confirmed by two skeptics and `scripts/checks/steps/lemma_4_2_step_3.py`.",
    "proof_kind": "chain",
    "ends": [
     {
@@ -499,7 +533,12 @@
      }
     }
    ],
-   "text_error_claim": "The intermediate claim Ϝ(r) > e^gamma*2.50637 is false: min over loglog r of Ϝ is 2*sqrt(e^gamma*2.50637) ~ 4.225 (at r ~ 26.3 < 27), below e^gamma*2.50637 ~ 4.464. The conclusion Ϝ(r) > 3 for r>e is true.",
+   "text_error": {
+    "kind": "error",
+    "corrected": "F(r) >= 2 sqrt(e^gamma * 2.50637) > 4.22 > 3 for all r > e",
+    "evidence": "scripts/checks/steps/lemma_4_2_step_3.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "batch": "P064-s",
     "steps": [
@@ -746,10 +785,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read R, Fr, Lg, gx, hfun, hfun_antitone, ghatY, norm_S_etaStar_le_ghat and the numerics ghatY_le_num/ghatY_le_asym, and grepped all constants: [L] never compares $g$ with $h$ at $x_r=(6r)^3$ (it uses $\\max(g,h)$), so no crossover estimate exists."
+     }
     }
    }
   },
@@ -1219,10 +1264,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read R, Fr, Lg, gx, hfun, hfun_antitone, ghatY, norm_S_etaStar_le_ghat and the numerics ghatY_le_num/ghatY_le_asym, and grepped all constants: [L] never compares $g$ with $h$ at $x_r=(6r)^3$ (it uses $\\max(g,h)$), so no crossover estimate exists."
+     }
     }
    }
   },
@@ -1403,10 +1454,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read R, Fr, Lg, gx, hfun, hfun_antitone, ghatY, norm_S_etaStar_le_ghat and the numerics ghatY_le_num/ghatY_le_asym, and grepped all constants: [L] never compares $g$ with $h$ at $x_r=(6r)^3$ (it uses $\\max(g,h)$), so no crossover estimate exists."
+     }
     }
    }
   },
@@ -1524,7 +1581,6 @@
      "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
     ]
    },
-   "text_error_claim": "Typo: '80/27 log x' should read '80/27 log x_1' (as in the next display).",
    "verification": {
     "batch": "P064-s",
     "steps": [
@@ -1577,10 +1633,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read R, Fr, Lg, gx, hfun, hfun_antitone, ghatY, norm_S_etaStar_le_ghat and the numerics ghatY_le_num/ghatY_le_asym, and grepped all constants: [L] never compares $g$ with $h$ at $x_r=(6r)^3$ (it uses $\\max(g,h)$), so no crossover estimate exists."
+     }
     }
    }
   },
@@ -1877,10 +1939,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read R, Fr, Lg, gx, hfun, hfun_antitone, ghatY, norm_S_etaStar_le_ghat and the numerics ghatY_le_num/ghatY_le_asym, and grepped all constants: [L] never compares $g$ with $h$ at $x_r=(6r)^3$ (it uses $\\max(g,h)$), so no crossover estimate exists."
+     }
     }
    }
   },
@@ -2390,10 +2458,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read R_le_R, gx_scale_le(_of_le_one) and grepped convex/2.004: [L] uses only monotonicity of $R$, never convexity of $t\\mapsto R_{e^t,r}$ or the $f''f-(f')^2$ criterion."
+     }
     }
    }
   },
@@ -2503,10 +2577,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read R_le_R, gx_scale_le(_of_le_one) and grepped convex/2.004: [L] uses only monotonicity of $R$, never convexity of $t\\mapsto R_{e^t,r}$ or the $f''f-(f')^2$ criterion."
+     }
     }
    }
   },
@@ -2558,10 +2638,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read R_le_R, gx_scale_le(_of_le_one) and grepped convex/2.004: [L] uses only monotonicity of $R$, never convexity of $t\\mapsto R_{e^t,r}$ or the $f''f-(f')^2$ criterion."
+     }
     }
    }
   },
@@ -2613,10 +2699,16 @@
      "batch": "B030-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read R_le_R, gx_scale_le(_of_le_one) and grepped convex/2.004: [L] uses only monotonicity of $R$, never convexity of $t\\mapsto R_{e^t,r}$ or the $f''f-(f')^2$ criterion."
+     }
     }
    }
   },
@@ -3023,31 +3115,30 @@
   {
    "id": "Proposition 4.5 step 9",
    "item": "Proposition 4.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean's `Lg(2r)/r` is independent of `x` but this independence is not used as a step; `G` is abstract.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "In [L] the $L_{2r}/r$ term is likewise independent of the scale, but because the per-scale parameter is $\\min(1,w)r$ (corrected $\\delta\\mapsto w\\delta$ scaling) it still uses monotonicity of $L$ for $w<1$.",
+   "proof_kind": "helper",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/Prop1123.lean",
-     "module": "TernaryGoldbach.MinorArcs.Prop1123",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
      "lines": [
-      102,
-      209
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.gx",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.GBound",
-     "lines": [
-      33,
-      36
-     ]
+      149,
+      153
+     ],
+     "snippet": "  have hL : Lg (2 * (w * n)) / (w * n) ≤ Lg (2 * n) / n / w := by\n    rw [div_div, mul_comm n w]\n    exact div_le_div_of_nonneg_right (Lg_monotoneOn (show 2 * (w * n) ∈ Ici (1340 : ℝ) by\n      simp only [mem_Ici]; linarith) (show 2 * n ∈ Ici (1340 : ℝ) by simp only [mem_Ici]; linarith)\n      (by nlinarith)) (by positivity)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+      "lines": [
+       97,
+       167
+      ],
+      "conclusion": "For $w\\le1$: $L_{2wn}/(wn)\\le (L_{2n}/n)/w$ by `Lg_monotoneOn`; the $L$ term carries no dependence on the scale $wy$ (for $w\\ge1$ it is unchanged in `gx_scale_le_of_one_le`)."
+     }
     }
    ],
    "searched": {
@@ -3072,41 +3163,66 @@
      "batch": "B031-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "gx_scale_le_of_le_one hL (149-153) handles the $x$-independent $L_{2r}/r$ term at each scale, with the corrected $r$-scaling."
+     }
     }
    }
   },
   {
    "id": "Proposition 4.5 step 10",
    "item": "Proposition 4.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "The integral `∫ L_r/r·wx φ dw/w ≤ L_r/r|φ|₁x` is not carried out; the majorant `G` is abstract and bounded numerically elsewhere.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] integrates the $L_{2r}/r$ term against $\\max(1,1/w)\\varphi$, getting factor 1.398 (inside $\\hat g$) instead of $|\\varphi|_1$, because its per-scale parameter is $\\min(1,w)r$.",
+   "proof_kind": "chain",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/Prop1123.lean",
-     "module": "TernaryGoldbach.MinorArcs.Prop1123",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
      "lines": [
-      102,
-      209
-     ]
+      149,
+      153
+     ],
+     "snippet": "  have hL : Lg (2 * (w * n)) / (w * n) ≤ Lg (2 * n) / n / w := by\n    rw [div_div, mul_comm n w]\n    exact div_le_div_of_nonneg_right (Lg_monotoneOn (show 2 * (w * n) ∈ Ici (1340 : ℝ) by\n      simp only [mem_Ici]; linarith) (show 2 * n ∈ Ici (1340 : ℝ) by simp only [mem_Ici]; linarith)\n      (by nlinarith)) (by positivity)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+      "lines": [
+       97,
+       167
+      ],
+      "conclusion": "For $w\\le1$: $L_{2wn}/(wn)\\le (L_{2n}/n)/w$."
+     }
     },
     {
-     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
      "lines": [
-      33,
-      36
-     ]
+      402,
+      407
+     ],
+     "snippet": "  have hint : ∫ w in Ici w₀, G w * phi w ≤ 1.398 * M := by\n    have : ∫ w in Ici w₀, G w * phi w = M * ∫ w in Ici w₀, max 1 (1 / w) * phi w := by\n      rw [← integral_const_mul]; congr 1; ext w; simp only [hG]; ring\n    rw [this]\n    have := integral_max_inv_phi_le hw₀ hw₀1\n    nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+      "lines": [
+       356,
+       413
+      ],
+      "conclusion": "With the majorant $G(w)=\\max(g_y(n),h(y))\\max(1,1/w)$, $\\int_{w_0}^\\infty G\\varphi\\le 1.398\\max(g_y(n),h(y))$ via `integral_max_inv_phi_le`."
+     }
     }
    ],
    "searched": {
@@ -3131,41 +3247,66 @@
      "batch": "B031-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "gx_scale_le_of_le_one hL plus norm_S_etaStar_le_ghat hint bound the integral of the $L_{2r}/r$ term, with factor 1.398."
+     }
     }
    }
   },
   {
    "id": "Proposition 4.5 step 11",
    "item": "Proposition 4.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "No convexity/monotonicity of `y↦R_{e^y,t}` in the log scale exists; Lean uses `gx_antitoneOn` in r only.",
+   "relation": "hasPart",
+   "class": "Partial",
+   "note": "Part: the decreasing property of $R$ in the scale (and its consequence $R_{wx,t}\\le R_{x,t}$ for $w\\ge1$); [L] has no convexity of $y\\mapsto R_{e^y,t}$ and no interpolation for $w<1$.",
+   "proof_kind": "helper",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+     "declaration": "TernaryGoldbach.MinorArcs.R_le_R",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/Prop1123.lean",
-     "module": "TernaryGoldbach.MinorArcs.Prop1123",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
      "lines": [
-      102,
-      209
-     ]
+      79,
+      82
+     ],
+     "snippet": "theorem R_le_R {z z' t t' : ℝ} (ht' : 1 ≤ 4 * t') (htt : t' ≤ t)\n    (hb : 1 < 9 * z ^ (1 / 3 : ℝ) / (2.004 * t))\n    (hbb : 9 * z ^ (1 / 3 : ℝ) / (2.004 * t) ≤ 9 * z' ^ (1 / 3 : ℝ) / (2.004 * t')) :\n    R z' t' ≤ R z t := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.R_le_R",
+      "lines": [
+       77,
+       95
+      ],
+      "conclusion": "$R_{z',t'}\\le R_{z,t}$ for $t'\\le t$ and $9z^{1/3}/(2.004t)\\le 9z'^{1/3}/(2.004t')$: in particular $z\\mapsto R_{z,t}$ is non-increasing."
+     }
     },
     {
-     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
      "lines": [
-      33,
-      36
-     ]
+      177,
+      180
+     ],
+     "snippet": "  have hR : R (w * y) (2 * n) ≤ R y (2 * n) := by\n    refine R_le_R (by linarith) le_rfl ?_ ?_\n    · rw [one_lt_div (by positivity)]; nlinarith\n    · exact div_le_div_of_nonneg_right (by linarith) (by positivity)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+      "lines": [
+       169,
+       193
+      ],
+      "conclusion": "For $w\\ge1$: $R_{wy,2n}\\le R_{y,2n}$, the case $w\\ge1$ of the bound that follows."
+     }
     }
    ],
    "searched": {
@@ -3190,10 +3331,16 @@
      "batch": "B031-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "R_le_R establishes the 'decreasing' half of the step; convexity is absent."
+     }
     }
    }
   },
@@ -3266,20 +3413,70 @@
   {
    "id": "Proposition 4.5 step 13",
    "item": "Proposition 4.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Connective; no interpolation step in Lean.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Connective introducing the $R$-interpolation integral; [L] makes the corresponding inference by monotonicity of $R$ and $\\int\\max(1,1/w)\\varphi\\le1.398$.",
+   "proof_kind": "chain",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/Prop1123.lean",
-     "module": "TernaryGoldbach.MinorArcs.Prop1123",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
      "lines": [
-      102,
-      209
-     ]
+      109,
+      117
+     ],
+     "snippet": "  have hR : R (w * y) (2 * (w * n)) ≤ R y (2 * n) := by\n    refine R_le_R (by nlinarith) (by nlinarith) ?_ ?_\n    · rw [one_lt_div (by positivity)]; nlinarith\n    · rw [hwy, div_le_div_iff₀ (by positivity) (by positivity)]\n      have : y ^ (1 / 3 : ℝ) * (2.004 * (2 * (w * n))) ≤\n          w ^ (1 / 3 : ℝ) * y ^ (1 / 3 : ℝ) * (2.004 * (2 * n)) := by\n        have := mul_le_mul_of_nonneg_left hw13 (by positivity : (0:ℝ) ≤ y ^ (1 / 3 : ℝ) * 4.008 * n)\n        nlinarith\n      nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+      "lines": [
+       97,
+       167
+      ],
+      "conclusion": "For $w\\le1$: $R_{wy,2wn}\\le R_{y,2n}$ via `R_le_R` (monotonicity, no interpolation)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      177,
+      180
+     ],
+     "snippet": "  have hR : R (w * y) (2 * n) ≤ R y (2 * n) := by\n    refine R_le_R (by linarith) le_rfl ?_ ?_\n    · rw [one_lt_div (by positivity)]; nlinarith\n    · exact div_le_div_of_nonneg_right (by linarith) (by positivity)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+      "lines": [
+       169,
+       193
+      ],
+      "conclusion": "For $w\\ge1$: $R_{wy,2n}\\le R_{y,2n}$."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      402,
+      407
+     ],
+     "snippet": "  have hint : ∫ w in Ici w₀, G w * phi w ≤ 1.398 * M := by\n    have : ∫ w in Ici w₀, G w * phi w = M * ∫ w in Ici w₀, max 1 (1 / w) * phi w := by\n      rw [← integral_const_mul]; congr 1; ext w; simp only [hG]; ring\n    rw [this]\n    have := integral_max_inv_phi_le hw₀ hw₀1\n    nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+      "lines": [
+       356,
+       413
+      ],
+      "conclusion": "With the majorant $G(w)=\\max(g_y(n),h(y))\\max(1,1/w)$, $\\int_{w_0}^\\infty G\\varphi\\le 1.398\\max(g_y(n),h(y))$ via `integral_max_inv_phi_le`."
+     }
     }
    ],
    "searched": {
@@ -3304,10 +3501,16 @@
      "batch": "B031-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "Takes the relation of step 14: the same lines make the inference by monotonicity."
+     }
     }
    }
   },
@@ -3431,10 +3634,16 @@
      "batch": "B031-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read prop_11_2_3, norm_S_etaStar_le_ghat, integral_max_inv_phi_le and grepped log-w integrals: [L] defines no $C_{\\varphi,2,K}$; its replacement constant is $\\int\\max(1,1/w)\\varphi\\le1.398$."
+     }
     }
    }
   },
@@ -3479,10 +3688,16 @@
      "batch": "B031-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Read prop_11_2_3, norm_S_etaStar_le_ghat, integral_max_inv_phi_le and grepped log-w integrals: [L] defines no $C_{\\varphi,2,K}$; its replacement constant is $\\int\\max(1,1/w)\\varphi\\le1.398$."
+     }
     }
    }
   },
@@ -3991,10 +4206,16 @@
      "batch": "B032-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Lemma 11.2.5 is not formalized: ghatY builds $\\max(g_y,h)$ in, and greps of its constants over TernaryGoldbach/ find nothing."
+     }
     }
    }
   },
@@ -4272,10 +4493,16 @@
      "batch": "B032-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "confirmed",
+      "reason": "Lemma 11.2.5 is not formalized: ghatY builds $\\max(g_y,h)$ in, and greps of its constants over TernaryGoldbach/ find nothing."
+     }
     }
    }
   },
@@ -4911,7 +5138,6 @@
      }
     }
    ],
-   "text_error_claim": "Typo: the first line omits the sum `Σ*_{χ mod q*}` over characters (it writes `|Σ a_n e(αn) χ(n)|²` with `χ` unbound).",
    "verification": {
     "carried_from": "book Proposition 12.1.1 step 5",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -5336,7 +5562,6 @@
      }
     }
    ],
-   "text_error_claim": "Typo: `e^{2\\pi n u/r}` lacks the factor `i`.",
    "verification": {
     "carried_from": "book Proposition 12.1.1 step 12",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -5359,7 +5584,7 @@
    "item": "Proposition 5.1",
    "relation": "hasPart",
    "class": "Partial",
-   "note": "Lean proves the two facts separately: `c_r(n)=μ(r)` for `n` coprime to `r` (`ramanujan_coprime`, not used in the Bombieri route) and `|τ(χ)|²=q` for primitive `χ` (used inside `norm_sq_gaussSum`); the `Hence` conclusion (step 14) is not part of this match.",
+   "note": "Lean proves the two facts separately: `c_r(n)=μ(r)` for `n` coprime to `r` (`ramanujan_coprime`, not used in the Bombieri route) and `|τ(χ)|²=q` for primitive `χ` (used inside `norm_sq_gaussSum`); the `Hence` conclusion (step 14) is not part of this match. Text typo, confirmed by two skeptics and `scripts/checks/steps/proposition_12_1_1_step_13.py`.",
    "proof_kind": "helper",
    "ends": [
     {
@@ -5403,6 +5628,12 @@
      }
     }
    ],
+   "text_error": {
+    "kind": "typo",
+    "corrected": "Hence, for r <= sqrt x coprime to q, q mu^2(r)|...|^2 = |...|^2",
+    "evidence": "scripts/checks/steps/proposition_12_1_1_step_13.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "carried_from": "book Proposition 12.1.1 step 13",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -5422,7 +5653,7 @@
    "item": "Proposition 5.1",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "Lean obtains `|τ(ψ)|²|S_{ψ⁻¹}(β)|² = |Σ_{b mod q} ψ(b) S(b/q+β)|²` at modulus `q` for any `ψ` with weight `w(q,c)` carrying the `μ²(r)` factor, not at modulus `qr` with `q|…|² ` for primitive `χ`.",
+   "note": "Lean obtains `|τ(ψ)|²|S_{ψ⁻¹}(β)|² = |Σ_{b mod q} ψ(b) S(b/q+β)|²` at modulus `q` for any `ψ` with weight `w(q,c)` carrying the `μ²(r)` factor, not at modulus `qr` with `q|…|² ` for primitive `χ`. Text typo, confirmed by two skeptics and `scripts/checks/steps/proposition_12_1_1_step_14.py`.",
    "proof_kind": "chain",
    "ends": [
     {
@@ -5466,7 +5697,12 @@
      }
     }
    ],
-   "text_error_claim": "The displayed equality needs a factor `μ²(r)` on the left side (`|c_r(n)|² = μ(r)²`, `|τ(χ̄)|²=q`); it fails for `r` not squarefree.",
+   "text_error": {
+    "kind": "typo",
+    "corrected": "q mu^2(r) |sum_n a_n e(alpha n) chi(n)|^2 = |sum_{(b,qr)=1} chi-bar(b) S(b/qr + alpha)|^2",
+    "evidence": "scripts/checks/steps/proposition_12_1_1_step_14.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "carried_from": "book Proposition 12.1.1 step 14",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -5613,7 +5849,6 @@
      }
     }
    ],
-   "text_error_claim": "`Σ =` should be `Σ ≤`: step 8 only bounds `Σ` above by the `qr`-level sum that the first line here rewrites.",
    "verification": {
     "carried_from": "book Proposition 12.1.1 step 16",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -6415,7 +6650,7 @@
    "item": "Proposition 5.2",
    "relation": "broadMatch",
    "class": "Faithful",
-   "note": "[L] proves disjointness for all `q̃,q̃' ≤ 2Q` (including even `q ≤ 2Q`) and for integer translates of the arcs, by the same bound `|b/q-b'/q'| ≥ 1/qq'` (`2/qq'` both even).",
+   "note": "[L] proves disjointness for all `q̃,q̃' ≤ 2Q` (including even `q ≤ 2Q`) and for integer translates of the arcs, by the same bound `|b/q-b'/q'| ≥ 1/qq'` (`2/qq'` both even). Text typo, confirmed by two skeptics and `scripts/checks/steps/proposition_12_1_2_step_11.py`.",
    "proof_kind": "helper",
    "ends": [
     {
@@ -6459,6 +6694,12 @@
      }
     }
    ],
+   "text_error": {
+    "kind": "typo",
+    "corrected": "If q <= 2Q and q' <= 2Q are both even, then |b/q - b'/q'| >= 2/qq' >= 1/2qQ + 1/2Qq'",
+    "evidence": "scripts/checks/steps/proposition_12_1_2_step_11.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "carried_from": "book Proposition 12.1.2 step 11",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -6762,7 +7003,7 @@
    "item": "Lemma 5.3",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "[L] proves monotonicity of `G t + 2.50637/t` (the form `at + b/t`), not of `a + b/t`; no `qe^m ≥ 27` condition is needed since `div_totient_lt` is for `r ≥ 3`.",
+   "note": "[L] proves monotonicity of `G t + 2.50637/t` (the form `at + b/t`), not of `a + b/t`; no `qe^m ≥ 27` condition is needed since `div_totient_lt` is for `r ≥ 3`. Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_12_2_1_step_5.py`.",
    "proof_kind": "direct",
    "ends": [
     {
@@ -6786,7 +7027,12 @@
      }
     }
    ],
-   "text_error_claim": "Typo: `a + b/t` is decreasing in `t`; the function that is increasing for `t ≥ √(b/a)` is `at + b/t`.",
+   "text_error": {
+    "kind": "typo",
+    "corrected": "the function t -> at + b/t is increasing for t >= sqrt(b/a)",
+    "evidence": "scripts/checks/steps/lemma_12_2_1_step_5.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "carried_from": "book Lemma 12.2.1 step 5",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -7344,7 +7590,7 @@
    "item": "Lemma 5.4",
    "relation": "relatedMatch",
    "class": "Deviates",
-   "note": "[L] assumes `Q ≥ 20000 Q₀` for `G_ge_log` instead of `Q/Q₀ ≥ 184` for (charpy).",
+   "note": "[L] assumes `Q ≥ 20000 Q₀` for `G_ge_log` instead of `Q/Q₀ ≥ 184` for (charpy). Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_12_2_2_step_9.py`.",
    "proof_kind": "direct",
    "ends": [
     {
@@ -7368,7 +7614,12 @@
      }
     }
    ],
-   "text_error_claim": "Typo/inconsistency: the hypothesis is `Q ≥ 182 Q₀`, so `Q/Q₀ ≥ 184` does not follow; (charpy) needs only `R ≥ 182`.",
+   "text_error": {
+    "kind": "typo",
+    "corrected": "since Q/Q_0 >= 182.",
+    "evidence": "scripts/checks/steps/lemma_12_2_2_step_9.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
+   },
    "verification": {
     "carried_from": "book Lemma 12.2.2 step 9",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -7386,9 +7637,10 @@
   {
    "id": "Lemma 5.4 step 10",
    "item": "Lemma 5.4",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "No derivative computation for `Q₀/(sq) + log q` appears; `regionS` instead uses `qR = Q₀/s ≤ Q₀` (lines 145-149).",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Same role (pass from the $q$-dependent bound to one in $\\log Q_0$), but [L]'s quantity is $\\log(qR)$, bounded via $qR=Q_0/s$, not $Q_0/sq+\\log q$ maximized at $q=1$ by a derivative.",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.regionS",
@@ -7397,9 +7649,18 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot3",
      "lines": [
-      74,
-      185
-     ]
+      146,
+      149
+     ],
+     "snippet": "  have hqRQ : Real.log ((q : ℝ) * R) ≤ Real.log Q₀ := by\n    apply Real.log_le_log hqR\n    have e : (q : ℝ) * R = Q₀ / s := by rw [hRdef]; field_simp\n    rw [e]; exact div_le_self hQ₀0.le hs",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.regionS",
+      "lines": [
+       74,
+       185
+      ],
+      "conclusion": "$\\log(qR)\\le\\log Q_0$ since $qR=Q_0/s\\le Q_0$ ($s\\ge1$), removing the $q$-dependence of the bound $P/\\varphi(P)\\le0.86+0.4\\log(qR)$."
+     }
     }
    ],
    "searched": {
@@ -7418,10 +7679,16 @@
      "batch": "B034-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "regionS hqRQ (146-149) removes the $q$-dependence by $qR=Q_0/s\\le Q_0$ instead of the derivative in $q$."
+     }
     }
    }
   },
@@ -7566,21 +7833,11 @@
   {
    "id": "Lemma 5.5 step 3",
    "item": "Lemma 5.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Identity with 1.312 and rho absent; Lean uses l<=0.6L directly in poly_regionS.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] replaces the algebra lowering the right side of (12.22) to $(1-\\rho)(\\log Q_0+\\sigma)+1.312\\rho^2$ by one polynomial inequality with $\\sigma=1.36$, $c_E$ and $1.064$ in place of $1.312$, and $\\rho\\le0.6$.",
+   "proof_kind": "chain",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.regionS",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot3",
-     "lines": [
-      74,
-      185
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
      "repo": "lean",
@@ -7588,9 +7845,38 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot3",
      "lines": [
-      65,
+      66,
       71
-     ]
+     ],
+     "snippet": "theorem poly_regionS {X l L : ℝ} (hX : X ≤ 0.4 * l + 0.86) (hX0 : 0 ≤ X) (hl : 11.5 ≤ l)\n    (hρ : l ≤ 0.6 * L) : X * (L + 1.33258) ≤ (l + 1.36) * (L - l + 1.064) := by\n  have hLc : 0 ≤ L + 1.33258 := by linarith\n  have h06 : 0 ≤ 0.6 * l + 0.5 := by linarith\n  have hLl : 0 ≤ 0.6 * L - l := by linarith\n  nlinarith [mul_nonneg h06 hLl, mul_le_mul_of_nonneg_right hX hLc]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
+      "lines": [
+       65,
+       71
+      ],
+      "conclusion": "$X(L+1.33258)\\le(l+1.36)(L-l+1.064)$ for $X\\le0.4l+0.86$, $l\\ge11.5$, $l\\le0.6L$: the sufficient inequality corresponding to (12.22), proved by `nlinarith`."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.regionS",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+     "lines": [
+      171,
+      173
+     ],
+     "snippet": "  have hD : X * (L + cE) ≤ (l + 1.36) * (Real.log t + 1.064) := by\n    rw [hlogt]; unfold cE\n    exact poly_regionS (by linarith) hX0.le hl5 hρ",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.regionS",
+      "lines": [
+       74,
+       185
+      ],
+      "conclusion": "Applies `poly_regionS` with $l=\\log Q_0$, $L=\\log Q$, $\\log t=L-l$."
+     }
     }
    ],
    "searched": {
@@ -7609,10 +7895,16 @@
      "batch": "B035-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "poly_regionS (used at regionS 171-173) does this algebra by a polynomial inequality with different constants."
+     }
     }
    }
   },
@@ -7823,9 +8115,10 @@
   {
    "id": "Lemma 5.5 step 8",
    "item": "Lemma 5.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean has no c(sigma) threshold; hypothesis hh is the c' condition.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Connective introducing the sufficient condition; [L]'s condition is hypothesis `hh` with `hcc`, a different quantity (see step 9).",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.regionS",
@@ -7834,20 +8127,38 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot3",
      "lines": [
-      74,
-      185
-     ]
+      78,
+      80
+     ],
+     "snippet": "    (hcc : Real.exp Real.eulerMascheroniConstant * Real.log c' +\n      2.50637 / Real.log (Real.log q) ≤ 0.86)\n    (hh : Real.log q + 1.039 * (Q₀ / (s * q)) ≤ c' * ((q : ℝ) * (Q₀ / (s * q))) ^ ((2 : ℝ) / 9)) :",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.regionS",
+      "lines": [
+       74,
+       185
+      ],
+      "conclusion": "Hypotheses: $e^\\gamma\\log c'+2.50637/\\log\\log q\\le0.86$ and $\\log q+1.039R\\le c'(qR)^{2/9}$, $R=Q_0/sq$: [L]'s sufficient smallness condition."
+     }
     },
     {
-     "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
+     "declaration": "TernaryGoldbach.MinorArcs.regionS",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
      "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot3",
      "lines": [
-      65,
-      71
-     ]
+      128,
+      144
+     ],
+     "snippet": "  have hlogV : Real.log V ≤ Real.log c' + (2 / 9) * Real.log ((q : ℝ) * R) := by\n    have := Real.log_le_log (by linarith) hh\n    rwa [Real.log_mul hc'.ne' (by positivity), Real.log_rpow hqR] at this\n  have hγ := TernaryGoldbach.MinorArcs.exp_gamma_le_sharp\n  have hγ0 : 0 < Real.exp Real.eulerMascheroniConstant := Real.exp_pos _\n  have hq1 : (1 : ℝ) ≤ q := by exact_mod_cast hq\n  have hlqR : 0 ≤ Real.log ((q : ℝ) * R) := Real.log_nonneg (one_le_mul_of_one_le_of_one_le hq1 hR)\n  have hX' : X ≤ 0.86 + 0.4 * Real.log ((q : ℝ) * R) := by\n    have e1 : 2.50637 / Real.log V ≤ 2.50637 / Real.log (Real.log q) :=\n      div_le_div_of_nonneg_left (by norm_num) (by linarith) hlV1\n    have e2 : Real.exp Real.eulerMascheroniConstant * Real.log V ≤\n        Real.exp Real.eulerMascheroniConstant * Real.log c' +\n          Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) := by\n      rw [← mul_add]; exact mul_le_mul_of_nonneg_left hlogV hγ0.le\n    have e3 : Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) ≤\n        0.4 * Real.log ((q : ℝ) * R) := by nlinarith\n    linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.regionS",
+      "lines": [
+       74,
+       185
+      ],
+      "conclusion": "Taking logs of the condition: $\\log V\\le\\log c'+\\tfrac29\\log(qR)$, hence $P/\\varphi(P)\\le0.86+0.4\\log(qR)$."
+     }
     }
    ],
    "searched": {
@@ -7866,19 +8177,26 @@
      "batch": "B035-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "Takes the relation of step 9."
+     }
     }
    }
   },
   {
    "id": "Lemma 5.5 step 9",
    "item": "Lemma 5.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Threshold on Q0/sq+log q via c(sigma)Q0^((1-rho)e^-gamma) absent; Lean uses hh: log q+1.039R <= c'(qR)^(2/9).",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L]'s sufficient condition is $\\log q+1.039R\\le c'(qR)^{2/9}$ with $c'$ constrained by $e^\\gamma\\log c'+2.50637/\\log\\log q\\le0.86$, a different quantity from $Q_0/sq+\\log q\\le c(\\sigma)Q_0^{(1-\\rho)e^{-\\gamma}}$; the exponentiation step is the same in reverse.",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.regionS",
@@ -7887,20 +8205,38 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot3",
      "lines": [
-      74,
-      185
-     ]
+      78,
+      80
+     ],
+     "snippet": "    (hcc : Real.exp Real.eulerMascheroniConstant * Real.log c' +\n      2.50637 / Real.log (Real.log q) ≤ 0.86)\n    (hh : Real.log q + 1.039 * (Q₀ / (s * q)) ≤ c' * ((q : ℝ) * (Q₀ / (s * q))) ^ ((2 : ℝ) / 9)) :",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.regionS",
+      "lines": [
+       74,
+       185
+      ],
+      "conclusion": "Hypotheses: $e^\\gamma\\log c'+2.50637/\\log\\log q\\le0.86$ and $\\log q+1.039R\\le c'(qR)^{2/9}$, $R=Q_0/sq$: [L]'s sufficient smallness condition."
+     }
     },
     {
-     "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
+     "declaration": "TernaryGoldbach.MinorArcs.regionS",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
      "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot3",
      "lines": [
-      65,
-      71
-     ]
+      128,
+      144
+     ],
+     "snippet": "  have hlogV : Real.log V ≤ Real.log c' + (2 / 9) * Real.log ((q : ℝ) * R) := by\n    have := Real.log_le_log (by linarith) hh\n    rwa [Real.log_mul hc'.ne' (by positivity), Real.log_rpow hqR] at this\n  have hγ := TernaryGoldbach.MinorArcs.exp_gamma_le_sharp\n  have hγ0 : 0 < Real.exp Real.eulerMascheroniConstant := Real.exp_pos _\n  have hq1 : (1 : ℝ) ≤ q := by exact_mod_cast hq\n  have hlqR : 0 ≤ Real.log ((q : ℝ) * R) := Real.log_nonneg (one_le_mul_of_one_le_of_one_le hq1 hR)\n  have hX' : X ≤ 0.86 + 0.4 * Real.log ((q : ℝ) * R) := by\n    have e1 : 2.50637 / Real.log V ≤ 2.50637 / Real.log (Real.log q) :=\n      div_le_div_of_nonneg_left (by norm_num) (by linarith) hlV1\n    have e2 : Real.exp Real.eulerMascheroniConstant * Real.log V ≤\n        Real.exp Real.eulerMascheroniConstant * Real.log c' +\n          Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) := by\n      rw [← mul_add]; exact mul_le_mul_of_nonneg_left hlogV hγ0.le\n    have e3 : Real.exp Real.eulerMascheroniConstant * ((2 / 9) * Real.log ((q : ℝ) * R)) ≤\n        0.4 * Real.log ((q : ℝ) * R) := by nlinarith\n    linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.regionS",
+      "lines": [
+       74,
+       185
+      ],
+      "conclusion": "Taking logs of the condition: $\\log V\\le\\log c'+\\tfrac29\\log(qR)$, hence $P/\\varphi(P)\\le0.86+0.4\\log(qR)$."
+     }
     }
    ],
    "searched": {
@@ -7919,19 +8255,26 @@
      "batch": "B035-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "regionS hypotheses hcc/hh (78-80) and hlogV/hX' (128-144) form the analogous sufficient condition with a different quantity."
+     }
     }
    }
   },
   {
    "id": "Lemma 5.5 step 10",
    "item": "Lemma 5.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "c(sigma) definition absent in Lean.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] has no closed form $c(\\sigma)$; its threshold constant $c'$ is a parameter fixed by hypothesis `hcc` (instantiated $c'=1.03$ in `large_q_hS`).",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.regionS",
@@ -7940,20 +8283,18 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot3",
      "lines": [
-      74,
-      185
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot3",
-     "lines": [
-      65,
-      71
-     ]
+      78,
+      79
+     ],
+     "snippet": "    (hcc : Real.exp Real.eulerMascheroniConstant * Real.log c' +\n      2.50637 / Real.log (Real.log q) ≤ 0.86)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.regionS",
+      "lines": [
+       74,
+       185
+      ],
+      "conclusion": "$c'>0$ is constrained by $e^\\gamma\\log c'+2.50637/\\log\\log q\\le0.86$, the analogue of $e^\\gamma\\log c(\\sigma)=\\sigma-\\sigma^2/5.248-1.172$."
+     }
     }
    ],
    "searched": {
@@ -7972,10 +8313,16 @@
      "batch": "B035-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A04",
+      "ruling": "overturned",
+      "reason": "regionS hypothesis hcc (78-79) plays the role of the definition of $c(\\sigma)$ with a different constraint."
+     }
     }
    }
   },
@@ -8497,10 +8844,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "Read star_suffices/regionL/regionS/prop_12_2_4/checkC2_suffices and grepped all of TernaryGoldbach/: [L] never bounds err_{q,R} via (cante)/(hosmo) nor derives an upper bound on s; it covers all R ≥ 1 by regionL (R ≥ λ(q)) and regionS (R < λ(q))."
+     }
     }
    }
   },
@@ -8600,10 +8953,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No upper bound err ≤ (φ(q)/q)(log q − S_q + 1.4709 − c_E) and no constant 1.4709 or bound G(R) ≤ log R + 1.4709 anywhere in TernaryGoldbach/; [L] only uses Ramaré's two-sided estimate."
+     }
     }
    }
   },
@@ -8703,10 +9062,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No use of (charpy) G(R) ≥ log R + 1.312 with (hosmo) to bound err from below; 1.312 occurs only in a LSQuot2 docstring."
+     }
     }
    }
   },
@@ -8806,10 +9171,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "The lower bound err ≥ −(φ(q)/q)(S_q + c_E − 1.312) is absent; [L]'s only bound on −e₂ is Ramaré's (e2_bound), which corresponds to [H]'s later (12.32), not to this easy bound."
+     }
     }
    }
   },
@@ -9015,10 +9386,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "The combined bound on the right side of (12.26) by log q − (1−ω)S_q + const is absent; regionL bounds it by 7.4527 R^{-1/3}(q/φ(q))f₁(q) instead."
+     }
     }
    }
   },
@@ -9118,10 +9495,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "(12.28) as a sufficient condition for (12.26) is absent; [L] does not split off large s."
+     }
     }
    }
   },
@@ -9221,10 +9604,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "[L] makes no assumption sq < (c_{ρ,2}q)^{1/(1−ω)}; prop_12_2_4 splits only on q ≥ 2.2·10^10 and R vs λ(q)."
+     }
     }
    }
   },
@@ -9324,10 +9713,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "c_{ρ,2} is defined nowhere in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -9579,10 +9974,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No R^{1−τ} > c(c₊)q^τ − log q chain; [L] has no c(c₊) or τ and no lower bound on R beyond R ≥ 1."
+     }
     }
    }
   },
@@ -9682,10 +10083,16 @@
      "batch": "B036-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No iteration to R > ϖ(q); [L] has no ϖ and replaces the small-R range by regionS with large_q_hS."
+     }
     }
    }
   },
@@ -9741,10 +10148,16 @@
      "batch": "B037-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "Connective to ϖ₀; no ϖ, ϖ₀ in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -9800,10 +10213,16 @@
      "batch": "B037-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "ϖ₀(q) and c(c₊) are defined nowhere in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -10443,10 +10862,16 @@
      "batch": "B037-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "Connective to ϖ₀; no ϖ, ϖ₀ in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -10497,10 +10922,16 @@
      "batch": "B037-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No case 210 ∤ q in TernaryGoldbach/ (grep 210, p ≠ 7, primorial); lamQ_le_k and lamQ_pow_le treat all q."
+     }
     }
    }
   },
@@ -10556,50 +10987,69 @@
      "batch": "B037-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "Connective to ϖ₀; no ϖ, ϖ₀ in TernaryGoldbach/."
+     }
     }
    }
   },
   {
    "id": "Proposition 5.6 step 37",
    "item": "Proposition 5.6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] does not treat $210\\nmid q$ or omit the prime 7.",
+   "relation": "hasPart",
+   "class": "Partial",
+   "note": "Part: the fact that $p\\mapsto(\\log p)/p$ is decreasing for $p\\ge3$ (`log_div_anti`, used through `shat_anti` in the exchange argument). [L] does not omit 7 or treat $210\\nmid q$, and for $(p/(p-1))f_1(p)$ it proves only an antitone majorant `gHatQ` (`gp_le_ghat`, `ghat_anti`), not that the function itself decreases.",
+   "proof_kind": "helper",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
+     "declaration": "TernaryGoldbach.MinorArcs.log_div_anti",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
      "file": "TernaryGoldbach/MinorArcs/LSQuot4.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot4",
      "lines": [
-      262,
-      291
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot5",
-     "lines": [
-      217,
-      277
-     ]
+      203,
+      206
+     ],
+     "snippet": "theorem log_div_anti {a b : ℝ} (hb : 3 ≤ b) (hab : b ≤ a) : Real.log a / a ≤ Real.log b / b := by\n  have he : Real.exp 1 ≤ 3 := (Real.exp_one_lt_d9).le.trans (by norm_num)\n  exact Real.log_div_self_antitoneOn (Set.mem_Ici.2 (he.trans hb))\n    (Set.mem_Ici.2 (he.trans (hb.trans hab))) hab",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.log_div_anti",
+      "lines": [
+       203,
+       206
+      ],
+      "conclusion": "For $3\\le b\\le a$, $\\log a/a\\le\\log b/b$: the map $p\\mapsto(\\log p)/p$ is decreasing for $p\\ge3$ (via `Real.log_div_self_antitoneOn`)."
+     }
     }
    ],
    "searched": {
     "declarations": [
+     "TernaryGoldbach.MinorArcs.G_le_mul_Gq",
+     "TernaryGoldbach.MinorArcs.IHk_step",
+     "TernaryGoldbach.MinorArcs.checkC2_suffices",
+     "TernaryGoldbach.MinorArcs.checkC_suffices",
+     "TernaryGoldbach.MinorArcs.ghat_anti",
+     "TernaryGoldbach.MinorArcs.ghat_pow_le",
      "TernaryGoldbach.MinorArcs.lamQ_le_k",
-     "TernaryGoldbach.MinorArcs.lamQ_pow_le"
+     "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+     "TernaryGoldbach.MinorArcs.large_q_hS",
+     "TernaryGoldbach.MinorArcs.log_div_anti",
+     "TernaryGoldbach.MinorArcs.ramare_Gq",
+     "TernaryGoldbach.MinorArcs.shat_anti",
+     "TernaryGoldbach.Prelim.F_all"
     ],
     "greps": [
-     "p ≠ 7|nmid|210 in TernaryGoldbach/MinorArcs/LSQuot*.lean"
+     "p ≠ 7|nmid|210 in TernaryGoldbach/MinorArcs/LSQuot*.lean",
+     "1.4709|1.312|0.627312|0.023111|1.90516|1.633|0.74914|6.62365|1.01624|0.47126|0.33102|10.09062|7.06909|190.272|2.24742|0.07354|0.8009|0.6924|6.3513|6.74849|84.351|0.35152|7.44586|5.8478|477.465|475.513|846.765|838.227|916.322|429.731|112000|0.2797|0.911|7.45235|0.37268|0.02741 in tg/TernaryGoldbach/ (all)",
+     "varpi|ϖ|cRho|c_rho|Abel|theta|θ|210|p ≠ 7 in tg/TernaryGoldbach/ (all)",
+     "Gq_le|Gq_ge|G_le|G_ge|1.3325 in tg/TernaryGoldbach/ (all)"
     ]
    },
    "verification": {
@@ -10609,10 +11059,16 @@
      "batch": "B037-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "overturned",
+      "reason": "Found log_div_anti (LSQuot4.lean 203–206), which proves that (log p)/p is decreasing for p ≥ 3, one of the two facts the step cites; the 7-omission itself is absent."
+     }
     }
    }
   },
@@ -10726,10 +11182,16 @@
      "batch": "B037-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No Rosser–Schoenfeld (3.30) or computation for 29 ≤ p₁ ≤ 43; Prelim.F_all bounds ∏_{p≤x}p/(p−1) by e^γ log θ(x) + 2.50637/log θ(x) for Lemma C.2.2, a different bound not used here."
+     }
     }
    }
   },
@@ -10780,10 +11242,16 @@
      "batch": "B037-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No bound ∏_{p≤p₁}p/(p−1) < 1.90516 log p₁; [L] bounds ∏ (p/(p−1))f₁(p) jointly via ĝ (gHatQ, Gk) and Prelim.F_all has a different right side."
+     }
     }
    }
   },
@@ -10943,10 +11411,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "[L] never forms Σ_{a<p≤x} log(1+p^{-2/3}); f1p_le_one_add bounds the local factor only, and the product is bounded via ĝ and the primorial induction."
+     }
     }
    }
   },
@@ -10997,10 +11471,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No comparison log(1+p^{-2/3}) ≤ (log p)p^{-2/3}/log a in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -11181,10 +11661,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "Constants 0.33102, 7.06909, 10.09062 and the 10^4 split are absent from TernaryGoldbach/."
+     }
     }
    }
   },
@@ -11235,10 +11721,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "The constant 0.47126 and the bound are absent from TernaryGoldbach/."
+     }
     }
    }
   },
@@ -11289,10 +11781,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No computation over primes 29..10^4 for this sum in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -11343,10 +11841,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No bound Σ_{p≤x} log(1+p^{-2/3}) ≤ 0.74914x^{1/3}; [L] bounds ĝ(p)^{21} ≤ p² per prime instead, a different quantity."
+     }
     }
    }
   },
@@ -11397,10 +11901,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "Signposting for the absent 0.74914x^{1/3} bound."
+     }
     }
    }
   },
@@ -11652,10 +12162,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "ϖ(q) and its monotonicity are absent from TernaryGoldbach/."
+     }
     }
    }
   },
@@ -11706,10 +12222,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No threshold max(Q_{0,min}, Q_{0,min}^{1−ω}/c_{ρ,2}) in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -11760,10 +12282,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No ϖ = ϖ₀ monotonicity argument or 112000 threshold (112000 occurs only in an unrelated kernel table in Prelim/SmallMuPhi)."
+     }
     }
    }
   },
@@ -11814,10 +12342,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No monotonicity of ϖ₀ in ρ and q or reduction to ρ = 0.6; [L] never compares λ with ϖ₀."
+     }
     }
    }
   },
@@ -11868,10 +12402,16 @@
      "batch": "B038-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "ϖ₀(2.2·10^10) ≥ 846.765 is absent; 846.765 occurs nowhere in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -12222,32 +12762,11 @@
   {
    "id": "Proposition 5.6 step 66",
    "item": "Proposition 5.6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "The substitution $0.8009t-\\log t+0.07354\\ge0.6924t$ and the logarithmic form are not in [L]; the Lean argument has no such step.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "For $q\\ge\\prod_{p\\le31}p$ ($\\omega(q)\\ge11$), [L] reduces its large-$q$ inequality to a logarithmic comparison by a different argument: the induction `IHk_step` with $\\hat g(p)^{21}\\le p^2$ (proved by taking logs in `ghat_pow_le`), in place of [H]'s bound $0.8009t-\\log t+0.07354\\ge0.6924t$ and the log form (12.40).",
+   "proof_kind": "helper",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot4.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot4",
-     "lines": [
-      262,
-      291
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot5",
-     "lines": [
-      217,
-      277
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.ghat_pow_le",
      "repo": "lean",
@@ -12255,31 +12774,42 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot5",
      "lines": [
-      132,
+      155,
       171
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.lamQ",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot2.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot2",
-     "lines": [
-      33,
-      34
-     ]
+     ],
+     "snippet": "  have hl1 : Real.log ((p : ℝ) / (p - 1)) ≤ 1 / 36 := by\n    have := Real.log_le_sub_one_of_pos (div_pos (by linarith : (0 : ℝ) < p) (by linarith : (0 : ℝ) < p - 1))\n    have e : (p : ℝ) / (p - 1) - 1 = 1 / (p - 1) := by rw [div_sub_one (by linarith)]; ring\n    have : 1 / ((p : ℝ) - 1) ≤ 1 / 36 := one_div_le_one_div_of_le (by norm_num) (by linarith)\n    linarith\n  have hl2 : Real.log (1 + y) ≤ 0.0905 := by\n    have := Real.log_le_sub_one_of_pos (by linarith : (0 : ℝ) < 1 + y); linarith\n  have hlp : 3.6 ≤ Real.log p := by\n    have h37 := le_log_num (z := 37) 3 0.6 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)\n    push_cast at h37\n    have := Real.log_le_log (by norm_num) hp'\n    linarith\n  have key : Real.log (((p : ℝ) / (p - 1) * (1 + y)) ^ 21) ≤ Real.log ((p : ℝ) ^ 2) := by\n    rw [Real.log_pow, Real.log_pow, Real.log_mul (div_pos (by linarith) (by linarith)).ne'\n      (by linarith : (0 : ℝ) < 1 + y).ne']\n    push_cast; linarith\n  exact (Real.log_le_log_iff (by positivity) (by positivity)).1 key",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghat_pow_le",
+      "lines": [
+       132,
+       171
+      ],
+      "conclusion": "For a prime $p\\ge37$, bounds $\\log(p/(p-1))\\le1/36$, $\\log(1+p^{-2/3})\\le0.0905$, $\\log p\\ge3.6$ and compares logarithms to get $\\hat g(p)^{21}\\le p^2$, the per-prime inequality that drives the induction for $q\\ge\\prod_{p\\le31}p$."
+     }
     }
    ],
    "searched": {
     "declarations": [
+     "TernaryGoldbach.MinorArcs.G_le_mul_Gq",
+     "TernaryGoldbach.MinorArcs.IHk_step",
+     "TernaryGoldbach.MinorArcs.checkC2_suffices",
+     "TernaryGoldbach.MinorArcs.checkC_suffices",
+     "TernaryGoldbach.MinorArcs.ghat_anti",
+     "TernaryGoldbach.MinorArcs.ghat_pow_le",
+     "TernaryGoldbach.MinorArcs.lamQ",
      "TernaryGoldbach.MinorArcs.lamQ_le_k",
      "TernaryGoldbach.MinorArcs.lamQ_pow_le",
-     "TernaryGoldbach.MinorArcs.ghat_pow_le",
-     "TernaryGoldbach.MinorArcs.lamQ"
+     "TernaryGoldbach.MinorArcs.large_q_hS",
+     "TernaryGoldbach.MinorArcs.log_div_anti",
+     "TernaryGoldbach.MinorArcs.ramare_Gq",
+     "TernaryGoldbach.MinorArcs.shat_anti",
+     "TernaryGoldbach.Prelim.F_all"
     ],
     "greps": [
-     "0.8009|190.272|2.24742|0.07354|84.351|7.44586|477.465|916.322|429.731|3.3 \\* 10\\^9|0.6924|1.633 in TernaryGoldbach/MinorArcs/"
+     "0.8009|190.272|2.24742|0.07354|84.351|7.44586|477.465|916.322|429.731|3.3 \\* 10\\^9|0.6924|1.633 in TernaryGoldbach/MinorArcs/",
+     "1.4709|1.312|0.627312|0.023111|1.90516|1.633|0.74914|6.62365|1.01624|0.47126|0.33102|10.09062|7.06909|190.272|2.24742|0.07354|0.8009|0.6924|6.3513|6.74849|84.351|0.35152|7.44586|5.8478|477.465|475.513|846.765|838.227|916.322|429.731|112000|0.2797|0.911|7.45235|0.37268|0.02741 in tg/TernaryGoldbach/ (all)",
+     "varpi|ϖ|cRho|c_rho|Abel|theta|θ|210|p ≠ 7 in tg/TernaryGoldbach/ (all)",
+     "Gq_le|Gq_ge|G_le|G_ge|1.3325 in tg/TernaryGoldbach/ (all)"
     ]
    },
    "verification": {
@@ -12289,10 +12819,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "overturned",
+      "reason": "Found that [L] covers the same range q ≥ ∏_{p≤31} p by taking logarithms in ghat_pow_le (LSQuot5.lean 155–171) for its induction step, a different inequality in place of [H]'s substitution."
+     }
     }
    }
   },
@@ -12475,10 +13011,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No 210 ∤ q refinement or (modowo)/(hipowo) in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -12552,10 +13094,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "Constants 1.633, 5.8478, 7.44586 and products over p ≠ 7 are absent from TernaryGoldbach/."
+     }
     }
    }
   },
@@ -12629,10 +13177,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No sum bound over p ≤ p₁, p ≠ 7 in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -12706,10 +13260,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No λ(q) bound with constants 84.351, 0.35152 in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -12783,10 +13343,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No 210 ∤ q variant in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -12860,10 +13426,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "Constants 477.465, 475.513 and threshold 3.3·10^9 are absent from TernaryGoldbach/."
+     }
     }
    }
   },
@@ -13017,10 +13589,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "The inequality with e^{0.224t}/7 and 84.351 is absent; [L] has no 210 ∤ q case."
+     }
     }
    }
   },
@@ -13094,10 +13672,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No t ≥ 37 reduction in TernaryGoldbach/."
+     }
     }
    }
   },
@@ -13171,10 +13755,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "Constant 6.74849 and this inequality are absent from TernaryGoldbach/."
+     }
     }
    }
   },
@@ -13248,10 +13838,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No t ≥ 37 check; [L] has no 210 ∤ q case."
+     }
     }
    }
   },
@@ -13325,10 +13921,16 @@
      "batch": "B039-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A05",
+      "ruling": "confirmed",
+      "reason": "No 210 ∤ q, q ≥ 3.3·10^9 conclusion; [L]'s threshold is q ≥ 2.2·10^10 for all q."
+     }
     }
    }
   },
@@ -18691,10 +19293,16 @@
      "batch": "B046-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A07",
+      "ruling": "confirmed",
+      "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     }
     }
    }
   },
@@ -18802,10 +19410,16 @@
      "batch": "B046-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A07",
+      "ruling": "confirmed",
+      "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     }
     }
    }
   },
@@ -18856,10 +19470,16 @@
      "batch": "B046-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A07",
+      "ruling": "confirmed",
+      "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     }
     }
    }
   },
@@ -18910,10 +19530,16 @@
      "batch": "B046-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A07",
+      "ruling": "confirmed",
+      "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     }
     }
    }
   },
@@ -18964,10 +19590,16 @@
      "batch": "B046-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A07",
+      "ruling": "confirmed",
+      "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     }
     }
    }
   },
@@ -19018,10 +19650,16 @@
      "batch": "B046-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A07",
+      "ruling": "confirmed",
+      "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     }
     }
    }
   },
@@ -19072,10 +19710,16 @@
      "batch": "B046-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A07",
+      "ruling": "confirmed",
+      "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     }
     }
    }
   },
@@ -19126,10 +19770,16 @@
      "batch": "B046-s",
      "steps": [
       "mapper (sonnet)",
-      "verifier (sonnet)"
+      "verifier (sonnet)",
+      "absence audit (opus)"
      ],
      "agreed": true,
-     "same_relation": true
+     "same_relation": true,
+     "audit": {
+      "file": "A07",
+      "ruling": "confirmed",
+      "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     }
     }
    }
   }

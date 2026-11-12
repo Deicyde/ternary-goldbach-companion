@@ -24,9 +24,10 @@ SETTLED = {
                 'The case v = 2 fails, inherited from (5.32): ∫₁⁴ H₂(S)dS/S = (4/π²)((7/6)log 2 + (1/6)log 3 − 11/24) '
                 '≈ 0.21620 > 0.15107 log 4 ≈ 0.20943.'),
     'Theorem 7.1.1': ('statement-false', 'lean/Companion/Book/Thm_7_1_1.lean', 'Companion.Book.thm_7_1_1_remark_false',
-                      'The remark after the theorem is false: η♡ is the one-sided Gaussian, so η̂♡(−δ) = '
-                      '∫₀^∞ e(δt)e^{−t²/2}dt, whose real part is half of √(2π)e^{−2π²δ²}; at δ = 0 it is √(π/2), '
-                      'not √(2π). The theorem itself is not refuted.'),
+                      'The theorem and the remark after it cannot both hold (`thm_7_1_1_remark_imp_not`): with η♡ '
+                      'one-sided, as in §9.2, η̂♡(0) = √(π/2), not √(2π), so the remark is false '
+                      '(`thm_7_1_1_remark_false`); with η♡(t) = e^{−t²/2} on all of ℝ, as §7.1 writes it, the '
+                      'theorem is false (`thm_7_1_1_twoSided_false`).'),
     'Proposition 11.2.3': ('statement-false', 'lean/Companion/Book/Prop_11_2_3.lean', 'Companion.Book.prop_11_2_3_false',
                            'The first case (11.18)–(11.19) omits the term C_{φ,0,K} = 1.04488∫₀^{1/K}φ that its proof '
                            'produces and the second case keeps; for a continuous φ concentrated near w = 2.75/x '

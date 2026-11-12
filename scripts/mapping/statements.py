@@ -3,7 +3,8 @@
 New code.  The table below says, for each file, which book item it states, the declaration of the
 statement, and what the file proves about it at the pin: `proved` (the statement as printed, with the
 formalization's hypotheses where named), `implied` (the statement implies, or is equivalent to, a
-declaration of the formalization), `refuted` (its negation), or `stated` (no relation).  It was read off
+declaration of the formalization), `refuted` (its negation), `exclusive` (it and another printed
+statement cannot both hold), or `stated` (no relation).  It was read off
 each file's theorems; the declarations and lines are read from the files here and checked against the
 build (lean/.lake).  `version` is the commit of this repository that added lean/.
 
@@ -43,7 +44,7 @@ TABLE = {
     'Prop_D_0_3': ('Proposition D.0.3', [('prop_D_0_3', 'refuted', 'prop_D_0_3_upTo_false', None)]),
     'Thm_1_1_1': ('Theorem 1.1.1', [('thm_1_1_1', 'proved', 'thm_1_1_1_holds', 'PlattGRH, BinaryGoldbachInput, RamareMoebius')]),
     'Thm_3_1_1': ('Theorem 3.1.1', [('thm_3_1_1', 'implied', 'thm_3_1_1_implies_formal', 'TernaryGoldbach.MinorArcs.theorem_3_1_1')]),
-    'Thm_7_1_1': ('Theorem 7.1.1', [('thm_7_1_1', 'stated', None, None),
+    'Thm_7_1_1': ('Theorem 7.1.1', [('thm_7_1_1', 'exclusive', 'thm_7_1_1_remark_imp_not', 'thm_7_1_1_twoSided_false'),
                                     ('thm_7_1_1_remark', 'refuted', 'thm_7_1_1_remark_false', None)]),
     'Thm_7_1_4': ('Theorem 7.1.4', [('thm_7_1_4', 'implied', 'thm_7_1_4_implies_formal_odd', 'TernaryGoldbach.MajorArcs.thm_7_1_4_odd')]),
     'Thm_13_2_1': ('Theorem 13.2.1', [('thm_13_2_1', 'stated', None, None)]),
@@ -59,6 +60,11 @@ def note_of(decl, proves, thm, other):
         return f'Stated as printed in `{decl}`; the file proves that it implies `{other}` (`{thm}`), not the statement itself.'
     if proves == 'equivalent':
         return f'Stated as printed in `{decl}`; the file proves it equivalent to the hypothesis `{other}` (`{thm}`).'
+    if proves == 'exclusive':  # Theorem 7.1.1: η♡ one-sided, as in §9.2; §7.1 writes e^{-t²/2} with no range
+        return (f'Stated in `{decl}` with η♡ one-sided, as in §9.2; the file proves that the theorem and the remark '
+                f'after it cannot both hold (`{thm}`), and that the theorem is false with η♡ two-sided (`{other}`).')
+    if proves == 'refuted' and decl.endswith('thm_7_1_1_remark'):
+        return f'Stated in `{decl}` with η♡ one-sided, as in §9.2, and proved false there (`{thm}`).'
     if proves == 'refuted':
         return f'Stated as printed in `{decl}`, and proved false there (`{thm}`).'
     return f'Stated as printed in `{decl}`; the file proves no relation to the formalization.'
@@ -73,14 +79,19 @@ def main():
             k = next((k for k, l in enumerate(lines) if re.match(rf'^(noncomputable )?def {re.escape(name)}\b', l)), None)
             if k is None:
                 sys.exit(f'{f}: no def {name}')
-            if thm and not any(re.match(rf'^theorem {re.escape(thm)}\b', l) for l in lines):
-                sys.exit(f'{f}: no theorem {thm}')
+            for t in (thm, other if proves == 'exclusive' else None):
+                if t and not any(re.match(rf'^theorem {re.escape(t)}\b', l) for l in lines):
+                    sys.exit(f'{f}: no theorem {t}')
             end = next((j for j in range(k, min(k + 60, len(lines))) if not lines[j].strip()), min(k + 60, len(lines)))
             decl = f'Companion.Book.{name}'
             out.append(dict(item=item, file=f'lean/Companion/Book/{f}.lean', module=f'Companion.Book.{f}', declaration=decl,
                             line=k + 1, snippet='\n'.join(lines[k:end]).rstrip(), truncated=end - k >= 60 and bool(lines[end - 1].strip()),
-                            proves=proves, theorem=f'Companion.Book.{thm}' if thm else None, other=other,
-                            note=note_of(decl, proves, thm and f'Companion.Book.{thm}', other)))
+                            proves=proves, theorem=f'Companion.Book.{thm}' if thm else None,
+                            other=f'Companion.Book.{other}' if proves == 'exclusive' else other,
+                            # a statement that fixes a reading the printed text leaves open is a close match
+                            relation='closeMatch' if item == 'Theorem 7.1.1' else 'exactMatch',
+                            note=note_of(decl, proves, thm and f'Companion.Book.{thm}',
+                                         f'Companion.Book.{other}' if proves == 'exclusive' else other)))
     doc = dict(repository=dict(uri=URI, version=version, path='lean',
                                uri_note='placeholder: the owner of the published repository is decided before publishing'),
                statements=out)

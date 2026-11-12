@@ -46,5 +46,5 @@
       }
     }
   },
-  "note": "Nothing after its proof (§9.6, from Prop 9.2.2 plus Platt at T₀ = 10⁸/q) invokes it. Erratum: The remark after the theorem is false: η♡ is the one-sided Gaussian, so η̂♡(−δ) = ∫₀^∞ e(δt)e^{−t²/2}dt, whose real part is half of √(2π)e^{−2π²δ²}; at δ = 0 it is √(π/2), not √(2π). (proved by `Companion.Book.thm_7_1_1_remark_false` in `lean/Companion/Book/Thm_7_1_1.lean`)."
+  "note": "Nothing after its proof (§9.6, from Prop 9.2.2 plus Platt at T₀ = 10⁸/q) invokes it. Erratum: The theorem and the remark after it cannot both hold (`thm_7_1_1_remark_imp_not`): with η♡ one-sided, as in §9.2, η̂♡(0) = √(π/2), not √(2π), so the remark is false (`thm_7_1_1_remark_false`); with η♡(t) = e^{−t²/2} on all of ℝ, as §7.1 writes it, the theorem is false (`thm_7_1_1_twoSided_false`) (proved by `Companion.Book.thm_7_1_1_remark_false` in `lean/Companion/Book/Thm_7_1_1.lean`)."
 }

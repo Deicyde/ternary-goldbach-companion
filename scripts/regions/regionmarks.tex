@@ -1,0 +1,78 @@
+% Position markers for the numbered items of [H] (arXiv:1501.05438v2), \input after the
+% preamble of 3nonpupbook.tex.  The marker mechanism (zref-savepos labels in a list of their
+% own, written at shipout) is formal-companion's informalize fcmarkers.sty \fc@savepos.
+% Every marker is a zero-size whatsit placed where it adds no break point and changes no
+% \lastskip, so the layout is the arXiv one; build.py checks this page by page.
+%
+%   thm:<n>:head   theorem-like head, inside the label box: the baseline of the first line
+%   thm:<n>:end    the end of the last line (horizontal mode only), and
+%   thm:<n>:below  after that line on the vertical list (also: after a closing paragraph)
+%   \rmenddisp{n}{k} in the .aux: theorem n ends with display k (no node is added)
+%   disp:<k>:post  after the box of the k-th display, numbered or not
+%   eq:<k>:pre     after the line before the k-th equation environment (horizontal mode only)
+%   eq:<k>:tag=<n> its number <n>, at the left of "(" on the number's baseline
+%   eq:<k>:post    after the display box (a \vadjust in display math lands there)
+%   flt:<type>:<k>:top / :bot   top and bottom of the k-th float box
+%   cap:<type>:<n> after the caption of <type> <n>, inside the float box
+\RequirePackage{zref-savepos}
+\RequirePackage{zref-abspage}
+\makeatletter
+\zref@newlist{rmpos}
+\zref@addprops{rmpos}{posx,posy,abspage}
+\newcommand*\rm@savepos[1]{%
+  \begingroup
+    \edef\rm@tmp{\endgroup
+      \noexpand\ZREF@zsavepos\noexpand\zref@labelbylist{rmpos}{#1}}%
+  \rm@tmp}
+\AddToHook{begindocument/end}{%
+  \immediate\write\@auxout{\string\rmgeometry{pdfpagewidth=\number\pdfpagewidth,%
+    pdfpageheight=\number\pdfpageheight,%
+    textleft=\number\dimexpr1in+\hoffset+\oddsidemargin\relax,%
+    evenleft=\number\dimexpr1in+\hoffset+\evensidemargin\relax,%
+    texttop=\number\dimexpr1in+\voffset+\topmargin+\headheight+\headsep\relax,%
+    textwidth=\number\textwidth,textheight=\number\textheight,%
+    baselineskip=\number\baselineskip}}}
+\providecommand\rmgeometry[1]{}
+% theorem-like items
+\gdef\rm@thm{}
+\let\rm@orig@thmhead\thmhead
+\def\thmhead#1#2#3{\xdef\rm@thm{#2}\rm@savepos{thm:#2:head}\rm@orig@thmhead{#1}{#2}{#3}}
+\newcount\rm@dispk
+\def\rm@thmend{%
+  \ifhmode
+    \ifnum\lastnodetype=\m@ne
+      \rm@enddisp
+    \else
+      \unskip\rm@savepos{thm:\rm@thm:end}\vadjust{\rm@savepos{thm:\rm@thm:below}}%
+    \fi
+  \else
+    \ifnum\lastnodetype=\@ne \rm@savepos{thm:\rm@thm:below}\else
+    \ifnum\lastnodetype=\tw@ \rm@savepos{thm:\rm@thm:below}\else
+      \rm@enddisp
+    \fi\fi
+  \fi}
+% a theorem that ends with a display: name that display's post marker, without a node
+\def\rm@enddisp{\if@filesw\immediate\write\@auxout{\string\rmenddisp{\rm@thm}{\the\rm@dispk}}\fi}
+\providecommand\rmenddisp[2]{}
+% every display, numbered or not: a \vadjust in display math lands after the display box
+\everydisplay=\expandafter{\the\everydisplay
+  \global\advance\rm@dispk\@ne\vadjust{\rm@savepos{disp:\the\rm@dispk:post}}}
+\AddToHook{env/prop/end}{\rm@thmend}
+\AddToHook{env/theorem/end}{\rm@thmend}
+\AddToHook{env/corollary/end}{\rm@thmend}
+\AddToHook{env/lemma/end}{\rm@thmend}
+% numbered displays
+\newcount\rm@eqk
+\AddToHook{env/equation/begin}{\global\advance\rm@eqk\@ne
+  \ifhmode\vadjust{\rm@savepos{eq:\the\rm@eqk:pre}}\fi}
+\def\tagform@#1{\maketag@@@{\rm@savepos{eq:\the\rm@eqk:tag=#1}(\ignorespaces#1\unskip\@@italiccorr)}}
+\AddToHook{env/equation/end}{\vadjust{\rm@savepos{eq:\the\rm@eqk:post}}}
+% floats
+\newcount\rm@flt
+\AddToHook{env/figure/after}{\global\advance\rm@flt\@ne\rm@savepos{flt:figure:\the\rm@flt:top}}
+\AddToHook{env/figure/end}{\rm@savepos{flt:figure:\the\rm@flt:bot}}
+\AddToHook{env/table/after}{\global\advance\rm@flt\@ne\rm@savepos{flt:table:\the\rm@flt:top}}
+\AddToHook{env/table/end}{\rm@savepos{flt:table:\the\rm@flt:bot}}
+\let\rm@orig@makecaption\@makecaption
+\long\def\@makecaption#1#2{\rm@orig@makecaption{#1}{#2}\rm@savepos{cap:\@captype:\csname the\@captype\endcsname}}
+\makeatother

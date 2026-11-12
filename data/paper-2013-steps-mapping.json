@@ -69,9 +69,9 @@
   {
    "id": "Lemma 4.1 step 1",
    "item": "Lemma 4.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean uses no Taylor expansion; Lemma 11.1.1 is replaced by exact polarization with |w|=|v|.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Here the text uses a truncated Taylor expansion of √(1+x) to turn closeness of the two vectors into a lower bound for the convolution. In the proof of conv2_ge, [L] reaches that lower-bound form with the exact polarization identity instead.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
@@ -80,20 +80,20 @@
      "file": "TernaryGoldbach/MajorArcs/CMain.lean",
      "module": "TernaryGoldbach.MajorArcs.CMain",
      "lines": [
-      138,
+      155,
       164
-     ]
+     ],
+     "snippet": "  have heq : conv2 ρ = (∫ t, etaO t ^ 2) - (1 / 2) * ∫ t, (etaO (t + s) - etaO t) ^ 2 := by\n    unfold conv2\n    simp_rw [hpt]\n    have h1 : Integrable fun t => etaO t ^ 2 + etaO (t + s) ^ 2 := integrable_etaO_sq.add hshift\n    rw [integral_div, integral_sub h1 hdiff, integral_add integrable_etaO_sq hshift,\n      integral_add_right_eq_self (fun t => etaO t ^ 2) s]\n    ring\n  rw [heq]\n  have := integral_sq_etaO_shift_le s\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
+      "lines": [
+       138,
+       164
+      ],
+      "conclusion": "Exact polarization with the shifted copy of η◦ (|w| = |v|) gives conv2 ρ = ‖η◦‖₂² − ½‖η◦(·+s) − η◦‖₂²."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MajorArcs.conv2_ge"
-    ],
-    "greps": [
-     "2\\.71|Taylor|taylor|sqrt_one_add in TernaryGoldbach/",
-     "sqrt.*(1 \\+ in TernaryGoldbach/MajorArcs"
-    ]
-   },
    "verification": {
     "carried_from": "book Lemma 11.1.1 step 1",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -102,7 +102,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
@@ -110,9 +111,15 @@
       "file": "A04",
       "ruling": "confirmed",
       "reason": "Read conv2_ge (CMain.lean 138-164) and grepped TernaryGoldbach/ for Taylor/sqrt/2.71: [L] never expands $\\sqrt{1+x}$; it uses exact polarization."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "In conv2_ge, the polarization lines do this step's job by another route.",
+      "old_note": "Lean uses no Taylor expansion; Lemma 11.1.1 is replaced by exact polarization with |w|=|v|."
      }
     }
-   }
+   },
+   "proof_kind": "direct"
   },
   {
    "id": "Lemma 4.1 step 2",
@@ -213,9 +220,9 @@
   {
    "id": "Lemma 4.1 step 4",
    "item": "Lemma 4.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean never states Lemma 4.1 and has no sqrt(1+x) expansion of |w|/|v|; conv2_ge uses exact polarization with |w|=|v| (translation invariance) and a Lipschitz bound, constant 8.82 in place of 2.71.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text expands |w|_2/|v|_2 = sqrt(1+...) to second order with constant 2.71 to compare <w,v> with |v|^2. [L] reaches the corresponding inner-product lower bound inside conv2_ge by exact polarization (translation invariance gives |w| = |v|) plus a Lipschitz shift bound, with constant 8.82.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
@@ -224,26 +231,27 @@
      "file": "TernaryGoldbach/MajorArcs/CMain.lean",
      "module": "TernaryGoldbach.MajorArcs.CMain",
      "lines": [
-      138,
+      152,
       164
-     ]
+     ],
+     "snippet": "  have hpt : ∀ t, etaO t * etaO (ρ - t) =\n      (etaO t ^ 2 + etaO (t + s) ^ 2 - (etaO (t + s) - etaO t) ^ 2) / 2 := fun t => by\n    rw [hsym]; ring\n  have heq : conv2 ρ = (∫ t, etaO t ^ 2) - (1 / 2) * ∫ t, (etaO (t + s) - etaO t) ^ 2 := by\n    unfold conv2\n    simp_rw [hpt]\n    have h1 : Integrable fun t => etaO t ^ 2 + etaO (t + s) ^ 2 := integrable_etaO_sq.add hshift\n    rw [integral_div, integral_sub h1 hdiff, integral_add integrable_etaO_sq hshift,\n      integral_add_right_eq_self (fun t => etaO t ^ 2) s]\n    ring\n  rw [heq]\n  have := integral_sq_etaO_shift_le s\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
+      "lines": [
+       138,
+       164
+      ],
+      "conclusion": "By exact polarization with equal norms, conv2 rho = ||eta_o||^2 - (1/2) ||eta_o(.+s) - eta_o||^2, and the shift bound gives conv2 rho >= ||eta_o||^2 - 8.82 (2-rho)^2."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MajorArcs.conv2_ge"
-    ],
-    "greps": [
-     "rg 'sqrt \\(1 \\+|sqrt_one_add|Taylor|taylor' in TernaryGoldbach/MajorArcs, TernaryGoldbach/Prelim",
-     "rg '2\\.71' in TernaryGoldbach/ (only e-approximations 2.7182...)"
-    ]
-   },
    "verification": {
     "batch": "P064-s",
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
     ],
     "agreed": true,
     "same_relation": true,
@@ -251,8 +259,14 @@
      "file": "A10",
      "ruling": "confirmed",
      "reason": "Read conv2_ge (CMain.lean): it uses exact polarization with |w|=|v|; grep for sqrt(1+x) expansions and 2.71 in TernaryGoldbach/ finds no |w|/|v| expansion."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "reason": "conv2_ge's polarization lines do this step's job, the inner-product-versus-norm comparison, by a different argument.",
+     "old_note": "Lean never states Lemma 4.1 and has no sqrt(1+x) expansion of |w|/|v|; conv2_ge uses exact polarization with |w|=|v| (translation invariance) and a Lipschitz bound, constant 8.82 in place of 2.71."
     }
-   }
+   },
+   "proof_kind": "direct"
   },
   {
    "id": "Lemma 4.1 step 5",
@@ -425,7 +439,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The Rosser-Schoenfeld product bound is stated for primes x≥5, and `div_totient_lt` applies it at x=p_k for at least four primes and compares with log r."
   },
   {
    "id": "Lemma 4.2 step 2",
@@ -488,7 +503,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`div_totient_lt` bounds q/phi(q) by a product over the first primes, and then by the function of log r via monotonicity and theta(x) <= log r."
   },
   {
    "id": "Lemma 4.2 step 3",
@@ -553,7 +569,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "With at most three prime factors q/φ(q) is at most 3.75, and `bigF_gt` shows the lower bound on the log-log expression exceeds 3.75 for r≥3."
   },
   {
    "id": "Lemma 4.3 step 1",
@@ -612,7 +629,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "`hfun_antitone` shows h is non-increasing for large z, and `gx_scale_le_of_one_le` shows g_x(n) is non-increasing in x."
   },
   {
    "id": "Lemma 4.3 step 2",
@@ -2919,7 +2937,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "|S_{η_*}(α,x)| is bounded by an integral of |S_{η₂}(α,wy)| against φ(w)/w, and the trivial Chebyshev bound |S_{η₂}(α,z)|≤17z handles the small-scale part."
   },
   {
    "id": "Proposition 4.5 step 4",
@@ -3068,7 +3087,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`norm_S_eta2_le_of_not_mem` gives a pointwise bound at each scale wy, and `norm_S_etaStar_le_of_pointwise` integrates it against phi, with a trivial bound outside the range."
   },
   {
    "id": "Proposition 4.5 step 7",
@@ -3318,7 +3338,8 @@
       "reason": "gx_scale_le_of_le_one hL plus norm_S_etaStar_le_ghat hint bound the integral of the $L_{2r}/r$ term, with factor 1.398."
      }
     }
-   }
+   },
+   "summary": "`gx_scale_le_of_le_one` gives a scaling bound for w <= 1, and `norm_S_etaStar_le_ghat` uses a majorant in w to bound the integral against phi."
   },
   {
    "id": "Proposition 4.5 step 11",
@@ -3468,7 +3489,8 @@
      "ruling": "overturned",
      "reason": "The `w ≥ 1` case $R_{wx,t} \\le R_{x,t}$ is proved in `gx_scale_le_of_one_le` (hR, lines 177-180, via `R_le_R`); the `w < 1` convexity interpolation is absent (Lean uses $R_{wy,2wn} \\le R_{y,2n}$ instead)."
     }
-   }
+   },
+   "summary": "R is shown to decrease in the scale, which gives R_{wy,2n}≤R_{y,2n} for w≥1 and the monotonicity needed for the interpolation bound."
   },
   {
    "id": "Proposition 4.5 step 13",
@@ -3572,7 +3594,8 @@
       "reason": "Takes the relation of step 14: the same lines make the inference by monotonicity."
      }
     }
-   }
+   },
+   "summary": "The scale monotonicity of g is shown for w <= 1 and w >= 1 separately, and `norm_S_etaStar_le_ghat` then integrates the resulting majorant against phi."
   },
   {
    "id": "Proposition 4.5 step 14",
@@ -3651,7 +3674,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "Monotonicity of R in the scale gives the scaling bound g_{wy}(wn)≤g_y(n)/w, and integration of the resulting majorant against φ gives `prop_11_2_3`."
   },
   {
    "id": "Proposition 4.5 step 15",
@@ -3825,7 +3849,8 @@
      "ruling": "own",
      "reason": "The step announces the derivative test for the decreasing functions (11.22); Lean's derivative test is `antitoneOn_mul_exp_neg`, applied to the piece containing those functions (`QC`, the `L_{2r}/r` term) in `QC_antitoneOn`. Both sides' ends are parts of this chain."
     }
-   }
+   },
+   "summary": "`antitoneOn_mul_exp_neg` reduces monotonicity of Q(s)e^(-ps) to a derivative inequality, and `QC_antitoneOn` applies it to the L-term."
   },
   {
    "id": "Lemma 4.6 step 2",
@@ -3884,7 +3909,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "`QA_antitoneOn` and `QC_antitoneOn` show that the main term and the L-term are non-increasing in log r on the relevant ranges."
   },
   {
    "id": "Lemma 4.6 step 3",
@@ -3982,7 +4008,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "A derivative sign test shows Q(s)e^{-ps} is antitone when Q'≤pQ, and `QA_antitoneOn` applies it to the main-term piece using elasticity bounds."
   },
   {
    "id": "Lemma 4.6 step 5",
@@ -4061,7 +4088,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "`Rs_hasDerivAt` computes the derivative of R, `Rs_deriv_le` bounds it by 0.27125/(B-s), and `QA_antitoneOn` uses B-s >= 2.5 to conclude Q' <= Q/2."
   },
   {
    "id": "Lemma 4.6 step 6",
@@ -4177,12 +4205,18 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus): noMatch search re-run"
+      "judge (opus): noMatch search re-run",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
      "ruling": "confirmed",
-     "reason": "No lower bound for `g_x` at $r=(3/8)x^{4/15}$ exists; `ghatY` takes `max(g_y(n), h(y))`, so the comparison is never made."
+     "reason": "No lower bound for `g_x` at $r=(3/8)x^{4/15}$ exists; `ghatY` takes `max(g_y(n), h(y))`, so the comparison is never made.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Lemma 11.2.5 is not needed or performed in [L]."
+     }
     }
    }
   },
@@ -4222,12 +4256,18 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus)"
+      "judge (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": false,
      "disagreement": "class noMatch vs relatedMatch",
      "ruling": "mapper",
-     "reason": "The display defines a lower bound `gm_x` for `g`; Lean never bounds `g` from below here (Lemma 11.2.5 is bypassed by `max(g_y,h)` in `ghatY`). `gx` is `g` itself, not this lower bound, so it does not carry the step."
+     "reason": "The display defines a lower bound `gm_x` for `g`; Lean never bounds `g` from below here (Lemma 11.2.5 is bypassed by `max(g_y,h)` in `ghatY`). `gx` is `g` itself, not this lower bound, so it does not carry the step.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "[L] never defines or uses gm_x."
+     }
     }
    }
   },
@@ -4267,7 +4307,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -4275,6 +4316,11 @@
       "file": "A04",
       "ruling": "confirmed",
       "reason": "Lemma 11.2.5 is not formalized: ghatY builds $\\max(g_y,h)$ in, and greps of its constants over TernaryGoldbach/ find nothing."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Lemma 11.2.5 is not needed or performed in [L]."
      }
     }
    }
@@ -4509,12 +4555,18 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus): noMatch search re-run"
+      "judge (opus): noMatch search re-run",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
      "ruling": "confirmed",
-     "reason": "No evaluation of $\\log 2r$ at $r=(3/8)x^{4/15}$ and no bound $gm_x(r)\\ge(0.40298\\log x+3.25765)/(\\sqrt{3/4}x^{2/15})$ exists."
+     "reason": "No evaluation of $\\log 2r$ at $r=(3/8)x^{4/15}$ and no bound $gm_x(r)\\ge(0.40298\\log x+3.25765)/(\\sqrt{3/4}x^{2/15})$ exists.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "No Lean lines do this step's job."
+     }
     }
    }
   },
@@ -4554,7 +4606,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -4562,6 +4615,11 @@
       "file": "A04",
       "ruling": "confirmed",
       "reason": "Lemma 11.2.5 is not formalized: ghatY builds $\\max(g_y,h)$ in, and greps of its constants over TernaryGoldbach/ find nothing."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Lean's proof does not need this lower bound."
      }
     }
    }
@@ -4967,12 +5025,18 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus): noMatch search re-run"
+     "judge (opus): noMatch search re-run",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
     "ruling": "confirmed",
-    "reason": "Own grep for 2/15, 4/15, 0.40298, 3.25765, 0.63368, 5.68721, 1218, e^28 across TernaryGoldbach/ finds nothing; Lemma 4.7 is bypassed by the max in `ghatY`."
+    "reason": "Own grep for 2/15, 4/15, 0.40298, 3.25765, 0.63368, 5.68721, 1218, e^28 across TernaryGoldbach/ finds nothing; Lemma 4.7 is bypassed by the max in `ghatY`.",
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "[L] avoids the comparison through the max in ghatY; no Lean lines settle it."
+    }
    }
   },
   {
@@ -5228,7 +5292,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The arc integrals are translated to 0 and summed into one integral of F_R, and the character expansion of F_R is evaluated using `weight_sum` for the q=cr sums."
   },
   {
    "id": "Proposition 5.1 step 6",
@@ -5291,7 +5356,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`Gq_mR_le` compares G at the two scales under the hypothesis, and `Farc_le` uses it termwise in the character expansion to get a pointwise bound on F."
   },
   {
    "id": "Proposition 5.1 step 7",
@@ -5417,7 +5483,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "F_R is defined as the sum over q and b of |S(b/q+β)|², and its character expansion with `weight_sum` gives the comparison between the two sums."
   },
   {
    "id": "Proposition 5.1 step 9",
@@ -5609,7 +5676,8 @@
      "ruling": "own",
      "reason": "Lean's route for Prop 12.1.1 (Bombieri.lean, via GaussInduced) reduces any ψ mod q to its primitive character χ mod the conductor and uses `gauss_induced`, where $c_r(1)=\\mu(r)$ appears only through Möbius inversion; `ramanujan_coprime` (verifier) is used for Montgomery's inequality, not this route."
     }
-   }
+   },
+   "summary": "`norm_sq_gaussSum` takes the primitive character of the conductor and writes the Gauss sum in terms of it via `gauss_induced`."
   },
   {
    "id": "Proposition 5.1 step 12",
@@ -5793,7 +5861,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The character sum of S(b/q+β) is expressed as a Gauss sum times the twisted sum S_{ψ⁻¹}(β), and |τ(ψ)|² equals the conductor when q/c is squarefree and coprime to c."
   },
   {
    "id": "Proposition 5.1 step 15",
@@ -5856,7 +5925,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`Farc_eq` gives the character expansion of F_R, and `sum_arcs_eq_integral_Farc` shows the arc integrals equal the integral of F_R after translating each arc to 0."
   },
   {
    "id": "Proposition 5.1 step 16",
@@ -5939,7 +6009,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The character expansion of F_R with the weight-sum evaluation is combined with the translation of arc integrals to compare the weighted sums with the sum over q alone."
   },
   {
    "id": "Proposition 5.1 step 17",
@@ -6005,7 +6076,8 @@
      "ruling": "own",
      "reason": "The step's argument (radius $\\le 1/(2qQ)$ from $\\delta_0Q^2\\le x/2$, distinct fractions differ by $\\ge 1/qq'$) is `wrad_add_le` plus `arcs_unique`; `sum_arc_indicator_le_one` (mapper) and `sum_arcs_le_integral` (verifier) are the consequence, the next step's Σ ≤ ∫."
     }
-   }
+   },
+   "summary": "`wrad_add_le` bounds the sum of two arc radii by the reciprocal of qq', and `arcs_unique` uses it to show the arcs are pairwise disjoint."
   },
   {
    "id": "Proposition 5.1 step 18",
@@ -6068,7 +6140,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The arc integrals are bounded by the integral over [0,1] since the arcs do not overlap, and Plancherel turns that integral into the sum of |a_n|²."
   },
   {
    "id": "Proposition 5.1 step 19",
@@ -6174,7 +6247,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`mem_majorArcs_iff` states the major-arc condition in uniform form, and `integral_majorArcs_le` bounds the integral over the major arcs by the sum of integrals over arcs."
   },
   {
    "id": "Proposition 5.2 step 2",
@@ -6280,7 +6354,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "Bombieri's identity at a common modulus L expresses φ(q) times the sum over residues through characters, which gives the character expansion of F_R and hence the arc integral."
   },
   {
    "id": "Proposition 5.2 step 4",
@@ -6363,7 +6438,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`Farc` defines the arc sum, `Farc_eq` expands it over characters via Bombieri's identity, and `weight_sum` evaluates the weights as a G-function."
   },
   {
    "id": "Proposition 5.2 step 5",
@@ -6552,7 +6628,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The character expansion of F_R and the translation of arcs to |β|<w_q give the arc integrals as an integral of F_R, from which the odd and even parts are obtained."
   },
   {
    "id": "Proposition 5.2 step 8",
@@ -6658,7 +6735,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`totient_mul_sum_units_lift` is Bombieri's identity at a common modulus, and `Farc_eq` uses it to expand F_R over characters."
   },
   {
    "id": "Proposition 5.2 step 10",
@@ -6721,7 +6799,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The same character expansion and arc translation produce the bounds for Σ₁ and Σ₁+Σ₂ in terms of sums over residues b coprime to q."
   },
   {
    "id": "Proposition 5.2 step 11",
@@ -6853,7 +6932,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`sum_arcs_le_integral` bounds the sum of arc integrals by the full integral, and Plancherel (`setIntegral_norm_sq_expTsum`) identifies the latter with the sum of |a_n|^2."
   },
   {
    "id": "Lemma 5.3 step 1",
@@ -6919,7 +6999,8 @@
      "ruling": "verifier",
      "reason": "The step is the set-up of P plus the connective to the [RS75 (5.1)] bound; [L] makes the set-up exactly (primeSetRq, regionS lines 92-93) but bounds log P with psi(n) <= 1.03883n, so only the set-up part is carried."
     }
-   }
+   },
+   "summary": "The set of primes up to R together with the primes dividing q is defined as the support of 𝒫, and `regionS` sets R=Q₀/(sq) and P as the product over this set."
   },
   {
    "id": "Lemma 5.3 step 2",
@@ -7028,7 +7109,8 @@
      "ruling": "own",
      "reason": "The step has two parts: the value of ε₀ (absent, [L] uses 1.039) and the invocation of (3.42), which [L] carries via div_totient_lt applied at regionS line 121; hasPart, with the use site added."
     }
-   }
+   },
+   "summary": "`div_totient_lt` gives the Rosser-Schoenfeld bound on q/phi(q) under the stated hypothesis, and `regionS` applies it with r = e^V."
   },
   {
    "id": "Lemma 5.3 step 4",
@@ -7186,7 +7268,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "With V=log q+1.039R and P≤e^V, the bound on P/φ(P) is e^γ log V+2.50637/log V, which is then simplified to 0.86+0.4 log(qR)."
   },
   {
    "id": "Lemma 5.3 step 7",
@@ -7357,7 +7440,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`Gq_mul_le` proves G_q(R) G_P(t) <= G_q(tR) under a divisibility condition, and `regionS` instantiates it with t = Q/Q0 and R = Q0/(sq)."
   },
   {
    "id": "Lemma 5.4 step 3",
@@ -7466,7 +7550,8 @@
      "ruling": "verifier",
      "reason": "The step applies the lower bound for d = 𝒫, which is squarefree, so G_le_mul_Gq's squarefree hypothesis does not enter the step's claim; the Lean form is a rearrangement, applied at regionS line 107 after squarefreeness (96-100)."
     }
-   }
+   },
+   "summary": "For squarefree P one has G(t)≤(P/φ(P))G_P(t), and `regionS` applies this with t=Q/Q₀ after verifying that P is squarefree."
   },
   {
    "id": "Lemma 5.4 step 5",
@@ -7520,7 +7605,7 @@
    "relation": "relatedMatch",
    "class": "Deviates",
    "note": "[L] does not call a Lemma 12.2.1; it bounds `P/φ(P)` directly with a different constant form.",
-   "proof_kind": "chain",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.regionS",
@@ -7563,7 +7648,7 @@
    "relation": "relatedMatch",
    "class": "Deviates",
    "note": "Bound is `0.86 + 0.4 log(qR)` (needs `log q ≥ 3` and `hcc`, `hh`), not `e^γ(log(Q₀/sq + log q) + 0.658)`.",
-   "proof_kind": "chain",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.regionS",
@@ -7661,7 +7746,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`G_ge_log` bounds G below by log t + 1.064, and `regionS` uses it to conclude a quotient bound for G_q."
   },
   {
    "id": "Lemma 5.4 step 9",
@@ -7984,7 +8070,8 @@
       "reason": "poly_regionS (used at regionS 171-173) does this algebra by a polynomial inequality with different constants."
      }
     }
-   }
+   },
+   "summary": "`poly_regionS` proves the polynomial inequality sufficient for (12.22), and `regionS` applies it with l = log Q0 and L = log Q."
   },
   {
    "id": "Lemma 5.5 step 4",
@@ -8081,21 +8168,10 @@
   {
    "id": "Lemma 5.5 step 6",
    "item": "Lemma 5.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean has no 1.312/σ form of Lemma 12.2.3; regionS bounds with cE and σ=1.36 via poly_regionS, with no counterpart of this step.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text settles the inequality uniformly in ρ by differentiating (1−ρ)σ + 1.312ρ² in ρ and minimizing; Lean's poly_regionS (called in regionS at the polynomial-inequality step) settles its version with constants 1.36, 1.064, cE by an nlinarith certificate using l ≤ 0.6L.",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.regionS",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot3",
-     "lines": [
-      74,
-      185
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
      "repo": "lean",
@@ -8103,20 +8179,20 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot3",
      "lines": [
-      65,
+      68,
       71
-     ]
+     ],
+     "snippet": "  have hLc : 0 ≤ L + 1.33258 := by linarith\n  have h06 : 0 ≤ 0.6 * l + 0.5 := by linarith\n  have hLl : 0 ≤ 0.6 * L - l := by linarith\n  nlinarith [mul_nonneg h06 hLl, mul_le_mul_of_nonneg_right hX hLc]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
+      "lines": [
+       65,
+       71
+      ],
+      "conclusion": "X(L+1.33258) ≤ (l+1.36)(L−l+1.064) for all l ≤ 0.6L, i.e. the final inequality holds uniformly in ρ = l/L ≤ 0.6, settled by nlinarith."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.regionS",
-     "TernaryGoldbach.MinorArcs.poly_regionS"
-    ],
-    "greps": [
-     "1\\.312|5\\.248|12\\.2\\.3|trivo|paniz in tg (lean, md)"
-    ]
-   },
    "verification": {
     "carried_from": "book Lemma 12.2.3 step 6",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -8125,33 +8201,29 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus)"
+      "judge (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": false,
      "disagreement": "class relatedMatch vs noMatch",
      "ruling": "verifier",
-     "reason": "The connective claims a derivative/minimisation in ρ; poly_regionS proves its inequality by nlinarith with no minimisation over ρ, so no Lean lines make this move."
+     "reason": "The connective claims a derivative/minimisation in ρ; poly_regionS proves its inequality by nlinarith with no minimisation over ρ, so no Lean lines make this move.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "Lean lines handle the same uniform-in-ρ inequality by a different argument and with different constants.",
+      "old_note": "Lean has no 1.312/σ form of Lemma 12.2.3; regionS bounds with cE and σ=1.36 via poly_regionS, with no counterpart of this step."
+     }
     }
-   }
+   },
+   "proof_kind": "direct"
   },
   {
    "id": "Lemma 5.5 step 7",
    "item": "Lemma 5.5",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean has no 1.312/σ form of Lemma 12.2.3; regionS bounds with cE and σ=1.36 via poly_regionS, with no counterpart of this step.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds (1−ρ)σ + 1.312ρ² − 1.172 below by its minimum σ − σ²/5.248 − 1.172 at ρ = σ/2.624; Lean proves the corresponding polynomial inequality in (l, L) with constants 1.36, 1.064, cE directly by nlinarith with the product (0.6l+0.5)(0.6L−l) ≥ 0.",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.regionS",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot3",
-     "lines": [
-      74,
-      185
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
      "repo": "lean",
@@ -8159,20 +8231,20 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot3",
      "lines": [
-      65,
+      68,
       71
-     ]
+     ],
+     "snippet": "  have hLc : 0 ≤ L + 1.33258 := by linarith\n  have h06 : 0 ≤ 0.6 * l + 0.5 := by linarith\n  have hLl : 0 ≤ 0.6 * L - l := by linarith\n  nlinarith [mul_nonneg h06 hLl, mul_le_mul_of_nonneg_right hX hLc]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
+      "lines": [
+       65,
+       71
+      ],
+      "conclusion": "X(L+1.33258) ≤ (l+1.36)(L−l+1.064) for all l ≤ 0.6L, i.e. the final inequality holds uniformly in ρ = l/L ≤ 0.6, settled by nlinarith."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.regionS",
-     "TernaryGoldbach.MinorArcs.poly_regionS"
-    ],
-    "greps": [
-     "1\\.312|5\\.248|12\\.2\\.3|trivo|paniz in tg (lean, md)"
-    ]
-   },
    "verification": {
     "carried_from": "book Lemma 12.2.3 step 7",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -8181,14 +8253,21 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus)"
+      "judge (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": false,
      "disagreement": "class relatedMatch vs noMatch",
      "ruling": "verifier",
-     "reason": "The display minimises (1-ρ)σ+1.312ρ² over ρ to get σ-σ²/5.248-1.172; [L] has no σ, no 1.312, and no such minimum (poly_regionS is a fixed-constant polynomial inequality), so the claim is absent."
+     "reason": "The display minimises (1-ρ)σ+1.312ρ² over ρ to get σ-σ²/5.248-1.172; [L] has no σ, no 1.312, and no such minimum (poly_regionS is a fixed-constant polynomial inequality), so the claim is absent.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "Same job (the inequality holding for every ρ), done by another route and with other constants.",
+      "old_note": "Lean has no 1.312/σ form of Lemma 12.2.3; regionS bounds with cE and σ=1.36 via poly_regionS, with no counterpart of this step."
+     }
     }
-   }
+   },
+   "proof_kind": "direct"
   },
   {
    "id": "Lemma 5.5 step 8",
@@ -8738,7 +8817,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "Only the upper bound θ≤0.6274 (the ω analogue) is used, and the stated ω-form condition then gives the bound on the quotient."
   },
   {
    "id": "Proposition 5.6 step 8",
@@ -8824,7 +8904,8 @@
      "ruling": "own",
      "reason": "Both sides are right about different places: c_Δ = 1.36 − c is used in star_core h2 (97-98) and enters as 0.0274177 in hstar and kapQ; merged as a chain, relatedMatch because ω(ρ) is replaced by the constant 0.6274."
     }
-   }
+   },
+   "summary": "`star_core` bounds the constant c_Delta term from below, `star_suffices` states the hypothesis with omega = 0.6274, and `kapQ` defines the right-hand constant."
   },
   {
    "id": "Proposition 5.6 step 9",
@@ -9156,21 +9237,10 @@
   {
    "id": "Proposition 5.6 step 12",
    "item": "Proposition 5.6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "The lower bound err ≥ −(φ(q)/q)(S_q + c_E − 1.312) for R ≥ 182 is absent; Lean uses |e| ≤ 7.284 R^{-1/3} f1q instead.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds err_{q,tR} from below by -(phi(q)/q)(S_q + c_E - 1.312) via (charpy),(hosmo) to control the right side of (karka); [L] bounds the same negative part of the error at tR, max(0,-e2), by Ramare's |e| <= 7.284 R^{-1/3} f1(q) with t >= 20000, and feeds it into regionL and checkC2_suffices.",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot6.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot6",
-     "lines": [
-      68,
-      98
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.e2_bound",
      "repo": "lean",
@@ -9178,70 +9248,20 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot2.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot2",
      "lines": [
-      142,
+      160,
       167
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.regionL",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot2.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot2",
-     "lines": [
-      171,
-      213
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.regionS",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot3",
-     "lines": [
-      74,
-      185
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.lamQ",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot2.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot2",
-     "lines": [
-      33,
-      34
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.kapQ",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot2.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot2",
-     "lines": [
-      30,
-      31
-     ]
+     ],
+     "snippet": "  have hpow : (Q / (s * q)) ^ (-(1 / 3 : ℝ)) ≤ 0.03685 * R ^ (-(1 / 3 : ℝ)) := by\n    rw [e, Real.mul_rpow (by linarith) hR0.le]\n    exact mul_le_mul_of_nonneg_right (rpow_neg_third_le ht) (by positivity)\n  refine max_le (by positivity) ?_\n  have h2 := (abs_le.1 h).1\n  calc _ ≤ 7.284 * (Q / (s * q)) ^ (-(1 / 3 : ℝ)) * f1q q := by linarith\n    _ ≤ 7.284 * (0.03685 * R ^ (-(1 / 3 : ℝ))) * f1q q := by gcongr\n    _ = _ := by ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.e2_bound",
+      "lines": [
+       142,
+       167
+      ],
+      "conclusion": "max(0, -e2) <= 7.284 * 0.03685 * R^(-1/3) f1(q), i.e. a lower bound on the error term at tR from Ramare's estimate."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.prop_12_2_4",
-     "TernaryGoldbach.MinorArcs.star_suffices",
-     "TernaryGoldbach.MinorArcs.e2_bound",
-     "TernaryGoldbach.MinorArcs.regionL",
-     "TernaryGoldbach.MinorArcs.regionS",
-     "TernaryGoldbach.MinorArcs.lamQ",
-     "TernaryGoldbach.MinorArcs.kapQ"
-    ],
-    "greps": [
-     "1.4709, 1.312, omega, cante, charpy, hosmo, koklo, joho, miasmar, 12.29..12.40 in tg/TernaryGoldbach/MinorArcs/LSQuot*.lean",
-     "c_rho|cRho|varpi|ϖ in tg/TernaryGoldbach"
-    ]
-   },
    "verification": {
     "carried_from": "book Proposition 12.2.4 step 12",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -9250,7 +9270,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
@@ -9258,9 +9279,15 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "The lower bound err ≥ −(φ(q)/q)(S_q + c_E − 1.312) is absent; [L]'s only bound on −e₂ is Ramaré's (e2_bound), which corresponds to [H]'s later (12.32), not to this easy bound."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "e2_bound bounds the same quantity (the negative part of err at tR) at this point of the reduction, with a different bound.",
+      "old_note": "The lower bound err ≥ −(φ(q)/q)(S_q + c_E − 1.312) for R ≥ 182 is absent; Lean uses |e| ≤ 7.284 R^{-1/3} f1q instead."
      }
     }
-   }
+   },
+   "proof_kind": "helper"
   },
   {
    "id": "Proposition 5.6 step 13",
@@ -10162,7 +10189,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -10170,6 +10198,11 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "No iteration to R > ϖ(q); [L] has no ϖ and replaces the small-R range by regionS with large_q_hS."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "[L] never derives the threshold ϖ(q)."
      }
     }
    }
@@ -10227,7 +10260,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -10235,6 +10269,11 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "Connective to ϖ₀; no ϖ, ϖ₀ in TernaryGoldbach/."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Signposting toward a definition [L] does not have."
      }
     }
    }
@@ -10292,7 +10331,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -10300,6 +10340,11 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "ϖ₀(q) and c(c₊) are defined nowhere in TernaryGoldbach/."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "This is a definition [L] never uses."
      }
     }
    }
@@ -10545,7 +10590,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "Ramaré's bound on G_q(R) is applied at tR with t≥20000, giving a bound on max(0,-e₂) of the form 7.284·0.03685·R^{-1/3}f₁(q)."
   },
   {
    "id": "Proposition 5.6 step 29",
@@ -10694,7 +10740,8 @@
      "ruling": "own",
      "reason": "Both parts are carried: $\\beta_\\rho$ shows up unnamed as $0.6274\\cdot0.03685$ (from `rpow_neg_third_le`) in `regionL`'s calc, and 'enough when $R\\ge\\lambda(q)$' is `lamQ` plus `regionL`, so not just hasPart."
     }
-   }
+   },
+   "summary": "`rpow_neg_third_le` bounds t^(-1/3), `lamQ` defines lambda(q) with the constant 7.4527, and `regionL` shows the needed inequality for R at least lamQ."
   },
   {
    "id": "Proposition 5.6 step 31",
@@ -10803,7 +10850,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "For q≥2.2·10¹⁰ the inequality lamQ(q)⁷≤a⁹q² is proved, which gives log q+1.039R≤1.03(qR)^{2/9} on the range needed by `regionS`."
   },
   {
    "id": "Proposition 5.6 step 33",
@@ -10886,7 +10934,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`gp_le_ghat` bounds g(p) by a comparison function, and `ghat_anti` and `shat_anti` show the comparison functions are antitone on primes."
   },
   {
    "id": "Proposition 5.6 step 34",
@@ -10941,7 +10990,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -10949,6 +10999,11 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "Connective to ϖ₀; no ϖ, ϖ₀ in TernaryGoldbach/."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Signposting toward a definition [L] does not have."
      }
     }
    }
@@ -11066,7 +11121,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -11074,6 +11130,11 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "Connective to ϖ₀; no ϖ, ϖ₀ in TernaryGoldbach/."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Signposting toward a definition [L] does not have."
      }
     }
    }
@@ -11211,7 +11272,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "An antitone majorant gHatQ of g(p) is defined with explicit values for p≤31, and the inequality lamQ(q)⁷≤a⁹q² for large q supplies the matching bound."
   },
   {
    "id": "Proposition 5.6 step 39",
@@ -11276,20 +11338,29 @@
   {
    "id": "Proposition 5.6 step 40",
    "item": "Proposition 5.6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] has no bound $\\prod_{p\\le p_1}p/(p-1)<1.90516\\log p_1$; it uses `gHatQ` products.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "To bound λ(q), the text bounds prod_{p<=p1} p/(p-1) < 1.90516 log p1 using [RS (3.30)] and a computation. [L] bounds the combined product q/φ(q)·f1(q) = prod gp(p) by prod ĝ over the first k primes, then uses the tabulated G_10 for k <= 10 (and ĝ^21 <= p^2 for k >= 11).",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.gHatQ",
+     "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
      "file": "TernaryGoldbach/MinorArcs/LSQuot4.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot4",
      "lines": [
-      25,
-      30
-     ]
+      268,
+      277
+     ],
+     "snippet": "  have hg := (exch_gen gHatQ (fun n => by linarith [one_le_ghat n])\n    (fun a b ha hb hab => ghat_anti ha hb hab) P hPp).1\n  have hs := (exch_gen shat shat_nonneg (fun a b ha hb hab => shat_anti ha hb hab) P hPp).2\n  have hG : ∏ p ∈ P, gp p ≤ Gk P.card :=\n    (prod_le_prod₀ (fun p hp => by\n      have := (Nat.prime_of_mem_primeFactors hp).two_le\n      unfold gp; have := f1p_pos p\n      have h2 : (2 : ℝ) ≤ p := by exact_mod_cast (Nat.prime_of_mem_primeFactors hp).two_le\n      exact mul_nonneg (div_nonneg (by linarith) (by linarith)) this.le)\n      fun p hp => gp_le_ghat (hPp p hp)).trans hg",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
+      "lines": [
+       262,
+       291
+      ],
+      "conclusion": "prod_{p|q} (p/(p-1)) f1(p) <= G_k, the product of the antitone majorant ĝ over the first k = ω(q) primes, by the exchange argument."
+     }
     },
     {
      "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
@@ -11298,21 +11369,20 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot5",
      "lines": [
-      217,
-      277
-     ]
+      229,
+      232
+     ],
+     "snippet": "    have hG : Gk k ≤ Gk 10 := by\n      unfold Gk\n      exact prod_le_prod_of_subset_of_one_le₀ (range_subset_range.2 (by omega))\n        (fun i _ => by linarith [one_le_ghat (Nat.nth Nat.Prime i)]) fun i _ _ => one_le_ghat _",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+      "lines": [
+       217,
+       277
+      ],
+      "conclusion": "For k <= 10, G_k <= G_10, which Gk_10 then evaluates numerically."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.gHatQ",
-     "TernaryGoldbach.MinorArcs.lamQ_pow_le",
-     "TernaryGoldbach.MinorArcs.lamQ_le_k"
-    ],
-    "greps": [
-     "1\\.90516|1\\.9051 in TernaryGoldbach/ (all)"
-    ]
-   },
    "verification": {
     "carried_from": "book Proposition 12.2.4 step 40",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -11321,7 +11391,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
@@ -11329,9 +11400,16 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "No bound ∏_{p≤p₁}p/(p−1) < 1.90516 log p₁; [L] bounds ∏ (p/(p−1))f₁(p) jointly via ĝ (gHatQ, Gk) and Prelim.F_all has a different right side."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "The Lean lines bound the same product-over-primes factor of λ(q) at this point, by another route.",
+      "old_note": "[L] has no bound $\\prod_{p\\le p_1}p/(p-1)<1.90516\\log p_1$; it uses `gHatQ` products."
      }
     }
-   }
+   },
+   "proof_kind": "chain",
+   "summary": "The product over p | q is bounded by the antitone majorant's product over the first ω(q) primes, which for ω(q) ≤ 10 is at most its value at ten primes."
   },
   {
    "id": "Proposition 5.6 step 41",
@@ -11440,7 +11518,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`star_core` bounds theta by 0.6274 from l <= 0.6L and l >= 11.5, and `rpow_neg_third_le` bounds t^(-1/3) for t >= 20000."
   },
   {
    "id": "Proposition 5.6 step 43",
@@ -11992,7 +12071,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -12000,6 +12080,11 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "Signposting for the absent 0.74914x^{1/3} bound."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "This is signposting prose with no Lean counterpart."
      }
     }
    }
@@ -12076,55 +12161,71 @@
   {
    "id": "Proposition 5.6 step 53",
    "item": "Proposition 5.6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Mertens-type Σ log p/p < log p_1 [3.24] is absent; Lean uses explicit numeric bounds on the first primes' Σ log p/p (Sk_10_le) instead.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds sum_{p<=p1} log p/p < log p1 by [RS (3.24)] to control S_q in κ(q). [L] controls the same sum through ŝ and the exchange argument: explicit numerics for the first ten primes, and log p/p <= log p in the primorial induction.",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.Sk_10_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot5",
-     "lines": [
-      63,
-      71
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.log_primes_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot5",
-     "lines": [
-      33,
-      61
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.shat",
+     "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
      "file": "TernaryGoldbach/MinorArcs/LSQuot4.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot4",
      "lines": [
-      32,
-      33
-     ]
+      270,
+      278
+     ],
+     "snippet": "  have hs := (exch_gen shat shat_nonneg (fun a b ha hb hab => shat_anti ha hb hab) P hPp).2\n  have hG : ∏ p ∈ P, gp p ≤ Gk P.card :=\n    (prod_le_prod₀ (fun p hp => by\n      have := (Nat.prime_of_mem_primeFactors hp).two_le\n      unfold gp; have := f1p_pos p\n      have h2 : (2 : ℝ) ≤ p := by exact_mod_cast (Nat.prime_of_mem_primeFactors hp).two_le\n      exact mul_nonneg (div_nonneg (by linarith) (by linarith)) this.le)\n      fun p hp => gp_le_ghat (hPp p hp)).trans hg\n  have hS : Sq q ≤ Sk P.card := (sum_le_sum fun p hp => le_shat (hPp p hp)).trans hs",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
+      "lines": [
+       262,
+       291
+      ],
+      "conclusion": "S_q <= S_k, the sum of the majorant ŝ(p) of log p/p over the first k = ω(q) primes, by the exchange argument."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot5",
+     "lines": [
+      233,
+      242
+     ],
+     "snippet": "    have hS : Sk k ≤ Sk 10 := by\n      unfold Sk\n      exact sum_le_sum_of_subset_of_nonneg (range_subset_range.2 (by omega))\n        fun i _ _ => shat_nonneg _\n    set κ0 : ℝ := 0.3726 * (23.8143 - (2 * 1.098613 / 3 + 1.609442 / 5 + 1.94597 / 7 +\n      2.397896 / 11 + 2.564952 / 13 + 2.833241 / 17 + 2.944498 / 19 + 3.135495 / 23 +\n      3.367296 / 29)) + 0.0274177 with hκ0def\n    have hκ0 : 0 < κ0 := by norm_num [hκ0def]\n    have hκ : κ0 ≤ kapk k q := by\n      unfold kapk; have := Sk_10_le; rw [hκ0def]; nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+      "lines": [
+       217,
+       277
+      ],
+      "conclusion": "For k <= 10, S_k <= S_10 <= explicit numerics (Sk_10_le), giving κ(q) >= κ0."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.IHk_step",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot5",
+     "lines": [
+      185,
+      193
+     ],
+     "snippet": "  have hκ' : kapk k (primk k) ≤ kapk (k + 1) (primk (k + 1)) := by\n    unfold kapk\n    rw [Sk_succ, primk_succ]\n    have hsh : shat p = Real.log p / p := by unfold shat; rw [if_neg (by omega)]\n    rw [hsh]; push_cast\n    rw [Real.log_mul hprim0.ne' (by positivity)]\n    have hlp : 0 ≤ Real.log p := Real.log_natCast_nonneg p\n    have : Real.log p / p ≤ Real.log p := div_le_self hlp (by linarith)\n    linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.IHk_step",
+      "lines": [
+       173,
+       208
+      ],
+      "conclusion": "For k >= 11, each added prime raises S by log p/p <= log p, so κ_k(p1...pk) increases along the primorials."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.Sk_10_le",
-     "TernaryGoldbach.MinorArcs.log_primes_le",
-     "TernaryGoldbach.MinorArcs.shat"
-    ],
-    "greps": [
-     "0.74914|6.62365|1.01624|0.47126|0.33102|846.765|838.227|10.09062|112000|7.06909 in TernaryGoldbach/ and BLUEPRINT.md, NOTES.md",
-     "varpi|ϖ|theta|Abel in TernaryGoldbach/MinorArcs/LSQuot*.lean"
-    ]
-   },
    "verification": {
     "carried_from": "book Proposition 12.2.4 step 53",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -12133,14 +12234,22 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus): noMatch search re-run"
+      "judge (opus): noMatch search re-run",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
      "ruling": "confirmed",
-     "reason": "The Rosser-Schoenfeld bound $\\sum_{p\\le p_1}\\log p/p<\\log p_1$ is absent: [L] has only `Sq_le_log` ($S_q\\le\\log q$) and explicit numeric `Sk`/`shat` bounds, which do not carry this claim."
+     "reason": "The Rosser-Schoenfeld bound $\\sum_{p\\le p_1}\\log p/p<\\log p_1$ is absent: [L] has only `Sq_le_log` ($S_q\\le\\log q$) and explicit numeric `Sk`/`shat` bounds, which do not carry this claim.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "The Lean lines bound the same sum Σ log p/p inside κ(q) at this point, by another route.",
+      "old_note": "Mertens-type Σ log p/p < log p_1 [3.24] is absent; Lean uses explicit numeric bounds on the first primes' Σ log p/p (Sk_10_le) instead."
+     }
     }
-   }
+   },
+   "proof_kind": "chain",
+   "summary": "The sum over p | q is bounded by the majorant's sum over the first ω(q) primes: numerically up to ten primes, then by induction along the primorials."
   },
   {
    "id": "Proposition 5.6 step 54",
@@ -12203,7 +12312,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "λ(q) is defined by the stated formula and bounded by a product over the first ω(q) primes via an exchange argument."
   },
   {
    "id": "Proposition 5.6 step 55",
@@ -12253,7 +12363,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -12261,6 +12372,11 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "ϖ(q) and its monotonicity are absent from TernaryGoldbach/."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "This is a property of a quantity [L] never defines."
      }
     }
    }
@@ -12373,7 +12489,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -12381,6 +12498,11 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "No ϖ = ϖ₀ monotonicity argument or 112000 threshold (112000 occurs only in an unrelated kernel table in Prelim/SmallMuPhi)."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "[L] has no ϖ, so this monotonicity step has no Lean counterpart."
      }
     }
    }
@@ -12612,7 +12734,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`lamQ_pow_le` bounds lambda(q)^7 for large q via bounds on G_k and S_k and induction over primorials, with `base_10` giving the numeric base case."
   },
   {
    "id": "Proposition 5.6 step 62",
@@ -12678,26 +12801,16 @@
      "ruling": "mapper",
      "reason": "The conclusion 'λ<ϖ_0, so no checking for $q\\ge2.2\\cdot10^{10}$' is replaced in [L] by `large_q_hS` (R<λ(q) satisfies the small-R hypothesis of `regionS`) together with `regionL`; the mapper's chain names the lines that play this role, while the verifier's `lamQ_pow_le` is only an input to it."
     }
-   }
+   },
+   "summary": "For q≥2.2·10¹⁰ and R<λ(q) the needed bound on log q+1.039R holds, and `regionL` handles the case λ(q)≤Q₀/(sq) with threshold λ(q)."
   },
   {
    "id": "Proposition 5.6 step 63",
    "item": "Proposition 5.6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "The q ≥ ∏_{p≤31} p case via ϖ=ϖ_0 and (12.drolo) is absent; Lean covers all q ≥ 2.2·10^10 by lamQ_pow_le (primorial induction) instead.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text opens the case q >= ∏_{p<=31} p with rough bounds through ϖ = ϖ_0 and (drolo). [L] settles the corresponding large case, k >= 11 prime factors with q >= p1...pk, by the primorial induction and the exchange argument.",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.hcc_large",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot6.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot6",
-     "lines": [
-      19,
-      38
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
      "repo": "lean",
@@ -12705,21 +12818,20 @@
      "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot5",
      "lines": [
-      217,
+      255,
       277
-     ]
+     ],
+     "snippet": "  · -- `k ≥ 11`\n    obtain ⟨hκ, hmain⟩ := IHk_all hk\n    have hprim : ((primk k : ℕ) : ℝ) ≤ q := by\n      have hPp : ∀ p ∈ q.primeFactors, p.Prime := fun p hp => Nat.prime_of_mem_primeFactors hp\n      have h2 := (TernaryGoldbach.Prelim.exch q.primeFactors hPp).2\n      have h3 : ∏ p ∈ q.primeFactors, p ≤ q := Nat.le_of_dvd (by omega) (Nat.prod_primeFactors_dvd q)\n      unfold primk; exact_mod_cast h2.trans h3\n    have hprim0 : (0 : ℝ) < primk k := by\n      unfold primk; push_cast\n      exact prod_pos fun i _ => by exact_mod_cast (Nat.prime_nth_prime i).pos\n    have hκq : kapk k (primk k) ≤ kapk k q := by\n      unfold kapk; have := Real.log_le_log hprim0 hprim; linarith\n    obtain ⟨hlam, -⟩ := lamQ_le_k hq1 (lt_of_lt_of_le hκ hκq)\n    have hG0 : 0 ≤ Gk k := by\n      unfold Gk; exact prod_nonneg fun i _ => by linarith [one_le_ghat (Nat.nth Nat.Prime i)]\n    have h1 : lamQ q ≤ (7.4527 * Gk k / kapk k (primk k)) ^ 3 :=\n      hlam.trans (pow_le_pow_left₀ (div_nonneg (mul_nonneg (by norm_num) hG0) (hκ.le.trans hκq))\n        (div_le_div₀ (mul_nonneg (by norm_num) hG0) le_rfl hκ hκq) 3)\n    calc lamQ q ^ 7 ≤ ((7.4527 * Gk k / kapk k (primk k)) ^ 3) ^ 7 := pow_le_pow_left₀ hlam0 h1 7\n      _ = (7.4527 * Gk k) ^ 21 / kapk k (primk k) ^ 21 := by rw [← pow_mul, div_pow]\n      _ ≤ (103 / 120 : ℝ) ^ 9 * ((primk k : ℕ) : ℝ) ^ 2 := by\n          rw [div_le_iff₀ (by positivity)]; exact hmain\n      _ ≤ (103 / 120 : ℝ) ^ 9 * (q : ℝ) ^ 2 := by gcongr",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+      "lines": [
+       217,
+       277
+      ],
+      "conclusion": "When q has k >= 11 prime factors (so q >= primk k >= ∏_{p<=31} p), λ(q)^7 <= a^9 q^2, using the primorial induction IHk_all."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.hcc_large",
-     "TernaryGoldbach.MinorArcs.lamQ_pow_le"
-    ],
-    "greps": [
-     "0.74914|6.62365|1.01624|0.47126|0.33102|846.765|838.227|10.09062|112000|7.06909 in TernaryGoldbach/ and BLUEPRINT.md, NOTES.md",
-     "varpi|ϖ|theta|Abel in TernaryGoldbach/MinorArcs/LSQuot*.lean"
-    ]
-   },
    "verification": {
     "carried_from": "book Proposition 12.2.4 step 63",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -12728,14 +12840,21 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus): noMatch search re-run"
+      "judge (opus): noMatch search re-run",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
      "ruling": "confirmed",
-     "reason": "[L] never defines $\\varpi$ or $\\varpi_0$ and has no $q\\ge\\prod_{p\\le31}p$ case; it covers that range through `IHk_all`/`lamQ_pow_le`. A grep for 0.2797 and 0.911 returns nothing."
+     "reason": "[L] never defines $\\varpi$ or $\\varpi_0$ and has no $q\\ge\\prod_{p\\le31}p$ case; it covers that range through `IHk_all`/`lamQ_pow_le`. A grep for 0.2797 and 0.911 returns nothing.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "The k >= 11 branch settles the corresponding case of the large-q analysis, by another route.",
+      "old_note": "The q ≥ ∏_{p≤31} p case via ϖ=ϖ_0 and (12.drolo) is absent; Lean covers all q ≥ 2.2·10^10 by lamQ_pow_le (primorial induction) instead."
+     }
     }
-   }
+   },
+   "proof_kind": "helper"
   },
   {
    "id": "Proposition 5.6 step 64",
@@ -12847,7 +12966,8 @@
      "ruling": "mapper",
      "reason": "What remains to be shown here corresponds in [L] to the primorial induction `IHk_step`/`lamQ_pow_le`, a different inequality ($\\lambda^7\\le(103/120)^9q^2$) at the same point of the argument, so relatedMatch."
     }
-   }
+   },
+   "summary": "`IHk_step` is the induction step over primorials for the lambda bound, and `lamQ_pow_le` combines it with the numerical case k <= 10."
   },
   {
    "id": "Proposition 5.6 step 66",
@@ -13029,7 +13149,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The inequality lamQ(q)⁷≤(103/120)⁹q² is proved for q≥2.2·10¹⁰ by cases on the number of prime factors, and it implies the bound on log q+1.039R."
   },
   {
    "id": "Proposition 5.6 step 69",
@@ -13944,66 +14065,51 @@
   {
    "id": "Proposition 5.6 step 80",
    "item": "Proposition 5.6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] has no $210\\nmid q$, $q\\ge3.3\\cdot10^9$ conclusion; its threshold is $q\\ge2.2\\cdot10^{10}$ for all $q$.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text concludes ϖ(q) > λ(q) for q >= 3.3·10^9 with 210 ∤ q, so the small-R lemma covers every R < λ(q). [L] reaches the corresponding conclusion for all q >= 2.2·10^10: the regionS hypothesis holds for every R < λ(q).",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot4.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot4",
-     "lines": [
-      262,
-      291
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+     "declaration": "TernaryGoldbach.MinorArcs.large_q_hS",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
      "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
      "module": "TernaryGoldbach.MinorArcs.LSQuot5",
      "lines": [
-      217,
-      277
-     ]
+      306,
+      311
+     ],
+     "snippet": "theorem large_q_hS {q : ℕ} (hq : 22000000000 ≤ q) {R : ℝ} (hR1 : 1 ≤ R) (hR : R < lamQ q) :\n    Real.log q + 1.039 * R ≤ 1.03 * ((q : ℝ) * R) ^ ((2 : ℝ) / 9) := by\n  have hq' : (22000000000 : ℝ) ≤ q := by exact_mod_cast hq\n  have hq0 : (0 : ℝ) < q := by linarith\n  have hR0 : 0 < R := by linarith\n  have hlam := lamQ_pow_le hq",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.large_q_hS",
+      "lines": [
+       305,
+       340
+      ],
+      "conclusion": "For q >= 2.2·10^10 and 1 <= R < λ(q), log q + 1.039R <= 1.03(qR)^{2/9}, via λ(q)^7 <= a^9 q^2."
+     }
     },
     {
-     "declaration": "TernaryGoldbach.MinorArcs.ghat_pow_le",
+     "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot5.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot5",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot6.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot6",
      "lines": [
-      132,
-      171
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.lamQ",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot2.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot2",
-     "lines": [
-      33,
-      34
-     ]
+      85,
+      90
+     ],
+     "snippet": "    rcases le_or_gt (lamQ q) R with hL | hL\n    · exact regionL hQ hQ₀ hρ hq hs hR hL\n    have hq' : (22000000000 : ℝ) ≤ q := by exact_mod_cast hbig\n    have hlq : 3 ≤ Real.log q := by\n      have := log_Q1_ge.trans (Real.log_le_log (by norm_num) hq'); linarith\n    exact regionS hQ hQ₀ hρ hq hs hR (by norm_num) hlq (hcc_large hbig) (large_q_hS hbig hR hL)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+      "lines": [
+       68,
+       98
+      ],
+      "conclusion": "For large q, R >= λ(q) is handled by regionL and R < λ(q) by regionS with large_q_hS, so the two regions cover every R."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.lamQ_le_k",
-     "TernaryGoldbach.MinorArcs.lamQ_pow_le",
-     "TernaryGoldbach.MinorArcs.ghat_pow_le",
-     "TernaryGoldbach.MinorArcs.lamQ"
-    ],
-    "greps": [
-     "0.8009|190.272|2.24742|0.07354|84.351|7.44586|477.465|916.322|429.731|3.3 \\* 10\\^9|0.6924|1.633 in TernaryGoldbach/MinorArcs/"
-    ]
-   },
    "verification": {
     "carried_from": "book Proposition 12.2.4 step 80",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -14012,7 +14118,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
@@ -14020,9 +14127,16 @@
       "file": "A05",
       "ruling": "confirmed",
       "reason": "No 210 ∤ q, q ≥ 3.3·10^9 conclusion; [L]'s threshold is q ≥ 2.2·10^10 for all q."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "The Lean lines establish the same covering conclusion at this point, with a different threshold.",
+      "old_note": "[L] has no $210\\nmid q$, $q\\ge3.3\\cdot10^9$ conclusion; its threshold is $q\\ge2.2\\cdot10^{10}$ for all $q$."
      }
     }
-   }
+   },
+   "proof_kind": "chain",
+   "summary": "For large q the small-R bound comes from λ(q)^7 ≤ a^9 q^2, and the two regions R < λ(q) and R ≥ λ(q) together cover every R."
   },
   {
    "id": "Proposition 5.6 step 81",
@@ -14030,7 +14144,7 @@
    "relation": "relatedMatch",
    "class": "Deviates",
    "note": "Same place (small $q$, bounding the max of $\\mathrm{err}$ over $R<\\lambda(q)$) but [L] replaces the computation by the reduction to $\\Phi(q,\\lfloor R\\rfloor,L)\\le0$ for all $q<2.2\\cdot10^{10}$ with $c_+=2$, proved structurally; no $3.3\\cdot10^9$ split, no (luce)/(agammen) form.",
-   "proof_kind": "chain",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.checkC2_suffices",
@@ -14124,7 +14238,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "Since G_q(R) depends only on ⌊R⌋ and the log terms are monotone, the inequality at real R follows from a check at the integer ⌊R⌋, done by kernel computation."
   },
   {
    "id": "Corollary 5.7 step 1",
@@ -14207,7 +14322,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`prop_12_1_2` bounds the arc integral given a quotient bound, `prop_12_2_4` supplies that quotient bound, and `cor_12_2_5` combines them."
   },
   {
    "id": "Corollary 5.8 step 1",
@@ -14257,12 +14373,18 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus): noMatch search re-run"
+      "judge (opus): noMatch search re-run",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
      "ruling": "confirmed",
-     "reason": "Cor 12.2.6 is not assembled in [L]: there is no use of Ramaré's Thm 5.2 or point-evaluation sum over reduced $a/q$, and greps for 12.2.6, 5.2 and MR2493924 match only a BLUEPRINT listing."
+     "reason": "Cor 12.2.6 is not assembled in [L]: there is no use of Ramaré's Thm 5.2 or point-evaluation sum over reduced $a/q$, and greps for 12.2.6, 5.2 and MR2493924 match only a BLUEPRINT listing.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Corollary 12.2.6 has no counterpart in [L]."
+     }
     }
    }
   },
@@ -14343,7 +14465,8 @@
       "reason": "Farc_le (LargeSieveProof.lean:225-244), via Farc_eq/Bombieri's identity, is the same G_q-ratio comparison for F_R(beta), which at beta=0 is a sum of |S(b/q)|^2 over moduli q~<=2R."
      }
     }
-   }
+   },
+   "summary": "The character expansion of F_R gives Ramaré's comparison F_{Q₀}≤C·F_Q whenever C bounds the ratios G_q(2Q₀/sq)/G_q(2Q/sq), and at β=0 this is the stated sum inequality."
   },
   {
    "id": "Corollary 5.8 step 3",
@@ -14879,7 +15002,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`prop_13_1_2` defines f n as I(n+1) - I n, and `layer_le` shows this is the integral over the layer between consecutive major-arc sets."
   },
   {
    "id": "Proposition 6.2 step 3",
@@ -15071,7 +15195,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "A layer decomposition bounds the integral outside the arcs by a sum over r of g(n) times the increments, plus a last-layer term, giving the bound by ∑f(n)g(n)."
   },
   {
    "id": "Proposition 6.2 step 7",
@@ -15391,7 +15516,8 @@
     "disagreement": "class broadMatch vs relatedMatch",
     "ruling": "verifier",
     "reason": "`norm_S_eta2_le_of_not_mem` (lines 118-123) takes the Dirichlet approximation at each scale z = wy with Q = (3/4)z^{2/3} and rescales, not once at y with Q=(3/4)y^{2/3}; a different object enters the step, so relatedMatch, not broadMatch."
-   }
+   },
+   "summary": "`minor_total` sets y = x/kappa, `exists_approx2` gives the Dirichlet approximation, `norm_S_eta2_le_of_not_mem` rescales it, and `mem_majorArcs_of_approx` does the parity analysis for the arcs."
   },
   {
    "id": "Theorem 6.3 step 2",
@@ -15497,7 +15623,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "From the approximation of 2α one writes α=m/(2q)+δ/(2y) and splits on parity, so α not in the major arc forces r≤max(1,|δ|/δ₀)q."
   },
   {
    "id": "Theorem 6.3 step 4",
@@ -15560,7 +15687,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`norm_S_eta2_le_of_not_mem` gives a pointwise bound outside the major arcs, and `prop_11_2_3'` integrates it against phi to bound S_eta_*."
   },
   {
    "id": "Theorem 6.3 step 5",
@@ -15682,7 +15810,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The inequality r≤max(1,|δ|/8)q for α outside the major arc, together with monotonicity of g_z, bounds |S_{η₂}(α,z)| by g_z(min(1,w)n)·z."
   },
   {
    "id": "Theorem 6.3 step 7",
@@ -15807,7 +15936,8 @@
     "disagreement": "class relatedMatch vs noMatch",
     "ruling": "mapper",
     "reason": "[L] handles case q > z^{1/3}/6 at this place via `theorem_3_1_1` at scale z = wy with threshold z ≥ 2.16·10^20 (no K, no C_{φ,3}); same role with different quantities, so relatedMatch rather than noMatch."
-   }
+   },
+   "summary": "For q above z^{1/3}/6, `theorem_3_1_1.2` gives the h-type bound on S_{η₂}, and the threshold 2.16·10²⁰ is checked from the hypothesis on n and y."
   },
   {
    "id": "Theorem 6.3 step 9",
@@ -15972,7 +16102,8 @@
     "disagreement": "disjoint declarations",
     "ruling": "own",
     "reason": "Both sides are right that [L] replaces the capped g with g(n) = y ĝ(y,n) on levels up to a free r₂ ≤ y^{1/3}/6; merged their ends (ghatY, minor_total 387, NumericsGoal, thm_13_2_1_repaired statement)."
-   }
+   },
+   "summary": "`ghatY` defines a majorant with a max against h, `minor_total` uses it as the level function, and `NumericsGoal` and `thm_13_2_1_repaired` replace the book's extension beyond r1 by a top level."
   },
   {
    "id": "Theorem 6.3 step 11",
@@ -16051,7 +16182,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "ĝ is defined as 1.398 max(g_y(n),h(y)) plus a cubic term, so g≥h holds by construction, ĝ is non-increasing, and the bound on S_{η*} follows."
   },
   {
    "id": "Theorem 6.3 step 12",
@@ -16179,7 +16311,8 @@
      "ruling": "own",
      "reason": "Both ends are right and they complement each other: the step introduces the split $S_{\\eta_+}=S_{1,\\eta_+}+S_{2,\\eta_+}$, which [L] makes with the coefficients `a₁`, `a₂` and the identity `S_etaPlus_eq`."
     }
-   }
+   },
+   "summary": "The coefficients a₁ and a₂ are defined by splitting off primes above √x, and S_{η₊} is shown to be the sum of the two exponential sums."
   },
   {
    "id": "Theorem 6.3 step 14",
@@ -16433,7 +16566,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`norm_S_etaStar_le_uniform` gives a uniform sup bound, and `minor_total` pulls it out of the integral and applies Plancherel to the remaining integral of |S_2|^2."
   },
   {
    "id": "Theorem 6.3 step 19",
@@ -16582,7 +16716,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "A bound on each term for n≤x and a partial-summation argument using ψ-θ<1.4262√y give the numerical bound E≤8·10⁻¹¹x for large x."
   },
   {
    "id": "Theorem 6.3 step 21",
@@ -16647,7 +16782,8 @@
      "ruling": "verifier",
      "reason": "The step is a citation connective claiming use of [RS62, Thm. 12]; `sum_vonMangoldt_lt` is that theorem with the same constant 1.03883, and E_partial's `hψ` (210-218) applies it at y = sqrt x exactly as the text does. The 1.94 sup-norm and merged sums belong to step 22, not to this citation."
     }
-   }
+   },
+   "summary": "`sum_vonMangoldt_lt` gives the Rosser-Schoenfeld bound psi(y) < 1.03883 y, and `E_partial` applies it to the sum of Lambda up to sqrt x."
   },
   {
    "id": "Theorem 6.3 step 22",
@@ -16710,7 +16846,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "For n≤√x each term is bounded using Λ(n)≤log x/2 and η₊≤1.94, and the bound on the sum of Λ up to √x gives the displayed estimate."
   },
   {
    "id": "Theorem 6.3 step 23",
@@ -16793,7 +16930,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`norm_S_etaStar_le_uniform` and `norm_sq_sum_a₂_le` give the sup bound and the l2 bound on a2, and `minor_total` combines them into a bound on the integral."
   },
   {
    "id": "Theorem 6.3 step 24",
@@ -16876,7 +17014,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "A uniform bound 22.75x/κ on |S_{η_*}| is multiplied by the L² bound 8·10⁻¹¹x on S₂, giving the bound on the integral outside the arcs."
   },
   {
    "id": "Theorem 6.3 step 25",
@@ -17045,7 +17184,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "`thm_13_2_1_repaired` combines the l-infinity input with the l2 input from `cor_12_2_5`, whose majorant `Hl2y` is defined with c_plus = 2."
   },
   {
    "id": "Theorem 6.3 step 28",
@@ -17147,7 +17287,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "The conditions (20000r₁)²≤x/784 and 2r₁≤(2√(x/784))^{0.6} are the hypotheses for applying `cor_12_2_5`, which gives the ℓ² bound over arcs."
   },
   {
    "id": "Theorem 6.3 step 30",
@@ -17210,7 +17351,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "The jump of H at r₁ is controlled through the top-level term of the bound, whose numerical content is collected in `Mexpr` and shown to be at most 1.037."
   },
   {
    "id": "Theorem 6.3 step 31",
@@ -17273,7 +17415,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`ghatY` defines the Lean replacement for g(r) plus the constant, and `minor_total` shows it bounds |S_eta_*| off the major arcs as the l-infinity input."
   },
   {
    "id": "Theorem 6.3 step 32",
@@ -17352,7 +17495,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "`minor_total` shows the level function is non-increasing, which lets `prop_13_1_2` give the discrete bound used in `thm_13_2_1_repaired`."
   },
   {
    "id": "Theorem 6.3 step 33",
@@ -17537,7 +17681,8 @@
     ],
     "agreed": true,
     "same_relation": true
-   }
+   },
+   "summary": "A quadratic triangle-type inequality replaces the square-root triangle inequality, and with the split S_{η₊}=S₁+S₂ and the bound on ∫|S₂|² it gives I₀≥8.6294x."
   },
   {
    "id": "Theorem 6.3 step 36",
@@ -17683,7 +17828,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "Plancherel gives the integral of |S₂|² as the sum of squared coefficients, which is bounded by 8·10⁻¹¹x for x≥4.9·10²⁶, a numerical bound on E."
   },
   {
    "id": "Theorem 6.3 step 38",
@@ -17975,7 +18121,8 @@
      "ruling": "verifier",
      "reason": "The step rests on η₂ ≥ 0 and |η₂|_1 = 1, and Lean proves both (`eta2_nonneg`, `integral_abs_eta2`). The scaled identity ∫_1^∞ η₂(t/x)dt = x and the zero sum are absent, so hasPart with those two facts as the part is right; noMatch ignores lines that do carry part of the step."
     }
-   }
+   },
+   "summary": "η₂ is shown nonnegative and to have integral 1, so its L¹ norm is 1 and the integral of η₂(t/x) equals x."
   },
   {
    "id": "Lemma A.2 step 4",
@@ -18680,7 +18827,8 @@
      "ruling": "mapper",
      "reason": "At this place Lean bounds the same sum ΣΛ(n)η₂(n/x) by a different argument: unconditionally, by Chebyshev, ≤ 17x (`norm_S_eta2_le_trivial`), with no RH lemma and no computation for x<2000. relatedMatch with the different argument and weaker constant noted is more accurate than noMatch."
     }
-   }
+   },
+   "summary": "`norm_S_eta2_le_trivial` gives an unconditional 17z bound from a bound on psi, and `prop_11_2_3` applies it at scale wy in place of the book's constant."
   },
   {
    "id": "Lemma B.1 step 1",
@@ -19424,7 +19572,8 @@
      "agreed": true,
      "same_relation": true
     }
-   }
+   },
+   "summary": "`ternaryGoldbachUpTo_1e27` handles small odd n via binary Goldbach for n-3, and larger n by choosing a prime p so that n-p is even and in range for binary Goldbach."
   },
   {
    "id": "Proposition C.1 step 2",
@@ -19514,9 +19663,9 @@
   {
    "id": "Proposition C.1 step 4",
    "item": "Proposition C.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Delta values from Ramare's tables and RH verification are not used; the ladder replaces the prime-gap step.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text uses Ramare's tables to pick Delta for n-4>=e^59 so that [n-4-(n-4)/Delta, n-4] contains a prime. Lean gets a prime in [n-4e18, n-4] for all 4e18+3<n<=1e27 from ladder_prime instead.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
@@ -19525,32 +19674,20 @@
      "file": "TernaryGoldbach/Helfgott/SmallCases.lean",
      "module": "TernaryGoldbach.Helfgott.SmallCases",
      "lines": [
-      20,
-      40
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Ladder.ladder_prime",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Ladder/Main.lean",
-     "module": "TernaryGoldbach.Ladder.Main",
-     "lines": [
-      17,
-      25
-     ]
+      32,
+      35
+     ],
+     "snippet": "    have hi2 : (n - 5) / 3927138875067072512 ≤ 254638308 := by omega\n    obtain ⟨p, hp, hp1, hp2⟩ := Ladder.ladder_prime hi1 hi2\n    have hpb : p ≤ n - 4 := by omega\n    have hpa : n - 4 * 10 ^ 18 ≤ p := by omega",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+      "lines": [
+       20,
+       40
+      ],
+      "conclusion": "For odd 4e18+3<n<=1e27, rung (n-5)/(111616*2^45) of the ladder gives a prime p with n-4e18<=p<=n-4."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
-     "TernaryGoldbach.Ladder.ladder_prime"
-    ],
-    "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
-     "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
-    ]
-   },
    "verification": {
     "carried_from": "book Proposition D.0.3 step 4",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -19559,7 +19696,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
@@ -19567,16 +19705,22 @@
       "file": "A07",
       "ruling": "confirmed",
       "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "Lean's ladder lines provide the prime in the window for this range.",
+      "old_note": "Delta values from Ramare's tables and RH verification are not used; the ladder replaces the prime-gap step."
      }
     }
-   }
+   },
+   "proof_kind": "direct"
   },
   {
    "id": "Proposition C.1 step 5",
    "item": "Proposition C.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Delta values from Ramare's tables and RH verification are not used; the ladder replaces the prime-gap step.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text gives Delta values (case a/b/c) that guarantee a prime in [n-4-(n-4)/Delta, n-4]. Lean gets the prime in [n-4e18, n-4] from a Proth-prime ladder rung.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
@@ -19585,32 +19729,20 @@
      "file": "TernaryGoldbach/Helfgott/SmallCases.lean",
      "module": "TernaryGoldbach.Helfgott.SmallCases",
      "lines": [
-      20,
-      40
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Ladder.ladder_prime",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Ladder/Main.lean",
-     "module": "TernaryGoldbach.Ladder.Main",
-     "lines": [
-      17,
-      25
-     ]
+      32,
+      35
+     ],
+     "snippet": "    have hi2 : (n - 5) / 3927138875067072512 ≤ 254638308 := by omega\n    obtain ⟨p, hp, hp1, hp2⟩ := Ladder.ladder_prime hi1 hi2\n    have hpb : p ≤ n - 4 := by omega\n    have hpa : n - 4 * 10 ^ 18 ≤ p := by omega",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+      "lines": [
+       20,
+       40
+      ],
+      "conclusion": "For odd 4e18+3<n<=1e27, rung (n-5)/(111616*2^45) of the ladder gives a prime p with n-4e18<=p<=n-4."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
-     "TernaryGoldbach.Ladder.ladder_prime"
-    ],
-    "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
-     "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
-    ]
-   },
    "verification": {
     "carried_from": "book Proposition D.0.3 step 5",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -19619,21 +19751,28 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus): noMatch search re-run"
+      "judge (opus): noMatch search re-run",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
      "ruling": "confirmed",
-     "reason": "Lean never uses Ramaré's [Rpc] prime-gap constants. `ternaryGoldbachUpTo_1e27` takes its prime p ∈ [n-4·10¹⁸, n-4] from the kernel-checked Proth ladder (`ladder_prime`), and greps for the Δ values and Rpc in TernaryGoldbach find nothing."
+     "reason": "Lean never uses Ramaré's [Rpc] prime-gap constants. `ternaryGoldbachUpTo_1e27` takes its prime p ∈ [n-4·10¹⁸, n-4] from the kernel-checked Proth ladder (`ladder_prime`), and greps for the Δ values and Rpc in TernaryGoldbach find nothing.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "Same job (a prime close below n-4), different source.",
+      "old_note": "Delta values from Ramare's tables and RH verification are not used; the ladder replaces the prime-gap step."
+     }
     }
-   }
+   },
+   "proof_kind": "direct"
   },
   {
    "id": "Proposition C.1 step 6",
    "item": "Proposition C.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Delta values from Ramare's tables and RH verification are not used; the ladder replaces the prime-gap step.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text checks (n-4)/Delta<=4e18-4 for n-4<e^{r0}, so that n-p fits binary Goldbach. Lean proves n-4e18<=p (hpa) straight from the rung bounds.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
@@ -19642,32 +19781,20 @@
      "file": "TernaryGoldbach/Helfgott/SmallCases.lean",
      "module": "TernaryGoldbach.Helfgott.SmallCases",
      "lines": [
-      20,
-      40
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Ladder.ladder_prime",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Ladder/Main.lean",
-     "module": "TernaryGoldbach.Ladder.Main",
-     "lines": [
-      17,
-      25
-     ]
+      32,
+      35
+     ],
+     "snippet": "    have hi2 : (n - 5) / 3927138875067072512 ≤ 254638308 := by omega\n    obtain ⟨p, hp, hp1, hp2⟩ := Ladder.ladder_prime hi1 hi2\n    have hpb : p ≤ n - 4 := by omega\n    have hpa : n - 4 * 10 ^ 18 ≤ p := by omega",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+      "lines": [
+       20,
+       40
+      ],
+      "conclusion": "For odd 4e18+3<n<=1e27, rung (n-5)/(111616*2^45) of the ladder gives a prime p with n-4e18<=p<=n-4."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
-     "TernaryGoldbach.Ladder.ladder_prime"
-    ],
-    "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
-     "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
-    ]
-   },
    "verification": {
     "carried_from": "book Proposition D.0.3 step 6",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -19676,7 +19803,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
@@ -19684,9 +19812,15 @@
       "file": "A07",
       "ruling": "confirmed",
       "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "Lean's hpa bounds the same gap n-p by 4e18.",
+      "old_note": "Delta values from Ramare's tables and RH verification are not used; the ladder replaces the prime-gap step."
      }
     }
-   }
+   },
+   "proof_kind": "direct"
   },
   {
    "id": "Proposition C.1 step 7",
@@ -19736,7 +19870,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -19744,6 +19879,11 @@
       "file": "A07",
       "ruling": "confirmed",
       "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Lean's small-case proof has no branch for n-4>=e^{r0}."
      }
     }
    }
@@ -19796,7 +19936,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -19804,6 +19945,11 @@
       "file": "A07",
       "ruling": "confirmed",
       "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Lean's small-case proof has no branch for n-4>=e^{r0}."
      }
     }
    }
@@ -19811,9 +19957,9 @@
   {
    "id": "Proposition C.1 step 9",
    "item": "Proposition C.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Delta values from Ramare's tables and RH verification are not used; the ladder replaces the prime-gap step.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text uses the prime-gap bound Delta (Ramare's tables, RH verification) to find a prime p with n-p in the binary-Goldbach-verified range for n-4 < e^68. [L] gets the same prime p in the same place from its Proth-prime ladder (`Ladder.ladder_prime`), but only up to 1e27.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
@@ -19822,32 +19968,20 @@
      "file": "TernaryGoldbach/Helfgott/SmallCases.lean",
      "module": "TernaryGoldbach.Helfgott.SmallCases",
      "lines": [
-      20,
-      40
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Ladder.ladder_prime",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Ladder/Main.lean",
-     "module": "TernaryGoldbach.Ladder.Main",
-     "lines": [
-      17,
-      25
-     ]
+      29,
+      35
+     ],
+     "snippet": "  · -- a prime `p ∈ [n − 4·10¹⁸, n − 4]` from rung `i` of the ladder\n    push Not at hsmall\n    have hi1 : 1 ≤ (n - 5) / 3927138875067072512 := by omega\n    have hi2 : (n - 5) / 3927138875067072512 ≤ 254638308 := by omega\n    obtain ⟨p, hp, hp1, hp2⟩ := Ladder.ladder_prime hi1 hi2\n    have hpb : p ≤ n - 4 := by omega\n    have hpa : n - 4 * 10 ^ 18 ≤ p := by omega",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
+      "lines": [
+       20,
+       40
+      ],
+      "conclusion": "For odd 4e18+3 < n <= 1e27, rung (n-5)/(111616*2^45) of the prime ladder gives a prime p with n - 4e18 <= p <= n - 4."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27",
-     "TernaryGoldbach.Ladder.ladder_prime"
-    ],
-    "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
-     "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
-    ]
-   },
    "verification": {
     "carried_from": "book Proposition D.0.3 step 9",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -19856,7 +19990,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
@@ -19864,9 +19999,15 @@
       "file": "A07",
       "ruling": "confirmed",
       "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "The ladder lines find the same prime p with n-p small at this point of the proof, by another route.",
+      "old_note": "Delta values from Ramare's tables and RH verification are not used; the ladder replaces the prime-gap step."
      }
     }
-   }
+   },
+   "proof_kind": "direct"
   },
   {
    "id": "Proposition C.1 step 10",
@@ -19916,7 +20057,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -19924,6 +20066,11 @@
       "file": "A07",
       "ruling": "confirmed",
       "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Lean's small-case proof has no branch for n-4>=e^68."
      }
     }
    }
@@ -19976,7 +20123,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -19984,6 +20132,11 @@
       "file": "A07",
       "ruling": "confirmed",
       "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Lean's small-case proof has no branch for n-4>=e^68."
      }
     }
    }
@@ -20036,7 +20189,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -20044,6 +20198,11 @@
       "file": "A07",
       "ruling": "confirmed",
       "reason": "Read othcheck.tex 79-118, ternaryGoldbachUpTo_1e27 and ladder_prime; Lean obtains p in [n-4e18,n-4] from the Proth ladder for n<=1e27 and never forms a window (n-4)/Delta, so no Delta from [Rpc], no e^{59}/e^{r_0}/e^{68} case split and no check of (n-4)/Delta occurs."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "Lean's small-case proof has no branch for n-4>=e^68."
      }
     }
    }

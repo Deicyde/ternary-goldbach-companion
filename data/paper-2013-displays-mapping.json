@@ -2972,44 +2972,28 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus): noMatch search re-run"
+      "judge (opus): noMatch search re-run",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
      "ruling": "confirmed",
-     "reason": "Grep for E₁/expInt/exp integral finds only unrelated local names (BaseGap2 `E₁` error constant); [L] never defines the exponential integral."
+     "reason": "Grep for E₁/expInt/exp integral finds only unrelated local names (BaseGap2 `E₁` error constant); [L] never defines the exponential integral.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "A definition [L] never uses."
+     }
     }
    }
   },
   {
    "id": "6 display 5",
    "section": "6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean keeps $\\digamma(r)=e^\\gamma\\log\\log r+2.50637/\\log\\log r$ (`Fr`) and bounds it with $e^\\gamma\\le1.7882$ and numerical logs; the constant $c_\\gamma=1.025742$ does not occur.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds digamma(r) uniformly by e^gamma log log r + c_gamma; [L] bounds Fr M at each block point numerically, using e^gamma <= 1.7882 and certified bounds on log log M, with no c_gamma.",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.Fr",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.GBound",
-     "lines": [
-      25,
-      27
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.Fs",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
-     "module": "TernaryGoldbach.MinorArcs.GMono",
-     "lines": [
-      52,
-      54
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
      "repo": "lean",
@@ -3017,24 +3001,20 @@
      "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
      "module": "TernaryGoldbach.MinorArcs.NumericsCore",
      "lines": [
-      53,
-      128
-     ]
+      90,
+      98
+     ],
+     "snippet": "  have hF : Fr M ≤ 1.7882 * c₁ + 2.50637 / c₂ := by\n    unfold Fr\n    have hg := exp_gamma_le_sharp\n    have hll : 0 < Real.log (Real.log M) := lt_of_lt_of_le hc₂ h6\n    have t1 : rexp eulerMascheroniConstant * Real.log (Real.log M) ≤ 1.7882 * c₁ :=\n      mul_le_mul hg h5 hll.le (by norm_num)\n    have t2 : 2.50637 / Real.log (Real.log M) ≤ 2.50637 / c₂ :=\n      div_le_div_of_nonneg_left (by norm_num) hc₂ h6\n    linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+      "lines": [
+       53,
+       128
+      ],
+      "conclusion": "Fr M <= 1.7882*c1 + 2.50637/c2 from e^gamma <= 1.7882 and certified bounds on log log M."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.Fr",
-     "TernaryGoldbach.MinorArcs.Fs",
-     "TernaryGoldbach.MinorArcs.ghatY_le_num",
-     "TernaryGoldbach.MinorArcs.Fr_monotoneOn"
-    ],
-    "greps": [
-     "1\\.025742 in TernaryGoldbach/",
-     "c_γ|cγ in TernaryGoldbach/",
-     "2\\.50637 in TernaryGoldbach/MinorArcs"
-    ]
-   },
    "verification": {
     "carried_from": "book 13.2 display 4",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -3043,12 +3023,18 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "judge (opus): noMatch search re-run"
+      "judge (opus): noMatch search re-run",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
      "ruling": "confirmed",
-     "reason": "[L] bounds `Fr` only pointwise (NumericsCore:90, $Fr\\,M\\le1.7882c_1+2.50637/c_2$; NumericsAsymp:97 $Fr\\,n\\le14.4t^2$); no bound $e^\\gamma\\log\\log r+c_\\gamma$ and no 1.025742."
+     "reason": "[L] bounds `Fr` only pointwise (NumericsCore:90, $Fr\\,M\\le1.7882c_1+2.50637/c_2$; NumericsAsymp:97 $Fr\\,n\\le14.4t^2$); no bound $e^\\gamma\\log\\log r+c_\\gamma$ and no 1.025742.",
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "Same quantity Fr bounded at the point where the g-bound is evaluated, by a different route.",
+      "old_note": "Lean keeps $\\digamma(r)=e^\\gamma\\log\\log r+2.50637/\\log\\log r$ (`Fr`) and bounds it with $e^\\gamma\\le1.7882$ and numerical logs; the constant $c_\\gamma=1.025742$ does not occur."
+     }
     }
    }
   },
@@ -3127,32 +3113,10 @@
   {
    "id": "6 display 7",
    "section": "6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "The tangent-line bound for $\\sqrt{F}$ and its integration is replaced by block numerics; not in Lean.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds sqrt(digamma(r)) over a range of r by the tangent line of sqrt F at log r0; [L] bounds sqrt(Fr M) at each block point by a certified constant s1 (`hsF`), with no tangent line.",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.Fs",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
-     "module": "TernaryGoldbach.MinorArcs.GMono",
-     "lines": [
-      52,
-      54
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.Fs_hasDerivAt",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
-     "module": "TernaryGoldbach.MinorArcs.GMono",
-     "lines": [
-      74,
-      83
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
      "repo": "lean",
@@ -3160,34 +3124,20 @@
      "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
      "module": "TernaryGoldbach.MinorArcs.NumericsCore",
      "lines": [
-      53,
-      128
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.cell_bound",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
-     "module": "TernaryGoldbach.MinorArcs.NumericsCore",
-     "lines": [
-      271,
-      411
-     ]
+      90,
+      100
+     ],
+     "snippet": "  have hF : Fr M ≤ 1.7882 * c₁ + 2.50637 / c₂ := by\n    unfold Fr\n    have hg := exp_gamma_le_sharp\n    have hll : 0 < Real.log (Real.log M) := lt_of_lt_of_le hc₂ h6\n    have t1 : rexp eulerMascheroniConstant * Real.log (Real.log M) ≤ 1.7882 * c₁ :=\n      mul_le_mul hg h5 hll.le (by norm_num)\n    have t2 : 2.50637 / Real.log (Real.log M) ≤ 2.50637 / c₂ :=\n      div_le_div_of_nonneg_left (by norm_num) hc₂ h6\n    linarith\n  have hsF : √(Fr M) ≤ s₁ := by\n    rw [Real.sqrt_le_left hs₁]; linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+      "lines": [
+       53,
+       128
+      ],
+      "conclusion": "sqrt(Fr M) <= s1, via the numerical bound on Fr M."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.Fs",
-     "TernaryGoldbach.MinorArcs.Fs_hasDerivAt",
-     "TernaryGoldbach.MinorArcs.ghatY_le_num",
-     "TernaryGoldbach.MinorArcs.cell_bound"
-    ],
-    "greps": [
-     "sqrt.*Fr|√.*Fr in TernaryGoldbach/MinorArcs",
-     "ConcaveOn in TernaryGoldbach/"
-    ]
-   },
    "verification": {
     "carried_from": "book 13.2 display 6",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -3196,7 +3146,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
@@ -3204,6 +3155,11 @@
       "file": "A08",
       "ruling": "confirmed",
       "reason": "Same reading; no tangent-line bound for sqrt(F(log r)) occurs; Lean bounds ghat by block numerics (ghatY_le_num, cell_bound)."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "Same quantity sqrt(Fr) bounded at the corresponding point by block numerics.",
+      "old_note": "The tangent-line bound for $\\sqrt{F}$ and its integration is replaced by block numerics; not in Lean."
      }
     }
    }
@@ -3456,7 +3412,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -3464,6 +3421,11 @@
      "file": "A10",
      "ruling": "confirmed",
      "reason": "Read Fr, Fr_monotoneOn, gx_antitoneOn; no integral of Fr(r)/r^{3/2} or E_1 in MinorArcs/."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "[L]'s level-by-level route never needs this integral, and no Lean lines bound it."
     }
    }
   },
@@ -5479,20 +5441,29 @@
   {
    "id": "7 display 31",
    "section": "7",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean bounds E directly from |η₊| ≤ 1.94 and t|η₊| ≤ 2.32 via ψ, θ estimates (`E_partial`, `E_le_14_28`); the constants C_{η₊,j} and the integral 0.7131∫t^{-1/2}(sup_{r≥t}η₊)² are never formed.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds the non-prime contribution through C_{eta_+,0} = 0.7131 * int t^{-1/2} (sup_{r>=t} eta_+)^2, splitting at t = 1 into a constant sup bound and a c/t sup bound. Here 0.7131 = 1.4262/2 comes from psi - theta. [L] bounds the same non-prime sum inside E with the same psi - theta estimate, using |eta_+| <= 1.94 on n <= x and dyadic blocks with t|eta_+| <= 2.32 above x in place of the integral.",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.E_le_14_28",
+     "declaration": "TernaryGoldbach.MinorArcs.E_partial",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
      "file": "TernaryGoldbach/MinorArcs/EBound.lean",
      "module": "TernaryGoldbach.MinorArcs.EBound",
      "lines": [
-      277,
-      366
-     ]
+      219,
+      227
+     ],
+     "snippet": "    have hNP : ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤ 1.4262 * √x :=\n      (Prelim.sum_vonMangoldt_nonprime_lt hx0).le\n    have : Real.log x / 2 * ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) +\n        Real.log x * ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤\n        Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x) := by\n      have := mul_le_mul_of_nonneg_left hψ (by linarith : 0 ≤ Real.log x / 2)\n      have := mul_le_mul_of_nonneg_left hNP hlx\n      linarith\n    exact mul_le_mul_of_nonneg_left this (by norm_num)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+      "lines": [
+       172,
+       274
+      ],
+      "conclusion": "On n <= x the non-prime von Mangoldt mass is at most 1.4262 sqrt x (psi - theta), weighted by log x and |eta_+| <= 1.94."
+     }
     },
     {
      "declaration": "TernaryGoldbach.MinorArcs.E_partial",
@@ -5501,51 +5472,27 @@
      "file": "TernaryGoldbach/MinorArcs/EBound.lean",
      "module": "TernaryGoldbach.MinorArcs.EBound",
      "lines": [
-      172,
-      274
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Helfgott.abs_etaPlus_le_A",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Helfgott/HHBound.lean",
-     "module": "TernaryGoldbach.Helfgott.HHBound",
-     "lines": [
-      431,
-      442
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Helfgott.mul_abs_etaPlus_le_B",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Helfgott/HHBound.lean",
-     "module": "TernaryGoldbach.Helfgott.HHBound",
-     "lines": [
-      444,
-      455
-     ]
+      234,
+      253
+     ],
+     "snippet": "  have hblock : ∀ j, ∑ n ∈ Ioc (a j) (a (j + 1)), eTerm x n ≤\n      1.4262 * 2.32 ^ 2 * √2 * √x * (((j : ℝ) + 1) * Real.log 2 + Real.log x) * r ^ j := by\n    intro j\n    set K := (((j : ℝ) + 1) * Real.log 2 + Real.log x) * 2.32 ^ 2 / 4 ^ j with hK\n    have hK0 : 0 ≤ K := by\n      have := Real.log_nonneg (by norm_num : (1:ℝ) ≤ 2)\n      positivity\n    refine (sum_le_sum fun n hn => eTerm_block hx j hn).trans ?_\n    rw [← sum_mul]\n    have hsub3 : Ioc (a j) (a (j + 1)) ⊆ Icc 1 (a (j + 1)) := by\n      intro n hn; have := mem_Ioc.1 hn; exact mem_Icc.2 ⟨by omega, this.2⟩\n    have hs : ∑ n ∈ Ioc (a j) (a (j + 1)), lamNP n ≤ 1.4262 * √(2 ^ (j + 1) * x) := by\n      refine (sum_le_sum_of_subset_of_nonneg hsub3 fun n _ _ => lamNP_nonneg n).trans ?_\n      exact (Prelim.sum_vonMangoldt_nonprime_lt (y := 2 ^ (j + 1) * x) (by positivity)).le\n    rw [sqrt_two_pow_mul j hx0.le] at hs\n    calc (∑ n ∈ Ioc (a j) (a (j + 1)), lamNP n) * K ≤ 1.4262 * (√2 ^ (j + 1) * √x) * K :=\n          mul_le_mul_of_nonneg_right hs hK0\n      _ = 1.4262 * 2.32 ^ 2 * √2 * √x * (((j : ℝ) + 1) * Real.log 2 + Real.log x) * r ^ j := by\n          rw [hK, hr, div_pow, pow_succ]\n          field_simp",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+      "lines": [
+       172,
+       274
+      ],
+      "conclusion": "On each dyadic block (2^j x, 2^{j+1} x] the non-prime terms Lambda(n)^2 eta_+(n/x)^2 are bounded using psi - theta < 1.4262 sqrt y and t|eta_+(t)| <= 2.32."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.E_le_14_28",
-     "TernaryGoldbach.MinorArcs.E_partial",
-     "TernaryGoldbach.Helfgott.abs_etaPlus_le_A",
-     "TernaryGoldbach.Helfgott.mul_abs_etaPlus_le_B"
-    ],
-    "greps": [
-     "0\\.7131|2\\.3375|1\\.19073|1\\.07996 in TernaryGoldbach/",
-     "sup.*etaPlus|sSup.*etaPlus in TernaryGoldbach/"
-    ]
-   },
    "verification": {
     "batch": "P067-d",
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
     ],
     "agreed": true,
     "same_relation": true,
@@ -5553,6 +5500,11 @@
      "file": "A10",
      "ruling": "confirmed",
      "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "reason": "E_partial bounds the same non-prime prime-power sum from psi - theta, using dyadic blocks instead of the sup integral.",
+     "old_note": "Lean bounds E directly from |η₊| ≤ 1.94 and t|η₊| ≤ 2.32 via ψ, θ estimates (`E_partial`, `E_le_14_28`); the constants C_{η₊,j} and the integral 0.7131∫t^{-1/2}(sup_{r≥t}η₊)² are never formed."
     }
    }
   },
@@ -6347,9 +6299,9 @@
   {
    "id": "7 display 44",
    "section": "7",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] has no function $f$ or bisection for $R_{y/K,2r_1}$; it uses $R_{y,2n}\\le0.6628$ for $n^4\\le y$ and `gx_scale_le`.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds R_{y/K,2r1} by bisecting the function f(t); [L] bounds R_{y,2n} uniformly by 0.6628 for n^4 <= y and uses this in the large-level estimate ghatY_le_asym, with no f and no bisection.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
@@ -6358,45 +6310,40 @@
      "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
      "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
      "lines": [
-      17,
+      37,
       52
-     ]
+     ],
+     "snippet": "  have h8 : Real.log (8 * n) ≤ 3 * Real.log B := by\n    have := Real.log_le_log (by positivity) hB3\n    rw [Real.log_pow] at this; push_cast at this; linarith\n  unfold R\n  rw [show 4 * (2 * n) = 8 * n by ring,\n    show 9 * y ^ (1 / 3 : ℝ) / (2.004 * (2 * n)) = B by rw [hB]; ring]\n  have hq : Real.log (8 * n) / (2 * Real.log B) ≤ 1.5 := by\n    rw [div_le_iff₀ (by positivity)]; linarith\n  have hq0 : 0 ≤ Real.log (8 * n) / (2 * Real.log B) :=\n    div_nonneg (Real.log_nonneg (by linarith)) (by positivity)\n  have hl : Real.log (1 + Real.log (8 * n) / (2 * Real.log B)) ≤ Real.log 2.5 :=\n    Real.log_le_log (by linarith) (by linarith)\n  have h25 : Real.log 2.5 ≤ 0.9164 := by\n    have := log_le_num (z := 2.5) 0 0.9164 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)\n    norm_num at this ⊢; linarith\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
+      "lines": [
+       17,
+       52
+      ],
+      "conclusion": "R_{y,2n} <= 0.6628 whenever n^4 <= y."
+     }
     },
     {
-     "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+     "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
-     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
      "lines": [
-      350,
-      351
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
-     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
-     "lines": [
-      195,
-      205
-     ]
+      110,
+      110
+     ],
+     "snippet": "  have hR := R_le_of_pow_four hy0 (by linarith) hny",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+      "lines": [
+       55,
+       188
+      ],
+      "conclusion": "Applies the uniform R bound at the large-level point n of ghatY."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "R_le_of_pow_four",
-     "ghatY",
-     "gx_scale_le",
-     "ghatY_le_asym"
-    ],
-    "greps": [
-     "grep -rnE with the displayed constants (1.07996|1.19073|2.33744|0.44937|0.60581|0.51942|0.2779|1.04488|0.093426|0.07455|0.58385|0.60295|0.71392|0.71219|0.041568|0.0169073|0.001399|0.02219|0.43086|0.10426|0.4153461|0.071498|0.089805|1.280418|9.2598|474.608|5.42506) in TernaryGoldbach/; grep 'C_{φ|Cφ|C_phi|cphi|φ,3|φ,2' in TernaryGoldbach/ and NOTES.md, BLUEPRINT.md",
-     "grep '12\\*2\\^\\(1/3\\)|4/3 \\* Real.log|0.019562618' in TernaryGoldbach/ (no hit)"
-    ]
-   },
    "verification": {
     "carried_from": "book 14.3 display 15",
     "reason": "LaTeX identical to the book record (whitespace ignored)",
@@ -6405,7 +6352,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
      ],
      "agreed": true,
      "same_relation": true,
@@ -6413,6 +6361,11 @@
       "file": "A08",
       "ruling": "confirmed",
       "reason": "Grep of TernaryGoldbach/MinorArcs for the function f, 2.004 with 4/3 log t, and bisection numerics finds only R/gx definitions; R_le_of_pow_four and gx_scale_le replace the R_{y/K,2r_1} computation."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "reason": "Same quantity R bounded for the large-r range by a different argument.",
+      "old_note": "[L] has no function $f$ or bisection for $R_{y/K,2r_1}$; it uses $R_{y,2n}\\le0.6628$ for $n^4\\le y$ and `gx_scale_le`."
      }
     }
    }
@@ -7188,7 +7141,8 @@
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)",
-      "absence audit (opus)"
+      "absence audit (opus)",
+      "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
      ],
      "agreed": true,
      "same_relation": true,
@@ -7196,6 +7150,11 @@
       "file": "A08",
       "ruling": "confirmed",
       "reason": "Grep P2|I0|0.41415^2 over MinorArcs: I0_ge is the l2 lower bound (different quantity), 0.41415 occurs only as R's floor in GMono/SecondBridge; no I_{0,r_0,r_1,z} bound."
+     },
+     "rejudged_2026_11_13": {
+      "from": "noMatch",
+      "kept": true,
+      "reason": "No Lean lines bound this quantity."
      }
     }
    }
@@ -7270,12 +7229,18 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus): noMatch search re-run"
+     "judge (opus): noMatch search re-run",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
     "ruling": "confirmed",
-    "reason": "Own grep for 0.0163662, 0.19115, 0.49214, 800000 across TernaryGoldbach/ finds nothing; [L] bounds the level sum by certified block values (`chain_le`, `cell_bound`), not by the f₀+f₁+f₂ split or the I₀ Cauchy–Schwarz bound."
+    "reason": "Own grep for 0.0163662, 0.19115, 0.49214, 800000 across TernaryGoldbach/ finds nothing; [L] bounds the level sum by certified block values (`chain_le`, `cell_bound`), not by the f₀+f₁+f₂ split or the I₀ Cauchy–Schwarz bound.",
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "No Lean lines form or bound I_{0,r_0,r_1,y}, and [L]'s route does not need it."
+    }
    }
   },
   {
@@ -7348,7 +7313,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -7356,6 +7322,11 @@
      "file": "A10",
      "ruling": "confirmed",
      "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "No Lean lines form or bound I_{0,r_0,r_1,y/K}, and [L]'s route does not need it."
     }
    }
   },
@@ -7429,7 +7400,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -7437,6 +7409,11 @@
      "file": "A10",
      "ruling": "confirmed",
      "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "[L] never forms the c_phi-weighted combination."
     }
    }
   },
@@ -7510,7 +7487,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -7518,6 +7496,11 @@
      "file": "A10",
      "ruling": "confirmed",
      "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "[L] never forms or bounds f_0(r_0,y)."
     }
    }
   },

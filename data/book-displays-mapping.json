@@ -2842,9 +2842,9 @@
   {
    "id": "5.1 display 8",
    "section": "5.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Constants $c_{v,4},c_{v,5}$; Lean's `abs_g2_le_large` has 0.0236 and 528 instead.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text gives the constants c_{v,4}, c_{v,5} for the pointwise bound on g_v (Lemma 5.1.2); [L]'s abs_g2_le_large proves that bound for v=2 with constants 0.0236 and 528 and a (1+log x)^2/x second term.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
@@ -2853,28 +2853,47 @@
      "file": "TernaryGoldbach/MinorArcs/G2Bound.lean",
      "module": "TernaryGoldbach.MinorArcs.G2Bound",
      "lines": [
-      201,
+      203,
+      204
+     ],
+     "snippet": "theorem abs_g2_le_large {x : ℝ} (hx : 1 < x) :\n    |g2 x| ≤ 0.0236 / Real.log x ^ 2 + 528 * (1 + Real.log x) ^ 2 / x := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+      "lines": [
+       201,
+       229
+      ],
+      "conclusion": "|g2(x)| <= 0.0236/(log x)^2 + 528(1+log x)^2/x for x > 1."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/G2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.G2Bound",
+     "lines": [
+      223,
       229
-     ]
+     ],
+     "snippet": "    _ ≤ 0.0236 / Real.log x ^ 2 + 528 * (1 + Real.log x) ^ 2 / x := by\n        have e1 : 0.015913 / Real.log x ^ 2 * 1.48 = 0.02355124 / Real.log x ^ 2 := by ring\n        have e2 : 527.85 / x * (1 + Real.log x) ^ 2 = 527.85 * (1 + Real.log x) ^ 2 / x := by ring\n        rw [e1, e2]\n        gcongr\n        · norm_num\n        · norm_num",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+      "lines": [
+       201,
+       229
+      ],
+      "conclusion": "Produces the constants 0.0236 and 528 from 0.015913*1.48 and 527.85."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.abs_g2_le_large",
-     "TernaryGoldbach.MinorArcs.T2_le'",
-     "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le"
-    ],
-    "greps": [
-     "817\\.168|1634\\.34|0\\.038128|0\\.2046|0\\.0044325|0\\.1079|111\\.536|55\\.768 in [L] (Lean, md)",
-     "c_{v|C0|C_0 in TernaryGoldbach/MinorArcs"
-    ]
-   },
    "verification": {
     "batch": "B049-d",
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
     ],
     "agreed": true,
     "same_relation": true,
@@ -2882,6 +2901,11 @@
      "file": "A07",
      "ruling": "confirmed",
      "reason": "Read typeII.tex 690-770, T2_le', abs_T2_sub_le route and G2Tail; Lean has no constants c_{v,i}: T2 is bounded by kernel values to 10^4 plus tail_integral_le, with no O* Euler-Maclaurin pieces."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "reason": "Same pointwise bound on g2, with different constants.",
+     "old_note": "Constants $c_{v,4},c_{v,5}$; Lean's `abs_g2_le_large` has 0.0236 and 528 instead."
     }
    }
   },
@@ -2953,7 +2977,7 @@
    "relation": "relatedMatch",
    "class": "Deviates",
    "note": "Same shape (main term at small $m$, error terms, tail), but Lean has no $c_{v,i}$, no $\\log 2/C_0$ term and no $c_{v,4}/2s(\\log S/2s)^2$ sum; the tail is bounded by `tail_integral_le`.",
-   "proof_kind": "chain",
+   "proof_kind": "helper",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
@@ -2989,9 +3013,9 @@
   {
    "id": "5.1 display 11",
    "section": "5.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean bounds the tail differently (0.0045 via weighted Cauchy-Schwarz); this numeric evaluation is absent.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text evaluates the far-tail contribution exactly as (c_{v,4}/2)/log(10^10/2) using the pointwise log^-2 bound; [L] bounds the whole tail integral_{10^4}^S |g2|/y by 0.0045 via weighted Cauchy-Schwarz and certified sums.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le",
@@ -3000,27 +3024,27 @@
      "file": "TernaryGoldbach/MinorArcs/G2Tail.lean",
      "module": "TernaryGoldbach.MinorArcs.G2Tail",
      "lines": [
-      1084,
+      1085,
       1089
-     ]
+     ],
+     "snippet": "theorem tail_integral_le {S : ℝ} (hS : 10000 ≤ S) : ∫ y in (10000 : ℝ)..S, |g2 y| / y ≤ 0.0045 := by\n  refine (tail_le_sum hS).trans ((sum_terms_le hS).trans ?_)\n  unfold l1w1\n  rw [tv_one, Macc]\n  norm_num",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le",
+      "lines": [
+       1084,
+       1089
+      ],
+      "conclusion": "integral_{10^4}^S |g2 y|/y dy <= 0.0045 for S >= 10^4."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le",
-     "TernaryGoldbach.MinorArcs.T2_le'"
-    ],
-    "greps": [
-     "0\\.00009923|0\\.000853 in [L]",
-     "log \\(10 \\^ 10 in TernaryGoldbach/MinorArcs"
-    ]
-   },
    "verification": {
     "batch": "B049-d",
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
     ],
     "agreed": true,
     "same_relation": true,
@@ -3028,6 +3052,11 @@
      "file": "A07",
      "ruling": "confirmed",
      "reason": "Lean bounds the whole m>10^4 tail at once (tail_integral_le, 0.0045, weighted Cauchy-Schwarz) and never isolates or evaluates the s<S/10^10 piece; consistent with the judge's confirmed noMatch for the parallel c_{v,1} term (5.1 display 14)."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "reason": "Same tail of the |g2|/y integral bounded by a different argument.",
+     "old_note": "Lean bounds the tail differently (0.0045 via weighted Cauchy-Schwarz); this numeric evaluation is absent."
     }
    }
   },
@@ -3302,12 +3331,18 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus): noMatch search re-run"
+     "judge (opus): noMatch search re-run",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
     "ruling": "confirmed",
-    "reason": "Remark on an unused alternative (Note); no congruence-class truncated-Moebius computation in TernaryGoldbach/MinorArcs."
+    "reason": "Remark on an unused alternative (Note); no congruence-class truncated-Moebius computation in TernaryGoldbach/MinorArcs.",
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "A side remark [L] does not perform."
+    }
    }
   },
   {
@@ -3356,9 +3391,9 @@
   {
    "id": "6.2 display 1",
    "section": "6.2",
-   "relation": "exactMatch",
-   "class": "1-to-1",
-   "note": "The min is split over two lemmas; the quotient form follows from `(2πt)² = 4π²t²` and `96/4 = 24`.",
+   "relation": "closeMatch",
+   "class": "Faithful",
+   "note": "The min is split over two lemmas, and the quotient form follows from (2 pi t)^2 = 4 pi^2 t^2 and 96/4 = 24.",
    "proof_kind": "chain",
    "ends": [
     {
@@ -3407,12 +3442,18 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus)"
+     "judge (opus)",
+     "sweep (sonnet) and lead check (opus), 2026-11-13: exactMatch -> closeMatch"
     ],
     "agreed": false,
     "disagreement": "class relatedMatch vs exactMatch; disjoint declarations",
     "ruling": "verifier",
-    "reason": "`norm_fourier_logeta2_le` and `norm_fourier_logeta2_le_decay` give both entries of the min for every real `t`, hence at `t=-δ` exactly as displayed; the `-δ/2` lemma is only [L]'s later instance. Lines narrowed to the statements."
+    "reason": "`norm_fourier_logeta2_le` and `norm_fourier_logeta2_le_decay` give both entries of the min for every real `t`, hence at `t=-δ` exactly as displayed; the `-δ/2` lemma is only [L]'s later instance. Lines narrowed to the statements.",
+    "rejudged_2026_11_13": {
+     "from": "exactMatch",
+     "reason": "Note names a split and an algebraic reformulation.",
+     "old_note": "The min is split over two lemmas; the quotient form follows from `(2πt)² = 4π²t²` and `96/4 = 24`."
+    }
    }
   },
   {
@@ -3796,53 +3837,29 @@
   {
    "id": "6.2 display 10",
    "section": "6.2",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "No Lean bound on `Σ_{v≤V,(v,q)≠1} Λ(v)(v,q)²`: Lean's per-`v` term uses `q_v = q/(q,v)` so only `(q,v)¹` appears (`U²v(q,v)/q`).",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds sum_{v<=V,(v,q)!=1} Lambda(v)(v,q)^2 by 2qV log q, grouping by p | q and summing a geometric series; [L] uses the same grouping and geometric sum for sum Lambda(v) v over non-coprime v and gets (3/2)V log q for odd q, because its per-v term carries only (q,v)^1.",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_gcd_le",
+     "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_not_coprime_le",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GcdSums.lean",
-     "module": "TernaryGoldbach.MinorArcs.GcdSums",
+     "file": "TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+     "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
      "lines": [
-      167,
-      188
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.totient_mul_sum_vonMangoldt_mul_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GcdSums.lean",
-     "module": "TernaryGoldbach.MinorArcs.GcdSums",
-     "lines": [
-      105,
-      140
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.bound_4_30_v_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
-     "module": "TernaryGoldbach.MinorArcs.TypeI2Sum",
-     "lines": [
-      105,
-      170
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_small",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
-     "module": "TernaryGoldbach.MinorArcs.TypeI2Sum",
-     "lines": [
-      292,
-      404
-     ]
+      521,
+      538
+     ],
+     "snippet": "    calc ∑ v ∈ S with v.minFac = p, (Λ v : ℝ) * v\n        ≤ ∑ v ∈ (Icc 1 L).image (fun α => p ^ α), (Λ v : ℝ) * v :=\n          sum_le_sum_of_subset_of_nonneg hsub fun v _ _ =>\n            mul_nonneg ArithmeticFunction.vonMangoldt_nonneg (Nat.cast_nonneg _)\n      _ = ∑ α ∈ Icc 1 L, Real.log p * (p : ℝ) ^ α := by\n          rw [sum_image (fun a _ b _ h => Nat.pow_right_injective hpp.two_le h)]\n          refine sum_congr rfl fun α hα => ?_\n          rw [ArithmeticFunction.vonMangoldt_apply_pow (by have := (mem_Icc.1 hα).1; omega),\n            ArithmeticFunction.vonMangoldt_apply_prime hpp]\n          push_cast; ring\n      _ = Real.log p * ∑ α ∈ Icc 1 L, (p : ℝ) ^ α := by rw [mul_sum]\n      _ ≤ Real.log p * (3 / 2 * (p : ℝ) ^ L) :=\n          mul_le_mul_of_nonneg_left (geom_sum_le_three_halves hp3 L)\n            (Real.log_nonneg (by exact_mod_cast hpp.one_lt.le))\n      _ ≤ Real.log p * (3 / 2 * NV) := by\n          have h1 : ((p ^ L : ℕ) : ℝ) ≤ NV := by exact_mod_cast Nat.pow_log_le_self p hNV0\n          push_cast at h1\n          have h2 : 0 ≤ Real.log p := Real.log_nonneg (by exact_mod_cast hpp.one_lt.le)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_not_coprime_le",
+      "lines": [
+       469,
+       554
+      ],
+      "conclusion": "For each p | q, the sum over powers p^alpha <= V of Lambda(v) v is at most (3/2) V log p, via a geometric sum."
+     }
     },
     {
      "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_not_coprime_le",
@@ -3851,38 +3868,37 @@
      "file": "TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
      "module": "TernaryGoldbach.MinorArcs.TypeI2Proof",
      "lines": [
-      469,
+      541,
       554
-     ]
+     ],
+     "snippet": "  refine (sum_le_sum hfib).trans ?_\n  rw [← mul_sum]\n  have hlog : ∑ p ∈ q.primeFactors, Real.log p ≤ Real.log q := by\n    rw [← Real.log_prod (fun p hp => by\n      have := (Nat.mem_primeFactors.1 hp).1.pos; positivity)]\n    apply Real.log_le_log (by\n      apply prod_pos; intro p hp; have := (Nat.mem_primeFactors.1 hp).1.pos; positivity)\n    have := Nat.le_of_dvd (Nat.pos_of_ne_zero hq0) (Nat.prod_primeFactors_dvd q)\n    have h : ((∏ p ∈ q.primeFactors, p : ℕ) : ℝ) ≤ q := by exact_mod_cast this\n    push_cast at h; exact h\n  have hlq : 0 ≤ Real.log q := Real.log_nonneg (by exact_mod_cast hq.pos)\n  calc 3 / 2 * (NV : ℝ) * ∑ p ∈ q.primeFactors, Real.log p ≤ 3 / 2 * (NV : ℝ) * Real.log q := by\n        gcongr\n    _ ≤ 3 / 2 * V * Real.log q := by gcongr",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_not_coprime_le",
+      "lines": [
+       469,
+       554
+      ],
+      "conclusion": "Summing over p | q with sum log p <= log q gives (3/2) V log q."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_gcd_le",
-     "TernaryGoldbach.MinorArcs.totient_mul_sum_vonMangoldt_mul_le",
-     "TernaryGoldbach.MinorArcs.bound_4_30_v_le",
-     "TernaryGoldbach.MinorArcs.typeI2_le_small",
-     "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_not_coprime_le",
-     "TernaryGoldbach.MinorArcs.typeI2_le_large",
-     "TernaryGoldbach.MinorArcs.typeI2_le_sum"
-    ],
-    "greps": [
-     "gcd[^\\n]*\\) \\^ 2 in TernaryGoldbach/MinorArcs and Prelim",
-     "padicValNat|v_p|not_coprime in TernaryGoldbach/MinorArcs and Prelim",
-     "(v, q) in TernaryGoldbach/MinorArcs"
-    ]
-   },
    "verification": {
     "batch": "B050-d",
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus)"
+     "judge (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
     ],
     "agreed": false,
     "disagreement": "class relatedMatch vs noMatch",
     "ruling": "verifier",
-    "reason": "No Lean lines bound `Σ_{(v,q)≠1} Λ(v)(v,q)²`; [L]'s route keeps `q_v` so only `(q,v)¹` occurs, and `sum_vonMangoldt_mul_gcd_le` carries display 8's `j=1` line, not this one."
+    "reason": "No Lean lines bound `Σ_{(v,q)≠1} Λ(v)(v,q)²`; [L]'s route keeps `q_v` so only `(q,v)¹` occurs, and `sum_vonMangoldt_mul_gcd_le` carries display 8's `j=1` line, not this one.",
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "reason": "The non-coprime v contribution is bounded at the same place, with a different quantity.",
+     "old_note": "No Lean bound on `Σ_{v≤V,(v,q)≠1} Λ(v)(v,q)²`: Lean's per-`v` term uses `q_v = q/(q,v)` so only `(q,v)¹` appears (`U²v(q,v)/q`)."
+    }
    }
   },
   {
@@ -4301,9 +4317,9 @@
   {
    "id": "6.2 display 18",
    "section": "6.2",
-   "relation": "exactMatch",
-   "class": "1-to-1",
-   "note": "`κ₀` appears only as the literal `1.27` in `zeta3` and `S1_bound`.",
+   "relation": "closeMatch",
+   "class": "Faithful",
+   "note": "kappa_0 does not exist as a symbol in Lean; only the literal 1.27 appears in zeta3 and S1_bound.",
    "proof_kind": "helper",
    "ends": [
     {
@@ -4351,10 +4367,16 @@
     "batch": "B050-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "sweep (sonnet) and lead check (opus), 2026-11-13: exactMatch -> closeMatch"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "rejudged_2026_11_13": {
+     "from": "exactMatch",
+     "reason": "Note says the symbol is only a literal.",
+     "old_note": "`κ₀` appears only as the literal `1.27` in `zeta3` and `S1_bound`."
+    }
    }
   },
   {
@@ -5040,7 +5062,7 @@
    "relation": "narrowMatch",
    "class": "Deviates",
    "note": "Lean bounds the same two integrals but weaker: after multiplying the f6 bound by sqrt(log 2q) the log term is 4 sqrt(log 2q) sqrt((x/U)/log(x/2Uq)) against the text 2.3 sqrt(x/U)/sqrt(log(x/2Uq)) sqrt(log 2q), and there is an extra term 2e sqrt(2q log 2q).",
-   "proof_kind": "chain",
+   "proof_kind": "helper",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
@@ -9103,7 +9125,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -9111,6 +9134,11 @@
      "file": "A07",
      "ruling": "confirmed",
      "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "A definition belonging to a route [L] does not take."
     }
    }
   },
@@ -9535,7 +9563,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -9543,6 +9572,11 @@
      "file": "A07",
      "ruling": "confirmed",
      "reason": "Read MellinRotate.lean (Jr, re_exponent, norm_Jr, Gr_eq, norm_Gr_le, integral_rpow_exp_quad_le, norm_Gr_le_closed, regimes A/B); Lean rotates the ray t=re^{i theta} at fixed theta and completes the square in r, with no saddle point, phase, upsilon, j(rho), contour L1-L3, I_0 or arctan bookkeeping."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "A definition [L] never uses."
     }
    }
   },
@@ -9604,12 +9638,18 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus): noMatch search re-run"
+     "judge (opus): noMatch search re-run",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
     "ruling": "confirmed",
-    "reason": "Steepest-descent argument computation for the saddle point; [L] has no saddle point, phi or arg computation (grep saddle|steepest|Complex.arg across TernaryGoldbach/ finds nothing relevant), bounding G_delta by fixed-angle rotation in norm_G_le_regimeA/B."
+    "reason": "Steepest-descent argument computation for the saddle point; [L] has no saddle point, phi or arg computation (grep saddle|steepest|Complex.arg across TernaryGoldbach/ finds nothing relevant), bounding G_delta by fixed-angle rotation in norm_G_le_regimeA/B.",
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "This belongs to a saddle-point branch [L] does not have."
+    }
    }
   },
   {
@@ -10231,12 +10271,18 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus)"
+     "judge (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": false,
     "disagreement": "class noMatch vs relatedMatch",
     "ruling": "mapper",
-    "reason": "The display computes Re((u-u_{0,+})^2/2) on the segment L2 through the saddle point; re_exponent computes the real part of the full exponent along a ray through the origin, a different quantity with no saddle point, so there is no Lean counterpart of this claim."
+    "reason": "The display computes Re((u-u_{0,+})^2/2) on the segment L2 through the saddle point; re_exponent computes the real part of the full exponent along a ray through the origin, a different quantity with no saddle point, so there is no Lean counterpart of this claim.",
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "A different quantity on a contour [L] does not use."
+    }
    }
   },
   {
@@ -13438,12 +13484,18 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus): noMatch search re-run"
+     "judge (opus): noMatch search re-run",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
     "ruling": "confirmed",
-    "reason": "c_{1,σ,τ}, c_{2,σ,τ} and their constants (1.30454, 3.15692, ...) do not occur in TernaryGoldbach/; [L]'s constants 0.588 and 0.892 come from the rotation bound."
+    "reason": "c_{1,σ,τ}, c_{2,σ,τ} and their constants (1.30454, 3.15692, ...) do not occur in TernaryGoldbach/; [L]'s constants 0.588 and 0.892 come from the rotation bound.",
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "No Lean lines bound these constants."
+    }
    }
   },
   {
@@ -18707,43 +18759,27 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus): noMatch search re-run"
+     "judge (opus): noMatch search re-run",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
     "ruling": "confirmed",
-    "reason": "Grep for E₁/expInt/exp integral finds only unrelated local names (BaseGap2 `E₁` error constant); [L] never defines the exponential integral."
+    "reason": "Grep for E₁/expInt/exp integral finds only unrelated local names (BaseGap2 `E₁` error constant); [L] never defines the exponential integral.",
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "A definition [L] never uses."
+    }
    }
   },
   {
    "id": "13.2 display 4",
    "section": "13.2",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean keeps $\\digamma(r)=e^\\gamma\\log\\log r+2.50637/\\log\\log r$ (`Fr`) and bounds it with $e^\\gamma\\le1.7882$ and numerical logs; the constant $c_\\gamma=1.025742$ does not occur.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds digamma(r) uniformly by e^gamma log log r + c_gamma; [L] bounds Fr M at each block point numerically, using e^gamma <= 1.7882 and certified bounds on log log M, with no c_gamma.",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.Fr",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.GBound",
-     "lines": [
-      25,
-      27
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.Fs",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
-     "module": "TernaryGoldbach.MinorArcs.GMono",
-     "lines": [
-      52,
-      54
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
      "repo": "lean",
@@ -18751,35 +18787,37 @@
      "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
      "module": "TernaryGoldbach.MinorArcs.NumericsCore",
      "lines": [
-      53,
-      128
-     ]
+      90,
+      98
+     ],
+     "snippet": "  have hF : Fr M ≤ 1.7882 * c₁ + 2.50637 / c₂ := by\n    unfold Fr\n    have hg := exp_gamma_le_sharp\n    have hll : 0 < Real.log (Real.log M) := lt_of_lt_of_le hc₂ h6\n    have t1 : rexp eulerMascheroniConstant * Real.log (Real.log M) ≤ 1.7882 * c₁ :=\n      mul_le_mul hg h5 hll.le (by norm_num)\n    have t2 : 2.50637 / Real.log (Real.log M) ≤ 2.50637 / c₂ :=\n      div_le_div_of_nonneg_left (by norm_num) hc₂ h6\n    linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+      "lines": [
+       53,
+       128
+      ],
+      "conclusion": "Fr M <= 1.7882*c1 + 2.50637/c2 from e^gamma <= 1.7882 and certified bounds on log log M."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.Fr",
-     "TernaryGoldbach.MinorArcs.Fs",
-     "TernaryGoldbach.MinorArcs.ghatY_le_num",
-     "TernaryGoldbach.MinorArcs.Fr_monotoneOn"
-    ],
-    "greps": [
-     "1\\.025742 in TernaryGoldbach/",
-     "c_γ|cγ in TernaryGoldbach/",
-     "2\\.50637 in TernaryGoldbach/MinorArcs"
-    ]
-   },
    "verification": {
     "batch": "B059-d",
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus): noMatch search re-run"
+     "judge (opus): noMatch search re-run",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
     ],
     "agreed": true,
     "same_relation": true,
     "ruling": "confirmed",
-    "reason": "[L] bounds `Fr` only pointwise (NumericsCore:90, $Fr\\,M\\le1.7882c_1+2.50637/c_2$; NumericsAsymp:97 $Fr\\,n\\le14.4t^2$); no bound $e^\\gamma\\log\\log r+c_\\gamma$ and no 1.025742."
+    "reason": "[L] bounds `Fr` only pointwise (NumericsCore:90, $Fr\\,M\\le1.7882c_1+2.50637/c_2$; NumericsAsymp:97 $Fr\\,n\\le14.4t^2$); no bound $e^\\gamma\\log\\log r+c_\\gamma$ and no 1.025742.",
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "reason": "Same quantity Fr bounded at the point where the g-bound is evaluated, by a different route.",
+     "old_note": "Lean keeps $\\digamma(r)=e^\\gamma\\log\\log r+2.50637/\\log\\log r$ (`Fr`) and bounds it with $e^\\gamma\\le1.7882$ and numerical logs; the constant $c_\\gamma=1.025742$ does not occur."
+    }
    }
   },
   {
@@ -18853,32 +18891,10 @@
   {
    "id": "13.2 display 6",
    "section": "13.2",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "The tangent-line bound for $\\sqrt{F}$ and its integration is replaced by block numerics; not in Lean.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds sqrt(digamma(r)) over a range of r by the tangent line of sqrt F at log r0; [L] bounds sqrt(Fr M) at each block point by a certified constant s1 (`hsF`), with no tangent line.",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.Fs",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
-     "module": "TernaryGoldbach.MinorArcs.GMono",
-     "lines": [
-      52,
-      54
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.Fs_hasDerivAt",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
-     "module": "TernaryGoldbach.MinorArcs.GMono",
-     "lines": [
-      74,
-      83
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
      "repo": "lean",
@@ -18886,40 +18902,27 @@
      "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
      "module": "TernaryGoldbach.MinorArcs.NumericsCore",
      "lines": [
-      53,
-      128
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.cell_bound",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
-     "module": "TernaryGoldbach.MinorArcs.NumericsCore",
-     "lines": [
-      271,
-      411
-     ]
+      90,
+      100
+     ],
+     "snippet": "  have hF : Fr M ≤ 1.7882 * c₁ + 2.50637 / c₂ := by\n    unfold Fr\n    have hg := exp_gamma_le_sharp\n    have hll : 0 < Real.log (Real.log M) := lt_of_lt_of_le hc₂ h6\n    have t1 : rexp eulerMascheroniConstant * Real.log (Real.log M) ≤ 1.7882 * c₁ :=\n      mul_le_mul hg h5 hll.le (by norm_num)\n    have t2 : 2.50637 / Real.log (Real.log M) ≤ 2.50637 / c₂ :=\n      div_le_div_of_nonneg_left (by norm_num) hc₂ h6\n    linarith\n  have hsF : √(Fr M) ≤ s₁ := by\n    rw [Real.sqrt_le_left hs₁]; linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+      "lines": [
+       53,
+       128
+      ],
+      "conclusion": "sqrt(Fr M) <= s1, via the numerical bound on Fr M."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.Fs",
-     "TernaryGoldbach.MinorArcs.Fs_hasDerivAt",
-     "TernaryGoldbach.MinorArcs.ghatY_le_num",
-     "TernaryGoldbach.MinorArcs.cell_bound"
-    ],
-    "greps": [
-     "sqrt.*Fr|√.*Fr in TernaryGoldbach/MinorArcs",
-     "ConcaveOn in TernaryGoldbach/"
-    ]
-   },
    "verification": {
     "batch": "B059-d",
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
     ],
     "agreed": true,
     "same_relation": true,
@@ -18927,6 +18930,11 @@
      "file": "A08",
      "ruling": "confirmed",
      "reason": "Same reading; no tangent-line bound for sqrt(F(log r)) occurs; Lean bounds ghat by block numerics (ghatY_le_num, cell_bound)."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "reason": "Same quantity sqrt(Fr) bounded at the corresponding point by block numerics.",
+     "old_note": "The tangent-line bound for $\\sqrt{F}$ and its integration is replaced by block numerics; not in Lean."
     }
    }
   },
@@ -19826,9 +19834,9 @@
   {
    "id": "14.1 display 5",
    "section": "14.1",
-   "relation": "exactMatch",
-   "class": "1-to-1",
-   "note": "The decimal value is stated as the interval $[6.798779,6.79878]$.",
+   "relation": "closeMatch",
+   "class": "Faithful",
+   "note": "The decimal value is stated in Lean as the interval [6.798779, 6.79878].",
    "proof_kind": "helper",
    "ends": [
     {
@@ -19856,10 +19864,16 @@
     "batch": "B060-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "sweep (sonnet) and lead check (opus), 2026-11-13: exactMatch -> closeMatch"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "rejudged_2026_11_13": {
+     "from": "exactMatch",
+     "reason": "Note names a reformulation as an interval.",
+     "old_note": "The decimal value is stated as the interval $[6.798779,6.79878]$."
+    }
    }
   },
   {
@@ -20250,7 +20264,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -20258,6 +20273,11 @@
      "file": "A08",
      "ruling": "confirmed",
      "reason": "Re-read conclusion.tex 205-245; CMain.lean uses the Lipschitz constant 8.82 (conv2_ge), and EtaONum.lean integrates polynomial approximations of eta_o^2, not x^k e^{-x^2}; no incomplete gamma (grep gammaInc|lowerGamma)."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "[L]'s route does not need this computation."
     }
    }
   },
@@ -21898,9 +21918,9 @@
   {
    "id": "14.3 display 15",
    "section": "14.3",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] has no function $f$ or bisection for $R_{y/K,2r_1}$; it uses $R_{y,2n}\\le0.6628$ for $n^4\\le y$ and `gx_scale_le`.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The text bounds R_{y/K,2r1} by bisecting the function f(t); [L] bounds R_{y,2n} uniformly by 0.6628 for n^4 <= y and uses this in the large-level estimate ghatY_le_asym, with no f and no bisection.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
@@ -21909,51 +21929,47 @@
      "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
      "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
      "lines": [
-      17,
+      37,
       52
-     ]
+     ],
+     "snippet": "  have h8 : Real.log (8 * n) ≤ 3 * Real.log B := by\n    have := Real.log_le_log (by positivity) hB3\n    rw [Real.log_pow] at this; push_cast at this; linarith\n  unfold R\n  rw [show 4 * (2 * n) = 8 * n by ring,\n    show 9 * y ^ (1 / 3 : ℝ) / (2.004 * (2 * n)) = B by rw [hB]; ring]\n  have hq : Real.log (8 * n) / (2 * Real.log B) ≤ 1.5 := by\n    rw [div_le_iff₀ (by positivity)]; linarith\n  have hq0 : 0 ≤ Real.log (8 * n) / (2 * Real.log B) :=\n    div_nonneg (Real.log_nonneg (by linarith)) (by positivity)\n  have hl : Real.log (1 + Real.log (8 * n) / (2 * Real.log B)) ≤ Real.log 2.5 :=\n    Real.log_le_log (by linarith) (by linarith)\n  have h25 : Real.log 2.5 ≤ 0.9164 := by\n    have := log_le_num (z := 2.5) 0 0.9164 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)\n    norm_num at this ⊢; linarith\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
+      "lines": [
+       17,
+       52
+      ],
+      "conclusion": "R_{y,2n} <= 0.6628 whenever n^4 <= y."
+     }
     },
     {
-     "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+     "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
-     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
      "lines": [
-      350,
-      351
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
-     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
-     "lines": [
-      195,
-      205
-     ]
+      110,
+      110
+     ],
+     "snippet": "  have hR := R_le_of_pow_four hy0 (by linarith) hny",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+      "lines": [
+       55,
+       188
+      ],
+      "conclusion": "Applies the uniform R bound at the large-level point n of ghatY."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "R_le_of_pow_four",
-     "ghatY",
-     "gx_scale_le",
-     "ghatY_le_asym"
-    ],
-    "greps": [
-     "grep -rnE with the displayed constants (1.07996|1.19073|2.33744|0.44937|0.60581|0.51942|0.2779|1.04488|0.093426|0.07455|0.58385|0.60295|0.71392|0.71219|0.041568|0.0169073|0.001399|0.02219|0.43086|0.10426|0.4153461|0.071498|0.089805|1.280418|9.2598|474.608|5.42506) in TernaryGoldbach/; grep 'C_{φ|Cφ|C_phi|cphi|φ,3|φ,2' in TernaryGoldbach/ and NOTES.md, BLUEPRINT.md",
-     "grep '12\\*2\\^\\(1/3\\)|4/3 \\* Real.log|0.019562618' in TernaryGoldbach/ (no hit)"
-    ]
-   },
    "verification": {
     "batch": "B061-d",
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, changed"
     ],
     "agreed": true,
     "same_relation": true,
@@ -21961,6 +21977,11 @@
      "file": "A08",
      "ruling": "confirmed",
      "reason": "Grep of TernaryGoldbach/MinorArcs for the function f, 2.004 with 4/3 log t, and bisection numerics finds only R/gx definitions; R_le_of_pow_four and gx_scale_le replace the R_{y/K,2r_1} computation."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "reason": "Same quantity R bounded for the large-r range by a different argument.",
+     "old_note": "[L] has no function $f$ or bisection for $R_{y/K,2r_1}$; it uses $R_{y,2n}\\le0.6628$ for $n^4\\le y$ and `gx_scale_le`."
     }
    }
   },
@@ -22595,7 +22616,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -22603,6 +22625,11 @@
      "file": "A08",
      "ruling": "confirmed",
      "reason": "Grep P2|I0|0.41415^2 over MinorArcs: I0_ge is the l2 lower bound (different quantity), 0.41415 occurs only as R's floor in GMono/SecondBridge; no I_{0,r_0,r_1,z} bound."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "No Lean lines bound this quantity."
     }
    }
   },
@@ -23552,7 +23579,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -23560,6 +23588,11 @@
      "file": "A09",
      "ruling": "confirmed",
      "reason": "Grepped TernaryGoldbach/ for the roots, C_3/C_4 values and third derivatives of h; [L] defines only hP, hP', hP'' and never locates zeros of h'''."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "No Lean lines compute α_{3,j} or C_3, and [L]'s proof does not need them."
     }
    }
   },
@@ -23762,7 +23795,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -23770,6 +23804,11 @@
      "file": "A09",
      "ruling": "confirmed",
      "reason": "[L] never forms C_4 or integrates by parts four times; tail decay uses only the L^2 norm of g'' (integral_gL''_sq_le)."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "[L] has no C_4 and no fourfold integration by parts."
     }
    }
   },
@@ -25009,7 +25048,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -25017,6 +25057,11 @@
      "file": "A09",
      "ruling": "confirmed",
      "reason": "No L^2 norm of h_H' sqrt t in [L]; grep for derivatives of hH found none."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "[L] never forms the quantity this display bounds."
     }
    }
   },
@@ -25281,7 +25326,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "absence audit (opus)"
+     "absence audit (opus)",
+     "judge (opus), 2026-11-13: re-judged against relatedMatch, noMatch kept"
     ],
     "agreed": true,
     "same_relation": true,
@@ -25289,6 +25335,11 @@
      "file": "A09",
      "ruling": "confirmed",
      "reason": "abs_hH_le_eps integrates by parts in u and bounds |h_H| via the total variation of h, never bounding d/dw h(t e^{-w/H}) by |h'|_inf or estimating h_H - h."
+    },
+    "rejudged_2026_11_13": {
+     "from": "noMatch",
+     "kept": true,
+     "reason": "The total-variation argument serves a different estimate, not this step's derivative bound."
     }
    }
   },

@@ -1,0 +1,73 @@
+{
+  "id": "Eq 14.51",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 286,
+        "rect": [
+          0.25926,
+          0.22906,
+          0.56816,
+          0.14008
+        ]
+      },
+      "title": "Equation (14.51)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.eq_14_51",
+        "module": "Companion.Book.Eq_14_51"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.eq_14_51",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def eq_14_51 : Prop :=\n  ∀ N : ℕ, 10 ^ 27 ≤ N →\n    eq_14_51_first N ≤\n        3 * eq_14_51_supNorm etaPlus ^ 2 * eq_14_51_supNorm etaStar * eq_14_51_second N ∧\n      3 * eq_14_51_supNorm etaPlus ^ 2 * eq_14_51_supNorm etaStar * eq_14_51_second N ≤\n        3 * eq_14_51_supNorm etaPlus ^ 2 * eq_14_51_supNorm etaStar * eq_14_51_third N",
+            "line": 187,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Eq_14_51.lean",
+            "fragment": "L187"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.eq_14_51`, and proved there (`Companion.Book.eq_14_51_holds`).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          286
+        ],
+        "printed": [
+          276
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -5,15 +5,15 @@ New code, standard library only (formal-companion's route B: this producer write
 
 Reads data/items.json (the item list at the pin), data/regions-book.json (the items' regions on
 the arXiv PDF), data/decls-P.json (the linked declarations at the pin: module, keyword line, kind,
-statement) and data/pins.json, and writes
+statement), data/pins.json and data/statements.json (the items stated as printed in lean/), and writes
 
   book/annotations/_defaults.json            the PDF and the repository at the pin, as end templates
   book/annotations/<chapter>/<item>__<role>__<declaration>.json
   book/annotations/<chapter>/<item>/<role>__<declaration>.json   (an item with several records)
 
-One record per (item, linked declaration); one checked absence (`noMatch`) for an item judged not
-formalized whose absence was searched at the pin; one record with an empty object for any other
-item that links nothing.  Every record names all the item's regions.
+One record per (item, linked declaration), and per statement of the item in lean/; one checked
+absence (`noMatch`) for an item judged not formalized whose absence was searched at the pin; one
+record with an empty object for any other item that links nothing.  Every record names all the item's regions.
 
 Usage: python3 -I scripts/produce.py [<repository root>]
 """
@@ -58,6 +58,8 @@ STATUS = {
 KEY_LINKS = {'states', 'states-weaker', 'states-variant', 'defines', 'hypothesis'}
 TITLE = {'theorem': 'Theorem', 'lemma': 'Lemma', 'proposition': 'Proposition', 'corollary': 'Corollary',
          'figure': 'Figure', 'table': 'Table'}
+STATEMENT_PROVENANCE = {'actor': 'agent', 'method': 'stated as printed (2026-11-06); compared with the LaTeX and built at the pin',
+                        'confirmed_by_human': False}
 CLAIMS_ERROR = re.compile(r'(?i)\b(errat\w*|typo\w*|misprint\w*|wrong\w*|false\w*|incorrect\w*|mistake\w*|slip\w*|'
                           r'should read|flaw\w*|is not true|does not hold|fails?|correct(?:ed|ion|s)?|invalid)\b')
 PREPRINT = re.compile(r'2013|2014|preprint|\bH13\b|\[HP?13')
@@ -104,6 +106,11 @@ def main():
     pins, items, regions, decls = data('pins.json'), data('items.json')['items'], data('regions-book.json'), \
         data('decls-P.json')['declarations']
     pdf, lean, mathlib = pins['pdf'], pins['lean'], pins['mathlib']
+    stmt_path = os.path.join(root, 'data', 'statements.json')
+    stmt_doc = json.load(open(stmt_path, encoding='utf-8')) if os.path.exists(stmt_path) else {'statements': []}
+    statements = collections.defaultdict(list)
+    for st in stmt_doc['statements']:
+        statements[st['item']].append(st)
     if regions['pdf']['sha256'] != pdf['sha256'] or regions['pdf']['pages'] != pdf['physical_page_count']:
         sys.exit('regions-book.json is of another PDF')
 
@@ -158,8 +165,9 @@ def main():
             kind = er['check'].get('kind') or er['kind']
             lead = 'Typo: ' if kind == 'typo' else 'Erratum: '
             first = (sentences(er['check']['note']) or [''])[0]
-            note = (note.split('. ')[0].rstrip('.') + '. ' if note else '') + lead + first + \
-                f" (checked by `{er['check']['script']}`)."
+            how = f"proved by `{er['check']['theorem']}` in `{er['check']['script']}`" if er['check'].get('theorem') \
+                else f"checked by `{er['check']['script']}`"
+            note = (note.split('. ')[0].rstrip('.') + '. ' if note else '') + lead + first + f' ({how}).'
         base = {'id': it['id'], 'kind': it['kind'], 'status': STATUS[it['status']]}
         records = []
         nf = it['status'].startswith('not-formalized')
@@ -186,12 +194,26 @@ def main():
                                    object=[{'type': 'lean', 'uri': lean['uri'], 'version': lean['commit']}],
                                    extensions={NS: dict(common)}))
             counts['checked_absences'] += 1
-        elif not records:
+        elif not records and not statements.get(it['id']):
             records.append(dict(base, subject=subject, object=[], extensions={NS: dict(common)}))
             counts['unlinked'] += 1
         for r in records:
             if note:
                 r['note'] = note
+        # the item stated as printed in this repository's lean/ (data/statements.json), with what the
+        # file proves about it in the note
+        for st in statements.get(it['id'], []):
+            src = stmt_doc['repository']
+            end = {'type': 'lean', 'uri': src['uri'], 'version': src['version'],
+                   'location': {'declaration': st['declaration'], 'module': st['module']}, 'role': 'key',
+                   'extensions': {NS: {'declaration': {'id': st['declaration'], 'kind': 'def'},
+                                       'snippet': {'text': st['snippet'], 'line': st['line'], 'truncated': st['truncated']},
+                                       'destination': {'resolution': 'exact',
+                                                       'href': f"{src['uri']}/blob/{src['version']}/{st['file']}",
+                                                       'fragment': f"L{st['line']}"}}}}
+            records.append(dict(base, relation='exactMatch', subject=subject, object=[end], note=st['note'],
+                                extensions={NS: dict(common, provenance=STATEMENT_PROVENANCE)}))
+            counts['formal_statements'] += 1
         # file names: <item>__<role>__<declaration>, or a folder for an item with several records
         def key_of(r, in_item):
             if r.get('relation') == 'noMatch' or not r['object']:

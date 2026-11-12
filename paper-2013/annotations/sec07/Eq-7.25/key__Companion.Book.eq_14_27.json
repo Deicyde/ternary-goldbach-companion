@@ -1,0 +1,73 @@
+{
+  "id": "Eq 7.25",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.20371,
+          0.4337,
+          0.63183,
+          0.0397
+        ]
+      },
+      "title": "Equation (7.25)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.eq_14_27",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L119",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Eq_14_27.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 119,
+            "text": "def eq_14_27 : Prop :=\n  ∀ N : ℕ, Odd N → ∀ x : ℝ, (4.9e26 : ℝ) ≤ x → x = N / (2 + 9 / 4 / √(2 * Real.pi) / κ) →\n    1.058259 / κ * x ^ 2 ≤\n      (∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x,\n        S etaPlus x α ^ 2 * S etaStar x α * TernaryGoldbach.e (-(N * α))).re",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "Companion.Book.eq_14_27",
+        "module": "Companion.Book.Eq_14_27"
+      },
+      "role": "key",
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05"
+    }
+  ],
+  "note": "As [H] (14.27), up to notation. Stated as printed in `Companion.Book.eq_14_27`; the file proves that it implies `TernaryGoldbach.MajorArcs.major_total` (`Companion.Book.eq_14_27_implies_formal`), not the statement itself.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

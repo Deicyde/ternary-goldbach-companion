@@ -1,0 +1,73 @@
+{
+  "id": "Eq 9.94",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 207,
+        "rect": [
+          0.17135,
+          0.79951,
+          0.56816,
+          0.05547
+        ]
+      },
+      "title": "Equation (9.94)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.94"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.eq_9_94",
+        "module": "Companion.Book.Eq_9_94"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.eq_9_94",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def eq_9_94 : Prop :=\n  ∀ x : ℝ, 1e12 ≤ x →\n    ∃ E₁ E₂ : ℝ, |E₁| ≤ 1.95e-6 ∧ |E₂| ≤ 5.3e-7 ∧\n      ∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t) =\n        (0.640206 + E₁) * Real.log x - 0.021095 + E₂",
+            "line": 114,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Eq_9_94.lean",
+            "fragment": "L114"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.eq_9_94`, and proved there (`Companion.Book.eq_9_94_holds`).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          207
+        ],
+        "printed": [
+          197
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "Eq 14.7",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 271,
+        "rect": [
+          0.17135,
+          0.51629,
+          0.56816,
+          0.05532
+        ]
+      },
+      "title": "Equation (14.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.eq_14_7",
+        "module": "Companion.Book.Eq_14_7"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.eq_14_7",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def eq_14_7 : Prop :=\n  ∀ x : ℝ, (4.9e26 : ℝ) ≤ x →\n    (∃ E₁ E₂ : ℝ, |E₁| ≤ 0.00007 ∧ |E₂| ≤ 0.075273 ∧\n      ∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 =\n        (8.70524 + E₁) * x + E₂ * x) ∧\n    (∃ E : ℝ, |E| ≤ 0.0754 ∧\n      ∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 = (8.7052 + E) * x) ∧\n    ∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 ≤ 8.7806 * x",
+            "line": 159,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Eq_14_7.lean",
+            "fragment": "L159"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.eq_14_7`, and proved there from the hypotheses PlattGRH (`Companion.Book.eq_14_7_holds`).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          271
+        ],
+        "printed": [
+          261
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

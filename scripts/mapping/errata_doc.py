@@ -1,4 +1,5 @@
-"""Write docs/errata.md: the claims that [H] errs which a re-run check in scripts/checks/ confirms.
+"""Write docs/errata.md: the claims that [H] errs which a re-run check in scripts/checks/, or a compiled
+Lean refutation in lean/ (scripts/mapping/formal_errata.py), confirms.
 
 New code.  Reads data/items.json and data/regions-book.json; lists only errata whose check state is `confirmed`.
 
@@ -15,13 +16,17 @@ rows = [x for x in items if x['erratum'].get('check', {}).get('state') == 'confi
 kind = lambda x: x['erratum']['check'].get('kind') or x['erratum']['kind']
 lines = ['# Confirmed errata of arXiv:1501.05438v2', '',
          'Each claim below was confirmed by the numerical check named beside it, re-run on the recorded',
-         'date (`data/checks-run.json`). The checks were written and judged by AI agents; no person has',
-         'reviewed them. Claims not confirmed this way are not listed. Printed page numbers.', '',
+         'date (`data/checks-run.json`), or by the Lean theorem named beside it, which proves the printed',
+         'statement false and was built at the pin (`lean/`). The checks and the Lean files were written and',
+         'judged by AI agents; no person has reviewed them. Claims not confirmed this way are not listed.',
+         'Printed page numbers.', '',
          '| Item | p. | Kind | What | Check |', '|---|---|---|---|---|']
 for x in rows:
     note = ' '.join(x['erratum']['check']['note'].split()).replace('|', '\\|')
     pages = sorted({r['page'] - 10 for r in regions.get(x['id'], [])}) or ['']
-    lines.append(f"| {x['id']} | {pages[0]} | {kind(x)} | {note} | `{x['erratum']['check']['script']}` |")
+    c = x['erratum']['check']
+    how = f"`{c['script']}`, `{c['theorem'].split('.')[-1]}`" if c.get('theorem') else f"`{c['script']}`"
+    lines.append(f"| {x['id']} | {pages[0]} | {kind(x)} | {note} | {how} |")
 lines.append('')
 os.makedirs(os.path.join(root, 'docs'), exist_ok=True)
 open(os.path.join(root, 'docs', 'errata.md'), 'w', encoding='utf-8').write('\n'.join(lines))

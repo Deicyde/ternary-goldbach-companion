@@ -1,0 +1,73 @@
+{
+  "id": "Proposition 12.1.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 240,
+        "rect": [
+          0.25926,
+          0.33382,
+          0.56816,
+          0.19462
+        ]
+      },
+      "title": "Proposition 12.1.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.prop_12_1_2",
+        "module": "Companion.Book.Prop_12_1_2"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.prop_12_1_2",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def prop_12_1_2 : Prop :=\n  ∀ (x δ₀ Q₀ : ℝ) (a : ℕ → ℂ),\n    (∀ n, a n ≠ 0 → n.Prime) →\n    Summable (fun n => ‖a n‖) → Summable (fun n => ‖a n‖ ^ 2) →\n    (∀ n : ℕ, (n : ℝ) ≤ √x → a n = 0) →\n    1 ≤ Q₀ → 1 ≤ δ₀ → δ₀ * Q₀ ^ 2 ≤ x / 2 →\n    ∫ α in Ioc (0 : ℝ) 1 ∩ TernaryGoldbach.Helfgott.majorArcs δ₀ Q₀ x,\n        ‖TernaryGoldbach.expTsum a α‖ ^ 2 ≤\n      quotMax_12_1_2 x δ₀ Q₀ * ∑' n, ‖a n‖ ^ 2",
+            "line": 105,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Prop_12_1_2.lean",
+            "fragment": "L105"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.prop_12_1_2`, and proved there (`Companion.Book.prop_12_1_2_holds`).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          240
+        ],
+        "printed": [
+          230
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "Eq 5.32",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 102,
+        "rect": [
+          0.25926,
+          0.30188,
+          0.56816,
+          0.04023
+        ]
+      },
+      "title": "Equation (5.32)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.eq_5_32",
+        "module": "Companion.Book.Eq_5_32"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.eq_5_32",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def eq_5_32 : Prop :=\n  ∀ T : ℝ, 1 ≤ T →\n    (∫ S in (1 : ℝ)..T, eq_5_32_G 1 S / S) ≤ 0.3698 * Real.log T ∧\n    (∫ S in (1 : ℝ)..T, eq_5_32_G 2 S / S) ≤ 0.37273 * Real.log T",
+            "line": 107,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Eq_5_32.lean",
+            "fragment": "L107"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.eq_5_32`, and proved false there (`Companion.Book.eq_5_32_each_case_false`).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          102
+        ],
+        "printed": [
+          92
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

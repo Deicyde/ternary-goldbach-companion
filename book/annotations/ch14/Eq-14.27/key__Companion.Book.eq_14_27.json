@@ -1,0 +1,73 @@
+{
+  "id": "Eq 14.27",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 277,
+        "rect": [
+          0.17135,
+          0.43236,
+          0.56816,
+          0.03637
+        ]
+      },
+      "title": "Equation (14.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.eq_14_27",
+        "module": "Companion.Book.Eq_14_27"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.eq_14_27",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def eq_14_27 : Prop :=\n  ∀ N : ℕ, Odd N → ∀ x : ℝ, (4.9e26 : ℝ) ≤ x → x = N / (2 + 9 / 4 / √(2 * Real.pi) / κ) →\n    1.058259 / κ * x ^ 2 ≤\n      (∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x,\n        S etaPlus x α ^ 2 * S etaStar x α * TernaryGoldbach.e (-(N * α))).re",
+            "line": 119,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Eq_14_27.lean",
+            "fragment": "L119"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.eq_14_27`; the file proves that it implies `TernaryGoldbach.MajorArcs.major_total` (`Companion.Book.eq_14_27_implies_formal`), not the statement itself.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          277
+        ],
+        "printed": [
+          267
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

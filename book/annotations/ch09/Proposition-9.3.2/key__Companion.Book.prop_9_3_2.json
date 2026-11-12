@@ -1,0 +1,73 @@
+{
+  "id": "Proposition 9.3.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 192,
+        "rect": [
+          0.25926,
+          0.15373,
+          0.56816,
+          0.24296
+        ]
+      },
+      "title": "Proposition 9.3.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.3.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.prop_9_3_2",
+        "module": "Companion.Book.Prop_9_3_2"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.prop_9_3_2",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def prop_9_3_2 : Prop :=\n  ∀ x : ℝ, 1 ≤ x → ∀ δ : ℝ, ∀ (q : ℕ) [NeZero q] (χ : DirichletCharacter ℂ q), χ.IsPrimitive →\n    ∀ T0 : ℝ, GRHUpTo χ T0 → max (10 * π * |δ|) 50 ≤ T0 →\n      (q = 1 → ‖(∑' n : ℕ, (Λ n : ℂ) * χ n * e (δ / x * n) * (phiPos (n / x) : ℂ)) -\n          𝓕 (fun t : ℝ => (phiPos t : ℂ)) (-δ) * x‖ ≤ prop_9_3_2_err q T0 δ x * x) ∧\n      (1 < q → ‖∑' n : ℕ, (Λ n : ℂ) * χ n * e (δ / x * n) * (phiPos (n / x) : ℂ)‖ ≤\n          prop_9_3_2_err q T0 δ x * x)",
+            "line": 121,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Prop_9_3_2.lean",
+            "fragment": "L121"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.prop_9_3_2`; the file proves that it implies `TernaryGoldbach.MajorArcs.prop_9_3_2` (`Companion.Book.prop_9_3_2_implies_formal`), not the statement itself.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          192
+        ],
+        "printed": [
+          182
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

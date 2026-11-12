@@ -1,0 +1,73 @@
+{
+  "id": "Lemma 4.1.3",
+  "kind": "lemma",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17135,
+          0.64616,
+          0.56816,
+          0.12606
+        ]
+      },
+      "title": "Lemma 4.1.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.lemma_4_1_3",
+        "module": "Companion.Book.Lemma_4_1_3"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.lemma_4_1_3",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def lemma_4_1_3 : Prop :=\n  ∀ (α : ℝ) (a : ℤ) (q : ℕ) (β Q : ℝ),\n    0 < q → Int.gcd a q = 1 → |β| ≤ 1 → (q : ℝ) ≤ Q → α = a / q + β / (q * Q) →\n    ∀ y₁ y₂ : ℝ, 0 ≤ y₁ → y₁ < y₂ → y₂ - y₁ ≤ q → y₂ ≤ Q / 2 →\n    ∀ B C : ℝ, 0 ≤ B → 0 ≤ C →\n      (∑ n ∈ Finset.Ioc ⌊y₁⌋ ⌊y₂⌋ with ¬ (q : ℤ) ∣ n,\n          min (B / |Real.sin (π * α * n)|) (C / |Real.sin (π * α * n)| ^ 2)) ≤\n        2 * B * (q / π) * max 2 (Real.log (C * Real.exp 3 * q / (B * π))) ∧\n      (∑ n ∈ Finset.Ioc ⌊y₁⌋ ⌊y₂⌋ with ¬ (q : ℤ) ∣ n,\n          min (B / |Real.sin (π * α * n)|) (C / |Real.sin (π * α * n)| ^ 2)) ≤\n        2 * B * q / π * Real.log (2 * Real.exp 2 * q / π)",
+            "line": 108,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Lemma_4_1_3.lean",
+            "fragment": "L108"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.lemma_4_1_3`, and proved there (`Companion.Book.lemma_4_1_3_holds`).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

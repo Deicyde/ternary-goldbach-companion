@@ -1,0 +1,73 @@
+{
+  "id": "Eq 5.12",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 36,
+        "rect": [
+          0.20371,
+          0.30656,
+          0.63183,
+          0.05266
+        ]
+      },
+      "title": "Equation (5.12)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.eq_12_12",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L105",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Eq_12_12.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 105,
+            "text": "def eq_12_12 : Prop :=\n  ∀ d : ℕ, 1 ≤ d → ∀ R : ℝ, 1 ≤ R →\n    |GqP d R - ((Nat.totient d : ℝ) / d) *\n        (Real.log R + eq_12_12_cE + ∑ p ∈ d.primeFactors, Real.log p / p)|\n      ≤ 7.284 * R ^ (-(1 / 3 : ℝ)) * eq_12_12_f1 d",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "Companion.Book.eq_12_12",
+        "module": "Companion.Book.Eq_12_12"
+      },
+      "role": "key",
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05"
+    }
+  ],
+  "note": "As [H] (12.12), up to notation. Stated as printed in `Companion.Book.eq_12_12`, and proved there (`Companion.Book.eq_12_12_holds`).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          36
+        ],
+        "printed": [
+          36
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

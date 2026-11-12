@@ -1,0 +1,73 @@
+{
+  "id": "Eq 2.21",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 47,
+        "rect": [
+          0.17135,
+          0.5037,
+          0.56816,
+          0.03905
+        ]
+      },
+      "title": "Equation (2.21)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.eq_2_21",
+        "module": "Companion.Book.Eq_2_21"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.eq_2_21",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def eq_2_21 : Prop :=\n  ∀ x : ℝ, 11815 ≤ x →\n    |∑ᶠ n ∈ {n : ℕ | 1 ≤ n ∧ (n : ℝ) ≤ x}, (ArithmeticFunction.moebius n : ℝ) / n|\n      ≤ 0.03 / Real.log x",
+            "line": 68,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Eq_2_21.lean",
+            "fragment": "L68"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.eq_2_21`; the file proves it equivalent to the hypothesis `TernaryGoldbach.RamareMoebius` (`Companion.Book.eq_2_21_iff`).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          47
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

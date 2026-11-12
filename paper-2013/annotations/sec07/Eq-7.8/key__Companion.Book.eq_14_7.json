@@ -1,0 +1,73 @@
+{
+  "id": "Eq 7.8",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.20371,
+          0.83208,
+          0.63183,
+          0.05889
+        ]
+      },
+      "title": "Equation (7.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.eq_14_7",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L159",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Eq_14_7.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 159,
+            "text": "def eq_14_7 : Prop :=\n  ∀ x : ℝ, (4.9e26 : ℝ) ≤ x →\n    (∃ E₁ E₂ : ℝ, |E₁| ≤ 0.00007 ∧ |E₂| ≤ 0.075273 ∧\n      ∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 =\n        (8.70524 + E₁) * x + E₂ * x) ∧\n    (∃ E : ℝ, |E| ≤ 0.0754 ∧\n      ∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 = (8.7052 + E) * x) ∧\n    ∫ α in Set.Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 ≤ 8.7806 * x",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "Companion.Book.eq_14_7",
+        "module": "Companion.Book.Eq_14_7"
+      },
+      "role": "key",
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05"
+    }
+  ],
+  "note": "[H] (14.7) changed it (constant O^*(0.075272) -> O^*(0.075273) in the middle step; final 8.7052+O^*(0.0754) <= 8.7806 unchanged), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          57
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

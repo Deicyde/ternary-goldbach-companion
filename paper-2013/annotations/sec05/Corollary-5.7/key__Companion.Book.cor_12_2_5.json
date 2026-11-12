@@ -1,0 +1,73 @@
+{
+  "id": "Corollary 5.7",
+  "kind": "corollary",
+  "status": "partial",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 44,
+        "rect": [
+          0.20371,
+          0.4513,
+          0.63183,
+          0.20647
+        ]
+      },
+      "title": "Corollary 5.7",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 5.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.cor_12_2_5",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L143",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Cor_12_2_5.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 143,
+            "text": "def cor_12_2_5 : Prop :=\n  ∀ (x δ₀ Q₀ : ℝ) (a : ℕ → ℂ), cor_12_2_5_coeffs x a →\n    (10 : ℝ) ^ 5 ≤ Q₀ → 1 ≤ δ₀ → (20000 * Q₀) ^ 2 ≤ x / (2 * δ₀) →\n    let Q := √(x / (2 * δ₀))\n    (Q₀ ≤ Q ^ (0.6 : ℝ) →\n      ∫ α in Ioc (0 : ℝ) 1 ∩ cor_12_2_5_arcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤\n        (Real.log Q₀ + 1.36) / (Real.log Q + cor_12_2_5_cE) * ∑' n, ‖a n‖ ^ 2) ∧\n    (2 * Q₀ ≤ (2 * Q) ^ (0.6 : ℝ) →\n      ∫ α in Ioc (0 : ℝ) 1 ∩ Helfgott.majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤\n        (Real.log (2 * Q₀) + 1.36) / (Real.log (2 * Q) + cor_12_2_5_cE) * ∑' n, ‖a n‖ ^ 2)",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "Companion.Book.cor_12_2_5",
+        "module": "Companion.Book.Cor_12_2_5"
+      },
+      "role": "key",
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05"
+    }
+  ],
+  "note": "As [H] Corollary 12.2.5, up to notation. Stated as printed in `Companion.Book.cor_12_2_5`; the file proves that it implies `TernaryGoldbach.MinorArcs.cor_12_2_5` (`Companion.Book.cor_12_2_5_implies_formal`), not the statement itself.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          44
+        ],
+        "printed": [
+          44
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

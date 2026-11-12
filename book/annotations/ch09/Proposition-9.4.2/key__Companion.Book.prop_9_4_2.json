@@ -1,0 +1,73 @@
+{
+  "id": "Proposition 9.4.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 197,
+        "rect": [
+          0.17135,
+          0.40198,
+          0.56816,
+          0.26074
+        ]
+      },
+      "title": "Proposition 9.4.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.4.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05",
+      "location": {
+        "declaration": "Companion.Book.prop_9_4_2",
+        "module": "Companion.Book.Prop_9_4_2"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.prop_9_4_2",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def prop_9_4_2 : Prop :=\n  ∀ H : ℝ, 25 ≤ H → ∀ x : ℝ, 1e3 ≤ x → ∀ δ : ℝ,\n  ∀ (q : ℕ) [NeZero q] (χ : DirichletCharacter ℂ q), χ.IsPrimitive →\n  ∀ T₀ : ℝ, H + max (10 * π * |δ|) 50 ≤ T₀ → GRHUpTo χ T₀ →\n    ‖Schar χ (fun n => ((Λ n * etaPlusH H (n / x) : ℝ) : ℂ)) (δ / x) -\n        (if q = 1 then 𝓕 (fun u => (etaPlusH H u : ℂ)) (-δ) * x else 0)‖ ≤\n      errBook H q T₀ δ x * x",
+            "line": 200,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Prop_9_4_2.lean",
+            "fragment": "L200"
+          }
+        }
+      }
+    }
+  ],
+  "note": "Stated as printed in `Companion.Book.prop_9_4_2`, and proved there (`Companion.Book.prop_9_4_2_holds`).",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          197
+        ],
+        "printed": [
+          187
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "stated as printed (2026-11-06); compared with the LaTeX and built at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

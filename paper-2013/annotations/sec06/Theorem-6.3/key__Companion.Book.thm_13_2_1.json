@@ -1,0 +1,92 @@
+{
+  "id": "Theorem 6.3",
+  "kind": "theorem",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 48,
+        "rect": [
+          0.20371,
+          0.71865,
+          0.63183,
+          0.18168
+        ]
+      },
+      "title": "Theorem 6.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3#0"
+        }
+      }
+    },
+    {
+      "location": {
+        "page": 49,
+        "rect": [
+          0.20371,
+          0.07362,
+          0.63183,
+          0.55362
+        ]
+      },
+      "title": "Theorem 6.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 6.3#1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Companion.Book.thm_13_2_1",
+            "kind": "def"
+          },
+          "destination": {
+            "fragment": "L269",
+            "href": "https://github.com/Deicyde/ternary-goldbach-companion/blob/d0bb01181787da10922a9c44de19e7db7de0dc05/lean/Companion/Book/Thm_13_2_1.lean",
+            "resolution": "exact"
+          },
+          "snippet": {
+            "line": 269,
+            "text": "def thm_13_2_1 : Prop :=\n  ∀ (κ x : ℝ) (φ ηp : ℝ → ℝ) (r₀ : ℝ),\n    1 ≤ κ → (10 : ℝ) ^ 25 * κ ≤ x →\n    ContinuousOn φ (Ici 0) → (∀ t, 0 ≤ t → 0 ≤ φ t) → IntegrableOn φ (Ici 0) →\n    (∀ t, 0 ≤ t → 0 ≤ ηp t) → BddAbove (ηp '' Ici 0) →\n    (∃ F : Finset ℝ, ∀ t, 0 < t → t ∉ F → DifferentiableAt ℝ ηp t) →\n    Tendsto ηp atTop (𝓝 0) →\n    IntegrableOn (fun t => 1 / √t * thm_13_2_1_etaBar ηp t ^ 2) (Ioi 0) →\n    IntegrableOn (fun t => Real.log t / √t * thm_13_2_1_etaBar ηp t ^ 2) (Ioi 1) →\n    (10 : ℝ) ^ 5 ≤ r₀ → r₀ < thm_13_2_1_r₁ κ x →\n    thm_13_2_1_Z φ ηp κ x r₀ ≤\n      (√(thm_13_2_1_l1 φ * x / κ * (thm_13_2_1_M φ ηp κ x r₀ + thm_13_2_1_T φ ηp κ x r₀)) +\n        √((Helfgott.S (thm_13_2_1_etaStar φ κ) x 0).re * thm_13_2_1_E ηp x)) ^ 2",
+            "truncated": false
+          }
+        }
+      },
+      "location": {
+        "declaration": "Companion.Book.thm_13_2_1",
+        "module": "Companion.Book.Thm_13_2_1"
+      },
+      "role": "key",
+      "type": "lean",
+      "uri": "https://github.com/Deicyde/ternary-goldbach-companion",
+      "version": "d0bb01181787da10922a9c44de19e7db7de0dc05"
+    }
+  ],
+  "note": "[H] Theorem 13.2.1 changed it (constants c^+ 2.3912 -> 2.0532, c^- 0.6294 -> 0.6394; T uses C_{phi,3}((1/2)log(x/kappa)) instead of C_{phi,3}(log x); g now displayed explicitly (13.10) with 3.36 and L_{2r} (was 3.2, L_r via eq:basia)), so the link is at most related.",
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          48,
+          49
+        ],
+        "printed": [
+          48,
+          49
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "matched to [H] by LaTeX label; checked by reading both LaTeX sources",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

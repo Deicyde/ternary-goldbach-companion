@@ -14282,8 +14282,12 @@
     "description": "False for both v. Since G_v ≥ T_v (the exact sum (5.28)), ∫₁ᵀG₂/S > 0.37273 log T for 3.37 ≲ T ≲ 2195, and ∫₁ᵀG₁/S > 0.3698 log T for 4.52 ≲ T ≲ 371. The remark that 0.358 would do for v = 2 is also wrong. The repo reports v = 2 only; v = 1 is new.",
     "verdict_2026_11_06": "confirmed",
     "check": {
-     "state": "pending formal check",
-     "formal_statement": "Companion/Book/Eq_5_32.lean"
+     "state": "confirmed",
+     "kind": "statement-false",
+     "how": "compiled Lean refutation at the pin",
+     "script": "lean/Companion/Book/Eq_5_32.lean",
+     "theorem": "Companion.Book.eq_5_32_each_case_false",
+     "note": "Both cases fail with G_v the exact sum (5.28), the least function the text allows: for v = 1, ∫₁⁵ G₁(S)dS/S = (2/3)log 2 + (1/3)log 5 − 2/5 ≈ 0.59858 > 0.3698 log 5, and for v = 2, ∫₁⁴ G₂(S)dS/S = (7/6)log 2 + (1/6)log 3 − 11/24 ≈ 0.53344 > 0.37273 log 4."
     }
    },
    "verification": {
@@ -14547,8 +14551,12 @@
     "description": "False for both v (inherited from (5.32)): ∫₁ᵀH₂/S − 0.15107 log T > 0 for every T ≳ 3.37 (supremum 0.023059 at T ≈ 15.58, constant 0.023051 for T ≥ 16), and ∫₁ᵀH₁/S > 0.22482 log T for 4.52 ≲ T ≲ 622 (supremum 0.0117 at T ≈ 15.98). The repo reports v = 2 only; v = 1 is new.",
     "verdict_2026_11_06": "confirmed",
     "check": {
-     "state": "pending formal check",
-     "formal_statement": "Companion/Book/Eq_5_36.lean"
+     "state": "confirmed",
+     "kind": "statement-false",
+     "how": "compiled Lean refutation at the pin",
+     "script": "lean/Companion/Book/Eq_5_36.lean",
+     "theorem": "Companion.Book.eq_5_36_false",
+     "note": "The case v = 2 fails, inherited from (5.32): ∫₁⁴ H₂(S)dS/S = (4/π²)((7/6)log 2 + (1/6)log 3 − 11/24) ≈ 0.21620 > 0.15107 log 4 ≈ 0.20943."
     }
    },
    "verification": {
@@ -23031,8 +23039,12 @@
     "description": "The remark right after the theorem, 'η̂♥(−δ) is just √(2π)e^{−2π²δ²}', is false. It is repeated in Ch. 1 after (1.11)–(1.12) as 'self-duality of the Gaussian'. The book's weights live on ℝ⁺: Lemma 9.1.1's main term is G_δ(1)x = x∫₀^∞e(δt)η(t)dt. So the correct value is √(π/2)e^{−2π²δ²} + i√2·D(√2πδ), with D = Dawson's integral: half the real part, plus an imaginary part. Read with the remark's value, the theorem fails for q = 1.",
     "verdict_2026_11_06": "confirmed",
     "check": {
-     "state": "pending formal check",
-     "formal_statement": "Companion/Book/Thm_7_1_1.lean"
+     "state": "confirmed",
+     "kind": "statement-false",
+     "how": "compiled Lean refutation at the pin",
+     "script": "lean/Companion/Book/Thm_7_1_1.lean",
+     "theorem": "Companion.Book.thm_7_1_1_remark_false",
+     "note": "The remark after the theorem is false: η♡ is the one-sided Gaussian, so η̂♡(−δ) = ∫₀^∞ e(δt)e^{−t²/2}dt, whose real part is half of √(2π)e^{−2π²δ²}; at δ = 0 it is √(π/2), not √(2π). The theorem itself is not refuted."
     }
    },
    "verification": {
@@ -38786,8 +38798,12 @@
     "description": "(1) The first case is false as printed. (11.18)–(11.19) omit the contribution of the scales w < 1/K. The proof bounds that part by C_{φ,0,K}x = 1.04488x∫_0^{1/K}φ (Cor C.1.3), and the second case keeps it inside h_φ. Since φ may be any continuous L¹ function, it can put its mass at tiny w, and the printed bound then fails by large factors. Adding C_{φ,0,K}/|φ|₁ to g_{x,φ} restores it; see Eq 11.18. (2) Proof gap: the δ ↦ wδ erratum, which the repo's NOTES.md says Helfgott reported himself. At scale wx the approximation is 2α = a/q + (wδ)/(wx). For w < 1, Thm 3.1.1 then gives only g_{wx}(r_w) with r_w = max(1,w|δ|/8)q. When |δ| > 8 this r_w is smaller than r, so the bound is weaker than the g_{wx}(r) the proof uses. For w > 1 the hypothesis |δ/x| ≤ 1/(qQ_{wx}) can fail. (3) Tacit conditions. (11.11) is stated only for q ≥ 3, and √Ϝ(r) is undefined for r ≤ e (e.g. q ≤ 2, |δ| ≤ 8); the proposition assumes neither. K = 1 turns the correction term of R_{x,K,φ,t} into 0/0 (its limit is 0). R_{x/K,2r} needs 9(x/K)^{1/3}/(4.008r) > 1, i.e. r < 2.2455(x/K)^{1/3}. Since r can reach x^{1/3}/6, admissible δ violate this once K > 2445.",
     "verdict_2026_11_06": "confirmed",
     "check": {
-     "state": "pending formal check",
-     "formal_statement": "Companion/Book/Prop_11_2_3.lean"
+     "state": "confirmed",
+     "kind": "statement-false",
+     "how": "compiled Lean refutation at the pin",
+     "script": "lean/Companion/Book/Prop_11_2_3.lean",
+     "theorem": "Companion.Book.prop_11_2_3_false",
+     "note": "The first case (11.18)–(11.19) omits the term C_{φ,0,K} = 1.04488∫₀^{1/K}φ that its proof produces and the second case keeps; for a continuous φ concentrated near w = 2.75/x (x = 10³⁰, K = 8, q = 8·10⁸, δ = 0), |S_{η*}(α,x)| ≥ 0.18|φ|₁x while g_{x,φ}(q)|φ|₁x ≤ 0.01|φ|₁x."
     }
    },
    "verification": {
@@ -55264,8 +55280,12 @@
     "description": "The range should start at 7. n = 5 is odd and ≥ 5 but is not a sum of three primes, since any three primes sum to at least 6. The proof's first step, n = 3 + (n−3) with [OSHP], needs n − 3 ≥ 4. Theorem 1.1.1 correctly says 'greater than 5'. For 7 ≤ n ≤ n₀ the proposition holds.",
     "verdict_2026_11_06": "confirmed",
     "check": {
-     "state": "pending formal check",
-     "formal_statement": "Companion/Book/Prop_D_0_3.lean"
+     "state": "confirmed",
+     "kind": "typo",
+     "how": "compiled Lean refutation at the pin",
+     "script": "lean/Companion/Book/Prop_D_0_3.lean",
+     "theorem": "Companion.Book.prop_D_0_3_upTo_false",
+     "note": "The range should read 5 < n: 5 is odd and at most n₀, but it is not a sum of three primes."
     }
    },
    "verification": {

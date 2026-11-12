@@ -406,6 +406,21 @@ def main():
         A, B = src[a], src[b]
         return A['chapter_file'] == B['chapter_file'] and (A['line'] <= B['line'] <= B['end_line'] <= A['end_line']
                                                          or B['line'] <= A['line'] <= A['end_line'] <= B['end_line'])
+
+    # a theorem-like item's box reaches down to the bottom of each display it holds on that page (a display's
+    # box spans its ink, which can pass the last line of the item's words)
+    holders = [i for i in regions if src[i]['kind'] not in ('equation', 'figure', 'table')]
+    for e in [i for i in regions if src[i]['kind'] == 'equation']:
+        for t in holders:
+            A, B = src[t], src[e]
+            if not (A['chapter_file'] == B['chapter_file'] and A['line'] <= B['line'] <= B['end_line'] <= A['end_line']):
+                continue
+            for re_ in regions[e]:
+                for rt in regions[t]:
+                    if rt['page'] == re_['page']:
+                        top = min(rt['rect'][1], re_['rect'][1])
+                        bot = max(rt['rect'][1] + rt['rect'][3], re_['rect'][1] + re_['rect'][3])
+                        rt['rect'][1], rt['rect'][3] = round(top, 5), round(bot - top, 5)
     by_page = collections.defaultdict(list)
     for iid, regs in regions.items():
         for r in regs:

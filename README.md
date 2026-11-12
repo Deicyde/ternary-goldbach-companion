@@ -16,8 +16,8 @@ Each link carries a relation judged statement by statement; an item searched for
 is a checked absence (`noMatch`).
 
 A second overlay, in `paper-2013/`, shows H. A. Helfgott, *The ternary Goldbach conjecture is true*,
-arXiv:1312.7748v2 (2014, 79 pp.). Each of its 244 numbered items is matched to its counterpart in the
-book and takes that item's Lean links: with the book's relation where the two statements are the
+arXiv:1312.7748v2 (2014, 79 pp.). 241 of its 244 numbered items are matched to their counterparts in
+the book and take those items' Lean links: with the book's relation where the two statements are the
 same up to notation, and as `relatedMatch` at most where the book changed it (the note says what
 changed). A further link points to the book's item on the book's PDF.
 
@@ -44,17 +44,23 @@ library only. The cards show plain statements: there is no Verso build of the pi
 
 ## Counts
 
-778 items, 2256 annotations: 2227 link calr3/ternary-goldbach, 29 the statements in `lean/`. By
-item (the relation of its key links to calr3/ternary-goldbach; a link that only supports the item
-is `relatedMatch`):
+778 items, 2256 annotations: 2220 link calr3/ternary-goldbach (131 of them checked absences), 7
+Mathlib, 29 the statements in `lean/`. By item, the strongest relation of its key links to
+calr3/ternary-goldbach or Mathlib (a link that only supports the item is `relatedMatch`):
 
 | Relation | Items |
 |---|---|
-| `exactMatch` (alone or with others) | 108 |
-| `narrowMatch`: the book's item is more general (weaker constants or ranges in Lean) | 80 alone, 112 in all |
-| `broadMatch`: the Lean statement is more general | 7 |
-| `relatedMatch` only: a variant, a different definition, a step inside a proof, or a replacement argument | 430 |
+| `exactMatch` | 36 |
+| `closeMatch`: the same up to a difference the note names (a floor, a factor, a typo's sign) | 13 |
+| `broadMatch`: the Lean statement is more general | 19 |
+| `narrowMatch`: the book's item is more general (weaker constants, narrower ranges, fixed parameters in Lean) | 88 |
+| `hasPart`: Lean states a part of the item (one clause, one step of a chain) | 34 |
+| `relatedMatch` only: a variant, a different definition, a step inside a proof, or a replacement argument | 457 |
 | `noMatch`: searched for at the pin and absent | 131 |
+
+The key links of the 217 items that had an `exactMatch`, `narrowMatch` or `broadMatch` were judged
+again on 2026-11-12, blind and statement by statement (`data/rejudge-2026-11-12.json`); 144 items
+changed, and no relation was raised.
 
 By status (vocabulary of `data/items.json`): replaced 198, variant 142, not formalized (not needed) 132,
 weaker 94, inlined 75, definition match 64, exact 47, definition differs 17, stronger 8, hypothesis 1.
@@ -63,7 +69,8 @@ The paper: 244 items (26 theorem-like, 218 equations), 953 annotations. 181 item
 book counterpart states up to notation, 60 were changed in the book (constants, ranges, redefined
 functions, rewritten steps), and 3 have no counterpart in the book. Two matches by LaTeX label were
 wrong (the book reused the label) and were replaced by the counterpart found by reading. By item:
-`exactMatch` 31, `narrowMatch` 26, `broadMatch` 3, `relatedMatch` only 149, `noMatch` 31, no link 4.
+`exactMatch` 10, `closeMatch` 5, `broadMatch` 8, `narrowMatch` 21, `hasPart` 7, `relatedMatch` only
+158, `noMatch` 31, no link 4.
 
 ## Formal statements
 
@@ -71,19 +78,22 @@ wrong (the book reused the label) and were replaced by the counterpart found by 
 calr3/ternary-goldbach at the pin (`lean/README.md`). At the pin each file proves, about its
 statement: the statement itself, 8 (Thm 1.1.1 and (14.7) from the formalization's hypotheses);
 that it implies a theorem of the formalization, 13, or is equivalent to its hypothesis
-`RamareMoebius`, 1 ((2.21)); its negation, 4 ((5.32), (5.36), Prop 11.2.3, Prop D.0.3), and for
-Thm 7.1.1 the negation of the remark printed after it; nothing, 2 (Thm 7.1.1, Thm 13.2.1). Each
-such item of `book/` links its statement (`exactMatch`), and the note says what the file proves.
+`RamareMoebius`, 1 ((2.21)); its negation, 4 ((5.32), (5.36), Prop 11.2.3, Prop D.0.3); for Thm
+7.1.1, stated with the one-sided Gaussian of §9.2, that it and the remark printed after it cannot
+both hold, that the remark is false, and that the theorem is false with the two-sided Gaussian;
+nothing, 1 (Thm 13.2.1). Each such item of `book/` links its statement (`exactMatch`; `closeMatch`
+for Thm 7.1.1, whose reading of η♡ the file fixes), and the note says what the file proves.
 These links name `https://github.com/Deicyde/ternary-goldbach-companion`, a placeholder for where
 this repository will be published, at the commit that added `lean/`.
 
 ## Errata
 
-145 claims that [H] errs are confirmed (6 of them typos): 140 by a numerical check in
-`scripts/checks/`, re-run on 2026-11-12, and 5 by a Lean proof in `lean/` that the printed
-statement is false: (5.32), (5.36), Prop 11.2.3, the remark after Thm 7.1.1, and Prop D.0.3, whose
-range should start at 5 < n (a typo). `docs/errata.md` lists them; each annotation's note gives its
-item's. No other erratum claim appears here.
+146 claims that [H] errs are confirmed (7 of them typos): 141 by a numerical check in
+`scripts/checks/`, re-run on 2026-11-12, and 5 by a Lean proof in `lean/`: (5.32), (5.36) and
+Prop 11.2.3 are false as printed; Prop D.0.3's range should start at 5 < n (a typo); Thm 7.1.1 and
+the remark after it cannot both hold (the remark is false with η♡ one-sided, as in §9.2; the theorem
+is false with η♡ two-sided, as §7.1 writes it). `docs/errata.md` lists them; each annotation's note
+gives its item's. Notes state no other claim that [H] errs.
 
 ## What was checked
 
@@ -102,7 +112,7 @@ item's. No other erratum claim appears here.
   `Classical.choice` and `Quot.sound` (`lean/Axioms.lean`). Its statements are those of 2026-11-06,
   unchanged, and the definitions of the formalization they use are the same at `ce82a5b` and at the
   pin. Each refuted statement was compared with the printed one in the LaTeX.
-- Not checked: 196 other erratum claims, the typo claims among them, have no re-run check and are
+- Not checked: 195 other erratum claims, the typo claims among them, have no re-run check and are
   left out.
 
 ## Layout
@@ -110,7 +120,8 @@ item's. No other erratum claim appears here.
 - `data/items.json`: the items, their status, declarations at the pin, and how each verdict was
   checked (`verification`). `data/repin.json`: each item's declarations at `ce82a5b` and at the pin.
   `data/regions-book.json`: the items' regions on the PDF.
-- `scripts/mapping/`: the merge of the mapping, the re-pin, the item list. `scripts/regions/`: the
+- `scripts/mapping/`: the merge of the mapping, the re-pin, the item list; `review_fixes.py`, the
+  corrections of the 2026-11-12 review, with the re-judged relations of `data/rejudge-2026-11-12.json`. `scripts/regions/`: the
   regions. `scripts/checks/`: the numerical checks behind the errata. `scripts/produce.py`: the
   annotations.
 - `book/annotations/`: the annotations; `book/pdf-overlay/`: generated by formal-companion's

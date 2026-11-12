@@ -61,7 +61,7 @@ TITLE = {'theorem': 'Theorem', 'lemma': 'Lemma', 'proposition': 'Proposition', '
 STATEMENT_PROVENANCE = {'actor': 'agent', 'method': 'stated as printed (2026-11-06); compared with the LaTeX and built at the pin',
                         'confirmed_by_human': False}
 CLAIMS_ERROR = re.compile(r'(?i)\b(errat\w*|typo\w*|misprint\w*|wrong\w*|false\w*|incorrect\w*|mistake\w*|slip\w*|'
-                          r'should read|flaw\w*|is not true|does not hold|fails?|correct(?:ed|ion|s)?|invalid)\b')
+                          r'should read|flaw\w*|is not true|does not hold|fails?|correct(?:ed|ion|s)?|invalid|misquot\w*|misstat\w*)\b')
 PREPRINT = re.compile(r'2013|2014|preprint|\bH13\b|\[HP?13')
 
 

@@ -232,4 +232,5 @@ def main():
     print(json.dumps(dict(sorted(counts.items())), indent=1))
 
 
-main()
+if __name__ == '__main__':
+    main()

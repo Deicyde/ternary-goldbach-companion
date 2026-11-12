@@ -15,13 +15,14 @@ New code.  Pipeline:
    rebuilt layout is not the arXiv layout on every page (a newer TeX), so otherwise the box's
    words are found in the arXiv PDF's own word boxes, on that page and its neighbours, and the
    region is the span of the matched words, again across the text width (`method: words`); a
-   display moves as one box, to where the arXiv PDF prints its number at the right margin
+   display moves as one box, to where the arXiv PDF prints its number at the margin
    (`method: number`).
 4. Checks on the arXiv PDF: the crop of each item's first region (`pdftotext -f p -l p -x -y -W
    -H`, in points) holds the item's printed number; regions of two items overlap only where one
    item holds the other.
 
-Usage: python3 -I regions.py <build dir> <arXiv PDF> <book_items.json> <out regions-book.json>
+Usage: python3 -I regions.py <build dir> <arXiv PDF> <items json> <out regions json> [<main file> <arXiv id>]
+(defaults: `3nonpupbook`, `arXiv:1501.05438v2`, the book; `ternvin`, `arXiv:1312.7748v2` is the 2013 paper)
 """
 import collections
 import difflib
@@ -55,17 +56,18 @@ def bbox_words(pdf):
 
 
 def read_aux(build):
-    marks, enddisp, geo = {}, {}, {}
+    marks, enddisp, geo, afterdisp = {}, {}, {}, set()
     for f in glob.glob(os.path.join(build, '*.aux')):
         s = open(f, encoding='latin-1').read()
         for name, x, y, p in re.findall(r'\\zref@newlabel\{([^}]*)\}\{\\posx\{(\d+)\}\\posy\{(\d+)\}\\abspage\{(\d+)\}\}', s):
             marks[name] = (int(p), int(x) / SP_PER_BP, int(y) / SP_PER_BP)
         for n, k in re.findall(r'\\rmenddisp\{([^}]*)\}\{(\d+)\}', s):
             enddisp[n] = int(k)
+        afterdisp |= {int(k) for k in re.findall(r'\\rmafterdisp\{(\d+)\}', s)}
         m = re.search(r'\\rmgeometry\{([^}]*)\}', s)
         if m:
             geo = {k: int(v) / SP_PER_BP for k, v in (kv.split('=') for kv in m.group(1).split(','))}
-    return marks, enddisp, geo
+    return marks, enddisp, geo, afterdisp
 
 
 class Layout:
@@ -87,21 +89,54 @@ def words_in(words, y0, y1, x0, x1):
     return [w for w in words if y0 < (w[2] + w[4]) / 2 < y1 and x0 - 30 < w[1] and w[3] < x1 + 30]
 
 
-def raw_boxes(items, marks, enddisp, L, mine):
+def read_sources(build):
+    """The rebuilt source files, by name without `.tex`, as lists of lines; a file whose line holds
+    `\\input{regionmarks}` (added before `\\begin{document}` by build.sh) has it removed, so lines
+    are the arXiv source's."""
+    out = {}
+    for f in glob.glob(os.path.join(build, '*.tex')):
+        lines = open(f, encoding='latin-1').read().split('\n')
+        out[os.path.basename(f)[:-4]] = [l for l in lines if l.strip() != '\\input{regionmarks}']
+    return out
+
+
+def last_word(src, it):
+    """The last word of text before the item's environment in its source (comments and blank lines
+    skipped), letters and digits only, or None when that text ends in a command or a display."""
+    lines = src.get(it['chapter_file'])
+    if not lines:
+        return None
+    for k in range(it['line'] - 2, max(it['line'] - 40, -1), -1):
+        t = re.sub(r'(?<!\\)%.*', '', lines[k]).strip()
+        if not t:
+            continue
+        if t.endswith(('}', '\\]', '$$')) and not t.endswith('$'):
+            return None
+        m = re.search(r'([A-Za-z0-9]+)[^A-Za-z0-9]*$', t)
+        return m.group(1) if m else None
+    return None
+
+
+def raw_boxes(items, marks, enddisp, afterdisp, L, mine, src):
     """Item id -> [(page, y0, y1)] on the rebuilt PDF, and the marker names used."""
     by_kind = collections.defaultdict(list)
     for it in items:
         by_kind['thm' if it['kind'] in ('theorem', 'lemma', 'proposition', 'corollary') else it['kind']].append(it)
-    heads = sorted(((m, n[4:-5]) for n, m in marks.items() if n.startswith('thm:') and n.endswith(':head')),
+    # an unnumbered theorem-like head (the 2013 paper's Main Theorem) is no item
+    heads = sorted(((m, n[4:-5]) for n, m in marks.items() if n.startswith('thm:') and n.endswith(':head')
+                    and n != 'thm::head'),
                    key=lambda t: (t[0][0], -t[0][2]))
     tags = sorted(((int(re.match(r'eq:(\d+):', n).group(1)), n.split('tag=')[1]) for n in marks if ':tag=' in n))
     boxes, notes = {}, collections.defaultdict(list)
 
-    def span(page, lo, hi):
+    def span(page, lo, hi, floor=None):
         ws = words_in(mine[page - 1][2], lo, hi, L.left(page), L.left(page) + L.width)
         if not ws:
             return (page, lo, hi)
-        return (page, min(w[2] for w in ws), max(w[4] for w in ws))
+        top = min(w[2] for w in ws)
+        if floor is not None:  # a tall glyph (a radical) reaches above the display: not into the line before it
+            top = max(top, floor)
+        return (page, top, max(w[4] for w in ws))
 
     # theorem-like items, matched in document order
     thms = by_kind['thm']
@@ -138,14 +173,29 @@ def raw_boxes(items, marks, enddisp, L, mine):
         # the display starts below the line before it and below any display above it on the page
         above = [L.y(m) for n, m in marks.items() if n.endswith(':post') and m[0] == page and L.y(m) < L.y(tag) - 1
                  and m is not post]
+        floor = None
         if pre and pre[0] == page:
             lo = max([L.y(pre)] + above)
+            floor = L.y(pre) + 1
+        elif k in afterdisp:
+            # it follows a display directly: it starts where that display ends, or at the top of
+            # the text block when that display is on the page before
+            lo = max(above) if above else L.top - 3
         else:
-            # no line before it (a display that opens a list item): as far above the number's
-            # baseline as the display reaches below it
-            lo = max([2 * L.y(tag) - L.y(post) - 2] + above)
-            notes[it['id']].append('display top estimated: no line before the display')
-        boxes[it['id']] = [span(page, lo, L.y(post) + 0.5)]
+            # no marker before it: a display that opens a paragraph or a list item.  If the source's
+            # text before the environment ends in a word, the display starts below where the rebuilt
+            # page prints that word, between the display above and the number
+            last = last_word(src, it)
+            hits = [w for w in mine[page - 1][2] if last and key(w) == last and max(above + [0]) < w[2] < L.y(tag)
+                    and L.left(page) - 2 <= w[1] <= L.left(page) + L.width]
+            if hits:
+                lo = max(w[4] for w in hits)
+                floor = lo + 1
+            else:
+                # as far above the number's baseline as the display reaches below it
+                lo = max([2 * L.y(tag) - L.y(post) - 2] + above)
+                notes[it['id']].append('display top estimated: no line before the display')
+        boxes[it['id']] = [span(page, lo, L.y(post) + 0.5, floor)]
     return boxes, notes
 
 
@@ -192,8 +242,8 @@ def key(w):
 
 
 def carry_display(box, num, mine, arx, L):
-    """A display moves as one box: find its number at the right margin of the arXiv PDF and
-    shift the rebuilt box by the number's displacement.  Of several such tokens, take the one
+    """A display moves as one box: find its number at the margin of the arXiv PDF (the side the
+    rebuilt PDF prints it on) and shift the rebuilt box by the number's displacement.  Of several such tokens, take the one
     whose surroundings hold most of the box's words, and at least 60% of them."""
     page, y0, y1 = box
     tag = f'({num})'
@@ -201,6 +251,8 @@ def carry_display(box, num, mine, arx, L):
     if not mt:
         return None
     mt = mt[0]
+    # the number's margin: the right one in [H]; the left one in the 2013 paper (amsart, leqno)
+    at_left = abs(mt[1] - L.left(page)) <= 2
     mw = collections.Counter(key(w) for w in words_in(mine[page - 1][2], y0 - 0.5, y1 + 0.5, L.left(page),
                                                        L.left(page) + L.width) if key(w))
     best, n = None, 0
@@ -208,7 +260,7 @@ def carry_display(box, num, mine, arx, L):
         if not 1 <= pg <= len(arx):
             continue
         for w in arx[pg - 1][2]:
-            if w[0] != tag or abs(w[3] - (L.left(pg) + L.width)) > 2:
+            if w[0] != tag or (abs(w[1] - L.left(pg)) > 2 if at_left else abs(w[3] - (L.left(pg) + L.width)) > 2):
                 continue
             n += 1
             d = w[2] - mt[2]
@@ -219,7 +271,23 @@ def carry_display(box, num, mine, arx, L):
                 best = (score, pg, d)
     if best is None or (n > 1 and best[0] < 0.6 * sum(mw.values())):
         return None
-    return [(best[1], y0 + best[2], y1 + best[2], 'number')]
+    _, pg, d = best
+    # the number may wrap to a line of its own in one build and not the other: then the display's
+    # words move by another displacement than the number.  Take the displacement most of the
+    # display's words agree on (to 1 pt), and add the number's box
+    body = [w for w in words_in(mine[page - 1][2], y0 - 0.5, y1 + 0.5, L.left(page), L.left(page) + L.width)
+            if key(w) and w is not mt]
+    votes = collections.Counter()
+    for w in body:
+        ds = {round(v[2] - w[2]) for v in arx[pg - 1][2]
+              if key(v) == key(w) and abs(v[1] - w[1]) <= 20 and abs(v[2] - w[2]) <= 40}
+        votes.update(ds)
+    if body and votes:
+        dw, nv = votes.most_common(1)[0]
+        if abs(dw - d) > 1.5 and nv >= 0.6 * len(body):
+            at = next(v for v in arx[pg - 1][2] if v[0] == tag and abs(v[2] - (mt[2] + d)) < 0.01)
+            return [(pg, min(y0 + dw, at[2]), max(y1 + dw, at[4]), 'number')]
+    return [(pg, y0 + d, y1 + d, 'number')]
 
 
 def carry(box, mine, arx, L, num=None, identity_only=False):
@@ -286,14 +354,15 @@ def printed_number(it):
 
 def main():
     build, pdf, items_path, out_path = sys.argv[1:5]
+    main_file, identifier = (sys.argv[5:7] + ['3nonpupbook', 'arXiv:1501.05438v2'][len(sys.argv[5:7]):])
     items = json.load(open(items_path))['items']
-    marks, enddisp, geo = read_aux(build)
+    marks, enddisp, geo, afterdisp = read_aux(build)
     L = Layout(geo)
-    mine = bbox_words(os.path.join(build, '3nonpupbook.pdf'))
+    mine = bbox_words(os.path.join(build, main_file + '.pdf'))
     arx = bbox_words(pdf)
     if len(mine) != len(arx):
         sys.exit(f'page counts differ: rebuilt {len(mine)}, arXiv {len(arx)}')
-    boxes, notes = raw_boxes(items, marks, enddisp, L, mine)
+    boxes, notes = raw_boxes(items, marks, enddisp, afterdisp, L, mine, read_sources(build))
 
     regions, missing = {}, {}
     for it in items:
@@ -380,7 +449,7 @@ def main():
                 cont += 1
     sha = hashlib.sha256(open(pdf, 'rb').read()).hexdigest()
     methods = collections.Counter(r['method'] for regs in regions.values() for r in regs)
-    out = dict(pdf=dict(identifier='arXiv:1501.05438v2', sha256=sha, bytes=os.path.getsize(pdf), pages=len(arx)),
+    out = dict(pdf=dict(identifier=identifier, sha256=sha, bytes=os.path.getsize(pdf), pages=len(arx)),
                coordinates='fractions of the displayed page (MediaBox, no rotation), from the top left: [x, y, w, h]',
                items={iid: regs for iid, regs in regions.items()},
                missing=missing, notes={k: v for k, v in notes.items() if v},

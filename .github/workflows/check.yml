@@ -16,9 +16,7 @@ jobs:
       - name: book annotations (Literature Links scan)
         run: PYTHONPATH=book/pdf-overlay/tools python3 -B -m literature_links scan book/annotations
       - name: paper-2013 overlay
-        if: hashFiles('paper-2013/pdf-overlay/GENERATED.json') != ''
         working-directory: paper-2013
         run: python3 -B pdf-overlay/tools/check_generated.py
       - name: paper-2013 annotations (Literature Links scan)
-        if: hashFiles('paper-2013/pdf-overlay/GENERATED.json') != ''
         run: PYTHONPATH=paper-2013/pdf-overlay/tools python3 -B -m literature_links scan paper-2013/annotations

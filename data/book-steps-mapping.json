@@ -9,7 +9,7 @@
   "uri": "https://github.com/leanprover-community/mathlib4",
   "commit": "56a005855ea17e0b0958f73ec801ae140b0a1679"
  },
- "method": "each record mapped by one agent and independently by a second; an opus judge ruled on class or declaration-set disagreements and re-ran one in five agreed noMatch searches; paper records with LaTeX identical to a book record carry the book verdict. No person has reviewed these verdicts.",
+ "method": "each record mapped by one agent and independently by a second; an opus judge ruled on class or declaration-set disagreements and re-ran one in five agreed noMatch searches; an opus absence audit re-checked every other agreed noMatch; paper records with LaTeX identical to a book record carry the book verdict; text-error claims enter a note only when two opus skeptics confirm them and a re-run check script (scripts/checks/steps/) or the Lean backs them. Every declaration was checked with #check at the pin. No person has reviewed these verdicts.",
  "total": 993,
  "mapped": 993,
  "records": [
@@ -390,9 +390,9 @@
   {
    "id": "Lemma 4.1.1 step 1",
    "item": "Lemma 4.1.1",
-   "relation": "relatedMatch",
-   "class": "Deviates",
-   "note": "Lean centres at the real c = ⌊y⌋+(q+1)/2, not at m_0 with ⌊(q+1)/2⌋; the window is |n-c| ≤ q/2 (closed) rather than j in (-q/2,q/2].",
+   "relation": "closeMatch",
+   "class": "Faithful",
+   "note": "Lean centres at the real c = ⌊y⌋+(q+1)/2, not at m_0 = ⌊y⌋+⌊(q+1)/2⌋, with the closed window |n-c| ≤ q/2 in place of j ∈ (-q/2,q/2]; the same residue-window set-up up to these conventions. Relation set in the session lead's sample check (was relatedMatch).",
    "proof_kind": "direct",
    "ends": [
     {
@@ -421,7 +421,8 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus)"
+     "judge (opus)",
+     "session lead sample check (opus): relation changed"
     ],
     "agreed": false,
     "disagreement": "class closeMatch vs relatedMatch",
@@ -28976,7 +28977,7 @@
    "item": "Lemma 9.3.1",
    "relation": "noMatch",
    "class": "Absent",
-   "note": "The Gaussian integral estimates and numerics (a<=0.117, 1.487, 2.566, 1.578) are absent from Lean.",
+   "note": "The Gaussian integral estimates and numerics (a<=0.117, 1.487, 2.566, 1.578) are absent from Lean. Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_9_3_1_step_24.py`.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
@@ -29013,6 +29014,12 @@
      "1\\.299|0\\.117|5\\.13|7\\.96|1\\.487|1\\.578|6\\.11|amanita|garmola in TernaryGoldbach, Companion",
      "t\\^2 e\\^|integral tail Gaussian in TernaryGoldbach/Explicit"
     ]
+   },
+   "text_error": {
+    "kind": "typo",
+    "corrected": "Setting c=0.1065, c1=1/(2|delta|) <= 3pi/40 and y=T0/(pi|delta|) >= 10, we obtain",
+    "evidence": "scripts/checks/steps/lemma_9_3_1_step_24.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
    },
    "verification": {
     "batch": "B023-s",
@@ -29339,7 +29346,7 @@
    "item": "Lemma 9.3.1",
    "relation": "noMatch",
    "class": "Absent",
-   "note": "The Gaussian integral estimates and numerics (a<=0.117, 1.487, 2.566, 1.578) are absent from Lean.",
+   "note": "The Gaussian integral estimates and numerics (a<=0.117, 1.487, 2.566, 1.578) are absent from Lean. Text error, confirmed by two skeptics and `scripts/checks/steps/lemma_9_3_1_step_30.py`.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
@@ -29376,6 +29383,12 @@
      "1\\.299|0\\.117|5\\.13|7\\.96|1\\.487|1\\.578|6\\.11|amanita|garmola in TernaryGoldbach, Companion",
      "t\\^2 e\\^|integral tail Gaussian in TernaryGoldbach/Explicit"
     ]
+   },
+   "text_error": {
+    "kind": "error",
+    "corrected": "With only T0 >= 10 pi|delta|, (caplor) <= 1.605 T0 log(qT0/2pi); 1.578 needs the extra hypothesis T0 >= 4 pi^2 |delta|",
+    "evidence": "scripts/checks/steps/lemma_9_3_1_step_30.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
    },
    "verification": {
     "batch": "B023-s",
@@ -36551,7 +36564,7 @@
    "item": "Lemma 11.2.1",
    "relation": "noMatch",
    "class": "Absent",
-   "note": "The bound on L_{2r} at x_r is absent from [L].",
+   "note": "The bound on L_{2r} at x_r is absent from [L]. Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_11_2_1_step_11.py`.",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.Lg",
@@ -36580,6 +36593,12 @@
      "0\\.27125|0\\.41415|0\\.09072|0\\.1211|1\\.9521|4\\.56|22\\.55|1234|0\\.276|\\b33\\b in TernaryGoldbach/",
      "ConvexOn|convexOn in TernaryGoldbach/MinorArcs"
     ]
+   },
+   "text_error": {
+    "kind": "typo",
+    "corrected": "L_{2r} <= e^gamma log log x_r ((13/12) log x_r + 4.25) + 4.56 log x_r + 22.55",
+    "evidence": "scripts/checks/steps/lemma_11_2_1_step_11.py",
+    "confirmed_by": "two skeptics (opus), each confirming independently"
    },
    "note_edited": "unconfirmed text-error wording removed or evidence added by the session lead",
    "verification": {
@@ -48057,31 +48076,50 @@
   {
    "id": "Corollary 12.2.6 step 2",
    "item": "Corollary 12.2.6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Reduction by max_q G_q(Q0)/G_q(Q) for the discrete sum Σ|S(a/q)|² is not formalized.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Same Ramare/Bombieri comparison by $\\max G_q$-ratio, but for the arc function $F_R(\\beta)$ (moduli $\\tilde q\\le 2R$, ratio at $(2Q_0/sq,2Q/sq)$) inside Prop 12.1.2; [L] never states the point-evaluation sum for $q\\le Q_0$ of Cor 12.2.6.",
+   "proof_kind": "chain",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot6.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot6",
-     "lines": [
-      68,
-      98
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+     "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
      "file": "TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
      "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
      "lines": [
-      375,
-      396
-     ]
+      143,
+      169
+     ],
+     "snippet": "theorem Farc_eq {L : ℕ} [NeZero L] {a : ℕ → ℂ} {δ₀ R x β : ℝ} (hx : 0 < x)\n    (hqL : ∀ q ∈ Qset R, q ∣ L) (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) :\n    Farc a δ₀ R x β = ∑ Ψ : DirichletCharacter ℂ L, ‖Schar Ψ⁻¹ a β‖ ^ 2 *\n      (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * Gq (qt Ψ.conductor) ((mR δ₀ R x β : ℕ) / qt Ψ.conductor))) := by\n  classical\n  have hT : ∀ q ∈ Qset R, ∑ b ∈ Bset q, ‖expTsum a ((b : ℝ) / q + β)‖ ^ 2 =\n      ∑ Ψ : DirichletCharacter ℂ L,\n        (if Ψ.conductor ∣ q then TernaryGoldbach.wq q Ψ.conductor else 0) / q.totient *\n          ‖Schar Ψ⁻¹ a β‖ ^ 2 := by\n    intro q hq\n    have hq1 : 1 ≤ q := (Finset.mem_Icc.1 (Finset.mem_filter.1 hq).1).1\n    have : NeZero q := ⟨by omega⟩\n    have hφ : (0 : ℝ) < q.totient := by exact_mod_cast Nat.totient_pos.2 (by omega)\n    rw [sum_Bset_eq_units (fun t => ‖expTsum a t‖ ^ 2) β]\n    have key := totient_mul_sum_units_lift (hqL q hq) ha hcop β\n    simp_rw [div_mul_eq_mul_div, ← Finset.sum_div, ← key]\n    field_simp\n  unfold Farc\n  rw [Finset.sum_congr rfl fun q hq => by rw [hT q hq], ← Finset.sum_filter, Qset_filter_eq hx,\n    Finset.sum_comm]\n  refine Finset.sum_congr rfl fun Ψ _ => ?_\n  have hc1 : 1 ≤ Ψ.conductor := Nat.pos_of_ne_zero (DirichletCharacter.conductor_ne_zero Ψ)\n  rw [← weight_sum Ψ.conductor hc1, Finset.mul_sum]\n  refine Finset.sum_congr rfl fun q _ => ?_\n  ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.Farc_eq",
+      "lines": [
+       140,
+       169
+      ],
+      "conclusion": "Character expansion (Bombieri's identity `totient_mul_sum_units_lift`, the analogue of Ramare's Thm 2.1): $F_R(\\beta)=\\sum_{q}\\sum^*_b|S(b/q+\\beta)|^2$ equals $\\sum_\\Psi |S_{\\Psi^{-1}}(\\beta)|^2$ weighted by $(c/\\varphi(c))\\kappa_c G_{\\tilde c}(m_R(\\beta)/\\tilde c)$."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Farc_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+     "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+     "lines": [
+      225,
+      244
+     ],
+     "snippet": "theorem Farc_le {L : ℕ} [NeZero L] {a : ℕ → ℂ} {δ₀ Q₀ Q x β C : ℝ} (hx : 0 < x) (hQ₀ : 1 ≤ Q₀)\n    (hQQ : Q₀ ≤ Q) (hC0 : 0 ≤ C)\n    (hC : ∀ q : ℕ, 1 ≤ q → Even q → (q : ℝ) ≤ 2 * Q₀ → ∀ s : ℝ, 1 ≤ s → s ≤ 2 * Q₀ / q →\n      Gq q (2 * Q₀ / (s * q)) ≤ C * Gq q (2 * Q / (s * q)))\n    (hqL₀ : ∀ q ∈ Qset Q₀, q ∣ L) (hqL : ∀ q ∈ Qset Q, q ∣ L) (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) :\n    Farc a δ₀ Q₀ x β ≤ C * Farc a δ₀ Q x β := by\n  rw [Farc_eq hx hqL₀ ha hcop, Farc_eq hx hqL ha hcop, Finset.mul_sum]\n  refine Finset.sum_le_sum fun Ψ _ => ?_\n  have hc1 : 1 ≤ Ψ.conductor := Nat.pos_of_ne_zero (DirichletCharacter.conductor_ne_zero Ψ)\n  have hG := Gq_mR_le (δ₀ := δ₀) (x := x) (β := β) hx hQ₀ hQQ hC0 hC Ψ.conductor hc1\n  have h1 : 0 ≤ ‖Schar Ψ⁻¹ a β‖ ^ 2 := by positivity\n  have h2 : 0 ≤ (Ψ.conductor : ℝ) / Ψ.conductor.totient := by positivity\n  have h3 := kap_nonneg Ψ.conductor\n  calc ‖Schar Ψ⁻¹ a β‖ ^ 2 * (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * Gq (qt Ψ.conductor) ((mR δ₀ Q₀ x β : ℕ) / qt Ψ.conductor)))\n      ≤ ‖Schar Ψ⁻¹ a β‖ ^ 2 * (Ψ.conductor / Ψ.conductor.totient *\n        (kap Ψ.conductor * (C * Gq (qt Ψ.conductor) ((mR δ₀ Q x β : ℕ) / qt Ψ.conductor)))) := by\n        gcongr\n    _ = _ := by ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.Farc_le",
+      "lines": [
+       224,
+       244
+      ],
+      "conclusion": "Ramare's comparison: $F_{Q_0}(\\beta)\\le C\\,F_Q(\\beta)$ whenever $C$ bounds the ratios $G_q(2Q_0/sq)/G_q(2Q/sq)$; at $\\beta=0$ this is $\\sum_{\\tilde q\\le 2Q_0}\\sum^*_b|S(b/q)|^2\\le C\\sum_{\\tilde q\\le 2Q}\\sum^*_b|S(b/q)|^2$."
+     }
     }
    ],
    "searched": {
@@ -48098,30 +48136,26 @@
     "batch": "B040-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "overturned",
+     "reason": "Farc_le (LargeSieveProof.lean:225-244), via Farc_eq/Bombieri's identity, is the same G_q-ratio comparison for F_R(beta), which at beta=0 is a sum of |S(b/q)|^2 over moduli q~<=2R."
+    }
    }
   },
   {
    "id": "Corollary 12.2.6 step 3",
    "item": "Corollary 12.2.6",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean uses prop_12_2_4 only for the arc integral (cor_12_2_5), not to replace G_1(Q0)/G_1(Q/Q0) in a point-evaluation sum.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] bounds the $G_q$-ratio by Prop 12.2.4 only in Cor 12.2.5 (integral over arcs), with $c_+=2$ and $(Q_0,Q)$ replaced by $(2Q_0,2Q)$; Cor 12.2.6 itself is not assembled.",
+   "proof_kind": "direct",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/LSQuot6.lean",
-     "module": "TernaryGoldbach.MinorArcs.LSQuot6",
-     "lines": [
-      68,
-      98
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
      "repo": "lean",
@@ -48129,9 +48163,18 @@
      "file": "TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
      "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
      "lines": [
-      375,
+      392,
       396
-     ]
+     ],
+     "snippet": "  · have h2Q₀ : (0 : ℝ) < 2 * Q₀ := by linarith\n    have hlog : Real.log (2 * Q₀) ≤ 0.6 * Real.log (2 * Q) := by\n      have := Real.log_le_log h2Q₀ hρ\n      rwa [Real.log_rpow (by nlinarith)] at this\n    exact prop_12_2_4 (by linarith) (by linarith) hlog hq hq2 hs hsq",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+      "lines": [
+       375,
+       396
+      ],
+      "conclusion": "Supplies the $G_q$-ratio constant of Prop 12.1.2 by `prop_12_2_4` (with $c_+=2$, at $(2Q_0,2Q)$) instead of an easy bound."
+     }
     }
    ],
    "searched": {
@@ -48148,10 +48191,16 @@
     "batch": "B040-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "overturned",
+     "reason": "cor_12_2_5 lines 392-396 make exactly this move (prop_12_2_4 supplies the G_q-ratio constant) for the arc-integral analogue."
+    }
    }
   },
   {
@@ -48303,10 +48352,16 @@
     "batch": "B040-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read abel_le and grepped Abel/summation by parts/intervalIntegral across TernaryGoldbach/: [L] never states or uses the integral Abel summation formula (jokors) here (Mathlib AbelSummation is used only in Prelim/PNTMertens)."
+    }
    }
   },
   {
@@ -48341,18 +48396,25 @@
     "batch": "B040-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "abel_le works purely discretely; no application of integral Abel summation with alpha_n=h(n)-h(n+1) or A(x)=h(a)-h(floor x+1) exists in TernaryGoldbach/."
+    }
    }
   },
   {
    "id": "Lemma 13.1.1 step 6",
    "item": "Lemma 13.1.1",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "The integral chain with floor is absent; Lean keeps the discrete sum Σ g(n)(F(n)-F(n-1)).",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] does the rearrangement discretely, with $\\sum_{a<n\\le b} g(n)(F(n)-F(n-1))$ in place of $\\int_a^b h(u)F'(u)\\,du$ and no floor/integral chain; $g$ is assumed non-increasing instead of the running maximum $h$.",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.MinorArcs.abel_le",
@@ -48361,9 +48423,18 @@
      "file": "TernaryGoldbach/MinorArcs/Prop1312.lean",
      "module": "TernaryGoldbach.MinorArcs.Prop1312",
      "lines": [
-      23,
-      46
-     ]
+      31,
+      43
+     ],
+     "snippet": "  have key : ∀ k, a ≤ k → k ≤ b →\n      ∑ n ∈ Icc a k, f n * g n ≤ g a * F a + ∑ n ∈ Ioc a k, g n * (F n - F (n - 1)) -\n        g k * (F k - ∑ m ∈ Icc a k, f m) := by\n    intro k hak hkb\n    induction k, hak using Nat.le_induction with\n    | base => simp; linarith [mul_comm (f a) (g a)]\n    | succ k hak ih =>\n      have ih := ih (by omega)\n      rw [sum_Icc_succ_top (by omega), sum_Icc_succ_top (by omega), sum_Ioc_succ_top hak,\n        Nat.add_sub_cancel]\n      have hgk := hg k hak (by omega)\n      have hSk := hS k hak (by omega)\n      nlinarith [mul_le_mul_of_nonneg_right hgk (sub_nonneg.2 hSk)]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+      "lines": [
+       23,
+       46
+      ],
+      "conclusion": "Discrete summation by parts by induction: $\\sum_{a\\le n\\le k} f(n)g(n)\\le g(a)F(a)+\\sum_{a<n\\le k} g(n)(F(n)-F(n-1)) - g(k)(F(k)-S(k))$, the discrete counterpart of turning $\\sum F(n)(h(n)-h(n+1))$ into $h(a)F(a)-h(b)F(b)+\\int h F'$."
+     }
     }
    ],
    "searched": {
@@ -48379,10 +48450,16 @@
     "batch": "B040-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "overturned",
+     "reason": "abel_le's `key` induction (Prop1312.lean:31-43) performs the same summation-by-parts rearrangement in discrete form."
+    }
    }
   },
   {
@@ -50367,8 +50444,8 @@
   {
    "id": "Theorem 13.2.1 step 26",
    "item": "Theorem 13.2.1",
-   "relation": "exactMatch",
-   "class": "1-to-1",
+   "relation": "relatedMatch",
+   "class": "Deviates",
    "proof_kind": "direct",
    "ends": [
     {
@@ -50397,13 +50474,15 @@
     "steps": [
      "mapper (sonnet)",
      "verifier (sonnet)",
-     "judge (opus)"
+     "judge (opus)",
+     "session lead sample check (opus): relation changed"
     ],
     "agreed": false,
     "disagreement": "class relatedMatch vs exactMatch",
     "ruling": "verifier",
     "reason": "The step only names the remaining quantity, the integral of |S_{eta_*}||S_{1,eta_+}|^2 off M_{8,r0}; Lean's `hZ1` bounds exactly this integral over A = (0,1] \\ majorArcs 8 r0 x. The (1+t) split vs square-root triangle inequality is the earlier reduction and does not enter this step's claim."
-   }
+   },
+   "note": "Connective introducing the bound on the minor-arc ℓ²×ℓ∞ integral; Lean bounds the corresponding integral by its own Mexpr, with different constants. Relation set in the session lead's sample check (was exactMatch)."
   },
   {
    "id": "Theorem 13.2.1 step 27",
@@ -51294,10 +51373,16 @@
     "batch": "B043-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_trig_le, norm_eta2DD_large, the Eta2DDExpand/Eta2DDTaylor grids and grepped interpolation/chord/second-derivative patterns: [L] has no interpolation formula (B.4) for g or its derivation; g is bounded exactly and grids use first-order Lipschitz bounds for other functions."
+    }
    }
   },
   {
@@ -51344,10 +51429,16 @@
     "batch": "B043-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_trig_le, norm_eta2DD_large, the Eta2DDExpand/Eta2DDTaylor grids and grepped interpolation/chord/second-derivative patterns: [L] has no interpolation formula (B.4) for g or its derivation; g is bounded exactly and grids use first-order Lipschitz bounds for other functions."
+    }
    }
   },
   {
@@ -51394,10 +51485,16 @@
     "batch": "B043-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_trig_le, norm_eta2DD_large, the Eta2DDExpand/Eta2DDTaylor grids and grepped interpolation/chord/second-derivative patterns: [L] has no interpolation formula (B.4) for g or its derivation; g is bounded exactly and grids use first-order Lipschitz bounds for other functions."
+    }
    }
   },
   {
@@ -51444,10 +51541,16 @@
     "batch": "B043-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_trig_le, norm_eta2DD_large, the Eta2DDExpand/Eta2DDTaylor grids and grepped interpolation/chord/second-derivative patterns: [L] has no interpolation formula (B.4) for g or its derivation; g is bounded exactly and grids use first-order Lipschitz bounds for other functions."
+    }
    }
   },
   {
@@ -51494,10 +51597,16 @@
     "batch": "B043-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_trig_le, norm_eta2DD_large, the Eta2DDExpand/Eta2DDTaylor grids and grepped interpolation/chord/second-derivative patterns: [L] has no interpolation formula (B.4) for g or its derivation; g is bounded exactly and grids use first-order Lipschitz bounds for other functions."
+    }
    }
   },
   {
@@ -51936,42 +52045,30 @@
   {
    "id": "Lemma B.1.2 step 7",
    "item": "Lemma B.1.2",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean does not bound `(f̂)''`, use step-size error terms, or evaluate `f̂` by Simpson's rule; it uses Taylor polynomials and kernel grids instead.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] bounds the first derivative of the $\\widehat f$ part (Lipschitz in $x=2\\pi t$) for its grid, not $(\\widehat f)''$, and only on $0\\le t\\le 2$.",
+   "proof_kind": "helper",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_le",
+     "declaration": "TernaryGoldbach.MinorArcs.norm_Jq_sub_le",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/Eta2DDBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.Eta2DDBound",
+     "file": "TernaryGoldbach/MinorArcs/Eta2DDTaylor.lean",
+     "module": "TernaryGoldbach.MinorArcs.Eta2DDTaylor",
      "lines": [
-      62,
-      66
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_ge_two",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/Eta2DDBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.Eta2DDBound",
-     "lines": [
-      27,
-      51
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.eta2_fourier_bound'",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/InnerSums.lean",
-     "module": "TernaryGoldbach.MinorArcs.InnerSums",
-     "lines": [
-      78,
-      93
-     ]
+      50,
+      73
+     ],
+     "snippet": "theorem norm_Jq_sub_le {a b x x' : ℝ} (ha : 0 < a) (hab : a ≤ b) :\n    ‖Jq a b (x / (2 * π)) - Jq a b (x' / (2 * π))‖ ≤ |x - x'| / a * (b - a) := by\n  have hpos : ∀ u ∈ Set.uIcc a b, 0 < u := fun u hu => by\n    rw [Set.uIcc_of_le hab] at hu; exact ha.trans_le hu.1\n  have hint : ∀ y : ℝ, IntervalIntegrable (fun u => e (-(u * y)) * (((u ^ 2)⁻¹ : ℝ) : ℂ)) volume a b :=\n    fun y => ((continuous_E y).continuousOn.mul\n      (continuous_ofReal.comp_continuousOn (by\n        simpa using continuousOn_inv_pow ha hab 1 2))).intervalIntegrable\n  unfold Jq\n  rw [← intervalIntegral.integral_sub (hint _) (hint _)]\n  have hb : |b - a| = b - a := abs_of_nonneg (by linarith)\n  rw [← hb]\n  refine intervalIntegral.norm_integral_le_of_norm_le_const fun u hu => ?_\n  have hu' : u ∈ Set.uIcc a b := Set.uIoc_subset_uIcc hu\n  have hu0 := hpos u hu'\n  have hau : a ≤ u := by rw [Set.uIcc_of_le hab] at hu'; exact hu'.1\n  rw [← sub_mul, norm_mul, e_eq_cexp, e_eq_cexp, Complex.norm_real, Real.norm_eq_abs,\n    abs_of_pos (by positivity)]\n  have h1 := norm_cexp_sub_le (u * x) (u * x')\n  rw [show u * x - u * x' = u * (x - x') by ring, abs_mul, abs_of_pos hu0] at h1\n  calc ‖cexp (-I * ((u * x : ℝ) : ℂ)) - cexp (-I * ((u * x' : ℝ) : ℂ))‖ * (u ^ 2)⁻¹\n      ≤ u * |x - x'| * (u ^ 2)⁻¹ := mul_le_mul_of_nonneg_right h1 (by positivity)\n    _ = |x - x'| / u := by field_simp\n    _ ≤ |x - x'| / a := div_le_div_of_nonneg_left (abs_nonneg _) ha hau",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.norm_Jq_sub_le",
+      "lines": [
+       50,
+       73
+      ],
+      "conclusion": "Regularity of the $\\widehat f$ part: $\\|J(a,b)(x/2\\pi)-J(a,b)(x'/2\\pi)\\|\\le |x-x'|(b-a)/a$, a first-derivative (Lipschitz) bound from $|u\\cdot u^{-2}|$ rather than the second-derivative bound $|(\\widehat f)''|\\le(2\\pi)^2|x^2f|_1$."
+     }
     }
    ],
    "searched": {
@@ -51990,51 +52087,65 @@
     "batch": "B043-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "overturned",
+     "reason": "norm_Jq_sub_le (Eta2DDTaylor.lean:50-73) is [L]'s derivative bound on the f-hat part used to control grid sampling, a Lipschitz analogue of the 12 pi^2 bound."
+    }
    }
   },
   {
    "id": "Lemma B.1.2 step 8",
    "item": "Lemma B.1.2",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "Lean does not bound `(f̂)''`, use step-size error terms, or evaluate `f̂` by Simpson's rule; it uses Taylor polynomials and kernel grids instead.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Same step (derivative bound on $4g+\\widehat f$ giving a per-cell sampling error) but first-order: Lipschitz constant $24$ in $x$ and error $12\\cdot$width, instead of $|(4g+\\widehat f)''|\\le 48\\pi^2$ and $24\\pi^2\\delta_1^2$; only on $0\\le t\\le 2$ with adaptive bisection, not $\\delta_1=0.001$.",
+   "proof_kind": "chain",
    "ends": [
     {
-     "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_le",
+     "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_sub_le",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/Eta2DDBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.Eta2DDBound",
+     "file": "TernaryGoldbach/MinorArcs/Eta2DDTaylor.lean",
+     "module": "TernaryGoldbach.MinorArcs.Eta2DDTaylor",
      "lines": [
-      62,
-      66
-     ]
+      82,
+      103
+     ],
+     "snippet": "theorem norm_eta2DD_sub_le (x x' : ℝ) :\n    ‖eta2DD (x / (2 * π)) - eta2DD (x' / (2 * π))‖ ≤ 24 * |x - x'| := by\n  have h1 := norm_e_sub_le (1 / 2) x x' (by norm_num)\n  have h2 := norm_e_sub_le (1 / 4) x x' (by norm_num)\n  have h3 := norm_e_sub_le 1 x x' (by norm_num)\n  have h4 := norm_Jq_sub_le (a := 1 / 4) (b := 1 / 2) (x := x) (x' := x') (by norm_num) (by norm_num)\n  have h5 := norm_Jq_sub_le (a := 1 / 2) (b := 1) (x := x) (x' := x') (by norm_num) (by norm_num)\n  have hE : eta2DD (x / (2 * π)) - eta2DD (x' / (2 * π)) =\n      16 * (e (-(1 / 2 * (x / (2 * π)))) - e (-(1 / 2 * (x' / (2 * π))))) -\n      16 * (e (-(1 / 4 * (x / (2 * π)))) - e (-(1 / 4 * (x' / (2 * π))))) -\n      4 * (e (-(1 * (x / (2 * π)))) - e (-(1 * (x' / (2 * π))))) +\n      4 * (Jq (1 / 4) (1 / 2) (x / (2 * π)) - Jq (1 / 4) (1 / 2) (x' / (2 * π))) -\n      4 * (Jq (1 / 2) 1 (x / (2 * π)) - Jq (1 / 2) 1 (x' / (2 * π))) := by\n    unfold eta2DD; ring\n  rw [hE]\n  have n4 : ‖(4 : ℂ)‖ = 4 := by norm_num\n  have n16 : ‖(16 : ℂ)‖ = 16 := by norm_num\n  have hd := abs_nonneg (x - x')\n  refine (norm_five_le _ _ _ _ _).trans ?_\n  simp only [norm_mul, n4, n16]\n  norm_num at h4 h5\n  nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_sub_le",
+      "lines": [
+       81,
+       103
+      ],
+      "conclusion": "$\\eta_2$'s $-(4g+\\widehat f)$ (`eta2DD`) is $24$-Lipschitz in $x=2\\pi t$, combining the bounds on the point-mass and $\\widehat f$ parts."
+     }
     },
     {
-     "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_ge_two",
+     "declaration": "TernaryGoldbach.MinorArcs.cellC_sound",
      "repo": "lean",
      "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/Eta2DDBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.Eta2DDBound",
+     "file": "TernaryGoldbach/MinorArcs/Eta2DDTaylor.lean",
+     "module": "TernaryGoldbach.MinorArcs.Eta2DDTaylor",
      "lines": [
-      27,
-      51
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.eta2_fourier_bound'",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/InnerSums.lean",
-     "module": "TernaryGoldbach.MinorArcs.InnerSums",
-     "lines": [
-      78,
-      93
-     ]
+      372,
+      378
+     ],
+     "snippet": "  have hL := norm_eta2DD_sub_le x xc\n  have hd : |x - (xc : ℝ)| ≤ ((x1 : ℝ) - x0) / 2 := by\n    simp only [xc]; push_cast; rw [abs_le]; constructor <;> linarith\n  have hMdef : (M : ℝ) = 32 - 12 * ((x1 : ℝ) - x0) - errC := by simp only [M]; push_cast; ring\n  have := norm_sub_norm_le (eta2DD (x / (2 * π))) (eta2DD ((xc : ℝ) / (2 * π)))\n  have := norm_sub_norm_le (eta2DD ((xc : ℝ) / (2 * π))) (PN Nc xc)\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.cellC_sound",
+      "lines": [
+       339,
+       378
+      ],
+      "conclusion": "Sampling error on a grid cell: the value at any $x$ in $[x_0,x_1]$ differs from the centre value by at most $12(x_1-x_0)$."
+     }
     }
    ],
    "searched": {
@@ -52053,10 +52164,16 @@
     "batch": "B043-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "overturned",
+     "reason": "norm_eta2DD_sub_le plus cellC_sound (Eta2DDTaylor.lean:82-103, 372-378) bound the derivative of 4g+f-hat and turn it into a grid-cell sampling error."
+    }
    }
   },
   {
@@ -52530,10 +52647,16 @@
     "batch": "B043-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, norm_eta2log4_le, norm_eta2DD_large and grepped arg/pi/3/4*log 2 in MinorArcs: [L] never forms g*log y - 4 log 2*k nor any angle argument."
+    }
    }
   },
   {
@@ -52581,10 +52704,16 @@
     "batch": "B043-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, norm_eta2log4_le, norm_eta2DD_large and grepped arg/pi/3/4*log 2 in MinorArcs: [L] never forms g*log y - 4 log 2*k nor any angle argument."
+    }
    }
   },
   {
@@ -52999,10 +53128,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53042,10 +53177,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53085,10 +53226,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53128,10 +53275,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53291,10 +53444,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53334,10 +53493,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53377,10 +53542,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53420,10 +53591,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53463,10 +53640,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53506,10 +53689,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53549,10 +53738,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53592,10 +53787,16 @@
     "batch": "B044-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read eta2log_fourier_bound, ghat_eta2log, norm_eta2log4_le, eta2_fourier_bound': [L] proves (B.11) for all t analytically (48 log 2 + (log rho - log 4)c0) with no large-|t| case, symmetry reduction, interval I, sampling, Simpson or arcsin numerics."
+    }
    }
   },
   {
@@ -53844,10 +54045,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -53989,10 +54196,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54029,10 +54242,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54112,10 +54331,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54152,10 +54377,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54192,10 +54423,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54275,10 +54512,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54358,10 +54601,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54398,10 +54647,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54438,10 +54693,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54478,10 +54739,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read norm_S_eta2_le_trivial and the Explicit/ explicit-formula chain (explicit_formula_zeta, SsumG_gsm_errH, ZetaZeroSums) and grepped 0.0463/9.611/2.68/2.73e/3.061/0.135: [L] never applies the explicit formula to eta_2; Explicit/ treats a Gaussian smoothing for psi bounds with Gaussian-weighted zero sums."
+    }
    }
   },
   {
@@ -54589,10 +54856,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read tail_le, tsum_inv_sq_tail, SmallFsq.lean and grepped 15/pi, riemannZeta 4, squarefree tails in TernaryGoldbach/: [L] has only a computational j=2, m=1 tail bound, with no integer-A reduction, constant C or the C/A^{j-1} algebra."
+    }
    }
   },
   {
@@ -54638,10 +54911,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read tail_le, tsum_inv_sq_tail, SmallFsq.lean and grepped 15/pi, riemannZeta 4, squarefree tails in TernaryGoldbach/: [L] has only a computational j=2, m=1 tail bound, with no integer-A reduction, constant C or the C/A^{j-1} algebra."
+    }
    }
   },
   {
@@ -54687,10 +54966,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read tail_le, tsum_inv_sq_tail, SmallFsq.lean and grepped 15/pi, riemannZeta 4, squarefree tails in TernaryGoldbach/: [L] has only a computational j=2, m=1 tail bound, with no integer-A reduction, constant C or the C/A^{j-1} algebra."
+    }
    }
   },
   {
@@ -54946,10 +55231,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read tail_le, tsum_inv_sq_tail, SmallFsq.lean and grepped 15/pi, riemannZeta 4, squarefree tails in TernaryGoldbach/: [L] has only a computational j=2, m=1 tail bound, with no integer-A reduction, constant C or the C/A^{j-1} algebra."
+    }
    }
   },
   {
@@ -54995,10 +55286,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read tail_le, tsum_inv_sq_tail, SmallFsq.lean and grepped 15/pi, riemannZeta 4, squarefree tails in TernaryGoldbach/: [L] has only a computational j=2, m=1 tail bound, with no integer-A reduction, constant C or the C/A^{j-1} algebra."
+    }
    }
   },
   {
@@ -55044,10 +55341,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read tail_le, tsum_inv_sq_tail, SmallFsq.lean and grepped 15/pi, riemannZeta 4, squarefree tails in TernaryGoldbach/: [L] has only a computational j=2, m=1 tail bound, with no integer-A reduction, constant C or the C/A^{j-1} algebra."
+    }
    }
   },
   {
@@ -55093,10 +55396,16 @@
     "batch": "B045-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A06",
+     "ruling": "confirmed",
+     "reason": "Read tail_le, tsum_inv_sq_tail, SmallFsq.lean and grepped 15/pi, riemannZeta 4, squarefree tails in TernaryGoldbach/: [L] has only a computational j=2, m=1 tail bound, with no integer-A reduction, constant C or the C/A^{j-1} algebra."
+    }
    }
   },
   {
@@ -55500,7 +55809,7 @@
      "TernaryGoldbach.Ladder.ladder_prime"
     ],
     "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in ~/tg-companion/tg/TernaryGoldbach",
+     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
      "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
     ]
    },
@@ -55556,7 +55865,7 @@
      "TernaryGoldbach.Ladder.ladder_prime"
     ],
     "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in ~/tg-companion/tg/TernaryGoldbach",
+     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
      "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
     ]
    },
@@ -55609,7 +55918,7 @@
      "TernaryGoldbach.Ladder.ladder_prime"
     ],
     "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in ~/tg-companion/tg/TernaryGoldbach",
+     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
      "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
     ]
    },
@@ -55665,7 +55974,7 @@
      "TernaryGoldbach.Ladder.ladder_prime"
     ],
     "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in ~/tg-companion/tg/TernaryGoldbach",
+     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
      "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
     ]
    },
@@ -55721,7 +56030,7 @@
      "TernaryGoldbach.Ladder.ladder_prime"
     ],
     "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in ~/tg-companion/tg/TernaryGoldbach",
+     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
      "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
     ]
    },
@@ -55777,7 +56086,7 @@
      "TernaryGoldbach.Ladder.ladder_prime"
     ],
     "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in ~/tg-companion/tg/TernaryGoldbach",
+     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
      "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
     ]
    },
@@ -55833,7 +56142,7 @@
      "TernaryGoldbach.Ladder.ladder_prime"
     ],
     "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in ~/tg-companion/tg/TernaryGoldbach",
+     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
      "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
     ]
    },
@@ -55889,7 +56198,7 @@
      "TernaryGoldbach.Ladder.ladder_prime"
     ],
     "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in ~/tg-companion/tg/TernaryGoldbach",
+     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
      "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
     ]
    },
@@ -55945,7 +56254,7 @@
      "TernaryGoldbach.Ladder.ladder_prime"
     ],
     "greps": [
-     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in ~/tg-companion/tg/TernaryGoldbach",
+     "Delta|28314000|52211882224|13861486834|307779681|146869130682|15392435100|307908668|147674531294 in TernaryGoldbach",
      "e\\^\\{?59|ZetaGrid|Platt in TernaryGoldbach/Helfgott and TernaryGoldbach/Ladder"
     ]
    },

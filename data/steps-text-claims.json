@@ -1,0 +1,1033 @@
+[
+ {
+  "id": "Lemma 4.2.4 step 26",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "sum_{1<=m<=M, q∤m} (log m)|T_{m,o}(alpha)| <= (5c_0c_2/3pi^2) M log(M/sqrt e) + (20c_0/3pi^2)(2c_2)^{3/2} sqrt x log x",
+  "reasonA": "The line before (eq:cocolo) bounds the sum of (log m)|T_{m,o}|, and the right side's M log(M/sqrt e) comes from the integral of t log t, so the printed left side has lost the weight (log m).",
+  "reasonB": "The preceding display bounds the sum with weight (log m), and the right side's M log(M/sqrt e) term comes from integrating t log t, so the (log m) weight is dropped in the LHS of (eq:cocolo)."
+ },
+ {
+  "id": "Lemma 4.2.4 step 41",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_prok_logx.py",
+   "g1B_prok.py"
+  ],
+  "lean": "NOTES.md: Lemma 4.2.4 bullet on (4.59)-(4.60)",
+  "corrected": "(2/9 + 3/2 + log(D' + (19/18) q)) <= log x",
+  "reasonA": "Since e^{2/9+3/2} = 5.5970 <= 5.6, the hypothesis gives 2/9+3/2+log(D'+19/18 q) <= log x, which is what produces the (9/8)(2c_2)^{3/2} sqrt x log x term; '<= x' is a misprint. With log x read, the 25/4 = (10/3)(3/4+9/8) in (eq:prok) follows from the displayed expansion (the separate NOTES.md remark that the constant could not be reproduced is not settled here).",
+  "reasonB": "'<= x' should be '<= log x': it follows since log(D'+(19/18)q) <= log x - log 5.6 and 2/9+3/2 = 1.72222 < log 5.6 = 1.72277, and it is what converts (9/8)q^2(...) into the (9/8)(2c_2)^{3/2} sqrt(x) log x term. With that reading I do reproduce the constant 25/4 = (10/3)(3/4+9/8) from the displayed chain (contrary to the second part of the claim), though the middle '=' lines are really '<=' and the 19/18 step needs q>=2.",
+  "check": "scripts/checks/steps/lemma_4_2_4_step_41.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 12.2.1 step 5",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_suspiro_monotone.py",
+   "g1B_lemma1221.py"
+  ],
+  "lean": null,
+  "corrected": "the function t -> at + b/t is increasing for t >= sqrt(b/a)",
+  "reasonA": "The function being bounded is e^gamma t + 2.50637/t with t = log log n, which has the form at + b/t and increases for t >= sqrt(b/a) = 1.1863 <= log log 27 = 1.1927; a + b/t decreases.",
+  "reasonB": "The function applied is t -> e^gamma t + 2.50637/t at t = log log n, of the form a t + b/t, which increases for t >= sqrt(b/a) = 1.1863 <= log log 27 = 1.1927; a + b/t is decreasing.",
+  "check": "scripts/checks/steps/lemma_12_2_1_step_5.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Proposition 12.1.1 step 5",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "... q^* int (1/phi(q)) sum*_{chi mod q*} |sum_n a_n e(alpha n) chi(n)|^2 d alpha",
+  "reasonA": "Multiplying the Selberg identity by 1/phi(q) and integrating gives sum*_{chi mod q*} |sum a_n e(alpha n) chi(n)|^2; the first line drops this character sum (chi is unbound there), and the next line restores it.",
+  "reasonB": "By the preceding identity for sum_a |S(a/q)|^2, the first line needs the primitive-character sum Σ*_{χ mod q*} before |Σ a_n e(αn)χ(n)|^2; the next lines have it."
+ },
+ {
+  "id": "Proposition 12.1.1 step 16",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "Sigma <= sum_{q<=Q} sum_{r<=Q/q,(r,q)=1} mu^2(r)/phi(rq) int ...",
+  "reasonA": "Sigma was defined with r <= (Q/q*) min(1, delta_0/|alpha|x) and only bounded by the qr-level sum, and the first line here equals that qr-level sum (via q|sum a_n e(alpha n)chi(n)|^2 = |sum_b chi-bar(b) S(b/qr+alpha)|^2 and phi(qr) = phi(q)phi(r)). So 'Sigma =' should read 'Sigma <='; the chain's conclusion is unaffected.",
+  "reasonB": "Σ was only shown to be <= the q r-level sum (integration range δ0Q0/q*x enlarged to δ0Q/qrx, q*<=Q0 enlarged to q<=Q); the first line here equals that bound term by term (φ(qr)=φ(q)φ(r), q|Σ a_n e(αn)χ(n)|^2 = |Σ_b ...|^2), so 'Σ =' should be 'Σ <='. The conclusion is unaffected."
+ },
+ {
+  "id": "14 display 3",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "F_H(y) = sin(H log y)/(pi log y)",
+  "reasonA": "The right side is in y and h_H uses F_H(y), so the left side should be F_H(y).",
+  "reasonB": "The left side F_H(t) has variable t while the right side uses y, and h_H uses F_H(y)."
+ },
+ {
+  "id": "Lemma B.2.4 step 2",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_marengo.py",
+   "g1B_marengo.py"
+  ],
+  "lean": null,
+  "corrected": "|(log . eta_2)''|_1 = 2((log.eta_2)'(1/2) - (log.eta_2)'(1/4)) = 96 log 2",
+  "reasonA": "The lemma states the L^1 norm, and 2(f'(1/2+) - f'(1/4+)) = 2(16+32) log 2 is the total variation of f' = (log.eta_2)' (jumps at 1/4 and 1/2 included). The sup norm of f'' is infinite because f'' has point masses at 1/4 and 1/2.",
+  "reasonB": "The lemma (eq:carengo) states the L^1 norm, and 96 log 2 is the total variation of (log·η2)' (jumps 32 log2 at 1/4 and 16 log2 at 1/2, plus monotone pieces 32 log2 and 16 log2). The sup norm is not meant (η2 has a kink at 1/2, so (log·η2)'' has a point mass).",
+  "check": "scripts/checks/steps/lemma_b_2_4_step_2.py",
+  "check_exit": 0
+ },
+ {
+  "id": "3.3 display 4",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_S0v.py"
+  ],
+  "lean": null,
+  "corrected": "S_{0,v} = sum_{(n,v)>1} Lambda(n) e(alpha n) eta(n/x)",
+  "reasonA": "The left side of (3.11) minus the f-twisted sum is the sum over n with gcd(n,v) > 1, i.e. prime powers p^k with p | v. For v = 2, eta = 1_[0,1], x = 20, alpha = 0, that remainder is 4 log 2, but the sum over n | v gives log 2. (3.11) also writes S_{0,w} for S_{0,v}.",
+  "reasonB": "With f(n)=1_{(n,v)=1}, S_η - (S_{I,1}-S_{I,2}+S_II+S_{0,∞}) is the sum over n with (n,v)>1, i.e. Λ supported on p^k with p|v; for v=2, n|v omits n=4,8,... (Λ(4)=log 2), so (3.11) fails as printed. The display also labels it S_{0,v} while (3.11) writes S_{0,w}.",
+  "check": "scripts/checks/steps/3_3_display_4.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 4.1.1 step 27",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_arcsin.py",
+   "g1B_arcsin.py"
+  ],
+  "lean": null,
+  "corrected": "arcsin x + x sqrt(1-x^2) <= 2x for 0<=x<=1; set x = sqrt(C/A)",
+  "reasonA": "With x = sqrt(C/A), A arcsin x + C sqrt(A/C-1) = A(arcsin x + x sqrt(1-x^2)), and g = 2x - arcsin x - x sqrt(1-x^2) has g(0) = 0 and g' = 2 - 2 sqrt(1-x^2) >= 0, which gives 4q sqrt(AC)/pi. The printed inequality is true but useless, and x = C/A does not produce the display.",
+  "reasonB": "With x = sqrt(C/A), A arcsin x + C sqrt(A/C - 1) = A(arcsin x + x sqrt(1-x^2)), and arcsin x + x sqrt(1-x^2) <= 2x (its derivative is 2 sqrt(1-x^2) <= 2) gives 2 sqrt(AC). The printed x(1-x^2) and x = C/A do not give the display.",
+  "check": "scripts/checks/steps/lemma_4_1_1_step_27.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Theorem 3.1.1 step 8",
+  "group": 1,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_torot.py",
+   "g1B_thm311.py"
+  ],
+  "lean": "TernaryGoldbach/MinorArcs/PointwiseBound.lean:theorem_3_1_1 (docstring; proved with 0.8764 after the separate (5.36) fix, which changes 0.67506 to 0.7468)",
+  "corrected": "... + (log 2/(2 sqrt rho) + (sqrt rho/2) 0.67506) <= 0.27125 C (log delta_0 q + 0.002) + 0.4141 log delta_0 q + 0.81021",
+  "reasonA": "The term (log 4 delta_0 q)/2 contributes log 2/(2 sqrt rho), and (sqrt rho/2)*0.67506 must not be halved again. With rho = 3.397962 the constant is 0.81020, not the printed (1/2)(log2/sqrt rho + (sqrt rho/2)0.67506) = 0.49911, and this wrong value propagates to the 0.5 of Theorem 3.1.1 (the other coefficients 0.27125 and 0.4141 check out).",
+  "reasonB": "The constant term of (1/(2√ρ))(log 4t)/2 + (√ρ/2)·0.67506 is log2/(2√ρ) + (√ρ/2)·0.67506 = 0.81020 (ρ = 3.397962), but (eq:torot) writes (1/2)(log2/√ρ + (√ρ/2)·0.67506) = 0.49911, halving the 0.67506 term twice. The other coefficients 0.27125 and 0.4141 are right.",
+  "check": "scripts/checks/steps/theorem_3_1_1_step_8.py",
+  "check_exit": 0
+ },
+ {
+  "id": "6.2 display 46",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "first '=' replaced by '<='",
+  "reasonA": "sqrt((x/W)(log W)W(a+b)) = x sqrt(log W) sqrt(a+b) <= x sqrt(log W)(sqrt a + sqrt b) with a = 1/(2|delta q|), b = 1/(16(1-rho)Q), so the first '=' is '<='. The second claimed typo is wrong: theta|delta|q = theta|delta q| because q > 0.",
+  "reasonB": "The prose says 'contribute at most', and the step uses sqrt(a+b) <= sqrt a + sqrt b, so the first '=' is '<='. The second sub-claim is not a typo: for q>0, |δ|q = |δq|, so (log θ|δ|q) is the same as (log θ|δq|)."
+ },
+ {
+  "id": "Proposition 5.2.4 step 1",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "Assume first q < W/2.",
+  "reasonA": "(pokor2b) and (garn1a) both assume q < W/2, and at q = W/2 the denominator log(W/2q) is 0. The proof's 'q <= W/2' is a slip.",
+  "reasonB": "(pokor2b) and (garn1a) both require q < W/2, and at q = W/2 the factor 1/log(W/2q) is undefined."
+ },
+ {
+  "id": "Lemma 4.2.3 step 6",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "(1/2) sum_{n!=0} |eta_(x/m)-hat((x/m)(n/2) - delta/2)|",
+  "reasonA": "Since f-hat(t) = (x/m) eta_(x/m)-hat((x/m)t - delta/2), every term has eta_(x/m)-hat. The c_0 log(x/m) factor in the second line comes from |eta_(x/m)''-hat|_inf <= c_0 log(x/m), so plain eta-hat in the n != 0 sum is a misprint. The second line's '=' is also really '<=', with absolute values dropped.",
+  "reasonB": "f̂(t) = (x/m) η̂_{(x/m)}((x/m)t - δ/2), so the n≠0 terms involve η̂_{(x/m)}. The second line's (m/x) log(x/m) c0 (π^2-4)/(2π^2) term comes from |η̂_{(x/m)}''|_∞ <= c0 log(x/m), which η̂ alone would not give."
+ },
+ {
+  "id": "Proposition 12.1.2 step 11",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_overlap.py"
+  ],
+  "lean": null,
+  "corrected": "If q <= 2Q and q' <= 2Q are both even, then |b/q - b'/q'| >= 2/qq' >= 1/2qQ + 1/2Qq'",
+  "reasonA": "Sigma_2 and the bound for Sigma_1+Sigma_2 run over even q <= 2Q, so the both-even case must cover q, q' <= 2Q. There 2/qq' >= 1/2qQ + 1/2Qq' is equivalent to q+q' <= 4Q, which holds; the printed restriction 'q, q' <= Q' leaves that range uncovered.",
+  "reasonB": "Σ2 runs over even q <= 2Q, so the both-even case must cover q, q' <= 2Q. There 2/qq' >= 1/(2qQ) + 1/(2Qq') is equivalent to q+q' <= 4Q, which holds, and |b/q - b'/q'| >= 2/qq' since bq'-b'q is even and nonzero. The odd/even case (needs 2q+q' <= 4Q) is fine as printed.",
+  "check": "scripts/checks/steps/proposition_12_1_2_step_11.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma B.2.4 step 1",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_marengo.py",
+   "g1B_marengo.py"
+  ],
+  "lean": null,
+  "corrected": "The function (log . eta_2)'(t) is 0 for t outside [1/4,1], is increasing and negative on (1/4,1/2), and decreasing and positive on (1/2,1).",
+  "reasonA": "f = log.eta_2 is 4 log t log 4t on [1/4,1/2] (negative and decreasing) and -4 log^2 t on [1/2,1] (negative and increasing), so the sentence is false for f. It is exactly true for f' (negative increasing from -32 log 2, then positive decreasing from 16 log 2), which is what the next display uses.",
+  "reasonB": "As printed it is false: log·η2 is decreasing and negative on (1/4,1/2) and increasing and negative (= -4 log^2 t) on (1/2,1). The statement is true of (log·η2)' (negative and increasing from -32 log2 to 0, then positive and decreasing from 16 log2 to 0), which is what the next display uses; η is also meant as η2.",
+  "check": "scripts/checks/steps/lemma_b_2_4_step_1.py",
+  "check_exit": 0
+ },
+ {
+  "id": "9.4 display 1",
+  "group": 1,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_complex_chi_zeros.py"
+  ],
+  "lean": "NOTES.md: Part II, Lemma 9.1.3 bullet (Lean avoids N(T), MellinRotate.lean)",
+  "corrected": "Pair the zeros of L(chi) with gamma < -T_0 with the zeros of L(chi-bar) with gamma > T_0 (bounding |G_delta| and |G_{-delta}|); the stated bound then follows for all primitive chi.",
+  "reasonA": "For complex chi the zeros of L(s,chi) are not symmetric under gamma -> -gamma: for chi mod 5 with chi(2) = i, the lowest zeros are 1/2+6.1836i and 1/2-4.1329i. So the proof's 'as usual' pairing rho <-> 1-rho and Lemma 9.1.3's N^+ = N/2 fail, and the proof covers only real chi as written. The bound itself should survive by summing over chi and chi-bar, using that Cor 8.0.2 is symmetric in the sign of delta (NOTES.md); no counterexample to the display is claimed.",
+  "reasonB": "For complex χ the zeros of L(s,χ) are not symmetric under γ -> -γ (ρ pairs with 1-ρ̄, which has the same γ), so N^+ = N/2 in Lemma 9.1.3's proof and the step Σ_{|γ|>T0} = Σ_{γ>T0}(|G_δ(ρ)| + |G_δ(1-ρ)|) in this proof are false. The bound itself very likely survives: zeros with γ<0 are conjugates of zeros of L(χ̄), |G_δ(ρ̄)| = |G_{-δ}(ρ)| for real η, and Cor. 8.0.2 is symmetric in the sign of δ. So this is a proof gap, not a false constant.",
+  "check": "scripts/checks/steps/9_4_display_1.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 5.2.2 step 14",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_sigma.py",
+   "g1B_sigma.py"
+  ],
+  "lean": "TernaryGoldbach/MinorArcs/TypeIINumerics.lean:exp_50136_ge",
+  "corrected": "sigma = (1/2) e^{-2*0.25068} = 0.30285...",
+  "reasonA": "(1/2)e^{0.50136} = 0.82548, but (1/2)e^{-0.50136} = 0.30285 matches the printed value and the later use of sigma < 1, so the sign of the exponent is a misprint.",
+  "reasonB": "(1/2)e^{2·0.25068} = 0.8255, while (1/2)e^{-2·0.25068} = 0.30285 matches the printed value and the later use of log 2σ = -2·0.25068.",
+  "check": "scripts/checks/steps/lemma_5_2_2_step_14.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 4.2.4 step 4",
+  "group": 1,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g1A_umin.py",
+   "g1B_uvrange.py"
+  ],
+  "lean": "TernaryGoldbach/MinorArcs/TypeI2Proof.lean (sum over Icc 1 (min NU (NM / v)), line 424)",
+  "corrected": "replace min(U, M/V) by min(U, M/v) in both u-sums (and M/Vq by M/vq in the next display)",
+  "reasonA": "Writing a = uv, the constraint a <= M gives u <= M/v, not M/V. With q = 1, M = U = 60, V = 9, the left side is 0.26267, matching the M/v version, while the printed M/V version gives 0.50780. The slip is harmless downstream because the u-sum is only bounded by 1 in absolute value.",
+  "reasonB": "uv = a <= M forces u <= M/v (and a/U <= v forces u <= U), so the range is min(U, M/v); with M/V the identity fails (U=V=10, M=45, q=3: LHS -0.02441, printed RHS 0.12556, corrected RHS -0.02441). It is harmless later because (eq:grara) bounds the u-sum by 1 for any range.",
+  "check": "scripts/checks/steps/lemma_4_2_4_step_4.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 4.2.4 step 36",
+  "group": 2,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g2A_q1_negative.py",
+   "g2B_logq_q1.py"
+  ],
+  "lean": "TernaryGoldbach/MinorArcs/TypeI2Rest.lean:sum_R1W",
+  "corrected": "<= (2|eta'|_1/pi) q max(1, log(c_0 e^3 q^2/(4 pi |eta'|_1 x))) log^+(q/2)",
+  "reasonA": "For q=1 the range m<=q/2 is empty (sum 0) while the printed bound is (2|eta'|_1/pi) max(1,...) log(1/2) < 0 (about -2.45 for eta_2), so the inequality is false at q=1; for q>=2 log(q/2)>=0 and it is fine.",
+  "reasonB": "q=1 is allowed by the lemma (q<=Q_0). The sum over m<=q/2 is then empty (=0) but the printed bound has log(q/2)<0 and so is negative, which is false. Harmless, since it is fixed by using log^+.",
+  "check": "scripts/checks/steps/lemma_4_2_4_step_36.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 9.1.4 step 22",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "(1/2pi) int_{-inf}^{inf} |f'(T)|^2 dT = |eta(t) log t|_2^2",
+  "reasonA": "Mellin-Plancherel on Re s=1/2 gives (1/2pi)int|f'(T)|^2 dT = int_0^inf |eta(t) log t|^2 dt, a squared norm; the next lines take the square root and get |eta log|_2, so only the exponent 2 is missing.",
+  "reasonB": "By Plancherel the left side equals the squared norm |eta(t) log t|_2^2. The square is missing, and the following Cauchy-Schwarz takes the square root, which gives |eta log|_2."
+ },
+ {
+  "id": "Lemma 12.2.2 step 9",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g2B_charpy_182.py"
+  ],
+  "lean": null,
+  "corrected": "since Q/Q_0 >= 182.",
+  "reasonA": "The lemma assumes Q >= 182 Q_0 and (charpy) is stated for R >= 182, so the justification should read Q/Q_0 >= 182; 184 is a misprint and the argument works unchanged.",
+  "reasonB": "The hypothesis is Q>=182 Q_0, and (charpy) needs only R>=182. G(R)-log R >= 1.31714 on [182,184], so '184' should read '182' and nothing else changes.",
+  "check": "scripts/checks/steps/lemma_12_2_2_step_9.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Proposition 12.1.1 step 12",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "c_r(n) = sum_{u mod r, (u,r)=1} e^{2 pi i n u/r}",
+  "reasonA": "The Ramanujan sum is sum_{(u,r)=1} e^{2 pi i n u/r}; the display just above uses e^{2 pi i n b/qr} and the text uses c_r(n)=mu(r) for (n,r)=1, which needs the i.",
+  "reasonB": "The Ramanujan sum is sum e^{2 pi i n u/r}. The printed exponent is missing the i, and the line above uses e^{2 pi i n b/qr} correctly."
+ },
+ {
+  "id": "10.3 display 1",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "sum_{a mod q, (a,q)=1} |S_eta(a/q + delta/x, x)|^2 = ...",
+  "reasonA": "S_eta(alpha,x) takes the length x as its second argument (the right side and the next display use S_eta(a/q+delta/x, x)); 'chi' in that slot is a misprint.",
+  "reasonB": "S_eta(alpha,x) is defined as sum Lambda(n)e(alpha n)eta(n/x), and (beatit) is applied with the second argument x. The ',chi' on the left side is a slip for ',x'."
+ },
+ {
+  "id": "Lemma 4.2 step 3",
+  "group": 2,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g2A_digamma_min.py",
+   "g2B_digamma_min.py"
+  ],
+  "lean": null,
+  "corrected": "F(r) >= 2 sqrt(e^gamma * 2.50637) > 4.22 > 3 for all r > e",
+  "reasonA": "F(r) = e^gamma t + 2.50637/t with t = loglog r has minimum 2 sqrt(2.50637 e^gamma) = 4.2256 at r = 26.44, below e^gamma*2.50637 = 4.4640, so the middle inequality is false; the conclusion F(r) > 3 for r > e still holds.",
+  "reasonB": "The minimum of F over loglog r is 2 sqrt(e^gamma*2.50637)=4.22565 (at r~26.44), which is below e^gamma*2.50637=4.46403, so the intermediate inequality is false. The conclusion F(r)>3 for r>e still holds.",
+  "check": "scripts/checks/steps/lemma_4_2_step_3.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 4.2.2 step 9",
+  "group": 2,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g2A_odd_sum.py",
+   "g2B_oddsum.py"
+  ],
+  "lean": null,
+  "corrected": "... <= (q c_0/x)(1/8 - 1/(2 pi^2)) (M/q + 1)^2",
+  "reasonA": "sum_{m<=N, m odd} m = ceil(floor(N)/2)^2, which equals (N+1)^2/4 only when N is an odd integer (N=M/q=2 gives 1, not 9/4), so the printed '=' is false; '<=' holds and is all that (asparto), an O*-bound, needs.",
+  "reasonB": "Sum of odd m<=N equals ceil(floor N/2)^2, which is ((N+1)/2)^2 only when N is an odd integer (N=2 gives 1 vs 9/4). Only '<=' holds; this is harmless since the result is used as an O^* upper bound.",
+  "check": "scripts/checks/steps/lemma_4_2_2_step_9.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 4.1.1 step 3",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "occupies each residue class mod q exactly once.",
+  "reasonA": "r = aj + c runs over q consecutive j with (a,q)=1, so it hits each residue class mod q once; there is no p in the lemma.",
+  "reasonB": "r = aj+c runs over a complete residue system mod q, since j ranges over q consecutive integers and (a,q)=1. There is no p in the lemma."
+ },
+ {
+  "id": "Lemma 4.2.1 step 44",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-lean",
+  "scripts": [],
+  "lean": "TernaryGoldbach/MinorArcs/TypeIProof.lean:norm_restPart_le_caseB (hD'R : D' <= R)",
+  "corrected": "(by the definition of D' and R, we have R >= D').",
+  "reasonA": "In this branch c_2 x/q < D, so D' = c_2 x/q <= max(c_2 x/q, q/2) = R, which is what makes the R-term absorb the D'-term; R >= D is generally false here (the sum over R < m <= D is nonempty).",
+  "reasonB": "In this case c_2x/q<D, so D'=c_2x/q <= max(c_2x/q,q/2)=R. What the argument needs is R>=D', while R>=D fails (the sum over R<m<=D is generally nonempty)."
+ },
+ {
+  "id": "Theorem 3.1.1 step 16",
+  "group": 2,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g2A_thm311_const.py",
+   "g2B_thm311_const.py"
+  ],
+  "lean": "TernaryGoldbach/MinorArcs/PointwiseBound.lean:theorem_3_1_1",
+  "corrected": "constant 0.81020 in place of 0.49911 (0.8764 after the corrected (5.36))",
+  "reasonA": "AM-GM gives the constant term (1/(2 sqrt rho))(log 4/2) + (sqrt rho/2)*0.67506 = log 2/(2 sqrt rho) + (sqrt rho/2)*0.67506 = 0.81020 at rho = 3.397962, but (torot) puts an extra factor 1/2 on the 0.67506 term and gets 0.49911, so the stated bound is not proved (the log coefficient 0.4141 is right). Separately, the Lean proof's correction of (5.36) raises the constant further, to 0.8764.",
+  "reasonB": "In (6.77) the AM-GM constant is log2/(2 sqrt rho)+(sqrt rho/2)*0.67506 = 0.81020. [H] writes (1/2)(log2/sqrt rho+(sqrt rho/2)0.67506)=0.49911, which halves the 0.67506 term twice; the 0.27125 and 0.4141 coefficients are correct.",
+  "check": "scripts/checks/steps/theorem_3_1_1_step_16.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 5.2.3 step 3",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "We split (A_0,A_1] into ceil((A_1-A_0)/2k) blocks of at most 2k consecutive integers",
+  "reasonA": "Blocks of 2k consecutive integers number ceil((A_1-A_0)/2k), and since 2k = min(2q, 2 ceil(Q/2)) >= min(2q,Q) this gives the factor ceil((A_1-A_0)/min(2q,Q)) of (pokor1b); with ceil(/k) blocks the bound would be off by a factor 2.",
+  "reasonB": "Blocks of 2k consecutive integers cover (A_0,A_1] with ceil((A_1-A_0)/2k) blocks, and 2k=min(2q,2ceil(Q/2))>=min(2q,Q) gives the factor in (pokor1b). Using ceil(.../k) blocks would only give the weaker factor ceil(.../min(q,Q/2))."
+ },
+ {
+  "id": "Proposition 5.2.4 step 9",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "apply (eq:zeromb) with varrho = x/4Wq, rho = 1.",
+  "reasonA": "S_2 here has v=2 and 2 alpha = a/q + delta/x, which is the setting of Lemma 5.2.3 (zeromb), not of Lemma 5.2.2 (zerom, which needs an approximation to alpha); also A_1 - A_0 = x/W - U' <= x/2W = 2 varrho q satisfies (zeromb)'s hypothesis but not (zerom)'s A_1 - A_0 <= varrho q.",
+  "reasonB": "S_2 runs over odd m with 2alpha approximated, and A_1-A_0 <= x/2W = 2 varrho q. That meets the hypothesis of (zeromb) but not the hypothesis A_1-A_0 <= varrho q of (zerom); (zeromb) gives exactly (gargamel)."
+ },
+ {
+  "id": "Lemma 4.2.3 step 8",
+  "group": 2,
+  "A": "confirmed_error",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-lean",
+  "scripts": [],
+  "lean": "TernaryGoldbach/MinorArcs/TypeI.lean:bound_4_40",
+  "corrected": "(x eta^(-delta/2)/2) sum_{m<=M, m odd, q|m} mu(m)/m log(x/m) = (x mu(q)/2q) eta^(-delta/2) sum_{m<=M/q, (m,2q)=1} mu(m)/m log(x/(mq))",
+  "reasonA": "Since mu(qm') = mu(q) mu(m') for (m',2q)=1, the left side equals (x mu(q)/2q) eta^(-delta) sum ..., so the printed right side is off by a factor 2; the preceding line also gives the argument -delta/2, not -delta. This is not a slip confined to one line: it is carried into the lemma statement (4.40), which NOTES.md lists as inconsistent with its proof.",
+  "reasonB": "The previous line gives the main term (1/2)(x/m)log(x/m) eta^(-delta/2), and m=qm' gives mu(m)/m=(mu(q)/q)mu(m')/m'. So as printed the two sides differ by a factor 2 and both should use eta^(-delta/2); the slip carries into statement (4.40), which Lean corrects."
+ },
+ {
+  "id": "Lemma 4.2.1 step 12",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "sum_{m<=M, q|m} mu(m) (x/m) eta^(-delta) + sum_{m<=M, q|m} mu(m) (m/x)(c_0/(2pi)^2) O*(pi^2-4) = ...",
+  "reasonA": "The sum being estimated is (esthel)'s sum_m mu(m) T_m, and the right side (mu(q)/q) sum mu(m)/m and the mu(q)^2 error factor only arise with mu(m) inside the left-hand sums; the factor mu(m) is simply dropped on the left.",
+  "reasonB": "The sum being evaluated is sum_m mu(m) sum_n e(alpha mn)eta(mn/x) over q|m. The left side omits mu(m) (and the second sum should be an O^* error term), while the right side and the O^* coefficient mu(q)^2 already account for mu(m)."
+ },
+ {
+  "id": "6.3 display 23",
+  "group": 2,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g2A_SI1_const.py",
+   "g2B_SI1_const.py"
+  ],
+  "lean": "TernaryGoldbach/MinorArcs/SecondTypeI1.lean:typeI1_second",
+  "corrected": "with the printed x/q prefactor: <= 4.9438 x^{2/3} log x + 0.00289 x^{2/3}(log x)^2; with the corrected (4.40) (x/2q) the 2.4719 is right",
+  "reasonA": "With y = x^{1/3}/6, (x/y)(2/3+0.1573) log x = 4.9438 x^{2/3} log x, so the printed second inequality '<= 2.4719 x^{2/3} log x' is false by a factor 2. 2.4719 = 3(2/3+0.1573) is the value for x/(2y), i.e. for the corrected (4.40) prefactor x/2q rather than the x/q printed in (lavapie).",
+  "reasonB": "With y=x^{1/3}/6 we have x/y=6x^{2/3}, so (x/y)(2/3+0.1573)log x = 4.9438 x^{2/3} log x > 2.4719 x^{2/3} log x, and the second inequality is false as printed. 2.4719 is right only with the prefactor x/2q (odd n; the (4.40) erratum), i.e. x/2y.",
+  "check": "scripts/checks/steps/6_3_display_23.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 4.2.1 step 26",
+  "group": 2,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g2A_DleQ_boundary.py",
+   "g2B_boundary_Q3.py"
+  ],
+  "lean": null,
+  "corrected": "If D < (Q+1)/2, then M >= floor(D) ...; assume from now on that D >= (Q+1)/2.",
+  "reasonA": "Q = floor(x/|delta q|) is an integer; when Q is odd and D = (Q+1)/2 (e.g. Q=3, D=2) the hypothesis holds but M = Q/2 < floor(D), and m = (Q+1)/2 lies in the second sum, so 'the second sum is empty' is false at this boundary point. The case D >= (Q+1)/2 is handled by the argument that follows, so the slip is harmless.",
+  "reasonB": "Q=floor(x/|delta q|) is an integer. For Q odd and D=(Q+1)/2 the hypothesis holds, but M=Q/2<floor D and m=(Q+1)/2 lies in the second sum (Q=3, D=2). The boundary case is harmless because the D>(Q+1)/2 argument also covers D=(Q+1)/2.",
+  "check": "scripts/checks/steps/lemma_4_2_1_step_26.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 5.2.2 step 17",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g2B_sigma.py"
+  ],
+  "lean": null,
+  "corrected": "= (W/2)(1 + (3 sigma/(1-sigma/3.5)) r/R) < (W/2)(1 + r/R)",
+  "reasonA": "q r R = sigma W r/R, so (3/2) q r R/(1-sigma/3.5) = (W/2)(3 sigma/(1-sigma/3.5))(r/R); the stray W in 'rW/R' is a misprint, and the next display correctly uses (1 + r R^{-1})^{-1}.",
+  "reasonB": "qrR = sigma W r/R, so the middle expression equals (W/2)(1+(3sigma/(1-sigma/3.5)) r/R). Since 3sigma/(1-sigma/3.5)=0.99462<1, it is below (W/2)(1+r/R), which is what the next display (1+rR^{-1})^{-1} uses; the extra W is a misprint.",
+  "check": "scripts/checks/steps/lemma_5_2_2_step_17.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma B.1.2 step 9",
+  "group": 2,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g2A_normfour_max.py",
+   "g2B_eta2dd_max.py"
+  ],
+  "lean": "TernaryGoldbach/MinorArcs/Eta2DDBound.lean",
+  "corrected": "The largest value of |4g(t) + f^(t)| we find is 31.52065...",
+  "reasonA": "The quantity computed is |eta_2''^| = |4g + f^|; its maximum is 31.52065 at t = 17.4148, while max|f^| is only about 8.94 (at t = 1.04), so 'f^(t)' should read '|4g(t) + f^(t)|'.",
+  "reasonB": "|f^(t)| <= |f|_1 = 12 (numerically max ~8.94), so f^ cannot reach 31.52. The computed max 31.52065 at t~17.415 is that of |4g+f^| = |eta_2''^|, which is what (elundot) needs.",
+  "check": "scripts/checks/steps/lemma_b_1_2_step_9.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 4.2.4 step 37",
+  "group": 3,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g3A_l424_q1.py",
+   "g3B_bobo_q1.py"
+  ],
+  "lean": "TypeI2Rest.lean:bound_4_51/bound_4_52 docstrings (NOTES.md Lemma 4.2.4: log^+(q/2))",
+  "corrected": "replace log(q/2) by log^+(q/2) = max(0, log(q/2))",
+  "reasonA": "lem:bogus allows q=1 (only q<=Q0 is assumed); then the sum over 1<=m<=q/2 is empty (=0) while the bound is positive*log(1/2)<0, so the printed bound is false. It is harmless for q>=2 (q=2 gives 0 with the only term weighted by log 1=0).",
+  "reasonB": "Case (b) allows q=1 (Lemma 4.2.4 only has q<=Q_0); then the sum over m<=1/2 is empty (=0), but max(1,...)>=1 and log(1/2)<0 make the printed bound negative. For q>=2 it is fine (log m<=log(q/2), and m=1 contributes 0).",
+  "check": "scripts/checks/steps/lemma_4_2_4_step_37.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 4.1.3 step 4",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "... + int_{(q/pi)arcsin(C/B)}^{q/2} C/sin^2((pi/q)t) dt",
+  "reasonA": "The second integrand should be C/sin^2((pi/q)t) (the next line's C cot arcsin(C/B) is its exact value). The kink objection is a real gap in the 'by convexity' justification (midpoint convexity fails on the interval containing (q/pi)arcsin(C/B), e.g. q=2046, C/B=0.00385), but the summed inequality still holds on a grid of q<400 and all C in [B sin(pi/q),B], so the display is not false.",
+  "reasonB": "The second integrand needs the factor C; the next line has C cot arcsin(C/B), which is the exact value of the integral with C, and lines 2-3 are equalities. The convexity worry about the kink does not make the display false: numerically it holds for all q<=300 and C in [B sin(pi/q),B] (max of lhs-rhs is 0, at q=2, C=B). Lean's TrigSums.lean objects to a later step of the proof, not to this one."
+ },
+ {
+  "id": "Lemma 5.1.1 step 5",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "m <= sqrt(z/(d_1^2 s_1 d_2^2 s_2 d_3))",
+  "reasonA": "The condition being removed is the one in (dbamain), m <= sqrt(z/(d_1^2 s_1 d_2^2 s_2 d_3)); the display drops d_3 and writes s for s_1, and the (shalco) sentence restores d_3.",
+  "reasonB": "The innermost sum in (dbamain) runs over m <= sqrt(z/(d_1^2 s_1 d_2^2 s_2 d_3)). The display writes s for s_1 and drops d_3, and the next sentence and (shalco) restore both."
+ },
+ {
+  "id": "Proposition 12.1.1 step 14",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g3B_ramanujan_mu2.py"
+  ],
+  "lean": "MinorArcs/Bombieri.lean:norm_sq_gaussSum",
+  "corrected": "q mu^2(r) |sum_n a_n e(alpha n) chi(n)|^2 = |sum_{(b,qr)=1} chi-bar(b) S(b/qr + alpha)|^2",
+  "reasonA": "Taking |.|^2 in Bombieri's identity gives q mu^2(r)|sum a_n e(alpha n) chi(n)|^2 = |sum_b chi-bar(b) S(b/qr+alpha)|^2; as printed it fails for non-squarefree r (right side 0). The next display only uses it with weight mu^2(r), so nothing downstream breaks.",
+  "reasonB": "The right side equals |chi(r) tau(chi-bar) mu(r)|^2 |sum a_n e(alpha n) chi(n)|^2 = mu^2(r) q |...|^2, so for non-squarefree r (e.g. q=3, r=4) it is 0 while the left side is not. The next display only uses it under the weight mu^2(r), so the factor mu^2(r) was simply omitted.",
+  "check": "scripts/checks/steps/proposition_12_1_1_step_14.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Corollary 9.3.3 step 3",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "since eta_2 is supported on [1/4,1]",
+  "reasonA": "eta_2 = eta_1 *_M eta_1 with eta_1 = 2 I_[1/2,1] is supported on [1/4,1]; the integral is cut to [1/4,1], which [-1/4,1] would not justify.",
+  "reasonB": "eta_2 = eta_1 *_M eta_1 with eta_1 = 2*1_[1/2,1], so its support is [1/4,1], and this is what restricting the w-integral to [1/4,1] needs. [-1/4,1] is a misprint."
+ },
+ {
+  "id": "Lemma 4.3 step 11",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "... + (80/27) log x_1 + 7.51",
+  "reasonA": "(16/9)log 2 + (80/27)log x_1 - (80/9)log 6 + 111/5 = (80/27)log x_1 + 7.505, so the term is (80/27)log x_1. The following display uses log x_1, and the lemma has no x.",
+  "reasonB": "log(2^{16/9}(x_1^{1/3}/6)^{80/9}) = (80/27) log x_1 + (16/9) log 2 - (80/9) log 6, and with 111/5 the constant is 7.505 <= 7.51. The variable is x_1, as in the next display."
+ },
+ {
+  "id": "Lemma 5.2.1 step 3",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-lean",
+  "scripts": [],
+  "lean": "NOTES.md Lemma 5.2.1 (hypothesis qR^2(nu+upsilon) <= 1)",
+  "corrected": "If nu+upsilon <= 1/qR^2",
+  "reasonA": "Different shifted fractions are at least 1/qR^2 apart, so the shifted angles are >= 1/qR^2 - upsilon apart, which is >= nu only when nu+upsilon <= 1/qR^2. The choice R = 1/sqrt((nu+upsilon)q) gives equality.",
+  "reasonB": "Distinct fractions a_i/q + a'/r are >= 1/(qR^2) apart, so the shifted angles are >= 1/(qR^2) - upsilon >= nu apart exactly when nu+upsilon <= 1/(qR^2). The printed inequality points the wrong way, though the chosen R = 1/sqrt((nu+upsilon)q) gives equality, so the argument still works."
+ },
+ {
+  "id": "Lemma 4.1.1 step 7",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g3B_invsin2_convex.py"
+  ],
+  "lean": "TernaryGoldbach/MinorArcs/TrigSums.lean:convexOn_inv_sin_sq",
+  "corrected": "since x -> 1/sin^2 x is convex on (0,pi). Hence the terms with r != 0, -1 contribute at most",
+  "reasonA": "r=0,-1 are the terms bounded by A, and the pairs (r=-k, r=k-1), k>=2, include r=1, so 'r != 0,1' should read r != 0,-1. '(0,infinity)' should be (0,pi): 1/sin^2 is not convex across pi, but every argument used lies in (0,pi/2].",
+  "reasonB": "The pairs (r=-k, r=k-1), k>=2, include r=1, and r=0,-1 are the terms bounded by A, so 'r != 0, 1' should read 'r != 0, -1'. Also, 1/sin^2 is not convex on (0,inf) (it blows up at pi; e.g. f(3.15) > (f(3)+f(3.3))/2), only on (0,pi), and that is all that is used since the arguments lie in (0,pi/2].",
+  "check": "scripts/checks/steps/lemma_4_1_1_step_7.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Theorem 3.1.1 step 7",
+  "group": 3,
+  "A": "refuted",
+  "B": "refuted",
+  "kind": null,
+  "status": "refuted",
+  "scripts": [
+   "g3B_thm311_rho.py"
+  ],
+  "lean": "MinorArcs/FirstChoiceMain.lean (header: 0.81019..., weakened to 0.8764 with 0.7468)",
+  "corrected": "no change to this display; in (torot) the constant 0.49911 should be 0.81020 (0.8764 with the corrected (5.36))",
+  "reasonA": "This display only chooses rho (any rho>0 works for AM-GM), and with the printed inputs it evaluates to 3.3979624, as printed. The real mistakes are elsewhere: (torot)'s constant should be log2/(2sqrt rho)+(sqrt rho/2)0.67506 = 0.81020, not 0.49911 (an extra factor 1/2), and 0.67506 itself inherits the false (5.36).",
+  "reasonB": "The rho display is arithmetically right (rho = 3.3979624, with C_{x1,2q0} = 0.65065), and rho is a free AM-GM parameter, so the display cannot be wrong. The real errors are elsewhere: (torot) gives 0.49911 for (1/2)(log2/sqrt rho + (sqrt rho/2)0.67506) when the correct constant is log2/(2 sqrt rho) + (sqrt rho/2)0.67506 = 0.81020, and 0.67506 is inherited from the false (5.36)."
+ },
+ {
+  "id": "6.2 display 44",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "<= 4 sqrt(kappa_1) sqrt(x W_0) sqrt(log W_0)",
+  "reasonA": "int_V^{W0} sqrt(kappa_1 x W log W/4) dW/W <= (sqrt(kappa_1 x)/2) sqrt(log W0) * 2 sqrt(W0), so the factor should be sqrt(log W_0); the next display uses sqrt(log W_0).",
+  "reasonB": "The integral is 2 sqrt(kappa_1 x) int_V^{W_0} sqrt(log W) W^{-1/2} dW <= 4 sqrt(kappa_1) sqrt(x W_0) sqrt(log W_0). The free W is a slip, and the next display has sqrt(log W_0)."
+ },
+ {
+  "id": "Lemma 5.2.3 step 5",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g3A_zeromb_odd.py",
+   "g3B_zeromb_allm.py"
+  ],
+  "lean": "MinorArcs/TypeII.lean:lemma_5_2_3_c",
+  "corrected": "sum over A0<m<=A1, m odd, in (zeromb)",
+  "reasonA": "As printed (all m), (zeromb) is false: for alpha=1/101 (2alpha=2/101, q=101), W=100, W'=50, A1-A0=2q and Q large, the all-m sum is 37015, more than the bound 27669, while the odd-m sum is 18507. The lemma is announced as the m-odd version and its proof uses m-m' even, so the missing 'm odd' is clearly intended.",
+  "reasonB": "As printed (all m), (zeromb) is false. Counterexample: q=11, alpha=1/11, (A0,A1]=(0,22], W=20, W'=10, Q huge, where lhs/rhs = 1.0476, because m and m+q give the same angle. With 'm odd', as in (pokor1b) and (pokor2b) and the lemma's stated purpose, it holds, so the condition was just left out of the display.",
+  "check": "scripts/checks/steps/lemma_5_2_3_step_5.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Proposition 5.2.4 step 16",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "(1 + (x/W-U')/(2(Q'-q))) (W-W'+nu^{-1}) sum (log p)^2",
+  "reasonA": "U is not defined in Prop. 5.2.4; the range is U'<m<=x/W, and the next step uses x/W-U' <= x/2W (from U' >= x/2W).",
+  "reasonB": "U does not appear in Prop 5.2.4. The range being split is U' < m <= x/W, so the numerator is x/W - U' (<= x/2W, as used in the next display)."
+ },
+ {
+  "id": "Proposition 12.1.2 step 2",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "second sum over q <= 2Q_0, q even",
+  "reasonA": "(majdef) takes even q <= 2r = 2Q_0, and the next display sums over even q* <= 2Q_0.",
+  "reasonB": "(majdef) takes even q up to 2r = 2Q_0, as the next display (q* <= 2Q_0 even) and the statement (max over even q <= 2Q_0) do. 'q <= Q_0' for the even sum is a misprint."
+ },
+ {
+  "id": "Proposition 12.1.1 step 13",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g3B_ramanujan_mu2.py"
+  ],
+  "lean": "MinorArcs/Bombieri.lean:norm_sq_gaussSum",
+  "corrected": "Hence, for r <= sqrt x coprime to q, q mu^2(r)|...|^2 = |...|^2",
+  "reasonA": "The facts stated (c_r(n)=mu(r) for (n,r)=1, |tau(chi-bar)|=sqrt q) are correct, but 'Hence, for r<=sqrt x coprime to q' introduces an identity that holds only with the factor mu^2(r) (equivalently, for squarefree r). Only squarefree r are used afterwards.",
+  "reasonB": "The two facts stated (c_r(n) = mu(r) for (n,r)=1, and |tau(chi-bar)| = sqrt q) are correct. But the quantifier 'for r <= sqrt x coprime to q' that introduces the step-14 identity needs r squarefree (or a factor mu^2(r)); otherwise the right side is 0 (script: r=4, 8).",
+  "check": "scripts/checks/steps/proposition_12_1_1_step_13.py",
+  "check_exit": 0
+ },
+ {
+  "id": "6.3 display 38",
+  "group": 3,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g3A_minarc_010327.py"
+  ],
+  "lean": null,
+  "corrected": "skip the simplification: the preceding expression is <= 0.10327 t^{3/2} for t >= log(2.16e20)",
+  "reasonA": "Worse than a missing t^{3/2}: the simplified left side is 78.05 at t0 = log(2.16e20), and its ratio to t^{3/2} is 0.2436 > 0.10327 (it wrongly multiplies sqrt(3) kappa_9 by sqrt t). The conclusion |S_II| <= 0.10327 x^{5/6}(log x)^{3/2} is still true, because the unsimplified expression divided by t^{3/2} is at most 0.103264 for t >= t0.",
+  "reasonB": "Restoring t^{3/2} is not enough: at t = log(2.16e20) the simplified left side is 78.05 = 0.2436 t^{3/2} > 0.10327 t^{3/2}, because the simplification turns sqrt3 kappa_9 into sqrt3 kappa_9 sqrt t and drops the -log c' terms. The unsimplified expression before it is <= 0.103264 t^{3/2}, so the conclusion |S_II| <= 0.10327 x^{5/6}(log x)^{3/2} still holds.",
+  "check": "scripts/checks/steps/6_3_display_38.py",
+  "check_exit": 0
+ },
+ {
+  "id": "6.2 display 34",
+  "group": 3,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g3A_kappa6_H2.py",
+   "g3B_kappa6_velib.py"
+  ],
+  "lean": "MinorArcs/H2Bound.lean:integral_H2_le",
+  "corrected": "int_1^T H_2(S)dS/S <= 0.15107 log T + 0.0231, so (quartma) gains + 0.0231/beta",
+  "reasonA": "kappa_6 = 0.60428 = 4*0.15107 is used in (quartma) through (5.36), int_1^T H_2/S <= 0.15107 log T, which is false: an independent computation of G_2 gives int_1^4 G_2/S = 0.53344 > 0.37273 log 4 and sup_T (int_1^T H_2/S - 0.15107 log T) = 0.023059 at T = 15.578. So (quartma) with this kappa_6 fails (it needs an additive constant).",
+  "reasonB": "kappa_6/4 = 0.15107 is used through (velib) = (5.36), int_1^T H_2(S) dS/S <= 0.15107 log T. Computing G_2 exactly from (grotto), the left side minus 0.15107 log T reaches 0.023059 at T = 15.578 and stays about 0.023 > 0 for every T >= 16, so (quartma) with kappa_6 = 0.60428 and no additive term is false.",
+  "check": "scripts/checks/steps/6_2_display_34.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Proposition 5.2.4 step 18",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "(W/2 + x/(q|delta|)) (1 + (x/W-U')/(2(Q'-q))) <= ...",
+  "reasonA": "Same slip as step 16: U is undefined here, and the bound x/W-U' <= x/2W used in the next line needs U'.",
+  "reasonB": "As in step 16, U is undefined in Prop 5.2.4 and the range is U' < m <= x/W. With U', the bound x/W - U' <= x/2W in the next line holds, since U' >= x/2W."
+ },
+ {
+  "id": "Lemma 9.1.1 step 16",
+  "group": 3,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g3A_hutterite.py",
+   "g3B_hutterite.py"
+  ],
+  "lean": null,
+  "corrected": "|log t| <= (2/3)(t^{-1/2} + t^{1/2}) for all t>0",
+  "reasonA": "The printed (hutterite) is false (at t=1: 4/3 <= 0); the reversed inequality |log t| <= (2/3)(t^{-1/2}+t^{1/2}) holds, since min_u (4/3)cosh(u/2)-|u| = 0.01417 at |u|=2.3895. The reversed form is what the preceding |eta log t| bounds use.",
+  "reasonB": "As printed, (hutterite) fails at t=1 (4/3 <= 0). The reversed form |log t| <= (2/3)(t^{-1/2}+t^{1/2}) holds for all t>0 (min of (4/3)cosh(u/2) - |u| is 0.014174 at |u| = 2.38953), and that is the form the preceding bounds |eta log t| <= (2/3)(...) use.",
+  "check": "scripts/checks/steps/lemma_9_1_1_step_16.py",
+  "check_exit": 0
+ },
+ {
+  "id": "7 display 17",
+  "group": 4,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": null,
+  "corrected": "Z_{eta_+^2,2} <= 0.640209 log x",
+  "reasonA": "Z_{eta,2}=(1/x)sum Lambda^2 eta, and the line before gives Z <= (1/x)sum Lambda(n)log n eta_+^2(n/x), so (malavita) yields Z_{eta_+^2,2} <= 0.640209 log x. The printed bound with the extra x is true but weaker, and the later uses (third line of opus111: 2*(0.640209 log x)) need the version without x.",
+  "reasonB": "Z_{eta,k}(x) = (1/x) sum Lambda^k(n) eta(n/x) (ternvin.tex 1670), so (malavita) gives Z_{eta_+^2,2} <= 0.640209 log x; the extra factor x is a misprint, and the later use (line 4829, '2*(0.640209 log x)') takes the correct form."
+ },
+ {
+  "id": "7 display 43",
+  "group": 4,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g4A_display43.py",
+   "g4B_display43.py"
+  ],
+  "lean": null,
+  "corrected": "<= 14.3096/(0.5 log x+0.6294)*(0.640209 x log x - 0.021095 x) - 8.6297x <= (18.3223-8.6297)x <= 9.6926x",
+  "reasonA": "13.6164 = log 150001 + 1.698, but the theorem (gypo) and H(r) use c^+ = 2.3912 (> log 2 + 1.698), so the numerator should be log 150001 + 2.3912 = 14.3096. The expression increases in x towards 2*14.3096*0.640209 - 8.6297 = 9.6926, so the bound 8.805x fails (already 9.315x at x=4.9e26), and (roussel) becomes 0.041061*9.6926x = 0.39799x instead of 0.36155x.",
+  "reasonB": "With the stated c^+ = 2.3912 (also used in (gypo) and justified at line 3900 as > log 2 + 1.698), log(150001)+c^+ = 14.3096, not 13.6164 = log(150001)+1.698 (log 2 dropped); the first line then tends to 18.322x, so the chain gives about 9.693x, not 8.805x, and (roussel) becomes about 0.398x instead of 0.36155x.",
+  "check": "scripts/checks/steps/7_display_43.py",
+  "check_exit": 0
+ },
+ {
+  "id": "7 display 64",
+  "group": 4,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g4A_display64.py",
+   "g4B_f0.py"
+  ],
+  "lean": null,
+  "corrected": "f_0(r_0,y) <= 0.4153461*sqrt((2/sqrt r_0)*5.73827) <= 0.071498",
+  "reasonA": "sqrt((2/sqrt 150000)*5.73827) = 0.172140, so 0.4153461*0.172140 = 0.071498 > 0.069219; the same formula with 0.68659 gives the printed 0.11819, so the formula is right and the final arithmetic is wrong (0.069219 corresponds to a factor 0.40211).",
+  "reasonB": "sqrt((2/sqrt(150000))*5.73827) = 0.172140 (the crude bound 0.68659*0.17214 = 0.11819 just above confirms that factor), so 0.4153461*0.17214 = 0.071498 > 0.069219; 0.069219 would require the factor 0.40211.",
+  "check": "scripts/checks/steps/7_display_64.py",
+  "check_exit": 0
+ },
+ {
+  "id": "7 display 65",
+  "group": 4,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g4A_display64.py",
+   "g4B_f0.py"
+  ],
+  "lean": null,
+  "corrected": "int_{r_0}^{r_1} g(r)/r dr <= 0.071498 + 0.016367 + 0.001332 <= 0.089197",
+  "reasonA": "The addition is right, but it uses the unsupported f_0 <= 0.069219 from display 64; with f_0 <= 0.071498 the bound is 0.089197. This carries into (casbah): 1.280418*0.089197 = 0.11421x instead of 0.111292x.",
+  "reasonB": "The addition is right, but it uses the false 0.069219 from display 64; with 0.071498 the bound is 0.089197, so (casbah) becomes about 0.11421x and (bustier) about 0.77962x instead of 0.77671x (the downstream slack absorbs this).",
+  "check": "scripts/checks/steps/7_display_65.py",
+  "check_exit": 0
+ },
+ {
+  "id": "7 display 53",
+  "group": 4,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g4A_display53.py",
+   "g4B_f2.py"
+  ],
+  "lean": null,
+  "corrected": "f_2(r_0,y) = 3.2 ((log y)/2)^{1/6} y^{-1/6} log((3/8)y^{4/15}/r_0) <= 3.2 (log y)^{1/6}(2y)^{-1/6}((4/15)log y + 0.05699 - log r_0)",
+  "reasonA": "By (cymba), f_2 has log(r_1/r_0) with r_1=(3/8)y^{4/15}, so the '=' with x^{4/15} is wrong as printed. The second line's 0.05699 = log(3/8)+(4/15)log 49 does use x=49y, but that is still a valid upper bound because x>y, so the intended reading is y^{4/15} (or '<=' in place of '='), and f_2 <= 0.001332 holds either way (0.000936 with y).",
+  "reasonB": "f_2 is defined with log(r_1/r_0), r_1 = (3/8)y^{4/15} (cymba), so the '=' with x^{4/15} is wrong as printed; but the constant 0.05699 = (4/15)log 49 + log(3/8) shows the second line was derived from x = 49y, and since x > y the resulting bound (and f_2 <= 0.001332 at y = 10^25) is still a valid upper bound.",
+  "check": "scripts/checks/steps/7_display_53.py",
+  "check_exit": 0
+ },
+ {
+  "id": "7 display 62",
+  "group": 4,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g4A_display62.py",
+   "g4B_R.py"
+  ],
+  "lean": null,
+  "corrected": "R_{y,2r_0} <= 0.27125 log(1 + log(8r_0)/(2 log(9(10^150)^{1/3}/(2.004*2r_0)))) + 0.41415 <= 0.43182; R_{2y/log y,2r_0} <= 0.43211; then 0.43182^2 P_2/sqrt r_0 <= 0.10472, 0.43211^2 P_2/sqrt r_0 <= 0.10486, (jijona) <= 0.33315",
+  "reasonA": "The display correctly evaluates R_{y,r_0} = 0.430857 at y=10^150, but I_{0,r_0,r_1,z} needs R_{z,2r_0} (as in mali1), and R increases in t, so the substitution is invalid: R_{y,2r_0} = 0.43181 and R_{2y/log y,2r_0} = 0.43210, which give 0.10471 and 0.10485 in place of 0.10426 and 0.10439. Then (jijona) becomes 0.33314 instead of 0.33247, which is still below 0.4153461, so later steps are unaffected.",
+  "reasonB": "The display correctly bounds R_{y,r_0} (0.430857 at y = 10^150), but I_{0,r_0,r_1,z} needs R_{z,2r_0}, which is 0.431813 (and 0.432100 at 2y/log y), so 0.10426 and 0.10439 should be 0.10472 and 0.10486, and (jijona) gives 0.33315 rather than 0.33247; this is harmless since only <= 0.4153461 is needed.",
+  "check": "scripts/checks/steps/7_display_62.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 9.3.1 step 2",
+  "group": 5,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": "NOTES.md: Part II, 'Lemma 9.1.3: N+ = N/2 holds only for real chi'",
+  "corrected": "sum_{|Im rho|>T0, L(rho,chi)=0} |G_delta(rho)| = sum_{Im rho>T0, L(rho,chi)=0} |F_delta(rho+2)| + sum_{Im rho>T0, L(rho,conj chi)=0} |F_delta(conj(rho)+2)|; the identity as printed holds for real chi",
+  "reasonA": "For complex chi the zeros of L(s,chi) are symmetric under rho -> 1-conj(rho), not rho -> 1-rho (1-rho is a zero of L(s,conj chi)), so the zeros with Im rho < -T0 are not the points 1-rho with Im rho > T0 and the identity fails as printed. The resulting bound survives by summing over chi and conj chi (the high-zero bound depends only on |Im rho| and zero counts, and Cor 8.0.2 is symmetric in the sign of delta); NOTES.md records the same erratum for Lemma 9.1.3.",
+  "reasonB": "The lemma covers any primitive chi mod q. For complex chi, the functional equation sends a zero rho of L(s,chi) to 1-rho as a zero of L(s,chi-bar), so L(s,chi)'s zeros pair as rho and 1-conj(rho), which have the same imaginary part; the printed identity and the remark 'zeros come in pairs rho, 1-rho' hold only for real chi. The bound can be recovered: the zeros of L(s,chi) with Im<-T0 are the conjugates of L(s,chi-bar)'s zeros with Im>T0, the zero count is the same, and |G_delta(conj s)|=|G_{-delta}(s)|, so a bound depending only on |delta| survives."
+ },
+ {
+  "id": "Lemma 9.3.1 step 24",
+  "group": 5,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g5A_lemma931_y_c1_T0.py",
+   "g5B_festavign_y_c1.py"
+  ],
+  "lean": null,
+  "corrected": "Setting c=0.1065, c1=1/(2|delta|) <= 3pi/40 and y=T0/(pi|delta|) >= 10, we obtain",
+  "reasonA": "Under T0>=max(10 pi|delta|,50) and |delta|>20/(3pi) one only gets y>=10 (<4pi) and c1<3pi/40=0.2356 (>3/16); e.g. |delta|=3, T0=30pi gives y=10 with a Gaussian term present. The next displays use the correct values y>=10 and c1<=(2*20/(3pi))^{-1}, which give a=0.11686<=0.117, so this is a stale remnant of an earlier hypothesis.",
+  "reasonB": "When |delta|>20/(3pi), the hypothesis T0>=max(10pi|delta|,50) only gives y>=10 (|delta|=10, T0=100pi gives y=10<4pi) and c1<3pi/40=0.2356, which is above 3/16. The next display evaluates a at y=10 with c1=(2*20/(3pi))^{-1}, and a<=0.117 holds there (a=0.11686), so the intended values are clear.",
+  "check": "scripts/checks/steps/lemma_9_3_1_step_24.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 9.3.1 step 30",
+  "group": 5,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "confirmed-script",
+  "scripts": [
+   "g5A_lemma931_y_c1_T0.py",
+   "g5B_festavign_caplor.py"
+  ],
+  "lean": null,
+  "corrected": "With only T0 >= 10 pi|delta|, (caplor) <= 1.605 T0 log(qT0/2pi); 1.578 needs the extra hypothesis T0 >= 4 pi^2 |delta|",
+  "reasonA": "The lemma assumes only T0>=max(10 pi|delta|,50), which does not give T0>=4pi^2|delta| (|delta|=3, T0=30pi<12pi^2, Gaussian term present). The constant really depends on it: 1.487+2.566(1+1/log(T0/(pi|delta|)))/(T0/|delta|) is 1.5777 at T0/|delta|=4pi^2 but 1.6042 at 10pi, and the line-1 ratio of (caplor) reaches 1.6028 > 1.578, so the printed 1.578 is not established under the lemma's hypotheses.",
+  "reasonB": "T0>=4pi^2|delta| is not a hypothesis: in the Gaussian case |delta|>20/(3pi), T0=10pi|delta| (>50) is allowed, which gives y=10 instead of y>=4pi. Then the last inequality of (eq:caplor) fails: the printed middle bound gives 1.487+2.566(1+1/log 10)/(10pi)=1.6042, and the actual ratio at |delta|=2.2, q=1, T0=22pi is 1.6023>1.578, so the lemma's constant 1.578 is not proved under T0>=max(10pi|delta|,50).",
+  "check": "scripts/checks/steps/lemma_9_3_1_step_30.py",
+  "check_exit": 0
+ },
+ {
+  "id": "Lemma 9.4.1 step 2",
+  "group": 5,
+  "A": "confirmed_error",
+  "B": "confirmed_error",
+  "kind": "error",
+  "status": "both-skeptics-no-check",
+  "scripts": [],
+  "lean": "NOTES.md: Part II, 'Lemma 9.1.3: N+ = N/2 holds only for real chi'",
+  "corrected": "sum_{|Im rho|>T0} |G_delta(rho)| = sum_{Im rho>T0, L(rho,chi)=0} |G_delta(rho)| + sum_{Im rho>T0, L(rho,conj chi)=0} |G_delta(1-rho)|; the identity as printed holds for real chi",
+  "reasonA": "Same flaw as Lemma 9.3.1 step 2: for complex chi the functional equation pairs rho with 1-conj(rho), so the zeros with Im rho < -T0 are conj(1-rho') for zeros rho' of L(s,conj chi), not 1-rho for zeros of L(s,chi). The bound can be repaired by summing over chi and conj chi (equivalently delta and -delta), as recorded for Lemma 9.1.3 in NOTES.md.",
+  "reasonB": "Same as in Lemma 9.3.1: for complex chi, the zeros of L(s,chi) with Im<-T0 are 1-rho' for zeros rho' of L(s,chi-bar), not 1-rho for zeros rho of L(s,chi), so the identity holds only for real chi. It can be repaired by summing over the zeros of L(s,chi-bar), which have the same zero count, using a bound that depends only on |delta|."
+ },
+ {
+  "id": "Lemma 11.1.1 step 4",
+  "group": 5,
+  "A": "refuted",
+  "B": "refuted",
+  "kind": null,
+  "status": "refuted",
+  "scripts": [],
+  "lean": null,
+  "corrected": "sqrt(1+x)=1+x/2+O*(x^2/2^{3/2}) for x >= -3/4 (indeed O*(2x^2/9)); the lemma also holds with 1/2 in place of 2.71 by polarization",
+  "reasonA": "The stated range |x|<=1/2 is too narrow, but the bound used is true on the whole range x in [-3/4,5/4] that occurs here (delta<=1/2): sqrt(1+x)-1-x/2 = -x^2/(2(1+sqrt(1+x))^2), so the error is at most (2/9)x^2 < x^2/2^{3/2}. The display therefore holds as printed and 1/2+(5/2)^2/2^{3/2}=2.7097<=2.71. Only the justification is incomplete; the '1+delta' in line 2 is a separate misprint for 1+<w-v,v>/|v|^2+delta^2/2.",
+  "reasonB": "The display is true as printed. x=2<w-v,v>/|v|^2+delta^2 lies in [-3/4,5/4], and on that range sqrt(1+x)=1+x/2+O*(x^2/2^{3/2}) still holds (worst ratio 0.63 at x=-3/4; it fails only for x<-0.964); the end result |w|/|v|=1+<w-v,v>/|v|^2+O*(2.71 delta^2) holds even with 1/2 in place of 2.71. Only the justification 'for |x|<=1/2' is too narrow, and the '1+delta' in the second line is a misprint for 1+<w-v,v>/|v|^2."
+ },
+ {
+  "id": "Lemma 11.2.1 step 11",
+  "group": 5,
+  "A": "confirmed_typo",
+  "B": "confirmed_typo",
+  "kind": "typo",
+  "status": "confirmed-script",
+  "scripts": [
+   "g5A_lemma1121_logx.py",
+   "g5B_convet_L2r.py"
+  ],
+  "lean": null,
+  "corrected": "L_{2r} <= e^gamma log log x_r ((13/12) log x_r + 4.25) + 4.56 log x_r + 22.55",
+  "reasonA": "Since (13/4)log(x_r^{1/3}/3) = (13/12)log x_r - (13/4)log 3, the constants check (7.82-(13/4)log 3=4.2495<=4.25, 13.66/3=4.5533<=4.56, 37.55-13.66 log 3=22.543<=22.55), and the commented-out TeX variant has '\\frac{13}{12}\\log x_r'. As printed, (13/12)x_r is a weaker but true bound; the intended reading is log x_r.",
+  "reasonB": "(13/4)log(x_r^{1/3}/3)+7.82 = (13/12)log x_r + 4.2495, so the factor should be (13/12) log x_r; x_r is a misprint, and the later (13/2)e^gamma x_r^{-1/3} log x_r loglog x_r uses log x_r. The other constants check out (13.66/3=4.553<=4.56 and 37.55-13.66 log 3=22.543<=22.55).",
+  "check": "scripts/checks/steps/lemma_11_2_1_step_11.py",
+  "check_exit": 0
+ }
+]

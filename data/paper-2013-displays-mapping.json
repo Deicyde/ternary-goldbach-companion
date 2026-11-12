@@ -9,7 +9,7 @@
   "uri": "https://github.com/leanprover-community/mathlib4",
   "commit": "56a005855ea17e0b0958f73ec801ae140b0a1679"
  },
- "method": "each record mapped by one agent and independently by a second; an opus judge ruled on class or declaration-set disagreements and re-ran one in five agreed noMatch searches; paper records with LaTeX identical to a book record carry the book verdict. No person has reviewed these verdicts.",
+ "method": "each record mapped by one agent and independently by a second; an opus judge ruled on class or declaration-set disagreements and re-ran one in five agreed noMatch searches; an opus absence audit re-checked every other agreed noMatch; paper records with LaTeX identical to a book record carry the book verdict; text-error claims enter a note only when two opus skeptics confirm them and a re-run check script (scripts/checks/steps/) or the Lean backs them. Every declaration was checked with #check at the pin. No person has reviewed these verdicts.",
  "total": 138,
  "mapped": 138,
  "records": [
@@ -46,10 +46,16 @@
     "batch": "P066-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Grepped 'main term' (comments only); expository schema with no Lean counterpart."
+    }
    }
   },
   {
@@ -2659,10 +2665,16 @@
     "batch": "P066-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read cor_12_2_5, prop_12_2_4, large_sieve_opt; grep for N + Q^2 forms finds no point-evaluation assembly."
+    }
    }
   },
   {
@@ -3443,10 +3455,16 @@
     "batch": "P066-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read Fr, Fr_monotoneOn, gx_antitoneOn; no integral of Fr(r)/r^{3/2} or E_1 in MinorArcs/."
+    }
    }
   },
   {
@@ -4476,10 +4494,16 @@
     "batch": "P067-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    }
    }
   },
   {
@@ -5520,10 +5544,16 @@
     "batch": "P067-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    }
    }
   },
   {
@@ -5582,30 +5612,25 @@
     "batch": "P067-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    }
    }
   },
   {
    "id": "7 display 33",
    "section": "7",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "No C_{η₊,2} = 0.51941|η₊|_∞² appears; Lean uses |η₊| ≤ 1.94 inside `E_partial`.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] has no constant $C_{\\eta_+,2}$; the $|\\eta_+|_\\infty^2$ factor appears as $1.94^2$ multiplying the $n\\le x$ sum (`E_partial`). Relation set in the session lead's sample check (was noMatch), as for book 14.3 display 4.",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.E_le_14_28",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/EBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.EBound",
-     "lines": [
-      277,
-      366
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.E_partial",
      "repo": "lean",
@@ -5613,41 +5638,37 @@
      "file": "TernaryGoldbach/MinorArcs/EBound.lean",
      "module": "TernaryGoldbach.MinorArcs.EBound",
      "lines": [
-      172,
-      274
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Helfgott.abs_etaPlus_le_A",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Helfgott/HHBound.lean",
-     "module": "TernaryGoldbach.Helfgott.HHBound",
-     "lines": [
-      431,
-      442
-     ]
+      206,
+      228
+     ],
+     "snippet": "  have hlow : ∑ n ∈ Icc 1 ⌊x⌋₊, eTerm x n ≤\n      1.94 ^ 2 * (Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x)) := by\n    refine (sum_le_sum fun n hn => eTerm_low hx hn).trans ?_\n    rw [← mul_sum, sum_add_distrib, ← mul_sum, ← mul_sum]\n    have hψ : ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) ≤ 1.03883 * √x := by\n      rw [← sum_filter]\n      have hsub2 : (Icc 1 ⌊x⌋₊).filter (fun n : ℕ => (n : ℝ) ≤ √x) ⊆ Icc 1 ⌊√x⌋₊ := by\n        intro n hn\n        have h := mem_filter.1 hn\n        exact mem_Icc.2 ⟨(mem_Icc.1 h.1).1, Nat.le_floor h.2⟩\n      refine (sum_le_sum_of_subset_of_nonneg hsub2 fun n _ _ =>\n        ArithmeticFunction.vonMangoldt_nonneg).trans ?_\n      exact (Prelim.sum_vonMangoldt_lt (Real.sqrt_pos.2 hx0)).le\n    have hNP : ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤ 1.4262 * √x :=\n      (Prelim.sum_vonMangoldt_nonprime_lt hx0).le\n    have : Real.log x / 2 * ∑ n ∈ Icc 1 ⌊x⌋₊, (if (n : ℝ) ≤ √x then (Λ n : ℝ) else 0) +\n        Real.log x * ∑ n ∈ Icc 1 ⌊x⌋₊, lamNP n ≤\n        Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x) := by\n      have := mul_le_mul_of_nonneg_left hψ (by linarith : 0 ≤ Real.log x / 2)\n      have := mul_le_mul_of_nonneg_left hNP hlx\n      linarith\n    exact mul_le_mul_of_nonneg_left this (by norm_num)\n  -- the dyadic part",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+      "lines": [
+       172,
+       274
+      ],
+      "conclusion": "Low part $n\\le x$ of $E$: bounded by $1.94^2(\\tfrac{\\log x}2\\cdot1.03883\\sqrt x+\\log x\\cdot1.4262\\sqrt x)$ using $|\\eta_+|\\le1.94$."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.E_le_14_28",
-     "TernaryGoldbach.MinorArcs.E_partial",
-     "TernaryGoldbach.Helfgott.abs_etaPlus_le_A"
-    ],
-    "greps": [
-     "0\\.51941|0\\.60579 in TernaryGoldbach/"
-    ]
-   },
    "verification": {
     "batch": "P067-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)",
+     "session lead sample check (opus): relation changed"
     ],
     "agreed": true,
-    "same_relation": true
-   }
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    }
+   },
+   "proof_kind": "direct"
   },
   {
    "id": "7 display 34",
@@ -7326,10 +7347,16 @@
     "batch": "P068-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    }
    }
   },
   {
@@ -7401,10 +7428,16 @@
     "batch": "P068-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    }
    }
   },
   {
@@ -7476,41 +7509,26 @@
     "batch": "P068-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    }
    }
   },
   {
    "id": "7 display 62",
    "section": "7",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "No evaluation of $R_{y,r_0}$ at $y=10^{150}$ (Lean's cells and asymptotic range switch at $y=10^{100}$ with $R_{y,2n}\\le0.6628$). Text error, confirmed by two skeptics and `scripts/checks/steps/7_display_62.py`.",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "[L] bounds $R_{y,t}$ for all $t=2n$ with $n^4\\le y$ (which includes $t=r_0$, $y\\ge10^{150}$) but only by $0.6628$, not $0.43086$; it uses the bound in `ghatY_le_asym` for its $y\\ge10^{100}$ range, not in an $I_0$ estimate. Text error, confirmed by two skeptics and `scripts/checks/steps/7_display_62.py`.",
+   "proof_kind": "helper",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/MinorTotal.lean",
-     "module": "TernaryGoldbach.MinorArcs.MinorTotal",
-     "lines": [
-      77,
-      81
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.R",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
-     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
-     "lines": [
-      26,
-      29
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
      "repo": "lean",
@@ -7520,32 +7538,18 @@
      "lines": [
       17,
       52
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.MinorArcs.asymp_goal",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
-     "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
-     "lines": [
-      384,
-      607
-     ]
+     ],
+     "snippet": "/-- `R_{y,2n} ≤ 0.6628` when `n⁴ ≤ y`. -/\ntheorem R_le_of_pow_four {y n : ℝ} (hy : 0 < y) (hn : 1 ≤ n) (hny : n ^ 4 ≤ y) :\n    R y (2 * n) ≤ 0.6628 := by\n  have hn0 : 0 < n := by linarith\n  have hY : 0 < y ^ (1 / 3 : ℝ) := by positivity\n  have hY3 : (y ^ (1 / 3 : ℝ)) ^ 3 = y := by\n    rw [← Real.rpow_natCast, ← Real.rpow_mul hy.le]; norm_num\n  set B := 9 * y ^ (1 / 3 : ℝ) / (4.008 * n) with hB\n  have hB0 : 0 < B := by positivity\n  -- `8n ≤ B³`\n  have hB3 : 8 * n ≤ B ^ 3 := by\n    have e : B ^ 3 = 729 * y / (4.008 ^ 3 * n ^ 3) := by\n      simp only [hB]; rw [div_pow, mul_pow, mul_pow, hY3]; ring\n    rw [e, le_div_iff₀ (by positivity)]\n    nlinarith [pow_pos hn0 4]\n  have hB1 : 1 < B := by\n    by_contra h; push Not at h\n    have : B ^ 3 ≤ 1 := pow_le_one₀ hB0.le h\n    linarith\n  have hlB : 0 < Real.log B := Real.log_pos hB1\n  have h8 : Real.log (8 * n) ≤ 3 * Real.log B := by\n    have := Real.log_le_log (by positivity) hB3\n    rw [Real.log_pow] at this; push_cast at this; linarith\n  unfold R\n  rw [show 4 * (2 * n) = 8 * n by ring,\n    show 9 * y ^ (1 / 3 : ℝ) / (2.004 * (2 * n)) = B by rw [hB]; ring]\n  have hq : Real.log (8 * n) / (2 * Real.log B) ≤ 1.5 := by\n    rw [div_le_iff₀ (by positivity)]; linarith\n  have hq0 : 0 ≤ Real.log (8 * n) / (2 * Real.log B) :=\n    div_nonneg (Real.log_nonneg (by linarith)) (by positivity)\n  have hl : Real.log (1 + Real.log (8 * n) / (2 * Real.log B)) ≤ Real.log 2.5 :=\n    Real.log_le_log (by linarith) (by linarith)\n  have h25 : Real.log 2.5 ≤ 0.9164 := by\n    have := log_le_num (z := 2.5) 0 0.9164 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)\n    norm_num at this ⊢; linarith\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
+      "lines": [
+       17,
+       52
+      ],
+      "conclusion": "For $n\\ge1$ and $n^4\\le y$, `R y (2 * n)` $=R_{y,2n}\\le 0.6628$, via $\\log(1+\\log 8n/(2\\log B))\\le\\log 2.5\\le0.9164$; at $2n=r_0=150000$ this covers every $y\\ge10^{150}$."
+     }
     }
    ],
-   "searched": {
-    "declarations": [
-     "TernaryGoldbach.MinorArcs.R",
-     "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
-     "TernaryGoldbach.MinorArcs.ghatY_le_num",
-     "TernaryGoldbach.MinorArcs.asymp_goal"
-    ],
-    "greps": [
-     "0.43086|0.43113|10\\^150|1e150 in TernaryGoldbach/",
-     "2.004 in TernaryGoldbach/MinorArcs/"
-    ]
-   },
    "text_error": {
     "kind": "error",
     "corrected": "R_{y,2r_0} <= 0.27125 log(1 + log(8r_0)/(2 log(9(10^150)^{1/3}/(2.004*2r_0)))) + 0.41415 <= 0.43182; R_{2y/log y,2r_0} <= 0.43211; then 0.43182^2 P_2/sqrt r_0 <= 0.10472, 0.43211^2 P_2/sqrt r_0 <= 0.10486, (jijona) <= 0.33315",
@@ -7556,10 +7560,16 @@
     "batch": "P068-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "overturned",
+     "reason": "NumericsAsymp.R_le_of_pow_four (lines 17-52) proves R_{y,2n} <= 0.6628 whenever n^4 <= y, a weaker constant for the same quantity covering t=r_0, y>=10^150."
+    }
    }
   },
   {
@@ -7709,10 +7719,16 @@
     "batch": "P068-d",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A10",
+     "ruling": "confirmed",
+     "reason": "Read the listed declarations and grepped the section-7 constants across TernaryGoldbach/: none of these quantities (C_{eta+,j}, I_0, f_0, Gaussian tail at 2 kappa) is formed."
+    }
    }
   },
   {

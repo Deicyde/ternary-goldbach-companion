@@ -1,9 +1,9 @@
 {
   "id": "Lemma 9.1.1 step 48",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "The product of two $L^2$ norms (Cauchy-Schwarz form) does not occur in Lean.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text bounds the integral by a product of two L2 norms. The Lean bounds it by the integral of a pointwise product bound, evaluated exactly as x^{-1/2} VgL.",
   "subject": [
     {
       "location": {
@@ -29,19 +29,33 @@
         "declaration": "TernaryGoldbach.Explicit.norm_integral_hIntG_le",
         "module": "TernaryGoldbach.Explicit.ExplicitBoundGen",
         "lines": [
-          31,
+          64,
           68
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.Explicit.norm_integral_hIntG_le"
           },
+          "snippet": {
+            "text": "  refine (norm_integral_le_of_norm_le hgi (Eventually.of_forall hpt)).trans (le_of_eq ?_)\n  rw [hg, integral_const_mul, integral_add ((integrable_exp_neg_abs hθv).const_mul _)\n    ((integrable_abs_mul_exp hθv).const_mul _), integral_const_mul, integral_const_mul,\n    integral_exp_neg_mul_abs hθv, integral_abs_mul_exp_neg_mul_abs hθv]\n  unfold VgL; rw [← hc₁]; ring",
+            "line": 64,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_integral_hIntG_le",
+            "lines": [
+              31,
+              68
+            ],
+            "conclusion": "Evaluates the integral of the pointwise bound in closed form, giving x^{-1/2} · VgL."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBoundGen.lean",
-            "fragment": "L31-L68"
+            "fragment": "L64-L68"
           }
         }
       }
@@ -59,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run; judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
       }
     }
   }

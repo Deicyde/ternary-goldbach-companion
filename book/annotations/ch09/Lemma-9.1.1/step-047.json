@@ -1,9 +1,9 @@
 {
   "id": "Lemma 9.1.1 step 47",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Lean does not apply Cauchy-Schwarz to the line integral; it uses pointwise bounds.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text bounds the line integral on Re s = -1/2 by Cauchy-Schwarz. The Lean bounds the same integral by integrating a pointwise product of norm_logDeriv_L_left and the decay hypothesis on mellin φ.",
   "subject": [
     {
       "location": {
@@ -29,19 +29,33 @@
         "declaration": "TernaryGoldbach.Explicit.norm_integral_hIntG_le",
         "module": "TernaryGoldbach.Explicit.ExplicitBoundGen",
         "lines": [
-          31,
-          68
+          59,
+          64
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.Explicit.norm_integral_hIntG_le"
           },
+          "snippet": {
+            "text": "    have e2 : x ^ (-1 / 2 : ℝ) = x ^ (-(1 / 2) : ℝ) := by norm_num\n    calc ‖logDeriv χ.LFunction s‖ * (‖mellin φ s‖ * x ^ (-1 / 2 : ℝ))\n        ≤ (c₁ * (DN N + 37 + 2.6 * |y|)) * (Kv * Real.exp (-(θv * |y|)) * x ^ (-1 / 2 : ℝ)) :=\n          mul_le_mul hL' (mul_le_mul_of_nonneg_right hGs hxp) (by positivity) (by positivity)\n      _ = g y := by rw [hg, e2]; ring\n  refine (norm_integral_le_of_norm_le hgi (Eventually.of_forall hpt)).trans (le_of_eq ?_)",
+            "line": 59,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.norm_integral_hIntG_le",
+            "lines": [
+              31,
+              68
+            ],
+            "conclusion": "Bounds the integrand |L'/L(s)|·|M φ(s)|·x^{-1/2} on Re s = -1/2 pointwise by a product bound and integrates it (norm_integral_le_of_norm_le)."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBoundGen.lean",
-            "fragment": "L31-L68"
+            "fragment": "L59-L64"
           }
         }
       }
@@ -59,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
       }
     }
   }

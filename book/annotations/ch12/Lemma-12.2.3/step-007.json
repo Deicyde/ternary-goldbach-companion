@@ -1,9 +1,9 @@
 {
   "id": "Lemma 12.2.3 step 7",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Lean has no 1.312/σ form of Lemma 12.2.3; regionS bounds with cE and σ=1.36 via poly_regionS, with no counterpart of this step.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text bounds (1−ρ)σ + 1.312ρ² − 1.172 below by its minimum σ − σ²/5.248 − 1.172 at ρ = σ/2.624; Lean proves the corresponding polynomial inequality in (l, L) with constants 1.36, 1.064, cE directly by nlinarith with the product (0.6l+0.5)(0.6L−l) ≥ 0.",
   "subject": [
     {
       "location": {
@@ -26,44 +26,36 @@
   "object": [
     {
       "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.regionS",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
-        "lines": [
-          74,
-          185
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.regionS"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
-            "fragment": "L74-L185"
-          }
-        }
-      }
-    },
-    {
-      "location": {
         "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
         "module": "TernaryGoldbach.MinorArcs.LSQuot3",
         "lines": [
-          65,
+          68,
           71
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MinorArcs.poly_regionS"
           },
+          "snippet": {
+            "text": "  have hLc : 0 ≤ L + 1.33258 := by linarith\n  have h06 : 0 ≤ 0.6 * l + 0.5 := by linarith\n  have hLl : 0 ≤ 0.6 * L - l := by linarith\n  nlinarith [mul_nonneg h06 hLl, mul_le_mul_of_nonneg_right hX hLc]",
+            "line": 68,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.poly_regionS",
+            "lines": [
+              65,
+              71
+            ],
+            "conclusion": "X(L+1.33258) ≤ (l+1.36)(L−l+1.064) for all l ≤ 0.6L, i.e. the final inequality holds uniformly in ρ = l/L ≤ 0.6, settled by nlinarith."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
-            "fragment": "L65-L71"
+            "fragment": "L68-L71"
           }
         }
       }
@@ -81,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
       }
     }
   }

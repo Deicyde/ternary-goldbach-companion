@@ -1,9 +1,9 @@
 {
   "id": "Proposition 12.2.4 step 63",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "The q ≥ ∏_{p≤31} p case via ϖ=ϖ_0 and (12.drolo) is absent; Lean covers all q ≥ 2.2·10^10 by lamQ_pow_le (primorial induction) instead.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text opens the case q >= ∏_{p<=31} p with rough bounds through ϖ = ϖ_0 and (drolo). [L] settles the corresponding large case, k >= 11 prime factors with q >= p1...pk, by the primorial induction and the exchange argument.",
   "subject": [
     {
       "location": {
@@ -26,44 +26,36 @@
   "object": [
     {
       "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.hcc_large",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot6",
-        "lines": [
-          19,
-          38
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.hcc_large"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot6.lean",
-            "fragment": "L19-L38"
-          }
-        }
-      }
-    },
-    {
-      "location": {
         "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
         "module": "TernaryGoldbach.MinorArcs.LSQuot5",
         "lines": [
-          217,
+          255,
           277
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MinorArcs.lamQ_pow_le"
           },
+          "snippet": {
+            "text": "  · -- `k ≥ 11`\n    obtain ⟨hκ, hmain⟩ := IHk_all hk\n    have hprim : ((primk k : ℕ) : ℝ) ≤ q := by\n      have hPp : ∀ p ∈ q.primeFactors, p.Prime := fun p hp => Nat.prime_of_mem_primeFactors hp\n      have h2 := (TernaryGoldbach.Prelim.exch q.primeFactors hPp).2\n      have h3 : ∏ p ∈ q.primeFactors, p ≤ q := Nat.le_of_dvd (by omega) (Nat.prod_primeFactors_dvd q)\n      unfold primk; exact_mod_cast h2.trans h3\n    have hprim0 : (0 : ℝ) < primk k := by\n      unfold primk; push_cast\n      exact prod_pos fun i _ => by exact_mod_cast (Nat.prime_nth_prime i).pos\n    have hκq : kapk k (primk k) ≤ kapk k q := by\n      unfold kapk; have := Real.log_le_log hprim0 hprim; linarith\n    obtain ⟨hlam, -⟩ := lamQ_le_k hq1 (lt_of_lt_of_le hκ hκq)\n    have hG0 : 0 ≤ Gk k := by\n      unfold Gk; exact prod_nonneg fun i _ => by linarith [one_le_ghat (Nat.nth Nat.Prime i)]\n    have h1 : lamQ q ≤ (7.4527 * Gk k / kapk k (primk k)) ^ 3 :=\n      hlam.trans (pow_le_pow_left₀ (div_nonneg (mul_nonneg (by norm_num) hG0) (hκ.le.trans hκq))\n        (div_le_div₀ (mul_nonneg (by norm_num) hG0) le_rfl hκ hκq) 3)\n    calc lamQ q ^ 7 ≤ ((7.4527 * Gk k / kapk k (primk k)) ^ 3) ^ 7 := pow_le_pow_left₀ hlam0 h1 7\n      _ = (7.4527 * Gk k) ^ 21 / kapk k (primk k) ^ 21 := by rw [← pow_mul, div_pow]\n      _ ≤ (103 / 120 : ℝ) ^ 9 * ((primk k : ℕ) : ℝ) ^ 2 := by\n          rw [div_le_iff₀ (by positivity)]; exact hmain\n      _ ≤ (103 / 120 : ℝ) ^ 9 * (q : ℝ) ^ 2 := by gcongr",
+            "line": 255,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+            "lines": [
+              217,
+              277
+            ],
+            "conclusion": "When q has k >= 11 prime factors (so q >= primk k >= ∏_{p<=31} p), λ(q)^7 <= a^9 q^2, using the primorial induction IHk_all."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
-            "fragment": "L217-L277"
+            "fragment": "L255-L277"
           }
         }
       }
@@ -81,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run; judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
       }
     }
   }

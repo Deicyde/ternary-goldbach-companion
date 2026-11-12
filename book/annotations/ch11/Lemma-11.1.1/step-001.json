@@ -1,9 +1,9 @@
 {
   "id": "Lemma 11.1.1 step 1",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Lean uses no Taylor expansion; Lemma 11.1.1 is replaced by exact polarization with |w|=|v|.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "Here the text uses a truncated Taylor expansion of √(1+x) to turn closeness of the two vectors into a lower bound for the convolution. In the proof of conv2_ge, [L] reaches that lower-bound form with the exact polarization identity instead.",
   "subject": [
     {
       "location": {
@@ -29,19 +29,33 @@
         "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
         "module": "TernaryGoldbach.MajorArcs.CMain",
         "lines": [
-          138,
+          155,
           164
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MajorArcs.conv2_ge"
           },
+          "snippet": {
+            "text": "  have heq : conv2 ρ = (∫ t, etaO t ^ 2) - (1 / 2) * ∫ t, (etaO (t + s) - etaO t) ^ 2 := by\n    unfold conv2\n    simp_rw [hpt]\n    have h1 : Integrable fun t => etaO t ^ 2 + etaO (t + s) ^ 2 := integrable_etaO_sq.add hshift\n    rw [integral_div, integral_sub h1 hdiff, integral_add integrable_etaO_sq hshift,\n      integral_add_right_eq_self (fun t => etaO t ^ 2) s]\n    ring\n  rw [heq]\n  have := integral_sq_etaO_shift_le s\n  linarith",
+            "line": 155,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
+            "lines": [
+              138,
+              164
+            ],
+            "conclusion": "Exact polarization with the shifted copy of η◦ (|w| = |v|) gives conv2 ρ = ‖η◦‖₂² − ½‖η◦(·+s) − η◦‖₂²."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
-            "fragment": "L138-L164"
+            "fragment": "L155-L164"
           }
         }
       }
@@ -59,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
       }
     }
   }

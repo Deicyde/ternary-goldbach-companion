@@ -1,9 +1,9 @@
 {
   "id": "Lemma 4.1.1 step 13",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Lean does not use the series of t/sin t and t cot t with nonnegative coefficients (A&S 4.3.68, 4.3.70).",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text expands t/sin t and t cot t as series with nonnegative coefficients (A&S 4.3.68, 4.3.70); Lean controls the same functions by Taylor bounds on sin and cos inside sq_div_sin_sq_add_mul_cot_two_mul_le, which fq_half_add_le uses for the final numerical step of the first bound.",
   "subject": [
     {
       "location": {
@@ -29,41 +29,33 @@
         "declaration": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le",
         "module": "TernaryGoldbach.MinorArcs.TrigSums",
         "lines": [
-          177,
-          197
+          181,
+          184
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le"
           },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
-            "fragment": "L177-L197"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.trig_core",
-        "module": "TernaryGoldbach.MinorArcs.TrigSums",
-        "lines": [
-          138,
-          175
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.trig_core"
+          "snippet": {
+            "text": "  have hS1 : t - t ^ 3 / 4 < Real.sin t := by\n    have := Real.sin_gt_sub_cube ht; nlinarith [pow_pos ht 3]\n  have hS2 := Real.sin_le ht.le\n  have hC1 := Real.one_sub_sq_div_two_le_cos (x := t)",
+            "line": 181,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le",
+            "lines": [
+              177,
+              197
+            ],
+            "conclusion": "Elementary bounds t − t³/4 < sin t ≤ t and cos t ≥ 1 − t²/2 for 0 < t ≤ π/6."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
-            "fragment": "L138-L175"
+            "fragment": "L181-L184"
           }
         }
       }
@@ -81,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
       }
     }
   }

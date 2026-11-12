@@ -1,9 +1,9 @@
 {
   "id": "Lemma 4.1.1 step 14",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "No series coefficients a_{2k+1}, b_{2k+1} or expansions of (t/sin t)² in Lean.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text uses the nonnegativity of the series coefficients to bound (t/sin t)² and t cot t on [0, t₀] by monotonicity; Lean bounds the combination t²/sin²t + t cot 2t on (0, π/6] from Taylor bounds via trig_core, with no series and no c₀.",
   "subject": [
     {
       "location": {
@@ -29,41 +29,33 @@
         "declaration": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le",
         "module": "TernaryGoldbach.MinorArcs.TrigSums",
         "lines": [
-          177,
-          197
+          181,
+          187
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le"
           },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
-            "fragment": "L177-L197"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.trig_core",
-        "module": "TernaryGoldbach.MinorArcs.TrigSums",
-        "lines": [
-          138,
-          175
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.trig_core"
+          "snippet": {
+            "text": "  have hS1 : t - t ^ 3 / 4 < Real.sin t := by\n    have := Real.sin_gt_sub_cube ht; nlinarith [pow_pos ht 3]\n  have hS2 := Real.sin_le ht.le\n  have hC1 := Real.one_sub_sq_div_two_le_cos (x := t)\n  have hSpos : 0 < Real.sin t := Real.sin_pos_of_pos_of_lt_pi ht (by linarith [Real.pi_gt_three])\n  have hCpos : 0 < Real.cos t := Real.cos_pos_of_mem_Ioo ⟨by linarith, by linarith [Real.pi_gt_three]⟩\n  have hcore := trig_core t (Real.sin t) (Real.cos t) ht hpi hS1 hS2 hC1",
+            "line": 181,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.sq_div_sin_sq_add_mul_cot_two_mul_le",
+            "lines": [
+              177,
+              197
+            ],
+            "conclusion": "From Taylor bounds on sin and cos, trig_core gives the polynomial inequality that yields t²/sin²t + t cot 2t ≤ 3/2 on (0, π/6]."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
-            "fragment": "L138-L175"
+            "fragment": "L181-L187"
           }
         }
       }
@@ -81,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
       }
     }
   }

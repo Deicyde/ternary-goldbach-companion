@@ -1,9 +1,9 @@
 {
   "id": "Lemma 2.3.1 step 3",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Lean never uses f' or f''; the relation between f̂ and f̂'' is replaced by hypothesis hK.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text expresses f̂ through f̂' (and then f̂'') divided by powers of 2πi t to get 1/(n−α)² decay; Lean takes the bound (2πt)²‖𝓕 f t‖ ≤ K as hypothesis hK and derives the same pointwise 1/(n−α)² bound hpt from it.",
   "subject": [
     {
       "location": {
@@ -29,19 +29,33 @@
         "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
         "module": "TernaryGoldbach.MinorArcs.FourierSums",
         "lines": [
-          211,
-          246
+          224,
+          232
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.norm_tsum_le_of_fourier_bound"
           },
+          "snippet": {
+            "text": "  have hpt : ∀ n : ℤ, ‖𝓕 g n‖ ≤ K / (4 * π ^ 2) * (1 / ((n : ℝ) - α) ^ 2) := by\n    intro n\n    rw [fourier_mul_e]\n    have h := hK (n - α)\n    have hpos : 0 < (2 * π * ((n : ℝ) - α)) ^ 2 := by\n      have := hαn n; positivity\n    rw [show K / (4 * π ^ 2) * (1 / ((n : ℝ) - α) ^ 2) = K / (2 * π * ((n : ℝ) - α)) ^ 2 by\n      field_simp; ring]\n    rw [le_div_iff₀ hpos]; linarith",
+            "line": 224,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.norm_tsum_le_of_fourier_bound",
+            "lines": [
+              211,
+              246
+            ],
+            "conclusion": "‖𝓕 g n‖ ≤ K/(2π(n−α))² for every n, read off hypothesis hK on (2πt)²‖𝓕 f t‖."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
-            "fragment": "L211-L246"
+            "fragment": "L224-L232"
           }
         }
       }
@@ -59,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run; judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
       }
     }
   }

@@ -1,0 +1,81 @@
+{
+  "id": "7 display 44",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text bounds R_{y/K,2r1} by bisecting the function f(t); [L] bounds R_{y,2n} uniformly by 0.6628 for n^4 <= y and uses this in the large-level estimate ghatY_le_asym, with no f and no bisection.",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.20371,
+          0.51772,
+          0.63183,
+          0.04682
+        ]
+      },
+      "title": "Display, p. 65",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "7 display 44"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
+        "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+        "lines": [
+          37,
+          52
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.R_le_of_pow_four"
+          },
+          "snippet": {
+            "text": "  have h8 : Real.log (8 * n) ≤ 3 * Real.log B := by\n    have := Real.log_le_log (by positivity) hB3\n    rw [Real.log_pow] at this; push_cast at this; linarith\n  unfold R\n  rw [show 4 * (2 * n) = 8 * n by ring,\n    show 9 * y ^ (1 / 3 : ℝ) / (2.004 * (2 * n)) = B by rw [hB]; ring]\n  have hq : Real.log (8 * n) / (2 * Real.log B) ≤ 1.5 := by\n    rw [div_le_iff₀ (by positivity)]; linarith\n  have hq0 : 0 ≤ Real.log (8 * n) / (2 * Real.log B) :=\n    div_nonneg (Real.log_nonneg (by linarith)) (by positivity)\n  have hl : Real.log (1 + Real.log (8 * n) / (2 * Real.log B)) ≤ Real.log 2.5 :=\n    Real.log_le_log (by linarith) (by linarith)\n  have h25 : Real.log 2.5 ≤ 0.9164 := by\n    have := log_le_num (z := 2.5) 0 0.9164 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)\n    norm_num at this ⊢; linarith\n  linarith",
+            "line": 37,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
+            "lines": [
+              17,
+              52
+            ],
+            "conclusion": "R_{y,2n} <= 0.6628 whenever n^4 <= y."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+            "fragment": "L37-L52"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "carried from book 14.3 display 15, the same LaTeX (mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed)",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

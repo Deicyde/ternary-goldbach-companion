@@ -1,9 +1,9 @@
 {
   "id": "Proposition 12.2.4 step 80",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "[L] has no $210\\nmid q$, $q\\ge3.3\\cdot10^9$ conclusion; its threshold is $q\\ge2.2\\cdot10^{10}$ for all $q$.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text concludes ϖ(q) > λ(q) for q >= 3.3·10^9 with 210 ∤ q, so the small-R lemma covers every R < λ(q). [L] reaches the corresponding conclusion for all q >= 2.2·10^10: the regionS hypothesis holds for every R < λ(q).",
   "subject": [
     {
       "location": {
@@ -26,88 +26,72 @@
   "object": [
     {
       "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot4",
-        "lines": [
-          262,
-          291
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.lamQ_le_k"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
-            "fragment": "L262-L291"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+        "declaration": "TernaryGoldbach.MinorArcs.large_q_hS",
         "module": "TernaryGoldbach.MinorArcs.LSQuot5",
         "lines": [
-          217,
-          277
+          306,
+          311
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.lamQ_pow_le"
+            "id": "TernaryGoldbach.MinorArcs.large_q_hS"
+          },
+          "snippet": {
+            "text": "theorem large_q_hS {q : ℕ} (hq : 22000000000 ≤ q) {R : ℝ} (hR1 : 1 ≤ R) (hR : R < lamQ q) :\n    Real.log q + 1.039 * R ≤ 1.03 * ((q : ℝ) * R) ^ ((2 : ℝ) / 9) := by\n  have hq' : (22000000000 : ℝ) ≤ q := by exact_mod_cast hq\n  have hq0 : (0 : ℝ) < q := by linarith\n  have hR0 : 0 < R := by linarith\n  have hlam := lamQ_pow_le hq",
+            "line": 306,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.large_q_hS",
+            "lines": [
+              305,
+              340
+            ],
+            "conclusion": "For q >= 2.2·10^10 and 1 <= R < λ(q), log q + 1.039R <= 1.03(qR)^{2/9}, via λ(q)^7 <= a^9 q^2."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
-            "fragment": "L217-L277"
+            "fragment": "L306-L311"
           }
         }
       }
     },
     {
       "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.ghat_pow_le",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot5",
+        "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot6",
         "lines": [
-          132,
-          171
+          85,
+          90
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.ghat_pow_le"
+            "id": "TernaryGoldbach.MinorArcs.prop_12_2_4"
+          },
+          "snippet": {
+            "text": "    rcases le_or_gt (lamQ q) R with hL | hL\n    · exact regionL hQ hQ₀ hρ hq hs hR hL\n    have hq' : (22000000000 : ℝ) ≤ q := by exact_mod_cast hbig\n    have hlq : 3 ≤ Real.log q := by\n      have := log_Q1_ge.trans (Real.log_le_log (by norm_num) hq'); linarith\n    exact regionS hQ hQ₀ hρ hq hs hR (by norm_num) hlq (hcc_large hbig) (large_q_hS hbig hR hL)",
+            "line": 85,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+            "lines": [
+              68,
+              98
+            ],
+            "conclusion": "For large q, R >= λ(q) is handled by regionL and R < λ(q) by regionS with large_q_hS, so the two regions cover every R."
           },
           "destination": {
             "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
-            "fragment": "L132-L171"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.lamQ",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
-        "lines": [
-          33,
-          34
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.lamQ"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
-            "fragment": "L33-L34"
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot6.lean",
+            "fragment": "L85-L90"
           }
         }
       }
@@ -125,8 +109,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain",
+        "summary": "For large q the small-R bound comes from λ(q)^7 ≤ a^9 q^2, and the two regions R < λ(q) and R ≥ λ(q) together cover every R."
       }
     }
   }

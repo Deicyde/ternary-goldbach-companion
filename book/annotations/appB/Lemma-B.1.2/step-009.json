@@ -1,9 +1,9 @@
 {
   "id": "Lemma B.1.2 step 9",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Lean does not bound `(f̂)''`, use step-size error terms, or evaluate `f̂` by Simpson's rule; it uses Taylor polynomials and kernel grids instead. Text typo, confirmed by two skeptics and `scripts/checks/steps/lemma_b_1_2_step_9.py`.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text evaluates (4g + f-hat)(t) = (2 pi t)^2 eta2-hat(t) numerically by Simpson's rule for |t| < 655, finding a maximum of 31.52065. [L] bounds the same quantity eta2DD by 32 using kernel-checked Taylor and expansion grids, combined in norm_eta2DD_le.",
   "subject": [
     {
       "location": {
@@ -26,22 +26,36 @@
   "object": [
     {
       "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_le",
+        "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_le_two",
         "module": "TernaryGoldbach.MinorArcs.Eta2DDBound",
         "lines": [
-          62,
-          66
+          54,
+          60
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.norm_eta2DD_le"
+            "id": "TernaryGoldbach.MinorArcs.norm_eta2DD_le_two"
+          },
+          "snippet": {
+            "text": "theorem norm_eta2DD_le_two {t : ℝ} (ht0 : 0 ≤ t) (ht : t ≤ 2) : ‖eta2DD t‖ ≤ 32 := by\n  have h := chkC_sound 10 0 Xc le_rfl le_rfl gridC (2 * π * t) (by push_cast; positivity) (by\n    simp only [Xc]; push_cast\n    have := Real.pi_lt_d2\n    nlinarith)\n  have hπ : (2 * π * t) / (2 * π) = t := by field_simp\n  rwa [hπ] at h",
+            "line": 54,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_le_two",
+            "lines": [
+              53,
+              60
+            ],
+            "conclusion": "For 0 <= t <= 2, ||eta2DD t|| <= 32, by a kernel-checked Taylor-polynomial bisection grid."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2DDBound.lean",
-            "fragment": "L62-L66"
+            "fragment": "L54-L60"
           }
         }
       }
@@ -51,41 +65,33 @@
         "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_ge_two",
         "module": "TernaryGoldbach.MinorArcs.Eta2DDBound",
         "lines": [
-          27,
+          37,
           51
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MinorArcs.norm_eta2DD_ge_two"
           },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2DDBound.lean",
-            "fragment": "L27-L51"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.eta2_fourier_bound'",
-        "module": "TernaryGoldbach.MinorArcs.InnerSums",
-        "lines": [
-          78,
-          93
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.eta2_fourier_bound'"
+          "snippet": {
+            "text": "  rw [← hw, abs_of_nonneg hw0] at hR\n  obtain ⟨s, hs, m, hm, hz⟩ := exists_zm (norm_e (-(1 / 4 * t)))\n  have hF : ‖Fz (e (-(1 / 4 * t))) w‖ + 6120 * w ^ 3 ≤ 32 := by\n    rw [hz]\n    rcases hs with rfl | rfl\n    · have := chk_sound (s := 1) (Or.inl rfl) 12 (-1) 1 0 (2 / 25) le_rfl gridB_pos m w\n        (by push_cast; exact hm.1) (by push_cast; exact hm.2) (by push_cast; exact hw0)\n        (by push_cast; exact hw1)\n      simpa using this\n    · have := chk_sound (s := -1) (Or.inr rfl) 20 (-1) 1 0 (2 / 25) le_rfl gridB_neg m w\n        (by push_cast; exact hm.1) (by push_cast; exact hm.2) (by push_cast; exact hw0)\n        (by push_cast; exact hw1)\n      simpa using this\n  have := norm_sub_norm_le (eta2DD t) (Fz (e (-(1 / 4 * t))) w)\n  linarith",
+            "line": 37,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_eta2DD_ge_two",
+            "lines": [
+              27,
+              51
+            ],
+            "conclusion": "For t >= 2, ||eta2DD t|| <= 32, from the expansion F(e(-t/4), 1/(2 pi t)) + O*(6120 w^3) and kernel-checked grids."
           },
           "destination": {
             "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
-            "fragment": "L78-L93"
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2DDBound.lean",
+            "fragment": "L37-L51"
           }
         }
       }
@@ -103,8 +109,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run; judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain",
+        "summary": "The bound |η₂''| ≤ 32 is split at t = 2: a kernel-checked Taylor grid on [0, 2], and an asymptotic expansion with checked grids for t ≥ 2."
       }
     }
   }

@@ -2,8 +2,8 @@
   "id": "Lemma 4.2.1 step 10",
   "kind": "proof_step",
   "status": "formalized",
-  "relation": "exactMatch",
-  "note": "Max stated as an upper bound for all |r| ≤ 1/2 plus the value at r = 1/2; n ≠ 0 via an `if n = 0` term in a sum over ℤ.",
+  "relation": "closeMatch",
+  "note": "Lean states the max as an upper bound for all |r| ≤ 1/2 plus the value at r = 1/2, and encodes n ≠ 0 via an `if n = 0` term in a sum over ℤ.",
   "subject": [
     {
       "location": {
@@ -109,11 +109,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus); sweep (sonnet) and lead check (opus), 2026-11-13: exactMatch -> closeMatch",
         "confirmed_by_human": false
       },
       "proof": {
-        "kind": "chain"
+        "kind": "chain",
+        "summary": "`hasSum_inv_sq_sub_half` evaluates the sum at r = 1/2 as pi^2 - 4, and `tsum_inv_sq_sub_le` shows no |r| <= 1/2 exceeds it, so the maximum is attained there."
       }
     }
   }

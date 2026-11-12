@@ -1,9 +1,9 @@
 {
   "id": "Proposition 12.2.4 step 53",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Mertens-type Σ log p/p < log p_1 [3.24] is absent; Lean uses explicit numeric bounds on the first primes' Σ log p/p (Sk_10_le) instead.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text bounds sum_{p<=p1} log p/p < log p1 by [RS (3.24)] to control S_q in κ(q). [L] controls the same sum through ŝ and the exchange argument: explicit numerics for the first ten primes, and log p/p <= log p in the primorial induction.",
   "subject": [
     {
       "location": {
@@ -26,66 +26,108 @@
   "object": [
     {
       "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.Sk_10_le",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot5",
-        "lines": [
-          63,
-          71
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.Sk_10_le"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
-            "fragment": "L63-L71"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.log_primes_le",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot5",
-        "lines": [
-          33,
-          61
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.log_primes_le"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
-            "fragment": "L33-L61"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.shat",
+        "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
         "module": "TernaryGoldbach.MinorArcs.LSQuot4",
         "lines": [
-          32,
-          33
+          270,
+          278
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.shat"
+            "id": "TernaryGoldbach.MinorArcs.lamQ_le_k"
+          },
+          "snippet": {
+            "text": "  have hs := (exch_gen shat shat_nonneg (fun a b ha hb hab => shat_anti ha hb hab) P hPp).2\n  have hG : ∏ p ∈ P, gp p ≤ Gk P.card :=\n    (prod_le_prod₀ (fun p hp => by\n      have := (Nat.prime_of_mem_primeFactors hp).two_le\n      unfold gp; have := f1p_pos p\n      have h2 : (2 : ℝ) ≤ p := by exact_mod_cast (Nat.prime_of_mem_primeFactors hp).two_le\n      exact mul_nonneg (div_nonneg (by linarith) (by linarith)) this.le)\n      fun p hp => gp_le_ghat (hPp p hp)).trans hg\n  have hS : Sq q ≤ Sk P.card := (sum_le_sum fun p hp => le_shat (hPp p hp)).trans hs",
+            "line": 270,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
+            "lines": [
+              262,
+              291
+            ],
+            "conclusion": "S_q <= S_k, the sum of the majorant ŝ(p) of log p/p over the first k = ω(q) primes, by the exchange argument."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
-            "fragment": "L32-L33"
+            "fragment": "L270-L278"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot5",
+        "lines": [
+          233,
+          242
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lamQ_pow_le"
+          },
+          "snippet": {
+            "text": "    have hS : Sk k ≤ Sk 10 := by\n      unfold Sk\n      exact sum_le_sum_of_subset_of_nonneg (range_subset_range.2 (by omega))\n        fun i _ _ => shat_nonneg _\n    set κ0 : ℝ := 0.3726 * (23.8143 - (2 * 1.098613 / 3 + 1.609442 / 5 + 1.94597 / 7 +\n      2.397896 / 11 + 2.564952 / 13 + 2.833241 / 17 + 2.944498 / 19 + 3.135495 / 23 +\n      3.367296 / 29)) + 0.0274177 with hκ0def\n    have hκ0 : 0 < κ0 := by norm_num [hκ0def]\n    have hκ : κ0 ≤ kapk k q := by\n      unfold kapk; have := Sk_10_le; rw [hκ0def]; nlinarith",
+            "line": 233,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+            "lines": [
+              217,
+              277
+            ],
+            "conclusion": "For k <= 10, S_k <= S_10 <= explicit numerics (Sk_10_le), giving κ(q) >= κ0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
+            "fragment": "L233-L242"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.IHk_step",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot5",
+        "lines": [
+          185,
+          193
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.IHk_step"
+          },
+          "snippet": {
+            "text": "  have hκ' : kapk k (primk k) ≤ kapk (k + 1) (primk (k + 1)) := by\n    unfold kapk\n    rw [Sk_succ, primk_succ]\n    have hsh : shat p = Real.log p / p := by unfold shat; rw [if_neg (by omega)]\n    rw [hsh]; push_cast\n    rw [Real.log_mul hprim0.ne' (by positivity)]\n    have hlp : 0 ≤ Real.log p := Real.log_natCast_nonneg p\n    have : Real.log p / p ≤ Real.log p := div_le_self hlp (by linarith)\n    linarith",
+            "line": 185,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.IHk_step",
+            "lines": [
+              173,
+              208
+            ],
+            "conclusion": "For k >= 11, each added prime raises S by log p/p <= log p, so κ_k(p1...pk) increases along the primorials."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
+            "fragment": "L185-L193"
           }
         }
       }
@@ -103,8 +145,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run; judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain",
+        "summary": "The sum over p | q is bounded by the majorant's sum over the first ω(q) primes: numerically up to ten primes, then by induction along the primorials."
       }
     }
   }

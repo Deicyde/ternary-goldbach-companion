@@ -1,9 +1,9 @@
 {
   "id": "Lemma 5.2.1 step 3",
   "kind": "proof_step",
-  "status": "partial",
-  "relation": "relatedMatch",
-  "note": "Same argument, but R is a free parameter with 1 ≤ R ≤ W' and qR²(ν+υ) ≤ 1 rather than R = 1/√((ν+υ)q); the gain is stated as (φ(q)/q) log R, not as the displayed (werst) factor. Text typo, confirmed by two skeptics and the Lean (NOTES.md Lemma 5.2.1 (hypothesis qR^2(nu+upsilon) <= 1)).",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same argument, but R is a free parameter with 1 ≤ R ≤ W' and qR²(ν+υ) ≤ 1, which contains the text choice R = 1/√((ν+υ)q); the gain is stated as (φ(q)/q) log R.",
   "subject": [
     {
       "location": {
@@ -145,11 +145,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet)",
+        "method": "mapper (sonnet); verifier (sonnet); sweep (sonnet) and lead check (opus), 2026-11-13: relatedMatch -> closeMatch",
         "confirmed_by_human": false
       },
       "proof": {
-        "kind": "chain"
+        "kind": "chain",
+        "summary": "Adding fractions b/r with r≤R keeps the angles ν-separated when qR²(ν+υ)≤1, so the large sieve applies to all triples and yields the gain of (φ(q)/q) log R."
       }
     }
   }

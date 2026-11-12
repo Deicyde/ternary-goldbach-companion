@@ -1,9 +1,9 @@
 {
   "id": "Lemma 4.2.4 step 34",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "The numerical inequality is not used; Lean absorbs the (Q+1) log terms by bounding log M by log D and hT / hMY instead.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text uses a numerical inequality to absorb the (Q+1)-sized log terms into the final case-(a) bound. The Lean absorbs the corresponding M = Q/2 terms by exact cancellation (hT), then M <= (1+ε)Y/2 (hMY) and log M <= log D.",
   "subject": [
     {
       "location": {
@@ -29,41 +29,69 @@
         "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
         "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
         "lines": [
-          880,
-          1126
+          1097,
+          1109
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA"
           },
+          "snippet": {
+            "text": "  have hT : Real.log M * (2 * √c₀ / π * M) + Bc * T3 ≤ Bc * (D * (Real.log D - 1) + M) := by\n    have h1 : Real.log M * (2 * √c₀ / π * M) ≤ Bc * (M * Real.log M) := by\n      have := mul_le_mul_of_nonneg_right hBc' (mul_nonneg hM0.le hlogM)\n      linarith\n    by_cases hDM : M < D\n    · rw [hT3def, if_pos hDM]\n      have e : Bc * (M * Real.log M) + Bc * (D * (Real.log D - 1) - M * (Real.log M - 1)) =\n          Bc * (D * (Real.log D - 1) + M) := by ring\n      linarith\n    · rw [hT3def, if_neg hDM, mul_zero, add_zero]\n      have hMDe : M = D := le_antisymm hMD (not_lt.1 hDM)\n      have e : Bc * (M * Real.log M) = Bc * (D * (Real.log D - 1) + M) := by rw [hMDe]; ring\n      linarith",
+            "line": 1097,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+            "lines": [
+              880,
+              1126
+            ],
+            "conclusion": "Cancels the M log M term of range (A1) against the -M(log M - 1) term of range (A2), giving Bc(D(log D - 1) + M)."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
-            "fragment": "L880-L1126"
+            "fragment": "L1097-L1109"
           }
         }
       }
     },
     {
       "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
         "module": "TernaryGoldbach.MinorArcs.TypeI2Rest",
         "lines": [
-          458,
-          769
+          1120,
+          1126
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB"
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA"
+          },
+          "snippet": {
+            "text": "  have hMY : Bc * M ≤ Bc * ((1 + ε) * Y * (1 / 2)) := by\n    refine mul_le_mul_of_nonneg_left ?_ hBc\n    nlinarith\n  have hq : Real.log M * (35 * c₀ * c₂ / (3 * π ^ 2) * q) ≤ 35 * c₀ * c₂ / (3 * π ^ 2) * q * Real.log D := by\n    have := mul_le_mul_of_nonneg_right hlogMD (show 0 ≤ 35 * c₀ * c₂ / (3 * π ^ 2) * q by positivity)\n    linarith\n  linarith",
+            "line": 1120,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+            "lines": [
+              880,
+              1126
+            ],
+            "conclusion": "Absorbs the leftover Bc·M term into the (1+ε)Y term and the log M · q term into log D, which closes the bound (4.52)."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
-            "fragment": "L458-L769"
+            "fragment": "L1120-L1126"
           }
         }
       }
@@ -81,8 +109,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus): noMatch search re-run; judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain",
+        "summary": "The case (A) bound is closed in two moves: the M log M terms of ranges (A1) and (A2) cancel, and the leftover terms are absorbed into (1+ε)Y and log D."
       }
     }
   }

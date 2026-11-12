@@ -1,9 +1,9 @@
 {
   "id": "Lemma 5.1.1 step 15",
   "kind": "proof_step",
-  "status": "partial",
-  "relation": "relatedMatch",
-  "note": "Lean's proof of the bound checks `floor X < 200` and uses `4 | m` above, as in the text, but the constant is 1.27 directly; the application is per pair `(r1,r2)` over `e | 2 r1 r2`.",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same bound as in the text (floor X < 200, 4 | m above), but the constant is the literal 1.27 and it is applied per pair (r1,r2) over e | 2 r1 r2.",
   "subject": [
     {
       "location": {
@@ -109,11 +109,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet)",
+        "method": "mapper (sonnet); verifier (sonnet); sweep (sonnet) and lead check (opus), 2026-11-13: relatedMatch -> closeMatch",
         "confirmed_by_human": false
       },
       "proof": {
-        "kind": "chain"
+        "kind": "chain",
+        "summary": "`fsq_le'` proves fsq X <= 1.27 X from numerics for small floors and a squarefree count bound, and `lemma_5_1_1_term` applies it termwise."
       }
     }
   }

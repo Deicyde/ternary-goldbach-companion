@@ -1,9 +1,9 @@
 {
   "id": "Lemma 9.1.4 step 5",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "No count N(1,χ) ≤ 0.819 log q + 16.8 in [L]; replaced by window counts ZL.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text counts the low zeros (|Im rho| <= 1) by N(1,chi) = O*(0.819 log q + 16.8). [L] counts the zeros in each line window, the low ones included, by Z_L via Jensen, and zero_sum_bound feeds these counts into the |gamma| <= T0 sum.",
   "subject": [
     {
       "location": {
@@ -29,19 +29,33 @@
         "declaration": "TernaryGoldbach.Explicit.count_line_window",
         "module": "TernaryGoldbach.Explicit.ZeroSumBound",
         "lines": [
-          393,
+          420,
           432
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.Explicit.count_line_window"
           },
+          "snippet": {
+            "text": "  have h1 := sum_multRect_le hχ hχ1 F ((Finset.filter_subset _ _).trans hS) c (r := 2.3)\n    (by norm_num) (by norm_num) hball\n  have hcT : |c| ≤ |T0 + 3.48| := by\n    have h0 := hwin u0 hu0\n    have h0' := him u0 (Finset.mem_filter.1 hu0).1\n    rw [abs_of_pos (by linarith : (0:ℝ) < T0 + 3.48)]\n    have := abs_sub_abs_le_abs_sub c u0.im\n    rw [abs_sub_comm] at this\n    linarith\n  refine h1.trans ?_\n  unfold ZL\n  exact div_le_div_of_nonneg_right (log_BP_mono N hcT)\n    (log_ratio_pos (by norm_num) (by norm_num)).le",
+            "line": 420,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.count_line_window",
+            "lines": [
+              393,
+              432
+            ],
+            "conclusion": "Jensen's bound (sum_multRect_le) bounds the total multiplicity of critical-line zeros in each height-3.48 window, including those around height 0, by Z_L."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
-            "fragment": "L393-L432"
+            "fragment": "L420-L432"
           }
         }
       }
@@ -59,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
       }
     }
   }

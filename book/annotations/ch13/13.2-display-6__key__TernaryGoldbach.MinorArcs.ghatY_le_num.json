@@ -1,0 +1,81 @@
+{
+  "id": "13.2 display 6",
+  "kind": "display",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text bounds sqrt(digamma(r)) over a range of r by the tangent line of sqrt F at log r0; [L] bounds sqrt(Fr M) at each block point by a certified constant s1 (`hsF`), with no tangent line.",
+  "subject": [
+    {
+      "location": {
+        "page": 264,
+        "rect": [
+          0.25926,
+          0.20362,
+          0.56816,
+          0.07382
+        ]
+      },
+      "title": "Display, p. 254",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "13.2 display 6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+        "module": "TernaryGoldbach.MinorArcs.NumericsCore",
+        "lines": [
+          90,
+          100
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY_le_num"
+          },
+          "snippet": {
+            "text": "  have hF : Fr M ≤ 1.7882 * c₁ + 2.50637 / c₂ := by\n    unfold Fr\n    have hg := exp_gamma_le_sharp\n    have hll : 0 < Real.log (Real.log M) := lt_of_lt_of_le hc₂ h6\n    have t1 : rexp eulerMascheroniConstant * Real.log (Real.log M) ≤ 1.7882 * c₁ :=\n      mul_le_mul hg h5 hll.le (by norm_num)\n    have t2 : 2.50637 / Real.log (Real.log M) ≤ 2.50637 / c₂ :=\n      div_le_div_of_nonneg_left (by norm_num) hc₂ h6\n    linarith\n  have hsF : √(Fr M) ≤ s₁ := by\n    rw [Real.sqrt_le_left hs₁]; linarith",
+            "line": 90,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+            "lines": [
+              53,
+              128
+            ],
+            "conclusion": "sqrt(Fr M) <= s1, via the numerical bound on Fr M."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsCore.lean",
+            "fragment": "L90-L100"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          264
+        ],
+        "printed": [
+          254
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

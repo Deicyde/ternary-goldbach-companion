@@ -1,9 +1,9 @@
 {
   "id": "Proposition 5.6 step 40",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "[L] has no bound $\\prod_{p\\le p_1}p/(p-1)<1.90516\\log p_1$; it uses `gHatQ` products.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "To bound λ(q), the text bounds prod_{p<=p1} p/(p-1) < 1.90516 log p1 using [RS (3.30)] and a computation. [L] bounds the combined product q/φ(q)·f1(q) = prod gp(p) by prod ĝ over the first k primes, then uses the tabulated G_10 for k <= 10 (and ĝ^21 <= p^2 for k >= 11).",
   "subject": [
     {
       "location": {
@@ -26,22 +26,36 @@
   "object": [
     {
       "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.gHatQ",
+        "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
         "module": "TernaryGoldbach.MinorArcs.LSQuot4",
         "lines": [
-          25,
-          30
+          268,
+          277
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.gHatQ"
+            "id": "TernaryGoldbach.MinorArcs.lamQ_le_k"
+          },
+          "snippet": {
+            "text": "  have hg := (exch_gen gHatQ (fun n => by linarith [one_le_ghat n])\n    (fun a b ha hb hab => ghat_anti ha hb hab) P hPp).1\n  have hs := (exch_gen shat shat_nonneg (fun a b ha hb hab => shat_anti ha hb hab) P hPp).2\n  have hG : ∏ p ∈ P, gp p ≤ Gk P.card :=\n    (prod_le_prod₀ (fun p hp => by\n      have := (Nat.prime_of_mem_primeFactors hp).two_le\n      unfold gp; have := f1p_pos p\n      have h2 : (2 : ℝ) ≤ p := by exact_mod_cast (Nat.prime_of_mem_primeFactors hp).two_le\n      exact mul_nonneg (div_nonneg (by linarith) (by linarith)) this.le)\n      fun p hp => gp_le_ghat (hPp p hp)).trans hg",
+            "line": 268,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lamQ_le_k",
+            "lines": [
+              262,
+              291
+            ],
+            "conclusion": "prod_{p|q} (p/(p-1)) f1(p) <= G_k, the product of the antitone majorant ĝ over the first k = ω(q) primes, by the exchange argument."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
-            "fragment": "L25-L30"
+            "fragment": "L268-L277"
           }
         }
       }
@@ -51,19 +65,33 @@
         "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
         "module": "TernaryGoldbach.MinorArcs.LSQuot5",
         "lines": [
-          217,
-          277
+          229,
+          232
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MinorArcs.lamQ_pow_le"
           },
+          "snippet": {
+            "text": "    have hG : Gk k ≤ Gk 10 := by\n      unfold Gk\n      exact prod_le_prod_of_subset_of_one_le₀ (range_subset_range.2 (by omega))\n        (fun i _ => by linarith [one_le_ghat (Nat.nth Nat.Prime i)]) fun i _ _ => one_le_ghat _",
+            "line": 229,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.lamQ_pow_le",
+            "lines": [
+              217,
+              277
+            ],
+            "conclusion": "For k <= 10, G_k <= G_10, which Gk_10 then evaluates numerically."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot5.lean",
-            "fragment": "L217-L277"
+            "fragment": "L229-L232"
           }
         }
       }
@@ -81,8 +109,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "carried from book Proposition 12.2.4 step 40, the same LaTeX (mapper (sonnet); verifier (sonnet); absence audit (opus))",
+        "method": "carried from book Proposition 12.2.4 step 40, the same LaTeX (mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed)",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain",
+        "summary": "The product over p | q is bounded by the antitone majorant's product over the first ω(q) primes, which for ω(q) ≤ 10 is at most its value at ten primes."
       }
     }
   }

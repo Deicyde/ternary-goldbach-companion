@@ -1,9 +1,9 @@
 {
   "id": "Lemma 9.1.4 step 7",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "No low-lying zero sum bound in [L]; it is absorbed in E1b.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text bounds the sum of |G_delta(rho)| over the low zeros separately by |eta(t)t^{-1/2}|_1 (0.819 log q + 16.8). [L] covers the low zeros inside one window-count bound for all |gamma| <= T0 (hB of zero_sum_bound).",
   "subject": [
     {
       "location": {
@@ -26,22 +26,36 @@
   "object": [
     {
       "location": {
-        "declaration": "TernaryGoldbach.Explicit.count_line_window",
+        "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
         "module": "TernaryGoldbach.Explicit.ZeroSumBound",
         "lines": [
-          393,
-          432
+          501,
+          505
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
-            "id": "TernaryGoldbach.Explicit.count_line_window"
+            "id": "TernaryGoldbach.Explicit.zero_sum_bound"
+          },
+          "snippet": {
+            "text": "    rw [Finset.sum_congr rfl heq, ← Finset.mul_sum]\n    refine mul_le_mul_of_nonneg_left ?_ (Real.sqrt_nonneg _)\n    exact sum_window_fline_le m (fun u _ => hm u) (h := 3.48) (by norm_num) hT00.le (Jl T0)\n      (lt_Jl hT00.le) him (ZL_nonneg N T0)\n      (fun k => count_line_window hχ hχ1 hT00.le S hSZ hre him k) δ",
+            "line": 501,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.zero_sum_bound",
+            "lines": [
+              441,
+              573
+            ],
+            "conclusion": "The sum of m_u |G_delta(u)| x^{Re u} over critical-line zeros with |Im u| <= T0, low zeros included, is at most sqrt(x) times the window-count/fline bound (E1b)."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
-            "fragment": "L393-L432"
+            "fragment": "L501-L505"
           }
         }
       }
@@ -59,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
       }
     }
   }

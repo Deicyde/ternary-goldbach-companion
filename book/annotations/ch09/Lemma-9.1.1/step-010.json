@@ -1,9 +1,9 @@
 {
   "id": "Lemma 9.1.1 step 10",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Lean has no analysis of the pole question at `s=0`: Lean assumes `GoodSmoothing` (holomorphy of `mellin φ` for `Re s > -1`, which forces η(0)=0) and does not carry this step.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text decides whether G_δ has a pole at 0 by computing M(t f'(t))(0) = lim f - f(0). The Lean gets holomorphy at 0 from the O(t^2) decay of fδ at 0 (Mellin holomorphy via isBigO bounds), and passes it to explicit_formula through goodSmoothing_fδ.",
   "subject": [
     {
       "location": {
@@ -26,22 +26,72 @@
   "object": [
     {
       "location": {
-        "declaration": "TernaryGoldbach.Explicit.GoodSmoothing",
-        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "declaration": "TernaryGoldbach.Explicit.differentiableAt_G",
+        "module": "TernaryGoldbach.Explicit.GMellin",
         "lines": [
-          49,
-          56
+          67,
+          72
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
-            "id": "TernaryGoldbach.Explicit.GoodSmoothing"
+            "id": "TernaryGoldbach.Explicit.differentiableAt_G"
+          },
+          "snippet": {
+            "text": "theorem differentiableAt_G (δ : ℝ) {s : ℂ} (hs : -2 < s.re) :\n    DifferentiableAt ℂ (fun s => Gr s δ 0) s := by\n  have h := mellin_differentiableAt_of_isBigO_rpow_exp (f := fδ δ) (a := 1) (b := -2) one_pos\n    ((continuous_fδ δ).locallyIntegrable.locallyIntegrableOn _) (fδ_isBigO_top δ) (fδ_isBigO_bot δ) hs\n  have e : mellin (fδ δ) = fun s => Gr s δ 0 := funext (mellin_fδ δ)\n  rwa [e] at h",
+            "line": 67,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.differentiableAt_G",
+            "lines": [
+              66,
+              72
+            ],
+            "conclusion": "G_δ = M(fδ δ) is holomorphic on Re s > -2, so it has no pole at s = 0."
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/GMellin.lean",
+            "fragment": "L67-L72"
+          }
+        }
+      }
+    },
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.goodSmoothing_fδ",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula",
+        "lines": [
+          81,
+          83
+        ]
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.goodSmoothing_fδ"
+          },
+          "snippet": {
+            "text": "      (by norm_num)\n  diff := fun s hs => by\n    have e : mellin (fδ δ) = fun s => Gr s δ 0 := funext (mellin_fδ δ)",
+            "line": 81,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.Explicit.goodSmoothing_fδ",
+            "lines": [
+              77,
+              86
+            ],
+            "conclusion": "Supplies the GoodSmoothing holomorphy field (Re s > -1, which includes s = 0) for fδ, using differentiableAt_G."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
-            "fragment": "L49-L56"
+            "fragment": "L81-L83"
           }
         }
       }
@@ -59,8 +109,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "chain",
+        "summary": "Holomorphy of G_δ on Re s > -2 rules out a pole at s = 0, and that holomorphy is passed on as the smoothing's GoodSmoothing field."
       }
     }
   }

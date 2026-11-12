@@ -2,8 +2,8 @@
   "id": "Proposition 5.2.4 step 9",
   "kind": "proof_step",
   "status": "formalized",
-  "relation": "exactMatch",
-  "note": "Lean applies the odd-m version (zeromb), the one that bounds S2.",
+  "relation": "closeMatch",
+  "note": "Lean applies the odd-m version (zeromb) that bounds S2, not the all-m statement.",
   "subject": [
     {
       "location": {
@@ -109,11 +109,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus); sweep (sonnet) and lead check (opus), 2026-11-13: exactMatch -> closeMatch",
         "confirmed_by_human": false
       },
       "proof": {
-        "kind": "chain"
+        "kind": "chain",
+        "summary": "`lemma_5_2_3_c` is applied with rho = x/(4Wq) and the other parameter 1, which `prop_5_2_4_b` records as the bound (5.55)."
       }
     }
   }

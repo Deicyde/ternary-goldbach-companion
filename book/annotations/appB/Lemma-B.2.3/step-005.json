@@ -1,9 +1,9 @@
 {
   "id": "Lemma B.2.3 step 5",
   "kind": "proof_step",
-  "status": "partial",
-  "relation": "relatedMatch",
-  "note": "Lean has the same decomposition (log y part + (-16 log 2 k + h^) part), phrased for eta^ via c^2 scaling rather than for the Fourier transform of eta''.",
+  "status": "formalized",
+  "relation": "closeMatch",
+  "note": "Same decomposition (log y part plus (-16 log 2 k + h^) part), stated for eta^ via c^2 scaling rather than for the Fourier transform of eta''.",
   "subject": [
     {
       "location": {
@@ -109,11 +109,12 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); judge (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); judge (opus); sweep (sonnet) and lead check (opus), 2026-11-13: relatedMatch -> closeMatch",
         "confirmed_by_human": false
       },
       "proof": {
-        "kind": "chain"
+        "kind": "chain",
+        "summary": "`ghat_eta2log` splits the transform of the log-smoothing into log and non-log parts, and `norm_fourier_logeta2_le_decay` assembles the decay expression."
       }
     }
   }

@@ -1,9 +1,9 @@
 {
   "id": "Lemma 4.1 step 4",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Lean never states Lemma 4.1 and has no sqrt(1+x) expansion of |w|/|v|; conv2_ge uses exact polarization with |w|=|v| (translation invariance) and a Lipschitz bound, constant 8.82 in place of 2.71.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text expands |w|_2/|v|_2 = sqrt(1+...) to second order with constant 2.71 to compare <w,v> with |v|^2. [L] reaches the corresponding inner-product lower bound inside conv2_ge by exact polarization (translation invariance gives |w| = |v|) plus a Lipschitz shift bound, with constant 8.82.",
   "subject": [
     {
       "location": {
@@ -29,19 +29,33 @@
         "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
         "module": "TernaryGoldbach.MajorArcs.CMain",
         "lines": [
-          138,
+          152,
           164
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MajorArcs.conv2_ge"
           },
+          "snippet": {
+            "text": "  have hpt : ∀ t, etaO t * etaO (ρ - t) =\n      (etaO t ^ 2 + etaO (t + s) ^ 2 - (etaO (t + s) - etaO t) ^ 2) / 2 := fun t => by\n    rw [hsym]; ring\n  have heq : conv2 ρ = (∫ t, etaO t ^ 2) - (1 / 2) * ∫ t, (etaO (t + s) - etaO t) ^ 2 := by\n    unfold conv2\n    simp_rw [hpt]\n    have h1 : Integrable fun t => etaO t ^ 2 + etaO (t + s) ^ 2 := integrable_etaO_sq.add hshift\n    rw [integral_div, integral_sub h1 hdiff, integral_add integrable_etaO_sq hshift,\n      integral_add_right_eq_self (fun t => etaO t ^ 2) s]\n    ring\n  rw [heq]\n  have := integral_sq_etaO_shift_le s\n  linarith",
+            "line": 152,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
+            "lines": [
+              138,
+              164
+            ],
+            "conclusion": "By exact polarization with equal norms, conv2 rho = ||eta_o||^2 - (1/2) ||eta_o(.+s) - eta_o||^2, and the shift bound gives conv2 rho >= ||eta_o||^2 - 8.82 (2-rho)^2."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/CMain.lean",
-            "fragment": "L138-L164"
+            "fragment": "L152-L164"
           }
         }
       }
@@ -59,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "direct"
       }
     }
   }

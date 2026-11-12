@@ -1,9 +1,9 @@
 {
   "id": "5.1 display 11",
   "kind": "display",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "Lean bounds the tail differently (0.0045 via weighted Cauchy-Schwarz); this numeric evaluation is absent.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text evaluates the far-tail contribution exactly as (c_{v,4}/2)/log(10^10/2) using the pointwise log^-2 bound; [L] bounds the whole tail integral_{10^4}^S |g2|/y by 0.0045 via weighted Cauchy-Schwarz and certified sums.",
   "subject": [
     {
       "location": {
@@ -29,19 +29,33 @@
         "declaration": "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le",
         "module": "TernaryGoldbach.MinorArcs.G2Tail",
         "lines": [
-          1084,
+          1085,
           1089
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le"
           },
+          "snippet": {
+            "text": "theorem tail_integral_le {S : ℝ} (hS : 10000 ≤ S) : ∫ y in (10000 : ℝ)..S, |g2 y| / y ≤ 0.0045 := by\n  refine (tail_le_sum hS).trans ((sum_terms_le hS).trans ?_)\n  unfold l1w1\n  rw [tv_one, Macc]\n  norm_num",
+            "line": 1085,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le",
+            "lines": [
+              1084,
+              1089
+            ],
+            "conclusion": "integral_{10^4}^S |g2 y|/y dy <= 0.0045 for S >= 10^4."
+          },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Tail.lean",
-            "fragment": "L1084-L1089"
+            "fragment": "L1085-L1089"
           }
         }
       }
@@ -59,7 +73,7 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
       }
     }

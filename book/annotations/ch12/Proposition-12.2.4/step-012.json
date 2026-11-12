@@ -1,9 +1,9 @@
 {
   "id": "Proposition 12.2.4 step 12",
   "kind": "proof_step",
-  "status": "not_formalized",
-  "relation": "noMatch",
-  "note": "The lower bound err ≥ −(φ(q)/q)(S_q + c_E − 1.312) for R ≥ 182 is absent; Lean uses |e| ≤ 7.284 R^{-1/3} f1q instead.",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "note": "The text bounds err_{q,tR} from below by -(phi(q)/q)(S_q + c_E - 1.312) via (charpy),(hosmo) to control the right side of (karka); [L] bounds the same negative part of the error at tR, max(0,-e2), by Ramare's |e| <= 7.284 R^{-1/3} f1(q) with t >= 20000, and feeds it into regionL and checkC2_suffices.",
   "subject": [
     {
       "location": {
@@ -26,132 +26,36 @@
   "object": [
     {
       "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot6",
-        "lines": [
-          68,
-          98
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.prop_12_2_4"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot6.lean",
-            "fragment": "L68-L98"
-          }
-        }
-      }
-    },
-    {
-      "location": {
         "declaration": "TernaryGoldbach.MinorArcs.e2_bound",
         "module": "TernaryGoldbach.MinorArcs.LSQuot2",
         "lines": [
-          142,
+          160,
           167
         ]
       },
+      "role": "key",
       "extensions": {
         "org.mathlib-initiative.formal-companion.overlay": {
           "declaration": {
             "id": "TernaryGoldbach.MinorArcs.e2_bound"
           },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
-            "fragment": "L142-L167"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.regionL",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
-        "lines": [
-          171,
-          213
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.regionL"
+          "snippet": {
+            "text": "  have hpow : (Q / (s * q)) ^ (-(1 / 3 : ℝ)) ≤ 0.03685 * R ^ (-(1 / 3 : ℝ)) := by\n    rw [e, Real.mul_rpow (by linarith) hR0.le]\n    exact mul_le_mul_of_nonneg_right (rpow_neg_third_le ht) (by positivity)\n  refine max_le (by positivity) ?_\n  have h2 := (abs_le.1 h).1\n  calc _ ≤ 7.284 * (Q / (s * q)) ^ (-(1 / 3 : ℝ)) * f1q q := by linarith\n    _ ≤ 7.284 * (0.03685 * R ^ (-(1 / 3 : ℝ))) * f1q q := by gcongr\n    _ = _ := by ring",
+            "line": 160,
+            "truncated": false
+          },
+          "proof_context": {
+            "declaration": "TernaryGoldbach.MinorArcs.e2_bound",
+            "lines": [
+              142,
+              167
+            ],
+            "conclusion": "max(0, -e2) <= 7.284 * 0.03685 * R^(-1/3) f1(q), i.e. a lower bound on the error term at tR from Ramare's estimate."
           },
           "destination": {
             "resolution": "exact",
             "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
-            "fragment": "L171-L213"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.regionS",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot3",
-        "lines": [
-          74,
-          185
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.regionS"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
-            "fragment": "L74-L185"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.lamQ",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
-        "lines": [
-          33,
-          34
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.lamQ"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
-            "fragment": "L33-L34"
-          }
-        }
-      }
-    },
-    {
-      "location": {
-        "declaration": "TernaryGoldbach.MinorArcs.kapQ",
-        "module": "TernaryGoldbach.MinorArcs.LSQuot2",
-        "lines": [
-          30,
-          31
-        ]
-      },
-      "extensions": {
-        "org.mathlib-initiative.formal-companion.overlay": {
-          "declaration": {
-            "id": "TernaryGoldbach.MinorArcs.kapQ"
-          },
-          "destination": {
-            "resolution": "exact",
-            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
-            "fragment": "L30-L31"
+            "fragment": "L160-L167"
           }
         }
       }
@@ -169,8 +73,11 @@
       },
       "provenance": {
         "actor": "agent",
-        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus)",
+        "method": "mapper (sonnet); verifier (sonnet); absence audit (opus); judge (opus), 2026-11-13: re-judged against relatedMatch, changed",
         "confirmed_by_human": false
+      },
+      "proof": {
+        "kind": "helper"
       }
     }
   }

@@ -47,7 +47,7 @@ library only. The cards show plain statements: there is no Verso build of the pi
 
 ## Counts
 
-778 items, 2256 annotations on them (3872 in all, with 623 on the 434 unnumbered displays and 993
+778 items, 2256 annotations on them (3873 in all, with 624 on the 434 unnumbered displays and 993
 on the proof steps): 2220 link calr3/ternary-goldbach (131 of them checked absences), 7
 Mathlib, 29 the statements in `lean/`. By item, the strongest relation of its key links to
 calr3/ternary-goldbach or Mathlib (a link that only supports the item is `relatedMatch`):
@@ -69,8 +69,8 @@ changed, and no relation was raised.
 By status (vocabulary of `data/items.json`): replaced 198, variant 142, not formalized (not needed) 132,
 weaker 94, inlined 75, definition match 64, exact 47, definition differs 17, stronger 8, hypothesis 1.
 
-The paper: 244 items (26 theorem-like, 218 equations), 953 annotations on them (1491 in all, with
-221 on the 138 unnumbered displays and 317 on the proof steps). 181 items state what their
+The paper: 244 items (26 theorem-like, 218 equations), 953 annotations on them (1492 in all, with
+222 on the 138 unnumbered displays and 317 on the proof steps). 181 items state what their
 book counterpart states up to notation, 60 were changed in the book (constants, ranges, redefined
 functions, rewritten steps), and 3 have no counterpart in the book. Two matches by LaTeX label were
 wrong (the book reused the label) and were replaced by the counterpart found by reading. By item:
@@ -88,32 +88,32 @@ Helfgott, *The ternary Goldbach problem* (arXiv:1501.05438v2):
 
 | | Formalized | 1-to-1 | Deviates | Absent |
 |---|---|---|---|---|
-| Statements | 2/66 (3%) | 2/66 (3%) | 53/66 (80%) | 8/66 (12%) |
-| Displays | 122/1142 (11%) | 60/1142 (5%) | 744/1142 (65%) | 237/1142 (21%) |
-| Steps | 134/993 (13%) | 44/993 (4%) | 520/993 (52%) | 312/993 (31%) |
+| Statements | 4/66 (6%) | 4/66 (6%) | 46/66 (70%) | 10/66 (15%) |
+| Displays | 123/1142 (11%) | 58/1142 (5%) | 742/1142 (65%) | 238/1142 (21%) |
+| Steps | 137/993 (14%) | 42/993 (4%) | 543/993 (55%) | 286/993 (29%) |
 
-Of the 53 statements that deviate, 35 have a confirmed erratum; of the others, [L] proves less (`narrowMatch`) for 6 and does the work another way (`relatedMatch`) for 12.
+Of the 46 statements that deviate, 13 have a confirmed erratum; of the others, [L] proves less (`narrowMatch`) for 9 and does the work another way (`relatedMatch`) for 24.
 
 | Chapter | Statements formalized | Displays formalized | Steps formalized | Steps absent | Deviations |
 |---|---|---|---|---|---|
 | 1 | 1/1 (100%) | 16/69 (23%) | — | — | 36/70 (51%) |
-| 2 | 0/1 (0%) | 11/34 (32%) | 4/7 (57%) | 1/7 (14%) | 21/42 (50%) |
-| 3 | 0/1 (0%) | 5/25 (20%) | — | — | 11/26 (42%) |
-| 4 | 1/7 (14%) | 4/64 (6%) | 42/198 (21%) | 18/198 (9%) | 185/269 (69%) |
-| 5 | 0/6 (0%) | 8/79 (10%) | 33/127 (26%) | 18/127 (14%) | 130/212 (61%) |
-| 6 | — | 23/168 (14%) | 7/18 (39%) | 0/18 (0%) | 139/186 (75%) |
-| 7 | 0/5 (0%) | 4/18 (22%) | — | — | 15/23 (65%) |
-| 8 | 0/2 (0%) | 0/114 (0%) | — | — | 53/116 (46%) |
-| 9 | 0/12 (0%) | 7/134 (5%) | 8/274 (3%) | 125/274 (46%) | 236/420 (56%) |
+| 2 | 0/1 (0%) | 11/34 (32%) | 4/7 (57%) | 0/7 (0%) | 21/42 (50%) |
+| 3 | 0/1 (0%) | 5/25 (20%) | — | — | 10/26 (38%) |
+| 4 | 3/7 (43%) | 4/64 (6%) | 42/198 (21%) | 14/198 (7%) | 185/269 (69%) |
+| 5 | 0/6 (0%) | 8/79 (10%) | 34/127 (27%) | 18/127 (14%) | 129/212 (61%) |
+| 6 | — | 23/168 (14%) | 7/18 (39%) | 0/18 (0%) | 140/186 (75%) |
+| 7 | 0/5 (0%) | 4/18 (22%) | — | — | 14/23 (61%) |
+| 8 | 0/2 (0%) | 0/114 (0%) | — | — | 51/116 (44%) |
+| 9 | 0/12 (0%) | 8/134 (6%) | 8/274 (3%) | 117/274 (43%) | 240/420 (57%) |
 | 10 | 0/2 (0%) | 7/63 (11%) | — | — | 55/65 (85%) |
-| 11 | 0/6 (0%) | 5/33 (15%) | 2/69 (3%) | 39/69 (57%) | 46/108 (43%) |
-| 12 | 0/8 (0%) | 6/52 (12%) | 19/145 (13%) | 51/145 (35%) | 114/205 (56%) |
-| 13 | 0/3 (0%) | 3/49 (6%) | 12/59 (20%) | 3/59 (5%) | 76/111 (68%) |
-| 14 | — | 13/120 (11%) | — | — | 87/120 (72%) |
+| 11 | 0/6 (0%) | 5/33 (15%) | 2/69 (3%) | 37/69 (54%) | 48/108 (44%) |
+| 12 | 0/8 (0%) | 6/52 (12%) | 19/145 (13%) | 44/145 (30%) | 121/205 (59%) |
+| 13 | 0/3 (0%) | 3/49 (6%) | 12/59 (20%) | 3/59 (5%) | 78/111 (70%) |
+| 14 | — | 13/120 (11%) | — | — | 88/120 (73%) |
 | A | — | 8/76 (11%) | — | — | 40/76 (53%) |
-| B | 0/6 (0%) | 0/18 (0%) | 6/52 (12%) | 21/52 (40%) | 48/76 (63%) |
+| B | 0/6 (0%) | 0/18 (0%) | 8/52 (15%) | 21/52 (40%) | 46/76 (61%) |
 | C | 0/5 (0%) | 2/25 (8%) | 0/32 (0%) | 27/32 (84%) | 21/62 (34%) |
-| D | 0/1 (0%) | 0/1 (0%) | 1/12 (8%) | 9/12 (75%) | 4/14 (29%) |
+| D | 0/1 (0%) | 0/1 (0%) | 1/12 (8%) | 5/12 (42%) | 8/14 (57%) |
 
 By statement share: most formalized chapter 1, 1/1 (100%); least chapters 2 (0/1), 3 (0/1), 5 (0/6), 7 (0/5), 8 (0/2), 9 (0/12), 10 (0/2), 11 (0/6), 12 (0/8), 13 (0/3), B (0/6), C (0/5), D (0/1), 0% each. By step share: most formalized chapter 2, 4/7 (57%); least chapter C, 0/32 (0%).
 
@@ -122,8 +122,8 @@ Helfgott, *The ternary Goldbach conjecture is true* (arXiv:1312.7748v2):
 | | Formalized | 1-to-1 | Deviates | Absent |
 |---|---|---|---|---|
 | Statements | 0/26 (0%) | 0/26 (0%) | 20/26 (77%) | 4/26 (15%) |
-| Displays | 38/356 (11%) | 18/356 (5%) | 241/356 (68%) | 60/356 (17%) |
-| Steps | 33/317 (10%) | 7/317 (2%) | 145/317 (46%) | 131/317 (41%) |
+| Displays | 38/356 (11%) | 18/356 (5%) | 245/356 (69%) | 56/356 (16%) |
+| Steps | 33/317 (10%) | 7/317 (2%) | 158/317 (50%) | 118/317 (37%) |
 
 Of the 20 statements that deviate, 0 have a confirmed erratum; of the others, [L] proves less (`narrowMatch`) for 3 and does the work another way (`relatedMatch`) for 17.
 
@@ -145,8 +145,8 @@ this repository will be published, at the commit that added `lean/`.
 
 ## Errata
 
-146 claims that [H] errs are confirmed (7 of them typos): 141 by a numerical check in
-`scripts/checks/`, re-run on 2026-11-12, and 5 by a Lean proof in `lean/`: (5.32), (5.36) and
+147 claims that [H] errs are confirmed (7 of them typos): 142 by a numerical check in
+`scripts/checks/`, re-run on 2026-11-12 ((6.77): 2026-11-13), and 5 by a Lean proof in `lean/`: (5.32), (5.36) and
 Prop 11.2.3 are false as printed; Prop D.0.3's range should start at 5 < n (a typo); Thm 7.1.1 and
 the remark after it cannot both hold (the remark is false with η♡ one-sided, as in §9.2; the theorem
 is false with η♡ two-sided, as §7.1 writes it). `docs/errata.md` lists them; each annotation's note
@@ -169,7 +169,11 @@ gives its item's. Notes state no other claim that [H] errs.
   `Classical.choice` and `Quot.sound` (`lean/Axioms.lean`). Its statements are those of 2026-11-06,
   unchanged, and the definitions of the formalization they use are the same at `ce82a5b` and at the
   pin. Each refuted statement was compared with the printed one in the LaTeX.
-- Not checked: 195 other erratum claims, the typo claims among them, have no re-run check and are
+- The annotations pass `cf overlay check`, `pdf-overlay/tools/check_generated.py` and
+  `python3 -m literature_links scan <overlay>/annotations` (the scan's target is the annotations folder: the
+  overlay root also holds tracked copies, `site/pdf-overlay/verso.json` and the vendored schemas, that are
+  not annotations).
+- Not checked: 194 other erratum claims, the typo claims among them, have no re-run check and are
   left out.
 
 ## Layout

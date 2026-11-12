@@ -5,9 +5,14 @@ New code.  Reads data/items.json and data/regions-book.json; lists only errata w
 
 Usage: python3 -I errata_doc.py <repository root>
 """
+import importlib.util
 import json
 import os
 import sys
+
+spec = importlib.util.spec_from_file_location('produce', os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'produce.py'))
+produce = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(produce)
 
 root = sys.argv[1]
 items = json.load(open(os.path.join(root, 'data', 'items.json')))['items']
@@ -22,11 +27,16 @@ lines = ['# Confirmed errata of arXiv:1501.05438v2', '',
          'Printed page numbers.', '',
          '| Item | p. | Kind | What | Check |', '|---|---|---|---|---|']
 for x in rows:
-    note = ' '.join(x['erratum']['check']['note'].split()).replace('|', '\\|')
+    note = produce.dejargon(x['erratum']['check']['note']).replace('|', '\\|')
     pages = sorted({r['page'] - 10 for r in regions.get(x['id'], [])}) or ['']
     c = x['erratum']['check']
     how = f"`{c['script']}`, `{c['theorem'].split('.')[-1]}`" if c.get('theorem') else f"`{c['script']}`"
     lines.append(f"| {x['id']} | {pages[0]} | {kind(x)} | {note} | {how} |")
+runs = json.load(open(os.path.join(root, 'data', 'checks-run.json')))['checks']
+rejected = sorted(f for f, r in runs.items() if not r['decision'].startswith('CONFIRMED'))
+if rejected:
+    lines += ['', 'The re-runs of ' + ' and '.join(f'`{f}`' for f in rejected) + ' did not confirm their claims; '
+              'these scripts back no claim here.']
 lines.append('')
 os.makedirs(os.path.join(root, 'docs'), exist_ok=True)
 open(os.path.join(root, 'docs', 'errata.md'), 'w', encoding='utf-8').write('\n'.join(lines))

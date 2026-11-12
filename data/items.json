@@ -115,7 +115,11 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "Identical to the unnumbered 'Main Theorem' of 1312.7748v2 (§1.1), which also proved n ≥ 10²⁷ analytically and cited [HP13] for the rest."
+   "changes_since_2013": "Identical to the unnumbered 'Main Theorem' of 1312.7748v2 (§1.1), which also proved n ≥ 10²⁷ analytically and cited [HP13] for the rest.",
+   "relations_at_P": {
+    "TernaryGoldbach.ternary_goldbach_of_hypotheses": "narrowMatch",
+    "TernaryGoldbach.ternary_goldbach": "narrowMatch"
+   }
   },
   {
    "id": "Eq 1.1",
@@ -237,7 +241,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "No counterpart (Chapter 1 is new); the S_η form of the identity is 1312.7748v2 (3.3) = [H, (10.3)]."
+   "changes_since_2013": "No counterpart (Chapter 1 is new); the S_η form of the identity is 1312.7748v2 (3.3) = [H, (10.3)].",
+   "relations_at_P": {
+    "TernaryGoldbach.circle_identity_tsum": "hasPart"
+   }
   },
   {
    "id": "Eq 1.3",
@@ -504,7 +511,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "No labelled counterpart (Chapter 1 is new). The same definition is 1205.5252v4 (1.1) and 1312.7748v2 (3.1), repeated there as (6.9), and is unnumbered in 1305.2897v4 §1. The book repeats it as (3.1), (7.1), (10.1) and (13.9)."
+   "changes_since_2013": "No labelled counterpart (Chapter 1 is new). The same definition is 1205.5252v4 (1.1) and 1312.7748v2 (3.1), repeated there as (6.9), and is unnumbered in 1305.2897v4 §1. The book repeats it as (3.1), (7.1), (10.1) and (13.9).",
+   "relations_at_P": {
+    "TernaryGoldbach.expTsum": "broadMatch"
+   }
   },
   {
    "id": "Eq 1.7",
@@ -676,7 +686,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "No counterpart (Chapter 1 is new); same formula as 1305.2897v4 (1.8) (written S_η(δ/x,x)) and 1312.7748v2 (3.9); the book repeats it as (7.2) and (10.9)."
+   "changes_since_2013": "No counterpart (Chapter 1 is new); same formula as 1305.2897v4 (1.8) (written S_η(δ/x,x)) and 1312.7748v2 (3.9); the book repeats it as (7.2) and (10.9).",
+   "relations_at_P": {
+    "TernaryGoldbach.Schar": "broadMatch",
+    "TernaryGoldbach.Explicit.SsumG": "broadMatch"
+   }
   },
   {
    "id": "Eq 1.9",
@@ -749,7 +763,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "No counterpart (Chapter 1 is new)."
+   "changes_since_2013": "No counterpart (Chapter 1 is new).",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.fδ": "relatedMatch"
+   }
   },
   {
    "id": "Eq 1.10",
@@ -888,7 +905,7 @@
      "script": "scripts/checks/eq_1_11.py",
      "command": "PYTHONPATH=<mpmath dir> python3 -s eq_1_11.py",
      "output_line": "CONFIRMED: the book's one-sided transform is sqrt(pi/2)e^{-2pi^2 d^2} + i sqrt2 D(sqrt2 pi d), half the remark's real value plus an imaginary part, and with the remark's two-sided value (1.11)-(1.12) fail at q=1, delta=0 for x > 2.694e11.",
-     "note": "After (1.12) the book says η̂(−δ) is just √(2π)e^{−2π²δ²}, but its weights are one-sided (η♥(t) = 0 for t < 0, and the main term of Lemma 9.1.1 is ∫₀^∞η(t)e(δt)dt), so η̂(−δ) = √(π/2)e^{−2π²δ²} + i√2·D(√2πδ): 1.028806 + 0.551811i at δ = 0.1, against the remark's 2.057613. Read with the remark's two-sided value, (1.11)–(1.12) fail at q = 1, δ = 0, since (1/x)ΣΛ(n)e^{−(n/x)²/2} → √(π/2) and |E| → 1.2533 exceeds the bound for x > 2.694·10¹¹ (asymptotic threshold); the claim survives, and the remark is used nowhere.",
+     "note": "(1.11)–(1.12) and the remark after them cannot both hold. With η♡ one-sided, as in §9.2 (η♥(t) = 0 for t < 0), η̂♡(−δ) = √(π/2)e^{−2π²δ²} + i√2·D(√2πδ), 1.028806 + 0.551811i at δ = 0.1 against the remark's 2.057613, so the remark is false; with the two-sided value √(2π)e^{−2π²δ²}, (1.11)–(1.12) fail at q = 1, δ = 0 for x > 2.694·10¹¹, since (1/x)ΣΛ(n)e^{−(n/x)²/2} → √(π/2).",
      "why": "",
      "rerun": "CONFIRMED: the book's one-sided transform is sqrt(pi/2)e^{-2pi^2 d^2} + i sqrt2 D(sqrt2 pi d), half the remark's real value plus an imaginary part, and with the remark's two-sided value (1.11)-(1.12) fail at q=1, delta=0 for x > 2.694e11."
     }
@@ -2563,7 +2580,13 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "the Ch. 1 copy is new; vs 1205.5252v4 (1.3): δ₀ and R unchanged; L was min((log δ^{7/4}q^{13/4} + 80/9)·q/φ(q), (5/6)log x + 50/9) + log q^{80/9}δ^{16/9} + 111/5"
+   "changes_since_2013": "the Ch. 1 copy is new; vs 1205.5252v4 (1.3): δ₀ and R unchanged; L was min((log δ^{7/4}q^{13/4} + 80/9)·q/φ(q), (5/6)log x + 50/9) + log q^{80/9}δ^{16/9} + 111/5",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.R": "hasPart",
+    "TernaryGoldbach.MinorArcs.delta0": "hasPart",
+    "TernaryGoldbach.MinorArcs.L": "hasPart",
+    "TernaryGoldbach.MinorArcs.Cxt": "relatedMatch"
+   }
   },
   {
    "id": "Eq 1.35",
@@ -2635,7 +2658,11 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "Same integral as 1312.7748v2 (1.3) (N for n); notation only. Matched by content, labels differ."
+   "changes_since_2013": "Same integral as 1312.7748v2 (1.3) (N for n); notation only. Matched by content, labels differ.",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.majorArcs": "relatedMatch",
+    "TernaryGoldbach.Helfgott.integrand": "hasPart"
+   }
   },
   {
    "id": "Eq 1.36",
@@ -3002,7 +3029,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "No counterpart in the 2013 introductions; the general exchange is 1305.2897v4 (4.54) = 1312.7748v2 (4.9) = book (11.9)."
+   "changes_since_2013": "No counterpart in the 2013 introductions; the general exchange is 1305.2897v4 (4.54) = 1312.7748v2 (4.9) = book (11.9).",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.etaStar": "relatedMatch"
+   }
   },
   {
    "id": "Eq 1.41",
@@ -3623,7 +3653,10 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1305.2897v4 (2.1), 1312.7748v2 (2.2))"
+   "changes_since_2013": "identical (1305.2897v4 (2.1), 1312.7748v2 (2.2))",
+   "relations_at_P": {
+    "MellinConvergent": "relatedMatch"
+   }
   },
   {
    "id": "Eq 2.6",
@@ -3793,7 +3826,10 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1305.2897v4 (2.3))"
+   "changes_since_2013": "identical (1305.2897v4 (2.3))",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.mellinConv": "closeMatch"
+   }
   },
   {
    "id": "Eq 2.8",
@@ -5168,7 +5204,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical formula (1205.5252v4 (1.1), label eq:inaug)"
+   "changes_since_2013": "identical formula (1205.5252v4 (1.1), label eq:inaug)",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.S": "narrowMatch",
+    "TernaryGoldbach.e": "relatedMatch"
+   }
   },
   {
    "id": "Theorem 3.1.1",
@@ -5307,7 +5347,11 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "First case: 3.2x^{5/6} → 3.36x^{5/6}, and L redefined (see (3.3)). Second case: 0.2727 and 1218 → 0.276 and 1234. The hypotheses, 0.5 and 2.5 are unchanged. The (6.77) slip is already in 1205.5252v4's proof of its Main Theorem."
+   "changes_since_2013": "First case: 3.2x^{5/6} → 3.36x^{5/6}, and L redefined (see (3.3)). Second case: 0.2727 and 1218 → 0.276 and 1234. The hypotheses, 0.5 and 2.5 are unchanged. The (6.77) slip is already in 1205.5252v4's proof of its Main Theorem.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.theorem_3_1_1_second": "hasPart",
+    "TernaryGoldbach.MinorArcs.theorem_3_1_1_first": "hasPart"
+   }
   },
   {
    "id": "Eq 3.2",
@@ -5501,7 +5545,13 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "δ₀ and R_{x,t} are unchanged (1205.5252v4 (1.3)). L is redefined. In 2013 it was min((log δ^{7/4}q^{13/4} + 80/9)·q/φ(q), (5/6)log x + 50/9) + log q^{80/9}δ^{16/9} + 111/5. The book has (q/φ(q))(13/4 log t + 7.82) + 13.66 log t + 37.55, with t = δ₀q. The log x branch of the min is dropped. The log δ₀ coefficients grow (inside 7/4 → 13/4, outside 16/9 → 13.66), the outer log q coefficient goes 80/9 → 13.66 and 111/5 → 37.55. The inner constant drops, 80/9 → 7.82."
+   "changes_since_2013": "δ₀ and R_{x,t} are unchanged (1205.5252v4 (1.3)). L is redefined. In 2013 it was min((log δ^{7/4}q^{13/4} + 80/9)·q/φ(q), (5/6)log x + 50/9) + log q^{80/9}δ^{16/9} + 111/5. The book has (q/φ(q))(13/4 log t + 7.82) + 13.66 log t + 37.55, with t = δ₀q. The log x branch of the min is dropped. The log δ₀ coefficients grow (inside 7/4 → 13/4, outside 16/9 → 13.66), the outer log q coefficient goes 80/9 → 13.66 and 111/5 → 37.55. The inner constant drops, 80/9 → 7.82.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.R": "hasPart",
+    "TernaryGoldbach.MinorArcs.delta0": "hasPart",
+    "TernaryGoldbach.MinorArcs.L": "hasPart",
+    "TernaryGoldbach.MinorArcs.Cxt": "relatedMatch"
+   }
   },
   {
    "id": "Eq 3.4",
@@ -5688,8 +5738,12 @@
     "description": "As printed, (3.6) has +μ_{≤U}∗Λ_{≤V}∗1; it must be −μ_{≤U}∗Λ_{≤V}∗1. The derivation right after it and (3.8) (… − S_{I,2} …) use the correct sign. The paragraph's last step, 'By Λ_V = Λ_{>V} + Λ_{≥V}', should read Λ = Λ_{>V} + Λ_{≤V}. Harmless.",
     "verdict_2026_11_06": "not-checked",
     "check": {
-     "state": "unconfirmed",
-     "why": "2026-11-06 skeptics: not-checked"
+     "state": "confirmed",
+     "kind": "typo",
+     "script": "scripts/checks/eq_3_6.py",
+     "command": "python3 -I eq_3_6.py",
+     "output_line": "CONFIRMED: (3.6) as printed fails (n = 2, U = V = 2: right side 3 log 2, Lambda(2) = log 2), and with -mu_{<=U}*Lambda_{<=V}*1 it holds for all n <= 200, U, V <= 6: a sign typo.",
+     "note": "As printed, (3.6) has +μ_{≤U}∗Λ_{≤V}∗1 and fails (at n = 2, U = V = 2 the right side is 3 log 2, against Λ(2) = log 2); with −μ_{≤U}∗Λ_{≤V}∗1, the sign that (3.8) uses, it holds."
     }
    },
    "verification": {
@@ -5700,7 +5754,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "no counterpart (2013 §2.5 states only the decomposition (2.20) = (3.8), citing [IK, §13.4] for the proof)"
+   "changes_since_2013": "no counterpart (2013 §2.5 states only the decomposition (2.20) = (3.8), citing [IK, §13.4] for the proof)",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.trunc": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.vaughan": "closeMatch"
+   }
   },
   {
    "id": "Table 3.1",
@@ -5998,7 +6056,13 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (2013 (2.21))"
+   "changes_since_2013": "identical (2013 (2.21))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeI2": "hasPart",
+    "TernaryGoldbach.MinorArcs.typeILog": "hasPart",
+    "TernaryGoldbach.MinorArcs.S0inf": "hasPart",
+    "TernaryGoldbach.MinorArcs.typeII": "hasPart"
+   }
   },
   {
    "id": "Eq 3.10",
@@ -6054,7 +6118,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (2013 (2.22))"
+   "changes_since_2013": "identical (2013 (2.22))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeII": "relatedMatch"
+   }
   },
   {
    "id": "Eq 3.11",
@@ -6545,7 +6612,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "notation only (gcd(a,q) → (a,q)); two expository remarks added to the proof (1205.5252v4 Lemma 3.1)"
+   "changes_since_2013": "notation only (gcd(a,q) → (a,q)); two expository remarks added to the proof (1205.5252v4 Lemma 3.1)",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.Approx": "relatedMatch"
+   }
   },
   {
    "id": "Eq 4.1",
@@ -6986,7 +7056,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1205.5252v4 (3.5))"
+   "changes_since_2013": "identical (1205.5252v4 (3.5))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.lemma_4_1_2": "narrowMatch"
+   }
   },
   {
    "id": "Lemma 4.1.3",
@@ -7131,7 +7204,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1205.5252v4 (3.6))"
+   "changes_since_2013": "identical (1205.5252v4 (3.6))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.lemma_4_1_3": "broadMatch"
+   }
   },
   {
    "id": "Eq 4.7",
@@ -8595,7 +8671,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1205.5252v4 (3.26))"
+   "changes_since_2013": "identical (1205.5252v4 (3.26))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.sum_inv_le": "hasPart"
+   }
   },
   {
    "id": "Eq 4.27",
@@ -8835,7 +8914,13 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "notation only (gcd(·,·) is now written (·,·)) vs 1205.5252v4 Lemma 3.5; same constants and the same misreference"
+   "changes_since_2013": "notation only (gcd(·,·) is now written (·,·)) vs 1205.5252v4 Lemma 3.5; same constants and the same misreference",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB": "hasPart",
+    "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseA": "hasPart",
+    "TernaryGoldbach.MinorArcs.c₂": "hasPart",
+    "TernaryGoldbach.MinorArcs.Approx2": "relatedMatch"
+   }
   },
   {
    "id": "Eq 4.29",
@@ -8902,7 +8987,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1205.5252v4 (3.29))"
+   "changes_since_2013": "identical (1205.5252v4 (3.29))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeI": "narrowMatch"
+   }
   },
   {
    "id": "Eq 4.30",
@@ -8985,7 +9073,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "notation only (gcd(m,2q) is now written (m,2q)) vs 1205.5252v4 (3.30)"
+   "changes_since_2013": "notation only (gcd(m,2q) is now written (m,2q)) vs 1205.5252v4 (3.30)",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.Mof": "relatedMatch"
+   }
   },
   {
    "id": "Eq 4.31",
@@ -9052,7 +9143,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1205.5252v4 (3.31))"
+   "changes_since_2013": "identical (1205.5252v4 (3.31))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB": "relatedMatch"
+   }
   },
   {
    "id": "Eq 4.32",
@@ -9157,7 +9251,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1205.5252v4 (3.32))"
+   "changes_since_2013": "identical (1205.5252v4 (3.32))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA": "relatedMatch"
+   }
   },
   {
    "id": "Eq 4.33",
@@ -9375,7 +9472,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1205.5252v4 (3.35))"
+   "changes_since_2013": "identical (1205.5252v4 (3.35))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.Todd": "narrowMatch"
+   }
   },
   {
    "id": "Eq 4.36",
@@ -9453,7 +9553,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (2013 (3.36))"
+   "changes_since_2013": "identical (2013 (3.36))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.SmoothData.norm_ToddG_le": "broadMatch",
+    "TernaryGoldbach.MinorArcs.norm_Todd_le": "narrowMatch"
+   }
   },
   {
    "id": "Eq 4.37",
@@ -9509,7 +9613,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (2013 (3.37))"
+   "changes_since_2013": "identical (2013 (3.37))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.c₂_identity": "narrowMatch",
+    "TernaryGoldbach.MinorArcs.c₂": "relatedMatch"
+   }
   },
   {
    "id": "Lemma 4.2.3",
@@ -9726,7 +9834,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (2013 (3.39))"
+   "changes_since_2013": "identical (2013 (3.39))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeILog": "narrowMatch"
+   }
   },
   {
    "id": "Eq 4.40",
@@ -9882,7 +9993,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (2013 (3.41))"
+   "changes_since_2013": "identical (2013 (3.41))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB": "relatedMatch"
+   }
   },
   {
    "id": "Eq 4.42",
@@ -10053,7 +10167,7 @@
    "status": "not-formalized-not-needed",
    "confidence": "high",
    "book_statement": "Case |δ| ≥ 1/2c₂ of Lemma 4.2.3's proof: bounding Σ_j(j+1)log(x/(jq+1)) gives Σ_{m≤M,q∤m}|T_{m,∘}| ≤ (40/3π²)(c₀q³/4x)(log x + (2M/q + M²/2q²)log(√e x/M)) ≤ (5c₀c₂/3π²)M log(√e x/M) + (40/3)√2c₀c₂^{3/2}√x log x.",
-   "note": "This only feeds the unused (4.42): §6.2.1 applies Lemma 4.2.3 with D = U ≤ Q/2. There is no Lean counterpart. Checked numerically (prior-2026-11-06/agents/C12-judge/chk445.py): the j-sum bound holds. Given M ≤ c₂x/q, q² ≤ 2c₂x and M ≥ √3 > √e, the first line gives the second with a √x log x coefficient of (40√2/3π²)c₀c₂^{3/2} ≈ 1.91c₀c₂^{3/2}. The printed (40/3)√2 ≈ 18.86 is exactly π² times larger. Lemma 4.2.4's analogue (4.57) has (20c₀/3π²)(2c₂)^{3/2}, which is the same 1.91. The printed constant is weaker but valid, and it reappears in (4.42). The first line's c₀q³/4x is half of the c₀q³/2x printed in (4.44), which is a factor-2 slip there. So (4.45) follows from the argument, not from (4.44) as printed.",
+   "note": "This only feeds the unused (4.42): §6.2.1 applies Lemma 4.2.3 with D = U ≤ Q/2. There is no Lean counterpart. Checked numerically: the j-sum bound holds. Given M ≤ c₂x/q, q² ≤ 2c₂x and M ≥ √3 > √e, the first line gives the second with a √x log x coefficient of (40√2/3π²)c₀c₂^{3/2} ≈ 1.91c₀c₂^{3/2}. The printed (40/3)√2 ≈ 18.86 is exactly π² times larger. Lemma 4.2.4's analogue (4.57) has (20c₀/3π²)(2c₂)^{3/2}, which is the same 1.91. The printed constant is weaker but valid, and it reappears in (4.42). The first line's c₀q³/4x is half of the c₀q³/2x printed in (4.44), which is a factor-2 slip there. So (4.45) follows from the argument, not from (4.44) as printed.",
    "evidence": "",
    "lean": [],
    "erratum": {
@@ -10120,7 +10234,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (2013 (3.46))"
+   "changes_since_2013": "identical (2013 (3.46))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.sum_R1L": "narrowMatch"
+   }
   },
   {
    "id": "Eq 4.47",
@@ -10423,7 +10540,10 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (Minor arcs 2013, (3.48))"
+   "changes_since_2013": "identical (Minor arcs 2013, (3.48))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeI2": "narrowMatch"
+   }
   },
   {
    "id": "Eq 4.50",
@@ -10531,7 +10651,11 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (2013 (3.49))"
+   "changes_since_2013": "identical (2013 (3.49))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.norm_mainPartI2_le": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.c₄": "relatedMatch"
+   }
   },
   {
    "id": "Eq 4.51",
@@ -11104,7 +11228,11 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (2013 (3.55))"
+   "changes_since_2013": "identical (2013 (3.55))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.norm_restPartI2_le_sum": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.restPartI2": "relatedMatch"
+   }
   },
   {
    "id": "Eq 4.57",
@@ -11642,7 +11770,10 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "Notation only: gcd(m,v), gcd(n,v) became (m,v), (n,v); otherwise identical to 1205.5252v4 (4.1)."
+   "changes_since_2013": "Notation only: gcd(m,v), gcd(n,v) became (m,v), (n,v); otherwise identical to 1205.5252v4 (4.1).",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeII": "narrowMatch"
+   }
   },
   {
    "id": "Eq 5.2",
@@ -11803,7 +11934,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "Notation only (gcd → ( , ), alignment); the spurious 4 in the first line is already in 1205.5252v4 (4.4)."
+   "changes_since_2013": "Notation only (gcd → ( , ), alignment); the spurious 4 in the first line is already in 1205.5252v4 (4.4).",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.IIsum": "relatedMatch"
+   }
   },
   {
    "id": "Eq 5.4",
@@ -11892,7 +12026,12 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "Notation only (gcd → ( , )); otherwise identical to 1205.5252v4 (4.5). The 'V ≤ w' sentence is verbatim from 1205.5252v4."
+   "changes_since_2013": "Notation only (gcd → ( , )); otherwise identical to 1205.5252v4 (4.5). The 'V ≤ w' sentence is verbatim from 1205.5252v4.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.primeExpSum": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.S1": "hasPart",
+    "TernaryGoldbach.MinorArcs.S2": "hasPart"
+   }
   },
   {
    "id": "Eq 5.5",
@@ -12015,7 +12154,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "Unnumbered display in 1205.5252v4 §4.1 (S₁ restated); identical up to gcd notation."
+   "changes_since_2013": "Unnumbered display in 1205.5252v4 §4.1 (S₁ restated); identical up to gcd notation.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.S1": "narrowMatch"
+   }
   },
   {
    "id": "Eq 5.7",
@@ -12181,7 +12323,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "1205.5252v4 (4.8); notation only (gcd)."
+   "changes_since_2013": "1205.5252v4 (4.8); notation only (gcd).",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.innerS": "relatedMatch"
+   }
   },
   {
    "id": "Lemma 5.1.1",
@@ -12548,7 +12693,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "1205.5252v4 (4.11); identical."
+   "changes_since_2013": "1205.5252v4 (4.11); identical.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.lemma_5_1_1": "closeMatch"
+   }
   },
   {
    "id": "Eq 5.12",
@@ -13164,7 +13312,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "notation only; (4.19) of 1205.5252v4"
+   "changes_since_2013": "notation only; (4.19) of 1205.5252v4",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.integral_g2": "hasPart"
+   }
   },
   {
    "id": "Lemma 5.1.2",
@@ -13343,7 +13494,11 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "notation only; (4.20) of 1205.5252v4"
+   "changes_since_2013": "notation only; (4.20) of 1205.5252v4",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.g2_eq_sum_dvd": "hasPart",
+    "TernaryGoldbach.MinorArcs.g2_eq_sum_moebius": "hasPart"
+   }
   },
   {
    "id": "Eq 5.21",
@@ -14243,7 +14398,11 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "notation only (gcd); 1205.5252v4 (4.31), with the same (2−√2)/10⁵ term"
+   "changes_since_2013": "notation only (gcd); 1205.5252v4 (4.31), with the same (2−√2)/10⁵ term",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.T2_le'": "hasPart",
+    "TernaryGoldbach.MinorArcs.T2_le": "hasPart"
+   }
   },
   {
    "id": "Eq 5.32",
@@ -14439,7 +14598,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1205.5252v4 (4.34))"
+   "changes_since_2013": "identical (1205.5252v4 (4.34))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.S1_bound": "hasPart"
+   }
   },
   {
    "id": "Eq 5.35",
@@ -14501,7 +14663,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1205.5252v4 (4.35), same misprint)"
+   "changes_since_2013": "identical (1205.5252v4 (4.35), same misprint)",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.H2": "hasPart"
+   }
   },
   {
    "id": "Eq 5.36",
@@ -14618,7 +14783,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "same statement, unnumbered (inline) in 1205.5252v4, p. 44"
+   "changes_since_2013": "same statement, unnumbered (inline) in 1205.5252v4, p. 44",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.H2_le": "hasPart"
+   }
   },
   {
    "id": "Eq 5.38",
@@ -14701,7 +14869,12 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "notation only (gcd(m,v) written (m,v)); 1205.5252v4 (4.37)"
+   "changes_since_2013": "notation only (gcd(m,v) written (m,v)); 1205.5252v4 (4.37)",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.primeExpSum": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.oddSqSum": "narrowMatch",
+    "TernaryGoldbach.MinorArcs.S2": "narrowMatch"
+   }
   },
   {
    "id": "Lemma 5.2.1",
@@ -14719,7 +14892,7 @@
    "status": "variant",
    "confidence": "high",
    "book_statement": "For α_i = a_i/q + υ_i, υ_i in an interval of length υ, ν-separated when a_i = a_j, ν+υ ≤ 1/q, W,W′ ≥ 1, W′ ≥ W/2: ∑_i|S(α_i)|² ≤ min(1, 2q/(φ(q)log(1/q(ν+υ))))(W−W′+ν⁻¹)∑(log p)².",
-   "note": "Lean never states the min(1,·) form: the log gain is proved for a caller-chosen R ≤ W′, which repairs the book's unproved case R > W′. Hypotheses are otherwise weaker (separation ≥ ν, only W′ ≥ 0).",
+   "note": "Lean never states the min(1,·) form: the log gain is proved for a caller-chosen R ≤ W′. Hypotheses are otherwise weaker (separation ≥ ν, only W′ ≥ 0).",
    "evidence": "Lean: trivial branch and, for 1 ≤ R ≤ W′, qR²(ν+υ) ≤ 1, a (φ(q)/q)log R gain; book: min(1, 2q/(φ(q) log(1/q(ν+υ)))) with R = (q(ν+υ))^{-1/2} uncapped.",
    "lean": [
     {
@@ -15017,7 +15190,12 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "notation only (gcd written (·,·)); 1205.5252v4 (4.40)"
+   "changes_since_2013": "notation only (gcd written (·,·)); 1205.5252v4 (4.40)",
+   "relations_at_P": {
+    "TernaryGoldbach.Prelim.sum_inv_le_sum_inv_totient": "hasPart",
+    "TernaryGoldbach.Prelim.log_le_sum_coprime": "hasPart",
+    "TernaryGoldbach.Prelim.sum_sqfree_div_totient_le": "hasPart"
+   }
   },
   {
    "id": "Lemma 5.2.2",
@@ -15765,7 +15943,10 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "identical (1205.5252v4 Lemma 4.5), including the (5.52) omission"
+   "changes_since_2013": "identical (1205.5252v4 Lemma 4.5), including the (5.52) omission",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.lemma_5_2_3_b": "hasPart"
+   }
   },
   {
    "id": "Eq 5.50",
@@ -15832,7 +16013,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1205.5252v4 (4.49))"
+   "changes_since_2013": "identical (1205.5252v4 (4.49))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.lemma_5_2_3_a": "broadMatch"
+   }
   },
   {
    "id": "Eq 5.51",
@@ -16147,7 +16331,10 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "notation only (1205.5252v4 Prop 4.6: \\gcd(a,q) → (a,q), display layout)"
+   "changes_since_2013": "notation only (1205.5252v4 Prop 4.6: \\gcd(a,q) → (a,q), display layout)",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.prop_5_2_4_e": "hasPart"
+   }
   },
   {
    "id": "Eq 5.53",
@@ -16208,7 +16395,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1205.5252v4 (4.52))"
+   "changes_since_2013": "identical (1205.5252v4 (4.52))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.prop_5_2_4_a": "broadMatch"
+   }
   },
   {
    "id": "Eq 5.54",
@@ -16342,7 +16532,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1205.5252v4 (4.54))"
+   "changes_since_2013": "identical (1205.5252v4 (4.54))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.prop_5_2_4_b": "broadMatch"
+   }
   },
   {
    "id": "Eq 5.56",
@@ -16503,7 +16696,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1205.5252v4 (4.56))"
+   "changes_since_2013": "identical (1205.5252v4 (4.56))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.prop_5_2_4_d": "broadMatch"
+   }
   },
   {
    "id": "Eq 5.58",
@@ -16667,7 +16863,13 @@
     "previous_status": "weaker",
     "absence_searched_at_P": "grep for (6.1), η₂'', eta2'', eVariationOn (deriv, 48 in Helfgott/Eta2*.lean and MinorArcs/"
    },
-   "changes_since_2013": "Identical (1205.5252v4 (2.5))."
+   "changes_since_2013": "Identical (1205.5252v4 (2.5)).",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.integral_abs_eta2": "hasPart",
+    "TernaryGoldbach.Helfgott.eVariationOn_eta2": "hasPart",
+    "TernaryGoldbach.MinorArcs.eta2_L1": "hasPart",
+    "TernaryGoldbach.MinorArcs.eta2'L1": "relatedMatch"
+   }
   },
   {
    "id": "Eq 6.2",
@@ -16763,7 +16965,11 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "Identical (1205.5252v4 (2.6))."
+   "changes_since_2013": "Identical (1205.5252v4 (2.6)).",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.integral_abs_eta2log_le": "hasPart",
+    "TernaryGoldbach.MinorArcs.eVariationOn_eta2log_le": "hasPart"
+   }
   },
   {
    "id": "Eq 6.3",
@@ -17304,7 +17510,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "Notation only: gcd dropped (1205.5252v4 (5.7))."
+   "changes_since_2013": "Notation only: gcd dropped (1205.5252v4 (5.7)).",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.sum_vonMangoldt_gcd_div_le": "closeMatch"
+   }
   },
   {
    "id": "Eq 6.10",
@@ -18206,7 +18415,11 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1205.5252v4, (5.16))"
+   "changes_since_2013": "identical (1205.5252v4, (5.16))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.logSqSum": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.logSqSum_le_half": "narrowMatch"
+   }
   },
   {
    "id": "Eq 6.20",
@@ -18931,7 +19144,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "unnumbered display in 1205.5252v4 (same equalities); the book numbers it and lengthens the remark that follows"
+   "changes_since_2013": "unnumbered display in 1205.5252v4 (same equalities); the book numbers it and lengthens the remark that follows",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.integral_inv_mul_log": "closeMatch"
+   }
   },
   {
    "id": "Eq 6.29",
@@ -19097,7 +19313,11 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1205.5252v4 (5.26))"
+   "changes_since_2013": "identical (1205.5252v4 (5.26))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeII_638": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.typeII_637": "relatedMatch"
+   }
   },
   {
    "id": "Eq 6.31",
@@ -20496,7 +20716,14 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical"
+   "changes_since_2013": "identical",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.U1": "closeMatch",
+    "TernaryGoldbach.MinorArcs.delta0": "hasPart",
+    "TernaryGoldbach.MinorArcs.V1": "closeMatch",
+    "TernaryGoldbach.MinorArcs.U1V1_ge": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.first_choice_t": "relatedMatch"
+   }
   },
   {
    "id": "Eq 6.50",
@@ -20579,7 +20806,11 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical"
+   "changes_since_2013": "identical",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.theorem_3_1_1": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.cube_root_facts": "relatedMatch"
+   }
   },
   {
    "id": "Eq 6.51",
@@ -21433,7 +21664,10 @@
     ],
     "previous_status": "inlined"
    },
-   "changes_since_2013": "1205.5252v4 (5.53) had (log q)/2 where (1/2)log 4qδ₀ = (log 8q)/2 is right (2013 slip, fixed). 16.404 → 16.406: 16.404 was below 8.22088(1 + 1.15√2)3^{−1/4} = 16.4055. The remark after it changed from 1.5785x^{3/4−4/5} (wrong exponent) to 1.57863x^{4/5−3/4} but kept 16.404."
+   "changes_since_2013": "1205.5252v4 (5.53) had (log q)/2 where (1/2)log 4qδ₀ = (log 8q)/2 is right (2013 slip, fixed). 16.404 → 16.406: 16.404 was below 8.22088(1 + 1.15√2)3^{−1/4} = 16.4055. The remark after it changed from 1.5785x^{3/4−4/5} (wrong exponent) to 1.57863x^{4/5−3/4} but kept 16.404.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeII_rest_le": "relatedMatch"
+   }
   },
   {
    "id": "Eq 6.61",
@@ -21526,7 +21760,10 @@
     ],
     "previous_status": "inlined"
    },
-   "changes_since_2013": "1205.5252v4 (5.54) had log(12x^{1/3}/|δq|), bounded via log 9. Since V = 9x^{1/3}/2 in both versions, 2V = 9x^{1/3} is right; the book has it, bounded via log(27/4) (2013 slip fixed). 1.68038 → 1.79926."
+   "changes_since_2013": "1205.5252v4 (5.54) had log(12x^{1/3}/|δq|), bounded via log 9. Since V = 9x^{1/3}/2 in both versions, 2V = 9x^{1/3} is right; the book has it, bounded via log(27/4) (2013 slip fixed). 1.68038 → 1.79926.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeII_rest_le": "relatedMatch"
+   }
   },
   {
    "id": "Eq 6.62",
@@ -21608,7 +21845,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "No counterpart: 1205.5252v4 only says the last lines of (5.53) and (5.54) can be simplified (with 0.83574 where the book has 0.89657) and gives no combined display."
+   "changes_since_2013": "No counterpart: 1205.5252v4 only says the last lines of (5.53) and (5.54) can be simplified (with 0.83574 where the book has 0.89657) and gives no combined display.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.typeII_rest_le": "relatedMatch"
+   }
   },
   {
    "id": "Eq 6.63",
@@ -22956,7 +23196,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "No labelled counterpart. The same formula is an unnumbered display in 1305.2897v4 §1, which reads 'is', so the 'us' misprint is new in the book. 1312.7748v2 (3.1) has the same formula but is the counterpart of [H, (10.1)]."
+   "changes_since_2013": "No labelled counterpart. The same formula is an unnumbered display in 1305.2897v4 §1, which reads 'is', so the 'us' misprint is new in the book. 1312.7748v2 (3.1) has the same formula but is the counterpart of [H, (10.1)].",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.S": "narrowMatch",
+    "TernaryGoldbach.expTsum": "broadMatch"
+   }
   },
   {
    "id": "Eq 7.2",
@@ -23012,7 +23256,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "Notation only: 1305.2897v4 (1.8) and 1312.7748v2 (1.4) wrote S_η(δ/x,x); the book adds the subscript χ."
+   "changes_since_2013": "Notation only: 1305.2897v4 (1.8) and 1312.7748v2 (1.4) wrote S_η(δ/x,x); the book adds the subscript χ.",
+   "relations_at_P": {
+    "TernaryGoldbach.Schar": "broadMatch",
+    "TernaryGoldbach.Explicit.SsumG": "broadMatch"
+   }
   },
   {
    "id": "Theorem 7.1.1",
@@ -23030,7 +23278,7 @@
    "status": "not-formalized-not-needed",
    "confidence": "high",
    "book_statement": "Gaussian weight η♥(t) = e^{−t²/2}: for x ≥ 10⁸, χ primitive mod q ≤ 3·10⁵ and |δ| ≤ 4r/q, the twisted sum equals [q=1]·η̂♥(−δ)x + Ex with |E| ≤ 4.306·10⁻²² + (650400/√q + 112)/√x.",
-   "note": "Nothing after its proof (§9.6, from Prop 9.2.2 plus Platt at T₀ = 10⁸/q) invokes it. Part III uses only Cor 7.1.3, Thm 7.1.4 and Prop 7.1.5, so the closing remark of §9.6 that Thms 7.1.1–7.1.4 are 'crucial for Part III' overstates the case. Prop 9.2.2, the Gaussian explicit formula, has no Lean counterpart. The §9.6 arithmetic was recomputed (check96.py) and is correct: 4.30555·10⁻²² ≤ 4.306·10⁻²², 648661.3 ≤ 648662, 650363.2 ≤ 650400.",
+   "note": "Nothing after its proof (§9.6, from Prop 9.2.2 plus Platt at T₀ = 10⁸/q) invokes it. Part III uses only Cor 7.1.3, Thm 7.1.4 and Prop 7.1.5, so the closing remark of §9.6 that Thms 7.1.1–7.1.4 are 'crucial for Part III' overstates the case. Prop 9.2.2, the Gaussian explicit formula, has no Lean counterpart. The §9.6 arithmetic was recomputed and is correct: 4.30555·10⁻²² ≤ 4.306·10⁻²², 648661.3 ≤ 648662, 650363.2 ≤ 650400.",
    "evidence": "",
    "lean": [],
    "erratum": {
@@ -23044,7 +23292,7 @@
      "how": "compiled Lean refutation at the pin",
      "script": "lean/Companion/Book/Thm_7_1_1.lean",
      "theorem": "Companion.Book.thm_7_1_1_remark_false",
-     "note": "The remark after the theorem is false: η♡ is the one-sided Gaussian, so η̂♡(−δ) = ∫₀^∞ e(δt)e^{−t²/2}dt, whose real part is half of √(2π)e^{−2π²δ²}; at δ = 0 it is √(π/2), not √(2π). The theorem itself is not refuted."
+     "note": "The theorem and the remark after it cannot both hold (`thm_7_1_1_remark_imp_not`): with η♡ one-sided, as in §9.2, η̂♡(0) = √(π/2), not √(2π), so the remark is false (`thm_7_1_1_remark_false`); with η♡(t) = e^{−t²/2} on all of ℝ, as §7.1 writes it, the theorem is false (`thm_7_1_1_twoSided_false`)."
     }
    },
    "verification": {
@@ -23241,7 +23489,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "4.269·10⁻¹⁴/q → 2.485·10⁻¹⁹ (no longer divided by q); 380600 → 381500; 76 unchanged; 'used in [HelfTern]' became 'used in Part III'."
+   "changes_since_2013": "4.269·10⁻¹⁴/q → 2.485·10⁻¹⁹ (no longer divided by q); 380600 → 381500; 76 unchanged; 'used in [HelfTern]' became 'used in Part III'.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.etaU": "relatedMatch"
+   }
   },
   {
    "id": "Eq 7.3",
@@ -23308,7 +23559,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "Identical (1305.2897v4 (1.2))."
+   "changes_since_2013": "Identical (1305.2897v4 (1.2)).",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.P0": "hasPart"
+   }
   },
   {
    "id": "Eq 7.4",
@@ -23353,7 +23607,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "Identical to 1305.2897v4 (1.3). By the book's own remark (§9.4), the first arXiv version of the major-arcs paper used η = h_H(t)e^{−t²/2} with h built from t³(2−t)³. It was changed so that the truncation keeps Mη holomorphic."
+   "changes_since_2013": "Identical to 1305.2897v4 (1.3). By the book's own remark (§9.4), the first arXiv version of the major-arcs paper used η = h_H(t)e^{−t²/2} with h built from t³(2−t)³. It was changed so that the truncation keeps Mη holomorphic.",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.etaPlus": "narrowMatch"
+   }
   },
   {
    "id": "Eq 7.5",
@@ -23493,7 +23750,12 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "Identical to 1305.2897v4 (1.5), including the t/y misprints."
+   "changes_since_2013": "Identical to 1305.2897v4 (1.5), including the t/y misprints.",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.F": "hasPart",
+    "TernaryGoldbach.Helfgott.sH": "relatedMatch",
+    "TernaryGoldbach.Helfgott.hH": "hasPart"
+   }
   },
   {
    "id": "Theorem 7.1.4",
@@ -23609,7 +23871,11 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "General q: 6.18·10⁻¹²/√q → 1.3482·10⁻¹⁴ (no longer divided by √q); 1.14·10⁻¹⁰/q → 1.617·10⁻¹⁰/q; 499100 → 499900; 52 unchanged. For q = 1: 3.34·10⁻¹¹ → 4.772·10⁻¹¹ and 251100 → 251400."
+   "changes_since_2013": "General q: 6.18·10⁻¹²/√q → 1.3482·10⁻¹⁴ (no longer divided by √q); 1.14·10⁻¹⁰/q → 1.617·10⁻¹⁰/q; 499100 → 499900; 52 unchanged. For q = 1: 3.34·10⁻¹¹ → 4.772·10⁻¹¹ and 251100 → 251400.",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.thm_7_1_4_odd": "hasPart",
+    "TernaryGoldbach.MajorArcs.thm_7_1_4_even": "hasPart"
+   }
   },
   {
    "id": "Proposition 7.1.5",
@@ -23726,7 +23992,12 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "|E₁|: 1.536·10⁻¹⁵ → 5.123·10⁻¹⁵. 310.84 → 366.91 in both the E₁ and E₂ bounds. 2·10⁻⁶, 0.640206 and 0.021095 are unchanged."
+   "changes_since_2013": "|E₁|: 1.536·10⁻¹⁵ → 5.123·10⁻¹⁵. 310.84 → 366.91 in both the E₁ and E₂ bounds. 2·10⁻⁶, 0.640206 and 0.021095 are unchanged.",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.prop_7_1_5'": "hasPart",
+    "TernaryGoldbach.MinorArcs.prop_7_1_5": "hasPart",
+    "TernaryGoldbach.MajorArcs.prop_9_5_1": "relatedMatch"
+   }
   },
   {
    "id": "Eq 7.7",
@@ -24257,7 +24528,12 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical"
+   "changes_since_2013": "identical",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.fδ": "relatedMatch",
+    "TernaryGoldbach.Explicit.fP": "relatedMatch",
+    "TernaryGoldbach.Explicit.mellin_fδ": "relatedMatch"
+   }
   },
   {
    "id": "Eq 8.6",
@@ -24398,7 +24674,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical formula; an unnumbered display in MA13 (1305.2897v4) §3.2"
+   "changes_since_2013": "identical formula; an unnumbered display in MA13 (1305.2897v4) §3.2",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.Gr": "relatedMatch"
+   }
   },
   {
    "id": "Eq 8.9",
@@ -27888,7 +28167,12 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical ((4.11) of 1305.2897v4)"
+   "changes_since_2013": "identical ((4.11) of 1305.2897v4)",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.C3": "relatedMatch",
+    "TernaryGoldbach.Explicit.norm_logDeriv_zeta_le": "relatedMatch",
+    "TernaryGoldbach.Explicit.norm_logDeriv_L_right": "hasPart"
+   }
   },
   {
    "id": "Eq 9.12",
@@ -27992,7 +28276,11 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1305.2897v4 (4.12)); the 's = 1/2 + iτ' slip is already there"
+   "changes_since_2013": "identical (1305.2897v4 (4.12)); the 's = 1/2 + iτ' slip is already there",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.norm_logDeriv_zeta_left": "relatedMatch",
+    "TernaryGoldbach.Explicit.norm_logDeriv_L_left": "relatedMatch"
+   }
   },
   {
    "id": "Eq 9.13",
@@ -28096,7 +28384,11 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1305.2897v4 (4.13)); the footnote's range and 226.844 are unchanged"
+   "changes_since_2013": "identical (1305.2897v4 (4.13)); the footnote's range and 226.844 are unchanged",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.norm_integral_hZeta_le": "relatedMatch",
+    "TernaryGoldbach.Explicit.norm_integral_hInt_le": "relatedMatch"
+   }
   },
   {
    "id": "Eq 9.14",
@@ -29743,7 +30035,7 @@
    "status": "not-formalized-not-needed",
    "confidence": "high",
    "book_statement": "Since T₀ ≥ 50 and q ≥ 1, (9.36) is at most 1.072·log(qT₀/2π)·e^{−0.1598T₀}; multiplied by κ₀,₁ = 3.286 it gives the 3.53 of Lemma 9.2.1.",
-   "note": "Worst case q = 1, T₀ = 50: ratio 1.07115 ≤ 1.072 (scratchpad/agents/C35/check92.py); the ratio decreases in q and T₀ towards 1/(2πc) = 0.996. 3.286·1.072 = 3.5226 ≤ 3.53. Not formalized, not needed.",
+   "note": "Worst case q = 1, T₀ = 50: ratio 1.07115 ≤ 1.072; the ratio decreases in q and T₀ towards 1/(2πc) = 0.996. 3.286·1.072 = 3.5226 ≤ 3.53. Not formalized, not needed.",
    "evidence": "",
    "lean": [],
    "erratum": {
@@ -30271,7 +30563,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (an unnumbered display in 1305.2897v4 §4.3)"
+   "changes_since_2013": "identical (an unnumbered display in 1305.2897v4 §4.3)",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.fδ": "relatedMatch",
+    "TernaryGoldbach.Helfgott.phi": "hasPart"
+   }
   },
   {
    "id": "Eq 9.47",
@@ -30338,7 +30634,12 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical to 1305.2897v4 (4.44)"
+   "changes_since_2013": "identical to 1305.2897v4 (4.44)",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.Gr_zero_eq": "hasPart",
+    "TernaryGoldbach.Explicit.Gr": "relatedMatch",
+    "TernaryGoldbach.Explicit.mellin_fδ": "hasPart"
+   }
   },
   {
    "id": "Lemma 9.3.1",
@@ -30982,7 +31283,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1305.2897v4 (4.50)); only the lead-in now points to (9.46)"
+   "changes_since_2013": "identical (1305.2897v4 (4.50)); only the lead-in now points to (9.46)",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.integral_log_sq_etaSq_le": "relatedMatch",
+    "TernaryGoldbach.Explicit.integral_etaSq": "hasPart"
+   }
   },
   {
    "id": "Proposition 9.3.2",
@@ -31098,7 +31403,12 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "1305.2897v4 Prop 4.8: T₀ ≥ max(4π²|δ|,100) became max(10π|δ|,50). First-line constants 3.5→6.11 and 0.64→1.578: Lemma 9.3.1's majorant now uses κ₂,₁ = 5.13 and κ₂,₀ = 7.96 in place of c₂ = 3.262. Also 5.053→5.056, which corrects a 2013 slip (Lemma 9.1.4 gives 17.21|η·log|₂ − log(2π√e)|η|₂ = 5.0558)."
+   "changes_since_2013": "1305.2897v4 Prop 4.8: T₀ ≥ max(4π²|δ|,100) became max(10π|δ|,50). First-line constants 3.5→6.11 and 0.64→1.578: Lemma 9.3.1's majorant now uses κ₂,₁ = 5.13 and κ₂,₀ = 7.96 in place of c₂ = 3.262. Also 5.053→5.056, which corrects a 2013 slip (Lemma 9.1.4 gives 17.21|η·log|₂ − log(2π√e)|η|₂ = 5.0558).",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.GRHUpTo": "relatedMatch",
+    "TernaryGoldbach.MajorArcs.prop_9_3_2_one": "hasPart",
+    "TernaryGoldbach.MajorArcs.prop_9_3_2_ne": "hasPart"
+   }
   },
   {
    "id": "Eq 9.56",
@@ -31487,7 +31797,11 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "1305.2897v4 Cor 4.9: T₀ ≥ max(4π²|δ|,100) became max(10π|δ|,50). Constants: 3.5→6.11, 0.0019→0.0102 (Gaussian integral 0.002866→0.006446), 1.675→1.679, 6.936→6.957, 1.954→1.958, 51.047→51.17."
+   "changes_since_2013": "1305.2897v4 Cor 4.9: T₀ ≥ max(4π²|δ|,100) became max(10π|δ|,50). Constants: 3.5→6.11, 0.0019→0.0102 (Gaussian integral 0.002866→0.006446), 1.675→1.679, 6.936→6.957, 1.954→1.958, 51.047→51.17.",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.cor_9_3_3": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.etaU": "relatedMatch"
+   }
   },
   {
    "id": "Eq 9.60",
@@ -31778,7 +32092,11 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "notation only (a \\cdot added); 1305.2897v4 (4.58)"
+   "changes_since_2013": "notation only (a \\cdot added); 1305.2897v4 (4.58)",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.hH": "relatedMatch",
+    "TernaryGoldbach.Helfgott.etaPlus": "narrowMatch"
+   }
   },
   {
    "id": "Lemma 9.4.1",
@@ -34071,7 +34389,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "2013 (4.87): (0.607(log 450)²/log 10¹² + 1.21 log 450)√450·e^{−50π/4} + (2.06√450 log 450 + 43.87)/√x ≤ 1.536·10⁻¹⁵ + 310.84/√x; book: new (9.73) form (T₁ = 50, H term), 5.123·10⁻¹⁵ + 366.91/√x."
+   "changes_since_2013": "2013 (4.87): (0.607(log 450)²/log 10¹² + 1.21 log 450)√450·e^{−50π/4} + (2.06√450 log 450 + 43.87)/√x ≤ 1.536·10⁻¹⁵ + 310.84/√x; book: new (9.73) form (T₁ = 50, H term), 5.123·10⁻¹⁵ + 366.91/√x.",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.prop_9_5_1": "relatedMatch"
+   }
   },
   {
    "id": "Eq 9.94",
@@ -34293,7 +34614,11 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1312.7748 (3.1))"
+   "changes_since_2013": "identical (1312.7748 (3.1))",
+   "relations_at_P": {
+    "TernaryGoldbach.expTsum": "broadMatch",
+    "TernaryGoldbach.e": "relatedMatch"
+   }
   },
   {
    "id": "Eq 10.2",
@@ -34376,7 +34701,11 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1312.7748 (3.2))"
+   "changes_since_2013": "identical (1312.7748 (3.2))",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.tri": "relatedMatch",
+    "TernaryGoldbach.Helfgott.repSum": "narrowMatch"
+   }
   },
   {
    "id": "Eq 10.3",
@@ -34448,7 +34777,11 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "notation only (spacing; 1312.7748 (3.3))"
+   "changes_since_2013": "notation only (spacing; 1312.7748 (3.3))",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.circle_identity_input": "relatedMatch",
+    "TernaryGoldbach.circle_identity_tsum": "relatedMatch"
+   }
   },
   {
    "id": "Eq 10.4",
@@ -34531,7 +34864,11 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1312.7748 (3.4))"
+   "changes_since_2013": "identical (1312.7748 (3.4))",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.fI": "relatedMatch",
+    "TernaryGoldbach.Helfgott.integrand": "relatedMatch"
+   }
   },
   {
    "id": "Eq 10.5",
@@ -34692,7 +35029,11 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1312.7748 (3.6))"
+   "changes_since_2013": "identical (1312.7748 (3.6))",
+   "relations_at_P": {
+    "TernaryGoldbach.gaussSum_eq_sum_range": "narrowMatch",
+    "TernaryGoldbach.stdAddChar_natCast_eq_e": "relatedMatch"
+   }
   },
   {
    "id": "Eq 10.7",
@@ -34975,7 +35316,13 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1312.7748 (3.9))"
+   "changes_since_2013": "identical (1312.7748 (3.9))",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.Ssum": "narrowMatch",
+    "TernaryGoldbach.Schar": "broadMatch",
+    "TernaryGoldbach.MajorArcs.Schar_eq_Ssum": "relatedMatch",
+    "TernaryGoldbach.Explicit.SsumG": "broadMatch"
+   }
   },
   {
    "id": "Eq 10.10",
@@ -35368,7 +35715,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1312.7748v2 (3.14))"
+   "changes_since_2013": "identical (1312.7748v2 (3.14))",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.ramanujan_sum": "closeMatch"
+   }
   },
   {
    "id": "Eq 10.15",
@@ -36001,7 +36351,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical to 1312.7748v2 (3.22), misprint included. The tool's other match, 1205.5252v4 (5.60), is a label collision: eq:hosto there is the |S_II| bound."
+   "changes_since_2013": "identical to 1312.7748v2 (3.22), misprint included. The tool's other match, 1205.5252v4 (5.60), is a label collision: eq:hosto there is the |S_II| bound.",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.Cmain": "relatedMatch"
+   }
   },
   {
    "id": "Eq 10.23",
@@ -36827,7 +37180,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1312.7748v2 (3.32))"
+   "changes_since_2013": "identical (1312.7748v2 (3.32))",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.gaussSum_one_eq": "closeMatch"
+   }
   },
   {
    "id": "Eq 10.33",
@@ -37562,7 +37918,10 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "Identical to 1312.7748v2 (4.3). 1305.2897v4 (B.2), the counterpart of (A.2), has the same right side, but pairs it with the t² h of (B.1)."
+   "changes_since_2013": "Identical to 1312.7748v2 (4.3). 1305.2897v4 (B.2), the counterpart of (A.2), has the same right side, but pairs it with the t² h of (B.1).",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.P0": "hasPart"
+   }
   },
   {
    "id": "Eq 11.4",
@@ -37751,7 +38110,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "Identical to 1312.7748v2 (4.5)."
+   "changes_since_2013": "Identical to 1312.7748v2 (4.5).",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.conv2_ge": "relatedMatch"
+   }
   },
   {
    "id": "Eq 11.6",
@@ -37906,7 +38268,10 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical"
+   "changes_since_2013": "identical",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.eta2": "hasPart"
+   }
   },
   {
    "id": "Eq 11.8",
@@ -37951,7 +38316,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1305.2897v4 (4.53) differs only in punctuation)"
+   "changes_since_2013": "identical (1305.2897v4 (4.53) differs only in punctuation)",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.S": "narrowMatch"
+   }
   },
   {
    "id": "Eq 11.9",
@@ -38084,7 +38452,10 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical"
+   "changes_since_2013": "identical",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.eta2": "hasPart"
+   }
   },
   {
    "id": "Eq 11.11",
@@ -38378,7 +38749,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical"
+   "changes_since_2013": "identical",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.theorem_3_1_1": "broadMatch"
+   }
   },
   {
    "id": "Eq 11.15",
@@ -38512,7 +38886,10 @@
     ],
     "previous_status": "replaced"
    },
-   "changes_since_2013": "r ≥ 3 became r ≥ 11 (the 2013 proof already assumed r ≥ 11). The proof was redone for the new constants (threshold e³⁴ → e³³, new bisection intervals)."
+   "changes_since_2013": "r ≥ 3 became r ≥ 11 (the 2013 proof already assumed r ≥ 11). The proof was redone for the new constants (threshold e³⁴ → e³³, new bisection intervals).",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.hfun_antitone": "hasPart"
+   }
   },
   {
    "id": "Eq 11.16",
@@ -40027,7 +40404,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "Identical (1312.7748v2 Prop 5.2, which cites (3.5) for (10.5)); proof text unchanged, misprints included."
+   "changes_since_2013": "Identical (1312.7748v2 Prop 5.2, which cites (3.5) for (10.5)); proof text unchanged, misprints included.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.PrimeSupported": "relatedMatch"
+   }
   },
   {
    "id": "Eq 12.5",
@@ -40446,7 +40826,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1312.7748v2 (5.10))"
+   "changes_since_2013": "identical (1312.7748v2 (5.10))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.harmonic_le_G": "hasPart"
+   }
   },
   {
    "id": "Eq 12.11",
@@ -40507,7 +40890,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1312.7748v2 (5.11))"
+   "changes_since_2013": "identical (1312.7748v2 (5.11))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.G_le_mul_Gq": "hasPart"
+   }
   },
   {
    "id": "Eq 12.12",
@@ -40679,7 +41065,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1312.7748v2 (5.13))"
+   "changes_since_2013": "identical (1312.7748v2 (5.13))",
+   "relations_at_P": {
+    "TernaryGoldbach.Prelim.f1pP": "hasPart",
+    "TernaryGoldbach.MinorArcs.f1p": "hasPart"
+   }
   },
   {
    "id": "Eq 12.14",
@@ -40751,7 +41141,12 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1312.7748v2 (5.14))"
+   "changes_since_2013": "identical (1312.7748v2 (5.14))",
+   "relations_at_P": {
+    "TernaryGoldbach.Prelim.RamPf.cR": "hasPart",
+    "TernaryGoldbach.Prelim.RamPf.cR_bounds": "hasPart",
+    "TernaryGoldbach.MinorArcs.cE": "relatedMatch"
+   }
   },
   {
    "id": "Eq 12.15",
@@ -41681,7 +42076,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1312.7748v2 (5.23))"
+   "changes_since_2013": "identical (1312.7748v2 (5.23))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.cE": "relatedMatch"
+   }
   },
   {
    "id": "Eq 12.24",
@@ -41753,7 +42151,10 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1312.7748v2 (5.24))"
+   "changes_since_2013": "identical (1312.7748v2 (5.24))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.Sq": "relatedMatch"
+   }
   },
   {
    "id": "Eq 12.25",
@@ -42296,7 +42697,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1312.7748v2 (5.32))"
+   "changes_since_2013": "identical (1312.7748v2 (5.32))",
+   "relations_at_P": {
+    "TernaryGoldbach.Prelim.RamPf.ramare_bound": "broadMatch"
+   }
   },
   {
    "id": "Eq 12.33",
@@ -42401,7 +42805,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1312.7748v2, (5.33))"
+   "changes_since_2013": "identical (1312.7748v2, (5.33))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.kapQ": "relatedMatch"
+   }
   },
   {
    "id": "Eq 12.34",
@@ -43078,7 +43485,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "notation only: the second display is now numbered (12.42); otherwise as 1312.7748v2 Cor 5.7"
+   "changes_since_2013": "notation only: the second display is now numbered (12.42); otherwise as 1312.7748v2 Cor 5.7",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.cor_12_2_5": "hasPart"
+   }
   },
   {
    "id": "Eq 12.42",
@@ -45489,7 +45899,10 @@
     "absence_search_found": true,
     "sample_check": "agreed in the sample; the absence search at P then found MinorArcs.Cxt, which defines it"
    },
-   "changes_since_2013": "identical ((6.27) of 1312.7748v2)"
+   "changes_since_2013": "identical ((6.27) of 1312.7748v2)",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.Cxt": "closeMatch"
+   }
   },
   {
    "id": "Eq 13.31",
@@ -45890,7 +46303,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "Thm 7.1.4 (q = 1) constants changed: 3.34·10⁻¹¹ → 4.772·10⁻¹¹, 251100 → 251400; bound 1.1377·10⁻⁸ → 1.1405·10⁻⁸ (source now Thm 7.1.4 instead of [HelfMaj, Thm 1.4])."
+   "changes_since_2013": "Thm 7.1.4 (q = 1) constants changed: 3.34·10⁻¹¹ → 4.772·10⁻¹¹, 251100 → 251400; bound 1.1377·10⁻⁸ → 1.1405·10⁻⁸ (source now Thm 7.1.4 instead of [HelfMaj, Thm 1.4]).",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.thm_7_1_4_one": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.2",
@@ -45973,7 +46389,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "Thm 7.1.4 constants changed: 6.18·10⁻¹² → 1.3482·10⁻¹⁴·√300000, 1.14·10⁻¹⁰ → 1.617·10⁻¹⁰, 499100 → 499900; bound 2.3921·10⁻⁸ → 2.3992·10⁻⁸; √q now written √q*."
+   "changes_since_2013": "Thm 7.1.4 constants changed: 6.18·10⁻¹² → 1.3482·10⁻¹⁴·√300000, 1.14·10⁻¹⁰ → 1.617·10⁻¹⁰, 499100 → 499900; bound 2.3921·10⁻⁸ → 2.3992·10⁻⁸; √q now written √q*.",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.err_scaled_le": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.3",
@@ -46056,7 +46475,11 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "identical"
+   "changes_since_2013": "identical",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.abs_etaPlus_le_A": "relatedMatch",
+    "TernaryGoldbach.Helfgott.abs_etaPlus_le_400": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.4",
@@ -46511,7 +46934,10 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "identical (1312.7748v2 (7.10))"
+   "changes_since_2013": "identical (1312.7748v2 (7.10))",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.prod_lower_bound": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.10",
@@ -46872,7 +47298,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1312.7748v2 (7.13))"
+   "changes_since_2013": "identical (1312.7748v2 (7.13))",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.κ": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.15",
@@ -46945,7 +47374,10 @@
     ],
     "previous_status": "definition-match"
    },
-   "changes_since_2013": "identical (1312.7748v2 (7.14))"
+   "changes_since_2013": "identical (1312.7748v2 (7.14))",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.xOf_denom_bounds": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.16",
@@ -47006,7 +47438,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1312.7748v2 (7.15))"
+   "changes_since_2013": "identical (1312.7748v2 (7.15))",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.xOf_ge": "hasPart"
+   }
   },
   {
    "id": "Eq 14.17",
@@ -47100,7 +47535,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "2013 (7.16) used √q (book: √q*), 4.269·10⁻¹⁴ (from a 4.269·10⁻¹⁴/q term), 380600, and 1/√x₊ where the scale needs 1/√(x/κ); it got 1.9075·10⁻⁸/κ. The book has 2.485·10⁻¹⁹, 381500 and 1/√10²⁵, fixing the scale, but prints 1.33805·10⁻⁸ for 1.338·10⁻⁷."
+   "changes_since_2013": "2013 (7.16) used √q (book: √q*), 4.269·10⁻¹⁴ (from a 4.269·10⁻¹⁴/q term), 380600, and 1/√x₊ where the scale needs 1/√(x/κ); it got 1.9075·10⁻⁸/κ. The book has 2.485·10⁻¹⁹, 381500 and 1/√10²⁵, fixing the scale, but prints 1.33805·10⁻⁸ for 1.338·10⁻⁷.",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.err_scaled_le_star": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.18",
@@ -47183,7 +47621,11 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "Error constant 310.84/√x → 366.91/√x (revised Prop 7.1.5); otherwise identical."
+   "changes_since_2013": "Error constant 310.84/√x → 366.91/√x (revised Prop 7.1.5); otherwise identical.",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.prop_7_1_5'": "hasPart",
+    "TernaryGoldbach.MinorArcs.prop_7_1_5": "hasPart"
+   }
   },
   {
    "id": "Eq 14.19",
@@ -47460,7 +47902,11 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical"
+   "changes_since_2013": "identical",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.integral_etaU": "relatedMatch",
+    "TernaryGoldbach.MajorArcs.integral_etaS": "closeMatch"
+   }
   },
   {
    "id": "Eq 14.23",
@@ -47893,7 +48339,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "2013 (7.26): constants refined. C₀ 2.3375→2.33744; C₂ 0.60579→0.60581 (factor 0.51941→0.51942, since 1.03883/2 = 0.519415); C₁ 0.4494→0.44937; 2.9433→2.94325, 5.1244→5.12426; final 8.4031→8.4029·10⁻¹²."
+   "changes_since_2013": "2013 (7.26): constants refined. C₀ 2.3375→2.33744; C₂ 0.60579→0.60581 (factor 0.51941→0.51942, since 1.03883/2 = 0.519415); C₁ 0.4494→0.44937; 2.9433→2.94325, 5.1244→5.12426; final 8.4031→8.4029·10⁻¹².",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.E_le_14_28": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.29",
@@ -48060,7 +48509,11 @@
     ],
     "previous_status": "stronger"
    },
-   "changes_since_2013": "identical (2013 (7.28))"
+   "changes_since_2013": "identical (2013 (7.28))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.sig": "relatedMatch",
+    "TernaryGoldbach.MinorArcs.sig_le_lin": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.31",
@@ -49491,7 +49944,12 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1312.7748v2 (7.49))"
+   "changes_since_2013": "identical (1312.7748v2 (7.49))",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.circle_identity_input": "narrowMatch",
+    "TernaryGoldbach.Helfgott.integrand": "relatedMatch",
+    "TernaryGoldbach.Helfgott.repSum": "relatedMatch"
+   }
   },
   {
    "id": "Eq 14.51",
@@ -49574,7 +50032,11 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "identical (1312.7748v2 (7.50))"
+   "changes_since_2013": "identical (1312.7748v2 (7.50))",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.nonprime_input": "relatedMatch",
+    "TernaryGoldbach.Helfgott.repSum_sub_le_of_bounds": "closeMatch"
+   }
   },
   {
    "id": "Eq A.1",
@@ -49641,7 +50103,11 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (= (B.1) of 1305.2897v4)"
+   "changes_since_2013": "identical (= (B.1) of 1305.2897v4)",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.gL": "relatedMatch",
+    "TernaryGoldbach.Helfgott.hP": "hasPart"
+   }
   },
   {
    "id": "Eq A.2",
@@ -49714,7 +50180,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (= (B.2) of 1305.2897v4, misprint included)"
+   "changes_since_2013": "identical (= (B.2) of 1305.2897v4, misprint included)",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.P0": "hasPart"
+   }
   },
   {
    "id": "Eq A.3",
@@ -49770,7 +50239,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (= (B.3) of 1305.2897v4)"
+   "changes_since_2013": "identical (= (B.3) of 1305.2897v4)",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.etaPlus": "narrowMatch"
+   }
   },
   {
    "id": "Eq A.4",
@@ -49854,7 +50326,12 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (= (B.4) of 1305.2897v4, misprint included)"
+   "changes_since_2013": "identical (= (B.4) of 1305.2897v4, misprint included)",
+   "relations_at_P": {
+    "TernaryGoldbach.Helfgott.F": "hasPart",
+    "TernaryGoldbach.Helfgott.hH": "hasPart",
+    "TernaryGoldbach.Helfgott.hH_eq_u": "relatedMatch"
+   }
   },
   {
    "id": "Eq A.5",
@@ -50140,7 +50617,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1305.2897v4, (B.8))"
+   "changes_since_2013": "identical (1305.2897v4, (B.8))",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.norm_fourier_gC_le": "hasPart"
+   }
   },
   {
    "id": "Eq A.9",
@@ -50218,7 +50698,13 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1305.2897v4, (B.9))"
+   "changes_since_2013": "identical (1305.2897v4, (B.9))",
+   "relations_at_P": {
+    "TernaryGoldbach.Explicit.Cg_eq_integral": "hasPart",
+    "TernaryGoldbach.Explicit.Cg_eq": "hasPart",
+    "TernaryGoldbach.Explicit.Cg_le": "relatedMatch",
+    "TernaryGoldbach.Explicit.Cg": "relatedMatch"
+   }
   },
   {
    "id": "Eq A.10",
@@ -50748,7 +51234,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "Identical (1305.2897v4 (B.19))."
+   "changes_since_2013": "Identical (1305.2897v4 (B.19)).",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.cube_mul_exp_neg_sq_le": "relatedMatch"
+   }
   },
   {
    "id": "Eq A.20",
@@ -51061,7 +51550,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "Identical (1305.2897v4 (B.24)), misprint included."
+   "changes_since_2013": "Identical (1305.2897v4 (B.24)), misprint included.",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.abs_mul_Ew_le": "relatedMatch"
+   }
   },
   {
    "id": "Eq A.25",
@@ -51183,7 +51675,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "Identical (1305.2897v4 (B.26))."
+   "changes_since_2013": "Identical (1305.2897v4 (B.26)).",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.PolyNum.integral_P0_sq": "closeMatch"
+   }
   },
   {
    "id": "Eq A.27",
@@ -51683,7 +52178,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1305.2897v4 (B.35))"
+   "changes_since_2013": "identical (1305.2897v4 (B.35))",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.hH_eq_conv": "closeMatch"
+   }
   },
   {
    "id": "Eq A.36",
@@ -52562,7 +53060,7 @@
    "status": "weaker",
    "confidence": "high",
    "book_statement": "For η₂(t) = 4max(log 2 − |log 2t|, 0), the Fourier transform of η₂'' satisfies |η̂₂''(t)| ≤ 31.521 for all real t. The range |t| ≥ 655 follows from Lemma B.1.1 and (B.8); the rest is a rigorous computation.",
-   "note": "Book proof: |t| ≥ 655 from 4·7.87052 + 80/(π|t|); |t| < 655 by sampling at step 0.001 with error ½δ²·48π², evaluating f̂ by Simpson's rule in interval arithmetic. Lean history (NOTES): reaching 31.521 needed the axiom eta2DD_small for |t| ≤ 655. That axiom was removed by switching to c₀ = 32, as Helfgott suggested (README). The companion draft Companion/Book/Lemma_B_1_2.lean (not indexed) proves the printed lemma equivalent to its [0,655) range (lemma_B_1_2_iff_Ico). Its module doc (lines 86–89) already notes the 'f̂(t)' misprint. That file is companion work, not the formalization's own docs.",
+   "note": "Book proof: |t| ≥ 655 from 4·7.87052 + 80/(π|t|); |t| < 655 by sampling at step 0.001 with error ½δ²·48π², evaluating f̂ by Simpson's rule in interval arithmetic. Lean proves (B.6) with c₀ = 32 in place of 31.521 (README at the pin). The companion draft Companion/Book/Lemma_B_1_2.lean (not indexed) proves the printed lemma equivalent to its [0,655) range (lemma_B_1_2_iff_Ico). Its module doc (lines 86–89) already notes the 'f̂(t)' misprint. That file is companion work, not the formalization's own docs.",
    "evidence": "",
    "lean": [
     {
@@ -52628,7 +53126,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "Statement identical (Lemma A.2 of 1205.5252v4). The proof's footnote now points to §2.6 for interval arithmetic instead of citing Platt's implementation and Lambov."
+   "changes_since_2013": "Statement identical (Lemma A.2 of 1205.5252v4). The proof's footnote now points to §2.6 for interval arithmetic instead of citing Platt's implementation and Lambov.",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.c₀": "relatedMatch"
+   }
   },
   {
    "id": "Eq B.6",
@@ -52923,7 +53424,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "notation only: η_y became η_(y), and the remark 'sketched in [Helf, (2.4)]' is commented out (1205.5252v4 Lemma A.3)."
+   "changes_since_2013": "notation only: η_y became η_(y), and the remark 'sketched in [Helf, (2.4)]' is commented out (1205.5252v4 Lemma A.3).",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.eta2log": "relatedMatch"
+   }
   },
   {
    "id": "Eq B.9",
@@ -52979,7 +53483,10 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "notation only (η_y → η_(y)); 1205.5252v4 (A.9)."
+   "changes_since_2013": "notation only (η_y → η_(y)); 1205.5252v4 (A.9).",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.eta2'L1": "relatedMatch"
+   }
   },
   {
    "id": "Lemma B.2.2",
@@ -54081,7 +54588,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1312.7748v2 Cor A.3)"
+   "changes_since_2013": "identical (1312.7748v2 Cor A.3)",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.norm_S_eta2_le_trivial": "relatedMatch"
+   }
   },
   {
    "id": "Eq C.5",
@@ -54137,7 +54647,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1312.7748v2 (A.5))"
+   "changes_since_2013": "identical (1312.7748v2 (A.5))",
+   "relations_at_P": {
+    "TernaryGoldbach.MinorArcs.norm_S_eta2_le_trivial": "relatedMatch"
+   }
   },
   {
    "id": "Eq C.6",
@@ -54398,7 +54911,10 @@
     ],
     "previous_status": "weaker"
    },
-   "changes_since_2013": "identical (1312.7748v2 (B.4))"
+   "changes_since_2013": "identical (1312.7748v2 (B.4))",
+   "relations_at_P": {
+    "TernaryGoldbach.MajorArcs.sum_Qset_mPhi2_le": "relatedMatch"
+   }
   },
   {
    "id": "Eq C.10",
@@ -54514,7 +55030,11 @@
     ],
     "previous_status": "stronger"
    },
-   "changes_since_2013": "identical (1312.7748v2 (B.5)), including the c_E error bar"
+   "changes_since_2013": "identical (1312.7748v2 (B.5)), including the c_E error bar",
+   "relations_at_P": {
+    "TernaryGoldbach.Prelim.RamPf.cR": "relatedMatch",
+    "TernaryGoldbach.Prelim.RamPf.cR_bounds": "relatedMatch"
+   }
   },
   {
    "id": "Eq C.11",
@@ -55158,7 +55678,10 @@
     ],
     "previous_status": "exact"
    },
-   "changes_since_2013": "Statement identical (1312.7748v2 Lemma 4.2). The proof was repaired. In 2013 the cases were q ≥ 27 and r < 27, missing q < 27 ≤ r, and it claimed Ϝ(r) > e^γ·2.50637 = 4.464, which is false (min Ϝ = 2√(e^γ·2.50637) = 4.2256). The book uses q < 27 and AM–GM."
+   "changes_since_2013": "Statement identical (1312.7748v2 Lemma 4.2). The proof was repaired. In 2013 the cases were q ≥ 27 and r < 27, missing q < 27 ≤ r, and it claimed Ϝ(r) > e^γ·2.50637 = 4.464, which is false (min Ϝ = 2√(e^γ·2.50637) = 4.2256). The book uses q < 27 and AM–GM.",
+   "relations_at_P": {
+    "TernaryGoldbach.Prelim.div_totient_lt": "narrowMatch"
+   }
   },
   {
    "id": "Eq C.19",

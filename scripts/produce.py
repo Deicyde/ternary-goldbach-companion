@@ -61,18 +61,47 @@ TITLE = {'theorem': 'Theorem', 'lemma': 'Lemma', 'proposition': 'Proposition', '
 STATEMENT_PROVENANCE = {'actor': 'agent', 'method': 'stated as printed (2026-11-06); compared with the LaTeX and built at the pin',
                         'confirmed_by_human': False}
 CLAIMS_ERROR = re.compile(r'(?i)\b(errat\w*|typo\w*|misprint\w*|wrong\w*|false\w*|incorrect\w*|mistake\w*|slip\w*|'
-                          r'should read|flaw\w*|is not true|does not hold|fails?|correct(?:ed|ion|s)?|invalid|misquot\w*|misstat\w*)\b')
+                          r'should read|flaw\w*|is not true|does not hold|fails?|correct(?:ed|ion|s)?|invalid|misquot\w*|misstat\w*|'
+                          r'should be|reversed|lacks?|omits?|omitted|not established|does not follow|unproved|too (?:small|large)|'
+                          r'survives|without the minus sign|gap|repair\w*|must move)\b')
 PREPRINT = re.compile(r'2013|2014|preprint|\bH13\b|\[HP?13')
 
 
+# the 2026-11-06 skeptics' phrasing ("the claim survives": the erratum claim was not refuted) -> what holds
+JARGON = [(re.compile(r'\b[Tt]he (?:gap )?claim survives,? as (an? [^.;:,()]+)'), r'it is \1'),
+          (re.compile(r'\b[Tt]he claim survives, granting\b'), 'it stands, granting'),
+          (re.compile(r'(?:[,;]\s*|\s+)(?:and |so )?the (?:gap )?claim survives(?: as stated)?(?=[.;:,)])'), ''),
+          (re.compile(r'(?:(?<=^)|(?<=[.;]\s))The (?:gap )?claim survives(?: as stated)?[.;:,]?\s*'), ''),
+          (re.compile(r"\b[Tt]he packet's (main )?claim"), r'the \1claim'),
+          (re.compile(r'\b[Tt]he claim survives\b'), 'the erratum stands'), (re.compile(r'\bdoes not survive\b'), 'does not hold'),
+          (re.compile(r'\bsurvives\b'), 'still holds'), (re.compile(r'\bsurvive\b'), 'still hold'),
+          (re.compile(r'\s+([.;,])'), r'\1'), (re.compile(r'[;,]\s*$'), '.'), (re.compile(r'\.\.$'), '.')]
+
+
+def dejargon(text):
+    text = ' '.join((text or '').split())
+    for rx, rep in JARGON:
+        text = rx.sub(rep, text)
+    return re.sub(r'(^|[.;:]\s+)([a-z])', lambda m: m.group(1) + m.group(2).upper() if m.group(1) in ('', ) or
+                  m.group(1).startswith('.') else m.group(0), text).strip()
+
+
+ABBREVIATION = re.compile(r'(?:\b(?:e\.g|i\.e|cf|Prop|Thm|Lem|Cor|Ch|Sec|Eq|Eqs|pp?|resp|vs|approx|ca|al|Fig|No)\.|\b[A-Z]\.)$')
+
+
 def sentences(text):
-    parts = re.split(r'(?<=\.)\s+(?=[A-Z`(\[])', ' '.join((text or '').split()))
-    return [p for p in parts if p]
+    out, cur = [], ''
+    for part in re.split(r'(?<=[.!?])\s+', ' '.join((text or '').split())):
+        cur = f'{cur} {part}'.strip()
+        if not ABBREVIATION.search(cur):
+            out.append(cur)
+            cur = ''
+    return out + ([cur] if cur else [])
 
 
 def terse(text, keep_errors):
     """At most two sentences, without claims that [H] errs (unless confirmed) or 2013 comparisons."""
-    out = [s for s in sentences(text) if not PREPRINT.search(s) and (keep_errors or not CLAIMS_ERROR.search(s))]
+    out = [s for s in sentences(dejargon(text)) if not PREPRINT.search(s) and (keep_errors or not CLAIMS_ERROR.search(s))]
     return ' '.join(out[:2])
 
 
@@ -155,19 +184,21 @@ def main():
         v = it['verification']
         prov = {'actor': 'agent', 'method': 're-judged at the pin' if v['rejudged'] else 'mapped, verified, judged',
                 'confirmed_by_human': False}
+        if it.get('relations_at_P'):
+            prov['method'] += '; key relations re-judged blind, statement against statement (2026-11-12)'
         common = {'locator': {'physical': pages, 'printed': [p - pdf['printed_page_offset'] for p in pages
                                                               if p - pdf['printed_page_offset'] >= 1]},
                   'provenance': prov}
         er = it['erratum']
         confirmed = er.get('present') and er.get('check', {}).get('state') == 'confirmed'
-        note = terse(it.get('note') or '', keep_errors=bool(confirmed))
+        note = terse(it.get('note') or '', keep_errors=False)  # a confirmed erratum is stated from its check, below
         if confirmed:
             kind = er['check'].get('kind') or er['kind']
             lead = 'Typo: ' if kind == 'typo' else 'Erratum: '
-            first = (sentences(er['check']['note']) or [''])[0]
+            first = (sentences(dejargon(er['check']['note'])) or [''])[0]
             how = f"proved by `{er['check']['theorem']}` in `{er['check']['script']}`" if er['check'].get('theorem') \
                 else f"checked by `{er['check']['script']}`"
-            note = (note.split('. ')[0].rstrip('.') + '. ' if note else '') + lead + first + f' ({how}).'
+            note = (sentences(note)[0].rstrip('.') + '. ' if note else '') + lead + first.rstrip('.') + f' ({how}).'
         base = {'id': it['id'], 'kind': it['kind'], 'status': STATUS[it['status']]}
         records = []
         nf = it['status'].startswith('not-formalized')
@@ -186,6 +217,8 @@ def main():
                 rel = 'relatedMatch'
             else:
                 rel = RELATION[it['status']] if key else 'relatedMatch'
+            if key and l['decl'] in it.get('relations_at_P', {}):  # re-judged on 2026-11-12 (scripts/mapping/review_fixes.py)
+                rel = it['relations_at_P'][l['decl']]
             role = 'key' if key else 'support'
             records.append(dict(base, relation=rel, subject=subject, object=[lean_end(l, role)],
                                 extensions={NS: dict(common)}))
@@ -197,6 +230,13 @@ def main():
         elif not records and not statements.get(it['id']):
             records.append(dict(base, subject=subject, object=[], extensions={NS: dict(common)}))
             counts['unlinked'] += 1
+        # an item judged formalized whose re-judged key links state no more than a part or a special case of it
+        if base['status'] == 'formalized' and it.get('relations_at_P') and not any(
+                r.get('relation') in ('exactMatch', 'closeMatch', 'broadMatch') and r['object'][0].get('role') == 'key'
+                for r in records if r['object']):
+            for r in records:
+                r['status'] = 'partial'
+            counts['formalized_to_partial'] += 1
         for r in records:
             if note:
                 r['note'] = note
@@ -211,7 +251,7 @@ def main():
                                        'destination': {'resolution': 'exact',
                                                        'href': f"{src['uri']}/blob/{src['version']}/{st['file']}",
                                                        'fragment': f"L{st['line']}"}}}}
-            records.append(dict(base, relation='exactMatch', subject=subject, object=[end], note=st['note'],
+            records.append(dict(base, relation=st.get('relation', 'exactMatch'), subject=subject, object=[end], note=st['note'],
                                 extensions={NS: dict(common, provenance=STATEMENT_PROVENANCE)}))
             counts['formal_statements'] += 1
         # file names: <item>__<role>__<declaration>, or a folder for an item with several records

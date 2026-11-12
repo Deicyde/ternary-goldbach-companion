@@ -1,0 +1,1438 @@
+{
+ "about": "Relations of key links re-judged on 2026-11-12 (scripts/mapping/review_fixes.py applies them). Each was judged blind, statement against statement, against the LaTeX and the Lean at the pin; a verdict stronger than the earlier relation was not taken.",
+ "items": {
+  "Corollary 12.2.5": {
+   "TernaryGoldbach.MinorArcs.cor_12_2_5": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "States only the second claim (12.42), and in weakened form: delta0>=2 instead of >=1, constant c+ replaced by 2 (book 1.36), cE truncated to 1.33258; first claim (over eq:jokor arcs) absent."
+   }
+  },
+  "Corollary 7.1.3": {
+   "TernaryGoldbach.MinorArcs.etaU": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "Defines the weight η = η_2 *_M φ used in the corollary (∫ η_2(u/w) φ(w) dw/w)."
+   }
+  },
+  "Corollary 9.3.3": {
+   "TernaryGoldbach.MajorArcs.cor_9_3_3": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same shape and main term, but requires x>=4 (book x>0) and uses a different error function err933N (its own for q>=2, an E2g/E1g-based form for q=1) instead of the explicit err of (eq:monte); equivalence/comparability of the error cannot be verified."
+   },
+   "TernaryGoldbach.MinorArcs.etaU": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines the weight eta_* = eta2 *_M phi (phi=t^2e^{-t^2/2}) used in the corollary; it exactly matches the corollary's definition of eta_* but is not the corollary's claim."
+   }
+  },
+  "Corollary C.1.3": {
+   "TernaryGoldbach.MinorArcs.norm_S_eta2_le_trivial": {
+    "relation": "relatedMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   }
+  },
+  "Eq 1.2": {
+   "TernaryGoldbach.circle_identity_tsum": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "States the outer equality for absolutely summable a,b,c (plus integrability), with sign convention e(n alpha), e(-N alpha); middle expression hat(f1*f2*f3) omitted."
+   }
+  },
+  "Eq 1.34": {
+   "TernaryGoldbach.MinorArcs.R": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly the R_{x,t} clause."
+   },
+   "TernaryGoldbach.MinorArcs.delta0": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly the delta0 clause."
+   },
+   "TernaryGoldbach.MinorArcs.L": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly the L clause (no x argument, as the formula does not depend on x)."
+   },
+   "TernaryGoldbach.MinorArcs.Cxt": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the inner log(1+...) of R, in terms of T=x^{1/3}; R = 0.27125 Cxt + 0.41415."
+   }
+  },
+  "Eq 1.35": {
+   "TernaryGoldbach.Helfgott.majorArcs": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines M_{delta0,r} (10.5); the intro's M here is a loosely defined (different) major-arc set, and the declaration is not the integral."
+   },
+   "TernaryGoldbach.Helfgott.integrand": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The integrand S_{eta+}^2 S_{eta*} e(-N alpha), with x fixed to xOf N; the integration over M is not included."
+   }
+  },
+  "Eq 1.40": {
+   "TernaryGoldbach.Helfgott.etaStar": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Definition of a specific eta_* = (eta2 *_M phi)(49 t), an instance of the general eta_* in the item; not the identity."
+   }
+  },
+  "Eq 1.6": {
+   "TernaryGoldbach.expTsum": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "General exponential series sum a(n) e(n alpha); S_eta is the case a(n)=Lambda(n)eta(n/x)."
+   }
+  },
+  "Eq 1.8": {
+   "TernaryGoldbach.Schar": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "General twisted sum sum a_n chi(n) e(n beta); item is a_n=Lambda(n)eta(n/x), beta=delta/x."
+   },
+   "TernaryGoldbach.Explicit.SsumG": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "sum Lambda chi phi(n/x) for arbitrary complex phi; item is phi(t)=e(delta t)eta(t)."
+   }
+  },
+  "Eq 1.9": {
+   "TernaryGoldbach.Explicit.fδ": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines the function t^2 e^{-t^2/2} e(delta t) (a specific eta) whose Mellin transform is F_delta, not the transform itself."
+   }
+  },
+  "Eq 10.1": {
+   "TernaryGoldbach.expTsum": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "General exponential series; S_eta is the case a(n)=Lambda(n)eta(n/x)."
+   },
+   "TernaryGoldbach.e": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the additive character e(t)=exp(2 pi i t) used in the definition."
+   }
+  },
+  "Eq 10.14": {
+   "TernaryGoldbach.MajorArcs.ramanujan_sum": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Ramanujan sum written directly as sum over a<q coprime of e(an/q) (not as tau(chi_0,n)), and RHS indexed by d -> q/d with divisibility indicator; equivalent for q>=1."
+   }
+  },
+  "Eq 10.2": {
+   "TernaryGoldbach.Helfgott.tri": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "Generic convolution \\sum_{n_1+n_2+n_3=N} f(n_1)g(n_2)h(n_3) for real f,g,h; covers the display with f=\\Lambda\\cdot\\eta_1(\\cdot/x) only for real \\eta_i and is not the specific sum."
+   },
+   "TernaryGoldbach.Helfgott.repSum": {
+    "relation": "narrowMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   }
+  },
+  "Eq 10.22": {
+   "TernaryGoldbach.MajorArcs.Cmain": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Definition of the right-hand double integral (as (eta_o*eta_o) convolved with eta_*) for the specific eta_o, eta_*; not the identity."
+   }
+  },
+  "Eq 10.3": {
+   "TernaryGoldbach.Helfgott.circle_identity_input": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Evaluates this integral as the representation sum only for eta1=eta2=eta+, eta3=eta*, x=xOf N."
+   },
+   "TernaryGoldbach.circle_identity_tsum": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "General identity: the integral over (0,1] of three absolutely summable exponential series times e(-N alpha) equals the triple convolution sum. It covers the surrounding claim (10.2)=(10.3) but is not the expression itself."
+   }
+  },
+  "Eq 10.32": {
+   "TernaryGoldbach.MajorArcs.gaussSum_one_eq": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "States the core identity tau(chi_0)=mu(q) (chi_0 = conj chi_0 = trivial character) without the common factor hat eta3(-delta) x/phi(q)."
+   }
+  },
+  "Eq 10.4": {
+   "TernaryGoldbach.MajorArcs.fI": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the integrand, for the specific weights eta1=eta2=eta+, eta3=eta*; no integral over M."
+   },
+   "TernaryGoldbach.Helfgott.integrand": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the integrand, for the specific weights eta+, eta+, eta* and x=xOf N; no integral over M."
+   }
+  },
+  "Eq 10.6": {
+   "TernaryGoldbach.gaussSum_eq_sum_range": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only b=1: Mathlib gaussSum with stdAddChar equals sum_{c<N} chi(c) e(c/N)."
+   },
+   "TernaryGoldbach.stdAddChar_natCast_eq_e": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Auxiliary fact stdAddChar(c)=e(c/N), not the Gauss sum."
+   }
+  },
+  "Eq 10.9": {
+   "TernaryGoldbach.Explicit.Ssum": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Fixes eta=t^2 e^{-t^2/2} and beta=delta/x."
+   },
+   "TernaryGoldbach.Schar": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "General sum_n a_n chi(n) e(n beta); item is a_n=Lambda(n)eta(n/x)."
+   },
+   "TernaryGoldbach.MajorArcs.Schar_eq_Ssum": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Lemma identifying Schar with Ssum for the Gaussian weight; not the definition."
+   },
+   "TernaryGoldbach.Explicit.SsumG": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "sum Lambda chi phi(n/x) for arbitrary complex phi, which includes phi(t)=e(beta x t)eta(t)."
+   }
+  },
+  "Eq 11.10": {
+   "TernaryGoldbach.Helfgott.eta2": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines eta2 by the explicit right-hand formula (0 for t<=0); the equality with eta1 *_M eta1 is not stated."
+   }
+  },
+  "Eq 11.14": {
+   "TernaryGoldbach.MinorArcs.theorem_3_1_1": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Its second conjunct is exactly this bound, 0.276 x^{5/6}(log x)^{3/2} + 1234 x^{2/3} log x, under the same hypotheses; it also states the q <= x^{1/3}/6 case."
+   }
+  },
+  "Eq 11.3": {
+   "TernaryGoldbach.MajorArcs.P0": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the [0,2] branch formula, without the restriction to [0,2] / zero elsewhere."
+   }
+  },
+  "Eq 11.5": {
+   "TernaryGoldbach.MajorArcs.conv2_ge": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Lean proves only the lower bound conv2(rho) >= |eta_o|_2^2 - 8.82(2-rho)^2, for all rho, with a constant 8.82 that is weaker than 2.71|eta_o'|_2^2 (about 6.7-7.4); it is one-sided, its constant is weaker, and its range is wider, so neither statement implies the other."
+   }
+  },
+  "Eq 11.7": {
+   "TernaryGoldbach.Helfgott.eta2": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines the closed form 4 max(log 2 - |log 2t|,0) for t>0 (0 for t<=0); the identity with the Mellin convolution eta_1 *_M eta_1 is not stated."
+   }
+  },
+  "Eq 11.8": {
+   "TernaryGoldbach.Helfgott.S": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Lean's S fixes f(n) = Lambda(n) e(n alpha) (a tsum over n in N); the book's f is arbitrary."
+   }
+  },
+  "Eq 12.10": {
+   "TernaryGoldbach.MinorArcs.harmonic_le_G": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The middle step H_n = sum_{r<=n} 1/r <= G(n), only for integers 1 <= n <= 199 (checked by computation)."
+   }
+  },
+  "Eq 12.11": {
+   "TernaryGoldbach.MinorArcs.G_le_mul_Gq": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the left inequality G(t) <= (P/phi(P)) G_P(t), and with the extra hypothesis that P is squarefree."
+   }
+  },
+  "Eq 12.13": {
+   "TernaryGoldbach.Prelim.f1pP": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the local factor at a single p."
+   },
+   "TernaryGoldbach.MinorArcs.f1p": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the local factor at a single p."
+   }
+  },
+  "Eq 12.14": {
+   "TernaryGoldbach.Prelim.RamPf.cR": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The definition gamma + sum_p log p/(p(p-1)) (sumP is a tsum over primes); the numerical value is not part of it."
+   },
+   "TernaryGoldbach.Prelim.RamPf.cR_bounds": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The numerical part: 1.3325822 <= c_E <= 1.3325823."
+   },
+   "TernaryGoldbach.MinorArcs.cE": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The literal 1.33258, a rounded-down value used in place of c_E; it is not the constant itself."
+   }
+  },
+  "Eq 12.23": {
+   "TernaryGoldbach.MinorArcs.cE": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The rounded constant 1.33258 that appears in the denominator."
+   }
+  },
+  "Eq 12.24": {
+   "TernaryGoldbach.MinorArcs.Sq": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the subexpression S_q = sum_{p|q} log p/p; err_{q,R} itself is not defined."
+   }
+  },
+  "Eq 12.32": {
+   "TernaryGoldbach.Prelim.RamPf.ramare_bound": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly |G_d(R) - (phi(d)/d)(log R + c_E + S_d)| <= 7.284 R^{-1/3} f_1(d), for R > 0, which is wider than the book's R >= 1 (from (12.12))."
+   }
+  },
+  "Eq 12.33": {
+   "TernaryGoldbach.MinorArcs.kapQ": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "kappa(q), defined in the book at (12.31), with omega = 0.6274 and c_Delta = 0.0274177; an ingredient of lambda(q)."
+   }
+  },
+  "Eq 13.30": {
+   "TernaryGoldbach.MinorArcs.Cxt": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same expression, but parametrised by T = z^{1/3} instead of z (Cxt (z^{1/3}) t = R^o_{z,t})."
+   }
+  },
+  "Eq 14.1": {
+   "TernaryGoldbach.MajorArcs.thm_7_1_4_one": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Bounds the same q=1 error for x >= 4.9e26, |delta| <= 6e5, but by 1e-18 + 6.24e6/sqrt(x); that is weaker than 1.1405e-8 near x_+ (about 2.8e-7) and stronger only for x above about 3e29, so neither statement implies the other."
+   }
+  },
+  "Eq 14.14": {
+   "TernaryGoldbach.Helfgott.κ": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the parameter choice kappa = 49 used in the display."
+   }
+  },
+  "Eq 14.15": {
+   "TernaryGoldbach.Helfgott.xOf_denom_bounds": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "Shows the denominator is positive and at most 2.02. This is a numerical fact about the definition, not the definition itself."
+   }
+  },
+  "Eq 14.16": {
+   "TernaryGoldbach.Helfgott.xOf_ge": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the first claim, xOf N >= 4.9e26 for N >= 10^27; x/kappa >= 1e25 is not stated."
+   }
+  },
+  "Eq 14.17": {
+   "TernaryGoldbach.MajorArcs.err_scaled_le_star": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A numerical lemma sqrt(c)(err(c) y + 1e-12 y) <= 1.49e-6 y; it plays the role of the sqrt(q*)|err| bound, but its constant is about 100x weaker than 1.33805e-8."
+   }
+  },
+  "Eq 14.18": {
+   "TernaryGoldbach.MajorArcs.prop_7_1_5'": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "States the first equality of the chain (error E2 with |E2| <= 2e-6 + 366.91/sqrt x) for x >= 4.9e26, which is the context range; the final O*(3e-6) inequality is not stated. It assumes Fact PlattGRH."
+   },
+   "TernaryGoldbach.MinorArcs.prop_7_1_5": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "This is the same statement as prop_7_1_5' and is proved from it: only the first equality of the chain, for x >= 4.9e26."
+   }
+  },
+  "Eq 14.2": {
+   "TernaryGoldbach.MajorArcs.err_scaled_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A purely numerical inequality, sqrt c * (err bound/sqrt c * x + 1e-15 x) <= 4.25e-7 x, used to combine the Lean constants. It does not bound err itself."
+   }
+  },
+  "Eq 14.22": {
+   "TernaryGoldbach.MajorArcs.integral_etaU": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Gives the unscaled integral of eta_2 *_M phi as sqrt(pi/2), an ingredient (kappa = 1 version) rather than the statement about eta_*."
+   },
+   "TernaryGoldbach.MajorArcs.integral_etaS": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "States the outer equality as the integral of eta_*(s) = etaU(kappa s), equal to sqrt(pi/2)/kappa. This is the integral rather than the L1 norm (equal because eta_* >= 0, but not stated), and the intermediate |eta_2|_1 |phi|_1 factorisation is absent."
+   }
+  },
+  "Eq 14.28": {
+   "TernaryGoldbach.MinorArcs.E_le_14_28": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Bounds a different quantity: the sum over n not prime > sqrt x of (Lambda(n) eta_+(n/x))^2. The book's E is the explicit expression ((C_0+C_2) log x + ...) x^{1/2} of (eq:georgic) that bounds such a sum. The Lean constant 8e-11 is also weaker than 8.4029e-12."
+   }
+  },
+  "Eq 14.3": {
+   "TernaryGoldbach.Helfgott.abs_etaPlus_le_A": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Gives |eta_+(t)| <= 1.94 for t >= 0, a weakened version of the sup-norm clause only (1.94 vs 1.079955)."
+   },
+   "TernaryGoldbach.Helfgott.abs_etaPlus_le_400": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Gives the crude bound |eta_+(t)| <= 400 for t >= 0, far weaker than the sup clause."
+   }
+  },
+  "Eq 14.30": {
+   "TernaryGoldbach.MinorArcs.sig": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "Defines the bounding function used in T_le."
+   },
+   "TernaryGoldbach.MinorArcs.sig_le_lin": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "sig(x) ≤ 0.640208000017 log x − 0.021095 for x ≥ 4.9e26; combined with T_le it gives S ≤ 0.640208000017 x log x − 0.021095 x."
+   }
+  },
+  "Eq 14.50": {
+   "TernaryGoldbach.Helfgott.circle_identity_input": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Gives the identity (plus integrability) over (0,1] with weights eta(n_i/x), correcting the book's missing /x. It fixes x = xOf N where the book's identity holds for any x, and requires N > 0."
+   },
+   "TernaryGoldbach.Helfgott.integrand": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Definition of the right-hand integrand S_{eta_+}^2 S_{eta_*} e(-N alpha) at x = xOf N, not the identity."
+   },
+   "TernaryGoldbach.Helfgott.repSum": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Definition of the left-hand weighted representation sum (with a predicate filter) at x = xOf N, not the identity."
+   }
+  },
+  "Eq 14.51": {
+   "TernaryGoldbach.Helfgott.nonprime_input": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A downstream numerical consequence: repSum(all) - repSum(odd primes) <= 6.7e6 N sqrt N log N for N >= 10^27, obtained after inserting crude sup bounds and Chebyshev estimates."
+   },
+   "TernaryGoldbach.Helfgott.repSum_sub_le_of_bounds": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "States the outer inequality of the chain: repSum(all) - repSum(Good) <= 3 Ap^2 As log N (psi(N) - theta(N) + log 2) psi(N), with Ap and As any bounds on |eta_+| and |eta_*| on t >= 0 in place of the sup norms. The middle step is absent, and the weights carry /x = xOf N."
+   }
+  },
+  "Eq 14.9": {
+   "TernaryGoldbach.MajorArcs.prod_lower_bound": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Bounds a finite product over odd primes 3 <= p <= R, for R >= 200, below by 0.6606(1 - 1/199). This is a different quantity (the truncated product, which exceeds the infinite one), and twice the bound is 1.3146 < 1.3203."
+   }
+  },
+  "Eq 2.5": {
+   "MellinConvergent": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The integrability predicate for the Mellin integral, i.e. the l_1 condition discussed after the display, not the transform itself."
+   }
+  },
+  "Eq 2.7": {
+   "TernaryGoldbach.Helfgott.mellinConv": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same formula, int_{r>0} f(r) g(t/r)/r, but only for real-valued f and g (the book's functions are general)."
+   }
+  },
+  "Eq 3.1": {
+   "TernaryGoldbach.Helfgott.S": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same sum (as a tsum over n, alpha real rather than in R/Z), but Lean only allows a real-valued weight eta : R -> R, while the book allows complex-valued eta."
+   },
+   "TernaryGoldbach.e": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "e(t) = exp(2 pi i t) is defined in the surrounding text and used in the display; it is not the display's definition of S_eta."
+   }
+  },
+  "Eq 3.10": {
+   "TernaryGoldbach.MinorArcs.typeII": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "typeII is the Type II sum S_II with f = 1_odd (v = 2) built in; it uses this f but does not define it."
+   }
+  },
+  "Eq 3.3": {
+   "TernaryGoldbach.MinorArcs.R": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly the R_{x,t} clause."
+   },
+   "TernaryGoldbach.MinorArcs.delta0": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly the delta0 clause."
+   },
+   "TernaryGoldbach.MinorArcs.L": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly the L_{x,t,q} clause; the formula does not depend on x, so Lean drops x as an argument."
+   },
+   "TernaryGoldbach.MinorArcs.Cxt": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "C_{x,t} = log(1 + ...) (written with T = x^{1/3}) is only the inner logarithm of R_{x,t} (R = 0.27125 C + 0.41415); it is not one of the display's clauses."
+   }
+  },
+  "Eq 3.6": {
+   "TernaryGoldbach.MinorArcs.trunc": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "Defines the truncation f_{<=U}, which the display uses, not the identity."
+   },
+   "TernaryGoldbach.MinorArcs.vaughan": {
+    "relation": "closeMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   }
+  },
+  "Eq 3.9": {
+   "TernaryGoldbach.MinorArcs.typeI2": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The S_{I,2} clause (sums over v <= V, u <= U, n), specialised to f = 1_odd (v = 2) and eta = eta_2."
+   },
+   "TernaryGoldbach.MinorArcs.typeILog": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The S_{I,1} clause with U = D, specialised to f = 1_odd and eta = eta_2."
+   },
+   "TernaryGoldbach.MinorArcs.S0inf": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The S_{0,infty} clause, specialised to f = 1_odd and eta = eta_2."
+   },
+   "TernaryGoldbach.MinorArcs.typeII": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The S_II clause, specialised to f = 1_odd and eta = eta_2. m runs over all odd m <= x, but terms with m <= U vanish because the inner divisor sum over d > U is then empty."
+   }
+  },
+  "Eq 4.26": {
+   "TernaryGoldbach.MinorArcs.sum_inv_le": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the first inequality of the chain (divided by x): sum_{j<J} 1/(R+jq) <= 1/R + (1/q) log(D/R), for any R, q > 0 and any J with R + (J-1)q <= D. The second inequality is not stated."
+   }
+  },
+  "Eq 4.29": {
+   "TernaryGoldbach.MinorArcs.typeI": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same sum with eta fixed to eta_2, which the lemma leaves general. The finite range n <= x is harmless because supp eta_2 is in [1/4, 1]."
+   }
+  },
+  "Eq 4.30": {
+   "TernaryGoldbach.MinorArcs.Mof": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A specific choice M = min(x/(2|delta|q), D) (D if delta = 0) of the parameter M, which the book only requires to lie in [min(Q0/2, D), D]."
+   }
+  },
+  "Eq 4.31": {
+   "TernaryGoldbach.MinorArcs.norm_restPart_le_caseB": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Proves that the non-main terms are at most bound_4_31, under case-(b)-type hypotheses. It is a claim using the expression, not the expression itself."
+   }
+  },
+  "Eq 4.32": {
+   "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Proves that the non-main terms (with M = Mof) are at most bound_4_32 for |delta| >= 1/2c2. It is a claim using the expression, not the expression itself."
+   }
+  },
+  "Eq 4.35": {
+   "TernaryGoldbach.MinorArcs.Todd": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same sum with the weight fixed to eta_2."
+   }
+  },
+  "Eq 4.36": {
+   "TernaryGoldbach.MinorArcs.SmoothData.norm_ToddG_le": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same three bounds for any continuous, compactly supported g with |g|_1 <= N, total variation <= V and (2pi t)^2|g^(t)| <= K (giving x N/2m + V/2, V/2/|sin|, (m/x)(K/2)/sin^2). With N = 1 this is the book's case, and Lean drops piecewise C^2. The last two bounds are stated for sin != 0, where the book's min is otherwise trivial."
+   },
+   "TernaryGoldbach.MinorArcs.norm_Todd_le": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same three bounds, but only for eta = eta_2, with |eta'|_1 = 8 log 2 and c0 fixed to 32."
+   }
+  },
+  "Eq 4.37": {
+   "TernaryGoldbach.MinorArcs.c₂_identity": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same identity (with c2 = 6pi/5sqrt(c0)), but proved only for the fixed value c0 = 32; in the book it holds for any c0 > 0."
+   },
+   "TernaryGoldbach.MinorArcs.c₂": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The definition c2 = 6pi/(5 sqrt c0) from the preceding text, which the identity follows from; it is not the identity."
+   }
+  },
+  "Eq 4.39": {
+   "TernaryGoldbach.MinorArcs.typeILog": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same sum with eta fixed to eta_2."
+   }
+  },
+  "Eq 4.41": {
+   "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Proves that the non-main terms of the log-weighted Type I sum are at most bound_4_41. It is a claim using the expression, not the expression itself."
+   }
+  },
+  "Eq 4.46": {
+   "TernaryGoldbach.MinorArcs.sum_R1L": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same bound for eta = eta_2 and c0 = 32, but the sum runs over m <= min(q/2, D) with the extra hypothesis D <= x/4. This is a sub-sum of non-negative terms, so the claim is weaker."
+   }
+  },
+  "Eq 4.49": {
+   "TernaryGoldbach.MinorArcs.typeI2": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same triple sum with eta fixed to eta_2. The absolute value is taken at the use site, not in the definition."
+   }
+  },
+  "Eq 4.5": {
+   "TernaryGoldbach.MinorArcs.lemma_4_1_2": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same hypotheses and bound, but Lean's C/0 = 0 makes the summand 0 instead of A where sin(pi alpha n) = 0 (possible when q not| n only in degenerate cases). The left side can only shrink, so the claim is at most slightly weaker."
+   }
+  },
+  "Eq 4.50": {
+   "TernaryGoldbach.MinorArcs.norm_mainPartI2_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Proves that the terms with q | a <= M are at most bound_4_50 (the corrected expression). It also assumes the PlattGRH input. It is a claim using the expression, not the expression itself."
+   },
+   "TernaryGoldbach.MinorArcs.c₄": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The constant c4 = 1.03884 used in the display. It is defined later in the proof, not by this display."
+   }
+  },
+  "Eq 4.56": {
+   "TernaryGoldbach.MinorArcs.norm_restPartI2_le_sum": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Proves ||restPartI2|| <= sum_{n<=UV, not(q|n and n<=M)} log n |T_{n,o}|, the reduction to (an absolute-value form of) this sum with eta_2 and the oddness of m dropped. It is a step that uses the expression."
+   },
+   "TernaryGoldbach.MinorArcs.restPartI2": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same range of m (odd, not(q|m and m<=M)), but with coefficient c(a) = sum Lambda(v) mu(a/v) instead of log m: it is the quantity before applying |c(a)| <= log a."
+   }
+  },
+  "Eq 4.6": {
+   "TernaryGoldbach.MinorArcs.lemma_4_1_3": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same hypotheses (Approx = alpha = a/q + beta/qQ, (a,q)=1, |beta|<=1, q<=Q; y2-y1<=q, y2<=Q/2, B,C>=0) and the same bound. Lean also proves the second bound of the lemma, (2Bq/pi) log(2e^2 q/pi), in the same statement."
+   }
+  },
+  "Eq 5.1": {
+   "TernaryGoldbach.MinorArcs.typeII": {
+    "relation": "narrowMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   }
+  },
+  "Eq 5.11": {
+   "TernaryGoldbach.MinorArcs.lemma_5_1_1": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Lean states Lemma 5.1.1 for v=2 (main term 4z/pi^2 = 6z/pi^2 * v/sigma(v)) with exactly this error bound. The l-range lower end is max(z/(y r1), z/(y r2), z/(2r1r2)), where the book's (5.9) prints min, a typo given (5.8). r <= floor y vs r < y changes nothing."
+   }
+  },
+  "Eq 5.19": {
+   "TernaryGoldbach.MinorArcs.integral_g2": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Proves the identity behind the rewriting for one s (y = S/s, v=2): int_{1/2}^1 g2(uy) du = sum mu mu/(sigma sigma) (1 - max(1/2, r1/y, r2/y)). The weighted sum over s and the prefactor are not stated."
+   }
+  },
+  "Eq 5.20": {
+   "TernaryGoldbach.MinorArcs.g2_eq_sum_dvd": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The v=2 case of the equality of g with the second line: sum_d mu(d) (sum_{d|r} f(r))^2, with f = mu/sigma on odd r."
+   },
+   "TernaryGoldbach.MinorArcs.g2_eq_sum_moebius": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The v=2 case of the equality of g with the last line: sum_{d<=N} mu(d) f(d)^2 S_d(N/d)^2, where f(d)^2 = 1/sigma(d)^2 for odd squarefree d, the oddness of f gives (d,2)=1, and S_d sums over odd r coprime to d. The intermediate equalities are not stated, and the v=1 case is not covered."
+   }
+  },
+  "Eq 5.3": {
+   "TernaryGoldbach.MinorArcs.IIsum": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines only the integrand of the right side (v=2). The m-range starts at x/2W, which is harmless because c_m = 0 for m <= U. It states no claim."
+   }
+  },
+  "Eq 5.31": {
+   "TernaryGoldbach.MinorArcs.T2_le'": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the v=2 case, T2(S) <= 0.37273. It holds for S >= 16, wider than the displayed S >= 100000 (the book's text extends it to 16 <= S). It assumes Ramare's Moebius bound as a Fact."
+   },
+   "TernaryGoldbach.MinorArcs.T2_le": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "A restatement of T2_le': the v=2 case for S >= 16."
+   }
+  },
+  "Eq 5.34": {
+   "TernaryGoldbach.MinorArcs.S1_bound": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Proves only the upper half of the O* statement (S1 <= ...), for x, W > 0 and U >= 1. Lean's H2 uses max(T2,0) where the book uses G2, so Lean's H2 is at most the book's."
+   }
+  },
+  "Eq 5.35": {
+   "TernaryGoldbach.MinorArcs.H2": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines only H2, and for S<16 uses (4/pi^2) max(T2(S),0) in place of the book's computable upper bound (4/pi^2) G2(S). H1 is absent."
+   }
+  },
+  "Eq 5.37": {
+   "TernaryGoldbach.MinorArcs.H2_le": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the H2 <= 2/pi^2 clause, for all S, with Lean's H2 (max(T2,0) in place of G2)."
+   }
+  },
+  "Eq 5.38": {
+   "TernaryGoldbach.MinorArcs.primeExpSum": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines only the inner prime sum S(beta) = sum_{W'<p<=W} log p e(beta p)."
+   },
+   "TernaryGoldbach.MinorArcs.oddSqSum": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same sum over odd m with a free upper endpoint A1 in place of x/W, which is only a reparametrisation. v=2 is fixed."
+   },
+   "TernaryGoldbach.MinorArcs.S2": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly the definition with v=2 fixed (m odd)."
+   }
+  },
+  "Eq 5.4": {
+   "TernaryGoldbach.MinorArcs.primeExpSum": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines only the inner prime sum, with general endpoints."
+   },
+   "TernaryGoldbach.MinorArcs.S1": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The S1 clause, with v=2 (odd m)."
+   },
+   "TernaryGoldbach.MinorArcs.S2": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The S2 clause, with v=2, and general U', W' standing for max(U,x/2W) and max(V,W/2)."
+   }
+  },
+  "Eq 5.41": {
+   "TernaryGoldbach.Prelim.sum_inv_le_sum_inv_totient": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The second inequality, sum_{n<=N} 1/n <= sum_{r<=N squarefree} 1/phi(r), for natural N."
+   },
+   "TernaryGoldbach.Prelim.log_le_sum_coprime": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The outer inequality of the chain, with R left free (R >= 0): (phi(q)/q) log R <= sum. Setting R = (q(nu+upsilon))^{-1/2} gives the printed right end. The intermediate links are not stated."
+   },
+   "TernaryGoldbach.Prelim.sum_sqfree_div_totient_le": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The first inequality, generalised to a non-negative antitone weight w (w=1 gives the book's step)."
+   }
+  },
+  "Eq 5.50": {
+   "TernaryGoldbach.MinorArcs.lemma_5_2_3_a": {
+    "relation": "broadMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   }
+  },
+  "Eq 5.53": {
+   "TernaryGoldbach.MinorArcs.prop_5_2_4_a": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same bound. Lean drops Prop 5.2.4's x >= W >= 1 and Q >= 3.5W (it needs only x, W > 0). Its extra assumptions rho > 0 and W' <= W cost nothing: rho = 0 is vacuous, and W' > W makes both sides 0."
+   }
+  },
+  "Eq 5.55": {
+   "TernaryGoldbach.MinorArcs.prop_5_2_4_b": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same bound. Lean needs only q <= Q, x, W > 0, W' >= W/2 and U' >= x/2W, dropping the proposition's Q >= 3.5W and x >= W >= 1."
+   }
+  },
+  "Eq 5.57": {
+   "TernaryGoldbach.MinorArcs.prop_5_2_4_d": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same bound and the same delta and rho conditions. Lean drops the proposition's Q >= 3.5W and x >= W >= 1."
+   }
+  },
+  "Eq 5.6": {
+   "TernaryGoldbach.MinorArcs.S1": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly the definition with v=2 fixed (m odd). v is a free parameter in the book here."
+   }
+  },
+  "Eq 5.8": {
+   "TernaryGoldbach.MinorArcs.innerS": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines only the inner sum for fixed s (y = B/Us, z = B/s, B = x/W), with v=2. It states no equality."
+   }
+  },
+  "Eq 6.1": {
+   "TernaryGoldbach.Helfgott.integral_abs_eta2": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The first clause, |eta2|_1 = 1."
+   },
+   "TernaryGoldbach.Helfgott.eVariationOn_eta2": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The second clause, stated as total variation of eta2 = 8 log 2."
+   },
+   "TernaryGoldbach.MinorArcs.eta2_L1": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The first clause, |eta2|_1 = 1 (an alias of integral_abs_eta2)."
+   },
+   "TernaryGoldbach.MinorArcs.eta2'L1": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only defines the constant 8 log 2 under the name |eta2'|_1. It states no claim about eta2."
+   }
+  },
+  "Eq 6.19": {
+   "TernaryGoldbach.MinorArcs.logSqSum": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "Defines the left-hand sum over primes in (floor W', floor W]."
+   },
+   "TernaryGoldbach.MinorArcs.logSqSum_le_half": {
+    "relation": "narrowMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   }
+  },
+  "Eq 6.2": {
+   "TernaryGoldbach.MinorArcs.integral_abs_eta2log_le": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The first clause, non-strict (<= log rho)."
+   },
+   "TernaryGoldbach.MinorArcs.eVariationOn_eta2log_le": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The second clause as a non-strict upper bound: total variation <= 8 log 2 log rho. The exact value 2 log(rho/2) eta2(1/2) is not stated."
+   }
+  },
+  "Eq 6.28": {
+   "TernaryGoldbach.MinorArcs.integral_inv_mul_log": {
+    "relation": "closeMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   }
+  },
+  "Eq 6.30": {
+   "TernaryGoldbach.MinorArcs.typeII_638": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A full bound on |S_II| in the regime V <= 2theta q <= x/U. The first case of Phi appears inside it, but Phi itself is not defined or stated."
+   },
+   "TernaryGoldbach.MinorArcs.typeII_637": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A full bound on |S_II| for 2eq <= V. The second case of Phi appears inside it, as log log(x/2Uq) - log log(V/2q), but it is a different statement."
+   }
+  },
+  "Eq 6.49": {
+   "TernaryGoldbach.MinorArcs.U1": {
+    "relation": "closeMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   },
+   "TernaryGoldbach.MinorArcs.delta0": {
+    "relation": "hasPart",
+    "how": "review sample 2026-11-12",
+    "why": "delta0 \\delta = max 2 (|\\delta|/4): exactly the 'where' part of the display."
+   },
+   "TernaryGoldbach.MinorArcs.V1": {
+    "relation": "closeMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   },
+   "TernaryGoldbach.MinorArcs.U1V1_ge": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "Consequence of the rounding: UV \\ge (1-1/T) x/(2\\sqrt t), replacing the exact x/UV=2\\sqrt{q\\delta_0}; needs T\\ge 6\\cdot10^6, t\\le T/3."
+   },
+   "TernaryGoldbach.MinorArcs.first_choice_t": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "With Q=3T^2/4 and q\\le T/6 (=y), derives |\\delta|q\\le 4T/3 and 2\\le\\delta_0 q\\le T/3 (= 2y): the consequences of the choice of Q, not the definitions."
+   }
+  },
+  "Eq 6.50": {
+   "TernaryGoldbach.MinorArcs.theorem_3_1_1": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Uses x >= 2.16e20 as a hypothesis but states Theorem 3.1.1, not the assumption."
+   },
+   "TernaryGoldbach.MinorArcs.cube_root_facts": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Consequences of x >= 2.16e20 (x^{1/3} >= 6e6 and power identities), not the assumption itself."
+   }
+  },
+  "Eq 6.60": {
+   "TernaryGoldbach.MinorArcs.typeII_rest_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Bounds Lean's own lower-order-term expression by 3.2 x^{5/6}. That is a different expression from the book's 8.22088... + 1.84251 x^{5/6} terms."
+   }
+  },
+  "Eq 6.61": {
+   "TernaryGoldbach.MinorArcs.typeII_rest_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Bounds Lean's lower-order-term expression by 3.2 x^{5/6}. That is a different expression from the book's terms."
+   }
+  },
+  "Eq 6.62": {
+   "TernaryGoldbach.MinorArcs.typeII_rest_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Lemma bounding the lower-order terms by 3.2 x^{5/6}, used to reach this display."
+   }
+  },
+  "Eq 6.9": {
+   "TernaryGoldbach.MinorArcs.sum_vonMangoldt_gcd_div_le": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "States the chain's end result multiplied by q: sum_{v<=N} Lambda(v)(q,v)/v <= log N + log q, for natural N rather than real V. Intermediate lines are not stated."
+   }
+  },
+  "Eq 7.1": {
+   "TernaryGoldbach.Helfgott.S": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same sum (as a tsum, argument order x, alpha), but eta is restricted to real-valued functions while the book allows complex-valued ones."
+   },
+   "TernaryGoldbach.expTsum": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A general exponential series sum a(n) e(n alpha). S_eta is the case a(n) = Lambda(n) eta(n/x)."
+   }
+  },
+  "Eq 7.2": {
+   "TernaryGoldbach.Schar": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "General twisted sum sum a_n psi(n) e(n beta). The item is the case a_n = Lambda(n) eta(n/x), beta = delta/x."
+   },
+   "TernaryGoldbach.Explicit.SsumG": {
+    "relation": "broadMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "sum Lambda(n) chi(n) phi(n/x) for a general phi. The item is phi(t) = eta(t) e(delta t)."
+   }
+  },
+  "Eq 7.3": {
+   "TernaryGoldbach.MajorArcs.P0": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the [0,2] clause of the formula, without the cutoff."
+   }
+  },
+  "Eq 7.4": {
+   "TernaryGoldbach.Helfgott.etaPlus": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Fixes H = 200, where the book leaves H a free positive constant."
+   }
+  },
+  "Eq 7.6": {
+   "TernaryGoldbach.Helfgott.F": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The first line (F_H), with the junk value 0 at y = 1. The book's F_H(t) is a typo for F_H(y)."
+   },
+   "TernaryGoldbach.Helfgott.sH": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "F_H(e^v) = (H/pi) sinc(Hv), a reparametrisation in v = log y with the singularity removed. Not the printed definition."
+   },
+   "TernaryGoldbach.Helfgott.hH": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The second line (h_H as a Mellin convolution), with H free."
+   }
+  },
+  "Eq 8.5": {
+   "TernaryGoldbach.Explicit.fδ": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the integrand eta(t) e(delta t), with eta fixed to t^2 e^{-t^2/2}. Not the Mellin transform."
+   },
+   "TernaryGoldbach.Explicit.fP": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The integrand eta_+(t) e(delta t), not the transform."
+   },
+   "TernaryGoldbach.Explicit.mellin_fδ": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Identifies the Mellin transform of t^2 e^{-t^2/2} e(delta t) (one specific eta) with the rotated integral Gr s delta 0. That is a different claim."
+   }
+  },
+  "Eq 8.8": {
+   "TernaryGoldbach.Explicit.Gr": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A rotated-contour integral that equals G_delta at theta = 0. A different quantity."
+   }
+  },
+  "Eq 9.11": {
+   "TernaryGoldbach.Explicit.C3": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines the constant sum Lambda(n) n^{-3/2} = |zeta'/zeta(3/2)|. No inequality, and no numerical value 1.50524."
+   },
+   "TernaryGoldbach.Explicit.norm_logDeriv_zeta_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The analogue for zeta only (trivial character), on Re u >= 3/2, bounded by C3."
+   },
+   "TernaryGoldbach.Explicit.norm_logDeriv_L_right": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The first inequality |L'/L(3/2+iy, chi)| <= C3 for every Dirichlet chi. The numerical bound 1.50524 is not stated."
+   }
+  },
+  "Eq 9.12": {
+   "TernaryGoldbach.Explicit.norm_logDeriv_zeta_left": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A different, much weaker bound for zeta, linear in |y|: (2/log 2 + 4.8)(40 + 2.6|y|)."
+   },
+   "TernaryGoldbach.Explicit.norm_logDeriv_L_left": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A different bound shape, (2/log 2 + 4.8) log(B/0.355), obtained by another method. Neither bound implies the other."
+   }
+  },
+  "Eq 9.13": {
+   "TernaryGoldbach.Explicit.norm_integral_hZeta_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A bound on the line integral for zeta. The item is just the expression."
+   },
+   "TernaryGoldbach.Explicit.norm_integral_hInt_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A bound on the line integral for primitive chi, a different statement from the expression."
+   }
+  },
+  "Eq 9.46": {
+   "TernaryGoldbach.Explicit.fδ": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Includes the extra factor e(delta t) and has no cutoff at t < 0."
+   },
+   "TernaryGoldbach.Helfgott.phi": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the t >= 0 formula, with no cutoff for t < 0."
+   }
+  },
+  "Eq 9.47": {
+   "TernaryGoldbach.Explicit.Gr_zero_eq": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Gr s delta 0 (Lean's G_delta) is given as the Mellin integral of t^2 e^{-t^2/2} e(delta t): the G_delta line only."
+   },
+   "TernaryGoldbach.Explicit.Gr": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The rotated-contour integral. Only at theta = 0 does it give G_delta, and that takes another lemma."
+   },
+   "TernaryGoldbach.Explicit.mellin_fδ": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "M(eta e(delta .))(s) = Gr s delta 0: the G_delta line. F_delta is not covered."
+   }
+  },
+  "Eq 9.55": {
+   "TernaryGoldbach.Explicit.integral_log_sq_etaSq_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Bounds |eta log|_2^2 by 3/2 - 3 sqrt(pi)/4 = 0.1707, weaker than the printed 0.16364. A weaker version of one clause."
+   },
+   "TernaryGoldbach.Explicit.integral_etaSq": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Exactly the clause |eta|_2^2 = 3 sqrt(pi)/8."
+   }
+  },
+  "Eq 9.63": {
+   "TernaryGoldbach.Helfgott.hH": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines the factor h_H only."
+   },
+   "TernaryGoldbach.Helfgott.etaPlus": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same formula with H fixed to 200, where the book leaves H general."
+   }
+  },
+  "Eq 9.93": {
+   "TernaryGoldbach.MajorArcs.prop_9_5_1": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Bounds the whole sum's error by 1e-8 for x >= 4.9e26, which follows from (9.72) together with this bound. It does not state the bound on err itself."
+   }
+  },
+  "Eq A.1": {
+   "TernaryGoldbach.MajorArcs.gL": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "gL(u) = h(e^u), which is h composed with exp, not h itself."
+   },
+   "TernaryGoldbach.Helfgott.hP": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the formula on [0,2], extended to all of R with no cutoff (the first clause)."
+   }
+  },
+  "Eq A.19": {
+   "TernaryGoldbach.MajorArcs.cube_mul_exp_neg_sq_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Bounds the factor: s^3 e^{-s^2} <= 1/2, a weaker stand-in for the max (3/2)^{3/2}e^{-3/2}. It is a lemma used in the step."
+   }
+  },
+  "Eq A.2": {
+   "TernaryGoldbach.MajorArcs.P0": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the formula on [0,2], with no cutoff."
+   }
+  },
+  "Eq A.24": {
+   "TernaryGoldbach.MajorArcs.abs_mul_Ew_le": {
+    "relation": "relatedMatch",
+    "how": "review 2026-11-12, verified against the LaTeX and the Lean"
+   }
+  },
+  "Eq A.26": {
+   "TernaryGoldbach.MajorArcs.PolyNum.integral_P0_sq": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Gives 0.640205997 <= int_0^2 P0^2 <= 0.640205998: the squared norm (P0 = eta_o on [0,2]) as an enclosure. The square root 0.8001287 is not stated."
+   }
+  },
+  "Eq A.3": {
+   "TernaryGoldbach.Helfgott.etaPlus": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The same formula with H fixed at 200; the book leaves H as a free parameter at this point."
+   }
+  },
+  "Eq A.35": {
+   "TernaryGoldbach.MajorArcs.hH_eq_conv": {
+    "relation": "closeMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "h_H(t) = int_R h(t e^{-v}) sin(Hv)/(pi v) dv for H, t > 0. This is the second form with v = w/H, integrated over all of R instead of cut at the support. The first form is not stated separately."
+   }
+  },
+  "Eq A.4": {
+   "TernaryGoldbach.Helfgott.F": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines F_H only (the book's typo F_H(t) is fixed to F_H(y))."
+   },
+   "TernaryGoldbach.Helfgott.hH": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines h_H only, with the same integral."
+   },
+   "TernaryGoldbach.Helfgott.hH_eq_u": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A change-of-variables identity for h_H, not a definition in the item."
+   }
+  },
+  "Eq A.8": {
+   "TernaryGoldbach.Explicit.norm_fourier_gC_le": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "|F g(xi)| <= int |g| = C_0, with g = h o exp. This is only the C_0 clause (Mh(it) is a Fourier transform of g); the C_1 to C_4 bounds are not stated."
+   }
+  },
+  "Eq A.9": {
+   "TernaryGoldbach.Explicit.Cg_eq_integral": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The first equality, Cg = int_0^2 t(2-t)^3 e^{t-1/2} dt."
+   },
+   "TernaryGoldbach.Explicit.Cg_eq": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The closed form, Cg = 92 e^{-1/2} - 12 e^{3/2}."
+   },
+   "TernaryGoldbach.Explicit.Cg_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only Cg <= 2.03, weaker than the printed value 2.02055184..."
+   },
+   "TernaryGoldbach.Explicit.Cg": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines Cg = int |g| (C_0 in the log variable), the left-hand side; not the computation in the item."
+   }
+  },
+  "Eq B.9": {
+   "TernaryGoldbach.MinorArcs.eta2'L1": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the constant |eta_2'|_1 = 8 log 2 that appears in the item."
+   }
+  },
+  "Eq C.10": {
+   "TernaryGoldbach.Prelim.RamPf.cR": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Defines c_E = gamma + sum_p log p/(p(p-1)), the constant in the item, from the 'where' clause."
+   },
+   "TernaryGoldbach.Prelim.RamPf.cR_bounds": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "A numerical enclosure of c_E, which sits outside the display."
+   }
+  },
+  "Eq C.5": {
+   "TernaryGoldbach.MinorArcs.norm_S_eta2_le_trivial": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "An unconditional trivial bound |S_eta2(alpha,z)| <= 17z; its constant is much weaker and it needs no zero hypothesis, so neither statement implies the other."
+   }
+  },
+  "Eq C.9": {
+   "TernaryGoldbach.MajorArcs.sum_Qset_mPhi2_le": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Bounds by 2.85 a finite sum over Qset 150000, not the full series. It follows from the book's upper bound but is a different quantity, and there is no lower bound."
+   }
+  },
+  "Lemma 11.2.1": {
+   "TernaryGoldbach.MinorArcs.hfun_antitone": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "hfun is exactly the book's h(x) (eq:flou). Lean proves h is decreasing, the h-branch of the lemma, but only for x >= e^9 (about 8103) rather than x >= 21, and not the piecewise function."
+   }
+  },
+  "Lemma 4.1.1": {
+   "TernaryGoldbach.MinorArcs.Approx": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Definition of the shared hypothesis alpha = a/q + beta/(qQ), (a,q)=1, |beta|<=1, 1<=q<=Q, not the lemma."
+   }
+  },
+  "Lemma 4.2.2": {
+   "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB": {
+    "relation": "hasPart",
+    "how": "review sample 2026-11-12",
+    "why": "The |\\delta|\\le1/2c_2 or D\\le Q_0/2 case (4.30)+(4.31), for \\eta_2 only."
+   },
+   "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseA": {
+    "relation": "hasPart",
+    "how": "review sample 2026-11-12",
+    "why": "The |\\delta|\\ge1/2c_2 case (4.30)+(4.32), for \\eta_2 only (and any \\epsilon>0)."
+   },
+   "TernaryGoldbach.MinorArcs.c₂": {
+    "relation": "hasPart",
+    "how": "review sample 2026-11-12",
+    "why": "c_2 = 6\\pi/(5\\sqrt{c_0}) as in the lemma, with c_0 fixed to 32 (the value for \\eta_2)."
+   },
+   "TernaryGoldbach.MinorArcs.Approx2": {
+    "relation": "relatedMatch",
+    "how": "review sample 2026-11-12",
+    "why": "Encodes the lemma's hypothesis 2\\alpha\\equiv a/q+\\delta/x, (a,q)=1, |\\delta/x|\\le1/(qQ_0), q\\le Q_0 (with 1\\le q); a hypothesis definition, not the claim."
+   }
+  },
+  "Lemma 5.2.3": {
+   "TernaryGoldbach.MinorArcs.lemma_5_2_3_b": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Display (5.51). Lean adds the hypotheses W >= 50000 and W' <= W, and (a,q)=1 is explicit."
+   }
+  },
+  "Lemma B.1.2": {
+   "TernaryGoldbach.MinorArcs.c₀": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "The constant 32 used in place of 31.521. It is a definition, not the claim."
+   }
+  },
+  "Lemma B.2.1": {
+   "TernaryGoldbach.MinorArcs.eta2log": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Definition of eta_(y)(t) = log(yt) eta_2(t), introduced in the lemma, not the inequality."
+   }
+  },
+  "Lemma C.2.2": {
+   "TernaryGoldbach.Prelim.div_totient_lt": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Same inequality and ranges, but the statement carries an extra [Fact PlattGRH] instance hypothesis (an unformalized GRH verification), so it is conditional where the book's lemma is not."
+   }
+  },
+  "Proposition 12.1.2": {
+   "TernaryGoldbach.MinorArcs.PrimeSupported": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Definition of the hypothesis on a_n (prime support > sqrt x, l1), not the proposition."
+   }
+  },
+  "Proposition 5.2.4": {
+   "TernaryGoldbach.MinorArcs.prop_5_2_4_e": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Display (5.54), with the extra hypotheses W >= 50000 and W' <= W."
+   }
+  },
+  "Proposition 7.1.5": {
+   "TernaryGoldbach.MajorArcs.prop_7_1_5'": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Only the second equality (the E2 form), with the same E2 bound but for x >= 4.9e26 instead of x >= 10^12, and with a [Fact PlattGRH] hypothesis."
+   },
+   "TernaryGoldbach.MinorArcs.prop_7_1_5": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "Restates prop_7_1_5': the E2 equality only, for x >= 4.9e26, under PlattGRH."
+   },
+   "TernaryGoldbach.MajorArcs.prop_9_5_1": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Gives the first equality but with |E1| <= 1e-8, much weaker than 5.123e-15 + 366.91/sqrt x, for x >= 4.9e26 under RH up to height 500. It is the ingredient of the proof, not the item."
+   }
+  },
+  "Proposition 9.3.2": {
+   "TernaryGoldbach.MajorArcs.GRHUpTo": {
+    "relation": "relatedMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Definition of the GRH-up-to-T0 hypothesis."
+   },
+   "TernaryGoldbach.MajorArcs.prop_9_3_2_one": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The q=1 case, with Lean's error term errZ in place of the book's err."
+   },
+   "TernaryGoldbach.MajorArcs.prop_9_3_2_ne": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The q>1 case, with Lean's error term errNew in place of the book's err."
+   }
+  },
+  "Theorem 1.1.1": {
+   "TernaryGoldbach.ternary_goldbach_of_hypotheses": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Concludes Statement, but assuming PlattGRH, BinaryGoldbachInput and RamareMoebius (unformalized numerical results) as explicit hypotheses."
+   },
+   "TernaryGoldbach.ternary_goldbach": {
+    "relation": "narrowMatch",
+    "how": "blind judge 2026-11-12",
+    "why": "Statement, conditional on the Fact instances PlattGRH, RamareMoebius and BinaryGoldbachInput."
+   }
+  },
+  "Theorem 3.1.1": {
+   "TernaryGoldbach.MinorArcs.theorem_3_1_1_second": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The second case with x = T^3 (T >= 6e6, i.e. x >= 2.16e20): 1.4341 T^{5/2}(log T)^{3/2} + 3702 T^2 log T equals 0.276 x^{5/6}(log x)^{3/2} + 1234 x^{2/3} log x (up to rounding of 0.276*3^{3/2}). Also assumes PlattGRH and RamareMoebius."
+   },
+   "TernaryGoldbach.MinorArcs.theorem_3_1_1_first": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The first case with x = T^3, with weaker constants: 0.8764, 2.526, 3.8 in place of 0.5, 2.5, 3.36."
+   }
+  },
+  "Theorem 7.1.4": {
+   "TernaryGoldbach.MajorArcs.thm_7_1_4_odd": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The odd-q case, for x >= 4.9e26, with the weaker bound (7.5e-8 + 7.7e6/sqrt x)/sqrt q, which dominates the book's bound throughout the range. Also assumes PlattGRH."
+   },
+   "TernaryGoldbach.MajorArcs.thm_7_1_4_even": {
+    "relation": "hasPart",
+    "how": "blind judge 2026-11-12",
+    "why": "The even-q case (|delta| <= 1200000/q), for x >= 4.9e26, with the same weaker bound (7.5e-8 + 7.7e6/sqrt x)/sqrt q. Also assumes PlattGRH."
+   }
+  }
+ }
+}

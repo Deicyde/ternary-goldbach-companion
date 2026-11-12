@@ -15,7 +15,7 @@ proof of Lemma 5.1.2, bounds `f(t) = |∑_{r ≤ t} μ(r)/r|` for real `1 ≤ t 
 
 **What the formalization does.** It does not prove this bound. It takes it, in exactly this form,
 as the hypothesis `TernaryGoldbach.RamareMoebius` (`TernaryGoldbach/Statement.lean`), one of the
-five hypotheses of the main theorem `TernaryGoldbach.ternary_goldbach_of_hypotheses`; inside the
+three hypotheses of the main theorem `TernaryGoldbach.ternary_goldbach_of_hypotheses`; inside the
 proof it is passed as `[Fact TernaryGoldbach.RamareMoebius]` and unpacked by
 `TernaryGoldbach.Prelim.ramare_moebius`.
 

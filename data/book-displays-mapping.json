@@ -1,0 +1,824 @@
+{
+ "overlay": "book",
+ "kind": "displays",
+ "lean": {
+  "uri": "https://github.com/calr3/ternary-goldbach",
+  "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553"
+ },
+ "mathlib": {
+  "uri": "https://github.com/leanprover-community/mathlib4",
+  "commit": "56a005855ea17e0b0958f73ec801ae140b0a1679"
+ },
+ "method": "each record mapped by one agent and independently by a second; an opus judge ruled on class or declaration-set disagreements and re-ran one in five agreed noMatch searches; paper records with LaTeX identical to a book record carry the book verdict. No person has reviewed these verdicts.",
+ "total": 434,
+ "mapped": 18,
+ "records": [
+  {
+   "id": "5.1 display 1",
+   "section": "5.1",
+   "relation": "exactMatch",
+   "class": "1-to-1",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.wM",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/S1Lemma.lean",
+     "module": "TernaryGoldbach.MinorArcs.S1Lemma",
+     "lines": [
+      204,
+      204
+     ],
+     "snippet": "noncomputable def wM (y : ℝ) (r₁ r₂ : ℕ) : ℝ := 1 - max (1 / 2) (max (r₁ / y) (r₂ / y))",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.wM",
+      "lines": [
+       203,
+       204
+      ],
+      "conclusion": "Defines `wM y r1 r2 = 1 - max (1/2) (max (r1/y) (r2/y))`, the weight $1-\\max(1/2,r_1/y,r_2/y)$ of [H, (5.10)]."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 2",
+   "section": "5.1",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "Lean defines only $v=2$ (odd $r_1r_2$); $g_1$ and general $v$ are absent.",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.g2",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Defs.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Defs",
+     "lines": [
+      41,
+      45
+     ],
+     "snippet": "/-- `g₂(t)` [H, Lemma 5.1.2]. -/\nnoncomputable def g2 (t : ℝ) : ℝ :=\n  ∑ r₁ ∈ Icc 1 ⌊t⌋₊, ∑ r₂ ∈ Icc 1 ⌊t⌋₊,\n    if Nat.Coprime r₁ r₂ ∧ Odd (r₁ * r₂) then\n      (μ r₁ : ℝ) * μ r₂ / ((σ 1 r₁ : ℝ) * σ 1 r₂) else 0",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.g2",
+      "lines": [
+       41,
+       45
+      ],
+      "conclusion": "`g2 t` is $g_2(t)$: the sum over $r_1,r_2\\le\\lfloor t\\rfloor$, coprime with $r_1r_2$ odd, of $\\mu(r_1)\\mu(r_2)/(\\sigma(r_1)\\sigma(r_2))$; this is $g_v$ for $v=2$ only."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 3",
+   "section": "5.1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Lean has no $g_1$ (v=1 absent) and no bound of this piecewise form.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/G2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.G2Bound",
+     "lines": [
+      201,
+      229
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.g2",
+     "TernaryGoldbach.MinorArcs.abs_g2_le_large"
+    ],
+    "greps": [
+     "111\\.536|55\\.768|0\\.0044325|0\\.1079 in ~/tg-companion/tg",
+     "g1 in TernaryGoldbach/MinorArcs"
+    ]
+   },
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 4",
+   "section": "5.1",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean proves a different $v=2$ pointwise bound for all $x>1$ with other constants (0.0236, 528) and no $2.1/x$ or $10^6$ range split; unused, since (5.31) is proved via kernel values and `tail_integral_le`.",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/G2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.G2Bound",
+     "lines": [
+      201,
+      203
+     ],
+     "snippet": "/-- **[H, Lemma 5.1.2] (`v = 2`, our constants)**: `|g₂(x)| ≤ 0.0236/(log x)² + 528 (1 + log x)²/x`\nfor `x > 1`. -/\ntheorem abs_g2_le_large {x : ℝ} (hx : 1 < x) :",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+      "lines": [
+       201,
+       229
+      ],
+      "conclusion": "For $v=2$ and all $x>1$, $|g_2(x)|\\le 0.0236/(\\log x)^2+528(1+\\log x)^2/x$ (`g2`); unused by the main theorem."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 5",
+   "section": "5.1",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean treats the odd-$n$ sum by counting odd integers in an interval ($\\frac14\\int g_2/y$ main term, error $\\le1$ per $y$), not by Euler-Maclaurin with $B_2$; the $\\log(1+1/m)$ appears as $\\int_m^{m+1}dy/y$ (`Ire`).",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.T2_eq_integral",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Basic.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Basic",
+     "lines": [
+      119,
+      120
+     ],
+     "snippet": "theorem T2_eq_integral {S : ℝ} (hS : 1 ≤ S) :\n    T2 S = S⁻¹ * ∫ y in Set.Ioc (0 : ℝ) S, g2 y * Nodd S y := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.T2_eq_integral",
+      "lines": [
+       119,
+       157
+      ],
+      "conclusion": "$T_2(S)=S^{-1}\\int_0^S g_2(y)N_S(y)\\,dy$ with `Nodd S y` counting odd $s$ with $S/2s<y\\le S/s$ (the sum over odd $n$ of $f$ turned into a count)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.abs_Nodd_sub_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Basic.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Basic",
+     "lines": [
+      199,
+      205
+     ],
+     "snippet": "theorem abs_Nodd_sub_le {S y : ℝ} (hy : 1 ≤ y) (hyS : y ≤ S) : |Nodd S y - S / (4 * y)| ≤ 1 := by\n  rw [Nodd_eq hy hyS]\n  have hy0 : 0 < y := by linarith\n  have hS0 : 0 < S := by linarith\n  have h := abs_card_odd_sub_le (α := S / (2 * y)) (by positivity)\n  have e : S / (2 * y) / 2 = S / (4 * y) := by ring\n  rwa [e] at h",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.abs_Nodd_sub_le",
+      "lines": [
+       199,
+       205
+      ],
+      "conclusion": "$|N_S(y)-S/(4y)|\\le1$, the odd-integer count in $(\\alpha,2\\alpha]$ equals $S/4y$ up to $1$."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.abs_T2_sub_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Basic.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Basic",
+     "lines": [
+      225,
+      227
+     ],
+     "snippet": "/-- **`|T₂(S) − ¼ ∫₁^S g₂(y)/y dy| ≤ S⁻¹ ∫₁^S |g₂|`** for `S ≥ 1`. -/\ntheorem abs_T2_sub_le {S : ℝ} (hS : 1 ≤ S) :\n    |T2 S - 1 / 4 * (∫ y in (1 : ℝ)..S, g2 y / y)| ≤ S⁻¹ * ∫ y in (1 : ℝ)..S, |g2 y| := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.abs_T2_sub_le",
+      "lines": [
+       225,
+       268
+      ],
+      "conclusion": "$|T_2(S)-\\frac14\\int_1^S g_2(y)/y\\,dy|\\le S^{-1}\\int_1^S|g_2|$."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 6",
+   "section": "5.1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Constants of the book's decomposition; Lean has no such constants.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Bound",
+     "lines": [
+      22,
+      73
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "TernaryGoldbach.MinorArcs.T2_le'",
+     "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le"
+    ],
+    "greps": [
+     "817\\.168|1634\\.34|0\\.038128|0\\.2046|0\\.0044325|0\\.1079|111\\.536|55\\.768 in ~/tg-companion/tg (Lean, md)",
+     "c_{v|C0|C_0 in TernaryGoldbach/MinorArcs"
+    ]
+   },
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 7",
+   "section": "5.1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Constants $c_{v,2},c_{v,3}$ of the pointwise bound in (5.1.2); Lean has none.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/G2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.G2Bound",
+     "lines": [
+      201,
+      229
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "TernaryGoldbach.MinorArcs.T2_le'",
+     "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le"
+    ],
+    "greps": [
+     "817\\.168|1634\\.34|0\\.038128|0\\.2046|0\\.0044325|0\\.1079|111\\.536|55\\.768 in ~/tg-companion/tg (Lean, md)",
+     "c_{v|C0|C_0 in TernaryGoldbach/MinorArcs"
+    ]
+   },
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus): noMatch search re-run"
+    ],
+    "agreed": true,
+    "same_relation": true,
+    "ruling": "confirmed",
+    "reason": "No constants c_{v,2}, c_{v,3} or their values in TernaryGoldbach/; Lean's tail uses tail_integral_le instead of piecewise pointwise bounds."
+   }
+  },
+  {
+   "id": "5.1 display 8",
+   "section": "5.1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Constants $c_{v,4},c_{v,5}$; Lean's `abs_g2_le_large` has 0.0236 and 528 instead.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/G2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.G2Bound",
+     "lines": [
+      201,
+      229
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "TernaryGoldbach.MinorArcs.T2_le'",
+     "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le"
+    ],
+    "greps": [
+     "817\\.168|1634\\.34|0\\.038128|0\\.2046|0\\.0044325|0\\.1079|111\\.536|55\\.768 in ~/tg-companion/tg (Lean, md)",
+     "c_{v|C0|C_0 in TernaryGoldbach/MinorArcs"
+    ]
+   },
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 9",
+   "section": "5.1",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Same place and same main term ($C_0=10^4$, $\\phi(2)/4=1/4$), but a different decomposition: Lean's error is $S^{-1}\\int_1^S|g_2|$ plus the tail $\\int_{10^4}^S|g_2|/y$, with no $O^*(c_{v,0}(5m^2+2m+1)/S^2)$ terms and no ranges $S/10^6$, $S/10^{10}$ with constants $c_{v,1..5}$.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.abs_T2_sub_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Basic.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Basic",
+     "lines": [
+      225,
+      227
+     ],
+     "snippet": "/-- **`|T₂(S) − ¼ ∫₁^S g₂(y)/y dy| ≤ S⁻¹ ∫₁^S |g₂|`** for `S ≥ 1`. -/\ntheorem abs_T2_sub_le {S : ℝ} (hS : 1 ≤ S) :\n    |T2 S - 1 / 4 * (∫ y in (1 : ℝ)..S, g2 y / y)| ≤ S⁻¹ * ∫ y in (1 : ℝ)..S, |g2 y| := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.abs_T2_sub_le",
+      "lines": [
+       225,
+       268
+      ],
+      "conclusion": "For $S\\ge1$, $|T_2(S)-\\frac14\\int_1^S g_2(y)/y\\,dy|\\le S^{-1}\\int_1^S|g_2|$: the main term plus a single error term, in place of the text's Euler--Maclaurin errors."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Bound",
+     "lines": [
+      27,
+      54
+     ],
+     "snippet": "  have hT := abs_T2_sub_le (show (1 : ℝ) ≤ S by linarith)\n  have hT' : T2 S ≤ 1 / 4 * (∫ y in (1 : ℝ)..S, g2 y / y) + S⁻¹ * ∫ y in (1 : ℝ)..S, |g2 y| :=\n    sub_le_iff_le_add'.1 (abs_le.1 hT).2\n  obtain ⟨hI, hJ⟩ := I_J_XX\n  have htail := tail_integral_le h\n  -- split at `10⁴`\n  have e1 := intervalIntegral.integral_add_adjacent_intervals\n    (intervalIntegrable_g2_div le_rfl (by norm_num : (1 : ℝ) ≤ 10000))\n    (intervalIntegrable_g2_div (by norm_num) h)\n  have e2 := intervalIntegral.integral_add_adjacent_intervals\n    (intervalIntegrable_abs_g2 zero_le_one (by norm_num : (1 : ℝ) ≤ 10000))\n    (intervalIntegrable_abs_g2 (by norm_num) h)\n  have h3 : ∫ y in (10000 : ℝ)..S, g2 y / y ≤ ∫ y in (10000 : ℝ)..S, |g2 y| / y :=\n    intervalIntegral.integral_mono_on h (intervalIntegrable_g2_div (by norm_num) h)\n      (G2Tail.intervalIntegrable_abs_g2_div (by norm_num) h) fun y hy =>\n        div_le_div_of_nonneg_right (le_abs_self _) (by linarith [hy.1])\n  have h4 : S⁻¹ * ∫ y in (10000 : ℝ)..S, |g2 y| ≤ ∫ y in (10000 : ℝ)..S, |g2 y| / y := by\n    rw [← intervalIntegral.integral_const_mul]\n    refine intervalIntegral.integral_mono_on h ((intervalIntegrable_abs_g2 (by norm_num) h).const_mul _)\n      (G2Tail.intervalIntegrable_abs_g2_div (by norm_num) h) fun y hy => ?_\n    have hy0 : 0 < y := by linarith [hy.1]\n    rw [inv_mul_eq_div]\n    exact div_le_div_of_nonneg_left (abs_nonneg _) hy0 hy.2\n  have h5 : S⁻¹ * ∫ y in (1 : ℝ)..10000, |g2 y| ≤ (∫ y in (1 : ℝ)..10000, |g2 y|) / 10000 := by\n    rw [inv_mul_eq_div]\n    exact div_le_div_of_nonneg_left (intervalIntegral.integral_nonneg (by norm_num)\n      fun y _ => abs_nonneg _) (by norm_num) h\n  rw [← e1, ← e2] at hT'",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+      "lines": [
+       22,
+       73
+      ],
+      "conclusion": "For $S\\ge10^4$, splits both integrals at $10^4$ ($=C_0$): main term $\\frac14\\int_1^{10^4}g_2/y=\\frac14\\sum_{m<10^4}g_2(m)\\log(1+1/m)$ and tail $\\int_{10^4}^S|g_2|/y$ bounded by `tail_integral_le`."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus)"
+    ],
+    "agreed": false,
+    "disagreement": "class relatedMatch vs noMatch",
+    "ruling": "own",
+    "reason": "Lean bounds T_2 at the same point with the same main term over m<=10^4 but via a different decomposition (abs_T2_sub_le plus a split at 10^4), so relatedMatch, not noMatch; added the abs_T2_sub_le end."
+   }
+  },
+  {
+   "id": "5.1 display 10",
+   "section": "5.1",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Same shape (main term at small $m$, error terms, tail), but Lean has no $c_{v,i}$, no $\\log 2/C_0$ term and no $c_{v,4}/2s(\\log S/2s)^2$ sum; the tail is bounded by `tail_integral_le`.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Bound",
+     "lines": [
+      27,
+      73
+     ],
+     "snippet": "  have hT := abs_T2_sub_le (show (1 : ℝ) ≤ S by linarith)\n  have hT' : T2 S ≤ 1 / 4 * (∫ y in (1 : ℝ)..S, g2 y / y) + S⁻¹ * ∫ y in (1 : ℝ)..S, |g2 y| :=\n    sub_le_iff_le_add'.1 (abs_le.1 hT).2\n  obtain ⟨hI, hJ⟩ := I_J_XX\n  have htail := tail_integral_le h\n  -- split at `10⁴`\n  have e1 := intervalIntegral.integral_add_adjacent_intervals\n    (intervalIntegrable_g2_div le_rfl (by norm_num : (1 : ℝ) ≤ 10000))\n    (intervalIntegrable_g2_div (by norm_num) h)\n  have e2 := intervalIntegral.integral_add_adjacent_intervals\n    (intervalIntegrable_abs_g2 zero_le_one (by norm_num : (1 : ℝ) ≤ 10000))\n    (intervalIntegrable_abs_g2 (by norm_num) h)\n  have h3 : ∫ y in (10000 : ℝ)..S, g2 y / y ≤ ∫ y in (10000 : ℝ)..S, |g2 y| / y :=\n    intervalIntegral.integral_mono_on h (intervalIntegrable_g2_div (by norm_num) h)\n      (G2Tail.intervalIntegrable_abs_g2_div (by norm_num) h) fun y hy =>\n        div_le_div_of_nonneg_right (le_abs_self _) (by linarith [hy.1])\n  have h4 : S⁻¹ * ∫ y in (10000 : ℝ)..S, |g2 y| ≤ ∫ y in (10000 : ℝ)..S, |g2 y| / y := by\n    rw [← intervalIntegral.integral_const_mul]\n    refine intervalIntegral.integral_mono_on h ((intervalIntegrable_abs_g2 (by norm_num) h).const_mul _)\n      (G2Tail.intervalIntegrable_abs_g2_div (by norm_num) h) fun y hy => ?_\n    have hy0 : 0 < y := by linarith [hy.1]\n    rw [inv_mul_eq_div]\n    exact div_le_div_of_nonneg_left (abs_nonneg _) hy0 hy.2\n  have h5 : S⁻¹ * ∫ y in (1 : ℝ)..10000, |g2 y| ≤ (∫ y in (1 : ℝ)..10000, |g2 y|) / 10000 := by\n    rw [inv_mul_eq_div]\n    exact div_le_div_of_nonneg_left (intervalIntegral.integral_nonneg (by norm_num)\n      fun y _ => abs_nonneg _) (by norm_num) h\n  rw [← e1, ← e2] at hT'\n  -- the numbers\n  have hD : (D : ℝ) = 10 ^ 30 := DR\n  rw [hD] at hI hJ\n  have hIf : ((Ifin : ℤ) : ℝ) = 1442305043071741356929337106029717587029646414197648482569251 := by\n    norm_num [Ifin]\n  have hJf : ((Jfin : ℕ) : ℝ) = 9218553783470309560072038260070108962893361103201224033363762 := by\n    norm_num [Jfin]\n  rw [hIf] at hI\n  rw [hJf] at hJ\n  have hI' : ∫ y in (1 : ℝ)..10000, g2 y / y ≤ 1.4423050431 := by\n    have := (le_div_iff₀' (by norm_num : (0 : ℝ) < (10 ^ 30) ^ 2)).2 hI\n    refine this.trans ?_\n    norm_num\n  have hJ' : ∫ y in (1 : ℝ)..10000, |g2 y| ≤ 9.2185538 := by\n    have := (le_div_iff₀' (by norm_num : (0 : ℝ) < (10 ^ 30) ^ 2)).2 hJ\n    refine this.trans ?_\n    norm_num\n  rw [mul_add, mul_add] at hT'\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+      "lines": [
+       22,
+       73
+      ],
+      "conclusion": "Bounds $T_2(S)$ by the main term $\\frac14\\int_1^{10^4}g_2/y\\le0.3605763$ plus $S^{-1}\\int_1^{10^4}|g_2|\\le9.22/S$ plus the tail $\\frac54\\cdot0.0045$."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 11",
+   "section": "5.1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Lean bounds the tail differently (0.0045 via weighted Cauchy-Schwarz); this numeric evaluation is absent.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/G2Tail.lean",
+     "module": "TernaryGoldbach.MinorArcs.G2Tail",
+     "lines": [
+      1084,
+      1089
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le",
+     "TernaryGoldbach.MinorArcs.T2_le'"
+    ],
+    "greps": [
+     "0\\.00009923|0\\.000853 in ~/tg-companion/tg",
+     "log \\(10 \\^ 10 in TernaryGoldbach/MinorArcs"
+    ]
+   },
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 12",
+   "section": "5.1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Numeric value of the $10^6$/$10^{10}$ error terms; Lean has no such terms.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Bound",
+     "lines": [
+      22,
+      73
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "TernaryGoldbach.MinorArcs.T2_le'",
+     "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le"
+    ],
+    "greps": [
+     "817\\.168|1634\\.34|0\\.038128|0\\.2046|0\\.0044325|0\\.1079|111\\.536|55\\.768 in ~/tg-companion/tg (Lean, md)",
+     "c_{v|C0|C_0 in TernaryGoldbach/MinorArcs"
+    ]
+   },
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 13",
+   "section": "5.1",
+   "relation": "hasPart",
+   "class": "Partial",
+   "note": "First line, $v=2$ only: $\\frac12\\frac{\\phi(2)}{2}\\sum g_2(m)\\log(1+1/m)=\\frac14\\int_1^{10^4}g_2/y\\approx0.360576$, proved as an upper bound over $m<10^4$ (`Ire`). The $v=1$ value and the second line ($\\sum|g_v|(5m^2+2m+1)$) are absent.",
+   "proof_kind": "direct",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Bound",
+     "lines": [
+      56,
+      67
+     ],
+     "snippet": "  have hD : (D : ℝ) = 10 ^ 30 := DR\n  rw [hD] at hI hJ\n  have hIf : ((Ifin : ℤ) : ℝ) = 1442305043071741356929337106029717587029646414197648482569251 := by\n    norm_num [Ifin]\n  have hJf : ((Jfin : ℕ) : ℝ) = 9218553783470309560072038260070108962893361103201224033363762 := by\n    norm_num [Jfin]\n  rw [hIf] at hI\n  rw [hJf] at hJ\n  have hI' : ∫ y in (1 : ℝ)..10000, g2 y / y ≤ 1.4423050431 := by\n    have := (le_div_iff₀' (by norm_num : (0 : ℝ) < (10 ^ 30) ^ 2)).2 hI\n    refine this.trans ?_\n    norm_num",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+      "lines": [
+       22,
+       73
+      ],
+      "conclusion": "With $D=10^{30}$ kernel data `Ifin`, gives $\\int_1^{10^4}g_2/y\\le1.4423050431$, so $\\frac14\\int\\le0.360576\\ldots$ for $v=2$."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 14",
+   "section": "5.1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Lean has no $c_{v,1}$ term; its analogue is $S^{-1}\\int_1^{10^4}|g_2|\\le9.2185538/S$.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Bound.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Bound",
+     "lines": [
+      22,
+      73
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.abs_g2_le_large",
+     "TernaryGoldbach.MinorArcs.T2_le'",
+     "TernaryGoldbach.MinorArcs.G2Tail.tail_integral_le"
+    ],
+    "greps": [
+     "817\\.168|1634\\.34|0\\.038128|0\\.2046|0\\.0044325|0\\.1079|111\\.536|55\\.768 in ~/tg-companion/tg (Lean, md)",
+     "c_{v|C0|C_0 in TernaryGoldbach/MinorArcs"
+    ]
+   },
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus): noMatch search re-run"
+    ],
+    "agreed": true,
+    "same_relation": true,
+    "ruling": "confirmed",
+    "reason": "No c_{v,1} log2/C_0 term or values 0.00006931/0.00017328 in TernaryGoldbach/; Lean's analogue is S^{-1}int_1^{10^4}|g_2| <= 9.2185538/10^4."
+   }
+  },
+  {
+   "id": "5.1 display 15",
+   "section": "5.1",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean defines the left side (v=2, odd $s$) as `T2` and proves the exact form $\\alpha_n+\\beta_n/S$ for $S<700$ (`T2_eq_ac`), but defines no majorant $G_v$ for $v=1$ or general $S$.",
+   "proof_kind": "direct",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.T2",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Defs.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Defs",
+     "lines": [
+      108,
+      110
+     ],
+     "snippet": "/-- The triple sum `T₂(S) = ∑_{s ≤ S odd} (1/s) ∫_{1/2}^1 g₂(uS/s) du` [H, (5.28)]. -/\nnoncomputable def T2 (S : ℝ) : ℝ :=\n  ∑ s ∈ Icc 1 ⌊S⌋₊, if Odd s then (1 / s : ℝ) * ∫ u in (1 / 2 : ℝ)..1, g2 (u * S / s) else 0",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.T2",
+      "lines": [
+       108,
+       110
+      ],
+      "conclusion": "`T2 S` $=\\sum_{s\\le S,\\ s\\ odd}\\frac1s\\int_{1/2}^1 g_2(uS/s)\\,du$, the triple sum of [H, (5.28)] for $v=2$."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.SmallG2.T2_eq_ac",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Small.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Small",
+     "lines": [
+      444,
+      446
+     ],
+     "snippet": "/-- **`T₂(S) = a(n) − a(⌊n/2⌋)/2 + (c(n) − c(⌊n/2⌋))/S`** for `S ∈ [n, n+1)`. -/\ntheorem T2_eq_ac {n : ℕ} (hn : 1 ≤ n) {S : ℝ} (h1 : (n : ℝ) ≤ S) (h2 : S < n + 1) :\n    T2 S = areal n - areal (n / 2) / 2 + (creal n - creal (n / 2)) / S := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.SmallG2.T2_eq_ac",
+      "lines": [
+       444,
+       494
+      ],
+      "conclusion": "For $S\\in[n,n+1)$, $n\\ge1$: `T2 S = areal n - areal (n/2)/2 + (creal n - creal (n/2))/S`, i.e. $T_2(S)=\\alpha_n+\\beta_n/S$ exactly with $\\alpha_n,\\beta_n$ depending only on $\\lfloor S\\rfloor$."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 16",
+   "section": "5.1",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean shows $T_2(S)=\\alpha_n+\\beta_n/S$ with $n=\\lfloor S\\rfloor$ for $v=2$, $S<700$ (and `H2B.T2_eq` for $n\\le15$); the book's $G_v$ is a majorant of this form, which Lean does not define.",
+   "proof_kind": "direct",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.SmallG2.T2_eq_ac",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/T2Small.lean",
+     "module": "TernaryGoldbach.MinorArcs.T2Small",
+     "lines": [
+      444,
+      446
+     ],
+     "snippet": "/-- **`T₂(S) = a(n) − a(⌊n/2⌋)/2 + (c(n) − c(⌊n/2⌋))/S`** for `S ∈ [n, n+1)`. -/\ntheorem T2_eq_ac {n : ℕ} (hn : 1 ≤ n) {S : ℝ} (h1 : (n : ℝ) ≤ S) (h2 : S < n + 1) :\n    T2 S = areal n - areal (n / 2) / 2 + (creal n - creal (n / 2)) / S := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.SmallG2.T2_eq_ac",
+      "lines": [
+       444,
+       494
+      ],
+      "conclusion": "For $S\\in[n,n+1)$, $n\\ge1$: `T2 S = areal n - areal (n/2)/2 + (creal n - creal (n/2))/S`, i.e. $T_2(S)=\\alpha_n+\\beta_n/S$ exactly with $\\alpha_n,\\beta_n$ depending only on $\\lfloor S\\rfloor$."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5.1 display 17",
+   "section": "5.1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Alternative route (a remark outside the main argument) via $\\sum_{d\\le U}\\mu(d)(W/qd+O(1))$; Lean's $S_1$ does not use it.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.S1",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+     "module": "TernaryGoldbach.MinorArcs.TypeIIS1",
+     "lines": [
+      52,
+      55
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.S1_eq_triples",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+     "module": "TernaryGoldbach.MinorArcs.TypeIIS1",
+     "lines": [
+      72,
+      128
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.S1",
+     "TernaryGoldbach.MinorArcs.S1_eq_triples"
+    ],
+    "greps": [
+     "W / (q \\* d)|W/qd in TernaryGoldbach",
+     "sum_moebius in TernaryGoldbach/MinorArcs"
+    ]
+   },
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus): noMatch search re-run"
+    ],
+    "agreed": true,
+    "same_relation": true,
+    "ruling": "confirmed",
+    "reason": "Remark on an unused alternative (Note); no congruence-class truncated-Moebius computation in TernaryGoldbach/MinorArcs."
+   }
+  },
+  {
+   "id": "5.2 display 1",
+   "section": "5.2",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Heuristic trivial size of $S_2$; no Lean statement.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.S2",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/TypeII.lean",
+     "module": "TernaryGoldbach.MinorArcs.TypeII",
+     "lines": [
+      489,
+      490
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.S2"
+    ],
+    "greps": [
+     "2 \\* Real.log x|trivial in TernaryGoldbach/MinorArcs/TypeII*.lean, LargeSievePrimes.lean"
+    ]
+   },
+   "verification": {
+    "batch": "B049-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  }
+ ]
+}

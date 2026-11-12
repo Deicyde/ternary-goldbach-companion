@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.39",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 103,
+        "rect": [
+          0.17135,
+          0.69442,
+          0.56816,
+          0.08834
+        ]
+      },
+      "title": "Equation (5.39)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.large_sieve_primes",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.large_sieve_primes",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem large_sieve_primes {ι : Type*} (s : Finset ι) (β : ι → ℝ) {δ : ℝ} (hδ : 0 < δ)\n    (hδ1 : δ ≤ 1)\n    (hsep : ∀ r ∈ s, ∀ r' ∈ s, r ≠ r' → δ ≤ |(β r - β r') - round (β r - β r')|)\n    {W' W : ℝ} (hW' : 0 ≤ W') :\n    ∑ r ∈ s, ‖primeExpSum W' W (β r)‖ ^ 2 ≤ (W - W' + δ⁻¹) * logSqSum W' W :=",
+            "line": 31,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L31"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          103
+        ],
+        "printed": [
+          93
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The log-gain factor is proved only for R ≤ W′; the factor-1 bound needs no W′ ≥ W/2 or W ≥ 1."
+}

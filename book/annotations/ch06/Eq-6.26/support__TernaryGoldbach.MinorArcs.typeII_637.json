@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.26",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 121,
+        "rect": [
+          0.17135,
+          0.74563,
+          0.56816,
+          0.03611
+        ]
+      },
+      "title": "Equation (6.26)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_637",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_637",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_637 {α x Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) (hx : 0 < x) {U V : ℕ} (hU : 1 ≤ U)\n    (hV : (2000000 : ℝ) ≤ V) (hVU : (V : ℝ) ≤ x / U) (hQ : 3.5 * (x / U) ≤ Q)\n    (hqV : 2 * rexp 1 * q ≤ V) :\n    ‖typeII α x U V‖ ≤\n      x / √(2 * Nat.totient q) * √((Real.log (x / (U * V)) + Real.log (2 * q) *\n        (Real.log (Real.log (x / U / (2 * q))) - Real.log (Real.log (V / (2 * q))))) *\n        (0.60428 * Real.log (x / (U * V)) + 0.0924 + 8 * zeta3 * √(x / V) / U)) +\n      4 * √(kap1 x U V * q * x / (2 * Nat.totient q)) * (2 * √(x / U) + √(Real.log (2 * q)) *\n        (2 * rexp 1 * √(2 * q) + 4 * √(x / U / Real.log (x / U / (2 * q))))) +\n      8 * 1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) / √V :=",
+            "line": 333,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L333"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          121
+        ],
+        "printed": [
+          111
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The main term needs an extra 0.0231·x/(β√φ(q)) from the corrected (5.36); Lean includes it and never isolates (6.26). Erratum: Because (5.36) is false, the first summand contributes more than (6.26). (checked by `scripts/checks/eq_6_26.py`)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 4.2.2",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 73,
+        "rect": [
+          0.17135,
+          0.34627,
+          0.56816,
+          0.50695
+        ]
+      },
+      "title": "Lemma 4.2.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_sum",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Total"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_le_sum",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_le_sum {α x δ Q U V : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q) (hx : 0 < x)\n    (hqV : q * V ≤ Q) (hQV : 16 * V ≤ Q) (hU : 1 ≤ U) (hV : 1 ≤ V) (hUV : U * V ≤ x) :\n    (|δ| ≤ 1 / (2 * c₂) → ‖typeI2 α x U V‖ ≤ ∑ v ∈ Icc 1 ⌊V⌋₊, if Odd v then\n        (Λ v : ℝ) * (bound_4_30 (x / v) δ (q / Nat.gcd q v) U +\n          bound_4_31 (x / v) (q / Nat.gcd q v) U) else 0) ∧\n    (1 / (2 * c₂) ≤ |δ| → ∀ ε, 0 < ε → ε ≤ 1 → ‖typeI2 α x U V‖ ≤ ∑ v ∈ Icc 1 ⌊V⌋₊, if Odd v then\n        (Λ v : ℝ) * (bound_4_30 (x / v) δ (q / Nat.gcd q v) U +\n          bound_4_32 (x / v) δ (q / Nat.gcd q v) U (Q / v) ε) else 0) :=",
+            "line": 110,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Total.lean",
+            "fragment": "L110"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          73
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the lemma for η = η₂ only, with c₀ = 32 in place of 31.521; the hypotheses Q₀ ≥ 16 and ε ≤ 1 are not needed."
+}

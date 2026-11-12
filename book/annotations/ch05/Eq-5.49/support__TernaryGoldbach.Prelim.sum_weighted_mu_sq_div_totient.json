@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.49",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 106,
+        "rect": [
+          0.25926,
+          0.64163,
+          0.56816,
+          0.03736
+        ]
+      },
+      "title": "Equation (5.49)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.49"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_weighted_mu_sq_div_totient",
+        "module": "TernaryGoldbach.Prelim.LargeSieveMV"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_weighted_mu_sq_div_totient",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_weighted_mu_sq_div_totient {R : ℝ} (hR : 2 ≤ R) :\n    Real.log R + 0.25068 ≤ ∑ r ∈ (Icc 1 ⌊R⌋₊).filter Squarefree,\n      (1 + r / R)⁻¹ * (1 / Nat.totient r : ℝ) :=",
+            "line": 48,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LargeSieveMV.lean",
+            "fragment": "L48"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          106
+        ],
+        "printed": [
+          96
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses σ₀ = 0.30286 and needs W ≥ 50000 to absorb its +1 in the length term; the choice appears only in the odd-m proof."
+}

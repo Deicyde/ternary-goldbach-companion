@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 4.1.2",
+  "kind": "lemma",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 64,
+        "rect": [
+          0.25926,
+          0.65507,
+          0.56816,
+          0.0922
+        ]
+      },
+      "title": "Lemma 4.1.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_Icc_low_high",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_Icc_low_high",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_Icc_low_high (F : ℕ → ℝ) (q : ℕ) (hq : 1 ≤ q) :\n    ∑ R ∈ Finset.Icc 1 (q - 1), F R =\n      ∑ r ∈ Finset.Icc 1 ((q - 1) / 2), F r + ∑ k ∈ Finset.Icc 1 (q / 2), F (q - k) :=",
+            "line": 1211,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1211"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          64
+        ],
+        "printed": [
+          54
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Only the first bound 20Cq²/(3π²) is used downstream. Erratum: The proof's first display runs the integer-distance sum to r = q/2, but only r ≤ (q−1)/2 occur; for even q the extra term makes the display (2q²+1)C/3, which exceeds the next bound C·N(q) at q = 2, 4, 6 (3 > 2.363, 11 > 10.629, 24.333 > 24.146) and there even exceeds 20Cq²/(3π²). (checked by `scripts/checks/lemma_4_1_2.py`)."
+}

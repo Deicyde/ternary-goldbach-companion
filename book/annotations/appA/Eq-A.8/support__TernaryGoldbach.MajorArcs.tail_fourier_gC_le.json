@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.8",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 290,
+        "rect": [
+          0.25926,
+          0.65508,
+          0.56816,
+          0.04779
+        ]
+      },
+      "title": "Equation (A.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.tail_fourier_gC_le",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.tail_fourier_gC_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem tail_fourier_gC_le {H : ℝ} (hH0 : 0 < H) :\n    ∫ ξ in (Icc (-(H / (2 * π))) (H / (2 * π)))ᶜ, ‖𝓕 gC ξ‖ ^ 2 ≤ 19.5 / H ^ 2 :=",
+            "line": 435,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L435"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          290
+        ],
+        "printed": [
+          280
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps only the trivial term; the pointwise decay terms are never formalized. Their use in (A.21)–(A.23) is replaced by Plancherel tails in log coordinates."
+}

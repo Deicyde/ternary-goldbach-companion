@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.28",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 221,
+        "rect": [
+          0.17135,
+          0.55053,
+          0.56816,
+          0.05209
+        ]
+      },
+      "title": "Equation (10.28)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.l2_major_bounds",
+        "module": "TernaryGoldbach.MajorArcs.L2Major"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.l2_major_bounds",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem l2_major_bounds {x : ℝ} (hx : 4.9e26 ≤ x) :\n    8.6296 * x ≤ ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 ∧\n      ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 ≤ 8.79 * x :=",
+            "line": 309,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "fragment": "L309"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          221
+        ],
+        "printed": [
+          211
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Proved only for η₊ inside the upper half of l2_major_bounds, with the same pairing of even and odd moduli."
+}

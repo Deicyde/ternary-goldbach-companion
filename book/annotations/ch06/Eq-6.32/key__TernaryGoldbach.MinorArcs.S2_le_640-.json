@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.32",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 123,
+        "rect": [
+          0.17135,
+          0.59201,
+          0.56816,
+          0.07975
+        ]
+      },
+      "title": "Equation (6.32)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2_le_640'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2_le_640'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S2_le_640' {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (h2α : 2 * α = a / q + δ / x + k) (hδQ : |δ / x| ≤ 1 / (q * Q)) (hδ8 : 8 ≤ |δ|) (hx : 0 < x)\n    (hQx : x ≤ Q ^ 2) {U V : ℕ} (hU : 1 ≤ U) {A : ℝ} (hVA : (V : ℝ) ≤ A)\n    (hcV : |δ| * q * (1 + x / (2 * U * Q)) / 4 * rexp 1 ≤ A)\n    {W : ℝ} (hW : W ∈ Set.Icc A (x / U)) :\n    S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (2 / |δ| * x / (Nat.totient q * Real.log (W / (|δ| * q * (1 + x / (2 * U * Q)) / 4))) +\n        q / Nat.totient q * (W / Real.log (W / (|δ| * q * (1 + x / (2 * U * Q)) / 4)))) *\n        logSqSum (max V (W / 2)) W :=",
+            "line": 388,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L388"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          123
+        ],
+        "printed": [
+          113
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean states only the log branch of the min, keeps Σ(log p)² unbounded until pointwise_gen', and uses W ≥ ec' and x ≤ Q² in place of |δq| ≤ 2W and Q ≥ 2√x."
+}

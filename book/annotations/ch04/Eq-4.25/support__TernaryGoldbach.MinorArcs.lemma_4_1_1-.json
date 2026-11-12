@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.25",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.25926,
+          0.43527,
+          0.56816,
+          0.10773
+        ]
+      },
+      "title": "Equation (4.25)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_1'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_1_1'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_4_1_1' {α Q : ℝ} {a : ℤ} {q : ℕ} (h : Approx α a q Q) (y : ℝ) {A C : ℝ}\n    (hA : 0 ≤ A) (hC : 0 ≤ C) :\n    ∑ n ∈ Finset.Ioc ⌊y⌋ ⌊y + q⌋, minA A C (Real.sin (π * α * n) ^ 2) ≤\n      min (2 * A + 6 * q ^ 2 / π ^ 2 * C) (3 * A + 4 * q / π * √(A * C)) :=",
+            "line": 908,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L908"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "All m in (R, D] are kept, including q | m (since |T_m| ≥ 0), so no Q/2 restriction is needed, in Lean as in the book. The book's '(4.26) gets halved' for Lemma 4.2.2 is the coefficient 3c₁/2 in block_R3."
+}

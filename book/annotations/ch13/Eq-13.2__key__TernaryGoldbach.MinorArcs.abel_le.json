@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.2",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 255,
+        "rect": [
+          0.17135,
+          0.81446,
+          0.56816,
+          0.04306
+        ]
+      },
+      "title": "Equation (13.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abel_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abel_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem abel_le {f g F : ℕ → ℝ} {a b : ℕ} (hab : a ≤ b)\n    (hg : ∀ n, a ≤ n → n < b → g (n + 1) ≤ g n) (hg0 : 0 ≤ g b)\n    (hS : ∀ n, a ≤ n → n ≤ b → ∑ m ∈ Icc a n, f m ≤ F n) :\n    ∑ n ∈ Icc a b, f n * g n ≤ g a * F a + ∑ n ∈ Ioc a b, g n * (F n - F (n - 1)) :=",
+            "line": 26,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L26"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          255
+        ],
+        "printed": [
+          245
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "[H] then applies it with the running maximum h in place of g; in Lean g is already non-increasing."
+}

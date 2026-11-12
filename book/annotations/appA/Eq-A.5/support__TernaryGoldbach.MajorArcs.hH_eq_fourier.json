@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.5",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 289,
+        "rect": [
+          0.17135,
+          0.79793,
+          0.56816,
+          0.05642
+        ]
+      },
+      "title": "Equation (A.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.hH_eq_fourier",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.hH_eq_fourier",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hH_eq_fourier {H t : ℝ} (hH0 : 0 < H) (ht : 0 < t) :\n    (hH H t : ℂ) = ∫ ξ in Icc (-(H / (2 * π))) (H / (2 * π)),\n      Complex.exp (↑(2 * π * ξ * Real.log t) * I) * 𝓕 gC ξ :=",
+            "line": 272,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L272"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          289
+        ],
+        "printed": [
+          279
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked numerically: Re MF_H(iτ) = (1/π)[Si((H+τ)R) + Si((H−τ)R)] tends to 1.000, 0.500 and 0.000 for τ/H = 0.5, 1 and 1.5 (R = 10⁶). The integral converges only conditionally (sinc ∉ L¹)."
+}

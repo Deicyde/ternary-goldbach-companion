@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.8",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 213,
+        "rect": [
+          0.17135,
+          0.63809,
+          0.56816,
+          0.0163
+        ]
+      },
+      "title": "Equation (10.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Schar_primitive",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Schar_primitive",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Schar_primitive {q : ℕ} [NeZero q] (ψ : DirichletCharacter ℂ q) (c : ℕ → ℂ) (β : ℝ) :\n    Schar ψ (coprimePart q c) β = Schar ψ.primitiveCharacter (coprimePart q c) β :=",
+            "line": 78,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap.lean",
+            "fragment": "L78"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          213
+        ],
+        "printed": [
+          203
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean splits off the non-coprime n first and expands in characters mod q, the route the book calls 'more obvious'. The O* term should carry |η(p^α/x)|."
+}

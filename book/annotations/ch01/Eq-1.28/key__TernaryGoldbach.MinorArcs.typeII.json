@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.28",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 31,
+        "rect": [
+          0.17135,
+          0.78947,
+          0.56816,
+          0.06585
+        ]
+      },
+      "title": "Equation (1.28)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII",
+        "module": "TernaryGoldbach.MinorArcs.Decomposition"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def typeII (α x : ℝ) (U V : ℕ) : ℂ :=\n  ∑ m ∈ Icc 1 ⌊x⌋₊, if Odd m then (∑ d ∈ m.divisors.filter (U < ·), (μ d : ℂ)) *\n    ∑ n ∈ Icc 1 ⌊x⌋₊, (if Odd n ∧ V < n then (Λ n : ℂ) * e (α * m * n) *\n      (eta2 (m * n / x) : ℂ) else 0) else 0",
+            "line": 97,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Decomposition.lean",
+            "fragment": "L97"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          31
+        ],
+        "printed": [
+          21
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has only the odd (v = 2) form. The upper limit must be x/U, not X/U, and the n-range n > V;"
+}

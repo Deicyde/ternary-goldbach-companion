@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.13",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 91,
+        "rect": [
+          0.17135,
+          0.7059,
+          0.56816,
+          0.1476
+        ]
+      },
+      "title": "Equation (5.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_1_1_term",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_1_1_term",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_1_1_term {y z : ℝ} (hy : 0 < y) (hz : 0 < z) {r₁ r₂ : ℕ}\n    (hr₁ : r₁ ∈ Icc 1 ⌊y⌋₊) (hr₂ : r₂ ∈ Icc 1 ⌊y⌋₊) :\n    |if Nat.Coprime r₁ r₂ ∧ Odd (r₁ * r₂) then\n        (μ r₁ : ℝ) * μ r₂ * (cntSq (2 * (r₁ * r₂)) (aL y z r₁ r₂) (bL z r₁ r₂) -\n          4 * z / π ^ 2 / ((σ 1 r₁ : ℝ) * σ 1 r₂) * wM y r₁ r₂) else 0| ≤\n      1.27 * √z * (1 + 1 / √2) * ((if Odd r₁ then divA r₁ else 0) *\n        (if Odd r₂ then divA r₂ else 0)) :=",
+            "line": 212,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L212"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          91
+        ],
+        "printed": [
+          81
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps (r₁,r₂) fixed, with no s_i = r_i/d_i reindexing here (it reappears only in sum_odd_divisors_le). The book's split 'truncated main (5.13) + error (5.14)', then 'completed (5.15) − tail (5.16)', becomes a single per-m comparison bounded by the fsq summand."
+}

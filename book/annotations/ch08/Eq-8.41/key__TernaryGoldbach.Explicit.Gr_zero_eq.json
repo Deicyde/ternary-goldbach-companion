@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.41",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 166,
+        "rect": [
+          0.25926,
+          0.69163,
+          0.56816,
+          0.04019
+        ]
+      },
+      "title": "Equation (8.41)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.Gr_zero_eq",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.Gr_zero_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Gr_zero_eq (s : ℂ) (δ : ℝ) :\n    Gr s δ 0 = ∫ t in Ioi (0:ℝ), (t : ℂ) ^ (s - 1) *\n      (((t ^ 2 * Real.exp (-t ^ 2 / 2) : ℝ) : ℂ) * cexp (2 * π * I * δ * t)) :=",
+            "line": 687,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L687"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          166
+        ],
+        "printed": [
+          156
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Spot checks used rotated-ray quadrature over δ ∈ [−3, −0.02], τ ∈ [0.25, 40], σ ∈ [0.05, 3]. They give |F_δ(s)|/RHS ≤ 0.85 for c₁ and ≤ 0.80 for c₂, with the largest ratios at small σ and large τ (0.90 for c₁ at σ = 0.01, τ = 80, ρ = 0.02)."
+}

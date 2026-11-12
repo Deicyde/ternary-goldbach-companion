@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.66",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 137,
+        "rect": [
+          0.17135,
+          0.57973,
+          0.56816,
+          0.1133
+        ]
+      },
+      "title": "Equation (6.66)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.66"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI2"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_second",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_second {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hc : SecondCase T δ q) :\n    ‖typeI2 α (T ^ 3) (U2 T) (V2 T)‖ ≤\n      (0.031 * Real.log T ^ 2 + 3185.8 * Real.log T + 8455.3) * T ^ 2 :=",
+            "line": 490,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI2.lean",
+            "fragment": "L490"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          137
+        ],
+        "printed": [
+          127
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The last term of (6.66) should have (2c₂)^{3/2} for (3c₂)^{1/2}; the total 1177.76 still holds. Lean bounds its own form of (4.51) at Q₀ = x^{2/3}/349 and c₀ = 32, keeping the lower-order terms as a polynomial in log x."
+}

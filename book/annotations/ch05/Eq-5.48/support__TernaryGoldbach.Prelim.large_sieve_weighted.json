@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.48",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 106,
+        "rect": [
+          0.25926,
+          0.40373,
+          0.56816,
+          0.13211
+        ]
+      },
+      "title": "Equation (5.48)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.48"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.large_sieve_weighted",
+        "module": "TernaryGoldbach.Prelim.LargeSieveMV"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.large_sieve_weighted",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem large_sieve_weighted {ι : Type*} (s : Finset ι) (α δ : ι → ℝ)\n    (hδ : ∀ r ∈ s, 0 < δ r)\n    (hsep : ∀ r ∈ s, ∀ r' ∈ s, r ≠ r' → δ r ≤ |(α r - α r') - round (α r - α r')|)\n    (M N : ℕ) (a : ℕ → ℂ) :\n    ∑ r ∈ s, ((N : ℝ) + 3 / 2 * (δ r)⁻¹)⁻¹ * ‖∑ n ∈ Ioc M (M + N), a n * e (α r * n)‖ ^ 2 ≤\n      ∑ n ∈ Ioc M (M + N), ‖a n‖ ^ 2 :=",
+            "line": 37,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LargeSieveMV.lean",
+            "fragment": "L37"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          106
+        ],
+        "printed": [
+          96
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the large-sieve step with W−W′+1 in place of W/2 (smaller weight when W′ < W/2+1), for odd m; [H]'s W/2 version is not stated. Erratum: [H] applies MV73 (1.6), which needs an integer N at least the span of the primes in (W',W], with N = W/2; that span can be W/2+1/2 (W = 13: primes 7..13, span 7 > 6.5), and there the literal (1.6) weight 0.0986 is below [H]'s 0.1038. (checked by `scripts/checks/eq_5_48.py`)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.17",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 293,
+        "rect": [
+          0.17135,
+          0.50522,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Equation (A.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_fP_tail {δ T0 : ℝ} (hT0 : 200 + max (10 * π * |δ|) 50 ≤ T0) {s : ℂ}\n    (hr1 : 0 < s.re) (hr2 : s.re < 1) (hτ : T0 < |s.im|) :\n    ‖mellin (fP δ) s‖ ≤ Cg * (2 * aH) * EB (T0 - 200) * rhoB ^ ⌊(|s.im| - T0) / 4.4⌋₊ +\n      Cg * (2 * aH) * EA (T0 - 200) δ * rhoA δ ^ ⌊(|s.im| - T0) / 4.4⌋₊ :=",
+            "line": 286,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L286"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          293
+        ],
+        "printed": [
+          283
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The book uses (A.17) in Lemma 9.4.1, in (9.85) for η₊², and for (A.28). Lean never bounds an L¹ norm of Mh."
+}

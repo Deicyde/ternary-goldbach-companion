@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.35",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 279,
+        "rect": [
+          0.17135,
+          0.59387,
+          0.56816,
+          0.03633
+        ]
+      },
+      "title": "Equation (14.35)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+        "module": "TernaryGoldbach.MinorArcs.NumericsCore"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ghatY_le_num",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem ghatY_le_num {Y M u a₁ b₁ b₂ ρ c₁ c₂ s₁ s₂ t₁ h₁ G : ℝ}\n    (hY : 1e25 ≤ Y) (hM : 670 ≤ M) (hu : 0 ≤ u) (hu3 : u ^ 3 ≤ Y) (hMu : M ≤ u / 6)\n    (h1 : Real.log (2 * M) ≤ a₁) (h2 : Real.log (8 * M) ≤ b₁)\n    (h3 : b₂ ≤ Real.log (9 * u / (4.008 * M))) (hb₂ : 0 < b₂)\n    (h4 : Real.log (1 + b₁ / (2 * b₂)) ≤ ρ) (h5 : Real.log (Real.log M) ≤ c₁)\n    (h6 : c₂ ≤ Real.log (Real.log M)) (hc₂ : 0 < c₂)\n    (h7 : 1.7882 * c₁ + 2.50637 / c₂ ≤ s₁ ^ 2) (hs₁ : 0 ≤ s₁) (h8 : s₂ ^ 2 ≤ 2 * M) (hs₂ : 0 < s₂)\n    (h9 : Y ^ (-1 / 6 : ℝ) ≤ t₁) (h10 : hfun Y ≤ h₁)\n    (hGa : 1.398 * ((((0.27125 * ρ + 0.41415) * a₁ + 0.8764) * s₁ + 2.526) / s₂ +\n        ((1.7882 * c₁ + 2.50637 / c₂) * (13 / 4 * a₁ + 7.82) + 13.66 * a₁ + 37.55) / M + 3.8 * t₁) +\n        17 * (670 / M) ^ 3 / 3 ≤ G)\n    (hGb : 1.398 * h₁ + 17 * (670 / M) ^ 3 / 3 ≤ G) :\n    ghatY Y M ≤ G :=",
+            "line": 54,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsCore.lean",
+            "fragment": "L54"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          279
+        ],
+        "printed": [
+          269
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Same R and same computation, done inside the certified evaluation ĝ(10²⁵,150000) ≤ 0.060272; it feeds ĝ, not R_{y,K,φ,2r0}."
+}

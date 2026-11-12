@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.40",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 76,
+        "rect": [
+          0.25926,
+          0.20779,
+          0.56816,
+          0.09461
+        ]
+      },
+      "title": "Equation (4.40)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ToddG_main",
+        "module": "TernaryGoldbach.MinorArcs.InnerSumsGen"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ToddG_main",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem ToddG_main {g : ℝ → ℝ} {N V K : ℝ} (hg : SmoothData g N V K) {α x δ : ℝ} {a k₀ : ℤ} {q m' : ℕ} (hx : 0 < x) (hq : 1 ≤ q) (hm' : Odd m')\n    (h2α : 2 * α = a / q + δ / x + k₀) (hr : |δ * (q * m' : ℕ) / x| ≤ 1 / 2) :\n    ∃ E : ℂ, ToddG g α x (q * m') = e ((a + k₀ * q) / 2) *\n        ((x / (2 * (q * m' : ℕ)) : ℝ) * ghat g (-(δ / 2)) + E) ∧\n      ‖E‖ ≤ (q * m' : ℕ) / x * (K / (2 * π ^ 2)) * (π ^ 2 - 4) :=",
+            "line": 138,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSumsGen.lean",
+            "fragment": "L138"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          76
+        ],
+        "printed": [
+          66
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses the odd-n main term x/2q, min(1,c₀/(πδ)²), (m,2q) = 1, (log·η)^(−δ/2); the printed all-n term is up to 4× too small for |δ| ≳ 1."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 5.2.1",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 103,
+        "rect": [
+          0.17135,
+          0.62412,
+          0.56816,
+          0.15863
+        ]
+      },
+      "title": "Lemma 5.2.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_1",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_1",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_2_1 {ι : Type*} (s : Finset ι) {q : ℕ} (hq : 1 ≤ q) (a : ι → ℤ) (u : ι → ℝ)\n    {ν υ : ℝ} (hν : 0 < ν) (hυ : 0 ≤ υ) (hνυ : ν + υ ≤ 1 / q)\n    (hdiff : ∀ i ∈ s, ∀ j ∈ s, |u i - u j| ≤ υ)\n    (hsep : ∀ i ∈ s, ∀ j ∈ s, i ≠ j → (q : ℤ) ∣ a i - a j → ν ≤ |u i - u j|)\n    {W' W : ℝ} (hW' : 0 ≤ W') :\n    (∑ i ∈ s, ‖primeExpSum W' W (a i / q + u i)‖ ^ 2 ≤ (W - W' + ν⁻¹) * logSqSum W' W) ∧\n    (∀ R : ℝ, 1 ≤ R → R ≤ W' → q * R ^ 2 * (ν + υ) ≤ 1 →\n      Nat.totient q / q * Real.log R * ∑ i ∈ s, ‖primeExpSum W' W (a i / q + u i)‖ ^ 2 ≤\n        (W - W' + ν⁻¹) * logSqSum W' W) :=",
+            "line": 380,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L380"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          103
+        ],
+        "printed": [
+          93
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never states the min(1,·) form: the log gain is proved for a caller-chosen R ≤ W′, which repairs the book's unproved case R > W′. Hypotheses are otherwise weaker (separation ≥ ν, only W′ ≥ 0)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.4.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 197,
+        "rect": [
+          0.17135,
+          0.40198,
+          0.56816,
+          0.26074
+        ]
+      },
+      "title": "Proposition 9.4.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.4.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_SsumG_fP_le {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (δ : ℝ) {x : ℝ} (hx : 1 ≤ x) {T0 : ℝ} (hT0 : 200 + max (10 * π * |δ|) 50 ≤ T0)\n    (hG : ∀ ρ : ℂ, χ.LFunction ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ T0 → ρ.re = 1 / 2)\n    {A : ℝ} (hA0 : 0 < A) (hA : ∫ v in Ioi (0:ℝ), etaPlus v ^ 2 ≤ A) :\n    ‖SsumG χ (fP δ) x‖ ≤ Cg * 300 * (2 * aH) * Z3g (BP N) 0 +\n      √x * E1g (BP N) T0 (2 * π * A) (2 * π * 1.129) +\n      x * E2g (BP N) 11 T0 (Cg * (2 * aH) * EB (T0 - 200)) (Cg * (2 * aH) * EA (T0 - 200) δ) rhoB (rhoA δ) +\n      x ^ (-(1 / 2) : ℝ) * VgL (DN N) (Cg * (300 * Real.exp 1) * (2 * aH)) (thP δ) / (2 * π) :=",
+            "line": 153,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusBound.lean",
+            "fragment": "L153"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          197
+        ],
+        "printed": [
+          187
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves it outright (no hypotheses) for H = 200 with its own, much larger error err942N (Plancherel windows below T₀, Jensen windows above, uniform Mellin bounds at s = 0 and Re s = −1/2). The book's (9.70) first line rests on Lemma 9.4.1, whose proof drops Lemma 9.1.3's boundary term;"
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.32",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 33,
+        "rect": [
+          0.17135,
+          0.26834,
+          0.56816,
+          0.03936
+        ]
+      },
+      "title": "Equation (1.32)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.large_sieve",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieve"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.large_sieve",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem large_sieve {ι : Type*} (s : Finset ι) (α : ι → ℝ) {δ : ℝ} (hδ : 0 < δ) (β : ℝ)\n    (hdisj : (s : Set ι).PairwiseDisjoint fun r => Set.Ioc (α r - δ / 2) (α r + δ / 2))\n    (hsub : ∀ r ∈ s, Set.Ioc (α r - δ / 2) (α r + δ / 2) ⊆ Set.Ioc β (β + 1))\n    (X : ℕ) (a : ℕ → ℂ) :\n    ∑ r ∈ s, ‖expSum X a (α r)‖ ^ 2 ≤\n      (δ⁻¹ + 4 * Real.pi * X) * ∑ n ∈ range (X + 1), ‖a n‖ ^ 2 :=",
+            "line": 133,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieve.lean",
+            "fragment": "L133"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          33
+        ],
+        "printed": [
+          23
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the sharper N − 1 + δ⁻¹ form with δ ≤ 1, which (1.32) needs when there is a single point."
+}

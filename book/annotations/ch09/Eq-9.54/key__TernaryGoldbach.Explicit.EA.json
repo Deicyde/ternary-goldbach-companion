@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.54",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 191,
+        "rect": [
+          0.17135,
+          0.47466,
+          0.56816,
+          0.07457
+        ]
+      },
+      "title": "Equation (9.54)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.54"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.EA",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.EA",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def EA (T0 δ : ℝ) : ℝ :=\n  if δ = 0 then 0 else 0.588 * (T0 / (π * |δ|)) ^ 2 * Real.exp (-0.1065 * (T0 / (π * |δ|)) ^ 2)",
+            "line": 92,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L92"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          191
+        ],
+        "printed": [
+          181
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Constants reproduced with c = 0.1065: 1.487 = 0.995/(2πc), 2.194 = 0.995/(40c²), 2.566 = 0.995·0.117/(4c²). The first inequality needs log(q|δ|/2) ≥ 0, which follows from |δ| > 20/(3π) > 2."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.37",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 249,
+        "rect": [
+          0.17135,
+          0.17761,
+          0.56816,
+          0.06874
+        ]
+      },
+      "title": "Equation (12.37)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Phi2_reduce",
+        "module": "TernaryGoldbach.MinorArcs.LSQuotRed"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Phi2_reduce",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Phi2_reduce {n : ℕ} (hn : 1 ≤ n) (base : ∀ A, A ∣ 30030 → Phi2 A n (Real.log A) ≤ 0) :\n    ∀ q, 1 ≤ q → q < 22000000000 → Phi2 q n (Real.log q) ≤ 0 :=",
+            "line": 516,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuotRed.lean",
+            "fragment": "L516"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          249
+        ],
+        "printed": [
+          239
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "In the follow-up for q ≥ ∏_{p≤37, p≠7} p the denominator should be 0.8009t − log t − 1.594, not + 0.07354, needing constant ≈ 7.63; the claim survives. With σ ≈ 1.3471 (repair of (12.29)) ϖ₀(3.3·10⁹) ≈ 475.17 < 475.513, so that threshold must move."
+}

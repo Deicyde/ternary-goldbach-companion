@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.48",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 285,
+        "rect": [
+          0.17135,
+          0.19599,
+          0.56816,
+          0.0172
+        ]
+      },
+      "title": "Equation (14.48)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.48"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Mexpr",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def Mexpr (x : ℝ) (r₂ : ℕ) : ℝ :=\n  ghatY (x / κ) 150000 * (cL 150000 * sig x / Dx x - 8.6294) +\n    ∑ n ∈ Finset.Ioo 150000 r₂, ghatY (x / κ) n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n    ghatY (x / κ) r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)",
+            "line": 78,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L78"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          285
+        ],
+        "printed": [
+          275
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's Mexpr (normalized like |φ|₁M/x, also absorbing T) is bounded by 1.037 instead of a sum of three closed constants."
+}

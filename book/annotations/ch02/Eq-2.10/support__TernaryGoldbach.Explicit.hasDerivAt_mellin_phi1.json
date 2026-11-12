@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.10",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 45,
+        "rect": [
+          0.17135,
+          0.28499,
+          0.56816,
+          0.05703
+        ]
+      },
+      "title": "Equation (2.10)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.hasDerivAt_mellin_phi1",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.hasDerivAt_mellin_phi1",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hasDerivAt_mellin_phi1 {s : ℂ} (hs : -2 < s.re) :\n    MellinConvergent phi2 s ∧ HasDerivAt (mellin phi1) (mellin phi2 s) s :=",
+            "line": 329,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L329"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          45
+        ],
+        "printed": [
+          35
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The log rule is Mathlib's; the two derivative rules appear only as Fourier differentiation in log coordinates on ℜs = 0, which is all Lean needs."
+}

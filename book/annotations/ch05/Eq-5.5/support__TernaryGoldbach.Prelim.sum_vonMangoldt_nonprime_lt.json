@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 89,
+        "rect": [
+          0.17135,
+          0.63927,
+          0.56816,
+          0.1248
+        ]
+      },
+      "title": "Equation (5.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_vonMangoldt_nonprime_lt",
+        "module": "TernaryGoldbach.Prelim.LambdaMu"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_vonMangoldt_nonprime_lt",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_vonMangoldt_nonprime_lt {y : ℝ} (hy : 0 < y) :\n    ∑ n ∈ Icc 1 ⌊y⌋₊, (if n.Prime then 0 else (Λ n : ℝ)) < 1.4262 * √y :=",
+            "line": 761,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LambdaMu.lean",
+            "fragment": "L761"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          89
+        ],
+        "printed": [
+          79
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The '=' should be '≤'. Lean never defines S₃ and keeps the unrounded (x/2W+1)(1.4262²W); it reproves ψ−θ < 1.4262√y by a kernel check to 10⁶, explicit ψ bounds to 10¹², and (2.15) above."
+}

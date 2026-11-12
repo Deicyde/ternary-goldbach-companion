@@ -1,0 +1,89 @@
+{
+  "id": "Theorem 13.2.1",
+  "kind": "theorem",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 258,
+        "rect": [
+          0.25926,
+          0.52184,
+          0.56816,
+          0.33254
+        ]
+      },
+      "title": "Theorem 13.2.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1#0"
+        }
+      }
+    },
+    {
+      "location": {
+        "page": 259,
+        "rect": [
+          0.17135,
+          0.15806,
+          0.56816,
+          0.42836
+        ]
+      },
+      "title": "Theorem 13.2.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 13.2.1#1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_gap",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap2"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_gap",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_S_etaStar_le_gap {x α : ℝ} (hx : 4.9e26 ≤ x) (h1 : α ∈ majorArcs 8 r₀ (x / κ))\n    (h2 : α ∉ majorArcs 8 r₀ x) : ‖S etaStar x α‖ ≤ 0.0121 * (x / κ) :=",
+            "line": 243,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap2.lean",
+            "fragment": "L243"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          258,
+          259
+        ],
+        "printed": [
+          248,
+          249
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves only the specialization (φ = t²e^{−t²/2}, κ = 49, r₀ = 150000), with arcs at scale x/κ above the base level, levels up to ≈ x^{0.3}, c₊ = 2 and gx constants 0.8764, 2.526, 3.8 (book 0.5, 2.5, 3.36); final constant 1.0376 vs the book's 1.00948. This repairs the book's scale mix-up between the x-scale ℓ² input and the y-scale ℓ∞ input; minor_total now assumes PlattGRH and RamareMoebius."
+}

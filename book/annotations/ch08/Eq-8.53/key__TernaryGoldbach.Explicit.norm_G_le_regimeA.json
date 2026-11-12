@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.53",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 172,
+        "rect": [
+          0.25926,
+          0.25378,
+          0.56816,
+          0.02864
+        ]
+      },
+      "title": "Equation (8.53)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.53"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_le_regimeA",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_le_regimeA",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_G_le_regimeA (s : ℂ) (δ : ℝ) (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1)\n    (hy : 10 * π * |δ| ≤ |s.im|) (hm : |s.im| < 3 / 2 * (π * δ) ^ 2) :\n    ‖Gr s δ 0‖ ≤ 0.588 * (|s.im| / (π * |δ|)) ^ 2 *\n      Real.exp (-0.1065 * (|s.im| / (π * |δ|)) ^ 2) :=",
+            "line": 582,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L582"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          172
+        ],
+        "printed": [
+          162
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked: e^{−20(√2−1)/2} = 0.01588888 and e^{−20/6} = 0.03567399, both just below the printed values. (1 − tan²(π/8))/4 = (√2−1)/2."
+}

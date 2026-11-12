@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.31",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 32,
+        "rect": [
+          0.25926,
+          0.7433,
+          0.56816,
+          0.03892
+        ]
+      },
+      "title": "Equation (1.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_2_3_b {α Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) {W' W : ℝ} (hqW : 2 * q < W) (hQW : 3.5 * W ≤ Q)\n    (hW : 50000 ≤ W) (hW'W : W / 2 ≤ W') (hWW : W' ≤ W) (A₀ A₁ : ℝ) :\n    oddSqSum α W' W A₀ A₁ ≤\n      ⌈(A₁ - A₀) / (2 * q)⌉₊ * (q / Nat.totient q * (W / Real.log (W / (2 * q))) * logSqSum W' W) :=",
+            "line": 1383,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1383"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          32
+        ],
+        "printed": [
+          22
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The x/(4φ(q)) term is the odd-m constant of (5.54); for all m it is x/(2φ(q)). Lean needs W ≥ 50000, and its (2.19)-type bound (1/2)W log W now holds for W ≥ 2·10⁶ rather than the book's W ≥ 117."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.4",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17135,
+          0.74022,
+          0.56816,
+          0.11472
+        ]
+      },
+      "title": "Equation (4.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_G_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_G_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_G_le {q A C : ℝ} (hq : 0 < q) (hA : 0 ≤ A) (hC : 0 ≤ C) {u₁ : ℝ} {m : ℕ}\n    (hu₁ : 1 ≤ u₁) (hlast : u₁ + m - 1 ≤ q / 2) :\n    ∑ i ∈ Finset.range m, min A (C * fq q (u₁ + i)) ≤ 2 * (q / π) * √(A * C) :=",
+            "line": 406,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L406"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "For even q, r' = q/2 occurs in both sums though r = ±q/2 is one residue; harmless, since the '−qδ₂' term alone bounds it. Lean's families are exactly those of (4.4), but each is then bounded by monotonicity rather than the book's count of A-terms."
+}

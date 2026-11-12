@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.25",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 30,
+        "rect": [
+          0.25926,
+          0.36783,
+          0.56816,
+          0.05064
+        ]
+      },
+      "title": "Equation (1.25)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.muBound",
+        "module": "TernaryGoldbach.MinorArcs.TypeITotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.muBound",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def muBound (U : ℝ) (q : ℕ) : ℝ :=\n  if 2 * (q : ℝ) ^ 2 < U then\n    min 1 (2.8 * (2 * q / Nat.totient (2 * q)) / Real.log (U / (2 * q ^ 2))) else 1",
+            "line": 24,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeITotal.lean",
+            "fragment": "L24"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          30
+        ],
+        "printed": [
+          20
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the constant 2.8 instead of [Ramb]'s 4/5, using only the RamareMoebius hypothesis."
+}

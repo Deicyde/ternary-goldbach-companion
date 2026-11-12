@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 43,
+        "rect": [
+          0.17135,
+          0.2892,
+          0.56816,
+          0.04225
+        ]
+      },
+      "title": "Equation (2.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_tsum_le_variation",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_tsum_le_variation",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_tsum_le_variation {f : ℝ → ℂ} (hfs : HasCompactSupport f) {V : ℝ} (hV0 : 0 ≤ V)\n    (hV : eVariationOn f Set.univ ≤ ENNReal.ofReal V) {α : ℝ} (hα : Real.sin (π * α) ≠ 0) :\n    ‖∑' n : ℤ, f n * e (α * n)‖ ≤ V / (2 * |Real.sin (π * α)|) :=",
+            "line": 287,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L287"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          43
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean states the two bounds with total variation in place of |f′|₁ (equal for continuous piecewise-C¹ f) and requires continuity for the first, which avoids the book's isolated-value counterexample. Erratum: (2.2) is stated for compactly supported piecewise continuous f with |f′|₁ counting jumps, and it fails when an integer value f(n) lies off [f(n−), f(n+)]: for f = 1_{0} the left side is 1 and the right side 0, and for f = 1_{[−1,1]} − 0.01·1_{0} at α = 1/2 it is 1.01 > 1. (checked by `scripts/checks/eq_2_2.py`)."
+}

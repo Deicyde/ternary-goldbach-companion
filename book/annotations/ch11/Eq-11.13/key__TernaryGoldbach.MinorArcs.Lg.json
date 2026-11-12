@@ -1,0 +1,70 @@
+{
+  "id": "Eq 11.13",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 231,
+        "rect": [
+          0.17135,
+          0.16789,
+          0.56816,
+          0.07713
+        ]
+      },
+      "title": "Equation (11.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 11.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Lg",
+        "module": "TernaryGoldbach.MinorArcs.GBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Lg",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def Lg (t : ℝ) : ℝ :=\n  Fr (t / 2) * (13 / 4 * Real.log t + 7.82) + 13.66 * Real.log t + 37.55",
+            "line": 30,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GBound.lean",
+            "fragment": "L30"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          231
+        ],
+        "printed": [
+          221
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "L_t is (3.3)'s L_{x,t,q} with q/φ(q) replaced by Ϝ(t/2). Lean keeps both: L for (3.3) and Lg for (11.13), and norm_S_eta2_le_gx proves L(2r,q) ≤ Lg(2r)."
+}

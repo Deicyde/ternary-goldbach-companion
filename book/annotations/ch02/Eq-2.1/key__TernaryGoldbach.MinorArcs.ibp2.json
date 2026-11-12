@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.1",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 42,
+        "rect": [
+          0.25926,
+          0.81428,
+          0.56816,
+          0.03813
+        ]
+      },
+      "title": "Equation (2.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ibp2",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ibp2",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem ibp2 {a b t : ℝ} (ht : t ≠ 0) {g g' g'' : ℝ → ℝ}\n    (hg : ∀ x ∈ Set.uIcc a b, HasDerivAt g (g' x) x)\n    (hg' : ∀ x ∈ Set.uIcc a b, HasDerivAt g' (g'' x) x)\n    (hc : ContinuousOn g'' (Set.uIcc a b)) :\n    ((2 * π * t) ^ 2 : ℂ) * ∫ u in a..b, e (-(u * t)) * (g u : ℂ) =\n      2 * π * I * t * (e (-(b * t)) * g b - e (-(a * t)) * g a) +\n        (e (-(b * t)) * g' b - e (-(a * t)) * g' a) - ∫ u in a..b, e (-(u * t)) * (g'' u : ℂ) :=",
+            "line": 42,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L42"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          42
+        ],
+        "printed": [
+          32
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has no general form of (2.1); it integrates by parts piece by piece for each weight (k = 2 only) and replaces the book's k = 3 use for η◦ by an L² tail bound."
+}

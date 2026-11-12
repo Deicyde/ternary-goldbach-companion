@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.1",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 174,
+        "rect": [
+          0.25926,
+          0.5901,
+          0.56816,
+          0.06524
+        ]
+      },
+      "title": "Equation (9.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_integral_hZeta_le",
+        "module": "TernaryGoldbach.Explicit.ZetaBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_integral_hZeta_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_integral_hZeta_le (δ : ℝ) {x : ℝ} (hx : 0 < x) :\n    ‖∫ y : ℝ, hZeta (fδ δ) x (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤ x ^ (-(1 / 2) : ℝ) * Vz δ :=",
+            "line": 56,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZetaBound.lean",
+            "fragment": "L56"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          174
+        ],
+        "printed": [
+          164
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The identity is formalized in limit form without R; the O* error with constant log q + 6.01 is not, being replaced by bounds x^{−1/2}Vb with Vb about 10⁴ times larger at q = 3, δ = 0."
+}

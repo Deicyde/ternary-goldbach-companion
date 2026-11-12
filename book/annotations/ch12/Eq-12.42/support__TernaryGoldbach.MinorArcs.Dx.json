@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.42",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 252,
+        "rect": [
+          0.25926,
+          0.47484,
+          0.56816,
+          0.03885
+        ]
+      },
+      "title": "Equation (12.42)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Dx",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Dx",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def Dx (x : ℝ) : ℝ := Real.log (2 * √(x / 784)) + cE",
+            "line": 73,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L73"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          252
+        ],
+        "printed": [
+          242
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "c₊ = 2 replaces 1.36 and δ₀ ≥ 2 replaces δ₀ ≥ 1. Lean's main line applies it with δ₀ = 392 (arcs at scale x/κ) because of the Thm 13.2.1 scale repair; the book uses δ₀ = 8 at scale x."
+}

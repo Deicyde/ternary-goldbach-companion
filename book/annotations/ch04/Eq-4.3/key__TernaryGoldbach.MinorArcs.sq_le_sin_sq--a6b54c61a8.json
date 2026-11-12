@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.3",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17135,
+          0.37776,
+          0.56816,
+          0.03736
+        ]
+      },
+      "title": "Equation (4.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sq_le_sin_sq₂",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sq_le_sin_sq₂",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sq_le_sin_sq₂ {t : ℝ} (ht : 0 < t) (ht1 : t ≤ π / 6) :\n    t ^ 2 ≤ (1 + t ^ 2 / 3 + t ^ 4 / 15 + t ^ 6 / 20) * Real.sin t ^ 2 :=",
+            "line": 1072,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1072"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Numerically c₀(π/4) = 0.0738068 (the printed bound 0.074807 is valid; 0.073807 was probably meant) and c₀(π/2) = 0.105934; the needed signs hold: c₀(π/4) − 4/45 = −0.0151 and −1/6 + (c₀(π/2) − 27/360)(π/2)² = −0.0903. Lean replaces c₀ by explicit polynomial majorants on narrower ranges. c₀(t) is unrelated to the §4.2 constant c₀ (Lean's MinorArcs.c₀ = 32)."
+}

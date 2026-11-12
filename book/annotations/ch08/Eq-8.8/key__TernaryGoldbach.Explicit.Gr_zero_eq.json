@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.8",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 156,
+        "rect": [
+          0.25926,
+          0.6758,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Equation (8.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.Gr_zero_eq",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.Gr_zero_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Gr_zero_eq (s : ℂ) (δ : ℝ) :\n    Gr s δ 0 = ∫ t in Ioi (0:ℝ), (t : ℂ) ^ (s - 1) *\n      (((t ^ 2 * Real.exp (-t ^ 2 / 2) : ℝ) : ℂ) * cexp (2 * π * I * δ * t)) :=",
+            "line": 687,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L687"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          156
+        ],
+        "printed": [
+          146
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Match is up to the index shift s ↦ s+2: Lean defines only the k = 2 transform (η = t²e^{−t²/2}); the η₊ case reuses it as Gr(s−1+2πiξ) δ 0 = F_δ(s+1+2πiξ) (EtaPlusMellin.mellin_fP_eq), as in the book's §9.4. No k = 0 transform (Thm 7.1.1's smoothing) and no meromorphic continuation are formalized;"
+}

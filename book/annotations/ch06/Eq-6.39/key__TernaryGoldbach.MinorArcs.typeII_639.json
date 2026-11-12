@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.39",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 126,
+        "rect": [
+          0.25926,
+          0.38573,
+          0.56816,
+          0.0685
+        ]
+      },
+      "title": "Equation (6.39)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_639",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_639",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_639 {α x Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) (hqQ : (q : ℝ) ≤ Q) (hx : 0 < x) {U V : ℕ}\n    (hU : 1 ≤ U) (hV : (2000000 : ℝ) ≤ V) (hVU : (V : ℝ) ≤ x / U) :\n    ‖typeII α x U V‖ ≤\n      4 * (√(kap1 x U V) * (√(x ^ 2 / (8 * q) + q * x) * (2 / 3 *\n        (Real.log (x / U) * √(Real.log (x / U)) - Real.log V * √(Real.log V))) +\n        √2 * x * (√(Real.log V) + 1 / √(Real.log V)) / √V +\n        √x * √(Real.log (x / U)) * √(x / U))) +\n      8 * 1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) / √V :=",
+            "line": 603,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L603"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          126
+        ],
+        "printed": [
+          116
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean needs no lower bound on q and assumes V ≥ 2·10⁶ as the chapter does. It has √2κ₂x(√log V + 1/√log V)/√V in place of κ₂√(2 log x/U)x/√V and 8·1.4262x√(κ₁(½+1/U))/√V for κ₉x/√V; the Δ-term is unsplit and at most the book's."
+}

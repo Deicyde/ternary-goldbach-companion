@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.15",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 260,
+        "rect": [
+          0.25926,
+          0.18721,
+          0.56816,
+          0.05443
+        ]
+      },
+      "title": "Equation (13.15)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+        "module": "TernaryGoldbach.MinorArcs.GMono"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem gx_antitoneOn {x : ℝ} (hx : 2.16e20 ≤ x) : AntitoneOn (gx x) (Icc 670 (x ^ (1 / 3 : ℝ) / 6)) :=",
+            "line": 266,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L266"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          260
+        ],
+        "printed": [
+          250
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves monotonicity of g on the whole range up to z^{1/3}/6 and uses no K, so the book's range gaps between (y/K)^{1/3}/6 and y^{1/3}/6 do not arise."
+}

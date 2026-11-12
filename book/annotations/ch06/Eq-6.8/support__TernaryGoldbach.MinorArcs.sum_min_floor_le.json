@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.8",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 114,
+        "rect": [
+          0.25926,
+          0.32501,
+          0.56816,
+          0.1155
+        ]
+      },
+      "title": "Equation (6.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_min_floor_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Large"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_min_floor_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_min_floor_le {x δ U V : ℝ} {q : ℕ} (hq : 1 ≤ q) (hx : 0 < x) (hδ : 0 < |δ|)\n    (hU : 0 < U) (hV : 2.5e7 ≤ V) :\n    ∑ v ∈ Icc 1 ⌊V⌋₊, (Λ v : ℝ) *\n        min ((⌊x / v / (|δ| * ((q / Nat.gcd q v : ℕ) : ℝ))⌋₊ : ℝ) + 1) (2 * U) ≤\n      x / (|δ| * q) * (1.03883 + Real.log q + logPlus (6 * U * V * |δ| * q / (√2 * x))) +\n        1.0064 * V :=",
+            "line": 17,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Large.lean",
+            "fragment": "L17"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          114
+        ],
+        "printed": [
+          104
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses (4.32) as stated (log⁺(2U/y_v)) and pays a factor 1 + V/Q instead of the floored log⁺. In the display after (6.11), Lean has 1.0064V for V ≥ 2.5·10⁷ where the book has 1.0004V, since (2.14) is proved only with 1.0064."
+}

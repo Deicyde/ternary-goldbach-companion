@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.37",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 224,
+        "rect": [
+          0.25926,
+          0.50511,
+          0.56816,
+          0.0789
+        ]
+      },
+      "title": "Equation (10.37)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_full_main",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_full_main",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_full_main {x : ℝ} (hx : 0 < x) (N : ℝ) :\n    ∫ β, (𝓕 etaOC (-(β * x)) * x) ^ 2 * (𝓕 etaSC (-(β * x)) * x) * e (-(N * β)) =\n      (x : ℂ) ^ 2 * (Cmain (N / x) : ℂ) :=",
+            "line": 380,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L380"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          224
+        ],
+        "printed": [
+          214
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "C_{η◦,η*} matches; C₀ is not defined in Lean, which bounds the truncated series by 1.314 using a kernel-checked Mertens product (prod_p_div_le) and no hypothesis."
+}

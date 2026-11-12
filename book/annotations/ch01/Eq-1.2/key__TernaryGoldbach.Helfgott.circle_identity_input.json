@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 17,
+        "rect": [
+          0.17135,
+          0.62032,
+          0.56816,
+          0.03722
+        ]
+      },
+      "title": "Equation (1.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.circle_identity_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.circle_identity_input",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem circle_identity_input (N : ℕ) (hN : 0 < N) :\n    IntegrableOn (integrand N) (Set.Ioc 0 1) ∧\n      ∫ α in Set.Ioc (0:ℝ) 1, integrand N α = (repSum (fun _ => True) N : ℂ) :=",
+            "line": 37,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "fragment": "L37"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          17
+        ],
+        "printed": [
+          7
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean restricts to weights on ℕ and uses S(α) = Σ a(n)e(αn) with e(−Nα), the same identity after α ↦ −α; every weight in the book is supported on n ≥ 1."
+}

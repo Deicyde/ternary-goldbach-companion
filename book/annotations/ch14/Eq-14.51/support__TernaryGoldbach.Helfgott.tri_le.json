@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.51",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 286,
+        "rect": [
+          0.25926,
+          0.22906,
+          0.56816,
+          0.14008
+        ]
+      },
+      "title": "Equation (14.51)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.tri_le",
+        "module": "TernaryGoldbach.Helfgott.NonPrime"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.tri_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem tri_le {f g h : ℕ → ℝ} (hf : ∀ n, 0 ≤ f n) (hg : ∀ n, 0 ≤ g n) (hh : ∀ n, 0 ≤ h n)\n    {N : ℕ} {B : ℝ} (hB : ∀ n ≤ N, h n ≤ B) :\n    tri f g h N ≤ (∑ n ∈ range (N + 1), f n) * (∑ n ∈ range (N + 1), g n) * B :=",
+            "line": 42,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/NonPrime.lean",
+            "fragment": "L42"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          286
+        ],
+        "printed": [
+          276
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Exact (Lean bounds each bad term in absolute value); the numeric consequence uses the crude 6.7·10⁶ instead of [H]'s 7.3306, absorbed by final_inequality_crude."
+}

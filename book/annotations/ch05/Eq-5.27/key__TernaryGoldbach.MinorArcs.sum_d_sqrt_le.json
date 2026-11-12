@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.27",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 98,
+        "rect": [
+          0.25926,
+          0.32086,
+          0.56816,
+          0.07035
+        ]
+      },
+      "title": "Equation (5.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_d_sqrt_le",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_d_sqrt_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_d_sqrt_le (N : ℕ) : ∑ d ∈ Icc 1 N, gsq d ≤ (1 + Real.log N) ^ 2 :=",
+            "line": 309,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L309"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          98
+        ],
+        "printed": [
+          88
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "No Lean statement of (5.27); Lean works at s = ½ with truncation and gets (1 + log x)² instead of [H]'s linear factor, off the main line."
+}

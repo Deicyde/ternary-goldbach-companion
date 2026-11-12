@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.28",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 122,
+        "rect": [
+          0.25926,
+          0.58461,
+          0.56816,
+          0.10653
+        ]
+      },
+      "title": "Equation (6.28)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_G637_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_G637_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_G637_le {x : ℝ} (hx : 0 < x) {U V : ℕ} {q : ℕ} (hq : 1 ≤ q) (hU : 1 ≤ U)\n    (hV : 0 < (V : ℝ)) (hVU : (V : ℝ) ≤ x / U) (hqV : 2 * rexp 1 * q ≤ V) {β : ℝ} (hβ : 0 < β) :\n    IntervalIntegrable (G637 x U V q β) volume V (x / U) ∧\n    ∫ W in (V : ℝ)..x / U, G637 x U V q β W ≤\n      x / √(8 * Nat.totient q) * β / 2 * (Real.log (x / (U * V)) + Real.log (2 * q) *\n        (Real.log (Real.log (x / U / (2 * q))) - Real.log (Real.log (V / (2 * q))))) +\n      x / √(8 * Nat.totient q) / (2 * β) *\n        (0.15107 * Real.log (x / (U * V)) + 0.0231 + 2 * zeta3 * √(x / V) / U) +\n      √(kap1 x U V * q * x / (2 * Nat.totient q)) * (2 * √(x / U) + √(Real.log (2 * q)) *\n        (2 * rexp 1 * √(2 * q) + 4 * √(x / U / Real.log (x / U / (2 * q))))) +\n      1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) * (2 / √V) :=",
+            "line": 214,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L214"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          122
+        ],
+        "printed": [
+          112
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Exact; needs 2q < V, which holds since 2eq ≤ V."
+}

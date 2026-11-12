@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.7",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 176,
+        "rect": [
+          0.25926,
+          0.48601,
+          0.56816,
+          0.08143
+        ]
+      },
+      "title": "Equation (9.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.good_height",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.good_height",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem good_height {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (k : ℕ) :\n    ∃ T ∈ Icc (k : ℝ) (k + 1), ∀ σ ∈ [[(-1 / 2 : ℝ), 3 / 2]],\n      (χ.LFunction ((σ : ℂ) + ((T : ℝ) : ℂ) * I) ≠ 0 ∧\n        χ.LFunction ((σ : ℂ) + ((-T : ℝ) : ℂ) * I) ≠ 0) ∧\n      (‖logDeriv χ.LFunction ((σ : ℂ) + ((T : ℝ) : ℂ) * I)‖ ≤ Hk N k ∧\n        ‖logDeriv χ.LFunction ((σ : ℂ) + ((-T : ℝ) : ℂ) * I)‖ ≤ Hk N k) :=",
+            "line": 577,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L577"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          176
+        ],
+        "printed": [
+          166
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the shift as a limit over good heights and handles the horizontal segments the book omits. The left side should be on ℜs = 3/2, and R should include the factor x^s (missing η(0)log x for even χ, η(0) ≠ 0)."
+}

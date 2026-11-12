@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.92",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 203,
+        "rect": [
+          0.17135,
+          0.69507,
+          0.56816,
+          0.06772
+        ]
+      },
+      "title": "Equation (9.92)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.92"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.first_line_le",
+        "module": "TernaryGoldbach.MajorArcs.Cor713"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.first_line_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem first_line_le {q : ℕ} (hq1 : 1 ≤ q) (hq3 : q ≤ 300000) {δ : ℝ}\n    (hδ : |δ| ≤ 4 * 300000 / q) :\n    (1e8 / q) * Real.log (q * (1e8 / q) / (2 * π)) *\n      (6.11 * Real.exp (-0.1598 * (1e8 / q)) + 1.578 * expδ (1e8 / q) δ) ≤ 2.485e-19 :=",
+            "line": 89,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L89"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          203
+        ],
+        "printed": [
+          193
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves both bounds inline, rounding 1000/(12π) down to 26.5."
+}

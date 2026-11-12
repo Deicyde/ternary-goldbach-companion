@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.6",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 149,
+        "rect": [
+          0.17135,
+          0.7141,
+          0.56816,
+          0.06937
+        ]
+      },
+      "title": "Equation (7.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.hH",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.hH",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def hH (H t : ℝ) : ℝ :=\n  ∫ y in Set.Ioi (0:ℝ), hBase (t / y) * F H y / y",
+            "line": 38,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L38"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          149
+        ],
+        "printed": [
+          139
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "I checked the claim MF_H(iτ) = 1_{(−H,H)}(τ): ∫ sin(Hu)/(πu)·e^{iτu}du = 1 for |τ| < H. Lean also quantifies how well h_H approximates h: MajorArcs.integral_norm_sq_gC_sub and MajorArcs.tail_fourier_gC_le (HHFourier.lean:378, 434) give ‖g − g_H‖₂² ≤ 19.5/H²."
+}

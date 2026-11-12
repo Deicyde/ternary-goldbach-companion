@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 9.1.4",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 182,
+        "rect": [
+          0.25926,
+          0.63508,
+          0.56816,
+          0.21741
+        ]
+      },
+      "title": "Lemma 9.1.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_G_half",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherel"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_norm_sq_G_half",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_norm_sq_G_half (δ : ℝ) :\n    ∫ t : ℝ, ‖Gr (((1 / 2 : ℝ) : ℂ) + t * I) δ 0‖ ^ 2 =\n      2 * π * ∫ u in Ioi (0:ℝ), (u ^ 2 * Real.exp (-u ^ 2 / 2)) ^ 2 :=",
+            "line": 88,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherel.lean",
+            "fragment": "L88"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          182
+        ],
+        "printed": [
+          172
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps the strategy: Cauchy–Schwarz plus Mellin–Plancherel, giving √T₀·log. It replaces partial summation with N(T,χ) by Sobolev bounds on windows of height 3.48, each carrying ≤ ZL zeros (Jensen)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.74",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 142,
+        "rect": [
+          0.25926,
+          0.44165,
+          0.56816,
+          0.15716
+        ]
+      },
+      "title": "Equation (6.74)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.74"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bM1_asym",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIbNum"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bM1_asym",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem bM1_asym {L : ℝ} (hL : 55 ≤ L) :\n    √(12 * a1F0 L * bX0 L * bB0 L) ≤ 1.0091 * (L * √L) :=",
+            "line": 220,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIbNum.lean",
+            "fragment": "L220"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          142
+        ],
+        "printed": [
+          132
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The text's a^{3/2} − b^{3/2} ≤ (a^{1/2}/2)(a − b) should be (3/2)a^{1/2}(a − b), so two terms of (6.74) are 3× too small; the conclusion still holds numerically. Lean's asymptotic range starts at t = 165."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.3.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 192,
+        "rect": [
+          0.25926,
+          0.15373,
+          0.56816,
+          0.24296
+        ]
+      },
+      "title": "Proposition 9.3.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.3.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_zeta_le",
+        "module": "TernaryGoldbach.Explicit.ZetaBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_zeta_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_SsumG_zeta_le (δ : ℝ) {x : ℝ} (hx : 1 ≤ x) {T0 : ℝ} (hT0 : max (10 * π * |δ|) 50 ≤ T0)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ T0 → ρ.re = 1 / 2) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) (fδ δ) x - mellin (fδ δ) 1 * x‖ ≤ errZ T0 δ x * x :=",
+            "line": 132,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZetaBound.lean",
+            "fragment": "L132"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          192
+        ],
+        "printed": [
+          182
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the proposition with its own, larger error err932N in place of (9.57); MajorArcs.err932 transcribes (9.57) but no theorem bounds the sum by it."
+}

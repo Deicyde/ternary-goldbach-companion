@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.23",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 47,
+        "rect": [
+          0.17135,
+          0.67548,
+          0.56816,
+          0.04062
+        ]
+      },
+      "title": "Equation (2.23)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.abs_muSum_log_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeITotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.abs_muSum_log_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem abs_muSum_log_le {x U : ℝ} {q : ℕ} (hq : 1 ≤ q) (hU : 0 < U) (hUx : U ≤ x) :\n    |muSum U q (2 * q) fun m => Real.log (x / (m * q))| ≤\n      (2 * q / Nat.totient (2 * q) + 2.67) + Real.log (x / U) * muBound U q :=",
+            "line": 53,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeITotal.lean",
+            "fragment": "L53"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          47
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the additive form q/φ(q) + 2.67 in place of 1.00303·q/φ(q); it is weaker for every q with q/φ(q) < 881."
+}

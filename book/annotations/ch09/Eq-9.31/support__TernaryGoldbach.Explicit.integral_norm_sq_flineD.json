@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.31",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 183,
+        "rect": [
+          0.17135,
+          0.24126,
+          0.56816,
+          0.05017
+        ]
+      },
+      "title": "Equation (9.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_norm_sq_flineD",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherel"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_norm_sq_flineD",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_norm_sq_flineD (δ : ℝ) :\n    ∫ t, ‖flineD δ t‖ ^ 2 = 2 * π * ∫ v in Ioi (0:ℝ), Real.log v ^ 2 * etaSq v :=",
+            "line": 253,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherel.lean",
+            "fragment": "L253"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          183
+        ],
+        "printed": [
+          173
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Never used: no proof refers to (9.31), and the proof of Lemma 9.1.4 bounds ∫|G′_δ(½+iT)|² by Plancherel instead."
+}

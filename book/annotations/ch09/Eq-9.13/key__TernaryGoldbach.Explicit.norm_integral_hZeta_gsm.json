@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.13",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 178,
+        "rect": [
+          0.25926,
+          0.3599,
+          0.56816,
+          0.04252
+        ]
+      },
+      "title": "Equation (9.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_integral_hZeta_gsm",
+        "module": "TernaryGoldbach.Explicit.PsiExplicit"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_integral_hZeta_gsm",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_integral_hZeta_gsm {a b δ : ℝ} (hδ : 0 < δ) (hab : b ≤ a) {x : ℝ} (hx : 0 < x) :\n    ‖∫ y : ℝ, hZeta (fun u => (gsm a b δ u : ℂ)) x (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤\n      x ^ (-(1 / 2) : ℝ) * Vg a b δ :=",
+            "line": 51,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/PsiExplicit.lean",
+            "fragment": "L51"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          178
+        ],
+        "printed": [
+          168
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds the norm of the same line integral, pointwise rather than by Cauchy–Schwarz, with constants about 10⁴ times the book's at q = 3, δ = 0. The book's 226.844 covers only |τ| ≤ 10⁵; the full integral is about 226.850, and 6.01 still holds."
+}

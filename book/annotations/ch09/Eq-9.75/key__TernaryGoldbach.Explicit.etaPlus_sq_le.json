@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.75",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 199,
+        "rect": [
+          0.17135,
+          0.4716,
+          0.56816,
+          0.04247
+        ]
+      },
+      "title": "Equation (9.75)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.75"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.etaPlus_sq_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.etaPlus_sq_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem etaPlus_sq_le {t : ℝ} (ht : 0 ≤ t) : etaPlus t ^ 2 ≤ 9.9225 * (t ^ 2 * Real.exp (-t ^ 2)) :=",
+            "line": 279,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L279"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          199
+        ],
+        "printed": [
+          189
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds the two pieces separately and much more crudely: √65.5 ≈ 8.09, against the book's |η₊|_∞|η₊|₂ ≈ 0.864 at H = 200. This suffices because the term is multiplied by √x and compared with x ≥ 4.9·10²⁶."
+}

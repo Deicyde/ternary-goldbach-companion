@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.11",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 115,
+        "rect": [
+          0.17135,
+          0.74177,
+          0.56816,
+          0.04416
+        ]
+      },
+      "title": "Equation (6.11)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.coefQ",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.coefQ",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def coefQ (x : ℝ) (q : ℕ) (U V c : ℝ) : ℝ :=\n  √(c₀ * c) / π * (logPlus (2 * U / q) + 1 / rexp 1) +\n    2 * eta2'L1 / π * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 * V / (4 * π * eta2'L1 * x))) +\n    (2 * √(3 * c₀ * c) / π + 3 * c / (2 * c₂) + 55 * c₀ * c₂ / (6 * π ^ 2))",
+            "line": 181,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L181"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          115
+        ],
+        "printed": [
+          105
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never names c_{6,I₂}; its counterpart carries the factor 1.0064 (book 1.0004) and c₀ = 32."
+}

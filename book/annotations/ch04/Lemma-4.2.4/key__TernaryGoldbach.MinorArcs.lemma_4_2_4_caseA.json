@@ -1,0 +1,89 @@
+{
+  "id": "Lemma 4.2.4",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 80,
+        "rect": [
+          0.25926,
+          0.60522,
+          0.56816,
+          0.25097
+        ]
+      },
+      "title": "Lemma 4.2.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4#0"
+        }
+      }
+    },
+    {
+      "location": {
+        "page": 81,
+        "rect": [
+          0.17135,
+          0.15806,
+          0.56816,
+          0.34383
+        ]
+      },
+      "title": "Lemma 4.2.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4#1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_4_caseA",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_4_2_4_caseA {α x δ Q₀ U V : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q₀)\n    (hQ₀2 : 2 ≤ Q₀) (hx : 0 < x) (hU : 1 ≤ U) (hV : 1 ≤ V) (hδ : 1 / (2 * c₂) ≤ |δ|) {ε : ℝ}\n    (hε : 0 < ε) (hε1 : ε ≤ 1) :\n    ‖typeI2 α x U V‖ ≤ bound_4_50 x δ q U V + bound_4_52 x δ q U V Q₀ ε :=",
+            "line": 1131,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L1131"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          80,
+          81
+        ],
+        "printed": [
+          70,
+          71
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves both cases for η₂ with a factor 3/2 on the (U+1)²V log q term, c₁ = 1+|η'|₁/(x/D) and cruder lower-order terms; it drops UV + (19/18)Q₀ ≤ x/5.6 and Q₀ ≥ 2√x."
+}

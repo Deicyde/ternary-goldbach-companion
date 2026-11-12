@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.1",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 238,
+        "rect": [
+          0.25926,
+          0.21376,
+          0.56816,
+          0.0518
+        ]
+      },
+      "title": "Equation (12.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.majorArcs",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.majorArcs",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def majorArcs (δ₀ r x : ℝ) : Set ℝ :=\n  (⋃ (q : ℕ) (_ : 1 ≤ q ∧ (q : ℝ) ≤ r ∧ Odd q) (a : ℤ) (_ : IsCoprime a (q : ℤ)),\n      Set.Ioo (a / q - δ₀ * r / (2 * q * x)) (a / q + δ₀ * r / (2 * q * x))) ∪\n  (⋃ (q : ℕ) (_ : 1 ≤ q ∧ (q : ℝ) ≤ 2 * r ∧ Even q) (a : ℤ) (_ : IsCoprime a (q : ℤ)),\n      Set.Ioo (a / q - δ₀ * r / (q * x)) (a / q + δ₀ * r / (q * x)))",
+            "line": 64,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L64"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          238
+        ],
+        "printed": [
+          228
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "With Q0 in place of r, δ0Q0² ≤ x/2 makes the arcs disjoint mod 1: the half-widths at a/q and a'/q' sum to (q+q')δ0Q0/(qq'x) ≤ 1/(qq'). So (12.3) is an equality."
+}

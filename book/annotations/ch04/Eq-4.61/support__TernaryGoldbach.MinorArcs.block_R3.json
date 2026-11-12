@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.61",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 86,
+        "rect": [
+          0.25926,
+          0.19979,
+          0.56816,
+          0.0873
+        ]
+      },
+      "title": "Equation (4.61)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.61"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.block_R3",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.block_R3",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem block_R3 {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {R D : ℝ} (hR0 : 0 < R) (j : ℕ) (hyD : R + j * q < D) :\n    ∑ n ∈ Ioc ⌊R + j * q⌋ ⌊min (R + (j + 1) * q) D⌋, Tn α x n ≤\n      3 * (1 + eta2'L1 / (x / D)) / 2 * x * (1 / (R + j * q)) +\n        2 * q * √(c₀ * (1 + eta2'L1 / (x / D))) / π * √(1 + q / (R + j * q)) :=",
+            "line": 381,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L381"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          86
+        ],
+        "printed": [
+          76
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The book weights each block by its lower end log(jq+R), which does not bound log m on the block; Lean uses the upper end, so the j=0 term is (x/R)log(R+q) (≤ (x/R)log 3R for R ≥ q/2). Typo: After (4.61) the book cites the assumption x >= e^2 c/2 (the lemma states x >= e^2 c_2/2 = 2.481); (checked by `scripts/checks/eq_4_61.py`)."
+}

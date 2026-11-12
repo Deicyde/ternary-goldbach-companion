@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 5.1.1",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 91,
+        "rect": [
+          0.17135,
+          0.15773,
+          0.56816,
+          0.32055
+        ]
+      },
+      "title": "Lemma 5.1.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.1.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_1_1",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_1_1",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_1_1 {y z : ℝ} (hy : 0 < y) (hz : 0 < z) :\n    |∑ r₁ ∈ Icc 1 ⌊y⌋₊, ∑ r₂ ∈ Icc 1 ⌊y⌋₊,\n      (if Nat.Coprime r₁ r₂ ∧ Odd (r₁ * r₂) then\n        (μ r₁ : ℝ) * μ r₂ * (cntSq (2 * (r₁ * r₂)) (aL y z r₁ r₂) (bL z r₁ r₂) -\n          4 * z / π ^ 2 / ((σ 1 r₁ : ℝ) * σ 1 r₂) * wM y r₁ r₂) else 0)| ≤\n      1.27 * (1 + 1 / √2) * ((1 - 2 ^ (-(3 / 2) : ℝ)) * (riemannZeta (3 / 2)).re) ^ 2 *\n        y * √z :=",
+            "line": 328,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L328"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          91
+        ],
+        "printed": [
+          81
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Only the v = 2 case is formalized, with the l-sum's lower limit read as max(...) (the printed min makes the lemma false); the general-v 5.08 bound is absent and unused. Erratum: (5.9) and (5.12) print the lower limit min((z/y)/min(r1,r2), z/(2r1r2)), which makes the lemma false (v=2, y=3/2, z=10^6: left side 202646 against main term 135094.9 with error 9274.5); the intended limit is max(...), the range of (5.8), which gives 135091. (checked by `scripts/checks/lemma_5_1_1.py`)."
+}

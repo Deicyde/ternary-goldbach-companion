@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.39",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 299,
+        "rect": [
+          0.17135,
+          0.53074,
+          0.56816,
+          0.07625
+        ]
+      },
+      "title": "Equation (A.39)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.39"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.mul_abs_etaPlus_le_B",
+        "module": "TernaryGoldbach.Helfgott.HHBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.mul_abs_etaPlus_le_B",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem mul_abs_etaPlus_le_B {t : ℝ} (ht : 0 ≤ t) : t * |etaPlus t| ≤ 2.32 :=",
+            "line": 445,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/HHBound.lean",
+            "fragment": "L445"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          299
+        ],
+        "printed": [
+          289
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Valid, but every right side is +∞ because |(h−h_H)/t|_∞ = ∞ (see (A.36)); the notation |(h−h_H(t))/t|_∞ mixes a function with its value (harmless). The book needs the log t and 1/t versions only in Prop 9.5.1, which Lean proves by Mellin/Plancherel bounds (prop_9_5_1, MajorArcs/Prop715.lean:300)."
+}

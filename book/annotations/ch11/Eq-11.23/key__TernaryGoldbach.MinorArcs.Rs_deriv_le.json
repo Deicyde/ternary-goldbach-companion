@@ -1,0 +1,70 @@
+{
+  "id": "Eq 11.23",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 235,
+        "rect": [
+          0.17135,
+          0.3026,
+          0.56816,
+          0.04458
+        ]
+      },
+      "title": "Equation (11.23)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 11.23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Rs_deriv_le",
+        "module": "TernaryGoldbach.MinorArcs.GMono"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Rs_deriv_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Rs_deriv_le {B s : ℝ} (hs : 0 ≤ Real.log 8 + s) (hB : s < B) :\n    0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.27125 / (B - s) :=",
+            "line": 129,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L129"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          235
+        ],
+        "printed": [
+          225
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean does not follow (11.23)–(11.25); it bounds dR/ds and tests Q' ≤ Q/2 on the whole main term."
+}

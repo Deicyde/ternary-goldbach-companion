@@ -1,0 +1,70 @@
+{
+  "id": "Eq C.10",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 310,
+        "rect": [
+          0.25926,
+          0.27334,
+          0.56816,
+          0.09406
+        ]
+      },
+      "title": "Equation (C.10)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq C.10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.RamPf.ramare_bound",
+        "module": "TernaryGoldbach.Prelim.RamareLog"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.RamPf.ramare_bound",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem ramare_bound {d : ℕ} (hd : 1 ≤ d) {R : ℝ} (hR : 0 < R) :\n    |GqP d R - (Nat.totient d / d) * (Real.log R + cR + SqP d)| ≤\n      7.284 * R ^ (-(1 / 3 : ℝ)) * TernaryGoldbach.Prelim.f1qP d :=",
+            "line": 347,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/RamareLog.lean",
+            "fragment": "L347"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          310
+        ],
+        "printed": [
+          300
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves Ramaré's Lemma 3.4 for all d (with 7.04 internally), which contains both lines; it is not one of the hypotheses."
+}

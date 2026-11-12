@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.59",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 133,
+        "rect": [
+          0.17135,
+          0.20521,
+          0.56816,
+          0.07927
+        ]
+      },
+      "title": "Equation (6.59)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.59"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_B8x_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_B8x_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_B8x_first {x δ U V : ℝ} {q : ℕ} (hq : 1 ≤ q) (hx : 0 < x)\n    (hδ : 1 / (2 * c₂) ≤ |δ|) (hUV0 : 0 ≤ U * V)\n    (hUV : U * V ≤ x / (2 * √(delta0 δ * q))) :\n    x / (|δ| * q) * (1.03883 + Real.log q + logPlus (6 * U * V * |δ| * q / (√2 * x))) ≤\n      (2.016 * Real.log (delta0 δ * q) + 0.3108) * (2 * x / (delta0 δ * q)) :=",
+            "line": 454,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2.lean",
+            "fragment": "L454"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          133
+        ],
+        "printed": [
+          123
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's leading constant is 2.5257 (book 2.49157), because ψ(y) ≤ 1.0064y replaces the book's 1.0004y; the φ(q)-term is 2.8·2x/(δ₀φ(q)) with no logarithm and includes the odd-q factor 2, and the x^{2/3} terms are absorbed into 0.556x^{5/6}."
+}

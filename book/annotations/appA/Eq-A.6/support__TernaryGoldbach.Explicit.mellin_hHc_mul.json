@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.6",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 290,
+        "rect": [
+          0.25926,
+          0.16974,
+          0.56816,
+          0.05642
+        ]
+      },
+      "title": "Equation (A.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.mellin_hHc_mul",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.mellin_hHc_mul",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem mellin_hHc_mul {g : ℝ → ℂ} (hg : AEStronglyMeasurable g (volume.restrict (Ioi 0)))\n    {C b : ℝ} (hC : 0 ≤ C) (hgb : ∀ t : ℝ, 0 < t → ‖g t‖ ≤ C * (t ^ b * Real.exp (-t ^ 2 / 2)))\n    {s : ℂ} (hs : 0 < s.re + b) :\n    mellin (fun t => hHc t * g t) s =\n      ∫ ξ in Icc (-aH) aH, 𝓕 gC ξ * mellin g (s + ((2 * π * ξ : ℝ) : ℂ) * I) :=",
+            "line": 33,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L33"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          290
+        ],
+        "printed": [
+          280
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked with H = 5: h_H(t) computed from (A.4) equals (1/2π)∫_{−H}^{H}Mh(iτ)t^{−iτ}dτ to 6 digits at t = 0.3, 1, 1.7, 2.5 (1.563929 at t = 1). Mh_H(iτ) is not an absolutely convergent integral: h_H(e^u) ≈ Im(e^{iHu}Mh(−iH))/(πu) as |u| → ∞ (H = 5, u = 40: −2.193e−3 vs −2.165e−3; |Mh(200i)| = 5.37e−7 ≠ 0)."
+}

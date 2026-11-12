@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.3",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 238,
+        "rect": [
+          0.25926,
+          0.44369,
+          0.56816,
+          0.05667
+        ]
+      },
+      "title": "Equation (12.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_majorArcs_eq",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_majorArcs_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_majorArcs_eq {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, g α =\n      ∑ q ∈ Qset r₀, ∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, g y :=",
+            "line": 27,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L27"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          238
+        ],
+        "printed": [
+          228
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "(12.3) for the (12.1) arcs is not formalized; Prop 12.1.2's use is replaced by a covering inequality for the (10.5) arcs, and the equality form exists only in the major-arc files."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 11.2.1",
+  "kind": "lemma",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 231,
+        "rect": [
+          0.17135,
+          0.39602,
+          0.56816,
+          0.09113
+        ]
+      },
+      "title": "Lemma 11.2.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 11.2.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_S_etaStar_le_ghat {x n α : ℝ} (hx : 0 < x) (hy : 1e25 ≤ x / κ)\n    (hn : 670 ≤ n) (hny : n ≤ (x / κ) ^ (1 / 3 : ℝ) / 6) (hny' : 2.16e20 * n ≤ 670 * (x / κ))\n    (hα : α ∉ majorArcs 8 n (x / κ)) :\n    ‖S etaStar x α‖ ≤ x / κ * ghatY (x / κ) n :=",
+            "line": 358,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L358"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          231
+        ],
+        "printed": [
+          221
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean does not need the lemma: it uses max(g, h) and the two separate monotonicities."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.26",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 97,
+        "rect": [
+          0.17135,
+          0.75153,
+          0.56816,
+          0.05198
+        ]
+      },
+      "title": "Equation (5.26)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.ramare_moebius",
+        "module": "TernaryGoldbach.Prelim.RamareMoebius"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.ramare_moebius",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem ramare_moebius [h : Fact RamareMoebius] {x : ℝ} (hx : 11815 ≤ x) :\n    |∑ n ∈ Icc 1 ⌊x⌋₊, (μ n : ℝ) / n| ≤ 0.03 / Real.log x :=",
+            "line": 23,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/RamareMoebius.lean",
+            "fragment": "L23"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          97
+        ],
+        "printed": [
+          87
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean switches to Ramaré's bound at t = 11815 rather than 10¹⁰, so its Rankin exponent is 1/9 for all x; the √(2/t) part is the same."
+}

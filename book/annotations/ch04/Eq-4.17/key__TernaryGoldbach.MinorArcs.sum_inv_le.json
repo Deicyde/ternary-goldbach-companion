@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.17",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.25926,
+          0.80375,
+          0.56816,
+          0.05206
+        ]
+      },
+      "title": "Equation (4.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_inv_le",
+        "module": "TernaryGoldbach.MinorArcs.BlockSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_inv_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_inv_le {R q D : ℝ} (hR : 0 < R) (hq : 0 < q) {J : ℕ} (hJ : 1 ≤ J)\n    (hD : R + (J - 1) * q ≤ D) :\n    ∑ j ∈ range J, 1 / (R + j * q) ≤ 1 / R + 1 / q * Real.log (D / R) :=",
+            "line": 53,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BlockSums.lean",
+            "fragment": "L53"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean reaches x/Q₀ at once because Qr ≥ Q₀. The book's 2x/Q and (1+ε)x/εQ, with Q = ⌊x/|δq|⌋, are where the gap recorded at (4.11) begins."
+}

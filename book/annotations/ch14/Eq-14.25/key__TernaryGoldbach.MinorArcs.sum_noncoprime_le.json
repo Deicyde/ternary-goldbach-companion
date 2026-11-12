@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.25",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 275,
+        "rect": [
+          0.17135,
+          0.63769,
+          0.56816,
+          0.09065
+        ]
+      },
+      "title": "Equation (14.25)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_noncoprime_le",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap2"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_noncoprime_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_noncoprime_le {y : ℝ} (hy : 1e25 ≤ y) {q K : ℕ} (hq : 1 ≤ q) (hK : y ^ 2 ≤ 2 ^ K) :\n    ∑' n, ‖((Λ n * etaU (n / y) : ℝ) : ℂ) - coprimePart q (fun n => ((Λ n * etaU (n / y) : ℝ) : ℂ)) n‖\n      ≤ 6.2 * K * Real.log q + 1 :=",
+            "line": 41,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap2.lean",
+            "fragment": "L41"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          275
+        ],
+        "printed": [
+          265
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Prop 10.4.1 needs log 2r, not log r (e.g. q = 154770); then LS_{η*} ≤ 25.73 log x + 0.60 and LS_{η₊} ≤ 19.65 log x + 30.04, negligible downstream. Lean bounds the non-coprime sum directly."
+}

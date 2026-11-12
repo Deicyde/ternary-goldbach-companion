@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.25",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 30,
+        "rect": [
+          0.25926,
+          0.36783,
+          0.56816,
+          0.05064
+        ]
+      },
+      "title": "Equation (1.25)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.abs_mqs_le",
+        "module": "TernaryGoldbach.Prelim.LiouvilleBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.abs_mqs_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem abs_mqs_le {q : ℕ} (hq : 1 ≤ q) {x : ℝ} (hqx : (q : ℝ) < x) :\n    |mqs q x| ≤ 2.8 * ((q : ℝ) / Nat.totient q) / Real.log (x / q) :=",
+            "line": 623,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LiouvilleBound.lean",
+            "fragment": "L623"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          30
+        ],
+        "printed": [
+          20
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the constant 2.8 instead of [Ramb]'s 4/5, using only the RamareMoebius hypothesis."
+}

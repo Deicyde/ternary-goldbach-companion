@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.32",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 102,
+        "rect": [
+          0.25926,
+          0.30188,
+          0.56816,
+          0.04023
+        ]
+      },
+      "title": "Equation (5.32)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_H2_le",
+        "module": "TernaryGoldbach.MinorArcs.H2Bound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_H2_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_H2_le {T : ℝ} (hT : 1 ≤ T) :\n    ∫ S in (1 : ℝ)..T, H2 S / S ≤ 0.15107 * Real.log T + 0.0231 :=",
+            "line": 374,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/H2Bound.lean",
+            "fragment": "L374"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          102
+        ],
+        "printed": [
+          92
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "In the book (5.32) only feeds (5.36). The failure ranges come from a 0.01-grid with G_v = T_v below 3000 (exact evaluation of (5.29), as the book does below 10⁵); since G_v ≥ T_v by construction, the counterexamples hold for any admissible G_v."
+}

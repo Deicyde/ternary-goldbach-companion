@@ -1,0 +1,69 @@
+{
+  "id": "Eq 6.60",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 133,
+        "rect": [
+          0.17135,
+          0.36737,
+          0.56816,
+          0.21875
+        ]
+      },
+      "title": "Equation (6.60)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.60"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_rest_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeII"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_rest_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_rest_le {T t c : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (ht2 : 2 ≤ t) (htT : t ≤ T / 3)\n    (hct : t ≤ c) (hc : c ≤ 1.0015 * t) (hq : 1 ≤ q) (hqT : (q : ℝ) ≤ T) :\n    4 * √(kap1 (T ^ 3) (U1 T t) (V1 T) * q * T ^ 3 / (2 * Nat.totient q)) *\n        (2 * √(T ^ 3 / U1 T t) + √(Real.log c) * (2 * rexp 1 * √c +\n          4 * √(T ^ 3 / U1 T t / Real.log (T ^ 3 / U1 T t / c)))) +\n      8 * 1.4262 * T ^ 3 * √(kap1 (T ^ 3) (U1 T t) (V1 T) * (1 / 2 + 1 / U1 T t)) / √(V1 T) ≤\n      3.2 * (T ^ 2 * √T) :=",
+            "line": 130,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeII.lean",
+            "fragment": "L130"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          133
+        ],
+        "printed": [
+          123
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

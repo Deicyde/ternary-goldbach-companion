@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.30",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 163,
+        "rect": [
+          0.17135,
+          0.52925,
+          0.56816,
+          0.03531
+        ]
+      },
+      "title": "Equation (8.30)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.re_exponent",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.re_exponent",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem re_exponent (δ θ r : ℝ) :\n    (-(r : ℂ) ^ 2 * cexp (2 * θ * I) / 2 + 2 * π * I * δ * r * cexp (θ * I)).re =\n      -r ^ 2 * Real.cos (2 * θ) / 2 - 2 * π * δ * r * Real.sin θ :=",
+            "line": 42,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L42"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          163
+        ],
+        "printed": [
+          153
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Exact: checked against Re φ from (8.12) at 2000 random points, with no discrepancy. Reused for (8.31), (8.34), the L₃ estimate and §8.4.2."
+}

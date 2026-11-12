@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.58",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 85,
+        "rect": [
+          0.17135,
+          0.23698,
+          0.56816,
+          0.13064
+        ]
+      },
+      "title": "Equation (4.58)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.58"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.second_approx",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.second_approx",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem second_approx {ξ Q ε : ℝ} {a : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hqQ : (q : ℝ) ≤ Q) (hε : 0 < ε) (hexact : |ξ - a / q| = 1 / (q * Q)) :\n    ∃ (a' : ℤ) (q' : ℕ), 1 ≤ q' ∧ IsCoprime a' (q' : ℤ) ∧ (q' : ℝ) ≤ (1 + ε) * Q ∧\n      |ξ - a' / q'| ≤ 1 / (q' * ((1 + ε) * Q)) ∧ ε * Q / (1 + ε) ≤ q' :=",
+            "line": 1025,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1025"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          85
+        ],
+        "printed": [
+          75
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The block sums before (4.58) use lower-end weights log(jq'+(Q+1)/2); Lean weights each block by its upper end (sum_R3W') and states the result as bound_4_52, keeping x/Q₀ factors."
+}

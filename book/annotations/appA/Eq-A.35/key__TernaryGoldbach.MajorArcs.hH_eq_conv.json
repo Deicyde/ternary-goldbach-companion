@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.35",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 298,
+        "rect": [
+          0.25926,
+          0.36167,
+          0.56816,
+          0.04138
+        ]
+      },
+      "title": "Equation (A.35)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.hH_eq_conv",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.hH_eq_conv",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hH_eq_conv {H t : ℝ} (hH0 : 0 < H) (ht : 0 < t) :\n    hH H t = ∫ v, gL (Real.log t - v) * sH H v :=",
+            "line": 215,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L215"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          298
+        ],
+        "printed": [
+          288
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Verified: with y = e^{w/H}, dy/y = dw/H and F_H(e^{w/H}) = H sin w/(πw), and y = t/2 ↔ w = −H log(2/t). Since h(2) = h(0) = 0, the integration by parts that follows has no boundary terms. hH_eq_conv is the literal statement up to the dummy rescaling v = w/H. hH_eq_u is the equivalent form that Lean actually integrates by parts."
+}

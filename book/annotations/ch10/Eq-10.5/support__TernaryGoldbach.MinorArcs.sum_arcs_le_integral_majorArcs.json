@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 211,
+        "rect": [
+          0.17135,
+          0.78739,
+          0.56816,
+          0.0661
+        ]
+      },
+      "title": "Equation (10.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral_majorArcs",
+        "module": "TernaryGoldbach.MajorArcs.ArcsEq"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_arcs_le_integral_majorArcs",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_arcs_le_integral_majorArcs {g : ℝ → ℝ} (hg : Continuous g) (hper : Function.Periodic g 1)\n    (hg0 : ∀ α, 0 ≤ g α) {δ₀ Q x : ℝ} (hx : 0 < x) (hδ : 0 < δ₀) (hQ : 0 < Q)\n    (hQx : δ₀ * Q ^ 2 ≤ x / 2) (hw : δ₀ * Q ≤ x) :\n    ∑ q ∈ Qset Q, ∑ b ∈ Bset q, ∫ y in arc δ₀ Q x q b, g y ≤\n      ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q x, g α :=",
+            "line": 34,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcsEq.lean",
+            "fragment": "L34"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          211
+        ],
+        "printed": [
+          201
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The same Lean definition also serves Ch. 12–13 with other (δ₀, R) and other scales (LargeSieveArcs, OffArcs). The cites tool links (10.5) to MinorArcs.Gq, but that link only comes from the module docstring of LargeSievePrimes.lean;"
+}

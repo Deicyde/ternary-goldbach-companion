@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.13",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 259,
+        "rect": [
+          0.17135,
+          0.48257,
+          0.56816,
+          0.08787
+        ]
+      },
+      "title": "Equation (13.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Mexpr",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def Mexpr (x : ℝ) (r₂ : ℕ) : ℝ :=\n  ghatY (x / κ) 150000 * (cL 150000 * sig x / Dx x - 8.6294) +\n    ∑ n ∈ Finset.Ioo 150000 r₂, ghatY (x / κ) n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n    ghatY (x / κ) r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)",
+            "line": 78,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L78"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          259
+        ],
+        "printed": [
+          249
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's H has c₊ = 2 and δ₀ = 392 (scale-y arcs), i.e. c⁺ = log 2 + 2, c⁻ = log(2/28) + 1.33258 = −1.3065. Mexpr keeps the exact weights log((n+1)/n) ([H] uses ∫g/(r+1) ≤ ∫g/r), replaces S by σ(x)x and (√J−√E)² by 8.6294x (I0_ge)."
+}

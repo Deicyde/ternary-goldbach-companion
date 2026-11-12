@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.40",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 36,
+        "rect": [
+          0.25926,
+          0.4631,
+          0.56816,
+          0.08913
+        ]
+      },
+      "title": "Equation (1.40)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S_etaStar_eq",
+        "module": "TernaryGoldbach.MinorArcs.EtaStar"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S_etaStar_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S_etaStar_eq {x : ℝ} (hx : 0 < x) (α : ℝ) :\n    S etaStar x α = ∫ w in Ioi (0:ℝ), S eta2 (w * (x / κ)) α * ((phi w / w : ℝ) : ℂ) :=",
+            "line": 41,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EtaStar.lean",
+            "fragment": "L41"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          36
+        ],
+        "printed": [
+          26
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves only the instances of (1.40) the proof needs, for η* = (η₂∗_Mφ)(49t), written at scale x/κ rather than with η₁(κr)."
+}

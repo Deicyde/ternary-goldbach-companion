@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.29",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 32,
+        "rect": [
+          0.25926,
+          0.18621,
+          0.56816,
+          0.12952
+        ]
+      },
+      "title": "Equation (1.29)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def S2 (α x U' W' W : ℝ) : ℝ := oddSqSum α W' W U' (x / W)",
+            "line": 490,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L490"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          32
+        ],
+        "printed": [
+          22
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines the odd-m, prime-only versions of (5.6)/(5.38). Erratum: The book says the integrand of (1.28) is at most √(S₁S₂), but η₁ = 2 on [1/2,1] makes the integrand 4·Σ_m c_m Σ_n Λ(n)e(αmn) over the unweighted ranges of (1.29), so Cauchy–Schwarz gives 4√(S₁S₂); at x = 1015000, U = V = 100, W = 10⁴, α = 1/101 the integrand is 3.909·√(S₁S₂). (checked by `scripts/checks/eq_1_29.py`)."
+}

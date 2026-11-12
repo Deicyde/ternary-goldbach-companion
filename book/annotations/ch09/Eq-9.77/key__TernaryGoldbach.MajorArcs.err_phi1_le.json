@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.77",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 200,
+        "rect": [
+          0.25926,
+          0.28698,
+          0.56816,
+          0.02044
+        ]
+      },
+      "title": "Equation (9.77)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.77"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err_phi1_le",
+        "module": "TernaryGoldbach.MajorArcs.Prop715"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err_phi1_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem err_phi1_le {x : ℝ} (hx : 4.9e26 ≤ x)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ 500 → ρ.re = 1 / 2) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) phi1 x - mellin phi1 1 * x‖ ≤ 2.7e-9 * x :=",
+            "line": 230,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L230"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          200
+        ],
+        "printed": [
+          190
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has no c₀ or |η₊,₂′|₂; it absorbs its own s = 0 and Re s = −1/2 terms into err_phi1_le and err_phi2_le. The display before (9.77) prints the H ≥ 50 values 162.56, 59.325;"
+}

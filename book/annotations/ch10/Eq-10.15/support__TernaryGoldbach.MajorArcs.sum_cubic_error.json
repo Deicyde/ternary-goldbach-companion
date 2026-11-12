@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.15",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 214,
+        "rect": [
+          0.25926,
+          0.72387,
+          0.56816,
+          0.03336
+        ]
+      },
+      "title": "Equation (10.15)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_cubic_error",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_cubic_error",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_cubic_error {s : Finset ℕ} (Sp Ss eb : ℕ → ℂ) (Mp Ms : ℂ) {U ρ : ℝ} (hρ : 0 < ρ)\n    (heb : ∀ b ∈ s, ‖eb b‖ = 1) (hU : ∀ b ∈ s, ‖Ss b - Ms‖ ≤ U)\n    (hR : ∑ b ∈ s, ‖Sp b - Mp‖ ^ 2 ≤ ρ ^ 2) :\n    ‖∑ b ∈ s, Sp b ^ 2 * Ss b * eb b - Mp ^ 2 * Ms * ∑ b ∈ s, eb b‖ ≤\n      U * ∑ b ∈ s, ‖Sp b‖ ^ 2 +\n        ρ / 2 * (9 * ‖Ms‖ ^ 2 + (2 * ∑ b ∈ s, ‖Sp b‖ ^ 2 + 2 * s.card * ‖Mp‖ ^ 2) / 9) :=",
+            "line": 302,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L302"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          214
+        ],
+        "printed": [
+          204
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean isolates only the main-term product M₊²M_*, not the χ₀ term with full sums S."
+}

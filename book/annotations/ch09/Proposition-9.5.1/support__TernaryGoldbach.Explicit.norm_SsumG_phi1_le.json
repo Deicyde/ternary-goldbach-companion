@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.5.1",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 198,
+        "rect": [
+          0.25926,
+          0.5638,
+          0.56816,
+          0.22211
+        ]
+      },
+      "title": "Proposition 9.5.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_phi1_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_SsumG_phi1_le {x : ℝ} (hx : 1 ≤ x)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ 500 → ρ.re = 1 / 2) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) phi1 x - mellin phi1 1 * x‖ ≤\n      (Cg * (2 * aH)) ^ 2 * 8 * Z3g BPz2 0 + √x * E1g BPz2 500 (2 * π * 65.5) (2 * π * 147.7) +\n      x * E2g BPz2 10 500 ((Cg * (2 * aH)) ^ 2 * 8 * Real.exp (-60)) 0 (Real.exp (-2.64)) 0 +\n      x ^ (-(1 / 2) : ℝ) * VgL 3 ((Cg * (2 * aH)) ^ 2 * 8 * Real.exp 1) (1 / 400) / (2 * π) :=",
+            "line": 277,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L277"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          198
+        ],
+        "printed": [
+          188
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean fixes H = 200, T₀ = 500 and needs x ≥ 4.9·10²⁶ (book 10⁸), with error 10⁻⁸ in place of err_{ℓ2,η₊}. Lean's tail counts zeros in both half-planes, so the book's factor-2 and boundary-term gaps at (9.90) do not arise."
+}

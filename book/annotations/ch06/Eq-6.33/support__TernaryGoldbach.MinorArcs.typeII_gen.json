@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.33",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 123,
+        "rect": [
+          0.17135,
+          0.79723,
+          0.56816,
+          0.09359
+        ]
+      },
+      "title": "Equation (6.33)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_gen",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_gen",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_gen {α x : ℝ} {q : ℕ} (hq : 1 ≤ q) (hx : 0 < x) {U V : ℕ} (hU : 1 ≤ U)\n    (hV : (2000000 : ℝ) ≤ V) (hVU : (V : ℝ) ≤ x / U) {c m : ℝ} (hc1 : 1 ≤ c) (hm : 0 < m)\n    (hcV : c * rexp 1 ≤ V)\n    (hS2gen : ∀ W ∈ Set.Icc (V : ℝ) (x / U), S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (m * x / (Nat.totient q * Real.log (W / c)) + q / Nat.totient q * (W / Real.log (W / c))) *\n        logSqSum (max V (W / 2)) W) :\n    ‖typeII α x U V‖ ≤\n      4 * x * √(m / (2 * Nat.totient q)) * √((Real.log (x / (U * V)) + Real.log c *\n        (Real.log (Real.log (x / U / c)) - Real.log (Real.log (V / c)))) *\n        (0.15107 * Real.log (x / (U * V)) + 0.0231 + 2 * zeta3 * √(x / V) / U)) +\n      4 * √(kap1 x U V * q * x / (2 * Nat.totient q)) * (2 * √(x / U) + √(Real.log c) *\n        (2 * rexp 1 * √c + 4 * √(x / U / Real.log (x / U / c)))) +\n      8 * 1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) / √V :=",
+            "line": 314,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L314"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          123
+        ],
+        "printed": [
+          113
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never writes (6.33) as one integral; it bounds the integrand pointwise and splits it at once."
+}

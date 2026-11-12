@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.18",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 71,
+        "rect": [
+          0.17135,
+          0.18341,
+          0.56816,
+          0.10167
+        ]
+      },
+      "title": "Equation (4.18)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_sqrt_le",
+        "module": "TernaryGoldbach.MinorArcs.BlockSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_sqrt_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_sqrt_le {R q D : ℝ} (hR : 0 < R) (hq : 0 < q) {J : ℕ} (hJ : 1 ≤ J)\n    (hD : R + (J - 1) * q ≤ D) :\n    ∑ j ∈ range J, √(1 + q / (R + j * q)) ≤ √(1 + q / R) + (D - R) / q + 1 / 2 * Real.log (D / R) :=",
+            "line": 96,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BlockSums.lean",
+            "fragment": "L96"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          71
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The first term uses 2((1+ε)Q+1)/(Q+1) ≤ 2(1+ε), and the j ≥ 1 terms are compared with the integral of a decreasing function."
+}

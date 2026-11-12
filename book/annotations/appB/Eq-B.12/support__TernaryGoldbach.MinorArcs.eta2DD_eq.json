@@ -1,0 +1,70 @@
+{
+  "id": "Eq B.12",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 304,
+        "rect": [
+          0.25926,
+          0.40501,
+          0.56816,
+          0.02198
+        ]
+      },
+      "title": "Equation (B.12)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq B.12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2DD_eq",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2DD_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem eta2DD_eq {t : ℝ} (ht : t ≠ 0) :\n    ((2 * π * t) ^ 2 : ℂ) * 𝓕 (fun u => (eta2 u : ℂ)) t = eta2DD t :=",
+            "line": 152,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L152"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          304
+        ],
+        "printed": [
+          294
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked numerically: 4g + f̂ = −(2πt)²η̂₂ and −16 log 2·k + ĥ = −(2πt)²(log·η₂)^ agree to about 10⁻¹² at t = 0.3, 1, 7.7, 17.4, 40. Lean's proof of (B.11) uses only the coarse split ghat_eta2log, regrouped as η̂_(4) + (log ρ − log 4)η̂₂."
+}

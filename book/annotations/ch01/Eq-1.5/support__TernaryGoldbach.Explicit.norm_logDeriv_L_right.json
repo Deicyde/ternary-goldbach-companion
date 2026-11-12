@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 19,
+        "rect": [
+          0.17135,
+          0.54191,
+          0.56816,
+          0.04378
+        ]
+      },
+      "title": "Equation (1.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_logDeriv_L_right",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_logDeriv_L_right",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_logDeriv_L_right {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (y : ℝ) :\n    ‖logDeriv χ.LFunction (((3 / 2 : ℝ) : ℂ) + y * I)‖ ≤ C3 :=",
+            "line": 739,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L739"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          19
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Book use: last step of (9.4), proof of Lemma 9.1.1. Not reproved in the repo;"
+}

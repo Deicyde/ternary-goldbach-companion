@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.48",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 80,
+        "rect": [
+          0.25926,
+          0.21458,
+          0.56816,
+          0.09799
+        ]
+      },
+      "title": "Equation (4.48)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.48"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3L",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_R3L {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 1 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {R D : ℝ} (hRq : (q : ℝ) / 2 ≤ R) (hRc : c₂ * x / q ≤ R)\n    (hRD : R < D) (hD4 : D ≤ x / 4) (hDe : D ≤ x / rexp 1) :\n    ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, TLn α x n ≤\n      3 * (1 + eta2'L1 / (x / D)) / 2 * (√(2 * x / c₂) * Real.log (2 * x / c₂) +\n          x / q * Real.log (q / c₂) * logPlus (D / (c₂ * x / q))) +\n        2 * √(c₀ * (1 + eta2'L1 / (x / D))) / π * (√3 * q * Real.log (q / c₂) +\n          (D * (1 + Real.log x - Real.log D) - R * (1 + Real.log x - Real.log R)) +\n          q / 2 * Real.log (q / c₂) * logPlus (D / (q / 2))) :=",
+            "line": 654,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L654"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          80
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "sum_R3L (line 650) is the whole range-(R3) bound: the log-weighted analogues of (4.25), (4.26) and (4.48), with c₁ = 1+|η'|₁/(x/D) and max(c₂x/q, q/2) ≤ R < D ≤ min(x/4, x/e). Checked the book's two steps: the summand decreases in t and log(x/R) ≤ log(q/c₂)."
+}

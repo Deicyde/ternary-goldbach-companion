@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.19",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 46,
+        "rect": [
+          0.25926,
+          0.8157,
+          0.56816,
+          0.03962
+        ]
+      },
+      "title": "Equation (2.19)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.logsq_ge",
+        "module": "TernaryGoldbach.Prelim.LambdaMu"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.logsq_ge",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem logsq_ge {N : ℕ} (h : 46000000 ≤ N) :\n    ∑ p ∈ (Ioc (N / 2) N).filter Nat.Prime, Real.log p ^ 2 ≤ 1 / 2 * N * Real.log N :=",
+            "line": 1847,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LambdaMu.lean",
+            "fragment": "L1847"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          46
+        ],
+        "printed": [
+          36
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (2.19) only for y ≥ 2·10⁶ (book: y ≥ 117); every minor-arc use has W ≥ V ≥ 2·10⁶."
+}

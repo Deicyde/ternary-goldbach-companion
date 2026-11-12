@@ -1,0 +1,70 @@
+{
+  "id": "Corollary 9.3.3",
+  "kind": "corollary",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 193,
+        "rect": [
+          0.17135,
+          0.25669,
+          0.56816,
+          0.25809
+        ]
+      },
+      "title": "Corollary 9.3.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.etaU",
+        "module": "TernaryGoldbach.MinorArcs.EtaU"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.etaU",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def etaU (u : ℝ) : ℝ := ∫ w in Ioi (0:ℝ), eta2 (u / w) * phi w / w",
+            "line": 24,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EtaU.lean",
+            "fragment": "L24"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          193
+        ],
+        "printed": [
+          183
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the corollary for x ≥ 4 with its own larger error err933N; the book's proof also covers only x ≥ 4 (Prop 9.3.2 at wx, w ≥ 1/4). The cor_9_3_3 docstring is stale: err933N uses Lean's errZ for q = 1, not [H]'s error;"
+}

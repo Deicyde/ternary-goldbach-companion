@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.20",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 29,
+        "rect": [
+          0.17135,
+          0.23531,
+          0.56816,
+          0.04005
+        ]
+      },
+      "title": "Equation (1.20)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Todd_le (α : ℝ) :\n    ‖Todd α x m‖ ≤ x / (2 * m) + eta2'L1 / 2 ∧\n    (Real.sin (2 * π * m * α) ≠ 0 →\n      ‖Todd α x m‖ ≤ eta2'L1 / 2 / |Real.sin (2 * π * m * α)| ∧\n      ‖Todd α x m‖ ≤ m / x * (c₀ / 2) / Real.sin (2 * π * m * α) ^ 2) :=",
+            "line": 163,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L163"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          29
+        ],
+        "printed": [
+          19
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "True with c = 1/2: |Σ| = |sin πNα/sin πα| ≤ 1/|sin πα| ≤ 1/(2{α}). c = 1/2 is sharp (α = 1/2, N odd); a grid check gives max |Σ|·{α} = 0.4999. The book's proof only uses smoothed versions (unnumbered display after (1.21), (2.2), Lemma 2.3.1)."
+}

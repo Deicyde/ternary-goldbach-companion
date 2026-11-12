@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.57",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 109,
+        "rect": [
+          0.17135,
+          0.58933,
+          0.56816,
+          0.05386
+        ]
+      },
+      "title": "Equation (5.57)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.57"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2_le_57",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2_le_57",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S2_le_57 {α x δ Q ρ : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (h2α : 2 * α = a / q + δ / x + k) (hδQ : |δ / x| ≤ 1 / (q * Q)) (hρ1 : ρ < 1)\n    (hqρ : (q : ℝ) ≤ ρ * Q) (hx : 0 < x) (hδ0 : δ ≠ 0) {U V : ℕ} {W : ℝ} (hV : 0 < (V : ℝ))\n    (hVW : (V : ℝ) ≤ W) (hQ : 0 < Q) :\n    S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (2 * (x ^ 2 / (2 * |δ| * q) + x ^ 2 / (16 * (1 - ρ) * Q)) / x +\n        1 / (2 * (1 - ρ)) * x / (2 * W) + W / 2) * logSqSum (max V (W / 2)) W :=",
+            "line": 529,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L529"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          109
+        ],
+        "printed": [
+          99
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean matches (5.57); in the proof the block count uses U′, not the undefined U of the text."
+}

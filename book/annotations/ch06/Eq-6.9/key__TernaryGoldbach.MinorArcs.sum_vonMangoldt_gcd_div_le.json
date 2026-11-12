@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.9",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 114,
+        "rect": [
+          0.25926,
+          0.46969,
+          0.56816,
+          0.16629
+        ]
+      },
+      "title": "Equation (6.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_gcd_div_le",
+        "module": "TernaryGoldbach.MinorArcs.GcdSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_gcd_div_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_vonMangoldt_gcd_div_le {q N : ℕ} (hq : 1 ≤ q) (hN : 1 ≤ N) :\n    ∑ v ∈ Icc 1 N, (Λ v : ℝ) * (1 / v) * Nat.gcd q v ≤ Real.log N + Real.log q :=",
+            "line": 151,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GcdSums.lean",
+            "fragment": "L151"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          114
+        ],
+        "printed": [
+          104
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the same bound via (q,v) = Σ_{d|(q,v)}φ(d) instead of the p-adic expansion; its proof of (2.12) depends on PlattGRH."
+}

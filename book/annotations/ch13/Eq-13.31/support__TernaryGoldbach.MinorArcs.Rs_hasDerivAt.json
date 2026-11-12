@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.31",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 265,
+        "rect": [
+          0.17135,
+          0.82301,
+          0.56816,
+          0.03451
+        ]
+      },
+      "title": "Equation (13.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Rs_hasDerivAt",
+        "module": "TernaryGoldbach.MinorArcs.GMono"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Rs_hasDerivAt",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Rs_hasDerivAt {B s : ℝ} (hs : 0 ≤ Real.log 8 + s) (hB : s < B) :\n    HasDerivAt (Rs B) (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8)))) s :=",
+            "line": 114,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GMono.lean",
+            "fragment": "L114"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          265
+        ],
+        "printed": [
+          255
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Convexity of R² is not formalized; monotonicity of ĝ replaces it."
+}

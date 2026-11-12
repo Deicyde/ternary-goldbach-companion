@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.11",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.17135,
+          0.47799,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Equation (3.11)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S0two",
+        "module": "TernaryGoldbach.MinorArcs.Decomposition"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S0two",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def S0two (α x : ℝ) : ℂ :=\n  ∑ n ∈ Icc 1 ⌊x⌋₊, if Odd n then 0 else (Λ n : ℂ) * wt α x n",
+            "line": 91,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Decomposition.lean",
+            "fragment": "L91"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          47
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the identity for v = 2 with remainder Σ_{n even, n≤x} Λ(n)e(αn)η₂(n/x); the printed Σ_{n|v} omits the prime powers p^k, k ≥ 2, p | v. Erratum: With the printed S_{0,v} = Σ_{n|v} Λ(n)e(αn)η(n/x), (3.11) is false: the remainder must be Σ_{(n,v)>1} Λ(n)e(αn)η(n/x), which also contains the prime powers p^k, k ≥ 2, p | v; for η = η₂, v = 2, α = 0 the omitted terms total 4(log 2)² ≈ 1.92 (e.g. x = 100: S_η = 99.1255 against 97.2037 + 0). (checked by `scripts/checks/eq_3_11.py`)."
+}

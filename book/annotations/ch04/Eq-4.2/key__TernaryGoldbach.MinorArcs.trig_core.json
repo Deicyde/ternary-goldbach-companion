@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.2",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17135,
+          0.26029,
+          0.56816,
+          0.08288
+        ]
+      },
+      "title": "Equation (4.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.trig_core",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.trig_core",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem trig_core (t S C : ℝ) (ht : 0 < t) (ht1 : t ≤ 5236 / 10000) (hS1 : t - t ^ 3 / 4 < S)\n    (hS2 : S ≤ t) (hC1 : 1 - t ^ 2 / 2 ≤ C) :\n    t * S * (1 - 2 * S ^ 2) ≤ C * (3 * S ^ 2 - 2 * t ^ 2) :=",
+            "line": 138,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L138"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked: t/sin t = 1 + t²/6 + 7t⁴/360 + …, t cot t = 1 − t²/3 − t⁴/45 − 2t⁶/945 − …, coefficient signs as stated. Lean never states the series, only finite one-sided truncations on (0, π/3] and (0, π/2], which suffice because q ≤ 2 is handled separately."
+}

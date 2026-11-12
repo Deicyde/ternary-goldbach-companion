@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.22",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 47,
+        "rect": [
+          0.17135,
+          0.60156,
+          0.56816,
+          0.04062
+        ]
+      },
+      "title": "Equation (2.22)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.abs_mqs_le",
+        "module": "TernaryGoldbach.Prelim.LiouvilleBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.abs_mqs_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem abs_mqs_le {q : ℕ} (hq : 1 ≤ q) {x : ℝ} (hqx : (q : ℝ) < x) :\n    |mqs q x| ≤ 2.8 * ((q : ℝ) / Nat.totient q) / Real.log (x / q) :=",
+            "line": 623,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LiouvilleBound.lean",
+            "fragment": "L623"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          47
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (2.22) with constant 2.8 in place of 4/5, via Ramaré's Liouville-function route."
+}

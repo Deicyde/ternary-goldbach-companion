@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 9.4.1",
+  "kind": "lemma",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17135,
+          0.15773,
+          0.56816,
+          0.15988
+        ]
+      },
+      "title": "Lemma 9.4.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.E2g",
+        "module": "TernaryGoldbach.Explicit.ZeroSumGen"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.E2g",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def E2g (B : ℝ → ℝ) (κ T0 EB' EA' ρB ρA : ℝ) : ℝ :=\n  EB' * (2 * Z3g B T0 / (1 - ρB) + 2 * c3g κ T0 / (1 - ρB) ^ 2) +\n    EA' * (2 * Z3g B T0 / (1 - ρA) + 2 * c3g κ T0 / (1 - ρA) ^ 2)",
+            "line": 195,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumGen.lean",
+            "fragment": "L195"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean replaces the lemma with a zero-by-zero tail bound and Jensen-window zero counts, at H = 200. The book's proof does not give 11.308: it drops a boundary term of Lemma 9.1.3 and pairs ρ with 1−ρ, a zero of L(s,χ̄) for complex χ."
+}

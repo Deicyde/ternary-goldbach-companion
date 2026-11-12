@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.4",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 211,
+        "rect": [
+          0.17135,
+          0.71789,
+          0.56816,
+          0.0358
+        ]
+      },
+      "title": "Equation (10.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.integrand",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.integrand",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def integrand (N : ℕ) (α : ℝ) : ℂ :=\n  S etaPlus (xOf N) α ^ 2 * S etaStar (xOf N) α * e (-(N * α))",
+            "line": 83,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L83"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          211
+        ],
+        "printed": [
+          201
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Formalized only for δ₀ = 8, r = 150000 and the weights (η₊,η₊,η_*); Lean bounds the real part of the integral. major_arcs_input now assumes only PlattGRH."
+}

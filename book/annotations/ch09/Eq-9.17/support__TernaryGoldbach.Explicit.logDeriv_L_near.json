@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.17",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 179,
+        "rect": [
+          0.17135,
+          0.72395,
+          0.56816,
+          0.03695
+        ]
+      },
+      "title": "Equation (9.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.logDeriv_L_near",
+        "module": "TernaryGoldbach.Explicit.LogDerivL"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.logDeriv_L_near",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem logDeriv_L_near {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {T : ℝ} {z : ℂ} (hz : z ∈ closedBall (2 + T * I) (10 / 4))\n    (hLz : χ.LFunction z ≠ 0) :\n    ‖logDeriv χ.LFunction z - ∑ u ∈ zerosIn χ.LFunction (2 + T * I) 10 (10 / 2),\n        ((divB χ.LFunction (2 + T * I) 10 u).toNat : ℂ) / (z - u)‖ ≤\n      4.8 * Real.log (BT N T / 0.355) :=",
+            "line": 96,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LogDerivL.lean",
+            "fragment": "L96"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          179
+        ],
+        "printed": [
+          169
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Not needed: it only feeds Lemma 9.1.2. With H = 5/8 the factor 8H is the 5 of Lemma 9.1.2."
+}

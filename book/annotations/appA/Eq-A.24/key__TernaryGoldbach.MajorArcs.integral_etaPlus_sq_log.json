@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.24",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 294,
+        "rect": [
+          0.25926,
+          0.77587,
+          0.56816,
+          0.07426
+        ]
+      },
+      "title": "Equation (A.24)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_etaPlus_sq_log",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_etaPlus_sq_log {x : ℝ} (hx : 1 ≤ x) :\n    |(∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t)) - (0.640206 * Real.log x - 0.021095)| ≤\n      1.95e-6 * Real.log x + 5.3e-7 :=",
+            "line": 889,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L889"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          294
+        ],
+        "printed": [
+          284
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The book uses (A.24) only in its derivation of (9.94), for the square term. Lean's (9.94) handles the square term the same way, with weaker constants, and the cross terms by Parseval."
+}

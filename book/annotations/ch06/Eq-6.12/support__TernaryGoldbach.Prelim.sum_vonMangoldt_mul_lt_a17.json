@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.12",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 116,
+        "rect": [
+          0.25926,
+          0.67543,
+          0.56816,
+          0.08026
+        ]
+      },
+      "title": "Equation (6.12)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_vonMangoldt_mul_lt_a17",
+        "module": "TernaryGoldbach.Prelim.LambdaMu"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_vonMangoldt_mul_lt_a17",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_vonMangoldt_mul_lt_a17 {y : ℝ} (hy : 2.5e7 ≤ y) :\n    ∑ n ∈ Icc 1 ⌊y⌋₊, (Λ n : ℝ) * n < 1.022 * y ^ 2 / 2 :=",
+            "line": 1362,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LambdaMu.lean",
+            "fragment": "L1362"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          116
+        ],
+        "printed": [
+          106
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses 0.511V² for Σ_{v≤V}Λ(v)v (book 0.5004V²), U²V log q in place of 2UVq log V + 2U²V log V, muBound (2.8·2q/φ(2q)) instead of (4/5)q/φ(q), and no assumption Q ≤ 2UV/e. The old (2.17) lemma sum_vonMangoldt_mul_lt' is gone; sum_vonMangoldt_mul_lt_a17 replaces it."
+}

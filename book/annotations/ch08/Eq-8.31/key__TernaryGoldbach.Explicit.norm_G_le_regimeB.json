@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.31",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 163,
+        "rect": [
+          0.17135,
+          0.60648,
+          0.56816,
+          0.07035
+        ]
+      },
+      "title": "Equation (8.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_le_regimeB",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_le_regimeB",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_G_le_regimeB (s : ℂ) (δ : ℝ) (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1) (hτ : 50 ≤ |s.im|)\n    (hδ : 3 / 2 * (π * δ) ^ 2 ≤ |s.im|) :\n    ‖Gr s δ 0‖ ≤ 0.892 * |s.im| * Real.exp (-0.1598 * |s.im|) :=",
+            "line": 531,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L531"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          163
+        ],
+        "printed": [
+          153
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "All three forms match Re φ(u_{0,+}) computed from (8.15) (relative error ≤ 7e-16, 2·10⁴ random (ℓ,τ), ℓ > 0). With (8.40), −Re φ(u_{0,+}) = (π/2 − E(ρ) + 2/ρ)τ; the book's unnumbered display after (8.40) (l.962–964) drops this factor τ."
+}

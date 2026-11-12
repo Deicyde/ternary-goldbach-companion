@@ -1,0 +1,70 @@
+{
+  "id": "Eq B.7",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.25926,
+          0.49097,
+          0.56816,
+          0.02167
+        ]
+      },
+      "title": "Equation (B.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq B.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2DD",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2DD",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def eta2DD (t : ℝ) : ℂ :=\n  16 * e (-(1 / 2 * t)) - 16 * e (-(1 / 4 * t)) - 4 * e (-(1 * t)) +\n    4 * Jq (1 / 4) (1 / 2) t - 4 * Jq (1 / 2) 1 t",
+            "line": 121,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L121"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked: η₂' is 4/x on (1/4,1/2) and −4/x on (1/2,1), so it jumps by +16, −16, +4 at 1/4, 1/2, 1, and the smooth part is ∓4x⁻². Numerically, (2πt)²η̂₂(t) = eta2DD(t) = −(4g+f̂)(t) to 10⁻¹⁰ at t = 0.7, 3.1, 17.41. |η₂''|₁ = 36 + 12 = 48, as the book says."
+}

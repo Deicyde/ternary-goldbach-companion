@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 113,
+        "rect": [
+          0.17135,
+          0.68181,
+          0.56816,
+          0.04545
+        ]
+      },
+      "title": "Equation (6.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_eq_sum",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Total"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_eq_sum",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_eq_sum (α : ℝ) {x : ℝ} (hx : 0 < x) (U V : ℝ) :\n    typeI2 α x U V = ∑ v ∈ Icc 1 ⌊V⌋₊, if Odd v then (Λ v : ℂ) * typeI (v * α) (x / v) U else 0 :=",
+            "line": 18,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Total.lean",
+            "fragment": "L18"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          113
+        ],
+        "printed": [
+          103
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The identity uses no hypothesis. The approximation of 2vα (not vα) is handled by approx2_mul."
+}

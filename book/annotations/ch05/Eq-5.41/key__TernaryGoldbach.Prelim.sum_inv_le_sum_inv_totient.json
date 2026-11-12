@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.41",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 104,
+        "rect": [
+          0.25926,
+          0.38701,
+          0.56816,
+          0.06689
+        ]
+      },
+      "title": "Equation (5.41)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_inv_le_sum_inv_totient",
+        "module": "TernaryGoldbach.Prelim.SumMuSqPhi"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_inv_le_sum_inv_totient",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_inv_le_sum_inv_totient (N : ℕ) :\n    ∑ n ∈ Icc 1 N, (1 / n : ℝ) ≤ ∑ r ∈ (Icc 1 N).filter Squarefree, (1 / Nat.totient r : ℝ) :=",
+            "line": 118,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SumMuSqPhi.lean",
+            "fragment": "L118"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          104
+        ],
+        "printed": [
+          94
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The last step ∑_{d≤R}1/d ≥ log R is Mathlib's harmonic-sum bound inside log_le_sum_coprime. Lean keeps log R and lets the caller pick R (capped at W′) instead of substituting R = (q(ν+υ))^{-1/2}."
+}

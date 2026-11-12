@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.74",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 199,
+        "rect": [
+          0.17135,
+          0.37703,
+          0.56816,
+          0.0416
+        ]
+      },
+      "title": "Equation (9.74)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.74"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+        "module": "TernaryGoldbach.MajorArcs.Prop715"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem prop_9_5_1 {x : ℝ} (hx : 4.9e26 ≤ x) (hG : GRHUpTo (1 : DirichletCharacter ℂ 1) 500) :\n    |∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 -\n        x * ∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t)| ≤ 1e-8 * (x * Real.log x) :=",
+            "line": 299,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L299"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          199
+        ],
+        "printed": [
+          189
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never forms η₊,₂ as a smoothing; it treats φ₁ = η₊² and φ₂ = η₊² log separately, and the derivative line has no counterpart."
+}

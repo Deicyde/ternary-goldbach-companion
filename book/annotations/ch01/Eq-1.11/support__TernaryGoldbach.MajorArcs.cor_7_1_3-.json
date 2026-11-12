@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.11",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 24,
+        "rect": [
+          0.25926,
+          0.32418,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Equation (1.11)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.cor_7_1_3'",
+        "module": "TernaryGoldbach.MajorArcs.Cor713"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.cor_7_1_3'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem cor_7_1_3' {y : ℝ} (hy : 1e25 ≤ y) {q : ℕ} [NeZero q] (hq : q ≤ 300000)\n    (χ : DirichletCharacter ℂ q) (hχ : χ.IsPrimitive) {δ : ℝ} (hδ : |δ| ≤ 4 * 300000 / q) :\n    ‖Schar χ (fun n => ((Λ n * etaU (n / y) : ℝ) : ℂ)) (δ / y) -\n        (if q = 1 then 𝓕 (fun u => (etaU u : ℂ)) (-δ) * y else 0)‖ ≤\n      (1e-17 + 4.7e6 / √q / √y) * y :=",
+            "line": 807,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L807"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          24
+        ],
+        "printed": [
+          14
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Thm 7.1.1 for the Gaussian is never used; Lean formalizes only the analogues for the weights the proof uses. Erratum: After (1.12) the book says η̂(−δ) is just √(2π)e^{−2π²δ²}, but its weights are one-sided (η♥(t) = 0 for t < 0, and the main term of Lemma 9.1.1 is ∫₀^∞η(t)e(δt)dt), so η̂(−δ) = √(π/2)e^{−2π²δ²} + i√2·D(√2πδ): 1.028806 + 0.551811i at δ = 0.1, against the remark's 2.057613. (checked by `scripts/checks/eq_1_11.py`)."
+}

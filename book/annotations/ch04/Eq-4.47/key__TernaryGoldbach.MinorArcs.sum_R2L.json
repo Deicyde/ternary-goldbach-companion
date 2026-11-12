@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.47",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 79,
+        "rect": [
+          0.17135,
+          0.54955,
+          0.56816,
+          0.21873
+        ]
+      },
+      "title": "Equation (4.47)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.47"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R2L",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R2L",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_R2L {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 1 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {D' : ℝ} (hD'q : (q : ℝ) / 2 < D') (hD'Q : D' ≤ Q / 2)\n    (hD'c : D' ≤ c₂ * x / q) (hD'4 : D' ≤ x / 4) (hD'e : D' ≤ x / rexp 1) :\n    ∑ n ∈ Ioc ⌊(q : ℝ) / 2⌋ ⌊D'⌋, (if (q : ℤ) ∣ n then 0 else TLn α x n) ≤\n      5 * c₀ * c₂ / (3 * π ^ 2) * (D' * Real.log (rexp (1 / 2) * x / D') +\n        4 * √(2 * c₂ * x) * Real.log (2 * rexp 1 * x / c₂)) :=",
+            "line": 464,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L464"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          79
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean route: blocks via sum_Ioc_le_blocks and Lemma 4.1.2 (lines 488–555), S2_le (line 560), then s(½+log q−log s) ≤ c₂(1+log q−log c₂) (hsΛ, line 577), so log(2x/q)+log(eq/c₂) = log(2ex/c₂). The repo's 'only justified for q ≥ 2' (bound_4_41 docstring) is the monotonicity condition q e^{−1/2} ≥ c₂; at q = 1 there is nothing to prove."
+}

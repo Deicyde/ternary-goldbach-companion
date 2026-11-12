@@ -1,0 +1,70 @@
+{
+  "id": "Eq B.8",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 302,
+        "rect": [
+          0.25926,
+          0.64924,
+          0.56816,
+          0.0358
+        ]
+      },
+      "title": "Equation (B.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq B.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Jq_sub_expand",
+        "module": "TernaryGoldbach.MinorArcs.Eta2DDExpand"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Jq_sub_expand",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Jq_sub_expand {a b t : ℝ} (ha : 0 < a) (hab : a ≤ b) (ht : t ≠ 0) :\n    ‖Jq a b t - ((I * ((1 / (2 * π * t) : ℝ) : ℂ)) *\n        (e (-(b * t)) * ((b ^ 2)⁻¹ : ℝ) - e (-(a * t)) * ((a ^ 2)⁻¹ : ℝ)) +\n      2 * (I * ((1 / (2 * π * t) : ℝ) : ℂ)) ^ 2 *\n        (e (-(b * t)) * ((b ^ 3)⁻¹ : ℝ) - e (-(a * t)) * ((a ^ 3)⁻¹ : ℝ)) +\n      6 * (I * ((1 / (2 * π * t) : ℝ) : ℂ)) ^ 3 *\n        (e (-(b * t)) * ((b ^ 4)⁻¹ : ℝ) - e (-(a * t)) * ((a ^ 4)⁻¹ : ℝ)))‖ ≤\n      |1 / (2 * π * t)| ^ 3 * (6 * ((a ^ 4)⁻¹ - (b ^ 4)⁻¹)) :=",
+            "line": 82,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2DDExpand.lean",
+            "fragment": "L82"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          302
+        ],
+        "printed": [
+          292
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked: |f'|₁ = 64 + 32 + 4 (jumps) + 48 + 12 (smooth) = 160. At t = 654.9, |f̂| = 0.0192 ≤ 80/(654.9π) = 0.0389."
+}

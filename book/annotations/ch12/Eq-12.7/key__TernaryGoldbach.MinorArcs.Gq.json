@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.7",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 242,
+        "rect": [
+          0.25926,
+          0.2106,
+          0.56816,
+          0.03451
+        ]
+      },
+      "title": "Equation (12.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Gq",
+        "module": "TernaryGoldbach.MinorArcs.LargeSievePrimes"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Gq",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def Gq (q : ℕ) (R : ℝ) : ℝ :=\n  ∑ r ∈ (Finset.Icc 1 ⌊R⌋₊).filter (fun r => Nat.Coprime r q), ((μ r : ℝ) ^ 2) / Nat.totient r",
+            "line": 29,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSievePrimes.lean",
+            "fragment": "L29"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          242
+        ],
+        "printed": [
+          232
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never forms the max; it states the bound cross-multiplied, with s ≥ 1."
+}

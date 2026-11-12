@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.41",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 299,
+        "rect": [
+          0.17135,
+          0.82308,
+          0.56816,
+          0.03643
+        ]
+      },
+      "title": "Equation (A.41)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.goodSmoothing_phi2",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.goodSmoothing_phi2",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem goodSmoothing_phi2 :\n    GoodSmoothing phi2 (2 * ((Cg * (2 * aH)) ^ 2 * 8 * Real.exp 1 * Real.exp (1 / 800))) (1 / 400) where\n  continuousAt :=",
+            "line": 396,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L396"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          299
+        ],
+        "printed": [
+          289
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The book needs it only inside Prop 9.5.1, with H ≥ 25: for |η_{+,2}'|₂ in (9.76), for η_{+,2}'t^{σ−1} ∈ ℓ¹, and for the residue term c₀. Lean states |η₊(t)| ≤ 3.15te^{−t²/2} (abs_etaPlus_le_gauss, norm_fP_le), so |η₊/t|_∞ ≤ 3.15 at H = 200."
+}

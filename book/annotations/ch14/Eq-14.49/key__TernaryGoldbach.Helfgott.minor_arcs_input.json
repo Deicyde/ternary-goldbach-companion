@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.49",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 285,
+        "rect": [
+          0.17135,
+          0.31722,
+          0.56816,
+          0.12039
+        ]
+      },
+      "title": "Equation (14.49)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.49"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.minor_arcs_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.minor_arcs_input",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem minor_arcs_input (N : ℕ) (hN27 : 10 ^ 27 ≤ N) :\n    ∫ α in Set.Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ (xOf N),\n        ‖S etaStar (xOf N) α‖ * ‖S etaPlus (xOf N) α‖ ^ 2 ≤ 1.0376 * xOf N ^ 2 / κ :=",
+            "line": 110,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "fragment": "L110"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          285
+        ],
+        "printed": [
+          275
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's constant is 1.0376 in place of 1.00948 (from Mexpr ≤ 1.037, t = 5·10⁻⁴); the final margin is 1.049 − 1.0376. The book's argument does not give 1.00948 (Thm 3.1.1's 0.5 should be 0.8102, and the Thm 13.2.1 scale gap);"
+}

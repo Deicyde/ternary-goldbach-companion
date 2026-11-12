@@ -1,0 +1,69 @@
+{
+  "id": "Eq 6.76",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 143,
+        "rect": [
+          0.17135,
+          0.2824,
+          0.56816,
+          0.0367
+        ]
+      },
+      "title": "Equation (6.76)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.76"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeII"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_first {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hqT : (q : ℝ) ≤ T / 6) :\n    ‖typeII α (T ^ 3) (U1 T (delta0 δ * q)) (V1 T)‖ ≤\n      T ^ 3 / √(delta0 δ * Nat.totient q) *\n          (√(Cxt T (delta0 δ * q) * (Real.log (delta0 δ * q) + 0.002) +\n              Real.log (4 * (delta0 δ * q)) / 2) *\n            √(0.30214 * Real.log (delta0 δ * q) + 0.7468)) +\n        3.2 * (T ^ 2 * √T) :=",
+            "line": 329,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeII.lean",
+            "fragment": "L329"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          143
+        ],
+        "printed": [
+          133
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

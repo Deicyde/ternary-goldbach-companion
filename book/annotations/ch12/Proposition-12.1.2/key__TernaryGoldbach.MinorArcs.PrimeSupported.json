@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 12.1.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 240,
+        "rect": [
+          0.25926,
+          0.33382,
+          0.56816,
+          0.19462
+        ]
+      },
+      "title": "Proposition 12.1.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.PrimeSupported",
+        "module": "TernaryGoldbach.MinorArcs.LargeSievePrimes"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.PrimeSupported",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def PrimeSupported (x : ℝ) (a : ℕ → ℂ) : Prop :=\n  (∀ n, a n ≠ 0 → n.Prime ∧ √x < n) ∧ Summable fun n => ‖a n‖",
+            "line": 36,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSievePrimes.lean",
+            "fragment": "L36"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          240
+        ],
+        "printed": [
+          230
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean needs δ0 ≥ 2 (for 2Q ≤ √x, because its common modulus includes odd q ∈ (Q, 2Q]); the book's δ0 ≥ 1 is sound, and both applications use δ0 ≥ 8. prop_12_1_2 now carries no hypotheses."
+}

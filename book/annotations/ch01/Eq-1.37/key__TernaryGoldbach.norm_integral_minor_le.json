@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.37",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 35,
+        "rect": [
+          0.17135,
+          0.19259,
+          0.56816,
+          0.06981
+        ]
+      },
+      "title": "Equation (1.37)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.norm_integral_minor_le",
+        "module": "TernaryGoldbach.CircleMethod"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.norm_integral_minor_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_integral_minor_le (X N : ℕ) (a b c : ℕ → ℂ) {M : Set ℝ} (hM : MeasurableSet M)\n    {B : ℝ} (hB0 : 0 ≤ B) (hB : ∀ α ∈ Set.Ioc (0:ℝ) 1 \\ M, ‖expSum X a α‖ ≤ B) :\n    ‖∫ α in Set.Ioc (0:ℝ) 1 \\ M, circleIntegrand X N a b c α‖ ≤\n      B * (√(∑ n ∈ range (X + 1), ‖b n‖ ^ 2) * √(∑ n ∈ range (X + 1), ‖c n‖ ^ 2)) :=",
+            "line": 227,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/CircleMethod.lean",
+            "fragment": "L227"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          35
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Illustrative only. The book replaces this bound by ℓ² bounds over arcs combined with pointwise bounds that decrease in q (Prop 13.1.2, Thm 13.2.1), and so does Lean's main line (minor_arcs_input). norm_integral_minor_le and isSumOfThreePrimes_of_circle form an unused generic scaffold (finite sums, used nowhere else in the repo)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.66",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 196,
+        "rect": [
+          0.25926,
+          0.1834,
+          0.56816,
+          0.09247
+        ]
+      },
+      "title": "Equation (9.66)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.66"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.sum_geom_windows",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.sum_geom_windows",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_geom_windows {S : Finset ℂ} (m : ℂ → ℝ) (hm : ∀ u ∈ S, 0 ≤ m u) (idx : ℂ → ℕ)\n    {Z0 c E ρ : ℝ} (hZ0 : 0 ≤ Z0) (hc : 0 ≤ c) (hE : 0 ≤ E) (hρ0 : 0 ≤ ρ) (hρ1 : ρ < 1)\n    (hZ : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => idx u = k), m u ≤ Z0 + c * (k + 1)) :\n    ∑ u ∈ S, m u * (E * ρ ^ idx u) ≤ E * (Z0 / (1 - ρ) + c / (1 - ρ) ^ 2) :=",
+            "line": 170,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L170"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          196
+        ],
+        "printed": [
+          186
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has no counterpart of Lemma 9.1.3 and no N(T,χ) integral; it counts zeros in 4.4-wide windows by Jensen's formula and sums a geometric series. The decreasing-f clause of Lemma 9.1.3 omits the boundary term f(T₀)g_χ(T₀); the Lean route does not need it."
+}

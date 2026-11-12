@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.13",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 116,
+        "rect": [
+          0.25926,
+          0.82088,
+          0.56816,
+          0.03531
+        ]
+      },
+      "title": "Equation (6.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_small",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_le_small",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_le_small {α x δ Q U V : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q) (hx : 0 < x)\n    (hqV : q * V ≤ Q) (hQV : 16 * V ≤ Q) (hU : 1 ≤ U) (hV : 2.5e7 ≤ V) (hUV : U * V ≤ x)\n    (hδ : |δ| ≤ 1 / (2 * c₂)) :\n    ‖typeI2 α x U V‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) * muBound (min (Q / (2 * V)) U) q * Real.log (V * q) +\n        c₀ * (1 / 8 - 1 / (2 * π ^ 2)) / x *\n          (U ^ 2 / q * (0.511 * V ^ 2 + V * q * Real.log q) + (2 * U + q) * (0.511 * V ^ 2)) +\n        1.0064 * coefUV (cPlus x U V) * (U * V) + 1.0064 * coefQ x q U V (cPlus x U V) * Q :=",
+            "line": 300,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L300"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          116
+        ],
+        "printed": [
+          106
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's factor is 1.0064 (book 1.0004), it keeps max(1,·) and log⁺(2U/q) + 1/e instead of assuming Q ≤ 2UV/e, and never rounds to the c_{k,I₂}."
+}

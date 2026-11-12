@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.22",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 96,
+        "rect": [
+          0.25926,
+          0.77022,
+          0.56816,
+          0.08505
+        ]
+      },
+      "title": "Equation (5.22)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.tsum_Hd_rpow",
+        "module": "TernaryGoldbach.MinorArcs.G2Euler"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.tsum_Hd_rpow",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem tsum_Hd_rpow {d p : ℕ} (hp : p.Prime) {s : ℝ} (hs1 : s < 1) :\n    ∑' e, Hd d (p ^ e) * ((p ^ e : ℕ) : ℝ) ^ s = if p ≠ 2 ∧ ¬ p ∣ d then ell s p else cfac s p :=",
+            "line": 89,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/G2Euler.lean",
+            "fragment": "L89"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          96
+        ],
+        "printed": [
+          86
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never forms F_v(s₁,s₂): it bounds the square by 2α² + 2β², so only diagonal products appear, and products bound truncated sums; local factors agree under s ↦ 1 − s."
+}

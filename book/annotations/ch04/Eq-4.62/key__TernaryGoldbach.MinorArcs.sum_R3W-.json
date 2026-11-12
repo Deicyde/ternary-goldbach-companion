@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.62",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 86,
+        "rect": [
+          0.25926,
+          0.3234,
+          0.56816,
+          0.08455
+        ]
+      },
+      "title": "Equation (4.62)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.62"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3W'",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3W'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_R3W' {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {R D : ℝ} (hR1 : 1 ≤ R) (hRD : R < D) :\n    ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Real.log n * Tn α x n ≤\n      3 * (1 + eta2'L1 / (x / D)) / 2 * x *\n          (Real.log (R + q) / R + Real.log D / q * Real.log (D / R)) +\n        2 * √(c₀ * (1 + eta2'L1 / (x / D))) / π *\n          (q * √(1 + q / R) * Real.log (R + q) + (D * (Real.log D - 1) - R * (Real.log R - 1)) +\n            2 * q * Real.log (D / R) + q / 2 * Real.log D * Real.log (D / R)) :=",
+            "line": 178,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L178"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          86
+        ],
+        "printed": [
+          76
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's analogue uses upper-end weights and gains an extra 2q log(D/R) term; for R ≥ q/2 the first block gives q√3 log 3R."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.12",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 116,
+        "rect": [
+          0.25926,
+          0.67543,
+          0.56816,
+          0.08026
+        ]
+      },
+      "title": "Equation (6.12)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_small",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_le_small",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_le_small {α x δ Q U V : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q) (hx : 0 < x)\n    (hqV : q * V ≤ Q) (hQV : 16 * V ≤ Q) (hU : 1 ≤ U) (hV : 2.5e7 ≤ V) (hUV : U * V ≤ x)\n    (hδ : |δ| ≤ 1 / (2 * c₂)) :\n    ‖typeI2 α x U V‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) * muBound (min (Q / (2 * V)) U) q * Real.log (V * q) +\n        c₀ * (1 / 8 - 1 / (2 * π ^ 2)) / x *\n          (U ^ 2 / q * (0.511 * V ^ 2 + V * q * Real.log q) + (2 * U + q) * (0.511 * V ^ 2)) +\n        1.0064 * coefUV (cPlus x U V) * (U * V) + 1.0064 * coefQ x q U V (cPlus x U V) * Q :=",
+            "line": 300,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L300"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          116
+        ],
+        "printed": [
+          106
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses 0.511V² for Σ_{v≤V}Λ(v)v (book 0.5004V²), U²V log q in place of 2UVq log V + 2U²V log V, muBound (2.8·2q/φ(2q)) instead of (4/5)q/φ(q), and no assumption Q ≤ 2UV/e. The old (2.17) lemma sum_vonMangoldt_mul_lt' is gone; sum_vonMangoldt_mul_lt_a17 replaces it."
+}

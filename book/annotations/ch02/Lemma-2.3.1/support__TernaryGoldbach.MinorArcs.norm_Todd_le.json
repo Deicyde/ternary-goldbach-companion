@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 2.3.1",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 43,
+        "rect": [
+          0.17135,
+          0.41847,
+          0.56816,
+          0.09098
+        ]
+      },
+      "title": "Lemma 2.3.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 2.3.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Todd_le (α : ℝ) :\n    ‖Todd α x m‖ ≤ x / (2 * m) + eta2'L1 / 2 ∧\n    (Real.sin (2 * π * m * α) ≠ 0 →\n      ‖Todd α x m‖ ≤ eta2'L1 / 2 / |Real.sin (2 * π * m * α)| ∧\n      ‖Todd α x m‖ ≤ m / x * (c₀ / 2) / Real.sin (2 * π * m * α) ^ 2) :=",
+            "line": 163,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L163"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          43
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean replaces |(f″)^|_∞ by sup_t (2πt)²|f̂(t)| (the same quantity) and drops the piecewise-C¹ hypothesis; α ∈ ℤ is excluded."
+}

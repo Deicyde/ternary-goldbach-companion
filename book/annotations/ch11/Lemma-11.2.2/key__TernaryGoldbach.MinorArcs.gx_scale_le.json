@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 11.2.2",
+  "kind": "lemma",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 232,
+        "rect": [
+          0.25926,
+          0.63889,
+          0.56816,
+          0.03202
+        ]
+      },
+      "title": "Lemma 11.2.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 11.2.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
+        "module": "TernaryGoldbach.MinorArcs.LinftyLevels"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx_scale_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem gx_scale_le {y n w : ℝ} (hy : 0 < y) (hw : 0 < w) (hn : 670 ≤ min 1 w * n)\n    (hny : n ≤ y ^ (1 / 3 : ℝ) / 6) :\n    gx (w * y) (min 1 w * n) ≤ gx y n * max 1 (1 / w) :=",
+            "line": 196,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+            "fragment": "L196"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          232
+        ],
+        "printed": [
+          222
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean replaces convex interpolation of R between x/K and x by monotonicity of R and a factor max(1,1/w)."
+}

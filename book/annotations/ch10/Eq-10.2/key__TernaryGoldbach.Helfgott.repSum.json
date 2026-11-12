@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.2",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 211,
+        "rect": [
+          0.17135,
+          0.48702,
+          0.56816,
+          0.03501
+        ]
+      },
+      "title": "Equation (10.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.repSum",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.repSum",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def repSum (P : ℕ → Prop) (N : ℕ) : ℝ :=\n  ∑ n₁ ∈ Finset.range (N + 1), ∑ n₂ ∈ Finset.range (N + 1), ∑ n₃ ∈ Finset.range (N + 1),\n    if n₁ + n₂ + n₃ = N ∧ P n₁ ∧ P n₂ ∧ P n₃ then\n      Λ n₁ * Λ n₂ * Λ n₃ * etaPlus (n₁ / xOf N) * etaPlus (n₂ / xOf N) *\n        etaStar (n₃ / xOf N)\n    else 0",
+            "line": 89,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L89"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          211
+        ],
+        "printed": [
+          201
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines (10.2) only for the final choice η₁ = η₂ = η₊, η₃ = η_*, x = xOf N; circle_identity_tsum and tri cover general weights. repSum_lower_bound now assumes only PlattGRH and RamareMoebius."
+}

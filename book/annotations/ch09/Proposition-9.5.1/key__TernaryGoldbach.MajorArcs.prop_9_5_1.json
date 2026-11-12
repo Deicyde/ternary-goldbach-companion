@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.5.1",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 198,
+        "rect": [
+          0.25926,
+          0.5638,
+          0.56816,
+          0.22211
+        ]
+      },
+      "title": "Proposition 9.5.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+        "module": "TernaryGoldbach.MajorArcs.Prop715"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_5_1",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem prop_9_5_1 {x : ℝ} (hx : 4.9e26 ≤ x) (hG : GRHUpTo (1 : DirichletCharacter ℂ 1) 500) :\n    |∑' n : ℕ, Λ n * Real.log n * etaPlus (n / x) ^ 2 -\n        x * ∫ t in Ioi 0, etaPlus t ^ 2 * Real.log (x * t)| ≤ 1e-8 * (x * Real.log x) :=",
+            "line": 299,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L299"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          198
+        ],
+        "printed": [
+          188
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean fixes H = 200, T₀ = 500 and needs x ≥ 4.9·10²⁶ (book 10⁸), with error 10⁻⁸ in place of err_{ℓ2,η₊}. Lean's tail counts zeros in both half-planes, so the book's factor-2 and boundary-term gaps at (9.90) do not arise."
+}

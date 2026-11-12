@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.34",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 298,
+        "rect": [
+          0.25926,
+          0.22716,
+          0.56816,
+          0.05657
+        ]
+      },
+      "title": "Equation (A.34)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.abs_etaPlus_le_A",
+        "module": "TernaryGoldbach.Helfgott.HHBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.abs_etaPlus_le_A",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem abs_etaPlus_le_A {t : ℝ} (ht : 0 ≤ t) : |etaPlus t| ≤ 1.94 :=",
+            "line": 432,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/HHBound.lean",
+            "fragment": "L432"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          298
+        ],
+        "printed": [
+          288
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Both inequalities are valid, but the second is vacuous: |(h−h_H)/t|_∞ = ∞ because h_H(t) decays only like 1/log(1/t) as t → 0+ (see (A.36)). The step needs η◦ = h·η♦ = t³(2−t)³e^{−(t−1)²/2} (the explicit formula of (A.2), also Lean's MajorArcs.etaO), not the printed 'h(t)η♥(t)'."
+}

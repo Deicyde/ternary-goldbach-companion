@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.43",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17135,
+          0.7418,
+          0.56816,
+          0.0577
+        ]
+      },
+      "title": "Equation (4.43)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.restPartL",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.restPartL",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def restPartL (α x D M : ℝ) (q : ℕ) : ℂ :=\n  ∑ m ∈ Icc 1 ⌊D⌋₊, if Odd m ∧ ¬ ((q : ℕ) ∣ m ∧ (m : ℝ) ≤ M) then (μ m : ℂ) * ToddG (eta2log (x / m)) α x m else 0",
+            "line": 907,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L907"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "With M = min(Q/2, D) (Lean: Mof, unrounded Q), the book's range Q/2 < m ≤ D is exactly Lean's m > M. The sentence after (4.43) cites (4.15) where (4.43) is meant (harmless)."
+}

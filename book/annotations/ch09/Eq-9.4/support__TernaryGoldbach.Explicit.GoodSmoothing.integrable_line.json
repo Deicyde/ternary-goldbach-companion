@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.4",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 175,
+        "rect": [
+          0.17135,
+          0.30917,
+          0.56816,
+          0.12794
+        ]
+      },
+      "title": "Equation (9.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.GoodSmoothing.integrable_line",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.GoodSmoothing.integrable_line",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem GoodSmoothing.integrable_line {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {σ : ℝ}\n    (h1 : -1 / 2 ≤ σ) (h2 : σ ≤ 3 / 2) : Integrable fun t : ℝ => mellin φ ((σ : ℂ) + t * I) :=",
+            "line": 70,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L70"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          175
+        ],
+        "printed": [
+          165
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the identity under exponential decay of the Mellin transform, which makes the sum–integral swap legitimate; the book's justification (G_δ bounded on ℜs = 3/2) does not give absolute integrability for general η."
+}

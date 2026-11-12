@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.10",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 291,
+        "rect": [
+          0.17135,
+          0.25279,
+          0.56816,
+          0.03883
+        ]
+      },
+      "title": "Equation (A.10)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.abs_hH_le_eps",
+        "module": "TernaryGoldbach.Helfgott.HHBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.abs_hH_le_eps",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem abs_hH_le_eps {H t ε : ℝ} (hHpos : 0 < H) (ht : 0 < t) (hε0 : 0 < ε) (hε1 : ε ≤ 1) :\n    |hH H t| ≤ 5 * H * ε ^ 2 / π + 6 / π * Real.exp (1 / 2) :=",
+            "line": 298,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/HHBound.lean",
+            "fragment": "L298"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          291
+        ],
+        "printed": [
+          281
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has (A.10) in pre-limit form. There the value enters a sup bound for h_H, which plays the role of the book's §A.5, rather than the decay of Mh."
+}

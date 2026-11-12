@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 88,
+        "rect": [
+          0.25926,
+          0.19755,
+          0.56816,
+          0.03883
+        ]
+      },
+      "title": "Equation (5.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.eta2",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.eta2",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def eta2 (t : ℝ) : ℝ :=\n  if 0 < t then 4 * max (Real.log 2 - |Real.log (2 * t)|) 0 else 0",
+            "line": 45,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L45"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          88
+        ],
+        "printed": [
+          78
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The formalization never states η₂ = η₁ *_M η₁ as functions; it proves the identity only at y = mn/x after (5.3)'s substitution, by closed-form evaluation (eta2_eq_log)."
+}

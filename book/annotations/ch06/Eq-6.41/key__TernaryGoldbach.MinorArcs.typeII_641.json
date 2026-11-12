@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.41",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 126,
+        "rect": [
+          0.25926,
+          0.66935,
+          0.56816,
+          0.18415
+        ]
+      },
+      "title": "Equation (6.41)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_641",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_641",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_641 {α x δ Q ρ θ : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (h2α : 2 * α = a / q + δ / x + k) (hδQ : |δ / x| ≤ 1 / (q * Q)) (hδ8 : 8 ≤ |δ|) (hx : 0 < x)\n    (hQx : x ≤ Q ^ 2) (hρ1 : ρ < 1) (hqρ : (q : ℝ) ≤ ρ * Q) {U V : ℕ} (hU : 1 ≤ U)\n    (hV : (2000000 : ℝ) ≤ V) (hVA : (V : ℝ) ≤ θ * |δ| * q) (hAU : θ * |δ| * q ≤ x / U)\n    (hθ : |δ| * q * (1 + x / (2 * U * Q)) / 4 * rexp 1 ≤ θ * |δ| * q) :\n    let c :=",
+            "line": 626,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L626"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          126
+        ],
+        "printed": [
+          116
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean assumes V ≥ 2·10⁶, q ≤ ρQ for some ρ < 1 and θ|δq| ≥ e·c'. Erratum: (6.41) inherits the (5.36) error in the same way: its second factor needs kappa_6 log(x/(U theta |delta q|)) + 2 kappa_7 + 4E, where 4E = 0.0922 for T >= 16. (checked by `scripts/checks/eq_6_41.py`)."
+}

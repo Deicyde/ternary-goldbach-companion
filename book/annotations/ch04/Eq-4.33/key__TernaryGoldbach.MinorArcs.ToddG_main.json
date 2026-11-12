@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.33",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 74,
+        "rect": [
+          0.25926,
+          0.40856,
+          0.56816,
+          0.0771
+        ]
+      },
+      "title": "Equation (4.33)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.ToddG_main",
+        "module": "TernaryGoldbach.MinorArcs.InnerSumsGen"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.ToddG_main",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem ToddG_main {g : ℝ → ℝ} {N V K : ℝ} (hg : SmoothData g N V K) {α x δ : ℝ} {a k₀ : ℤ} {q m' : ℕ} (hx : 0 < x) (hq : 1 ≤ q) (hm' : Odd m')\n    (h2α : 2 * α = a / q + δ / x + k₀) (hr : |δ * (q * m' : ℕ) / x| ≤ 1 / 2) :\n    ∃ E : ℂ, ToddG g α x (q * m') = e ((a + k₀ * q) / 2) *\n        ((x / (2 * (q * m' : ℕ)) : ℝ) * ghat g (-(δ / 2)) + E) ∧\n      ‖E‖ ≤ (q * m' : ℕ) / x * (K / (2 * π ^ 2)) * (π ^ 2 - 4) :=",
+            "line": 138,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSumsGen.lean",
+            "fragment": "L138"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          74
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "ĥ(k) = ½(−1)^k f̂(k/2), so Σ_k ĥ(k) = ½(Σ_n f̂(n) − Σ_n f̂(n+½))."
+}

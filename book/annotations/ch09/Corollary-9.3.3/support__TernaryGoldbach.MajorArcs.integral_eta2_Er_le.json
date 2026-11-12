@@ -1,0 +1,70 @@
+{
+  "id": "Corollary 9.3.3",
+  "kind": "corollary",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 193,
+        "rect": [
+          0.17135,
+          0.25669,
+          0.56816,
+          0.25809
+        ]
+      },
+      "title": "Corollary 9.3.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_eta2_Er_le",
+        "module": "TernaryGoldbach.MajorArcs.Cor933"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_eta2_Er_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_eta2_Er_le {q : ℕ} (hq : 1 ≤ q) {T0 : ℝ} (hT0 : 50 ≤ T0) {δ x : ℝ} (hx : 0 < x) :\n    ∫ r in Ioi 0, eta2 r * Er q T0 δ x r ≤ err933 q T0 δ x :=",
+            "line": 264,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L264"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          193
+        ],
+        "printed": [
+          183
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the corollary for x ≥ 4 with its own larger error err933N; the book's proof also covers only x ≥ 4 (Prop 9.3.2 at wx, w ≥ 1/4). The cor_9_3_3 docstring is stale: err933N uses Lean's errZ for q = 1, not [H]'s error;"
+}

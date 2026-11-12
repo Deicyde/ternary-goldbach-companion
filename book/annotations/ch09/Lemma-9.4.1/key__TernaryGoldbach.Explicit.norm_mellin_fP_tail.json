@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 9.4.1",
+  "kind": "lemma",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17135,
+          0.15773,
+          0.56816,
+          0.15988
+        ]
+      },
+      "title": "Lemma 9.4.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.4.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_tail",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_fP_tail {δ T0 : ℝ} (hT0 : 200 + max (10 * π * |δ|) 50 ≤ T0) {s : ℂ}\n    (hr1 : 0 < s.re) (hr2 : s.re < 1) (hτ : T0 < |s.im|) :\n    ‖mellin (fP δ) s‖ ≤ Cg * (2 * aH) * EB (T0 - 200) * rhoB ^ ⌊(|s.im| - T0) / 4.4⌋₊ +\n      Cg * (2 * aH) * EA (T0 - 200) δ * rhoA δ ^ ⌊(|s.im| - T0) / 4.4⌋₊ :=",
+            "line": 286,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L286"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean replaces the lemma with a zero-by-zero tail bound and Jensen-window zero counts, at H = 200. The book's proof does not give 11.308: it drops a boundary term of Lemma 9.1.3 and pairs ρ with 1−ρ, a zero of L(s,χ̄) for complex χ."
+}

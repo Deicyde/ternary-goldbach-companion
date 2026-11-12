@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.18",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 180,
+        "rect": [
+          0.25926,
+          0.18214,
+          0.56816,
+          0.13643
+        ]
+      },
+      "title": "Equation (9.18)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_LFunction_le",
+        "module": "TernaryGoldbach.Explicit.LGrowth"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_LFunction_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_LFunction_le {χ : DirichletCharacter ℂ q} (hχ : χ ≠ 1) {s : ℂ} (hs : 0 < s.re) :\n    ‖χ.LFunction s‖ ≤ ((q : ℝ) + 1) * ‖s‖ / s.re :=",
+            "line": 179,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LGrowth.lean",
+            "fragment": "L179"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          180
+        ],
+        "printed": [
+          170
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's partial-summation bound keeps |s|/σ and is not used for Lemma 9.1.2."
+}

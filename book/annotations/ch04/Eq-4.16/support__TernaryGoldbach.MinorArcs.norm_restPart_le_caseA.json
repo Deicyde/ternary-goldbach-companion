@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.16",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 70,
+        "rect": [
+          0.25926,
+          0.22682,
+          0.56816,
+          0.15298
+        ]
+      },
+      "title": "Equation (4.16)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPart_le_caseA",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_restPart_le_caseA {α x δ Q₀ D ε : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k)\n    (hδQ₀ : |δ / x| ≤ 1 / (q * Q₀)) (hqQ₀ : (q : ℝ) ≤ Q₀) (hδ : 1 / (2 * c₂) ≤ |δ|) (hD1 : 1 ≤ D)\n    (hε : 0 < ε) :\n    ‖restPart α x D (Mof x δ q D) q‖ ≤ bound_4_32 x δ q D Q₀ ε :=",
+            "line": 1119,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1119"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          70
+        ],
+        "printed": [
+          60
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Algebra checked: Σ_{0≤j≤M/q}(j+1) ≤ ½(M/q)² + (3/2)(M/q) + 1. Also q ≤ 2c₂x/Q₀ and q ≤ Q₀ give q² ≤ 2c₂x."
+}

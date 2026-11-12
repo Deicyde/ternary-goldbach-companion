@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.4",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 149,
+        "rect": [
+          0.17135,
+          0.51647,
+          0.56816,
+          0.022
+        ]
+      },
+      "title": "Equation (7.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.etaPlus",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.etaPlus",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def etaPlus (t : ℝ) : ℝ := hH 200 t * t * Real.exp (-t ^ 2 / 2)",
+            "line": 42,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L42"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          149
+        ],
+        "printed": [
+          139
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "etaPlus vanishes for t ≤ 0 (MajorArcs.etaPlus_of_nonpos, HHFourier.lean:496), so 𝓕(etaPlus) is the book's η̂₊ of the zero-extended weight. Restated in the book as (9.63), which is what Thm714.lean cites."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.19",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 244,
+        "rect": [
+          0.25926,
+          0.5176,
+          0.56816,
+          0.03589
+        ]
+      },
+      "title": "Equation (12.19)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionS",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionS",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem regionS {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs : 1 ≤ s)\n    (hR : 1 ≤ Q₀ / (s * q)) {c' : ℝ} (hc' : 0 < c') (hlq : 3 ≤ Real.log q)\n    (hcc : Real.exp Real.eulerMascheroniConstant * Real.log c' +\n      2.50637 / Real.log (Real.log q) ≤ 0.86)\n    (hh : Real.log q + 1.039 * (Q₀ / (s * q)) ≤ c' * ((q : ℝ) * (Q₀ / (s * q))) ^ ((2 : ℝ) / 9)) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 1.36) / (Real.log Q + cE) * Gq q (Q / (s * q)) :=",
+            "line": 75,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L75"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          244
+        ],
+        "printed": [
+          234
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean states the multiplicative form G_q(R)·G_P(t) ≤ G_q(tR), which implies (12.19) since both G's are ≥ 1."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.8",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 257,
+        "rect": [
+          0.17135,
+          0.77368,
+          0.56816,
+          0.08357
+        ]
+      },
+      "title": "Equation (13.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.layer_le",
+        "module": "TernaryGoldbach.MinorArcs.Prop1312"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.layer_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem layer_le {u v : Ω → ℝ} (hu : Integrable u μ) (huv : Integrable (fun ω => u ω * v ω) μ)\n    (hu0 : ∀ ω, 0 ≤ u ω) {M : ℕ → Set Ω} (hM : ∀ n, MeasurableSet (M n)) (hmono : Monotone M)\n    {g : ℕ → ℝ} {r₀ K : ℕ} (hv : ∀ n, r₀ ≤ n → n < K → ∀ ω ∉ M n, v ω ≤ g n) :\n    ∀ k, r₀ ≤ k → k ≤ K → ∫ ω in (M r₀)ᶜ, u ω * v ω ∂μ ≤\n      ∑ n ∈ Ico r₀ k, g n * ((∫ ω in M (n + 1), u ω ∂μ) - ∫ ω in M n, u ω ∂μ) +\n        ∫ ω in (M k)ᶜ, u ω * v ω ∂μ :=",
+            "line": 52,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Prop1312.lean",
+            "fragment": "L52"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          257
+        ],
+        "printed": [
+          247
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's f(n) is I(n+1) − I(n) (differences of nested integrals) rather than an integral over 𝔐_{n+1}∖𝔐_n; layer_le's e2 identifies the two."
+}

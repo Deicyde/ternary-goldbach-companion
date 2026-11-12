@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.85",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 201,
+        "rect": [
+          0.17135,
+          0.4059,
+          0.56816,
+          0.07089
+        ]
+      },
+      "title": "Equation (9.85)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.85"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_hg0_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_hg0_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_hg0_le {c : ℝ} (hc0 : 0 ≤ c) (hc : c ≤ 0.6) {w : ℂ} (h1 : -1 ≤ w.re)\n    (h2 : w.re ≤ 2) :\n    ‖mellin (fun t => hHc t * g0 t) w‖ ≤\n      Cg * (8 * (Real.exp (200 * c) * Real.exp (-(c * |w.im|)))) * (2 * aH) :=",
+            "line": 239,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L239"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          201
+        ],
+        "printed": [
+          191
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "41.73727/4π = 3.321346 ≤ 3.32135 ✓. In the book's normalization the constant is 2·3.32135 = 6.643 (F_x = 2·M[(log x + log t)t²e^{−t²}]);"
+}

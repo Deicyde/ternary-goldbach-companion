@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.51",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 81,
+        "rect": [
+          0.17135,
+          0.17821,
+          0.56816,
+          0.11348
+        ]
+      },
+      "title": "Equation (4.51)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_51",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_51",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_51 (x : ℝ) (q : ℕ) (U V : ℝ) : ℝ :=\n  let D := U * V\n  let c₁ := 1 + eta2'L1 / (x / D)\n  2 * √(c₀ * c₁) / π *\n      (D * Real.log (D / √(rexp 1)) +\n        q * (√3 * Real.log (3 * D) + (2 + Real.log D / 2) * logPlus (D / (q / 2)))) +\n    3 * c₁ / 2 * (x / q) * Real.log D * logPlus (D / (c₂ * x / q)) +\n    2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) *\n      logPlus (q / 2) +\n    3 * c₁ / 2 * √(2 * x / c₂) * (Real.log (3 * √(c₂ * x / 2)) + 1) +\n    (2 * √c₀ / π * √(2 * c₂ * x) * (2 + 12 * Real.log (5 * D)) + 5 * c₀ / (6 * π ^ 2))",
+            "line": 214,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L214"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          81
+        ],
+        "printed": [
+          71
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's form uses c₁ = 1+|η'|₁/(x/D) (book prints 2x/D), block upper-end weights, log⁺(q/2), and a √x term about 1.6 times the book's; it needs x ≥ 10, UV ≥ 2 and drops UV + (19/18)Q₀ ≤ x/5.6."
+}

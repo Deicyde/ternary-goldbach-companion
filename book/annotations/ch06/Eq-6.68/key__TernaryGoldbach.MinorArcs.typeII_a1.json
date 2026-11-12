@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.68",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 139,
+        "rect": [
+          0.17135,
+          0.17821,
+          0.56816,
+          0.24061
+        ]
+      },
+      "title": "Equation (6.68)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.68"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_a1",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIa"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_a1",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_a1 {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hq : T / 6 < q) (hq16 : 16 * (q : ℝ) ≤ T ^ 3 / U2 T) :\n    ‖typeII α (T ^ 3) (U2 T) (V2 T)‖ ≤\n      (√(12 * a1F0 (Real.log T) * a1X0 (Real.log T) * a1B0 (Real.log T)) + a1SEC (Real.log T)) *\n        (T ^ 2 * √T) :=",
+            "line": 700,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIa.lean",
+            "fragment": "L700"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          139
+        ],
+        "printed": [
+          129
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's expression is in L = log x^{1/3} at θ = 8 and its own parameters. In the t ≥ 2000 bound the fourth summand 0.000048 should be 0.00048; the total 0.10848 is right."
+}

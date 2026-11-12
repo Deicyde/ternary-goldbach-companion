@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.47",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 79,
+        "rect": [
+          0.17135,
+          0.54955,
+          0.56816,
+          0.21873
+        ]
+      },
+      "title": "Equation (4.47)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.47"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2_le",
+        "module": "TernaryGoldbach.MinorArcs.SumTools"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S2_le {q D' : ℝ} (hq : 0 < q) {J : ℕ} (hJ : 1 ≤ J) (hJD : (J - 1 / 2) * q ≤ D')\n    (hD'x : D' ≤ x / rexp 1) :\n    ∑ j ∈ range J, ((j : ℝ) + 3 / 2) * (Real.log x - Real.log ((j + 1 / 2) * q)) ≤\n      Real.log x - Real.log (q / 2) +\n        (2 * D' / q + D' ^ 2 / (2 * q ^ 2)) * (1 / 2 + Real.log x - Real.log D') :=",
+            "line": 189,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SumTools.lean",
+            "fragment": "L189"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          79
+        ],
+        "printed": [
+          69
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean route: blocks via sum_Ioc_le_blocks and Lemma 4.1.2 (lines 488–555), S2_le (line 560), then s(½+log q−log s) ≤ c₂(1+log q−log c₂) (hsΛ, line 577), so log(2x/q)+log(eq/c₂) = log(2ex/c₂). The repo's 'only justified for q ≥ 2' (bound_4_41 docstring) is the monotonicity condition q e^{−1/2} ≥ c₂; at q = 1 there is nothing to prove."
+}

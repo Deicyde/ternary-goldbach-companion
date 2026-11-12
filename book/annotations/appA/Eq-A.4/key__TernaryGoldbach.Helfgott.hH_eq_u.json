@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.4",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 289,
+        "rect": [
+          0.17135,
+          0.68135,
+          0.56816,
+          0.06937
+        ]
+      },
+      "title": "Equation (A.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.hH_eq_u",
+        "module": "TernaryGoldbach.Helfgott.HHBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.hH_eq_u",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hH_eq_u {H t : ℝ} (ht : 0 < t) :\n    hH H t = ∫ u in Set.Ioi (0:ℝ), hBase u * F H (t / u) / u :=",
+            "line": 275,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/HHBound.lean",
+            "fragment": "L275"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          289
+        ],
+        "printed": [
+          279
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines hH directly by the integral, not through Helfgott.mellinConv (which is used for η_*). MajorArcs.hH_of_neg gives h_H(t) = 0 for t < 0."
+}

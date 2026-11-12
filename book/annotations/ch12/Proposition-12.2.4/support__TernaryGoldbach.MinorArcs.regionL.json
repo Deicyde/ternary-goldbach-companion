@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 12.2.4",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 246,
+        "rect": [
+          0.25926,
+          0.15578,
+          0.56816,
+          0.09867
+        ]
+      },
+      "title": "Proposition 12.2.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.2.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.regionL",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.regionL",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem regionL {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs : 1 ≤ s)\n    (hR : 1 ≤ Q₀ / (s * q)) (hlam : lamQ q ≤ Q₀ / (s * q)) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 1.36) / (Real.log Q + cE) * Gq q (Q / (s * q)) :=",
+            "line": 171,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L171"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          246
+        ],
+        "printed": [
+          236
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves c₊ = 2 in place of 1.36: [H]'s argument with 1.36 for q ≥ 2.2·10¹⁰, and for q < 2.2·10¹⁰ a kernel-checked Φ ≤ 0 reduction replacing [H]'s computation. Step (12.29) applies Lemma 12.2.3, whose denominator log Q + 1.312 is too weak for (12.23);"
+}

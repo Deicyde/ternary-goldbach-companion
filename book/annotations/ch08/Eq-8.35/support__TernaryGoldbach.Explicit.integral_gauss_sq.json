@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.35",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 164,
+        "rect": [
+          0.25926,
+          0.2981,
+          0.56816,
+          0.03961
+        ]
+      },
+      "title": "Equation (8.35)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_gauss_sq",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_gauss_sq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_gauss_sq {c : ℝ} (hc : 0 < c) :\n    ∫ u : ℝ, u ^ 2 * Real.exp (-(c / 2) * u ^ 2) = √π / (c * √(c / 2)) :=",
+            "line": 392,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L392"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          164
+        ],
+        "printed": [
+          154
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Numerically, e^{Re φ(u_{0,+})}∫_{y₀}^∞e^{−Re φ(x₀+iy)}dy = 1.1408, 0.9727, 0.9066, 1.2507, 1.2524, 0.8951 at (ℓ,τ) = (1,1), (2,30), (0.5,100), (10,5), (3,0.3), (1,1000). All are ≤ √(π/2) = 1.25331."
+}

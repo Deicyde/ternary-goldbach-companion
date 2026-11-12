@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.17",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 293,
+        "rect": [
+          0.17135,
+          0.50522,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Equation (A.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_integral_gC_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_integral_gC_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_integral_gC_le {F : ℝ → ℂ} {B : ℝ} (hB : ∀ ξ ∈ Icc (-aH) aH, ‖F ξ‖ ≤ B) :\n    ‖∫ ξ in Icc (-aH) aH, 𝓕 gC ξ * F ξ‖ ≤ Cg * B * (2 * aH) :=",
+            "line": 96,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L96"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          293
+        ],
+        "printed": [
+          283
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The book uses (A.17) in Lemma 9.4.1, in (9.85) for η₊², and for (A.28). Lean never bounds an L¹ norm of Mh."
+}

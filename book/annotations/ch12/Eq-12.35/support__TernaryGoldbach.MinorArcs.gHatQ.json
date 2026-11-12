@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.35",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 248,
+        "rect": [
+          0.25926,
+          0.70618,
+          0.56816,
+          0.05317
+        ]
+      },
+      "title": "Equation (12.35)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gHatQ",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot4"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gHatQ",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def gHatQ (p : ℕ) : ℝ :=\n  if p ≤ 3 then 1.39953 else if p ≤ 5 then 1.36194 else if p ≤ 7 then 1.3115 else\n  if p ≤ 11 then 1.24148 else if p ≤ 13 then 1.21777 else if p ≤ 17 then 1.18326 else\n  if p ≤ 19 then 1.17031 else if p ≤ 23 then 1.14988 else if p ≤ 29 then 1.12806 else\n  if p ≤ 31 then 1.12235 else (p : ℝ) / (p - 1) * (1 + (p : ℝ) ^ (-(2 / 3 : ℝ)))",
+            "line": 26,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
+            "fragment": "L26"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          248
+        ],
+        "printed": [
+          238
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean assumes κ_k > 0 and uses the majorant ĝ."
+}

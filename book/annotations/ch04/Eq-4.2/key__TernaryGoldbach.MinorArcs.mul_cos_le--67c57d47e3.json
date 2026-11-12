@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.2",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17135,
+          0.26029,
+          0.56816,
+          0.08288
+        ]
+      },
+      "title": "Equation (4.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.mul_cos_le₁",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.mul_cos_le₁",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem mul_cos_le₁ {x : ℝ} (hx : 0 < x) (hx1 : x ≤ π / 2) :\n    x * Real.cos x ≤ (1 - x ^ 2 / 3) * Real.sin x :=",
+            "line": 1001,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1001"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked: t/sin t = 1 + t²/6 + 7t⁴/360 + …, t cot t = 1 − t²/3 − t⁴/45 − 2t⁶/945 − …, coefficient signs as stated. Lean never states the series, only finite one-sided truncations on (0, π/3] and (0, π/2], which suffice because q ≤ 2 is handled separately."
+}

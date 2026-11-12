@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.29",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 163,
+        "rect": [
+          0.17135,
+          0.37,
+          0.56816,
+          0.03661
+        ]
+      },
+      "title": "Equation (8.29)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Gr_le",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Gr_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Gr_le (s : ℂ) (δ : ℝ) {θ : ℝ} (hθ : |θ| < π / 4) (hs : -2 < s.re)\n    (hsg : 0 ≤ θ * s.im) :\n    ‖Gr s δ 0‖ ≤ Real.exp (-(|θ| * |s.im|)) * ∫ r in Ioi (0:ℝ),\n      r ^ (s.re + 1) * Real.exp (-(Real.cos (2 * θ) / 2) * r ^ 2 + (2 * π * |δ| * |Real.sin θ|) * r) :=",
+            "line": 359,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L359"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          163
+        ],
+        "printed": [
+          153
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "A device of the book's Temme-integral route for sgn ℓ = sgn τ. §8.4.2 defines the I_j the same way for ℓ < 0. Lean's one-ray bound is uniform in sgn δ (it uses −2πδ r sinθ ≤ 2π|δ||sinθ|r), so Thm 8.0.1's case split disappears."
+}

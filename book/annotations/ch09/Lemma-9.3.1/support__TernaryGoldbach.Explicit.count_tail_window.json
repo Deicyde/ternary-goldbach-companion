@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 9.3.1",
+  "kind": "lemma",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 189,
+        "rect": [
+          0.17135,
+          0.15373,
+          0.56816,
+          0.12717
+        ]
+      },
+      "title": "Lemma 9.3.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.3.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.count_tail_window",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.count_tail_window",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem count_tail_window {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {T T0 : ℝ} (hT0 : 0 < T0) (S : Finset ℂ) (hS : S ⊆ zerosRect χ T)\n    (hre : ∀ u ∈ S, 0 < u.re ∧ u.re < 1) (him : ∀ u ∈ S, T0 < |u.im|) (k : ℕ) :\n    ∑ u ∈ S.filter (fun u => ⌊(|u.im| - T0) / 4.4⌋₊ = k), (multRect χ T u : ℝ) ≤\n      2 * Z3 N T0 + 2 * c3 T0 * (k + 1) :=",
+            "line": 327,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L327"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          189
+        ],
+        "printed": [
+          179
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "There is no standalone Lean statement. Its role in Prop 9.3.2 is played by the hC steps listed, under the same hypothesis T₀ ≥ max(10π|δ|,50): rotation bounds replace Cor 8.0.2 and Jensen windows replace Lemma 9.1.3."
+}

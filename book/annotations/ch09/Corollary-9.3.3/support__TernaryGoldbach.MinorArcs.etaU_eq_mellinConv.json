@@ -1,0 +1,70 @@
+{
+  "id": "Corollary 9.3.3",
+  "kind": "corollary",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 193,
+        "rect": [
+          0.17135,
+          0.25669,
+          0.56816,
+          0.25809
+        ]
+      },
+      "title": "Corollary 9.3.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 9.3.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.etaU_eq_mellinConv",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap2"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.etaU_eq_mellinConv",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem etaU_eq_mellinConv {u : ℝ} (hu : 0 < u) : etaU u = mellinConv eta2 phi u :=",
+            "line": 23,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap2.lean",
+            "fragment": "L23"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          193
+        ],
+        "printed": [
+          183
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the corollary for x ≥ 4 with its own larger error err933N; the book's proof also covers only x ≥ 4 (Prop 9.3.2 at wx, w ≥ 1/4). The cor_9_3_3 docstring is stale: err933N uses Lean's errZ for q = 1, not [H]'s error;"
+}

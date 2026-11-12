@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.25",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 246,
+        "rect": [
+          0.25926,
+          0.48478,
+          0.56816,
+          0.08952
+        ]
+      },
+      "title": "Equation (12.25)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.star_core",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot2"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.star_core",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem star_core {k K l L a S c e1 e2 : ℝ} (hk : 0 < k) (hkK : k * K = 1) (hl : 11.5 ≤ l)\n    (hρ : l ≤ 0.6 * L) (hc1 : 1.3325822 ≤ c) (hc2 : c ≤ 1.3325823) (haS : S ≤ a)\n    (hst : K * (e1 + 0.6274 * max 0 (-e2)) ≤ 0.3726 * (a - S) + 0.0274177)\n    (hG2 : 0 ≤ k * (L - a + c + S) + e2) :\n    k * (l - a + c + S) + e1 ≤ (l + 1.36) / (L + 1.33258) * (k * (L - a + c + S) + e2) :=",
+            "line": 81,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot2.lean",
+            "fragment": "L81"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          246
+        ],
+        "printed": [
+          236
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The equivalence is used inside star_core/star_core2 and is not stated separately."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.36",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.17135,
+          0.34495,
+          0.56816,
+          0.03653
+        ]
+      },
+      "title": "Equation (4.36)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.36"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Todd_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Todd_le (α : ℝ) :\n    ‖Todd α x m‖ ≤ x / (2 * m) + eta2'L1 / 2 ∧\n    (Real.sin (2 * π * m * α) ≠ 0 →\n      ‖Todd α x m‖ ≤ eta2'L1 / 2 / |Real.sin (2 * π * m * α)| ∧\n      ‖Todd α x m‖ ≤ m / x * (c₀ / 2) / Real.sin (2 * π * m * α) ^ 2) :=",
+            "line": 163,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L163"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Todd (InnerSums.lean:95) sums over all r ∈ ℤ, n = 2r+1; negative n contribute 0 because supp η₂ ⊆ [1/4,1]. Proved from the §2.3 Fourier/variation bounds (FourierSums.lean); no hypotheses."
+}

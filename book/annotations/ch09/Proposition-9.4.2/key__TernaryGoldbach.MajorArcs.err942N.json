@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.4.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 197,
+        "rect": [
+          0.17135,
+          0.40198,
+          0.56816,
+          0.26074
+        ]
+      },
+      "title": "Proposition 9.4.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.4.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err942N",
+        "module": "TernaryGoldbach.MajorArcs.Prop942"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err942N",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def err942N (q : ℕ) (T0 δ x : ℝ) : ℝ := if q = 1 then errPZ T0 δ x else errP q T0 δ x",
+            "line": 61,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop942.lean",
+            "fragment": "L61"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          197
+        ],
+        "printed": [
+          187
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves it outright (no hypotheses) for H = 200 with its own, much larger error err942N (Plancherel windows below T₀, Jensen windows above, uniform Mellin bounds at s = 0 and Re s = −1/2). The book's (9.70) first line rests on Lemma 9.4.1, whose proof drops Lemma 9.1.3's boundary term;"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "Eq 2.10",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 45,
+        "rect": [
+          0.17135,
+          0.28499,
+          0.56816,
+          0.05703
+        ]
+      },
+      "title": "Equation (2.10)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "Real.fourier_deriv",
+        "module": "Mathlib.Analysis.Fourier.FourierTransformDeriv"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "Real.fourier_deriv",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem fourier_deriv\n    {f : ℝ → E} (hf : Integrable f) (h'f : Differentiable ℝ f) (hf' : Integrable (deriv f)) :\n    𝓕 (deriv f) = fun (x : ℝ) ↦ (2 * π * I * x) • (𝓕 f x) :=",
+            "line": 792,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/Analysis/Fourier/FourierTransformDeriv.lean",
+            "fragment": "L792"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          45
+        ],
+        "printed": [
+          35
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The log rule is Mathlib's; the two derivative rules appear only as Fourier differentiation in log coordinates on ℜs = 0, which is all Lean needs."
+}

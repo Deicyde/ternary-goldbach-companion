@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.51",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 286,
+        "rect": [
+          0.25926,
+          0.22906,
+          0.56816,
+          0.14008
+        ]
+      },
+      "title": "Equation (14.51)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.repSum_sub_le_of_bounds",
+        "module": "TernaryGoldbach.Helfgott.NonPrime"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.repSum_sub_le_of_bounds",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem repSum_sub_le_of_bounds {N : ℕ} (hN : 1 ≤ N) {Ap As : ℝ}\n    (hAp : ∀ t, 0 ≤ t → |etaPlus t| ≤ Ap) (hAs : ∀ t, 0 ≤ t → |etaStar t| ≤ As) :\n    repSum (fun _ => True) N - repSum Good N ≤\n      3 * (Ap ^ 2 * As) * Real.log N * (psi N - theta N + Real.log 2) * psi N :=",
+            "line": 112,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/NonPrime.lean",
+            "fragment": "L112"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          286
+        ],
+        "printed": [
+          276
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Exact (Lean bounds each bad term in absolute value); the numeric consequence uses the crude 6.7·10⁶ instead of [H]'s 7.3306, absorbed by final_inequality_crude."
+}

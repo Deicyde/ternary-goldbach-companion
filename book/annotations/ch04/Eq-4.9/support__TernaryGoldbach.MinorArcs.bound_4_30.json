@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.9",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 67,
+        "rect": [
+          0.17135,
+          0.51973,
+          0.56816,
+          0.05685
+        ]
+      },
+      "title": "Equation (4.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_30",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_30",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_30 (x δ : ℝ) (q : ℕ) (D : ℝ) : ℝ :=\n  x / (2 * q) * minInv c₀ (π * δ) * |muSum (Mof x δ q D) q (2 * q) fun _ => 1| +\n    c₀ * q / x * (1 / 8 - 1 / (2 * π ^ 2)) * (D / q + 1) ^ 2",
+            "line": 139,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L139"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          67
+        ],
+        "printed": [
+          57
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Not needed: the main line uses (4.30). Checked: the error is Σ_{m'≤M/q} qm'/x ≤ M²/2xq + M/2x times c₀(π² − 4)/4π² = c₀(1/4 − 1/π²)."
+}

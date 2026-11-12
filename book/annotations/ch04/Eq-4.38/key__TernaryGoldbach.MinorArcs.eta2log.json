@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.38",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.17135,
+          0.75065,
+          0.56816,
+          0.02284
+        ]
+      },
+      "title": "Equation (4.38)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2log",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def eta2log (ρ t : ℝ) : ℝ := Real.log (ρ * t) * eta2 t",
+            "line": 20,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L20"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "In the book (4.38) is an assumption, checked for η₂ with ρ₀ = 4 in §6.2.1 via (6.2) and Lemma B.2.3 ((6.2) alone gives only |η̂_(ρ)''|∞ ≤ 48 log ρ). Lean proves it rather than assuming it, so Lean's Lemma 4.2.3 just requires D ≤ x/4 (ρ = x/m ≥ 4)."
+}

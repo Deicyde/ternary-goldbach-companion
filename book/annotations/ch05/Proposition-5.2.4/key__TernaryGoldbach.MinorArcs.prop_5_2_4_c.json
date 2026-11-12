@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 5.2.4",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 109,
+        "rect": [
+          0.17135,
+          0.15529,
+          0.56816,
+          0.4879
+        ]
+      },
+      "title": "Proposition 5.2.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 5.2.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem prop_5_2_4_c {α x δ U' W' W : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hx : 0 < x) (hW : 0 < W)\n    (hδ0 : δ ≠ 0) (hcond : x / (4 * W) + q ≤ x / (|δ| * q)) (hU' : x / (2 * W) ≤ U')\n    (hW' : 0 ≤ W') :\n    (S2 α x U' W' W ≤ (W - W' + x / (|δ| * q)) * logSqSum W' W) ∧\n    (∀ R : ℝ, 1 ≤ R → R ≤ W' → R ^ 2 ≤ x / (|δ| * q) / (q + x / (4 * W)) →\n      Nat.totient q / q * Real.log R * S2 α x U' W' W ≤\n        (W - W' + x / (|δ| * q)) * logSqSum W' W) :=",
+            "line": 588,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L588"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          109
+        ],
+        "printed": [
+          99
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's suffixes are out of order (a, e, b, c, d); (5.54) adds W ≥ 50000 and (5.56) is split into a trivial branch and a log R gain with R ≤ W′. Erratum: The proof of Prop. 5.2.4 has two real gaps, and the printed bounds still hold. (checked by `scripts/checks/proposition_5_2_4.py`)."
+}

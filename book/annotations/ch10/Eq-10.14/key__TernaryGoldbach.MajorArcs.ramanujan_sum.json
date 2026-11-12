@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.14",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 214,
+        "rect": [
+          0.25926,
+          0.61604,
+          0.56816,
+          0.03483
+        ]
+      },
+      "title": "Equation (10.14)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.ramanujan_sum",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.ramanujan_sum",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem ramanujan_sum (q n : ℕ) (hq : 1 ≤ q) :\n    ∑ a ∈ (range q).filter q.Coprime, e (a * n / q) =\n      ∑ d ∈ q.divisors, (μ d : ℂ) * (if q / d ∣ n then ((q / d : ℕ) : ℂ) else 0) :=",
+            "line": 23,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L23"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          214
+        ],
+        "printed": [
+          204
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Same identity after d ↦ q/d; n ∈ ℕ is harmless since c_q(n) depends on n mod q. None of these declarations uses a hypothesis."
+}

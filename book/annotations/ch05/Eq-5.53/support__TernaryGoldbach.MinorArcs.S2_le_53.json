@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.53",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 109,
+        "rect": [
+          0.17135,
+          0.2286,
+          0.56816,
+          0.05386
+        ]
+      },
+      "title": "Equation (5.53)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.53"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2_le_53",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2_le_53",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S2_le_53 {α x Q ρ : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) (hρ : 0 < ρ) (hρ1 : ρ ≤ 1) (hqρ : (q : ℝ) ≤ ρ * Q)\n    (hx : 0 < x) {U V : ℕ} {W : ℝ} (hV : 0 < (V : ℝ)) (hVW : (V : ℝ) ≤ W) :\n    S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (2 * (max 1 (2 * ρ) * x ^ 2 / (16 * q) + q * x) / x + max 1 (2 * ρ) * x / (2 * W) + W / 2) *\n        logSqSum (max V (W / 2)) W :=",
+            "line": 513,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L513"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          109
+        ],
+        "printed": [
+          99
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Same bound; [H]'s ρ = 0 case is vacuous, and Q ≥ 3.5W, x ≥ W are not needed."
+}

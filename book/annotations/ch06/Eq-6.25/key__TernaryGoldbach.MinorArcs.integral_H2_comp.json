@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.25",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 121,
+        "rect": [
+          0.17135,
+          0.59633,
+          0.56816,
+          0.07339
+        ]
+      },
+      "title": "Equation (6.25)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_H2_comp",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITools"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_H2_comp",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_H2_comp {x U V : ℝ} (hx : 0 < x) (hU : 0 < U) (hV : 0 < V) (hVU : V ≤ x / U) :\n    IntervalIntegrable (fun W => H2 (x / (W * U)) / W) volume V (x / U) ∧\n    ∫ W in V..x / U, H2 (x / (W * U)) / W ≤ 0.15107 * Real.log (x / (U * V)) + 0.0231 :=",
+            "line": 13,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITools.lean",
+            "fragment": "L13"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          121
+        ],
+        "printed": [
+          111
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The correct bound is (β/2 + κ₆/4β)log(x/UW₀) + 0.0231/β; Lean proves this corrected form. Erratum: (6.25) is equivalent to (5.36) at T = x/UW_0, and (5.36) is false. (checked by `scripts/checks/eq_6_25.py`)."
+}

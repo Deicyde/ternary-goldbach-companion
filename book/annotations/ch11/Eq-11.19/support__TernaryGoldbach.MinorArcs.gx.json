@@ -1,0 +1,70 @@
+{
+  "id": "Eq 11.19",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 233,
+        "rect": [
+          0.17135,
+          0.36461,
+          0.56816,
+          0.08335
+        ]
+      },
+      "title": "Equation (11.19)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 11.19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx",
+        "module": "TernaryGoldbach.MinorArcs.GBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def gx (x r : ℝ) : ℝ :=\n  ((R x (2 * r) * Real.log (2 * r) + 0.8764) * √(Fr r) + 2.526) / √(2 * r) + Lg (2 * r) / r +\n    3.8 * x ^ (-1 / 6 : ℝ)",
+            "line": 34,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GBound.lean",
+            "fragment": "L34"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          233
+        ],
+        "printed": [
+          223
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines no g_{x,φ}; it never interpolates R between scales and instead pays max(1,1/w), integrated to 1.398."
+}

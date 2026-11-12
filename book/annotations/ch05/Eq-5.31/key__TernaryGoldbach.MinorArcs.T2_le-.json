@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.31",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 101,
+        "rect": [
+          0.17135,
+          0.67345,
+          0.56816,
+          0.05541
+        ]
+      },
+      "title": "Equation (5.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.T2_le'",
+        "module": "TernaryGoldbach.MinorArcs.T2Bound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.T2_le'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem T2_le' {S : ℝ} (hS : 16 ≤ S) : T2 S ≤ 0.37273 :=",
+            "line": 23,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Bound.lean",
+            "fragment": "L23"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          101
+        ],
+        "printed": [
+          91
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The v = 2 case is formalized with the same constant on the book's extended range S ≥ 16; the v = 1 bound 0.36393 is not formalized and not used. Erratum: In the proof of (5.31) the term from |g_v(x)| <= ... + c_{v,5}/sqrt(x) (x >= 10^10) is printed and used as (2-sqrt2)c_{v,5}/10^5 for both v; for v = 1 the sum over all s < S/10^10 makes it 2(2-sqrt2)c_{1,5}/10^5, so the printed 0.0006506 should be 0.0006513 and the v = 1 total is 0.3639231 (not 0.3639225), still <= 0.36393. (checked by `scripts/checks/eq_5_31.py`)."
+}

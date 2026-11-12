@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.18",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 118,
+        "rect": [
+          0.25926,
+          0.61258,
+          0.56816,
+          0.03336
+        ]
+      },
+      "title": "Equation (6.18)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.pointwise_637",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.pointwise_637",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem pointwise_637 {α x Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) (hx : 0 < x) {U V : ℕ} (hU : 1 ≤ U)\n    (hV : (2000000 : ℝ) ≤ V) (hQ : 3.5 * (x / U) ≤ Q) (hqV : 2 * rexp 1 * q ≤ V) {β : ℝ} (hβ : 0 < β)\n    {W : ℝ} (hW : W ∈ Set.Icc (V : ℝ) (x / U)) :\n    √(S1 x U W) * (√(S2 α x (max U (x / (2 * W))) (max V (W / 2)) W) +\n      √((x / (2 * W) + 1) * (1.4262 ^ 2 * W))) ≤ W * G637 x U V q β W :=",
+            "line": 77,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L77"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          118
+        ],
+        "printed": [
+          108
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps κ₁ = 2/π² + κ₀ζ(3/2)³√(x/V)/U as an expression and bounds it numerically only at the chosen parameters (0.23209, 0.24083). κ₂ ≤ 1.93768 and κ₉ ≤ 3.9086 need the unrounded κ₁ = 0.234663, not 0.2347."
+}

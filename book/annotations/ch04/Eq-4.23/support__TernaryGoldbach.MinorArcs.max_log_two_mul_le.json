@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.23",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 71,
+        "rect": [
+          0.17135,
+          0.7768,
+          0.56816,
+          0.08055
+        ]
+      },
+      "title": "Equation (4.23)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.max_log_two_mul_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.max_log_two_mul_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem max_log_two_mul_le {X : ℝ} (hX : 0 < X) :\n    max 2 (Real.log (2 * X)) ≤ 2 * max 1 (Real.log X) :=",
+            "line": 112,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L112"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          71
+        ],
+        "printed": [
+          61
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The all-n (4.23) is a step in the proof of Lemma 4.2.1, which Lean does not formalize; only the odd-n analogue exists. Its input, Lemma 4.1.3, has a gap in its printed proof."
+}

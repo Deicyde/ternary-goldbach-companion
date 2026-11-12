@@ -1,0 +1,69 @@
+{
+  "id": "Eq 5.12",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 91,
+        "rect": [
+          0.17135,
+          0.51839,
+          0.56816,
+          0.11867
+        ]
+      },
+      "title": "Equation (5.12)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.cntSq_approx",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.cntSq_approx",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem cntSq_approx {P : ℕ} (hP : Squarefree P) {a b : ℝ} (ha : 0 ≤ a) (hab : a ≤ b)\n    (hb2 : b ≤ 2 * a) :\n    |cntSq P a b - (b - a) * (6 / Real.pi ^ 2 * (P / σ 1 P))| ≤\n      ∑ e ∈ P.divisors, fsq (Real.sqrt (b / e)) :=",
+            "line": 281,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L281"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          91
+        ],
+        "printed": [
+          81
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

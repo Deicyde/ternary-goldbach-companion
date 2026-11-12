@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 44,
+        "rect": [
+          0.25926,
+          0.48078,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Equation (2.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.GoodSmoothing",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.GoodSmoothing",
+            "kind": "inductive"
+          },
+          "snippet": {
+            "text": "structure GoodSmoothing (φ : ℝ → ℂ) (K c : ℝ) : Prop where\n  continuousAt : ∀ y : ℝ, 0 < y → ContinuousAt φ y\n  conv : MellinConvergent φ ((3 / 2 : ℝ) : ℂ)\n  diff : ∀ s : ℂ, -1 < s.re → DifferentiableAt ℂ (mellin φ) s\n  c_pos : 0 < c\n  strip : ∀ s : ℂ, -1 / 2 ≤ s.re → s.re ≤ 3 / 2 → ‖mellin φ s‖ ≤ K * Real.exp (-(c * |s.im|))",
+            "line": 51,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L51"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          44
+        ],
+        "printed": [
+          34
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Mathlib's mellin is the book's Mellin transform; it is 0 where the integral diverges, so Lean statements carry convergence hypotheses."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.26",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.25926,
+          0.60739,
+          0.56816,
+          0.04895
+        ]
+      },
+      "title": "Equation (4.26)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_R3' {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {R D : ℝ} (hR0 : 0 < R) (hRD : R < D) :\n    ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Tn α x n ≤\n      3 * (1 + eta2'L1 / (x / D)) / 2 * (x / R + x / q * Real.log (D / R)) +\n        2 * √(c₀ * (1 + eta2'L1 / (x / D))) / π * q *\n          (√(1 + q / R) + (D - R) / q + 1 / 2 * Real.log (D / R)) :=",
+            "line": 456,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L456"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The min(q/c₂, 2x/q) of (4.26)/(4.28) enters (4.31) only as q/c₂, so the weaker Lean form loses nothing downstream. sum_inv_le is reused for Lemma 4.2.4 (TypeI2Rest.lean:288)."
+}

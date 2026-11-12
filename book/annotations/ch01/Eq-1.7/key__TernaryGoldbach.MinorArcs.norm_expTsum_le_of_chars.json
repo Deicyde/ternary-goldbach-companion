@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.7",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.17135,
+          0.39566,
+          0.56816,
+          0.03947
+        ]
+      },
+      "title": "Equation (1.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_expTsum_le_of_chars",
+        "module": "TernaryGoldbach.MinorArcs.BaseGap"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_expTsum_le_of_chars",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_expTsum_le_of_chars {q : ℕ} [NeZero q] {c : ℕ → ℂ}\n    (hc : Summable fun n => ‖c n‖) (β : ℝ) {b : ZMod q} (hb : IsUnit b) {M : ℂ} {E D : ℝ}\n    (hD : ∑' n, ‖c n - coprimePart q c n‖ ≤ D)\n    (hchar : ∀ ψ : DirichletCharacter ℂ q,\n      ‖Schar ψ⁻¹.primitiveCharacter c β - (if ψ = 1 then M else 0)‖ ≤ E) :\n    ‖expTsum c ((b.val : ℝ) / q + β)‖ ≤ D + ‖M‖ / q.totient + √q * (E + D) :=",
+            "line": 93,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BaseGap.lean",
+            "fragment": "L93"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21
+        ],
+        "printed": [
+          11
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never states the identity; it uses it pointwise (with |τ(ψ)| ≤ √q) for the minor-arc base gap and in mean square over the residues b on the major arcs."
+}

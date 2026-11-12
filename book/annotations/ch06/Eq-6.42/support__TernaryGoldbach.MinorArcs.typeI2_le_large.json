@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.42",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 127,
+        "rect": [
+          0.17135,
+          0.3755,
+          0.56816,
+          0.01738
+        ]
+      },
+      "title": "Equation (6.42)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_le_large",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Large"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_le_large",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_le_large {α x δ Q U V ε : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q)\n    (hx : 0 < x) (hqV : q * V ≤ Q) (hQV : 16 * V ≤ Q) (hU : 1 ≤ U) (hV : 2.5e7 ≤ V)\n    (hUV : U * V ≤ x) (hδ : 1 / (2 * c₂) ≤ |δ|) (hε : 0 < ε) (hε1 : ε ≤ 1) :\n    ‖typeI2 α x U V‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) * muBound (min (Q / (2 * V)) U) q * Real.log (V * q) +\n        c₀ * (1 / 8 - 1 / (2 * π ^ 2)) / x *\n          (U ^ 2 / q * (0.511 * V ^ 2 + V * q * Real.log q) + (2 * U + q) * (0.511 * V ^ 2)) +\n        1.0064 * (2 * √(c₀ * cPlus x U V) / π * (1 + (1 + ε) * (1 + V / Q) / rexp 1)) * (U * V) +\n        1.0064 * (3 / 2 * cPlus x U V * (2 + (1 + ε) / ε * logPlus (2 * U * V * |δ| * q / x))) *\n          (x * V / Q) +\n        1.0064 * (35 * c₀ * c₂ / (3 * π ^ 2)) * Q +\n        2 * √(c₀ * cPlus x U V) / π * (1 + ε) * √(3 + 2 * ε) *\n          (x / (|δ| * q) * (1.03883 + Real.log q + logPlus (6 * U * V * |δ| * q / (√2 * x))) +\n            1.0064 * V) :=",
+            "line": 224,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Large.lean",
+            "fragment": "L224"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          127
+        ],
+        "printed": [
+          117
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Exposition only; the Lean proof fixes κ = 1/2 without optimizing. With ψ(y) ≤ 1.0064y in place of [H]'s 1.0004y, the C₀UV term yields 2.5257x/√(δ₀q) in Lean (book 2.49157 before (6.59)), whence theorem_3_1_1's 2.526 in place of 2.5."
+}

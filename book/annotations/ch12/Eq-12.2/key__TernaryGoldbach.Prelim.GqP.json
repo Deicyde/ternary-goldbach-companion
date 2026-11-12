@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.2",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 238,
+        "rect": [
+          0.25926,
+          0.35892,
+          0.56816,
+          0.05259
+        ]
+      },
+      "title": "Equation (12.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.GqP",
+        "module": "TernaryGoldbach.Prelim.RamareGq"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.GqP",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def GqP (q : ℕ) (R : ℝ) : ℝ :=\n  ∑ r ∈ (Finset.Icc 1 ⌊R⌋₊).filter (fun r => Nat.Coprime r q), ((μ r : ℝ) ^ 2) / Nat.totient r",
+            "line": 16,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/RamareGq.lean",
+            "fragment": "L16"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          238
+        ],
+        "printed": [
+          228
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "G_q depends only on the primes dividing q, which is why the two maxima in (12.6) coincide. In §12.1, Lean evaluates Gq only at even moduli: q in prop_12_1_2's hypothesis, and G_{c̃} with c̃ = qt c in Farc_eq."
+}

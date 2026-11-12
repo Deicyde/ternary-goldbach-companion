@@ -1,0 +1,70 @@
+{
+  "id": "Eq C.9",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 310,
+        "rect": [
+          0.25926,
+          0.17772,
+          0.56816,
+          0.04041
+        ]
+      },
+      "title": "Equation (C.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq C.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prod_upper_bound",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prod_upper_bound",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem prod_upper_bound {R : ℕ} (hR : 200 ≤ R) :\n    ∏ p ∈ oddPrimes R, (1 + 1 / ((p : ℝ) - 1) ^ 2) ≤ 1.4122 * Real.exp (1 / 199) :=",
+            "line": 459,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L459"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          310
+        ],
+        "printed": [
+          300
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds only the finite sum over Qset 150000 from above, with 2.85 in place of 2.826421."
+}

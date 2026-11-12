@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.6",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 44,
+        "rect": [
+          0.25926,
+          0.65719,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Equation (2.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.integral_norm_sq_fourier",
+        "module": "TernaryGoldbach.Prelim.PlancherelReal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.integral_norm_sq_fourier",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_norm_sq_fourier {f : ℝ → ℂ} (h1 : Integrable f) (h2 : MemLp f 2) :\n    ∫ ξ, ‖𝓕 f ξ‖ ^ 2 = ∫ x, ‖f x‖ ^ 2 :=",
+            "line": 83,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/PlancherelReal.lean",
+            "fragment": "L83"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          44
+        ],
+        "printed": [
+          34
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (2.6) only on ℜs = 1/2 under a decay hypothesis narrower than the book's L¹/L² condition; the book's uses on ℜs = −1/2 are avoided by pointwise bounds."
+}

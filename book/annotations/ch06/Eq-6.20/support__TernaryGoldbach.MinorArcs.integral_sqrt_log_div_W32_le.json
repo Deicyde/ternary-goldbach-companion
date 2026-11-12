@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.20",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 119,
+        "rect": [
+          0.17135,
+          0.57481,
+          0.56816,
+          0.19783
+        ]
+      },
+      "title": "Equation (6.20)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_sqrt_log_div_W32_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_sqrt_log_div_W32_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_sqrt_log_div_W32_le {V A : ℝ} (hV : 1 < V) (hVA : V ≤ A) :\n    ∫ W in V..A, √(Real.log W) / (W * √W) ≤\n      2 * (√(Real.log V) + 1 / √(Real.log V)) / √V :=",
+            "line": 212,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L212"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          119
+        ],
+        "printed": [
+          109
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps κ₁ = kap1 symbolic, bounds ∫_V^{W₀}√(log W)W^{-3/2} by (2/√V)(√log V + 1/√log V) rather than 2√(log W₀)/√V, and carries the S₃ share separately."
+}

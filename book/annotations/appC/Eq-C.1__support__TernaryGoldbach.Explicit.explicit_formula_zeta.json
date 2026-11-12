@@ -1,0 +1,70 @@
+{
+  "id": "Eq C.1",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 307,
+        "rect": [
+          0.17135,
+          0.51832,
+          0.56816,
+          0.04184
+        ]
+      },
+      "title": "Equation (C.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq C.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.explicit_formula_zeta",
+        "module": "TernaryGoldbach.Explicit.ZetaExplicit"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.explicit_formula_zeta",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem explicit_formula_zeta {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {x : ℝ} (hx : 0 < x) :\n    ∃ T : ℕ → ℝ, (∀ k : ℕ, T k ∈ Icc ((k : ℝ) + 1) ((k : ℝ) + 2)) ∧\n      Tendsto (fun k => ∑ u ∈ zerosRectD zetaF (T k), (multRectD zetaF (T k) u : ℂ) *\n          (mellin φ u * (x : ℂ) ^ u)) atTop\n        (𝓝 (mellin φ 1 * x - SsumG (1 : DirichletCharacter ℂ 1) φ x -\n          (1 / (2 * π) : ℂ) * ∫ y : ℝ, hZeta φ x (((-1 / 2 : ℝ) : ℂ) + y * I))) :=",
+            "line": 122,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZetaExplicit.lean",
+            "fragment": "L122"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          307
+        ],
+        "printed": [
+          297
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Derivation: shift (1/2πi)∫_{(2)} (−ζ'/ζ)(s)Mφ(s)ds to the far left. The residues are Mφ(1) at s = 1, −Mφ(ρ) at the nontrivial zeros, and −Mφ(−2k) at the trivial zeros, which sum to −∫φ/(x(x²−1))."
+}

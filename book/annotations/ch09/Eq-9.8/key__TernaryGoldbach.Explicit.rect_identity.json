@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.8",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 176,
+        "rect": [
+          0.25926,
+          0.74024,
+          0.56816,
+          0.0358
+        ]
+      },
+      "title": "Equation (9.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.rect_identity",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.rect_identity",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem rect_identity {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {x : ℝ} (hx : 0 < x) {T : ℝ}\n    (hT : 0 < T)\n    (hbot : ∀ σ ∈ [[(-1 / 2 : ℝ), 3 / 2]], χ.LFunction ((σ : ℂ) + ((-T : ℝ) : ℂ) * I) ≠ 0)\n    (htop : ∀ σ ∈ [[(-1 / 2 : ℝ), 3 / 2]], χ.LFunction ((σ : ℂ) + ((T : ℝ) : ℂ) * I) ≠ 0) :\n    rectInt (fun s => logDeriv χ.LFunction s * (mellin φ s * (x : ℂ) ^ s)) (zT T) (wT T) =\n      2 * π * I * ∑ u ∈ zerosRect χ T, (multRect χ T u : ℂ) * (mellin φ u * (x : ℂ) ^ u) :=",
+            "line": 307,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L307"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          176
+        ],
+        "printed": [
+          166
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean replaces both uses of (9.8): Landau's lemma bounds L′/L on ℜs = −1/2, and R disappears. The ζ completed-form reflection (logDeriv_xiF_one_sub) now also serves the Weil explicit formula used for the ψ bounds."
+}

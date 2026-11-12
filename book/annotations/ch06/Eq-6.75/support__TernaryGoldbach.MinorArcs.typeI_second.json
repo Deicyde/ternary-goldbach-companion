@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.75",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 142,
+        "rect": [
+          0.25926,
+          0.75786,
+          0.56816,
+          0.09564
+        ]
+      },
+      "title": "Equation (6.75)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.75"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI2"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI_second",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI_second {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hc : SecondCase T δ q) :\n    ‖typeILog α (T ^ 3) (U2 T)‖ + ‖typeI2 α (T ^ 3) (U2 T) (V2 T)‖ ≤\n      (0.0717 * Real.log T ^ 2 + 3199.9 * Real.log T + 8471.0) * T ^ 2 :=",
+            "line": 521,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI2.lean",
+            "fragment": "L521"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          142
+        ],
+        "printed": [
+          132
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves 0.275993 and 1234 for 0.27598 and 1233.38, adding 3 log x for S_{0,2} and the case q′ ≤ y, |δ′q′| ≤ 8y missed by the book's split, handled by the first case of Thm 3.1.1."
+}

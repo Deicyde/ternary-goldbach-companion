@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.50",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 80,
+        "rect": [
+          0.25926,
+          0.7861,
+          0.56816,
+          0.07009
+        ]
+      },
+      "title": "Equation (4.50)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.50"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_50",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_50",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_50 (x δ : ℝ) (q : ℕ) (U V : ℝ) : ℝ :=\n  let D := U * V\n  x / (2 * q) * minInv c₀ (π * δ) * Real.log (V * q) +\n    (1 / 4 - 1 / π ^ 2) * c₀ *\n      (D ^ 2 * Real.log V / (2 * q * x) + 3 * c₄ / 2 * (U * V ^ 2 / x) +\n        3 / 2 * ((U + 1) ^ 2 * V / (2 * x) * Real.log q))",
+            "line": 196,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L196"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          80
+        ],
+        "printed": [
+          70
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "For q even the main part is 0."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.6",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 113,
+        "rect": [
+          0.17135,
+          0.78367,
+          0.56816,
+          0.07165
+        ]
+      },
+      "title": "Equation (6.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_30_v_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_30_v_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem bound_4_30_v_le {x δ Q U V : ℝ} {q v : ℕ} (hq : 1 ≤ q) (hx : 0 < x)\n    (hδQ : |δ| * q * Q ≤ x) (hU : 0 < U) (hQ : 0 < Q) (hv : 1 ≤ v) (hvV : (v : ℝ) ≤ V) :\n    bound_4_30 (x / v) δ (q / Nat.gcd q v) U ≤\n      x / (2 * q) * minInv c₀ (π * δ) * muBound (min (Q / (2 * V)) U) q * (Nat.gcd q v / v) +\n        c₀ * (1 / 8 - 1 / (2 * π ^ 2)) / x * (U ^ 2 / q * v * Nat.gcd q v + (2 * U + q) * v) :=",
+            "line": 106,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L106"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          113
+        ],
+        "printed": [
+          103
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean applies Lemma 4.2.2 with modulus q_v throughout (μ-sum over (m,2q_v)=1, numerator q_v) and states the needed Q ≥ 16V explicitly."
+}

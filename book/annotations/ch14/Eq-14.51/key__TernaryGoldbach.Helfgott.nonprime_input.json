@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.51",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 286,
+        "rect": [
+          0.25926,
+          0.22906,
+          0.56816,
+          0.14008
+        ]
+      },
+      "title": "Equation (14.51)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+        "module": "TernaryGoldbach.Helfgott.Inputs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.nonprime_input",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem nonprime_input (N : ℕ) (hN27 : 10 ^ 27 ≤ N) :\n    repSum (fun _ => True) N - repSum (fun n => n.Prime ∧ Odd n) N ≤\n      6.7e6 * (N * √N) * Real.log N :=",
+            "line": 127,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Inputs.lean",
+            "fragment": "L127"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          286
+        ],
+        "printed": [
+          276
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Exact (Lean bounds each bad term in absolute value); the numeric consequence uses the crude 6.7·10⁶ instead of [H]'s 7.3306, absorbed by final_inequality_crude."
+}

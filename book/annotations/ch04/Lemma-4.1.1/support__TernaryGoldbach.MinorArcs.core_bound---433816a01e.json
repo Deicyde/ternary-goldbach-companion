@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 4.1.1",
+  "kind": "lemma",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 62,
+        "rect": [
+          0.25926,
+          0.27352,
+          0.56816,
+          0.08188
+        ]
+      },
+      "title": "Lemma 4.1.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₂'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem core_bound₂' {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs0 : 0 ≤ s) (hs1 : s ≤ 1 / 2) {A C : ℝ}\n    (hA : 0 ≤ A) (hC : 0 ≤ C) (τ : ℕ → ℝ) (hτ : ∀ R, τ R ∈ Icc (s - 1 / 2) (s + 1 / 2))\n    (F : ℕ → ℝ) (hF0 : ∀ R, 0 ≤ F R) (hFA : ∀ R, F R ≤ A)\n    (hFC : ∀ R, 1 ≤ R → R + 2 ≤ q → F R ≤ C * fq q (R + τ R)) :\n    ∑ R ∈ Finset.range q, F R ≤ 3 * A + 4 * q / π * √(A * C) :=",
+            "line": 636,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L636"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          62
+        ],
+        "printed": [
+          52
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Only the second bound 3A + (4q/π)√(AC) is used downstream (book: proof of Lemma 4.2.1; Lean likewise); the first bound's method is reused for Lemma 4.1.2."
+}

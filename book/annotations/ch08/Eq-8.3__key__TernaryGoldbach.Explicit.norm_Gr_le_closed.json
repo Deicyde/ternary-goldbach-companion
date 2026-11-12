@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.3",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 154,
+        "rect": [
+          0.25926,
+          0.41236,
+          0.56816,
+          0.03458
+        ]
+      },
+      "title": "Equation (8.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Gr_le_closed",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Gr_le_closed",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Gr_le_closed (s : ℂ) (δ : ℝ) {θ : ℝ} (hθ0 : 0 ≤ θ) (hθ : θ < π / 4)\n    (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1) :\n    ‖Gr s δ 0‖ ≤ Real.exp (-(θ * |s.im|)) *\n      (Real.exp ((2 * π * |δ| * Real.sin θ) ^ 2 / (2 * Real.cos (2 * θ))) *\n        ((1 + (2 * π * |δ| * Real.sin θ / Real.cos (2 * θ)) ^ 2) * √(π / (Real.cos (2 * θ) / 2)) +\n          √π / (Real.cos (2 * θ) * √(Real.cos (2 * θ) / 2)))) :=",
+            "line": 479,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L479"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          154
+        ],
+        "printed": [
+          144
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Cor 8.0.2's proof turns (8.3)–(8.4) into (8.50) for |τ| ≥ 20. It uses (1+π/2^{3/2})e^{−5π} + ½e^{−20π} ≤ 7.8·10⁻⁶e^{−0.1598·20} (3.1809·10⁻⁷ ≤ 3.1922·10⁻⁷, rechecked) and e^{−ℓ²/2} = e^{−2τ/ρ}."
+}

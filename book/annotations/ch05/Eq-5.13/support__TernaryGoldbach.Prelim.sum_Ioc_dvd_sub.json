@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.13",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 91,
+        "rect": [
+          0.17135,
+          0.7059,
+          0.56816,
+          0.1476
+        ]
+      },
+      "title": "Equation (5.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_Ioc_dvd_sub",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_Ioc_dvd_sub",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_Ioc_dvd_sub {a b : ℝ} (ha : 0 ≤ a) (hab : a ≤ b) {D : ℕ} (hD : 1 ≤ D) :\n    |(∑ l ∈ Ioc ⌊a⌋₊ ⌊b⌋₊, if D ∣ l then (1 : ℝ) else 0) - (b - a) / D| < 1 :=",
+            "line": 68,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L68"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          91
+        ],
+        "printed": [
+          81
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps (r₁,r₂) fixed, with no s_i = r_i/d_i reindexing here (it reappears only in sum_odd_divisors_le). The book's split 'truncated main (5.13) + error (5.14)', then 'completed (5.15) − tail (5.16)', becomes a single per-m comparison bounded by the fsq summand."
+}

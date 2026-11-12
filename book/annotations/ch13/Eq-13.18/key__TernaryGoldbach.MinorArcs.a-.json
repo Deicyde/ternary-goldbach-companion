@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.18",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 261,
+        "rect": [
+          0.17135,
+          0.77712,
+          0.56816,
+          0.0385
+        ]
+      },
+      "title": "Equation (13.18)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a₁",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a₁",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def a₁ (x : ℝ) (n : ℕ) : ℂ :=\n  if n.Prime ∧ √x < n then ((Λ n * etaPlus (n / x) : ℝ) : ℂ) else 0",
+            "line": 92,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L92"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          261
+        ],
+        "printed": [
+          251
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "No standalone statement. For the S₂ part Lean uses |S_{η*}| ≤ 22.75y and ∫|S₂|² ≤ 8·10⁻¹¹x instead of S_{η*}(0,x)·E."
+}

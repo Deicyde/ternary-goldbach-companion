@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.16",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 118,
+        "rect": [
+          0.25926,
+          0.40275,
+          0.56816,
+          0.03705
+        ]
+      },
+      "title": "Equation (6.16)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S1_bound",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIS1"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S1_bound",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S1_bound {x U W : ℝ} (hx : 0 < x) (hW : 0 < W) (hU : 1 ≤ U) :\n    S1 x U W ≤ x / W * H2 (x / (W * U)) +\n      1.27 * (riemannZeta (3 / 2)).re ^ 3 * x ^ (3 / 2 : ℝ) / (W ^ (3 / 2 : ℝ) * U) :=",
+            "line": 400,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+            "fragment": "L400"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          118
+        ],
+        "printed": [
+          108
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never states the 2/π² form separately; it keeps H₂ in the main term and uses 1.27ζ(3/2)³ = 22.6417… exactly as zeta3."
+}

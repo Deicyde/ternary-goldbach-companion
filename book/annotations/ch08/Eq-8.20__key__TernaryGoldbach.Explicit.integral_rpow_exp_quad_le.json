@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.20",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 159,
+        "rect": [
+          0.17135,
+          0.48006,
+          0.56816,
+          0.03705
+        ]
+      },
+      "title": "Equation (8.20)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_rpow_exp_quad_le",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_rpow_exp_quad_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_rpow_exp_quad_le {p c b : ℝ} (hp0 : 0 ≤ p) (hp2 : p ≤ 2) (hc : 0 < c) :\n    ∫ r in Ioi (0:ℝ), r ^ p * Real.exp (-(c / 2) * r ^ 2 + b * r) ≤\n      Real.exp (b ^ 2 / (2 * c)) * ((1 + (b / c) ^ 2) * √(π / (c / 2)) + √π / (c * √(c / 2))) :=",
+            "line": 418,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L418"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          159
+        ],
+        "printed": [
+          149
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Needs τ ≥ 0, which the book assumes. Only used to get (8.21)."
+}

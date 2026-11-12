@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.41",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.17135,
+          0.70799,
+          0.56816,
+          0.06235
+        ]
+      },
+      "title": "Equation (1.41)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.large_sieve_opt",
+        "module": "TernaryGoldbach.Prelim.LargeSieveMV"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.large_sieve_opt",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem large_sieve_opt {ι : Type*} (s : Finset ι) (α : ι → ℝ) {δ : ℝ} (hδ : 0 < δ) (hδ1 : δ ≤ 1)\n    (hsep : ∀ r ∈ s, ∀ r' ∈ s, r ≠ r' → δ ≤ |(α r - α r') - round (α r - α r')|)\n    (M N : ℕ) (a : ℕ → ℂ) :\n    ∑ r ∈ s, ‖∑ n ∈ Ioc M (M + N), a n * e (α r * n)‖ ^ 2 ≤\n      ((N : ℝ) - 1 + δ⁻¹) * ∑ n ∈ Ioc M (M + N), ‖a n‖ ^ 2 :=",
+            "line": 26,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LargeSieveMV.lean",
+            "fragment": "L26"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          27
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Not formalized and not needed: like the book's main line, Lean bounds ∫_{𝔐}|S|² directly (cor_12_2_5, with c₊ = 2 and δ₀ ≥ 2)."
+}

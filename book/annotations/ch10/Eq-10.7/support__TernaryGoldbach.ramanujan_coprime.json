@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.7",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 212,
+        "rect": [
+          0.25926,
+          0.73516,
+          0.56816,
+          0.11834
+        ]
+      },
+      "title": "Equation (10.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.ramanujan_coprime",
+        "module": "TernaryGoldbach.MinorArcs.Montgomery"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.ramanujan_coprime",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem ramanujan_coprime (q n : ℕ) (hq : 1 ≤ q) (hn : Nat.Coprime n q) :\n    ∑ a ∈ (range q).filter q.Coprime, e (a * n / q) = μ q :=",
+            "line": 75,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Montgomery.lean",
+            "fragment": "L75"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          212
+        ],
+        "printed": [
+          202
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never needs non-unit a₀: the non-coprime n are bounded directly (10⁻¹⁵x for η₊, 10⁻¹²x/κ for η_*)."
+}

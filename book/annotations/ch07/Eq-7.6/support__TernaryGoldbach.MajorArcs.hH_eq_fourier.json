@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.6",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 149,
+        "rect": [
+          0.17135,
+          0.7141,
+          0.56816,
+          0.06937
+        ]
+      },
+      "title": "Equation (7.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.hH_eq_fourier",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.hH_eq_fourier",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hH_eq_fourier {H t : ℝ} (hH0 : 0 < H) (ht : 0 < t) :\n    (hH H t : ℂ) = ∫ ξ in Icc (-(H / (2 * π))) (H / (2 * π)),\n      Complex.exp (↑(2 * π * ξ * Real.log t) * I) * 𝓕 gC ξ :=",
+            "line": 272,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L272"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          149
+        ],
+        "printed": [
+          139
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "I checked the claim MF_H(iτ) = 1_{(−H,H)}(τ): ∫ sin(Hu)/(πu)·e^{iτu}du = 1 for |τ| < H. Lean also quantifies how well h_H approximates h: MajorArcs.integral_norm_sq_gC_sub and MajorArcs.tail_fourier_gC_le (HHFourier.lean:378, 434) give ‖g − g_H‖₂² ≤ 19.5/H²."
+}

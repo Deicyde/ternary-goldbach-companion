@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.17",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 92,
+        "rect": [
+          0.25926,
+          0.79038,
+          0.56816,
+          0.06571
+        ]
+      },
+      "title": "Equation (5.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+        "module": "TernaryGoldbach.MinorArcs.S1Lemma"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_divisors_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_odd_divisors_le {y : ℝ} (hy : 0 ≤ y) :\n    ∑ r ∈ (Icc 1 ⌊y⌋₊).filter Odd, ∑ d ∈ r.divisors, 1 / √((r : ℝ) * d) ≤\n      (1 - 2 ^ (-(3 / 2) : ℝ)) * (riemannZeta (3 / 2)).re * √y :=",
+            "line": 118,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/S1Lemma.lean",
+            "fragment": "L118"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          92
+        ],
+        "printed": [
+          82
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean treats v = 2 only and bounds the error per pair (r₁,r₂) rather than re-indexing by (d_i,s_i); the summands coincide."
+}

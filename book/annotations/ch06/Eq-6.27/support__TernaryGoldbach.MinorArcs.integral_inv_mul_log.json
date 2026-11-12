@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.27",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 122,
+        "rect": [
+          0.25926,
+          0.38099,
+          0.56816,
+          0.03911
+        ]
+      },
+      "title": "Equation (6.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_inv_mul_log",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITools"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_inv_mul_log",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_inv_mul_log {c a b : ℝ} (hc : 0 < c) (hca : c < a) (hab : a ≤ b) :\n    ∫ W in a..b, 1 / (W * Real.log (W / c)) =\n      Real.log (Real.log (b / c)) - Real.log (Real.log (a / c)) :=",
+            "line": 63,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITools.lean",
+            "fragment": "L63"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          122
+        ],
+        "printed": [
+          112
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean takes θ = 8 in the second parameter choice where [H] takes θ = 4; the empty case 2θq > x/U is handled by applying (5.53) on all of [V, x/U]."
+}

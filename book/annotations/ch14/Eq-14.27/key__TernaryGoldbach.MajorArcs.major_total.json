@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.27",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 277,
+        "rect": [
+          0.17135,
+          0.43212,
+          0.56816,
+          0.03661
+        ]
+      },
+      "title": "Equation (14.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.major_total",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.major_total",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem major_total {N : ℕ} (hN : Odd N) {x : ℝ} (hx : 4.9e26 ≤ x)\n    (hNx : (N : ℝ) / x = 2 + 9 / (8 * √(π / 2)) / κ) :\n    1.049 * x ^ 2 / κ ≤ (∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, fI N x α).re :=",
+            "line": 974,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L974"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          277
+        ],
+        "printed": [
+          267
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's constant is 1.049, enough against the minor-arc 1.0376. The book's 1.058259 still holds after correcting (14.26) only if C₀C ≥ 1.0582990/κ is used unrounded."
+}

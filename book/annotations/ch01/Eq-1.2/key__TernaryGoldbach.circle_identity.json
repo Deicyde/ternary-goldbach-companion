@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 17,
+        "rect": [
+          0.17135,
+          0.62032,
+          0.56816,
+          0.03722
+        ]
+      },
+      "title": "Equation (1.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.circle_identity",
+        "module": "TernaryGoldbach.CircleMethod"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.circle_identity",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem circle_identity (X N : ℕ) (a b c : ℕ → ℂ) :\n    ∫ α in (0:ℝ)..1, expSum X a α * expSum X b α * expSum X c α * e (-(N * α)) =\n      ∑ n₁ ∈ range (X + 1), ∑ n₂ ∈ range (X + 1), ∑ n₃ ∈ range (X + 1),\n        if n₁ + n₂ + n₃ = N then a n₁ * b n₂ * c n₃ else 0 :=",
+            "line": 82,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/CircleMethod.lean",
+            "fragment": "L82"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          17
+        ],
+        "printed": [
+          7
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean restricts to weights on ℕ and uses S(α) = Σ a(n)e(αn) with e(−Nα), the same identity after α ↦ −α; every weight in the book is supported on n ≥ 1."
+}

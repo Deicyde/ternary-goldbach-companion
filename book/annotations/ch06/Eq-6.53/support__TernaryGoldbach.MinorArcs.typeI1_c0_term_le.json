@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.53",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 130,
+        "rect": [
+          0.25926,
+          0.5708,
+          0.56816,
+          0.15779
+        ]
+      },
+      "title": "Equation (6.53)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.53"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI1_c0_term_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI1"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI1_c0_term_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI1_c0_term_le {T U : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : 1 ≤ q) (hU1 : 1 ≤ U)\n    (hU2 : U ≤ 0.0786 * T ^ 2) :\n    c₀ * (1 / 2 - 2 / π ^ 2) * (U ^ 2 / (4 * q * T ^ 3) * Real.log (rexp (1 / 2) * T ^ 3 / U) +\n      1 / rexp 1) ≤ 0.0001 * (T ^ 2 * √T) :=",
+            "line": 183,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI1.lean",
+            "fragment": "L183"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          130
+        ],
+        "printed": [
+          120
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The printed c_{10,I} term is overstated by √(qδ₀): U²/(4qx) = x^{1/3}/(324q²δ₀)."
+}

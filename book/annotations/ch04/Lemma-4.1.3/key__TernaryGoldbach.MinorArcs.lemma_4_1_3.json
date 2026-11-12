@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 4.1.3",
+  "kind": "lemma",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17135,
+          0.64616,
+          0.56816,
+          0.12606
+        ]
+      },
+      "title": "Lemma 4.1.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_1_3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_1_3",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_4_1_3 {α Q : ℝ} {a : ℤ} {q : ℕ} (h : Approx α a q Q) {y₁ y₂ : ℝ}\n    (hy : 0 ≤ y₁) (_hy₁₂ : y₁ < y₂) (hlen : y₂ - y₁ ≤ q) (hy₂ : y₂ ≤ Q / 2) {B C : ℝ}\n    (hB : 0 ≤ B) (hC : 0 ≤ C) :\n    (∑ n ∈ Finset.Ioc ⌊y₁⌋ ⌊y₂⌋, (if (q : ℤ) ∣ n then 0 else\n        min (B / |Real.sin (π * α * n)|) (C / Real.sin (π * α * n) ^ 2))) ≤\n      2 * B * q / π * max 2 (Real.log (C * rexp 3 * q / (B * π))) ∧\n    (∑ n ∈ Finset.Ioc ⌊y₁⌋ ⌊y₂⌋, (if (q : ℤ) ∣ n then 0 else\n        min (B / |Real.sin (π * α * n)|) (C / Real.sin (π * α * n) ^ 2))) ≤\n      2 * B * q / π * Real.log (2 * rexp 2 * q / π) :=",
+            "line": 2084,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L2084"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Further slips in the proof. Erratum: For C < B sin(π/q) the proof's majorant X already exceeds the right side of (4.6) near C = B sin(π/2q) (ratio 1.0696 at q = 140, above 1 for every q ≤ 400 except q = 3), and the printed relaxation to C = B sin(π/q) gives the factor 3 + log((q/π)sin(π/q)) ≥ 2.548, so the range C ≤ Bπ/(eq), where (4.6) claims the factor 2, is not proved. (checked by `scripts/checks/lemma_4_1_3.py`)."
+}

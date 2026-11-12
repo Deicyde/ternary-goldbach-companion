@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.6",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 212,
+        "rect": [
+          0.25926,
+          0.61258,
+          0.56816,
+          0.03434
+        ]
+      },
+      "title": "Equation (10.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.gaussSum_eq_sum_range",
+        "module": "TernaryGoldbach.Prelim.GaussInduced"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.gaussSum_eq_sum_range",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem gaussSum_eq_sum_range {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) :\n    gaussSum χ ZMod.stdAddChar = ∑ c ∈ range N, χ (c : ZMod N) * e (c / N) :=",
+            "line": 168,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/GaussInduced.lean",
+            "fragment": "L168"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          212
+        ],
+        "printed": [
+          202
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses Mathlib's gaussSum; τ(χ,b) appears as gaussSum with mulShift b, and τ(χ₀,n) as the Ramanujan sum ramanujan_sum."
+}

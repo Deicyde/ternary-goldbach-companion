@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.3.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 192,
+        "rect": [
+          0.25926,
+          0.15373,
+          0.56816,
+          0.24296
+        ]
+      },
+      "title": "Proposition 9.3.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.3.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Ssum_le",
+        "module": "TernaryGoldbach.Explicit.ExplicitBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Ssum_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Ssum_le {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (δ : ℝ) {x : ℝ} (hx : 1 ≤ x) {T0 : ℝ} (hT0 : max (10 * π * |δ|) 50 ≤ T0)\n    (hG : ∀ ρ : ℂ, χ.LFunction ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ T0 → ρ.re = 1 / 2) :\n    ‖Ssum χ δ x‖ ≤ E0b N + √x * E1b N T0 + x * E2b N T0 δ + x ^ (-(1 / 2) : ℝ) * Vb N δ / (2 * π) :=",
+            "line": 97,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBound.lean",
+            "fragment": "L97"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          192
+        ],
+        "printed": [
+          182
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the proposition with its own, larger error err932N in place of (9.57); MajorArcs.err932 transcribes (9.57) but no theorem bounds the sum by it."
+}

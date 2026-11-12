@@ -1,0 +1,69 @@
+{
+  "id": "Eq 9.53",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 191,
+        "rect": [
+          0.17135,
+          0.39527,
+          0.56816,
+          0.04023
+        ]
+      },
+      "title": "Equation (9.53)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.53"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_tail",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_tail",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_G_tail (s : ℂ) (δ : ℝ) (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1) {T0 : ℝ}\n    (hT0 : max (10 * π * |δ|) 50 ≤ T0) (hτ : T0 ≤ |s.im|) :\n    ‖Gr s δ 0‖ ≤ EB T0 * Real.exp (-0.1398 * (|s.im| - T0)) +\n      EA T0 δ * Real.exp (-1.93 * ((|s.im| - T0) / (π * |δ|))) :=",
+            "line": 105,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L105"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          191
+        ],
+        "printed": [
+          181
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  }
+}

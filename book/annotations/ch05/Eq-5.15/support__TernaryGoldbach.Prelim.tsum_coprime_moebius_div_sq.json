@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.15",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 92,
+        "rect": [
+          0.25926,
+          0.35271,
+          0.56816,
+          0.11828
+        ]
+      },
+      "title": "Equation (5.15)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.tsum_coprime_moebius_div_sq",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.tsum_coprime_moebius_div_sq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem tsum_coprime_moebius_div_sq {P : ℕ} (hP : P ≠ 0) :\n    ∑' m : ℕ, (if Nat.Coprime m P then (μ m : ℝ) / (m : ℝ) ^ 2 else 0) =\n      6 / Real.pi ^ 2 / ∏ p ∈ P.primeFactors, (1 - 1 / (p : ℝ) ^ 2) :=",
+            "line": 112,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L112"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          92
+        ],
+        "printed": [
+          82
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The book's ∏_{p|r₁r₂v}(1−1/p)∏_{p∤r₁r₂v}(1−p^{−2}) = (6/π²)r₁r₂v/(σ(r₁)σ(r₂)σ(v)) needs r₁r₂v squarefree; Lean assumes Squarefree P explicitly."
+}

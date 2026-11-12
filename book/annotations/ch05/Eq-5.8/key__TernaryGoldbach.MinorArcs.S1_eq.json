@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.8",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 90,
+        "rect": [
+          0.25926,
+          0.7146,
+          0.56816,
+          0.06619
+        ]
+      },
+      "title": "Equation (5.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S1_eq",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIS1"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S1_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S1_eq {x U W : ℝ} (hx : 0 < x) (hW : 0 < W) (hU : 1 ≤ U) :\n    S1 x U W = ∑ s ∈ (Icc 1 ⌊x / W⌋₊).filter Odd, innerS (x / W) U s :=",
+            "line": 337,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+            "fragment": "L337"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          90
+        ],
+        "printed": [
+          80
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Formalized for v = 2 only (the book's final choice) and with U ≥ 1; the inclusive ranges add only terms with empty l-intervals."
+}

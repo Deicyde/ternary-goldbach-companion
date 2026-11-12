@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.90",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 202,
+        "rect": [
+          0.25926,
+          0.43483,
+          0.56816,
+          0.05428
+        ]
+      },
+      "title": "Equation (9.90)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.90"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.count_tail_windowG",
+        "module": "TernaryGoldbach.Explicit.ZeroSumGen"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.count_tail_windowG",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem count_tail_windowG (hp : PolyDatum f B κ) {T T0 : ℝ} (hT0 : 0 < T0) (S : Finset ℂ)\n    (hS : S ⊆ zerosRectD f T) (hre : ∀ u ∈ S, 0 < u.re ∧ u.re < 1) (him : ∀ u ∈ S, T0 < |u.im|)\n    (k : ℕ) :\n    ∑ u ∈ S.filter (fun u => ⌊(|u.im| - T0) / 4.4⌋₊ = k), (multRectD f T u : ℝ) ≤\n      2 * Z3g B T0 + 2 * c3g κ T0 * (k + 1) :=",
+            "line": 121,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumGen.lean",
+            "fragment": "L121"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          202
+        ],
+        "printed": [
+          192
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The repo docs (README.md:192, NOTES.md:12) only note that N⁺ = N/2 needs a real χ, which holds for ζ. Neither gap here is reported there."
+}

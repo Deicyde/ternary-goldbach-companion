@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.48",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 106,
+        "rect": [
+          0.25926,
+          0.40373,
+          0.56816,
+          0.13211
+        ]
+      },
+      "title": "Equation (5.48)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.48"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.large_sieve_primes_weighted",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.large_sieve_primes_weighted",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem large_sieve_primes_weighted {ι : Type*} (s : Finset ι) (β δ : ι → ℝ)\n    (hδ : ∀ r ∈ s, 0 < δ r)\n    (hsep : ∀ r ∈ s, ∀ r' ∈ s, r ≠ r' → δ r ≤ |(β r - β r') - round (β r - β r')|)\n    {W' W : ℝ} (hW' : 0 ≤ W') :\n    ∑ r ∈ s, (W - W' + 1 + 3 / 2 * (δ r)⁻¹)⁻¹ * ‖primeExpSum W' W (β r)‖ ^ 2 ≤ logSqSum W' W :=",
+            "line": 821,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L821"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          106
+        ],
+        "printed": [
+          96
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the large-sieve step with W−W′+1 in place of W/2 (smaller weight when W′ < W/2+1), for odd m; [H]'s W/2 version is not stated. Erratum: [H] applies MV73 (1.6), which needs an integer N at least the span of the primes in (W',W], with N = W/2; that span can be W/2+1/2 (W = 13: primes 7..13, span 7 > 6.5), and there the literal (1.6) weight 0.0986 is below [H]'s 0.1038. (checked by `scripts/checks/eq_5_48.py`)."
+}

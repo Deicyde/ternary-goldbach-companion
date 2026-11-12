@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.65",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17135,
+          0.62094,
+          0.56816,
+          0.03406
+        ]
+      },
+      "title": "Equation (9.65)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.65"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_tail_floor",
+        "module": "TernaryGoldbach.Explicit.ZetaBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_tail_floor",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_G_tail_floor {δ T0 : ℝ} (hT0 : max (10 * π * |δ|) 50 ≤ T0) {s : ℂ} (hr1 : -1 ≤ s.re)\n    (hr2 : s.re ≤ 1) (hτ : T0 < |s.im|) :\n    ‖Gr s δ 0‖ ≤ EB T0 * rhoB ^ ⌊(|s.im| - T0) / 4.4⌋₊ +\n      EA T0 δ * rhoA δ ^ ⌊(|s.im| - T0) / 4.4⌋₊ :=",
+            "line": 18,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZetaBound.lean",
+            "fragment": "L18"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Same exponents 0.1598 and 0.1065, but Lean's regime-B majorant grows like |τ| (k = 2 shape), not √|τ|, and bounds a single value of Gr rather than the pair |F_δ(ρ+1)| + |F_δ(2−ρ)|."
+}

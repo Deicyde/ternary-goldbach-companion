@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.38",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 103,
+        "rect": [
+          0.17135,
+          0.34536,
+          0.56816,
+          0.06364
+        ]
+      },
+      "title": "Equation (5.38)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.primeExpSum",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.primeExpSum",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def primeExpSum (W' W β : ℝ) : ℂ :=\n  ∑ p ∈ (Ioc ⌊W'⌋₊ ⌊W⌋₊).filter Nat.Prime, (Real.log p : ℂ) * e (β * p)",
+            "line": 19,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L19"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          103
+        ],
+        "printed": [
+          93
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines only the v = 2 case, the only one used later; (p,v)=1 is automatic since p > W′ ≥ V > 2."
+}

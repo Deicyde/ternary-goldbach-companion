@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.30",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 296,
+        "rect": [
+          0.25926,
+          0.26593,
+          0.56816,
+          0.02052
+        ]
+      },
+      "title": "Equation (A.30)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_fP_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_SsumG_fP_le {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (δ : ℝ) {x : ℝ} (hx : 1 ≤ x) {T0 : ℝ} (hT0 : 200 + max (10 * π * |δ|) 50 ≤ T0)\n    (hG : ∀ ρ : ℂ, χ.LFunction ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ T0 → ρ.re = 1 / 2)\n    {A : ℝ} (hA0 : 0 < A) (hA : ∫ v in Ioi (0:ℝ), etaPlus v ^ 2 ≤ A) :\n    ‖SsumG χ (fP δ) x‖ ≤ Cg * 300 * (2 * aH) * Z3g (BP N) 0 +\n      √x * E1g (BP N) T0 (2 * π * A) (2 * π * 1.129) +\n      x * E2g (BP N) 11 T0 (Cg * (2 * aH) * EB (T0 - 200)) (Cg * (2 * aH) * EA (T0 - 200) δ) rhoB (rhoA δ) +\n      x ^ (-(1 / 2) : ℝ) * VgL (DN N) (Cg * (300 * Real.exp 1) * (2 * aH)) (thP δ) / (2 * π) :=",
+            "line": 153,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusBound.lean",
+            "fragment": "L153"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          296
+        ],
+        "printed": [
+          286
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked: ∫₀² h²/t = 2.257042946, agreeing with the closed form; its square root 1.50234581 ≤ 1.5023459, and 1.5023459/√2 = 1.06231897 ≤ 1.062319. The book uses (A.30) in Props 9.4.2 and 9.5.1 and, at σ = 0, for |η₊|₁ ≤ 1.062319 in (14.3)."
+}

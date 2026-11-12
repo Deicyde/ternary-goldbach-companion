@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.17",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 118,
+        "rect": [
+          0.25926,
+          0.56448,
+          0.56816,
+          0.03336
+        ]
+      },
+      "title": "Equation (6.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a1_M1_le",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIa"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a1_M1_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem a1_M1_le {T : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : T / 6 < q)\n    (hq16 : 16 * (q : ℝ) ≤ T ^ 3 / U2 T) :\n    4 * T ^ 3 * √(1 / 4 / (2 * Nat.totient q)) *\n      √((Real.log (T ^ 3 / (U2 T * (2 * 8 * q))) + Real.log (2 * q) *\n        (Real.log (Real.log (T ^ 3 / U2 T / (2 * q))) -\n          Real.log (Real.log (2 * 8 * q / (2 * q))))) *\n        (0.15107 * Real.log (T ^ 3 / (U2 T * (2 * 8 * q))) + 0.0231 +\n          2 * zeta3 * √(T ^ 3 / (2 * 8 * q)) / U2 T)) ≤\n    √(12 * a1F0 (Real.log T) * a1X0 (Real.log T) * a1B0 (Real.log T)) * (T ^ 2 * √T) :=",
+            "line": 188,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIa.lean",
+            "fragment": "L188"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          118
+        ],
+        "printed": [
+          108
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps the ζ(3/2)³ term exact and verifies the bounds (6.17) is used for (κ₁, κ₇, S₃) directly at each of [H]'s two parameter choices."
+}

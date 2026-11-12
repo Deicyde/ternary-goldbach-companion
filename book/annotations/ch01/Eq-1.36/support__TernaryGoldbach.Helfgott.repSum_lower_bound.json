@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.36",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 34,
+        "rect": [
+          0.25926,
+          0.82293,
+          0.56816,
+          0.0358
+        ]
+      },
+      "title": "Equation (1.36)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.36"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.repSum_lower_bound",
+        "module": "TernaryGoldbach.Helfgott.Main"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.repSum_lower_bound",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem repSum_lower_bound (N : ℕ) (hN : Odd N) (hN27 : 10 ^ 27 ≤ N) :\n    (1.049 - 1.0376) * xOf N ^ 2 / κ ≤ repSum (fun _ => True) N :=",
+            "line": 30,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Main.lean",
+            "fragment": "L30"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          34
+        ],
+        "printed": [
+          24
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The printed integrand mixes ∫_𝔪 S₊²S_*e(−αn) and ∫_𝔪|S₊|²|S_*|; Lean bounds the latter, which bounds both."
+}

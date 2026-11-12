@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.93",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 207,
+        "rect": [
+          0.17135,
+          0.21372,
+          0.56816,
+          0.10367
+        ]
+      },
+      "title": "Equation (9.93)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.93"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err_phi2_le",
+        "module": "TernaryGoldbach.MajorArcs.Prop715"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err_phi2_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem err_phi2_le {x : ℝ} (hx : 4.9e26 ≤ x)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ 500 → ρ.re = 1 / 2) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) phi2 x - mellin phi2 1 * x‖ ≤ 4.1e-9 * x :=",
+            "line": 255,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L255"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          207
+        ],
+        "printed": [
+          197
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean evaluates its own budget at T₀ = 500 and gets the constant 10⁻⁸, with no √x term. The book's 5.123·10⁻¹⁵ inherits the factor-2 and boundary-term gaps of (9.90) and is not established; the E₂ form (9.95) is unaffected."
+}

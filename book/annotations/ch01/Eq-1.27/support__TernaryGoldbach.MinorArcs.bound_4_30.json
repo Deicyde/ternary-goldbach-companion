@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.27",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 31,
+        "rect": [
+          0.17135,
+          0.34543,
+          0.56816,
+          0.03797
+        ]
+      },
+      "title": "Equation (1.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_30",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_30",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_30 (x δ : ℝ) (q : ℕ) (D : ℝ) : ℝ :=\n  x / (2 * q) * minInv c₀ (π * δ) * |muSum (Mof x δ q D) q (2 * q) fun _ => 1| +\n    c₀ * q / x * (1 / 8 - 1 / (2 * π ^ 2)) * (D / q + 1) ^ 2",
+            "line": 139,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L139"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          31
+        ],
+        "printed": [
+          21
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "A heuristic 'proportional to' summary rather than a statement, so there is nothing to formalize. Its precise forms are Lemmas 4.2.1/4.2.2 and the Ch. 6 Type I totals (FirstChoiceTypeI1/I2 in Lean)."
+}

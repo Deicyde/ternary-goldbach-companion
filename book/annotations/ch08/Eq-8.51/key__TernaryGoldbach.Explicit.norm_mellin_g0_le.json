@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.51",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 171,
+        "rect": [
+          0.17135,
+          0.68443,
+          0.56816,
+          0.02854
+        ]
+      },
+      "title": "Equation (8.51)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_g0_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_g0_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_g0_le {s : ℂ} (h1 : -1 ≤ s.re) (h2 : s.re ≤ 2) :\n    ‖mellin g0 s‖ ≤ 8 * Real.exp (-(0.6 * |s.im|)) :=",
+            "line": 145,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L145"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          171
+        ],
+        "printed": [
+          161
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked numerically. The quoted remainder bound holds on Re z ≥ 0, |z| ∈ [0.05, 20]: the largest ratio |R₂|/bound is 0.9993, on the real axis."
+}

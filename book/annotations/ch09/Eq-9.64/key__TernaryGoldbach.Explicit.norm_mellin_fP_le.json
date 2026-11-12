@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.64",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 195,
+        "rect": [
+          0.17135,
+          0.52969,
+          0.56816,
+          0.05024
+        ]
+      },
+      "title": "Equation (9.64)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.64"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_mellin_fP_le",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_mellin_fP_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_mellin_fP_le (δ : ℝ) {s : ℂ} (hs : -1 < s.re) {B : ℝ}\n    (hB : ∀ ξ ∈ Icc (-aH) aH, ‖Gr (s - 1 + ((2 * π * ξ : ℝ) : ℂ) * I) δ 0‖ ≤ B) :\n    ‖mellin (fP δ) s‖ ≤ Cg * B * (2 * aH) :=",
+            "line": 221,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L221"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          195
+        ],
+        "printed": [
+          185
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds |G_δ(s)| for one s, with sup|ĝ|·(interval length) ≈ C_g·2a ≤ 129.24 instead of |Mh(ir)|₁/2π ≤ 2.5774; no ρ ↔ 1−ρ pairing is used."
+}

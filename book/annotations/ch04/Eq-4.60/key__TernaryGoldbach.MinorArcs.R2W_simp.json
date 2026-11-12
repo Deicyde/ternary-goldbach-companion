@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.60",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 85,
+        "rect": [
+          0.17135,
+          0.73732,
+          0.56816,
+          0.11917
+        ]
+      },
+      "title": "Equation (4.60)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.60"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.R2W_simp",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.R2W_simp",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem R2W_simp {x D D' : ℝ} {q : ℕ} (hq : 1 ≤ q) (hx : 2 ≤ x) (hD'q : (q : ℝ) / 2 < D')\n    (hD'1 : 1 ≤ D') (hD'c : D' ≤ c₂ * x / q) (hD'D : D' ≤ D) :\n    10 * c₀ * q / (3 * π ^ 2 * x) * ((D' + 2 * q) ^ 2 / 2 * (Real.log (D' + 2 * q) - 1 / 2) + 1 / 4) ≤\n      2 * √c₀ / π * (D' * (Real.log D' - 1 / 2)) +\n        (2 * √c₀ / π * √(2 * c₂ * x) * (2 + 12 * Real.log (5 * D)) + 5 * c₀ / (6 * π ^ 2)) :=",
+            "line": 385,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L385"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          85
+        ],
+        "printed": [
+          75
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The justification's '≤ x' should be '≤ log x'; the printed constant 25c₀/4π² is reproducible. Lean's secondary term (2√c₀/π)√(2c₂x)(2+12 log 5D) is larger but needs no UV + (19/18)Q₀ ≤ x/5.6."
+}

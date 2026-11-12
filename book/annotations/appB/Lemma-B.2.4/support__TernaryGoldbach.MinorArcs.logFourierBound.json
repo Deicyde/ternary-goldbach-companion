@@ -1,0 +1,70 @@
+{
+  "id": "Lemma B.2.4",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 305,
+        "rect": [
+          0.17135,
+          0.8068,
+          0.56816,
+          0.04443
+        ]
+      },
+      "title": "Lemma B.2.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma B.2.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.logFourierBound",
+        "module": "TernaryGoldbach.MinorArcs.TypeITotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.logFourierBound",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def logFourierBound (δ : ℝ) : ℝ :=\n  if δ = 0 then 2 - Real.log 4 else min (2 - Real.log 4) (96 * Real.log 2 / (π * δ) ^ 2)",
+            "line": 29,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeITotal.lean",
+            "fragment": "L29"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          305
+        ],
+        "printed": [
+          295
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Only an ℓ¹-type bound is needed, since this term is lower order in the S_{I,1} bound (6.3) of §6.2.1, which applies (2.1) with k = 2 to it. Lean proves exactly the form that is used, with [H]'s constant."
+}

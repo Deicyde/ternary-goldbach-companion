@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.9",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 22,
+        "rect": [
+          0.25926,
+          0.48984,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Equation (1.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.Fline",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.Fline",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def Fline {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (φ : ℝ → ℂ) (x : ℝ) (s : ℂ) : ℂ :=\n  -(deriv χ.LFunction s / χ.LFunction s) * mellin φ s * (x : ℂ) ^ s",
+            "line": 111,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L111"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          22
+        ],
+        "printed": [
+          12
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Ch. 8 fixes η = e^{−t²/2} (F_δ = M(e^{−t²/2}e(δt))); Ch. 9 writes G_δ for a general η."
+}

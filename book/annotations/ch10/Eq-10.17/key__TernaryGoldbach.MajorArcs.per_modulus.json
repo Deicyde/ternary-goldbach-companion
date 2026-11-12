@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.17",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 215,
+        "rect": [
+          0.17135,
+          0.35213,
+          0.56816,
+          0.12648
+        ]
+      },
+      "title": "Equation (10.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.per_modulus",
+        "module": "TernaryGoldbach.MajorArcs.MajorTotal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.per_modulus",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem per_modulus (N : ℕ) {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) :\n    ‖(∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, fI N x y) -\n        (coefN N q : ℂ) * ((x : ℂ) ^ 2 * (Cmain (N / x) : ℂ))‖ ≤\n      (3.67e-6 * (x / κ) + 8.85e-7 * x / 9) * (∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, ‖S etaPlus x y‖ ^ 2) +\n        9 * 8.85e-7 * x / 2 * mPhi2 q * (7.78 * (x / κ)) +\n        8.85e-7 * x / 9 * mPhi q * (0.640208 * x) + mPhi2 q * (2.03e-5 * x ^ 2) :=",
+            "line": 808,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/MajorTotal.lean",
+            "fragment": "L808"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          215
+        ],
+        "printed": [
+          205
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Same expression modulus by modulus for δ₀ = 8, r = 150000; the difference S − main term is bounded by resid_plus (7.83·10⁻¹³x²) and resid_star (1.34·10⁻¹¹(x/κ)²)."
+}

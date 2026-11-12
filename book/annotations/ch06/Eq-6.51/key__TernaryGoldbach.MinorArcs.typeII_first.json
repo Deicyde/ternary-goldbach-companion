@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.51",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 130,
+        "rect": [
+          0.25926,
+          0.40723,
+          0.56816,
+          0.02688
+        ]
+      },
+      "title": "Equation (6.51)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeII"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_first {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hqT : (q : ℝ) ≤ T / 6) :\n    ‖typeII α (T ^ 3) (U1 T (delta0 δ * q)) (V1 T)‖ ≤\n      T ^ 3 / √(delta0 δ * Nat.totient q) *\n          (√(Cxt T (delta0 δ * q) * (Real.log (delta0 δ * q) + 0.002) +\n              Real.log (4 * (delta0 δ * q)) / 2) *\n            √(0.30214 * Real.log (delta0 δ * q) + 0.7468)) +\n        3.2 * (T ^ 2 * √T) :=",
+            "line": 329,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeII.lean",
+            "fragment": "L329"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          130
+        ],
+        "printed": [
+          120
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean checks the hypotheses each lemma needs, including Q ≥ 3.5x/U required by Prop 5.2.4 but absent from (6.51), and V ≥ 2·10⁶."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 11.8",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 230,
+        "rect": [
+          0.25926,
+          0.36823,
+          0.56816,
+          0.03368
+        ]
+      },
+      "title": "Equation (11.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 11.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.S",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.S",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def S (η : ℝ → ℝ) (x α : ℝ) : ℂ :=\n  ∑' n : ℕ, ((Λ n * η (n / x) : ℝ) : ℂ) * e (n * α)",
+            "line": 58,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L58"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          230
+        ],
+        "printed": [
+          220
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The general notation (any f) is not formalized, and Ch. 11 only needs f(n) = Λ(n)e(αn). The book's other use of this notation, before Cor 9.3.3 with a character twist, is handled separately in MajorArcs/Cor933.lean through the twisted sum Schar."
+}

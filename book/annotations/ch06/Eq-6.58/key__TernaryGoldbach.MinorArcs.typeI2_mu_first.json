@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.58",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 132,
+        "rect": [
+          0.25926,
+          0.18355,
+          0.56816,
+          0.06786
+        ]
+      },
+      "title": "Equation (6.58)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.58"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_mu_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_mu_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_mu_first {δ T : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : 1 ≤ q)\n    (ht2 : 2 ≤ delta0 δ * q) (htT : delta0 δ * q ≤ T / 3) :\n    T ^ 3 / (2 * q) * minInv c₀ (π * δ) *\n        muBound (min (3 / 4 * T ^ 2 / (2 * V1 T)) (U1 T (delta0 δ * q))) q *\n        Real.log (V1 T * q) ≤\n      2.8 * (2 * T ^ 3 / (delta0 δ * Nat.totient q)) +\n        (1.5 * Real.log (delta0 δ * q) + 1.309) * (2 * T ^ 3 / (delta0 δ * q)) :=",
+            "line": 95,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2.lean",
+            "fragment": "L95"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          132
+        ],
+        "printed": [
+          122
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds (6.12) in a different shape: a constant 2.8·2x/(δ₀φ(q)) with the logarithm moved to the x/(δ₀q) slot, the 2q/φ(2q) factor for odd q included, and 0.152·2x/t (from ψ(y) ≤ 1.0064y, book 1.0004y) for 0.29315x/(q²δ₀)."
+}

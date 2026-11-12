@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.94",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 207,
+        "rect": [
+          0.17135,
+          0.79951,
+          0.56816,
+          0.05547
+        ]
+      },
+      "title": "Equation (9.94)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.94"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.etaO_numerics",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusSqLog"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.etaO_numerics",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem etaO_numerics :\n    (0.640205997 ≤ ∫ t in (0:ℝ)..2, P0 t ^ 2 * 1 ∧ ∫ t in (0:ℝ)..2, P0 t ^ 2 * 1 ≤ 0.640205998) ∧\n    (-0.02109479 ≤ ∫ t in (0:ℝ)..2, P0 t ^ 2 * Real.log t ∧\n      ∫ t in (0:ℝ)..2, P0 t ^ 2 * Real.log t ≤ -0.02109477) ∧\n    ∫ u, W0'' u ^ 2 ≤ 1000 ∧ ∫ u, W1'' u ^ 2 ≤ 60 :=",
+            "line": 855,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusSqLog.lean",
+            "fragment": "L855"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          207
+        ],
+        "printed": [
+          197
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's statement is for x ≥ 1, more general than the book's context x ≥ 10¹². Its proof budget (λ = 1.6, 0.4 with M = 1000, 60) leaves only 3·10⁻⁸ of margin in the constant."
+}

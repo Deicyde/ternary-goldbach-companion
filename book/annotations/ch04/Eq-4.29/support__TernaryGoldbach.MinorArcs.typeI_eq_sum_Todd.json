@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.29",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 73,
+        "rect": [
+          0.17135,
+          0.41612,
+          0.56816,
+          0.05006
+        ]
+      },
+      "title": "Equation (4.29)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI_eq_sum_Todd",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI_eq_sum_Todd",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI_eq_sum_Todd {α x : ℝ} (hx : 0 < x) (D : ℝ) :\n    typeI α x D = ∑ m ∈ Icc 1 ⌊D⌋₊, if Odd m then (μ m : ℂ) * Todd α x m else 0 :=",
+            "line": 734,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L734"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          73
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "In [H, §6.2.2] the lemma is applied with vα and x/v for each odd v ≤ V (Lean: typeI2_le_sum)."
+}

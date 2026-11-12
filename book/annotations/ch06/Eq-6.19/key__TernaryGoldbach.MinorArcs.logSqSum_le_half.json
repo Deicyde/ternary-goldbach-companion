@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.19",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 119,
+        "rect": [
+          0.17135,
+          0.28653,
+          0.56816,
+          0.03905
+        ]
+      },
+      "title": "Equation (6.19)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.logSqSum_le_half",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.logSqSum_le_half",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem logSqSum_le_half {W' W : ℝ} (hW : 2e6 ≤ W) (hW' : W / 2 ≤ W') :\n    logSqSum W' W ≤ 1 / 2 * W * Real.log W :=",
+            "line": 35,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L35"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          119
+        ],
+        "printed": [
+          109
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (6.19) for W ≥ 2·10⁶, which covers every W ≥ V under the chapter's assumption V ≥ 2·10⁶; the underlying (2.19) is proved only for y ≥ 2·10⁶, not y ≥ 117."
+}

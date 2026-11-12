@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.7",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 90,
+        "rect": [
+          0.25926,
+          0.50316,
+          0.56816,
+          0.15562
+        ]
+      },
+      "title": "Equation (5.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S1_eq_triples",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIS1"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S1_eq_triples",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S1_eq_triples {x U W : ℝ} (hx : 0 < x) (hW : 0 < W) (hU : 0 < U) :\n    S1 x U W = ∑ p ∈ (Icc 1 ⌊x / W⌋₊ ×ˢ Icc 1 ⌊x / W⌋₊ ×ˢ Icc 1 ⌊x / W⌋₊).filter\n      (fun p : ℕ × ℕ × ℕ => Odd p.1 ∧ x / W / 2 < p.1 ∧ p.2.1 ∣ p.1 ∧ p.2.2 ∣ p.1 ∧\n        U < p.2.1 ∧ U < p.2.2 ∧ Squarefree p.2.1 ∧ Squarefree p.2.2),\n      (μ p.2.1 : ℝ) * μ p.2.2 :=",
+            "line": 73,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+            "fragment": "L73"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          90
+        ],
+        "printed": [
+          80
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean goes from the triples (m,d₁,d₂) directly to the quadruples (s,r₁,r₂,l) of (5.8), with v = 2 and r₁ ≤ x/(WUs) non-strict."
+}

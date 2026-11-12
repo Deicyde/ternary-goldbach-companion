@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 4.1.3",
+  "kind": "lemma",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17135,
+          0.64616,
+          0.56816,
+          0.12606
+        ]
+      },
+      "title": "Lemma 4.1.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_hBC_half_le",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_hBC_half_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_hBC_half_le {B C : ℝ} {q : ℕ} (hq : 2 ≤ q) (hB : 0 ≤ B) (hC : 0 ≤ C) :\n    ∑ j ∈ Finset.Icc 1 (q - 1), hBC B C q ((j : ℝ) / 2) ≤\n      hBC B C q (1 / 2) + 2 * ∫ u in (1 / 2 : ℝ)..(q / 2), hBC B C q u :=",
+            "line": 1834,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1834"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Further slips in the proof. Erratum: For C < B sin(π/q) the proof's majorant X already exceeds the right side of (4.6) near C = B sin(π/2q) (ratio 1.0696 at q = 140, above 1 for every q ≤ 400 except q = 3), and the printed relaxation to C = B sin(π/q) gives the factor 3 + log((q/π)sin(π/q)) ≥ 2.548, so the range C ≤ Bπ/(eq), where (4.6) claims the factor 2, is not proved. (checked by `scripts/checks/lemma_4_1_3.py`)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.13",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 116,
+        "rect": [
+          0.25926,
+          0.82088,
+          0.56816,
+          0.03531
+        ]
+      },
+      "title": "Equation (6.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.mul_logPlus_mono",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.mul_logPlus_mono",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem mul_logPlus_mono {s t A : ℝ} (hs : 0 < s) (hst : s ≤ t) (hA : 0 ≤ A) :\n    s * logPlus (A / s) ≤ t * logPlus (A / t) + t / rexp 1 :=",
+            "line": 76,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L76"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          116
+        ],
+        "printed": [
+          106
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's factor is 1.0064 (book 1.0004), it keeps max(1,·) and log⁺(2U/q) + 1/e instead of assuming Q ≤ 2UV/e, and never rounds to the c_{k,I₂}."
+}

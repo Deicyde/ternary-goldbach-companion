@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.8",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 56,
+        "rect": [
+          0.25926,
+          0.82384,
+          0.56816,
+          0.03368
+        ]
+      },
+      "title": "Equation (3.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.decomposition",
+        "module": "TernaryGoldbach.MinorArcs.Decomposition"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.decomposition",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem decomposition (α : ℝ) {x : ℝ} (hx : 0 < x) (U V : ℕ) :\n    S eta2 x α = typeILog α x U - typeI2 α x U V + typeII α x U V + S0inf α x V + S0two α x :=",
+            "line": 244,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Decomposition.lean",
+            "fragment": "L244"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          56
+        ],
+        "printed": [
+          46
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The general statement (any completely multiplicative f, any η) is not formalized; the book only uses f = 1_{(n,2)=1} and η = η₂, which Lean covers. 'Any η' tacitly needs convergence (η₂ has compact support). Checked numerically for x ≤ 5000 and several α, U, V: error ≤ 1.4e-11."
+}

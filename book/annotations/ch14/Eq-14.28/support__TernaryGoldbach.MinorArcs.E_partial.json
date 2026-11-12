@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.28",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 278,
+        "rect": [
+          0.25926,
+          0.24113,
+          0.56816,
+          0.04015
+        ]
+      },
+      "title": "Equation (14.28)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.E_partial",
+        "module": "TernaryGoldbach.MinorArcs.EBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.E_partial",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem E_partial {x : ℝ} (hx : 1 ≤ x) (M : ℕ) :\n    ∑ n ∈ range M, eTerm x n ≤\n      1.94 ^ 2 * (Real.log x / 2 * (1.03883 * √x) + Real.log x * (1.4262 * √x)) +\n        1.4262 * 2.32 ^ 2 * √2 * √x *\n          (Real.log 2 * (1 / (1 - √2 / 4) ^ 2) + Real.log x * (1 / (1 - √2 / 4))) :=",
+            "line": 173,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "fragment": "L173"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          278
+        ],
+        "printed": [
+          268
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds the Parseval sum ∫|S₂|² directly by 8·10⁻¹¹x and never forms the closed-form E (13.11); the printed 5.12426 is a harmless round-up of 5.12425."
+}

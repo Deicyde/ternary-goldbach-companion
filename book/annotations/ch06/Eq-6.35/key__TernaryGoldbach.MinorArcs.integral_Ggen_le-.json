@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.35",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 124,
+        "rect": [
+          0.25926,
+          0.45559,
+          0.56816,
+          0.04129
+        ]
+      },
+      "title": "Equation (6.35)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_Ggen_le'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_Ggen_le' {x : ℝ} (hx : 0 < x) {U V : ℕ} {q : ℕ} (hq : 1 ≤ q) (hU : 1 ≤ U)\n    {A : ℝ} (hV : 0 < A) (hVU : A ≤ x / U) {c m : ℝ} (hc1 : 1 ≤ c) (hm : 0 < m)\n    (hcV : c * rexp 1 ≤ A) {β : ℝ} (hβ : 0 < β) :\n    IntervalIntegrable (Ggen x U V q c m β) volume A (x / U) ∧\n    ∫ W in A..x / U, Ggen x U V q c m β W ≤\n      x * √(m / (2 * Nat.totient q)) * β / 2 * (Real.log (x / (U * A)) + Real.log c *\n        (Real.log (Real.log (x / U / c)) - Real.log (Real.log (A / c)))) +\n      x * √(m / (2 * Nat.totient q)) / (2 * β) *\n        (0.15107 * Real.log (x / (U * A)) + 0.0231 + 2 * zeta3 * √(x / A) / U) +\n      √(kap1 x U V * q * x / (2 * Nat.totient q)) * (2 * √(x / U) + √(Real.log c) *\n        (2 * rexp 1 * √c + 4 * √(x / U / Real.log (x / U / c)))) +\n      1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) * (2 / √A) :=",
+            "line": 173,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L173"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          124
+        ],
+        "printed": [
+          114
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean treats the W²/2 part for |δ| ≥ 8 like (6.21), giving 4√(κ₁qx/2φ)(2√(x/U) + √(log c')(2e√c' + 4√((x/U)/log(x/Uc')))) in place of (6.35)–(6.36)."
+}

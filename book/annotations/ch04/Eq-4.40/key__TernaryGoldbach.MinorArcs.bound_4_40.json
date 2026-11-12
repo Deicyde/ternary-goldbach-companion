@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.40",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 76,
+        "rect": [
+          0.25926,
+          0.20779,
+          0.56816,
+          0.09461
+        ]
+      },
+      "title": "Equation (4.40)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_40",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_40",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_40 (x δ : ℝ) (q : ℕ) (D : ℝ) : ℝ :=\n  x / (2 * q) * minInv c₀ (π * δ) *\n      |muSum (Mof x δ q D) q (2 * q) fun m => Real.log (x / (m * q))| +\n    x / (2 * q) * ‖fourier (fun t => Real.log t * eta2 t) (-(δ / 2))‖ *\n      |muSum (Mof x δ q D) q (2 * q) fun _ => 1| +\n    c₀ * (1 / 2 - 2 / π ^ 2) * (D ^ 2 / (4 * q * x) * Real.log (rexp (1 / 2) * x / D) + 1 / rexp 1)",
+            "line": 167,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L167"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          76
+        ],
+        "printed": [
+          66
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses the odd-n main term x/2q, min(1,c₀/(πδ)²), (m,2q) = 1, (log·η)^(−δ/2); the printed all-n term is up to 4× too small for |δ| ≳ 1."
+}

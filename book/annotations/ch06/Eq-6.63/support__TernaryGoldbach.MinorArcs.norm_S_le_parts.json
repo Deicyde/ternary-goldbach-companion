@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.63",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 135,
+        "rect": [
+          0.17135,
+          0.51605,
+          0.56816,
+          0.12848
+        ]
+      },
+      "title": "Equation (6.63)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.63"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_le_parts",
+        "module": "TernaryGoldbach.MinorArcs.Assembly"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_le_parts",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_S_le_parts (α : ℝ) {x : ℝ} (hx : 1 ≤ x) (U V : ℕ) (hV : (V : ℝ) ≤ x / 4) :\n    ‖S eta2 x α‖ ≤ ‖typeILog α x U‖ + ‖typeI2 α x U V‖ + ‖typeII α x U V‖ + 3 * Real.log x :=",
+            "line": 65,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Assembly.lean",
+            "fragment": "L65"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          135
+        ],
+        "printed": [
+          125
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never states the √·√ form; it proves the post-(6.77) form with 0.8764, 2.526 (book 2.49157; ψ ≤ 1.0064y replaces 1.0004y) and 3.8x^{5/6}, and adds 3 log x for S_{0,2}, which the book takes to be 0."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.24",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 121,
+        "rect": [
+          0.17135,
+          0.49175,
+          0.56816,
+          0.03705
+        ]
+      },
+      "title": "Equation (6.24)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.G637",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.G637",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def G637 (x U V : ℝ) (q : ℕ) (β W : ℝ) : ℝ :=\n  x / √(8 * Nat.totient q) * β / 2 * (1 / W) +\n    x / √(8 * Nat.totient q) * β / 2 * Real.log (2 * q) * (1 / (W * Real.log (W / (2 * q)))) +\n    x / √(8 * Nat.totient q) / (2 * β) * (H2 (x / (W * U)) / W) +\n    x / √(8 * Nat.totient q) / (2 * β) * (zeta3 * √x / U) * (1 / (W * √W)) +\n    √(kap1 x U V * q * x / (2 * Nat.totient q)) * (√W / W) +\n    √(kap1 x U V * q * x / (2 * Nat.totient q)) * √(Real.log (2 * q)) *\n      (√W / (W * √(Real.log (W / (2 * q))))) +\n    1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) * (1 / (W * √W))",
+            "line": 64,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotal.lean",
+            "fragment": "L64"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          121
+        ],
+        "printed": [
+          111
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's β is [H]'s β/√2; κ₄ = 4κ₀ζ(3/2)³ is never rounded."
+}

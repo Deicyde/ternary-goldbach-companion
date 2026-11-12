@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.27",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 182,
+        "rect": [
+          0.25926,
+          0.21103,
+          0.56816,
+          0.08119
+        ]
+      },
+      "title": "Equation (9.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.sum_window_le",
+        "module": "TernaryGoldbach.Explicit.LineZeros"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.sum_window_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_window_le {S : Finset ℂ} (m : ℂ → ℝ) (hm : ∀ u ∈ S, 0 ≤ m u) {h T0 Z : ℝ} (hh : 0 < h)\n    (J : ℕ) (hJ : T0 < J * h) (hS : ∀ u ∈ S, |u.im| ≤ T0) (hZ0 : 0 ≤ Z)\n    (hZ : ∀ k : ℕ, ∑ u ∈ S.filter (fun u => (⌊u.im / h⌋ + J).toNat = k), m u ≤ Z)\n    {f f' : ℝ → ℂ} (hf : ∀ t, HasDerivAt f (f' t) t) (hf' : Continuous f') :\n    ∑ u ∈ S, m u * ‖f u.im‖ ≤\n      Z * ((1 / h) * (∫ t in (-(J * h))..(J * h), ‖f t‖) + ∫ t in (-(J * h))..(J * h), ‖f' t‖) :=",
+            "line": 83,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LineZeros.lean",
+            "fragment": "L83"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          182
+        ],
+        "printed": [
+          172
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "This step depends on the preceding unnumbered step Σ f(γ) = −½∫f′(N(T,χ) − N(y,χ)) dT, i.e. It also needs f to be continuous."
+}

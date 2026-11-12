@@ -1,0 +1,70 @@
+{
+  "id": "Eq C.18",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 312,
+        "rect": [
+          0.25926,
+          0.58508,
+          0.56816,
+          0.12791
+        ]
+      },
+      "title": "Equation (C.18)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq C.18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_fourier_etaPlus_Ioo_bounds",
+        "module": "TernaryGoldbach.MajorArcs.EtaPlusL2"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_fourier_etaPlus_Ioo_bounds",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_fourier_etaPlus_Ioo_bounds {T : ℝ} (hT : 4 ≤ T) :\n    0.6392 ≤ ∫ ξ in Ioo (-T) T, ‖𝓕 etaPC ξ‖ ^ 2 ∧ ∫ ξ in Ioo (-T) T, ‖𝓕 etaPC ξ‖ ^ 2 ≤ 0.640208 :=",
+            "line": 199,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/EtaPlusL2.lean",
+            "fragment": "L199"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          312
+        ],
+        "printed": [
+          302
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean does not state (C.18); its per-modulus main-term bound makes the summed truncation error unnecessary."
+}

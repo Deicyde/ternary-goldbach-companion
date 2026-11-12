@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.43",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 127,
+        "rect": [
+          0.17135,
+          0.44392,
+          0.56816,
+          0.05534
+        ]
+      },
+      "title": "Equation (6.43)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.coefUV",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.coefUV",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def coefUV (c : ℝ) : ℝ := 2 * √(c₀ * c) / π + 3 * c / (2 * c₂ * rexp 1)",
+            "line": 176,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L176"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          127
+        ],
+        "printed": [
+          117
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps the coefficients exact in c₊ with c₀ = 32 and the factor 1.0064 from ψ(y) ≤ 1.0064y (book 1.0004), giving 4.4576 in place of 4.39779 and about 5.0510 in place of 4.98314 at ε = 0.07; the second case carries an extra factor 1 + V/Q on the U/e part. The case split is at 1/(2c₂) ≈ 0.75026."
+}

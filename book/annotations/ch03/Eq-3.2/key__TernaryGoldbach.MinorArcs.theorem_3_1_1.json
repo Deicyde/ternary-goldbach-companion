@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 54,
+        "rect": [
+          0.25926,
+          0.5186,
+          0.56816,
+          0.04906
+        ]
+      },
+      "title": "Equation (3.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.theorem_3_1_1",
+        "module": "TernaryGoldbach.MinorArcs.PointwiseBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.theorem_3_1_1",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem theorem_3_1_1 {α x δ : ℝ} {a : ℤ} {q : ℕ} (hx : 2.16e20 ≤ x)\n    (h : Approx2 α x δ a q (3 / 4 * x ^ (2 / 3 : ℝ))) :\n    let δ₀ :=",
+            "line": 66,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+            "fragment": "L66"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          54
+        ],
+        "printed": [
+          44
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (3.2) with 0.8764, 2.526 and 3.8x^{5/6}; the 0.5 is not established by [H]'s (6.77), whose correct AM–GM constant is 0.81020. Erratum: The constant 0.5 in (3.2) comes from (6.77), which prints 0.49911 where the AM-GM step gives 0.81020; (checked by `scripts/checks/eq_3_2.py`)."
+}

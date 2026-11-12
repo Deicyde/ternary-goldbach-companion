@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.58",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 110,
+        "rect": [
+          0.25926,
+          0.41576,
+          0.56816,
+          0.03406
+        ]
+      },
+      "title": "Equation (5.58)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.58"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.odd_block_bound",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.odd_block_bound",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem odd_block_bound {α x δ : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (h2α : 2 * α = a / q + δ / x + k) (hx : 0 < x) (hδ0 : δ ≠ 0) (s : Finset ℤ)\n    (hodd : ∀ m ∈ s, Odd m) {Δ : ℝ} (hΔ : 0 ≤ Δ)\n    (hwidth : ∀ m ∈ s, ∀ m' ∈ s, |((m - m' : ℤ) : ℝ)| ≤ 2 * Δ)\n    (hcond : (q + Δ) * |δ| / x ≤ 1 / q) {W' W : ℝ} (hW' : 0 ≤ W') :\n    (∑ m ∈ s, ‖primeExpSum W' W (α * m)‖ ^ 2 ≤ (W - W' + x / (|δ| * q)) * logSqSum W' W) ∧\n    (∀ R : ℝ, 1 ≤ R → R ≤ W' → q * R ^ 2 * ((q + Δ) * |δ| / x) ≤ 1 →\n      Nat.totient q / q * Real.log R * ∑ m ∈ s, ‖primeExpSum W' W (α * m)‖ ^ 2 ≤\n        (W - W' + x / (|δ| * q)) * logSqSum W' W) :=",
+            "line": 502,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L502"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          110
+        ],
+        "printed": [
+          100
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds (|m₁−m₂|/2 + q)|δ|/x ≤ 1/q; lemma_5_2_1 asks separation ≥ ν, so the strict '> ν' of [H, Lemma 5.2.1] is not needed."
+}

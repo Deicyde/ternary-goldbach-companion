@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.12",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 68,
+        "rect": [
+          0.25926,
+          0.61801,
+          0.56816,
+          0.14831
+        ]
+      },
+      "title": "Equation (4.12)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.hasSum_inv_sq_sub_half",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.hasSum_inv_sq_sub_half",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hasSum_inv_sq_sub_half :\n    HasSum (fun n : ℤ => if n = 0 then 0 else 1 / ((n : ℝ) - 1 / 2) ^ 2) (π ^ 2 - 4) :=",
+            "line": 160,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L160"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          68
+        ],
+        "printed": [
+          58
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked numerically: Σ_{n≠0}(n − r)⁻² = 3.2899, 3.7392 and 5.8696 at r = 0, 1/4 and 1/2, and π² − 4 = 5.8696. The all-n computation itself is not in Lean."
+}

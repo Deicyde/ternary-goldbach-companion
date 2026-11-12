@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.4",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 63,
+        "rect": [
+          0.17135,
+          0.74022,
+          0.56816,
+          0.11472
+        ]
+      },
+      "title": "Equation (4.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.core_bound₂'",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.core_bound₂'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem core_bound₂' {q : ℕ} (hq : 1 ≤ q) {s : ℝ} (hs0 : 0 ≤ s) (hs1 : s ≤ 1 / 2) {A C : ℝ}\n    (hA : 0 ≤ A) (hC : 0 ≤ C) (τ : ℕ → ℝ) (hτ : ∀ R, τ R ∈ Icc (s - 1 / 2) (s + 1 / 2))\n    (F : ℕ → ℝ) (hF0 : ∀ R, 0 ≤ F R) (hFA : ∀ R, F R ≤ A)\n    (hFC : ∀ R, 1 ≤ R → R + 2 ≤ q → F R ≤ C * fq q (R + τ R)) :\n    ∑ R ∈ Finset.range q, F R ≤ 3 * A + 4 * q / π * √(A * C) :=",
+            "line": 636,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L636"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          63
+        ],
+        "printed": [
+          53
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "For even q, r' = q/2 occurs in both sums though r = ±q/2 is one residue; harmless, since the '−qδ₂' term alone bounds it. Lean's families are exactly those of (4.4), but each is then bounded by monotonicity rather than the book's count of A-terms."
+}

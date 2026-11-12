@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.3",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 88,
+        "rect": [
+          0.25926,
+          0.33545,
+          0.56816,
+          0.15353
+        ]
+      },
+      "title": "Equation (5.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.IIsum",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIReduction"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.IIsum",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def IIsum (α x : ℝ) (U V : ℕ) (W : ℝ) : ℂ :=\n  ∑ m ∈ Ioc ⌊x / (2 * W)⌋₊ ⌊x / W⌋₊, if Odd m then coefM U m *\n    ∑ n ∈ Ioc ⌊max (V : ℝ) (W / 2)⌋₊ ⌊W⌋₊, (if Odd n then (Λ n : ℂ) * e (α * m * n) else 0) else 0",
+            "line": 205,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIReduction.lean",
+            "fragment": "L205"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          88
+        ],
+        "printed": [
+          78
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean states only the outer identity, for v = 2, integer U, V ≥ 1 and V ≤ x/U."
+}

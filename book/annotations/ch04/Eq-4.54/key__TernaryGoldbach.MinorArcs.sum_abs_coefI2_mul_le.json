@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.54",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 83,
+        "rect": [
+          0.17135,
+          0.18713,
+          0.56816,
+          0.07336
+        ]
+      },
+      "title": "Equation (4.54)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.54"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_abs_coefI2_mul_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_abs_coefI2_mul_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_abs_coefI2_mul_le {U V M : ℝ} (hU : 1 ≤ U) (hV : 1 ≤ V) (hM : 0 ≤ M) {q : ℕ}\n    (hq : Odd q) :\n    ∑ a ∈ Icc 1 ⌊M⌋₊, (if Odd a ∧ q ∣ a then |coefI2 U V a| * a else 0) ≤\n      M ^ 2 * Real.log V / (4 * q) + 3 * c₄ / 4 * M * V +\n        3 / 2 * (U + 1) ^ 2 * V * Real.log q / 4 :=",
+            "line": 591,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L591"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          83
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses c₀ = 32 ≥ |η̂₂''|∞ and drops the squarefree condition on u, which only enlarges the sum."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.38",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 126,
+        "rect": [
+          0.25926,
+          0.1833,
+          0.56816,
+          0.16697
+        ]
+      },
+      "title": "Equation (6.38)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_split_gen",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_split_gen",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_split_gen {α x : ℝ} {q : ℕ} (hq : 1 ≤ q) (hx : 0 < x) {U V : ℕ} (hU : 1 ≤ U)\n    (hV : (2000000 : ℝ) ≤ V) {A : ℝ} (hVA : (V : ℝ) ≤ A) (hAU : A ≤ x / U) {M r : ℝ} (hM : 0 ≤ M)\n    (hr : 0 ≤ r)\n    (hS2a : ∀ W ∈ Set.Icc (V : ℝ) A, S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (2 * M / x + r * x / (2 * W) + W / 2) * logSqSum (max V (W / 2)) W)\n    {c m : ℝ} (hc1 : 1 ≤ c) (hm : 0 < m) (hcA : c * rexp 1 ≤ A)\n    (hS2gen : ∀ W ∈ Set.Icc A (x / U), S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (m * x / (Nat.totient q * Real.log (W / c)) + q / Nat.totient q * (W / Real.log (W / c))) *\n        logSqSum (max V (W / 2)) W) :\n    ‖typeII α x U V‖ ≤\n      4 * x * √(m / (2 * Nat.totient q)) * √((Real.log (x / (U * A)) + Real.log c *\n        (Real.log (Real.log (x / U / c)) - Real.log (Real.log (A / c)))) *\n        (0.15107 * Real.log (x / (U * A)) + 0.0231 + 2 * zeta3 * √(x / A) / U)) +\n      4 * √(kap1 x U V * q * x / (2 * Nat.totient q)) * (2 * √(x / U) + √(Real.log c) *\n        (2 * rexp 1 * √c + 4 * √(x / U / Real.log (x / U / c)))) +\n      4 * (√(kap1 x U V) * (√M * (2 / 3 *\n        (Real.log A * √(Real.log A) - Real.log V * √(Real.log V))) +\n        √r * x * (√(Real.log V) + 1 / √(Real.log V)) / √V + √x * √(Real.log A) * √A)) +\n      8 * 1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) / √V :=",
+            "line": 385,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L385"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          126
+        ],
+        "printed": [
+          116
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean assumes V ≥ 2·10⁶ (the chapter's standing assumption), θ ≥ e and Q ≥ 3.5x/U. Erratum: (6.38) has two gaps. (checked by `scripts/checks/eq_6_38.py`)."
+}

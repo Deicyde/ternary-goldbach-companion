@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.15",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 243,
+        "rect": [
+          0.17135,
+          0.32555,
+          0.56816,
+          0.0172
+        ]
+      },
+      "title": "Equation (12.15)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.15"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.G_ge_log",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot3"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.G_ge_log",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem G_ge_log {t : ℝ} (ht : 20000 ≤ t) : Real.log t + 1.064 ≤ Gq 1 t :=",
+            "line": 16,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot3.lean",
+            "fragment": "L16"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          243
+        ],
+        "printed": [
+          233
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean replaces (12.15) by the weaker G(t) ≥ log t + 1.064 for t ≥ 20000, which suffices since Q ≥ 20000Q0. The proof's 4·10⁷ threshold should be 4.43·10⁷ for the lower half; the inequality holds anyway."
+}

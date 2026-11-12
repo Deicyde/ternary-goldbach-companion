@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.38",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 75,
+        "rect": [
+          0.17135,
+          0.75065,
+          0.56816,
+          0.02284
+        ]
+      },
+      "title": "Equation (4.38)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.SmoothData",
+        "module": "TernaryGoldbach.MinorArcs.InnerSumsGen"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.SmoothData",
+            "kind": "inductive"
+          },
+          "snippet": {
+            "text": "structure SmoothData (g : ℝ → ℝ) (N V K : ℝ) : Prop where\n  cont : Continuous g\n  supp : HasCompactSupport g\n  l1 : ∫ t, |g t| ≤ N\n  V0 : 0 ≤ V\n  var : eVariationOn g Set.univ ≤ ENNReal.ofReal V\n  four : ∀ t, (2 * π * t) ^ 2 * ‖𝓕 (fun u => (g u : ℂ)) t‖ ≤ K",
+            "line": 19,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSumsGen.lean",
+            "fragment": "L19"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          75
+        ],
+        "printed": [
+          65
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "In the book (4.38) is an assumption, checked for η₂ with ρ₀ = 4 in §6.2.1 via (6.2) and Lemma B.2.3 ((6.2) alone gives only |η̂_(ρ)''|∞ ≤ 48 log ρ). Lean proves it rather than assuming it, so Lean's Lemma 4.2.3 just requires D ≤ x/4 (ρ = x/m ≥ 4)."
+}

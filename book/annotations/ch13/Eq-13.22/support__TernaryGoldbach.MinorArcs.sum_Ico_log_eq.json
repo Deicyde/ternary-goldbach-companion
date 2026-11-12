@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.22",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 263,
+        "rect": [
+          0.17135,
+          0.35506,
+          0.56816,
+          0.12872
+        ]
+      },
+      "title": "Equation (13.22)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_Ico_log_eq",
+        "module": "TernaryGoldbach.MinorArcs.NumericsCore"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_Ico_log_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_Ico_log_eq {M M' : ℕ} (hM : 1 ≤ M) (hMM : M ≤ M') :\n    ∑ n ∈ Finset.Ico M M', Real.log (((n : ℝ) + 1) / n) = Real.log ((M' : ℝ) / M) :=",
+            "line": 141,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsCore.lean",
+            "fragment": "L141"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          263
+        ],
+        "printed": [
+          253
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never integrates in r: the discrete Thm 13.2.1 turns ∫g(r)/r dr into Σĝ(y,n)log((n+1)/n), bounded by generated block chains."
+}

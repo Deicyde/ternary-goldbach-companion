@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.89",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 202,
+        "rect": [
+          0.25926,
+          0.32523,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Equation (9.89)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.89"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.phi1_tail",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSqBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.phi1_tail",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem phi1_tail (s : ℂ) (h0 : 0 < s.re) (h1 : s.re < 1) (hT : 500 < |s.im|) :\n    ‖mellin phi1 s‖ ≤ (Cg * (2 * aH)) ^ 2 * 8 * Real.exp (-60) * Real.exp (-2.64) ^ ⌊(|s.im| - 500) / 4.4⌋₊ +\n      0 * 0 ^ ⌊(|s.im| - 500) / 4.4⌋₊ :=",
+            "line": 216,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSqBound.lean",
+            "fragment": "L216"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          202
+        ],
+        "printed": [
+          192
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "(log t)·t·e^{−πt/2} is decreasing from t = 1.762 ✓. Lean's tail bound is cruder in constant but applied only above T₀ = 500."
+}

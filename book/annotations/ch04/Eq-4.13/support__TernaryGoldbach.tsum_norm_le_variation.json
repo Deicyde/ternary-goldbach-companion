@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.13",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17135,
+          0.52486,
+          0.56816,
+          0.03653
+        ]
+      },
+      "title": "Equation (4.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.tsum_norm_le_variation",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.tsum_norm_le_variation",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem tsum_norm_le_variation {f : ℝ → ℂ} (hf : Continuous f) (hfs : HasCompactSupport f)\n    {V : ℝ} (hV0 : 0 ≤ V) (hV : eVariationOn f Set.univ ≤ ENNReal.ofReal V) :\n    Summable (fun n : ℤ => ‖f n‖) ∧ ∑' n : ℤ, ‖f n‖ ≤ (∫ t, ‖f t‖) + V / 2 :=",
+            "line": 407,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L407"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean writes T_{m,∘} = e(αm)Σ_r f(r)e(2αmr) with f(u) = η₂((2m/x)u + m/x) (Todd_eq). Then |f|₁ = x/2m, |f̂''|_∞ ≤ 2c₀m/x (fourier_bound_fodd) and the variation is at most 8 log 2."
+}

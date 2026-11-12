@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.41",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 37,
+        "rect": [
+          0.17135,
+          0.70799,
+          0.56816,
+          0.06235
+        ]
+      },
+      "title": "Equation (1.41)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.large_sieve_farey",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieve"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.large_sieve_farey",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem large_sieve_farey (Q X : ℕ) (hQ : 1 ≤ Q) (a : ℕ → ℂ) :\n    ∑ q ∈ Icc 1 Q, ∑ b ∈ (Icc 1 q).filter (fun b => Nat.Coprime b q),\n        ‖expSum X a ((b : ℝ) / q)‖ ^ 2 ≤\n      ((Q : ℝ) ^ 2 + 4 * Real.pi * X) * ∑ n ∈ range (X + 1), ‖a n‖ ^ 2 :=",
+            "line": 239,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieve.lean",
+            "fragment": "L239"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          37
+        ],
+        "printed": [
+          27
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Not formalized and not needed: like the book's main line, Lean bounds ∫_{𝔐}|S|² directly (cor_12_2_5, with c₊ = 2 and δ₀ ≥ 2)."
+}

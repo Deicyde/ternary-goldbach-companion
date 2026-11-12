@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.42",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 127,
+        "rect": [
+          0.17135,
+          0.3755,
+          0.56816,
+          0.01738
+        ]
+      },
+      "title": "Equation (6.42)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.42"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_large_rest_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2b"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_large_rest_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_large_rest_first {δ T : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : 1 ≤ q)\n    (hqT : (q : ℝ) ≤ T / 6) (ht2 : 2 ≤ delta0 δ * q) (htT : delta0 δ * q ≤ T / 3)\n    (hδ : 1 / (2 * c₂) ≤ |δ|) :\n    let t :=",
+            "line": 23,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2b.lean",
+            "fragment": "L23"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          127
+        ],
+        "printed": [
+          117
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Exposition only; the Lean proof fixes κ = 1/2 without optimizing. With ψ(y) ≤ 1.0064y in place of [H]'s 1.0004y, the C₀UV term yields 2.5257x/√(δ₀q) in Lean (book 2.49157 before (6.59)), whence theorem_3_1_1's 2.526 in place of 2.5."
+}

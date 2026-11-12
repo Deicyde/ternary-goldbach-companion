@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.52",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 81,
+        "rect": [
+          0.17135,
+          0.35643,
+          0.56816,
+          0.13064
+        ]
+      },
+      "title": "Equation (4.52)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.52"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.b452_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI2"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.b452_second",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem b452_second {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hc : SecondCase T δ q) (hδ : 1 / (2 * c₂) ≤ |δ|) :\n    bound_4_52 (T ^ 3) δ q (U2 T) (V2 T) (Q2 T) 0.01 ≤\n      (3179.7 * Real.log T + 8455.3) * T ^ 2 :=",
+            "line": 322,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI2.lean",
+            "fragment": "L322"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          81
+        ],
+        "printed": [
+          71
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps log⁺(2D/y) (the book drops the factor 2 inside the log), keeps x/Q₀ where the book uses Q₀ ≥ 2√x, and has cruder lower-order constants; same leading term."
+}

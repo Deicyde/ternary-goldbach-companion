@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.9",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 271,
+        "rect": [
+          0.17135,
+          0.71394,
+          0.56816,
+          0.03969
+        ]
+      },
+      "title": "Equation (14.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.aP_ge",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.aP_ge",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem aP_ge {N p : ℕ} (hp : 3 ≤ p) : -(1 / ((p : ℝ) - 1) ^ 2) ≤ aP N p :=",
+            "line": 364,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L364"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          271
+        ],
+        "printed": [
+          261
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds the finite sum over Qset r₀ by 1.314, not C₀. The Rankin tail bound prod_one_add_p_abs_le now rests on the kernel computation Prelim.MertProd.prod_le_1e5 and uses no hypothesis (it formerly needed ButhePsi and RHUpTo)."
+}

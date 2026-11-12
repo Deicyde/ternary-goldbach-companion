@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.43",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 105,
+        "rect": [
+          0.17135,
+          0.18103,
+          0.56816,
+          0.09337
+        ]
+      },
+      "title": "Equation (5.43)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.half_add_inv_mul_log_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.half_add_inv_mul_log_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem half_add_inv_mul_log_le {y : ℝ} (hy : 1 ≤ y) (hy2 : y ≤ 6.76) :\n    (1 / 2 + 1 / y) * Real.log y ≤ 2 :=",
+            "line": 1354,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1354"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          105
+        ],
+        "printed": [
+          95
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "No all-m statement in Lean; the odd-m analogue (5.51) carries the main line. Erratum: In Case B of the proof (typeII.tex:1100), 'clearly qR^2 < W' with R=2 is false for W/4 <= q < W/2 (W=100, q=41 gives 164); only qR^2 < Q is needed, and it holds since 4q < 2W < 3.5W <= Q. 'q < W/2 <= W'' does not give the needed R=2 <= W': it fails for q=1, 2 < W < 4, W/2 <= W' < 2, and for W=3, W'=1.5 Montgomery's inequality (5.46) at r=2, alpha=0 is false (3.2104 > 0.1644); (checked by `scripts/checks/eq_5_43.py`)."
+}

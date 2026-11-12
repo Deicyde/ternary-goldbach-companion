@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.30",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "broadMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 278,
+        "rect": [
+          0.25926,
+          0.44399,
+          0.56816,
+          0.03368
+        ]
+      },
+      "title": "Equation (14.30)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sig",
+        "module": "TernaryGoldbach.MinorArcs.MinorTotal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sig",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def sig (x : ℝ) : ℝ := (0.640208 + 366.91 / √x) * Real.log x - 0.021095",
+            "line": 70,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/MinorTotal.lean",
+            "fragment": "L70"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          278
+        ],
+        "printed": [
+          268
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean does not round 2·10⁻⁶ + 366.91/√x up to 3·10⁻⁶, so its coefficient 0.640208000017 is marginally sharper."
+}

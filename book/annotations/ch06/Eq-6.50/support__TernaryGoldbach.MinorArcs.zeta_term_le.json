@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.50",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 130,
+        "rect": [
+          0.25926,
+          0.31667,
+          0.56816,
+          0.01907
+        ]
+      },
+      "title": "Equation (6.50)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.50"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.zeta_term_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceParams"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.zeta_term_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem zeta_term_le (hT : 6e6 ≤ T) (ht : 0 < t) (htT : t ≤ T / 3) :\n    8 * zeta3 * √(T ^ 3 / V1 T) / U1 T t ≤ 0.2355 :=",
+            "line": 133,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceParams.lean",
+            "fragment": "L133"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          130
+        ],
+        "printed": [
+          120
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Same assumption. Lean derives ε₁ ≤ 0.0015 and V ≥ 2·10⁶ (indeed ≥ 2.5·10⁷ for typeI2_first) from it and does not use (6.17)."
+}

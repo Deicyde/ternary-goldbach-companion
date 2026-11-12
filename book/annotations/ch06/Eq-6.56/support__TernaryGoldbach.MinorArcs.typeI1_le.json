@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.56",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 131,
+        "rect": [
+          0.17135,
+          0.39733,
+          0.56816,
+          0.07411
+        ]
+      },
+      "title": "Equation (6.56)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.56"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI1_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeITotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI1_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI1_le {α x δ Q₀ U : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q₀)\n    (hU : √3 ≤ U) (hUx : U ≤ min (x / 4) (x / rexp 1)) (hUQ : U ≤ Q₀ / 2) :\n    ‖typeILog α x U‖ ≤\n      x / (2 * q) * minInv c₀ (π * δ) *\n          ((2 * q / Nat.totient (2 * q) + 2.67) + Real.log (x / U) * muBound U q) +\n        x / (2 * q) * logFourierBound δ * muBound U q +\n        c₀ * (1 / 2 - 2 / π ^ 2) * (U ^ 2 / (4 * q * x) * Real.log (rexp (1 / 2) * x / U) +\n          1 / rexp 1) +\n        bound_4_41 x q U :=",
+            "line": 99,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeITotal.lean",
+            "fragment": "L99"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          131
+        ],
+        "printed": [
+          121
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's form differs: the δ-factor is bounded by 2/δ₀ at once, the x/(δ₀φ(q)) slot has the constant 3.8, the log t sits in an x/(δ₀q) slot (log t + 2.96), and the lower-order terms are 0.014x^{5/6}."
+}

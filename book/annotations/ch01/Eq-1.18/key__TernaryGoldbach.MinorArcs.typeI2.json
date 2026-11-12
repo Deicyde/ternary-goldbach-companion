@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.18",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 28,
+        "rect": [
+          0.25926,
+          0.60287,
+          0.56816,
+          0.03905
+        ]
+      },
+      "title": "Equation (1.18)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def typeI2 (α x U V : ℝ) : ℂ :=\n  ∑ v ∈ Icc 1 ⌊V⌋₊, if Odd v then (Λ v : ℂ) *\n    ∑ u ∈ Icc 1 ⌊U⌋₊, (if Odd u then (μ u : ℂ) *\n      ∑ n ∈ Icc 1 ⌊x⌋₊,\n        (if Odd n then e (α * v * u * n) * (eta2 (v * u * n / x) : ℂ) else 0) else 0) else 0",
+            "line": 85,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L85"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          28
+        ],
+        "printed": [
+          18
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines only the odd-variable η₂ sum of (3.9)/(4.49); the 'just (1.19) with αv for α' reduction also replaces x by x/v, as (6.5) shows."
+}

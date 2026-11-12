@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.66",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 137,
+        "rect": [
+          0.17135,
+          0.57973,
+          0.56816,
+          0.1133
+        ]
+      },
+      "title": "Equation (6.66)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.66"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.b451_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI2"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.b451_second",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem b451_second {T : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : T / 6 < q) (hqQ : (q : ℝ) ≤ T ^ 2 / 349) :\n    bound_4_51 (T ^ 3) q (U2 T) (V2 T) ≤\n      (0.031 * Real.log T ^ 2 + 3025.5 * Real.log T + 8360) * T ^ 2 :=",
+            "line": 86,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI2.lean",
+            "fragment": "L86"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          137
+        ],
+        "printed": [
+          127
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The last term of (6.66) should have (2c₂)^{3/2} for (3c₂)^{1/2}; the total 1177.76 still holds. Lean bounds its own form of (4.51) at Q₀ = x^{2/3}/349 and c₀ = 32, keeping the lower-order terms as a polynomial in log x."
+}

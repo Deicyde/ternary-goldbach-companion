@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.27",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.25926,
+          0.67607,
+          0.56816,
+          0.08342
+        ]
+      },
+      "title": "Equation (4.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_R3",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_R3",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_R3 {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {R D : ℝ} (hR : (q : ℝ) / 2 ≤ R) (hRD : R < D) :\n    ∑ n ∈ Ioc ⌊R⌋ ⌊D⌋, Tn α x n ≤\n      3 * (1 + eta2'L1 / (x / D)) / 2 * (x / R + x / q * Real.log (D / R)) +\n        2 * √(c₀ * (1 + eta2'L1 / (x / D))) / π * q *\n          (√3 + (D - R) / q + 1 / 2 * Real.log (D / R)) :=",
+            "line": 497,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L497"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "With R ≥ q/2, sum_sqrt_le implies the final bound of (4.27); the book's middle (integral) expression is not stated in Lean. The −R/q part is what absorbs the D'-term of (4.24) (hcancel, TypeIProof.lean:994)."
+}

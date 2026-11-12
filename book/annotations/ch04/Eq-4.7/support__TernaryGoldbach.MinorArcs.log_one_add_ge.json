@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.7",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.25926,
+          0.51988,
+          0.56816,
+          0.02063
+        ]
+      },
+      "title": "Equation (4.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.log_one_add_ge",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.log_one_add_ge",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem log_one_add_ge {y : ℝ} (hy0 : 0 ≤ y) (hy1 : y ≤ 1) : y * Real.log 2 ≤ Real.log (1 + y) :=",
+            "line": 1944,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1944"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked: with y = √(1 − t⁻²) (the book's δ = 1 − y), (4.7) ⟺ y − log(1+y) < 1 − log 2; LHS − RHS = −0.3069 at t = 1 and ≈ −1/(4t) as t → ∞ (max on [1, 201]: −0.00124)."
+}

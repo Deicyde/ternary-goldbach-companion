@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.2",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 174,
+        "rect": [
+          0.25926,
+          0.67277,
+          0.56816,
+          0.07713
+        ]
+      },
+      "title": "Equation (9.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zerosRect_cases",
+        "module": "TernaryGoldbach.Explicit.ZeroSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zerosRect_cases",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem zerosRect_cases {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {T : ℝ} {u : ℂ} (hu : u ∈ zerosRect χ T) :\n    χ.LFunction u = 0 ∧ |u.im| < T ∧ (u = 0 ∨ (0 < u.re ∧ u.re < 1)) :=",
+            "line": 159,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSums.lean",
+            "fragment": "L159"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          174
+        ],
+        "printed": [
+          164
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has no R: η(0) ≠ 0 is excluded and the even-χ residue at 0 is counted in the zero sum. As printed, R lacks η(0)log x for even χ with η(0) ≠ 0, and L′(1,χ)/L(1,χ) should be L′(1,χ̄)/L(1,χ̄)."
+}

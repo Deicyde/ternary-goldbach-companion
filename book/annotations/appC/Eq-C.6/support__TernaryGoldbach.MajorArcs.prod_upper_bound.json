@@ -1,0 +1,70 @@
+{
+  "id": "Eq C.6",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 309,
+        "rect": [
+          0.17135,
+          0.62536,
+          0.56816,
+          0.03947
+        ]
+      },
+      "title": "Equation (C.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq C.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prod_upper_bound",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prod_upper_bound",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem prod_upper_bound {R : ℕ} (hR : 200 ≤ R) :\n    ∏ p ∈ oddPrimes R, (1 + 1 / ((p : ℝ) - 1) ^ 2) ≤ 1.4122 * Real.exp (1 / 199) :=",
+            "line": 459,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L459"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          309
+        ],
+        "printed": [
+          299
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses the same telescoping in finite and shifted forms; it never bounds ∏_{p>r}(1+1/(p(p−1))) since it needs neither (C.7) nor (C.8)."
+}

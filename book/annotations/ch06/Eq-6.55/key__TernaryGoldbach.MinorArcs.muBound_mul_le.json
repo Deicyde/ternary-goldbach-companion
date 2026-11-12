@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.55",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 131,
+        "rect": [
+          0.17135,
+          0.18475,
+          0.56816,
+          0.02611
+        ]
+      },
+      "title": "Equation (6.55)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.55"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.muBound_mul_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI1"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.muBound_mul_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem muBound_mul_le {M L : ℝ} {q : ℕ} (hq : 1 ≤ q) (hM : 0 < M) (hL : 0 ≤ L) :\n    muBound M q * L ≤ 2.8 * (2 * q / Nat.totient (2 * q)) +\n      max (L - Real.log (M / (2 * q ^ 2))) 0 :=",
+            "line": 68,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI1.lean",
+            "fragment": "L68"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          131
+        ],
+        "printed": [
+          121
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean needs no maximizing point; the additive bound in muBound_mul_le and log_xq_U_le does the work for every x."
+}

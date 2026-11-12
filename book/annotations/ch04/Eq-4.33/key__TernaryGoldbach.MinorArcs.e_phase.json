@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.33",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 74,
+        "rect": [
+          0.25926,
+          0.40856,
+          0.56816,
+          0.0771
+        ]
+      },
+      "title": "Equation (4.33)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.33"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.e_phase",
+        "module": "TernaryGoldbach.MinorArcs.InnerSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.e_phase",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem e_phase {α x δ : ℝ} {a k₀ : ℤ} {q m' : ℕ} (hx : 0 < x) (hq : 1 ≤ q) (hm' : Odd m')\n    (h2α : 2 * α = a / q + δ / x + k₀) (r : ℤ) :\n    e (α * ((q * m' : ℕ) : ℝ) * (2 * r + 1)) =\n      e ((a + k₀ * q) / 2) * e (δ * ((q * m' : ℕ) : ℝ) / (2 * x) * (2 * r + 1)) :=",
+            "line": 205,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/InnerSums.lean",
+            "fragment": "L205"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          74
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "ĥ(k) = ½(−1)^k f̂(k/2), so Σ_k ĥ(k) = ½(Σ_n f̂(n) − Σ_n f̂(n+½))."
+}

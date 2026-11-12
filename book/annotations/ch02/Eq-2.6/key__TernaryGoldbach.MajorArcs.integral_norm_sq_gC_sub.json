@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.6",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 44,
+        "rect": [
+          0.25926,
+          0.65719,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Equation (2.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.integral_norm_sq_gC_sub",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.integral_norm_sq_gC_sub",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_norm_sq_gC_sub (H : ℝ) :\n    ∫ u, ‖gC u - 𝓕 (Kc H) (-u)‖ ^ 2 =\n      ∫ ξ in (Icc (-(H / (2 * π))) (H / (2 * π)))ᶜ, ‖𝓕 gC ξ‖ ^ 2 :=",
+            "line": 379,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L379"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          44
+        ],
+        "printed": [
+          34
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (2.6) only on ℜs = 1/2 under a decay hypothesis narrower than the book's L¹/L² condition; the book's uses on ℜs = −1/2 are avoided by pointwise bounds."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.43",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 282,
+        "rect": [
+          0.25926,
+          0.75865,
+          0.56816,
+          0.09485
+        ]
+      },
+      "title": "Equation (14.43)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.tail_le",
+        "module": "TernaryGoldbach.MinorArcs.NumericsCore"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.tail_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem tail_le {x L₁ c : ℝ} (hx : 4.9e26 ≤ x) (hL : Real.log x ≤ L₁) (hc0 : 0 ≤ c)\n    (hcD : c ≤ Dx x) :\n    sig x - c * sig x / Dx x ≤\n      (0.640208000017 * L₁ - 0.021095) * (1 - c / (L₁ / 2 - (Real.log 14 - cE))) :=",
+            "line": 236,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/NumericsCore.lean",
+            "fragment": "L236"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          282
+        ],
+        "printed": [
+          272
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The tail is replaced by Mexpr's top-level term at r2 ≈ 0.1x^{0.3}, bounded via tail_le and certified ĝ values."
+}

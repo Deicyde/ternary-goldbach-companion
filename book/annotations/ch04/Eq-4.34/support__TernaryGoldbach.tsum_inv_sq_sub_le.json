@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.34",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 74,
+        "rect": [
+          0.25926,
+          0.58931,
+          0.56816,
+          0.14843
+        ]
+      },
+      "title": "Equation (4.34)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.tsum_inv_sq_sub_le",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.tsum_inv_sq_sub_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem tsum_inv_sq_sub_le {r : ℝ} (hr : |r| ≤ 1 / 2) :\n    Summable (fun n : ℤ => if n = 0 then 0 else 1 / ((n : ℝ) - r) ^ 2) ∧\n      ∑' n : ℤ, (if n = 0 then 0 else 1 / ((n : ℝ) - r) ^ 2) ≤ π ^ 2 - 4 :=",
+            "line": 170,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L170"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          74
+        ],
+        "printed": [
+          64
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean splits off the zero frequency (Step F) and bounds the rest in Step D with tsum_inv_sq_sub_le. The condition |δm/x| ≤ ½ comes from m ≤ M ≤ x/(2|δ|q) (hMδ in lemma_4_2_2_caseA/B)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 211,
+        "rect": [
+          0.17135,
+          0.78739,
+          0.56816,
+          0.0661
+        ]
+      },
+      "title": "Equation (10.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.mem_majorArcs_iff",
+        "module": "TernaryGoldbach.MinorArcs.LargeSieveArcs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.mem_majorArcs_iff",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem mem_majorArcs_iff {δ₀ R x α : ℝ} :\n    α ∈ majorArcs δ₀ R x ↔ ∃ q : ℕ, 1 ≤ q ∧ (qt q : ℝ) ≤ 2 * R ∧ ∃ a : ℤ, IsCoprime a q ∧\n      |α - a / q| < wrad δ₀ R x q :=",
+            "line": 39,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LargeSieveArcs.lean",
+            "fragment": "L39"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          211
+        ],
+        "printed": [
+          201
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The same Lean definition also serves Ch. 12–13 with other (δ₀, R) and other scales (LargeSieveArcs, OffArcs). The cites tool links (10.5) to MinorArcs.Gq, but that link only comes from the module docstring of LargeSievePrimes.lean;"
+}

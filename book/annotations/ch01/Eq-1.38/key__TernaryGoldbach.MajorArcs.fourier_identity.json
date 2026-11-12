@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.38",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 35,
+        "rect": [
+          0.17135,
+          0.40394,
+          0.56816,
+          0.07418
+        ]
+      },
+      "title": "Equation (1.38)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.fourier_identity",
+        "module": "TernaryGoldbach.MajorArcs.FourierMain"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.fourier_identity",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem fourier_identity (M : ℝ) :\n    ∫ ξ, Complex.exp (↑(2 * π * ξ * M) * I) * (𝓕 etaOC ξ * 𝓕 etaOC ξ * 𝓕 etaSC ξ) = (Cmain M : ℂ) :=",
+            "line": 165,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/FourierMain.lean",
+            "fragment": "L165"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          35
+        ],
+        "printed": [
+          25
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the identity for η◦ and compares the η₊ integral with it (error ≤ 2.03·10⁻⁵x²), as Ch. 10 does."
+}

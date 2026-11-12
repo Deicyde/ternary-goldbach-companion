@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.10",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 114,
+        "rect": [
+          0.25926,
+          0.69174,
+          0.56816,
+          0.03905
+        ]
+      },
+      "title": "Equation (6.10)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_31_v_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Sum"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_31_v_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem bound_4_31_v_le {x U V : ℝ} {q v : ℕ} (hq : 1 ≤ q) (hx : 0 < x) (hU : 0 < U)\n    (hv : 1 ≤ v) (hvV : (v : ℝ) ≤ V) :\n    bound_4_31 (x / v) (q / Nat.gcd q v) U ≤\n      coefUV (cPlus x U V) * U + coefQ x q U V (cPlus x U V) * q :=",
+            "line": 187,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Sum.lean",
+            "fragment": "L187"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          114
+        ],
+        "printed": [
+          104
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean obtains the bound with 1.0064/(ec₂)·UV (for V ≥ 2.5·10⁷) instead of 1.0004/(ec₂)·UV, because (2.14) is proved only with 1.0064."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.3.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 192,
+        "rect": [
+          0.25926,
+          0.15373,
+          0.56816,
+          0.24296
+        ]
+      },
+      "title": "Proposition 9.3.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.3.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.GRHUpTo",
+        "module": "TernaryGoldbach.MajorArcs.GRH"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.GRHUpTo",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def GRHUpTo {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q) (T : ℝ) : Prop :=\n  ∀ ρ : ℂ, χ.LFunction ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ T → ρ.re = 1 / 2",
+            "line": 32,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/GRH.lean",
+            "fragment": "L32"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          192
+        ],
+        "printed": [
+          182
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the proposition with its own, larger error err932N in place of (9.57); MajorArcs.err932 transcribes (9.57) but no theorem bounds the sum by it."
+}

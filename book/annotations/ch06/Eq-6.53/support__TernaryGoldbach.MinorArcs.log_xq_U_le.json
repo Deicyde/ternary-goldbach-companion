@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.53",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 130,
+        "rect": [
+          0.25926,
+          0.5708,
+          0.56816,
+          0.15779
+        ]
+      },
+      "title": "Equation (6.53)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.53"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.log_xq_U_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI1"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.log_xq_U_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem log_xq_U_le {T t : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (ht2 : 2 ≤ t) (htT : t ≤ T / 3)\n    (hq : 1 ≤ q) (hqt : 2 * (q : ℝ) ≤ t) :\n    Real.log (T ^ 3 / U1 T t) - Real.log (U1 T t / (2 * q ^ 2)) ≤ 2 * Real.log t + 2.63 :=",
+            "line": 134,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI1.lean",
+            "fragment": "L134"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          130
+        ],
+        "printed": [
+          120
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The printed c_{10,I} term is overstated by √(qδ₀): U²/(4qx) = x^{1/3}/(324q²δ₀)."
+}

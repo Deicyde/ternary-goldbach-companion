@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.70",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 139,
+        "rect": [
+          0.17135,
+          0.76799,
+          0.56816,
+          0.0882
+        ]
+      },
+      "title": "Equation (6.70)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.70"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.div_totient_le_large",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIa"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.div_totient_le_large",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem div_totient_le_large {q : ℕ} (hq : (1e6 : ℝ) ≤ q) :\n    (q : ℝ) / Nat.totient q ≤ 1.7882 * Real.log (Real.log q) + 0.9549 :=",
+            "line": 169,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIa.lean",
+            "fragment": "L169"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          139
+        ],
+        "printed": [
+          129
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds the Ϝ-factor directly by 1.7882 log L + 0.9549 in its asymptotic ranges (L ≥ 70, resp. 55) instead of using (6.70)."
+}

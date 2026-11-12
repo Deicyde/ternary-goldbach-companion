@@ -1,0 +1,50 @@
+{
+  "id": "Eq 2.16",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "noMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 46,
+        "rect": [
+          0.25926,
+          0.56162,
+          0.56816,
+          0.04099
+        ]
+      },
+      "title": "Equation (2.16)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.16"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/calr3/ternary-goldbach",
+      "version": "192ca57362fa3ee737cd83205cb9ea99526c4553"
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          46
+        ],
+        "printed": [
+          36
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Not formalized and not needed: the one place [H] invokes (2.16), (4.55), only needs ψ(V) ≤ 1.03884V, which (2.15) gives. Erratum: For y > 200000 the book derives (2.16), sum_{n<=y} Lambda(n)n < 1.03884 y^2/2, from (2.15) psi(y) < 1.03883y and partial summation; that route gives at best about 1.0776 y^2/2 (2*1.03883 - 1 in the limit) even with int psi known exactly, and an upper bound on psi cannot control -int psi at all. (checked by `scripts/checks/eq_2_16.py`)."
+}

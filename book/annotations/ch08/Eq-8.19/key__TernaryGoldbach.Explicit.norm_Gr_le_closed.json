@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.19",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 159,
+        "rect": [
+          0.17135,
+          0.3232,
+          0.56816,
+          0.03336
+        ]
+      },
+      "title": "Equation (8.19)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Gr_le_closed",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Gr_le_closed",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Gr_le_closed (s : ℂ) (δ : ℝ) {θ : ℝ} (hθ0 : 0 ≤ θ) (hθ : θ < π / 4)\n    (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1) :\n    ‖Gr s δ 0‖ ≤ Real.exp (-(θ * |s.im|)) *\n      (Real.exp ((2 * π * |δ| * Real.sin θ) ^ 2 / (2 * Real.cos (2 * θ))) *\n        ((1 + (2 * π * |δ| * Real.sin θ / Real.cos (2 * θ)) ^ 2) * √(π / (Real.cos (2 * θ) / 2)) +\n          √π / (Real.cos (2 * θ) * √(Real.cos (2 * θ) / 2)))) :=",
+            "line": 479,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L479"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          159
+        ],
+        "printed": [
+          149
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Step of the saddle-point proof of Thm 8.0.1, used in (8.31) (ℓ>0) and after (8.47) (ℓ<0). Checked: it is exactly the real part of (8.16) (20,000 random (ℓ,τ), relative error ≤ 4·10⁻¹³)."
+}

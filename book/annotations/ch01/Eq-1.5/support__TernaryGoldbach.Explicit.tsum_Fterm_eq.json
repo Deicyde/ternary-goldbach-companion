@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 19,
+        "rect": [
+          0.17135,
+          0.54191,
+          0.56816,
+          0.04378
+        ]
+      },
+      "title": "Equation (1.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.tsum_Fterm_eq",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.tsum_Fterm_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem tsum_Fterm_eq {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (φ : ℝ → ℂ) {x : ℝ}\n    (hx : 0 < x) (t : ℝ) : ∑' n : ℕ, (Λ n : ℂ) * χ n * Fterm φ x n t =\n      Fline χ φ x (((3 / 2 : ℝ) : ℂ) + t * I) :=",
+            "line": 152,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L152"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          19
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Book use: last step of (9.4), proof of Lemma 9.1.1. Not reproved in the repo;"
+}

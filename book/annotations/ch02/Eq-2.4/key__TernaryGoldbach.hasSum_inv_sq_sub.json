@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.4",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 43,
+        "rect": [
+          0.17135,
+          0.71979,
+          0.56816,
+          0.04355
+        ]
+      },
+      "title": "Equation (2.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.hasSum_inv_sq_sub",
+        "module": "TernaryGoldbach.MinorArcs.FourierSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.hasSum_inv_sq_sub",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hasSum_inv_sq_sub {s : ℝ} (hs : Real.sin (π * s) ≠ 0) :\n    HasSum (fun n : ℤ => 1 / ((n : ℝ) - s) ^ 2) (π ^ 2 / Real.sin (π * s) ^ 2) :=",
+            "line": 60,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FourierSums.lean",
+            "fragment": "L60"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          43
+        ],
+        "printed": [
+          33
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the closed form by Parseval rather than from the cotangent partial fractions; the middle expression −(π cot πs)′ is not stated."
+}

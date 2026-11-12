@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.6",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 176,
+        "rect": [
+          0.25926,
+          0.328,
+          0.56816,
+          0.03336
+        ]
+      },
+      "title": "Equation (9.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.differentiableAt_G",
+        "module": "TernaryGoldbach.Explicit.GMellin"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.differentiableAt_G",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem differentiableAt_G (δ : ℝ) {s : ℂ} (hs : -2 < s.re) :\n    DifferentiableAt ℂ (fun s => Gr s δ 0) s :=",
+            "line": 67,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/GMellin.lean",
+            "fragment": "L67"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          176
+        ],
+        "printed": [
+          166
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never needs the Laurent expansion: its smoothings vanish at 0, and holomorphy at 0 is proved for each one."
+}

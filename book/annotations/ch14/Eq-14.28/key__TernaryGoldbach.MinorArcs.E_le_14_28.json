@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.28",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 278,
+        "rect": [
+          0.25926,
+          0.24113,
+          0.56816,
+          0.04015
+        ]
+      },
+      "title": "Equation (14.28)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.E_le_14_28",
+        "module": "TernaryGoldbach.MinorArcs.EBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.E_le_14_28",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem E_le_14_28 {x : ℝ} (hx : 4.9e26 ≤ x) :\n    ∑' n : ℕ, (if n.Prime ∧ √x < n then 0 else (Λ n * etaPlus (n / x)) ^ 2) ≤ 8e-11 * x :=",
+            "line": 278,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EBound.lean",
+            "fragment": "L278"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          278
+        ],
+        "printed": [
+          268
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds the Parseval sum ∫|S₂|² directly by 8·10⁻¹¹x and never forms the closed-form E (13.11); the printed 5.12426 is a harmless round-up of 5.12425."
+}

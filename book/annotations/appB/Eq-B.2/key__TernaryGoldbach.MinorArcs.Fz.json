@@ -1,0 +1,70 @@
+{
+  "id": "Eq B.2",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 301,
+        "rect": [
+          0.17135,
+          0.58572,
+          0.56816,
+          0.0172
+        ]
+      },
+      "title": "Equation (B.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq B.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Fz",
+        "module": "TernaryGoldbach.MinorArcs.Eta2DDExpand"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Fz",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def Fz (z : ℂ) (w : ℝ) : ℂ :=\n  16 * z ^ 2 - 16 * z - 4 * z ^ 4 +\n    4 * ((8 * z ^ 2 - 16 * z - z ^ 4) * (I * w) + (32 * z ^ 2 - 128 * z - 2 * z ^ 4) * (I * w) ^ 2 +\n      (192 * z ^ 2 - 1536 * z - 6 * z ^ 4) * (I * w) ^ 3)",
+            "line": 141,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2DDExpand.lean",
+            "fragment": "L141"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          301
+        ],
+        "printed": [
+          291
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The companion's draft Companion/Book/Lemma_B_1_2.lean (not in the declaration index, so not linked) defines the printed g as lemma_B_1_2_g. Its docstring and module doc cite (B.2) correctly, and lemma_B_1_2_g_eq_dirac writes g as the Fourier transform of 4δ_{1/4} − 4δ_{1/2} + δ₁."
+}

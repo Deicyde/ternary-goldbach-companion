@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.23",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 217,
+        "rect": [
+          0.17135,
+          0.36026,
+          0.56816,
+          0.07826
+        ]
+      },
+      "title": "Equation (10.23)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.23"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_Qset_coefN_ge",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_Qset_coefN_ge",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_Qset_coefN_ge {N : ℕ} (hN : Odd N) :\n    1.314 ≤ ∑ q ∈ TernaryGoldbach.MinorArcs.Qset 150000, coefN N q :=",
+            "line": 619,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L619"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          217
+        ],
+        "printed": [
+          207
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps the singular series truncated at the major-arc moduli, Σ_{q∈Qset r₀}coefN(N,q) ≥ 1.314, instead of completing it to the Euler product C₀; the bound 1.314 uses no hypothesis."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.28",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 122,
+        "rect": [
+          0.25926,
+          0.58461,
+          0.56816,
+          0.10653
+        ]
+      },
+      "title": "Equation (6.28)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_inv_mul_log",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITools"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_inv_mul_log",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_inv_mul_log {c a b : ℝ} (hc : 0 < c) (hca : c < a) (hab : a ≤ b) :\n    ∫ W in a..b, 1 / (W * Real.log (W / c)) =\n      Real.log (Real.log (b / c)) - Real.log (Real.log (a / c)) :=",
+            "line": 63,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITools.lean",
+            "fragment": "L63"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          122
+        ],
+        "printed": [
+          112
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Exact; needs 2q < V, which holds since 2eq ≤ V."
+}

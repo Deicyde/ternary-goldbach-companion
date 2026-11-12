@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.52",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 81,
+        "rect": [
+          0.17135,
+          0.35643,
+          0.56816,
+          0.13064
+        ]
+      },
+      "title": "Equation (4.52)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.52"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_52",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_52",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_52 (x δ : ℝ) (q : ℕ) (U V Q₀ ε : ℝ) : ℝ :=\n  let D := U * V\n  let c₁ := 1 + eta2'L1 / (x / D)\n  let y := x / (|δ| * q)\n  let Y := min ((⌊y⌋₊ : ℝ) + 1) (2 * D)\n  2 * √(c₀ * c₁) / π * (D * Real.log (D / rexp 1) +\n      (1 + ε) * Y * (√(3 + 2 * ε) * Real.log (5 * D) + 1 / 2 +\n        (2 + Real.log D / 2) * logPlus (2 * D / y))) +\n    3 * c₁ / 2 * (2 * Real.log (5 * D) + (1 + ε) / ε * Real.log D * logPlus (2 * D / y)) * (x / Q₀) +\n    35 * c₀ * c₂ / (3 * π ^ 2) * q * Real.log D",
+            "line": 231,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L231"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          81
+        ],
+        "printed": [
+          71
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps log⁺(2D/y) (the book drops the factor 2 inside the log), keeps x/Q₀ where the book uses Q₀ ≥ 2√x, and has cruder lower-order constants; same leading term."
+}

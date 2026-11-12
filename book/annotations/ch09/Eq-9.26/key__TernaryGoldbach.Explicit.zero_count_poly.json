@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.26",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 181,
+        "rect": [
+          0.17135,
+          0.82615,
+          0.56816,
+          0.03336
+        ]
+      },
+      "title": "Equation (9.26)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.zero_count_poly",
+        "module": "TernaryGoldbach.Explicit.ZeroSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.zero_count_poly",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem zero_count_poly {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (T : ℝ) {r : ℝ} (hr : 0 < r) (hr10 : r < 10) :\n    ((∑ᶠ u, MeromorphicOn.divisor χ.LFunction (Metric.closedBall (2 + T * I) |r|) u : ℤ) : ℝ) ≤\n      Real.log (BP N T / 0.355) / Real.log (10 / r) :=",
+            "line": 77,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSums.lean",
+            "fragment": "L77"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          181
+        ],
+        "printed": [
+          171
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Constants checked. [Tru, Thm 1] (arXiv:1206.1844v2) gives, for primitive nonprincipal χ and T ≥ 1, |N(T,χ) − (T/π)log(qT/2πe)| ≤ 0.315 log qT + 6.455, with N counting zeros with 0 < β < 1 and |γ| ≤ T."
+}

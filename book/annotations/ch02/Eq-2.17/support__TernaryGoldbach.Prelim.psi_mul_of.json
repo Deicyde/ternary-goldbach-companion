@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.17",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 46,
+        "rect": [
+          0.25926,
+          0.66352,
+          0.56816,
+          0.041
+        ]
+      },
+      "title": "Equation (2.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.psi_mul_of",
+        "module": "TernaryGoldbach.Prelim.LambdaMu"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.psi_mul_of",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem psi_mul_of {N : ℕ} (hN : 1 ≤ N) {δ ε A B : ℝ} (hA : 0 ≤ A)\n    (hup : psiN N ≤ (1 + δ) * N + B * √(N : ℝ))\n    (hlo : ∀ n, n < N → (1 - ε) * n - A * √(n : ℝ) - 11 ≤ psiN n) :\n    ∑ n ∈ Icc 1 N, (Λ n : ℝ) * n ≤\n      ((1 + δ) * N + B * √(N : ℝ)) * N -\n        ((1 - ε) * ((N : ℝ) * (N - 1) / 2) - A * (2 / 3 * N * √(N : ℝ)) - 11 * N) :=",
+            "line": 1217,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LambdaMu.lean",
+            "fragment": "L1217"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          46
+        ],
+        "printed": [
+          36
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the bound with 1.022 in place of 1.0008 and only for y ≥ 2.5·10⁷; downstream the S_{I,2} bounds carry 0.511V² in place of 0.5004V²."
+}

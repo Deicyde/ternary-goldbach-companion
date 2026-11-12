@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.26",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.25926,
+          0.60739,
+          0.56816,
+          0.04895
+        ]
+      },
+      "title": "Equation (4.26)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_inv_le",
+        "module": "TernaryGoldbach.MinorArcs.BlockSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_inv_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_inv_le {R q D : ℝ} (hR : 0 < R) (hq : 0 < q) {J : ℕ} (hJ : 1 ≤ J)\n    (hD : R + (J - 1) * q ≤ D) :\n    ∑ j ∈ range J, 1 / (R + j * q) ≤ 1 / R + 1 / q * Real.log (D / R) :=",
+            "line": 53,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BlockSums.lean",
+            "fragment": "L53"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The min(q/c₂, 2x/q) of (4.26)/(4.28) enters (4.31) only as q/c₂, so the weaker Lean form loses nothing downstream. sum_inv_le is reused for Lemma 4.2.4 (TypeI2Rest.lean:288)."
+}

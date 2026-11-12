@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.14",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 46,
+        "rect": [
+          0.25926,
+          0.40423,
+          0.56816,
+          0.03426
+        ]
+      },
+      "title": "Equation (2.14)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_vonMangoldt_le_a14",
+        "module": "TernaryGoldbach.Prelim.LambdaMu"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_vonMangoldt_le_a14",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_vonMangoldt_le_a14 {y : ℝ} (hy : 2.5e7 ≤ y) :\n    ∑ n ∈ Icc 1 ⌊y⌋₊, (Λ n : ℝ) ≤ 1.0064 * y :=",
+            "line": 1375,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LambdaMu.lean",
+            "fragment": "L1375"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          46
+        ],
+        "printed": [
+          36
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (2.14) only with constant 1.0064 and for y ≥ 2.5·10⁷, and the minor-arc type-II bounds of §6.2 carry 1.0064 in place of 1.0004. The old counterpart sum_vonMangoldt_le_10004 (1.0004, y ≥ 6·10⁶) no longer exists."
+}

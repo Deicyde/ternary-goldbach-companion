@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.40",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 104,
+        "rect": [
+          0.25926,
+          0.21789,
+          0.56816,
+          0.07023
+        ]
+      },
+      "title": "Equation (5.40)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.40"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sep_triples",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sep_triples",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sep_triples {q r r' b b' : ℕ} (hq : 1 ≤ q) (hr : 1 ≤ r) (hr' : 1 ≤ r')\n    (hrq : Nat.Coprime r q) (hr'q : Nat.Coprime r' q) (hb : b < r) (hb' : b' < r')\n    (hbr : Nat.Coprime r b) (hb'r : Nat.Coprime r' b') {A : ℤ} {u ν υ R : ℝ} (hν : 0 < ν)\n    (hu : |u| ≤ υ) (hRr : (r : ℝ) ≤ R) (hRr' : (r' : ℝ) ≤ R) (hR : q * R ^ 2 * (ν + υ) ≤ 1)\n    (hνυ : ν + υ ≤ 1 / q) (hcase : (q : ℤ) ∣ A → r = r' → b = b' → ν ≤ |u|) :\n    ν ≤ |(A / q + b / r - b' / r' + u : ℝ) - round (A / q + b / r - b' / r' + u : ℝ)| :=",
+            "line": 266,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L266"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          104
+        ],
+        "printed": [
+          94
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean restricts to squarefree r ≤ R ≤ W′ in both r-sums; [H]'s (5.40) needs R ≤ W′ and can fail for R > W′. Erratum: For admissible data q=1, alpha_1=0, nu=upsilon=1/8 (R=2), W=3, W'=1.5 the left side of (5.39) is (log 6)^2 = 3.2104, but (5.40) = ((log 6)^2+(log 1.5)^2)/2 = 1.6874, so the step 'LHS <= (5.40)' is false. (checked by `scripts/checks/eq_5_40.py`)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.32",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 183,
+        "rect": [
+          0.17135,
+          0.55212,
+          0.56816,
+          0.08069
+        ]
+      },
+      "title": "Equation (9.32)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.32"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.count_line_window",
+        "module": "TernaryGoldbach.Explicit.ZeroSumBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.count_line_window",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem count_line_window {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {T T0 : ℝ} (hT0 : 0 ≤ T0) (S : Finset ℂ) (hS : S ⊆ zerosRect χ T)\n    (hre : ∀ u ∈ S, u.re = 1 / 2) (him : ∀ u ∈ S, |u.im| ≤ T0) (k : ℕ) :\n    ∑ u ∈ S.filter (fun u => (⌊u.im / 3.48⌋ + Jl T0).toNat = k), (multRect χ T u : ℝ) ≤ ZL N T0 :=",
+            "line": 395,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumBound.lean",
+            "fragment": "L395"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          183
+        ],
+        "printed": [
+          173
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Read as a statement about F(|γ|) with F continuous, (9.32) is the two-sided partial summation and holds for every χ. The gap lies in applying it to |G_δ(ρ)|."
+}

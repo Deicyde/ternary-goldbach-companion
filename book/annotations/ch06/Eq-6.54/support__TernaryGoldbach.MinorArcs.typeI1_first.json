@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.54",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 130,
+        "rect": [
+          0.25926,
+          0.80483,
+          0.56816,
+          0.05251
+        ]
+      },
+      "title": "Equation (6.54)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.54"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI1_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI1"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI1_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI1_first {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hqT : (q : ℝ) ≤ T / 6) :\n    ‖typeILog α (T ^ 3) (U1 T (delta0 δ * q))‖ ≤\n      3.8 * (2 * T ^ 3 / (delta0 δ * Nat.totient q)) +\n        (Real.log (delta0 δ * q) + 2.96) * (2 * T ^ 3 / (delta0 δ * q)) + 0.014 * (T ^ 2 * √T) :=",
+            "line": 227,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI1.lean",
+            "fragment": "L227"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          130
+        ],
+        "printed": [
+          120
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean does not maximize over x; it uses min(1,a/ℓ)L ≤ a + (L−ℓ)⁺ with Ramaré-type constant 2.8 and modulus 2q, giving 2 log t + 2.63 for the excess in place of the book's (7/4) log t."
+}

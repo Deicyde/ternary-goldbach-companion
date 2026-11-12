@@ -1,0 +1,70 @@
+{
+  "id": "Eq C.11",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 310,
+        "rect": [
+          0.25926,
+          0.52392,
+          0.56816,
+          0.05226
+        ]
+      },
+      "title": "Equation (C.11)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq C.11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient",
+        "module": "TernaryGoldbach.MajorArcs.SumMuPhi"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.sum_odd_mu_sq_div_totient",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_odd_mu_sq_div_totient :\n    6.798779 ≤ ∑ q ∈ (Icc 1 150000).filter Odd,\n        ((ArithmeticFunction.moebius q : ℤ) : ℝ) ^ 2 / q.totient ∧\n      ∑ q ∈ (Icc 1 150000).filter Odd,\n        ((ArithmeticFunction.moebius q : ℤ) : ℝ) ^ 2 / q.totient ≤ 6.79878 :=",
+            "line": 32,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/SumMuPhi.lean",
+            "fragment": "L32"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          310
+        ],
+        "printed": [
+          300
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean does not state (C.11); it needs the sum only at r = 150000 and has no η → η∘ cross term."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.82",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 201,
+        "rect": [
+          0.17135,
+          0.20943,
+          0.56816,
+          0.03884
+        ]
+      },
+      "title": "Equation (9.82)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.82"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.mellin_phi1_eq",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.mellin_phi1_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem mellin_phi1_eq {s : ℂ} (hs : -2 < s.re) :\n    mellin phi1 s = ∫ ξ in Icc (-aH) aH,\n      𝓕 gC ξ * mellin (fun t => hHc t * g0 t) (s + ((2 * π * ξ : ℝ) : ℂ) * I) :=",
+            "line": 222,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L222"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          201
+        ],
+        "printed": [
+          191
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never forms η_{+,2}: prop_9_5_1 splits log n = log x + log(n/x) (Prop715.lean:324) and treats φ₁ = η₊² and φ₂ = η₊²·log separately, so the convolution is only needed for η₊²; the log t weight enters through M(φ₂) = M(φ₁)′ (hasDerivAt_mellin_phi1)."
+}

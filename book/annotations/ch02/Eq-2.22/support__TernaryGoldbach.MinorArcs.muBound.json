@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.22",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 47,
+        "rect": [
+          0.17135,
+          0.60156,
+          0.56816,
+          0.04062
+        ]
+      },
+      "title": "Equation (2.22)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.22"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.muBound",
+        "module": "TernaryGoldbach.MinorArcs.TypeITotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.muBound",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def muBound (U : ℝ) (q : ℕ) : ℝ :=\n  if 2 * (q : ℝ) ^ 2 < U then\n    min 1 (2.8 * (2 * q / Nat.totient (2 * q)) / Real.log (U / (2 * q ^ 2))) else 1",
+            "line": 24,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeITotal.lean",
+            "fragment": "L24"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          47
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (2.22) with constant 2.8 in place of 4/5, via Ramaré's Liouville-function route."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.63",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 135,
+        "rect": [
+          0.17135,
+          0.51605,
+          0.56816,
+          0.12848
+        ]
+      },
+      "title": "Equation (6.63)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.63"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.main_amgm",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceMain"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.main_amgm",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem main_amgm {T t : ℝ} (hT : 6e6 ≤ T) (ht2 : 2 ≤ t) (htT : t ≤ T / 3) (hC0 : 0 ≤ Cxt T t) :\n    √(Cxt T t * (Real.log t + 0.002) + Real.log (4 * t) / 2) *\n        √(0.30214 * Real.log t + 0.7468) ≤\n      (0.27125 * Cxt T t + 0.41415) * Real.log t + 0.8764 :=",
+            "line": 106,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceMain.lean",
+            "fragment": "L106"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          135
+        ],
+        "printed": [
+          125
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never states the √·√ form; it proves the post-(6.77) form with 0.8764, 2.526 (book 2.49157; ψ ≤ 1.0064y replaces 1.0004y) and 3.8x^{5/6}, and adds 3 log x for S_{0,2}, which the book takes to be 0."
+}

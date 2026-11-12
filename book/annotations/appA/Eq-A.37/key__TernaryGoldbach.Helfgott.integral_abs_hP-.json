@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.37",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 299,
+        "rect": [
+          0.17135,
+          0.39487,
+          0.56816,
+          0.02044
+        ]
+      },
+      "title": "Equation (A.37)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.37"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.integral_abs_hP'",
+        "module": "TernaryGoldbach.Helfgott.HHBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.integral_abs_hP'",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_abs_hP' {ε : ℝ} (hε0 : 0 < ε) (hε1 : ε ≤ 1) :\n    ∫ u in ε..2, |hP' u| = 2 * Real.exp (1 / 2) - hP ε :=",
+            "line": 223,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/HHBound.lean",
+            "fragment": "L223"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          299
+        ],
+        "printed": [
+          289
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked in double precision: the roots of h'' are α_{2,1} = 0.4875659719 and α_{2,2} = 1.4877716931; |h'(α_{2,2})| = 2.8058203796708 ≤ 2.805820379671 (margin ≈ 2·10⁻¹³); |h'(α_{2,1})| = 2.5330 is smaller; h' = 0 at the endpoints 0 and 2."
+}

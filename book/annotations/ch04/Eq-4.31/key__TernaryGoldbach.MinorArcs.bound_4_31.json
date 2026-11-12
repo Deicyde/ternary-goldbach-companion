@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.31",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 73,
+        "rect": [
+          0.17135,
+          0.59807,
+          0.56816,
+          0.07947
+        ]
+      },
+      "title": "Equation (4.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_31",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_31",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_31 (x : ℝ) (q : ℕ) (D : ℝ) : ℝ :=\n  let c₁ := 1 + eta2'L1 / (x / D)\n  2 * √(c₀ * c₁) / π * D + 3 * c₁ / 2 * (x / q) * logPlus (D / (c₂ * x / q)) +\n    √(c₀ * c₁) / π * q * logPlus (D / (q / 2)) +\n    2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) +\n    (2 * √(3 * c₀ * c₁) / π + 3 * c₁ / (2 * c₂) + 55 * c₀ * c₂ / (6 * π ^ 2)) * q",
+            "line": 144,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L144"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          73
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Obtained from (4.28) by the book's listed changes: the max term of (4.23) doubled (giving 2|η'|₁/π·max(1,·)), (4.24) doubled (giving 55c₀c₂/6π² via (4.37)), and (4.26) halved (giving 3c₁/2 and 3c₁/2c₂). The Lean proof reproduces every coefficient."
+}

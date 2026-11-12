@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 10.3.1",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 221,
+        "rect": [
+          0.17135,
+          0.29102,
+          0.56816,
+          0.47691
+        ]
+      },
+      "title": "Lemma 10.3.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 10.3.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.l2_major_bounds",
+        "module": "TernaryGoldbach.MajorArcs.L2Major"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.l2_major_bounds",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem l2_major_bounds {x : ℝ} (hx : 4.9e26 ≤ x) :\n    8.6296 * x ≤ ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 ∧\n      ∫ α in Ioc (0:ℝ) 1 ∩ majorArcs 8 r₀ x, ‖S etaPlus x α‖ ^ 2 ≤ 8.79 * x :=",
+            "line": 309,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "fragment": "L309"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          221
+        ],
+        "printed": [
+          211
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "No general-η statement in Lean; only the numeric §14.1 case. The book's proof needs disjoint arcs (x ≥ 2δ₀r²), and its coefficient log(2e²r) should be 2+(3/2)log r."
+}

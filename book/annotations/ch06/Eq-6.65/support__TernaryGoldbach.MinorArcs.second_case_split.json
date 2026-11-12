@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.65",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 136,
+        "rect": [
+          0.25926,
+          0.19794,
+          0.56816,
+          0.03797
+        ]
+      },
+      "title": "Equation (6.65)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.65"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.second_case_split",
+        "module": "TernaryGoldbach.MinorArcs.SecondChoice"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.second_case_split",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem second_case_split {α T δ δ' Q₀ : ℝ} {a a' : ℤ} {q q' : ℕ} (hT : 1 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hq : T / 6 < q)\n    (h' : Approx2 α (T ^ 3) δ' a' q' Q₀) :\n    T / 6 < q' ∨ ((q' : ℝ) ≤ T / 6 ∧ 8 < |δ'| ∧ 8 * (T / 6) < |δ'| * q') ∨\n      ((q' : ℝ) ≤ T / 6 ∧ Approx2 α (T ^ 3) δ' a' q' (3 / 4 * T ^ 2) ∧\n        2 * (T / 6) * (1 - (T / 6) / (3 / 4 * T ^ 2)) ≤ |δ'| * q' / 4) :=",
+            "line": 76,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondChoice.lean",
+            "fragment": "L76"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          136
+        ],
+        "printed": [
+          126
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean takes Q₀ = x^{2/3}/349 instead of x/U, so that Prop 5.2.4's Q ≥ 3.5W holds for W up to x/U, and rounds U up to ⌊1225x^{1/3}⌋; it also adds the case the book's split after (6.65) omits."
+}

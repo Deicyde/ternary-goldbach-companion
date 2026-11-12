@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.67",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 138,
+        "rect": [
+          0.25926,
+          0.62545,
+          0.56816,
+          0.16767
+        ]
+      },
+      "title": "Equation (6.67)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.67"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.a1_M3_le",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIa"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.a1_M3_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem a1_M3_le {T : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : T / 6 < q)\n    (hq16 : 16 * (q : ℝ) ≤ T ^ 3 / U2 T) :\n    4 * (√(kap1 (T ^ 3) (U2 T) (V2 T)) * (√((T ^ 3) ^ 2 / (16 * q) + q * T ^ 3) * (2 / 3 *\n      (Real.log (2 * 8 * q) * √(Real.log (2 * 8 * q)) - Real.log (V2 T) * √(Real.log (V2 T)))) +\n      T ^ 3 * (√(Real.log (V2 T)) + 1 / √(Real.log (V2 T))) / √(V2 T) +\n      √(T ^ 3) * √(Real.log (2 * 8 * q)) * √(2 * 8 * q))) ≤\n    4 * (0.49075 * (√6 / 4 * (√1.03 * 2.0795 * √(Real.log T + 0.9809)) +\n      0.007143 * (√(2 * Real.log T - 7.1106) * (Real.log T - 6.0119)) +\n      1.73207 * (√(Real.log T - 1.0986) + 1 / √(Real.log T - 1.0986)) +\n      0.028572 * √(2 * Real.log T - 7.1106))) * (T ^ 2 * √T) :=",
+            "line": 505,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIa.lean",
+            "fragment": "L505"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          138
+        ],
+        "printed": [
+          128
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses θ = 8, Q₀ = x^{2/3}/349 and splits case (a) at 16q ≤ x/U. Lean carries a factor √1.03 there."
+}

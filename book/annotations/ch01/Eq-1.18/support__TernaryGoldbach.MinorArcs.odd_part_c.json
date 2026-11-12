@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.18",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 28,
+        "rect": [
+          0.25926,
+          0.60287,
+          0.56816,
+          0.03905
+        ]
+      },
+      "title": "Equation (1.18)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.18"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.odd_part_c",
+        "module": "TernaryGoldbach.MinorArcs.Decomposition"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.odd_part_c",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem odd_part_c (α : ℝ) {x : ℝ} (hx : 0 < x) {U V M : ℕ} (hUM : U ≤ M) (hVM : V ≤ M)\n    (hNM : ⌊x⌋₊ ≤ M) :\n    ∑ n ∈ Icc 1 M, (if Odd n then (((trunc μ U * trunc Λ V * ArithmeticFunction.zeta) n : ℝ) : ℂ) *\n      wt α x n else 0) = typeI2 α x U V :=",
+            "line": 165,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Decomposition.lean",
+            "fragment": "L165"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          28
+        ],
+        "printed": [
+          18
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines only the odd-variable η₂ sum of (3.9)/(4.49); the 'just (1.19) with αv for α' reduction also replaces x by x/v, as (6.5) shows."
+}

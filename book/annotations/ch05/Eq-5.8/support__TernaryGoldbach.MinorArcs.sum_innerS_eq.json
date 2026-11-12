@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.8",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 90,
+        "rect": [
+          0.25926,
+          0.7146,
+          0.56816,
+          0.06619
+        ]
+      },
+      "title": "Equation (5.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_innerS_eq",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIS1"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_innerS_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_innerS_eq {B U : ℝ} (hB : 0 < B) (hU : 1 ≤ U) :\n    ∑ s ∈ (Icc 1 ⌊B⌋₊).filter Odd, innerS B U s =\n    ∑ q ∈ (Icc 1 ⌊B⌋₊ ×ˢ Icc 1 ⌊B⌋₊ ×ˢ Icc 1 ⌊B⌋₊ ×ˢ Icc 1 ⌊B⌋₊).filter\n      (fun q : ℕ × ℕ × ℕ × ℕ => Odd q.1 ∧ Nat.Coprime q.2.1 q.2.2.1 ∧ Odd (q.2.1 * q.2.2.1) ∧\n        Squarefree q.2.1 ∧ Squarefree q.2.2.1 ∧ Squarefree q.2.2.2 ∧\n        Nat.Coprime q.2.2.2 (2 * (q.2.1 * q.2.2.1)) ∧\n        U < (q.2.1 : ℝ) * q.2.2.2 ∧ U < (q.2.2.1 : ℝ) * q.2.2.2 ∧\n        B / 2 < (q.1 : ℝ) * q.2.1 * q.2.2.1 * q.2.2.2 ∧ (q.1 * q.2.1 * q.2.2.1 * q.2.2.2 : ℝ) ≤ B),\n      (μ q.2.1 : ℝ) * μ q.2.2.1 :=",
+            "line": 140,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+            "fragment": "L140"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          90
+        ],
+        "printed": [
+          80
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Formalized for v = 2 only (the book's final choice) and with U ≥ 1; the inclusive ranges add only terms with empty l-intervals."
+}

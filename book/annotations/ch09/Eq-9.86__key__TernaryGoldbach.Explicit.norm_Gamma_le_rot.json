@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.86",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 201,
+        "rect": [
+          0.17135,
+          0.50158,
+          0.56816,
+          0.02854
+        ]
+      },
+      "title": "Equation (9.86)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.86"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Gamma_le_rot",
+        "module": "TernaryGoldbach.Explicit.GammaBounds"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Gamma_le_rot",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Gamma_le_rot {a : ℂ} (ha : 0 < a.re) {φ : ℝ} (hφ0 : 0 ≤ φ) (hφ : φ < π / 2) :\n    ‖Complex.Gamma a‖ ≤ Real.exp (-(φ * |a.im|)) * Real.Gamma a.re * (Real.cos φ) ^ (-a.re) :=",
+            "line": 44,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/GammaBounds.lean",
+            "fragment": "L44"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          201
+        ],
+        "printed": [
+          191
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Grid check (0 < σ ≤ 1.5, 12.5 ≤ |τ| ≤ 200): max |Γ(s)|/bound = 0.9996. The rotation bound has no polynomial factor but only decay rate φ < π/2."
+}

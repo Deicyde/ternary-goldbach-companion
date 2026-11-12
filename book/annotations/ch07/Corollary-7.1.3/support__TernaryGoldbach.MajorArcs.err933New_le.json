@@ -1,0 +1,70 @@
+{
+  "id": "Corollary 7.1.3",
+  "kind": "corollary",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 149,
+        "rect": [
+          0.17135,
+          0.15373,
+          0.56816,
+          0.18776
+        ]
+      },
+      "title": "Corollary 7.1.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 7.1.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err933New_le",
+        "module": "TernaryGoldbach.MajorArcs.Cor713"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err933New_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem err933New_le {y : ℝ} (hy : 1e25 ≤ y) {q : ℕ} [NeZero q] (hq2 : 2 ≤ q) (hq3 : q ≤ 300000)\n    {δ : ℝ} (hδ : |δ| ≤ 1.2e6 / q) :\n    err933New q (1e8 / q) δ y ≤ 1e-17 + 4.7e6 / √q / √y :=",
+            "line": 567,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L567"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          149
+        ],
+        "printed": [
+          139
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the corollary only for y ≥ 10²⁵ with |E| ≤ 10⁻¹⁷ + 4.7·10⁶/(√q√y), which the book's bound implies (381500/√q + 76 ≤ 4.7·10⁶/√q for q ≤ 3·10⁵). major_arcs_input and minor_arcs_input cite it but state Ch. 14 results, not this corollary."
+}

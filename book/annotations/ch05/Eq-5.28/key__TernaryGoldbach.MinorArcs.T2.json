@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.28",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 99,
+        "rect": [
+          0.17135,
+          0.32236,
+          0.56816,
+          0.05352
+        ]
+      },
+      "title": "Equation (5.28)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.T2",
+        "module": "TernaryGoldbach.MinorArcs.T2Defs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.T2",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def T2 (S : ℝ) : ℝ :=\n  ∑ s ∈ Icc 1 ⌊S⌋₊, if Odd s then (1 / s : ℝ) * ∫ u in (1 / 2 : ℝ)..1, g2 (u * S / s) else 0",
+            "line": 109,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Defs.lean",
+            "fragment": "L109"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          99
+        ],
+        "printed": [
+          89
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's T2 is the sum for v = 2 only (odd s); the book's (5.28) is stated for general v."
+}

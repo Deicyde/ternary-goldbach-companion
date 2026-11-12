@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 12.2.2",
+  "kind": "lemma",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 244,
+        "rect": [
+          0.25926,
+          0.36957,
+          0.56816,
+          0.07494
+        ]
+      },
+      "title": "Lemma 12.2.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 12.2.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.G_le_mul_Gq",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot1"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.G_le_mul_Gq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem G_le_mul_Gq {P : ℕ} (hP : Squarefree P) {t : ℝ} :\n    Gq 1 t ≤ (P : ℝ) / Nat.totient P * Gq P t :=",
+            "line": 154,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot1.lean",
+            "fragment": "L154"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          244
+        ],
+        "printed": [
+          234
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "No standalone statement; regionS carries the argument with Lean's own constants and concludes directly against log Q + c_E. The proof's 'Q/Q0 ≥ 184' should be 182, and s ≥ 1 is needed."
+}

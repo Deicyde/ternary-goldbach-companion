@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 10.3.1",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 221,
+        "rect": [
+          0.17135,
+          0.29102,
+          0.56816,
+          0.47691
+        ]
+      },
+      "title": "Lemma 10.3.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 10.3.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.Jq_bounds",
+        "module": "TernaryGoldbach.MajorArcs.L2Major"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.Jq_bounds",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Jq_bounds {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq : q ∈ Qset r₀) :\n    0.63907 * mPhi q * x - 9.62e-4 * mPhi q * x - 3.6e-9 * x ≤\n        ∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, ‖S etaPlus x y‖ ^ 2 ∧\n      ∑ b ∈ Bset q, ∫ y in arc 8 r₀ x q b, ‖S etaPlus x y‖ ^ 2 ≤\n        0.64034 * mPhi q * x + 9.62e-4 * mPhi q * x + 2.17e-7 * x :=",
+            "line": 100,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/L2Major.lean",
+            "fragment": "L100"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          221
+        ],
+        "printed": [
+          211
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "No general-η statement in Lean; only the numeric §14.1 case. The book's proof needs disjoint arcs (x ≥ 2δ₀r²), and its coefficient log(2e²r) should be 2+(3/2)log r."
+}

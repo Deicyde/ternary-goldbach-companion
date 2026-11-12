@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.35",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 102,
+        "rect": [
+          0.25926,
+          0.56281,
+          0.56816,
+          0.05534
+        ]
+      },
+      "title": "Equation (5.35)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.35"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.H2",
+        "module": "TernaryGoldbach.MinorArcs.T2Defs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.H2",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def H2 (S : ℝ) : ℝ := if S < 16 then 4 / π ^ 2 * max (T2 S) 0 else 0.15107",
+            "line": 116,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Defs.lean",
+            "fragment": "L116"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          102
+        ],
+        "printed": [
+          92
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Below 40 (v = 1) or 16 (v = 2), G_v equals the exact sum T_v = α_n + β_n/S on [n, n+1); our recomputed v = 2 pieces match the Lean kernel table abT. Constants check: (6/π²)·0.36393 = 0.221243 ≤ 0.22125 and (4/π²)·0.37273 = 0.151062 ≤ 0.15107, so H_v majorizes (6v/π²σ(v))·T_v for all S ≥ 1."
+}

@@ -1,0 +1,89 @@
+{
+  "id": "Lemma 5.2.2",
+  "kind": "lemma",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 104,
+        "rect": [
+          0.25926,
+          0.72654,
+          0.56816,
+          0.12927
+        ]
+      },
+      "title": "Lemma 5.2.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2#0"
+        }
+      }
+    },
+    {
+      "location": {
+        "page": 105,
+        "rect": [
+          0.17135,
+          0.15703,
+          0.56816,
+          0.23779
+        ]
+      },
+      "title": "Lemma 5.2.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 5.2.2#1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_b",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_2_3_b {α Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) {W' W : ℝ} (hqW : 2 * q < W) (hQW : 3.5 * W ≤ Q)\n    (hW : 50000 ≤ W) (hW'W : W / 2 ≤ W') (hWW : W' ≤ W) (A₀ A₁ : ℝ) :\n    oddSqSum α W' W A₀ A₁ ≤\n      ⌈(A₁ - A₀) / (2 * q)⌉₊ * (q / Nat.totient q * (W / Real.log (W / (2 * q))) * logSqSum W' W) :=",
+            "line": 1383,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L1383"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          104,
+          105
+        ],
+        "printed": [
+          94,
+          95
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Only the odd-m version (Lemma 5.2.3) is used later; Lean redoes the proof for odd m and has no all-m lemma."
+}

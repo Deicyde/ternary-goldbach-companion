@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.36",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 124,
+        "rect": [
+          0.25926,
+          0.53425,
+          0.56816,
+          0.04139
+        ]
+      },
+      "title": "Equation (6.36)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.36"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_G53_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_G53_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_G53_le {x : ℝ} (hx : 0 < x) (U V : ℝ) (M : ℝ) {r : ℝ} (hr : 0 ≤ r) {A : ℝ}\n    (hV : 1 < V) (hVA : V ≤ A) :\n    IntervalIntegrable (G53 x U V M r) volume V A ∧\n    ∫ W in V..A, G53 x U V M r W ≤\n      √(kap1 x U V) * (√M * (2 / 3 *\n        (Real.log A * √(Real.log A) - Real.log V * √(Real.log V))) +\n        √r * x * (√(Real.log V) + 1 / √(Real.log V)) / √V + √x * √(Real.log A) * √A) +\n      1.4262 * x * √(kap1 x U V * (1 / 2 + 1 / U)) * (2 / √V - 2 / √A) :=",
+            "line": 294,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L294"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          124
+        ],
+        "printed": [
+          114
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean does not use (6.36); it keeps the [V, W₀] W²/4 piece separate, so typeII_641 needs only θ ≥ e(1+ε₁)/4, not θ ≥ 3e²/8."
+}

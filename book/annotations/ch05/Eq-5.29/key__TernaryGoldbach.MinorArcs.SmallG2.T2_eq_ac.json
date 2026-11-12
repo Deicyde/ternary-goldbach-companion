@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.29",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 99,
+        "rect": [
+          0.17135,
+          0.47815,
+          0.56816,
+          0.17621
+        ]
+      },
+      "title": "Equation (5.29)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.SmallG2.T2_eq_ac",
+        "module": "TernaryGoldbach.MinorArcs.T2Small"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.SmallG2.T2_eq_ac",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem T2_eq_ac {n : ℕ} (hn : 1 ≤ n) {S : ℝ} (h1 : (n : ℝ) ≤ S) (h2 : S < n + 1) :\n    T2 S = areal n - areal (n / 2) / 2 + (creal n - creal (n / 2)) / S :=",
+            "line": 445,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Small.lean",
+            "fragment": "L445"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          99
+        ],
+        "printed": [
+          89
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean reaches the book's α + β/S form by grouping by s and never states the per-m weights."
+}

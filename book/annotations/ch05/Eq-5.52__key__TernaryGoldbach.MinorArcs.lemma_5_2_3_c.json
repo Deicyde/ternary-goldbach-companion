@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.52",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 108,
+        "rect": [
+          0.25926,
+          0.4481,
+          0.56816,
+          0.08834
+        ]
+      },
+      "title": "Equation (5.52)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.52"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_5_2_3_c",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_5_2_3_c {α Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) {ϱ ρ : ℝ} (hϱ : 0 ≤ ϱ) (hϱ1 : ϱ ≤ 1) (hρ : 0 ≤ ρ)\n    (hϱρ : ϱ * ρ < 1) (hqρ : (q : ℝ) ≤ ρ * Q) {W' W : ℝ} (hW' : 0 ≤ W') {A₀ A₁ : ℝ}\n    (hA : A₁ - A₀ ≤ 2 * ϱ * q) :\n    oddSqSum α W' W A₀ A₁ ≤ (W - W' + q / (1 - ϱ * ρ)) * logSqSum W' W :=",
+            "line": 215,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L215"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          108
+        ],
+        "printed": [
+          98
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean sums over odd m only, the corrected form; ϱρ < 1 replaces ϱρ ≤ 1. Erratum: As printed (5.52) bounds the sum over all m and is false: with W=400, W'=200 (32 primes), q=401, Q=10^7, rho=q/Q, varrho=1 the all-m sum is 1.334 times the right side (also with 2alpha-a/q = 1/(2qQ)), while the odd-m sum is 0.667 of it. (checked by `scripts/checks/eq_5_52.py`)."
+}

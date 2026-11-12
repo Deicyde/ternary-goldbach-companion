@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.28",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 31,
+        "rect": [
+          0.17135,
+          0.78947,
+          0.56816,
+          0.06585
+        ]
+      },
+      "title": "Equation (1.28)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.28"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_eq_integral",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIReduction"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_eq_integral",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_eq_integral (α : ℝ) {x : ℝ} (hx : 0 < x) {U V : ℕ} (hU : 1 ≤ U) (hV : 1 ≤ V)\n    (hVU : (V : ℝ) ≤ x / U) :\n    typeII α x U V = 4 * ∫ W in (V : ℝ)..x / U, IIsum α x U V W / W :=",
+            "line": 210,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIReduction.lean",
+            "fragment": "L210"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          31
+        ],
+        "printed": [
+          21
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has only the odd (v = 2) form. The upper limit must be x/U, not X/U, and the n-range n > V;"
+}

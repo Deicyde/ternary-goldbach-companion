@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.49",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 170,
+        "rect": [
+          0.25926,
+          0.78305,
+          0.56816,
+          0.07646
+        ]
+      },
+      "title": "Equation (8.49)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.49"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_le_regimeA",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_le_regimeA",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_G_le_regimeA (s : ℂ) (δ : ℝ) (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1)\n    (hy : 10 * π * |δ| ≤ |s.im|) (hm : |s.im| < 3 / 2 * (π * δ) ^ 2) :\n    ‖Gr s δ 0‖ ≤ 0.588 * (|s.im| / (π * |δ|)) ^ 2 *\n      Real.exp (-0.1065 * (|s.im| / (π * |δ|)) ^ 2) :=",
+            "line": 582,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L582"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          170
+        ],
+        "printed": [
+          160
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The next step bounds e^{−c/t}/t^{k+1} (c = 80/3) by its global maximum at t = c/(k+1) ≥ 80/9, which lies outside t ≤ 1. The bound is valid but lossy."
+}

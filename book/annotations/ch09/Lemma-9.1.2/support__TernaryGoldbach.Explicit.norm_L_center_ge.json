@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 9.1.2",
+  "kind": "lemma",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 179,
+        "rect": [
+          0.17135,
+          0.39923,
+          0.56816,
+          0.15164
+        ]
+      },
+      "title": "Lemma 9.1.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_L_center_ge",
+        "module": "TernaryGoldbach.Explicit.LogDerivL"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_L_center_ge",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_L_center_ge {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (T : ℝ) :\n    0.355 ≤ ‖χ.LFunction (2 + T * I)‖ :=",
+            "line": 89,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LogDerivL.lean",
+            "fragment": "L89"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          179
+        ],
+        "printed": [
+          169
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lemma 9.1.2 serves only smoothings with η(0) ≠ 0; Lean's explicit formula admits only smoothings whose Mellin transform is holomorphic on Re s > −1, so it never needs the lemma."
+}

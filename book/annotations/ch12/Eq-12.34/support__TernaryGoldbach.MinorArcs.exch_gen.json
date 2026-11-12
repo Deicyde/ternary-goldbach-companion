@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.34",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 248,
+        "rect": [
+          0.25926,
+          0.63708,
+          0.56816,
+          0.04401
+        ]
+      },
+      "title": "Equation (12.34)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.exch_gen",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot4"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.exch_gen",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem exch_gen (f : ℕ → ℝ) (hf0 : ∀ n, 0 ≤ f n)\n    (hanti : ∀ a b : ℕ, a.Prime → b.Prime → b ≤ a → f a ≤ f b)\n    (P : Finset ℕ) (hP : ∀ p ∈ P, p.Prime) :\n    ∏ p ∈ P, f p ≤ ∏ i ∈ range P.card, f (Nat.nth Nat.Prime i) ∧\n      ∑ p ∈ P, f p ≤ ∑ i ∈ range P.card, f (Nat.nth Nat.Prime i) :=",
+            "line": 220,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot4.lean",
+            "fragment": "L220"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          248
+        ],
+        "printed": [
+          238
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's majorant ŝ avoids the exception."
+}

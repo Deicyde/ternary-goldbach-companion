@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.19",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 94,
+        "rect": [
+          0.25926,
+          0.34393,
+          0.56816,
+          0.05552
+        ]
+      },
+      "title": "Equation (5.19)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.19"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_g2",
+        "module": "TernaryGoldbach.MinorArcs.T2Defs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_g2",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_g2 {y : ℝ} (hy : 0 < y) :\n    ∫ u in (1 / 2 : ℝ)..1, g2 (u * y) =\n      ∑ r₁ ∈ Icc 1 ⌊y⌋₊, ∑ r₂ ∈ Icc 1 ⌊y⌋₊,\n        (if Nat.Coprime r₁ r₂ ∧ Odd (r₁ * r₂) then\n          (μ r₁ : ℝ) * μ r₂ / ((σ 1 r₁ : ℝ) * σ 1 r₂) else 0) * wM y r₁ r₂ :=",
+            "line": 53,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Defs.lean",
+            "fragment": "L53"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          94
+        ],
+        "printed": [
+          84
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Formalized for v = 2 only, as a per-s identity assembled inside S1_bound; boundary terms r_i = S/s carry weight 0."
+}

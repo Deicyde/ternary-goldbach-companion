@@ -1,0 +1,70 @@
+{
+  "id": "Corollary 7.1.3",
+  "kind": "corollary",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 149,
+        "rect": [
+          0.17135,
+          0.15373,
+          0.56816,
+          0.18776
+        ]
+      },
+      "title": "Corollary 7.1.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 7.1.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err933_le_book",
+        "module": "TernaryGoldbach.MajorArcs.Cor713"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err933_le_book",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem err933_le_book {y : ℝ} (hy : 1e8 ≤ y) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000) {δ : ℝ}\n    (hδ : |δ| ≤ 4 * 300000 / q) :\n    err933 q (1e8 / q) δ y ≤ 2.485e-19 + (381500 / √q + 76) / √y :=",
+            "line": 153,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L153"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          149
+        ],
+        "printed": [
+          139
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the corollary only for y ≥ 10²⁵ with |E| ≤ 10⁻¹⁷ + 4.7·10⁶/(√q√y), which the book's bound implies (381500/√q + 76 ≤ 4.7·10⁶/√q for q ≤ 3·10⁵). major_arcs_input and minor_arcs_input cite it but state Ch. 14 results, not this corollary."
+}

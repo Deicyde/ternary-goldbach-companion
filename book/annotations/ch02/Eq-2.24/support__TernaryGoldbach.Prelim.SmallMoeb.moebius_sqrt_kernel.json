@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.24",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 47,
+        "rect": [
+          0.17135,
+          0.81225,
+          0.56816,
+          0.04208
+        ]
+      },
+      "title": "Equation (2.24)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.SmallMoeb.moebius_sqrt_kernel",
+        "module": "TernaryGoldbach.Prelim.SmallMoebius"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.SmallMoeb.moebius_sqrt_kernel",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem moebius_sqrt_kernel (k : ℕ) (h1 : 1 ≤ k) (h2 : k < 11815) :\n    |∑ n ∈ Icc 1 k, (μ n : ℝ) / n| ≤ √(2 / (k + 1)) :=",
+            "line": 285,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SmallMoebius.lean",
+            "fragment": "L285"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          47
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (2.24) only for x < 11815, where (2.21) takes over. Erratum: The remark after (2.24) (p. 38) says |sum_{n<=x} mu(n)/n| <= 1/(2 sqrt x) for all 3 <= x <= 7727068587, but mu(7727068587) = +1 and m(7727068587) = 5.6880854e-6 exceeds 1/(2 sqrt x) = 5.6880397e-6, so the bound fails already at x = 7727068587; the correct range is 3 <= x < 7727068587. (checked by `scripts/checks/eq_2_24.py`)."
+}

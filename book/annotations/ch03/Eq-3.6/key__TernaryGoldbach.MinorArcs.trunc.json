@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.6",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 55,
+        "rect": [
+          0.17135,
+          0.8363,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Equation (3.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.trunc",
+        "module": "TernaryGoldbach.MinorArcs.Vaughan"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.trunc",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "def trunc (f : ArithmeticFunction ℝ) (U : ℕ) : ArithmeticFunction ℝ :=\n  ⟨fun n => if n ≤ U then f n else 0, by simp⟩",
+            "line": 25,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Vaughan.lean",
+            "fragment": "L25"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          55
+        ],
+        "printed": [
+          45
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The book allows real U, V; Lean's U, V : ℕ lose nothing since only ⌊U⌋, ⌊V⌋ matter."
+}

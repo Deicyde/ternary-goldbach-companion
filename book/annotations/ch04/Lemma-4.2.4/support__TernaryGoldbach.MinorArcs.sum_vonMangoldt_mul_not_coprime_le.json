@@ -1,0 +1,89 @@
+{
+  "id": "Lemma 4.2.4",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 80,
+        "rect": [
+          0.25926,
+          0.60522,
+          0.56816,
+          0.25097
+        ]
+      },
+      "title": "Lemma 4.2.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4#0"
+        }
+      }
+    },
+    {
+      "location": {
+        "page": 81,
+        "rect": [
+          0.17135,
+          0.15806,
+          0.56816,
+          0.34383
+        ]
+      },
+      "title": "Lemma 4.2.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.2.4#1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_not_coprime_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Proof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_vonMangoldt_mul_not_coprime_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_vonMangoldt_mul_not_coprime_le {q : ℕ} (hq : Odd q) {V : ℝ} (hV : 1 ≤ V) :\n    ∑ v ∈ Icc 1 ⌊V⌋₊, (if ¬ Nat.Coprime q v then (Λ v : ℝ) * v else 0) ≤\n      3 / 2 * V * Real.log q :=",
+            "line": 470,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Proof.lean",
+            "fragment": "L470"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          80,
+          81
+        ],
+        "printed": [
+          70,
+          71
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves both cases for η₂ with a factor 3/2 on the (U+1)²V log q term, c₁ = 1+|η'|₁/(x/D) and cruder lower-order terms; it drops UV + (19/18)Q₀ ≤ x/5.6 and Q₀ ≥ 2√x."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.30",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 183,
+        "rect": [
+          0.17135,
+          0.17811,
+          0.56816,
+          0.03883
+        ]
+      },
+      "title": "Equation (9.30)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_le_sobolev",
+        "module": "TernaryGoldbach.Explicit.LineZeros"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_le_sobolev",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_le_sobolev {f f' : ℝ → ℂ} (hf : ∀ t, HasDerivAt f (f' t) t) (hf' : Continuous f')\n    {a b γ : ℝ} (hab : a < b) (hγ : γ ∈ Icc a b) :\n    ‖f γ‖ ≤ (1 / (b - a)) * (∫ t in a..b, ‖f t‖) + ∫ t in a..b, ‖f' t‖ :=",
+            "line": 17,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LineZeros.lean",
+            "fragment": "L17"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          183
+        ],
+        "printed": [
+          173
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "For t²e^{−t²/2}, |η/√t|₁ = 2^{1/4}Γ(5/4) = 1.07790 (recomputed). Lean never states it: the Sobolev-window argument bounds |G_δ(½+iγ)| through ∫|G| and ∫|G′| over the window."
+}

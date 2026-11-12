@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 4.1.3",
+  "kind": "lemma",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 65,
+        "rect": [
+          0.17135,
+          0.64616,
+          0.56816,
+          0.12606
+        ]
+      },
+      "title": "Lemma 4.1.3",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 4.1.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.residue_form_gen",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.residue_form_gen",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem residue_form_gen {α Q : ℝ} {a : ℤ} {q : ℕ} (h : Approx α a q Q) {y₁ y₂ : ℝ}\n    (hy : 0 ≤ y₁) (hlen : y₂ - y₁ ≤ q) (hy₂ : y₂ ≤ Q / 2) (Φ : ℝ → ℝ) (hΦ : ∀ x, 0 ≤ Φ x) :\n    ∃ τ : ℕ → ℝ, (∀ R, τ R ∈ Icc (0 : ℝ) (1 / 2)) ∧\n      ∑ n ∈ Finset.Ioc ⌊y₁⌋ ⌊y₂⌋,\n          (if (q : ℤ) ∣ n then 0 else Φ (Real.sin (π * α * n) ^ 2)) ≤\n        ∑ R ∈ Finset.Icc 1 (q - 1), Φ (Real.sin (π * (R + τ R) / q) ^ 2) :=",
+            "line": 1545,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1545"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          65
+        ],
+        "printed": [
+          55
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Further slips in the proof. Erratum: For C < B sin(π/q) the proof's majorant X already exceeds the right side of (4.6) near C = B sin(π/2q) (ratio 1.0696 at q = 140, above 1 for every q ≤ 400 except q = 3), and the printed relaxation to C = B sin(π/q) gives the factor 3 + log((q/π)sin(π/q)) ≥ 2.548, so the range C ≤ Bπ/(eq), where (4.6) claims the factor 2, is not proved. (checked by `scripts/checks/lemma_4_1_3.py`)."
+}

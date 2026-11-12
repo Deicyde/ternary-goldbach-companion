@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.3.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 192,
+        "rect": [
+          0.25926,
+          0.15373,
+          0.56816,
+          0.24296
+        ]
+      },
+      "title": "Proposition 9.3.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.3.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_3_2_one",
+        "module": "TernaryGoldbach.MajorArcs.Prop932"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_3_2_one",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem prop_9_3_2_one {x : ℝ} (hx : 1 ≤ x) (δ : ℝ) {q : ℕ} [NeZero q] (hq : q = 1)\n    (χ : DirichletCharacter ℂ q) (hχ : χ.IsPrimitive) {T0 : ℝ} (hT0 : max (10 * π * |δ|) 50 ≤ T0)\n    (hG : GRHUpTo χ T0) :\n    ‖Schar χ (fun n => ((Λ n * phi (n / x) : ℝ) : ℂ)) (δ / x) -\n        𝓕 (fun u => (phiPos u : ℂ)) (-δ) * x‖ ≤ errZ T0 δ x * x :=",
+            "line": 69,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop932.lean",
+            "fragment": "L69"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          192
+        ],
+        "printed": [
+          182
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the proposition with its own, larger error err932N in place of (9.57); MajorArcs.err932 transcribes (9.57) but no theorem bounds the sum by it."
+}

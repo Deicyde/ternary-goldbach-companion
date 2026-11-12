@@ -1,0 +1,70 @@
+{
+  "id": "Eq C.6",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 309,
+        "rect": [
+          0.17135,
+          0.62536,
+          0.56816,
+          0.03947
+        ]
+      },
+      "title": "Equation (C.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq C.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_inv_mul_pred_le",
+        "module": "TernaryGoldbach.Prelim.MertensProduct"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_inv_mul_pred_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_inv_mul_pred_le {a b : ℕ} (ha : 1 ≤ a) (hab : a ≤ b) :\n    ∑ n ∈ Ioc a b, (1 : ℝ) / (n * (n - 1)) ≤ 1 / a - 1 / b :=",
+            "line": 713,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MertensProduct.lean",
+            "fragment": "L713"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          309
+        ],
+        "printed": [
+          299
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses the same telescoping in finite and shifted forms; it never bounds ∏_{p>r}(1+1/(p(p−1))) since it needs neither (C.7) nor (C.8)."
+}

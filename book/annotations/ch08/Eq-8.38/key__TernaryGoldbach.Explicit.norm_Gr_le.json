@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.38",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 164,
+        "rect": [
+          0.25926,
+          0.69577,
+          0.56816,
+          0.0718
+        ]
+      },
+      "title": "Equation (8.38)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_Gr_le",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_Gr_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Gr_le (s : ℂ) (δ : ℝ) {θ : ℝ} (hθ : |θ| < π / 4) (hs : -2 < s.re)\n    (hsg : 0 ≤ θ * s.im) :\n    ‖Gr s δ 0‖ ≤ Real.exp (-(|θ| * |s.im|)) * ∫ r in Ioi (0:ℝ),\n      r ^ (s.re + 1) * Real.exp (-(Real.cos (2 * θ) / 2) * r ^ 2 + (2 * π * |δ| * |Real.sin θ|) * r) :=",
+            "line": 359,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L359"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          164
+        ],
+        "printed": [
+          154
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Needs 2β ≤ arg u₀,₊ so that (8.37) holds on L₂. Used with β = π/8 for any ρ (√(π/(2cos(π/4))) = √π/2^{1/4} = 1.49045) and with β ∈ {π/6, π/5} for ρ ≤ 3/2."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.1",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 42,
+        "rect": [
+          0.25926,
+          0.81428,
+          0.56816,
+          0.03813
+        ]
+      },
+      "title": "Equation (2.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2DD_eq",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Fourier"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2DD_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem eta2DD_eq {t : ℝ} (ht : t ≠ 0) :\n    ((2 * π * t) ^ 2 : ℂ) * 𝓕 (fun u => (eta2 u : ℂ)) t = eta2DD t :=",
+            "line": 152,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Fourier.lean",
+            "fragment": "L152"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          42
+        ],
+        "printed": [
+          32
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has no general form of (2.1); it integrates by parts piece by piece for each weight (k = 2 only) and replaces the book's k = 3 use for η◦ by an L² tail bound."
+}

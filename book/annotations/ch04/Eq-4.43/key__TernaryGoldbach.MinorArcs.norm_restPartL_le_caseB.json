@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.43",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 77,
+        "rect": [
+          0.17135,
+          0.7418,
+          0.56816,
+          0.0577
+        ]
+      },
+      "title": "Equation (4.43)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartL_le_caseB",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_restPartL_le_caseB {α x δ Q M D : ℝ} {a k : ℤ} {q : ℕ} (hx : 1 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) (hD1 : 1 ≤ D) (hD4 : D ≤ x / 4) (hDe : D ≤ x / rexp 1)\n    (hD'Q : min (c₂ * x / q) D ≤ Q / 2) (hMD' : min (c₂ * x / q) D ≤ M) :\n    ‖restPartL α x D M q‖ ≤ bound_4_41 x q D :=",
+            "line": 970,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L970"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          77
+        ],
+        "printed": [
+          67
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "With M = min(Q/2, D) (Lean: Mof, unrounded Q), the book's range Q/2 < m ≤ D is exactly Lean's m > M. The sentence after (4.43) cites (4.15) where (4.43) is meant (harmless)."
+}

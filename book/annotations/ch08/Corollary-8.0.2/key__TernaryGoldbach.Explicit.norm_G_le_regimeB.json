@@ -1,0 +1,70 @@
+{
+  "id": "Corollary 8.0.2",
+  "kind": "corollary",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 154,
+        "rect": [
+          0.25926,
+          0.64626,
+          0.56816,
+          0.15126
+        ]
+      },
+      "title": "Corollary 8.0.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Corollary 8.0.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_le_regimeB",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_le_regimeB",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_G_le_regimeB (s : ℂ) (δ : ℝ) (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1) (hτ : 50 ≤ |s.im|)\n    (hδ : 3 / 2 * (π * δ) ^ 2 ≤ |s.im|) :\n    ‖Gr s δ 0‖ ≤ 0.892 * |s.im| * Real.exp (-0.1598 * |s.im|) :=",
+            "line": 531,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L531"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          154
+        ],
+        "printed": [
+          144
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean covers the k = 2 shape for each term G_δ(w) with −1 ≤ Re w ≤ 1, which also serves the book's k = 1 use for η₊. k = 0 is not formalized; its only use is Lemma 9.2.1 → Prop 9.2.2 → Thm 7.1.1, which nothing later cites. Lean bounds each zero separately rather than the pair ρ, 1−ρ."
+}

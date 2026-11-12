@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.56",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 109,
+        "rect": [
+          0.17135,
+          0.46098,
+          0.56816,
+          0.09213
+        ]
+      },
+      "title": "Equation (5.56)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.56"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.prop_5_2_4_c",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem prop_5_2_4_c {α x δ U' W' W : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hx : 0 < x) (hW : 0 < W)\n    (hδ0 : δ ≠ 0) (hcond : x / (4 * W) + q ≤ x / (|δ| * q)) (hU' : x / (2 * W) ≤ U')\n    (hW' : 0 ≤ W') :\n    (S2 α x U' W' W ≤ (W - W' + x / (|δ| * q)) * logSqSum W' W) ∧\n    (∀ R : ℝ, 1 ≤ R → R ≤ W' → R ^ 2 ≤ x / (|δ| * q) / (q + x / (4 * W)) →\n      Nat.totient q / q * Real.log R * S2 α x U' W' W ≤\n        (W - W' + x / (|δ| * q)) * logSqSum W' W) :=",
+            "line": 588,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L588"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          109
+        ],
+        "printed": [
+          99
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean adds the hypothesis R ≤ W′ missing from [H, Lemma 5.2.1] and uses the factor W − W′ ≤ W/2; (5.56) follows when √Λ ≤ W′, which holds in Ch. Erratum: (5.56) applies Lemma 5.2.1 with R = sqrt(Lambda), and that lemma's proof uses Montgomery's inequality for every squarefree r <= R without checking that it applies. (checked by `scripts/checks/eq_5_56.py`)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.2",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 211,
+        "rect": [
+          0.17135,
+          0.48702,
+          0.56816,
+          0.03501
+        ]
+      },
+      "title": "Equation (10.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.repSum_lower_bound",
+        "module": "TernaryGoldbach.Helfgott.Main"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.repSum_lower_bound",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem repSum_lower_bound (N : ℕ) (hN : Odd N) (hN27 : 10 ^ 27 ≤ N) :\n    (1.049 - 1.0376) * xOf N ^ 2 / κ ≤ repSum (fun _ => True) N :=",
+            "line": 30,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Main.lean",
+            "fragment": "L30"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          211
+        ],
+        "printed": [
+          201
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines (10.2) only for the final choice η₁ = η₂ = η₊, η₃ = η_*, x = xOf N; circle_identity_tsum and tri cover general weights. repSum_lower_bound now assumes only PlattGRH and RamareMoebius."
+}

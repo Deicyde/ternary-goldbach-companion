@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.34",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 102,
+        "rect": [
+          0.25926,
+          0.49244,
+          0.56816,
+          0.03553
+        ]
+      },
+      "title": "Equation (5.34)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S1_bound",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIS1"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S1_bound",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S1_bound {x U W : ℝ} (hx : 0 < x) (hW : 0 < W) (hU : 1 ≤ U) :\n    S1 x U W ≤ x / W * H2 (x / (W * U)) +\n      1.27 * (riemannZeta (3 / 2)).re ^ 3 * x ^ (3 / 2 : ℝ) / (W ^ (3 / 2 : ℝ) * U) :=",
+            "line": 400,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+            "fragment": "L400"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          102
+        ],
+        "printed": [
+          92
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the upper bound only (the usable reading of the O*), with the extra harmless hypothesis U ≥ 1."
+}

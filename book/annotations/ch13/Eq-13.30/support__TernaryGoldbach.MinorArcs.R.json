@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.30",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 265,
+        "rect": [
+          0.17135,
+          0.32033,
+          0.56816,
+          0.04392
+        ]
+      },
+      "title": "Equation (13.30)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.R",
+        "module": "TernaryGoldbach.MinorArcs.PointwiseBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.R",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def R (x t : ℝ) : ℝ :=\n  0.27125 * Real.log (1 + Real.log (4 * t) /\n    (2 * Real.log (9 * x ^ (1 / 3 : ℝ) / (2.004 * t)))) + 0.41415",
+            "line": 27,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+            "fragment": "L27"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          265
+        ],
+        "printed": [
+          255
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "R° matters only for the convexity behind (13.31), which the Lean route does not use. The rewriting of R°_{z,e^u/4} and f′ were checked."
+}

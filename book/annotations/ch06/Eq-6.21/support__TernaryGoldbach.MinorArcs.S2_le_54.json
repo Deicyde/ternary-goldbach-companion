@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.21",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 120,
+        "rect": [
+          0.25926,
+          0.32025,
+          0.56816,
+          0.12832
+        ]
+      },
+      "title": "Equation (6.21)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S2_le_54",
+        "module": "TernaryGoldbach.MinorArcs.TypeIILarge"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S2_le_54",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem S2_le_54 {α x Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) (hx : 0 < x) {U V : ℕ}\n    (hV : (2000000 : ℝ) ≤ V) (hQ : 3.5 * (x / U) ≤ Q) {A : ℝ} (hVA : (V : ℝ) ≤ A)\n    (hqA : 2 * q * rexp 1 ≤ A) {W : ℝ} (hW : W ∈ Set.Icc A (x / U)) :\n    S2 α x (max U (x / (2 * W))) (max V (W / 2)) W ≤\n      (1 / 4 * x / (Nat.totient q * Real.log (W / (2 * q))) +\n        q / Nat.totient q * (W / Real.log (W / (2 * q)))) * logSqSum (max V (W / 2)) W :=",
+            "line": 548,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIILarge.lean",
+            "fragment": "L548"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          120
+        ],
+        "printed": [
+          110
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's integrand is exactly (6.21)'s, with κ₁ kept symbolic. Erratum: (6.21) uses (5.54) for every W up to x/U. (checked by `scripts/checks/eq_6_21.py`)."
+}

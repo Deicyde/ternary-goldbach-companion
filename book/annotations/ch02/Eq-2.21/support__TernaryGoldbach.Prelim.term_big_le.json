@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.21",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 47,
+        "rect": [
+          0.17135,
+          0.5037,
+          0.56816,
+          0.03905
+        ]
+      },
+      "title": "Equation (2.21)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.21"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.term_big_le",
+        "module": "TernaryGoldbach.Prelim.LiouvilleBound"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.term_big_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem term_big_le {z : ℝ} (hz : 0 < z) {u N : ℕ} (hu : u ∈ Icc 1 N)\n    (hge : 11815 ≤ z / (u * u : ℕ)) :\n    |∑ n ∈ Icc 1 ⌊z / (u * u : ℕ)⌋₊, (μ n : ℝ) / n| / (u * u : ℕ) ≤\n      0.03 / Real.log z * ((1 + 2 / 9 * Real.log u) * (1 / (u * u : ℕ))) :=",
+            "line": 241,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LiouvilleBound.lean",
+            "fragment": "L241"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          47
+        ],
+        "printed": [
+          37
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Taken verbatim as the hypothesis RamareMoebius."
+}

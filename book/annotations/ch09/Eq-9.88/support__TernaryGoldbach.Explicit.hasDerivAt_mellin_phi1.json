@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.88",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 202,
+        "rect": [
+          0.25926,
+          0.18342,
+          0.56816,
+          0.06929
+        ]
+      },
+      "title": "Equation (9.88)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.88"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.hasDerivAt_mellin_phi1",
+        "module": "TernaryGoldbach.Explicit.EtaPlusSq"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.hasDerivAt_mellin_phi1",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hasDerivAt_mellin_phi1 {s : ℂ} (hs : -2 < s.re) :\n    MellinConvergent phi2 s ∧ HasDerivAt (mellin phi1) (mellin phi2 s) s :=",
+            "line": 329,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusSq.lean",
+            "fragment": "L329"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          202
+        ],
+        "printed": [
+          192
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "½log|τ/2| + 0.609/|τ| ≤ ½log|τ| − 0.3222 for |τ| ≥ 25, so −0.297 leaves 0.025 of slack; the dropped imaginary part costs at most (Im ψ/2)²/(2(log x + ½log 12.5)) ≤ 0.017 for x ≥ 10⁸."
+}

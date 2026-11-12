@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.31",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 73,
+        "rect": [
+          0.17135,
+          0.59807,
+          0.56816,
+          0.07947
+        ]
+      },
+      "title": "Equation (4.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_2_caseB",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_4_2_2_caseB {α x δ Q₀ D : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q₀)\n    (hD : 1 ≤ D) (hDx : D ≤ x) (hcase : |δ| ≤ 1 / (2 * c₂) ∨ D ≤ Q₀ / 2) :\n    ‖typeI α x D‖ ≤ bound_4_30 x δ q D + bound_4_31 x q D :=",
+            "line": 1290,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L1290"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          73
+        ],
+        "printed": [
+          63
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Obtained from (4.28) by the book's listed changes: the max term of (4.23) doubled (giving 2|η'|₁/π·max(1,·)), (4.24) doubled (giving 55c₀c₂/6π² via (4.37)), and (4.26) halved (giving 3c₁/2 and 3c₁/2c₂). The Lean proof reproduces every coefficient."
+}

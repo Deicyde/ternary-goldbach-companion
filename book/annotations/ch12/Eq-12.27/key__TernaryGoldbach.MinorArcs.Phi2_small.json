@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.27",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 247,
+        "rect": [
+          0.17135,
+          0.44448,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Equation (12.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Phi2_small",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot9"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Phi2_small",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Phi2_small {q n : ℕ} (hq1 : 1 ≤ q) (hq : q < 22000000000) (hn1 : 1 ≤ n) (hn3 : n ≤ 3) :\n    Phi2 q n (max (Real.log q) (Real.log (1e5 / ((n : ℝ) + 1)))) ≤ 0 :=",
+            "line": 282,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot9.lean",
+            "fragment": "L282"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          247
+        ],
+        "printed": [
+          237
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has no counterpart of this threshold; its c₊ = 2 Φ-checks pass for ⌊R⌋ ≥ 4 with L = log q alone."
+}

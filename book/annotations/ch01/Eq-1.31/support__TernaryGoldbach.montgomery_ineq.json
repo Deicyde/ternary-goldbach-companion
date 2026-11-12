@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.31",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 32,
+        "rect": [
+          0.25926,
+          0.7433,
+          0.56816,
+          0.03892
+        ]
+      },
+      "title": "Equation (1.31)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.31"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.montgomery_ineq",
+        "module": "TernaryGoldbach.MinorArcs.Montgomery"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.montgomery_ineq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem montgomery_ineq {r : ℕ} (hr : Squarefree r) (s : Finset ℕ) (a : ℕ → ℂ)\n    (hs : ∀ n ∈ s, Nat.Coprime n r) (α : ℝ) :\n    ‖∑ n ∈ s, a n * e (α * n)‖ ^ 2 ≤\n      (Nat.totient r : ℝ) * ∑ b ∈ (range r).filter r.Coprime,\n        ‖∑ n ∈ s, a n * e ((α + b / r) * n)‖ ^ 2 :=",
+            "line": 138,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Montgomery.lean",
+            "fragment": "L138"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          32
+        ],
+        "printed": [
+          22
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The x/(4φ(q)) term is the odd-m constant of (5.54); for all m it is x/(2φ(q)). Lean needs W ≥ 50000, and its (2.19)-type bound (1/2)W log W now holds for W ≥ 2·10⁶ rather than the book's W ≥ 117."
+}

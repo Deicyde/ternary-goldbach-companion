@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 111,
+        "rect": [
+          0.17135,
+          0.77835,
+          0.56816,
+          0.07663
+        ]
+      },
+      "title": "Equation (6.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.smoothData_eta2log",
+        "module": "TernaryGoldbach.MinorArcs.Eta2Log"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.smoothData_eta2log",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem smoothData_eta2log : SmoothData (eta2log ρ) (Real.log ρ) (eta2'L1 * Real.log ρ)\n    (c₀ * Real.log ρ) :=",
+            "line": 241,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Eta2Log.lean",
+            "fragment": "L241"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          111
+        ],
+        "printed": [
+          101
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the first two lines non-strictly and replaces the third by the Fourier bound c₀ log ρ (Lemma B.2.3 with c₀ = 32); the printed middle expression for |η₂,ρ″|₁ is not used. Erratum: The middle expression printed for |eta''_{2,rho}|_1 in (6.2) is exactly 1/4 of the true value for rho outside (e^2, 4e^2). (checked by `scripts/checks/eq_6_2.py`)."
+}

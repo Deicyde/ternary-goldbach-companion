@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.24",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 30,
+        "rect": [
+          0.25926,
+          0.21434,
+          0.56816,
+          0.05178
+        ]
+      },
+      "title": "Equation (1.24)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.24"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.abs_sum_moebius_div_coprime_le_one",
+        "module": "TernaryGoldbach.Prelim.MoebiusCoprime"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.abs_sum_moebius_div_coprime_le_one",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem abs_sum_moebius_div_coprime_le_one (x : ℝ) {q : ℕ} (_hq : 1 ≤ q) :\n    |∑ n ∈ Icc 1 ⌊x⌋₊, (if Nat.Coprime n q then (μ n : ℝ) / n else 0)| ≤ 1 :=",
+            "line": 71,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/MoebiusCoprime.lean",
+            "fragment": "L71"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          30
+        ],
+        "printed": [
+          20
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "All-integer (v = 1) sketch of the q|m main term in the proof of Lemma 4.2.1. Lean does not state that lemma (TypeI.lean calls it 'only the template')."
+}

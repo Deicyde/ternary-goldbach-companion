@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.62",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 193,
+        "rect": [
+          0.17135,
+          0.8174,
+          0.56816,
+          0.04089
+        ]
+      },
+      "title": "Equation (9.62)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.62"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err932N_le_ErN",
+        "module": "TernaryGoldbach.MajorArcs.Cor933"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err932N_le_ErN",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem err932N_le_ErN {q : ℕ} [NeZero q] {T0 δ : ℝ} (hT0 : max (10 * π * |δ|) 50 ≤ T0) {x r : ℝ}\n    (hx : 0 < x) (hr : 0 < r) (hr1 : r ≤ 1) : err932N q T0 (δ * r) (r * x) ≤ ErN q T0 δ x r :=",
+            "line": 362,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor933.lean",
+            "fragment": "L362"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          193
+        ],
+        "printed": [
+          183
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Trivial identity; Lean states it with its own error err932N."
+}

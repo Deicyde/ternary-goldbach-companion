@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.3",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 149,
+        "rect": [
+          0.17135,
+          0.40851,
+          0.56816,
+          0.03932
+        ]
+      },
+      "title": "Equation (7.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.etaO_eq",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.etaO_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem etaO_eq {t : ℝ} (ht : 0 < t) : etaO t = hBase t * t * Real.exp (-t ^ 2 / 2) :=",
+            "line": 506,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L506"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          149
+        ],
+        "printed": [
+          139
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Used in the Lean Part III main term and ℓ² analysis (L2Major, CMain, FourierMain, MajorTotal). EtaCirc.lean's module doc writes η∘ = h(t)·t·e^{−t²/2} with Chapter 7's h, while [H, (11.3)] writes η∘ = h·η♥ with (11.2)'s different h."
+}

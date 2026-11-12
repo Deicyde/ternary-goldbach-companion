@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.4",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 113,
+        "rect": [
+          0.17135,
+          0.25982,
+          0.56816,
+          0.12758
+        ]
+      },
+      "title": "Equation (6.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI1_second",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeI1"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI1_second",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI1_second {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hc : SecondCase T δ q) :\n    ‖typeILog α (T ^ 3) (U2 T)‖ ≤\n      (0.0407 * Real.log T ^ 2 + 14.1 * Real.log T + 15.7) * T ^ 2 :=",
+            "line": 314,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeI1.lean",
+            "fragment": "L314"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          113
+        ],
+        "printed": [
+          103
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never forms (6.4); it evaluates (4.41) directly at each parameter choice, so the dropped term (2√(c₀c₁)/π)U log(ex/U) is included."
+}

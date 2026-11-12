@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.30",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 99,
+        "rect": [
+          0.17135,
+          0.721,
+          0.56816,
+          0.13249
+        ]
+      },
+      "title": "Equation (5.30)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.T2_eq_integral",
+        "module": "TernaryGoldbach.MinorArcs.T2Basic"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.T2_eq_integral",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem T2_eq_integral {S : ℝ} (hS : 1 ≤ S) :\n    T2 S = S⁻¹ * ∫ y in Set.Ioc (0 : ℝ) S, g2 y * Nodd S y :=",
+            "line": 119,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/T2Basic.lean",
+            "fragment": "L119"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          99
+        ],
+        "printed": [
+          89
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean replaces the Euler–Maclaurin step by the counting bound |N_S(y) − S/(4y)| ≤ 1; the main term ¼Σg₂(m)log(1+1/m) is the same. Erratum: (5.30) prints f'(3/2m), f'(s/(m+1)), (2m/s)^2, ((m+1)/s)^2 where S is meant, and its variation step is wrong: f' has total variation 6(m+1)^2/S^2 and |f'(S/2m-)| = 2m^2/S^2, so the stated Euler-Maclaurin method gives (m+1)^2/(2S^2) (odd n: (m+1)^2/S^2), which is at most the printed c_{v,0}(5m^2+2m+1)/S^2 only for m >= 3. (checked by `scripts/checks/eq_5_30.py`)."
+}

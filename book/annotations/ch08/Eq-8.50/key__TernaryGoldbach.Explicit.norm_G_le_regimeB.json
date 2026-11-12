@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.50",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 171,
+        "rect": [
+          0.17135,
+          0.37073,
+          0.56816,
+          0.04315
+        ]
+      },
+      "title": "Equation (8.50)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.50"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_G_le_regimeB",
+        "module": "TernaryGoldbach.Explicit.MellinRotate"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_G_le_regimeB",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_G_le_regimeB (s : ℂ) (δ : ℝ) (hs0 : -1 ≤ s.re) (hs1 : s.re ≤ 1) (hτ : 50 ≤ |s.im|)\n    (hδ : 3 / 2 * (π * δ) ^ 2 ≤ |s.im|) :\n    ‖Gr s δ 0‖ ≤ 0.892 * |s.im| * Real.exp (-0.1598 * |s.im|) :=",
+            "line": 531,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinRotate.lean",
+            "fragment": "L531"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          171
+        ],
+        "printed": [
+          161
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Used in the last step of Cor 8.0.2 ('remembering to add (8.50)'). For δ ≠ 0, one of |F_δ(s+k)| and |F_δ(1−s+k)| is in the main case (8.1) and the other in the same-sign case; for δ = 0 both are same-sign. 4·10⁻⁷ is added to the c₂ bounds in κ_{k,0}, and 6·10⁻⁵ to the c₁ bounds in κ_{k,1}."
+}

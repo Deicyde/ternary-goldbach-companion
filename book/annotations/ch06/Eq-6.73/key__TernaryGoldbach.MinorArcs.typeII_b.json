@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.73",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 142,
+        "rect": [
+          0.25926,
+          0.1796,
+          0.56816,
+          0.2379
+        ]
+      },
+      "title": "Equation (6.73)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.73"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_b",
+        "module": "TernaryGoldbach.MinorArcs.SecondTypeIIb"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_b",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_b {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (Q2 T)) (hq : (q : ℝ) ≤ T / 6) (hδ8 : 8 < |δ|)\n    (hδq : 8 * (T / 6) < |δ| * q) :\n    ‖typeII α (T ^ 3) (U2 T) (V2 T)‖ ≤\n      (√(12 * a1F0 (Real.log T) * bX0 (Real.log T) * bB0 (Real.log T)) + bSEC (Real.log T)) *\n        (T ^ 2 * √T) :=",
+            "line": 741,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondTypeIIb.lean",
+            "fragment": "L741"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          142
+        ],
+        "printed": [
+          132
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's analogue is in L = log x^{1/3} at θ = 8 and its own parameters, and it bounds case (b) by the same 1.413L^{3/2} as case (a)."
+}

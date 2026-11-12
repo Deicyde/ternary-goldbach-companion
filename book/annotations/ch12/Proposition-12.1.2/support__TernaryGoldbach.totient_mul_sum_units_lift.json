@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 12.1.2",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 240,
+        "rect": [
+          0.25926,
+          0.33382,
+          0.56816,
+          0.19462
+        ]
+      },
+      "title": "Proposition 12.1.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 12.1.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.totient_mul_sum_units_lift",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.totient_mul_sum_units_lift",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem totient_mul_sum_units_lift {q L : ℕ} [NeZero q] [NeZero L] (hqL : q ∣ L) {a : ℕ → ℂ}\n    (ha : Summable fun n => ‖a n‖) (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n L) (β : ℝ) :\n    q.totient * ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2 =\n      ∑ Ψ : DirichletCharacter ℂ L,\n        (if Ψ.conductor ∣ q then wq q Ψ.conductor else 0) * ‖Schar Ψ⁻¹ a β‖ ^ 2 :=",
+            "line": 189,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L189"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          240
+        ],
+        "printed": [
+          230
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean needs δ0 ≥ 2 (for 2Q ≤ √x, because its common modulus includes odd q ∈ (Q, 2Q]); the book's δ0 ≥ 1 is sound, and both applications use δ0 ≥ 8. prop_12_1_2 now carries no hypotheses."
+}

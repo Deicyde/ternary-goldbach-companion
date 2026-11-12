@@ -1,0 +1,70 @@
+{
+  "id": "Theorem 7.1.4",
+  "kind": "theorem",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 150,
+        "rect": [
+          0.25926,
+          0.25397,
+          0.56816,
+          0.24307
+        ]
+      },
+      "title": "Theorem 7.1.4",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Theorem 7.1.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.errPZ_le",
+        "module": "TernaryGoldbach.MajorArcs.Thm714"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.errPZ_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem errPZ_le {x : ℝ} (hx : 4.9e26 ≤ x) {δ : ℝ} (hδ : |δ| ≤ 6e5) :\n    errPZ 1e8 δ x ≤ 1e-18 + 6.24e6 / √x :=",
+            "line": 485,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Thm714.lean",
+            "fragment": "L485"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          150
+        ],
+        "printed": [
+          140
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the odd/even statements only for x ≥ 4.9·10²⁶ with |E| ≤ (7.5·10⁻⁸ + 7.7·10⁶/√x)/√q, implied by the book; its separate q = 1 bound 10⁻¹⁸ + 6.24·10⁶/√x is incomparable with the book's sharper q = 1 clause."
+}

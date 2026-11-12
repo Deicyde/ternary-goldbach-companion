@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.6",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 212,
+        "rect": [
+          0.25926,
+          0.61258,
+          0.56816,
+          0.03434
+        ]
+      },
+      "title": "Equation (10.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.sum_char_mul_S",
+        "module": "TernaryGoldbach.MinorArcs.Bombieri"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.sum_char_mul_S",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_char_mul_S {q : ℕ} [NeZero q] (ψ : DirichletCharacter ℂ q) {a : ℕ → ℂ}\n    (ha : Summable fun n => ‖a n‖) (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q) (β : ℝ) :\n    ∑ b : ZMod q, ψ b * expTsum a (b.val / q + β) =\n      gaussSum ψ ZMod.stdAddChar * Schar ψ⁻¹ a β :=",
+            "line": 78,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Bombieri.lean",
+            "fragment": "L78"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          212
+        ],
+        "printed": [
+          202
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean uses Mathlib's gaussSum; τ(χ,b) appears as gaussSum with mulShift b, and τ(χ₀,n) as the Ramanujan sum ramanujan_sum."
+}

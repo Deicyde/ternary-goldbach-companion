@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.25",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 275,
+        "rect": [
+          0.17135,
+          0.63769,
+          0.56816,
+          0.09065
+        ]
+      },
+      "title": "Equation (14.25)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.25"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.coprime_split",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.coprime_split",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem coprime_split {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hq : q ≤ 300000) :\n    ∑' n, ‖cP x n - coprimePart q (cP x) n‖ ≤ 1e-15 * x :=",
+            "line": 298,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L298"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          275
+        ],
+        "printed": [
+          265
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Prop 10.4.1 needs log 2r, not log r (e.g. q = 154770); then LS_{η*} ≤ 25.73 log x + 0.60 and LS_{η₊} ≤ 19.65 log x + 30.04, negligible downstream. Lean bounds the non-coprime sum directly."
+}

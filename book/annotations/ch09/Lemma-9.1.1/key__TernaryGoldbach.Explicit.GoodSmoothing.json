@@ -1,0 +1,70 @@
+{
+  "id": "Lemma 9.1.1",
+  "kind": "lemma",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 174,
+        "rect": [
+          0.25926,
+          0.49314,
+          0.56816,
+          0.36313
+        ]
+      },
+      "title": "Lemma 9.1.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Lemma 9.1.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.GoodSmoothing",
+        "module": "TernaryGoldbach.Explicit.ExplicitFormula"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.GoodSmoothing",
+            "kind": "inductive"
+          },
+          "snippet": {
+            "text": "structure GoodSmoothing (φ : ℝ → ℂ) (K c : ℝ) : Prop where\n  continuousAt : ∀ y : ℝ, 0 < y → ContinuousAt φ y\n  conv : MellinConvergent φ ((3 / 2 : ℝ) : ℂ)\n  diff : ∀ s : ℂ, -1 < s.re → DifferentiableAt ℂ (mellin φ) s\n  c_pos : 0 < c\n  strip : ∀ s : ℂ, -1 / 2 ≤ s.re → s.re ≤ 3 / 2 → ‖mellin φ s‖ ≤ K * Real.exp (-(c * |s.im|))",
+            "line": 51,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitFormula.lean",
+            "fragment": "L51"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          174
+        ],
+        "printed": [
+          164
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the identity only for smoothings with Mellin transform holomorphic at 0 and exponentially decaying, as a limit of rectangle zero sums with no R; the error term is bounded via Landau's lemma with much larger constants. The book's R misses η(0)log x for even χ when η(0) ≠ 0, a case Lean excludes."
+}

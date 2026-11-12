@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.12",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 242,
+        "rect": [
+          0.25926,
+          0.80673,
+          0.56816,
+          0.04817
+        ]
+      },
+      "title": "Equation (12.12)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.12"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.RamPf.abs_E_le",
+        "module": "TernaryGoldbach.Prelim.RamareMain"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.RamPf.abs_E_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem abs_E_le {d : ℕ} (hd : 1 ≤ d) {R : ℝ} (hR : 0 < R) :\n    |∑' a, hD d a * Fo (R / a)| ≤ 7.04 * R ^ (-(1 / 3 : ℝ)) * f1qP d :=",
+            "line": 106,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/RamareMain.lean",
+            "fragment": "L106"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          242
+        ],
+        "printed": [
+          232
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (12.12) for all R > 0. Ram95's (3.9) claims a product ≤ 8, but its value is ≈ 8.0836;"
+}

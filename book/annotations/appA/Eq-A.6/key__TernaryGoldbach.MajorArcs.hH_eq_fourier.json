@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.6",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 290,
+        "rect": [
+          0.25926,
+          0.16974,
+          0.56816,
+          0.05642
+        ]
+      },
+      "title": "Equation (A.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.hH_eq_fourier",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.hH_eq_fourier",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hH_eq_fourier {H t : ℝ} (hH0 : 0 < H) (ht : 0 < t) :\n    (hH H t : ℂ) = ∫ ξ in Icc (-(H / (2 * π))) (H / (2 * π)),\n      Complex.exp (↑(2 * π * ξ * Real.log t) * I) * 𝓕 gC ξ :=",
+            "line": 272,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L272"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          290
+        ],
+        "printed": [
+          280
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked with H = 5: h_H(t) computed from (A.4) equals (1/2π)∫_{−H}^{H}Mh(iτ)t^{−iτ}dτ to 6 digits at t = 0.3, 1, 1.7, 2.5 (1.563929 at t = 1). Mh_H(iτ) is not an absolutely convergent integral: h_H(e^u) ≈ Im(e^{iHu}Mh(−iH))/(πu) as |u| → ∞ (H = 5, u = 40: −2.193e−3 vs −2.165e−3; |Mh(200i)| = 5.37e−7 ≠ 0)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq B.17",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 305,
+        "rect": [
+          0.17135,
+          0.73914,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Equation (B.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq B.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_half_le",
+        "module": "TernaryGoldbach.MinorArcs.TypeITotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_fourier_logeta2_half_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_fourier_logeta2_half_le (δ : ℝ) :\n    ‖fourier (fun t => Real.log t * eta2 t) (-(δ / 2))‖ ≤ logFourierBound δ :=",
+            "line": 82,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeITotal.lean",
+            "fragment": "L82"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          305
+        ],
+        "printed": [
+          295
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean states the consequence |f̂|_∞ ≤ 2 − log 4 used in §6.2.1, not the L¹ identity; the identity is evaluated inside the proof."
+}

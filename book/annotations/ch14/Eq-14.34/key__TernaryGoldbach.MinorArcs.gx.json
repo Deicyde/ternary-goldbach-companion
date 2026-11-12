@@ -1,0 +1,70 @@
+{
+  "id": "Eq 14.34",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 279,
+        "rect": [
+          0.17135,
+          0.46065,
+          0.56816,
+          0.04345
+        ]
+      },
+      "title": "Equation (14.34)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 14.34"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.gx",
+        "module": "TernaryGoldbach.MinorArcs.GBound"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.gx",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def gx (x r : ℝ) : ℝ :=\n  ((R x (2 * r) * Real.log (2 * r) + 0.8764) * √(Fr r) + 2.526) / √(2 * r) + Lg (2 * r) / r +\n    3.8 * x ^ (-1 / 6 : ℝ)",
+            "line": 34,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/GBound.lean",
+            "fragment": "L34"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          279
+        ],
+        "printed": [
+          269
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "R_{y,K,φ,t} is never defined in Lean; ĝ = 1.398·max(g_y(n),h(y)) + 17(670/n)³/3 with Lean's g_y constants 0.8764, 2.526, 3.8. The printed '=' should be '≤'."
+}

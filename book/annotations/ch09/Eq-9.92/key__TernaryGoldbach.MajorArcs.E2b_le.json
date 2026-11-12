@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.92",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 203,
+        "rect": [
+          0.17135,
+          0.69507,
+          0.56816,
+          0.06772
+        ]
+      },
+      "title": "Equation (9.92)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.92"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.E2b_le",
+        "module": "TernaryGoldbach.MajorArcs.Cor713"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.E2b_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem E2b_le {q : ℕ} [NeZero q] (hq2 : 2 ≤ q) (hq3 : q ≤ 300000) {δ : ℝ}\n    (hδ : |δ| ≤ 1.2e6 / q) : E2b q (1e8 / q) δ ≤ 2e-18 :=",
+            "line": 422,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Cor713.lean",
+            "fragment": "L422"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          203
+        ],
+        "printed": [
+          193
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves both bounds inline, rounding 1000/(12π) down to 26.5."
+}

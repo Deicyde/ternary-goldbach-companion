@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.14",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 92,
+        "rect": [
+          0.25926,
+          0.17044,
+          0.56816,
+          0.0959
+        ]
+      },
+      "title": "Equation (5.14)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_Ioc_dvd_sub",
+        "module": "TernaryGoldbach.Prelim.SqfreeCount"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_Ioc_dvd_sub",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_Ioc_dvd_sub {a b : ℝ} (ha : 0 ≤ a) (hab : a ≤ b) {D : ℕ} (hD : 1 ≤ D) :\n    |(∑ l ∈ Ioc ⌊a⌋₊ ⌊b⌋₊, if D ∣ l then (1 : ℝ) else 0) - (b - a) / D| < 1 :=",
+            "line": 68,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SqfreeCount.lean",
+            "fragment": "L68"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          92
+        ],
+        "printed": [
+          82
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Same content, organized per pair (r₁,r₂) and per divisor e of 2r₁r₂ instead of over (d₁,d₂,s₁,s₂,d₃)."
+}

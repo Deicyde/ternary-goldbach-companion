@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.27",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 221,
+        "rect": [
+          0.17135,
+          0.44505,
+          0.56816,
+          0.09373
+        ]
+      },
+      "title": "Equation (10.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.err_scaled_le",
+        "module": "TernaryGoldbach.MajorArcs.ArcChars"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.err_scaled_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem err_scaled_le {x c : ℝ} (hx : 4.9e26 ≤ x) (hc2 : 2 ≤ c) (hc3 : c ≤ 300000) :\n    √c * (((7.5e-8 + 7.7e6 / √x) / √c) * x + 1e-15 * x) ≤ 4.25e-7 * x :=",
+            "line": 324,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/ArcChars.lean",
+            "fragment": "L324"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          221
+        ],
+        "printed": [
+          211
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines none of E, ET, K_{r,2}; it uses explicit per-modulus bounds, cruder than [H]'s (14.1)–(14.2) but sufficient."
+}

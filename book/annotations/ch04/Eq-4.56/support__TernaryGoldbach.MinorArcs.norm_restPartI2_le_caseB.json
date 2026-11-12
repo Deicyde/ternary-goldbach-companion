@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.56",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 83,
+        "rect": [
+          0.17135,
+          0.64345,
+          0.56816,
+          0.05673
+        ]
+      },
+      "title": "Equation (4.56)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.56"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseB",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_restPartI2_le_caseB {α x δ Q M U V : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) (hU : 0 ≤ U) (hV : 0 ≤ V) (hD2 : 2 ≤ U * V)\n    (hcx : 6 ≤ c₂ * x) (hD'Q : min (c₂ * x / q) (U * V) ≤ Q / 2)\n    (hMD' : min (c₂ * x / q) (U * V) ≤ M) :\n    ‖restPartI2 α x M U V q‖ ≤ bound_4_51 x q U V :=",
+            "line": 461,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L461"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          83
+        ],
+        "printed": [
+          73
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The display omits the absolute value on T_{m,∘}; the text uses |T_{m,∘}|. Lean states it with absolute values and without the parity condition on m."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.91",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 202,
+        "rect": [
+          0.25926,
+          0.53808,
+          0.56816,
+          0.07611
+        ]
+      },
+      "title": "Equation (9.91)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.91"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.E2g",
+        "module": "TernaryGoldbach.Explicit.ZeroSumGen"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.E2g",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def E2g (B : ℝ → ℝ) (κ T0 EB' EA' ρB ρA : ℝ) : ℝ :=\n  EB' * (2 * Z3g B T0 / (1 - ρB) + 2 * c3g κ T0 / (1 - ρB) ^ 2) +\n    EA' * (2 * Z3g B T0 / (1 - ρA) + 2 * c3g κ T0 / (1 - ρA) ^ 2)",
+            "line": 195,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZeroSumGen.lean",
+            "fragment": "L195"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          202
+        ],
+        "printed": [
+          192
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean bounds the tail as a geometric series over 4.4-windows, with no counterpart of the integral. The first line of (9.91) keeps 8.39 where (9.89) has 8.45; the printed inequality still holds."
+}

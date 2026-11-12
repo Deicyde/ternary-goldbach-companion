@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.4",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 89,
+        "rect": [
+          0.17135,
+          0.43427,
+          0.56816,
+          0.15814
+        ]
+      },
+      "title": "Equation (5.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.S1",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIS1"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.S1",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def S1 (x U W : ℝ) : ℝ :=\n  ∑ m ∈ Ioc ⌊max U (x / (2 * W))⌋₊ ⌊x / W⌋₊,\n    if Odd m then (∑ d ∈ m.divisors.filter (fun d : ℕ => U < (d : ℝ)), (μ d : ℝ)) ^ 2 else 0",
+            "line": 53,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIS1.lean",
+            "fragment": "L53"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          89
+        ],
+        "printed": [
+          79
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean definitions are the v = 2 instances;"
+}

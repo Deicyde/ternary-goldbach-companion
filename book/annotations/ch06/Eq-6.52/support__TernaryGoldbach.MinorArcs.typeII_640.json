@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.52",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 130,
+        "rect": [
+          0.25926,
+          0.46828,
+          0.56816,
+          0.07016
+        ]
+      },
+      "title": "Equation (6.52)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.52"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_640",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITotalGen"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_640",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_640 {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (h2α : 2 * α = a / q + δ / x + k) (hδQ : |δ / x| ≤ 1 / (q * Q)) (hδ8 : 8 ≤ |δ|) (hx : 0 < x)\n    (hQx : x ≤ Q ^ 2) {U V : ℕ} (hU : 1 ≤ U) (hV : (2000000 : ℝ) ≤ V) (hVU : (V : ℝ) ≤ x / U)\n    (hcV : |δ| * q * (1 + x / (2 * U * Q)) / 4 * rexp 1 ≤ V) :\n    let c :=",
+            "line": 505,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITotalGen.lean",
+            "fragment": "L505"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          130
+        ],
+        "printed": [
+          120
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean needs only θ = e (resp. θ = e(1+ε₁)/4 on |δq|), which are weaker than the book's θ = 27/8 and are proved inline in typeII_first."
+}

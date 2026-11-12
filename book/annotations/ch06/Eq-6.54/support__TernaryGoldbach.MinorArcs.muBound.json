@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.54",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 130,
+        "rect": [
+          0.25926,
+          0.80483,
+          0.56816,
+          0.05251
+        ]
+      },
+      "title": "Equation (6.54)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.54"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.muBound",
+        "module": "TernaryGoldbach.MinorArcs.TypeITotal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.muBound",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def muBound (U : ℝ) (q : ℕ) : ℝ :=\n  if 2 * (q : ℝ) ^ 2 < U then\n    min 1 (2.8 * (2 * q / Nat.totient (2 * q)) / Real.log (U / (2 * q ^ 2))) else 1",
+            "line": 24,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeITotal.lean",
+            "fragment": "L24"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          130
+        ],
+        "printed": [
+          120
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean does not maximize over x; it uses min(1,a/ℓ)L ≤ a + (L−ℓ)⁺ with Ramaré-type constant 2.8 and modulus 2q, giving 2 log t + 2.63 for the excess in place of the book's (7/4) log t."
+}

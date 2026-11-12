@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 88,
+        "rect": [
+          0.25926,
+          0.19755,
+          0.56816,
+          0.03883
+        ]
+      },
+      "title": "Equation (5.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.eta2_eq_log",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIReduction"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.eta2_eq_log",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem eta2_eq_log {x : ℝ} (hx : 0 < x) {m n : ℝ} (hm : 0 < m) (hn : 0 < n) :\n    (max (x / (2 * m)) n < min (x / m) (2 * n) →\n      eta2 (m * n / x) = 4 * (Real.log (min (x / m) (2 * n)) - Real.log (max (x / (2 * m)) n))) ∧\n    (min (x / m) (2 * n) ≤ max (x / (2 * m)) n → eta2 (m * n / x) = 0) :=",
+            "line": 23,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIReduction.lean",
+            "fragment": "L23"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          88
+        ],
+        "printed": [
+          78
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The formalization never states η₂ = η₁ *_M η₁ as functions; it proves the identity only at y = mn/x after (5.3)'s substitution, by closed-form evaluation (eta2_eq_log)."
+}

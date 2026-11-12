@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.51",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 108,
+        "rect": [
+          0.25926,
+          0.31459,
+          0.56816,
+          0.10132
+        ]
+      },
+      "title": "Equation (5.51)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.large_sieve_primes_weighted",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.large_sieve_primes_weighted",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem large_sieve_primes_weighted {ι : Type*} (s : Finset ι) (β δ : ι → ℝ)\n    (hδ : ∀ r ∈ s, 0 < δ r)\n    (hsep : ∀ r ∈ s, ∀ r' ∈ s, r ≠ r' → δ r ≤ |(β r - β r') - round (β r - β r')|)\n    {W' W : ℝ} (hW' : 0 ≤ W') :\n    ∑ r ∈ s, (W - W' + 1 + 3 / 2 * (δ r)⁻¹)⁻¹ * ‖primeExpSum W' W (β r)‖ ^ 2 ≤ logSqSum W' W :=",
+            "line": 821,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L821"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          108
+        ],
+        "printed": [
+          98
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean adds W ≥ 50000 because it counts ⌊W⌋−⌊W′⌋ ≤ W−W′+1 integers where [H] uses W/2; harmless for Ch. Erratum: The gap is confined to the R=2 branch: it checks q < W/2 <= W' where R = 2 <= W' is needed, and for 2<W<4 (W=3, W'=1.5, q=1) Montgomery's inequality (5.46) fails at r=2 (3.21 > 0.16); it also asserts qR^2 < W, false for q >= W/4 (W=10, q=3), though qR^2 < Q suffices. (checked by `scripts/checks/eq_5_51.py`)."
+}

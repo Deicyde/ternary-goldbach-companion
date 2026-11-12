@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.66",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 137,
+        "rect": [
+          0.17135,
+          0.57973,
+          0.56816,
+          0.1133
+        ]
+      },
+      "title": "Equation (6.66)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.66"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_51",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_51",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def bound_4_51 (x : ℝ) (q : ℕ) (U V : ℝ) : ℝ :=\n  let D := U * V\n  let c₁ := 1 + eta2'L1 / (x / D)\n  2 * √(c₀ * c₁) / π *\n      (D * Real.log (D / √(rexp 1)) +\n        q * (√3 * Real.log (3 * D) + (2 + Real.log D / 2) * logPlus (D / (q / 2)))) +\n    3 * c₁ / 2 * (x / q) * Real.log D * logPlus (D / (c₂ * x / q)) +\n    2 * eta2'L1 / π * q * max 1 (Real.log (c₀ * rexp 3 * q ^ 2 / (4 * π * eta2'L1 * x))) *\n      logPlus (q / 2) +\n    3 * c₁ / 2 * √(2 * x / c₂) * (Real.log (3 * √(c₂ * x / 2)) + 1) +\n    (2 * √c₀ / π * √(2 * c₂ * x) * (2 + 12 * Real.log (5 * D)) + 5 * c₀ / (6 * π ^ 2))",
+            "line": 214,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L214"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          137
+        ],
+        "printed": [
+          127
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The last term of (6.66) should have (2c₂)^{3/2} for (3c₂)^{1/2}; the total 1177.76 still holds. Lean bounds its own form of (4.51) at Q₀ = x^{2/3}/349 and c₀ = 32, keeping the lower-order terms as a polynomial in log x."
+}

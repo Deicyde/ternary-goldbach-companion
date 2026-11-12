@@ -1,0 +1,70 @@
+{
+  "id": "Eq 8.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 155,
+        "rect": [
+          0.17135,
+          0.40132,
+          0.56816,
+          0.03883
+        ]
+      },
+      "title": "Equation (8.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 8.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.fP",
+        "module": "TernaryGoldbach.Explicit.EtaPlusMellin"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.fP",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def fP (δ t : ℝ) : ℂ := ((etaPlus t : ℝ) : ℂ) * Complex.exp (2 * π * I * δ * t)",
+            "line": 59,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/EtaPlusMellin.lean",
+            "fragment": "L59"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          155
+        ],
+        "printed": [
+          145
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Mathlib's mellin f s = ∫ t in Ioi 0, t^(s−1) • f t has the book's normalization (dt/t, t^s). Lean never defines F_δ for the plain Gaussian e^{−t²/2}; it works with G_δ = F_δ(·+2) and with mellin (fP δ)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.27",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 72,
+        "rect": [
+          0.25926,
+          0.67607,
+          0.56816,
+          0.08342
+        ]
+      },
+      "title": "Equation (4.27)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.27"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_sqrt_le",
+        "module": "TernaryGoldbach.MinorArcs.BlockSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_sqrt_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_sqrt_le {R q D : ℝ} (hR : 0 < R) (hq : 0 < q) {J : ℕ} (hJ : 1 ≤ J)\n    (hD : R + (J - 1) * q ≤ D) :\n    ∑ j ∈ range J, √(1 + q / (R + j * q)) ≤ √(1 + q / R) + (D - R) / q + 1 / 2 * Real.log (D / R) :=",
+            "line": 96,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/BlockSums.lean",
+            "fragment": "L96"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          72
+        ],
+        "printed": [
+          62
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "With R ≥ q/2, sum_sqrt_le implies the final bound of (4.27); the book's middle (integral) expression is not stated in Lean. The −R/q part is what absorbs the D'-term of (4.24) (hcancel, TypeIProof.lean:994)."
+}

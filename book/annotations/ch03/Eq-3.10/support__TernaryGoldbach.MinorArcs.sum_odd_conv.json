@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.10",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.17135,
+          0.39503,
+          0.56816,
+          0.03932
+        ]
+      },
+      "title": "Equation (3.10)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.10"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_odd_conv",
+        "module": "TernaryGoldbach.MinorArcs.Decomposition"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_odd_conv",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_odd_conv (f g : ArithmeticFunction ℝ) (w : ℕ → ℂ) (M : ℕ)\n    (hw : ∀ n, M < n → w n = 0) :\n    ∑ n ∈ Icc 1 M, (if Odd n then ((f * g) n : ℂ) * w n else 0) =\n      ∑ a ∈ Icc 1 M, if Odd a then ∑ b ∈ Icc 1 M,\n        (if Odd b then (f a : ℂ) * g b * w (a * b) else 0) else 0 :=",
+            "line": 20,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/Decomposition.lean",
+            "fragment": "L20"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          47
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Only v = 2, the book's final choice, is formalized; general square-free v is unused generality."
+}

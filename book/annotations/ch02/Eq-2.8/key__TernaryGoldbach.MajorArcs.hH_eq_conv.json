@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.8",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 44,
+        "rect": [
+          0.25926,
+          0.8363,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Equation (2.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.hH_eq_conv",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.hH_eq_conv",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hH_eq_conv {H t : ℝ} (hH0 : 0 < H) (ht : 0 < t) :\n    hH H t = ∫ v, gL (Real.log t - v) * sH H v :=",
+            "line": 215,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L215"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          44
+        ],
+        "printed": [
+          34
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has no general Mellin convolution theorem; its only needed use (Mh_H truncates Mh) is proved directly in Fourier form in log coordinates."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.59",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 85,
+        "rect": [
+          0.17135,
+          0.45625,
+          0.56816,
+          0.09621
+        ]
+      },
+      "title": "Equation (4.59)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.59"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sum_log_mul_le_blocks",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sum_log_mul_le_blocks",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_log_mul_le_blocks {G : ℤ → ℝ} (hG : ∀ n, 0 ≤ G n) {q : ℕ} (hq : 1 ≤ q) (J : ℕ)\n    {a b : ℝ} (ha : 0 ≤ a) (hab : b ≤ a + J * q) (W B : ℕ → ℝ) (hW0 : ∀ j < J, 0 ≤ W j)\n    (hW : ∀ j < J, ∀ t : ℝ, 1 ≤ t → t ≤ min (a + (j + 1) * q) b → Real.log t ≤ W j)\n    (hB : ∀ j < J, ∑ n ∈ Ioc ⌊a + j * q⌋ ⌊min (a + (j + 1) * q) b⌋, G n ≤ B j) :\n    ∑ n ∈ Ioc ⌊a⌋ ⌊b⌋, Real.log n * G n ≤ ∑ j ∈ range J, W j * B j :=",
+            "line": 18,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L18"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          85
+        ],
+        "printed": [
+          75
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's bound has upper limit D'+2q in place of D'+3q/2 and replaces −F(q) by ¼, so it is slightly weaker; both use block upper-end weights."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.38",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 299,
+        "rect": [
+          0.17135,
+          0.44833,
+          0.56816,
+          0.03643
+        ]
+      },
+      "title": "Equation (A.38)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.etaPlus",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.etaPlus",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def etaPlus (t : ℝ) : ℝ := hH 200 t * t * Real.exp (-t ^ 2 / 2)",
+            "line": 42,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L42"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          299
+        ],
+        "printed": [
+          289
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Book uses: the proof of Prop 9.5.1 ((9.75), (9.76), c₀, (9.79), (9.80), H ≥ 25) and, at H = 200, (14.3), which feeds (14.25), (14.28), K_{r,2} of (10.27) and (14.51). Lean's prop_9_5_1 needs no ℓ∞ norm of η₊ (Mellin/Plancherel route from |h₂₀₀| ≤ 3.15)."
+}

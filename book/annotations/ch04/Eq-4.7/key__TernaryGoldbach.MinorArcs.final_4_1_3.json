@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.7",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 66,
+        "rect": [
+          0.25926,
+          0.51988,
+          0.56816,
+          0.02063
+        ]
+      },
+      "title": "Equation (4.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.final_4_1_3",
+        "module": "TernaryGoldbach.MinorArcs.TrigSums"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.final_4_1_3",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem final_4_1_3 {B C a : ℝ} (hB : 0 < B) (hC : 0 ≤ C) (ha : 0 < a) (ha1 : a ≤ π / 4) :\n    mBC B C a + (∫ v in a..(π / 2), mBC B C v) / a ≤\n        B / a * max 2 (Real.log (C * rexp 3 / (B * (2 * a)))) ∧\n      mBC B C a + (∫ v in a..(π / 2), mBC B C v) / a ≤ B / a * Real.log (rexp 2 / a) :=",
+            "line": 1954,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TrigSums.lean",
+            "fragment": "L1954"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          66
+        ],
+        "printed": [
+          56
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Checked: with y = √(1 − t⁻²) (the book's δ = 1 − y), (4.7) ⟺ y − log(1+y) < 1 − log 2; LHS − RHS = −0.3069 at t = 1 and ≈ −1/(4t) as t → ∞ (max on [1, 201]: −0.00124)."
+}

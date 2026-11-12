@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.9",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.17135,
+          0.18355,
+          0.56816,
+          0.17428
+        ]
+      },
+      "title": "Equation (3.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeILog",
+        "module": "TernaryGoldbach.MinorArcs.TypeI"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeILog",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def typeILog (α x D : ℝ) : ℂ :=\n  ∑ m ∈ Icc 1 ⌊D⌋₊, if Odd m then (μ m : ℂ) *\n    ∑ n ∈ Icc 1 ⌊x⌋₊,\n      (if Odd n then (Real.log n : ℂ) * e (α * m * n) * (eta2 (m * n / x) : ℂ) else 0) else 0",
+            "line": 77,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI.lean",
+            "fragment": "L77"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          47
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean defines the sums only for the book's final choice f = 1_{(n,2)=1}, η = η₂; general f and η are not needed. As the book says for its parameters, S0inf vanishes when V ≤ x/4 (S0inf_eq_zero, Assembly.lean:26)."
+}

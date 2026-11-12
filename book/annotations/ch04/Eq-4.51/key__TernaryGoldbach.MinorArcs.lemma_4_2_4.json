@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.51",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 81,
+        "rect": [
+          0.17135,
+          0.17821,
+          0.56816,
+          0.11348
+        ]
+      },
+      "title": "Equation (4.51)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.51"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.lemma_4_2_4",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.lemma_4_2_4",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem lemma_4_2_4 {α x δ Q₀ U V : ℝ} {a : ℤ} {q : ℕ} (h : Approx2 α x δ a q Q₀)\n    (hQ₀ : 2 * rexp 1 ≤ Q₀) (hx : 10 ≤ x) (hU : 1 ≤ U) (hV : 1 ≤ V) (hD2 : 2 ≤ U * V) :\n    ((|δ| ≤ 1 / (2 * c₂) ∨ U * V ≤ Q₀ / 2) →\n      ‖typeI2 α x U V‖ ≤ bound_4_50 x δ q U V + bound_4_51 x q U V) ∧\n    (1 / (2 * c₂) ≤ |δ| → ∀ ε, 0 < ε → ε ≤ 1 →\n      ‖typeI2 α x U V‖ ≤ bound_4_50 x δ q U V + bound_4_52 x δ q U V Q₀ ε) :=",
+            "line": 1164,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L1164"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          81
+        ],
+        "printed": [
+          71
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's form uses c₁ = 1+|η'|₁/(x/D) (book prints 2x/D), block upper-end weights, log⁺(q/2), and a √x term about 1.6 times the book's; it needs x ≥ 10, UV ≥ 2 and drops UV + (19/18)Q₀ ≤ x/5.6."
+}

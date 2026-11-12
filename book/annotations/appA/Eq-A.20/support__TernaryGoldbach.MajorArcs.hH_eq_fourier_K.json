@@ -1,0 +1,70 @@
+{
+  "id": "Eq A.20",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 294,
+        "rect": [
+          0.25926,
+          0.30086,
+          0.56816,
+          0.05073
+        ]
+      },
+      "title": "Equation (A.20)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq A.20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.hH_eq_fourier_K",
+        "module": "TernaryGoldbach.MajorArcs.HHFourier"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.hH_eq_fourier_K",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem hH_eq_fourier_K {H t : ℝ} (hH0 : 0 < H) (ht : 0 < t) :\n    (hH H t : ℂ) = 𝓕 (Kc H) (-Real.log t) :=",
+            "line": 300,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/HHFourier.lean",
+            "fragment": "L300"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          294
+        ],
+        "printed": [
+          284
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "It uses Plancherel for g and for ĝ·1_{[−a,a]} plus the cross term (integral_cross). The book's isometry likewise holds here only in the L² sense, not under the ℓ¹∩ℓ² sufficient condition stated after (2.6)."
+}

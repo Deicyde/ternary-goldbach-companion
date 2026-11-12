@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.46",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 188,
+        "rect": [
+          0.25926,
+          0.61339,
+          0.56816,
+          0.03932
+        ]
+      },
+      "title": "Equation (9.46)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.46"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.fδ",
+        "module": "TernaryGoldbach.Explicit.GMellin"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.fδ",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def fδ (δ t : ℝ) : ℂ :=\n  ((t ^ 2 * Real.exp (-t ^ 2 / 2) : ℝ) : ℂ) * cexp (2 * π * I * δ * t)",
+            "line": 19,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/GMellin.lean",
+            "fragment": "L19"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          188
+        ],
+        "printed": [
+          178
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "§9.3 is titled 'The case of η_*', but up to Cor 9.3.3 it works with this η; η_* only enters through the Mellin convolution with η₂."
+}

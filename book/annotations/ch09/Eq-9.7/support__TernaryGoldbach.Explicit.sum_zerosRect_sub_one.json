@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.7",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 176,
+        "rect": [
+          0.25926,
+          0.48601,
+          0.56816,
+          0.08143
+        ]
+      },
+      "title": "Equation (9.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.sum_zerosRect_sub_one",
+        "module": "TernaryGoldbach.Explicit.ZetaExplicit"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.sum_zerosRect_sub_one",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_zerosRect_sub_one {T : ℝ} (hT : 0 < T) (h : ℂ → ℂ) :\n    ∑ u ∈ zerosRectD (fun s : ℂ => s - 1) T, (multRectD (fun s : ℂ => s - 1) T u : ℂ) * h u = h 1 :=",
+            "line": 80,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZetaExplicit.lean",
+            "fragment": "L80"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          176
+        ],
+        "printed": [
+          166
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the shift as a limit over good heights and handles the horizontal segments the book omits. The left side should be on ℜs = 3/2, and R should include the factor x^s (missing η(0)log x for even χ, η(0) ≠ 0)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 2.13",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 46,
+        "rect": [
+          0.25926,
+          0.30677,
+          0.56816,
+          0.03905
+        ]
+      },
+      "title": "Equation (2.13)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 2.13"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.log_sub_le_sum_vonMangoldt_div",
+        "module": "TernaryGoldbach.Prelim.LambdaMu"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.log_sub_le_sum_vonMangoldt_div",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem log_sub_le_sum_vonMangoldt_div {x : ℝ} (hx : 1 ≤ x) :\n    Real.log x - Real.log (3 / √2) ≤ ∑ n ∈ Icc 1 ⌊x⌋₊, (Λ n : ℝ) / n :=",
+            "line": 1170,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/LambdaMu.lean",
+            "fragment": "L1170"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          46
+        ],
+        "printed": [
+          36
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Exact. The citing helpers cPsi_sum_le and big_sum_le are error-term bounds inside the proof, not better counterparts."
+}

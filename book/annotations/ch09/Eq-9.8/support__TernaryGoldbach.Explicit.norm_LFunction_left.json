@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.8",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 176,
+        "rect": [
+          0.25926,
+          0.74024,
+          0.56816,
+          0.0358
+        ]
+      },
+      "title": "Equation (9.8)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.8"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_LFunction_left",
+        "module": "TernaryGoldbach.Explicit.LGrowthLeft"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_LFunction_left",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_LFunction_left {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) {z : ℂ} (h1 : -8 ≤ z.re) (h2 : z.re ≤ 1 / 4) :\n    ‖χ.LFunction z‖ ≤ 512 * (N : ℝ) ^ 9 * ((N : ℝ) + 1) * (|z.im| + 9) *\n      Real.exp (π * |z.im| / 2) :=",
+            "line": 233,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/LGrowthLeft.lean",
+            "fragment": "L233"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          176
+        ],
+        "printed": [
+          166
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean replaces both uses of (9.8): Landau's lemma bounds L′/L on ℜs = −1/2, and R disappears. The ζ completed-form reflection (logDeriv_xiF_one_sub) now also serves the Weil explicit formula used for the ψ bounds."
+}

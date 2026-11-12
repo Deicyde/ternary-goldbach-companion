@@ -1,0 +1,70 @@
+{
+  "id": "Eq 7.7",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 150,
+        "rect": [
+          0.25926,
+          0.82213,
+          0.56816,
+          0.03368
+        ]
+      },
+      "title": "Equation (7.7)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 7.7"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.explicit_formula_zeta",
+        "module": "TernaryGoldbach.Explicit.ZetaExplicit"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.explicit_formula_zeta",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem explicit_formula_zeta {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {x : ℝ} (hx : 0 < x) :\n    ∃ T : ℕ → ℝ, (∀ k : ℕ, T k ∈ Icc ((k : ℝ) + 1) ((k : ℝ) + 2)) ∧\n      Tendsto (fun k => ∑ u ∈ zerosRectD zetaF (T k), (multRectD zetaF (T k) u : ℂ) *\n          (mellin φ u * (x : ℂ) ^ u)) atTop\n        (𝓝 (mellin φ 1 * x - SsumG (1 : DirichletCharacter ℂ 1) φ x -\n          (1 / (2 * π) : ℂ) * ∫ y : ℝ, hZeta φ x (((-1 / 2 : ℝ) : ℂ) + y * I))) :=",
+            "line": 122,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ZetaExplicit.lean",
+            "fragment": "L122"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          150
+        ],
+        "printed": [
+          140
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Its rigorous form in the book is Lemma 9.1.1 (lem:agamon). Here F_δ is Chapter 9's G_δ (Lean: mellin φ);"
+}

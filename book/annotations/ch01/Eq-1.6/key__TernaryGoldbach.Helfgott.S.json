@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.6",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 21,
+        "rect": [
+          0.17135,
+          0.1842,
+          0.56816,
+          0.0211
+        ]
+      },
+      "title": "Equation (1.6)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.6"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Helfgott.S",
+        "module": "TernaryGoldbach.Helfgott.Defs"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Helfgott.S",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def S (η : ℝ → ℝ) (x α : ℝ) : ℂ :=\n  ∑' n : ℕ, ((Λ n * η (n / x) : ℝ) : ℂ) * e (n * α)",
+            "line": 58,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Helfgott/Defs.lean",
+            "fragment": "L58"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          21
+        ],
+        "printed": [
+          11
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean applies S to η₊ and η_* (the circle-method integrand at x = xOf N). It also applies S to η₂ at many scales in the minor arcs: there are 33 occurrences of 'S eta2', e.g."
+}

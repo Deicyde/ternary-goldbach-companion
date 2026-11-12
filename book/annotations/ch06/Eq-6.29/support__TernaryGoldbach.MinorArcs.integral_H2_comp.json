@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.29",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 122,
+        "rect": [
+          0.25926,
+          0.81957,
+          0.56816,
+          0.03611
+        ]
+      },
+      "title": "Equation (6.29)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.29"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.integral_H2_comp",
+        "module": "TernaryGoldbach.MinorArcs.TypeIITools"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.integral_H2_comp",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_H2_comp {x U V : ℝ} (hx : 0 < x) (hU : 0 < U) (hV : 0 < V) (hVU : V ≤ x / U) :\n    IntervalIntegrable (fun W => H2 (x / (W * U)) / W) volume V (x / U) ∧\n    ∫ W in V..x / U, H2 (x / (W * U)) / W ≤ 0.15107 * Real.log (x / (U * V)) + 0.0231 :=",
+            "line": 13,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIITools.lean",
+            "fragment": "L13"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          122
+        ],
+        "printed": [
+          112
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The β⁻¹ bracket must read ¼κ₆ log(x/UW₀) + κ₇/2 + 0.0231; Lean proves that, with κ₇/2 replaced by its exact source 2κ₀ζ(3/2)³√(x/W₀)/U, so (6.17) is not needed. Erratum: (6.29) is derived through (6.25) from the false (5.36). (checked by `scripts/checks/eq_6_29.py`)."
+}

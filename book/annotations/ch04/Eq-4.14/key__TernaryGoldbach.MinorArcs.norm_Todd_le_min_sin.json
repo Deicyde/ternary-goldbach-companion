@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.14",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17135,
+          0.59359,
+          0.56816,
+          0.05177
+        ]
+      },
+      "title": "Equation (4.14)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_Todd_le_min_sin",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_Todd_le_min_sin",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_Todd_le_min_sin {α x δ : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x)\n    (h2α : 2 * α = a / q + δ / x + k) {m : ℕ} (hm : 1 ≤ m)\n    (hne : Real.sin (π * (a / q + δ / x) * (m : ℤ)) ≠ 0) {A B C : ℝ}\n    (hA : x / (2 * m) + eta2'L1 / 2 ≤ A) (hB : eta2'L1 / 2 ≤ B) (hC : m / x * (c₀ / 2) ≤ C) :\n    ‖Todd α x m‖ ≤ min A (C / Real.sin (π * (a / q + δ / x) * (m : ℤ)) ^ 2) ∧\n    ‖Todd α x m‖ ≤ min (B / |Real.sin (π * (a / q + δ / x) * (m : ℤ))|)\n      (C / Real.sin (π * (a / q + δ / x) * (m : ℤ)) ^ 2) :=",
+            "line": 86,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L86"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "As the book's proof of 4.2.2 says, for odd n C doubles and A halves, which gives c₁ = 1 + |η'|₁/(x/D). sum_A1's cruder A = x/2 + |η'|₁/2 is harmless there, because only Lemma 4.1.2's first bound, which does not involve A, is used. The conditions y₂ − y₁ ≤ q and y₂ ≤ Q/2 serve Lemma 4.1.2, not (4.14) itself."
+}

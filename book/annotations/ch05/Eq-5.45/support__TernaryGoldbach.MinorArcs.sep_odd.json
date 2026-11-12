@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.45",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 105,
+        "rect": [
+          0.17135,
+          0.50807,
+          0.56816,
+          0.0506
+        ]
+      },
+      "title": "Equation (5.45)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.45"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.sep_odd",
+        "module": "TernaryGoldbach.MinorArcs.TypeII"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.sep_odd",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sep_odd {α Q : ℝ} {a k : ℤ} {q : ℕ} (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ))\n    (hα : |2 * α - a / q - k| ≤ 1 / (q * Q)) (hQ : 0 < Q) {m m' : ℤ} (hm : Odd m) (hm' : Odd m')\n    (hne : m ≠ m') {K : ℝ} (hK : |((m - m' : ℤ) : ℝ)| / 2 ≤ K) (hKq : K < q) :\n    1 / q - K / (q * Q) ≤ |(α * m - α * m') - round (α * m - α * m')| :=",
+            "line": 111,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeII.lean",
+            "fragment": "L111"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          105
+        ],
+        "printed": [
+          95
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean carries out only the odd-m version of this step, which [H] reuses for (5.50)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.14",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 117,
+        "rect": [
+          0.17135,
+          0.41464,
+          0.56816,
+          0.08302
+        ]
+      },
+      "title": "Equation (6.14)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeI2_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI2c"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeI2_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeI2_first {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hqT : (q : ℝ) ≤ T / 6) :\n    ‖typeI2 α (T ^ 3) (U1 T (delta0 δ * q)) (V1 T)‖ ≤\n      2.5257 * (T ^ 3 / √(delta0 δ * q)) + 2.8 * (2 * T ^ 3 / (delta0 δ * Nat.totient q)) +\n        (15.267 * Real.log (delta0 δ * q) + 21.46) * (2 * T ^ 3 / (delta0 δ * q)) +\n        0.556 * (T ^ 2 * √T) :=",
+            "line": 17,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI2c.lean",
+            "fragment": "L17"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          117
+        ],
+        "printed": [
+          107
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean's factor is 1.0064 (book 1.0004), and the UV/e term carries an extra factor 1 + V/Q because Lean uses (4.32) with log⁺(2U/y_v) rather than the floored form."
+}

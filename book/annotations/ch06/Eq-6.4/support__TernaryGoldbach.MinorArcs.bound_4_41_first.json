@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.4",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 113,
+        "rect": [
+          0.17135,
+          0.25982,
+          0.56816,
+          0.12758
+        ]
+      },
+      "title": "Equation (6.4)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.4"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceTypeI"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.bound_4_41_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem bound_4_41_first {T U : ℝ} {q : ℕ} (hT : 6e6 ≤ T) (hq : 1 ≤ q) (hqT : (q : ℝ) ≤ T / 6)\n    (hU1 : 0.1924 * (T * √T) ≤ U) (hU2 : U ≤ 0.0786 * T ^ 2) :\n    bound_4_41 (T ^ 3) q U ≤ 0.0139 * (T ^ 2 * √T) :=",
+            "line": 70,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceTypeI.lean",
+            "fragment": "L70"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          113
+        ],
+        "printed": [
+          103
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean never forms (6.4); it evaluates (4.41) directly at each parameter choice, so the dropped term (2√(c₀c₁)/π)U log(ex/U) is included."
+}

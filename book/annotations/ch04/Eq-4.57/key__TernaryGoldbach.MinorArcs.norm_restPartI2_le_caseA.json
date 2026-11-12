@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.57",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 84,
+        "rect": [
+          0.25926,
+          0.32155,
+          0.56816,
+          0.05256
+        ]
+      },
+      "title": "Equation (4.57)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.57"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+        "module": "TernaryGoldbach.MinorArcs.TypeI2Rest"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_restPartI2_le_caseA",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_restPartI2_le_caseA {α x δ Q₀ U V ε : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x)\n    (hq : 1 ≤ q) (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k)\n    (hδQ₀ : |δ / x| ≤ 1 / (q * Q₀)) (hqQ₀ : (q : ℝ) ≤ Q₀) (hQ₀2 : 2 ≤ Q₀)\n    (hδ : 1 / (2 * c₂) ≤ |δ|) (hU : 0 ≤ U) (hV : 0 ≤ V) (hD1 : 1 ≤ U * V)\n    (hε : 0 < ε) (hε1 : ε ≤ 1) :\n    ‖restPartI2 α x (Mof x δ q (U * V)) U V q‖ ≤ bound_4_52 x δ q U V Q₀ ε :=",
+            "line": 882,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeI2Rest.lean",
+            "fragment": "L882"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          84
+        ],
+        "printed": [
+          74
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The left side lacks the weight log m. Lean does not state (4.57): it bounds the weight by log M on all of (0,M], giving (2√c₀/π)M log M + (35c₀c₂/3π²)q log M inside bound_4_52."
+}

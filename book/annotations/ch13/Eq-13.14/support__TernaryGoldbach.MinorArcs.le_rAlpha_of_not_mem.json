@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.14",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 259,
+        "rect": [
+          0.17135,
+          0.79123,
+          0.56816,
+          0.03436
+        ]
+      },
+      "title": "Equation (13.14)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.le_rAlpha_of_not_mem",
+        "module": "TernaryGoldbach.MinorArcs.OffArcs"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.le_rAlpha_of_not_mem",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem le_rAlpha_of_not_mem {α y δ δ₀ r Q : ℝ} {a : ℤ} {q : ℕ} (hy : 0 < y) (hδ₀ : 0 < δ₀)\n    (h : Approx2 α y δ a q Q) (hα : α ∉ majorArcs δ₀ r y) :\n    r ≤ max 1 (|δ| / δ₀) * q :=",
+            "line": 71,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/OffArcs.lean",
+            "fragment": "L71"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          259
+        ],
+        "printed": [
+          249
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean avoids Prop 11.2.3's δ_w = wδ issue by taking a fresh Dirichlet approximation at each scale, and merges cases q ≤ r and q > r. The book's (13.14) omits the C_{φ,3}(K)|φ|₁y term its source proof adds;"
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.5.1",
+  "kind": "proposition",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 198,
+        "rect": [
+          0.25926,
+          0.5638,
+          0.56816,
+          0.22211
+        ]
+      },
+      "title": "Proposition 9.5.1",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.5.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.norm_SsumG_zeta_le_gen",
+        "module": "TernaryGoldbach.Explicit.ExplicitBoundGen"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.norm_SsumG_zeta_le_gen",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_SsumG_zeta_le_gen {φ : ℝ → ℂ} {K c : ℝ} (hφ : GoodSmoothing φ K c) {x : ℝ} (hx : 1 ≤ x)\n    {T0 : ℝ} (hT0 : 50 ≤ T0)\n    (hRH : ∀ ρ : ℂ, riemannZeta ρ = 0 → 0 < ρ.re → ρ.re < 1 → |ρ.im| ≤ T0 → ρ.re = 1 / 2)\n    {G0 : ℝ} (hM0 : ‖mellin φ 0‖ ≤ G0)\n    {F F' : ℝ → ℂ} (hMF : ∀ t : ℝ, mellin φ (((1 / 2 : ℝ) : ℂ) + t * I) = F t)\n    (hF : ∀ t, HasDerivAt F (F' t) t) (hF' : Continuous F')\n    {Q1 Q2 : ℝ} (hQ1 : 0 < Q1) (hQ2 : 0 < Q2)\n    (hF2 : Integrable fun t => ‖F t‖ ^ 2) (hF2' : Integrable fun t => ‖F' t‖ ^ 2)\n    (hFQ : ∫ t, ‖F t‖ ^ 2 ≤ Q1) (hFQ' : ∫ t, ‖F' t‖ ^ 2 ≤ Q2)\n    {EB' EA' ρB ρA : ℝ} (hEB : 0 ≤ EB') (hEA : 0 ≤ EA') (hρB0 : 0 ≤ ρB) (hρB1 : ρB < 1)\n    (hρA0 : 0 ≤ ρA) (hρA1 : ρA < 1)\n    (htail : ∀ s : ℂ, 0 < s.re → s.re < 1 → T0 < |s.im| →\n      ‖mellin φ s‖ ≤ EB' * ρB ^ ⌊(|s.im| - T0) / 4.4⌋₊ + EA' * ρA ^ ⌊(|s.im| - T0) / 4.4⌋₊)\n    {Kv θv : ℝ} (hθv : 0 < θv) (hKv : 0 ≤ Kv)\n    (hv : ∀ y : ℝ, ‖mellin φ (((-1 / 2 : ℝ) : ℂ) + y * I)‖ ≤ Kv * Real.exp (-(θv * |y|))) :\n    ‖SsumG (1 : DirichletCharacter ℂ 1) φ x - mellin φ 1 * x‖ ≤ G0 * Z3g BPz2 0 +\n      √x * E1g BPz2 T0 Q1 Q2 + x * E2g BPz2 10 T0 EB' EA' ρB ρA +\n        x ^ (-(1 / 2) : ℝ) * VgL 3 Kv θv / (2 * π) :=",
+            "line": 173,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/ExplicitBoundGen.lean",
+            "fragment": "L173"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          198
+        ],
+        "printed": [
+          188
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean fixes H = 200, T₀ = 500 and needs x ≥ 4.9·10²⁶ (book 10⁸), with error 10⁻⁸ in place of err_{ℓ2,η₊}. Lean's tail counts zeros in both half-planes, so the book's factor-2 and boundary-term gaps at (9.90) do not arise."
+}

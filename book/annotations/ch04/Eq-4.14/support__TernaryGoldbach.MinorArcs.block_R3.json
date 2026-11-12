@@ -1,0 +1,70 @@
+{
+  "id": "Eq 4.14",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 69,
+        "rect": [
+          0.17135,
+          0.59359,
+          0.56816,
+          0.05177
+        ]
+      },
+      "title": "Equation (4.14)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 4.14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.block_R3",
+        "module": "TernaryGoldbach.MinorArcs.TypeIProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.block_R3",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem block_R3 {α x δ Q : ℝ} {a k : ℤ} {q : ℕ} (hx : 0 < x) (hq : 1 ≤ q)\n    (hcop : IsCoprime a (q : ℤ)) (h2α : 2 * α = a / q + δ / x + k) (hqQ : (q : ℝ) ≤ Q)\n    (hδ : |δ / x| * (q * Q) ≤ 1) {R D : ℝ} (hR0 : 0 < R) (j : ℕ) (hyD : R + j * q < D) :\n    ∑ n ∈ Ioc ⌊R + j * q⌋ ⌊min (R + (j + 1) * q) D⌋, Tn α x n ≤\n      3 * (1 + eta2'L1 / (x / D)) / 2 * x * (1 / (R + j * q)) +\n        2 * q * √(c₀ * (1 + eta2'L1 / (x / D))) / π * √(1 + q / (R + j * q)) :=",
+            "line": 381,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIProof.lean",
+            "fragment": "L381"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          69
+        ],
+        "printed": [
+          59
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "As the book's proof of 4.2.2 says, for odd n C doubles and A halves, which gives c₁ = 1 + |η'|₁/(x/D). sum_A1's cruder A = x/2 + |η'|₁/2 is harmless there, because only Lemma 4.1.2's first bound, which does not involve A, is used. The conditions y₂ − y₁ ≤ q and y₂ ≤ Q/2 serve Lemma 4.1.2, not (4.14) itself."
+}

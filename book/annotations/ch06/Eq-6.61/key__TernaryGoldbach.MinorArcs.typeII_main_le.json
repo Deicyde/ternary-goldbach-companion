@@ -1,0 +1,70 @@
+{
+  "id": "Eq 6.61",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 134,
+        "rect": [
+          0.25926,
+          0.19197,
+          0.56816,
+          0.2117
+        ]
+      },
+      "title": "Equation (6.61)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 6.61"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_main_le",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoice"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_main_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_main_le {x T t c U V : ℝ} (hT : 6e6 ≤ T) (hx : x = T ^ 3) (ht2 : 2 ≤ t)\n    (htT : t ≤ T / 3) (hct : t ≤ c) (hc : c ≤ 1.0015 * t) (hU : 0 < U) (hV1 : 9 * T / 2 - 1 ≤ V)\n    (hUV1 : (1 - 1 / T) * (x / (2 * √t)) ≤ U * V) (hUV2 : U * V ≤ x)\n    (hζ : 8 * zeta3 * √(x / V) / U ≤ 0.2355) :\n    √((Real.log (x / (U * V)) + Real.log c *\n        (Real.log (Real.log (x / U / c)) - Real.log (Real.log (V / c)))) *\n        (0.60428 * Real.log (x / (U * V)) + 0.0924 + 8 * zeta3 * √(x / V) / U)) ≤\n      √(Cxt T t * (Real.log t + 0.002) + Real.log (4 * t) / 2) *\n        √(0.30214 * Real.log t + 0.7468) :=",
+            "line": 230,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoice.lean",
+            "fragment": "L230"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          134
+        ],
+        "printed": [
+          124
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean has 0.7468, replaces log(1+ε₁) by 0.002, and bounds the secondary terms by 3.2x^{5/6}."
+}

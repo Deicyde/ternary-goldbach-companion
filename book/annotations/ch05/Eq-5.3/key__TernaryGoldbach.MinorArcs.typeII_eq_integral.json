@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.3",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 88,
+        "rect": [
+          0.25926,
+          0.33545,
+          0.56816,
+          0.15353
+        ]
+      },
+      "title": "Equation (5.3)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.3"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeII_eq_integral",
+        "module": "TernaryGoldbach.MinorArcs.TypeIIReduction"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeII_eq_integral",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeII_eq_integral (α : ℝ) {x : ℝ} (hx : 0 < x) {U V : ℕ} (hU : 1 ≤ U) (hV : 1 ≤ V)\n    (hVU : (V : ℝ) ≤ x / U) :\n    typeII α x U V = 4 * ∫ W in (V : ℝ)..x / U, IIsum α x U V W / W :=",
+            "line": 210,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeIIReduction.lean",
+            "fragment": "L210"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          88
+        ],
+        "printed": [
+          78
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean states only the outer identity, for v = 2, integer U, V ≥ 1 and V ≤ x/U."
+}

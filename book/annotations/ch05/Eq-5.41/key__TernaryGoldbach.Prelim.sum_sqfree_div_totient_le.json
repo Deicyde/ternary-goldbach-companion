@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.41",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 104,
+        "rect": [
+          0.25926,
+          0.38701,
+          0.56816,
+          0.06689
+        ]
+      },
+      "title": "Equation (5.41)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.sum_sqfree_div_totient_le",
+        "module": "TernaryGoldbach.Prelim.SumMuSqPhi"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.sum_sqfree_div_totient_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem sum_sqfree_div_totient_le {q : ℕ} (hq : 1 ≤ q) (w : ℕ → ℝ) (hw0 : ∀ n, 0 ≤ w n)\n    (hw : ∀ m n, m ≤ n → w n ≤ w m) (N : ℕ) :\n    ∑ r ∈ (Icc 1 N).filter Squarefree, w r / Nat.totient r ≤\n      q / Nat.totient q * ∑ r ∈ (Icc 1 N).filter (fun r => Squarefree r ∧ Nat.Coprime r q),\n        w r / Nat.totient r :=",
+            "line": 225,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SumMuSqPhi.lean",
+            "fragment": "L225"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          104
+        ],
+        "printed": [
+          94
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The last step ∑_{d≤R}1/d ≥ log R is Mathlib's harmonic-sum bound inside log_le_sum_coprime. Lean keeps log R and lets the caller pick R (capped at W′) instead of substituting R = (q(ν+υ))^{-1/2}."
+}

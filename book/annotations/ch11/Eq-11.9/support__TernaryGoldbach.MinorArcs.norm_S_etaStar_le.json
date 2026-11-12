@@ -1,0 +1,70 @@
+{
+  "id": "Eq 11.9",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 230,
+        "rect": [
+          0.25926,
+          0.4379,
+          0.56816,
+          0.08913
+        ]
+      },
+      "title": "Equation (11.9)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 11.9"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le",
+        "module": "TernaryGoldbach.MinorArcs.EtaStar"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem norm_S_etaStar_le {x : ℝ} (hx : 0 < x) (α : ℝ) :\n    ‖S etaStar x α‖ ≤ ∫ w in Ioi (0:ℝ), ‖S eta2 (w * (x / κ)) α‖ * (phi w / w) :=",
+            "line": 131,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/EtaStar.lean",
+            "fragment": "L131"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          230
+        ],
+        "printed": [
+          220
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Only the instance for η_* and f = Λ(n)e(nα) is stated. Helfgott.minor_arcs_input cites (11.9) only as a step of the minor-arc total and is not a counterpart."
+}

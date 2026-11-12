@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.11",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 57,
+        "rect": [
+          0.17135,
+          0.47799,
+          0.56816,
+          0.01808
+        ]
+      },
+      "title": "Equation (3.11)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.11"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceFinal"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem theorem_3_1_1_first {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hqT : (q : ℝ) ≤ T / 6) :\n    ‖S eta2 (T ^ 3) α‖ ≤\n      ((0.27125 * Cxt T (delta0 δ * q) + 0.41415) * Real.log (delta0 δ * q) + 0.8764) /\n          √(delta0 δ * Nat.totient q) * T ^ 3 +\n        2.526 * T ^ 3 / √(delta0 δ * q) +\n        2 * T ^ 3 / (delta0 δ * q) * ((q : ℝ) / Nat.totient q *\n          (13 / 4 * Real.log (delta0 δ * q) + 7.82) + 13.66 * Real.log (delta0 δ * q) + 37.55) +\n        3.8 * (T ^ 2 * √T) :=",
+            "line": 34,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceFinal.lean",
+            "fragment": "L34"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          57
+        ],
+        "printed": [
+          47
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves the identity for v = 2 with remainder Σ_{n even, n≤x} Λ(n)e(αn)η₂(n/x); the printed Σ_{n|v} omits the prime powers p^k, k ≥ 2, p | v. Erratum: With the printed S_{0,v} = Σ_{n|v} Λ(n)e(αn)η(n/x), (3.11) is false: the remainder must be Σ_{(n,v)>1} Λ(n)e(αn)η(n/x), which also contains the prime powers p^k, k ≥ 2, p | v; for η = η₂, v = 2, α = 0 the omitted terms total 4(log 2)² ≈ 1.92 (e.g. x = 100: S_η = 99.1255 against 97.2037 + 0). (checked by `scripts/checks/eq_3_11.py`)."
+}

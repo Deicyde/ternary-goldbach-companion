@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.81",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 200,
+        "rect": [
+          0.25926,
+          0.63726,
+          0.56816,
+          0.03844
+        ]
+      },
+      "title": "Equation (9.81)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.81"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.E1z500_le",
+        "module": "TernaryGoldbach.MajorArcs.Prop715"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.E1z500_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem E1z500_le {Q1 Q2 S1 S2 : ℝ} (hQ1 : 0 ≤ Q1) (hQ2 : 0 ≤ Q2)\n    (hS1 : 2 * 3.1416 * Q1 * (2 * 503.48) ≤ S1 ^ 2) (hS2 : 2 * 3.1416 * Q2 * (2 * 503.48) ≤ S2 ^ 2)\n    (hS1p : 0 ≤ S1) (hS2p : 0 ≤ S2) :\n    E1g BPz2 500 (2 * π * Q1) (2 * π * Q2) ≤ 50.84 * (S1 / 3.48 + S2) :=",
+            "line": 98,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop715.lean",
+            "fragment": "L98"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          200
+        ],
+        "printed": [
+          190
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean replaces Lemma 9.1.4's bound by Jensen-window counts and Plancherel moments at T₀ = 500; the book's constants check (2.44432 ≤ 2.445, 50.0337 ≤ 50.04)."
+}

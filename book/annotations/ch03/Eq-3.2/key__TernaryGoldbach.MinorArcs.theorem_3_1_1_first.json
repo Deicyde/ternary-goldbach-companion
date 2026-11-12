@@ -1,0 +1,70 @@
+{
+  "id": "Eq 3.2",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "narrowMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 54,
+        "rect": [
+          0.25926,
+          0.5186,
+          0.56816,
+          0.04906
+        ]
+      },
+      "title": "Equation (3.2)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 3.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoiceFinal"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.theorem_3_1_1_first",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem theorem_3_1_1_first {α δ T : ℝ} {a : ℤ} {q : ℕ} (hT : 6e6 ≤ T)\n    (h : Approx2 α (T ^ 3) δ a q (3 / 4 * T ^ 2)) (hqT : (q : ℝ) ≤ T / 6) :\n    ‖S eta2 (T ^ 3) α‖ ≤\n      ((0.27125 * Cxt T (delta0 δ * q) + 0.41415) * Real.log (delta0 δ * q) + 0.8764) /\n          √(delta0 δ * Nat.totient q) * T ^ 3 +\n        2.526 * T ^ 3 / √(delta0 δ * q) +\n        2 * T ^ 3 / (delta0 δ * q) * ((q : ℝ) / Nat.totient q *\n          (13 / 4 * Real.log (delta0 δ * q) + 7.82) + 13.66 * Real.log (delta0 δ * q) + 37.55) +\n        3.8 * (T ^ 2 * √T) :=",
+            "line": 34,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoiceFinal.lean",
+            "fragment": "L34"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          54
+        ],
+        "printed": [
+          44
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean proves (3.2) with 0.8764, 2.526 and 3.8x^{5/6}; the 0.5 is not established by [H]'s (6.77), whose correct AM–GM constant is 0.81020. Erratum: The constant 0.5 in (3.2) comes from (6.77), which prints 0.49911 where the AM-GM step gives 0.81020; (checked by `scripts/checks/eq_3_2.py`)."
+}

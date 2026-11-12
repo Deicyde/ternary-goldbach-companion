@@ -1,0 +1,70 @@
+{
+  "id": "Eq 10.14",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 214,
+        "rect": [
+          0.25926,
+          0.61604,
+          0.56816,
+          0.03483
+        ]
+      },
+      "title": "Equation (10.14)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 10.14"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.moebius_mul_ramanujan",
+        "module": "TernaryGoldbach.MajorArcs.Singular"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.moebius_mul_ramanujan",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem moebius_mul_ramanujan {q : ℕ} (hq : Squarefree q) (n : ℕ) :\n    (μ q : ℂ) * ∑ a ∈ (range q).filter q.Coprime, e (a * n / q) =\n      ((∏ p ∈ q.primeFactors, (1 - divW n p) : ℝ) : ℂ) :=",
+            "line": 97,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Singular.lean",
+            "fragment": "L97"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          214
+        ],
+        "printed": [
+          204
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Same identity after d ↦ q/d; n ∈ ℕ is harmless since c_q(n) depends on n mod q. None of these declarations uses a hypothesis."
+}

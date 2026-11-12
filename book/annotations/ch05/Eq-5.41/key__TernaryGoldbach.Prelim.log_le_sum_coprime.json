@@ -1,0 +1,70 @@
+{
+  "id": "Eq 5.41",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 104,
+        "rect": [
+          0.25926,
+          0.38701,
+          0.56816,
+          0.06689
+        ]
+      },
+      "title": "Equation (5.41)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 5.41"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Prelim.log_le_sum_coprime",
+        "module": "TernaryGoldbach.Prelim.SumMuSqPhi"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Prelim.log_le_sum_coprime",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem log_le_sum_coprime {q : ℕ} (hq : 1 ≤ q) {R : ℝ} (hR : 0 ≤ R) :\n    Nat.totient q / q * Real.log R ≤\n      ∑ r ∈ (Icc 1 ⌊R⌋₊).filter (fun r => Squarefree r ∧ Nat.Coprime r q),\n        (1 / Nat.totient r : ℝ) :=",
+            "line": 293,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Prelim/SumMuSqPhi.lean",
+            "fragment": "L293"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          104
+        ],
+        "printed": [
+          94
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The last step ∑_{d≤R}1/d ≥ log R is Mathlib's harmonic-sum bound inside log_le_sum_coprime. Lean keeps log R and lets the caller pick R (capped at W′) instead of substituting R = (q(ν+υ))^{-1/2}."
+}

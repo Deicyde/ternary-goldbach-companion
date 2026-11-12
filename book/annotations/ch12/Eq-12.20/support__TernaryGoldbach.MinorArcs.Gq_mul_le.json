@@ -1,0 +1,70 @@
+{
+  "id": "Eq 12.20",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 244,
+        "rect": [
+          0.25926,
+          0.71065,
+          0.56816,
+          0.04966
+        ]
+      },
+      "title": "Equation (12.20)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 12.20"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Gq_mul_le",
+        "module": "TernaryGoldbach.MinorArcs.LSQuot1"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Gq_mul_le",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Gq_mul_le {q P : ℕ} {R t : ℝ} (hR : 0 ≤ R) (ht : 0 ≤ t)\n    (hPR : ∀ p : ℕ, p.Prime → (p : ℝ) ≤ R → p ∣ P) (hPq : ∀ p : ℕ, p.Prime → p ∣ q → p ∣ P) :\n    Gq q R * Gq P t ≤ Gq q (t * R) :=",
+            "line": 77,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/LSQuot1.lean",
+            "fragment": "L77"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          244
+        ],
+        "printed": [
+          234
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "re-judged at the pin",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Lean keeps the mechanism but none of the constants."
+}

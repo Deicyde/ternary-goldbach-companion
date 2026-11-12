@@ -1,0 +1,70 @@
+{
+  "id": "Eq 1.17",
+  "kind": "equation",
+  "status": "partial",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 28,
+        "rect": [
+          0.25926,
+          0.54847,
+          0.56816,
+          0.03905
+        ]
+      },
+      "title": "Equation (1.17)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.17"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.typeILog_eq_sum",
+        "module": "TernaryGoldbach.MinorArcs.TypeILogProof"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.typeILog_eq_sum",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem typeILog_eq_sum {α x : ℝ} (hx : 0 < x) (D : ℝ) :\n    typeILog α x D = ∑ m ∈ Icc 1 ⌊D⌋₊,\n      if Odd m then (μ m : ℂ) * ToddG (eta2log (x / m)) α x m else 0 :=",
+            "line": 61,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/TypeILogProof.lean",
+            "fragment": "L61"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          28
+        ],
+        "printed": [
+          18
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The f ≡ 1 sum (1.17) is neither formalized nor needed. The difference is the book's own choice: Ch. 3 inserts f = 1_{(n,v)=1} with v = 2 ((3.9)–(3.10))."
+}

@@ -1,4 +1,4 @@
-"""Re-run the erratum checks that data/items.json cites, and record their decision lines.
+"""Re-run the erratum checks in scripts/checks/ (and any other that data/items.json cites), and record their decision lines.
 
 New code, standard library only.  Each check ends with one line `CONFIRMED: ...` or
 `NOT CONFIRMED: ...`, decided by its computation.  Python checks run with `python3 -I`, or, for
@@ -36,8 +36,11 @@ def run(path, mpmath_dir):
 def main():
     root, mpmath_dir, out = sys.argv[1:4]
     items = json.load(open(os.path.join(root, 'data', 'items.json')))['items']
+    here = os.path.relpath(os.path.dirname(os.path.abspath(__file__)), root)
+    committed = {os.path.join(here, f) for f in os.listdir(os.path.join(root, here))
+                 if f.endswith(('.py', '.c')) and f != 'run_all.py'}
     todo = sorted({x['erratum']['check']['script'] for x in items
-                   if x['erratum'].get('check', {}).get('script')})
+                   if x['erratum'].get('check', {}).get('script', '').startswith('scripts/')} | committed)
     results = {}
     with concurrent.futures.ThreadPoolExecutor(6) as pool:
         futures = {pool.submit(run, os.path.join(root, s), mpmath_dir): s for s in todo}

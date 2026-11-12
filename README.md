@@ -13,13 +13,16 @@ numbered equations, figures and the table: 778 items) is outlined on its page an
 the Lean declarations of [calr3/ternary-goldbach](https://github.com/calr3/ternary-goldbach),
 which formalizes the book relative to three published numerical results taken as hypotheses.
 Each link carries a relation judged statement by statement; an item searched for and not found
-is a checked absence (`noMatch`).
+is a checked absence (`noMatch`). Each unnumbered display outside proofs (434) and each step of
+each proof (993 steps of 55 proofs) has its own box too, linked to the Lean lines that carry it or
+marked absent after a search.
 
 A second overlay, in `paper-2013/`, shows H. A. Helfgott, *The ternary Goldbach conjecture is true*,
 arXiv:1312.7748v2 (2014, 79 pp.). 241 of its 244 numbered items are matched to their counterparts in
 the book and take those items' Lean links: with the book's relation where the two statements are the
 same up to notation, and as `relatedMatch` at most where the book changed it (the note says what
-changed). A further link points to the book's item on the book's PDF.
+changed). A further link points to the book's item on the book's PDF. Its 138 unnumbered displays
+and the 317 steps of its 23 proofs are linked as the book's are.
 
 ## Viewing it
 
@@ -44,7 +47,8 @@ library only. The cards show plain statements: there is no Verso build of the pi
 
 ## Counts
 
-778 items, 2256 annotations: 2220 link calr3/ternary-goldbach (131 of them checked absences), 7
+778 items, 2256 annotations on them (3872 in all, with 623 on the 434 unnumbered displays and 993
+on the proof steps): 2220 link calr3/ternary-goldbach (131 of them checked absences), 7
 Mathlib, 29 the statements in `lean/`. By item, the strongest relation of its key links to
 calr3/ternary-goldbach or Mathlib (a link that only supports the item is `relatedMatch`):
 
@@ -65,12 +69,65 @@ changed, and no relation was raised.
 By status (vocabulary of `data/items.json`): replaced 198, variant 142, not formalized (not needed) 132,
 weaker 94, inlined 75, definition match 64, exact 47, definition differs 17, stronger 8, hypothesis 1.
 
-The paper: 244 items (26 theorem-like, 218 equations), 953 annotations. 181 items state what their
+The paper: 244 items (26 theorem-like, 218 equations), 953 annotations on them (1491 in all, with
+221 on the 138 unnumbered displays and 317 on the proof steps). 181 items state what their
 book counterpart states up to notation, 60 were changed in the book (constants, ranges, redefined
 functions, rewritten steps), and 3 have no counterpart in the book. Two matches by LaTeX label were
 wrong (the book reused the label) and were replaced by the counterpart found by reading. By item:
 `exactMatch` 10, `closeMatch` 5, `broadMatch` 8, `narrowMatch` 21, `hasPart` 7, `relatedMatch` only
 158, `noMatch` 31, no link 4.
+
+<!-- coverage: written by scripts/coverage.py -->
+## Coverage
+
+Each statement, display and proof step has one class (`docs/coverage.md` section 6); "formalized" is
+1-to-1 + Faithful. Details, the paper's sections, the 1-to-1 list, every deviation and the absences:
+[`docs/coverage.md`](docs/coverage.md).
+
+Helfgott, *The ternary Goldbach problem* (arXiv:1501.05438v2):
+
+| | Formalized | 1-to-1 | Deviates | Absent |
+|---|---|---|---|---|
+| Statements | 2/66 (3%) | 2/66 (3%) | 53/66 (80%) | 8/66 (12%) |
+| Displays | 122/1142 (11%) | 60/1142 (5%) | 744/1142 (65%) | 237/1142 (21%) |
+| Steps | 134/993 (13%) | 44/993 (4%) | 520/993 (52%) | 312/993 (31%) |
+
+Of the 53 statements that deviate, 35 have a confirmed erratum; of the others, [L] proves less (`narrowMatch`) for 6 and does the work another way (`relatedMatch`) for 12.
+
+| Chapter | Statements formalized | Displays formalized | Steps formalized | Steps absent | Deviations |
+|---|---|---|---|---|---|
+| 1 | 1/1 (100%) | 16/69 (23%) | — | — | 36/70 (51%) |
+| 2 | 0/1 (0%) | 11/34 (32%) | 4/7 (57%) | 1/7 (14%) | 21/42 (50%) |
+| 3 | 0/1 (0%) | 5/25 (20%) | — | — | 11/26 (42%) |
+| 4 | 1/7 (14%) | 4/64 (6%) | 42/198 (21%) | 18/198 (9%) | 185/269 (69%) |
+| 5 | 0/6 (0%) | 8/79 (10%) | 33/127 (26%) | 18/127 (14%) | 130/212 (61%) |
+| 6 | — | 23/168 (14%) | 7/18 (39%) | 0/18 (0%) | 139/186 (75%) |
+| 7 | 0/5 (0%) | 4/18 (22%) | — | — | 15/23 (65%) |
+| 8 | 0/2 (0%) | 0/114 (0%) | — | — | 53/116 (46%) |
+| 9 | 0/12 (0%) | 7/134 (5%) | 8/274 (3%) | 125/274 (46%) | 236/420 (56%) |
+| 10 | 0/2 (0%) | 7/63 (11%) | — | — | 55/65 (85%) |
+| 11 | 0/6 (0%) | 5/33 (15%) | 2/69 (3%) | 39/69 (57%) | 46/108 (43%) |
+| 12 | 0/8 (0%) | 6/52 (12%) | 19/145 (13%) | 51/145 (35%) | 114/205 (56%) |
+| 13 | 0/3 (0%) | 3/49 (6%) | 12/59 (20%) | 3/59 (5%) | 76/111 (68%) |
+| 14 | — | 13/120 (11%) | — | — | 87/120 (72%) |
+| A | — | 8/76 (11%) | — | — | 40/76 (53%) |
+| B | 0/6 (0%) | 0/18 (0%) | 6/52 (12%) | 21/52 (40%) | 48/76 (63%) |
+| C | 0/5 (0%) | 2/25 (8%) | 0/32 (0%) | 27/32 (84%) | 21/62 (34%) |
+| D | 0/1 (0%) | 0/1 (0%) | 1/12 (8%) | 9/12 (75%) | 4/14 (29%) |
+
+By statement share: most formalized chapter 1, 1/1 (100%); least chapters 2 (0/1), 3 (0/1), 5 (0/6), 7 (0/5), 8 (0/2), 9 (0/12), 10 (0/2), 11 (0/6), 12 (0/8), 13 (0/3), B (0/6), C (0/5), D (0/1), 0% each. By step share: most formalized chapter 2, 4/7 (57%); least chapter C, 0/32 (0%).
+
+Helfgott, *The ternary Goldbach conjecture is true* (arXiv:1312.7748v2):
+
+| | Formalized | 1-to-1 | Deviates | Absent |
+|---|---|---|---|---|
+| Statements | 0/26 (0%) | 0/26 (0%) | 20/26 (77%) | 4/26 (15%) |
+| Displays | 38/356 (11%) | 18/356 (5%) | 241/356 (68%) | 60/356 (17%) |
+| Steps | 33/317 (10%) | 7/317 (2%) | 145/317 (46%) | 131/317 (41%) |
+
+Of the 20 statements that deviate, 0 have a confirmed erratum; of the others, [L] proves less (`narrowMatch`) for 3 and does the work another way (`relatedMatch`) for 17.
+
+<!-- /coverage -->
 
 ## Formal statements
 
@@ -131,7 +188,10 @@ gives its item's. Notes state no other claim that [H] errs.
 - `data/<overlay>-displays.json`, `data/<overlay>-steps.json`: the unnumbered displays outside proofs and the
   steps of every proof, segmented from the LaTeX (`scripts/steps/segment.py`; `data/book-splits.json`, the
   long paragraphs cut at sentences). `data/<overlay>-regions-steps.json`: their regions on the PDF
-  (`scripts/regions/run_steps.sh`). Not linked yet.
+  (`scripts/regions/run_steps.sh`). `data/<overlay>-{displays,steps}-mapping.json`: their links, with how each
+  was checked (`scripts/steps/map/`); `data/steps-text-claims.json`: the skeptics' verdicts on claims that the
+  text is wrong, with the checks in `scripts/checks/steps/`. `scripts/coverage.py`: `docs/coverage.md`,
+  `data/coverage.json` and the Coverage section above.
 - `paper-2013/`: the same for the paper. `data/items-paper-2013.json` (its items),
   `data/regions-paper-2013.json`, `data/matches-paper-2013.json` (each item's counterpart in the book
   and how it was checked); `scripts/paper/`.

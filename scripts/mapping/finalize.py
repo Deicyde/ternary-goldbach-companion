@@ -11,7 +11,7 @@ New code.  Inputs, all produced by this repository's scripts or by the review pa
 * the overrides of the sample check (item id -> status and note).
 
 Usage: python3 -I finalize.py <items_merged.json> <repin.json> <rejudge dir> <absence dir> <errata dir>
-       <lean_index_P.json> <mathlib_P.json> <tg checkout> <sample.json> <out dir>
+       <lean_index_P.json> <mathlib_P.json> <tg checkout> <sample.json> <out dir> [<checks-run.json>]
 """
 import collections
 import glob
@@ -42,6 +42,7 @@ def load_batches(d):
 
 def main():
     (merged_p, repin_p, rejudge_d, absence_d, errata_d, index_p, mathlib_p, tg, sample_p, out_d) = sys.argv[1:11]
+    rerun = json.load(open(sys.argv[11]))['checks'] if len(sys.argv) > 11 else None
     items = json.load(open(merged_p))
     repin = json.load(open(repin_p))
     rp = {r['id']: r for r in repin['items']}
@@ -156,6 +157,14 @@ def main():
                                    output_line=c.get('output_line', ''), note=c.get('note', ''), why=c.get('why', ''))
                 if c.get('kind') and c['kind'] != er['kind']:
                     er['check']['kind'] = c['kind']
+                if rerun is not None and c.get('script'):
+                    got = rerun.get(c['script'], {})
+                    er['check']['rerun'] = got.get('decision', '')
+                    if c['result'] == 'confirmed' and not got.get('decision', '').startswith('CONFIRMED:'):
+                        er['check']['state'] = 'confirmed at first run, not on re-run'
+                elif c['result'] == 'confirmed':
+                    er['check']['state'] = 'confirmed, not re-run'
+
             elif iid in CLUSTER_C:
                 er['check'] = dict(state='unconfirmed', why='Appendix C cluster of six, not re-checked')
             else:

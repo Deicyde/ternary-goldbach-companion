@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "Lean proves it outright (no hypotheses) for H = 200 with its own, much larger error err942N (Plancherel windows below T₀, Jensen windows above, uniform Mellin bounds at s = 0 and Re s = −1/2). The book's (9.70) first line rests on Lemma 9.4.1, whose proof drops Lemma 9.1.3's boundary term;"
+  "note": "Lean proves it outright (no hypotheses) for H = 200 with its own, much larger error err942N (Plancherel windows below T₀, Jensen windows above, uniform Mellin bounds at s = 0 and Re s = −1/2). Erratum: The first line of (9.70) is Lemma 9.4.1's bound, and (9.66) drops f(T₀)g_χ(T₀): for ζ even at the book's H = 200, T₀ = 450 the zero sum is 1.053 times (9.66)'s right side, and with the term restored the coefficient is at least 10.3532/(2π·0.1598) + 10.3532/2 = 15.49 > 11.308 for every q, H, T₀ (about 27 at §9.6's T₀ − H = 250, qT₀ = 1.35·10⁸). (checked by `scripts/checks/proposition_9_4_2.py`)."
 }

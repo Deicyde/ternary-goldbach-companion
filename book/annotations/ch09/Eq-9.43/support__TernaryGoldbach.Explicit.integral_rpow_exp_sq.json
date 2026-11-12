@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.43",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 187,
+        "rect": [
+          0.17135,
+          0.3236,
+          0.56816,
+          0.14756
+        ]
+      },
+      "title": "Equation (9.43)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.43"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.integral_rpow_exp_sq",
+        "module": "TernaryGoldbach.Explicit.MellinPlancherel"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.integral_rpow_exp_sq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem integral_rpow_exp_sq {q : ℝ} (hq : -1 < q) :\n    ∫ v in Ioi (0:ℝ), v ^ q * Real.exp (-v ^ (2:ℝ)) = (1 / 2) * Real.Gamma ((q + 1) / 2) :=",
+            "line": 279,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/MellinPlancherel.lean",
+            "fragment": "L279"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          187
+        ],
+        "printed": [
+          177
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Recomputed: 0.8862269, 0.4431135, 1.9475222 (closed form and quadrature; check92.py). They give |η♥|₂ = 0.941396 and |η♥·log|₂ = 1.395537 in (9.29)."
+}

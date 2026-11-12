@@ -2,6 +2,7 @@
   "id": "Eq 9.41",
   "kind": "equation",
   "status": "not_formalized",
+  "relation": "noMatch",
   "subject": [
     {
       "location": {
@@ -21,7 +22,13 @@
       }
     }
   ],
-  "object": [],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/calr3/ternary-goldbach",
+      "version": "192ca57362fa3ee737cd83205cb9ea99526c4553"
+    }
+  ],
   "extensions": {
     "org.mathlib-initiative.formal-companion.overlay": {
       "locator": {
@@ -39,5 +46,5 @@
       }
     }
   },
-  "note": "Splitting off log(q|δ|/2), which is negative when q|δ| < 2, and multiplying (9.38) by it is likewise valid only after recombining as above."
+  "note": "Splitting off log(q|δ|/2), which is negative when q|δ| < 2, and multiplying (9.38) by it is likewise valid only after recombining as above. Erratum: The proof applies (9.40), stated for y ≥ e, at y = T₀/(π|δ|), which is below e for |δ| > T₀/(πe) under the hypothesis T₀ ≥ 50; at q = 1, T₀ = 50, δ = 10 (y = 1.5915) the integral is 1.2428 against the (9.40) bound 1.0467. (checked by `scripts/checks/eq_9_41.py`)."
 }

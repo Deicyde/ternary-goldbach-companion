@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "The book weights each block by its lower end log(jq+R), which does not bound log m on the block; Lean uses the upper end, so the j=0 term is (x/R)log(R+q) (≤ (x/R)log 3R for R ≥ q/2). Typo: After (4.61) the book cites the assumption x >= e^2 c/2 (the lemma states x >= e^2 c_2/2 = 2.481); (checked by `scripts/checks/eq_4_61.py`)."
+  "note": "The book weights each block by its lower end log(jq+R), which does not bound log m on the block; Lean uses the upper end, so the j=0 term is (x/R)log(R+q) (≤ (x/R)log 3R for R ≥ q/2). Typo: After (4.61) the book cites the assumption x >= e^2 c/2 (the lemma states x >= e^2 c_2/2 = 2.481); (4.61) needs sqrt(c_2 x/2) >= e, i.e. x >= 2e^2/c_2 = 22.008 (at x = 10, q = 6 the left side 3.662 exceeds the right side 3.305), but U,V >= 1, Q_0 >= 2 sqrt x and UV + (19/18)Q_0 <= x/5.6 force x >= 150.757, so the slip is harmless. (checked by `scripts/checks/eq_4_61.py`)."
 }

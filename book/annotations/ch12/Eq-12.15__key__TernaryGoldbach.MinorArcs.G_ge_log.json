@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "Lean replaces (12.15) by the weaker G(t) ≥ log t + 1.064 for t ≥ 20000, which suffices since Q ≥ 20000Q0. The proof's 4·10⁷ threshold should be 4.43·10⁷ for the lower half; the inequality holds anyway."
+  "note": "Lean replaces (12.15) by the weaker G(t) ≥ log t + 1.064 for t ≥ 20000, which suffices since Q ≥ 20000Q0. Erratum: The proof says (12.12) gives (12.15) for R >= 4*10^7, but for the lower bound it gives log R + 1.312 only for R >= 4.4324*10^7 (at R = 4*10^7 only log R + 1.311284), so [4*10^7, 4.4324*10^7) is covered by neither step. (checked by `scripts/checks/eq_12_15.c`)."
 }

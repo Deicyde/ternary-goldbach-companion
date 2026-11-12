@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "Lean proves the identity only for smoothings with Mellin transform holomorphic at 0 and exponentially decaying, as a limit of rectangle zero sums with no R; the error term is bounded via Landau's lemma with much larger constants. The book's R misses η(0)log x for even χ when η(0) ≠ 0, a case Lean excludes."
+  "note": "Lean proves the identity only for smoothings with Mellin transform holomorphic at 0 and exponentially decaying, as a limit of rectangle zero sums with no R; the error term is bounded via Landau's lemma with much larger constants. Erratum: The book defines R = Res_{s=0}(L'/L)G_delta without the factor x^s, so for q>1, chi even, eta(0)≠0 the x-independent R of (9.2) misses eta(0) log x: for chi=(·/5) and eta=e^{-t^2/2} the residue is b+c_0+log x (2.3385, 6.9437, 13.8515 at x=10, 10^3, 10^6) and |LHS+sum_rho+b| = 4.66, 6.97, 9.27, 11.57 at x=10^2..10^5 against the printed bound 1.91, 1.57, 1.46, 1.42; only the Gaussian branch (Prop 9.2.2) has eta(0)≠0, and Thm 7.1.1 absorbs the extra (log x)/x. (checked by `scripts/checks/lemma_9_1_1.py`)."
 }

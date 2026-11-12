@@ -1,0 +1,70 @@
+{
+  "id": "Eq 9.38",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 186,
+        "rect": [
+          0.25926,
+          0.4508,
+          0.56816,
+          0.03946
+        ]
+      },
+      "title": "Equation (9.38)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 9.38"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.gauss_tail",
+        "module": "TernaryGoldbach.Explicit.WeilNumB"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.gauss_tail",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem gauss_tail {δ : ℝ} (hδ : 0 < δ) {W : ℝ} (hW : 3 / δ ≤ W) {C₁ κ₁ : ℝ} (hC : 0 ≤ C₁)\n    (hk : 0 ≤ κ₁) {f : ℝ → ℝ} (hf : Continuous f)\n    (hle : ∀ u, 3 / δ ≤ u → f u ≤ Real.exp (-(δ ^ 2 * u ^ 2 / 2)) / u * (C₁ + κ₁ * Real.log (δ * u))) :\n    ∫ u in (3 / δ)..W, f u ≤ (C₁ / 9 + κ₁ / 3) * Real.exp (-(9 / 2)) :=",
+            "line": 525,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/WeilNumB.lean",
+            "fragment": "L525"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          186
+        ],
+        "printed": [
+          176
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "The final '≤' is an equality. Lean has no such lemma; its high-zero tails are geometric window sums."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.30",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 265,
+        "rect": [
+          0.17135,
+          0.32033,
+          0.56816,
+          0.04392
+        ]
+      },
+      "title": "Equation (13.30)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Cxt",
+        "module": "TernaryGoldbach.MinorArcs.FirstChoice"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Cxt",
+            "kind": "def"
+          },
+          "snippet": {
+            "text": "noncomputable def Cxt (T t : ℝ) : ℝ := Real.log (1 + Real.log (4 * t) / (2 * Real.log (9 * T / (2.004 * t))))",
+            "line": 98,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/FirstChoice.lean",
+            "fragment": "L98"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          265
+        ],
+        "printed": [
+          255
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Cxt takes T = z^{1/3} as its argument, not z. It is used in the first-choice (§6) bounds as 0.27125·Cxt + 0.41415, not for the convexity behind (13.31)."
+}

@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "Lean replaces the Gaussian integral by EA(T₀−200,δ) and a geometric series in ρ_A."
+  "note": "Lean replaces the Gaussian integral by EA(T₀−200,δ) and a geometric series in ρ_A. Erratum: The second inequality of (9.68) is false: it multiplies the correction (π/2 + π|δ|/(2·0.1065(T₀−H)))/y by log(qT₀/2π)/log(T₀/π|δ|), which is < 1 when q|δ| < 2, so line 2 exceeds line 3 (q = 1, H = 25, T₀ = 75, δ = 1: 38.393 > 38.136; H = 200, T₀ = 250, δ = 0.1: 5.4782 > 5.4717); the correct factor is 1 + (…)/(y·log(qT₀/2π)). (checked by `scripts/checks/eq_9_68.py`)."
 }

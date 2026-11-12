@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "Lean proves the bound with 32 in place of 31.521 by an analytic route (48 log 2 at ρ = 4 plus (B.6)); the book's numerics (B.12)–(B.16) are not formalized. The new citer eta2_fourier_bound is (B.6), not this lemma."
+  "note": "Lean proves the bound with 32 in place of 31.521 by an analytic route (48 log 2 at ρ = 4 plus (B.6)); the book's numerics (B.12)–(B.16) are not formalized. Erratum: The step max(31.521 log y, 48 log 2 + 25) = 31.521 log y fails for 4 <= y < 6.3512, since 48 log 2 + 25 = 58.271 > 31.521 log 4 = 43.697, and the decay bound starts at t = 2252.505, beyond the checked range t <= 2252.21. (checked by `scripts/checks/lemma_b_2_3.py`)."
 }

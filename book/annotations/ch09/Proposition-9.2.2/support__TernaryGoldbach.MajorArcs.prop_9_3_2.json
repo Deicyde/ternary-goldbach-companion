@@ -1,0 +1,70 @@
+{
+  "id": "Proposition 9.2.2",
+  "kind": "proposition",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 187,
+        "rect": [
+          0.17135,
+          0.62371,
+          0.56816,
+          0.22498
+        ]
+      },
+      "title": "Proposition 9.2.2",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Proposition 9.2.2"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MajorArcs.prop_9_3_2",
+        "module": "TernaryGoldbach.MajorArcs.Prop932"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MajorArcs.prop_9_3_2",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem prop_9_3_2 {x : ℝ} (hx : 1 ≤ x) (δ : ℝ) {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q)\n    (hχ : χ.IsPrimitive) {T0 : ℝ} (hT0 : max (10 * π * |δ|) 50 ≤ T0) (hG : GRHUpTo χ T0) :\n    ‖Schar χ (fun n => ((Λ n * phi (n / x) : ℝ) : ℂ)) (δ / x) -\n        (if q = 1 then 𝓕 (fun u => (phiPos u : ℂ)) (-δ) * x else 0)‖ ≤ err932N q T0 δ x * x :=",
+            "line": 93,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MajorArcs/Prop932.lean",
+            "fragment": "L93"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          187
+        ],
+        "printed": [
+          177
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Side result: §9.6 uses it only to prove Thm 7.1.1, which no later chapter cites; Prop 9.3.2's proof proceeds 'as in' this one. Erratum: The proof prints |eta'|_2 + 2pi|delta||eta|_2 ≤ 0.942 + 4.183|delta| ≤ 1 + 5|delta|, which is |eta|_2 + 2pi|eta'|_2|delta| with the norms swapped; the correct value 0.665668 + 5.914967|delta| exceeds 1 + 5|delta| for |delta| > 0.3654, so the x^{-3/2} term should be (log q + 6)(1 + 6|delta|), with which the proof's closing inequality still holds. (checked by `scripts/checks/proposition_9_2_2.py`)."
+}

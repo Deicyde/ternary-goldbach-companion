@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "Lean proves the identity under exponential decay of the Mellin transform, which makes the sum–integral swap legitimate; the book's justification (G_δ bounded on ℜs = 3/2) does not give absolute integrability for general η."
+  "note": "Lean proves the identity under exponential decay of the Mellin transform, which makes the sum–integral swap legitimate; the book's justification (G_δ bounded on ℜs = 3/2) does not give absolute integrability for general η. Erratum: The book justifies swapping sum_n and the integral on Re s = 3/2 only by boundedness of G_delta there, but Fubini needs int|G_delta(3/2+i tau)| d tau < oo, which the lemma's hypotheses do not give: for eta = psi0(t) t^{-1.6} sin sqrt t, tau^{0.7}|G_0(3/2+i tau)| = 1.54303, 1.54301, 1.54301 at tau = 100, 400, 1600, so int|G_0| = oo. (checked by `scripts/checks/eq_9_4.py`)."
 }

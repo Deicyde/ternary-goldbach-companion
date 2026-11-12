@@ -2,6 +2,7 @@
   "id": "Eq A.18",
   "kind": "equation",
   "status": "not_formalized",
+  "relation": "noMatch",
   "subject": [
     {
       "location": {
@@ -21,7 +22,13 @@
       }
     }
   ],
-  "object": [],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/calr3/ternary-goldbach",
+      "version": "192ca57362fa3ee737cd83205cb9ea99526c4553"
+    }
+  ],
   "extensions": {
     "org.mathlib-initiative.formal-companion.overlay": {
       "locator": {
@@ -39,5 +46,5 @@
       }
     }
   },
-  "note": "The book uses (A.18) only for (A.32), |η₊′|₂ ≤ 10.845789, which is an input to Prop 9.4.2. Lean's η₊ explicit formula (TernaryGoldbach.Explicit.norm_SsumG_fP_le) needs only ∫η₊², ∫(log v)²η₊² and Mellin bounds on vertical lines, so neither (A.18) nor |η₊′|₂ appears."
+  "note": "The book uses (A.18) only for (A.32), |η₊′|₂ ≤ 10.845789, which is an input to Prop 9.4.2. Erratum: The book says |(t+i)Mh(it)|_1 is at most twice a bracket but prints the bracket itself, 27.8622803; the argument gives only 55.7245604, and the true norm is 36.6773, so (A.18) is false. (checked by `scripts/checks/eq_a_18.py`)."
 }

@@ -2,6 +2,7 @@
   "id": "Lemma 9.2.1",
   "kind": "lemma",
   "status": "not_formalized",
+  "relation": "noMatch",
   "subject": [
     {
       "location": {
@@ -21,7 +22,13 @@
       }
     }
   ],
-  "object": [],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/calr3/ternary-goldbach",
+      "version": "192ca57362fa3ee737cd83205cb9ea99526c4553"
+    }
+  ],
   "extensions": {
     "org.mathlib-initiative.formal-companion.overlay": {
       "locator": {
@@ -39,5 +46,5 @@
       }
     }
   },
-  "note": "Side branch: feeds only Prop 9.2.2 and thence Thm 7.1.1, which Part III never cites. Lean has no explicit k = 0 analogue of Cor 8.0.2."
+  "note": "Side branch: feeds only Prop 9.2.2 and thence Thm 7.1.1, which Part III never cites. Erratum: The proof's step (9.35) fails even for ζ (δ = 0.01, T₀ = 52.9: 1.8539·10⁻³ > 1.5796·10⁻³), and for χ mod 5 with χ(2) = i the pairing ρ ↔ 1−ρ fails (ρ = ½+6.18358i is a zero, |L(1−ρ,χ)| = 2.817). (checked by `scripts/checks/lemma_9_2_1.py`)."
 }

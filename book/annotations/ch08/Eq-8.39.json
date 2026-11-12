@@ -2,6 +2,7 @@
   "id": "Eq 8.39",
   "kind": "equation",
   "status": "not_formalized",
+  "relation": "noMatch",
   "subject": [
     {
       "location": {
@@ -21,7 +22,13 @@
       }
     }
   ],
-  "object": [],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/calr3/ternary-goldbach",
+      "version": "192ca57362fa3ee737cd83205cb9ea99526c4553"
+    }
+  ],
   "extensions": {
     "org.mathlib-initiative.formal-companion.overlay": {
       "locator": {
@@ -39,5 +46,5 @@
       }
     }
   },
-  "note": "For ℓ = 3, τ = 2, β = π/8 the foot of the perpendicular has |u∘| = 1.764324, as (8.39) gives. Not needed in Lean: the rotated-ray integrand carries r^{σ+1}, which integral_rpow_exp_quad_le handles by r^p ≤ 1 + r², so no distance-to-origin bound occurs."
+  "note": "(8.39) itself is correct. Erratum: The display after (8.39) claims the square is at least j/2 + (7/2)sin^2 b - (1/2)cos^2 b + (j/2)sin^2 b. (checked by `scripts/checks/eq_8_39.py`)."
 }

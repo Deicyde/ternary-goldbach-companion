@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "Lean route: blocks via sum_Ioc_le_blocks and Lemma 4.1.2 (lines 488–555), S2_le (line 560), then s(½+log q−log s) ≤ c₂(1+log q−log c₂) (hsΛ, line 577), so log(2x/q)+log(eq/c₂) = log(2ex/c₂). The repo's 'only justified for q ≥ 2' (bound_4_41 docstring) is the monotonicity condition q e^{−1/2} ≥ c₂; at q = 1 there is nothing to prove."
+  "note": "Lean route: blocks via sum_Ioc_le_blocks and Lemma 4.1.2 (lines 488–555), S2_le (line 560), then s(½+log q−log s) ≤ c₂(1+log q−log c₂) (hsΛ, line 577), so log(2x/q)+log(eq/c₂) = log(2ex/c₂). Erratum: The book's last '<=' in (4.47) needs qD' >= c_2 x and fails whenever D < c_2 x/q (x=1e6, q=100, D'=1000: line 4 = 58857 > line 5 = 52930 in units 5c_0/3pi^2). (checked by `scripts/checks/eq_4_47.py`)."
 }

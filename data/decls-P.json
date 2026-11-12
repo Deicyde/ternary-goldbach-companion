@@ -553,6 +553,18 @@
     "truncated": false
    }
   },
+  "TernaryGoldbach.Explicit.gauss_tail": {
+   "module": "TernaryGoldbach.Explicit.WeilNumB",
+   "line": 525,
+   "kind": "theorem",
+   "source": "project",
+   "private": false,
+   "snippet": {
+    "text": "theorem gauss_tail {δ : ℝ} (hδ : 0 < δ) {W : ℝ} (hW : 3 / δ ≤ W) {C₁ κ₁ : ℝ} (hC : 0 ≤ C₁)\n    (hk : 0 ≤ κ₁) {f : ℝ → ℝ} (hf : Continuous f)\n    (hle : ∀ u, 3 / δ ≤ u → f u ≤ Real.exp (-(δ ^ 2 * u ^ 2 / 2)) / u * (C₁ + κ₁ * Real.log (δ * u))) :\n    ∫ u in (3 / δ)..W, f u ≤ (C₁ / 9 + κ₁ / 3) * Real.exp (-(9 / 2)) :=",
+    "line": 525,
+    "truncated": false
+   }
+  },
   "TernaryGoldbach.Explicit.goodSmoothing_fP": {
    "module": "TernaryGoldbach.Explicit.EtaPlusMellin",
    "line": 268,
@@ -721,6 +733,18 @@
     "truncated": false
    }
   },
+  "TernaryGoldbach.Explicit.integral_mom": {
+   "module": "TernaryGoldbach.Explicit.EtaPlusSqBound",
+   "line": 124,
+   "kind": "theorem",
+   "source": "project",
+   "private": false,
+   "snippet": {
+    "text": "theorem integral_mom (k : ℕ) :\n    ∫ v in Ioi (0:ℝ), v ^ k * Real.exp (-v ^ 2) = (1 / 2) * Real.Gamma ((k + 1) / 2) :=",
+    "line": 124,
+    "truncated": false
+   }
+  },
   "TernaryGoldbach.Explicit.integral_norm_sq_G_half": {
    "module": "TernaryGoldbach.Explicit.MellinPlancherel",
    "line": 88,
@@ -838,6 +862,30 @@
    "snippet": {
     "text": "theorem integral_rpow_exp_quad_le {p c b : ℝ} (hp0 : 0 ≤ p) (hp2 : p ≤ 2) (hc : 0 < c) :\n    ∫ r in Ioi (0:ℝ), r ^ p * Real.exp (-(c / 2) * r ^ 2 + b * r) ≤\n      Real.exp (b ^ 2 / (2 * c)) * ((1 + (b / c) ^ 2) * √(π / (c / 2)) + √π / (c * √(c / 2))) :=",
     "line": 418,
+    "truncated": false
+   }
+  },
+  "TernaryGoldbach.Explicit.integral_rpow_exp_quad_le_ext": {
+   "module": "TernaryGoldbach.Explicit.GrExtend",
+   "line": 16,
+   "kind": "theorem",
+   "source": "project",
+   "private": false,
+   "snippet": {
+    "text": "theorem integral_rpow_exp_quad_le_ext {p c b : ℝ} (hp : -1 / 2 ≤ p) (hp2 : p ≤ 2) (hc : 0 < c) :\n    ∫ r in Ioi (0:ℝ), r ^ p * Real.exp (-(c / 2) * r ^ 2 + b * r) ≤\n      Real.exp (b ^ 2 / c) * ((c / 4) ^ (-(1 / 4 : ℝ)) * (1 / 2) * Real.Gamma (1 / 4) +\n        (c / 4) ^ (-(3 / 2 : ℝ)) * (1 / 2) * Real.Gamma (3 / 2)) :=",
+    "line": 16,
+    "truncated": false
+   }
+  },
+  "TernaryGoldbach.Explicit.integral_rpow_exp_sq": {
+   "module": "TernaryGoldbach.Explicit.MellinPlancherel",
+   "line": 279,
+   "kind": "theorem",
+   "source": "project",
+   "private": false,
+   "snippet": {
+    "text": "theorem integral_rpow_exp_sq {q : ℝ} (hq : -1 < q) :\n    ∫ v in Ioi (0:ℝ), v ^ q * Real.exp (-v ^ (2:ℝ)) = (1 / 2) * Real.Gamma ((q + 1) / 2) :=",
+    "line": 279,
     "truncated": false
    }
   },
@@ -1642,6 +1690,18 @@
    "snippet": {
     "text": "theorem tsum_Fterm_eq {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (φ : ℝ → ℂ) {x : ℝ}\n    (hx : 0 < x) (t : ℝ) : ∑' n : ℕ, (Λ n : ℂ) * χ n * Fterm φ x n t =\n      Fline χ φ x (((3 / 2 : ℝ) : ℂ) + t * I) :=",
     "line": 152,
+    "truncated": false
+   }
+  },
+  "TernaryGoldbach.Explicit.weil_formula": {
+   "module": "TernaryGoldbach.Explicit.WeilFormula",
+   "line": 142,
+   "kind": "theorem",
+   "source": "project",
+   "private": false,
+   "snippet": {
+    "text": "theorem weil_formula (hℓ0 : 0 < ℓ) (hℓ1 : ℓ ≤ 1) (hm : 2 ≤ m) (h2 : Real.exp (2 * m * ℓ) < 2) (T₀ : ℝ) :\n    Tendsto (fun k : ℕ => 2 * π * ∑ u ∈ rectZerosXi (goodT k), (mult (goodT k) u : ℂ) * WH ℓ m T₀ u)\n      atTop (𝓝 (2 * π * WHt ℓ m T₀ 1 +\n        ∫ y : ℝ, archF (((1 / 2 : ℝ) : ℂ) + y * I) * WHt ℓ m T₀ (((1 / 2 : ℝ) : ℂ) + y * I))) :=",
+    "line": 142,
     "truncated": false
    }
   },
@@ -3961,6 +4021,18 @@
     "truncated": false
    }
   },
+  "TernaryGoldbach.MinorArcs.Cxt_le_loglog": {
+   "module": "TernaryGoldbach.MinorArcs.SecondBridge",
+   "line": 72,
+   "kind": "theorem",
+   "source": "project",
+   "private": false,
+   "snippet": {
+    "text": "theorem Cxt_le_loglog {T t : ℝ} (hT : 6e6 ≤ T) (ht2 : 2 ≤ t) (htT : t ≤ T / 3) :\n    Cxt T t ≤ Real.log (Real.log T) - 1.06 :=",
+    "line": 72,
+    "truncated": false
+   }
+  },
   "TernaryGoldbach.MinorArcs.Dx": {
    "module": "TernaryGoldbach.MinorArcs.MinorTotal",
    "line": 73,
@@ -4546,18 +4618,6 @@
    "snippet": {
     "text": "theorem R_le_of_pow_four {y n : ℝ} (hy : 0 < y) (hn : 1 ≤ n) (hny : n ^ 4 ≤ y) :\n    R y (2 * n) ≤ 0.6628 :=",
     "line": 18,
-    "truncated": false
-   }
-  },
-  "TernaryGoldbach.MinorArcs.Rs": {
-   "module": "TernaryGoldbach.MinorArcs.GMono",
-   "line": 96,
-   "kind": "def",
-   "source": "project",
-   "private": false,
-   "snippet": {
-    "text": "noncomputable def Rs (B s : ℝ) : ℝ :=\n  0.27125 * Real.log (1 + (Real.log 8 + s) / (2 * (B - s))) + 0.41415",
-    "line": 96,
     "truncated": false
    }
   },
@@ -5662,6 +5722,18 @@
    "snippet": {
     "text": "theorem c0_gt : ghatY (1e25 : ℝ) ((10431623 : ℕ) : ℝ) ≤ 0.0119421 :=",
     "line": 318,
+    "truncated": false
+   }
+  },
+  "TernaryGoldbach.MinorArcs.c3_g0": {
+   "module": "TernaryGoldbach.MinorArcs.NumericsCells",
+   "line": 1088,
+   "kind": "theorem",
+   "source": "project",
+   "private": false,
+   "snippet": {
+    "text": "theorem c3_g0 : ghatY (1e27 : ℝ) ((150000 : ℕ) : ℝ) ≤ 0.0585094 :=",
+    "line": 1088,
     "truncated": false
    }
   },
@@ -10045,6 +10117,18 @@
     "truncated": false
    }
   },
+  "TernaryGoldbach.Prelim.Small.tail_le": {
+   "module": "TernaryGoldbach.Prelim.SmallFsq",
+   "line": 105,
+   "kind": "theorem",
+   "source": "project",
+   "private": false,
+   "snippet": {
+    "text": "theorem tail_le (N L : ℕ) (hN : 1 ≤ N) (hL : 1 ≤ L) :\n    ∑' k, sqInd (k + N) / ((k + N : ℕ) : ℝ) ^ 2 ≤\n      ∑ k ∈ range L, ((cq (k + N) : ℚ) : ℝ) / ((k + N : ℕ) : ℝ) ^ 2 + 1 / (((L + N : ℕ) : ℝ) - 1) :=",
+    "line": 105,
+    "truncated": false
+   }
+  },
   "TernaryGoldbach.Prelim.SmallG.lemma7_small": {
    "module": "TernaryGoldbach.Prelim.SmallG",
    "line": 278,
@@ -10390,6 +10474,18 @@
    "snippet": {
     "text": "theorem mertens_small (n : ℕ) (h1 : 1 ≤ n) (h : n ≤ 100) :\n    ∑ m ∈ Icc 1 n, (Λ m : ℝ) / m ≤ Real.log n :=",
     "line": 46,
+    "truncated": false
+   }
+  },
+  "TernaryGoldbach.Prelim.pmul_moebius_log": {
+   "module": "TernaryGoldbach.Prelim.MoebiusDecay",
+   "line": 17,
+   "kind": "theorem",
+   "source": "project",
+   "private": false,
+   "snippet": {
+    "text": "theorem pmul_moebius_log :\n    pmul (μ : ArithmeticFunction ℝ) log = -(Λ * (μ : ArithmeticFunction ℝ)) :=",
+    "line": 17,
     "truncated": false
    }
   },

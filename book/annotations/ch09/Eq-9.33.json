@@ -2,6 +2,7 @@
   "id": "Eq 9.33",
   "kind": "equation",
   "status": "not_formalized",
+  "relation": "noMatch",
   "subject": [
     {
       "location": {
@@ -21,7 +22,13 @@
       }
     }
   ],
-  "object": [],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/calr3/ternary-goldbach",
+      "version": "192ca57362fa3ee737cd83205cb9ea99526c4553"
+    }
+  ],
   "extensions": {
     "org.mathlib-initiative.formal-companion.overlay": {
       "locator": {
@@ -39,5 +46,5 @@
       }
     }
   },
-  "note": "Cor 8.0.2 needs σ ∈ [0,1] and |τ| ≥ 20, met since T₀ ≥ 50. The same 'pairs ρ, 1−ρ' step opens the proofs of Lemmas 9.3.1 and 9.4.1 ('As usual'), which are on [H]'s main line; the repo flags only Lemma 9.1.3's N⁺ = N/2."
+  "note": "Cor 8.0.2 needs σ ∈ [0,1] and |τ| ≥ 20, met since T₀ ≥ 50. Erratum: The identity before (9.33) uses 'zeros come in pairs ρ, 1−ρ', which holds only for real χ: for χ mod 5 with χ(2) = i the zeros with 50 < t < 55 are at t = 50.664, 51.977, 53.442, 54.485 and at t = −51.090, −53.757, and |L(1−ρ,χ)| = 1.424 at ρ = ½+50.6642i (1−ρ is a zero of L(s,χ̄)); in 50 < |t| < 90 there are 26 zeros above and 25 below. (checked by `scripts/checks/eq_9_33.py`)."
 }

@@ -1,0 +1,70 @@
+{
+  "id": "Eq 11.26",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 236,
+        "rect": [
+          0.25926,
+          0.25809,
+          0.56816,
+          0.06641
+        ]
+      },
+      "title": "Equation (11.26)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 11.26"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Cxt_le_loglog",
+        "module": "TernaryGoldbach.MinorArcs.SecondBridge"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Cxt_le_loglog",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Cxt_le_loglog {T t : ℝ} (hT : 6e6 ≤ T) (ht2 : 2 ≤ t) (htT : t ≤ T / 3) :\n    Cxt T t ≤ Real.log (Real.log T) - 1.06 :=",
+            "line": 72,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondBridge.lean",
+            "fragment": "L72"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          236
+        ],
+        "printed": [
+          226
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Not needed: Lemma 11.2.5 has no Lean counterpart. Float check: 0.6336820 at x = 10²⁵ (margin 2·10⁻⁶); 0.6360 at log x = 60, 0.6605 at log x = 100."
+}

@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "Lean has no counterpart of Lemma 9.1.3 and no N(T,χ) integral; it counts zeros in 4.4-wide windows by Jensen's formula and sums a geometric series. The decreasing-f clause of Lemma 9.1.3 omits the boundary term f(T₀)g_χ(T₀); the Lean route does not need it."
+  "note": "Lean has no counterpart of Lemma 9.1.3 and no N(T,χ) integral; it counts zeros in 4.4-wide windows by Jensen's formula and sums a geometric series. Erratum: Lemma 9.1.3's proof sets f(y)g_χ(y) − ∫f′g_χ = 0.5∫f/T, but integration by parts gives 2f(y)g_χ(y) + 0.5∫f/T (0.98622 against 0.00101 for the book's f at y = 75), so the decreasing-f clause and hence (9.66) lack f(T₀)g_χ(T₀). (checked by `scripts/checks/eq_9_66.py`)."
 }

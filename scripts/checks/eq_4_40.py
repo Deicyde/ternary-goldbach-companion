@@ -1,0 +1,404 @@
+"""Eq 4.40 (Lemma 4.2.3, typeI.tex:1176-1189): the printed main term is too small.
+
+Claim. (4.40) is printed with the all-n main term of (4.9) -- x/q, min(1, c0/(2 pi delta)^2),
+(m,q)=1, hat(log.eta)(-delta) -- whereas for odd n and 2alpha = a/q + delta/x the proof's own
+first display (typeI.tex:1236-1245) gives x/2q, hat eta(-delta/2) (<= min(1, c0/(pi delta)^2)),
+(m,2q)=1, hat(log.eta)(-delta/2).  For |delta| >~ 1 the printed term is up to 4x too small and
+"(4.40) plus (4.41)" fails, e.g. in the clause "|delta| >= 1/2c2 but D <= Q0/2" (typeI.tex:1204).
+
+Book inputs:
+  - Lemma 4.2.3 hypotheses, (4.39), (4.40), (4.41), c1, c2: typeI.tex:1153-1204.
+  - eta = eta_2(t) = 4 max(log 2 - |log 2t|, 0): intromin.tex:124-125.
+  - |eta_2'|_1 = 8 log 2, |eta_2''|_1 = 48: minarctotals.tex:39-41; (4.38) for rho >= 4:
+    minarctotals.tex:44-50, normfour.tex:168-171 (rho0 = 4, as the book applies the lemma at
+    minarctotals.tex:59-61).
+  - c0 = 31.521: normfour.tex:64, 171 and minarctotals.tex:86.  The check is repeated with
+    c0 = 48 = |eta_2''|_1, which bounds |hat(eta_2'')|_inf trivially.
+Method. (4.39) is evaluated as a finite sum over odd m <= D and odd n (blockwise Taylor
+expansion of log n with exact phase tables; the truncation error is bounded and printed; the
+routine is validated against naive summation).  M = D in every case, since D <= Q0/2 and
+D <= Q/2 (the statement leaves M undefined).
+Confirms the claim if: |(4.39)| minus the error bound exceeds printed (4.40)+(4.41) in every case.
+Run: python3 -I eq_4_40.py
+Ported from a 2026-11-06 check script.
+"""
+import math, cmath, time
+from fractions import Fraction as Fr
+
+PI = math.pi
+LOG2 = math.log(2.0)
+ETA1 = 8 * LOG2          # |eta_2'|_1, minarctotals.tex:39-41
+C0_BOOK = 31.521         # c_0 for eta_2, normfour.tex:64,171; minarctotals.tex:86
+C0_L1 = 48.0             # |eta_2''|_1 = 48 >= |hat(eta_2'')|_inf, minarctotals.tex:39-41
+RHO0 = 4                 # rho_0 = 4, minarctotals.tex:61
+
+
+def c2_of(c0):
+    """c_2 = 6 pi / (5 sqrt(c_0)), typeI.tex:1169."""
+    return 6 * PI / (5 * math.sqrt(c0))
+
+
+def eta2(t):
+    """eta_2(t) = 4 max(log 2 - |log 2t|, 0), intromin.tex:124-125."""
+    if t <= 0.25 or t >= 1.0:
+        return 0.0
+    return 4.0 * max(LOG2 - abs(math.log(2.0 * t)), 0.0)
+
+
+# ---- Fourier transforms hat g(xi) = int g(t) e(-xi t) dt by Gauss-Legendre ----
+def _gl(n):
+    xs, ws = [], []
+    for i in range(1, n + 1):
+        z = math.cos(PI * (i - 0.25) / (n + 0.5))
+        for _ in range(100):
+            p1, p2 = 1.0, 0.0
+            for j in range(1, n + 1):
+                p1, p2 = ((2 * j - 1) * z * p1 - (j - 1) * p2) / j, p1
+            pp = n * (z * p1 - p2) / (z * z - 1.0)
+            dz = p1 / pp
+            z -= dz
+            if abs(dz) < 1e-16:
+                break
+        xs.append(z)
+        ws.append(2.0 / ((1.0 - z * z) * pp * pp))
+    return xs, ws
+
+
+def _fourier_raw(g, xi, nodes, pieces):
+    xs, ws = _gl(nodes)
+    tot = 0j
+    for a, b in ((0.25, 0.5), (0.5, 1.0)):
+        h = (b - a) / pieces
+        for p in range(pieces):
+            mid = a + (p + 0.5) * h
+            s = 0j
+            for x_, w_ in zip(xs, ws):
+                t = mid + 0.5 * h * x_
+                s += w_ * g(t) * cmath.exp(-2j * PI * xi * t)
+            tot += s * 0.5 * h
+    return tot
+
+
+def eta_hat(xi):
+    a = _fourier_raw(eta2, xi, 20, 16)
+    b = _fourier_raw(eta2, xi, 30, 32)
+    assert abs(a - b) < 1e-12, (a, b)
+    return b
+
+
+def logeta_hat(xi):
+    g = lambda t: math.log(t) * eta2(t)
+    a = _fourier_raw(g, xi, 20, 16)
+    b = _fourier_raw(g, xi, 30, 32)
+    assert abs(a - b) < 1e-12, (a, b)
+    return b
+
+
+# ---- Moebius function ----
+def mobius(N):
+    mu = [1] * (N + 1)
+    mu[0] = 0
+    comp = bytearray(N + 1)
+    primes = []
+    for i in range(2, N + 1):
+        if not comp[i]:
+            primes.append(i)
+            mu[i] = -1
+        for p in primes:
+            ip = i * p
+            if ip > N:
+                break
+            comp[ip] = 1
+            if i % p == 0:
+                mu[ip] = 0
+                break
+            mu[ip] = -mu[i]
+    return mu
+
+
+# ---- The sum (4.39), evaluated term by term ------------------------------
+# S = sum_{m<=D, m odd} mu(m) T_m,  T_m = sum_{n odd} e(alpha m n) (log n) eta_2(mn/x),
+# with 2 alpha = a/q + delta/x (typeI.tex:1154).  Replacing alpha by alpha+1/2
+# multiplies every term (m, n odd) by -1, so |S| does not depend on the lift.
+# On x/4 < mn <= x/2: (log n) eta_2 = 4 log n (log(4m/x) + log n);
+# on x/2 < mn < x:    (log n) eta_2 = -4 log n (log(m/x) + log n).
+# Odd n are taken in blocks n = c + 2j, 0 <= j < L (L a power of 2, 2L <= R c);
+# log n = log c + log(1 + (2L/c) t), t = j/L, is replaced by its Taylor polynomial
+# of degree K in t, and sum_j w^j t^k (w = e(2 alpha m)) is tabulated exactly for
+# L = 2^s by doubling.  The truncation error is bounded and reported.
+
+K = 16
+R = 0.05
+
+
+def _tables(beta2, smax):
+    """G[s][k] = sum_{j<2^s} w^j (j/2^s)^k, w = e(beta2); beta2 a Fraction."""
+    binom = [[math.comb(k, i) for i in range(K + 1)] for k in range(K + 1)]
+    G = [[1.0 + 0j] + [0j] * K]           # L = 1: only j = 0, t^0 = 1, t^k = 0
+    for s in range(smax):
+        L = 1 << s
+        wL = cmath.exp(2j * PI * float((beta2 * L) % 1))
+        g = G[s]
+        # sum_{j<2L} w^j (j/2L)^k = 2^-k [ G_k(L) + w^L sum_i C(k,i) G_i(L) ]
+        new = []
+        for k in range(K + 1):
+            acc = 0j
+            bk = binom[k]
+            for i in range(k + 1):
+                acc += bk[i] * g[i]
+            new.append((g[k] + wL * acc) / (2 ** k))
+        G.append(new)
+    return G
+
+
+def _polymul(a, b):
+    out = [0.0] * (K + 1)
+    for i, ai in enumerate(a):
+        if ai == 0.0:
+            continue
+        for j in range(K + 1 - i):
+            out[i + j] += ai * b[j]
+    return out
+
+
+def T_odd(m, x, alpha):
+    """sum over odd n of e(alpha m n) (log n) eta_2(mn/x); returns (value, error bound)."""
+    beta = alpha * m
+    total = 0j
+    err = 0.0
+    nterms = 0
+    lo1 = x // (4 * m) + 1            # smallest n with 4mn > x
+    hi1 = x // (2 * m)                # largest n with 2mn <= x
+    lo2 = hi1 + 1
+    hi2 = (x - 1) // m                # largest n with mn < x
+    segs = []
+    for lo, hi, A, B in ((lo1, hi1, 4.0, math.log(4 * m / x)), (lo2, hi2, -4.0, math.log(m / x))):
+        if lo % 2 == 0:
+            lo += 1
+        if hi % 2 == 0:
+            hi -= 1
+        if hi >= lo:
+            segs.append((lo, hi, A, B))
+    if not segs:
+        return 0j, 0.0
+    smax = max(0, int(math.log2(max(1.0, R * segs[-1][1] / 2))) + 1)
+    G = _tables(2 * beta, smax + 1)
+    for lo, hi, A, B in segs:
+        c = lo
+        remaining = (hi - lo) // 2 + 1
+        while remaining > 0:
+            s = min(remaining.bit_length() - 1, len(G) - 1)
+            while s > 0 and 2 * (1 << s) > R * c:
+                s -= 1
+            L = 1 << s
+            l0 = math.log(c)
+            y = 2 * L / c
+            P = [0.0] + [(-1) ** (k + 1) * y ** k / k for k in range(1, K + 1)]
+            P2 = _polymul(P, P)
+            coef = [A * (l0 * (B + l0) if k == 0 else 0.0) + A * ((B + 2 * l0) * P[k] + P2[k])
+                    for k in range(K + 1)]
+            g = G[s]
+            acc = 0j
+            for k in range(K + 1):
+                acc += coef[k] * g[k]
+            ph = cmath.exp(2j * PI * float((beta * c) % 1))
+            total += ph * acc
+            # remainder of log(1+y t), |y t| <= y <= R:  <= y^(K+1)/((K+1)(1-y))
+            rem = y ** (K + 1) / ((K + 1) * (1 - y)) if s > 0 else 0.0
+            umax = l0 + y
+            err += L * abs(A) * (abs(B) + 2 * umax + 2 * rem + 1e-300) * rem
+            # floating-point rounding allowance
+            err += L * 1e-13 * abs(A) * (abs(B) + 2 * umax) * umax
+            nterms += L
+            c += 2 * L
+            remaining -= L
+    return total, err
+
+
+def S_439(x, q, a, delta, D, mu=None):
+    """(4.39) for 2 alpha = a/q + delta/x; delta a Fraction, x an int."""
+    alpha = Fr(a, 2 * q) + Fr(delta) / (2 * x)
+    if mu is None:
+        mu = mobius(int(D))
+    tot = 0j
+    err = 0.0
+    for m in range(1, int(D) + 1, 2):
+        if mu[m] == 0:
+            continue
+        v, e_ = T_odd(m, x, alpha)
+        tot += mu[m] * v
+        err += e_
+    return tot, err
+
+
+def S_439_naive(x, q, a, delta, D):
+    alpha = Fr(a, 2 * q) + Fr(delta) / (2 * x)
+    mu = mobius(int(D))
+    tot = 0j
+    for m in range(1, int(D) + 1, 2):
+        if mu[m] == 0:
+            continue
+        b = alpha * m
+        for n in range(x // (4 * m) + 1, x // m + 1):
+            if n % 2 == 0:
+                continue
+            t = m * n / x
+            if t >= 1.0:
+                continue
+            tot += mu[m] * cmath.exp(2j * PI * float((b * n) % 1)) * math.log(n) * eta2(t)
+    return tot
+
+
+# ---- The printed bounds of Lemma 4.2.3 (typeI.tex:1176-1220) ------------------
+def mu_sums(M_over_q, x, q, coprime_to):
+    mu = mobius(int(M_over_q))
+    s1, s2 = [], []
+    for m in range(1, int(M_over_q) + 1):
+        if mu[m] and math.gcd(m, coprime_to) == 1:
+            s1.append(mu[m] / m)
+            s2.append(mu[m] / m * math.log(x / (m * q)))
+    return math.fsum(s1), math.fsum(s2)
+
+
+def bound_440_printed(x, q, delta, D, M, c0):
+    """(4.40) as printed, typeI.tex:1176-1189: x/q, min(1,(c0/delta^2)/(2pi)^2), (m,q)=1, hat(log eta)(-delta)."""
+    d = float(delta)
+    s1, s2 = mu_sums(M / q, x, q, q)
+    mn = min(1.0, (c0 / d ** 2) / (2 * PI) ** 2) if d != 0 else 1.0
+    return ((x / q) * mn * abs(s2) + (x / q) * abs(logeta_hat(-d)) * abs(s1)
+            + c0 * (0.5 - 2 / PI ** 2) * (D ** 2 / (4 * q * x) * math.log(math.sqrt(math.e) * x / D) + 1 / math.e))
+
+
+def bound_440_oddn(x, q, delta, D, M, c0):
+    """Main term of the odd-n sum, as the proof's first display (typeI.tex:1236-1245) gives it:
+    x/2q, min(1, c0/(pi delta)^2) >= |hat eta(-delta/2)|, (m,2q)=1, hat(log eta)(-delta/2)."""
+    d = float(delta)
+    s1, s2 = mu_sums(M / q, x, q, 2 * q)
+    mn = min(1.0, c0 / (PI * d) ** 2) if d != 0 else 1.0
+    return ((x / (2 * q)) * mn * abs(s2) + (x / (2 * q)) * abs(logeta_hat(-d / 2)) * abs(s1)
+            + c0 * (0.5 - 2 / PI ** 2) * (D ** 2 / (4 * q * x) * math.log(math.sqrt(math.e) * x / D) + 1 / math.e))
+
+
+def logp(z):
+    return max(math.log(z), 0.0)
+
+
+def bound_441(x, q, D, c0):
+    """(4.41), typeI.tex:1191-1202, with c1 = 1 + |eta'|_1/(x/D) (typeI.tex:1203)."""
+    c1 = 1 + ETA1 / (x / D)
+    c2 = c2_of(c0)
+    A = 2 * math.sqrt(c0 * c1) / PI
+    return (A * D * math.log(math.e * x / D)
+            + 1.5 * c1 * (x / q) * logp(D / (c2 * x / q)) * math.log(q / c2)
+            + ((2 * ETA1 / PI) * max(1.0, math.log(c0 * math.e ** 3 * q * q / (4 * PI * ETA1 * x))) * math.log(x)
+               + A * (math.sqrt(3) + 0.5 * logp(D / (q / 2))) * math.log(q / c2)) * q
+            + 1.5 * c1 * math.sqrt(2 * x / c2) * math.log(2 * x / c2)
+            + 20 * c0 * c2 ** 1.5 / (3 * PI ** 2) * math.sqrt(2 * x) * math.log(2 * math.sqrt(math.e) * x / c2))
+
+
+def _442_parts(x, q, delta, D, c0):
+    d = abs(float(delta))
+    c1 = 1 + ETA1 / (x / D)
+    c2 = c2_of(c0)
+    A = 2 * math.sqrt(c0 * c1) / PI
+    X = x / (d * q)
+    const = A * D * math.log(math.e * x / D) + (40 / 3) * math.sqrt(2) * c0 * c2 ** 1.5 * math.sqrt(x) * math.log(x) \
+        + 0.75 * c1 * (2 / math.sqrt(5)) * math.sqrt(x) * math.log(x)
+    # increasing in eps:
+    inc = lambda e: A * (1 + e) * (X + 1) * (math.sqrt(3 + 2 * e) * logp(2 * math.sqrt(math.e) * d * q)
+                                            + 0.5 * logp(2 * D / X) * logp(2 * d * q))
+    # decreasing in eps:
+    dec = lambda e: 0.75 * c1 * (1 + e) / (2 * e) * math.log(x) * math.sqrt(x) * math.log(x)
+    return const, inc, dec
+
+
+def bound_442(x, q, delta, D, c0, eps):
+    """(4.42), typeI.tex:1207-1220."""
+    const, inc, dec = _442_parts(x, q, delta, D, c0)
+    return const + inc(eps) + dec(eps)
+
+
+def eps_fail_range(x, q, delta, D, c0, value):
+    """Largest grid interval [lo, hi] of eps in [1e-40, 1] on which (4.42) < value is certified:
+    on [e0, e1] (4.42) <= const + inc(e1) + dec(e0), its increasing/decreasing parts being monotone."""
+    const, inc, dec = _442_parts(x, q, delta, D, c0)
+    grid = [10 ** (-40 + 40 * i / 20000) for i in range(20001)]   # 1e-40 .. 1
+    best, cur = None, None
+    for e0, e1 in zip(grid, grid[1:]):
+        if const + inc(e1) + dec(e0) < value:
+            cur = (cur[0], e1) if cur else (e0, e1)
+            if best is None or math.log(cur[1] / cur[0]) > math.log(best[1] / best[0]):
+                best = cur
+        else:
+            cur = None
+    return best
+
+
+def hyps(x, q, delta, D, Q0, c0):
+    d = abs(float(delta))
+    c2 = c2_of(c0)
+    out = {
+        "|delta/x| <= 1/(q Q0)": d / x <= 1 / (q * Q0),
+        "q <= Q0": q <= Q0,
+        "Q0 >= max(16, 2 sqrt x)": Q0 >= max(16, 2 * math.sqrt(x)),
+        "sqrt3 <= D <= min(x/rho0, x/e)": math.sqrt(3) <= D <= min(x / RHO0, x / math.e),
+        "|delta| >= 1/(2 c2)": d >= 1 / (2 * c2),
+        "D <= Q0/2": D <= Q0 / 2,
+    }
+    return out
+# ---------------------------------------------------------------------------
+
+
+def report(label, x, q, a, delta, D, Q0):
+    print("=" * 78)
+    print(label)
+    print("  x=%g q=%d a=%d delta=%s D=%g Q0=%g" % (x, q, a, delta, D, Q0))
+    for k, v in hyps(x, q, delta, D, Q0, C0_BOOK).items():
+        print("  hypothesis %-34s %s" % (k, v))
+    ok = all(hyps(x, q, delta, D, Q0, C0_BOOK).values())
+    Q = x // int(abs(delta) * q) if Fr(delta).denominator == 1 else math.floor(x / abs(float(delta) * q))
+    M = D                                    # D <= Q0/2 and D <= Q/2: M = D under every reading
+    assert D <= Q / 2 and D <= Q0 / 2
+    t = time.time()
+    S, err = S_439(x, q, a, delta, D)
+    print("  |(4.39)| by summation = %.9e   (truncation/rounding bound %.1e, %.1f s)" % (abs(S), err, time.time() - t))
+    lower = abs(S) - err
+    res = {}
+    for c0 in (C0_BOOK, C0_L1):
+        p40 = bound_440_printed(x, q, delta, D, M, c0)
+        p41 = bound_441(x, q, D, c0)
+        o40 = bound_440_oddn(x, q, delta, D, M, c0)
+        print("  c0=%g: printed (4.40)=%.6e  (4.41)=%.6e  sum=%.6e  ratio |(4.39)|/sum=%.4f"
+              % (c0, p40, p41, p40 + p41, abs(S) / (p40 + p41)))
+        print("          odd-n main term (x/2q, c0/(pi delta)^2, (m,2q)=1) + (4.41) = %.6e  (holds: %s)"
+              % (o40 + p41, o40 + p41 >= abs(S) + err))
+        res[c0] = lower > p40 + p41
+    return ok and res[C0_BOOK] and res[C0_L1]
+
+
+def main():
+    t0 = time.time()
+    # Validate the summation routine against naive term-by-term summation.
+    for args in ((300000, 1, 0, Fr(3), 15), (300000, 3, 1, Fr(3), 5)):
+        v, e = S_439(*args)
+        w = S_439_naive(*args)
+        print("validation %s: blocks %.10e, naive %.10e, |diff| %.1e (bound %.1e)" % (args, abs(v), abs(w), abs(v - w), e))
+        assert abs(v - w) <= e + 1e-6 * abs(w)
+    print("|hat eta_2(1.5)| = %.7f, |hat(log eta_2)(1.5)| = %.7f, |hat(log eta_2)(3)| = %.7f"
+          % (abs(eta_hat(1.5)), abs(logeta_hat(1.5)), abs(logeta_hat(3))))
+    fails = []
+    for label, x, q, a, delta, D in (
+            ("Case A: eta_2, q=1, a=0, delta=3, x=1e14, D=1e5 (the claim uses D=1e6; that run takes ~520 s and gives 3.2477e13 vs 8.912e12)", 10 ** 14, 1, 0, Fr(3), 10 ** 5),
+            ("Case B: q=3, a=1, delta=3, x=1e30, D=5", 10 ** 30, 3, 1, Fr(3), 5),
+            ("Case C: q=1, a=0, delta=3, x=1e7, D=300", 10 ** 7, 1, 0, Fr(3), 300)):
+        Q0 = 2 * math.sqrt(x)
+        fails.append(report(label, x, q, a, delta, D, Q0))
+    print("total time %.1f s" % (time.time() - t0))
+    if all(fails):
+        print("CONFIRMED: in all three admissible cases (|delta|=3 >= 1/2c2, D <= Q0/2, eta_2) the summed |(4.39)| exceeds printed (4.40)+(4.41), with c0=31.521 and with c0=48, while the odd-n main term (x/2q, min(1,c0/(pi delta)^2), (m,2q)=1) plus (4.41) holds.")
+    else:
+        print("NOT CONFIRMED: in at least one case the printed (4.40)+(4.41) was not exceeded by the summed |(4.39)| (or a hypothesis failed).")
+
+
+if __name__ == "__main__":
+    main()

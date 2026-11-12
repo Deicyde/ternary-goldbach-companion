@@ -64,7 +64,7 @@ PREPRINT = re.compile(r'2013|2014|preprint|\bH13\b|\[HP?13')
 
 
 def sentences(text):
-    parts = re.split(r'(?<=[.;])\s+(?=[A-Z`(\[])', ' '.join((text or '').split()))
+    parts = re.split(r'(?<=\.)\s+(?=[A-Z`(\[])', ' '.join((text or '').split()))
     return [p for p in parts if p]
 
 

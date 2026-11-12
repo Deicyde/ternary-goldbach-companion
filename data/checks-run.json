@@ -1,0 +1,716 @@
+{
+ "run_at": "2026-11-12T06:59:06Z",
+ "python": "3.13.5",
+ "checks": {
+  "scripts/checks/corollary_8_0_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the statement of Cor 8.0.2 holds on the grid (max ratio 0.412), but at s = 1+20i, delta = 2 the cited (8.3) is false (|F| = 1.292e-28 > 1.182e-40) though (8.50) holds (1.46e-8), and one-contour c_2 values give kappa_{1,0} = 4.9582 > 4.903, kappa_{2,0} = 8.0071 > 7.96.",
+   "seconds": 43.1
+  },
+  "scripts/checks/corollary_9_3_3.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the proof covers only x >= 4 (the case x < 4 holds trivially, ratio 0.0785), and at q=1, delta=0, T0=50 the eta_2-average of the proof's bounds (first line 6.1691 N1 > 6.11 N1) exceeds (9.61) for x > 3.92e+04, while the averaged Gaussian coefficient stays <= 0.01013 <= 0.0102.",
+   "seconds": 1.4
+  },
+  "scripts/checks/eq_10_11.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for q=2, alpha=1/2, x=10 and an admissible smooth eta >= 0 satisfying (10.8), |S^3 e(-N alpha) - (10.10)| = 2.6641972 while (10.11) = 0.0, so (10.11) drops the cross terms; the corrected bound 2.6641972 holds.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_10_16.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the arcs of M_{8,r} are disjoint only for x >= 8r(2r-1) (exact for r = 2..40; 3.599988e11 for r = 150000), which the hypotheses of Prop 10.4.1 and Lemma 10.3.1 do not require, and below it the arc-by-arc sum (10.25) differs from the integral over the union.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_10_25.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: summing the per-residue (10.8) error over a needs more than one copy (q=9973: Delta = 3.58 x the per-residue bound), max|S_eta| is not |S_eta(0,x)| for sign-changing eta (ratio 1352 at x=1e6), and the corrected K-part 4.4e-09 x is still negligible.",
+   "seconds": 0.3
+  },
+  "scripts/checks/eq_10_26.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the harmonic sum behind (10.26) exceeds log(2e^2 r) at every r in [182, 200000] (19.0900 > 14.6115 at r = 150000), so the coefficient is not established; 2 + 1.5 log r holds, and in Section 14.1 the corrected terms (1.32e-08 and 2.13e-09) remain negligible.",
+   "seconds": 0.2
+  },
+  "scripts/checks/eq_10_34.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the a-sum of the S_{eta_1} error against a-independent main terms reaches 9.96 x E_+ for q=101 (book's step needs <= x E_+), the valid replacement for sqrt(B_+) is 3.6875|eta_+|_2 not 1.6812|eta_+|_2, and line 2 of (10.36) becomes 2.333e-06/kappa while (14.27) still holds (1.0582591 >= 1.058259).",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_10_36.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: even moduli q <= 2r reach sum_{p|q} log p = 12.6115 > log r = 11.9184, and with sqrt(L) for sqrt(B_+) line 2 of (10.36) is 2.333e-06/kappa; (14.27) still holds (1.0582600 >= 1.058259) but only from the unrounded C_0 C bound (1.0582578 from the printed 1.058298).",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_11_11.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the AM-GM constant in (6.77) is 0.8102, not the printed 0.49911 (no rho gives below 0.684), and at x = 1e25, delta0 q = 4e5 (6.76) = 8.42862 exceeds both (6.77) and R log t + 0.5 = 8.11878, so [H] does not prove the '+0.5' that (11.11) inherits.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_11_17.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with the x_r^{-1/6} the L_{2r}/r term requires, the ratio in (11.17) is 1.101 > 1 at x_r = e^33 (printed 0.9969) and falls below 1 only at log x_r = 38.443, so the proof leaves (33, 38.443) uncovered; directly g/h <= 0.592, so Lemma 11.2.1 survives.",
+   "seconds": 0.4
+  },
+  "scripts/checks/eq_11_18.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at x = 10^25, K = 2, 2alpha = 1/10^5 with phi a 1% tent at w = 14/x, S_eta*(alpha,x) = 1.043 |phi|_1 x exceeds the (11.18) bound 0.04935 |phi|_1 x.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_11_6.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: Lemma 11.1.1's hypothesis holds for (11.4) only when |2-rho| <= 0.24928, so (11.6)'s use of (11.5) for rho in [0, 1.7507) is unjustified, while polarization gives the needed bound with constant 1/2 for every rho.",
+   "seconds": 1.3
+  },
+  "scripts/checks/eq_12_12.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the product in [Ram95] (3.9) is about 8.0836 > 8 (it passes 8 at p = 14629), so the argument behind 7.284 = 0.9105*8 gives about 7.36.",
+   "seconds": 0.7
+  },
+  "scripts/checks/eq_12_15.c": {
+   "exit": 0,
+   "decision": "CONFIRMED: (12.12) gives the lower bound of (12.15) only for R >= 4.4324e+07, so [4e7, 4.4324e+07) is covered by neither step of the proof, though (12.15) holds there (min G(R) - log R = 1.3326).",
+   "seconds": 3.5
+  },
+  "scripts/checks/eq_12_29.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: in the admissible case q = 2^9 5^9, s = 1, Q0 = 3e9, rho = 0.6, R = 3 fails (12.29), and Lemma 12.2.3 gives only 0.615201 where (12.23) needs 0.614865, so 'covered by that Lemma' does not follow.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_12_34.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (12.34) fails at q = 3, p0 = 3 (kappa(3) = 0.30038 < 0.30769) and nowhere else for p0 <= 13.",
+   "seconds": 1.5
+  },
+  "scripts/checks/eq_12_35.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (12.35) fails at (q, p0) = (3, 3) and (15, 5) (g(3), g(5) > g(2)) and has a negative denominator for tiny q (e.g. q = 1, p0 = 3); no other failure for p0 <= 13.",
+   "seconds": 7.7
+  },
+  "scripts/checks/eq_12_37.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the follow-up's denominator should be 0.8009t - log t - 1.59439 (not +0.07354) and the constant 7.62646 (not 6.74849); the corrected inequality still holds for t >= 37 (margin 0.1535), and (12.37) itself fails at (3,3), (15,5) and for q <= 3 with non-positive denominator.",
+   "seconds": 0.8
+  },
+  "scripts/checks/eq_12_8.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (12.8) holds with maximum 41/12 - log 7 = 1.4707565 at R = 7, but (12.12), which the book cites as the same [Ram95, Lemma 3.4], yields it only for R >= 146041.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_13_13.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with the book's c+ = 2.0532, c- = 0.6394 the jump constant is -1.46271, not -2.14938 (the 2013 value), so at kappa = 49 the jump 0.476437 exceeds 7/15; the repaired Z <= 1.0175 x^2/kappa stays below 1.058259 x^2/kappa.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_13_14.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at y = 1e25 the argument |delta|q/8 of g_(y,phi) in (13.14) can reach y/(8Q) = y^(1/3)/6 = 3.59e7, beyond Lemma 11.2.4's range (y/K)^(1/3)/6 = 1.17e7, and the omitted C_(phi,0,K) = 1.46e-5 is positive; harmless, since g_(y,phi) decreases on [r_1, y^(1/3)/6] for y = 1e25..1e300.",
+   "seconds": 4.5
+  },
+  "scripts/checks/eq_13_15.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at y = 1e25 case 2 reaches q = y^(1/3)/6 = 3.59e7 beyond (y/K)^(1/3)/6 = 1.17e7 where (11.18) stops, and the omitted C_(phi,0,K) is positive; the gap is harmless since h(y/K) <= g_(y,phi)(r_1) and g_(y,phi) decreases on [r_1, y^(1/3)/6] for y = 1e25..1e300.",
+   "seconds": 4.4
+  },
+  "scripts/checks/eq_13_20.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with c+ = 2.0532, c- = 0.6394 the constant is -1.46271, not -2.14938 (the value for c+ = 2.3912, c- = 0.6294), and at kappa = 49, x = 4.9e26 the jump 0.476437 exceeds the printed bound 0.465491.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_13_34.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: f_1's last term with the printed 11.07, 37.55 is 0.00340353 < int L_2r/r^2 = 0.00341256 (13.66 log 2 is dropped; the derived constants 10.073, 47.018 give f_1 = 0.0169333), but the printed f_1 = 0.0169073 still exceeds the exact 0.0168732.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_14_17.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the (14.17) bracket is 1.338045e-07, so the bound is 1.33805e-7/kappa, not 1.33805e-8/kappa; propagated, (14.26) becomes 3.9620e-05/kappa = 8.0857e-07 x^2, and 1.058259 survives only through the unrounded 1.0582990.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_14_26.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with (14.17)'s value 1.33805e-7 and (14.2)'s 2.3992e-8 the term before (14.26) is 2.79367e-06/kappa (printed 1.7316e-6/kappa) and (14.26)'s error is 3.96248e-05 x^2/kappa = 8.08670e-07 x^2 (printed 3.85628e-5/kappa = 7.86996e-7 x^2).",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_14_27.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: 1.3203236*sqrt(pi/2)*0.8001287^2 = 1.0594001 < 1.0594003, and with the corrected (14.26) error the rounded chain gives 1.0582584 < 1.058259 while the unrounded 1.0582990 gives 1.0582594 >= 1.058259.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_14_29.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the error term in S_eta*(0,x) is 1.3380e-07 (q = 1: 1.2066e-07), not 1.33805e-8, and (14.29) still holds since (sqrt(pi/2) + 1.33805e-7)*8.4029e-12 = 1.053147e-11 <= 1.05315e-11.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_14_3.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (A.36) fails for small t (|h_H - h|/t at t = 1e-10 is 7.46 > 0.1087), so the proof of |eta_+|_inf <= 1.079955 is invalid, though the bound holds numerically (max |eta_+| = 1.00000007).",
+   "seconds": 4.8
+  },
+  "scripts/checks/eq_14_40.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: f(t) > (5/2)(log t)/t for t = 3e4, 1e5, 1e9 (f ~ 10 log t/t), so the text's extension step is false, but f(t) < 10 log t/t <= 0.0035 for t >= 30000 and max f on [180, 30000] = 0.0195626172, so (14.40) holds.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_14_45.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the printed 0.43086 is R_(y,r0); with R_(z,2r0), which the crude bound requires, (14.45)'s bound at y = 10^150 is 0.33306 > 0.33239, though the exact left side (0.33221 at 10^150, max 0.33221 on the grid) stays below 0.33239.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_14_49.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (6.77)'s constant is 0.81020, not 0.49911 (so not 0.5), and with it the section 14.3 chain gives Z = 1.0384 x^2/kappa > 1.00948 (still < 1.058259); the scale issue is not numerical and is not checked.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_14_7.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with the book's ET <= 1.1405e-8 and |eta_+|_1 <= 1.062319 the 5.19-term is 0.075457 > 0.075272, giving [8.62971x, 8.78077x], so (14.7)'s O*(0.0754), 8.6298x and 8.7806x do not follow (8.7808x does).",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_1_11.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the book's one-sided transform is sqrt(pi/2)e^{-2pi^2 d^2} + i sqrt2 D(sqrt2 pi d), half the remark's real value plus an imaginary part, and with the remark's two-sided value (1.11)-(1.12) fail at q=1, delta=0 for x > 2.694e11.",
+   "seconds": 1.7
+  },
+  "scripts/checks/eq_1_29.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the integrand of (1.28) is 4 times the unweighted bilinear sum and exceeds sqrt(S1 S2) (ratio 3.9087 at x=1015000, W=10^4, alpha=1/101), so Cauchy-Schwarz gives 4 sqrt(S1 S2).",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_1_33.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the AM-GM constant in (6.77) is 0.8102, not the printed 0.49911, and with 0.5 the book's (6.63) exceeds (1.33) (ratio 1.0265 at x=1e25, q=95003, delta0=2) while with 0.8102 it does not.",
+   "seconds": 0.2
+  },
+  "scripts/checks/eq_2_16.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (2.15) with partial summation gives at best 1.07761*y^2/2 for 200000 < y <= 100000000, not 1.03884*y^2/2, while (2.16) itself holds on (663, 100000000] (max ratio 1.03583).",
+   "seconds": 12.8
+  },
+  "scripts/checks/eq_2_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (2.2) with |f'|_1 = L1 norm plus jumps fails for piecewise continuous f with an isolated integer value (1_{0}: 1 > 0), and holds with the pointwise total variation.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_2_24.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: m(7727068587) = 5.6880854032e-06 exceeds 1/(2 sqrt T) = 5.6880397242e-06 by 4.568e-11, so the remark's bound already fails at its endpoint x = 7727068587 (mu(T) = +1), not first at 7727068588 - eps.",
+   "seconds": 12.3
+  },
+  "scripts/checks/eq_3_11.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with the printed S_{0,v} = sum_{n|v}, (3.11) misses the prime powers 2^k, k >= 2 (e.g. 4(log 2)^2 = 1.9218 at alpha = 0), and holds with the sum over (n,v) > 1.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_3_16.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: F_{3,V}(p1p2p3) = (12-6k) log p1 log p2 log p3, so the printed case list swaps the values 0 and 6 log p1 log p2 log p3 of its two middle cases.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_3_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (6.77) should give 0.8102 not 0.49911, so (6.63) exceeds (3.2) by up to 2.65% (prime q) and 3.2% (q = 60060); (5.36) needs +0.0231 and the 8/5 mu-sum gives 8.21811.",
+   "seconds": 0.2
+  },
+  "scripts/checks/eq_4_11.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for non-integer Q0 with floor(x/|delta q|) < Q0 the printed chain exceeds (4.11) and the closing log+ bound is reversed, while the repaired chain stays below (4.11).",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_4_24.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: min(c2x/q,D) exceeds Q/2 = floor(x/|delta q|)/2 by less than 1/2 at admissible points of both sub-cases of case (b), while floor(D') <= Q/2 always holds.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_4_30.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: sum_{m<=M/q, m odd} m equals (M/q+1)^2/4 only when M/q is an odd integer (e.g. 1 < 9/4 at M/q=2), so the printed '=' is only '<=', which suffices for (4.30).",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_4_32.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with floor(x/|delta q|) < Q0 the printed x/Q term exceeds the x/Q0 term of (4.32) while the repaired term fits, and 'M >= floor(D)' fails at D = (Q+1)/2 with Q odd.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_4_40.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: in all three admissible cases (|delta|=3 >= 1/2c2, D <= Q0/2, eta_2) the summed |(4.39)| exceeds printed (4.40)+(4.41), with c0=31.521 and with c0=48, while the odd-n main term (x/2q, min(1,c0/(pi delta)^2), (m,2q)=1) plus (4.41) holds.",
+   "seconds": 55.7
+  },
+  "scripts/checks/eq_4_42.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with eta_2, c0=31.521 and all hypotheses met, the summed |(4.39)| exceeds (4.42) (claim's example at eps=0.1: 3.63e30 vs 2.65e30), and with x=1e60 it exceeds (4.42) for every eps in [1e-6, 1], so (4.42) without a main term is false.",
+   "seconds": 0.9
+  },
+  "scripts/checks/eq_4_47.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the last '<=' of (4.47) fails whenever D < c_2 x/q (line 4 = 58857 > line 5 = 52930 in units 5c_0/3pi^2 at x=1e6, q=100, D'=1000), while line 3 <= line 5 on the whole grid (max ratio 0.9999999999), and the three typos are as claimed.",
+   "seconds": 1.9
+  },
+  "scripts/checks/eq_4_50.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the last O*-term of (4.50) needs sum (log p)p^a <= V log q, which fails (12 log 3 > 9 log 3 at q=3, V=9; (4.55) middle 5.318e+07 > final 3.592e+07 at an admissible instance), the argument gives it only with a factor 3/2, and (4.54) = 3.09 stays below the printed O*-term 1.34e+05.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_4_51.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with R = q/2 the book's chain exceeds the printed (4.51) (ratios 1.0415, 1.0264) while it stays below it for R = c_2x/q (max 0.9998); the m <= q/2 term is negative at q = 1, and c_1 should be 1+|eta'|_1/(x/D).",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_4_55.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the last '<=' of (4.55) fails (middle line 1.126e+06 > final line 8.159e+05 at an admissible instance) because sum (log p)p^a can exceed V log q (ratio up to 3/2); with the factor 3/2 it holds, and the (4.54) double sum stays below the printed final line.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_4_61.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the assumption cited after (4.61) (x >= e^2 c_2/2 = 2.4808) does not give (4.61), which needs x >= 2e^2/c_2 = 22.0084, but the lemma's other hypotheses force x >= 150.757, so the slip is harmless.",
+   "seconds": 2.3
+  },
+  "scripts/checks/eq_5_24.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the footnote's stronger inequality with (1-3x^3) fails for x > 0.5709 (including interior points of the case y_i = sqrt x), so it cannot cover the stated range, while it holds for x <= 1/2 and (5.24) itself shows no violation on the whole range.",
+   "seconds": 0.7
+  },
+  "scripts/checks/eq_5_30.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (5.30) misprints S as s/3 and bounds the variation of f' wrongly; the book's own method gives (m+1)^2/(2S^2) (odd n: (m+1)^2/S^2), which proves the printed bound only for m >= 3, while for m = 1, 2 the printed bound holds numerically for 10^4 <= S < 10^6.",
+   "seconds": 15.6
+  },
+  "scripts/checks/eq_5_31.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for v=1 the x>=10^10 term in the proof of (5.31) must be 2(2-sqrt2)c_{1,5}/10^5, not the printed (2-sqrt2)c_{1,5}/10^5, which raises the v=1 total to 0.3639231 <= 0.36393; the v=2 term is valid, the sum-integral '=' is a '<=', and (5.31) survives for both v.",
+   "seconds": 0.5
+  },
+  "scripts/checks/eq_5_39.py": {
+   "exit": 0,
+   "decision": "NOT CONFIRMED: For R > W' Montgomery's step (5.40) held for all 20 squarefree r <= 100 sharing a support prime in the claim's own example and all 281 random admissible cases with support other than {2,3}; the only failure is the support {2,3} (Eq 5.40), where (5.39) itself still holds.",
+   "seconds": 0.6
+  },
+  "scripts/checks/eq_5_40.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: For admissible data (q=1, alpha=0, nu=upsilon=1/8, W=3, W'=1.5) the left side of (5.39) is 3.2104 > (5.40) = 1.6874, the printed condition nu+upsilon >= 1/qR^2 is reversed, and (5.39) itself still holds.",
+   "seconds": 0.8
+  },
+  "scripts/checks/eq_5_43.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: In Case B 'qR^2 < W' fails for q >= W/4 (qR^2 < 3.5W <= Q holds) and R = 2 > W' at q=1, W=3, W'=1.5 where (5.46) fails at r=2; Case A's rW/R should be r/R; (5.43) still holds.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_5_48.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the span of primes in (W/2,W] can exceed W/2 (W=13: 7 > 6.5), so the literal MV (1.6) does not give [H]'s weights, but the N-1 (dilated) form does since span-1 < W-W' <= W/2.",
+   "seconds": 5.9
+  },
+  "scripts/checks/eq_5_51.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the R=2 branch of the proof of (5.51) is invalid for 2<W<4 (W=3: R=2>W'=1.5, (5.46) fails 3.21>0.16) and misstates qR^2<W, though (5.51) still holds; the N vs W/2 point is not a gap, since the dilated MV sieve has N-1/2 <= W/2.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_5_52.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with 32 primes in (200,400] and all hypotheses of (5.52), the all-m sum exceeds the printed bound by a factor 1.33 while the odd-m sum is within it.",
+   "seconds": 0.2
+  },
+  "scripts/checks/eq_5_56.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: in the example R = 3.44 > W' and the Montgomery step fails at r = 2, so (5.40) is false (S_2 = 231.16 > 191.02) while (5.56) holds (231.16 <= 1366.72); at W = 7, W' = 3.5 (R > W' too) the step is valid, so R > W' alone does not break it.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_6_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the printed middle expression of (6.2) is exactly 1/4 of |eta''_{2,rho}|_1 for rho outside (e^2, 4e^2) and less than 1/4 inside (ratio up to 4.2459), e.g. 8.318 vs 33.271 at rho = 4; the final bound < 48 log rho still holds.",
+   "seconds": 0.9
+  },
+  "scripts/checks/eq_6_21.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: Eq (6.21) applies (5.54) up to W = x/U, but with Q = x/U ((6.65)) Q >= 3.5W fails on (x/3.5U, x/U], where Lemma 5.2.2's chain breaks (3 sigma/(1 - sigma) = 1.303 > 1 at W = Q); the first choice satisfies Q >= 3.5x/U (ratio >= 101).",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_6_23.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: Eq (6.23) applies (5.54) up to W = x/U, but with Q = x/U ((6.65)) Q >= 3.5W fails on (x/3.5U, x/U], where Lemma 5.2.2's chain breaks (3 sigma/(1 - sigma) = 1.303 > 1 at W = Q); the first choice satisfies Q >= 3.5x/U (ratio >= 101).",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_6_25.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (6.25) fails for every x/UW_0 > 3.3673: its left side exceeds the right by E(T)/beta with E(T) = 0.023051 for T >= 16, and the first choice gives T up to 2828.",
+   "seconds": 1.3
+  },
+  "scripts/checks/eq_6_26.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for x/UW_0 > 3.3673 the first summand exceeds (6.26) by x E(T)/(beta sqrt(phi(q))), E(T) = 0.023051 for T >= 16, so (6.26) needs an extra 0.0231 x/(beta sqrt(phi(q))).",
+   "seconds": 1.3
+  },
+  "scripts/checks/eq_6_29.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for x/UW_0 > 3.3673 the beta^-1 bracket of (6.29) must contain + E(T) > 0 (E = 0.023051 for T >= 16) because (5.36) is false, so (6.29) as printed is not established.",
+   "seconds": 1.4
+  },
+  "scripts/checks/eq_6_31.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: after optimising beta the second factor of (6.31) must be kappa_6 log(x/UW_0) + 2kappa_7 + 4E(T) with 4E = 0.0922 for T >= 16, so (6.31) as printed is not established.",
+   "seconds": 1.3
+  },
+  "scripts/checks/eq_6_37.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the second factor of (6.37) needs + 4E(x/UV) > 0 for x/UV > 3.3673 (4E = 0.0922 for x/UV >= 16, reached in the first choice), so (6.37) is not established as printed; its unstated Q >= 3.5x/U holds there (ratio >= 101).",
+   "seconds": 1.3
+  },
+  "scripts/checks/eq_6_38.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the second factor of (6.38) needs + 4E(T) (0.0922 for T >= 16), and with Q = x/U ((6.65)) the hypothesis Q >= 3.5W of (5.54) fails on (x/3.5U, x/U], where the Lemma 5.2.2 chain breaks (3 sigma/(1 - sigma) = 1.303 > 1).",
+   "seconds": 1.4
+  },
+  "scripts/checks/eq_6_40.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: proceeding as in (6.23)-(6.31) with the true (5.36) adds 4E(T) (0.0922 for T >= 16) to the second factor of (6.40), so (6.40) as printed is not established.",
+   "seconds": 1.3
+  },
+  "scripts/checks/eq_6_41.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: proceeding as in (6.23)-(6.31) with the true (5.36) adds 4E(T) (0.0922 for T >= 16) to the second factor of (6.41), so (6.41) as printed is not established.",
+   "seconds": 1.4
+  },
+  "scripts/checks/eq_6_53.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at x = 2.16e20, q = 101, a = 1, delta = 10.8 the printed RHS of (6.53) is 3.073e+16 but |S_I1| >= 5.883e+16, so (6.53) as printed is false.",
+   "seconds": 6.5
+  },
+  "scripts/checks/eq_6_56.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for odd q the corrected first line (x/2q, c_0/(pi delta)^2, modulus 2q) exceeds the whole RHS of (6.56) at x = 2.16e20, q = 999983, delta = 4, 8, and the redone constant is 6.46333 instead of 6.11676.",
+   "seconds": 0.4
+  },
+  "scripts/checks/eq_6_58.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with (2.22) at modulus 2q the first line of (6.12) at q = 223, x = 2.16e20 is 0.05025 x > 0.04889 x = all of (6.58) (doubling the first term suffices), and y^{1/6}/2^{3/2} should be y^{1/2}/2^{3/2}, which keeps 0.00153 sqrt(x).",
+   "seconds": 12.0
+  },
+  "scripts/checks/eq_8_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for sigma > 1.48748 the printed c_2 mixes the beta=pi/5 I_2 bound with the beta=pi/6 I_3 bound (one contour gives c_2 = 5.05219 at sigma=3, tau=20, kappa_{2,0} = 8.0071 > 7.96), but y_0 >= ell gives an I_3 bound e^{-0.6295 tau}/tan(pi/5)^sigma that restores the printed c_2.",
+   "seconds": 1.1
+  },
+  "scripts/checks/eq_8_3.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (8.3) fails at points with sgn(delta)=sgn(tau) and small rho (e.g. s=1+i, delta=1: |F|=0.01747 against 4.2e-8; s=1+20i, delta=2: 1.29e-28 against 1.18e-40), because the L_3 tail bound is applied with ell<0, while the corrected form holds on the grid.",
+   "seconds": 2.8
+  },
+  "scripts/checks/eq_8_39.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the display after (8.39) fails for small rho (beta = pi/8: S = 0.585786 < 0.659010 at j = 1, failing for rho < 0.103623) while |u_o| >= (l/2)sqrt((j/2)(1+sin^2 beta)) holds for beta in [pi/8, pi/4], and arg u_o = beta, not arg u_{0,+} - beta.",
+   "seconds": 0.4
+  },
+  "scripts/checks/eq_8_4.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: x0/sqrt(tau) = sqrt((j(rho)-1)/(2rho)) is 0.34356 at rho=0.5 and reaches 0.51729 only at rho=1.49997, so the first case of (8.4) holds only for rho>=3/2 (as proved in (8.46)); the second case is correct.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_8_42.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for sigma > 1.48748 and tau > 4.7262 sigma the printed c_2 in (8.42) uses the beta=pi/6 I_3 term with the beta=pi/5 I_2 term (one contour gives c_2 = 3.19278, 5.05219 at tau=20, sigma=2, 3, against printed 3.15691, 5.02186), and y_0 >= l restores the printed c_2.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_8_43.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the chain cos th = sqrt(1-sin^2 th) < 1-sin^2 th/2 <= 1-2th^2/pi^2 after (8.43) is false on (pi/2, pi] (e.g. th = 0.9 pi), but cos th <= 1-2th^2/pi^2 holds on [0, pi], so I_0(t) <= sqrt(pi)/2^{3/2} e^t/sqrt(t) stands.",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_8_47.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at every test point with ell<0, tau>0, |F_delta(s)| (two methods agreeing) exceeds the right sides of (8.47) and (8.3), because the L_3 Gaussian integral exceeds the book's bound sqrt(pi/2)e^{-ell^2/2}; dropping e^{-ell^2/2} from the L_3 term restores the bound at all test points.",
+   "seconds": 3.0
+  },
+  "scripts/checks/eq_9_32.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for eta = t^2 e^{-t^2/2}, |G_1(1/2+5i)| = 7.51e-8 but |G_1(1/2-5i)| = 0.4986 = |G_{-1}(1/2+5i)|, and at delta = -2 (1/pi) int_1^40 |f|^2 = 1.327 > |eta|_2^2 = 0.6647.",
+   "seconds": 64.6
+  },
+  "scripts/checks/eq_9_33.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for chi mod 5 with chi(2) = i the zeros are not symmetric under rho -> 1-rho: 1/2+50.66421i is a zero but |L(1-rho,chi)| = 1.424 (1-rho is a zero of L(s,chi-bar)).",
+   "seconds": 39.4
+  },
+  "scripts/checks/eq_9_35.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for zeta, delta = 0.01, T0 = 52.9 the left side of (9.35) is 0.0018539 > 0.0015796, the right side; (9.35) fails at 90 of 201 grid points and holds once f(T0)g(T0) is added.",
+   "seconds": 13.3
+  },
+  "scripts/checks/eq_9_4.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for eta = psi0(t) t^-1.6 sin(sqrt t), which satisfies Lemma 9.1.1's hypotheses, tau^0.7 |G_0(3/2+i tau)| -> 1.54301, so G_0 is not integrable on Re s = 3/2 and the printed justification of the swap in (9.4) fails.",
+   "seconds": 2.5
+  },
+  "scripts/checks/eq_9_41.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at q = 1, T0 = 50, (9.40) fails at y = T0/(pi|delta|) for delta = 10 (y < e), but the combined (9.41) holds for delta = 10, 30, 100.",
+   "seconds": 0.2
+  },
+  "scripts/checks/eq_9_49.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for zeta at T0 = 52.97 the left side of (9.49) is 0.16879 > 0.14514, the right side; adding f(T0)g(T0) gives 1.273, which holds.",
+   "seconds": 16.3
+  },
+  "scripts/checks/eq_9_51.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the printed (9.51) fails at every tested q and T0 >= 50 (LHS/RHS = 1.00989 at q=1, T0=50; the normalized gap is >= 7.671), because the 1/(4T) weight times T is the constant 1/4, and with that constant a = 1.3634 at T0=50 restores the inequality.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_9_54.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at the admissible point q=1, |delta|=5, T0=50pi the first line of (9.54) is 1.5907 T0 log(qT0/2pi) and the exact integral 1.5801, both above 1.578, which needs T0 >= 39.35|delta| (true under 4pi^2|delta|, not 10pi|delta|).",
+   "seconds": 0.0
+  },
+  "scripts/checks/eq_9_66.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: f(y)g(y) - int f'g = 2f(y)g(y) + 0.5 int f/T (0.986221, not 0.001013), and for zeta at H=25, T0=75, delta->0 the zero sum 0.079746 exceeds the right side 0.067521 of (9.66), restored by adding f(75)g_chi(75) = 0.4926.",
+   "seconds": 10.2
+  },
+  "scripts/checks/eq_9_68.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the second inequality of (9.68) fails at 1104 admissible points, all with q|delta| < 2 (max ratio 1.0077); the first inequality holds as printed (true norm <= 12.492) though its substitution alone loses at 760 points; the final 16.147 bound holds.",
+   "seconds": 3.5
+  },
+  "scripts/checks/eq_9_73.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with the factor 2 and 8.45 the book's chain gives 0.9292, 1.8285, 3.4327 (not 0.462, 0.909, 1.71) and (9.93) becomes 1.0290e-14, and the exact doubled integral already exceeds the printed first line by 1.237 x at H=25, T0=200.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_9_88.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the printed second line of (9.88) is below |F_x(s)| at every grid point (at s=100i, x=1e8: 1.57e-65 vs 2.81e-32) because e^{-pi|tau|/2} should be e^{-pi|tau|/4}, the first line fails slightly since the digamma display drops i*arg w, and the corrected pi/4 bound holds on the whole grid for x >= 1e8.",
+   "seconds": 1.1
+  },
+  "scripts/checks/eq_9_90.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: Lemma 9.1.3's decreasing clause drops f(T0)g(T0) and (9.90) loses the conjugate zeros: at H=200, T0=450, x=1e12 the actual zeta zeros above 450 give sum f = 1.496 x RHS(9.90), and the repaired bound is 17.48 x the (9.73) first line.",
+   "seconds": 8.5
+  },
+  "scripts/checks/eq_9_91.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (9.91) uses 8.39/(4pi) where (9.89)'s 8.45 gives 0.67243 > 0.668 (coefficients 0.4646, 0.9142, 1.7123), but its printed first line still bounds RHS(9.90) for T0 < e^258.8, so (9.73) is unaffected.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_9_94.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the book's own error terms give 1.9465e-6 log x + 7.412e-7 with one cross copy (valid only for log x >= 60.5 > log 10^12) and a log x coefficient 3.89e-6 > 1.95e-6 with the two copies the expansion requires, so the printed O* constants of (9.94) do not follow from its derivation.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_a_15.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the (0,2) integral is 1035.5366451 (book's own closed form and quadrature agree), not 1152.69754862, so C_4 = 1896.0209466 < printed 2013.18185012.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_a_16.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the printed (A.16) equals -Mh(s) (e.g. -2.0205518 = -C_0 at s = 0), and the version with leading '+' matches Mh(s) at real and complex s.",
+   "seconds": 0.1
+  },
+  "scripts/checks/eq_a_18.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: 27.8622803 is the bracket itself (twice it is 55.7245604), and the true |(t+i)Mh(it)|_1 is 36.6773 > 27.8622803, so (A.18) is false.",
+   "seconds": 4.8
+  },
+  "scripts/checks/eq_a_32.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the (A.32) route needs |f|_1 <= 27.8622803 but gives 21.6916 with the factor 2 and 14.2771 with the true norm (truncated norm 35.3839 > 27.8622803 at H = 25); the bound itself holds for H >= 25 since |eta_+'|_2 <= 1.9788 there.",
+   "seconds": 1.9
+  },
+  "scripts/checks/eq_a_36.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: |h - h_H|/t first exceeds the right side of (A.36) near t = 9.21e-08 (H = 200) and t = 0.000108 (H = 25) and grows without bound as t -> 0+ (3657 at t = 1e-12, H = 200), so (A.36) is false for small t.",
+   "seconds": 9.4
+  },
+  "scripts/checks/eq_a_38.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: |(h - h_H)/t|_oo is not bounded by (A.36) (it grows without bound as t -> 0+), so the printed proof of (A.38) fails, but |h - h_H|_oo <= 64e^{3/2}/(pi H^3) gives |eta_+|_oo <= 1.003544 < 1.421007 at H = 25 and the statement holds for all H >= 25.",
+   "seconds": 12.2
+  },
+  "scripts/checks/eq_a_40.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: |(h - h_H)/t|_oo is not bounded by (A.36) (it grows without bound as t -> 0+), so the printed proof of (A.40) fails, but the corrected route gives |eta_+ log t|_oo <= 0.281515 < 0.497592 at H = 25 and the bound holds for all H >= 25.",
+   "seconds": 12.3
+  },
+  "scripts/checks/eq_a_41.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: |(h - h_H)/t|_oo is not bounded by (A.36) (it grows without bound as t -> 0+), so the printed proof of (A.41) fails, but the corrected route gives |eta_+/t|_oo <= 1.093387 < 1.434606 at H = 25 and the bound holds for all H >= 25.",
+   "seconds": 12.3
+  },
+  "scripts/checks/eq_a_42.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: |(h - h_H)/t|_oo is not bounded by (A.36) (it grows without bound as t -> 0+), so the printed proof of (A.42) fails, but the corrected route gives |eta_+ t|_oo <= 1.0647432 < 1.1907285 at H = 200 (1.069034 < 1.728163 at H = 25), so the bound holds for all H >= 25.",
+   "seconds": 12.2
+  },
+  "scripts/checks/eq_b_14.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: as printed |arg(z1/z2)| >= 2.1503 > pi/3 at every sampled t in I, so (B.14) is false; with the denominator 16 log 2 k - hat h the maximum is 0.99134 at t = 7.500, the book's 0.99134.",
+   "seconds": 22.0
+  },
+  "scripts/checks/eq_c_10.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the product in [Ram95, (3.9)] already exceeds 8 at p = 14629 (8.07227 for p <= 2*10^6, so 0.9105 times it is > 7.350 > 7.284), and c_E = 1.332582275733 lies outside 1.332582275 + O*(10^-9/3).",
+   "seconds": 1.5
+  },
+  "scripts/checks/lemma_10_3_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: sum_{q<=r odd}1/q + sum_{q<=2r even}2/q exceeds log(2e^2 r) for every integer r >= 19 and every real r >= 21 (r=182: 9.0212 > 7.8972; r=150000: 19.0900 > 14.6115), so (10.26)'s coefficient is not established; 2 + 1.5 log r is valid, and the Section 14.1 term becomes 1.319e-08.",
+   "seconds": 0.2
+  },
+  "scripts/checks/lemma_11_1_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: under |w-v| <= |v|/2 the proof's x reaches -0.75 and 1.25, outside the range |x| <= 1/2 where its Taylor bound was shown (and the printed remainder factor is 0.385 instead of 0.707 at x = -1/2), though the bound itself holds on [-3/4, 5/4] (sup 0.2222) and the lemma is true.",
+   "seconds": 0.7
+  },
+  "scripts/checks/lemma_12_2_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: a+b/t is decreasing (at+b/t is the increasing one), and m=1, q=4096 meets 'q e^m >= 27' and m+log q >= 8.53 with P = 2 < 27, so the chain does not cover it, while the lemma holds there and its worst case m=1, q=6 is correct.",
+   "seconds": 0.0
+  },
+  "scripts/checks/lemma_4_1_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for even q the printed display includes the extra term r = q/2; it exceeds C N(q) at q = 2, 4, 6, the midpoint step overshoots 20Cq^2/(3pi^2) for every even q, and with limit (q-1)/2 the proof works.",
+   "seconds": 0.4
+  },
+  "scripts/checks/lemma_4_1_3.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for C near B sin(pi/2q) the proof's majorant X exceeds the right side of (4.6) (ratio up to 1.0696), and the relaxation to C = B sin(pi/q) gives a factor >= 2.221 > 2, so the small-C range is not proved; the main range holds.",
+   "seconds": 2.0
+  },
+  "scripts/checks/lemma_4_2_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: all five printed assertions in the proof of Lemma 4.2.1 fail at admissible points while the stated local repairs hold.",
+   "seconds": 0.0
+  },
+  "scripts/checks/lemma_4_2_3.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: both conclusions of Lemma 4.2.3 fail for admissible parameters (eta_2, c0=31.521): |(4.39)| exceeds printed (4.40)+(4.41) when D <= Q0/2 and exceeds (4.42) at eps=0.1.",
+   "seconds": 55.8
+  },
+  "scripts/checks/lemma_4_2_4.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (4.36) needs c_1 = 1+|eta'|_1/(x/D), not the printed 1+|eta'|_1/(2x/D) (Sec. 6.3.2: 1.0003773 needed vs 1.000189 used), and the M/V ranges and the '(v,q)=1' after (4.53) are slips for M/v and '(v,q)>1'.",
+   "seconds": 0.0
+  },
+  "scripts/checks/lemma_5_1_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: with the printed lower limit min(...) the left side of (5.9) misses the main term (5.10) by more than the allowed error, while with max(...) (the range of (5.8)) it is within the error in every case.",
+   "seconds": 0.5
+  },
+  "scripts/checks/lemma_5_2_1.py": {
+   "exit": 0,
+   "decision": "NOT CONFIRMED: Montgomery's inequality needs only a free residue class mod each p | r, not R <= W'; in the claim's own example (W'=10, W=20, R=100) the step holds, and the step fails only when the primes in (W',W] are {2,3} (W' in [1.5,2), W in [3,4)), q odd, R >= 2, where (5.39) itself still holds.",
+   "seconds": 1.9
+  },
+  "scripts/checks/lemma_5_2_3.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: under all hypotheses of Lemma 5.2.3, (5.52) summed over all m fails (4227.45 > 2323.22 for W=100, q=101) while the odd-m sum satisfies the bound.",
+   "seconds": 0.1
+  },
+  "scripts/checks/lemma_9_1_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for chi=(./5), eta=exp(-t^2/2) the residue at s=0 is b+c_0+log x, so (9.1)-(9.2) fail for x>=100 by about log x, while the corrected identity holds.",
+   "seconds": 338.1
+  },
+  "scripts/checks/lemma_9_1_3.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for zeta with f(t)=exp(-10(t-14.13)), |sum-main| = 0.9408 exceeds the decreasing-f bound 0.00176 (the proof drops 2f(y)g(y)), and for f = 1 on [14,15] (9.24) predicts error 0 but the error is 0.8669.",
+   "seconds": 0.1
+  },
+  "scripts/checks/lemma_9_1_4.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for eta = t^2 e^{-t^2/2}, q = 1, T0 = 10, int_1^T0 |f'| g_chi = 16.92 exceeds the displayed Cauchy-Schwarz bound 12.65, and int_1^T0 |f'|^2 = 0.194 > |eta log|_2^2 = 0.1636.",
+   "seconds": 1.1
+  },
+  "scripts/checks/lemma_9_2_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: step (9.35) of the proof fails for zeta (0.0018539 > 0.0015796 at T0 = 52.9), and for chi mod 5 with chi(2) = i, 1 - rho is not a zero (|L(1-rho)| = 2.817).",
+   "seconds": 8.9
+  },
+  "scripts/checks/lemma_9_3_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (9.49) fails for zeta at T0 = 52.97 (0.16879 > 0.14514), (9.51) fails at T0 = 50 (1430.63 > 1422.95), the first line of (9.54) gives 1.591 > 1.578 at T0 = 10 pi |delta|, and 1 - rho is not a zero for chi mod 5 with chi(2) = i.",
+   "seconds": 16.4
+  },
+  "scripts/checks/lemma_9_4_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (9.66) fails for zeta at q=1, H=25, T0=75, restoring f(T0)g_chi(T0) needs constants 27.5 to 94.3 instead of 11.308, and even granting (9.66) the last line of (9.67) gives 11.3306 and the exact first line 11.3654 > 11.308 at q=1, T0=75, delta=0.",
+   "seconds": 5.5
+  },
+  "scripts/checks/lemma_b_2_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: max |arg(g/k)| on [-2,2] is 0.854834 > 0.7 (at t = +-0.49635), but it is below pi/3 and max |g - s k| = 7.870238 <= 7.87052, so (B.10) still holds.",
+   "seconds": 5.4
+  },
+  "scripts/checks/lemma_b_2_3.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: 48 log 2 + 25 = 58.271 > 31.521 log 4 = 43.697 (the max step fails for 4 <= y < 6.351) and the decay range starts at 2252.505 > 2252.21, while |eta_(4)''|_1 = 48 log 2 < 31.521 log 4 repairs the lemma.",
+   "seconds": 0.0
+  },
+  "scripts/checks/prop_10_4_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at x = 1 the arcs of M_{8,r} have half-width >= 4 and overlap, sqrt(L) = 3.6875|eta_+|_2 replaces 1.6812|eta_+|_2, and with this and the true E_* the (14.26) error is 4.0221e-05 x^2/kappa, so (14.27) still holds (1.0582600 >= 1.058259) using the unrounded C_0 C bound.",
+   "seconds": 0.1
+  },
+  "scripts/checks/proposition_12_2_4.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: Lemma 12.2.3 as stated only gives (12.23) with sigma <= 1.347089, which lowers varpi_0(3.3e9) to 475.17 < 475.513, while a lemma re-derived against log Q + c_E (c = 0.909181) keeps both printed comparisons.",
+   "seconds": 0.1
+  },
+  "scripts/checks/proposition_5_2_4.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at W = 3, W' = 1.5 the Montgomery steps behind (5.51)/(5.54) and (5.56) fail ((5.47) 0.9035 > (5.48) 0.6314; S_2 231.16 > (5.40) 191.02) while (5.54) and (5.56) hold, so the proof has gaps; the literal-N mechanism (W >= 10478) is not one, since N - 1 < W/2.",
+   "seconds": 0.0
+  },
+  "scripts/checks/proposition_7_1_5.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the derivation of (9.94) drops the factor 2 on the cross term; with it the argument gives 3.890e-06 log x + 1.261e-06 and only |E_2| <= 3.936e-06 + 366.91/sqrt(x) at x = 1e12, but the true cross term is -3.8e-13, so (9.94) and Prop 7.1.5 hold.",
+   "seconds": 0.1
+  },
+  "scripts/checks/proposition_9_2_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: the proof of Prop 9.2.2 uses 0.942 + 4.183|delta| = |eta|_2 + 2pi|eta'|_2|delta| (norms swapped); the true 0.6657 + 5.9150|delta| exceeds 1 + 5|delta| for |delta| > 0.3654, and (1 + 6|delta|) or the x^{-1} slack repairs the proof.",
+   "seconds": 0.1
+  },
+  "scripts/checks/proposition_9_3_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for q=1 the exact first-line majorant exceeds 6.11/1.578 (6.169 at T0=50, delta=0, above 6.11 until T0=52.41; up to 0.458% at T0=10pi|delta| for |delta| in [2.87,5.99]), so the proof's bound exceeds (9.57) for x > 1.63e+03 resp. 1.05e+06, while 6.19 and 1.605 suffice for the first line on the scan.",
+   "seconds": 1.4
+  },
+  "scripts/checks/proposition_9_4_2.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: for zeta at H=200, T0=450 the zero sum is 1.053 times (9.66)'s right side, the restored constant is >= 15.49 > 11.308 for all q, H, T0, and at Sec. 9.6 the missing term adds 2.15e-14 to the q-independent 1.3482e-14 (total 3.49e-14).",
+   "seconds": 20.7
+  },
+  "scripts/checks/proposition_9_5_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: repairing (9.90) makes the tail 17.5 x the e^{-pi T1/4} part of (9.73) at H=200, T0=450 and 36.7 x at H=25, T0=200 (factor 2 alone: 1.24 x), and the two-sided zero sum of f is already 1.07 x it, so (9.73) and 5.123e-15 are not established while the E2 form survives.",
+   "seconds": 9.2
+  },
+  "scripts/checks/table_3_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: at x = 1e27, delta_0 = 2, Theorem 3.1.1 as printed exceeds five Table 3.1 HH entries at admissible q and its worst-case form g_x(q0) is 2.6-4.9% above all seven.",
+   "seconds": 0.0
+  },
+  "scripts/checks/theorem_13_2_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: c- = 0.6394 is the scale-x constant (scale y would give -1.3065), Prop 11.2.3 at scale y bounds alpha just outside M_(8,r0)(x) only by g(r0/kappa) = 6.776 g(r0), the jump constant should be -1.46271, and eta_+ = max(0,1-tx/3) gives J < E, so M + T < 0.",
+   "seconds": 0.0
+  },
+  "scripts/checks/theorem_3_1_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: Theorem 3.1.1's proof fails numerically as printed: (6.77) gives 0.8102 not 0.49911 so (6.63) exceeds (3.2) by up to 3.2%, (5.36) needs +0.0231, and with it (6.70) at x0 is 0.27752 > 0.276.",
+   "seconds": 0.2
+  },
+  "scripts/checks/theorem_7_1_4.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: 11*1.2e6 = 1.32e7, not the printed 1.32e6, and with the correct coefficient the bound of Theorem 7.1.4 still holds for all q <= 300000, x >= 1e12 (min slack 0.93/sqrt(x)).",
+   "seconds": 4.8
+  },
+  "scripts/checks/theorem_8_0_1.py": {
+   "exit": 0,
+   "decision": "CONFIRMED: (8.3) is false for small rho (|F(1+i)|=0.01747 with delta=1 against 4.2e-8; at tau=400 it fails at rho=0.813 and holds at rho=0.82), the first case of (8.4) fails for rho<1.49997, and (8.1) holds for tau<0 only with absolute values.",
+   "seconds": 8.9
+  }
+ }
+}

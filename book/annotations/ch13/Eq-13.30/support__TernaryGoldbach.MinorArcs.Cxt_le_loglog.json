@@ -1,0 +1,70 @@
+{
+  "id": "Eq 13.30",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 265,
+        "rect": [
+          0.17135,
+          0.32033,
+          0.56816,
+          0.04392
+        ]
+      },
+      "title": "Equation (13.30)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 13.30"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.MinorArcs.Cxt_le_loglog",
+        "module": "TernaryGoldbach.MinorArcs.SecondBridge"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.MinorArcs.Cxt_le_loglog",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem Cxt_le_loglog {T t : ℝ} (hT : 6e6 ≤ T) (ht2 : 2 ≤ t) (htT : t ≤ T / 3) :\n    Cxt T t ≤ Real.log (Real.log T) - 1.06 :=",
+            "line": 72,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/MinorArcs/SecondBridge.lean",
+            "fragment": "L72"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          265
+        ],
+        "printed": [
+          255
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Cxt takes T = z^{1/3} as its argument, not z. It is used in the first-choice (§6) bounds as 0.27125·Cxt + 0.41415, not for the convexity behind (13.31)."
+}

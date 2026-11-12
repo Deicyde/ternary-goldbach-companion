@@ -1,0 +1,70 @@
+{
+  "id": "Eq C.1",
+  "kind": "equation",
+  "status": "not_formalized",
+  "relation": "relatedMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 307,
+        "rect": [
+          0.17135,
+          0.51832,
+          0.56816,
+          0.04184
+        ]
+      },
+      "title": "Equation (C.1)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq C.1"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "location": {
+        "declaration": "TernaryGoldbach.Explicit.weil_formula",
+        "module": "TernaryGoldbach.Explicit.WeilFormula"
+      },
+      "role": "support",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "TernaryGoldbach.Explicit.weil_formula",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "theorem weil_formula (hℓ0 : 0 < ℓ) (hℓ1 : ℓ ≤ 1) (hm : 2 ≤ m) (h2 : Real.exp (2 * m * ℓ) < 2) (T₀ : ℝ) :\n    Tendsto (fun k : ℕ => 2 * π * ∑ u ∈ rectZerosXi (goodT k), (mult (goodT k) u : ℂ) * WH ℓ m T₀ u)\n      atTop (𝓝 (2 * π * WHt ℓ m T₀ 1 +\n        ∫ y : ℝ, archF (((1 / 2 : ℝ) : ℂ) + y * I) * WHt ℓ m T₀ (((1 / 2 : ℝ) : ℂ) + y * I))) :=",
+            "line": 142,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/calr3/ternary-goldbach/blob/192ca57362fa3ee737cd83205cb9ea99526c4553/TernaryGoldbach/Explicit/WeilFormula.lean",
+            "fragment": "L142"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          307
+        ],
+        "printed": [
+          297
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Derivation: shift (1/2πi)∫_{(2)} (−ζ'/ζ)(s)Mφ(s)ds to the far left. The residues are Mφ(1) at s = 1, −Mφ(ρ) at the nontrivial zeros, and −Mφ(−2k) at the trivial zeros, which sum to −∫φ/(x(x²−1))."
+}

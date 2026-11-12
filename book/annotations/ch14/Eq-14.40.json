@@ -2,6 +2,7 @@
   "id": "Eq 14.40",
   "kind": "equation",
   "status": "not_formalized",
+  "relation": "noMatch",
   "subject": [
     {
       "location": {
@@ -21,7 +22,13 @@
       }
     }
   ],
-  "object": [],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/calr3/ternary-goldbach",
+      "version": "192ca57362fa3ee737cd83205cb9ea99526c4553"
+    }
+  ],
   "extensions": {
     "org.mathlib-initiative.formal-companion.overlay": {
       "locator": {
@@ -39,5 +46,5 @@
       }
     }
   },
-  "note": "Recomputed: the maximum of f on [180, 30000] is 0.0195626172, at t ≈ 516.18 (bound tight to 10⁻⁹). The numerator of f vanishes at t = 188.38; the denominator is positive for all t > 0."
+  "note": "Recomputed: the maximum of f on [180, 30000] is 0.0195626172, at t ≈ 516.18 (bound tight to 10⁻⁹). Erratum: The text says f(t) < (5/2)(log t)/t once t > (log t)², but f ~ 10(log t)/t; for example f(3·10⁴) = 1.691·10⁻³ > 8.59·10⁻⁴. (checked by `scripts/checks/eq_14_40.py`)."
 }

@@ -66,5 +66,5 @@
       }
     }
   },
-  "note": "Lean avoids Prop 11.2.3's δ_w = wδ issue by taking a fresh Dirichlet approximation at each scale, and merges cases q ≤ r and q > r. The book's (13.14) omits the C_{φ,3}(K)|φ|₁y term its source proof adds;"
+  "note": "Lean avoids Prop 11.2.3's δ_w = wδ issue by taking a fresh Dirichlet approximation at each scale, and merges cases q ≤ r and q > r. Erratum: (13.14) cites (11.18), whose statement omits the w < 1/K term C_{φ,0,K}y that the proof of Prop 11.2.3 adds (1.46·10⁻⁵y at y = 10²⁵), and it needs g_{y,φ} monotone up to y^{1/3}/6 = 3.59·10⁷, while Lemma 11.2.4 covers only (y/K)^{1/3}/6 = 1.17·10⁷. (checked by `scripts/checks/eq_13_14.py`)."
 }

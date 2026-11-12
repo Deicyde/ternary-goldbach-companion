@@ -22713,10 +22713,16 @@
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read logDeriv_L_near, landau, norm_L_le_BT and LGrowth; Lean's Landau disc about 2+iT is not zero-free and zeros are subtracted, so no disc inside Re s>1/2 or choice H=5/8 occurs (5/8 hits are Gamma bounds in LGrowthLeft)."
+    }
    }
   },
   {
@@ -22764,21 +22770,11 @@
   {
    "id": "Lemma 9.1.2 step 7",
    "item": "Lemma 9.1.2",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] bounds partial sums by q+1 and |L| by (q+1)|s|/Re s; no M(q) or choice N=M(q)/3.",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean bounds $|L(s,\\chi)|$ in the strip (the Landau maximum) by Abel summation with $|S(t)|\\le q+1$ in integral form, not by truncating at $N=M(q)/3$; it gets $(q+1)|s|/\\Re s$ in place of $2\\sqrt3\\sqrt{M(q)}$, for the disc about $2+iT$ rather than $C_{1/2+H,H}$, and has no $M(q)$.",
+   "proof_kind": "chain",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.Explicit.norm_psum_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Explicit/LGrowth.lean",
-     "module": "TernaryGoldbach.Explicit.LGrowth",
-     "lines": [
-      62,
-      71
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.Explicit.norm_LFunction_le",
      "repo": "lean",
@@ -22786,9 +22782,38 @@
      "file": "TernaryGoldbach/Explicit/LGrowth.lean",
      "module": "TernaryGoldbach.Explicit.LGrowth",
      "lines": [
-      178,
+      179,
       197
-     ]
+     ],
+     "snippet": "theorem norm_LFunction_le {χ : DirichletCharacter ℂ q} (hχ : χ ≠ 1) {s : ℂ} (hs : 0 < s.re) :\n    ‖χ.LFunction s‖ ≤ ((q : ℝ) + 1) * ‖s‖ / s.re := by\n  rw [LFunction_eq_mul_Iint hχ hs, norm_mul, Iint]\n  have hb : ‖∫ t in Ioi (1:ℝ), psum χ ⌊t⌋₊ * (t : ℂ) ^ (-(s + 1))‖ ≤ ((q : ℝ) + 1) / s.re := by\n    have hi := (integrableOn_Ioi_rpow_of_lt (a := -(s.re + 1)) (by linarith) one_pos).const_mul\n      ((q : ℝ) + 1)\n    refine (norm_integral_le_of_norm_le hi ((ae_restrict_iff' measurableSet_Ioi).2\n      (Filter.Eventually.of_forall fun t ht => ?_))).trans (le_of_eq ?_)\n    · have ht' : (0:ℝ) < t := lt_trans one_pos ht\n      rw [norm_mul, norm_cpow_neg ht']\n      exact mul_le_mul_of_nonneg_right (norm_psum_le hχ _) (Real.rpow_nonneg ht'.le _)\n    · rw [integral_const_mul, integral_Ioi_rpow_of_lt (by linarith) one_pos, Real.one_rpow]\n      have : s.re ≠ 0 := hs.ne'\n      field_simp\n      ring_nf\n      field_simp\n  calc ‖s‖ * ‖∫ t in Ioi (1:ℝ), psum χ ⌊t⌋₊ * (t : ℂ) ^ (-(s + 1))‖\n      ≤ ‖s‖ * (((q : ℝ) + 1) / s.re) := mul_le_mul_of_nonneg_left hb (norm_nonneg _)\n    _ = _ := by ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.norm_LFunction_le",
+      "lines": [
+       178,
+       197
+      ],
+      "conclusion": "For $\\chi\\ne 1$ and $\\Re s>0$, $|L(s,\\chi)|\\le (q+1)|s|/\\Re s$, from $L(s,\\chi)=s\\int_1^\\infty S(t)t^{-s-1}dt$ and $|S(t)|\\le q+1$ (`norm_psum_le`)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.Explicit.norm_L_le_BT",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Explicit/LogDerivL.lean",
+     "module": "TernaryGoldbach.Explicit.LogDerivL",
+     "lines": [
+      58,
+      77
+     ],
+     "snippet": "  · refine (norm_LFunction_le hχ1 (by linarith)).trans ?_\n    have hwn : ‖w‖ ≤ |T| + 22 := by\n      refine (Complex.norm_le_abs_re_add_abs_im w).trans ?_\n      rw [abs_of_pos (by linarith : (0:ℝ) < w.re)]; linarith\n    have h4 : ((N : ℝ) + 1) * ‖w‖ / w.re ≤ 4 * ((N : ℝ) + 1) * (|T| + 22) := by\n      rw [div_le_iff₀ (by linarith)]\n      have hp : 0 ≤ 4 * ((N : ℝ) + 1) * (|T| + 22) := by positivity\n      have h1 := mul_le_mul_of_nonneg_left hwn (by positivity : (0:ℝ) ≤ (N : ℝ) + 1)\n      have h2 := mul_le_mul_of_nonneg_left h hp\n      nlinarith\n    refine h4.trans ?_\n    have h9 : (1:ℝ) ≤ (N : ℝ) ^ 9 := one_le_pow₀ hN1\n    have he : (1:ℝ) ≤ Real.exp (π * (|T| + 10) / 2) := Real.one_le_exp (by positivity)\n    unfold BT\n    have hp : 0 ≤ ((N : ℝ) + 1) * (|T| + 22) := by positivity\n    calc 4 * ((N : ℝ) + 1) * (|T| + 22) = 4 * (((N : ℝ) + 1) * (|T| + 22)) := by ring\n      _ ≤ 512 * (N : ℝ) ^ 9 * (((N : ℝ) + 1) * (|T| + 22)) * Real.exp (π * (|T| + 10) / 2) := by\n        have : (4:ℝ) ≤ 512 * (N : ℝ) ^ 9 * Real.exp (π * (|T| + 10) / 2) := by nlinarith\n        nlinarith\n      _ = _ := by ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.norm_L_le_BT",
+      "lines": [
+       35,
+       77
+      ],
+      "conclusion": "On the part $\\Re w\\ge 1/4$ of the Landau disc $|w-(2+iT)|\\le 10$, `norm_LFunction_le` gives $|L(w,\\chi)|\\le 4(q+1)(|T|+22)\\le B_T$, Lean's bound for the maximum of $|L|$ that enters Landau's lemma."
+     }
     }
    ],
    "searched": {
@@ -22798,25 +22823,37 @@
     ],
     "greps": [
      "M(q)\\|Polya in TernaryGoldbach/",
-     "N = M(q)/3 in TernaryGoldbach/"
+     "N = M(q)/3 in TernaryGoldbach/",
+     "2\\.337|21\\.817|74\\.38|13\\.347|16\\.695|1\\.4056|13\\.3466|heartsuit|etaHeart|eta_heart in tg/TernaryGoldbach/",
+     "0\\.819|16\\.8|17\\.7|296\\.09|17\\.21|3\\.53|22\\.5|0\\.18787|0\\.0152|1\\.0057|1\\.072|7\\.487|E_1|expIntegral in tg/TernaryGoldbach/",
+     "M\\(q\\)|Polya|5 / 8|√3 in tg/TernaryGoldbach/Explicit/",
+     "N\\(T|riemann.?von|stieltjes|g_χ|N⁺|partial summation|abel in tg/TernaryGoldbach/ (case-insensitive)",
+     "N\\(1|low-lying|deriv.*Gr|flineD_le in tg/TernaryGoldbach/"
     ]
    },
    "verification": {
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "overturned",
+     "reason": "norm_LFunction_le (LGrowth.lean:179-197), used in norm_L_le_BT (LogDerivL.lean:58-77), is Lean's bound on |L(s,chi)| for the Landau maximum, obtained by a different partial-summation argument; the judge already linked the preceding step (sellyou) to LFunction_eq_mul_Iint as relatedMatch."
+    }
    }
   },
   {
    "id": "Lemma 9.1.2 step 8",
    "item": "Lemma 9.1.2",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] has no combination yielding a bound on L'/L(1,chi) in terms of M(q).",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean inserts its |L| bound into Landau's lemma at centre $2+iT$, radius 10, with the nearby zeros subtracted; it yields no bound on $L'/L(1,\\chi)$ in terms of $M(q)$.",
+   "proof_kind": "direct",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Explicit.logDeriv_L_near",
@@ -22825,20 +22862,18 @@
      "file": "TernaryGoldbach/Explicit/LogDerivL.lean",
      "module": "TernaryGoldbach.Explicit.LogDerivL",
      "lines": [
-      95,
+      110,
       118
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Explicit.norm_LFunction_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Explicit/LGrowth.lean",
-     "module": "TernaryGoldbach.Explicit.LGrowth",
-     "lines": [
-      178,
-      197
-     ]
+     ],
+     "snippet": "  have h := landau (DirichletCharacter.differentiable_LFunction hχ1) hc0 (by norm_num : (0:ℝ) < 10)\n    (fun w hw => norm_L_le_BT hχ hχ1 hw) hcB hz hLz\n  refine h.trans ?_\n  have hpos : 0 < BT N T / ‖χ.LFunction (2 + T * I)‖ := div_pos (by linarith) (by linarith)\n  have hle : Real.log (BT N T / ‖χ.LFunction (2 + T * I)‖) ≤ Real.log (BT N T / 0.355) :=\n    Real.log_le_log hpos (div_le_div_of_nonneg_left (by linarith) (by norm_num) hc)\n  calc 48 * Real.log (BT N T / ‖χ.LFunction (2 + T * I)‖) / 10\n      = 4.8 * Real.log (BT N T / ‖χ.LFunction (2 + T * I)‖) := by ring\n    _ ≤ 4.8 * Real.log (BT N T / 0.355) := by gcongr",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.logDeriv_L_near",
+      "lines": [
+       95,
+       118
+      ],
+      "conclusion": "Feeds the growth bound `norm_L_le_BT` and $|L(2+iT,\\chi)|\\ge 0.355$ into `landau` with $R=10$, giving $|L'/L(z)-\\sum_{|\\rho-c|<5} m_\\rho/(z-\\rho)|\\le 4.8\\log(B_T/0.355)$ for $|z-(2+iT)|\\le 5/2$."
+     }
     }
    ],
    "searched": {
@@ -22848,17 +22883,28 @@
     ],
     "greps": [
      "M(q)\\|Polya in TernaryGoldbach/",
-     "N = M(q)/3 in TernaryGoldbach/"
+     "N = M(q)/3 in TernaryGoldbach/",
+     "2\\.337|21\\.817|74\\.38|13\\.347|16\\.695|1\\.4056|13\\.3466|heartsuit|etaHeart|eta_heart in tg/TernaryGoldbach/",
+     "0\\.819|16\\.8|17\\.7|296\\.09|17\\.21|3\\.53|22\\.5|0\\.18787|0\\.0152|1\\.0057|1\\.072|7\\.487|E_1|expIntegral in tg/TernaryGoldbach/",
+     "M\\(q\\)|Polya|5 / 8|√3 in tg/TernaryGoldbach/Explicit/",
+     "N\\(T|riemann.?von|stieltjes|g_χ|N⁺|partial summation|abel in tg/TernaryGoldbach/ (case-insensitive)",
+     "N\\(1|low-lying|deriv.*Gr|flineD_le in tg/TernaryGoldbach/"
     ]
    },
    "verification": {
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "overturned",
+     "reason": "logDeriv_L_near lines 110-118 put Lean's growth bound for |L| into landau, the same final move for a different centre and conclusion (no L'/L(1,chi) bound)."
+    }
    }
   },
   {
@@ -22906,30 +22952,26 @@
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_count_poly, sum_window_le, sum_geom_windows; no counting function N(T,chi), no main-term integration by parts, no g_chi or decreasing-f simplification anywhere in TernaryGoldbach/."
+    }
    }
   },
   {
    "id": "Lemma 9.1.3 step 2",
    "item": "Lemma 9.1.3",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] never uses an asymptotic N(T,chi), a Stieltjes integral over zeros, or g_chi; Jensen windows replace them (NOTES.md, Prop932.lean header).",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean converts the zero sum into integrals of $|f|$ and $|f'|$ by a Sobolev bound per window, not by a Stieltjes integral against $N^+(T,\\chi)$; it treats both signs of $\\gamma$ at once for $|\\gamma|\\le T_0$ and gives an upper bound, not an identity.",
+   "proof_kind": "helper",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.Explicit.zero_count_poly",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Explicit/ZeroSums.lean",
-     "module": "TernaryGoldbach.Explicit.ZeroSums",
-     "lines": [
-      76,
-      95
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.Explicit.sum_window_le",
      "repo": "lean",
@@ -22937,9 +22979,18 @@
      "file": "TernaryGoldbach/Explicit/LineZeros.lean",
      "module": "TernaryGoldbach.Explicit.LineZeros",
      "lines": [
-      81,
-      150
-     ]
+      124,
+      139
+     ],
+     "snippet": "  have hpt : ∀ u ∈ S, ‖f u.im‖ ≤ W (idx u) := by\n    intro u hu\n    have h1 := norm_le_sobolev hf hf' (a := a (idx u)) (b := a (idx u + 1))\n      (by simp only [ha]; push_cast; nlinarith) (hwin u hu).2\n    have e : a (idx u + 1) - a (idx u) = h := by simp only [ha]; push_cast; ring\n    rw [e] at h1\n    exact h1\n  calc ∑ u ∈ S, m u * ‖f u.im‖ ≤ ∑ u ∈ S, m u * W (idx u) :=\n        Finset.sum_le_sum fun u hu => mul_le_mul_of_nonneg_left (hpt u hu) (hm u hu)\n    _ = ∑ k ∈ Finset.range (2 * J), ∑ u ∈ S.filter (fun u => idx u = k), m u * W (idx u) :=\n        (Finset.sum_fiberwise_of_maps_to (fun u hu => Finset.mem_range.2 (hwin u hu).1) _).symm\n    _ = ∑ k ∈ Finset.range (2 * J), W k * ∑ u ∈ S.filter (fun u => idx u = k), m u := by\n        refine Finset.sum_congr rfl fun k _ => ?_\n        rw [Finset.mul_sum]\n        refine Finset.sum_congr rfl fun u hu => ?_\n        rw [(Finset.mem_filter.1 hu).2]; ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.sum_window_le",
+      "lines": [
+       81,
+       150
+      ],
+      "conclusion": "Each zero's $|f(\\Im u)|$ is bounded by the Sobolev bound $W_k=(1/h)\\int_{I_k}|f|+\\int_{I_k}|f'|$ on its window $I_k$ of length $h$, and the zero sum is regrouped as $\\sum_k W_k\\sum_{u\\in I_k} m_u$."
+     }
     }
    ],
    "searched": {
@@ -22950,25 +23001,37 @@
     ],
     "greps": [
      "N(T\\|N⁺\\|g_χ\\|riemann_vonMangoldt in TernaryGoldbach/",
-     "Stieltjes\\|dN in TernaryGoldbach/"
+     "Stieltjes\\|dN in TernaryGoldbach/",
+     "2\\.337|21\\.817|74\\.38|13\\.347|16\\.695|1\\.4056|13\\.3466|heartsuit|etaHeart|eta_heart in tg/TernaryGoldbach/",
+     "0\\.819|16\\.8|17\\.7|296\\.09|17\\.21|3\\.53|22\\.5|0\\.18787|0\\.0152|1\\.0057|1\\.072|7\\.487|E_1|expIntegral in tg/TernaryGoldbach/",
+     "M\\(q\\)|Polya|5 / 8|√3 in tg/TernaryGoldbach/Explicit/",
+     "N\\(T|riemann.?von|stieltjes|g_χ|N⁺|partial summation|abel in tg/TernaryGoldbach/ (case-insensitive)",
+     "N\\(1|low-lying|deriv.*Gr|flineD_le in tg/TernaryGoldbach/"
     ]
    },
    "verification": {
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "overturned",
+     "reason": "sum_window_le (LineZeros.lean:124-139) is Lean's replacement for this partial summation over zeros (item status 'replaced'), a different argument for the same reduction of a zero sum to integrals of f and f'."
+    }
    }
   },
   {
    "id": "Lemma 9.1.3 step 3",
    "item": "Lemma 9.1.3",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] never uses an asymptotic N(T,chi), a Stieltjes integral over zeros, or g_chi; Jensen windows replace them (NOTES.md, Prop932.lean header).",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean's zero-count input is a local Jensen upper bound per disc, proved in [L], in place of the cited asymptotic $N(T,\\chi)=\\frac{T}{\\pi}\\log\\frac{qT}{2\\pi e}+O^*(g_\\chi(T))$; there is no main term and no lower bound.",
+   "proof_kind": "helper",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Explicit.zero_count_poly",
@@ -22977,20 +23040,18 @@
      "file": "TernaryGoldbach/Explicit/ZeroSums.lean",
      "module": "TernaryGoldbach.Explicit.ZeroSums",
      "lines": [
-      76,
-      95
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Explicit.sum_window_le",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Explicit/LineZeros.lean",
-     "module": "TernaryGoldbach.Explicit.LineZeros",
-     "lines": [
-      81,
-      150
-     ]
+      77,
+      80
+     ],
+     "snippet": "theorem zero_count_poly {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (T : ℝ) {r : ℝ} (hr : 0 < r) (hr10 : r < 10) :\n    ((∑ᶠ u, MeromorphicOn.divisor χ.LFunction (Metric.closedBall (2 + T * I) |r|) u : ℤ) : ℝ) ≤\n      Real.log (BP N T / 0.355) / Real.log (10 / r) := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.zero_count_poly",
+      "lines": [
+       76,
+       95
+      ],
+      "conclusion": "Jensen's formula: $L(s,\\chi)$ ($\\chi\\ne1$ primitive) has at most $\\log(B'_T/0.355)/\\log(10/r)$ zeros in $|s-(2+iT)|\\le r$."
+     }
     }
    ],
    "searched": {
@@ -23001,25 +23062,37 @@
     ],
     "greps": [
      "N(T\\|N⁺\\|g_χ\\|riemann_vonMangoldt in TernaryGoldbach/",
-     "Stieltjes\\|dN in TernaryGoldbach/"
+     "Stieltjes\\|dN in TernaryGoldbach/",
+     "2\\.337|21\\.817|74\\.38|13\\.347|16\\.695|1\\.4056|13\\.3466|heartsuit|etaHeart|eta_heart in tg/TernaryGoldbach/",
+     "0\\.819|16\\.8|17\\.7|296\\.09|17\\.21|3\\.53|22\\.5|0\\.18787|0\\.0152|1\\.0057|1\\.072|7\\.487|E_1|expIntegral in tg/TernaryGoldbach/",
+     "M\\(q\\)|Polya|5 / 8|√3 in tg/TernaryGoldbach/Explicit/",
+     "N\\(T|riemann.?von|stieltjes|g_χ|N⁺|partial summation|abel in tg/TernaryGoldbach/ (case-insensitive)",
+     "N\\(1|low-lying|deriv.*Gr|flineD_le in tg/TernaryGoldbach/"
     ]
    },
    "verification": {
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "overturned",
+     "reason": "zero_count_poly (ZeroSums.lean:77-80) is the Jensen count that replaces the cited N(T,chi) formula (melos) in Lean, a different quantity proved by a different argument."
+    }
    }
   },
   {
    "id": "Lemma 9.1.3 step 4",
    "item": "Lemma 9.1.3",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] never uses an asymptotic N(T,chi), a Stieltjes integral over zeros, or g_chi; Jensen windows replace them (NOTES.md, Prop932.lean header).",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "The explicit error term $g_\\chi(T)=0.5\\log qT+17.7$ and its sources have no Lean counterpart; Lean's explicit zero count is the Jensen bound $\\log(B'_T/0.355)/\\log(10/r)$ per disc, for all $T$.",
+   "proof_kind": "helper",
    "ends": [
     {
      "declaration": "TernaryGoldbach.Explicit.zero_count_poly",
@@ -23028,20 +23101,18 @@
      "file": "TernaryGoldbach/Explicit/ZeroSums.lean",
      "module": "TernaryGoldbach.Explicit.ZeroSums",
      "lines": [
-      76,
-      95
-     ]
-    },
-    {
-     "declaration": "TernaryGoldbach.Explicit.sum_geom_windows",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Explicit/ZeroSumBound.lean",
-     "module": "TernaryGoldbach.Explicit.ZeroSumBound",
-     "lines": [
-      168,
-      212
-     ]
+      77,
+      80
+     ],
+     "snippet": "theorem zero_count_poly {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N} (hχ : χ.IsPrimitive)\n    (hχ1 : χ ≠ 1) (T : ℝ) {r : ℝ} (hr : 0 < r) (hr10 : r < 10) :\n    ((∑ᶠ u, MeromorphicOn.divisor χ.LFunction (Metric.closedBall (2 + T * I) |r|) u : ℤ) : ℝ) ≤\n      Real.log (BP N T / 0.355) / Real.log (10 / r) := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.zero_count_poly",
+      "lines": [
+       76,
+       95
+      ],
+      "conclusion": "Jensen's formula: $L(s,\\chi)$ ($\\chi\\ne1$ primitive) has at most $\\log(B'_T/0.355)/\\log(10/r)$ zeros in $|s-(2+iT)|\\le r$, valid for every real $T$."
+     }
     }
    ],
    "searched": {
@@ -23052,37 +23123,38 @@
     ],
     "greps": [
      "N(T\\|N⁺\\|g_χ\\|riemann_vonMangoldt in TernaryGoldbach/",
-     "Stieltjes\\|dN in TernaryGoldbach/"
+     "Stieltjes\\|dN in TernaryGoldbach/",
+     "2\\.337|21\\.817|74\\.38|13\\.347|16\\.695|1\\.4056|13\\.3466|heartsuit|etaHeart|eta_heart in tg/TernaryGoldbach/",
+     "0\\.819|16\\.8|17\\.7|296\\.09|17\\.21|3\\.53|22\\.5|0\\.18787|0\\.0152|1\\.0057|1\\.072|7\\.487|E_1|expIntegral in tg/TernaryGoldbach/",
+     "M\\(q\\)|Polya|5 / 8|√3 in tg/TernaryGoldbach/Explicit/",
+     "N\\(T|riemann.?von|stieltjes|g_χ|N⁺|partial summation|abel in tg/TernaryGoldbach/ (case-insensitive)",
+     "N\\(1|low-lying|deriv.*Gr|flineD_le in tg/TernaryGoldbach/"
     ]
    },
    "verification": {
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "overturned",
+     "reason": "This step completes the statement of melos (range T>=1, explicit g_chi); Lean's explicit zero count at this point is zero_count_poly (ZeroSums.lean:77-80), a different quantity."
+    }
    }
   },
   {
    "id": "Lemma 9.1.3 step 5",
    "item": "Lemma 9.1.3",
-   "relation": "noMatch",
-   "class": "Absent",
-   "note": "[L] never uses an asymptotic N(T,chi), a Stieltjes integral over zeros, or g_chi; Jensen windows replace them (NOTES.md, Prop932.lean header).",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean substitutes a uniform per-window count $Z$ (Jensen) where the text substitutes (melos) into the partial summation; the result is an upper bound with $Z/h$ in place of the density $\\frac1{2\\pi}\\log\\frac{qT}{2\\pi}$ and $Z\\int|f'|$ in place of the $g_\\chi$ terms.",
+   "proof_kind": "helper",
    "ends": [
-    {
-     "declaration": "TernaryGoldbach.Explicit.zero_count_poly",
-     "repo": "lean",
-     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
-     "file": "TernaryGoldbach/Explicit/ZeroSums.lean",
-     "module": "TernaryGoldbach.Explicit.ZeroSums",
-     "lines": [
-      76,
-      95
-     ]
-    },
     {
      "declaration": "TernaryGoldbach.Explicit.sum_window_le",
      "repo": "lean",
@@ -23090,9 +23162,18 @@
      "file": "TernaryGoldbach/Explicit/LineZeros.lean",
      "module": "TernaryGoldbach.Explicit.LineZeros",
      "lines": [
-      81,
+      131,
       150
-     ]
+     ],
+     "snippet": "  calc ∑ u ∈ S, m u * ‖f u.im‖ ≤ ∑ u ∈ S, m u * W (idx u) :=\n        Finset.sum_le_sum fun u hu => mul_le_mul_of_nonneg_left (hpt u hu) (hm u hu)\n    _ = ∑ k ∈ Finset.range (2 * J), ∑ u ∈ S.filter (fun u => idx u = k), m u * W (idx u) :=\n        (Finset.sum_fiberwise_of_maps_to (fun u hu => Finset.mem_range.2 (hwin u hu).1) _).symm\n    _ = ∑ k ∈ Finset.range (2 * J), W k * ∑ u ∈ S.filter (fun u => idx u = k), m u := by\n        refine Finset.sum_congr rfl fun k _ => ?_\n        rw [Finset.mul_sum]\n        refine Finset.sum_congr rfl fun u hu => ?_\n        rw [(Finset.mem_filter.1 hu).2]; ring\n    _ ≤ ∑ k ∈ Finset.range (2 * J), W k * Z :=\n        Finset.sum_le_sum fun k _ => mul_le_mul_of_nonneg_left (hZ k) (hW0 k)\n    _ = Z * ∑ k ∈ Finset.range (2 * J), W k := by rw [Finset.mul_sum]; exact Finset.sum_congr rfl fun k _ => by ring\n    _ = _ := by\n        congr 1\n        simp only [hW]\n        rw [Finset.sum_add_distrib, ← Finset.mul_sum,\n          intervalIntegral.sum_integral_adjacent_intervals (fun k _ => hfc.norm.intervalIntegrable _ _),\n          intervalIntegral.sum_integral_adjacent_intervals (fun k _ => hf'.norm.intervalIntegrable _ _)]\n        simp only [ha]; push_cast\n        congr 3 <;> ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Explicit.sum_window_le",
+      "lines": [
+       81,
+       150
+      ],
+      "conclusion": "Inserting the window count $\\sum_{u\\in I_k} m_u\\le Z$ and summing the windows gives $\\sum_u m_u|f(\\Im u)|\\le Z((1/h)\\int_{-Jh}^{Jh}|f|+\\int_{-Jh}^{Jh}|f'|)$."
+     }
     }
    ],
    "searched": {
@@ -23103,17 +23184,28 @@
     ],
     "greps": [
      "N(T\\|N⁺\\|g_χ\\|riemann_vonMangoldt in TernaryGoldbach/",
-     "Stieltjes\\|dN in TernaryGoldbach/"
+     "Stieltjes\\|dN in TernaryGoldbach/",
+     "2\\.337|21\\.817|74\\.38|13\\.347|16\\.695|1\\.4056|13\\.3466|heartsuit|etaHeart|eta_heart in tg/TernaryGoldbach/",
+     "0\\.819|16\\.8|17\\.7|296\\.09|17\\.21|3\\.53|22\\.5|0\\.18787|0\\.0152|1\\.0057|1\\.072|7\\.487|E_1|expIntegral in tg/TernaryGoldbach/",
+     "M\\(q\\)|Polya|5 / 8|√3 in tg/TernaryGoldbach/Explicit/",
+     "N\\(T|riemann.?von|stieltjes|g_χ|N⁺|partial summation|abel in tg/TernaryGoldbach/ (case-insensitive)",
+     "N\\(1|low-lying|deriv.*Gr|flineD_le in tg/TernaryGoldbach/"
     ]
    },
    "verification": {
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "overturned",
+     "reason": "'Thus' introduces (bochal), the substitution of the zero count into the partial summation; Lean's counterpart is the insertion of the window count Z in sum_window_le (LineZeros.lean:131-150), which the judge already accepted as the counterpart of (datora)."
+    }
    }
   },
   {
@@ -23161,10 +23253,16 @@
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_count_poly, sum_window_le, sum_geom_windows; no counting function N(T,chi), no main-term integration by parts, no g_chi or decreasing-f simplification anywhere in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -23266,10 +23364,16 @@
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_count_poly, sum_window_le, sum_geom_windows; no counting function N(T,chi), no main-term integration by parts, no g_chi or decreasing-f simplification anywhere in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -23317,10 +23421,16 @@
     "batch": "B019-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_count_poly, sum_window_le, sum_geom_windows; no counting function N(T,chi), no main-term integration by parts, no g_chi or decreasing-f simplification anywhere in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -23360,10 +23470,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -23403,10 +23519,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -23446,10 +23568,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -23489,10 +23617,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -23532,10 +23666,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -23575,10 +23715,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -23618,10 +23764,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -24421,10 +24573,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -24464,10 +24622,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -24637,10 +24801,16 @@
     "batch": "B020-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hB, sum_window_fline_le, count_line_window, norm_G_uniform, MellinPlancherel; Lean has no pointwise |eta/sqrt t|_1 or |G'| trivial bound, no separate low-lying-zero term, no N(1,chi) count, no g_chi^2 integral and no boundary term; constants 0.819, 16.8, 17.7, 296.09 absent."
+    }
    }
   },
   {
@@ -24808,10 +24978,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -24861,10 +25037,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -24914,10 +25096,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25112,10 +25300,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25221,10 +25415,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25330,10 +25530,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25383,10 +25589,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25436,10 +25648,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25489,10 +25707,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25542,10 +25766,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25651,10 +25881,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25704,10 +25940,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -25757,10 +25999,16 @@
     "batch": "B021-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read zero_sum_bound step hC, norm_G_tail, count_tail_window, sum_geom_windows; these bound the tail for t^2e^{-t^2/2} (Lemma 9.3.1's replacement, per the B021 judge), and no Lean lines treat the eta_heart tail, pair rho with 1-rho, or estimate E_1/Gaussian integrals."
+    }
    }
   },
   {
@@ -26213,10 +26461,16 @@
     "batch": "B022-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read prop_9_3_2, prop_9_3_2_ne and err932; Lean has no eta_heart formula (GoodSmoothing excludes eta(0)!=0) and none of 2.337, 21.817, 74.38, 1.4056, 13.347, 16.695 occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -26264,10 +26518,16 @@
     "batch": "B022-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read prop_9_3_2, prop_9_3_2_ne and err932; Lean has no eta_heart formula (GoodSmoothing excludes eta(0)!=0) and none of 2.337, 21.817, 74.38, 1.4056, 13.347, 16.695 occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -26315,10 +26575,16 @@
     "batch": "B022-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read prop_9_3_2, prop_9_3_2_ne and err932; Lean has no eta_heart formula (GoodSmoothing excludes eta(0)!=0) and none of 2.337, 21.817, 74.38, 1.4056, 13.347, 16.695 occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -26366,10 +26632,16 @@
     "batch": "B022-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read prop_9_3_2, prop_9_3_2_ne and err932; Lean has no eta_heart formula (GoodSmoothing excludes eta(0)!=0) and none of 2.337, 21.817, 74.38, 1.4056, 13.347, 16.695 occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -26417,10 +26689,16 @@
     "batch": "B022-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read prop_9_3_2, prop_9_3_2_ne and err932; Lean has no eta_heart formula (GoodSmoothing excludes eta(0)!=0) and none of 2.337, 21.817, 74.38, 1.4056, 13.347, 16.695 occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -26522,10 +26800,16 @@
     "batch": "B022-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read prop_9_3_2, prop_9_3_2_ne and err932; Lean has no eta_heart formula (GoodSmoothing excludes eta(0)!=0) and none of 2.337, 21.817, 74.38, 1.4056, 13.347, 16.695 occur in TernaryGoldbach/."
+    }
    }
   },
   {
@@ -26627,10 +26911,16 @@
     "batch": "B022-s",
     "steps": [
      "mapper (sonnet)",
-     "verifier (sonnet)"
+     "verifier (sonnet)",
+     "absence audit (opus)"
     ],
     "agreed": true,
-    "same_relation": true
+    "same_relation": true,
+    "audit": {
+     "file": "A02",
+     "ruling": "confirmed",
+     "reason": "Read prop_9_3_2, prop_9_3_2_ne and err932; Lean has no eta_heart formula (GoodSmoothing excludes eta(0)!=0) and none of 2.337, 21.817, 74.38, 1.4056, 13.347, 16.695 occur in TernaryGoldbach/."
+    }
    }
   },
   {

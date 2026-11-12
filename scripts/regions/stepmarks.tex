@@ -1,0 +1,38 @@
+% Position markers for the displays and proof steps of [H] (arXiv:1501.05438v2) and of
+% arXiv:1312.7748v2, \input after regionmarks.tex.  Same marker mechanism (\rm@savepos); every
+% marker is a zero-size whatsit or an .aux record, placed where it adds no break point.
+%
+%   \rmdispline{k}{file}{line} in the .aux: the k-th display (numbered or not, the counter of
+%                  regionmarks.tex) opens at <line> of <file>
+%   ds:<k>:pre     after the line before the k-th display when it is a \[...\] (equation*) that
+%                  starts in horizontal mode and not on the empty list after another display
+%                  (TeX drops a space that ends the text before a display only when it is the
+%                  list's last node, so the hook drops it before adding the marker)
+%   \rmdsafter{k}  in the .aux: the k-th display opens such an empty list
+%   st:<n>:s       the start of the n-th prose step (\rmS{n}, which build_steps.py inserts into a
+%                  scratch copy of the source before the step's first character)
+%   st:<n>:e       its end (\rmE{n}, after its last character); \rmnoend{n} in the .aux when
+%                  that point is not in horizontal mode
+%   fn:<k>         the start of the k-th footnote's text
+\makeatletter
+\everydisplay=\expandafter{\the\everydisplay
+  \if@filesw\immediate\write\@auxout{\string\rmdispline{\the\rm@dispk}{\CurrentFile}{\the\inputlineno}}\fi}
+\AddToHook{env/equation*/begin}{%
+  \ifhmode
+    \ifnum\lastnodetype=\m@ne
+      \if@filesw\immediate\write\@auxout{\string\rmdsafter{\the\numexpr\rm@dispk+1\relax}}\fi
+    \else
+      \unskip\vadjust{\rm@savepos{ds:\the\numexpr\rm@dispk+1\relax:pre}}%
+    \fi
+  \fi}
+\providecommand\rmdispline[3]{}
+\providecommand\rmdsafter[1]{}
+\providecommand\rmnoend[1]{}
+\def\rmS#1{\ifvmode\leavevmode\fi\rm@savepos{st:#1:s}}
+\def\rmE#1{\ifhmode\rm@savepos{st:#1:e}\else
+  \if@filesw\immediate\write\@auxout{\string\rmnoend{#1}}\fi\fi}
+\newcount\rm@fnk
+\let\rm@orig@makefntext\@makefntext
+\long\def\@makefntext#1{\global\advance\rm@fnk\@ne
+  \rm@orig@makefntext{\rm@savepos{fn:\the\rm@fnk}#1}}
+\makeatother

@@ -128,6 +128,10 @@ gives its item's. Notes state no other claim that [H] errs.
   `cf overlay sync`.
 - `lean/`: the formal statements. `data/statements.json`: what each file proves, the links'
   source. `scripts/mapping/formal_errata.py`, `statements.py`: their records.
+- `data/<overlay>-displays.json`, `data/<overlay>-steps.json`: the unnumbered displays outside proofs and the
+  steps of every proof, segmented from the LaTeX (`scripts/steps/segment.py`; `data/book-splits.json`, the
+  long paragraphs cut at sentences). `data/<overlay>-regions-steps.json`: their regions on the PDF
+  (`scripts/regions/run_steps.sh`). Not linked yet.
 - `paper-2013/`: the same for the paper. `data/items-paper-2013.json` (its items),
   `data/regions-paper-2013.json`, `data/matches-paper-2013.json` (each item's counterpart in the book
   and how it was checked); `scripts/paper/`.

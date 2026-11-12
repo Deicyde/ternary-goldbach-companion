@@ -11,8 +11,61 @@
  },
  "method": "each record mapped by one agent and independently by a second; an opus judge ruled on class or declaration-set disagreements and re-ran one in five agreed noMatch searches; paper records with LaTeX identical to a book record carry the book verdict. No person has reviewed these verdicts.",
  "total": 317,
- "mapped": 270,
+ "mapped": 294,
  "records": [
+  {
+   "id": "Corollary 1.1 step 1",
+   "item": "Corollary 1.1",
+   "relation": "hasPart",
+   "class": "Partial",
+   "note": "Only the first sentence (odd n > 5, main theorem) is in [L]; the even n > 8 case (apply to n-3), the n <= 8 cases and the conclusion 'at most 4 primes' are not stated anywhere in [L] (greps for 'at most 4', 'four primes', 'n - 3' find only the unrelated odd-n split n = 3 + (n-3) in SmallCases.lean).",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.ternary_goldbach",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Helfgott/Main.lean",
+     "module": "TernaryGoldbach.Helfgott.Main",
+     "lines": [
+      88,
+      94
+     ],
+     "snippet": "/-- **The ternary Goldbach conjecture** (Helfgott, 2013): every odd integer greater than `5`\nis a sum of three primes.\n\nIt depends on the three hypotheses of `Statement.lean`, passed as `Fact` instances (see\n`MainTheorems.lean` for the version with explicit hypotheses). -/\ntheorem ternary_goldbach : Statement :=\n  statement_of_upTo_of_from Helfgott.ternaryGoldbachUpTo Helfgott.ternaryGoldbachFrom",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.ternary_goldbach",
+      "lines": [
+       88,
+       94
+      ],
+      "conclusion": "Every odd `n > 5` is a sum of three primes (`Statement`), which is the main theorem invoked in the first sentence of the step."
+     }
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.Statement",
+     "TernaryGoldbach.ternary_goldbach_of_hypotheses",
+     "TernaryGoldbach.Helfgott.ternaryGoldbachUpTo_1e27"
+    ],
+    "greps": [
+     "rg -i 'at most 4|four primes|sum of at most' in TernaryGoldbach/, Challenge.lean, Solution.lean",
+     "rg 'n - 3' in TernaryGoldbach/ (only Helfgott/SmallCases.lean, odd n = 3+(n-3) for binary Goldbach)"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus)"
+    ],
+    "agreed": false,
+    "disagreement": "disjoint declarations",
+    "ruling": "verifier",
+    "reason": "Both agree on hasPart for the odd case only; the theorem `ternary_goldbach` (Main.lean 88-94) proves the main theorem the step invokes, whereas `Statement` is only the definition of the claim."
+   }
+  },
   {
    "id": "Lemma 4.1 step 1",
    "item": "Lemma 4.1",
@@ -137,6 +190,44 @@
      "agreed": true,
      "same_relation": true
     }
+   }
+  },
+  {
+   "id": "Lemma 4.1 step 4",
+   "item": "Lemma 4.1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Lean never states Lemma 4.1 and has no sqrt(1+x) expansion of |w|/|v|; conv2_ge uses exact polarization with |w|=|v| (translation invariance) and a Lipschitz bound, constant 8.82 in place of 2.71.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MajorArcs.conv2_ge",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MajorArcs/CMain.lean",
+     "module": "TernaryGoldbach.MajorArcs.CMain",
+     "lines": [
+      138,
+      164
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MajorArcs.conv2_ge"
+    ],
+    "greps": [
+     "rg 'sqrt \\(1 \\+|sqrt_one_add|Taylor|taylor' in TernaryGoldbach/MajorArcs, TernaryGoldbach/Prelim",
+     "rg '2\\.71' in TernaryGoldbach/ (only e-approximations 2.7182...)"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
    }
   },
   {
@@ -360,6 +451,249 @@
    }
   },
   {
+   "id": "Lemma 4.2 step 3",
+   "item": "Lemma 4.2",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean splits on omega(q)<=3 (bound 3.75 < Ϝ(r) for all r>=3) rather than on r<27 with q/phi(q)<=3 and Ϝ(r)>3; the digamma comparison is a different argument (quadratic in loglog r, not e^gamma*2.50637).",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Prelim/MertensProduct.lean",
+     "module": "TernaryGoldbach.Prelim.MertensProduct",
+     "lines": [
+      2275,
+      2284
+     ],
+     "snippet": "  rcases le_or_gt k 3 with hk3 | hk3\n  · have h1 : ∏ i ∈ range k, ((Nat.nth Nat.Prime i : ℝ) / (Nat.nth Nat.Prime i - 1)) ≤\n        ∏ i ∈ range 3, ((Nat.nth Nat.Prime i : ℝ) / (Nat.nth Nat.Prime i - 1)) :=\n      prod_le_prod_of_subset_of_one_le₀ (range_subset_range.2 hk3) (fun i _ => hgpos i)\n        (fun i _ _ => hg1 i)\n    have h2 : ∏ i ∈ range 3, ((Nat.nth Nat.Prime i : ℝ) / (Nat.nth Nat.Prime i - 1)) = 3.75 := by\n      simp only [prod_range_succ, prod_range_zero, Nat.nth_prime_zero_eq_two,\n        Nat.nth_prime_one_eq_three, Nat.nth_prime_two_eq_five]\n      norm_num\n    linarith [hex.1]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+      "lines": [
+       2256,
+       2352
+      ],
+      "conclusion": "If q has at most 3 prime factors, q/phi(q) is at most the product over the first 3 primes, 2*3/2*5/4 = 3.75 (exchange lemma `exch` and `hk3` branch)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.Prelim.bigF_gt",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Prelim/MertensProduct.lean",
+     "module": "TernaryGoldbach.Prelim.MertensProduct",
+     "lines": [
+      2236,
+      2253
+     ],
+     "snippet": "theorem bigF_gt {r : ℝ} (hr : 3 ≤ r) :\n    3.75 < Real.exp Real.eulerMascheroniConstant * Real.log (Real.log r) +\n      2.50637 / Real.log (Real.log r) := by\n  have hl1 : 1 < Real.log r := by\n    rw [Real.lt_log_iff_exp_lt (by linarith)]\n    exact Real.exp_one_lt_d9.trans_le (by linarith)\n  set t := Real.log (Real.log r)\n  have ht : 0 < t := Real.log_pos hl1\n  have hG := exp_gamma_ge\n  have h1 : 1.625 * t ≤ Real.exp Real.eulerMascheroniConstant * t :=\n    mul_le_mul_of_nonneg_right hG ht.le\n  have h2 : 3.75 < 1.625 * t + 2.50637 / t := by\n    rw [← sub_pos]\n    have e : 1.625 * t + 2.50637 / t - 3.75 = (1.625 * t ^ 2 - 3.75 * t + 2.50637) / t := by\n      field_simp; ring\n    rw [e]; apply div_pos _ ht\n    nlinarith [sq_nonneg (t - 1.15385)]\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Prelim.bigF_gt",
+      "lines": [
+       2236,
+       2253
+      ],
+      "conclusion": "For r >= 3, 3.75 < e^gamma log log r + 2.50637/log log r, using e^gamma >= 1.625."
+     }
+    }
+   ],
+   "text_error_claim": "The intermediate claim Ϝ(r) > e^gamma*2.50637 is false: min over loglog r of Ϝ is 2*sqrt(e^gamma*2.50637) ~ 4.225 (at r ~ 26.3 < 27), below e^gamma*2.50637 ~ 4.464. The conclusion Ϝ(r) > 3 for r>e is true.",
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "Lemma 4.3 step 1",
+   "item": "Lemma 4.3",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean has the two monotonicities for its own g and h (different constants, h for z >= e^9, g for n >= 670) but not the reduction to h(x1) >= g_{x1}(r) at x1=(6r)^3 nor the bound x1 > e^12.5; it uses max(g,h) instead.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun_antitone",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      224,
+      257
+     ],
+     "snippet": "theorem hfun_antitone {z₁ z₂ : ℝ} (h9 : rexp 9 ≤ z₁) (h12 : z₁ ≤ z₂) : hfun z₂ ≤ hfun z₁ := by\n  have hz₁ : 0 < z₁ := lt_of_lt_of_le (Real.exp_pos 9) h9\n  have hz₂ : 0 < z₂ := by linarith\n  have hs₁ : 9 ≤ Real.log z₁ := by rw [Real.le_log_iff_exp_le hz₁]; exact h9\n  have hs12 := Real.log_le_log hz₁ h12\n  have hrp : ∀ z : ℝ, 0 < z → ∀ p : ℝ, z ^ p = rexp (p * Real.log z) := fun z hz p => by\n    rw [Real.rpow_def_of_pos hz, mul_comm]\n  -- first term\n  have hA := antitoneOn_mul_exp_neg (Q := fun s => s ^ (3 / 2 : ℝ))\n    (Q' := fun s => 3 / 2 * s ^ (1 / 2 : ℝ)) (s₁ := 9) (s₂ := Real.log z₂) (p := 1 / 6)\n    (fun s hs => by\n      have := Real.hasDerivAt_rpow_const (x := s) (p := 3 / 2) (Or.inl (by linarith [hs.1]))\n      convert this using 2; norm_num)\n    (fun s hs => by\n      have hs0 : 0 < s := by linarith [hs.1]\n      have e : s ^ (3 / 2 : ℝ) = s * s ^ (1 / 2 : ℝ) := by\n        rw [← Real.rpow_one_add' hs0.le (by norm_num)]; norm_num\n      rw [e]\n      have : 0 ≤ s ^ (1 / 2 : ℝ) := by positivity\n      nlinarith [hs.1])\n  have hB := antitoneOn_mul_exp_neg (Q := fun s => s) (Q' := fun _ => 1) (s₁ := 9)\n    (s₂ := Real.log z₂) (p := 1 / 3) (fun s _ => hasDerivAt_id s) (fun s hs => by\n      linarith [hs.1])\n  have m1 : Real.log z₁ ∈ Icc 9 (Real.log z₂) := ⟨hs₁, hs12⟩\n  have m2 : Real.log z₂ ∈ Icc 9 (Real.log z₂) := ⟨hs₁.trans hs12, le_rfl⟩\n  have h1 := hA m1 m2 hs12\n  have h2 := hB m1 m2 hs12\n  simp only at h1 h2\n  unfold hfun\n  rw [hrp z₁ hz₁, hrp z₂ hz₂, hrp z₁ hz₁ (-1 / 3), hrp z₂ hz₂ (-1 / 3)]\n  have e1 : ∀ s : ℝ, rexp (-1 / 6 * s) = rexp (-(1 / 6) * s) := fun s => by ring_nf\n  have e2 : ∀ s : ℝ, rexp (-1 / 3 * s) = rexp (-(1 / 3) * s) := fun s => by ring_nf\n  rw [e1, e1, e2, e2]\n  nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.hfun_antitone",
+      "lines": [
+       224,
+       257
+      ],
+      "conclusion": "h(z) = 0.276 z^{-1/6} (log z)^{3/2} + 1234 z^{-1/3} log z is non-increasing for z >= e^9, via antitoneOn_mul_exp_neg."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ],
+     "snippet": "/-- **Scaling of `g`**: for `w ≥ 1`, `g_{wy}(n) ≤ g_y(n)`. -/\ntheorem gx_scale_le_of_one_le {y n w : ℝ} (hy : 0 < y) (hw : 1 ≤ w)\n    (hn : 670 ≤ n) (hny : n ≤ y ^ (1 / 3 : ℝ) / 6) :\n    gx (w * y) n ≤ gx y n := by\n  have hw0 : 0 < w := by linarith\n  have hY : 0 < y ^ (1 / 3 : ℝ) := by positivity\n  have hYw : y ^ (1 / 3 : ℝ) ≤ (w * y) ^ (1 / 3 : ℝ) :=\n    Real.rpow_le_rpow hy.le (by nlinarith) (by norm_num)\n  have hR : R (w * y) (2 * n) ≤ R y (2 * n) := by\n    refine R_le_R (by linarith) le_rfl ?_ ?_\n    · rw [one_lt_div (by positivity)]; nlinarith\n    · exact div_le_div_of_nonneg_right (by linarith) (by positivity)\n  have hR0 : 0 ≤ R (w * y) (2 * n) := R_nonneg (by linarith) (by linarith)\n  have hl0 : 0 ≤ Real.log (2 * n) := Real.log_nonneg (by linarith)\n  have hF0 := Fr_pos hn\n  have hA : (R (w * y) (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) ≤\n      (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) :=\n    mul_le_mul_of_nonneg_right (by nlinarith) (Real.sqrt_nonneg _)\n  have hC : (w * y) ^ (-1 / 6 : ℝ) ≤ y ^ (-1 / 6 : ℝ) :=\n    Real.rpow_le_rpow_of_nonpos hy (by nlinarith) (by norm_num)\n  unfold gx\n  have := div_le_div_of_nonneg_right (show (R (w * y) (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 ≤\n    (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 by linarith) (Real.sqrt_nonneg (2 * n))\n  have := mul_le_mul_of_nonneg_left hC (show (0:ℝ) ≤ 3.8 by norm_num)\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+      "lines": [
+       169,
+       193
+      ],
+      "conclusion": "For w >= 1 and 670 <= n <= y^{1/3}/6, g_{wy}(n) <= g_y(n): x |-> g_x(n) is non-increasing (Lean's gx)."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "Lemma 4.3 step 2",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean bound R_{x1,2r} <= 0.27215 log log x1. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
    "id": "Lemma 4.3 step 3",
    "item": "Lemma 4.3",
    "relation": "noMatch",
@@ -420,6 +754,130 @@
    }
   },
   {
+   "id": "Lemma 4.3 step 4",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean bound R log 2r + 0.5 <= 0.09072 log log x1 log x1 - 0.255. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
    "id": "Lemma 4.3 step 5",
    "item": "Lemma 4.3",
    "relation": "noMatch",
@@ -472,6 +930,254 @@
    }
   },
   {
+   "id": "Lemma 4.3 step 6",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean bound Ϝ(r) <= e^gamma log log x1 for r>=11 (by bisection or otherwise). Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "Lemma 4.3 step 7",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean bound of (R log 2r + 0.5) sqrt(Ϝ(r)) + 2.5 by 0.1211 log x1 (log log x1)^{3/2} + 2. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
    "id": "Lemma 4.3 step 8",
    "item": "Lemma 4.3",
    "relation": "noMatch",
@@ -518,6 +1224,130 @@
      "agreed": true,
      "same_relation": true
     }
+   }
+  },
+  {
+   "id": "Lemma 4.3 step 9",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean bound of the first term of g_{x1}(r) at r = x1^{1/3}/6. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
    }
   },
   {
@@ -581,6 +1411,131 @@
    }
   },
   {
+   "id": "Lemma 4.3 step 11",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean bound of L_r at r = x1^{1/3}/6. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "text_error_claim": "Typo: '80/27 log x' should read '80/27 log x_1' (as in the next display).",
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
    "id": "Lemma 4.3 step 12",
    "item": "Lemma 4.3",
    "relation": "noMatch",
@@ -630,6 +1585,257 @@
    }
   },
   {
+   "id": "Lemma 4.3 step 13",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean bound (4.28 e^gamma log log x1 + 80/27 log x1 + 7.51)/(x1^{1/3}/6) < 1218 x1^{-1/3} log x1. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus): noMatch search re-run"
+    ],
+    "agreed": true,
+    "same_relation": true,
+    "ruling": "confirmed",
+    "reason": "Greps for 1218, 4.28, 7.51 find nothing relevant; [L] takes the majorant $\\max(g_y(n),h(y))$ and never makes the crossover comparison."
+   }
+  },
+  {
+   "id": "Lemma 4.3 step 14",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Range clause x1 >= e of the preceding inequality (4.28 e^gamma ... < 1218 ...); absent. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
    "id": "Lemma 4.3 step 15",
    "item": "Lemma 4.3",
    "relation": "noMatch",
@@ -676,6 +1882,464 @@
      "agreed": true,
      "same_relation": true
     }
+   }
+  },
+  {
+   "id": "Lemma 4.3 step 16",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "The claim that (humo) is below 0.2727 (log x1)^{3/2} for large x1 and the decrease of (log t)^{3/2}/t^{1/2} are not in [L].",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun_antitone",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      224,
+      257
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun_scale_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      264,
+      296
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      195,
+      205
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.hfun_antitone",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+     "TernaryGoldbach.MinorArcs.hfun_scale_le",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_gx",
+     "TernaryGoldbach.MinorArcs.R_le_R",
+     "TernaryGoldbach.MinorArcs.R_nonneg",
+     "TernaryGoldbach.MinorArcs.Fr_monotoneOn",
+     "TernaryGoldbach.MinorArcs.Lg_monotoneOn"
+    ],
+    "greps": [
+     "0.27215|0.09072|1.9521|0.1211|1218|4.28|7.51|0.2727|5832|583200|e\\^34|bisection in TernaryGoldbach/",
+     "h(x1)|crossover|(6 r)^3|6 \\* r in TernaryGoldbach/MinorArcs/"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus)"
+    ],
+    "agreed": false,
+    "disagreement": "class relatedMatch vs noMatch",
+    "ruling": "verifier",
+    "reason": "[L] never compares $g$ and $h$ at $x=(6r)^3$ (it uses $\\max(g,h)$ in `norm_S_etaStar_le_ghat`), so it does not do this step at all; `hfun_antitone` is a monotonicity of a different function for a different purpose, not an analogue at this place."
+   }
+  },
+  {
+   "id": "Lemma 4.3 step 17",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean verification of this ratio < 1 at e^34. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus): noMatch search re-run"
+    ],
+    "agreed": true,
+    "same_relation": true,
+    "ruling": "confirmed",
+    "reason": "Greps for 0.2727, 6.67, $e^{34}$ find nothing relevant; the ratio check belongs to the $g$/$h$ crossover that [L] avoids."
+   }
+  },
+  {
+   "id": "Lemma 4.3 step 18",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean verification at x = e^34 > e^{e^3}. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "Lemma 4.3 step 19",
+   "item": "Lemma 4.3",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "No Lean conclusion h(x1) >= g_{x1,0}(x1^{1/3}/6) and no bisection check on [5832, e^34]. Lean never compares g and h at x=(6r)^3: it takes the majorant max(g_y(n),h(y)) at every scale (NOTES.md; norm_S_etaStar_le_ghat), with different constants (0.8764, 2.526, 3.8, L_t, 0.276, 1234).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.hfun",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      209,
+      212
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PointwiseBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.PointwiseBound",
+     "lines": [
+      26,
+      29
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Lg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      29,
+      31
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      356,
+      413
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123b.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123b",
+     "lines": [
+      105,
+      142
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      169,
+      193
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.hfun",
+     "TernaryGoldbach.MinorArcs.R",
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.Lg",
+     "TernaryGoldbach.MinorArcs.norm_S_etaStar_le_ghat",
+     "TernaryGoldbach.MinorArcs.norm_S_eta2_le_of_not_mem",
+     "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le"
+    ],
+    "greps": [
+     "rg '0.27215|0.09072|0.1211|0.2727|1218|5832|583200|0.0845|1.056|4.28|7.51|80 */ *27|13 */ *12' in TernaryGoldbach/",
+     "rg '0.27125|0.41415' in TernaryGoldbach/ (hits only in FirstChoiceMain/FirstChoiceFinal, proof of Thm 3.1.1, not a comparison of g and h)",
+     "rg 'hfun' in TernaryGoldbach/ (uses: max(gx,hfun) majorant, never compares gx and hfun at x=(6r)^3)",
+     "rg '11.2.1|Lemma 4.3|lem:convet|crossover' in TernaryGoldbach NOTES.md BLUEPRINT.md"
+    ]
+   },
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
    }
   },
   {
@@ -1298,6 +2962,65 @@
    }
   },
   {
+   "id": "Proposition 4.5 step 8",
+   "item": "Proposition 4.5",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean bounds the 3.8 x^{-1/6} term pointwise per scale (factor 1/w for w<1, 1 for w>=1; constant 3.8) and integrates a majorant G, not the coarse K^{1/6} bound with constant 3.2.",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      154,
+      163
+     ],
+     "snippet": "  have hC : 3.8 * (w * y) ^ (-1 / 6 : ℝ) ≤ 3.8 * y ^ (-1 / 6 : ℝ) / w := by\n    have h1 : w ^ (-1 / 6 : ℝ) ≤ w⁻¹ := by\n      rw [← Real.rpow_neg_one]\n      exact Real.rpow_le_rpow_of_exponent_ge hw hw1 (by norm_num)\n    have := mul_le_mul_of_nonneg_left h1 (by positivity : (0:ℝ) ≤ 3.8 * y ^ (-1 / 6 : ℝ))\n    calc 3.8 * (w * y) ^ (-1 / 6 : ℝ) = 3.8 * y ^ (-1 / 6 : ℝ) * w ^ (-1 / 6 : ℝ) := by\n          rw [Real.mul_rpow hw.le hy.le]; ring\n      _ ≤ 3.8 * y ^ (-1 / 6 : ℝ) * w⁻¹ := this\n      _ = 3.8 * y ^ (-1 / 6 : ℝ) / w := by ring\n  have e : gx y n / w = ((R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526) / √(2 * n) / w +",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+      "lines": [
+       97,
+       167
+      ],
+      "conclusion": "For w <= 1, 3.8 (wy)^{-1/6} <= 3.8 y^{-1/6}/w, bounding the x^{-1/6} term of g at scale wy."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      187,
+      188
+     ],
+     "snippet": "  have hC : (w * y) ^ (-1 / 6 : ℝ) ≤ y ^ (-1 / 6 : ℝ) :=\n    Real.rpow_le_rpow_of_nonpos hy (by nlinarith) (by norm_num)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_one_le",
+      "lines": [
+       169,
+       193
+      ],
+      "conclusion": "For w >= 1, (wy)^{-1/6} <= y^{-1/6}."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
    "id": "Proposition 4.5 step 9",
    "item": "Proposition 4.5",
    "relation": "noMatch",
@@ -1589,6 +3312,85 @@
    }
   },
   {
+   "id": "Proposition 4.5 step 14",
+   "item": "Proposition 4.5",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean has no convexity interpolation of R between x/K and x and no integral bound with C_{phi,2,K}; it compares R at scale wy to R at y pointwise (with the factor 1/w) and integrates the resulting majorant.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R_le_R",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      77,
+      95
+     ],
+     "snippet": "/-- `R_{z,t}` decreases in `z` and increases in `t` (in the range where both logarithms are\npositive): `R z' t' ≤ R z t` if `t' ≤ t` and `9z^{1/3}/(2.004 t) ≤ 9z'^{1/3}/(2.004 t')`. -/\ntheorem R_le_R {z z' t t' : ℝ} (ht' : 1 ≤ 4 * t') (htt : t' ≤ t)\n    (hb : 1 < 9 * z ^ (1 / 3 : ℝ) / (2.004 * t))\n    (hbb : 9 * z ^ (1 / 3 : ℝ) / (2.004 * t) ≤ 9 * z' ^ (1 / 3 : ℝ) / (2.004 * t')) :\n    R z' t' ≤ R z t := by\n  unfold R\n  have ht0 : 0 < t' := by linarith\n  have hu := Real.log_le_log (by linarith) (show 4 * t' ≤ 4 * t by linarith)\n  have hu0 : 0 ≤ Real.log (4 * t') := Real.log_nonneg ht'\n  have hv0 : 0 < Real.log (9 * z ^ (1 / 3 : ℝ) / (2.004 * t)) := Real.log_pos hb\n  have hv := Real.log_le_log (by linarith) hbb\n  have hq : Real.log (4 * t') / (2 * Real.log (9 * z' ^ (1 / 3 : ℝ) / (2.004 * t'))) ≤\n      Real.log (4 * t) / (2 * Real.log (9 * z ^ (1 / 3 : ℝ) / (2.004 * t))) := by\n    apply div_le_div₀ (hu0.trans hu) hu (by positivity) (by linarith)\n  have hq0 : 0 ≤ Real.log (4 * t') / (2 * Real.log (9 * z' ^ (1 / 3 : ℝ) / (2.004 * t'))) :=\n    div_nonneg hu0 (by linarith)\n  have := Real.log_le_log (by linarith) (add_le_add_right hq 1)\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.R_le_R",
+      "lines": [
+       77,
+       95
+      ],
+      "conclusion": "R_{z',t'} <= R_{z,t} when t' <= t and the log argument is larger: monotonicity of R in the scale."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      117,
+      129
+     ],
+     "snippet": "      nlinarith\n  have hR0 : 0 ≤ R (w * y) (2 * (w * n)) := R_nonneg (by nlinarith) (by\n    rw [hwy]\n    have := mul_le_mul_of_nonneg_left hw13 (by positivity : (0:ℝ) ≤ y ^ (1 / 3 : ℝ))\n    nlinarith)\n  have hl : Real.log (2 * (w * n)) ≤ Real.log (2 * n) := Real.log_le_log (by nlinarith) (by nlinarith)\n  have hl0 : 0 ≤ Real.log (2 * (w * n)) := Real.log_nonneg (by nlinarith)\n  have hF : Fr (w * n) ≤ Fr n :=\n    Fr_monotoneOn (show w * n ∈ Ici (670 : ℝ) from hn) (show n ∈ Ici (670 : ℝ) from hn670) (by nlinarith)\n  have hF0 := Fr_pos hn\n  have hnum : (R (w * y) (2 * (w * n)) * Real.log (2 * (w * n)) + 0.8764) * √(Fr (w * n)) + 2.526 ≤\n      (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 := by\n    have h1 : R (w * y) (2 * (w * n)) * Real.log (2 * (w * n)) ≤ R y (2 * n) * Real.log (2 * n) :=",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le_of_le_one",
+      "lines": [
+       97,
+       167
+      ],
+      "conclusion": "R_{wy,2wn} <= R_{y,2n} used in the scaling g_{wy}(wn) <= g_y(n)/w."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123",
+     "lines": [
+      102,
+      209
+     ],
+     "snippet": "/-- **[H, Prop. 11.2.3], corrected** (first case, `q` small).  Let `y = x/κ` and\n`2α = a/q + δ/y` with `(a, q) = 1`, `|δ/y| ≤ 1/(q Q_y)`, `Q_y = (3/4)y^{2/3}`; let\n`r = max(1, |δ|/8) q`.  Let `0 < w₀ ≤ 1 ≤ w₁` with `w₀ y ≥ 2.16·10²⁰`, `q ≤ (w₀y)^{1/3}/6`,\n`w₀ r ≥ 670`, and `|δ/y| ≤ 1/(q Q_{w₁y})`.  If `G(w) ≥ g_{wy}(min(1, w) r)` on `[w₀, w₁]` with\n`Gφ` integrable there, then\n`|S_{η_*}(α, x)| ≤ y (∫_{w₀}^{w₁} G φ + 17 (∫_0^{w₀} φ + ∫_{w₁}^∞ φ))`. -/\ntheorem prop_11_2_3 {α x δ w₀ w₁ : ℝ} {a : ℤ} {q : ℕ} {G : ℝ → ℝ} (hx : 0 < x)\n    (h : Approx2 α (x / κ) δ a q (3 / 4 * (x / κ) ^ (2 / 3 : ℝ)))\n    (hw₀ : 0 < w₀) (hw₀1 : w₀ ≤ 1) (hw₁ : 1 ≤ w₁) (hy : 2.16e20 ≤ w₀ * (x / κ))\n    (hq : (q : ℝ) ≤ (w₀ * (x / κ)) ^ (1 / 3 : ℝ) / 6)\n    (hr : 670 ≤ w₀ * (max 1 (|δ| / 8) * q))\n    (hδ₁ : |δ / (x / κ)| ≤ 1 / (q * (3 / 4 * (w₁ * (x / κ)) ^ (2 / 3 : ℝ))))\n    (hG : ∀ w ∈ Icc w₀ w₁, gx (w * (x / κ)) (min 1 w * (max 1 (|δ| / 8) * q)) ≤ G w)\n    (hGi : IntegrableOn (fun w => G w * phi w) (Icc w₀ w₁)) :\n    ‖S etaStar x α‖ ≤ x / κ * ((∫ w in Icc w₀ w₁, G w * phi w) +\n      17 * ((∫ w in Ioo 0 w₀, phi w) + ∫ w in Ioi w₁, phi w)) := by\n  have hκ : (0 : ℝ) < κ := by rw [TernaryGoldbach.Helfgott.κ]; norm_num\n  set y := x / κ with hy_def\n  have hy0 : 0 < y := div_pos hx hκ\n  set r := max 1 (|δ| / 8) * q with hr_def\n  have hq1 : (1 : ℝ) ≤ q := by exact_mod_cast h.1\n  -- the majorant\n  set B : ℝ → ℝ := fun w =>\n    (Ioo 0 w₀).indicator (fun w => 17 * y * phi w) w +\n      (Icc w₀ w₁).indicator (fun w => y * (G w * phi w)) w +\n      (Ioi w₁).indicator (fun w => 17 * y * phi w) w with hB\n  have hφi : IntegrableOn (fun w => 17 * y * phi w) univ :=\n    (integrable_phi.const_mul (17 * y)).integrableOn\n  have hBi : Integrable B (volume.restrict (Ioi 0)) := by\n    refine Integrable.add (Integrable.add ?_ ?_) ?_\n    · exact (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioo).restrict\n    · exact (IntegrableOn.integrable_indicator (hGi.const_mul y) measurableSet_Icc).restrict\n    · exact (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioi).restrict\n  -- pointwise bound\n  have hpt : ∀ w ∈ Ioi (0 : ℝ), ‖S eta2 (w * y) α‖ * (phi w / w) ≤ B w := by\n    intro w (hw : 0 < w)\n    have hφw : 0 ≤ phi w / w := div_nonneg (phi_nonneg w) hw.le\n    have triv : ‖S eta2 (w * y) α‖ * (phi w / w) ≤ 17 * y * phi w := by\n      have := norm_S_eta2_le_trivial (mul_pos hw hy0) α\n      calc ‖S eta2 (w * y) α‖ * (phi w / w) ≤ 17 * (w * y) * (phi w / w) :=\n            mul_le_mul_of_nonneg_right this hφw\n        _ = 17 * y * phi w := by field_simp\n    rcases lt_or_ge w w₀ with h1 | h1\n    · have : B w = 17 * y * phi w := by\n        simp only [hB, indicator, mem_Ioo, mem_Icc, mem_Ioi, hw, h1, true_and, ite_true]\n        rw [ite_eq_right (by intro h'; linarith [h'.1]), ite_eq_right (by intro h'; linarith)]; ring\n      rw [this]; exact triv\n    rcases le_or_gt w w₁ with h2 | h2\n    · have hBw : B w = y * (G w * phi w) := by\n        simp only [hB, indicator, mem_Ioo, mem_Icc, mem_Ioi]\n        rw [ite_eq_right (by intro h'; linarith [h'.2]), ite_eq_left ⟨h1, h2⟩, ite_eq_right (by intro h'; linarith)]\n        ring\n      rw [hBw]\n      -- Theorem 3.1.1 at scale `wy`\n      have hz : 2.16e20 ≤ w * y := hy.trans (by gcongr)\n      have hqz : (q : ℝ) ≤ (w * y) ^ (1 / 3 : ℝ) / 6 :=\n        hq.trans (by gcongr)\n      obtain ⟨hTz, -, hTz23, -⟩ := cube_root_facts hz\n      have hQz : (q : ℝ) ≤ 3 / 4 * (w * y) ^ (2 / 3 : ℝ) := by rw [hTz23]; nlinarith\n      have hδz : |δ / y| ≤ 1 / (q * (3 / 4 * (w * y) ^ (2 / 3 : ℝ))) :=\n        hδ₁.trans (one_div_le_one_div_of_le (by positivity) (by gcongr))\n      have h' := h.rescale hw hδz hQz\n      have hmm := min_mul_max_le hw (abs_nonneg δ)\n      have hrw : min 1 w * r ≤ max 1 (|w * δ| / 8) * q := by\n        rw [abs_mul, abs_of_pos hw, hr_def, ← mul_assoc]\n        exact mul_le_mul_of_nonneg_right hmm (by linarith)\n      have hlow : 670 ≤ min 1 w * r := by\n        have : w₀ ≤ min 1 w := le_min hw₀1 h1\n        nlinarith [show (0 : ℝ) ≤ r by positivity]\n      have key := norm_S_eta2_le_gx hz h' hqz (by linarith)\n      have hup := r_le_cube_root hz h' hqz\n      have hmono := gx_antitoneOn hz ⟨hlow, hrw.trans hup⟩ ⟨hlow.trans hrw, hup⟩ hrw\n      calc ‖S eta2 (w * y) α‖ * (phi w / w)\n          ≤ gx (w * y) (max 1 (|w * δ| / 8) * q) * (w * y) * (phi w / w) :=\n            mul_le_mul_of_nonneg_right key hφw\n        _ ≤ G w * (w * y) * (phi w / w) := by\n            gcongr\n            exact hmono.trans (hG w ⟨h1, h2⟩)\n        _ = y * (G w * phi w) := by field_simp\n    · have : B w = 17 * y * phi w := by\n        simp only [hB, indicator, mem_Ioo, mem_Icc, mem_Ioi]\n        rw [ite_eq_right (by intro h'; linarith [h'.2]), ite_eq_right (by intro h'; linarith [h'.2]), ite_eq_left h2]\n        ring\n      rw [this]; exact triv\n  -- integrate\n  refine (norm_S_etaStar_le hx α).trans ?_\n  have hf0 : 0 ≤ᵐ[volume.restrict (Ioi 0)] fun w => ‖S eta2 (w * y) α‖ * (phi w / w) :=\n    (ae_restrict_iff' measurableSet_Ioi).2 (Filter.Eventually.of_forall fun w (hw : 0 < w) =>\n      mul_nonneg (norm_nonneg _) (div_nonneg (phi_nonneg w) hw.le))\n  refine (integral_mono_of_nonneg hf0 hBi\n    ((ae_restrict_iff' measurableSet_Ioi).2 (Filter.Eventually.of_forall hpt))).trans (le_of_eq ?_)\n  have I1 : Integrable ((Ioo 0 w₀).indicator (fun w => 17 * y * phi w)) (volume.restrict (Ioi 0)) :=\n    (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioo).restrict\n  have I2 : Integrable ((Icc w₀ w₁).indicator (fun w => y * (G w * phi w))) (volume.restrict (Ioi 0)) :=\n    (IntegrableOn.integrable_indicator (hGi.const_mul y) measurableSet_Icc).restrict\n  have I3 : Integrable ((Ioi w₁).indicator (fun w => 17 * y * phi w)) (volume.restrict (Ioi 0)) :=\n    (IntegrableOn.integrable_indicator (hφi.mono_set (subset_univ _)) measurableSet_Ioi).restrict\n  have I12 : Integrable (fun w => (Ioo 0 w₀).indicator (fun w => 17 * y * phi w) w +\n      (Icc w₀ w₁).indicator (fun w => y * (G w * phi w)) w) (volume.restrict (Ioi 0)) := I1.add I2\n  simp only [hB]\n  rw [integral_add I12 I3, integral_add I1 I2, setIntegral_indicator measurableSet_Ioo,\n    setIntegral_indicator measurableSet_Icc, setIntegral_indicator measurableSet_Ioi,\n    inter_eq_right.2 Ioo_subset_Ioi_self,\n    (inter_eq_right (s := Ioi (0:ℝ)) (t := Icc w₀ w₁)).2\n      (fun w (hw : w ∈ Icc w₀ w₁) => lt_of_lt_of_le hw₀ hw.1),\n    (inter_eq_right (s := Ioi (0:ℝ)) (t := Ioi w₁)).2 (Ioi_subset_Ioi (by linarith)),\n    integral_const_mul, integral_const_mul, integral_const_mul]\n  ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.prop_11_2_3",
+      "lines": [
+       102,
+       209
+      ],
+      "conclusion": "Integration over w against phi with an abstract majorant G."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
    "id": "Proposition 4.5 step 15",
    "item": "Proposition 4.5",
    "relation": "noMatch",
@@ -1748,6 +3550,320 @@
      "ruling": "own",
      "reason": "The step announces the derivative test for the decreasing functions (11.22); Lean's derivative test is `antitoneOn_mul_exp_neg`, applied to the piece containing those functions (`QC`, the `L_{2r}/r` term) in `QC_antitoneOn`. Both sides' ends are parts of this chain."
     }
+   }
+  },
+  {
+   "id": "Lemma 4.6 step 2",
+   "item": "Lemma 4.6",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean (single scale, no phi, no K) proves each piece of g monotone separately by the Q(s)e^{-ps} test, with Lean's constants and range r >= 670; it does not reduce to the three functions loglog r/r, log r/r, (log r)^2 loglog r/r nor to the R-term alone.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      163,
+      213
+     ],
+     "snippet": "theorem QA_antitoneOn {B : ℝ} (hB : 8.5 ≤ B) :\n    AntitoneOn (fun s => QA B s * rexp (-(1 / 2) * s)) (Icc 6 (B - 2.5)) := by\n  have hl2 : 0.69 ≤ Real.log 2 := by have := Real.log_two_gt_d9; linarith\n  have hl8 : 0 ≤ Real.log 8 := Real.log_nonneg (by norm_num)\n  refine antitoneOn_mul_exp_neg (Q' := fun s =>\n      (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * (Real.log 2 + s) +\n        Rs B s) * √(Fs s) + (Rs B s * (Real.log 2 + s) + 0.8764) *\n        ((rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2)) / (2 * √(Fs s))))\n    (fun s hs => ?_) (fun s hs => ?_)\n  · obtain ⟨hs1, hs2⟩ := hs\n    have hsB : s < B := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have hRd := Rs_hasDerivAt (B := B) (s := s) (by linarith) hsB\n    have hFd := (Fs_hasDerivAt (show (1:ℝ) < s by linarith)).sqrt (by linarith)\n    have hlin : HasDerivAt (fun s => Real.log 2 + s) 1 s := (hasDerivAt_id s).const_add _\n    unfold QA\n    exact (((hRd.mul hlin).add_const 0.8764).mul hFd).congr_deriv (by simp only [Pi.mul_apply]; ring)\n  · obtain ⟨hs1, hs2⟩ := hs\n    simp only [QA]\n    have hsB : s < B := by linarith\n    have hBs : 2.5 ≤ B - s := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have ha : 0 < √(Fs s) := Real.sqrt_pos.2 (by linarith)\n    have ha2 : √(Fs s) ^ 2 = Fs s := Real.sq_sqrt (by linarith)\n    have hR := Rs_ge (B := B) (s := s) (by linarith) hsB\n    have hRd := Rs_deriv_le (B := B) (s := s) (by linarith) hsB\n    have hRd' : 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.1085 := by\n      refine hRd.trans ?_\n      rw [div_le_iff₀ (by linarith)]; nlinarith\n    have hFd := Fs_deriv_le (show (1:ℝ) < s by linarith)\n    set D := rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2) with hD\n    have hD' : D ≤ 0.29804 := by\n      refine hFd.trans ?_; rw [div_le_iff₀ (by linarith)]; nlinarith\n    -- `D/(2√Ϝ) ≤ 0.0393 √Ϝ`\n    have hq : D / (2 * √(Fs s)) ≤ 0.0393 * √(Fs s) := by\n      rw [div_le_iff₀ (by positivity)]; nlinarith\n    set L := Real.log 2 + s\n    have hL : 6.69 ≤ L := by simp only [L]; linarith\n    set N := Rs B s * L + 0.8764\n    have hN : 0 ≤ N := by positivity\n    set a := √(Fs s)\n    have hRL : 0 ≤ 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) := by\n      have : 0 < 2 * B - s + Real.log 8 := by linarith\n      positivity\n    have t1 : (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * L + Rs B s) * a\n        ≤ (0.1085 * L + Rs B s) * a := by gcongr\n    have t2 : N * (D / (2 * a)) ≤ N * (0.0393 * a) := mul_le_mul_of_nonneg_left hq hN\n    -- `0.1085 L + R + 0.0393 N ≤ N/2`\n    have key : 0.1085 * L + Rs B s + 0.0393 * N ≤ 1 / 2 * N := by\n      simp only [N]; nlinarith\n    nlinarith [mul_le_mul_of_nonneg_right key ha.le]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+      "lines": [
+       163,
+       213
+      ],
+      "conclusion": "The main term (R log 2r + 0.8764) sqrt(Ϝ(r)) / sqrt(r), as Q(s) e^{-s/2}, is non-increasing for s = log r in [6, B-2.5]."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.QC_antitoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      219,
+      241
+     ],
+     "snippet": "theorem QC_antitoneOn (S₂ : ℝ) : AntitoneOn (fun s => QC s * rexp (-1 * s)) (Icc 6 S₂) := by\n  have hl2 : 0.69 ≤ Real.log 2 := by have := Real.log_two_gt_d9; linarith\n  refine antitoneOn_mul_exp_neg (Q' := fun s =>\n      (rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2)) *\n        (13 / 4 * (Real.log 2 + s) + 7.82) + Fs s * (13 / 4 * 1) + 13.66 * 1)\n    (fun s hs => ?_) (fun s hs => ?_)\n  · have hs1 : (1 : ℝ) < s := by linarith [hs.1]\n    have hlin : HasDerivAt (fun s => Real.log 2 + s) 1 s := (hasDerivAt_id s).const_add _\n    unfold QC\n    exact ((((Fs_hasDerivAt hs1).mul ((hlin.const_mul (13 / 4)).add_const 7.82)).add\n      (hlin.const_mul 13.66)).add_const 37.55).congr_deriv\n      (by ring)\n  · have hs1 : 6 ≤ s := hs.1\n    simp only [QC]\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have hD := Fs_deriv_le (show (1:ℝ) < s by linarith)\n    set D := rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2)\n    have hD' : D ≤ 0.29804 := by\n      refine hD.trans ?_; rw [div_le_iff₀ (by linarith)]; nlinarith\n    set M := 13 / 4 * (Real.log 2 + s) + 7.82\n    have hM : 29 ≤ M := by simp only [M]; linarith\n    nlinarith [mul_le_mul_of_nonneg_right hD' (by linarith : (0:ℝ) ≤ M),\n      mul_le_mul_of_nonneg_right hF (by linarith : (0:ℝ) ≤ M - 13 / 4)]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.QC_antitoneOn",
+      "lines": [
+       219,
+       241
+      ],
+      "conclusion": "The L-term (including Ϝ(r)(13/4 log 2r + 7.82)) / r, as Q(s) e^{-s}, is non-increasing on [6, S2]."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "Lemma 4.6 step 3",
+   "item": "Lemma 4.6",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean proves the whole main term (R log 2r + 0.8764) sqrt(Ϝ(r))/sqrt(r) antitone at once; it does not isolate the factor log(1 + log 8r/(2 log(9x^{1/3}/(4.008 r)))) sqrt(loglog r/r).",
+   "proof_kind": "direct",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      163,
+      213
+     ],
+     "snippet": "theorem QA_antitoneOn {B : ℝ} (hB : 8.5 ≤ B) :\n    AntitoneOn (fun s => QA B s * rexp (-(1 / 2) * s)) (Icc 6 (B - 2.5)) := by\n  have hl2 : 0.69 ≤ Real.log 2 := by have := Real.log_two_gt_d9; linarith\n  have hl8 : 0 ≤ Real.log 8 := Real.log_nonneg (by norm_num)\n  refine antitoneOn_mul_exp_neg (Q' := fun s =>\n      (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * (Real.log 2 + s) +\n        Rs B s) * √(Fs s) + (Rs B s * (Real.log 2 + s) + 0.8764) *\n        ((rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2)) / (2 * √(Fs s))))\n    (fun s hs => ?_) (fun s hs => ?_)\n  · obtain ⟨hs1, hs2⟩ := hs\n    have hsB : s < B := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have hRd := Rs_hasDerivAt (B := B) (s := s) (by linarith) hsB\n    have hFd := (Fs_hasDerivAt (show (1:ℝ) < s by linarith)).sqrt (by linarith)\n    have hlin : HasDerivAt (fun s => Real.log 2 + s) 1 s := (hasDerivAt_id s).const_add _\n    unfold QA\n    exact (((hRd.mul hlin).add_const 0.8764).mul hFd).congr_deriv (by simp only [Pi.mul_apply]; ring)\n  · obtain ⟨hs1, hs2⟩ := hs\n    simp only [QA]\n    have hsB : s < B := by linarith\n    have hBs : 2.5 ≤ B - s := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have ha : 0 < √(Fs s) := Real.sqrt_pos.2 (by linarith)\n    have ha2 : √(Fs s) ^ 2 = Fs s := Real.sq_sqrt (by linarith)\n    have hR := Rs_ge (B := B) (s := s) (by linarith) hsB\n    have hRd := Rs_deriv_le (B := B) (s := s) (by linarith) hsB\n    have hRd' : 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.1085 := by\n      refine hRd.trans ?_\n      rw [div_le_iff₀ (by linarith)]; nlinarith\n    have hFd := Fs_deriv_le (show (1:ℝ) < s by linarith)\n    set D := rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2) with hD\n    have hD' : D ≤ 0.29804 := by\n      refine hFd.trans ?_; rw [div_le_iff₀ (by linarith)]; nlinarith\n    -- `D/(2√Ϝ) ≤ 0.0393 √Ϝ`\n    have hq : D / (2 * √(Fs s)) ≤ 0.0393 * √(Fs s) := by\n      rw [div_le_iff₀ (by positivity)]; nlinarith\n    set L := Real.log 2 + s\n    have hL : 6.69 ≤ L := by simp only [L]; linarith\n    set N := Rs B s * L + 0.8764\n    have hN : 0 ≤ N := by positivity\n    set a := √(Fs s)\n    have hRL : 0 ≤ 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) := by\n      have : 0 < 2 * B - s + Real.log 8 := by linarith\n      positivity\n    have t1 : (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * L + Rs B s) * a\n        ≤ (0.1085 * L + Rs B s) * a := by gcongr\n    have t2 : N * (D / (2 * a)) ≤ N * (0.0393 * a) := mul_le_mul_of_nonneg_left hq hN\n    -- `0.1085 L + R + 0.0393 N ≤ N/2`\n    have key : 0.1085 * L + Rs B s + 0.0393 * N ≤ 1 / 2 * N := by\n      simp only [N]; nlinarith\n    nlinarith [mul_le_mul_of_nonneg_right key ha.le]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+      "lines": [
+       163,
+       213
+      ],
+      "conclusion": "Main-term monotonicity for s in [6, B-2.5] via antitoneOn_mul_exp_neg, with elasticity bounds for R, log 2r and sqrt(Ϝ)."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "Lemma 4.6 step 4",
+   "item": "Lemma 4.6",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean tests monotonicity by Q'/Q <= p (log-derivative) on the full main term in s = log r, not on the log of expression (horko) in r; range s >= 6 (r >= 403, used with r >= 670).",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_mul_exp_neg",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      23,
+      39
+     ],
+     "snippet": "/-- If `Q' ≤ p Q` on `[s₁, s₂]`, then `s ↦ Q(s) e^{-ps}` is antitone there. -/\ntheorem antitoneOn_mul_exp_neg {Q Q' : ℝ → ℝ} {s₁ s₂ p : ℝ}\n    (hd : ∀ s ∈ Icc s₁ s₂, HasDerivAt Q (Q' s) s) (hle : ∀ s ∈ Icc s₁ s₂, Q' s ≤ p * Q s) :\n    AntitoneOn (fun s => Q s * rexp (-p * s)) (Icc s₁ s₂) := by\n  have hD : ∀ s ∈ Icc s₁ s₂, HasDerivAt (fun s => Q s * rexp (-p * s))\n      (Q' s * rexp (-p * s) + Q s * (rexp (-p * s) * (-p))) s := by\n    intro s hs\n    have h1 : HasDerivAt (fun s => -p * s) (-p) s := by\n      simpa using (hasDerivAt_id s).const_mul (-p)\n    exact (hd s hs).mul h1.exp\n  refine antitoneOn_of_deriv_nonpos (convex_Icc _ _)\n    (fun s hs => (hD s hs).continuousAt.continuousWithinAt)\n    (fun s hs => (hD s (interior_subset hs)).differentiableAt.differentiableWithinAt) fun s hs => ?_\n  rw [(hD s (interior_subset hs)).deriv]\n  have := hle s (interior_subset hs)\n  have he := (Real.exp_pos (-p * s)).le\n  nlinarith [mul_nonneg (sub_nonneg.2 this) he]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.antitoneOn_mul_exp_neg",
+      "lines": [
+       23,
+       39
+      ],
+      "conclusion": "If Q' <= p Q on [s1,s2] then Q(s) e^{-ps} is antitone (derivative sign test)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      163,
+      213
+     ],
+     "snippet": "theorem QA_antitoneOn {B : ℝ} (hB : 8.5 ≤ B) :\n    AntitoneOn (fun s => QA B s * rexp (-(1 / 2) * s)) (Icc 6 (B - 2.5)) := by\n  have hl2 : 0.69 ≤ Real.log 2 := by have := Real.log_two_gt_d9; linarith\n  have hl8 : 0 ≤ Real.log 8 := Real.log_nonneg (by norm_num)\n  refine antitoneOn_mul_exp_neg (Q' := fun s =>\n      (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * (Real.log 2 + s) +\n        Rs B s) * √(Fs s) + (Rs B s * (Real.log 2 + s) + 0.8764) *\n        ((rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2)) / (2 * √(Fs s))))\n    (fun s hs => ?_) (fun s hs => ?_)\n  · obtain ⟨hs1, hs2⟩ := hs\n    have hsB : s < B := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have hRd := Rs_hasDerivAt (B := B) (s := s) (by linarith) hsB\n    have hFd := (Fs_hasDerivAt (show (1:ℝ) < s by linarith)).sqrt (by linarith)\n    have hlin : HasDerivAt (fun s => Real.log 2 + s) 1 s := (hasDerivAt_id s).const_add _\n    unfold QA\n    exact (((hRd.mul hlin).add_const 0.8764).mul hFd).congr_deriv (by simp only [Pi.mul_apply]; ring)\n  · obtain ⟨hs1, hs2⟩ := hs\n    simp only [QA]\n    have hsB : s < B := by linarith\n    have hBs : 2.5 ≤ B - s := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have ha : 0 < √(Fs s) := Real.sqrt_pos.2 (by linarith)\n    have ha2 : √(Fs s) ^ 2 = Fs s := Real.sq_sqrt (by linarith)\n    have hR := Rs_ge (B := B) (s := s) (by linarith) hsB\n    have hRd := Rs_deriv_le (B := B) (s := s) (by linarith) hsB\n    have hRd' : 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.1085 := by\n      refine hRd.trans ?_\n      rw [div_le_iff₀ (by linarith)]; nlinarith\n    have hFd := Fs_deriv_le (show (1:ℝ) < s by linarith)\n    set D := rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2) with hD\n    have hD' : D ≤ 0.29804 := by\n      refine hFd.trans ?_; rw [div_le_iff₀ (by linarith)]; nlinarith\n    -- `D/(2√Ϝ) ≤ 0.0393 √Ϝ`\n    have hq : D / (2 * √(Fs s)) ≤ 0.0393 * √(Fs s) := by\n      rw [div_le_iff₀ (by positivity)]; nlinarith\n    set L := Real.log 2 + s\n    have hL : 6.69 ≤ L := by simp only [L]; linarith\n    set N := Rs B s * L + 0.8764\n    have hN : 0 ≤ N := by positivity\n    set a := √(Fs s)\n    have hRL : 0 ≤ 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) := by\n      have : 0 < 2 * B - s + Real.log 8 := by linarith\n      positivity\n    have t1 : (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * L + Rs B s) * a\n        ≤ (0.1085 * L + Rs B s) * a := by gcongr\n    have t2 : N * (D / (2 * a)) ≤ N * (0.0393 * a) := mul_le_mul_of_nonneg_left hq hN\n    -- `0.1085 L + R + 0.0393 N ≤ N/2`\n    have key : 0.1085 * L + Rs B s + 0.0393 * N ≤ 1 / 2 * N := by\n      simp only [N]; nlinarith\n    nlinarith [mul_le_mul_of_nonneg_right key ha.le]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+      "lines": [
+       163,
+       213
+      ],
+      "conclusion": "Main-term monotonicity for s in [6, B-2.5] via antitoneOn_mul_exp_neg, with elasticity bounds for R, log 2r and sqrt(Ϝ)."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "Lemma 4.6 step 5",
+   "item": "Lemma 4.6",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Same derivative computation for the R-factor (ell = B - s), but Lean bounds Q'/Q <= 1/2 for the product (R log 2r + 0.8764) sqrt(Ϝ) with ell >= 2.5, not the inequality (log-derivative of the log factor + 1/(2 r log r loglog r) < 1/(2r)).",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Rs_hasDerivAt",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      114,
+      127
+     ],
+     "snippet": "theorem Rs_hasDerivAt {B s : ℝ} (hs : 0 ≤ Real.log 8 + s) (hB : s < B) :\n    HasDerivAt (Rs B) (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8)))) s := by\n  have hBs : B - s ≠ 0 := by linarith\n  have hu := ((hasDerivAt_id s).const_add (Real.log 8)).div\n    (((hasDerivAt_id s).const_sub B).const_mul 2) (by simp; exact hBs)\n  have hpos : 0 < 1 + (Real.log 8 + s) / (2 * (B - s)) := by\n    have : 0 ≤ (Real.log 8 + s) / (2 * (B - s)) := div_nonneg hs (by linarith)\n    linarith\n  have h2 : 2 * B - s + Real.log 8 ≠ 0 := by linarith\n  unfold Rs\n  refine ((((hu.const_add 1).log hpos.ne').const_mul 0.27125).add_const 0.41415).congr_deriv ?_\n  simp only [id, Pi.div_apply]\n  field_simp\n  ring",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.Rs_hasDerivAt",
+      "lines": [
+       114,
+       127
+      ],
+      "conclusion": "Derivative of R_{x,2e^s} in s: 0.27125 (B+log 8)/((B-s)(2B-s+log 8))."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Rs_deriv_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      129,
+      136
+     ],
+     "snippet": "theorem Rs_deriv_le {B s : ℝ} (hs : 0 ≤ Real.log 8 + s) (hB : s < B) :\n    0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.27125 / (B - s) := by\n  have hBs : 0 < B - s := by linarith\n  have h2 : 0 < 2 * B - s + Real.log 8 := by linarith\n  rw [mul_div_assoc']\n  rw [div_le_div_iff₀ (by positivity) hBs]\n  have : (B + Real.log 8) * (B - s) ≤ (B - s) * (2 * B - s + Real.log 8) := by nlinarith\n  nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.Rs_deriv_le",
+      "lines": [
+       129,
+       136
+      ],
+      "conclusion": "That derivative is at most 0.27125/(B-s)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      189,
+      213
+     ],
+     "snippet": "    have hRd' : 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.1085 := by\n      refine hRd.trans ?_\n      rw [div_le_iff₀ (by linarith)]; nlinarith\n    have hFd := Fs_deriv_le (show (1:ℝ) < s by linarith)\n    set D := rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2) with hD\n    have hD' : D ≤ 0.29804 := by\n      refine hFd.trans ?_; rw [div_le_iff₀ (by linarith)]; nlinarith\n    -- `D/(2√Ϝ) ≤ 0.0393 √Ϝ`\n    have hq : D / (2 * √(Fs s)) ≤ 0.0393 * √(Fs s) := by\n      rw [div_le_iff₀ (by positivity)]; nlinarith\n    set L := Real.log 2 + s\n    have hL : 6.69 ≤ L := by simp only [L]; linarith\n    set N := Rs B s * L + 0.8764\n    have hN : 0 ≤ N := by positivity\n    set a := √(Fs s)\n    have hRL : 0 ≤ 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) := by\n      have : 0 < 2 * B - s + Real.log 8 := by linarith\n      positivity\n    have t1 : (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * L + Rs B s) * a\n        ≤ (0.1085 * L + Rs B s) * a := by gcongr\n    have t2 : N * (D / (2 * a)) ≤ N * (0.0393 * a) := mul_le_mul_of_nonneg_left hq hN\n    -- `0.1085 L + R + 0.0393 N ≤ N/2`\n    have key : 0.1085 * L + Rs B s + 0.0393 * N ≤ 1 / 2 * N := by\n      simp only [N]; nlinarith\n    nlinarith [mul_le_mul_of_nonneg_right key ha.le]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+      "lines": [
+       163,
+       213
+      ],
+      "conclusion": "With B-s >= 2.5: R' <= 0.1085, D <= 0.29804, and 0.1085 L + R + 0.0393 N <= N/2 give Q' <= Q/2."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "Lemma 4.6 step 6",
+   "item": "Lemma 4.6",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "Lean gets ell >= 2.5 (weaker than the text's ell >= log(54/4.008) > 2.6); the 'enough to ensure (hut)' reduction is not made.",
+   "proof_kind": "direct",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      277,
+      285
+     ],
+     "snippet": "  have hsub : Icc 670 (T / 6) ⊆ Icc (rexp 6) (rexp (B - 2.5)) := by\n    intro r hr\n    refine ⟨exp_six_le.trans hr.1, hr.2.trans ?_⟩\n    rw [Real.exp_sub, hBdef, Real.exp_log (by positivity), le_div_iff₀ (Real.exp_pos _)]\n    have h1 : T / 6 * rexp 2.5 ≤ T / 6 * 13.4 := by gcongr; exact exp_two_point_five_le\n    have h2 : T / 6 * 13.4 ≤ 9 * T / 4.008 := by\n      rw [le_div_iff₀ (by norm_num)]; nlinarith\n    linarith\n  have hA := (antitoneOn_comp_log (QA_antitoneOn hB)).mono hsub",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+      "lines": [
+       264,
+       297
+      ],
+      "conclusion": "For r <= T/6 (T = x^{1/3}), log r <= B - 2.5 with B = log(9T/4.008), i.e. ell = log(9T/(4.008 r)) >= 2.5, using e^{2.5} <= 13.4 <= 54/4.008."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "Lemma 4.6 step 7",
+   "item": "Lemma 4.6",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean has no check at r = 175 and monotone-left-side argument; it proves Q' <= Q/2 uniformly on s in [6, B-2.5] by explicit bounds, hence for r >= 670 only.",
+   "proof_kind": "direct",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      163,
+      213
+     ],
+     "snippet": "theorem QA_antitoneOn {B : ℝ} (hB : 8.5 ≤ B) :\n    AntitoneOn (fun s => QA B s * rexp (-(1 / 2) * s)) (Icc 6 (B - 2.5)) := by\n  have hl2 : 0.69 ≤ Real.log 2 := by have := Real.log_two_gt_d9; linarith\n  have hl8 : 0 ≤ Real.log 8 := Real.log_nonneg (by norm_num)\n  refine antitoneOn_mul_exp_neg (Q' := fun s =>\n      (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * (Real.log 2 + s) +\n        Rs B s) * √(Fs s) + (Rs B s * (Real.log 2 + s) + 0.8764) *\n        ((rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2)) / (2 * √(Fs s))))\n    (fun s hs => ?_) (fun s hs => ?_)\n  · obtain ⟨hs1, hs2⟩ := hs\n    have hsB : s < B := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have hRd := Rs_hasDerivAt (B := B) (s := s) (by linarith) hsB\n    have hFd := (Fs_hasDerivAt (show (1:ℝ) < s by linarith)).sqrt (by linarith)\n    have hlin : HasDerivAt (fun s => Real.log 2 + s) 1 s := (hasDerivAt_id s).const_add _\n    unfold QA\n    exact (((hRd.mul hlin).add_const 0.8764).mul hFd).congr_deriv (by simp only [Pi.mul_apply]; ring)\n  · obtain ⟨hs1, hs2⟩ := hs\n    simp only [QA]\n    have hsB : s < B := by linarith\n    have hBs : 2.5 ≤ B - s := by linarith\n    have hF := Fs_ge (show (1:ℝ) < s by linarith)\n    have ha : 0 < √(Fs s) := Real.sqrt_pos.2 (by linarith)\n    have ha2 : √(Fs s) ^ 2 = Fs s := Real.sq_sqrt (by linarith)\n    have hR := Rs_ge (B := B) (s := s) (by linarith) hsB\n    have hRd := Rs_deriv_le (B := B) (s := s) (by linarith) hsB\n    have hRd' : 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) ≤ 0.1085 := by\n      refine hRd.trans ?_\n      rw [div_le_iff₀ (by linarith)]; nlinarith\n    have hFd := Fs_deriv_le (show (1:ℝ) < s by linarith)\n    set D := rexp eulerMascheroniConstant / s - 2.50637 / (s * Real.log s ^ 2) with hD\n    have hD' : D ≤ 0.29804 := by\n      refine hFd.trans ?_; rw [div_le_iff₀ (by linarith)]; nlinarith\n    -- `D/(2√Ϝ) ≤ 0.0393 √Ϝ`\n    have hq : D / (2 * √(Fs s)) ≤ 0.0393 * √(Fs s) := by\n      rw [div_le_iff₀ (by positivity)]; nlinarith\n    set L := Real.log 2 + s\n    have hL : 6.69 ≤ L := by simp only [L]; linarith\n    set N := Rs B s * L + 0.8764\n    have hN : 0 ≤ N := by positivity\n    set a := √(Fs s)\n    have hRL : 0 ≤ 0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) := by\n      have : 0 < 2 * B - s + Real.log 8 := by linarith\n      positivity\n    have t1 : (0.27125 * ((B + Real.log 8) / ((B - s) * (2 * B - s + Real.log 8))) * L + Rs B s) * a\n        ≤ (0.1085 * L + Rs B s) * a := by gcongr\n    have t2 : N * (D / (2 * a)) ≤ N * (0.0393 * a) := mul_le_mul_of_nonneg_left hq hN\n    -- `0.1085 L + R + 0.0393 N ≤ N/2`\n    have key : 0.1085 * L + Rs B s + 0.0393 * N ≤ 1 / 2 * N := by\n      simp only [N]; nlinarith\n    nlinarith [mul_le_mul_of_nonneg_right key ha.le]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.QA_antitoneOn",
+      "lines": [
+       163,
+       213
+      ],
+      "conclusion": "Main-term monotonicity for s in [6, B-2.5] via antitoneOn_mul_exp_neg, with elasticity bounds for R, log 2r and sqrt(Ϝ)."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P064-s",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
    }
   },
   {

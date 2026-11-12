@@ -11,8 +11,85 @@
  },
  "method": "each record mapped by one agent and independently by a second; an opus judge ruled on class or declaration-set disagreements and re-ran one in five agreed noMatch searches; paper records with LaTeX identical to a book record carry the book verdict. No person has reviewed these verdicts.",
  "total": 138,
- "mapped": 64,
+ "mapped": 96,
  "records": [
+  {
+   "id": "1 display 1",
+   "section": "1",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Expository schema 'main term + error term' in the introduction; no Lean statement of this generic form.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/MinorTotal.lean",
+     "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+     "lines": [
+      322,
+      528
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.minor_total",
+     "TernaryGoldbach.MajorArcs.l2_major_bounds"
+    ],
+    "greps": [
+     "main term in TernaryGoldbach/",
+     "error term in TernaryGoldbach/"
+    ]
+   },
+   "verification": {
+    "batch": "P066-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "2 display 1",
+   "section": "2",
+   "relation": "exactMatch",
+   "class": "1-to-1",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.fourier_eq_integral_e",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/FourierSums.lean",
+     "module": "TernaryGoldbach.MinorArcs.FourierSums",
+     "lines": [
+      193,
+      196
+     ],
+     "snippet": "/-- `𝓕 f(ξ) = ∫ e(-vξ) f(v) dv`. -/\ntheorem fourier_eq_integral_e (f : ℝ → ℂ) (ξ : ℝ) : 𝓕 f ξ = ∫ v, e (-(v * ξ)) * f v := by\n  rw [Real.fourier_real_eq]\n  simp_rw [Circle.smul_def, fourierChar_eq_e, smul_eq_mul]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.fourier_eq_integral_e",
+      "lines": [
+       193,
+       196
+      ],
+      "conclusion": "Mathlib's Fourier transform satisfies fhat(xi) = integral over R of e(-v xi) f(v) dv, the paper's normalisation."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P066-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
   {
    "id": "2 display 2",
    "section": "2",
@@ -980,6 +1057,65 @@
    }
   },
   {
+   "id": "3 display 14",
+   "section": "3",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "Lean does this for eta_+ only, with sharp-free uniform errors (4.25e-7 x, 2.83e-7 x) from Thm 7.1.4 in place of err_{eta,chi}; it gives bounds in the shape mu^2/phi|S|^2 <= sum <= mu^2/phi|S|^2 + E^2 rather than the displayed O* expansion with (2|eta|_1+err) and q max err^2 + K_{q,2}x terms.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MajorArcs.sum_units_sq_bounds",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MajorArcs/ArcChars.lean",
+     "module": "TernaryGoldbach.MajorArcs.ArcChars",
+     "lines": [
+      189,
+      231
+     ],
+     "snippet": "/-- **Principal and non-principal parts** of `Σ_b |S(b/q + β)|²` for `aₙ` supported on `(n, q) = 1`:\n`μ²(q)/φ(q) |S(β)|² ≤ Σ_b |S(b/q + β)|² ≤ μ²(q)/φ(q) |S(β)|² + E²` when\n`|τ(ψ)| |S_{ψ⁻¹}(β)| ≤ E` for all `ψ ≠ 1`. -/\ntheorem sum_units_sq_bounds {q : ℕ} [NeZero q] {a : ℕ → ℂ} (ha : Summable fun n => ‖a n‖)\n    (hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q) (β : ℝ) {E : ℝ}\n    (hE : ∀ ψ : DirichletCharacter ℂ q, ψ ≠ 1 →\n      ‖gaussSum ψ ZMod.stdAddChar‖ * ‖Schar ψ⁻¹ a β‖ ≤ E) :\n    (if Squarefree q then (1 : ℝ) else 0) / q.totient * ‖expTsum a β‖ ^ 2 ≤\n        ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2 ∧\n      ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2 ≤\n        (if Squarefree q then (1 : ℝ) else 0) / q.totient * ‖expTsum a β‖ ^ 2 + E ^ 2 := by\n  classical\n  set F := ∑ b ∈ (univ : Finset (ZMod q)).filter IsUnit, ‖expTsum a ((b.val : ℝ) / q + β)‖ ^ 2\n  have key := totient_mul_sum_units ha hcop β\n  rw [← Finset.add_sum_erase _ _ (Finset.mem_univ (1 : DirichletCharacter ℂ q)), inv_one,\n    Schar_one_eq_expTsum hcop, norm_sq_gaussSum_one] at key\n  set R := ∑ ψ ∈ (univ : Finset (DirichletCharacter ℂ q)).erase 1,\n    ‖gaussSum ψ ZMod.stdAddChar‖ ^ 2 * ‖Schar ψ⁻¹ a β‖ ^ 2\n  set m : ℝ := if Squarefree q then (1 : ℝ) else 0\n  have hR0 : 0 ≤ R := sum_nonneg fun _ _ => by positivity\n  have hcard : (univ : Finset (DirichletCharacter ℂ q)).card = q.totient := by\n    rw [Finset.card_univ, ← Nat.card_eq_fintype_card,\n      DirichletCharacter.card_eq_totient_of_hasEnoughRootsOfUnity]\n  have hφ : (0 : ℝ) < q.totient := by\n    exact_mod_cast Nat.totient_pos.2 (Nat.pos_of_ne_zero (NeZero.ne q))\n  have hR : R ≤ q.totient * E ^ 2 := by\n    calc R ≤ ∑ ψ ∈ (univ : Finset (DirichletCharacter ℂ q)).erase 1, E ^ 2 := by\n          refine sum_le_sum fun ψ hψ => ?_\n          rw [← mul_pow]\n          exact pow_le_pow_left₀ (by positivity) (hE ψ (Finset.ne_of_mem_erase hψ)) 2\n      _ = (((univ : Finset (DirichletCharacter ℂ q)).erase 1).card : ℝ) * E ^ 2 := by\n          rw [sum_const, nsmul_eq_mul]\n      _ ≤ q.totient * E ^ 2 := by\n          gcongr\n          rw [← hcard]; exact_mod_cast Finset.card_erase_le\n  have hF : F = (m * ‖expTsum a β‖ ^ 2 + R) / q.totient := by\n    rw [eq_div_iff hφ.ne']; linarith\n  rw [hF]\n  constructor\n  · rw [div_mul_eq_mul_div]\n    exact div_le_div_of_nonneg_right (by linarith) hφ.le\n  · rw [div_mul_eq_mul_div, div_add' _ _ _ hφ.ne']\n    exact div_le_div_of_nonneg_right (by nlinarith) hφ.le",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MajorArcs.sum_units_sq_bounds",
+      "lines": [
+       189,
+       231
+      ],
+      "conclusion": "Sum over units b mod q of |S(b/q+beta)|^2 lies between mu^2(q)/phi(q)|S(beta)|^2 and that plus E^2, E bounding |tau(psi)||S_psi(beta)| for psi != 1."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MajorArcs.arc_chars",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MajorArcs/ArcChars.lean",
+     "module": "TernaryGoldbach.MajorArcs.ArcChars",
+     "lines": [
+      343,
+      465
+     ],
+     "snippet": "/-- **[H, §10.3] for one modulus `q`** (`q̃ ≤ 3·10⁵`, `|βx| ≤ 1.2·10⁶/q̃`, `x ≥ 4.9·10²⁶`), with\n`S'_q = Σ_{(n,q)=1} Λ(n) η₊(n/x) e(nα)`:\n`μ²(q)/φ(q) |S'_q(β)|² ≤ Σ_b |S'_q(b/q + β)|² ≤ μ²(q)/φ(q) |S'_q(β)|² + (4.25·10⁻⁷ x)²` and\n`|S'_q(β) − η̂₊(−βx) x| ≤ 2.83·10⁻⁷ x`. -/\ntheorem arc_chars {x : ℝ} (hx : 4.9e26 ≤ x) {q : ℕ} (hq1 : 1 ≤ q) (hqt : (qt q : ℝ) ≤ 300000)\n    {β : ℝ} (hβ : |β * x| ≤ 1200000 / qt q) :\n    ((if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cP x)) β‖ ^ 2 ≤\n        ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cP x)) ((b : ℝ) / q + β)‖ ^ 2 ∧\n      ∑ b ∈ Bset q, ‖expTsum (coprimePart q (cP x)) ((b : ℝ) / q + β)‖ ^ 2 ≤\n        (if Squarefree q then (1:ℝ) else 0) / q.totient * ‖expTsum (coprimePart q (cP x)) β‖ ^ 2 +\n          (4.25e-7 * x) ^ 2) ∧\n      ‖expTsum (coprimePart q (cP x)) β - 𝓕 etaPC (-(β * x)) * x‖ ≤ 2.83e-7 * x := by\n  haveI : NeZero q := ⟨by omega⟩\n  have hx0 : 0 < x := by linarith\n  set a := coprimePart q (cP x) with ha_def\n  have hc := summable_cP hx0\n  have ha : Summable fun n => ‖a n‖ :=\n    hc.of_nonneg_of_le (fun n => norm_nonneg _) (norm_coprimePart_le q (cP x))\n  have hca := summable_sub_coprimePart hx0 q\n  have hcop : ∀ n, a n ≠ 0 → Nat.Coprime n q := fun n hn => by\n    by_contra h; exact hn (by simp [ha_def, coprimePart, h])\n  have hqq : q ≤ qt q := by unfold qt; split_ifs <;> omega\n  have hq3 : q ≤ 300000 := by\n    have : (q : ℝ) ≤ 300000 := le_trans (by exact_mod_cast hqq) hqt\n    exact_mod_cast this\n  have hD := coprime_split hx hq1 hq3\n  have hDa : ∑' n, ‖(cP x - a) n‖ ≤ 1e-15 * x := by\n    refine le_trans (le_of_eq ?_) hD; rfl\n  have hqt2 : (2 : ℝ) ≤ qt q := by\n    have : 2 ≤ qt q := by unfold qt; split_ifs with h\n                          · obtain ⟨k, hk⟩ := h; omega\n                          · omega\n    exact_mod_cast this\n  have hqt0 : (0 : ℝ) < qt q := by linarith\n  have hδx : β * x / x = β := by field_simp\n  -- the non-principal characters\n  have hE : ∀ ψ : DirichletCharacter ℂ q, ψ ≠ 1 →\n      ‖gaussSum ψ ZMod.stdAddChar‖ * ‖Schar ψ⁻¹ a β‖ ≤ 4.25e-7 * x := by\n    intro ψ hψ\n    set c' := ψ⁻¹.conductor with hc'\n    haveI : NeZero c' := ⟨DirichletCharacter.conductor_ne_zero _⟩\n    have hc'1 : c' ≠ 1 := fun h =>\n      hψ (inv_eq_one.1 ((DirichletCharacter.eq_one_iff_conductor_eq_one (χ := ψ⁻¹)).2 h))\n    have hc'2 : 2 ≤ c' := by have := NeZero.ne c'; omega\n    have hc'q : c' ∣ q := DirichletCharacter.conductor_dvd_level _\n    have hc'le : c' ≤ q := Nat.le_of_dvd (by omega) hc'q\n    have hτ : ‖gaussSum ψ ZMod.stdAddChar‖ ≤ √(c' : ℝ) := by\n      have := norm_gaussSum_le_sqrt_conductor ψ\n      rwa [← DirichletCharacter.conductor_inv] at this\n    set χ := ψ⁻¹.primitiveCharacter\n    have hχ : χ.IsPrimitive := DirichletCharacter.primitiveCharacter_isPrimitive _\n    have hS : ‖Schar ψ⁻¹ a β‖ ≤ ‖Schar χ (cP x) β‖ + 1e-15 * x := by\n      rw [ha_def, Schar_primitive, ← ha_def]\n      have h1 : Schar χ a β = Schar χ (cP x) β - Schar χ (cP x - a) β := by\n        rw [Schar_sub _ hc ha]; ring\n      rw [h1]\n      have h2 := norm_Schar_le χ hca β\n      have := norm_sub_le (Schar χ (cP x) β) (Schar χ (cP x - a) β)\n      linarith\n    have hcr : (c' : ℝ) ≤ q := by exact_mod_cast hc'le\n    have hT : ‖Schar χ (cP x) β‖ ≤\n        ((7.5e-8 + 7.7e6 / √x) / √(c' : ℝ)) * x := by\n      rcases Nat.even_or_odd c' with hev | hod\n      · have hqev : Even q := (even_iff_two_dvd.1 hev).trans hc'q |> even_iff_two_dvd.2\n        have hqtq : qt q = q := by unfold qt; rw [if_pos hqev]\n        have hc'3 : c' ≤ 300000 := le_trans hc'le hq3\n        have hδ : |β * x| ≤ 1200000 / c' := by\n          refine hβ.trans ?_\n          rw [hqtq]\n          exact div_le_div_of_nonneg_left (by norm_num) (by exact_mod_cast (by omega : 0 < c')) hcr\n        have := thm_7_1_4_even hx hev hc'3 χ hχ hδ\n        rw [if_neg hc'1, sub_zero, hδx] at this\n        exact this\n      · have hc'pos : (0 : ℝ) < c' := by exact_mod_cast (by omega : 0 < c')\n        have key : 2 * c' ≤ qt q := by\n          unfold qt\n          split_ifs with hqe\n          · have h2 : 2 ∣ q := even_iff_two_dvd.1 hqe\n            have hcop2 : Nat.Coprime 2 c' := (Nat.coprime_two_left).2 hod\n            exact Nat.le_of_dvd (by omega) (hcop2.mul_dvd_of_dvd_of_dvd h2 hc'q)\n          · omega\n        have hkey : (2 * c' : ℝ) ≤ qt q := by exact_mod_cast key\n        have hc'3 : c' ≤ 150000 := by\n          have : (2 * c' : ℝ) ≤ 300000 := hkey.trans hqt\n          have : (c' : ℝ) ≤ 150000 := by linarith\n          exact_mod_cast this\n        have hδ : |β * x| ≤ 600000 / c' := by\n          refine hβ.trans ?_\n          rw [div_le_div_iff₀ hqt0 hc'pos]; nlinarith\n        have := thm_7_1_4_odd hx hod hc'3 χ hχ hδ\n        rw [if_neg hc'1, sub_zero, hδx] at this\n        exact this\n    have hc'3r : (c' : ℝ) ≤ 300000 := hcr.trans (by exact_mod_cast hq3)\n    have hc'2r : (2 : ℝ) ≤ c' := by exact_mod_cast hc'2\n    calc ‖gaussSum ψ ZMod.stdAddChar‖ * ‖Schar ψ⁻¹ a β‖\n        ≤ √(c' : ℝ) * (((7.5e-8 + 7.7e6 / √x) / √(c' : ℝ)) * x + 1e-15 * x) :=\n          mul_le_mul hτ (hS.trans (by linarith)) (norm_nonneg _) (Real.sqrt_nonneg _)\n      _ ≤ 4.25e-7 * x := err_scaled_le hx hc'2r hc'3r\n  refine ⟨?_, ?_⟩\n  · have hsplit := sum_units_sq_bounds ha hcop β hE\n    rw [sum_Bset_eq_units (fun t => ‖expTsum a t‖ ^ 2) β]\n    exact hsplit\n  · -- the principal character: [H, Thm 7.1.4] for `q = 1`\n    have hδ1 : |β * x| ≤ 600000 := by\n      refine hβ.trans ?_\n      rw [div_le_iff₀ hqt0]; nlinarith\n    have h1 := thm_7_1_4_one hx (1 : DirichletCharacter ℂ 1) hδ1\n    rw [hδx, Schar_level_one] at h1\n    have h2 : expTsum a β = expTsum (cP x) β - expTsum (cP x - a) β := by\n      rw [expTsum_sub hc ha]; ring\n    have h3 := (norm_expTsum_le_tsum hca β).trans hDa\n    have hsx := sqrt_x_ge hx\n    have h4 : 6.24e6 / √x ≤ 6.24e6 / 2.2135e13 :=\n      div_le_div_of_nonneg_left (by norm_num) (by norm_num) hsx\n    rw [h2]\n    calc ‖expTsum (cP x) β - expTsum (cP x - a) β - 𝓕 etaPC (-(β * x)) * x‖\n        ≤ ‖expTsum (cP x) β - 𝓕 etaPC (-(β * x)) * x‖ + ‖expTsum (cP x - a) β‖ := by\n          have := norm_sub_le (expTsum (cP x) β - 𝓕 etaPC (-(β * x)) * x) (expTsum (cP x - a) β)\n          calc _ = ‖expTsum (cP x) β - 𝓕 etaPC (-(β * x)) * x - expTsum (cP x - a) β‖ := by\n                congr 1; ring\n            _ ≤ _ := this\n      _ ≤ (1e-18 + 6.24e6 / √x) * x + 1e-15 * x := add_le_add h1 h3\n      _ ≤ 2.83e-7 * x := by nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MajorArcs.arc_chars",
+      "lines": [
+       343,
+       465
+      ],
+      "conclusion": "For eta_+ and S' (coprime part), the sum over b of |S'(b/q+beta)|^2 is mu^2(q)/phi(q)|S'(beta)|^2 plus at most (4.25e-7 x)^2, with |S'(beta) - etahat_+(-beta x) x| <= 2.83e-7 x."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P066-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
    "id": "3 display 15",
    "section": "3",
    "relation": "relatedMatch",
@@ -1818,6 +1954,54 @@
    }
   },
   {
+   "id": "4 display 4",
+   "section": "4",
+   "relation": "exactMatch",
+   "class": "1-to-1",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Prelim/MertensProduct.lean",
+     "module": "TernaryGoldbach.Prelim.MertensProduct",
+     "lines": [
+      2256,
+      2260
+     ],
+     "snippet": "/-- **[H, Lemma C.2.2]** ([RS62, Thm. 15]): `q/φ(q) < e^γ log log r + 2.50637/log log r` for `q ≥ 1`,\n`r ≥ max(3, q)`. -/\ntheorem div_totient_lt {q : ℕ} (hq : 1 ≤ q) {r : ℝ} (hr : 3 ≤ r) (hqr : (q : ℝ) ≤ r) :\n    (q : ℝ) / Nat.totient q < Real.exp Real.eulerMascheroniConstant * Real.log (Real.log r) +\n      2.50637 / Real.log (Real.log r) := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Prelim.div_totient_lt",
+      "lines": [
+       2256,
+       2352
+      ],
+      "conclusion": "For `1 ≤ q`, `3 ≤ r`, `q ≤ r`: `q/φ(q) < e^γ log log r + 2.50637/log log r`.",
+      "notation": [
+       {
+        "math": "Ϝ(r)",
+        "lean": "e^γ log log r + 2.50637/log log r (also `MinorArcs.Fr`)"
+       }
+      ]
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book C.2 display 5",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B063-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
    "id": "4 display 5",
    "section": "4",
    "relation": "relatedMatch",
@@ -2300,6 +2484,65 @@
    }
   },
   {
+   "id": "5 display 6",
+   "section": "5",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "Lean has c_+ = 2 instead of 1.36 and delta0 >= 2 instead of delta0 >= 1; arcs in (0,1]; assumes PlattGRH.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+     "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+     "lines": [
+      375,
+      396
+     ],
+     "snippet": "/-- **[H, Cor. 12.2.5, (12.42)]** (with `δ₀ ≥ 2`).  Let `Q₀ ≥ 10⁵`, `δ₀ ≥ 2`,\n`(20000 Q₀)² ≤ x/2δ₀`, `Q = √(x/2δ₀)`, `2Q₀ ≤ (2Q)^{0.6}`.  Then\n`∫_{𝔐_{δ₀,Q₀}} |S|² ≤ (log 2Q₀ + 2)/(log 2Q + c_E) Σ|aₙ|²`. -/\ntheorem cor_12_2_5 {x δ₀ Q₀ : ℝ} {a : ℕ → ℂ} (ha : PrimeSupported x a)\n    (hQ₀ : 1e5 ≤ Q₀) (hδ₀ : 2 ≤ δ₀) (hx : (20000 * Q₀) ^ 2 ≤ x / (2 * δ₀))\n    (hρ : 2 * Q₀ ≤ (2 * √(x / (2 * δ₀))) ^ (0.6 : ℝ)) :\n    ∫ α in Ioc (0 : ℝ) 1 ∩ majorArcs δ₀ Q₀ x, ‖expTsum a α‖ ^ 2 ≤\n      (Real.log (2 * Q₀) + 2) / (Real.log (2 * √(x / (2 * δ₀))) + cE) * ∑' n, ‖a n‖ ^ 2 := by\n  set Q := √(x / (2 * δ₀)) with hQdef\n  have hQ0 : 0 ≤ x / (2 * δ₀) := le_trans (by positivity) hx\n  have hQ : 20000 * Q₀ ≤ Q := by\n    rw [hQdef]; exact Real.le_sqrt_of_sq_le hx\n  refine prop_12_1_2 ha hδ₀ (by linarith) ?_ fun q hq _ hq2 s hs hsq => ?_\n  · have h1 : Q₀ ^ 2 ≤ x / (2 * δ₀) := le_trans (by nlinarith) hx\n    have h2 : δ₀ * Q₀ ^ 2 ≤ δ₀ * (x / (2 * δ₀)) := mul_le_mul_of_nonneg_left h1 (by linarith)\n    have h3 : δ₀ * (x / (2 * δ₀)) = x / 2 := by field_simp\n    linarith\n  · have h2Q₀ : (0 : ℝ) < 2 * Q₀ := by linarith\n    have hlog : Real.log (2 * Q₀) ≤ 0.6 * Real.log (2 * Q) := by\n      have := Real.log_le_log h2Q₀ hρ\n      rwa [Real.log_rpow (by nlinarith)] at this\n    exact prop_12_2_4 (by linarith) (by linarith) hlog hq hq2 hs hsq",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+      "lines": [
+       375,
+       396
+      ],
+      "conclusion": "For prime-supported a, Q0>=1e5, delta0>=2, the integral over the major arcs of |S|^2 is at most (log 2Q0 + 2)/(log 2Q + cE) * sum |a_n|^2 (cE = c_E; PlattGRH assumed)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot6.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot6",
+     "lines": [
+      68,
+      98
+     ],
+     "snippet": "/-- **[H, Prop 12.2.4] with `c₊ = 2`** (for [H]'s `1.36`). -/\ntheorem prop_12_2_4 {Q Q₀ : ℝ} (hQ : 20000 * Q₀ ≤ Q) (hQ₀ : 1e5 ≤ Q₀)\n    (hρ : Real.log Q₀ ≤ 0.6 * Real.log Q) {q : ℕ} (hq : 1 ≤ q) (_hqQ : (q : ℝ) ≤ Q₀) {s : ℝ}\n    (hs : 1 ≤ s) (hsQ : s ≤ Q₀ / q) :\n    Gq q (Q₀ / (s * q)) ≤ (Real.log Q₀ + 2) / (Real.log Q + cE) * Gq q (Q / (s * q)) := by\n  have hq0 : (0 : ℝ) < q := by exact_mod_cast hq\n  have hsq : 0 < s * q := by positivity\n  have hR : 1 ≤ Q₀ / (s * q) := by\n    rw [le_div_iff₀ hsq, one_mul]; rw [le_div_iff₀ hq0] at hsQ; exact hsQ\n  have hLQ : 0 < Real.log Q + cE := by\n    have : 0 < Real.log Q := Real.log_pos (by linarith)\n    unfold cE; linarith\n  have hG' := Gq_nonneg_q q (Q / (s * q))\n  set R := Q₀ / (s * q) with hRdef\n  rcases le_or_gt 22000000000 q with hbig | hsmall\n  · -- large `q`: [H]'s argument, with `1.36`\n    refine weaken_136 hG' hLQ ?_\n    rcases le_or_gt (lamQ q) R with hL | hL\n    · exact regionL hQ hQ₀ hρ hq hs hR hL\n    have hq' : (22000000000 : ℝ) ≤ q := by exact_mod_cast hbig\n    have hlq : 3 ≤ Real.log q := by\n      have := log_Q1_ge.trans (Real.log_le_log (by norm_num) hq'); linarith\n    exact regionS hQ hQ₀ hρ hq hs hR (by norm_num) hlq (hcc_large hbig) (large_q_hS hbig hR hL)\n  · -- `q < 2.2·10¹⁰`: the reduction to `Φ`\n    refine checkC2_suffices hQ hQ₀ hρ hq hs hR ?_\n    set n := ⌊R⌋₊\n    have hn1 : 1 ≤ n := Nat.le_floor (by exact_mod_cast hR)\n    rcases le_or_gt n 3 with hn3 | hn4\n    · exact Phi2_small hq hsmall hn1 hn3\n    · have h := Phi2_reduce hn1 (fun A hA => Phi2_base hA (by omega)) q hq hsmall\n      exact (Phi2_anti q n (le_max_left _ _)).trans h",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+      "lines": [
+       68,
+       98
+      ],
+      "conclusion": "Gq q (Q0/(s q)) <= (log Q0 + 2)/(log Q + cE) * Gq q (Q/(s q)) for 20000 Q0 <= Q, Q0>=1e5, log Q0 <= 0.6 log Q."
+     }
+    }
+   ],
+   "verification": {
+    "batch": "P066-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
    "id": "5 display 7",
    "section": "5",
    "relation": "relatedMatch",
@@ -2340,6 +2583,135 @@
      "agreed": true,
      "same_relation": true
     }
+   }
+  },
+  {
+   "id": "5 display 8",
+   "section": "5",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "The point-evaluation large-sieve form with (N+Q^2) is not assembled in Lean; cor_12_2_5 is the integral form on prime-supported coefficients.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.cor_12_2_5",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LargeSieveProof.lean",
+     "module": "TernaryGoldbach.MinorArcs.LargeSieveProof",
+     "lines": [
+      375,
+      396
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot6.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot6",
+     "lines": [
+      68,
+      98
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.Prelim.large_sieve_opt",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Prelim/LargeSieveMV.lean",
+     "module": "TernaryGoldbach.Prelim.LargeSieveMV",
+     "lines": [
+      21,
+      32
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.cor_12_2_5",
+     "TernaryGoldbach.MinorArcs.prop_12_2_4",
+     "TernaryGoldbach.Prelim.large_sieve_opt"
+    ],
+    "greps": [
+     "(N \\+ Q|N + Q ^ 2 in TernaryGoldbach/",
+     "Q ^ 2 \\* in TernaryGoldbach/MinorArcs, Prelim",
+     "carnatio|12_2_6 in TernaryGoldbach/"
+    ]
+   },
+   "verification": {
+    "batch": "P066-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "5 display 9",
+   "section": "5",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Illustrative asymptotic showing Q0 needs a lower bound (counterexample at Q0=2, q=2); not formalised.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Gq",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LargeSievePrimes.lean",
+     "module": "TernaryGoldbach.MinorArcs.LargeSievePrimes",
+     "lines": [
+      28,
+      30
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.prop_12_2_4",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot6.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot6",
+     "lines": [
+      68,
+      98
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.ramare_Gq",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot1.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot1",
+     "lines": [
+      30,
+      33
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.Gq",
+     "TernaryGoldbach.MinorArcs.prop_12_2_4",
+     "TernaryGoldbach.MinorArcs.ramare_Gq"
+    ],
+    "greps": [
+     "Real.log 2 / 2 in TernaryGoldbach/",
+     "malito in TernaryGoldbach/ and NOTES.md",
+     "Q₀ = 2 in TernaryGoldbach/"
+    ]
+   },
+   "verification": {
+    "batch": "P066-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus)"
+    ],
+    "agreed": false,
+    "disagreement": "class noMatch vs hasPart",
+    "ruling": "mapper",
+    "reason": "The display is an expository counterexample (small $Q_0$, $q=2$ beats $q=1$) outside any proof; `ramare_Gq` is only the cited input (malito), and [L] never states the asymptotic quotients or the comparison, so no part of the claim is carried."
    }
   },
   {
@@ -2975,6 +3347,126 @@
      "ruling": "confirmed",
      "reason": "No integral of `Fr` over $[r_0,\\infty)$ in [L]; the tails are handled by discrete block sums (cell_bound, NumericsAsymp)."
     }
+   }
+  },
+  {
+   "id": "6 display 11",
+   "section": "6",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Lean never integrates Fr(r)/r^{3/2} over r; it uses monotonicity of g_x and evaluation at discrete levels instead.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      264,
+      297
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr_monotoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      50,
+      56
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.Fr",
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+     "TernaryGoldbach.MinorArcs.Fr_monotoneOn"
+    ],
+    "greps": [
+     "∫.*Fr in TernaryGoldbach/",
+     "E₁|expint|ExpInt in TernaryGoldbach/",
+     "3 / 2 in TernaryGoldbach/MinorArcs, Explicit, Prelim",
+     "digamma|Cauchy in MinorArcs/SecondNumerics, GBound, SecondTypeIIa, GMono"
+    ]
+   },
+   "verification": {
+    "batch": "P066-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)"
+    ],
+    "agreed": true,
+    "same_relation": true
+   }
+  },
+  {
+   "id": "6 display 12",
+   "section": "6",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "Cauchy-Schwarz over an r-integral of R_{z,2r} log 2r sqrt(Fr)/r^{3/2} is not used; Lean bounds the sum by pointwise g_x and monotonicity.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      33,
+      36
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GMono.lean",
+     "module": "TernaryGoldbach.MinorArcs.GMono",
+     "lines": [
+      264,
+      297
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.gx",
+     "TernaryGoldbach.MinorArcs.gx_antitoneOn",
+     "TernaryGoldbach.MinorArcs.R"
+    ],
+    "greps": [
+     "∫ with √ in TernaryGoldbach/MinorArcs",
+     "integral_inv_sqrt in MinorArcs/TypeIITools.lean",
+     "Cauchy in MinorArcs/"
+    ]
+   },
+   "verification": {
+    "batch": "P066-d",
+    "steps": [
+     "mapper (sonnet)",
+     "verifier (sonnet)",
+     "judge (opus): noMatch search re-run"
+    ],
+    "agreed": true,
+    "same_relation": true,
+    "ruling": "confirmed",
+    "reason": "Greps for Cauchy–Schwarz, `integral_mul_le_Lp` and $r^{3/2}$ integrals in `MinorArcs/` find no such split; [L] bounds $\\hat g$ pointwise per level (`ghatY_le_num`, NumericsAsymp) and sums."
    }
   },
   {
@@ -3937,6 +4429,1361 @@
     "reason": "LaTeX identical to the book record (whitespace ignored)",
     "book_verification": {
      "batch": "B060-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 30",
+   "section": "7",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "[L] proves the pointwise bounds $|\\eta_+|\\le1.94$ and $t|\\eta_+(t)|\\le2.32$, which give $\\sup_{r\\ge t}|\\eta_+(r)|\\le\\min(1.94,2.32/t)$; constants are weaker than $1.07996$, $1.19073$ (NOTES: needs Appendix A sup norms).",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.Helfgott.abs_etaPlus_le_A",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Helfgott/HHBound.lean",
+     "module": "TernaryGoldbach.Helfgott.HHBound",
+     "lines": [
+      431,
+      442
+     ],
+     "snippet": "/-- `|η₊(t)| ≤ 1.94` for `t ≥ 0` (cf. [H, (14.3)]: `1.079955`). -/\ntheorem abs_etaPlus_le_A {t : ℝ} (ht : 0 ≤ t) : |etaPlus t| ≤ 1.94 := by\n  unfold etaPlus\n  rw [abs_mul, abs_mul, abs_of_nonneg ht, abs_of_pos (Real.exp_pos _)]\n  have h1 := abs_hH200_le ht\n  have h2 := mul_exp_neg_sq_half_le t\n  have e : -(1 / 2) * t ^ 2 = -t ^ 2 / 2 := by ring\n  rw [e] at h2\n  have h3 : 0 ≤ t * Real.exp (-t ^ 2 / 2) := by positivity\n  calc |hH 200 t| * t * Real.exp (-t ^ 2 / 2) = |hH 200 t| * (t * Real.exp (-t ^ 2 / 2)) := by ring\n    _ ≤ 3.15 * (1 / 1.625) := mul_le_mul h1 h2 h3 (by norm_num)\n    _ ≤ 1.94 := by norm_num",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.abs_etaPlus_le_A",
+      "lines": [
+       431,
+       442
+      ],
+      "conclusion": "$|\\eta_+(t)|\\le 1.94$ for $t\\ge0$."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.Helfgott.mul_abs_etaPlus_le_B",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Helfgott/HHBound.lean",
+     "module": "TernaryGoldbach.Helfgott.HHBound",
+     "lines": [
+      444,
+      455
+     ],
+     "snippet": "/-- `t |η₊(t)| ≤ 2.32` for `t ≥ 0` (cf. [H, (14.24)]: `1.19073`). -/\ntheorem mul_abs_etaPlus_le_B {t : ℝ} (ht : 0 ≤ t) : t * |etaPlus t| ≤ 2.32 := by\n  unfold etaPlus\n  rw [abs_mul, abs_mul, abs_of_nonneg ht, abs_of_pos (Real.exp_pos _)]\n  have h1 := abs_hH200_le ht\n  have h2 := phi_le_two_div_e t\n  unfold phi at h2\n  have h3 : 0 ≤ t ^ 2 * Real.exp (-t ^ 2 / 2) := by positivity\n  calc t * (|hH 200 t| * t * Real.exp (-t ^ 2 / 2)) = |hH 200 t| * (t ^ 2 * Real.exp (-t ^ 2 / 2)) := by\n        ring\n    _ ≤ 3.15 * 0.7358 := mul_le_mul h1 h2 h3 (by norm_num)\n    _ ≤ 2.32 := by norm_num",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.mul_abs_etaPlus_le_B",
+      "lines": [
+       444,
+       455
+      ],
+      "conclusion": "$t|\\eta_+(t)|\\le 2.32$ for $t\\ge0$."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 1",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 35",
+   "section": "7",
+   "relation": "exactMatch",
+   "class": "1-to-1",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.integral_phi_Ioo_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PhiIntegrals.lean",
+     "module": "TernaryGoldbach.MinorArcs.PhiIntegrals",
+     "lines": [
+      162,
+      171
+     ],
+     "snippet": "theorem integral_phi_Ioo_le {w₀ : ℝ} (hw₀ : 0 ≤ w₀) : ∫ w in Ioo 0 w₀, phi w ≤ w₀ ^ 3 / 3 := by\n  rw [← integral_Ioc_eq_integral_Ioo, ← intervalIntegral.integral_of_le hw₀]\n  have h : ∫ w in (0:ℝ)..w₀, phi w ≤ ∫ w in (0:ℝ)..w₀, w ^ 2 := by\n    refine intervalIntegral.integral_mono_on hw₀ (integrable_phi.intervalIntegrable)\n      ((continuous_pow 2).intervalIntegrable _ _) fun w _ => ?_\n    unfold phi\n    have : rexp (-w ^ 2 / 2) ≤ 1 := Real.exp_le_one_iff.2 (by nlinarith)\n    nlinarith [sq_nonneg w]\n  rw [integral_pow] at h\n  linarith [show (w₀ ^ (2 + 1) - 0 ^ (2 + 1)) / (2 + 1 : ℝ) = w₀ ^ 3 / 3 by norm_num]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.integral_phi_Ioo_le",
+      "lines": [
+       162,
+       171
+      ],
+      "conclusion": "$\\int_0^{w_0}\\varphi\\le w_0^3/3$ via $e^{-w^2/2}\\le1$ (`Ioo 0 w₀`)."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 6",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 38",
+   "section": "7",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] bounds $\\int_{w_0}^\\infty\\max(1,1/w)\\varphi\\le1.398$ (weight $\\max(1,1/w)$, from `gx_scale_le`) instead of $-\\int_{1/K}^1\\varphi\\log w\\le0.093426$; no $\\log w$ integral is formalized.",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.integral_max_inv_phi_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PhiIntegrals.lean",
+     "module": "TernaryGoldbach.MinorArcs.PhiIntegrals",
+     "lines": [
+      113,
+      160
+     ],
+     "snippet": "/-- **`∫_{w₀}^∞ max(1, 1/w) φ ≤ 1.398`**. -/\ntheorem integral_max_inv_phi_le {w₀ : ℝ} (hw₀ : 0 < w₀) (hw₀1 : w₀ ≤ 1) :\n    ∫ w in Ici w₀, max 1 (1 / w) * phi w ≤ 1.398 := by\n  have hsplit : Ici w₀ = Ioc w₀ 1 ∪ Ioi 1 ∪ {w₀} := by\n    ext w; simp only [mem_Ici, mem_union, mem_Ioc, mem_Ioi, mem_singleton_iff]\n    constructor\n    · intro h; rcases eq_or_lt_of_le h with h | h\n      · exact Or.inr h.symm\n      · left; by_cases h1 : w ≤ 1\n        · exact Or.inl ⟨h, h1⟩\n        · exact Or.inr (by linarith)\n    · rintro ((⟨h, _⟩ | h) | h) <;> linarith\n  have hint : IntegrableOn (fun w => max 1 (1 / w) * phi w) (Ici w₀) := by\n    refine (integrable_phi.const_mul (max 1 (1 / w₀))).integrableOn.mono' ?_ ?_\n    · exact ((measurable_const.max (measurable_const.div measurable_id)).mul\n        (by unfold phi; fun_prop)).aestronglyMeasurable\n    · refine (ae_restrict_iff' measurableSet_Ici).2 (Eventually.of_forall fun w (hw : w₀ ≤ w) => ?_)\n      have hw0 : 0 < w := lt_of_lt_of_le hw₀ hw\n      rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (le_max_of_le_left zero_le_one)\n        (phi_nonneg w))]\n      refine mul_le_mul_of_nonneg_right (max_le_max le_rfl ?_) (phi_nonneg w)\n      exact one_div_le_one_div_of_le hw₀ hw\n  rw [integral_Ici_eq_integral_Ioi, ← Ioc_union_Ioi_eq_Ioi hw₀1,\n    setIntegral_union (Ioc_disjoint_Ioi le_rfl) measurableSet_Ioi\n      (hint.mono_set (fun w hw => le_of_lt hw.1)) (hint.mono_set (fun w hw => le_of_lt\n        (lt_of_le_of_lt hw₀1 hw)))]\n  have e1 : ∫ w in Ioc w₀ 1, max 1 (1 / w) * phi w = ∫ w in Ioc w₀ 1, w * rexp (-w ^ 2 / 2) := by\n    refine setIntegral_congr_fun measurableSet_Ioc fun w hw => ?_\n    have hw0 : 0 < w := lt_trans hw₀ hw.1\n    rw [max_eq_right (by rw [le_div_iff₀ hw0]; linarith [hw.2])]\n    unfold phi; field_simp\n  have e2 : ∫ w in Ioi 1, max 1 (1 / w) * phi w = ∫ w in Ioi (1:ℝ), phi w := by\n    refine setIntegral_congr_fun measurableSet_Ioi fun w (hw : 1 < w) => ?_\n    rw [max_eq_left (by rw [div_le_iff₀ (by linarith)]; linarith), one_mul]\n  rw [e1, e2, integral_phi_Ioi_one]\n  have h1 := integral_mul_exp_Ioc_le hw₀1\n  -- `∫_1^∞ e^{-w²/2} = √(2π)/2 - ∫_0^1 e^{-w²/2}`\n  have hg := integral_gaussian_Ioi (1 / 2)\n  have hg' : ∫ w in Ioi (0:ℝ), rexp (-w ^ 2 / 2) = √(π / (1 / 2)) / 2 := by\n    rw [← hg]; congr 1; ext w; ring_nf\n  rw [← Ioc_union_Ioi_eq_Ioi zero_le_one, setIntegral_union (Ioc_disjoint_Ioi le_rfl)\n    measurableSet_Ioi integrable_exp_neg_sq_half.integrableOn\n    integrable_exp_neg_sq_half.integrableOn] at hg'\n  have h2 := integral_exp_Ioc_ge\n  have hpi : √(π / (1 / 2)) ≤ 2.50664 := by\n    rw [Real.sqrt_le_left (by norm_num), div_div_eq_mul_div]\n    have := Real.pi_lt_d6; nlinarith\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.integral_max_inv_phi_le",
+      "lines": [
+       113,
+       160
+      ],
+      "conclusion": "$\\int_{w_0}^\\infty\\max(1,1/w)\\varphi(w)\\,dw\\le1.398$ for $0<w_0\\le1$."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 9",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 39",
+   "section": "7",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] does not form the convex combination $c R_{y/K,t}+(1-c)R_{y,t}$ with $c=0.07455/\\log\\frac{\\log y}2$; scale change is handled by $\\hat g=1.398\\max(g_y,h)+\\ldots$ and `gx_scale_le`. The value $0.58341$ for $R_{y,2r_0}$ is computed inside `c0_g0`, but $0.58385$ is not.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      350,
+      351
+     ],
+     "snippet": "/-- `ĝ(y, n) = 1.398 max(g_y(n), h(y)) + 17 (670/n)³/3`. -/\nnoncomputable def ghatY (y n : ℝ) : ℝ := 1.398 * max (gx y n) (hfun y) + 17 * (670 / n) ^ 3 / 3",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+      "lines": [
+       350,
+       351
+      ],
+      "conclusion": "Defines $\\hat g(y,n)=1.398\\max(g_y(n),h(y))+17(670/n)^3/3$, the replacement for $g_{y,\\varphi}$."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      195,
+      205
+     ],
+     "snippet": "/-- Both cases: `g_{wy}(min(1, w) n) ≤ g_y(n) · max(1, 1/w)`. -/\ntheorem gx_scale_le {y n w : ℝ} (hy : 0 < y) (hw : 0 < w) (hn : 670 ≤ min 1 w * n)\n    (hny : n ≤ y ^ (1 / 3 : ℝ) / 6) :\n    gx (w * y) (min 1 w * n) ≤ gx y n * max 1 (1 / w) := by\n  rcases le_total w 1 with h | h\n  · rw [min_eq_right h] at hn ⊢\n    rw [max_eq_right (by rw [le_div_iff₀ hw]; linarith), ← div_eq_mul_one_div]\n    exact gx_scale_le_of_le_one hy hw h hn hny\n  · rw [min_eq_left h, one_mul] at hn ⊢\n    rw [max_eq_left (by rw [div_le_iff₀ hw]; linarith), mul_one]\n    exact gx_scale_le_of_one_le hy h hn hny",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
+      "lines": [
+       195,
+       205
+      ],
+      "conclusion": "$g_{wy}(\\min(1,w)n)\\le g_y(n)\\max(1,1/w)$, replacing the convex combination of $R_{y/K,t}$ and $R_{y,t}$."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 10",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 40",
+   "section": "7",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "$\\digamma$ is defined identically; [L] bounds it at $r=150000$ only through $\\sqrt{\\digamma}\\le s_1=2.332969$ in `c0_g0` (with $e^\\gamma\\le1.7882$), i.e. $\\digamma\\lesssim5.4427$, weaker than $5.42506$.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Fr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/GBound.lean",
+     "module": "TernaryGoldbach.MinorArcs.GBound",
+     "lines": [
+      25,
+      27
+     ],
+     "snippet": "/-- `Ϝ(r) = e^γ log log r + 2.50637 / log log r` [H, Lemma C.2.2]. -/\nnoncomputable def Fr (r : ℝ) : ℝ :=\n  rexp eulerMascheroniConstant * Real.log (Real.log r) + 2.50637 / Real.log (Real.log r)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.Fr",
+      "lines": [
+       25,
+       27
+      ],
+      "conclusion": "Defines $\\digamma(r)=e^\\gamma\\log\\log r+2.50637/\\log\\log r$."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.c0_g0",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsCells.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsCells",
+     "lines": [
+      10,
+      30
+     ],
+     "snippet": "theorem c0_g0 : ghatY (1e25 : ℝ) ((150000 : ℕ) : ℝ) ≤ 0.060272 := by\n  refine ghatY_le_num (u := 215443200) (a₁ := 12.611542) (b₁ := 13.997915) (b₂ := 8.078748)\n    (ρ := 0.623985) (c₁ := 2.478088) (c₂ := 2.478081) (s₁ := 2.332969) (s₂ := 547.722)\n    (t₁ := 0.00006812928) (h₁ := 0.008542245) (by norm_num) (by norm_num) (by norm_num) (by norm_num)\n    (by norm_num) ?_ ?_ ?_ (by norm_num) ?_ ?_ ?_ (by norm_num) (by norm_num) (by norm_num)\n    (by norm_num) (by norm_num) ?_ ?_ (by norm_num) (by norm_num)\n  · exact (log_le_num (z := 2 * ((150000 : ℕ) : ℝ)) 12 0.611542 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num)\n  · exact (log_le_num (z := 8 * ((150000 : ℕ) : ℝ)) 13 0.997915 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num)\n  · exact (by norm_num : (8.078748 : ℝ) ≤ (8 : ℕ) + 0.078748).trans\n      (le_log_num (z := 9 * 215443200 / (4.008 * ((150000 : ℕ) : ℝ))) 8 0.078748 (by norm_num) (by norm_num) (by unfold taylor6; norm_num))\n  · exact (log_le_num (z := 1 + 13.997915 / (2 * 8.078748)) 0 0.623985 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num)\n  · refine (Real.log_le_log (Real.log_pos (by norm_num))\n      ((log_le_num (z := ((150000 : ℕ) : ℝ)) 11 0.91844 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num : ((11 : ℕ) : ℝ) + 0.91844 ≤ 11.91844))).trans ?_\n    exact (log_le_num (z := 11.91844) 2 0.478088 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (by norm_num)\n  · refine (by norm_num : (2.478081 : ℝ) ≤ (2 : ℕ) + 0.478081).trans\n      ((le_log_num (z := 11.918389) 2 0.478081 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans (Real.log_le_log (by norm_num) ?_))\n    exact (by norm_num : (11.918389 : ℝ) ≤ (11 : ℕ) + 0.918389).trans (le_log_num (z := ((150000 : ℕ) : ℝ)) 11 0.918389 (by norm_num) (by norm_num) (by unfold taylor6; norm_num))\n  · exact rpow_neg_sixth_le (by norm_num) (by norm_num)\n  · exact (hfun_le_num (sq := 7.587144) (by norm_num) ((log_le_num (z := 1e25) 57 0.56463 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)).trans\n      (by norm_num : ((57 : ℕ) : ℝ) + 0.56463 ≤ 57.56463)) (by norm_num) (by norm_num)\n      (rpow_neg_sixth_le (t := 0.00006812928) (by norm_num) (by norm_num))).trans (by norm_num)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.c0_g0",
+      "lines": [
+       10,
+       30
+      ],
+      "conclusion": "Certified evaluation $\\hat g(10^{25},150000)\\le0.060272$ via `ghatY_le_num` with explicit bounds for $\\log 2M$, $R$ (through $\\rho$), $\\sqrt{\\digamma}$, $L$ and $h$."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 11",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 44",
+   "section": "7",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "[L] has no function $f$ or bisection for $R_{y/K,2r_1}$; it uses $R_{y,2n}\\le0.6628$ for $n^4\\le y$ and `gx_scale_le`.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+     "lines": [
+      17,
+      52
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      350,
+      351
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      195,
+      205
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "R_le_of_pow_four",
+     "ghatY",
+     "gx_scale_le",
+     "ghatY_le_asym"
+    ],
+    "greps": [
+     "grep -rnE with the displayed constants (1.07996|1.19073|2.33744|0.44937|0.60581|0.51942|0.2779|1.04488|0.093426|0.07455|0.58385|0.60295|0.71392|0.71219|0.041568|0.0169073|0.001399|0.02219|0.43086|0.10426|0.4153461|0.071498|0.089805|1.280418|9.2598|474.608|5.42506) in TernaryGoldbach/; grep 'C_{φ|Cφ|C_phi|cphi|φ,3|φ,2' in TernaryGoldbach/ and NOTES.md, BLUEPRINT.md",
+     "grep '12\\*2\\^\\(1/3\\)|4/3 \\* Real.log|0.019562618' in TernaryGoldbach/ (no hit)"
+    ]
+   },
+   "verification": {
+    "carried_from": "book 14.3 display 15",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 45",
+   "section": "7",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] bounds $R_{y,2n}\\le0.6628$ for $n^4\\le y$ and has no convex combination at $2r_1$; $0.71219$ at $r_1=\\frac38y^{4/15}$ is not stated.",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+     "lines": [
+      17,
+      52
+     ],
+     "snippet": "/-- `R_{y,2n} ≤ 0.6628` when `n⁴ ≤ y`. -/\ntheorem R_le_of_pow_four {y n : ℝ} (hy : 0 < y) (hn : 1 ≤ n) (hny : n ^ 4 ≤ y) :\n    R y (2 * n) ≤ 0.6628 := by\n  have hn0 : 0 < n := by linarith\n  have hY : 0 < y ^ (1 / 3 : ℝ) := by positivity\n  have hY3 : (y ^ (1 / 3 : ℝ)) ^ 3 = y := by\n    rw [← Real.rpow_natCast, ← Real.rpow_mul hy.le]; norm_num\n  set B := 9 * y ^ (1 / 3 : ℝ) / (4.008 * n) with hB\n  have hB0 : 0 < B := by positivity\n  -- `8n ≤ B³`\n  have hB3 : 8 * n ≤ B ^ 3 := by\n    have e : B ^ 3 = 729 * y / (4.008 ^ 3 * n ^ 3) := by\n      simp only [hB]; rw [div_pow, mul_pow, mul_pow, hY3]; ring\n    rw [e, le_div_iff₀ (by positivity)]\n    nlinarith [pow_pos hn0 4]\n  have hB1 : 1 < B := by\n    by_contra h; push Not at h\n    have : B ^ 3 ≤ 1 := pow_le_one₀ hB0.le h\n    linarith\n  have hlB : 0 < Real.log B := Real.log_pos hB1\n  have h8 : Real.log (8 * n) ≤ 3 * Real.log B := by\n    have := Real.log_le_log (by positivity) hB3\n    rw [Real.log_pow] at this; push_cast at this; linarith\n  unfold R\n  rw [show 4 * (2 * n) = 8 * n by ring,\n    show 9 * y ^ (1 / 3 : ℝ) / (2.004 * (2 * n)) = B by rw [hB]; ring]\n  have hq : Real.log (8 * n) / (2 * Real.log B) ≤ 1.5 := by\n    rw [div_le_iff₀ (by positivity)]; linarith\n  have hq0 : 0 ≤ Real.log (8 * n) / (2 * Real.log B) :=\n    div_nonneg (Real.log_nonneg (by linarith)) (by positivity)\n  have hl : Real.log (1 + Real.log (8 * n) / (2 * Real.log B)) ≤ Real.log 2.5 :=\n    Real.log_le_log (by linarith) (by linarith)\n  have h25 : Real.log 2.5 ≤ 0.9164 := by\n    have := log_le_num (z := 2.5) 0 0.9164 (by norm_num) (by norm_num) (by unfold taylor6; norm_num)\n    norm_num at this ⊢; linarith\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.R_le_of_pow_four",
+      "lines": [
+       17,
+       52
+      ],
+      "conclusion": "$R_{y,2n}\\le0.6628$ whenever $n^4\\le y$."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 16",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 47",
+   "section": "7",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] gives only a crude bound $\\sqrt{\\digamma(n)}\\le3.795t$; no $-1.43644/(2\\sqrt{e^\\gamma\\log\\log y})$ refinement and no monotonicity of $\\digamma$ at $r_1$ here (`Fr_monotoneOn` is used elsewhere).",
+   "proof_kind": "direct",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+     "lines": [
+      106,
+      107
+     ],
+     "snippet": "  have hsF : √(Fr n) ≤ 3.795 * t := by\n    rw [Real.sqrt_le_left (by positivity)]; nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+      "lines": [
+       55,
+       188
+      ],
+      "conclusion": "$\\sqrt{\\digamma(n)}\\le3.795\\,n^{1/16}$."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 18",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 48",
+   "section": "7",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] bounds the same numerator of $g$ with $R\\le0.6628$ and crude $\\sqrt{\\digamma}$, not by $0.26031\\log y\\sqrt{\\log\\log y}-3.00147$.",
+   "proof_kind": "direct",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+     "lines": [
+      119,
+      123
+     ],
+     "snippet": "  have hA : (R y (2 * n) * Real.log (2 * n) + 0.8764) * √(Fr n) + 2.526 ≤ 22 * t ^ 3 := by\n    have h1 : R y (2 * n) * Real.log (2 * n) ≤ 0.6628 * (8.73 * t ^ 2) :=\n      mul_le_mul hR hlog2n hl2n0 (by norm_num)\n    have h2 := mul_le_mul (add_le_add_right h1 0.8764) hsF (Real.sqrt_nonneg _) (by positivity)\n    nlinarith [pow_pos ht0 3]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+      "lines": [
+       55,
+       188
+      ],
+      "conclusion": "$(R\\log 2n+0.8764)\\sqrt{\\digamma}+2.526\\le22t^3$."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 19",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 50",
+   "section": "7",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "[L]'s `Mexpr` has no $\\frac7{15}$-term; the top-level term is $\\hat g(y,r_2)(\\sigma-c_L\\sigma/D)$.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/MinorTotal.lean",
+     "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+     "lines": [
+      77,
+      81
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.thm_13_2_1_repaired",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Thm1321.lean",
+     "module": "TernaryGoldbach.MinorArcs.Thm1321",
+     "lines": [
+      147,
+      211
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/MinorTotal.lean",
+     "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+     "lines": [
+      322,
+      528
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "Mexpr",
+     "thm_13_2_1_repaired",
+     "minor_total",
+     "tail_le"
+    ],
+    "greps": [
+     "grep -rnE with the displayed constants (1.07996|1.19073|2.33744|0.44937|0.60581|0.51942|0.2779|1.04488|0.093426|0.07455|0.58385|0.60295|0.71392|0.71219|0.041568|0.0169073|0.001399|0.02219|0.43086|0.10426|0.4153461|0.071498|0.089805|1.280418|9.2598|474.608|5.42506) in TernaryGoldbach/; grep 'C_{φ|Cφ|C_phi|cphi|φ,3|φ,2' in TernaryGoldbach/ and NOTES.md, BLUEPRINT.md",
+     "grep '7 */ *15|2.14938|8 */ *15' in TernaryGoldbach/MinorArcs (no relevant hit)"
+    ]
+   },
+   "verification": {
+    "carried_from": "book 14.3 display 21",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 51",
+   "section": "7",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] has the discrete analogue $\\sum_n\\hat g(y,n)\\log\\frac{n+1}n\\,\\sigma/D$ for $\\frac{2S}{\\log x+2c^-}\\int g/r\\,dr$, with different $g$, $D$, and upper limit $r_2$ in place of $r_1$.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/MinorTotal.lean",
+     "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+     "lines": [
+      77,
+      81
+     ],
+     "snippet": "/-- The bound for `Z₁/(x · x/κ)` produced by `thm_13_2_1_repaired`. -/\nnoncomputable def Mexpr (x : ℝ) (r₂ : ℕ) : ℝ :=\n  ghatY (x / κ) 150000 * (cL 150000 * sig x / Dx x - 8.6294) +\n    ∑ n ∈ Finset.Ioo 150000 r₂, ghatY (x / κ) n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n    ghatY (x / κ) r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+      "lines": [
+       77,
+       81
+      ],
+      "conclusion": "Defines the discrete bound `Mexpr` for $Z_1/(x\\cdot x/\\kappa)$: base term, sum $\\sum\\hat g(y,n)\\log\\frac{n+1}n\\,\\sigma/D$ over $150000<n<r_2$, and tail term."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/MinorTotal.lean",
+     "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+     "lines": [
+      460,
+      499
+     ],
+     "snippet": "  have hsum : ∑ n ∈ Finset.Ioc 150000 r₂, g n * (Hl2y x T r₂ n - Hl2y x T r₂ (n - 1)) ≤\n      y * x * (∑ n ∈ Finset.Ioo 150000 r₂, ghatY y n * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) +\n        ghatY y r₂ * (sig x - cL (r₂ - 1) * sig x / Dx x)) := by\n    rw [hIoc, Finset.sum_insert Finset.right_notMem_Ioo, mul_add, Finset.mul_sum, add_comm]\n    refine add_le_add (Finset.sum_le_sum fun n hn => ?_) ?_\n    · obtain ⟨hn1, hn2⟩ := Finset.mem_Ioo.1 hn\n      have hn0 : (0:ℝ) < n := by\n        have : (150000 : ℝ) < n := by exact_mod_cast hn1\n        linarith\n      rw [hHl n hn2, hHl (n - 1) (by omega)]\n      have hcast : ((n - 1 : ℕ) : ℝ) + 1 = n := by\n        rw [Nat.cast_sub (by omega)]; push_cast; ring\n      have hdiff : cL n - cL (n - 1) = Real.log (((n : ℝ) + 1) / n) := by\n        unfold cL; rw [hcast, Real.log_div (by linarith) hn0.ne']\n        rw [Real.log_mul (by norm_num) (by linarith), Real.log_mul (by norm_num) hn0.ne']; ring\n      have hlog0 : 0 ≤ Real.log (((n : ℝ) + 1) / n) :=\n        Real.log_nonneg (by rw [le_div_iff₀ hn0]; linarith)\n      have e : cL n / Dx x * T - cL (n - 1) / Dx x * T = Real.log (((n : ℝ) + 1) / n) / Dx x * T := by\n        rw [← hdiff]; ring\n      rw [e]\n      have h1 : Real.log (((n : ℝ) + 1) / n) / Dx x * T ≤\n          x * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) := by\n        have := mul_le_mul_of_nonneg_left hT (div_nonneg hlog0 hD.le)\n        have e2 : x * (Real.log (((n : ℝ) + 1) / n) * sig x / Dx x) =\n            Real.log (((n : ℝ) + 1) / n) / Dx x * (sig x * x) := by ring\n        linarith\n      have := mul_le_mul_of_nonneg_left h1 (hgnn n hn1.le)\n      simp only [hg_def] at this ⊢\n      linarith\n    · rw [hHr, hHl (r₂ - 1) (by omega)]\n      have h1 : T - cL (r₂ - 1) / Dx x * T ≤ x * (sig x - cL (r₂ - 1) * sig x / Dx x) := by\n        have hc : 0 ≤ 1 - cL (r₂ - 1) / Dx x := by\n          rw [sub_nonneg, div_le_one hD]; exact hcD\n        have := mul_le_mul_of_nonneg_left hT hc\n        have e1 : T - cL (r₂ - 1) / Dx x * T = (1 - cL (r₂ - 1) / Dx x) * T := by ring\n        have e2 : x * (sig x - cL (r₂ - 1) * sig x / Dx x) = (1 - cL (r₂ - 1) / Dx x) * (sig x * x) := by\n          field_simp\n        linarith\n      have := mul_le_mul_of_nonneg_left h1 (hgnn r₂ h150.le)\n      simp only [hg_def] at this ⊢",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+      "lines": [
+       322,
+       528
+      ],
+      "conclusion": "Abel summation over levels $n\\in(150000,r_2]$: $\\sum g(n)(H(n)-H(n-1))\\le yx(\\sum\\hat g(y,n)\\log\\frac{n+1}n\\sigma/D+\\hat g(y,r_2)(\\sigma-c_L\\sigma/D))$."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 22",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 55",
+   "section": "7",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] has no c_φ=C_{φ,2}/|φ|₁/log K; the K-averaging is replaced by `gx_scale_le` and the weight bound `∫ max(1,1/w)φ ≤ 1.398`.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      195,
+      205
+     ],
+     "snippet": "/-- Both cases: `g_{wy}(min(1, w) n) ≤ g_y(n) · max(1, 1/w)`. -/\ntheorem gx_scale_le {y n w : ℝ} (hy : 0 < y) (hw : 0 < w) (hn : 670 ≤ min 1 w * n)\n    (hny : n ≤ y ^ (1 / 3 : ℝ) / 6) :\n    gx (w * y) (min 1 w * n) ≤ gx y n * max 1 (1 / w) := by\n  rcases le_total w 1 with h | h\n  · rw [min_eq_right h] at hn ⊢\n    rw [max_eq_right (by rw [le_div_iff₀ hw]; linarith), ← div_eq_mul_one_div]\n    exact gx_scale_le_of_le_one hy hw h hn hny\n  · rw [min_eq_left h, one_mul] at hn ⊢\n    rw [max_eq_left (by rw [div_le_iff₀ hw]; linarith), mul_one]\n    exact gx_scale_le_of_one_le hy h hn hny",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.gx_scale_le",
+      "lines": [
+       195,
+       205
+      ],
+      "conclusion": "`g_{wy}(min(1,w) n) ≤ g_y(n) max(1,1/w)`, replacing the combination of R_{y,t} and R_{y/K,t} by a scaling inequality."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.integral_max_inv_phi_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/PhiIntegrals.lean",
+     "module": "TernaryGoldbach.MinorArcs.PhiIntegrals",
+     "lines": [
+      113,
+      160
+     ],
+     "snippet": "/-- **`∫_{w₀}^∞ max(1, 1/w) φ ≤ 1.398`**. -/\ntheorem integral_max_inv_phi_le {w₀ : ℝ} (hw₀ : 0 < w₀) (hw₀1 : w₀ ≤ 1) :\n    ∫ w in Ici w₀, max 1 (1 / w) * phi w ≤ 1.398 := by\n  have hsplit : Ici w₀ = Ioc w₀ 1 ∪ Ioi 1 ∪ {w₀} := by\n    ext w; simp only [mem_Ici, mem_union, mem_Ioc, mem_Ioi, mem_singleton_iff]\n    constructor\n    · intro h; rcases eq_or_lt_of_le h with h | h\n      · exact Or.inr h.symm\n      · left; by_cases h1 : w ≤ 1\n        · exact Or.inl ⟨h, h1⟩\n        · exact Or.inr (by linarith)\n    · rintro ((⟨h, _⟩ | h) | h) <;> linarith\n  have hint : IntegrableOn (fun w => max 1 (1 / w) * phi w) (Ici w₀) := by\n    refine (integrable_phi.const_mul (max 1 (1 / w₀))).integrableOn.mono' ?_ ?_\n    · exact ((measurable_const.max (measurable_const.div measurable_id)).mul\n        (by unfold phi; fun_prop)).aestronglyMeasurable\n    · refine (ae_restrict_iff' measurableSet_Ici).2 (Eventually.of_forall fun w (hw : w₀ ≤ w) => ?_)\n      have hw0 : 0 < w := lt_of_lt_of_le hw₀ hw\n      rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (le_max_of_le_left zero_le_one)\n        (phi_nonneg w))]\n      refine mul_le_mul_of_nonneg_right (max_le_max le_rfl ?_) (phi_nonneg w)\n      exact one_div_le_one_div_of_le hw₀ hw\n  rw [integral_Ici_eq_integral_Ioi, ← Ioc_union_Ioi_eq_Ioi hw₀1,\n    setIntegral_union (Ioc_disjoint_Ioi le_rfl) measurableSet_Ioi\n      (hint.mono_set (fun w hw => le_of_lt hw.1)) (hint.mono_set (fun w hw => le_of_lt\n        (lt_of_le_of_lt hw₀1 hw)))]\n  have e1 : ∫ w in Ioc w₀ 1, max 1 (1 / w) * phi w = ∫ w in Ioc w₀ 1, w * rexp (-w ^ 2 / 2) := by\n    refine setIntegral_congr_fun measurableSet_Ioc fun w hw => ?_\n    have hw0 : 0 < w := lt_trans hw₀ hw.1\n    rw [max_eq_right (by rw [le_div_iff₀ hw0]; linarith [hw.2])]\n    unfold phi; field_simp\n  have e2 : ∫ w in Ioi 1, max 1 (1 / w) * phi w = ∫ w in Ioi (1:ℝ), phi w := by\n    refine setIntegral_congr_fun measurableSet_Ioi fun w (hw : 1 < w) => ?_\n    rw [max_eq_left (by rw [div_le_iff₀ (by linarith)]; linarith), one_mul]\n  rw [e1, e2, integral_phi_Ioi_one]\n  have h1 := integral_mul_exp_Ioc_le hw₀1\n  -- `∫_1^∞ e^{-w²/2} = √(2π)/2 - ∫_0^1 e^{-w²/2}`\n  have hg := integral_gaussian_Ioi (1 / 2)\n  have hg' : ∫ w in Ioi (0:ℝ), rexp (-w ^ 2 / 2) = √(π / (1 / 2)) / 2 := by\n    rw [← hg]; congr 1; ext w; ring_nf\n  rw [← Ioc_union_Ioi_eq_Ioi zero_le_one, setIntegral_union (Ioc_disjoint_Ioi le_rfl)\n    measurableSet_Ioi integrable_exp_neg_sq_half.integrableOn\n    integrable_exp_neg_sq_half.integrableOn] at hg'\n  have h2 := integral_exp_Ioc_ge\n  have hpi : √(π / (1 / 2)) ≤ 2.50664 := by\n    rw [Real.sqrt_le_left (by norm_num), div_div_eq_mul_div]\n    have := Real.pi_lt_d6; nlinarith\n  linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.integral_max_inv_phi_le",
+      "lines": [
+       113,
+       160
+      ],
+      "conclusion": "`∫_{w₀}^∞ max(1,1/w) φ(w) dw ≤ 1.398` for `0<w₀≤1`, the weight used in place of [H]'s K-averaging with C_{φ,2,K}."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 26",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)",
+      "judge (opus)"
+     ],
+     "agreed": false,
+     "disagreement": "class noMatch vs relatedMatch",
+     "ruling": "verifier",
+     "reason": "The weight $c_\\varphi$ of the $y$/$y/K$ combination is replaced at the same place by `gx_scale_le` and the bound $\\int\\max(1,1/w)\\varphi\\le1.398$; a different argument for the same scale-averaging step, so relatedMatch."
+    }
+   }
+  },
+  {
+   "id": "7 display 57",
+   "section": "7",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "[L] has no $I_{0,r_0,r_1,z}$ or $P_2$ bound (`I0_ge` is the $\\ell^2$ lower bound, a different quantity).",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.chain_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsCore",
+     "lines": [
+      456,
+      488
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/MinorTotal.lean",
+     "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+     "lines": [
+      77,
+      81
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.ghatY",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LinftyLevels.lean",
+     "module": "TernaryGoldbach.MinorArcs.LinftyLevels",
+     "lines": [
+      350,
+      351
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "chain_le",
+     "Mexpr",
+     "ghatY",
+     "I0_ge"
+    ],
+    "greps": [
+     "grep -rnE with the displayed constants (1.07996|1.19073|2.33744|0.44937|0.60581|0.51942|0.2779|1.04488|0.093426|0.07455|0.58385|0.60295|0.71392|0.71219|0.041568|0.0169073|0.001399|0.02219|0.43086|0.10426|0.4153461|0.071498|0.089805|1.280418|9.2598|474.608|5.42506) in TernaryGoldbach/; grep 'C_{φ|Cφ|C_phi|cphi|φ,3|φ,2' in TernaryGoldbach/ and NOTES.md, BLUEPRINT.md",
+     "grep 'P_2|P2' in TernaryGoldbach/MinorArcs (no hit)"
+    ]
+   },
+   "verification": {
+    "carried_from": "book 14.3 display 27",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 63",
+   "section": "7",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "[L] has no $P_2(\\log2r_0)/\\sqrt{r_0}$ numerics.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.chain_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsCore",
+     "lines": [
+      456,
+      488
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.Mexpr",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/MinorTotal.lean",
+     "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+     "lines": [
+      77,
+      81
+     ]
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.ghatY_le_asym",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsAsymp.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsAsymp",
+     "lines": [
+      55,
+      188
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "chain_le",
+     "Mexpr",
+     "ghatY_le_asym",
+     "asymp_goal"
+    ],
+    "greps": [
+     "grep -rnE with the displayed constants (1.07996|1.19073|2.33744|0.44937|0.60581|0.51942|0.2779|1.04488|0.093426|0.07455|0.58385|0.60295|0.71392|0.71219|0.041568|0.0169073|0.001399|0.02219|0.43086|0.10426|0.4153461|0.071498|0.089805|1.280418|9.2598|474.608|5.42506) in TernaryGoldbach/; grep 'C_{φ|Cφ|C_phi|cphi|φ,3|φ,2' in TernaryGoldbach/ and NOTES.md, BLUEPRINT.md",
+     "grep 'P_2|P2|0.10426|0.10439' in TernaryGoldbach (no hit)"
+    ]
+   },
+   "verification": {
+    "carried_from": "book 14.3 display 30",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 66",
+   "section": "7",
+   "relation": "relatedMatch",
+   "class": "Deviates",
+   "note": "[L] bounds $\\sigma/D_x$ (with $\\sigma\\le0.640208000017\\log x-0.021095$ and $D_x=\\log(2\\sqrt{x/784})+c_E$) by its value at $L_0$, not by $2\\cdot0.640209$; the factor $2S/(\\log x+2c^-)\\le1.280418x$ is not stated.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.sig_le_lin",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsCore",
+     "lines": [
+      203,
+      212
+     ],
+     "snippet": "/-- `σ(x) ≤ a L - 0.021095` with `a = 0.640208000017`, for `x ≥ 4.9·10²⁶`. -/\ntheorem sig_le_lin {x : ℝ} (hx : 4.9e26 ≤ x) :\n    sig x ≤ 0.640208000017 * Real.log x - 0.021095 := by\n  unfold sig\n  have hx0 : 0 < x := by linarith\n  have hl : 0 ≤ Real.log x := Real.log_nonneg (by linarith)\n  have hs : (2.2e13 : ℝ) ≤ √x := by rw [Real.le_sqrt (by norm_num) hx0.le]; linarith\n  have : 366.91 / √x ≤ 0.000000000017 := by\n    rw [div_le_iff₀ (by linarith)]; linarith\n  nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.sig_le_lin",
+      "lines": [
+       203,
+       212
+      ],
+      "conclusion": "$\\sigma(x)\\le0.640208000017\\log x-0.021095$ for $x\\ge4.9\\cdot10^{26}$."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.sig_div_Dx_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/NumericsCore.lean",
+     "module": "TernaryGoldbach.MinorArcs.NumericsCore",
+     "lines": [
+      214,
+      233
+     ],
+     "snippet": "/-- `σ/D ≤ (a L₀ - 0.021095)/(L₀/2 - d)` for `L = log x ≥ L₀ ≥ 60`. -/\ntheorem sig_div_Dx_le {x L₀ : ℝ} (hx : 4.9e26 ≤ x) (hL₀ : 60 ≤ L₀) (hL : L₀ ≤ Real.log x) :\n    sig x / Dx x ≤ (0.640208000017 * L₀ - 0.021095) / (L₀ / 2 - (Real.log 14 - cE)) := by\n  have hx0 : 0 < x := by linarith\n  obtain ⟨h14a, h14b⟩ := log14_bounds\n  have hcE : cE = 1.33258 := rfl\n  set d := Real.log 14 - cE\n  have hd1 : 1.3064 ≤ d := by simp only [d, hcE]; linarith\n  have hd2 : d ≤ 1.3066 := by simp only [d, hcE]; linarith\n  rw [Dx_eq hx0]\n  set L := Real.log x\n  have hD : 0 < L / 2 - d := by linarith\n  have hD₀ : 0 < L₀ / 2 - d := by linarith\n  have hs := sig_le_lin hx\n  have hs0 : 0 ≤ 0.640208000017 * L - 0.021095 := by linarith\n  calc sig x / (L / 2 - d) ≤ (0.640208000017 * L - 0.021095) / (L / 2 - d) :=\n        div_le_div_of_nonneg_right hs hD.le\n    _ ≤ (0.640208000017 * L₀ - 0.021095) / (L₀ / 2 - d) := by\n        rw [div_le_div_iff₀ hD hD₀]\n        nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.sig_div_Dx_le",
+      "lines": [
+       214,
+       233
+      ],
+      "conclusion": "$\\sigma(x)/D_x\\le(0.640208000017L_0-0.021095)/(L_0/2-d)$ for $\\log x\\ge L_0\\ge60$."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 34",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 67",
+   "section": "7",
+   "relation": "closeMatch",
+   "class": "Faithful",
+   "note": "[L] has no named $Z_{r_0}$; the integral appears only inside the statement of `minor_total`, over the fundamental domain $(0,1]$ for $\\mathbb R/\\mathbb Z$.",
+   "proof_kind": "direct",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/MinorTotal.lean",
+     "module": "TernaryGoldbach.MinorArcs.MinorTotal",
+     "lines": [
+      324,
+      326
+     ],
+     "snippet": "theorem minor_total {x : ℝ} (hx : 4.9e26 ≤ x) (hnum : NumericsGoal x) :\n    ∫ α in Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ x, ‖S etaStar x α‖ * ‖S etaPlus x α‖ ^ 2 ≤\n      1.0376 * x ^ 2 / κ := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.minor_total",
+      "lines": [
+       322,
+       528
+      ],
+      "conclusion": "The minor-arc integral $\\int_{(0,1]\\setminus\\mathfrak M_{8,r_0}}|S_{\\eta_*}(\\alpha,x)||S_{\\eta_+}(\\alpha,x)|^2d\\alpha$ appears as the left side of `minor_total`, bounded by $1.0376x^2/\\varkappa$.",
+      "notation": [
+       {
+        "math": "(\\mathbb R/\\mathbb Z)\\setminus\\mathfrak M_{8,r_0}",
+        "lean": "Ioc (0:ℝ) 1 \\ majorArcs 8 r₀ x"
+       }
+      ]
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.3 display 35",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B061-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)",
+      "judge (opus)"
+     ],
+     "agreed": false,
+     "disagreement": "class exactMatch vs closeMatch",
+     "ruling": "own",
+     "reason": "The integral is the left side of `minor_total` (statement lines 324-326, not 322-324 which are the docstring), over $(0,1]$ in place of $\\mathbb R/\\mathbb Z$ and with no named $Z_{r_0}$, so closeMatch."
+    }
+   }
+  },
+  {
+   "id": "7 display 69",
+   "section": "7",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "[L] proves the same two-step bound with weaker constants: `ψ-θ+log 2 ≤ 1.6001 √N` for `1.4263 √N` and `ψ ≤ 1.387 N` for `1.03883 N`, product `≤ 2.2194 N^{3/2}` not `1.48169`. The RS62 `ψ(y)<1.03883 y` is in [L] (`Prelim.sum_vonMangoldt_lt`) but not used here.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.Helfgott.sum_ΛBad_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Helfgott/NonPrime.lean",
+     "module": "TernaryGoldbach.Helfgott.NonPrime",
+     "lines": [
+      84,
+      109
+     ],
+     "snippet": "theorem sum_ΛBad_le (N : ℕ) : ∑ n ∈ range (N + 1), ΛBad n ≤ psi N - theta N + Real.log 2 := by\n  classical\n  have hsplit : psi N - theta N = ∑ n ∈ range (N + 1), if n.Prime then 0 else Λ n := by\n    rw [psi, theta, ← sum_sub_distrib]\n    refine sum_congr rfl fun n _ => ?_\n    split_ifs <;> ring\n  have hlog2 : ∑ n ∈ range (N + 1), (if n = 2 then Real.log 2 else 0) ≤ Real.log 2 := by\n    rw [sum_ite_eq' (range (N + 1)) 2 (fun _ => Real.log 2)]\n    split_ifs\n    · exact le_rfl\n    · exact Real.log_nonneg (by norm_num)\n  rw [hsplit]\n  refine le_trans ?_ (add_le_add le_rfl hlog2)\n  rw [← sum_add_distrib]\n  refine sum_le_sum fun n _ => ?_\n  unfold ΛBad Good\n  have h2 : (0:ℝ) ≤ Real.log 2 := Real.log_nonneg (by norm_num)\n  by_cases hp : n.Prime\n  · by_cases ho : Odd n\n    · simp only [hp, ho, and_self, ite_true]\n      split_ifs <;> linarith\n    · have : n = 2 := (hp.eq_two_or_odd').resolve_right ho\n      subst this\n      simp [hp, ho, vonMangoldt_apply_prime hp]\n  · simp only [hp, false_and, ite_false, ite_true]\n    split_ifs <;> simp [vonMangoldt_nonneg, h2]",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.sum_ΛBad_le",
+      "lines": [
+       83,
+       109
+      ],
+      "conclusion": "`∑_{n≤N, n even or non-prime} Λ(n) ≤ ψ(N) - θ(N) + log 2` (`ΛBad` = Λ off odd primes)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.Helfgott.psi_sub_theta_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Helfgott/Chebyshev.lean",
+     "module": "TernaryGoldbach.Helfgott.Chebyshev",
+     "lines": [
+      115,
+      115
+     ],
+     "snippet": "theorem psi_sub_theta_le (N : ℕ) (hN : 10 ^ 27 ≤ N) : psi N - theta N ≤ 1.6 * √N := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.psi_sub_theta_le",
+      "lines": [
+       114,
+       204
+      ],
+      "conclusion": "`ψ(N) - θ(N) ≤ 1.6 √N` for `N ≥ 10²⁷` (elementary, in place of [H]'s 1.4262 √N)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.Helfgott.psi_le",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Helfgott/Chebyshev.lean",
+     "module": "TernaryGoldbach.Helfgott.Chebyshev",
+     "lines": [
+      207,
+      207
+     ],
+     "snippet": "theorem psi_le (N : ℕ) (hN : 10 ^ 27 ≤ N) : psi N ≤ 1.387 * N := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.psi_le",
+      "lines": [
+       206,
+       218
+      ],
+      "conclusion": "`ψ(N) ≤ 1.387 N` for `N ≥ 10²⁷` (in place of [H]'s 1.03883 N)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Helfgott/Inputs.lean",
+     "module": "TernaryGoldbach.Helfgott.Inputs",
+     "lines": [
+      144,
+      149
+     ],
+     "snippet": "  calc repSum (fun _ => True) N - repSum (fun n => n.Prime ∧ Odd n) N\n      ≤ 3 * (400 ^ 2 * 6.2) * Real.log N * (psi N - theta N + Real.log 2) * psi N := h\n    _ ≤ 3 * (400 ^ 2 * 6.2) * Real.log N * (1.6001 * √N) * (1.387 * N) := by\n        gcongr; linarith\n    _ = (3 * (400 ^ 2 * 6.2) * 1.6001 * 1.387) * (N * √N) * Real.log N := by ring\n    _ ≤ 6.7e6 * (N * √N) * Real.log N := by gcongr; norm_num",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+      "lines": [
+       116,
+       149
+      ],
+      "conclusion": "calc: count ≤ 3(400²·6.2) log N (ψ-θ+log 2) ψ ≤ 3(400²·6.2) log N (1.6001√N)(1.387N) ≤ 6.7e6 N√N log N."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.4 display 2",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B062-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "7 display 70",
+   "section": "7",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "[L] gets the bound with sup norms 400, 6.2 (not 1.079955, 1.414) and the weaker Chebyshev constants, so `6.7e6 N^{3/2} log N` replaces `7.3306 N^{3/2} log N`. The literal 7.3306 occurs only in `final_inequality`.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.Helfgott.repSum_sub_le_of_bounds",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Helfgott/NonPrime.lean",
+     "module": "TernaryGoldbach.Helfgott.NonPrime",
+     "lines": [
+      112,
+      115
+     ],
+     "snippet": "theorem repSum_sub_le_of_bounds {N : ℕ} (hN : 1 ≤ N) {Ap As : ℝ}\n    (hAp : ∀ t, 0 ≤ t → |etaPlus t| ≤ Ap) (hAs : ∀ t, 0 ≤ t → |etaStar t| ≤ As) :\n    repSum (fun _ => True) N - repSum Good N ≤\n      3 * (Ap ^ 2 * As) * Real.log N * (psi N - theta N + Real.log 2) * psi N := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.repSum_sub_le_of_bounds",
+      "lines": [
+       111,
+       191
+      ],
+      "conclusion": "For `|η₊| ≤ Ap`, `|η_*| ≤ As`: even/non-prime part of the count `≤ 3 Ap² As log N (ψ(N)-θ(N)+log 2) ψ(N)` ([H, (14.51)] with constants as parameters)."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Helfgott/Inputs.lean",
+     "module": "TernaryGoldbach.Helfgott.Inputs",
+     "lines": [
+      127,
+      129
+     ],
+     "snippet": "theorem nonprime_input (N : ℕ) (hN27 : 10 ^ 27 ≤ N) :\n    repSum (fun _ => True) N - repSum (fun n => n.Prime ∧ Odd n) N ≤\n      6.7e6 * (N * √N) * Real.log N := by",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Helfgott.nonprime_input",
+      "lines": [
+       116,
+       149
+      ],
+      "conclusion": "The even/non-prime part of the count is `≤ 6.7·10⁶ N^{3/2} log N`, using `Ap=400`, `As=6.2`, `ψ(N) ≤ 1.387 N`, `ψ-θ ≤ 1.6001 √N`."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book 14.4 display 3",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B062-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "A display 1",
+   "section": "A",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "[L] gives only the trivial upper bound `17x`, not the two-sided asymptotic `(1+O*(ε))x + O*(0.135 x^{1/2})` under RH to `T₀`.",
+   "proof_kind": "helper",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_trivial",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/Prop1123.lean",
+     "module": "TernaryGoldbach.MinorArcs.Prop1123",
+     "lines": [
+      29,
+      60
+     ],
+     "snippet": "/-- The trivial bound `|S_{η₂}(α, z)| ≤ 3 ψ(z) ≤ 17 z`. -/\ntheorem norm_S_eta2_le_trivial {z : ℝ} (hz : 0 < z) (α : ℝ) : ‖S eta2 z α‖ ≤ 17 * z := by\n  unfold S\n  have hs : ∀ n ∉ Finset.range (⌊z⌋₊ + 1),\n      ((Λ n * eta2 (n / z) : ℝ) : ℂ) * TernaryGoldbach.e (n * α) = 0 := by\n    intro n hn\n    rw [Finset.mem_range, not_lt, Nat.succ_le_iff, Nat.floor_lt hz.le] at hn\n    rw [eta2_eq_zero, mul_zero, Complex.ofReal_zero, zero_mul]\n    rintro ⟨-, h1⟩\n    rw [div_lt_one hz] at h1\n    linarith\n  rw [tsum_eq_sum hs]\n  refine (norm_sum_le _ _).trans ?_\n  have h1 : ∀ n ∈ Finset.range (⌊z⌋₊ + 1),\n      ‖((Λ n * eta2 (n / z) : ℝ) : ℂ) * TernaryGoldbach.e (n * α)‖ ≤ 3 * Λ n := by\n    intro n _\n    rw [norm_mul, TernaryGoldbach.norm_e, mul_one, Complex.norm_real, Real.norm_eq_abs,\n      abs_of_nonneg (mul_nonneg ArithmeticFunction.vonMangoldt_nonneg (eta2_nonneg _))]\n    nlinarith [eta2_le (n / z), @ArithmeticFunction.vonMangoldt_nonneg n]\n  refine (Finset.sum_le_sum h1).trans ?_\n  rw [← Finset.mul_sum]\n  have hpsi : ∑ n ∈ Finset.range (⌊z⌋₊ + 1), Λ n = Chebyshev.psi z := by\n    have e : Finset.range (⌊z⌋₊ + 1) = insert 0 (Finset.Ioc 0 ⌊z⌋₊) := by\n      ext n; simp only [Finset.mem_range, Finset.mem_insert, Finset.mem_Ioc]; omega\n    rw [e, Finset.sum_insert (by simp), ArithmeticFunction.map_zero, zero_add]\n    rfl\n  rw [hpsi]\n  have h4 : Real.log 4 < 1.3863 := by\n    rw [show (4 : ℝ) = 2 ^ 2 by norm_num, Real.log_pow]\n    have := Real.log_two_lt_d9; push_cast; linarith\n  have := Chebyshev.psi_le_const_mul_self hz.le\n  nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.norm_S_eta2_le_trivial",
+      "lines": [
+       29,
+       60
+      ],
+      "conclusion": "`‖S_{η₂}(α,z)‖ ≤ 3ψ(z) ≤ 17z` for `z>0`, unconditionally.",
+      "notation": [
+       {
+        "math": "∑_n Λ(n) η₂(n/x)",
+        "lean": "‖S eta2 z α‖ at α=0"
+       }
+      ]
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book C.1 display 1",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B063-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "B display 1",
+   "section": "B",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "Definition identical; the numerical value is proved with precision 10^{-7}, not the stated 10^{-9}/3.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.Prelim.RamPf.cR",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Prelim/RamareLog.lean",
+     "module": "TernaryGoldbach.Prelim.RamareLog",
+     "lines": [
+      334,
+      335
+     ],
+     "snippet": "/-- `c_E = γ + ∑_p log p/(p(p−1))`. -/\nnoncomputable def cR : ℝ := eulerMascheroniConstant + sumP",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Prelim.RamPf.cR",
+      "lines": [
+       334,
+       335
+      ],
+      "conclusion": "Defines `c_E = γ + ∑_p log p/(p(p-1))` (`sumP`).",
+      "notation": [
+       {
+        "math": "c_E",
+        "lean": "cR"
+       }
+      ]
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.Prelim.RamPf.cR_bounds",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Prelim/RamareNum.lean",
+     "module": "TernaryGoldbach.Prelim.RamareNum",
+     "lines": [
+      336,
+      365
+     ],
+     "snippet": "/-- **`1.3325822 ≤ c_E ≤ 1.3325823`.** -/\ntheorem cR_bounds : (1.3325822 : ℝ) ≤ cR ∧ cR ≤ 1.3325823 := by\n  obtain ⟨g1, g2⟩ := gamma_bounds\n  obtain ⟨x1, x2⟩ := X_bounds\n  obtain ⟨t1, t2⟩ := T_num\n  rw [cR_eq]\n  set X := AP 2000 - AN 2000 + ((∑' j, aL (2 * j + 2001)) - ∑' j, aL (2 * j + 2002))\n  have hp1 := Real.pi_gt_d20\n  have hp2 := Real.pi_lt_d20\n  set Z := π ^ 2 / 6 with hZ\n  have hZ1 : (3.14159265358979323846 : ℝ) ^ 2 / 6 ≤ Z := by\n    rw [hZ]; have := mul_le_mul hp1.le hp1.le (by norm_num) (by linarith); nlinarith\n  have hZ2 : Z ≤ (3.14159265358979323847 : ℝ) ^ 2 / 6 := by\n    rw [hZ]; have := mul_le_mul hp2.le hp2.le (by linarith) (by norm_num); nlinarith\n  have hZ0 : (0 : ℝ) < (3.14159265358979323846 : ℝ) ^ 2 / 6 := by norm_num\n  have hZpos : 0 < Z := lt_of_lt_of_le hZ0 hZ1\n  have hXneg : X < 0 := by linarith\n  have hXZ1 : 2 * (-0.10131657860671647583 : ℝ) / ((3.14159265358979323846 : ℝ) ^ 2 / 6) ≤ 2 * X / Z := by\n    rw [div_le_div_iff₀ hZ0 hZpos]\n    nlinarith [mul_le_mul_of_nonneg_left x1 hZ0.le]\n  have hXZ2 : 2 * X / Z ≤ 2 * (-0.10131657772091292918 : ℝ) / ((3.14159265358979323847 : ℝ) ^ 2 / 6) := by\n    rw [div_le_div_iff₀ hZpos (by norm_num)]\n    nlinarith [mul_le_mul_of_nonneg_left x2 hZpos.le]\n  have hl1 := Real.log_two_gt_d9\n  have hl2 := Real.log_two_lt_d9\n  have c1 : (1.3325822 : ℝ) ≤ 0.57721566469316315316 + 0.6931471803 +\n      2 * (-0.10131657860671647583 : ℝ) / ((3.14159265358979323846 : ℝ) ^ 2 / 6) + 0.18540561648805936305 := by norm_num\n  have c2 : (0.57721566594324228495 : ℝ) + 0.6931471808 +\n      2 * (-0.10131657772091292918 : ℝ) / ((3.14159265358979323847 : ℝ) ^ 2 / 6) + 0.18540562949186247907 ≤ 1.3325823 := by norm_num\n  constructor <;> linarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Prelim.RamPf.cR_bounds",
+      "lines": [
+       336,
+       365
+      ],
+      "conclusion": "`1.3325822 ≤ c_E ≤ 1.3325823`."
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book C.2 display 1",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B063-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "B display 2",
+   "section": "B",
+   "relation": "narrowMatch",
+   "class": "Deviates",
+   "note": "[L] has only the lower bound, with `1.064` instead of `1.312` and for `r ≥ 20000` instead of `r ≥ 182`; the upper bound `log r + 1.354` is absent.",
+   "proof_kind": "chain",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.Prelim.ramare_Gq",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/Prelim/Ramare.lean",
+     "module": "TernaryGoldbach.Prelim.Ramare",
+     "lines": [
+      26,
+      30
+     ],
+     "snippet": "/-- **Ramaré's estimate** [Ram95, Lemma 3.4], [H, (12.12)–(12.14)]. -/\ntheorem ramare_Gq : ∃ c : ℝ, 1.3325822 ≤ c ∧ c ≤ 1.3325823 ∧ ∀ d : ℕ, 1 ≤ d → ∀ R : ℝ, 1 ≤ R →\n    |GqP d R - (Nat.totient d / d) * (Real.log R + c + SqP d)| ≤ 7.284 * R ^ (-(1 / 3 : ℝ)) * f1qP d :=\n  ⟨RamPf.cR, RamPf.cR_bounds.1, RamPf.cR_bounds.2, fun _ hd _ hR =>\n    RamPf.ramare_bound hd (by linarith)⟩",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.Prelim.ramare_Gq",
+      "lines": [
+       26,
+       30
+      ],
+      "conclusion": "Ramaré: `|G_d(R) - (φ(d)/d)(log R + c + S_d)| ≤ 7.284 R^{-1/3} f₁(d)` with `c ∈ [1.3325822, 1.3325823]`."
+     }
+    },
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.G_ge_log",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot3.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot3",
+     "lines": [
+      15,
+      24
+     ],
+     "snippet": "/-- `G(t) ≥ log t + 1.064` for `t ≥ 20000`, from (12.12). -/\ntheorem G_ge_log {t : ℝ} (ht : 20000 ≤ t) : Real.log t + 1.064 ≤ Gq 1 t := by\n  obtain ⟨c, hc1, -, hram⟩ := ramare_Gq\n  have h := (abs_le.1 (hram 1 le_rfl t (by linarith))).1\n  have hS : Sq 1 = 0 := by simp [Sq]\n  have hf : f1q 1 = 1 := by simp [f1q]\n  rw [hS, hf] at h\n  simp only [Nat.totient_one, Nat.cast_one, div_one, one_mul, mul_one, add_zero] at h\n  have := rpow_neg_third_le ht\n  nlinarith",
+     "proof_context": {
+      "declaration": "TernaryGoldbach.MinorArcs.G_ge_log",
+      "lines": [
+       15,
+       24
+      ],
+      "conclusion": "`G_1(t) = ∑_{r≤t} μ²(r)/φ(r) ≥ log t + 1.064` for `t ≥ 20000`.",
+      "notation": [
+       {
+        "math": "∑_{q≤r} μ²(q)/φ(q)",
+        "lean": "Gq 1 r"
+       }
+      ]
+     }
+    }
+   ],
+   "verification": {
+    "carried_from": "book C.2 display 2",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B063-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "B display 3",
+   "section": "B",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "The display only lists the three tail sums to be bounded; [L] has the summand `mPhi2` but no tail sum `∑_{q≥r}`; only finite sums over `Qset`.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MajorArcs.mPhi2",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MajorArcs/Singular.lean",
+     "module": "TernaryGoldbach.MajorArcs.Singular",
+     "lines": [
+      627,
+      628
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MajorArcs.mPhi2",
+     "TernaryGoldbach.MajorArcs.sum_Qset_mPhi2_le"
+    ],
+    "greps": [
+     "mPhi2|tail|q ≥ r in TernaryGoldbach/MajorArcs",
+     "6.7345|2.15502|4.31004 in TernaryGoldbach/"
+    ]
+   },
+   "verification": {
+    "carried_from": "book C.2 display 3",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B063-d",
+     "steps": [
+      "mapper (sonnet)",
+      "verifier (sonnet)"
+     ],
+     "agreed": true,
+     "same_relation": true
+    }
+   }
+  },
+  {
+   "id": "B display 4",
+   "section": "B",
+   "relation": "noMatch",
+   "class": "Absent",
+   "note": "`f_j(p) = (p^j-(p-1)^j)/((p-1)^j p)` with `f_j(p^k)=0` is not defined in [L]; the convolution identity (C.13) is not formalized, and `f1p` is a different function.",
+   "ends": [
+    {
+     "declaration": "TernaryGoldbach.MinorArcs.f1p",
+     "repo": "lean",
+     "commit": "192ca57362fa3ee737cd83205cb9ea99526c4553",
+     "file": "TernaryGoldbach/MinorArcs/LSQuot1.lean",
+     "module": "TernaryGoldbach.MinorArcs.LSQuot1",
+     "lines": [
+      22,
+      25
+     ]
+    }
+   ],
+   "searched": {
+    "declarations": [
+     "TernaryGoldbach.MinorArcs.f1p",
+     "TernaryGoldbach.MajorArcs.mPhi2",
+     "TernaryGoldbach.MajorArcs.mPhi"
+    ],
+    "greps": [
+     "p ^ j - (p - 1) ^ j|(p-1)^j in TernaryGoldbach/",
+     "f_j|fj in TernaryGoldbach/MajorArcs and Prelim and MinorArcs"
+    ]
+   },
+   "verification": {
+    "carried_from": "book C.2 display 4",
+    "reason": "LaTeX identical to the book record (whitespace ignored)",
+    "book_verification": {
+     "batch": "B063-d",
      "steps": [
       "mapper (sonnet)",
       "verifier (sonnet)"

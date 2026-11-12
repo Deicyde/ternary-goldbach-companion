@@ -10,6 +10,7 @@ Usage: python3 -I review_fixes.py <repository root>
 """
 import json
 import os
+import re
 import sys
 
 # item -> [(where, old text, new text)]; where is `note` or `check.note` (the erratum's check)
@@ -28,10 +29,9 @@ NOTES = {
                  'remark\'s 2.057613, so the remark is false; with the two-sided value √(2π)e^{−2π²δ²}, (1.11)–(1.12) '
                  'fail at q = 1, δ = 0 for x > 2.694·10¹¹, since (1/x)ΣΛ(n)e^{−(n/x)²/2} → √(π/2).')],
 }
-# machine paths of the session that ran the checks -> what scripts/checks/run_all.py writes
-PATHS = [(' (prior-2026-11-06/agents/C12-judge/chk445.py)', ''),
-         ('PYTHONPATH=<mpmath dir>', 'PYTHONPATH=<mpmath dir>'),
-         (' (scratchpad/agents/C35/check92.py)', ''), (' (check96.py)', '')]   # 2026-11-06 scripts not kept
+# machine paths of the session that ran the 2026-11-06 checks, and scripts of it that were not kept
+PATHS = [(re.compile(r' \((?:/tmp/[^)]*|scratchpad/[^)]*|check9[26]\.py)\)'), ''),
+         (re.compile(r'PYTHONPATH=/[^ "]*'), 'PYTHONPATH=<mpmath dir>')]
 # item -> erratum check added on 2026-11-12, confirmed only if its re-run (data/checks-run.json) says CONFIRMED
 CHECKS = {
     'Eq 3.6': ('typo', 'scripts/checks/eq_3_6.py', 'python3 -I eq_3_6.py',
@@ -73,8 +73,8 @@ def main():
         it['relations_at_P'] = {d: v['relation'] for d, v in per.items()}
         n += 1
     text = json.dumps(doc, indent=1, ensure_ascii=False)
-    for old, new in PATHS:
-        text = text.replace(json.dumps(old, ensure_ascii=False)[1:-1], json.dumps(new, ensure_ascii=False)[1:-1])
+    for rx, new in PATHS:
+        text = rx.sub(new, text)
     if '/tmp/' in text or '/home/' in text:
         sys.exit('a machine path is left in items.json')
     with open(path, 'w', encoding='utf-8') as f:

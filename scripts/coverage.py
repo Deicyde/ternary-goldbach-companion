@@ -15,7 +15,8 @@ Records and their class (the definitions are written into docs/coverage.md):
   link that only supports the item counts as `relatedMatch`; links to this repository's lean/ and to
   the book's PDF are not links to [L];
 - a record whose text a confirmed erratum (items.json) or a confirmed text error (the mapping's
-  `text_error`) says is wrong is Deviates, whatever its relation.
+  `text_error`) says is wrong is Deviates, whatever its relation; a confirmed proof gap (the proof does
+  not establish the statement, which may still be true) leaves the class of the relation.
 
 Usage: python3 -I scripts/coverage.py [<repository root>]
 """
@@ -100,6 +101,15 @@ def load(root, name):
     return json.load(open(os.path.join(root, 'data', name), encoding='utf-8'))
 
 
+def wrong(r):
+    """A confirmed erratum or text error that says the record's text is wrong (not a gap in a proof)."""
+    return bool(r.get('erratum')) and r['erratum']['kind'] != 'proof-gap'
+
+
+def gap(r):
+    return bool(r.get('erratum')) and r['erratum']['kind'] == 'proof-gap'
+
+
 def overlay_records(root, overlay, lean_uris):
     """[{id, type, kind, chapter, page, relation, class, ...}] of one overlay."""
     bundle = json.load(open(os.path.join(root, overlay, 'pdf-overlay', 'annotations.bundle.json'), encoding='utf-8'))
@@ -166,7 +176,7 @@ def overlay_records(root, overlay, lean_uris):
                 said = next((m.group(1) for n in notes for m in [re.search(r'\b(?:Erratum|Typo): (.*)', n)] if m), '')
                 if said:  # the note's erratum sentence, without the check it cites (the evidence column)
                     rec['erratum']['said'] = re.sub(r'\s*\((?:checked|proved) by [^()]*\)\.?$', '.', said)
-        rec['class'] = 'Deviates' if rec.get('erratum') else CLASS_OF.get(rec['relation'], 'Unjudged')
+        rec['class'] = 'Deviates' if wrong(rec) else CLASS_OF.get(rec['relation'], 'Unjudged')
         rec['relation_class'] = CLASS_OF.get(rec['relation'], 'Unjudged')
         out.append(rec)
     return out
@@ -244,8 +254,8 @@ def extremes_line(chapters, label):
 
 def deviates_line(recs):
     st = [r for r in recs if r['type'] == 'statements' and r['class'] == 'Deviates']
-    er = sum(1 for r in st if r.get('erratum'))
-    rel = collections.Counter(r['relation'] for r in st if not r.get('erratum'))
+    er = sum(1 for r in st if wrong(r))
+    rel = collections.Counter(r['relation'] for r in st if not wrong(r))
     return (f"Of the {len(st)} statements that deviate, {er} have a confirmed erratum; of the others, [L] proves less "
             f"(`narrowMatch`) for {rel['narrowMatch']} and does the work another way (`relatedMatch`) for {rel['relatedMatch']}.")
 
@@ -253,7 +263,7 @@ def deviates_line(recs):
 def evidence(r):
     if r.get('erratum'):
         e = r['erratum']
-        what = 'typo' if e['kind'] == 'typo' else 'error'
+        what = {'typo': 'typo', 'proof-gap': 'proof gap'}.get(e['kind'], 'error')
         how = f"`{e['evidence']}`" if not e['evidence'].startswith('lean/') else e['evidence']
         who = '; two skeptics' if e.get('confirmed_by') else ''
         return f'confirmed {what}: {how}{who}'
@@ -293,6 +303,10 @@ def write_doc(root, results):
         if moved:
             md += [f"Of the Deviates, {moved} records have a relation of another class but a confirmed erratum or text"
                    " error (section 4).", '']
+        g = sum(1 for r in res['records'] if gap(r) and r['type'] in TYPES)
+        if g:
+            md += [f"{g} records have a confirmed proof gap: [H]'s proof does not establish the statement, which is not"
+                   " shown wrong. They keep the class of their relation and are listed in section 4.", '']
     md += ['## 2. By chapter', '']
     for ov, title, label in OVERLAYS:
         res = results['overlays'][ov]
@@ -317,21 +331,32 @@ def write_doc(root, results):
     md += ['## 4. Deviations', '',
            'Every Deviates record, by chapter; in each chapter, the records with a confirmed erratum or text error come',
            'first. "Text against [L]" is the first sentence of the record\'s note. Evidence: the check that confirmed an',
-           'error, or the judged relation and how it was judged.', '']
+           'error, or the judged relation and how it was judged. Each text\'s list ends with the records whose proof has a',
+           'confirmed gap but whose relation is not Deviates.', '']
     for ov, title, label in OVERLAYS:
         res = results['overlays'][ov]
         recs = [r for r in res['records'] if r['class'] == 'Deviates' and r['type'] in TYPES]
+        gaps = [r for r in res['records'] if gap(r) and r['class'] != 'Deviates' and r['type'] in TYPES]
         md += [f'### {title}', '']
         for c in res['chapters']:
             rs = [r for r in recs if r['chapter'] == c['chapter']]
             if not rs:
                 continue
-            rs.sort(key=lambda r: (not r.get('erratum'), TYPES.index(r['type']), r['page'] or 0))
+            rs.sort(key=lambda r: (not wrong(r), not r.get('erratum'), TYPES.index(r['type']), r['page'] or 0))
             md += [f"#### {label} {c['chapter']} ({len(rs)})", '', '| Record | p. | Text against [L] | Declarations | Evidence |',
                    '|---|---|---|---|---|']
             for r in rs:
                 said = r.get('erratum', {}).get('said') or first_sentence(r['note'])
                 md.append(f"| {cell(label_of(r))} | {r['page']} | {cell(said) or '—'} | "
+                          f"{cell(decls_text(r['declarations'], 3))} | {cell(evidence(r))} |")
+            md.append('')
+        if gaps:
+            md += [f'#### Proof gaps (statement as formalized) ({len(gaps)})', '',
+                   "[H]'s proof does not establish these records, but their statements are not shown wrong; each keeps the class",
+                   'of its relation.', '', '| Record | p. | Class | Text against [L] | Declarations | Evidence |', '|---|---|---|---|---|---|']
+            for r in sorted(gaps, key=lambda r: (chapter_key(r['chapter']), TYPES.index(r['type']), r['page'] or 0)):
+                said = r['erratum'].get('said') or first_sentence(r['note'])
+                md.append(f"| {cell(label_of(r))} | {r['page']} | {r['class']} | {cell(said) or '—'} | "
                           f"{cell(decls_text(r['declarations'], 3))} | {cell(evidence(r))} |")
             md.append('')
     md += ['## 5. Absent', '']
@@ -358,7 +383,9 @@ def write_doc(root, results):
            'calr3/ternary-goldbach or Mathlib (not its links to this repository\'s `lean/` or to the book\'s PDF); with',
            'none, a checked absence makes it Absent, and a link that only supports it counts as `relatedMatch`. A',
            'record whose text a confirmed erratum (`data/items.json`) or text error (`text_error` in',
-           '`data/<overlay>-{steps,displays}-mapping.json`) says is wrong is Deviates whatever its relation; the',
+           '`data/<overlay>-{steps,displays}-mapping.json`) says is wrong is Deviates whatever its relation; a',
+           'confirmed proof gap (the proof does not establish the statement, which may still be true) does not',
+           'change the class of the relation. The',
            '`class` field of the mapping files is the class of the relation alone. A paper item takes no erratum',
            'from its book counterpart.', '']
     open(os.path.join(root, 'docs', 'coverage.md'), 'w', encoding='utf-8').write('\n'.join(md))
@@ -406,7 +433,7 @@ def main():
         results['overlays'][ov] = {
             'title': title, 'unit': label.lower(), 'headline': head, 'chapters': chapters,
             'other': sum(1 for r in recs if r['type'] == 'other'),
-            'erratum_moves': sum(1 for r in recs if r.get('erratum') and r['relation_class'] != 'Deviates'),
+            'erratum_moves': sum(1 for r in recs if wrong(r) and r['relation_class'] != 'Deviates'),
             'records': sorted(recs, key=lambda r: (TYPES.index(r['type']) if r['type'] in TYPES else 3,
                                                    chapter_key(r['chapter']), r['page'] or 0, r['id']))}
     write_doc(root, results)

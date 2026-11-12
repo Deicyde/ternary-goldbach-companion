@@ -630,7 +630,8 @@
     ],
     "previous_status": "inlined"
    },
-   "changes_since_2013": "No counterpart (Chapter 1 is new); the precise form is 1312.7748v2 (3.8) = [H, (10.8)]."
+   "changes_since_2013": "No counterpart (Chapter 1 is new); the precise form is 1312.7748v2 (3.8) = [H, (10.8)].",
+   "neutral_note": "The Lean never states this identity as a display. `MinorArcs.totient_mul_norm_le` uses it inside its proof and states only the triangle-inequality bound φ(q)|S(b/q+β)| ≤ Σ_ψ |τ(ψ)||S_ψ⁻¹(β)|, and `MinorArcs.norm_expTsum_le_of_chars` gives a pointwise bound using |τ| ≤ √q."
   },
   {
    "id": "Eq 1.8",
@@ -8278,7 +8279,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1205.5252v4 (3.20)), including the log/log⁺ misprint"
+   "changes_since_2013": "identical (1205.5252v4 (3.20)), including the log/log⁺ misprint",
+   "neutral_note": "The Lean has no display of this combination. The odd-n analogue `MinorArcs.norm_restPart_le_caseA` gives the bound `MinorArcs.bound_4_32`, in which √(3+2ε) appears where the book has ϖ_ε and logPlus is used in both places."
   },
   {
    "id": "Eq 4.21",
@@ -11698,7 +11700,8 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "identical (2013 (3.61))"
+   "changes_since_2013": "identical (2013 (3.61))",
+   "neutral_note": "`MinorArcs.sum_R3W'` states an analogue with upper-end weights, whose first block is q√(1+q/R) log(R+q) and which carries an extra 2q log(D/R) term. `MinorArcs.sum_R3W` is the variant for R ≥ q/2, with first block q√3 log 3R."
   },
   {
    "id": "Eq 5.1",
@@ -12515,7 +12518,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "1205.5252v4 (4.9); notation only (gcd); the min is already printed there."
+   "changes_since_2013": "1205.5252v4 (4.9); notation only (gcd); the min is already printed there.",
+   "neutral_note": "`MinorArcs.lemma_5_1_1` is stated with v = 2 and r ≤ y, using the lower limit `MinorArcs.aL` = max(z/(yr₁), z/(yr₂), z/(2r₁r₂)) and upper limit `MinorArcs.bL` = z/(r₁r₂), where the display has a min."
   },
   {
    "id": "Eq 5.10",
@@ -12769,7 +12773,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "1205.5252v4 (4.12); notation only (gcd); the min is already there."
+   "changes_since_2013": "1205.5252v4 (4.12); notation only (gcd); the min is already there.",
+   "neutral_note": "The Lean does not state this display. `Prelim.cntSq_approx` inverts the squarefree and coprimality condition per modulus P (with P = 2r₁r₂) on a generic interval [a,b], using `Prelim.coprime_indicator` and `Prelim.sum_moebius_sq_dvd`, so one divisor e plays the role of d₁d₂d₃."
   },
   {
    "id": "Eq 5.13",
@@ -13237,7 +13242,8 @@
     ],
     "previous_status": "inlined"
    },
-   "changes_since_2013": "notation only; (4.18) of 1205.5252v4 already has 5.04"
+   "changes_since_2013": "notation only; (4.18) of 1205.5252v4 already has 5.04",
+   "neutral_note": "The Lean states only the v = 2 case, and only the upper bound, inside the proof of `MinorArcs.S1_bound`. There it applies `MinorArcs.lemma_5_1_1` per odd s and sums using `MinorArcs.sum_odd_rpow_le_zeta` and `MinorArcs.const_S1_le`, so no general-v constant is stated."
   },
   {
    "id": "Eq 5.19",
@@ -13940,7 +13946,8 @@
     ],
     "previous_status": "replaced"
    },
-   "changes_since_2013": "identical ((4.25) of 1205.5252v4, same misprints)"
+   "changes_since_2013": "identical ((4.25) of 1205.5252v4, same misprints)",
+   "neutral_note": "The Lean has no ζ-quotient form. It uses truncated-product numerical bounds with separate ∏_{p|d} ρ_s(p), namely `MinorArcs.PS9_le` (2.9733), `MinorArcs.PSh_le` (11.4874) and `MinorArcs.G2Tail.sum_Hd_le` (2·1.2338 with factors (p+1)/p), and `MinorArcs.fo_sq_Sd_sq_le` uses only diagonal products."
   },
   {
    "id": "Eq 5.26",
@@ -17062,7 +17069,8 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "Adds the term (20c₀c₂^{3/2}/3π²)√(2x)·log(2√e x/c₂), absent from 1205.5252v4 (5.1). Otherwise notation only (gcd, 3c₁x/2q)."
+   "changes_since_2013": "Adds the term (20c₀c₂^{3/2}/3π²)√(2x)·log(2√e x/c₂), absent from 1205.5252v4 (5.1). Otherwise notation only (gcd, 3c₁x/2q).",
+   "neutral_note": "`MinorArcs.typeI1_le` states the bound with main term (x/2q)·min(1, c₀/(πδ)²) for c₀ = 32, sums over (m,2q)=1, η̂ evaluated at −δ/2, and the remainder `MinorArcs.bound_4_41`, whose last term has log(2ex/c₂) in place of log(2√e x/c₂). The main terms are in `MinorArcs.bound_4_40`."
   },
   {
    "id": "Eq 6.4",
@@ -21667,7 +21675,8 @@
    "changes_since_2013": "1205.5252v4 (5.53) had (log q)/2 where (1/2)log 4qδ₀ = (log 8q)/2 is right (2013 slip, fixed). 16.404 → 16.406: 16.404 was below 8.22088(1 + 1.15√2)3^{−1/4} = 16.4055. The remark after it changed from 1.5785x^{3/4−4/5} (wrong exponent) to 1.57863x^{4/5−3/4} but kept 16.404.",
    "relations_at_P": {
     "TernaryGoldbach.MinorArcs.typeII_rest_le": "relatedMatch"
-   }
+   },
+   "neutral_note": "Inside `MinorArcs.typeII_first` (case δ₀ = 2) the Lean has √(C_{x,2q}(log 2q + 0.002) + log(8q)/2)·√(0.30214 log 2q + 0.7468) with secondary terms bounded by 3.2x^{5/6} (`MinorArcs.typeII_main_le`, `MinorArcs.typeII_rest_le`), in place of the display's constants 0.67506, 16.406 and 1.84251."
   },
   {
    "id": "Eq 6.61",
@@ -21763,7 +21772,8 @@
    "changes_since_2013": "1205.5252v4 (5.54) had log(12x^{1/3}/|δq|), bounded via log 9. Since V = 9x^{1/3}/2 in both versions, 2V = 9x^{1/3} is right; the book has it, bounded via log(27/4) (2013 slip fixed). 1.68038 → 1.79926.",
    "relations_at_P": {
     "TernaryGoldbach.MinorArcs.typeII_rest_le": "relatedMatch"
-   }
+   },
+   "neutral_note": "Inside `MinorArcs.typeII_first` (case δ₀ = |δ|/4) the Lean uses `MinorArcs.typeII_main_le` with c = t(1+ε₁), replacing log(1+ε₁) by +0.002, with 0.7468 in place of 0.67506, and bounds the secondary terms by 3.2x^{5/6} via `MinorArcs.typeII_rest_le`."
   },
   {
    "id": "Eq 6.62",
@@ -21848,7 +21858,8 @@
    "changes_since_2013": "No counterpart: 1205.5252v4 only says the last lines of (5.53) and (5.54) can be simplified (with 0.83574 where the book has 0.89657) and gives no combined display.",
    "relations_at_P": {
     "TernaryGoldbach.MinorArcs.typeII_rest_le": "relatedMatch"
-   }
+   },
+   "neutral_note": "`MinorArcs.typeII_first` states the bound with log t + 0.002 where the display has log δ₀q + ε₁, 0.7468 where it has 0.67506, and a secondary term 3.2x^{5/6} (`MinorArcs.typeII_rest_le`) in place of 2.73908x^{5/6}. It also uses `Prelim.div_totient_lt` for q/φ(q)."
   },
   {
    "id": "Eq 6.63",
@@ -22138,7 +22149,8 @@
     ],
     "previous_status": "definition-differs"
    },
-   "changes_since_2013": "Same parameters as the unnumbered display in 1205.5252v4 §5.3.2; the text now checks U ≤ √x/2 and Q ≥ 2√x (2013: U < √x, Q > √(ex)) and takes θ = 4 (2013: θ = e²)."
+   "changes_since_2013": "Same parameters as the unnumbered display in 1205.5252v4 §5.3.2; the text now checks U ≤ √x/2 and Q ≥ 2√x (2013: U < √x, Q > √(ex)) and takes θ = 4 (2013: θ = e²).",
+   "neutral_note": "The Lean defines `MinorArcs.U2` = ⌊1225T⌋ in place of 500√6·T, `MinorArcs.V2` = ⌊T/3⌋, and `MinorArcs.Q2` = T²/349 in place of Q = x/U. `MinorArcs.theorem_3_1_1_second` uses these."
   },
   {
    "id": "Eq 6.66",
@@ -22312,7 +22324,8 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "1205.5252v4 (5.59) had θ = e²: 2e² where the book has 8 and log e² where it has log 4. Its range was y/4 < q ≤ x/2e²U, and its third line was (log(e²y/2))^{3/2} − (log y)^{3/2}. The 2013 text said 'minimal' for 'maximal'."
+   "changes_since_2013": "1205.5252v4 (5.59) had θ = e²: 2e² where the book has 8 and log e² where it has log 4. Its range was y/4 < q ≤ x/2e²U, and its third line was (log(e²y/2))^{3/2} − (log y)^{3/2}. The 2013 text said 'minimal' for 'maximal'.",
+   "neutral_note": "`MinorArcs.typeII_a1` states case (a1) with θ = 8, 16q ≤ x/U and Q₀ = T²/349, giving (√(12F₀X₀B₀) + a1SEC(L))T^{5/2}, via `MinorArcs.typeII_638`. `MinorArcs.a1_M3_le` carries an extra factor √1.03 in the third line."
   },
   {
    "id": "Eq 6.68",
@@ -22591,7 +22604,8 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "1205.5252v4 (5.60) [eq:hosto] gave 0.272652 for y/4 < q ≤ x/2e²U (θ = e²), as the x₀ value of a ratio it claimed decreases. The book has θ = 4, the range y < q ≤ x/8U and 0.275964, obtained via (6.68)–(6.70) and interval arithmetic."
+   "changes_since_2013": "1205.5252v4 (5.60) [eq:hosto] gave 0.272652 for y/4 < q ≤ x/2e²U (θ = e²), as the x₀ value of a ratio it claimed decreases. The book has θ = 4, the range y < q ≤ x/8U and 0.275964, obtained via (6.68)–(6.70) and interval arithmetic.",
+   "neutral_note": "`MinorArcs.a1_numeric` states √(12F₀X₀B₀) + a1SEC(L) ≤ 1.413 L^{3/2} for L ≥ 15.6, i.e. a constant 0.27193 instead of 0.275964. It is stated for the θ = 8 split at x/16U with Q₀ = x^{2/3}/349, completed by `MinorArcs.typeII_a2`."
   },
   {
    "id": "Eq 6.72",
@@ -23041,7 +23055,8 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "The 2013 analogue is unnumbered (1205.5252v4 conclusion) and is printed with C_{x₁,δ₀q} (x₁ = 10²⁵) where the book has C_{x,δ₀q}."
+   "changes_since_2013": "The 2013 analogue is unnumbered (1205.5252v4 conclusion) and is printed with C_{x₁,δ₀q} (x₁ = 10²⁵) where the book has C_{x,δ₀q}.",
+   "neutral_note": "`MinorArcs.main_amgm` states the left side with 0.7468 where the display has 0.67506, for 2 ≤ t ≤ T/3 and T ≥ 6·10⁶, bounded by (0.27125·C_{x,t} + 0.41415) log t + 0.8764 using `MinorArcs.sqrt_mul_sqrt_le`."
   },
   {
    "id": "Eq 6.77",
@@ -23113,8 +23128,13 @@
     "description": "The 0.67506 part of the constant term is halved twice. AM–GM gives (1/2√ρ)(log 4)/2 + (√ρ/2)·0.67506 = log 2/(2√ρ) + (√ρ/2)·0.67506 = 0.81020. But (6.77) prints (1/2)(log 2/√ρ + (√ρ/2)·0.67506) = log 2/(2√ρ) + (√ρ/4)·0.67506 = 0.49911. So (6.77) is false as printed, and Thm 3.1.1's +0.5 does not follow; the book's own route gives 0.8102.",
     "verdict_2026_11_06": "incomplete",
     "check": {
-     "state": "unconfirmed",
-     "why": "2026-11-06 skeptics: incomplete"
+     "state": "confirmed",
+     "script": "scripts/checks/theorem_3_1_1.py",
+     "command": "python3 -I theorem_3_1_1.py",
+     "output_line": "(6.77) printed constant = 0.499106 (book 0.49911); correct AM-GM constant = 0.810200",
+     "note": "(6.77) prints (1/2)(log 2/√ρ + (√ρ/2)·0.67506) = 0.49911, which halves the 0.67506 term twice; the AM–GM step gives log 2/(2√ρ) + (√ρ/2)·0.67506 = 0.81020.",
+     "why": "the slip two skeptics confirmed on Theorem 3.1.1 and on (3.2); the script was re-run on 2026-11-13",
+     "rerun": "(6.77) printed constant = 0.499106 (book 0.49911); correct AM-GM constant = 0.810200"
     }
    },
    "verification": {
@@ -24925,7 +24945,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "no counterpart (MA13 instead wrote F_δ(s) = ∫₀^∞ e^{−φ(u)}u^{σ}du/u, unnumbered)"
+   "changes_since_2013": "no counterpart (MA13 instead wrote F_δ(s) = ∫₀^∞ e^{−φ(u)}u^{σ}du/u, unnumbered)",
+   "neutral_note": "The Lean has no saddle-point contour. `Explicit.Gr` s δ θ is the rotated integral ∫₀^∞ Jr dr, which equals G_δ(s) and is bounded by `Explicit.norm_Gr_le` and `Explicit.norm_Gr_le_closed`."
   },
   {
    "id": "Eq 8.14",
@@ -24981,7 +25002,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "MA13 (3.10): u − 2πiδ − iτ/u = 0, i.e. u² + iℓu − iτ = 0 (for its φ); sign of the iℓu term flipped"
+   "changes_since_2013": "MA13 (3.10): u − 2πiδ − iτ/u = 0, i.e. u² + iℓu − iτ = 0 (for its φ); sign of the iℓu term flipped",
+   "neutral_note": "The Lean has no saddle point. `Explicit.norm_G_le_regimeB` fixes θ = 0.28 for |τ| ≥ (3/2)(πδ)² and gives 0.892|τ|e^{−0.1598|τ|}, while `Explicit.norm_G_le_regimeA` uses θ = 0.1866ρ and gives 0.588y²e^{−0.1065y²}."
   },
   {
    "id": "Eq 8.15",
@@ -25026,7 +25048,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "MA13 (3.11): u₀ = (−iℓ ± √(−ℓ²+4iτ))/2; sign of iℓ flipped"
+   "changes_since_2013": "MA13 (3.11): u₀ = (−iℓ ± √(−ℓ²+4iτ))/2; sign of iℓ flipped",
+   "neutral_note": "`Explicit.norm_Gr_le_closed` bounds ‖G_δ(s)‖ in closed form for any fixed angle 0 ≤ θ < π/4 by completing the square in r, and does not locate a saddle point."
   },
   {
    "id": "Eq 8.16",
@@ -25082,7 +25105,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "no counterpart (new; MA13 evaluated |u_{0,+}^s e^{y/2}| with y = ℜ(−iℓu₀) instead)"
+   "changes_since_2013": "no counterpart (new; MA13 evaluated |u_{0,+}^s e^{y/2}| with y = ℜ(−iℓu₀) instead)",
+   "neutral_note": "`Explicit.norm_Gr_le_closed` gives the factor e^{−θ|τ|}·e^{(2π|δ|sin θ)²/(2cos 2θ)}, from the Gaussian-integral step `Explicit.integral_rpow_exp_quad_le`. The quantities φ(u₀), E(ρ) and υ(ρ) are not evaluated."
   },
   {
    "id": "Eq 8.17",
@@ -25127,7 +25151,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "MA13 (3.12): φ''(u₀) = (u₀² + iτ)/u₀² = (−iℓu₀ + 2iτ)/u₀²; overall sign and sign of iℓ flipped"
+   "changes_since_2013": "MA13 (3.12): φ''(u₀) = (u₀² + iτ)/u₀² = (−iℓu₀ + 2iτ)/u₀²; overall sign and sign of iℓ flipped",
+   "neutral_note": "`Explicit.norm_G_le_regimeB` (prefactor 0.892|τ|) and `Explicit.norm_G_le_regimeA` (0.588y²) get their polynomial prefactors from a Gaussian moment bound after a fixed rotation, not from a steepest-descent direction or a 1/√|φ''| width."
   },
   {
    "id": "Eq 8.18",
@@ -25173,7 +25198,8 @@
     "rejudged": false,
     "sample_check": "agree"
    },
-   "changes_since_2013": "no counterpart (new; MA13 first assumed ℓ ≥ 0, calling ℓ < 0 easier)"
+   "changes_since_2013": "no counterpart (new; MA13 first assumed ℓ ≥ 0, calling ℓ < 0 easier)",
+   "neutral_note": "`Explicit.norm_G_le_regimeA` keeps the split at |τ| = (3/2)(πδ)², but without coordinates of u_{0,+}; its bounds depend on |δ| only and are uniform in sgn δ·sgn τ."
   },
   {
    "id": "Eq 8.19",
@@ -27871,7 +27897,8 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "identical ((4.7) of 1305.2897v4)"
+   "changes_since_2013": "identical ((4.7) of 1305.2897v4)",
+   "neutral_note": "`Explicit.explicit_formula_gen` states the shift as a limit over good heights T_k (`Explicit.good_height`), proven from the rectangle identity `Explicit.rect_identity`, with horizontal sides tending to 0 and left line at ℜs = −1/2. It has no separate residue term R, and `Explicit.explicit_formulaD` gives the same identity for any LDatum."
   },
   {
    "id": "Eq 9.8",
@@ -31132,7 +31159,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "1305.2897v4 (4.48): c₂/4 → κ_{2,0}/4; the misprint is the same."
+   "changes_since_2013": "1305.2897v4 (4.48): c₂/4 → κ_{2,0}/4; the misprint is the same.",
+   "neutral_note": "`Explicit.zero_sum_bound` bounds the zero sum by E0b + √x·E1b + x·E2b, where the Gaussian-regime tail is summed geometrically via `Explicit.norm_G_tail`, with EA = 0.588u₀²e^{−0.1065u₀²} and ratio e^{−1.93·4.4/(π(|δ|+1))}."
   },
   {
    "id": "Eq 9.54",
@@ -35807,7 +35835,8 @@
     ],
     "previous_status": "inlined"
    },
-   "changes_since_2013": "identical (1312.7748v2 (3.15))"
+   "changes_since_2013": "identical (1312.7748v2 (3.15))",
+   "neutral_note": "The Lean does not state this display. Inside `MajorArcs.pointwise_bound` it isolates only the main-term product (μ(q)/φ(q))³A₊²A_*Σ_b e(−N(b/q+β)) = coefN·A₊²A_*e(−Nβ) (`MajorArcs.coef_eq`), with all other terms going into the residual (a cubic-sum estimate), not the full sums S."
   },
   {
    "id": "Eq 10.16",
@@ -38610,7 +38639,8 @@
     ],
     "previous_status": "definition-differs"
    },
-   "changes_since_2013": "L_r/r became L_{2r}/r; 3.2x^{−1/6} became 3.36x^{−1/6}"
+   "changes_since_2013": "L_r/r became L_{2r}/r; 3.2x^{−1/6} became 3.36x^{−1/6}",
+   "neutral_note": "`MinorArcs.gx` defines g_x with constants 0.8764, 2.526 and 3.8 where the display has 0.5, 2.5 and 3.36."
   },
   {
    "id": "Eq 11.13",
@@ -39668,7 +39698,8 @@
     ],
     "previous_status": "replaced"
    },
-   "changes_since_2013": "2013 eq. (4.24) omitted the factor log 2r (and had x for y)"
+   "changes_since_2013": "2013 eq. (4.24) omitted the factor log 2r (and had x for y)",
+   "neutral_note": "The Lean does not follow this monotonicity argument. `MinorArcs.QA_antitoneOn` shows antitonicity of the main term on [6, B−2.5] using the derivative bound `MinorArcs.Rs_deriv_le`, dR/ds ≤ 0.27125/(B−s)."
   },
   {
    "id": "Eq 11.24",
@@ -43252,7 +43283,8 @@
     ],
     "previous_status": "replaced"
    },
-   "changes_since_2013": "identical (1312.7748v2, (5.39))"
+   "changes_since_2013": "identical (1312.7748v2, (5.39))",
+   "neutral_note": "The Lean has no lower bound for ϖ₀(q). `MinorArcs.large_q_hS` checks log q + 1.039R ≤ 1.03(qR)^{2/9} directly for q ≥ 2.2·10¹⁰ and R < λ(q), with exponent 2/9 in `MinorArcs.regionS`."
   },
   {
    "id": "Eq 12.40",
@@ -47076,7 +47108,8 @@
     ],
     "previous_status": "replaced"
    },
-   "changes_since_2013": "2013 (7.12) had (2 + 1/κ²), coming from (y + 2/y)e^{−y²/2} via DLMF (7.8.3) [MR2723248]. The book sharpens this to (y + 1/y) via A&S (7.1.13). The difference is negligible. The ∗/∗_M misprint in the derivation is unchanged."
+   "changes_since_2013": "2013 (7.12) had (2 + 1/κ²), coming from (y + 2/y)e^{−y²/2} via DLMF (7.8.3) [MR2723248]. The book sharpens this to (y + 1/y) via A&S (7.1.13). The difference is negligible. The ∗/∗_M misprint in the derivation is unchanged.",
+   "neutral_note": "The Lean does not truncate the integral at N/x. `MajorArcs.integral_etaS` gives ∫_ℝ η* = √(π/2)/κ exactly, and `MajorArcs.Cmain_ge` integrates over all of ℝ."
   },
   {
    "id": "Eq 14.12",
@@ -47137,7 +47170,8 @@
     ],
     "previous_status": "replaced"
    },
-   "changes_since_2013": "no counterpart (new in the book; 2013 gave only the value of |η∘'|₂², obtained 'by symbolic integration')"
+   "changes_since_2013": "no counterpart (new in the book; 2013 gave only the value of |η∘'|₂², obtained 'by symbolic integration')",
+   "neutral_note": "The Lean defines the derivative itself as `MajorArcs.P1` (factored form) and uses it only through the sup bound `MajorArcs.abs_P1_le`, |P1| ≤ 2.1 on [0,2], without the expanded polynomial for |η∘'|²."
   },
   {
    "id": "Eq 14.13",
@@ -47686,7 +47720,8 @@
     ],
     "previous_status": "replaced"
    },
-   "changes_since_2013": "No numbered 2013 counterpart: 2013 had the unnumbered display 'Z_{η₊²,2} ≤ 0.640209 x log x' (spurious factor x); the book numbers it and drops the x."
+   "changes_since_2013": "No numbered 2013 counterpart: 2013 had the unnumbered display 'Z_{η₊²,2} ≤ 0.640209 x log x' (spurious factor x); the book numbers it and drops the x.",
+   "neutral_note": "The Lean has no Z_{η₊²,2}. `MajorArcs.l2_major_bounds` uses ∫|S_{η₊}|² ≤ 8.79x, and `MajorArcs.norm_S_sub_coprime_le` bounds the non-coprime part pointwise by 10⁻¹⁵x."
   },
   {
    "id": "Eq 14.20",
@@ -47967,7 +48002,8 @@
     ],
     "previous_status": "replaced"
    },
-   "changes_since_2013": "err term 1.71973·10⁻⁸ → 1.20665·10⁻⁷: 2013 used 4.269·10⁻¹⁴ + 380676/√x₊ (scale x₊), the book 2.485·10⁻¹⁹ + 381576/√10²⁵ (scale x/κ); final 0.0362 log x unchanged."
+   "changes_since_2013": "err term 1.71973·10⁻⁸ → 1.20665·10⁻⁷: 2013 used 4.269·10⁻¹⁴ + 380676/√x₊ (scale x₊), the book 2.485·10⁻¹⁹ + 381576/√10²⁵ (scale x/κ); final 0.0362 log x unchanged.",
+   "neutral_note": "The Lean has no Z_{η*²,2}. `MajorArcs.resid_star` gives a pointwise residual bound 1.34·10⁻¹¹(x/κ)², using `MajorArcs.norm_S_star_sub_coprime_le`."
   },
   {
    "id": "Eq 14.24",
@@ -48591,7 +48627,8 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "2013 (7.29): E input 8.4031→8.4029·10⁻¹²; the conclusion 8.6297x is unchanged. In 2013 it was supported: ET ≤ 1.1377·10⁻⁸ gives 0.075272, so J ≥ 8.629898x and (√J−√E)² ≥ 8.629881x. The book raised ET to 1.1405·10⁻⁸ in (14.1) without recomputing (14.7), so the unchanged 8.6297 no longer follows."
+   "changes_since_2013": "2013 (7.29): E input 8.4031→8.4029·10⁻¹²; the conclusion 8.6297x is unchanged. In 2013 it was supported: ET ≤ 1.1377·10⁻⁸ gives 0.075272, so J ≥ 8.629898x and (√J−√E)² ≥ 8.629881x. The book raised ET to 1.1405·10⁻⁸ in (14.1) without recomputing (14.7), so the unchanged 8.6297 no longer follows.",
+   "neutral_note": "The Lean does not form √J − √E. `MinorArcs.I0_ge` states the bound 8.6294x, obtained from `MinorArcs.l2_major_14_7` (lower end 8.6296x) with `MinorArcs.norm_add_sq_le` in place of the display's 8.6297x."
   },
   {
    "id": "Eq 14.32",
@@ -48730,7 +48767,8 @@
     ],
     "previous_status": "replaced"
    },
-   "changes_since_2013": "identical (2013 (7.31))"
+   "changes_since_2013": "identical (2013 (7.31))",
+   "neutral_note": "The Lean has no cut at K. `MinorArcs.gx_scale_le` gives g_{wy}(min(1,w)n) ≤ g_y(n)·max(1,1/w), and `MinorArcs.integral_max_inv_phi_le` bounds ∫max(1,1/w)φ by 1.398, in place of |φ|₁ plus the C_{φ,2,K} term."
   },
   {
    "id": "Eq 14.34",
@@ -51614,7 +51652,8 @@
     ],
     "previous_status": "variant"
    },
-   "changes_since_2013": "1305.2897v4 (B.25) has only the upper bound. The lower bound 0.800128 − 274.8569/H^{7/2} is new."
+   "changes_since_2013": "1305.2897v4 (B.25) has only the upper bound. The lower bound 0.800128 − 274.8569/H^{7/2} is new.",
+   "neutral_note": "`MajorArcs.integral_sq_etaPlus_bounds` states 0.640204 ≤ ‖η₊‖₂² ≤ 0.640208 for the fixed case H = 200, rather than a bound with H^{7/2} for general H. It comes from the Lean's (9.94) as x → ∞. `MajorArcs.integral_etaPlus_sq_le` gives ≤ 0.6403."
   },
   {
    "id": "Eq A.26",
@@ -52790,7 +52829,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "Identical (the unlabelled display (A.1) of 1205.5252v4)."
+   "changes_since_2013": "Identical (the unlabelled display (A.1) of 1205.5252v4).",
+   "neutral_note": "`MinorArcs.norm_trig_le` states ‖4z³ − 16z + 16‖ ≤ 31.4821 for |z| = 1, which is |g(t)| ≤ 7.870525 against the display's 7.87052. `MinorArcs.norm_eta2DD_large` uses the same bound stated directly in t."
   },
   {
    "id": "Eq B.2",
@@ -54187,7 +54227,8 @@
     "repin": "unchanged",
     "rejudged": false
    },
-   "changes_since_2013": "identical (1205.5252v4 (A.18))."
+   "changes_since_2013": "identical (1205.5252v4 (A.18)).",
+   "neutral_note": "`MinorArcs.norm_fourier_logeta2_le_decay` states (2πt)²‖(log·η₂)^(t)‖ ≤ 96 log 2 in Fourier form."
   },
   {
    "id": "Lemma C.1.1",

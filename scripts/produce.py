@@ -249,7 +249,8 @@ def proof_overlay(root, overlay, pdf, lean, mathlib, folder):
         where = f'p. {pages[0]}' if len(pages) == 1 else f'pp. {pages[0]}–{pages[-1]}'
         title = f"{r['id']}: {'Display' if s['kind'] == 'display' else 'Text'}, {where}"
         absent = r['relation'] == 'noMatch'
-        extra = {'proof': {'kind': r['proof_kind']}} if r.get('proof_kind') and not absent else None
+        extra = {'proof': {'kind': r['proof_kind'], **({'summary': r['summary']} if r.get('summary') else {})}} \
+            if r.get('proof_kind') and not absent else None
         rec = record(r, 'proof_step', title, [end(e, not absent) for e in r['ends']], extra)
         steps[r['item']].append((s['step'], rec))
     steps = {k: [rec for _, rec in sorted(v, key=lambda x: x[0])] for k, v in steps.items()}
@@ -325,6 +326,8 @@ def main():
         er = it['erratum']
         confirmed = er.get('present') and er.get('check', {}).get('state') == 'confirmed'
         note = terse(it.get('note') or '', keep_errors=False)  # a confirmed erratum is stated from its check, below
+        if not note and it.get('neutral_note'):  # what [L] states instead, for a note left empty by the strip
+            note = terse(it['neutral_note'], keep_errors=False)
         if confirmed:
             kind = er['check'].get('kind') or er['kind']
             lead = 'Typo: ' if kind == 'typo' else 'Erratum: '

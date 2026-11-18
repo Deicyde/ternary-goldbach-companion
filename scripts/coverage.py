@@ -141,7 +141,8 @@ def overlay_records(root, overlay, lean_uris):
                        relation=r.get('relation'), note=r.get('note') or '', item=m.get('item'),
                        declarations=list(dict.fromkeys(e['location']['declaration'] for r in recs for e in r['object'])),
                        verification=verification_words(m['verification']),
-                       length=len(' '.join(texts[rid]['latex'].split())))
+                       length=texts[rid]['latex_chars'] if 'latex_chars' in texts[rid]
+                       else len(' '.join(texts[rid]['latex'].split())))
             if m.get('text_error'):
                 rec['erratum'] = {'kind': m['text_error']['kind'], 'evidence': m['text_error']['evidence'],
                                   'confirmed_by': m['text_error']['confirmed_by']}

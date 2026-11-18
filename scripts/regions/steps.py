@@ -211,6 +211,9 @@ def main():
     item_regs = json.load(open(items_regions))['items']
     D = json.load(open(disp_path))
     S = json.load(open(steps_path))
+    if any('latex' not in r for r in D['displays'] + S['steps']):
+        sys.exit('the data files leave out the source text; restore it first with '
+                 'scripts/source_text.py <e-print dir> <files> --write <dir>, and pass the restored copies')
     marks, enddisp, geo, afterdisp = read_aux(build)
     displine, dsafter, noend = read_step_aux(build, main_file)
     L = Layout(geo)

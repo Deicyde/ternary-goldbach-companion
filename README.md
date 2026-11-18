@@ -32,7 +32,9 @@ python3 pdf-overlay/tools/serve.py --build
 ```
 
 `serve.py` fetches the PDF from arxiv.org, checks its sha256, caches it under `book/.lake/` and
-serves the viewer on `127.0.0.1` only. The PDFs are not in this repository. Python 3.11+, standard
+serves the viewer on `127.0.0.1` only. The PDFs are not in this repository, and neither is the text
+of the book or the paper: `data/` locates each step and display by file and character offsets in the
+arXiv e-print, and `scripts/source_text.py` restores the text from the e-print and checks its sha256. Python 3.11+, standard
 library only. The cards show plain statements: there is no Verso build of the pinned commit, so no
 `pdf-overlay/verso.json` is written and nothing has hovers.
 

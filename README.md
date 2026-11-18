@@ -26,6 +26,15 @@ and the 317 steps of its 23 proofs are linked as the book's are.
 
 ## Viewing it
 
+Online: <https://deicyde.github.io/ternary-goldbach-companion/>. The site does not host the PDFs.
+They are under arXiv's non-exclusive licence, and arxiv.org serves them to any site
+(`Access-Control-Allow-Origin: *`), so the reader's browser fetches each PDF from arxiv.org. The viewer
+checks its sha256 before rendering it. `scripts/pages/build.sh` builds the site.
+`scripts/pages/remote_pdf.py` points the built viewer at arxiv.org; it edits only the built copy,
+never `pdf-overlay/`.
+
+Locally:
+
 ```sh
 git clone <this repository> && cd <it>/book      # or <it>/paper-2013
 python3 pdf-overlay/tools/serve.py --build

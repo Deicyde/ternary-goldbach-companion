@@ -44,8 +44,8 @@ python3 pdf-overlay/tools/serve.py --build
 serves the viewer on `127.0.0.1` only. The PDFs are not in this repository, and neither is the text
 of the book or the paper: `data/` locates each step and display by file and character offsets in the
 arXiv e-print, and `scripts/source_text.py` restores the text from the e-print and checks its sha256. Python 3.11+, standard
-library only. The cards show plain statements: there is no Verso build of the pinned commit, so no
-`pdf-overlay/verso.json` is written and nothing has hovers.
+library only. Each overlay's `pdf-overlay/verso.json`, cut from a Verso v4.35.0 build of `lean/` at
+`65911e7` with calr3 and Mathlib at their pins, gives the cards Verso's highlighting and hovers.
 
 ## Pins
 

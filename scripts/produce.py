@@ -57,7 +57,11 @@ RELATION = {
 }
 # The item's status -> the record's Literature Links status.
 STATUS = {
-    'exact': 'formalized', 'definition-match': 'formalized', 'stronger': 'formalized', 'inlined': 'formalized',
+    'exact': 'formalized', 'definition-match': 'formalized', 'stronger': 'formalized',
+    # inlined: proved as a step inside a declaration's proof, which states something else; the
+    # viewer's `formalized` says a key declaration states the item, and the coverage report counts
+    # the item's `relatedMatch` key links as deviating, so it is partial
+    'inlined': 'partial',
     'weaker': 'partial', 'variant': 'partial', 'definition-differs': 'partial',
     'replaced': 'not_formalized', 'hypothesis': 'not_formalized',
     'not-formalized-not-needed': 'not_formalized', 'not-formalized-gap': 'not_formalized', 'unclear': 'partial',
@@ -372,6 +376,7 @@ def main():
                 for r in records if r['object']):
             for r in records:
                 r['status'] = 'partial'
+            base = dict(base, status='partial')  # and so do the item's statements in lean/, written below
             counts['formalized_to_partial'] += 1
         for r in records:
             if note:

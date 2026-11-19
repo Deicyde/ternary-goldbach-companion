@@ -372,6 +372,7 @@ def main():
                 for r in records if r['object']):
             for r in records:
                 r['status'] = 'partial'
+            base = dict(base, status='partial')  # and so do the item's statements in lean/, written below
             counts['formalized_to_partial'] += 1
         for r in records:
             if note:

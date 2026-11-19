@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Build both overlays; their viewers fetch the PDFs from arxiv.org
+      - name: Build both overlays (pdf.remote; their viewers fetch the PDFs from arxiv.org)
         run: bash scripts/pages/build.sh
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

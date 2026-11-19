@@ -159,6 +159,14 @@ def main():
                                 else f"Counterpart in {ref}, changed: {m['change']}.",
                                 extensions={NS: dict(common)}))
             counts['book_links'] += 1
+        # formalized needs a key declaration among the item's links, as in the book's producer
+        # (formal-companion docs/overlay.md section 7)
+        if any(r.get('status') == 'formalized' for r in records) and not any(
+                o.get('role') == 'key' for r in records for o in r['object']):
+            for r in records:
+                if r.get('status') == 'formalized':
+                    r['status'] = 'partial'
+            counts['formalized_without_key_to_partial'] += 1
         # file names, as the book's producer names them
         def key_of(r, in_item):
             if r.get('relation') == 'noMatch':

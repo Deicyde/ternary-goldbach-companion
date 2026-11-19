@@ -1,0 +1,73 @@
+{
+  "id": "Eq 1.5",
+  "kind": "equation",
+  "status": "formalized",
+  "relation": "exactMatch",
+  "subject": [
+    {
+      "location": {
+        "page": 19,
+        "rect": [
+          0.17135,
+          0.54191,
+          0.56816,
+          0.04378
+        ]
+      },
+      "title": "Equation (1.5)",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "region": "Eq 1.5"
+        }
+      }
+    }
+  ],
+  "object": [
+    {
+      "type": "lean",
+      "uri": "https://github.com/leanprover-community/mathlib4",
+      "version": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+      "location": {
+        "declaration": "DirichletCharacter.LSeries_twist_vonMangoldt_eq",
+        "module": "Mathlib.NumberTheory.LSeries.Dirichlet"
+      },
+      "role": "key",
+      "extensions": {
+        "org.mathlib-initiative.formal-companion.overlay": {
+          "declaration": {
+            "id": "DirichletCharacter.LSeries_twist_vonMangoldt_eq",
+            "kind": "theorem"
+          },
+          "snippet": {
+            "text": "lemma LSeries_twist_vonMangoldt_eq {N : ℕ} (χ : DirichletCharacter ℂ N) {s : ℂ} (hs : 1 < s.re) :\n    L (↗χ * ↗Λ) s = -deriv (L ↗χ) s / L ↗χ s :=",
+            "line": 408,
+            "truncated": false
+          },
+          "destination": {
+            "resolution": "exact",
+            "href": "https://github.com/leanprover-community/mathlib4/blob/56a005855ea17e0b0958f73ec801ae140b0a1679/Mathlib/NumberTheory/LSeries/Dirichlet.lean",
+            "fragment": "L408"
+          }
+        }
+      }
+    }
+  ],
+  "extensions": {
+    "org.mathlib-initiative.formal-companion.overlay": {
+      "locator": {
+        "physical": [
+          19
+        ],
+        "printed": [
+          9
+        ]
+      },
+      "provenance": {
+        "actor": "agent",
+        "method": "mapped, verified, judged",
+        "confirmed_by_human": false
+      }
+    }
+  },
+  "note": "Book use: last step of (9.4), proof of Lemma 9.1.1. Not reproved in the repo; Mathlib supplies it, and ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div for ζ (Explicit/XiPartial.lean:249)."
+}

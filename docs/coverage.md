@@ -15,9 +15,9 @@ Contents: 1. Headline · 2. By chapter · 3. 1-to-1 · 4. Deviations · 5. Absen
 | | 1-to-1 | Faithful | Partial | Deviates | Absent | Unjudged | Formalized |
 |---|---|---|---|---|---|---|---|
 | Statements | 4/66 (6%) | 0/66 (0%) | 6/66 (9%) | 46/66 (70%) | 10/66 (15%) | 0/66 (0%) | **4/66 (6%)** |
-| Displays | 58/1142 (5%) | 65/1142 (6%) | 39/1142 (3%) | 742/1142 (65%) | 238/1142 (21%) | 0/1142 (0%) | **123/1142 (11%)** |
+| Displays | 59/1142 (5%) | 65/1142 (6%) | 39/1142 (3%) | 741/1142 (65%) | 238/1142 (21%) | 0/1142 (0%) | **124/1142 (11%)** |
 | Steps | 42/993 (4%) | 95/993 (10%) | 27/993 (3%) | 543/993 (55%) | 286/993 (29%) | 0/993 (0%) | **137/993 (14%)** |
-| &nbsp;&nbsp;of which numbered displays | 32/708 (5%) | 29/708 (4%) | 28/708 (4%) | 514/708 (73%) | 105/708 (15%) | 0/708 (0%) | **61/708 (9%)** |
+| &nbsp;&nbsp;of which numbered displays | 33/708 (5%) | 29/708 (4%) | 28/708 (4%) | 513/708 (72%) | 105/708 (15%) | 0/708 (0%) | **62/708 (9%)** |
 | &nbsp;&nbsp;of which unnumbered displays | 26/434 (6%) | 36/434 (8%) | 11/434 (3%) | 228/434 (53%) | 133/434 (31%) | 0/434 (0%) | **62/434 (14%)** |
 
 Not counted: 4 figures and tables. Statements are the numbered theorems, lemmas, propositions and corollaries; displays the numbered equations and the unnumbered displays outside proofs.
@@ -48,7 +48,7 @@ Of the Deviates, 3 records have a relation of another class but a confirmed erra
 
 | Chapter | Statements formalized | Displays formalized | Steps formalized | Steps absent | Deviations |
 |---|---|---|---|---|---|
-| 1 | 1/1 (100%) | 16/69 (23%) | — | — | 36/70 (51%) |
+| 1 | 1/1 (100%) | 17/69 (25%) | — | — | 35/70 (50%) |
 | 2 | 0/1 (0%) | 11/34 (32%) | 4/7 (57%) | 0/7 (0%) | 21/42 (50%) |
 | 3 | 0/1 (0%) | 5/25 (20%) | — | — | 10/26 (38%) |
 | 4 | 3/7 (43%) | 4/64 (6%) | 42/198 (21%) | 14/198 (7%) | 185/269 (69%) |
@@ -104,7 +104,7 @@ Displays and steps, by chapter:
 
 | Chapter | Displays 1-to-1 | Steps 1-to-1 |
 |---|---|---|
-| 1 | 11/69 (16%) | — |
+| 1 | 12/69 (17%) | — |
 | 2 | 10/34 (29%) | 1/7 (14%) |
 | 3 | 3/25 (12%) | — |
 | 4 | 2/64 (3%) | 17/198 (9%) |
@@ -153,7 +153,7 @@ confirmed gap but whose relation is not Deviates.
 
 ### Helfgott, *The ternary Goldbach problem* (arXiv:1501.05438v2)
 
-#### Chapter 1 (36)
+#### Chapter 1 (35)
 
 | Record | p. | Text against [L] | Declarations | Evidence |
 |---|---|---|---|---|
@@ -166,7 +166,6 @@ confirmed gap but whose relation is not Deviates.
 | 1.2 display 3 | 7 | Text calls it a simplification: [L] splits odd `q ≤ r` (radius `δ₀r/(2qx)`) from even `q ≤ 2r` (radius `δ₀r/(qx)`) and the arcs are over ℝ, not ℝ/ℤ; text's `1/(qQ)` with `Q ~ x/r` corresponds to `δ₀r/(2qx)`. | `Helfgott.majorArcs` | judged `relatedMatch` (mapper and verifier agreed) |
 | (1.3) | 8 | Lean's 𝔐 is the (10.5) set 𝔐_{8,150000}, not Ch. 1's simplified arcs of half-width 1/(qQ). | `Helfgott.majorArcs`, `Helfgott.repSum_lower_bound`, `isSumOfThreePrimes_of_circle` | judged `relatedMatch` (re-judged at the pin) |
 | (1.4) | 8 | Lean compares with Re∫_𝔐 and must subtract the non-prime terms (nonprime_input, 6.7·10⁶N^{3/2}log N), since the weights Λη see prime powers and 2. | `Helfgott.repSum_lower_bound`, `isSumOfThreePrimes_of_circle` | judged `relatedMatch` (re-judged at the pin) |
-| (1.5) | 9 | Book use: last step of (9.4), proof of Lemma 9.1.1. | `Explicit.SsumG_eq_line`, `Explicit.norm_logDeriv_L_right`, `Explicit.tsum_Fterm_eq` | judged `relatedMatch` (mapped, verified, judged) |
 | (1.7) | 11 | The Lean never states this identity as a display. | `MajorArcs.norm_S_sub_coprime_le`, `MinorArcs.Schar_primitive`, `MinorArcs.norm_expTsum_le_of_chars`, … (2 more) | judged `relatedMatch` (re-judged at the pin) |
 | 1.3 display 5 | 12 | [L] proves the explicit formula for primitive `χ ≠ 1` (`explicit_formula_gen`) and for ζ with the main term `M(1)x` (`explicit_formula_zeta`), as limits over rectangles with the remainder an integral on Re s = -1/2 instead of a trivial-zero sum; imprimitive characters are not covered. | `Explicit.explicit_formula_gen`, `Explicit.explicit_formula_zeta` | judged `relatedMatch` (judge ruling (own)) |
 | (1.9) | 12 | Ch. 8 fixes η = e^{−t²/2} (F_δ = M(e^{−t²/2}e(δt))); Ch. 9 writes G_δ for a general η. | `Explicit.fδ` | judged `relatedMatch` (mapped, verified, judged; key relations re-judged blind, statement against statement (2026-11-12)) |

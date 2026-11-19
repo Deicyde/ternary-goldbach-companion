@@ -100,14 +100,14 @@ Helfgott, *The ternary Goldbach problem* (arXiv:1501.05438v2):
 | | Formalized | 1-to-1 | Deviates | Absent |
 |---|---|---|---|---|
 | Statements | 4/66 (6%) | 4/66 (6%) | 46/66 (70%) | 10/66 (15%) |
-| Displays | 123/1142 (11%) | 58/1142 (5%) | 742/1142 (65%) | 238/1142 (21%) |
+| Displays | 124/1142 (11%) | 59/1142 (5%) | 741/1142 (65%) | 238/1142 (21%) |
 | Steps | 137/993 (14%) | 42/993 (4%) | 543/993 (55%) | 286/993 (29%) |
 
 Of the 46 statements that deviate, 13 have a confirmed erratum; of the others, [L] proves less (`narrowMatch`) for 9 and does the work another way (`relatedMatch`) for 24.
 
 | Chapter | Statements formalized | Displays formalized | Steps formalized | Steps absent | Deviations |
 |---|---|---|---|---|---|
-| 1 | 1/1 (100%) | 16/69 (23%) | — | — | 36/70 (51%) |
+| 1 | 1/1 (100%) | 17/69 (25%) | — | — | 35/70 (50%) |
 | 2 | 0/1 (0%) | 11/34 (32%) | 4/7 (57%) | 0/7 (0%) | 21/42 (50%) |
 | 3 | 0/1 (0%) | 5/25 (20%) | — | — | 10/26 (38%) |
 | 4 | 3/7 (43%) | 4/64 (6%) | 42/198 (21%) | 14/198 (7%) | 185/269 (69%) |

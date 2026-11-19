@@ -390,6 +390,14 @@ def main():
             records.append(dict(base, relation=st.get('relation', 'exactMatch'), subject=subject, object=[end], note=st['note'],
                                 extensions={NS: dict(common, provenance=STATEMENT_PROVENANCE)}))
             counts['formal_statements'] += 1
+        # an item judged formalized whose links name no key declaration (only `uses` links, say): the
+        # viewer would call it formalized and say no key declaration states it, and formal-companion's
+        # check_generated.py refuses that (docs/overlay.md section 7), so it is at most partial
+        if any(r.get('status') == 'formalized' for r in records) and not any(
+                o.get('role') == 'key' for r in records for o in r['object']):
+            for r in records:
+                r['status'] = 'partial'
+            counts['formalized_without_key_to_partial'] += 1
         # file names: <item>__<role>__<declaration>, or a folder for an item with several records
         def key_of(r, in_item):
             if r.get('relation') == 'noMatch' or not r['object']:
